@@ -1,0 +1,607 @@
+{
+  "case": "raw-valid-current-nonce",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_rawTransaction",
+    "params": [
+      "0xf86b8185847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a8d391fb09e2f92ffc93fe7ac7b1eb7f1e24289f707eec0f34292c1713f795ffa0554e314f2ec6166290fc977d4bd4c86a9e0cadc2366f6139bd907d893bb4e237",
+      [
+        "trace",
+        "stateDiff",
+        "vmTrace"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": {
+              "+": "0x"
+            },
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b34755ccb0391095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [
+          {
+            "action": {
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "callType": "call",
+              "gas": "0x0",
+              "input": "0x",
+              "to": "0x0000000000000000000000000000000000001234",
+              "value": "0x1"
+            },
+            "result": {
+              "gasUsed": "0x0",
+              "output": "0x"
+            },
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "call"
+          }
+        ],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        }
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        },
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": "=",
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b3472f99cd247095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "gas": "0x0",
+              "input": "0x",
+              "to": "0x0000000000000000000000000000000000001234",
+              "value": "0x1"
+            },
+            "result": {
+              "gasUsed": "0x0",
+              "output": "0x"
+            },
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "call"
+          }
+        ]
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": {
+              "+": "0x"
+            },
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b3472f99cd247095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "gas": "0x0",
+              "input": "0x",
+              "to": "0x0000000000000000000000000000000000001234",
+              "value": "0x1"
+            },
+            "result": {
+              "gasUsed": "0x0",
+              "output": "0x"
+            },
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "call"
+          }
+        ],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        }
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "*": {
+                "from": "0x0",
+                "to": "0x1"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b3472f99cd247095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [
+          {
+            "type": "call",
+            "action": {
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "callType": "call",
+              "gas": "0x0",
+              "input": "0x",
+              "to": "0x0000000000000000000000000000000000001234",
+              "value": "0x1"
+            },
+            "result": {
+              "gasUsed": "0x0",
+              "output": "0x"
+            },
+            "subtraces": 0,
+            "traceAddress": []
+          }
+        ],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        }
+      }
+    }
+  },
+  "topics": [
+    "H13",
+    "H16",
+    "H17"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "34be5cd1566ed836059b24b219a07f4b3322aef91ccba142dcf970fabbb08c80",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": {
+                "+": "0x"
+              },
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b34755ccb0391095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x0",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "5b4b98125c7dec36c3170d571c3ca47b2ea5a882fef9b967dac53e5bbfaee5fe",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": "=",
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b3472f99cd247095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x0",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "result",
+      "sha256": "49fa8a3b3a1b39b6a8fcb0c89e8ab420b9d57dfa5a72f83639d02044ad3dcd99",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": {
+                "+": "0x"
+              },
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b3472f99cd247095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x0",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "64a12b1f3952bf64525a631b83b3263f3464d85527ed2ab672c68359d82721f4",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "*": {
+                  "from": "0x0",
+                  "to": "0x1"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b3472f99cd247095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x0",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    }
+  ]
+}

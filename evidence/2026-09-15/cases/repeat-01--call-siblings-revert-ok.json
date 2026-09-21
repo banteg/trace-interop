@@ -1,0 +1,2610 @@
+{
+  "case": "repeat-01--call-siblings-revert-ok",
+  "run": "repeat-01",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x0000000000000000000000000000000000001005",
+        "gas": "0x927c0",
+        "gasPrice": "0x77359400",
+        "data": "0x"
+      },
+      [
+        "trace",
+        "stateDiff",
+        "vmTrace"
+      ],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "besu_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x2fc00f38b405"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b34726025e8efc96"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001005",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1499",
+                "output": "0x"
+              },
+              "subtraces": 2,
+              "traceAddress": [],
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x0000000000000000000000000000000000001005",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001003",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x0000000000000000000000000000000000001005",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 578997
+                },
+                "pc": 0,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578994
+                },
+                "pc": 2,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578991
+                },
+                "pc": 4,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578988
+                },
+                "pc": 6,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578985
+                },
+                "pc": 8,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1003"
+                  ],
+                  "store": null,
+                  "used": 578982
+                },
+                "pc": 10,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 578979
+                },
+                "pc": 13,
+                "sub": null
+              },
+              {
+                "cost": 62603,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576370
+                },
+                "pc": 16,
+                "sub": {
+                  "code": "0x60006000fd",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 4,
+                      "sub": null
+                    }
+                  ]
+                }
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 576368
+                },
+                "pc": 17,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 576365
+                },
+                "pc": 18,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576362
+                },
+                "pc": 20,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576359
+                },
+                "pc": 22,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576356
+                },
+                "pc": 24,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576353
+                },
+                "pc": 26,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1002"
+                  ],
+                  "store": null,
+                  "used": 576350
+                },
+                "pc": 28,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 576347
+                },
+                "pc": 31,
+                "sub": null
+              },
+              {
+                "cost": 62600,
+                "ex": {
+                  "mem": {
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                    "off": 0
+                  },
+                  "push": [
+                    "0x1"
+                  ],
+                  "store": null,
+                  "used": 573729
+                },
+                "pc": 34,
+                "sub": {
+                  "code": "0x602a60005260206000f3",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x2a"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null
+                    },
+                    {
+                      "cost": 6,
+                      "ex": {
+                        "mem": {
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                          "off": 0
+                        },
+                        "push": [],
+                        "store": null,
+                        "used": 59988
+                      },
+                      "pc": 4,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x20"
+                        ],
+                        "store": null,
+                        "used": 59985
+                      },
+                      "pc": 5,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 7,
+                      "sub": null
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 9,
+                      "sub": null
+                    }
+                  ]
+                }
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 35,
+                "sub": null
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 36,
+                "sub": null
+              }
+            ]
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "reth_nightly": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "callType": "call",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001005",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1499",
+                "output": "0x"
+              },
+              "subtraces": 2,
+              "traceAddress": []
+            },
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001003",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x6",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ]
+            },
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x12",
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ]
+            }
+          ],
+          "vmTrace": {
+            "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 579000,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 0,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578997,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 2,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578994,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 4,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578991,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 6,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578988,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 8,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578985,
+                  "push": [
+                    "0x1003"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 10,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578982,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 13,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 62603,
+                "ex": {
+                  "used": 578979,
+                  "push": [],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 16,
+                "sub": {
+                  "code": "0x60006000fd",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 60000,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59997,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "used": 59994,
+                        "push": [],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "REVERT"
+                    }
+                  ]
+                },
+                "op": "CALL"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "used": 576370,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 17,
+                "sub": null,
+                "op": "POP"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576368,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 18,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576365,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 20,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576362,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 22,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576359,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 24,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576356,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 26,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576353,
+                  "push": [
+                    "0x1002"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 28,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576350,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 31,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 62600,
+                "ex": {
+                  "used": 576347,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 34,
+                "sub": {
+                  "code": "0x602a60005260206000f3",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 60000,
+                        "push": [
+                          "0x2a"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59997,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 6,
+                      "ex": {
+                        "used": 59994,
+                        "push": [],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "MSTORE"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59988,
+                        "push": [
+                          "0x20"
+                        ],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 5,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59985,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 7,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "used": 59982,
+                        "push": [],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 9,
+                      "sub": null,
+                      "op": "RETURN"
+                    }
+                  ]
+                },
+                "op": "CALL"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "used": 573729,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 35,
+                "sub": null,
+                "op": "POP"
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "used": 573727,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 36,
+                "sub": null,
+                "op": "STOP"
+              }
+            ]
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "erigon_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x2fc00f38b405"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "callType": "call",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001005",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1499",
+                "output": "0x"
+              },
+              "subtraces": 2,
+              "traceAddress": [],
+              "type": "call"
+            },
+            {
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001003",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x6",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "call"
+            },
+            {
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x12",
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 578997
+                },
+                "pc": 0,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "0"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578994
+                },
+                "pc": 2,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578991
+                },
+                "pc": 4,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "2"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578988
+                },
+                "pc": 6,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "3"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 578985
+                },
+                "pc": 8,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "4"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1003"
+                  ],
+                  "store": null,
+                  "used": 578982
+                },
+                "pc": 10,
+                "sub": null,
+                "op": "PUSH2",
+                "idx": "5"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 578979
+                },
+                "pc": 13,
+                "sub": null,
+                "op": "PUSH2",
+                "idx": "6"
+              },
+              {
+                "cost": 62603,
+                "ex": {
+                  "mem": {
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                    "off": 0
+                  },
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576370
+                },
+                "pc": 16,
+                "sub": {
+                  "code": "0x60006000fd",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "7-0"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "7-1"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "REVERT",
+                      "idx": "7-2"
+                    }
+                  ]
+                },
+                "op": "CALL",
+                "idx": "7"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 576368
+                },
+                "pc": 17,
+                "sub": null,
+                "op": "POP",
+                "idx": "8"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 576365
+                },
+                "pc": 18,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "9"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576362
+                },
+                "pc": 20,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "10"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576359
+                },
+                "pc": 22,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "11"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576356
+                },
+                "pc": 24,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "12"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x0"
+                  ],
+                  "store": null,
+                  "used": 576353
+                },
+                "pc": 26,
+                "sub": null,
+                "op": "PUSH1",
+                "idx": "13"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1002"
+                  ],
+                  "store": null,
+                  "used": 576350
+                },
+                "pc": 28,
+                "sub": null,
+                "op": "PUSH2",
+                "idx": "14"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 576347
+                },
+                "pc": 31,
+                "sub": null,
+                "op": "PUSH2",
+                "idx": "15"
+              },
+              {
+                "cost": 62600,
+                "ex": {
+                  "mem": {
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                    "off": 0
+                  },
+                  "push": [
+                    "0x1"
+                  ],
+                  "store": null,
+                  "used": 573729
+                },
+                "pc": 34,
+                "sub": {
+                  "code": "0x602a60005260206000f3",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x2a"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "16-0"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "16-1"
+                    },
+                    {
+                      "cost": 6,
+                      "ex": {
+                        "mem": {
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                          "off": 0
+                        },
+                        "push": [],
+                        "store": null,
+                        "used": 59988
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "MSTORE",
+                      "idx": "16-2"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x20"
+                        ],
+                        "store": null,
+                        "used": 59985
+                      },
+                      "pc": 5,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "16-3"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x0"
+                        ],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 7,
+                      "sub": null,
+                      "op": "PUSH1",
+                      "idx": "16-4"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 9,
+                      "sub": null,
+                      "op": "RETURN",
+                      "idx": "16-5"
+                    }
+                  ]
+                },
+                "op": "CALL",
+                "idx": "16"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 35,
+                "sub": null,
+                "op": "POP",
+                "idx": "17"
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 36,
+                "sub": null,
+                "op": "STOP",
+                "idx": "18"
+              }
+            ]
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "reth_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "callType": "call",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001005",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1499",
+                "output": "0x"
+              },
+              "subtraces": 2,
+              "traceAddress": []
+            },
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001003",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x6",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ]
+            },
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001005",
+                "callType": "call",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x12",
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ]
+            }
+          ],
+          "vmTrace": {
+            "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 579000,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 0,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578997,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 2,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578994,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 4,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578991,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 6,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578988,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 8,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578985,
+                  "push": [
+                    "0x1003"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 10,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578982,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 13,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 62603,
+                "ex": {
+                  "used": 578979,
+                  "push": [],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x"
+                  },
+                  "store": null
+                },
+                "pc": 16,
+                "sub": {
+                  "code": "0x60006000fd",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 60000,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59997,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "used": 59994,
+                        "push": [],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "REVERT"
+                    }
+                  ]
+                },
+                "op": "CALL"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "used": 576370,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 17,
+                "sub": null,
+                "op": "POP"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576368,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 18,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576365,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 20,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576362,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 22,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576359,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 24,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576356,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 26,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576353,
+                  "push": [
+                    "0x1002"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 28,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 576350,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 31,
+                "sub": null,
+                "op": "PUSH2"
+              },
+              {
+                "cost": 62600,
+                "ex": {
+                  "used": 576347,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "store": null
+                },
+                "pc": 34,
+                "sub": {
+                  "code": "0x602a60005260206000f3",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 60000,
+                        "push": [
+                          "0x2a"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 0,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59997,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 2,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 6,
+                      "ex": {
+                        "used": 59994,
+                        "push": [],
+                        "mem": {
+                          "off": 0,
+                          "data": "0x"
+                        },
+                        "store": null
+                      },
+                      "pc": 4,
+                      "sub": null,
+                      "op": "MSTORE"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59988,
+                        "push": [
+                          "0x20"
+                        ],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 5,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "used": 59985,
+                        "push": [
+                          "0x0"
+                        ],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 7,
+                      "sub": null,
+                      "op": "PUSH1"
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "used": 59982,
+                        "push": [],
+                        "mem": {
+                          "off": 32,
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                        },
+                        "store": null
+                      },
+                      "pc": 9,
+                      "sub": null,
+                      "op": "RETURN"
+                    }
+                  ]
+                },
+                "op": "CALL"
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "used": 573729,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 35,
+                "sub": null,
+                "op": "POP"
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "used": 573727,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 36,
+                "sub": null,
+                "op": "STOP"
+              }
+            ]
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "nethermind_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "result": {
+          "vmTrace": {
+            "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 578997
+                },
+                "pc": 0,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 578994
+                },
+                "pc": 2,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 578991
+                },
+                "pc": 4,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 578988
+                },
+                "pc": 6,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 578985
+                },
+                "pc": 8,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1003"
+                  ],
+                  "store": null,
+                  "used": 578982
+                },
+                "pc": 10,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 578979
+                },
+                "pc": 13,
+                "sub": null
+              },
+              {
+                "sub": {
+                  "code": "0x60006000fd",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x00"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x00"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 4,
+                      "sub": null
+                    }
+                  ]
+                },
+                "cost": 62603,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 576370
+                },
+                "pc": 16
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 576368
+                },
+                "pc": 17,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x20"
+                  ],
+                  "store": null,
+                  "used": 576365
+                },
+                "pc": 18,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 576362
+                },
+                "pc": 20,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 576359
+                },
+                "pc": 22,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 576356
+                },
+                "pc": 24,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x00"
+                  ],
+                  "store": null,
+                  "used": 576353
+                },
+                "pc": 26,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x1002"
+                  ],
+                  "store": null,
+                  "used": 576350
+                },
+                "pc": 28,
+                "sub": null
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0xea60"
+                  ],
+                  "store": null,
+                  "used": 576347
+                },
+                "pc": 31,
+                "sub": null
+              },
+              {
+                "sub": {
+                  "code": "0x602a60005260206000f3",
+                  "ops": [
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x2a"
+                        ],
+                        "store": null,
+                        "used": 59997
+                      },
+                      "pc": 0,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x00"
+                        ],
+                        "store": null,
+                        "used": 59994
+                      },
+                      "pc": 2,
+                      "sub": null
+                    },
+                    {
+                      "cost": 6,
+                      "ex": {
+                        "mem": {
+                          "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                          "off": 0
+                        },
+                        "push": [],
+                        "store": null,
+                        "used": 59988
+                      },
+                      "pc": 4,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x20"
+                        ],
+                        "store": null,
+                        "used": 59985
+                      },
+                      "pc": 5,
+                      "sub": null
+                    },
+                    {
+                      "cost": 3,
+                      "ex": {
+                        "mem": null,
+                        "push": [
+                          "0x00"
+                        ],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 7,
+                      "sub": null
+                    },
+                    {
+                      "cost": 0,
+                      "ex": {
+                        "mem": null,
+                        "push": [],
+                        "store": null,
+                        "used": 59982
+                      },
+                      "pc": 9,
+                      "sub": null
+                    }
+                  ]
+                },
+                "cost": 62600,
+                "ex": {
+                  "mem": null,
+                  "push": [
+                    "0x01"
+                  ],
+                  "store": null,
+                  "used": 573729
+                },
+                "pc": 34
+              },
+              {
+                "cost": 2,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 35,
+                "sub": null
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "mem": null,
+                  "push": [],
+                  "store": null,
+                  "used": 573727
+                },
+                "pc": 36,
+                "sub": null
+              }
+            ]
+          },
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x2fc00f38b405"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b34726025e8efc96"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001005",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1499",
+                "output": "0x"
+              },
+              "subtraces": 2,
+              "traceAddress": [],
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x0000000000000000000000000000000000001005",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001003",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x0000000000000000000000000000000000001005",
+                "gas": "0xea60",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x12",
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "call"
+            }
+          ]
+        },
+        "id": 1
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    }
+  },
+  "head": {
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "difficulty": "0x0",
+    "number": "0x30",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "timestamp": "0x1e0",
+    "extraData": "0x",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "baseFeePerGas": "0x199876",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "blobGasUsed": "0x0",
+    "excessBlobGas": "0x0",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "blockAccessListHash": null,
+    "slotNumber": null,
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84"
+  },
+  "note": "Captured outcomes, not normative expected results. invalid_json preserves malformed response text."
+}

@@ -1,0 +1,123 @@
+{
+  "case": "repeat-01--raw-low-gas",
+  "run": "repeat-01",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_rawTransaction",
+    "params": [
+      "0xf86b81858477359400824e2094000000000000000000000000000000000000123401808718e5bb3abd10a0a038e0b48a1022d5c55eea7e525942547d2009224ffa7ab6d1b40a5a16cb70a590a0279569cdb60041c1eac5043486547bdf086c64543c7e2d07870a288096213d33",
+      [
+        "trace",
+        "stateDiff",
+        "vmTrace"
+      ]
+    ]
+  },
+  "responses": {
+    "nethermind_pinned": {
+      "response": {
+        "invalid_json": "{\"jsonrpc\":\"2.0\",\"result\":{\"vmTrace\":\"output\":null,\"stateDiff\":{},\"trace\":[]}"
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "besu_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": null,
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "reth_nightly": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "error": {
+          "code": -32000,
+          "message": "intrinsic gas too low"
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "reth_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "error": {
+          "code": -32000,
+          "message": "intrinsic gas too low"
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    },
+    "erigon_pinned": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "error": {
+          "code": -32000,
+          "message": "intrinsic gas too low: have 20000, want 21000"
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    }
+  },
+  "head": {
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "difficulty": "0x0",
+    "number": "0x30",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "timestamp": "0x1e0",
+    "extraData": "0x",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "baseFeePerGas": "0x199876",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "blobGasUsed": "0x0",
+    "excessBlobGas": "0x0",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "blockAccessListHash": null,
+    "slotNumber": null,
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84"
+  },
+  "note": "Captured outcomes, not normative expected results. invalid_json preserves malformed response text."
+}

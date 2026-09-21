@@ -1,0 +1,229 @@
+{
+  "case": "replay-revert-trace",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_replayTransaction",
+    "params": [
+      "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+      [
+        "trace"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+        "stateDiff": null,
+        "trace": [
+          {
+            "action": {
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "callType": "call",
+              "gas": "0x13488",
+              "input": "0x01",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+              "value": "0x0"
+            },
+            "error": "Reverted",
+            "result": {
+              "gasUsed": "0x889",
+              "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
+            },
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "call"
+          }
+        ],
+        "vmTrace": null,
+        "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": null,
+        "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+        "stateDiff": null,
+        "trace": [
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "gas": "0x13488",
+              "input": "0x01",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+              "value": "0x0"
+            },
+            "error": "Reverted",
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "call"
+          }
+        ],
+        "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+        "stateDiff": null,
+        "trace": [
+          {
+            "type": "call",
+            "action": {
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "callType": "call",
+              "gas": "0x13488",
+              "input": "0x01",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+              "value": "0x0"
+            },
+            "error": "Reverted",
+            "result": {
+              "gasUsed": "0x889",
+              "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
+            },
+            "subtraces": 0,
+            "traceAddress": []
+          }
+        ],
+        "vmTrace": null
+      }
+    }
+  },
+  "topics": [
+    "H01",
+    "H07",
+    "H09"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "e1bcdbcb07303c1b5e06e772dae473805f6e1bb698f150417a553652f2689f95",
+      "value": {
+        "result": {
+          "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+          "stateDiff": null,
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x13488",
+                "input": "0x01",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x889",
+                "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "afc5f91f764095877585d8dd5ab4bbc4b8d8a327ef15a3cc3ca0ec21dd9813c0",
+      "value": {
+        "result": {
+          "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+          "stateDiff": null,
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x13488",
+                "input": "0x01",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "b6137cb8580120323d014041a056e994d5f5693b3a6ae23d48b7388c8623d10d",
+      "value": {
+        "error": {
+          "code": -32601,
+          "message": "Method not found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "81866afd49efd2898a5b30a2088acf081d39ca1179cfefe02722f903fcb3e42a",
+      "value": {
+        "result": {
+          "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+          "stateDiff": null,
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x13488",
+                "input": "0x01",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x889",
+                "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    }
+  ]
+}

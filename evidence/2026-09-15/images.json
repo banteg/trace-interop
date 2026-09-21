@@ -1,0 +1,22 @@
+{
+  "besu": {
+    "digest": "hyperledger/besu@sha256:6f3f21ce533383fcc8db3bce02252b59d5a9e776b72b5a1c8ecd2db011600042",
+    "id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "requested": "hyperledger/besu:latest"
+  },
+  "erigon": {
+    "digest": "erigontech/erigon@sha256:46f5d3f9e9751be1fae8a805a6202d05c3925b7964f62c6a760c343282a6e6f3",
+    "id": "sha256:1f0a40a71acb54ae9ccc88f8993e1a70d58a4cad306e9cdb94435f30b69b58c9",
+    "requested": "erigontech/erigon:main-latest"
+  },
+  "nethermind": {
+    "digest": "nethermindeth/nethermind@sha256:cb280ff329ac2a9b045d0977b829a3faf44773f1fda85d8510c45edc58b2ced1",
+    "id": "sha256:d49202aa1596dcaca8e2c16ff18df761f612e1f55b6096ea4657ff432480d5af",
+    "requested": "nethermindeth/nethermind:master"
+  },
+  "reth": {
+    "digest": "ghcr.io/paradigmxyz/reth@sha256:68e76b32ad9ac1a3de54984d6f15bbce2047a92a771ff4efbcd08ee8f9dbd4d1",
+    "id": "sha256:b22b691a0dc5e216ff7e5548a19bb75b986f341acce68a480c477a30b88ae209",
+    "requested": "ghcr.io/paradigmxyz/reth:latest"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "case": "get-missing",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_get",
+    "params": [
+      "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      [
+        "0xffff"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": [],
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    }
+  },
+  "topics": [
+    "H02",
+    "H06"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "besu_pinned",
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "63c49671e4c0faf619ee397c992e45e4c411dce55a4ef9410067b01fc9c93a0f",
+      "value": {
+        "result": []
+      }
+    }
+  ]
+}

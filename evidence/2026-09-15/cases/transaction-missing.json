@@ -1,0 +1,75 @@
+{
+  "case": "transaction-missing",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_transaction",
+    "params": [
+      "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe"
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32000,
+        "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": []
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    }
+  },
+  "topics": [
+    "H06"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "cae7a7823fd87420fb10c78763a497850591aedf9fbc11985f7df2e5502a3611",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "result",
+      "sha256": "63c49671e4c0faf619ee397c992e45e4c411dce55a4ef9410067b01fc9c93a0f",
+      "value": {
+        "result": []
+      }
+    }
+  ]
+}

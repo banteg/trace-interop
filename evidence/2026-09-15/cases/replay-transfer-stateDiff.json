@@ -1,0 +1,357 @@
+{
+  "case": "replay-transfer-stateDiff",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_replayTransaction",
+    "params": [
+      "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+      [
+        "stateDiff"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0xe1f93",
+                "to": "0xe719b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b349381db4bf5a19",
+                "to": "0xc097ce7bc90715b3492e4b610902b0"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0xf",
+                "to": "0x10"
+              }
+            },
+            "storage": {}
+          },
+          "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34b9f1000000000",
+                "to": "0xc097ce7bc90715b34b9f1000000001"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null,
+        "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": null,
+        "output": null,
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0xe1f93",
+                "to": "0xe719b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b349381db4bf5a19",
+                "to": "0xc097ce7bc90715b3492e4b610902b0"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0xf",
+                "to": "0x10"
+              }
+            },
+            "storage": {}
+          },
+          "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34b9f1000000000",
+                "to": "0xc097ce7bc90715b34b9f1000000001"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0xe1f93",
+                "to": "0xe719b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b349381db4bf5a19",
+                "to": "0xc097ce7bc90715b3492e4b610902b0"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0xf",
+                "to": "0x10"
+              }
+            },
+            "storage": {}
+          },
+          "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34b9f1000000000",
+                "to": "0xc097ce7bc90715b34b9f1000000001"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null
+      }
+    }
+  },
+  "topics": [
+    "H01",
+    "H07",
+    "H08"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "e6082c3acf0e2294a2c45f0c3761f68175bb2dc53ac547f38ec00ec88934eae5",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0xe1f93",
+                  "to": "0xe719b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b349381db4bf5a19",
+                  "to": "0xc097ce7bc90715b3492e4b610902b0"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0xf",
+                  "to": "0x10"
+                }
+              },
+              "storage": {}
+            },
+            "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34b9f1000000000",
+                  "to": "0xc097ce7bc90715b34b9f1000000001"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "dbe20628f5e4f96edd6ef02a89b5064e1f6524ebe846ba6ac69e01941a2cc601",
+      "value": {
+        "result": {
+          "output": null,
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0xe1f93",
+                  "to": "0xe719b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b349381db4bf5a19",
+                  "to": "0xc097ce7bc90715b3492e4b610902b0"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0xf",
+                  "to": "0x10"
+                }
+              },
+              "storage": {}
+            },
+            "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34b9f1000000000",
+                  "to": "0xc097ce7bc90715b34b9f1000000001"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "b6137cb8580120323d014041a056e994d5f5693b3a6ae23d48b7388c8623d10d",
+      "value": {
+        "error": {
+          "code": -32601,
+          "message": "Method not found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "b5bdd12706db510df6b9b3e927e43f89a0bf4087f9eb13ef122d552afef78777",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0xe1f93",
+                  "to": "0xe719b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b349381db4bf5a19",
+                  "to": "0xc097ce7bc90715b3492e4b610902b0"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0xf",
+                  "to": "0x10"
+                }
+              },
+              "storage": {}
+            },
+            "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34b9f1000000000",
+                  "to": "0xc097ce7bc90715b34b9f1000000001"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    }
+  ]
+}

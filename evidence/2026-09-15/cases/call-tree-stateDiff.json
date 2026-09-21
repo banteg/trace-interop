@@ -1,0 +1,329 @@
+{
+  "case": "call-tree-stateDiff",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "gas": "0x927c0",
+        "gasPrice": "0x0",
+        "data": "0x"
+      },
+      [
+        "stateDiff"
+      ],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": null,
+        "output": null,
+        "stateDiff": {
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": "=",
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          },
+          "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+            "balance": {
+              "*": {
+                "from": "0x3b9ac9f2",
+                "to": "0x3b9ac9f1"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0xe",
+                "to": "0xf"
+              }
+            },
+            "storage": {
+              "0x0000000000000000000000000000000000000000000000000000000000000000": {
+                "*": {
+                  "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
+                  "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
+                }
+              },
+              "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
+                "*": {
+                  "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
+                  "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
+                }
+              }
+            }
+          },
+          "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+            "balance": {
+              "*": {
+                "from": "0xe",
+                "to": "0xf"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          }
+        },
+        "trace": []
+      },
+      "id": 1
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0xffee",
+        "stateDiff": {
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": "=",
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          },
+          "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+            "balance": {
+              "*": {
+                "from": "0x3b9ac9f2",
+                "to": "0x3b9ac9f1"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0xe",
+                "to": "0xf"
+              }
+            },
+            "storage": {
+              "0x0000000000000000000000000000000000000000000000000000000000000000": {
+                "*": {
+                  "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
+                  "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
+                }
+              },
+              "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
+                "*": {
+                  "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
+                  "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
+                }
+              }
+            }
+          },
+          "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+            "balance": {
+              "*": {
+                "from": "0xe",
+                "to": "0xf"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32603,
+        "message": "Internal error"
+      }
+    },
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32000,
+        "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
+      }
+    }
+  },
+  "topics": [
+    "H15",
+    "H16"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "c912be3751e7bb5d8b6869a77ce1ba2160c19327bcde26da361c0e9dbc073cc1",
+      "value": {
+        "result": {
+          "output": null,
+          "stateDiff": {
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            },
+            "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+              "balance": {
+                "*": {
+                  "from": "0x3b9ac9f2",
+                  "to": "0x3b9ac9f1"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0xe",
+                  "to": "0xf"
+                }
+              },
+              "storage": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": {
+                  "*": {
+                    "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
+                    "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
+                  }
+                },
+                "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
+                  "*": {
+                    "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
+                    "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
+                  }
+                }
+              }
+            },
+            "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+              "balance": {
+                "*": {
+                  "from": "0xe",
+                  "to": "0xf"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "25b6af0a05b10ed5ee250d5d89c5ae0cc0d49e7176d633d8d3f4d01595b2e4b2",
+      "value": {
+        "result": {
+          "output": "0xffee",
+          "stateDiff": {
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            },
+            "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+              "balance": {
+                "*": {
+                  "from": "0x3b9ac9f2",
+                  "to": "0x3b9ac9f1"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0xe",
+                  "to": "0xf"
+                }
+              },
+              "storage": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": {
+                  "*": {
+                    "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
+                    "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
+                  }
+                },
+                "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
+                  "*": {
+                    "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
+                    "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
+                  }
+                }
+              }
+            },
+            "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+              "balance": {
+                "*": {
+                  "from": "0xe",
+                  "to": "0xf"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "be437a3a68b8a0f63751731228097542d8349cb324362191c416e9a933031c18",
+      "value": {
+        "error": {
+          "code": -32603,
+          "message": "Internal error"
+        }
+      }
+    },
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "error",
+      "sha256": "4e51d0a8111dafe005448c9e17771f1714621ff7308f9b0683dab5d00afa8054",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
+        }
+      }
+    }
+  ]
+}

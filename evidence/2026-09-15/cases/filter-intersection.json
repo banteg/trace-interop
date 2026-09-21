@@ -1,0 +1,164 @@
+{
+  "case": "filter-intersection",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_filter",
+    "params": [
+      {
+        "fromBlock": "0x2",
+        "toBlock": "0x2",
+        "fromAddress": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+        ],
+        "toAddress": [
+          "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+        ],
+        "mode": "intersection"
+      }
+    ]
+  },
+  "responses": {
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": [
+        {
+          "action": {
+            "callType": "call",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x8d5b8",
+            "input": "0x",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "value": "0x0"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x2343f",
+            "output": "0xffee"
+          },
+          "subtraces": 7,
+          "traceAddress": [],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        }
+      ],
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32602,
+        "message": "Invalid filter params"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": [
+        {
+          "action": {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "callType": "call",
+            "gas": "0x8d5b8",
+            "input": "0x",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "value": "0x0"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x2343f",
+            "output": "0xffee"
+          },
+          "subtraces": 7,
+          "traceAddress": [],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        }
+      ]
+    },
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": [
+        {
+          "action": {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "callType": "call",
+            "gas": "0x8d5b8",
+            "input": "0x",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "value": "0x0"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x2343f",
+            "output": "0xffee"
+          },
+          "subtraces": 7,
+          "traceAddress": [],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        }
+      ]
+    }
+  },
+  "topics": [
+    "H03"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "nethermind_pinned",
+        "reth_pinned",
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "dcf50605e35faeb8ddd5f9b9f26053b5c307a27a5b52bac73bcda1405d53f14c",
+      "value": {
+        "result": [
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "gas": "0x8d5b8",
+              "input": "0x",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+              "value": "0x0"
+            },
+            "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+            "blockNumber": 2,
+            "result": {
+              "gasUsed": "0x2343f",
+              "output": "0xffee"
+            },
+            "subtraces": 7,
+            "traceAddress": [],
+            "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+            "transactionPosition": 1,
+            "type": "call"
+          }
+        ]
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "d681b5c9cbdf7987a9aebdc5fffaf078a7cb0f984f48f793f49ff73554c44582",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "Invalid filter params"
+        }
+      }
+    }
+  ]
+}

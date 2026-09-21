@@ -1,0 +1,5 @@
+This project's orchestration and reports are MIT licensed.
+The execution-apis specification is maintained separately under its CC0 license.
+Hive is used as an external, pinned dependency; its client adapters and simulator source
+retain their upstream licenses. Generated chain data and RPC observations are attributed
+to the pinned Hive/client versions in the manifests. Public fixture keys are test-only.

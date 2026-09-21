@@ -1,0 +1,423 @@
+{
+  "case": "call-transfer-stateDiff",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x0000000000000000000000000000000000001234",
+        "gas": "0x186a0",
+        "gasPrice": "0x77359400",
+        "value": "0x1",
+        "data": "0x"
+      },
+      [
+        "stateDiff"
+      ],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "*": {
+                "from": "0x0",
+                "to": "0x1"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b34755ccb0391095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": null,
+        "output": null,
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": "=",
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b3472f99cd247095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": []
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": {
+              "+": "0x"
+            },
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b3472f99cd247095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x66863b",
+                "to": "0x262aafd8968b"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "+": "0x1"
+            },
+            "code": {
+              "+": "0x"
+            },
+            "nonce": {
+              "+": "0x0"
+            },
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34755ccb0391096",
+                "to": "0xc097ce7bc90715b34755ccb0391095"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x85",
+                "to": "0x86"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [],
+        "vmTrace": null
+      }
+    }
+  },
+  "topics": [
+    "H08",
+    "H16",
+    "H17"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "3396f65444eb9db572a56e30e3d2e8950ca236cca6a79c4c15faaa8ba9ff88d7",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "*": {
+                  "from": "0x0",
+                  "to": "0x1"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b34755ccb0391095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "aad3b043226a67d7c841621cc3b27f0de2627377cf85fbe889499845be1832bd",
+      "value": {
+        "result": {
+          "output": null,
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": "=",
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b3472f99cd247095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "result",
+      "sha256": "d4f2d9107f8ac9cbd2768bba1f7ce7a3c7c26925b9d2a428f2c09fd73af3a787",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": {
+                "+": "0x"
+              },
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b3472f99cd247095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "b272340bab7fc05479ece6f6b05a6672f55f40cebb1b2bb579f8a4a9be6527fb",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x66863b",
+                  "to": "0x262aafd8968b"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "+": "0x1"
+              },
+              "code": {
+                "+": "0x"
+              },
+              "nonce": {
+                "+": "0x0"
+              },
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34755ccb0391096",
+                  "to": "0xc097ce7bc90715b34755ccb0391095"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    }
+  ]
+}

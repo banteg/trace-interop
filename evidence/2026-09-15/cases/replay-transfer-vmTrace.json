@@ -1,0 +1,122 @@
+{
+  "case": "replay-transfer-vmTrace",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_replayTransaction",
+    "params": [
+      "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+      [
+        "vmTrace"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        },
+        "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": {
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        },
+        "output": "0x",
+        "stateDiff": null,
+        "trace": [],
+        "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        }
+      }
+    }
+  },
+  "topics": [
+    "H01",
+    "H07"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "a69dd94dabd3ea654115cff2e7293f05159c85b68d4347fcc6c2ce2f20454aaf",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": null,
+          "trace": [],
+          "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "b6137cb8580120323d014041a056e994d5f5693b3a6ae23d48b7388c8623d10d",
+      "value": {
+        "error": {
+          "code": -32601,
+          "message": "Method not found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "3260154d0281c921de211256fe1376e721746c183c2f0fca3b5b19e500643b79",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": null,
+          "trace": [],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    }
+  ]
+}

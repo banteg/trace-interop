@@ -1,0 +1,71 @@
+{
+  "case": "get-missing-tx",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_get",
+    "params": [
+      "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+      []
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32602,
+        "message": "Value cannot be null. (Parameter 'source')",
+        "data": "System.ArgumentNullException: Value cannot be null. (Parameter 'source')"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    }
+  },
+  "topics": [
+    "H02",
+    "H06",
+    "H14"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "besu_pinned",
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "c48dc3530c60ae2d4a04ff0ffcf666efca9624e53477a24cd224ae5ecc8607fd",
+      "value": {
+        "error": {
+          "code": -32602,
+          "data": "System.ArgumentNullException: Value cannot be null. (Parameter 'source')",
+          "message": "Value cannot be null. (Parameter 'source')"
+        }
+      }
+    }
+  ]
+}

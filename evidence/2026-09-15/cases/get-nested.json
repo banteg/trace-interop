@@ -1,0 +1,159 @@
+{
+  "case": "get-nested",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_get",
+    "params": [
+      "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      [
+        "0x0",
+        "0x0"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": [
+        {
+          "action": {
+            "callType": "call",
+            "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "gas": "0xf35c",
+            "input": "0xff01",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
+            "value": "0x1"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x48",
+            "output": "0xffee"
+          },
+          "subtraces": 0,
+          "traceAddress": [
+            0
+          ],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        },
+        {
+          "action": {
+            "callType": "call",
+            "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "gas": "0xf35c",
+            "input": "0xff01",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
+            "value": "0x1"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x48",
+            "output": "0xffee"
+          },
+          "subtraces": 0,
+          "traceAddress": [
+            0
+          ],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        }
+      ],
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    }
+  },
+  "topics": [
+    "H02",
+    "H06"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "besu_pinned",
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "f83a7d7d501f93795a7e2f25962b61799cbbc234db9396ca7a1132dd9f927496",
+      "value": {
+        "result": [
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+              "gas": "0xf35c",
+              "input": "0xff01",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
+              "value": "0x1"
+            },
+            "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+            "blockNumber": 2,
+            "result": {
+              "gasUsed": "0x48",
+              "output": "0xffee"
+            },
+            "subtraces": 0,
+            "traceAddress": [
+              0
+            ],
+            "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+            "transactionPosition": 1,
+            "type": "call"
+          },
+          {
+            "action": {
+              "callType": "call",
+              "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+              "gas": "0xf35c",
+              "input": "0xff01",
+              "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
+              "value": "0x1"
+            },
+            "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+            "blockNumber": 2,
+            "result": {
+              "gasUsed": "0x48",
+              "output": "0xffee"
+            },
+            "subtraces": 0,
+            "traceAddress": [
+              0
+            ],
+            "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+            "transactionPosition": 1,
+            "type": "call"
+          }
+        ]
+      }
+    }
+  ]
+}

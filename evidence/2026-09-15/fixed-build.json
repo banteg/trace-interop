@@ -1,0 +1,13 @@
+{
+  "reth_commit": "8194fcedefcfa1cbfe11d57f30cae45a21fe136f",
+  "inspectors_commit": "19746b981132035fdfb7ca89c3faab6258104a18",
+  "binary_sha256": "d9a900982a79fde1a543f009f9edb46deb25e094a090a94a5e8749ade3ef05e5",
+  "cargo_lock_sha256": "6d85899285fe0c2dfbb28a9ab4eb336094aabe06108c403df64c8045b68ddb4c",
+  "features": [
+    "jemalloc",
+    "reth-revm/portable"
+  ],
+  "default_features": false,
+  "note": "Diagnostic interpreter build with local inspector dependency override and alloy-eip2930 updated to 0.2.4; not a released client build.",
+  "image": "sha256:07a06e6f8644d1f289bc8e23902bc181c51f18a909e1c16d6d6a59fb334a75f5"
+}

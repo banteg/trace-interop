@@ -1,0 +1,101 @@
+{
+  "case": "replay-missing",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_replayTransaction",
+    "params": [
+      "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+      [
+        "trace"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32000,
+        "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32001,
+        "message": "transaction not found"
+      }
+    }
+  },
+  "topics": [
+    "H01",
+    "H06",
+    "H07"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "cae7a7823fd87420fb10c78763a497850591aedf9fbc11985f7df2e5502a3611",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "b6137cb8580120323d014041a056e994d5f5693b3a6ae23d48b7388c8623d10d",
+      "value": {
+        "error": {
+          "code": -32601,
+          "message": "Method not found"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "error",
+      "sha256": "064fd202a1a1be621db3d9ee8cbeaa11d20e779e12a277e99ac684a318265971",
+      "value": {
+        "error": {
+          "code": -32001,
+          "message": "transaction not found"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "case": "raw-invalid",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_rawTransaction",
+    "params": [
+      "0x00",
+      [
+        "trace"
+      ]
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32000,
+        "message": "short input: 1"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32000,
+        "message": "Invalid RLP."
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32602,
+        "message": "Invalid transaction params (missing or incorrect)"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32602,
+        "message": "failed to decode signed transaction"
+      }
+    }
+  },
+  "topics": [
+    "H14"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "error",
+      "sha256": "2de1a960149d84c38bf5a13bbfc8a37f31f4abf815159adeb894c1f92aedcb8a",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "short input: 1"
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "86fa865cd801b265fc84a5cb24056ec8a1546295b7a674025bcbf8e8ad94fdf4",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "Invalid RLP."
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "c2fe35a2b035a5ef6f243dba07122f896ae8368335ef7080a92853c5b2b2e3b9",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "Invalid transaction params (missing or incorrect)"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "error",
+      "sha256": "b74608dbfbf17a688c9c4a1bbac4c840c9e691122891c1fe45a28de72d4fed6f",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "failed to decode signed transaction"
+        }
+      }
+    }
+  ]
+}

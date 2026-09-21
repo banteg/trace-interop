@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trace-interop"
+version = "0.1.0"
+description = "Reproducible evidence and draft conformance checks for Ethereum trace APIs"
+requires-python = ">=3.11"
+dependencies = ["jsonschema>=4.23,<5", "PyYAML>=6,<7"]
+
+[project.scripts]
+trace-interop = "trace_interop.cli:main"
+
+[tool.setuptools]
+packages = ["trace_interop"]

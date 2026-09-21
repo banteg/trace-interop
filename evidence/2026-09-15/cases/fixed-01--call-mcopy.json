@@ -1,0 +1,213 @@
+{
+  "case": "fixed-01--call-mcopy",
+  "run": "fixed-01",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x000000000000000000000000000000000000100a",
+        "gas": "0x927c0",
+        "gasPrice": "0x77359400",
+        "data": "0x"
+      },
+      [
+        "trace",
+        "stateDiff",
+        "vmTrace"
+      ],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "reth_fixed": {
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": "=",
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x85",
+                  "to": "0x86"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "callType": "call",
+                "gas": "0x8d5b8",
+                "input": "0x",
+                "to": "0x000000000000000000000000000000000000100a",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x1e",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": {
+            "code": "0x602a6000526020600060205e00",
+            "ops": [
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578997,
+                  "push": [
+                    "0x2a"
+                  ],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 0,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578994,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 2,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 6,
+                "ex": {
+                  "used": 578988,
+                  "push": [],
+                  "mem": {
+                    "off": 0,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 4,
+                "sub": null,
+                "op": "MSTORE"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578985,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 5,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578982,
+                  "push": [
+                    "0x0"
+                  ],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 7,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 3,
+                "ex": {
+                  "used": 578979,
+                  "push": [
+                    "0x20"
+                  ],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 9,
+                "sub": null,
+                "op": "PUSH1"
+              },
+              {
+                "cost": 9,
+                "ex": {
+                  "used": 578970,
+                  "push": [],
+                  "mem": {
+                    "off": 32,
+                    "data": "0x000000000000000000000000000000000000000000000000000000000000002a"
+                  },
+                  "store": null
+                },
+                "pc": 11,
+                "sub": null,
+                "op": "MCOPY"
+              },
+              {
+                "cost": 0,
+                "ex": {
+                  "used": 578970,
+                  "push": [],
+                  "mem": null,
+                  "store": null
+                },
+                "pc": 12,
+                "sub": null,
+                "op": "STOP"
+              }
+            ]
+          }
+        }
+      },
+      "hive_pass": false,
+      "transport_failure": false
+    }
+  },
+  "head": {
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "difficulty": "0x0",
+    "number": "0x30",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "timestamp": "0x1e0",
+    "extraData": "0x",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "baseFeePerGas": "0x199876",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "blobGasUsed": "0x0",
+    "excessBlobGas": "0x0",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "blockAccessListHash": null,
+    "slotNumber": null,
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84"
+  },
+  "note": "Captured outcomes, not normative expected results. invalid_json preserves malformed response text."
+}

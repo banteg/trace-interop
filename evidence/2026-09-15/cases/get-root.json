@@ -1,0 +1,130 @@
+{
+  "case": "get-root",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_get",
+    "params": [
+      "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      []
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "action": {
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "callType": "call",
+          "gas": "0x8d5b8",
+          "input": "0x",
+          "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+          "value": "0x0"
+        },
+        "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+        "blockNumber": 2,
+        "result": {
+          "gasUsed": "0x2343f",
+          "output": "0xffee"
+        },
+        "subtraces": 7,
+        "traceAddress": [],
+        "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+        "transactionPosition": 1,
+        "type": "call"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "result": [],
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "action": {
+          "callType": "call",
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "gas": "0x8d5b8",
+          "input": "0x",
+          "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+          "value": "0x0"
+        },
+        "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+        "blockNumber": 2,
+        "result": {
+          "gasUsed": "0x2343f",
+          "output": "0xffee"
+        },
+        "subtraces": 7,
+        "traceAddress": [],
+        "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+        "transactionPosition": 1,
+        "type": "call"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": null
+    }
+  },
+  "topics": [
+    "H02"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned",
+        "besu_pinned"
+      ],
+      "kind": "result",
+      "sha256": "1b5f62e2fa81ae931824aefe018da0f84004bdbb7adab945a8fe3b6344042ece",
+      "value": {
+        "result": {
+          "action": {
+            "callType": "call",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x8d5b8",
+            "input": "0x",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+            "value": "0x0"
+          },
+          "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
+          "blockNumber": 2,
+          "result": {
+            "gasUsed": "0x2343f",
+            "output": "0xffee"
+          },
+          "subtraces": 7,
+          "traceAddress": [],
+          "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "transactionPosition": 1,
+          "type": "call"
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "result",
+      "sha256": "63c49671e4c0faf619ee397c992e45e4c411dce55a4ef9410067b01fc9c93a0f",
+      "value": {
+        "result": []
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ff9c534d8448cd26fb0c3076ac8e5b6fcf4d3537e8d4a5249e4bec6d56664582",
+      "value": {
+        "result": null
+      }
+    }
+  ]
+}

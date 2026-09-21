@@ -1,0 +1,96 @@
+{
+  "case": "call-empty-types-priced",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "gas": "0x927c0",
+        "gasPrice": "0x77359400",
+        "data": "0x"
+      },
+      [],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32603,
+        "message": "Internal error",
+        "data": "System.InvalidOperationException: Sequence contains no elements"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0xffee",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0xffee",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0xffee",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": null
+      }
+    }
+  },
+  "topics": [
+    "H11"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "2664b28b219a089091a7b699533d425dc69791e066f81bcad2f55808bacf312e",
+      "value": {
+        "error": {
+          "code": -32603,
+          "data": "System.InvalidOperationException: Sequence contains no elements",
+          "message": "Internal error"
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned",
+        "reth_pinned",
+        "erigon_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ef823feaae5a1cdeee27f67dea0555f45128e6e181a1e53a98a078795c7bc315",
+      "value": {
+        "result": {
+          "output": "0xffee",
+          "stateDiff": null,
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    }
+  ]
+}

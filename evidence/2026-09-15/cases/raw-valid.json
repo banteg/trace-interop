@@ -1,0 +1,234 @@
+{
+  "case": "raw-valid",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_rawTransaction",
+    "params": [
+      "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a04c833abdb116ad76fc98610ae0e626d7e35154f1fba38ce6bfdaf69a31eec42ca035ecfb996cc68a2a03df0e1087194e25180b01bf0469f69b4f1d330eea9d027a",
+      [
+        "trace",
+        "stateDiff",
+        "vmTrace"
+      ],
+      "0x0"
+    ]
+  },
+  "responses": {
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32602,
+        "message": "too many arguments, want at most 2"
+      }
+    },
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32602,
+        "message": "Invalid params"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32602,
+        "message": "Invalid number of params"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0x",
+        "stateDiff": {
+          "0x0000000000000000000000000000000000000000": {
+            "balance": {
+              "*": {
+                "from": "0x0",
+                "to": "0x1319718a5000"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x0000000000000000000000000000000000001234": {
+            "balance": {
+              "*": {
+                "from": "0x0",
+                "to": "0x1"
+              }
+            },
+            "code": "=",
+            "nonce": "=",
+            "storage": {}
+          },
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+            "balance": {
+              "*": {
+                "from": "0xc097ce7bc90715b34b9f1000000000",
+                "to": "0xc097ce7bc90715b34b78dd1ceb5fff"
+              }
+            },
+            "code": "=",
+            "nonce": {
+              "*": {
+                "from": "0x0",
+                "to": "0x1"
+              }
+            },
+            "storage": {}
+          }
+        },
+        "trace": [
+          {
+            "type": "call",
+            "action": {
+              "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "callType": "call",
+              "gas": "0x0",
+              "input": "0x",
+              "to": "0x0000000000000000000000000000000000001234",
+              "value": "0x1"
+            },
+            "result": {
+              "gasUsed": "0x0",
+              "output": "0x"
+            },
+            "subtraces": 0,
+            "traceAddress": []
+          }
+        ],
+        "vmTrace": {
+          "code": "0x",
+          "ops": []
+        }
+      }
+    }
+  },
+  "topics": [
+    "H12",
+    "H14",
+    "H17"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "error",
+      "sha256": "55203dce6924aa6102be856f9b73f8176606c66ffeeaa0ea6a3d6732f0c7e1c6",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "too many arguments, want at most 2"
+        }
+      }
+    },
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "5d10232a04c1acf2c0b860a93da6f5e3608de3271f90c192b4d99f697a0ab4ef",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "Invalid params"
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "0c4de31a597aa84c3ed629b4c649ae1e95818c19f69a51af74eaef5d4f8a8ed0",
+      "value": {
+        "error": {
+          "code": -32602,
+          "message": "Invalid number of params"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "772e5867354763e70dcbaf4f850b900877da8de07434210e4506a13e5221312c",
+      "value": {
+        "result": {
+          "output": "0x",
+          "stateDiff": {
+            "0x0000000000000000000000000000000000000000": {
+              "balance": {
+                "*": {
+                  "from": "0x0",
+                  "to": "0x1319718a5000"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x0000000000000000000000000000000000001234": {
+              "balance": {
+                "*": {
+                  "from": "0x0",
+                  "to": "0x1"
+                }
+              },
+              "code": "=",
+              "nonce": "=",
+              "storage": {}
+            },
+            "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+              "balance": {
+                "*": {
+                  "from": "0xc097ce7bc90715b34b9f1000000000",
+                  "to": "0xc097ce7bc90715b34b78dd1ceb5fff"
+                }
+              },
+              "code": "=",
+              "nonce": {
+                "*": {
+                  "from": "0x0",
+                  "to": "0x1"
+                }
+              },
+              "storage": {}
+            }
+          },
+          "trace": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x0",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              "result": {
+                "gasUsed": "0x0",
+                "output": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "call"
+            }
+          ],
+          "vmTrace": {
+            "code": "0x",
+            "ops": []
+          }
+        }
+      }
+    }
+  ]
+}

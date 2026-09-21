@@ -1,0 +1,116 @@
+{
+  "case": "call-empty-types",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "gas": "0x927c0",
+        "gasPrice": "0x0",
+        "data": "0x"
+      },
+      [],
+      "0x30"
+    ]
+  },
+  "responses": {
+    "nethermind_pinned": {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32603,
+        "message": "Internal error",
+        "data": "System.InvalidOperationException: Sequence contains no elements"
+      },
+      "id": 1
+    },
+    "besu_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32603,
+        "message": "Internal error"
+      }
+    },
+    "reth_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "output": "0xffee",
+        "stateDiff": null,
+        "trace": [],
+        "vmTrace": null
+      }
+    },
+    "erigon_pinned": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32000,
+        "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
+      }
+    }
+  },
+  "topics": [
+    "H11"
+  ],
+  "exact_groups": [
+    {
+      "clients": [
+        "nethermind_pinned"
+      ],
+      "kind": "error",
+      "sha256": "2664b28b219a089091a7b699533d425dc69791e066f81bcad2f55808bacf312e",
+      "value": {
+        "error": {
+          "code": -32603,
+          "data": "System.InvalidOperationException: Sequence contains no elements",
+          "message": "Internal error"
+        }
+      }
+    },
+    {
+      "clients": [
+        "besu_pinned"
+      ],
+      "kind": "error",
+      "sha256": "be437a3a68b8a0f63751731228097542d8349cb324362191c416e9a933031c18",
+      "value": {
+        "error": {
+          "code": -32603,
+          "message": "Internal error"
+        }
+      }
+    },
+    {
+      "clients": [
+        "reth_pinned"
+      ],
+      "kind": "result",
+      "sha256": "ef823feaae5a1cdeee27f67dea0555f45128e6e181a1e53a98a078795c7bc315",
+      "value": {
+        "result": {
+          "output": "0xffee",
+          "stateDiff": null,
+          "trace": [],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "clients": [
+        "erigon_pinned"
+      ],
+      "kind": "error",
+      "sha256": "4e51d0a8111dafe005448c9e17771f1714621ff7308f9b0683dab5d00afa8054",
+      "value": {
+        "error": {
+          "code": -32000,
+          "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
+        }
+      }
+    }
+  ]
+}

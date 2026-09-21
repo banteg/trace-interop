@@ -1,0 +1,55 @@
+Sep 21 21:08:40.133 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 21 21:08:40.154 INF building 1 clients...
+Sep 21 21:08:40.154 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744
+Sep 21 21:08:40.180 INF building 1 simulators...
+Sep 21 21:08:40.180 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 21 21:08:40.268 INF creating output directory folder=/home/banteg/dev/trace-interop/runs/verified-fork-followup-besu-retry/hive
+Sep 21 21:08:40.275 INF running simulation: ethereum/rpc-compat
+Sep 21 21:08:40.424 INF hiveproxy started container=7a5a1f796f4f addr=172.17.0.2:8081
+Sep 21 21:08:40.583 INF API: suite started suite=0 name=rpc-compat
+Sep 21 21:08:40.584 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 21 21:08:48.835 INF API: client besu_development started suite=0 test=1 container=8b14088a
+Sep 21 21:08:49.142 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 21 21:08:49.184 INF API: test ended suite=0 test=2 pass=false
+Sep 21 21:08:49.185 INF API: test started suite=0 test=3 name="interop/_control/version (besu_development)"
+Sep 21 21:08:49.192 INF API: test ended suite=0 test=3 pass=false
+Sep 21 21:08:49.193 INF API: test started suite=0 test=4 name="interop/beacon-call-55 (besu_development)"
+Sep 21 21:08:49.276 INF API: test ended suite=0 test=4 pass=false
+Sep 21 21:08:49.277 INF API: test started suite=0 test=5 name="interop/beacon-call-56 (besu_development)"
+Sep 21 21:08:49.293 INF API: test ended suite=0 test=5 pass=false
+Sep 21 21:08:49.295 INF API: test started suite=0 test=6 name="interop/control-head (besu_development)"
+Sep 21 21:08:49.303 INF API: test ended suite=0 test=6 pass=false
+Sep 21 21:08:49.304 INF API: test started suite=0 test=7 name="interop/destroy-trace-55 (besu_development)"
+Sep 21 21:08:49.345 INF API: test ended suite=0 test=7 pass=false
+Sep 21 21:08:49.346 INF API: test started suite=0 test=8 name="interop/destroy-trace-56 (besu_development)"
+Sep 21 21:08:49.357 INF API: test ended suite=0 test=8 pass=false
+Sep 21 21:08:49.358 INF API: test started suite=0 test=9 name="interop/system-beacon-55-560 (besu_development)"
+Sep 21 21:08:49.373 INF API: test ended suite=0 test=9 pass=false
+Sep 21 21:08:49.375 INF API: test started suite=0 test=10 name="interop/system-beacon-55-8751 (besu_development)"
+Sep 21 21:08:49.382 INF API: test ended suite=0 test=10 pass=false
+Sep 21 21:08:49.383 INF API: test started suite=0 test=11 name="interop/system-beacon-56-560 (besu_development)"
+Sep 21 21:08:49.389 INF API: test ended suite=0 test=11 pass=false
+Sep 21 21:08:49.391 INF API: test started suite=0 test=12 name="interop/system-beacon-56-8751 (besu_development)"
+Sep 21 21:08:49.400 INF API: test ended suite=0 test=12 pass=false
+Sep 21 21:08:49.401 INF API: test started suite=0 test=13 name="interop/withdrawal-balance-51 (besu_development)"
+Sep 21 21:08:49.414 INF API: test ended suite=0 test=13 pass=false
+Sep 21 21:08:49.415 INF API: test started suite=0 test=14 name="interop/withdrawal-balance-52 (besu_development)"
+Sep 21 21:08:49.422 INF API: test ended suite=0 test=14 pass=false
+Sep 21 21:08:49.423 INF API: test started suite=0 test=15 name="interop/withdrawal-balance-53 (besu_development)"
+Sep 21 21:08:49.435 INF API: test ended suite=0 test=15 pass=false
+Sep 21 21:08:49.436 INF API: test started suite=0 test=16 name="interop/withdrawal-block-51 (besu_development)"
+Sep 21 21:08:49.473 INF API: test ended suite=0 test=16 pass=false
+Sep 21 21:08:49.475 INF API: test started suite=0 test=17 name="interop/withdrawal-block-52 (besu_development)"
+Sep 21 21:08:49.486 INF API: test ended suite=0 test=17 pass=false
+Sep 21 21:08:49.488 INF API: test started suite=0 test=18 name="interop/withdrawal-block-53 (besu_development)"
+Sep 21 21:08:49.504 INF API: test ended suite=0 test=18 pass=false
+Sep 21 21:08:49.507 INF API: test started suite=0 test=19 name="interop/withdrawal-filter-51 (besu_development)"
+Sep 21 21:08:49.556 INF API: test ended suite=0 test=19 pass=false
+Sep 21 21:08:49.557 INF API: test started suite=0 test=20 name="interop/withdrawal-filter-52 (besu_development)"
+Sep 21 21:08:49.566 INF API: test ended suite=0 test=20 pass=false
+Sep 21 21:08:49.567 INF API: test started suite=0 test=21 name="interop/withdrawal-filter-53 (besu_development)"
+Sep 21 21:08:49.575 INF API: test ended suite=0 test=21 pass=false
+Sep 21 21:08:49.775 INF API: test ended suite=0 test=1 pass=true
+Sep 21 21:08:49.782 INF API: suite ended suite=0
+Sep 21 21:08:50.015 INF simulation ethereum/rpc-compat finished suites=1 tests=21 failed=20
+20 tests failed

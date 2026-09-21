@@ -146,3 +146,20 @@ Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evide
 
 </details>
 
+## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xc097ce7bc90715b34b9f274876e806"
+}
+```
+
+</details>
+

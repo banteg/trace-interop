@@ -33,3 +33,16 @@ must report unavailable-state errors. A separate nonce query independently confi
 Erigon, Nethermind and Besu retention scenarios remain an explicit coverage gap. Selecting
 them with `pruned` fails before client execution. This limitation does not affect their
 ordinary replay or historical-query probes on fully retained fixture chains.
+
+## Tested matrix
+
+Both release and development builds of Besu and Nethermind, plus release builds of
+Erigon and Reth, complete the canonical switch and restoration. The pinned Erigon
+development build rejects the alternate forkchoice; the pinned Reth development
+build accepts restoration but does not publish the restored RPC head within 30 seconds.
+Those two scenarios are excluded from trace assessments. The Engine and head-control
+logs are retained with their runs.
+
+Both pinned Reth builds retain old headers and receipts after pruning, allow latest-state
+execution, and reject old state access. Their trace errors use -32603 with an insufficient
+changesets message; the draft proposes the existing execution-apis pruned-history code 4444.

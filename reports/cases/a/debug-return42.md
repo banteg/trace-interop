@@ -218,3 +218,29 @@ Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evide
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gas": "0x927c0",
+    "gasUsed": "0x521a",
+    "input": "0x",
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+    "to": "0x0000000000000000000000000000000000001002",
+    "type": "CALL",
+    "value": "0x0"
+  }
+}
+```
+
+</details>
+

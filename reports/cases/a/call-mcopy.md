@@ -806,3 +806,111 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H20: **change_needed** — MCOPY reports its same-step write of word 42 at offset 32.
+- H21: **matches** — Stack words use minimal hex quantities at every depth.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0x66863b",
+            "to": "0x2638a52010b7"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b34755ccb0391096",
+            "to": "0xc097ce7bc90715b3472f8bd4dd1896"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x85",
+            "to": "0x86"
+          }
+        },
+        "storage": {}
+      }
+    },
+    "trace": [
+      {
+        "action": {
+          "callType": "call",
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "gas": "0x8d5b8",
+          "input": "0x",
+          "to": "0x000000000000000000000000000000000000100a",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0x1e",
+          "output": "0x"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "call"
+      }
+    ],
+    "vmTrace": {
+      "code": "0x602a6000526020600060205e00",
+      "ops": [
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x2a"
+            ],
+            "store": null,
+            "used": 578997
+          },
+          "pc": 0,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x0"
+            ],
+            "store": null,
+            "used": 578994
+          },
+          "pc": 2,
+          "sub": null
+        },
+        {
+          "cost": 6,
+          "ex": {
+            "mem": {
+              "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+              "off": 0
+            },
+            "push": []
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+

@@ -48,3 +48,37 @@ Capture: **result**; scenario eligible: **False**. [Full evidence](../../../evid
 
 </details>
 
+## reth_development · Reth Version: 2.5.2+03cb186c
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x85"
+}
+```
+
+</details>
+
+## reth_release · Reth Version: 2.6.0+73a3a008
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x85"
+}
+```
+
+</details>
+

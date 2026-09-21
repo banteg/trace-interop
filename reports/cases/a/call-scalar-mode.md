@@ -183,3 +183,24 @@ Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../ev
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H14: **matches** — Malformed input returns invalid params (-32602).
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "error": {
+    "code": -32602,
+    "message": "Invalid trace type params"
+  },
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+```
+
+</details>
+

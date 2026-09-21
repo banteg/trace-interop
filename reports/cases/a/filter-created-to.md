@@ -316,3 +316,23 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H23: **change_needed** — Address matching is OR within each list, AND across lists, with action-specific endpoints.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": []
+}
+```
+
+</details>
+

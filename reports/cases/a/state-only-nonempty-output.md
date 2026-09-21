@@ -406,3 +406,59 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H08: **matches** — The return42 contract still returns word 42.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0x66863b",
+            "to": "0x26330fd0463f"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b34755ccb0391096",
+            "to": "0xc097ce7bc90715b3472f916b600896"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x85",
+            "to": "0x86"
+          }
+        },
+        "storage": {}
+      }
+    },
+    "trace": [],
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+

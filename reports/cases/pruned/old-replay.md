@@ -57,3 +57,45 @@ Capture: **rpc_error**; scenario eligible: **False**. [Full evidence](../../../e
 
 </details>
 
+## reth_development · Reth Version: 2.5.2+03cb186c
+
+Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
+
+- H06: **change_needed** — Unavailable historical state uses the proposed pruned-history error (4444).
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "error": {
+    "code": -32603,
+    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
+  },
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+```
+
+</details>
+
+## reth_release · Reth Version: 2.6.0+73a3a008
+
+Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
+
+- H06: **change_needed** — Unavailable historical state uses the proposed pruned-history error (4444).
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "error": {
+    "code": -32603,
+    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
+  },
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+```
+
+</details>
+

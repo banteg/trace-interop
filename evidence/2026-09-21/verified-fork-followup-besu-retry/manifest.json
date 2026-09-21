@@ -1,0 +1,371 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "client": "besu",
+      "created": "2026-09-21T14:26:04.230551624Z",
+      "digest": "hyperledger/besu@sha256:c01ddb5af3e614a03ec1672fa03585025d91255d8982c4fe7f20927e287bc06e",
+      "image_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "d997aad7b3be6333464c0687d3761c568ee63524",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "requested": "hyperledger/besu:develop"
+    }
+  },
+  "corpus": "fork-followup",
+  "finished_at": "2026-09-21T17:08:50.017238+00:00",
+  "fixture_manifest_sha256": "052d67924e6b81b5974e824c7c605754d86674b3be688b2ac85eec223d36f5cd",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x7d97fd",
+    "blobGasUsed": "0x20000",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x18d04",
+    "hash": "0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000002000000000000000000002000000000000000000000000000800000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000800000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x48",
+    "parentBeaconBlockRoot": "0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd",
+    "parentHash": "0x7964ce394f9773783863d05cf0826d125024c5f5dac03c07d5d7832c551a40de",
+    "receiptsRoot": "0x8242a788eddcd94326c2acb0a6cb547ca411104a65e3c6c5f751ce1c7f14cd15",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x42da2e489b18e750a877106cd83e76fd16d4234d530e8290eda403582c50aac4",
+    "timestamp": "0x2d0",
+    "transactionsRoot": "0x4a0b6fa744634b80a04463acab0cad7eb4aa563337ed6f95ec3728d7ef745a99",
+    "withdrawalsRoot": "0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "be87f22f480dbe4dd13896610820954ddfc762828fb4fee0850d4a20b0dacfec",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x33"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x33",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x33"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x33",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x34"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x34",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x34"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x34",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x35"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x35",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x35"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x35",
+          true
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    }
+  ],
+  "source_commit": "e4ff3388451181381c7280dccab3163fb92a3883",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "e35e7842fe218f8633af80233e6a1b71ff3124c5",
+    "generated_sha256": "def10261b3c0ca461dcb929b8209104316fc83287b20a233845669e6227a7f3c",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-21T17:08:40.094548+00:00"
+}

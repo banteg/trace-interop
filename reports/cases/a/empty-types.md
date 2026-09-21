@@ -215,3 +215,32 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Unrequested stateDiff is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H11: **matches** — An empty trace-type selection executes successfully.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+    "stateDiff": null,
+    "trace": [],
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+

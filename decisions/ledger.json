@@ -20,7 +20,7 @@
       ],
       "id": "H01",
       "kind": "Scope decision",
-      "next_step": "Agree the optional-method/conformance model at the meeting; no assumption of adopted optional status or Geth support.",
+      "next_step": "Agree the optional-method/conformance model with client teams; no assumption of adopted optional status or Geth support.",
       "rationale": "A caller should be able to distinguish an unsupported operation from a valid query with no trace.",
       "recommendation": "Specify each method independently; make the implemented subset discoverable or explicitly declared. An unsupported method should return -32601, never a fabricated empty result. Add individual replay to Besu when practical rather than removing it from the common API.",
       "title": "Method coverage"
@@ -294,7 +294,7 @@
       ],
       "id": "H16",
       "kind": "Spec decision / likely accounting bug",
-      "next_step": "Resolve fee and environment rules while preserving the now-tested storage carry-over, revert rollback and simulation isolation. Broader warm-access/refund behavior remains to test.",
+      "next_step": "Resolve fee and environment rules while preserving the storage carry-over, revert rollback and simulation isolation. Broader warm-access/refund behavior remains to test.",
       "rationale": "A state diff should be internally coherent and reconstructible; an ordered multi-call simulation should have one predictable state timeline.",
       "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15\u2019s documented policy consistently. Each callMany result should describe its own transition from the preceding call\u2019s post-state, not a cumulative diff from the original state.",
       "title": "Fee accounting and sequential state diffs"

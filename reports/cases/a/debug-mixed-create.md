@@ -365,3 +365,50 @@ Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evide
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "calls": [
+      {
+        "from": "0x0000000000000000000000000000000000001006",
+        "gas": "0x83739",
+        "gasUsed": "0x7e8",
+        "input": "0x600a61000d600039600a6000f3602a60005260206000f3",
+        "output": "0x602a60005260206000f3",
+        "to": "0xea91ad16d2b6ec90fe255a49dfd6e2f47304de88",
+        "type": "CREATE",
+        "value": "0x0"
+      },
+      {
+        "from": "0x0000000000000000000000000000000000001006",
+        "gas": "0x7b44f",
+        "gasUsed": "0x7e8",
+        "input": "0x600a61000d600039600a6000f3602a60005260206000f3",
+        "output": "0x602a60005260206000f3",
+        "to": "0x30b44c7249bb3959e686a86b65ccdb4c643c2750",
+        "type": "CREATE2",
+        "value": "0x0"
+      }
+    ],
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gas": "0x927c0",
+    "gasUsed": "0x15c0d",
+    "input": "0x",
+    "to": "0x0000000000000000000000000000000000001006",
+    "type": "CALL",
+    "value": "0x0"
+  }
+}
+```
+
+</details>
+

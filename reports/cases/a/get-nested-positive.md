@@ -300,3 +300,40 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H02: **matches** — Return one object whose traceAddress equals [6, 0].
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "action": {
+      "address": "0x2d303c5b7911d87d594bf1b31fbb9aa187888893",
+      "balance": "0x0",
+      "refundAddress": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+    },
+    "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+    "blockNumber": 2,
+    "result": null,
+    "subtraces": 0,
+    "traceAddress": [
+      6,
+      0
+    ],
+    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+    "transactionPosition": 1,
+    "type": "suicide"
+  }
+}
+```
+
+</details>
+

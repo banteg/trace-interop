@@ -15,6 +15,224 @@ Exact observations; group size is not a correctness vote.
 
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## erigon_development · 3.8.0-dev-c25b8e47
+
+Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{}
+```
+
+</details>
+
+## erigon_release · 3.6.1-0c4d9c91
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## nethermind_development · 2.1.0-unstable+a404c4f0
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## nethermind_release · 1.39.3+28cbe2a0
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## reth_development · Reth Version: 2.5.2+03cb186c
+
+Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{}
+```
+
+</details>
+
+## reth_release · Reth Version: 2.6.0+73a3a008
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
+## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
+
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json).
 
 

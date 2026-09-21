@@ -814,3 +814,113 @@ Draft result schema: **valid**.
 
 </details>
 
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
+
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested stateDiff is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H08: **matches** — The return42 contract still returns word 42.
+- H21: **matches** — Stack words use minimal hex quantities at every depth.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+    "stateDiff": null,
+    "trace": [],
+    "vmTrace": {
+      "code": "0x602a60005260206000f3",
+      "ops": [
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x2a"
+            ],
+            "store": null,
+            "used": 578997
+          },
+          "pc": 0,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x0"
+            ],
+            "store": null,
+            "used": 578994
+          },
+          "pc": 2,
+          "sub": null
+        },
+        {
+          "cost": 6,
+          "ex": {
+            "mem": {
+              "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+              "off": 0
+            },
+            "push": [],
+            "store": null,
+            "used": 578988
+          },
+          "pc": 4,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x20"
+            ],
+            "store": null,
+            "used": 578985
+          },
+          "pc": 5,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x0"
+            ],
+            "store": null,
+            "used": 578982
+          },
+          "pc": 7,
+          "sub": null
+        },
+        {
+          "cost": 0,
+          "ex": {
+            "mem": null,
+            "push": [],
+            "store": null,
+            "used": 578982
+          },
+          "pc": 9,
+          "sub": null
+        }
+      ]
+    }
+  }
+}
+```
+
+</details>
+

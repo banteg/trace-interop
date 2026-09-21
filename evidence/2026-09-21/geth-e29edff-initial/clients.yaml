@@ -1,0 +1,10 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/go-ethereum",
+      "tag": "0f2c4e64ecec547a21e80058275d6c7072918c37947fdf36fe1893ba47abec2e"
+    },
+    "client": "go-ethereum",
+    "nametag": "trace"
+  }
+]

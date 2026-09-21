@@ -5,7 +5,7 @@ implements all nine `trace_*` methods and the `trace`, `stateDiff` and `vmTrace`
 output families. It is a candidate implementation of this project's proposal,
 not upstream Geth support or an independent vote for the draft.
 
-The evaluated source is [6141d1d459](https://github.com/banteg/go-ethereum/commit/6141d1d459c5348bd4404c851850808517c82412).
+The evaluated source is [e29edff514](https://github.com/banteg/go-ethereum/commit/e29edff514a08c38ed0b08ab67d26a0644c79548).
 The [build lock](../locks/geth-trace.json) pins its source, toolchain, base image,
 binary hash and local image identity. Rebuilding with that lock reproduced the
 same binary hash.

@@ -12,7 +12,7 @@ Erigon, Reth, Nethermind and Besu are the initial clients. Hive owns client star
 
 ## Start here
 
-- [Client impact reports](reports/README.md): changes proposed for each client, with fresh assertions.
+- [Client impact reports](reports/README.md): changes proposed for each client, with linked assertions.
 - [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.
 - [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.
 - [Review workflow](docs/review.md): distinguish API decisions from execution defects.
@@ -24,9 +24,9 @@ uv run python scripts/check_schema.py
 uv run python scripts/build_reports.py
 ```
 
-## Existing evidence
+## Decisions and evidence
 
-The [decision ledger](decisions/README.md) imports 28 proposals from the September 15 investigation. [Historical evidence](evidence/2026-09-15/) retains exact responses and provenance. It is dated evidence, not a statement about current releases.
+The [decision ledger](decisions/README.md) tracks 28 questions with recommended behavior, rationale, evidence and remaining review work. [Comparison reports](reports/README.md) show how the draft affects each tested client build.
 
 ## Review target
 

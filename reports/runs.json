@@ -15,5 +15,118 @@
       "reth_development": "Reth Version: 2.5.2+03cb186c",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
     }
+  },
+  {
+    "complete": false,
+    "corpus": "a",
+    "digest": "3089ce9aa2266343090d6c6c358a5ef5163c2f89c1b24e63119c9432402fcc16",
+    "manifest": "../evidence/2026-09-21/verified-a/manifest.json",
+    "name": "verified-a",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": false,
+    "corpus": "fork-followup",
+    "digest": "9d86260ca57c693223677a706d9a37e4646b3eae0f3ffa1c8715905aeb8111e0",
+    "manifest": "../evidence/2026-09-21/verified-fork-followup/manifest.json",
+    "name": "verified-fork-followup",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "forks",
+    "digest": "f342bb9ac99ef9da0005cb8e667f58a2ff07e85400cccfe8ca1c6b37adbbfa6c",
+    "manifest": "../evidence/2026-09-21/verified-forks/manifest.json",
+    "name": "verified-forks",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "initial",
+    "digest": "81c09f26e12c3d2b0e6eef45cf65bde2be808b63e813392d3bf697912e05ca38",
+    "manifest": "../evidence/2026-09-21/verified-initial/manifest.json",
+    "name": "verified-initial",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": false,
+    "corpus": "pruned",
+    "digest": "959d895376ad80adb36a66cbf0402462b88593e5fad8dc5a683d992ef43d2651",
+    "manifest": "../evidence/2026-09-21/verified-pruned/manifest.json",
+    "name": "verified-pruned",
+    "versions": {
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": false,
+    "corpus": "reorg-safe",
+    "digest": "3e1b81f353c59afe29ea947eb7b8fb0f50a19b1bc18ac63ff08fece91fa9c634",
+    "manifest": "../evidence/2026-09-21/verified-reorg-safe/manifest.json",
+    "name": "verified-reorg-safe",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "repeat",
+    "digest": "2212f013dd5dd6553f885bbf98e180dc412bfa2ae106ece58bbe187c5ab66511",
+    "manifest": "../evidence/2026-09-21/verified-repeat/manifest.json",
+    "name": "verified-repeat",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
   }
 ]

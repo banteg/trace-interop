@@ -6,6 +6,7 @@ from pathlib import Path
 
 from trace_interop.cli import parse_exchange, selected_cases, collect, write
 from trace_interop.rules import evaluate
+from trace_interop.scenarios import verify_state
 
 
 REQ={'jsonrpc':'2.0','id':1,'method':'trace_call','params':[]}
@@ -20,6 +21,9 @@ class CaptureTests(unittest.TestCase):
         obs=self.exchange(raw)
         self.assertEqual(obs['status'],'malformed_json')
         self.assertEqual(obs['raw_response'],raw)
+
+    def test_json_null_is_an_invalid_envelope_not_malformed_json(self):
+        self.assertEqual(self.exchange('null')['status'],'invalid_envelope')
 
     def test_null_result_is_not_missing(self):
         self.assertEqual(self.exchange('{"jsonrpc":"2.0","id":1,"result":null}')['status'],'result')
@@ -57,6 +61,25 @@ class CaptureTests(unittest.TestCase):
             result=collect(path)
             self.assertFalse(result['complete'])
             self.assertEqual(result['missing'],[['_control/head','reth_release']])
+
+
+class ScenarioTests(unittest.TestCase):
+    def test_pruning_requires_independent_state_failure_and_live_control(self):
+        def result(value):return {'c':{'response':{'result':value}}}
+        def error(message):return {'c':{'response':{'error':{'code':-32603,'message':message}}}}
+        obs={'old-header':result({'number':'0x2'}),'old-receipt':result({}), 'latest-call':result({'output':'0x'+f'{42:064x}'})}
+        for n in ['old-transaction','old-replay','old-block','old-filter','old-nonce']:
+            obs[n]=error('insufficient changesets to revert to block #1')
+        self.assertTrue(verify_state('pruned',{},obs,'c')[0])
+        obs['old-nonce']=result('0x1')
+        self.assertFalse(verify_state('pruned',{},obs,'c')[0])
+
+    def test_reorg_requires_restored_head_not_just_accepted_switch(self):
+        corpus={'heads_a':[{'hash':'A'}],'heads_b':[{'hash':'B'}]}
+        obs={phase+'/head':{'c':{'response':{'result':{'hash':h}}}} for phase,h in [('before','A'),('after','B'),('restored','B')]}
+        self.assertFalse(verify_state('reorg-safe',corpus,obs,'c')[0])
+        obs['restored/head']['c']['response']['result']['hash']='A'
+        self.assertTrue(verify_state('reorg-safe',corpus,obs,'c')[0])
 
 
 class ProposalTests(unittest.TestCase):

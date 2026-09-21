@@ -1,10 +1,19 @@
 {
   "evidence": {
-    "../evidence/2026-09-21/initial/manifest.json": "62226f498c922aee67f920da9b699cad22d4ff66ef9697614d63a32a014ec7c4"
+    "../evidence/2026-09-21/initial/manifest.json": "62226f498c922aee67f920da9b699cad22d4ff66ef9697614d63a32a014ec7c4",
+    "../evidence/2026-09-21/verified-a/manifest.json": "3089ce9aa2266343090d6c6c358a5ef5163c2f89c1b24e63119c9432402fcc16",
+    "../evidence/2026-09-21/verified-fork-followup/manifest.json": "9d86260ca57c693223677a706d9a37e4646b3eae0f3ffa1c8715905aeb8111e0",
+    "../evidence/2026-09-21/verified-forks/manifest.json": "f342bb9ac99ef9da0005cb8e667f58a2ff07e85400cccfe8ca1c6b37adbbfa6c",
+    "../evidence/2026-09-21/verified-initial/manifest.json": "81c09f26e12c3d2b0e6eef45cf65bde2be808b63e813392d3bf697912e05ca38",
+    "../evidence/2026-09-21/verified-pruned/manifest.json": "959d895376ad80adb36a66cbf0402462b88593e5fad8dc5a683d992ef43d2651",
+    "../evidence/2026-09-21/verified-reorg-safe/manifest.json": "3e1b81f353c59afe29ea947eb7b8fb0f50a19b1bc18ac63ff08fece91fa9c634",
+    "../evidence/2026-09-21/verified-repeat/manifest.json": "2212f013dd5dd6553f885bbf98e180dc412bfa2ae106ece58bbe187c5ab66511"
   },
   "sources": {
+    "decisions/impact.json": "6e4bcd9c23c7ab72d909085670eacf5c0fc3718a96e538e0e33a85c258674729",
+    "decisions/ledger.json": "43b737ef42507b2707c3fbe84aaf6b9d592e0705be371d2ee5b832b248057988",
     "spec.lock.json": "d1be5200405fc38b45b0a50be9239b3ed9bfde477b569bc34bb81ec3cb09ae76",
-    "trace_interop/report.py": "8f2cdf8d4bcbbbeeda148b4b4fb469baa597ccc1ed607233c44d48e0aaa87ab0",
+    "trace_interop/report.py": "9a2edfc5889ee0aa71849b20a62e324e268c4b8be0c0797d5b4506332209b853",
     "trace_interop/rules.py": "46ea0858bf569561a4cdfa58f8710ec45bd08588f6ca4156e18c351477ee384f"
   },
   "spec_commit": "e35e7842fe218f8633af80233e6a1b71ff3124c5"

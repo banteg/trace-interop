@@ -1,4 +1,4 @@
-"""Generate client impact pages from dated decisions and independently checked runs."""
+"""Generate client impact pages from decisions and independently checked runs."""
 from collections import defaultdict
 import hashlib
 import json
@@ -57,7 +57,7 @@ def generate(root, runs, output):
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
     write(output/'assessment.json', {
         'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','spec.lock.json']},
+        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','spec.lock.json','decisions/ledger.json','decisions/impact.json']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},
     })
     write(output/'checks.json',records)
@@ -84,26 +84,42 @@ def generate(root, runs, output):
     write(output/'comparisons.json',comparisons)
     write(output/'runs.json',run_rows)
     introduction='# Trace API draft impact\n\nProposals for review, not an adopted standard or a client ranking. '
-    introduction+='Historical recommendations date to September 15. Fresh checks below are restricted to the exact pinned builds and selected cases. '
+    introduction+='Results apply to the pinned builds and selected cases. '
     introduction+='Schema validity, partial semantic assertions and full conformance are different claims.\n\n'
     if (root/'spec.lock.json').exists():
         lock=read(root/'spec.lock.json');introduction+=f'Draft: [{lock["commit"][:12]}]({lock["repository"]}/commit/{lock["commit"]}).\n\n'
-    introduction+='## Client impact\n\n'
+    introduction+='## Method observations\n\nR = at least one result; E = error responses only; U = method not found. Mixed results remain visible.\n\n'
+    clients=sorted({r['client'] for r in records})
+    introduction+='| Method | '+' | '.join(clients)+' |\n| --- | '+' | '.join('---' for _ in clients)+' |\n'
+    for method in sorted(methods if spec else []):
+        cells=[]
+        for client in clients:
+            statuses={e['record']['status'] for entries in case_pages.values() for e in entries if e['record']['client']==client and e['record']['eligible'] and e['request']['method']==method}
+            cells.append(', '.join(label for status,label in [('result','R'),('rpc_error','E'),('unsupported','U'),('malformed_json','malformed JSON'),('invalid_envelope','invalid envelope')] if status in statuses) or 'not observed')
+        introduction+='| `'+method+'` | '+' | '.join(cells)+' |\n'
+    introduction+='\n## Client impact\n\n'
     all_clients=sorted(set(by_client)|{'besu_release','erigon_release','nethermind_release','reth_release'})
     for client in all_clients:
         introduction+=f'- [{client}](clients/{client}.md)\n'
         path=output/'clients'/f'{client}.md';path.parent.mkdir(exist_ok=True)
         text=f'# {client}: proposed changes\n\n'
         versions=sorted({r['version'] for r in records if r['client']==client})
-        text+='Fresh builds: '+(', '.join(f'`{v}`' for v in versions) or 'not run')+'.\n\n'
-        text+='Matches mean only the linked assertions matched. They do not certify a whole decision or method. Historical change descriptions require review against fresh results.\n\n'
-        text+='| Decision | Fresh assertion results | Historical candidate change / review task |\n| --- | --- | --- |\n'
+        text+='Tested builds: '+(', '.join(f'`{v}`' for v in versions) or 'not run')+'.\n\n'
+        text+='Matches mean only the linked assertions matched. They do not certify a whole decision or method.\n\n'
+        text+='| Decision | Assertion results | Required change / review task |\n| --- | --- | --- |\n'
         base=client.split('_')[0]
         for id,d in decisions.items():
             checks=by_client[client][id]
             counts={s:sum(c['status']==s for c in checks) for s in ['change_needed','matches','unsupported']}
             verdict=', '.join(f'{n} {s.replace("_"," ")}' for s,n in counts.items() if n) or 'Not asserted / needs review'
-            impact=impacts.get(id,{}).get(base,'Review the proposed rule and linked evidence; no automated client-specific conclusion.')
+            if counts['change_needed']:
+                impact=impacts.get(id,{}).get(base,'; '.join(dict.fromkeys(c['requirement'] for c in checks if c['status']=='change_needed')))
+            elif counts['unsupported']:
+                impact=impacts.get(id,{}).get(base,'Implement the method or agree its exclusion from the profile.')
+            elif checks:
+                impact='No change identified by these checks.'
+            else:
+                impact='Needs review; no assertion covers this decision.'
             text+=f'| [{id} — {escape(d["title"])}](../decisions/{id}.md) | {verdict} | {escape(impact)} |\n'
         for id,checks in by_client[client].items():
             if not checks:continue
@@ -121,11 +137,11 @@ def generate(root, runs, output):
         introduction+=f'- [{id} — {d["title"]}](decisions/{id}.md)\n'
         path=output/'decisions'/f'{id}.md';path.parent.mkdir(exist_ok=True)
         text=f'# {id} — {d["title"]}\n\n**Disposition:** {d["kind"]}. Proposal, awaiting client review.\n\n'
-        for title,key in [('Proposed behavior','recommendation'),('Rationale','rationale'),('September 15 observation','observed'),('Unresolved review','next_step')]:text+=f'## {title}\n\n{d[key]}\n\n'
-        text+='## Historical evidence\n\n'
+        for title,key in [('Proposed behavior','recommendation'),('Rationale','rationale'),('Open questions','next_step')]:text+=f'## {title}\n\n{d[key]}\n\n'
+        text+='## Evidence\n\n'
         for name in d['cases']:
             text+=f'- [{name}]({link(root/"evidence/2026-09-15/cases"/(name+".json"),path.parent)})\n'
-        text+='\n## Fresh assertions\n\n'
+        text+='\n## Observations\n\n'
         found=False
         for client,topics in by_client.items():
             for c in topics[id]:
@@ -133,4 +149,8 @@ def generate(root, runs, output):
         if not found:text+='No automated assertion for this decision in the selected runs. Review remains manual.\n'
         path.write_text('\n'.join(line.rstrip() for line in text.splitlines())+'\n')
     (output/'README.md').write_text(introduction)
+    index='# Trace API decisions\n\nEach decision links proposed behavior, rationale, observations and open questions.\n\n| Decision | Question |\n| --- | --- |\n'
+    for id,d in decisions.items():index+=f'| [{id}](../reports/decisions/{id}.md) | {escape(d["title"])} |\n'
+    if output == (root/'reports').resolve():
+        (root/'decisions/README.md').write_text(index)
     print(f'Generated {len(records)} observation assessments and {len(decisions)} decision pages in {output}')

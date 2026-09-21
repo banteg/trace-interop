@@ -210,6 +210,7 @@ def execute(args):
 
 def parse_exchange(log, expected):
     requests, replies = [], []
+    invalid_json = object()
     for line in log.splitlines():
         match = re.search(r'(>>|<<)\s+(.*)$', line)
         if not match:
@@ -218,14 +219,14 @@ def parse_exchange(log, expected):
         try:
             value = json.loads(raw)
         except json.JSONDecodeError:
-            value = None
+            value = invalid_json
         (requests if match[1] == '>>' else replies).append((raw, value))
     if len(requests) != 1 or requests[0][1] != expected:
         return {'status': 'harness_error', 'detail': 'request mismatch', 'raw_log': log}
     if len(replies) != 1:
         return {'status': 'transport_error', 'detail': f'{len(replies)} responses', 'raw_log': log}
     raw, response = replies[0]
-    if response is None:
+    if response is invalid_json:
         return {'status': 'malformed_json', 'raw_response': raw}
     if not isinstance(response, dict) or response.get('jsonrpc') != '2.0' or type(response.get('id')) is not type(expected['id']) or response.get('id') != expected['id'] or ('result' in response) == ('error' in response):
         return {'status': 'invalid_envelope', 'raw_response': raw, 'response': response}

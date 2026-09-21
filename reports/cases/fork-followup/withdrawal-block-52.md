@@ -1,0 +1,365 @@
+# fork-followup/withdrawal-block-52
+
+Exact observations; group size is not a correctness vote.
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": [
+    "0x34",
+    true
+  ]
+}
+```
+
+## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
+
+Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{}
+```
+
+</details>
+
+## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## erigon_development · 3.8.0-dev-c25b8e47
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## erigon_release · 3.6.1-0c4d9c91
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## nethermind_development · 2.1.0-unstable+a404c4f0
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## nethermind_release · 1.39.3+28cbe2a0
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## reth_development · Reth Version: 2.5.2+03cb186c
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
+## reth_release · Reth Version: 2.6.0+73a3a008
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x70f50e2",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11470",
+    "hash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000001200000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000008000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x34",
+    "parentHash": "0x022037fe9ef69d04fd00706fcd5a9c80b1b791c6f9c3088469b6407a660c28b9",
+    "receiptsRoot": "0xa2dd95687771e75f96f544680724c54dc5c59c26ac59c7a58edab2b0382b5469",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x324",
+    "stateRoot": "0x3c7454b16a691794d881fa6565ab663b4cda39e69393fdd1ba067db336dbbb09",
+    "timestamp": "0x208",
+    "transactions": [
+      {
+        "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+        "blockNumber": "0x34",
+        "blockTimestamp": "0x208",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x186a0",
+        "gasPrice": "0x70f50e3",
+        "hash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+        "input": "0x74bff204de43b4a2656d6974",
+        "nonce": "0x75",
+        "r": "0xd1dfe7c72bc2bd884654cd8c7417009e50eecb519e9b8328c8cf2ba7b53c9c53",
+        "s"
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+

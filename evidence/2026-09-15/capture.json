@@ -1,0 +1,314 @@
+{
+  "chain_controls": {
+    "besu_pinned": {
+      "checks": {
+        "control-chain-id": true,
+        "control-height": true,
+        "head_identity": true,
+        "tree_receipt": true
+      },
+      "eligible": true
+    },
+    "erigon_pinned": {
+      "checks": {
+        "control-chain-id": true,
+        "control-height": true,
+        "head_identity": true,
+        "tree_receipt": true
+      },
+      "eligible": true
+    },
+    "nethermind_pinned": {
+      "checks": {
+        "control-chain-id": true,
+        "control-height": true,
+        "head_identity": true,
+        "tree_receipt": true
+      },
+      "eligible": true
+    },
+    "reth_pinned": {
+      "checks": {
+        "control-chain-id": true,
+        "control-height": true,
+        "head_identity": true,
+        "tree_receipt": true
+      },
+      "eligible": true
+    }
+  },
+  "coverage_runs": {
+    "boundary-repeat-01": {
+      "captured_exchanges": 10,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "374c4f6336162b374e2c460a98a826f09a68f5f9529ada9240e33ec07979901d",
+      "requested_cases": 10,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+      }
+    },
+    "fixed-01": {
+      "captured_exchanges": 41,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "54a507619563057a9c70ecdbb1c9ab174ec7d53a0783d3d97cc035bf24a84d03",
+      "requested_cases": 41,
+      "versions": {
+        "reth_fixed": "Reth Version: 2.5.2-dev+8194fced"
+      }
+    },
+    "fork-followup-01": {
+      "captured_exchanges": 90,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "e4c1d9cd3dc2e0a76438d7a83e9ec91ec03351c62ef66eb891e3d69d79b010f6",
+      "requested_cases": 18,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "forks-01": {
+      "captured_exchanges": 310,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [
+        {
+          "case": "destroy-prestate-55",
+          "client": "besu_pinned"
+        }
+      ],
+      "invalid_json": [],
+      "raw_sha256": "2d8cf6a4fba60ae2757a4616152fa2b7c0484b966492eaa2c1da454e978bb8fa",
+      "requested_cases": 62,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "pruned-02": {
+      "captured_exchanges": 10,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "9446854bede8bfa11f3ceaf38cf41784881568a1e2d765fa6a0c4cb2682dd59c",
+      "requested_cases": 10,
+      "versions": {
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "reorg-01": {
+      "captured_exchanges": 65,
+      "failed_launch_or_engine_phase": [
+        "client launch (erigon_pinned)"
+      ],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "8ad478f60973211630e22b3ccbad6d83989077db343d2bde84f8e77d0d2abe45",
+      "requested_cases": 15,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "reorg-safe-01": {
+      "captured_exchanges": 65,
+      "failed_launch_or_engine_phase": [
+        "client launch (erigon_pinned)"
+      ],
+      "incomplete_response": [],
+      "invalid_json": [],
+      "raw_sha256": "8ad478f60973211630e22b3ccbad6d83989077db343d2bde84f8e77d0d2abe45",
+      "requested_cases": 15,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "repeat-01": {
+      "captured_exchanges": 205,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [
+        {
+          "case": "raw-below-basefee-stateDiff",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-below-basefee-trace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-below-basefee-vmTrace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-below-basefee",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-insufficient-funds-stateDiff",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-insufficient-funds-trace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-insufficient-funds-vmTrace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-insufficient-funds",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-low-gas-stateDiff",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-low-gas-trace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-low-gas-vmTrace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-low-gas",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-wrong-chain-stateDiff",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-wrong-chain-trace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-wrong-chain-vmTrace",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-wrong-chain",
+          "client": "nethermind_pinned"
+        }
+      ],
+      "raw_sha256": "04d85c6aa8e5e0d9844b754156d13196034d979829b8cbc995ec8f777e53a094",
+      "requested_cases": 41,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    },
+    "semantic-01": {
+      "captured_exchanges": 430,
+      "failed_launch_or_engine_phase": [],
+      "incomplete_response": [],
+      "invalid_json": [
+        {
+          "case": "raw-below-basefee",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-insufficient-funds",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-low-gas",
+          "client": "nethermind_pinned"
+        },
+        {
+          "case": "raw-wrong-chain",
+          "client": "nethermind_pinned"
+        }
+      ],
+      "raw_sha256": "f82043d9307badaacf5f61f4792d863a0b582184cbe4e03857bda5fa3de73951",
+      "requested_cases": 86,
+      "versions": {
+        "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+        "erigon_pinned": "3.7.0-dev-c5a056d2",
+        "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+        "reth_nightly": "Reth Version: 2.5.2+95823365",
+        "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+      }
+    }
+  },
+  "date": "2026-09-15",
+  "fixed_build": {
+    "binary_sha256": "d9a900982a79fde1a543f009f9edb46deb25e094a090a94a5e8749ade3ef05e5",
+    "cargo_lock_sha256": "6d85899285fe0c2dfbb28a9ab4eb336094aabe06108c403df64c8045b68ddb4c",
+    "default_features": false,
+    "features": [
+      "jemalloc",
+      "reth-revm/portable"
+    ],
+    "image": "sha256:07a06e6f8644d1f289bc8e23902bc181c51f18a909e1c16d6d6a59fb334a75f5",
+    "inspectors_commit": "19746b981132035fdfb7ca89c3faab6258104a18",
+    "note": "Diagnostic interpreter build with local inspector dependency override and alloy-eip2930 updated to 0.2.4; not a released client build.",
+    "reth_commit": "8194fcedefcfa1cbfe11d57f30cae45a21fe136f"
+  },
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x49efb89bc8d0142ac4ad09280950583c3050ee48988e66772dded8aba7087bc9",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "initial_capture_scope": {
+    "disagreed_cases": 52,
+    "topics": 22,
+    "trace_cases": 60
+  },
+  "raw_capture_sha256": "3b3512ba8576354ce0e91e57cb37cab82db055f25eb672eeb5d7360760cfb28b",
+  "scope": {
+    "disagreed_cases": 52,
+    "topics": 28,
+    "trace_cases": 60
+  },
+  "status": "proposals for discussion; not adopted policy",
+  "versions": {
+    "besu_pinned": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+    "erigon_pinned": "3.7.0-dev-c5a056d2",
+    "nethermind_pinned": "1.40.0-unstable+9cfa9cf5",
+    "reth_pinned": "Reth Version: 2.5.2+5a6940e3"
+  }
+}

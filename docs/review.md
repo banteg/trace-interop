@@ -1,8 +1,8 @@
 # Reviewing a proposed rule
 
 Start with [your client's impact page](../reports/README.md), then follow a decision ID.
-Each record separates the old observation, proposed behavior, rationale and unresolved
-review. Fresh assertion results identify exact builds and cases. Response previews link
+Each record contains proposed behavior, rationale, observations and open questions.
+Assertion results identify exact builds and cases. Response previews link
 to the immutable source evidence.
 
 For a disagreement, record:

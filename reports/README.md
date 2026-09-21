@@ -1,8 +1,24 @@
 # Trace API draft impact
 
-Proposals for review, not an adopted standard or a client ranking. Historical recommendations date to September 15. Fresh checks below are restricted to the exact pinned builds and selected cases. Schema validity, partial semantic assertions and full conformance are different claims.
+Proposals for review, not an adopted standard or a client ranking. Results apply to the pinned builds and selected cases. Schema validity, partial semantic assertions and full conformance are different claims.
 
 Draft: [e35e7842fe21](https://github.com/banteg/execution-apis/commit/e35e7842fe218f8633af80233e6a1b71ff3124c5).
+
+## Method observations
+
+R = at least one result; E = error responses only; U = method not found. Mixed results remain visible.
+
+| Method | besu_development | besu_release | erigon_development | erigon_release | nethermind_development | nethermind_release | reth_development | reth_release |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace_block` | R | R | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_call` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_callMany` | R | R | R, E | R, E | R | R | R | R |
+| `trace_filter` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_get` | R, E | R | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_rawTransaction` | R, E | R, E | R, E | R, E | R, E, malformed JSON | R, E, malformed JSON | R, E | R, E |
+| `trace_replayBlockTransactions` | R | R | R | R | R | R | R | R |
+| `trace_replayTransaction` | U | U | R | R | R, E | R, E | R, E | R, E |
+| `trace_transaction` | R | R | R | R | R, E | R, E | R | R |
 
 ## Client impact
 
@@ -20,6 +36,13 @@ Draft: [e35e7842fe21](https://github.com/banteg/execution-apis/commit/e35e7842fe
 | Run | Corpus | Capture complete | Versions |
 | --- | --- | --- | --- |
 | [initial](../evidence/2026-09-21/initial/manifest.json) | initial | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-a](../evidence/2026-09-21/verified-a/manifest.json) | a | False | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-fork-followup](../evidence/2026-09-21/verified-fork-followup/manifest.json) | fork-followup | False | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-forks](../evidence/2026-09-21/verified-forks/manifest.json) | forks | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-initial](../evidence/2026-09-21/verified-initial/manifest.json) | initial | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-pruned](../evidence/2026-09-21/verified-pruned/manifest.json) | pruned | False | {'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/manifest.json) | reorg-safe | False | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
+| [verified-repeat](../evidence/2026-09-21/verified-repeat/manifest.json) | repeat | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
 
 ## Review decisions
 

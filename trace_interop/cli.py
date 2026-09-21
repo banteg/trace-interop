@@ -5,6 +5,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -20,7 +21,7 @@ IMAGES = {
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
     'erigon_release': ('erigon', 'erigontech/erigon:v3.6.1'),
     'erigon_development': ('erigon', 'erigontech/erigon:main-latest'),
-    'nethermind_release': ('nethermind', 'nethermindeth/nethermind:1.39.3'),
+    'nethermind_release': ('nethermind', 'nethermind/nethermind:1.39.3'),
     'nethermind_development': ('nethermind', 'nethermindeth/nethermind:master'),
     'besu_release': ('besu', 'hyperledger/besu:26.8.1'),
     'besu_development': ('besu', 'hyperledger/besu:develop'),
@@ -42,7 +43,10 @@ def sha(path):
 
 
 def run(*args, cwd=None, capture=False):
-    return subprocess.run(args, cwd=cwd, check=True, text=True,
+    env = dict(os.environ)
+    if args and args[0] == "go":
+        env["GOTOOLCHAIN"] = "go1.26.1"
+    return subprocess.run(args, cwd=cwd, check=True, text=True, env=env,
                           stdout=subprocess.PIPE if capture else None).stdout
 
 
@@ -81,7 +85,7 @@ def resolve(args):
                    'hive_commit': HIVE, 'clients': clients})
 
 
-DOCKERFILE = '''FROM golang:1-alpine AS builder
+DOCKERFILE = '''FROM golang:1.26.1-alpine AS builder
 RUN apk add --no-cache gcc musl-dev linux-headers
 WORKDIR /source
 COPY go.mod go.sum ./
@@ -178,7 +182,7 @@ def execute(args):
                 'fixture_manifest_sha256': sha(ROOT / 'fixtures/checksums.json'),
                 'source_commit': run('git', 'rev-parse', 'HEAD', cwd=ROOT, capture=True).strip(),
                 'source_dirty': bool(run('git', 'status', '--porcelain', cwd=ROOT, capture=True)),
-                'runner_sha256': sha(Path(__file__)), 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
+                'runner_sha256': sha(Path(__file__)), 'hive_binary_sha256': sha(hive / 'hive'), 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
     write(out / 'manifest.json', manifest)
     command = [str(hive / 'hive'), '--client-file', str(out / 'clients.yaml'),
                '--sim', 'ethereum/rpc-compat', '--sim.limit', '/interop',
@@ -255,7 +259,7 @@ def collect(out):
     transport = [[case, client] for case, clients in observations.items() for client, obs in clients.items() if obs['status'] in ['harness_error', 'transport_error']]
     summary = {'versions': versions, 'eligible': eligibility, 'missing': missing,
                'transport_errors': transport, 'launches': launches,
-               'complete': not missing and not transport and all(eligibility.values()),
+               'complete': not missing and not transport and all(eligibility.values()) and all(x['pass'] for x in launches),
                'exchange_count': sum(len(v) for v in observations.values()),
                'note': 'Hive placeholder failure counts are not conformance scores.'}
     write(out / 'observations.json', observations)

@@ -1,0 +1,170 @@
+{
+  "H01": {
+    "besu": "Decide whether to add trace_replayTransaction or declare it unsupported in the agreed profile.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H02": {
+    "reth": "Replace flat/offset selection with one traceAddress path; [] must select root. Existing callers may depend on old indexing.",
+    "nethermind": "Use one nested path and return a singular object/null instead of a list; this changes the response type.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H03": {
+    "reth": "Change the default from union to intersection between address lists; explicit union would remain an extension.",
+    "erigon": "Change default union to intersection and avoid suppressing one-sided intersection queries.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H04": {
+    "nethermind": "Treat [] address lists as unrestricted rather than matching nothing.",
+    "erigon": "The draft rejects null filters; historically accepted null, so stricter validation is a compatibility change.",
+    "besu": "The draft rejects null filters; historically accepted null, so stricter validation is a compatibility change.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H05": {
+    "nethermind": "Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change.",
+    "besu": "Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H06": {
+    "besu": "Return null rather than [] for unknown transaction lookup.",
+    "nethermind": "Replace unknown-transaction/path exceptions with null; distinguish unavailable history.",
+    "reth": "Return null for unknown individual replay rather than a missing-transaction error.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H07": {
+    "reth": "Add transactionHash to individual replay envelopes.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H08": {
+    "nethermind": "Preserve actual output bytes when only stateDiff is selected; null loses nonempty output too.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H09": {
+    "nethermind": "Retain failed-frame result information where available instead of omitting result.",
+    "besu": "Retain revert bytes and gas where available; use null for inapplicable result.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H10": {
+    "nethermind": "Review creation output field names against address/code/gasUsed.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H11": {
+    "nethermind": "Accept empty trace selections without an internal reduction exception.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H12": {
+    "reth": "The baseline rejects a third block argument; preserve existing extension only under a separate profile.",
+    "erigon": "Keep the two-argument baseline; document any block-selector extension.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H13": {
+    "reth": "Review signed nonce validation; ensure simulation does not replace the signed nonce.",
+    "nethermind": "Review signed nonce validation independently of unsigned-call permissiveness.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H14": {
+    "reth": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
+    "erigon": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
+    "nethermind": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
+    "besu": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers."
+  },
+  "H15": {
+    "reth": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
+    "erigon": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
+    "nethermind": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
+    "besu": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks."
+  },
+  "H16": {
+    "reth": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
+    "erigon": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
+    "nethermind": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
+    "besu": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule."
+  },
+  "H17": {
+    "reth": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
+    "erigon": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
+    "nethermind": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
+    "besu": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts."
+  },
+  "H18": {
+    "reth": "Capture EIP-7702 code set/replace/clear changes even when the account already exists; preserve authorization changes across execution revert.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H19": {
+    "reth": "Capture actually executing constructor and delegated code rather than relying on pre-state address lookup.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H20": {
+    "reth": "Refresh after the merged inspector fix; old gas/memory/call-return findings may now be resolved.",
+    "erigon": "Refresh after the merged MCOPY fix; retain nested gas timing as an open semantic question.",
+    "besu": "Review same-step VM memory effects, including MCOPY.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H21": {
+    "reth": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
+    "erigon": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
+    "nethermind": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
+    "besu": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers."
+  },
+  "H22": {
+    "besu": "Preserve precompile return bytes in the call-frame result as well as the execution envelope.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H23": {
+    "reth": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
+    "erigon": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
+    "nethermind": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
+    "besu": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters."
+  },
+  "H24": {
+    "besu": "Keep sibling frame failure status isolated; a reverting sibling must not taint a successful one.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H25": {
+    "nethermind": "Avoid partial/malformed JSON when signed-transaction validation fails.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H26": {
+    "reth": "Report real pre-Cancun deletion of account fields; preserve existing accounts after EIP-6780.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H27": {
+    "besu": "Investigate range/per-block discrepancies at fork boundaries; select fork rules separately per block.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "erigon": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  },
+  "H28": {
+    "erigon": "Investigate historical queries exposing the next block beacon-root update; block N must exclude N+1 changes.",
+    "reth": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "nethermind": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict.",
+    "besu": "No specific change established by the historical summary; review the proposed rule and fresh evidence. This is not a pass verdict."
+  }
+}

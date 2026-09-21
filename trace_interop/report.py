@@ -88,7 +88,7 @@ def generate(root, runs, output):
     introduction+='Schema validity, partial semantic assertions and full conformance are different claims.\n\n'
     if (root/'spec.lock.json').exists():
         lock=read(root/'spec.lock.json');introduction+=f'Draft: [{lock["commit"][:12]}]({lock["repository"]}/commit/{lock["commit"]}).\n\n'
-    introduction+='## Method observations\n\nR = at least one result; E = error responses only; U = method not found. Mixed results remain visible.\n\n'
+    introduction+='## Method observations\n\nR = at least one result; E = RPC error observed; U = method not found. Mixed results remain visible.\n\n'
     clients=sorted({r['client'] for r in records})
     introduction+='| Method | '+' | '.join(clients)+' |\n| --- | '+' | '.join('---' for _ in clients)+' |\n'
     for method in sorted(methods if spec else []):

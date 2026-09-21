@@ -6,7 +6,7 @@ Draft: [99a312e9c417](https://github.com/banteg/execution-apis/commit/99a312e9c4
 
 ## Method observations
 
-R = at least one result; E = error responses only; U = method not found. Mixed results remain visible.
+R = at least one result; E = RPC error observed; U = method not found. Mixed results remain visible.
 
 | Method | besu_development | besu_release | erigon_development | erigon_release | nethermind_development | nethermind_release | reth_development | reth_release |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -2,7 +2,7 @@
 
 Proposals for review, not an adopted standard or a client ranking. Historical recommendations date to September 15. Fresh checks below are restricted to the exact pinned builds and selected cases. Schema validity, partial semantic assertions and full conformance are different claims.
 
-Draft: [1143c7b33b93](https://github.com/banteg/execution-apis/commit/1143c7b33b93841d4e89f6f63d12d3e8f95d8b3c).
+Draft: [e35e7842fe21](https://github.com/banteg/execution-apis/commit/e35e7842fe218f8633af80233e6a1b71ff3124c5).
 
 ## Client impact
 

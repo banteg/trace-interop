@@ -169,4 +169,6 @@ def evaluate(case, observation, peers):
     if name in ['beacon-call-55','beacon-call-56']:
         h=next((h for h in context.get('headers',[]) if h.get('number')=='0x38'),None)
         if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
+    if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
+        check('H06', status=='rpc_error' and response['error']['code']==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
     return checks

@@ -33,3 +33,10 @@ jobs:
         working-directory: .spec-source
       - run: go test ./...
         working-directory: .spec-source/tools
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: .spec-source/package-lock.json
+      - run: npm ci && node --test scripts/docs-spec.test.cjs && npm run build:docs:core
+        working-directory: .spec-source

@@ -3,6 +3,37 @@ import json
 from pathlib import Path
 import subprocess
 
+READINESS = r'''package main
+import (
+ "context"
+ "fmt"
+ "net"
+ "time"
+ "github.com/ethereum/hive/hivesim"
+)
+// Hive observes port 8545; the authenticated Engine endpoint may open later.
+func waitInteropEngine(t *hivesim.T, c *hivesim.Client) {
+ for deadline:=time.Now().Add(30*time.Second); time.Now().Before(deadline); {
+  conn,err:=net.DialTimeout("tcp",net.JoinHostPort(c.IP.String(),"8551"),time.Second)
+  if err==nil {conn.Close();return}
+  time.Sleep(100*time.Millisecond)
+ }
+ t.Fatal("Engine endpoint did not become ready")
+}
+// An accepted forkchoice can precede publication to the ordinary RPC cache.
+func waitInteropHead(t *hivesim.T,c *hivesim.Client,want string) {
+ for deadline:=time.Now().Add(30*time.Second);time.Now().Before(deadline); {
+  ctx,cancel:=context.WithTimeout(context.Background(),2*time.Second)
+  var head struct { Hash string `json:"hash"` }
+  err:=c.RPC().CallContext(ctx,&head,"eth_getBlockByNumber","latest",false)
+  cancel()
+  if err==nil && head.Hash==want {return}
+  time.Sleep(100*time.Millisecond)
+ }
+ t.Fatal(fmt.Sprintf("canonical RPC head did not become %s",want))
+}
+'''
+
 REORG = r'''package main
 import (
  "encoding/json"
@@ -36,7 +67,7 @@ func runInteropScenario(t *hivesim.T, c *hivesim.Client) bool {
    var reply struct { PayloadStatus struct { Status string `json:"status"` } `json:"payloadStatus"` }
    err:=c.EngineAPI().Call(&reply,req.Method,req.Params...)
    if err!=nil { t.Fatal(err) }
-   if reply.PayloadStatus.Status=="VALID" { t.Logf("interop forkchoice accepted: %v",req.Params); return }
+   if reply.PayloadStatus.Status=="VALID" { t.Logf("interop forkchoice accepted: %v",req.Params); waitInteropHead(t,c,req.Params[0].(map[string]any)["headBlockHash"].(string)); return }
    if reply.PayloadStatus.Status=="INVALID" {t.Fatal("forkchoice invalid")}
    time.Sleep(200*time.Millisecond)
   }
@@ -69,6 +100,10 @@ def prepare(hive, corpus, name, clients):
         original=subprocess.check_output(['git','show','HEAD:'+relative],cwd=hive)
         (hive/relative).write_bytes(original)
     (sim/'interop_scenario.go').unlink(missing_ok=True)
+    (sim/'interop_readiness.go').write_text(READINESS)
+    p=sim/'main.go';text=p.read_text();needle='sendForkchoiceUpdated(t, c)'
+    if text.count(needle)!=1:raise ValueError('pinned Hive readiness insertion point changed')
+    p.write_text(text.replace(needle,'waitInteropEngine(t, c)\n\t\t\t'+needle))
     if name in ['reorg','reorg-safe']:
         # A complete scenario is small; case-level selection still needs all phase controls.
         (sim/'tests/reorg.json').write_text(json.dumps(corpus['plan'])+'\n')
@@ -98,6 +133,10 @@ def verify_state(corpus_name, corpus, observations, client):
         errors=[observations.get(n,{}).get(client,{}).get('response',{}).get('error') for n in ['old-transaction','old-replay','old-block','old-filter']]
         header,receipt,latest=result('old-header'),result('old-receipt'),result('latest-call')
         valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'
-        valid=valid and all(isinstance(e,dict) and 'prun' in e.get('message','').lower() for e in errors)
-        return bool(valid), 'requires retained old header/receipt, successful latest call, and explicit pruned-state errors'
+        nonce_error=observations.get('old-nonce',{}).get(client,{}).get('response',{}).get('error')
+        def unavailable(error):
+            message=error.get('message','').lower() if isinstance(error,dict) else ''
+            return 'prun' in message or 'insufficient changesets to revert' in message
+        valid=valid and unavailable(nonce_error) and all(unavailable(e) for e in errors)
+        return bool(valid), 'requires retained old header/receipt, successful latest call, and independently unavailable old state'
     return True, 'ordinary imported-chain scenario'

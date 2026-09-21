@@ -126,6 +126,9 @@ def selected_cases(corpus, pattern):
 
 
 def execute(args):
+    # Capture source state before creating the run's own untracked artifacts.
+    source_commit = run('git', 'rev-parse', 'HEAD', cwd=ROOT, capture=True).strip()
+    source_dirty = bool(run('git', 'status', '--porcelain', cwd=ROOT, capture=True))
     verify()
     out = Path(args.output).resolve()
     if out.exists():
@@ -190,8 +193,8 @@ def execute(args):
                 'corpus': args.corpus, 'selected_cases': cases, 'head': head,
                 'clients': {n: lock['clients'][n] for n in names}, 'hive_commit': HIVE,
                 'fixture_manifest_sha256': sha(ROOT / 'fixtures/checksums.json'),
-                'source_commit': run('git', 'rev-parse', 'HEAD', cwd=ROOT, capture=True).strip(),
-                'source_dirty': bool(run('git', 'status', '--porcelain', cwd=ROOT, capture=True)),
+                'source_commit': source_commit,
+                'source_dirty': source_dirty,
                 'runner_sha256': sha(Path(__file__)), 'hive_binary_sha256': sha(hive / 'hive'), 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
     write(out / 'manifest.json', manifest)
     command = [str(hive / 'hive'), '--client-file', str(out / 'clients.yaml'),

@@ -1,5 +1,13 @@
 {
   "evidence": {
+    "../evidence/2026-09-21/geth-final-a/manifest.json": "6c209b8c18af945ce38a07aa664b72abd08fccf6199dac6febba6ce56f106eb4",
+    "../evidence/2026-09-21/geth-final-fork-followup/manifest.json": "f122644ed37839ba719b986c0a9aa12be71f32c445f696efff1dbf2b4b07db40",
+    "../evidence/2026-09-21/geth-final-forks/manifest.json": "1e0ca8263b18bc3ba59f1382a7072b269090fa01ae0a11b2a79b1322f3d71053",
+    "../evidence/2026-09-21/geth-final-initial/manifest.json": "469cae6b7c0ba2b666337bb041a250086a6dc92eb09e95103f0b026c1cc8d3f3",
+    "../evidence/2026-09-21/geth-final-precompiles/manifest.json": "df849275299e02cd5142264f30eef8017aa322d351da7d94d6959b667875c05f",
+    "../evidence/2026-09-21/geth-final-reorg-safe/manifest.json": "96f2526c7273de4981725969faf26d38329c2d53aaa29ce2e2998cd8f908b9cb",
+    "../evidence/2026-09-21/geth-final-repeat/manifest.json": "505aba7199ad43fa14a9cb45aac8e0fb45983b34a53b2280f997e3ea04a906f7",
+    "../evidence/2026-09-21/precompiles-final/manifest.json": "aeec010ea0b8f97b530d0146c5909a28f668aff1a0c8d205d37de4cfebbfbff9",
     "../evidence/2026-09-21/verified-a-besu-retry/manifest.json": "64ffd8faefc6144013585b4989a4c0f84bd44f8ad6167881721dfb2f5da807af",
     "../evidence/2026-09-21/verified-a/manifest.json": "3089ce9aa2266343090d6c6c358a5ef5163c2f89c1b24e63119c9432402fcc16",
     "../evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json": "acedb4162dd96945e8b5540bd9df314a29fb781d6e1442d85a016b385bf2ab32",

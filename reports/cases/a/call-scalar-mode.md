@@ -21,6 +21,27 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-a/observations.json).
+
+- H14: **matches** — Malformed input returns invalid params (-32602).
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "error": {
+    "code": -32602,
+    "message": "invalid argument 1: json: cannot unmarshal string into Go value of type tracers.plain"
+  },
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).

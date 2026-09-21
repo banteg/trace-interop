@@ -1,0 +1,475 @@
+{
+  "clients": {
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "8ead64164eeac1f021d9210dc7e377844eb0f91078cedf6bf2ffedae618aa0f1",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9882508810ecaffc757b903cbaa241b321a7cd2afaf1be44a5cb103d2be259d0",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:31bf99402b9e84afafaea75566c16f6a186de688899ad518588cbe867e3d0b72",
+      "local_image": "trace-interop/geth-source:8ead64164eeac1f021d9210dc7e377844eb0f91078cedf6bf2ffedae618aa0f1",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "6141d1d459c5348bd4404c851850808517c82412",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "46bbfbdf2c983d39466d8e7b9ebf0adf2d245a7e1ab832234e1e8f416d23016e"
+      }
+    }
+  },
+  "corpus": "precompiles",
+  "finished_at": "2026-09-21T18:09:44.308458+00:00",
+  "fixture_manifest_sha256": "dbe4fb6b77404a6f32d9965762dea1b24d3db80804833c76a917879609036943",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "73735657cdcb54af87319f2a5c3d16c2e36eeb64f46429a0ee0397d2b466efae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060006006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060006006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060016006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060016006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-staticcall-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0fa5060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-staticcall-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0fa5060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060006006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060006006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060016006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060016006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "root-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "to": "0x0000000000000000000000000000000000000006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "root-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "to": "0x0000000000000000000000000000000000000006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    }
+  ],
+  "source_commit": "b0f2ed6f21fd90a5dcc3818425c2d8a96535fba5",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "99a312e9c41724f180673a636c6e200f213beb7b",
+    "generated_sha256": "def10261b3c0ca461dcb929b8209104316fc83287b20a233845669e6227a7f3c",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-21T18:09:41.087362+00:00"
+}

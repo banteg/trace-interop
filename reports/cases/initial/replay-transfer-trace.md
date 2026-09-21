@@ -16,6 +16,53 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-initial/observations.json).
+
+- H07: **matches** — Individual replay includes its transactionHash.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Unrequested stateDiff is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": null,
+    "trace": [
+      {
+        "action": {
+          "callType": "call",
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "gas": "0x0",
+          "input": "0x",
+          "to": "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d",
+          "value": "0x1"
+        },
+        "result": {
+          "gasUsed": "0x0",
+          "output": "0x"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "call"
+      }
+    ],
+    "transactionHash": "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **unsupported**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).

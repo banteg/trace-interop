@@ -13,6 +13,85 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+- H09: **matches** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x13488",
+        "input": "0x01",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
+        "value": "0x0"
+      },
+      "blockHash": "0x6e5b6369d615c8e0c46837766f513bb31e33ce819e637cd70f66871abed86eed",
+      "blockNumber": 36,
+      "error": "Reverted",
+      "result": {
+        "gasUsed": "0x889",
+        "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x894d679a5f0efe3beb6fa7e13b7c92c6c223c815f625a77be692533f73e21eb2",
+      "transactionPosition": 0,
+      "type": "call"
+    },
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x8d5b8",
+        "input": "0x",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "value": "0x0"
+      },
+      "blockHash": "0x6e5b6369d615c8e0c46837766f513bb31e33ce819e637cd70f66871abed86eed",
+      "blockNumber": 36,
+      "result": {
+        "gasUsed": "0x2343d",
+        "output": "0xffee"
+      },
+      "subtraces": 7,
+      "traceAddress": [],
+      "transactionHash": "0xcb6cc0f2c24bd58148d690e7c202ffffdc0ed017e2ca6e6a744d8d3698e38091",
+      "transactionPosition": 1,
+      "type": "call"
+    },
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "gas": "0xf35c",
+        "input": "0xff01",
+        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
+        "value": "0x1"
+      },
+      "blockHash": "0x6e5b6369d615c8e0c46837766f513bb31e33ce819e637cd70f66871abed86eed",
+      "blockNumber": 36,
+      "result": {
+        "gasUsed": "0x48",
+        "output": "0xffee"
+      },
+      "su
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

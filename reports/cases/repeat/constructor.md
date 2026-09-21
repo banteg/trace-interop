@@ -24,6 +24,116 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-repeat/observations.json).
+
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H19: **matches** — Creation vmTrace.code is executing initcode.
+- H10: **matches** — Successful creation uses address, code and gasUsed.
+- H21: **matches** — Stack words use minimal hex quantities at every depth.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x01",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0x66863b",
+            "to": "0x60fe91e48eeb"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b34755ccb0391096",
+            "to": "0xc097ce7bc90715b346f4b946dbb096"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x85",
+            "to": "0x86"
+          }
+        },
+        "storage": {}
+      },
+      "0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41": {
+        "balance": {
+          "+": "0x0"
+        },
+        "code": {
+          "+": "0x01"
+        },
+        "nonce": {
+          "+": "0x1"
+        },
+        "storage": {}
+      }
+    },
+    "trace": [
+      {
+        "action": {
+          "creationMethod": "create",
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "gas": "0x85822",
+          "init": "0x60016000526001601ff3",
+          "value": "0x0"
+        },
+        "result": {
+          "address": "0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41",
+          "code": "0x01",
+          "gasUsed": "0xda"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "create"
+      }
+    ],
+    "vmTrace": {
+      "code": "0x60016000526001601ff3",
+      "ops": [
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x1"
+            ],
+            "store": null,
+            "used": 546847
+          },
+          "op": "PUSH1",
+          "pc": 0,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x0"
+            ],
+            "store": null,
+            "used":
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-repeat/observations.json).

@@ -4,21 +4,23 @@ Proposals for review, not an adopted standard or a client ranking. Results apply
 
 Draft: [99a312e9c417](https://github.com/banteg/execution-apis/commit/99a312e9c41724f180673a636c6e200f213beb7b).
 
+`go-ethereum_trace` is the experimental [draft implementation](https://github.com/banteg/go-ethereum/tree/feat/trace), not upstream Geth support or an independent client vote.
+
 ## Method observations
 
 R = at least one result; E = RPC error observed; U = method not found. Mixed results remain visible.
 
-| Method | besu_development | besu_release | erigon_development | erigon_release | nethermind_development | nethermind_release | reth_development | reth_release |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `trace_block` | R | R | R, E | R, E | R, E | R, E | R, E | R, E |
-| `trace_call` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
-| `trace_callMany` | R | R | R, E | R, E | R | R | R | R |
-| `trace_filter` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
-| `trace_get` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
-| `trace_rawTransaction` | R, E | R, E | R, E | R, E | R, E, malformed JSON | R, E, malformed JSON | R, E | R, E |
-| `trace_replayBlockTransactions` | R | R | R | R | R | R | R | R |
-| `trace_replayTransaction` | U | U | R | R | R, E | R, E | R, E | R, E |
-| `trace_transaction` | R | R | R | R | R, E | R, E | R, E | R, E |
+| Method | besu_development | besu_release | erigon_development | erigon_release | go-ethereum_trace | nethermind_development | nethermind_release | reth_development | reth_release |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace_block` | R | R | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_call` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_callMany` | R | R | R, E | R, E | R | R | R | R | R |
+| `trace_filter` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_get` | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E | R, E |
+| `trace_rawTransaction` | R, E | R, E | R, E | R, E | R, E | R, E, malformed JSON | R, E, malformed JSON | R, E | R, E |
+| `trace_replayBlockTransactions` | R | R | R | R | R | R | R | R | R |
+| `trace_replayTransaction` | U | U | R | R | R | R, E | R, E | R, E | R, E |
+| `trace_transaction` | R | R | R | R | R | R, E | R, E | R, E | R, E |
 
 ## Client impact
 
@@ -26,6 +28,7 @@ R = at least one result; E = RPC error observed; U = method not found. Mixed res
 - [besu_release](clients/besu_release.md)
 - [erigon_development](clients/erigon_development.md)
 - [erigon_release](clients/erigon_release.md)
+- [go-ethereum_trace](clients/go-ethereum_trace.md)
 - [nethermind_development](clients/nethermind_development.md)
 - [nethermind_release](clients/nethermind_release.md)
 - [reth_development](clients/reth_development.md)
@@ -35,6 +38,14 @@ R = at least one result; E = RPC error observed; U = method not found. Mixed res
 
 | Run | Corpus | Capture complete | Versions |
 | --- | --- | --- | --- |
+| [geth-final-a](../evidence/2026-09-21/geth-final-a/manifest.json) | a | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-fork-followup](../evidence/2026-09-21/geth-final-fork-followup/manifest.json) | fork-followup | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-forks](../evidence/2026-09-21/geth-final-forks/manifest.json) | forks | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-initial](../evidence/2026-09-21/geth-final-initial/manifest.json) | initial | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-precompiles](../evidence/2026-09-21/geth-final-precompiles/manifest.json) | precompiles | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-reorg-safe](../evidence/2026-09-21/geth-final-reorg-safe/manifest.json) | reorg-safe | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [geth-final-repeat](../evidence/2026-09-21/geth-final-repeat/manifest.json) | repeat | True | {'go-ethereum_trace': 'Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1'} |
+| [precompiles-final](../evidence/2026-09-21/precompiles-final/manifest.json) | precompiles | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
 | [verified-a](../evidence/2026-09-21/verified-a/manifest.json) | a | False | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
 | [verified-a-besu-retry](../evidence/2026-09-21/verified-a-besu-retry/manifest.json) | a | True | {'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25'} |
 | [verified-fork-followup](../evidence/2026-09-21/verified-fork-followup/manifest.json) | fork-followup | False | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |

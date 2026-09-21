@@ -26,6 +26,50 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "post": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": "0xc4f206a5aa5411442"
+      },
+      "0x0000000000000000000000000000000000001008": {
+        "balance": "0x64"
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": "0xc097ce7bc90715b34796f5186d5d58",
+        "nonce": 128
+      }
+    },
+    "pre": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": "0xc4f200cb8a8742bfd"
+      },
+      "0x0000000000000000000000000000000000001007": {
+        "balance": "0x64",
+        "code": "0x611008ff",
+        "codeHash": "0xd3c6a4fb0cbb2fcfbfbd26a04f2e4279cfa17ecb601962708fca2003f0405bb8"
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": "0xc097ce7bc90715b347f875eff99958",
+        "nonce": 127
+      }
+    }
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

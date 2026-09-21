@@ -14,6 +14,56 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-fork-followup/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x62d8fb4",
+    "difficulty": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x17745",
+    "hash": "0xced7868057d8d421c73d54e58e5c5d70313a1d71ea43910b3fd6cd95f25de17a",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000001000000000000000000000000000000004000000000000200000000000000000000000000002000000000000000020000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x35",
+    "parentHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+    "receiptsRoot": "0x7f83604897d9bcfd7b817d4538c7a3fe7b2030dc969bb956b9cb27d26bea0243",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x3e5",
+    "stateRoot": "0xe3473e8bdb8bca96c93ff10ceaf369e7bbb0c754c36791a9a93c07fab75c662b",
+    "timestamp": "0x212",
+    "transactions": [
+      {
+        "accessList": [
+          {
+            "address": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+            "storageKeys": [
+              "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "0xefcb86facadbec33b8779888975eacca8f44a9073a845521617f1fb30e1ac818"
+            ]
+          }
+        ],
+        "blockHash": "0xced7868057d8d421c73d54e58e5c5d70313a1d71ea43910b3fd6cd95f25de17a",
+        "blockNumber": "0x35",
+        "blockTimestamp": "0x212",
+        "chainId": "0xc72dd9d5e883e",
+        "from": "0x7435ed30a8b4aeb0
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).

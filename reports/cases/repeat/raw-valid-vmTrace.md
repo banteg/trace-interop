@@ -16,6 +16,34 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-repeat/observations.json).
+
+- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested stateDiff is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": null,
+    "trace": [],
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-repeat/observations.json).

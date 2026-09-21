@@ -16,6 +16,79 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-initial/observations.json).
+
+- H07: **matches** — Individual replay includes its transactionHash.
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0x718ba",
+            "to": "0x7a87a"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b34a455f328dfca1",
+            "to": "0xc097ce7bc90715b34a2bbb19737821"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x6",
+            "to": "0x7"
+          }
+        },
+        "storage": {}
+      },
+      "0xeda8645ba6948855e3b3cd596bbb07596d59c603": {
+        "balance": "=",
+        "code": {
+          "*": {
+            "from": "0x",
+            "to": "0xef01004055cae5c7d838cda10d40f9d07106c7f5f3be1c"
+          }
+        },
+        "nonce": {
+          "*": {
+            "from": "0x0",
+            "to": "0x1"
+          }
+        },
+        "storage": {}
+      }
+    },
+    "trace": [],
+    "transactionHash": "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **unsupported**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).

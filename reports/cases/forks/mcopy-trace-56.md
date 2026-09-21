@@ -25,6 +25,112 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H21: **matches** — Stack words use minimal hex quantities at every depth.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0xc4f200cb8a876839d",
+            "to": "0xc4f2031a55517f643"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b347eec2d8f29150",
+            "to": "0xc097ce7bc90715b347c881fd969950"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x82",
+            "to": "0x83"
+          }
+        },
+        "storage": {}
+      }
+    },
+    "trace": [
+      {
+        "action": {
+          "callType": "call",
+          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "gas": "0x8d5b8",
+          "input": "0x",
+          "to": "0x000000000000000000000000000000000000100a",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0x1e",
+          "output": "0x"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "call"
+      }
+    ],
+    "vmTrace": {
+      "code": "0x602a6000526020600060205e00",
+      "ops": [
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x2a"
+            ],
+            "store": null,
+            "used": 578997
+          },
+          "op": "PUSH1",
+          "pc": 0,
+          "sub": null
+        },
+        {
+          "cost": 3,
+          "ex": {
+            "mem": null,
+            "push": [
+              "0x0"
+            ],
+            "store": null,
+            "used": 578994
+          },
+          "op": "PUSH1",
+          "pc": 2,
+          "sub": null
+        },
+        {
+          "cost": 6,
+          "ex": {
+            "mem": {
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

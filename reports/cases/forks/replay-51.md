@@ -17,6 +17,94 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "output": "0x",
+      "stateDiff": {
+        "0x0000000000000000000000000000000000000000": {
+          "balance": {
+            "*": {
+              "from": "0xc4f200cb8a86a25b7",
+              "to": "0xc4f200cb8a86a77bf"
+            }
+          },
+          "code": "=",
+          "nonce": "=",
+          "storage": {}
+        },
+        "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+          "balance": {
+            "*": {
+              "from": "0xc097ce7bc90715b34838c6176aab29",
+              "to": "0xc097ce7bc90715b34836306ad13541"
+            }
+          },
+          "code": "=",
+          "nonce": {
+            "*": {
+              "from": "0x72",
+              "to": "0x73"
+            }
+          },
+          "storage": {}
+        }
+      },
+      "trace": [
+        {
+          "action": {
+            "callType": "call",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x0",
+            "input": "0x",
+            "to": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "value": "0x1"
+          },
+          "result": {
+            "gasUsed": "0x0",
+            "output": "0x"
+          },
+          "subtraces": 0,
+          "traceAddress": [],
+          "type": "call"
+        }
+      ],
+      "transactionHash": "0x87d8ef31d0d35ae040f2998b90fd61eeb04882b21f189c521bec5c3cefb416d2",
+      "vmTrace": null
+    },
+    {
+      "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
+      "stateDiff": {
+        "0x0000000000000000000000000000000000000000": {
+          "balance": {
+            "*": {
+              "from": "0xc4f200cb8a86a77bf",
+              "to": "0xc4f200cb8a86ad260"
+            }
+          },
+          "code": "=",
+          "nonce": "=",
+          "storage": {}
+        },
+        "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

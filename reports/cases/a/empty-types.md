@@ -21,6 +21,35 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-a/observations.json).
+
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Unrequested stateDiff is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+- H11: **matches** — An empty trace-type selection executes successfully.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+    "stateDiff": null,
+    "trace": [],
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).

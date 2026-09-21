@@ -18,6 +18,27 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-repeat/observations.json).
+
+- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "error": {
+    "code": -32000,
+    "message": "max fee per gas less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, maxFeePerGas: 1, baseFee: 1677430"
+  },
+  "id": 1,
+  "jsonrpc": "2.0"
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-repeat/observations.json).

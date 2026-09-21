@@ -14,6 +14,55 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "baseFeePerGas": "0x2c6aca1",
+    "blobGasUsed": "0x20000",
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x11ca4",
+    "hash": "0xd0f4ccca39ffd79d7c48147bafc9c46c839936205cd8bd01f62be5a3e3ed332b",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800400000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000000000000004000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x3b",
+    "parentBeaconBlockRoot": "0x4b118bd31ed2c4eeb81dc9e3919e9989994333fe36f147c2930f12c53f0d3c78",
+    "parentHash": "0xab6c688040d8b79f7cf70f5aea8913d4dd2770bcfc17248052cab1df1c0d724a",
+    "receiptsRoot": "0x19e6e53aa9470fd4c39ef0dce70d8e1a11cd808cc3f3afbf347620e7b4b6a42e",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x3db",
+    "stateRoot": "0x3d0025edfb82ed102c9fc9eeed149fcbaf873e184f72f29186ed89b7c3d26045",
+    "timestamp": "0x24e",
+    "transactions": [
+      "0x03a4bc78840db70e9b34ed52a9b17a34d4c72011731e9d7c36c962cda16c5b17",
+      "0xfaf95f0248bf8587ba17feda97333e872894f94ab3b418bfab84287e76d89b79"
+    ],
+    "transactionsRoot": "0xfaa1efe1828068bd800820a01a40ba7610200b21331033fa567f78341301e821",
+    "uncles": [],
+    "withdrawals": [
+      {
+        "address": "0x5f552da00dfb4d3749d9e62dcee3c918855a86a0",
+        "amount": "0x64",
+        "index": "0x2",
+
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

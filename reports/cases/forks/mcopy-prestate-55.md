@@ -26,6 +26,42 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "post": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": "0xc4f2424ca6582b63d"
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": "0xc097ce7bc90715b343b5112a3e9958",
+        "nonce": 128
+      }
+    },
+    "pre": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": "0xc4f200cb8a8742bfd"
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": "0xc097ce7bc90715b347f875eff99958",
+        "nonce": 127
+      }
+    }
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

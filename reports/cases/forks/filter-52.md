@@ -16,6 +16,69 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+- H27: **matches** — A single-block filter agrees with trace_block at the same fork.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x133d8",
+        "input": "0x74bff204de43b4a2656d6974",
+        "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+        "value": "0x2"
+      },
+      "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+      "blockNumber": 52,
+      "result": {
+        "gasUsed": "0x6fa0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x63debd7bcab14a95198660dfe794ca12fd2a34b24f780dd7572c55f2a58735b3",
+      "transactionPosition": 0,
+      "type": "call"
+    },
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x0",
+        "input": "0x",
+        "to": "0x83c7e323d189f18725ac510004fdc2941f8c4a78",
+        "value": "0x1"
+      },
+      "blockHash": "0xa9578be0967413b9adc40736fd4ec67d0529b890a81d62102db05e61d6de1897",
+      "blockNumber": 52,
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0xd7822fd23594d52bc98493786233edb857cbeee469a3148b5780e076a53985db",
+      "transactionPosition": 1,
+      "type": "call"
+    }
+  ]
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

@@ -23,6 +23,53 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-a/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "calls": [
+      {
+        "error": "execution reverted",
+        "from": "0x0000000000000000000000000000000000001005",
+        "gas": "0xea60",
+        "gasUsed": "0x6",
+        "input": "0x",
+        "to": "0x0000000000000000000000000000000000001003",
+        "type": "CALL",
+        "value": "0x0"
+      },
+      {
+        "from": "0x0000000000000000000000000000000000001005",
+        "gas": "0xea60",
+        "gasUsed": "0x12",
+        "input": "0x",
+        "output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+        "to": "0x0000000000000000000000000000000000001002",
+        "type": "CALL",
+        "value": "0x0"
+      }
+    ],
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gas": "0x927c0",
+    "gasUsed": "0x66a1",
+    "input": "0x",
+    "to": "0x0000000000000000000000000000000000001005",
+    "type": "CALL",
+    "value": "0x0"
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).

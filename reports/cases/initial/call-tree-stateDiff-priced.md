@@ -23,6 +23,101 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-initial/observations.json).
+
+- H08: **matches** — Unrequested trace is an empty array.
+- H08: **matches** — Unrequested vmTrace is null.
+- H08: **matches** — Output remains a byte string under every trace selection.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0xffee",
+    "stateDiff": {
+      "0x0000000000000000000000000000000000000000": {
+        "balance": {
+          "*": {
+            "from": "0x66863b",
+            "to": "0x112b446d0b4e9"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      },
+      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+        "balance": {
+          "*": {
+            "from": "0xc097ce7bc90715b34755ccb0391096",
+            "to": "0xc097ce7bc90715b34642dd61bc3496"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0x85",
+            "to": "0x86"
+          }
+        },
+        "storage": {}
+      },
+      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+        "balance": {
+          "*": {
+            "from": "0x3b9ac9f2",
+            "to": "0x3b9ac9f1"
+          }
+        },
+        "code": "=",
+        "nonce": {
+          "*": {
+            "from": "0xe",
+            "to": "0xf"
+          }
+        },
+        "storage": {
+          "0x0000000000000000000000000000000000000000000000000000000000000000": {
+            "*": {
+              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
+              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
+            }
+          },
+          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
+            "*": {
+              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
+              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
+            }
+          }
+        }
+      },
+      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+        "balance": {
+          "*": {
+            "from": "0xe",
+            "to": "0xf"
+          }
+        },
+        "code": "=",
+        "nonce": "=",
+        "storage": {}
+      }
+    },
+    "trace": [],
+    "vmTrace": null
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).

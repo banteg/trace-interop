@@ -18,6 +18,84 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-a/observations.json).
+
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "action": {
+        "creationMethod": "create",
+        "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
+        "gas": "0x6a00f",
+        "init": "0x5b646368696c6460006000a133ff",
+        "value": "0x0"
+      },
+      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+      "blockNumber": 2,
+      "result": {
+        "address": "0x2d303c5b7911d87d594bf1b31fbb9aa187888893",
+        "code": "0x",
+        "gasUsed": "0x1682"
+      },
+      "subtraces": 1,
+      "traceAddress": [
+        6
+      ],
+      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      "transactionPosition": 1,
+      "type": "create"
+    },
+    {
+      "action": {
+        "address": "0x2d303c5b7911d87d594bf1b31fbb9aa187888893",
+        "balance": "0x0",
+        "refundAddress": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+      },
+      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+      "blockNumber": 2,
+      "result": null,
+      "subtraces": 0,
+      "traceAddress": [
+        6,
+        0
+      ],
+      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      "transactionPosition": 1,
+      "type": "suicide"
+    },
+    {
+      "action": {
+        "creationMethod": "create",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x4b0e",
+        "init": "0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3",
+        "value": "0x0"
+      },
+      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+      "blockNumber": 2,
+      "result": {
+        "address": "0x4055cae5c7d838cda10d40f9d07106c7f5f3be1c",
+        "code": "0x36156009575f355f555b305f525f5460205260405ff3",
+        "gasUsed": "0x114d"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x512b5deddff16d21ebba7b730d935b4287dbb
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).

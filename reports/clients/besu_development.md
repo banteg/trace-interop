@@ -13,9 +13,9 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | [H05 — Post-merge reward records](../decisions/H05.md) | 11 change needed | Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change. |
 | [H06 — Missing transactions and paths](../decisions/H06.md) | 1 change needed, 3 matches | Return null rather than [] for unknown transaction lookup. |
 | [H07 — Replay transactionHash field](../decisions/H07.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
-| [H08 — Empty output and unrequested components](../decisions/H08.md) | 147 matches | No change identified by these checks. |
-| [H09 — Failed frame results and error labels](../decisions/H09.md) | 18 change needed | Retain revert bytes and gas where available; use null for inapplicable result. |
-| [H10 — Creation result field names](../decisions/H10.md) | 1 change needed, 6 matches | Use address, code and gasUsed consistently for successful creation frames. |
+| [H08 — Empty output and unrequested components](../decisions/H08.md) | 163 matches | No change identified by these checks. |
+| [H09 — Failed frame results and error labels](../decisions/H09.md) | 26 change needed | Retain revert bytes and gas where available; use null for inapplicable result. |
+| [H10 — Creation result field names](../decisions/H10.md) | 1 change needed, 13 matches | Use address, code and gasUsed consistently for successful creation frames. |
 | [H11 — Empty trace-type selection](../decisions/H11.md) | 1 change needed, 2 matches | An empty trace-type selection executes successfully. |
 | [H12 — Raw-transaction block argument](../decisions/H12.md) | 1 matches | No change identified by these checks. |
 | [H13 — Signed transaction nonce validation](../decisions/H13.md) | 2 change needed | Reject signed nonce mismatches without substituting the account nonce. |
@@ -26,174 +26,66 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | [H18 — EIP-7702 code changes in stateDiff](../decisions/H18.md) | 6 matches | No change identified by these checks. |
 | [H19 — vmTrace executing bytecode](../decisions/H19.md) | 2 matches | No change identified by these checks. |
 | [H20 — vmTrace step timing and deltas](../decisions/H20.md) | 2 change needed | Review same-step VM memory effects, including MCOPY. |
-| [H21 — vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 51 matches | No change identified by these checks. |
+| [H21 — vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 67 matches | No change identified by these checks. |
 | [H22 — Precompile return bytes](../decisions/H22.md) | 1 change needed | Preserve precompile return bytes in the call-frame result as well as the execution envelope. |
 | [H23 — Special-action address matching](../decisions/H23.md) | 3 change needed, 1 matches | Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters. |
-| [H24 — Sibling failure isolation](../decisions/H24.md) | 2 change needed | Keep sibling frame failure status isolated; a reverting sibling must not taint a successful one. |
+| [H24 — Sibling failure isolation](../decisions/H24.md) | 9 change needed, 7 matches | Keep sibling frame failure status isolated; a reverting sibling must not taint a successful one. |
 | [H25 — Well-formed errors for rejected raw transactions](../decisions/H25.md) | 40 matches | No change identified by these checks. |
 | [H26 — Account deletion across Cancun](../decisions/H26.md) | 4 matches | No change identified by these checks. |
 | [H27 — Filter execution across fork boundaries](../decisions/H27.md) | 3 change needed, 13 matches | Investigate range/per-block discrepancies at fork boundaries; select fork rules separately per block. |
 | [H28 — Historical state at system-operation boundaries](../decisions/H28.md) | 12 matches | No change identified by these checks. |
-| [H29 — Precompile call-frame inclusion](../decisions/H29.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
+| [H29 — Precompile call-frame inclusion](../decisions/H29.md) | 6 change needed, 10 matches | Retain nested precompile frames with nonzero transferred or inherited value; keep root and parent failure status tied to their own execution. |
 
-<details><summary>H02: 7 assertion checks</summary>
+<details><summary>H08: 163 assertion checks</summary>
 
-- **matches** · `verified-a` / `get-nested-positive`: Return the transaction-tree record at [6, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/a/get-nested-positive.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-nested-positive$" --output runs/reproduce`
-- **matches** · `verified-a` / `get-nested-parent`: Return the transaction-tree record at [6], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/a/get-nested-parent.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-nested-parent$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-root`: Return the transaction-tree record at [], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/initial/get-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-root$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-zero`: Return the transaction-tree record at [0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/initial/get-zero.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-zero$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-one`: Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/initial/get-one.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-one$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-nested`: Return the transaction-tree record at [0, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-  [Compare responses](../cases/initial/get-nested.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-nested$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-transfer-root`: Return one object whose traceAddress equals []. Observed [].
-  [Compare responses](../cases/initial/get-transfer-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-transfer-root$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H14: 5 assertion checks</summary>
-
-- **matches** · `verified-a` / `get-path-wrong-type`: Malformed input returns invalid params (-32602).
-  [Compare responses](../cases/a/get-path-wrong-type.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-path-wrong-type$" --output runs/reproduce`
-- **matches** · `verified-a` / `call-wrong-type`: Malformed input returns invalid params (-32602).
-  [Compare responses](../cases/a/call-wrong-type.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-wrong-type$" --output runs/reproduce`
-- **matches** · `verified-a` / `call-unknown-mode`: Malformed input returns invalid params (-32602).
-  [Compare responses](../cases/a/call-unknown-mode.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-unknown-mode$" --output runs/reproduce`
-- **matches** · `verified-a` / `call-scalar-mode`: Malformed input returns invalid params (-32602).
-  [Compare responses](../cases/a/call-scalar-mode.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-scalar-mode$" --output runs/reproduce`
-- **matches** · `verified-initial` / `raw-invalid`: Malformed input returns invalid params (-32602).
-  [Compare responses](../cases/initial/raw-invalid.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^raw-invalid$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H09: 18 assertion checks</summary>
-
-- **change_needed** · `verified-a` / `transaction-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/transaction-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^transaction-tree$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `call-siblings-ok-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/call-siblings-ok-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-siblings-ok-revert$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `call-siblings-revert-ok`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-siblings-revert-ok$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `auth-replace`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/auth-replace.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^auth-replace$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `auth-set-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/auth-set-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^auth-set-revert$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `block-2`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/a/block-2.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^block-2$" --output runs/reproduce`
-- **change_needed** · `verified-fork-followup-besu-retry` / `beacon-call-55`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/fork-followup/beacon-call-55.md) · [Raw responses](../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json --clients besu_development --corpus fork-followup --case "^beacon-call-55$" --output runs/reproduce`
-- **change_needed** · `verified-forks` / `block-36`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/forks/block-36.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-36$" --output runs/reproduce`
-- **change_needed** · `verified-forks` / `block-48`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/forks/block-48.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-48$" --output runs/reproduce`
-- **change_needed** · `verified-forks` / `block-51`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/forks/block-51.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-51$" --output runs/reproduce`
-- **change_needed** · `verified-forks` / `block-60`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/forks/block-60.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-60$" --output runs/reproduce`
-- **change_needed** · `verified-forks` / `mcopy-trace-55`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/forks/mcopy-trace-55.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^mcopy-trace-55$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `transaction-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/initial/transaction-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^transaction-tree$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `transaction-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/initial/transaction-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^transaction-revert$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `block-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/initial/block-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^block-tree$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `call-tree-trace-priced`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
-- **change_needed** · `verified-repeat` / `call-siblings-revert-ok`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/repeat/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-siblings-revert-ok$" --output runs/reproduce`
-- **change_needed** · `verified-repeat` / `auth-set-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Compare responses](../cases/repeat/auth-set-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^auth-set-revert$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H03: 5 assertion checks</summary>
-
-- **matches** · `verified-a` / `filter-all`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
-  [Compare responses](../cases/a/filter-all.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-all$" --output runs/reproduce`
-- **matches** · `verified-initial` / `filter-all`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
-  [Compare responses](../cases/initial/filter-all.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-all$" --output runs/reproduce`
-- **matches** · `verified-initial` / `filter-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 5 records from this client's block trace.
-  [Compare responses](../cases/initial/filter-from.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-from$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `filter-to`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
-  [Compare responses](../cases/initial/filter-to.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-to$" --output runs/reproduce`
-- **matches** · `verified-initial` / `filter-both`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
-  [Compare responses](../cases/initial/filter-both.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-both$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H04: 3 assertion checks</summary>
-
-- **change_needed** · `verified-a` / `filter-from-empty-to-set`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
-  [Compare responses](../cases/a/filter-from-empty-to-set.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-from-empty-to-set$" --output runs/reproduce`
-- **matches** · `verified-a` / `filter-to-empty-from-set`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 5 records from this client's block trace.
-  [Compare responses](../cases/a/filter-to-empty-from-set.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-to-empty-from-set$" --output runs/reproduce`
-- **matches** · `verified-initial` / `filter-empty`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
-  [Compare responses](../cases/initial/filter-empty.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-empty$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H23: 4 assertion checks</summary>
-
-- **change_needed** · `verified-a` / `filter-created-to`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
-  [Compare responses](../cases/a/filter-created-to.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-created-to$" --output runs/reproduce`
-- **matches** · `verified-a` / `filter-creator-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 7 records from this client's block trace.
-  [Compare responses](../cases/a/filter-creator-from.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-creator-from$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `filter-suicide-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
-  [Compare responses](../cases/a/filter-suicide-from.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-suicide-from$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `filter-suicide-beneficiary`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
-  [Compare responses](../cases/a/filter-suicide-beneficiary.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-suicide-beneficiary$" --output runs/reproduce`
-
-</details>
-
-<details><summary>H08: 147 assertion checks</summary>
-
+- **matches** · `precompiles-final` / `nested-call-value0-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-call-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value0-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-call-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-call-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-call-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-success`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/root-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-failed`: Output remains a byte string under every trace selection.
+  [Compare responses](../cases/precompiles/root-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-failed$" --output runs/reproduce`
 - **matches** · `verified-a` / `call-return42`: Output remains a byte string under every trace selection.
   [Compare responses](../cases/a/call-return42.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-return42$" --output runs/reproduce`
@@ -638,8 +530,209 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 
 </details>
 
-<details><summary>H21: 51 assertion checks</summary>
+<details><summary>H29: 16 assertion checks</summary>
 
+- **matches** · `precompiles-final` / `nested-call-value0-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-call-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value0-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-call-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-call-value1-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-call-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-call-value1-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-call-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value1-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value1-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value1-success`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value1-failed`: Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-success`: Retain the root precompile frame, even with zero value.
+  [Compare responses](../cases/precompiles/root-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-failed`: Retain the root precompile frame, even with zero value.
+  [Compare responses](../cases/precompiles/root-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-failed$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H24: 16 assertion checks</summary>
+
+- **matches** · `precompiles-final` / `nested-call-value0-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-call-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-call-value0-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-call-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-call-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-call-value1-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-call-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-staticcall-value0-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value0-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value1-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value0-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-success`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-success$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value1-failed`: A handled precompile failure must not mark the successful parent as failed.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-failed$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `call-siblings-revert-ok`: The successful second sibling retains its output and has no error.
+  [Compare responses](../cases/a/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-siblings-revert-ok$" --output runs/reproduce`
+- **change_needed** · `verified-repeat` / `call-siblings-revert-ok`: The successful second sibling retains its output and has no error.
+  [Compare responses](../cases/repeat/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-siblings-revert-ok$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H10: 14 assertion checks</summary>
+
+- **matches** · `precompiles-final` / `nested-call-value0-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-call-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-call-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-success`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-success$" --output runs/reproduce`
+- **matches** · `verified-a` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/a/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-mixed-create$" --output runs/reproduce`
+- **matches** · `verified-a` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/a/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-mixed-create$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `call-tree-trace-priced`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
+- **matches** · `verified-initial` / `call-constructor-priced`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
+- **matches** · `verified-repeat` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/repeat/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-mixed-create$" --output runs/reproduce`
+- **matches** · `verified-repeat` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/repeat/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-mixed-create$" --output runs/reproduce`
+- **matches** · `verified-repeat` / `constructor`: Successful creation uses address, code and gasUsed.
+  [Compare responses](../cases/repeat/constructor.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^constructor$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H21: 67 assertion checks</summary>
+
+- **matches** · `precompiles-final` / `nested-call-value0-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-call-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value0-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-call-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-call-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-call-value1-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-call-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-staticcall-value0-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value0-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-delegatecall-value1-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value0-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `nested-callcode-value1-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-failed$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-success`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/root-success.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-success$" --output runs/reproduce`
+- **matches** · `precompiles-final` / `root-failed`: Stack words use minimal hex quantities at every depth.
+  [Compare responses](../cases/precompiles/root-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-failed$" --output runs/reproduce`
 - **matches** · `verified-a` / `call-return42`: Stack words use minimal hex quantities at every depth.
   [Compare responses](../cases/a/call-return42.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-return42$" --output runs/reproduce`
@@ -796,40 +889,183 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 
 </details>
 
-<details><summary>H24: 2 assertion checks</summary>
+<details><summary>H09: 26 assertion checks</summary>
 
-- **change_needed** · `verified-a` / `call-siblings-revert-ok`: The successful second sibling retains its output and has no error.
+- **change_needed** · `precompiles-final` / `nested-call-value0-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-call-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-call-value1-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-call-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-call-value1-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-staticcall-value0-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-staticcall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-staticcall-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value0-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-delegatecall-value1-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-delegatecall-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-delegatecall-value1-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value0-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-callcode-value0-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value0-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `nested-callcode-value1-failed`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/precompiles/nested-callcode-value1-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^nested-callcode-value1-failed$" --output runs/reproduce`
+- **change_needed** · `precompiles-final` / `root-failed`: A failed root precompile reports its own execution error.
+  [Compare responses](../cases/precompiles/root-failed.md) · [Raw responses](../../evidence/2026-09-21/precompiles-final/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/precompiles-final/manifest.json --clients besu_development --corpus precompiles --case "^root-failed$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `transaction-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/a/transaction-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^transaction-tree$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `call-siblings-ok-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/a/call-siblings-ok-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-siblings-ok-revert$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `call-siblings-revert-ok`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
   [Compare responses](../cases/a/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-siblings-revert-ok$" --output runs/reproduce`
-- **change_needed** · `verified-repeat` / `call-siblings-revert-ok`: The successful second sibling retains its output and has no error.
+- **change_needed** · `verified-a` / `auth-replace`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/a/auth-replace.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^auth-replace$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `auth-set-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/a/auth-set-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^auth-set-revert$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `block-2`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/a/block-2.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^block-2$" --output runs/reproduce`
+- **change_needed** · `verified-fork-followup-besu-retry` / `beacon-call-55`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/fork-followup/beacon-call-55.md) · [Raw responses](../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json --clients besu_development --corpus fork-followup --case "^beacon-call-55$" --output runs/reproduce`
+- **change_needed** · `verified-forks` / `block-36`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/forks/block-36.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-36$" --output runs/reproduce`
+- **change_needed** · `verified-forks` / `block-48`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/forks/block-48.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-48$" --output runs/reproduce`
+- **change_needed** · `verified-forks` / `block-51`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/forks/block-51.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-51$" --output runs/reproduce`
+- **change_needed** · `verified-forks` / `block-60`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/forks/block-60.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^block-60$" --output runs/reproduce`
+- **change_needed** · `verified-forks` / `mcopy-trace-55`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/forks/mcopy-trace-55.md) · [Raw responses](../../evidence/2026-09-21/verified-forks/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-forks/manifest.json --clients besu_development --corpus forks --case "^mcopy-trace-55$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `transaction-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/initial/transaction-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^transaction-tree$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `transaction-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/initial/transaction-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^transaction-revert$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `block-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/initial/block-tree.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^block-tree$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `call-tree-trace-priced`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
+- **change_needed** · `verified-repeat` / `call-siblings-revert-ok`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
   [Compare responses](../cases/repeat/call-siblings-revert-ok.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-siblings-revert-ok$" --output runs/reproduce`
+- **change_needed** · `verified-repeat` / `auth-set-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+  [Compare responses](../cases/repeat/auth-set-revert.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^auth-set-revert$" --output runs/reproduce`
 
 </details>
 
-<details><summary>H10: 7 assertion checks</summary>
+<details><summary>H02: 7 assertion checks</summary>
 
-- **matches** · `verified-a` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/a/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-mixed-create$" --output runs/reproduce`
-- **matches** · `verified-a` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/a/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-mixed-create$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `call-tree-trace-priced`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
-- **matches** · `verified-initial` / `call-constructor-priced`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
-- **matches** · `verified-repeat` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/repeat/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-mixed-create$" --output runs/reproduce`
-- **matches** · `verified-repeat` / `call-mixed-create`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/repeat/call-mixed-create.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^call-mixed-create$" --output runs/reproduce`
-- **matches** · `verified-repeat` / `constructor`: Successful creation uses address, code and gasUsed.
-  [Compare responses](../cases/repeat/constructor.md) · [Raw responses](../../evidence/2026-09-21/verified-repeat/observations.json).
-  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-repeat/manifest.json --clients besu_development --corpus repeat --case "^constructor$" --output runs/reproduce`
+- **matches** · `verified-a` / `get-nested-positive`: Return the transaction-tree record at [6, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/a/get-nested-positive.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-nested-positive$" --output runs/reproduce`
+- **matches** · `verified-a` / `get-nested-parent`: Return the transaction-tree record at [6], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/a/get-nested-parent.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-nested-parent$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-root`: Return the transaction-tree record at [], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-root$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-zero`: Return the transaction-tree record at [0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-zero.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-zero$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-one`: Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-one.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-one$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-nested`: Return the transaction-tree record at [0, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-nested.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-nested$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-transfer-root`: Return one object whose traceAddress equals []. Observed [].
+  [Compare responses](../cases/initial/get-transfer-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^get-transfer-root$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H14: 5 assertion checks</summary>
+
+- **matches** · `verified-a` / `get-path-wrong-type`: Malformed input returns invalid params (-32602).
+  [Compare responses](../cases/a/get-path-wrong-type.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^get-path-wrong-type$" --output runs/reproduce`
+- **matches** · `verified-a` / `call-wrong-type`: Malformed input returns invalid params (-32602).
+  [Compare responses](../cases/a/call-wrong-type.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-wrong-type$" --output runs/reproduce`
+- **matches** · `verified-a` / `call-unknown-mode`: Malformed input returns invalid params (-32602).
+  [Compare responses](../cases/a/call-unknown-mode.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-unknown-mode$" --output runs/reproduce`
+- **matches** · `verified-a` / `call-scalar-mode`: Malformed input returns invalid params (-32602).
+  [Compare responses](../cases/a/call-scalar-mode.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^call-scalar-mode$" --output runs/reproduce`
+- **matches** · `verified-initial` / `raw-invalid`: Malformed input returns invalid params (-32602).
+  [Compare responses](../cases/initial/raw-invalid.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^raw-invalid$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H03: 5 assertion checks</summary>
+
+- **matches** · `verified-a` / `filter-all`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
+  [Compare responses](../cases/a/filter-all.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-all$" --output runs/reproduce`
+- **matches** · `verified-initial` / `filter-all`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
+  [Compare responses](../cases/initial/filter-all.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-all$" --output runs/reproduce`
+- **matches** · `verified-initial` / `filter-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 5 records from this client's block trace.
+  [Compare responses](../cases/initial/filter-from.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-from$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `filter-to`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
+  [Compare responses](../cases/initial/filter-to.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-to$" --output runs/reproduce`
+- **matches** · `verified-initial` / `filter-both`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
+  [Compare responses](../cases/initial/filter-both.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-both$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H04: 3 assertion checks</summary>
+
+- **change_needed** · `verified-a` / `filter-from-empty-to-set`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
+  [Compare responses](../cases/a/filter-from-empty-to-set.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-from-empty-to-set$" --output runs/reproduce`
+- **matches** · `verified-a` / `filter-to-empty-from-set`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 5 records from this client's block trace.
+  [Compare responses](../cases/a/filter-to-empty-from-set.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-to-empty-from-set$" --output runs/reproduce`
+- **matches** · `verified-initial` / `filter-empty`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
+  [Compare responses](../cases/initial/filter-empty.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients besu_development --corpus initial --case "^filter-empty$" --output runs/reproduce`
+
+</details>
+
+<details><summary>H23: 4 assertion checks</summary>
+
+- **change_needed** · `verified-a` / `filter-created-to`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
+  [Compare responses](../cases/a/filter-created-to.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-created-to$" --output runs/reproduce`
+- **matches** · `verified-a` / `filter-creator-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 7 records from this client's block trace.
+  [Compare responses](../cases/a/filter-creator-from.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-creator-from$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `filter-suicide-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
+  [Compare responses](../cases/a/filter-suicide-from.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-suicide-from$" --output runs/reproduce`
+- **change_needed** · `verified-a` / `filter-suicide-beneficiary`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
+  [Compare responses](../cases/a/filter-suicide-beneficiary.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients besu_development --corpus a --case "^filter-suicide-beneficiary$" --output runs/reproduce`
 
 </details>
 

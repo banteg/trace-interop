@@ -13,6 +13,38 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/geth-final-reorg-safe/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockHash": "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434",
+    "blockNumber": "0x2a",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x5208",
+    "effectiveGasPrice": "0x38e4f7",
+    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759",
+    "transactionHash": "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483",
+    "transactionIndex": "0x0",
+    "type": "0x0"
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json).

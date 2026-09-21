@@ -16,6 +16,90 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-forks/observations.json).
+
+- H27: **matches** — A fork-crossing range equals the corresponding per-block traces.
+
+Draft result schema: **valid**.
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x133d8",
+        "input": "0x95297b6a5c01e24f656d6974",
+        "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+        "value": "0x2"
+      },
+      "blockHash": "0x652135e6008aa5a27ab49a5236608117fb6bfe518fd606df0e3cd83fafa8834f",
+      "blockNumber": 35,
+      "result": {
+        "gasUsed": "0x6fa0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x38287a4cde4cb8f1b78c6c29880a5721ddda573f6d15413753a1e0546b996c1d",
+      "transactionPosition": 0,
+      "type": "call"
+    },
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "gas": "0x0",
+        "input": "0x",
+        "to": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+        "value": "0x1"
+      },
+      "blockHash": "0x652135e6008aa5a27ab49a5236608117fb6bfe518fd606df0e3cd83fafa8834f",
+      "blockNumber": 35,
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x0c68db54417efe088e4000b2c274e0ae72f58d3fb80be5274f4dde231fb0b53d",
+      "transactionPosition": 1,
+      "type": "call"
+    },
+    {
+      "action": {
+        "author": "0x0000000000000000000000000000000000000000",
+        "rewardType": "block",
+        "value": "0x1c9f78d2893e4000"
+      },
+      "blockHash": "0x652135e6008aa5a27ab49a5236608117fb6bfe518fd606df0e3cd83fafa8834f",
+      "blockNumber": 35,
+      "result": null,
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": null,
+      "transactionPosition": null,
+      "type": "reward"
+    },
+    {
+      "action": {
+        "author": "0x0000000000000000000000000000000000000000",
+        "rewardType": "uncle",
+        "value": "0x18493fba64ef0000"
+      },
+      "blockHash": "0x
+… preview truncated; use the full evidence link above.
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-forks/observations.json).

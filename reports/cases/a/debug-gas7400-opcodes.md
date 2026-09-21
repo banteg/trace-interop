@@ -25,6 +25,64 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
+## go-ethereum_trace · Geth/v1.17.6-unstable-6141d1d4-2026-09-21/linux-amd64/go1.26.1
+
+Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-final-a/observations.json).
+
+
+<details><summary>Response preview</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "failed": false,
+    "gas": 28409,
+    "returnValue": "0x",
+    "structLogs": [
+      {
+        "depth": 1,
+        "gas": 579000,
+        "gasCost": 3,
+        "op": "PUSH2",
+        "pc": 0
+      },
+      {
+        "depth": 1,
+        "gas": 578997,
+        "gasCost": 3,
+        "op": "PUSH1",
+        "pc": 3
+      },
+      {
+        "depth": 1,
+        "gas": 578994,
+        "gasCost": 3,
+        "op": "PUSH2",
+        "pc": 5
+      },
+      {
+        "depth": 1,
+        "gas": 578991,
+        "gasCost": 7400,
+        "op": "CALLDATACOPY",
+        "pc": 8
+      },
+      {
+        "depth": 1,
+        "gas": 571591,
+        "gasCost": 0,
+        "op": "STOP",
+        "pc": 9
+      }
+    ]
+  }
+}
+```
+
+</details>
+
 ## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).

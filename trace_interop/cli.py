@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
-          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a'}
+          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a'}
 IMAGES = {
     'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
@@ -142,7 +142,7 @@ def execute(args):
     cases = selected_cases(corpus, args.case)
     if args.corpus in ['reorg', 'reorg-safe']:
         cases = corpus['cases']  # Canonical transitions require all three phases.
-    elif any(c['request']['method'] == 'trace_filter' for c in cases):
+    elif any(c['request']['method'] in ['trace_filter', 'trace_get'] for c in cases):
         names_selected = {c['name'] for c in cases}
         cases += [c for c in corpus['cases'] if c['name'] not in names_selected and (c['name'] in ['transaction-tree', 'block-tree'] or c['name'].startswith('block-'))]
     chain = ROOT / 'fixtures/chains' / CHAINS[args.corpus]
@@ -173,13 +173,15 @@ def execute(args):
     entries = []
     for name in names:
         info = lock['clients'][name]
-        run('docker', 'pull', info['digest'])
-        meta = json.loads(run('docker', 'image', 'inspect', info['digest'], capture=True))[0]
+        image = info.get('local_image') or info['digest']
+        if 'local_image' not in info:
+            run('docker', 'pull', image)
+        meta = json.loads(run('docker', 'image', 'inspect', image, capture=True))[0]
         if meta['Id'] != info['image_id']:
             raise ValueError(f'image identity mismatch for {name}')
         local = 'trace-interop/' + info['client']
         tag = info['image_id'].split(':')[1]
-        run('docker', 'tag', info['digest'], local + ':' + tag)
+        run('docker', 'tag', image, local + ':' + tag)
         entries.append({'client': info['client'], 'nametag': name.removeprefix(info['client'] + '_'),
                         'build_args': {'baseimage': local, 'tag': tag}})
     # JSON is valid YAML; Hive's client-file loader accepts this representation.

@@ -77,3 +77,4 @@ R = at least one result; E = RPC error observed; U = method not found. Mixed res
 - [H26 — Account deletion across Cancun](decisions/H26.md)
 - [H27 — Filter execution across fork boundaries](decisions/H27.md)
 - [H28 — Historical state at system-operation boundaries](decisions/H28.md)
+- [H29 — Precompile call-frame inclusion](decisions/H29.md)

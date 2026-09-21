@@ -496,6 +496,15 @@
       "rationale": "A future system write must not appear in an earlier block's state. This is an execution-context issue, not a cosmetic trace encoding choice.",
       "recommendation": "Historical state at block N should include that block's changes, including system operations, but none from N+1. Replay should start from the appropriate parent state and apply each system transition once.",
       "title": "Historical state at system-operation boundaries"
+    },
+    {
+      "id": "H29",
+      "title": "Precompile call-frame inclusion",
+      "kind": "Spec decision / client alignment",
+      "cases": [],
+      "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
+      "rationale": "All four tested clients omit nested zero-value precompiles. Erigon, Reth and Nethermind retain nonzero-value CALL, CALLCODE and DELEGATECALL frames; Besu omits them. Preserving this shared exception avoids changing existing tree paths and retains the value-bearing action context.",
+      "next_step": "Review the nonzero-value exception with Besu and confirm it for additional precompiles and fork activations. The precompiles corpus uses BN254 addition, with valid and invalid inputs, across CALL, STATICCALL, CALLCODE and DELEGATECALL. Frame inclusion is separate from failure propagation and return-byte correctness."
     }
   ]
 }

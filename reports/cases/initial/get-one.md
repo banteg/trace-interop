@@ -20,7 +20,7 @@ Exact observations; group size is not a correctness vote.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [1].
+- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
@@ -60,7 +60,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [1].
+- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
@@ -100,7 +100,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [1].
+- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -143,7 +143,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [1].
+- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -186,7 +186,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [1].
+- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
@@ -228,7 +228,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [1].
+- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
@@ -270,7 +270,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [1].
+- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -312,7 +312,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [1].
+- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
 
 Draft result schema: **valid**.
 

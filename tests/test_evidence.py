@@ -90,6 +90,17 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(checks[0]['topic'],'H02')
         self.assertEqual(checks[0]['status'],'change_needed')
 
+    def test_get_path_uses_same_transaction_tree_with_precompile_siblings(self):
+        case={'name':'get-nested-positive','request':{'method':'trace_get','params':['tx',['0x6','0x0']]}}
+        frame={'traceAddress':[7,0],'transactionHash':'tx','type':'suicide'}
+        peers={'transaction-tree':{'response':{'result':[frame]}}}
+        obs={'status':'result','response':{'result':None}}
+        self.assertEqual(evaluate(case,obs,peers)[0]['status'],'matches')
+        obs['response']['result']=frame
+        self.assertEqual(evaluate(case,obs,peers)[0]['status'],'change_needed')
+        case['request']['params'][1]=['0x7','0x0']
+        self.assertEqual(evaluate(case,obs,peers)[0]['status'],'matches')
+
     def test_unsupported_is_not_empty_success(self):
         checks=evaluate({'name':'replay','request':{'method':'trace_replayTransaction','params':[]}}, {'status':'unsupported','response':{'error':{'code':-32601}}},{})
         self.assertEqual([c['status'] for c in checks],['unsupported'])

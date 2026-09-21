@@ -20,7 +20,7 @@ Exact observations; group size is not a correctness vote.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [6].
+- H02: **matches** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d3
@@ -76,7 +76,7 @@ Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [6].
+- H02: **matches** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -118,7 +118,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [6].
+- H02: **matches** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -160,7 +160,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [6].
+- H02: **change_needed** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d
@@ -205,7 +205,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [6].
+- H02: **change_needed** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d
@@ -250,7 +250,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [6].
+- H02: **change_needed** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -292,7 +292,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [6].
+- H02: **change_needed** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -334,7 +334,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [6].
+- H02: **matches** — Return the transaction-tree record at [6], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d3

@@ -1,0 +1,389 @@
+{
+  "description": "BN254 addition root and nested frames across call modes, transferred/inherited value and precompile failure.",
+  "cases": [
+    {
+      "name": "nested-call-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x6000600052604060006080600060006006620186a0f15060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-call-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x602a600052604060006080600060006006620186a0f15060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-call-value1-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x6000600052604060006080600060016006620186a0f15060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-call-value1-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x602a600052604060006080600060016006620186a0f15060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-staticcall-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x600060005260406000608060006006620186a0fa5060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-staticcall-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x602a60005260406000608060006006620186a0fa5060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-delegatecall-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-delegatecall-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-delegatecall-value1-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-delegatecall-value1-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-callcode-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x6000600052604060006080600060006006620186a0f25060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-callcode-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0",
+            "data": "0x602a600052604060006080600060006006620186a0f25060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-callcode-value1-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x6000600052604060006080600060016006620186a0f25060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "nested-callcode-value1-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x602a600052604060006080600060016006620186a0f25060006000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "root-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "to": "0x0000000000000000000000000000000000000006",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    },
+    {
+      "name": "root-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "to": "0x0000000000000000000000000000000000000006",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "data": "0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile"
+    }
+  ]
+}

@@ -96,9 +96,14 @@ FLAGS="$FLAGS --config /trace-prune.toml"
 def prepare(hive, corpus, name, clients):
     sim=hive/'simulators/ethereum/rpc-compat'
     # Only restore files this adapter owns inside our dedicated dependency checkout.
-    for relative in ['simulators/ethereum/rpc-compat/main.go','clients/reth/reth.sh']:
+    for relative in ['simulators/ethereum/rpc-compat/main.go','clients/reth/reth.sh','clients/go-ethereum/geth.sh']:
         original=subprocess.check_output(['git','show','HEAD:'+relative],cwd=hive)
         (hive/relative).write_bytes(original)
+    if any(c['client']=='go-ethereum' for c in clients.values()):
+        p=hive/'clients/go-ethereum/geth.sh';text=p.read_text()
+        needle='admin,debug,eth,miner'
+        if text.count(needle)!=2:raise ValueError('pinned Geth API flags changed')
+        p.write_text(text.replace(needle,'admin,debug,trace,eth,miner'))
     (sim/'interop_scenario.go').unlink(missing_ok=True)
     (sim/'interop_readiness.go').write_text(READINESS)
     p=sim/'main.go';text=p.read_text();needle='sendForkchoiceUpdated(t, c)'

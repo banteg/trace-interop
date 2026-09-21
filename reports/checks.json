@@ -212,8 +212,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed [6, 0].",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -234,8 +234,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [6].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -3204,8 +3204,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed [6, 0].",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -3226,8 +3226,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [6].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -4963,8 +4963,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -4985,8 +4985,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [6].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -6694,8 +6694,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -6721,8 +6721,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -8713,8 +8713,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -8740,8 +8740,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -10741,8 +10741,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -10763,8 +10763,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [5].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -12448,8 +12448,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -12470,8 +12470,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [5].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -14155,8 +14155,8 @@
     "case": "get-nested-positive",
     "checks": [
       {
-        "detail": "Observed [6, 0].",
-        "requirement": "Return one object whose traceAddress equals [6, 0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6, 0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -14177,8 +14177,8 @@
     "case": "get-nested-parent",
     "checks": [
       {
-        "detail": "Observed [6].",
-        "requirement": "Return one object whose traceAddress equals [6].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [6], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -30603,8 +30603,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed [].",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -30625,8 +30625,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -30647,8 +30647,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [1].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -30672,7 +30672,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "besu_development",
     "corpus": "initial",
     "eligible": true,
@@ -32178,8 +32185,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed [].",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -32200,8 +32207,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -32222,8 +32229,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [1].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -32247,7 +32254,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "besu_release",
     "corpus": "initial",
     "eligible": true,
@@ -33937,8 +33951,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed [].",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -33959,8 +33973,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -33981,8 +33995,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [1].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -34001,7 +34015,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "erigon_development",
     "corpus": "initial",
     "eligible": true,
@@ -35684,8 +35705,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -35702,8 +35723,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -35724,8 +35745,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [1].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "matches",
         "topic": "H02"
       }
@@ -35744,7 +35765,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "erigon_release",
     "corpus": "initial",
     "eligible": true,
@@ -37510,8 +37538,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -37537,8 +37565,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -37564,8 +37592,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -37589,7 +37617,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "change_needed",
+        "topic": "H02"
+      }
+    ],
     "client": "nethermind_development",
     "corpus": "initial",
     "eligible": true,
@@ -39585,8 +39620,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -39612,8 +39647,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -39639,8 +39674,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed list.",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -39664,7 +39699,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "change_needed",
+        "topic": "H02"
+      }
+    ],
     "client": "nethermind_release",
     "corpus": "initial",
     "eligible": true,
@@ -41610,8 +41652,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -41632,8 +41674,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -41654,8 +41696,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -41674,7 +41716,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "reth_development",
     "corpus": "initial",
     "eligible": true,
@@ -43557,8 +43606,8 @@
     "case": "get-root",
     "checks": [
       {
-        "detail": "Observed NoneType.",
-        "requirement": "Return one object whose traceAddress equals [].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -43579,8 +43628,8 @@
     "case": "get-zero",
     "checks": [
       {
-        "detail": "Observed [].",
-        "requirement": "Return one object whose traceAddress equals [0].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -43601,8 +43650,8 @@
     "case": "get-one",
     "checks": [
       {
-        "detail": "Observed [0].",
-        "requirement": "Return one object whose traceAddress equals [1].",
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [1], or null if absent.",
         "status": "change_needed",
         "topic": "H02"
       }
@@ -43621,7 +43670,14 @@
   },
   {
     "case": "get-nested",
-    "checks": [],
+    "checks": [
+      {
+        "detail": "Compared with the same client and transaction; precompile inclusion can shift sibling indexes.",
+        "requirement": "Return the transaction-tree record at [0, 0], or null if absent.",
+        "status": "matches",
+        "topic": "H02"
+      }
+    ],
     "client": "reth_release",
     "corpus": "initial",
     "eligible": true,

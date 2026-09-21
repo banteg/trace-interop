@@ -7,7 +7,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | Decision | Assertion results | Required change / review task |
 | --- | --- | --- |
 | [H01 — Method coverage](../decisions/H01.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
-| [H02 — trace_get selector and return shape](../decisions/H02.md) | 6 change needed | Use one nested path and return a singular object/null instead of a list; this changes the response type. |
+| [H02 — trace_get selector and return shape](../decisions/H02.md) | 7 change needed | Use one nested path and return a singular object/null instead of a list; this changes the response type. |
 | [H03 — Filter composition and mode](../decisions/H03.md) | 5 matches | No change identified by these checks. |
 | [H04 — Empty address lists](../decisions/H04.md) | 3 change needed | Treat [] address lists as unrestricted rather than matching nothing. |
 | [H05 — Post-merge reward records](../decisions/H05.md) | 11 change needed | Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change. |
@@ -34,24 +34,28 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | [H26 — Account deletion across Cancun](../decisions/H26.md) | 2 change needed, 2 matches | Delete code/nonce before Cancun; preserve an existing account after EIP-6780. |
 | [H27 — Filter execution across fork boundaries](../decisions/H27.md) | 16 matches | No change identified by these checks. |
 | [H28 — Historical state at system-operation boundaries](../decisions/H28.md) | 12 matches | No change identified by these checks. |
+| [H29 — Precompile call-frame inclusion](../decisions/H29.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
 
-<details><summary>H02: 6 assertion checks</summary>
+<details><summary>H02: 7 assertion checks</summary>
 
-- **change_needed** · `verified-a` / `get-nested-positive`: Return one object whose traceAddress equals [6, 0]. Observed list.
+- **change_needed** · `verified-a` / `get-nested-positive`: Return the transaction-tree record at [6, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/a/get-nested-positive.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients nethermind_release --corpus a --case "^get-nested-positive$" --output runs/reproduce`
-- **change_needed** · `verified-a` / `get-nested-parent`: Return one object whose traceAddress equals [6]. Observed list.
+- **change_needed** · `verified-a` / `get-nested-parent`: Return the transaction-tree record at [6], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/a/get-nested-parent.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients nethermind_release --corpus a --case "^get-nested-parent$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `get-root`: Return one object whose traceAddress equals []. Observed list.
+- **change_needed** · `verified-initial` / `get-root`: Return the transaction-tree record at [], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients nethermind_release --corpus initial --case "^get-root$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `get-zero`: Return one object whose traceAddress equals [0]. Observed list.
+- **change_needed** · `verified-initial` / `get-zero`: Return the transaction-tree record at [0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-zero.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients nethermind_release --corpus initial --case "^get-zero$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `get-one`: Return one object whose traceAddress equals [1]. Observed list.
+- **change_needed** · `verified-initial` / `get-one`: Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-one.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients nethermind_release --corpus initial --case "^get-one$" --output runs/reproduce`
+- **change_needed** · `verified-initial` / `get-nested`: Return the transaction-tree record at [0, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-nested.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients nethermind_release --corpus initial --case "^get-nested$" --output runs/reproduce`
 - **change_needed** · `verified-initial` / `get-transfer-root`: Return one object whose traceAddress equals []. Observed list.
   [Compare responses](../cases/initial/get-transfer-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients nethermind_release --corpus initial --case "^get-transfer-root$" --output runs/reproduce`

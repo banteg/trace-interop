@@ -113,5 +113,8 @@
   },
   "H28": {
     "erigon": "Exclude the next block system update from historical state; compare release and development results."
+  },
+  "H29": {
+    "besu": "Retain nested precompile frames with nonzero transferred or inherited value; keep root and parent failure status tied to their own execution."
   }
 }

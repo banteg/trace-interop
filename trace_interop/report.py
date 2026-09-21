@@ -88,6 +88,8 @@ def generate(root, runs, output):
     introduction+='Schema validity, partial semantic assertions and full conformance are different claims.\n\n'
     if (root/'spec.lock.json').exists():
         lock=read(root/'spec.lock.json');introduction+=f'Draft: [{lock["commit"][:12]}]({lock["repository"]}/commit/{lock["commit"]}).\n\n'
+    if any(r['client']=='go-ethereum_trace' for r in records):
+        introduction+='`go-ethereum_trace` is the experimental [draft implementation](https://github.com/banteg/go-ethereum/tree/feat/trace), not upstream Geth support or an independent client vote.\n\n'
     introduction+='## Method observations\n\nR = at least one result; E = RPC error observed; U = method not found. Mixed results remain visible.\n\n'
     clients=sorted({r['client'] for r in records})
     introduction+='| Method | '+' | '.join(clients)+' |\n| --- | '+' | '.join('---' for _ in clients)+' |\n'

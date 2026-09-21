@@ -24,7 +24,7 @@ uv run trace-interop report --run runs/reth-root --output runs/reth-root-report
 
 The runner imports a disposable chain, verifies its head/state/transaction/receipt roots,
 and records the response. Read `summary.json` before interpreting results. Client launch
-or state-setup failures cannot count as semantic mismatches. Filters automatically include
+or state-setup failures cannot count as semantic mismatches. Filters and tree-path queries automatically include
 the block/transaction reference queries needed by relational assertions.
 
 ## Run the matrix
@@ -40,7 +40,8 @@ uv run trace-interop report --run runs/semantic --run runs/forks \
 
 `initial` covers all nine methods; `a` contains focused semantic discriminators;
 `repeat` checks reproducibility and trace-type combinations; `forks` and
-`fork-followup` exercise fork boundaries. See [scenario setup](scenarios.md) for reorgs
+`fork-followup` exercise fork boundaries. `precompiles` checks frame inclusion
+across root/nested execution, call modes, value and failure. See [scenario setup](scenarios.md) for reorgs
 and pruning. A zero-match case selector is an error. A run directory cannot be overwritten.
 One runner owns a checkout's Hive build context at a time.
 
@@ -96,3 +97,41 @@ Pass the actual checkout path. Pinning refuses a dirty spec checkout and checks 
 generated file agrees with a fresh build. The generated trace-only OpenRPC document is an
 immutable build artifact; edit YAML in the fork, not this file. Commit the new lock, artifact,
 assertion updates and regenerated reports together.
+
+## Evaluate the Geth fork
+
+The experimental `banteg/go-ethereum` branch `feat/trace` is built locally on Linux.
+It is identified separately from upstream Geth and evaluated with the same cases,
+schemas and assertions. The runner adds `trace` to the pinned Hive Geth adapter's
+HTTP/WebSocket API lists. It does not change any running node configuration.
+
+```sh
+git clone --branch feat/trace https://github.com/banteg/go-ethereum ../geth-trace
+# For an exact reproduction, check out source.commit from the recorded Geth lock.
+uv run python scripts/build_geth.py --source ../geth-trace \
+  --output runs/geth.lock.json
+uv run trace-interop run --lock runs/geth.lock.json \
+  --corpus initial --output runs/geth-initial
+```
+
+The builder copies a source snapshot, compiles with Go 1.26.1 and CGO disabled,
+and records the source commit, content hash, binary hash, base-image digest,
+recipe and local Docker image ID. Dirty builds require `--allow-dirty` and are
+marked as development captures. Published comparison runs use committed source.
+No image is pushed to a registry. The runner checks the exact local image ID
+before starting Hive.
+
+To reproduce a published binary, check out its clean source commit and pass
+`--reference locks/geth-trace.json` to the builder with a fresh `--output` path.
+This reuses the recorded base image and checks source and binary hashes. Docker
+metadata may give the rebuilt image a new ID; use the newly generated lock for
+that run. Retain the original lock and observations unchanged.
+
+`trace_get` assertions compare with the same transaction's `trace_transaction`
+response where available. Precompile inclusion can shift sibling indexes, so a
+path called “positive” in a frozen corpus is not assumed to exist in every client.
+This checks selector consistency; it does not by itself prove tree completeness.
+
+The fork scans blocks for `trace_filter`; no address index or performance claim is
+implied. The current pruning scenario has a verified Reth adapter only, so Geth's
+unavailable-history behavior is not yet verified by that scenario.

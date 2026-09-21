@@ -21,6 +21,7 @@ Exact observations; group size is not a correctness vote.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -40,6 +41,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -59,6 +61,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -78,6 +81,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -97,6 +101,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **change_needed** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xf35c', 'input': '0xff01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1', 'value': '0x1'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2', 'blockNumber': 2, 'result
@@ -164,6 +169,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **change_needed** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xf35c', 'input': '0xff01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1', 'value': '0x1'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2', 'blockNumber': 2, 'result
@@ -231,6 +237,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -250,6 +257,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
+- H02: **matches** — Return the transaction-tree record at [0, 0], or null if absent.
 
 Draft result schema: **valid**.
 

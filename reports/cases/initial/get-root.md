@@ -18,7 +18,7 @@ Exact observations; group size is not a correctness vote.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [].
+- H02: **matches** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -58,7 +58,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [].
+- H02: **matches** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -98,7 +98,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **matches** — Return one object whose traceAddress equals [].
+- H02: **matches** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -138,7 +138,7 @@ Draft result schema: **valid**.
 
 Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [].
+- H02: **change_needed** — Return the transaction-tree record at [], or null if absent.
 
 <details><summary>Response preview</summary>
 
@@ -159,7 +159,7 @@ Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../ev
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [].
+- H02: **change_needed** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [] is not valid under any of the given schemas
@@ -180,7 +180,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [].
+- H02: **change_needed** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **invalid**.
 - ``: [] is not valid under any of the given schemas
@@ -201,7 +201,7 @@ Draft result schema: **invalid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [].
+- H02: **change_needed** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **valid**.
 
@@ -221,7 +221,7 @@ Draft result schema: **valid**.
 
 Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
 
-- H02: **change_needed** — Return one object whose traceAddress equals [].
+- H02: **change_needed** — Return the transaction-tree record at [], or null if absent.
 
 Draft result schema: **valid**.
 

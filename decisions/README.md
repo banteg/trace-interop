@@ -32,3 +32,4 @@ Each decision links proposed behavior, rationale, observations and open question
 | [H26](../reports/decisions/H26.md) | Account deletion across Cancun |
 | [H27](../reports/decisions/H27.md) | Filter execution across fork boundaries |
 | [H28](../reports/decisions/H28.md) | Historical state at system-operation boundaries |
+| [H29](../reports/decisions/H29.md) | Precompile call-frame inclusion |

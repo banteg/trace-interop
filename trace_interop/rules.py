@@ -40,9 +40,14 @@ def evaluate(case, observation, peers):
         if missing:
             check('H06', status == 'result' and result is None, 'A missing transaction or tree path returns null.')
         else:
-            # Only known-positive corpus cases imply existence.
-            positive = name in ['get-root','get-transfer-root','get-zero','get-one','get-nested-positive','get-nested-parent']
-            if positive:
+            tree = other('transaction-tree')
+            reference = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
+            if reference:
+                expected = next((f for f in reference if f.get('traceAddress') == path),None)
+                check('H02', status == 'result' and result == expected,
+                      f'Return the transaction-tree record at {path}, or null if absent.',
+                      'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.')
+            elif name in ['get-root','get-transfer-root','get-zero','get-one']:
                 check('H02', isinstance(result,dict) and result.get('traceAddress') == path,
                       f'Return one object whose traceAddress equals {path}.',
                       f'Observed {result.get("traceAddress") if isinstance(result,dict) else type(result).__name__}.')
@@ -62,6 +67,23 @@ def evaluate(case, observation, peers):
         check('H08', isinstance(result,dict) and result.get('output') == '0x'+f'{42:064x}', 'The return42 contract still returns word 42.')
     if name in ['empty-types','call-empty-types','call-empty-types-priced']:
         check('H11', status == 'result' and isinstance(result,dict), 'An empty trace-type selection executes successfully.')
+    if context.get('_chain') == 'precompiles' and method == 'trace_call':
+        frames = result.get('trace',[]) if isinstance(result,dict) else []
+        root = next((f for f in frames if f.get('traceAddress') == []),None)
+        if name.startswith('nested-'):
+            value = int(params[0].get('value','0x0'),16)
+            children = [f for f in frames if f.get('traceAddress') != []]
+            expected = 1 if value else 0
+            check('H29', root is not None and root.get('subtraces') == expected and len(children) == expected
+                  and (not expected or children[0].get('traceAddress') == [0]),
+                  'Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.')
+            check('H24', root is not None and 'error' not in root,
+                  'A handled precompile failure must not mark the successful parent as failed.')
+        else:
+            check('H29', len(frames) == 1 and root is not None, 'Retain the root precompile frame, even with zero value.')
+            if name == 'root-failed':
+                check('H09', root is not None and bool(root.get('error')),
+                      'A failed root precompile reports its own execution error.')
     if name == 'call-identity':
         frames = result.get('trace',[]) if isinstance(result,dict) else []
         check('H22', bool(frames) and frames[0].get('result',{}).get('output') == params[0].get('data', params[0].get('input','0x')),

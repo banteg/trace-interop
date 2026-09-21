@@ -7,7 +7,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | Decision | Assertion results | Required change / review task |
 | --- | --- | --- |
 | [H01 — Method coverage](../decisions/H01.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
-| [H02 — trace_get selector and return shape](../decisions/H02.md) | 3 change needed, 3 matches | Return one object whose traceAddress equals [6, 0].; Return one object whose traceAddress equals []. |
+| [H02 — trace_get selector and return shape](../decisions/H02.md) | 3 change needed, 4 matches | Return the transaction-tree record at [6, 0], or null if absent.; Return the transaction-tree record at [], or null if absent.; Return one object whose traceAddress equals []. |
 | [H03 — Filter composition and mode](../decisions/H03.md) | 1 change needed, 4 matches | Change default union to intersection and avoid suppressing one-sided intersection queries. |
 | [H04 — Empty address lists](../decisions/H04.md) | 3 matches | No change identified by these checks. |
 | [H05 — Post-merge reward records](../decisions/H05.md) | 11 matches | No change identified by these checks. |
@@ -34,24 +34,28 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 | [H26 — Account deletion across Cancun](../decisions/H26.md) | 4 matches | No change identified by these checks. |
 | [H27 — Filter execution across fork boundaries](../decisions/H27.md) | 16 matches | No change identified by these checks. |
 | [H28 — Historical state at system-operation boundaries](../decisions/H28.md) | 5 change needed, 7 matches | Exclude the next block system update from historical state; compare release and development results. |
+| [H29 — Precompile call-frame inclusion](../decisions/H29.md) | Not asserted / needs review | Needs review; no assertion covers this decision. |
 
-<details><summary>H02: 6 assertion checks</summary>
+<details><summary>H02: 7 assertion checks</summary>
 
-- **change_needed** · `verified-a` / `get-nested-positive`: Return one object whose traceAddress equals [6, 0]. Observed NoneType.
+- **change_needed** · `verified-a` / `get-nested-positive`: Return the transaction-tree record at [6, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/a/get-nested-positive.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients erigon_release --corpus a --case "^get-nested-positive$" --output runs/reproduce`
-- **matches** · `verified-a` / `get-nested-parent`: Return one object whose traceAddress equals [6]. Observed [6].
+- **matches** · `verified-a` / `get-nested-parent`: Return the transaction-tree record at [6], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/a/get-nested-parent.md) · [Raw responses](../../evidence/2026-09-21/verified-a/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-a/manifest.json --clients erigon_release --corpus a --case "^get-nested-parent$" --output runs/reproduce`
-- **change_needed** · `verified-initial` / `get-root`: Return one object whose traceAddress equals []. Observed NoneType.
+- **change_needed** · `verified-initial` / `get-root`: Return the transaction-tree record at [], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients erigon_release --corpus initial --case "^get-root$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-zero`: Return one object whose traceAddress equals [0]. Observed [0].
+- **matches** · `verified-initial` / `get-zero`: Return the transaction-tree record at [0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-zero.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients erigon_release --corpus initial --case "^get-zero$" --output runs/reproduce`
-- **matches** · `verified-initial` / `get-one`: Return one object whose traceAddress equals [1]. Observed [1].
+- **matches** · `verified-initial` / `get-one`: Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
   [Compare responses](../cases/initial/get-one.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients erigon_release --corpus initial --case "^get-one$" --output runs/reproduce`
+- **matches** · `verified-initial` / `get-nested`: Return the transaction-tree record at [0, 0], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+  [Compare responses](../cases/initial/get-nested.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
+  Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients erigon_release --corpus initial --case "^get-nested$" --output runs/reproduce`
 - **change_needed** · `verified-initial` / `get-transfer-root`: Return one object whose traceAddress equals []. Observed NoneType.
   [Compare responses](../cases/initial/get-transfer-root.md) · [Raw responses](../../evidence/2026-09-21/verified-initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/verified-initial/manifest.json --clients erigon_release --corpus initial --case "^get-transfer-root$" --output runs/reproduce`

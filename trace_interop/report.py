@@ -5,7 +5,7 @@ import json
 import os
 
 from .cli import read, write, sha
-from .rules import evaluate
+from .rules import evaluate, is_extension_request
 
 
 def link(path, output):
@@ -41,7 +41,7 @@ def generate(root, runs, output):
                 record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':summary['eligible'].get(client,False),'checks':[],'spec_commit':lock['commit'] if spec else None}
                 if record['eligible'] and observation:
                     record['checks']=evaluate(dict(case,context=context),observation,peers)
-                    if spec and observation.get('status')=='result' and case['request']['method'] in methods:
+                    if spec and observation.get('status')=='result' and case['request']['method'] in methods and not is_extension_request(case['request']):
                         schema=methods[case['request']['method']]['result']['schema']
                         errors=list(Draft201909Validator(schema).iter_errors(observation['response']['result']))
                         record['schema']={'status':'invalid' if errors else 'valid','errors':[{'path':'/'.join(map(str,e.absolute_path)), 'message':e.message[:300]} for e in errors[:8]]}

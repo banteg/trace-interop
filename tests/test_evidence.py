@@ -83,6 +83,18 @@ class ScenarioTests(unittest.TestCase):
 
 
 class ProposalTests(unittest.TestCase):
+    def test_raw_block_extension_is_an_observation_for_acceptance_and_rejection(self):
+        case = {'name': 'raw-valid', 'request': {'method': 'trace_rawTransaction', 'params': ['0x', ['trace'], 'latest']}}
+        for response in [{'result': {}}, {'error': {'code': -32602}}, {'error': {'code': -32000}}]:
+            obs = {'status': 'result' if 'result' in response else 'rpc_error', 'response': response}
+            checks = evaluate(case, obs, {})
+            self.assertEqual({q['topic'] for q in checks}, {'H12', 'H25'})
+            self.assertEqual(next(q['status'] for q in checks if q['topic'] == 'H12'), 'observation')
+            self.assertFalse(any(q['status'] == 'change_needed' for q in checks))
+        malformed = evaluate(case, {'status': 'malformed_json'}, {})
+        self.assertEqual(malformed[0]['topic'], 'H25')
+        self.assertEqual(malformed[0]['status'], 'change_needed')
+
     def test_tree_path_rejects_flat_root_selection(self):
         case={'name':'get-zero','request':{'method':'trace_get','params':['0xhash',['0x0']]}}
         obs={'status':'result','response':{'result':{'traceAddress':[]}}}

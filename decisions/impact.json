@@ -122,15 +122,15 @@
     "H13": {
       "besu": {
         "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "Reject the nonce mismatch; do not replace a signed transaction’s nonce for simulation."
+        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
       },
       "erigon": {
         "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "Reject the nonce mismatch instead of substituting the account nonce."
+        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
       },
       "nethermind": {
         "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "Reject the mismatch without rewriting the signed nonce."
+        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
       }
     },
     "H15": {
@@ -253,12 +253,6 @@
       "reth": {
         "observed": "Individual replay results omit `transactionHash`.",
         "change": "Include the requested transaction hash in the replay envelope, consistently with block replay."
-      }
-    },
-    "H12": {
-      "reth": {
-        "observed": "Raw-transaction tracing accepts a third block-selector argument.",
-        "change": "Agree how to retain this extension alongside the draft’s two-argument baseline. This is a compatibility decision, not an execution defect."
       }
     },
     "H18": {

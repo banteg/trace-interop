@@ -21,14 +21,19 @@ optional extensions and pending policy choices explicit instead of calling them 
 
 ## Contribution path
 
+See [upstream acceptance criteria](upstream-acceptance.md) for the documented rules and
+review precedents, and [client fixes](client-fixes.md) for the current patch queue.
+
 The fork's YAML is the single specification source. Once a rule is agreed, promote its
 assertions into upstream `.io` fixtures on the upstream test chain, extending that chain
 only when necessary. Existing research-chain hashes cannot simply be pasted into upstream
 tests. Keep unresolved examples in this project. Reuse Hive and its client adapters;
 upstream reusable runner improvements independently.
 
-Geth-based `rpctestgen` support and optional-method policy remain upstream decisions.
-Neither is silently assumed by this project. No upstream PR is created by these tools.
+The normal test-generation path uses upstream Geth. Published guidance permits explicit
+maintainer CI exceptions for new methods awaiting Geth support; it does not automatically
+waive fixtures or schema validation. Optional-method policy remains unresolved.
+No upstream PR is created by these tools.
 
 ## Maintaining the reports
 

@@ -13,7 +13,7 @@
   },
   "methods": [
     {
-      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -77,7 +77,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
             "oneOf": [
               {
                 "oneOf": [
@@ -702,7 +702,7 @@
       "summary": "Returns localized call traces for a block."
     },
     {
-      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -1205,7 +1205,7 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                 "oneOf": [
                   {
                     "oneOf": [
@@ -1976,7 +1976,7 @@
       "summary": "Executes an unsigned call and returns selected traces."
     },
     {
-      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -2474,7 +2474,7 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                   "oneOf": [
                     {
                       "oneOf": [
@@ -3247,7 +3247,7 @@
       "summary": "Executes dependent unsigned calls in order."
     },
     {
-      "description": "Apply OR within each address list and AND between the lists; omitted/empty lists are unrestricted. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Apply OR within each address list and AND between the lists; omitted/empty lists are unrestricted. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -3369,7 +3369,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
             "oneOf": [
               {
                 "oneOf": [
@@ -3994,7 +3994,7 @@
       "summary": "Returns localized traces matching an address filter."
     },
     {
-      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -4060,7 +4060,7 @@
         "schema": {
           "anyOf": [
             {
-              "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+              "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
               "oneOf": [
                 {
                   "oneOf": [
@@ -4687,7 +4687,7 @@
       "summary": "Returns the trace at one tree path."
     },
     {
-      "description": "Decode and validate the signed transaction, including chain identity, nonce, funds and intrinsic gas. Preserve its signed fields; do not replace the nonce. The baseline has exactly two parameters. A block-selector extension requires separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result (H12-H14,H25). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "The proposed admission policy validates the signed transaction, including chain identity, nonce, funds and intrinsic gas, without replacing signed fields. Nonce-mismatch rejection remains a client agreement question (H13). The portable baseline defines two parameters and latest state. An explicitly supplied block-selector extension is outside this baseline; accepting it is not a baseline failure. Extension semantics require separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result (H12-H14,H25). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -5062,7 +5062,7 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                 "oneOf": [
                   {
                     "oneOf": [
@@ -5833,7 +5833,7 @@
       "summary": "Simulates a signed transaction at latest state."
     },
     {
-      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -6221,7 +6221,7 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                   "oneOf": [
                     {
                       "oneOf": [
@@ -7000,7 +7000,7 @@
       "summary": "Replays every transaction in a block."
     },
     {
-      "description": "Reconstruct the state immediately before this transaction, including preceding transactions and applicable system operations. Return null for an unknown transaction; error for unavailable history. Use the transaction block fork rules and report its actual committed state transition (H06,H07,H16,H18,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Reconstruct the state immediately before this transaction, including preceding transactions and applicable system operations. Return null for an unknown transaction; error for unavailable history. Use the transaction block fork rules and report its actual committed state transition (H06,H07,H16,H18,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -7372,7 +7372,7 @@
                 },
                 "trace": {
                   "items": {
-                    "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                    "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                     "oneOf": [
                       {
                         "oneOf": [
@@ -8154,7 +8154,7 @@
       "summary": "Replays a mined transaction with selected traces."
     },
     {
-      "description": "Return a flat preorder tree, including the root. Unknown transactions return null; unavailable state is an error. traceAddress is a path, not a flat list index (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H28 decision references.",
+      "description": "Return a flat preorder tree, including the root. Unknown transactions return null; unavailable state is an error. traceAddress is a path, not a flat list index (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -8203,7 +8203,7 @@
           "anyOf": [
             {
               "items": {
-                "description": "Preorder traversal. traceAddress gives child ordinals and subtraces counts direct children. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
                 "oneOf": [
                   {
                     "oneOf": [

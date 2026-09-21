@@ -19,6 +19,8 @@ Erigon, Reth, Nethermind and Besu are the initial clients. An experimental [Geth
 ## Start here
 
 - [Client impact reports](reports/README.md): observed differences, proposed changes, and links to client source code.
+- [Client fixes](docs/client-fixes.md): upstream patches, tested outcomes, and remaining work.
+- [Upstream acceptance](docs/upstream-acceptance.md): documented requirements and lessons from recent reviews.
 - [Geth draft implementation](docs/geth.md): evaluated fork, coverage and build reproduction.
 - [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.
 - [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.

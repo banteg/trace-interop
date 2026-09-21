@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/99a312e9c41724f180673a636c6e200f213beb7b) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/f26e2468b3e5409e777deb137254c2954ce70bc7) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 ## Start with your client
 
@@ -22,8 +22,8 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | [How do address filters combine?](decisions/H03.md) | OR within each list, AND between sender and recipient lists. |
 | [What survives a failed call?](decisions/H09.md) | Keep the error on that frame and preserve revert bytes and measured gas when available. |
 | [Which precompile frames are visible?](decisions/H29.md) | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |
-| [Should signed nonces be rewritten?](decisions/H13.md) | No. Reject a nonce mismatch instead of silently changing the transaction. |
+| [Should signed nonces be rewritten?](decisions/H13.md) | Proposed: reject a nonce mismatch without rewriting the transaction. Admission policy needs client agreement. |
 
 [All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
 
-[Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)
+[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)

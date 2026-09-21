@@ -21,14 +21,14 @@
     "../evidence/2026-09-21/verified-repeat/manifest.json": "2212f013dd5dd6553f885bbf98e180dc412bfa2ae106ece58bbe187c5ab66511"
   },
   "sources": {
-    "decisions/impact.json": "81f232442ed9a8a2cb2090ae419c1650b2032699276dac5906b037b5ace223bb",
-    "decisions/ledger.json": "63dba23ae9449a2ecba25dba5cf916d71affeb95f4669e7e201c9288907426c3",
+    "decisions/impact.json": "3a2c8620899065f5b3e072867a43401ff089634d1562630faea0042cde6c9d31",
+    "decisions/ledger.json": "af4bcf615acb5a04611013a26e20b8a915eadfbe28d26aaa83e245cecd553081",
     "decisions/sources.json": "89305d0b14bd303fd487c03e22b50b5b5d1c6eaf792b947a808e2d2f08ecff22",
     "locks/source-revisions.json": "0cc622d583eb692f7d5b128936e1fe2dc8ea95a97d52a54c25caed25959559a5",
-    "spec.lock.json": "9efc9a76a1c2b4a00d74f4fe70b1d5ef63a2b41262348af7b75beace9ee3e87f",
-    "trace_interop/presentation.py": "c417bee86e2b22214ff275975ea85b945ec90949f6b6f4e3f1644b6484f13964",
-    "trace_interop/report.py": "c082c156707897091652868f5d2e5e3b5cc7ed62c982dfccb8d25c8fbaeb6d2a",
-    "trace_interop/rules.py": "026a1db6765660a3ff9fc0d6f31bdfe4ad5dd0e6aed533d74021a17e94ef292b"
+    "spec.lock.json": "54afe2bb46d8b261b2d1867a3a4bcb907f7ba5ca32b6fbb79b68ce60587884f0",
+    "trace_interop/presentation.py": "2a11aaaecd0c3ef73f2d173b5bd0ff07e45cff747d07334581a41a1f9b9a622f",
+    "trace_interop/report.py": "7561e0c2697b4651195c722ee73bd5423034b0b0ee9f07407d9c39b28969f099",
+    "trace_interop/rules.py": "ea1bc8920f79ba838ddaed770530808bedfb30dc33cb50e37c243d1b4c4f36af"
   },
-  "spec_commit": "99a312e9c41724f180673a636c6e200f213beb7b"
+  "spec_commit": "f26e2468b3e5409e777deb137254c2954ce70bc7"
 }

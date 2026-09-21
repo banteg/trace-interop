@@ -52,6 +52,8 @@ def verdict(checks):
         return 'Method unavailable'
     if 'change_needed' in statuses:
         return 'Differs'
+    if 'observation' in statuses:
+        return 'Extension policy open'
     if 'matches' in statuses:
         return 'Checked cases agree'
     return 'Not assessed'
@@ -195,7 +197,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += table(['Build', 'Returned', 'Compared with draft', 'Evidence'], rows)
         text += '<details><summary>Request and assertion details</summary>\n\n```json\n' + json.dumps(entries[0]['request'], indent=2) + '\n```\n\n'
         for e in entries:
-            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD]
+            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD or c['status'] == 'observation']
             errors = r.get('schema', {}).get('errors', [])
             if not failures and not errors:
                 continue
@@ -211,16 +213,19 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     # Each family has one review page, with stable per-build entry points as well.
     def client_page(f, selected, path):
         profile = editorial['clients'][f]
-        text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Source guide](../sources.md)\n\n'
+        text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)\n\n'
         text += table(['Build', 'Tested version', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
         versions = {r['version'] for r in records if r['client'] in selected}
         for build_note in profile.get('build_notes', []):
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
-        rows = []; matched = []; untested = []
+        rows = []; matched = []; untested = []; extensions = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
+            if checks and all(q['status'] == 'observation' for q in checks):
+                extensions.append(topic)
+                continue
             if not any(q['status'] in BAD for q in checks):
                 if topic != 'H01':
                     (matched if checks else untested).append(topic)
@@ -239,6 +244,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             rows.append([subject, *statuses, change + ('<br>' + links if links else '')])
         text += '## Changes to discuss\n\n'
         text += table(['Behavior', *[channel(c) for c in selected], 'Proposed change'], rows) if rows else 'No differences were found by the selected semantic assertions.\n\n'
+        if extensions:
+            text += '## Extension observations\n\nThese requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.\n\n'
+            extension_rows = []
+            for topic in extensions:
+                for c in selected:
+                    checks = by_client[c].get(topic, [])
+                    if checks:
+                        detail = ' '.join(dict.fromkeys(q['detail'] for q in checks))
+                        extension_rows.append([channel(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
+            text += table(['Build', 'Extension', 'Observed', 'Example'], extension_rows)
         if f in ('reth', 'erigon'):
             schema_records = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
             if schema_records:
@@ -265,6 +280,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     for topic, d in decisions.items():
         path = output/'decisions'/(topic + '.md')
         text = f'# {d["title"]}\n\n{topic} · {d["kind"]} · [All decisions](../README.md#decisions-to-review)\n\n'
+        sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
+        if topic in sections:
+            text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'
         text += f'## Recommendation\n\n{d["recommendation"]}\n\n{d["rationale"]}\n\n## What changes for clients\n\n'
         rows = []
         for f, selected in by_family.items():
@@ -273,6 +291,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if affected:
                 observed, change = note(editorial, affected, topic, checks)
                 behavior = observed + '<br>**Proposed:** ' + change
+            elif any(q['status'] == 'observation' for q in checks):
+                behavior = ' '.join(dict.fromkeys(q['detail'] for q in checks)) + ' Extension policy remains open; no baseline change is required by this observation.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
             build_cells = '<br>'.join(f'{channel(c)}: {verdict(by_client[c].get(topic, []))}' for c in selected)
@@ -305,10 +325,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         ['[How do address filters combine?](decisions/H03.md)', 'OR within each list, AND between sender and recipient lists.'],
         ['[What survives a failed call?](decisions/H09.md)', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'],
         ['[Which precompile frames are visible?](decisions/H29.md)', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'],
-        ['[Should signed nonces be rewritten?](decisions/H13.md)', 'No. Reject a nonce mismatch instead of silently changing the transaction.'],
+        ['[Should signed nonces be rewritten?](decisions/H13.md)', 'Proposed: reject a nonce mismatch without rewriting the transaction. Admission policy needs client agreement.'],
     ])
     text += '[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
-    text += '[Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
+    text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
 
     text = '# Client source guide\n\nEntry points for reviewing the proposed changes. Links are pinned to the tested development revisions (or the experimental Geth fork), so line numbers remain stable. They identify relevant code, not necessarily the full fix.\n\n'

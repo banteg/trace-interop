@@ -14,8 +14,9 @@ same binary hash.
 
 The [client report](../reports/clients/go-ethereum_trace.md) includes 318 eligible
 RPC observations across `initial`, `a`, `repeat`, `forks`, `fork-followup`,
-`reorg-safe` and `precompiles`. All 429 applicable semantic assertions matched,
-and all 174 schema-checked results were valid. The 49 RPC errors include the
+`reorg-safe` and `precompiles`. All 428 applicable semantic assertions matched,
+and all 174 schema-checked results were valid. The extra raw-transaction block
+argument is recorded separately as an extension observation. The 49 RPC errors include the
 corpora's deliberate malformed or invalid requests; controls and out-of-profile
 queries are recorded separately from result-schema checks.
 

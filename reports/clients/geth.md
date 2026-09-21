@@ -2,7 +2,7 @@
 
 The experimental fork matches the selected assertions. It is a place to try the draft, not upstream Geth support; historical filtering is a bounded scan and pruning coverage remains incomplete.
 
-[All clients](../README.md) · [Source guide](../sources.md)
+[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -13,6 +13,14 @@ Code links use the tested development sources (or the Geth fork). These are prop
 ## Changes to discuss
 
 No differences were found by the selected semantic assertions.
+
+## Extension observations
+
+These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+
+| Build | Extension | Observed | Example |
+| --- | --- | --- | --- |
+| Draft fork | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
 <details><summary>Behaviors with no difference in the checked cases</summary>
 
@@ -28,7 +36,6 @@ No differences were found by the selected semantic assertions.
 | [Failed frame results and error labels](../decisions/H09.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
-| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) |
 | [Signed transaction nonce validation](../decisions/H13.md) | [Raw nonce high](../cases/a/raw-nonce-high.md) · [Raw nonce high](../cases/repeat/raw-nonce-high.md) |
 | [Invalid-parameter error codes](../decisions/H14.md) | [Call scalar mode](../cases/a/call-scalar-mode.md) · [Call unknown mode](../cases/a/call-unknown-mode.md) |
 | [Unsigned simulation fees and block environment](../decisions/H15.md) | [Call constructor](../cases/initial/call-constructor.md) · [Call empty types](../cases/initial/call-empty-types.md) |

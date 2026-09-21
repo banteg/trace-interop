@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · a · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response, including on validation failure. A signed nonce mismatch is rejected rather than replaced. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
+**What this checks:** Return one complete JSON-RPC response, including on validation failure. Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -37,28 +37,28 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H13](../../decisions/H13.md): A signed nonce mismatch is rejected rather than replaced.
+- [H13](../../decisions/H13.md): Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 </details>

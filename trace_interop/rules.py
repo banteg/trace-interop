@@ -4,6 +4,10 @@ from __future__ import annotations
 import re
 
 
+def is_extension_request(request):
+    return request['method'] == 'trace_rawTransaction' and len(request.get('params', [])) > 2
+
+
 def evaluate(case, observation, peers):
     """Return independently scoped rule checks; absence means no automated assertion."""
     name, request = case['name'], case['request']
@@ -30,6 +34,18 @@ def evaluate(case, observation, peers):
                   'Return one complete JSON-RPC response, including on validation failure.')
         if status in ['malformed_json', 'invalid_envelope']:
             return checks
+
+    if is_extension_request(request):
+        if status == 'result':
+            detail = 'The third-argument request returned a result; this does not prove which block state was used.'
+        elif status == 'rpc_error' and response['error']['code'] == -32602:
+            detail = 'The third-argument request was rejected as invalid params.'
+        else:
+            detail = 'The third-argument request returned an error; extension support is not established.'
+        checks.append({'topic': 'H12', 'status': 'observation',
+                       'requirement': 'Observe the explicit block-selector extension separately from the two-argument baseline.',
+                       'detail': detail})
+        return checks
 
     def other(n):
         return peers.get(n, {}).get('response', {}).get('result')
@@ -143,7 +159,7 @@ def evaluate(case, observation, peers):
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and response['error']['code'] == -32602, 'Malformed input returns invalid params (-32602).')
     if name in ['raw-nonce-high','raw-valid-current-nonce-high']:
-        check('H13', status == 'rpc_error', 'A signed nonce mismatch is rejected rather than replaced.')
+        check('H13', status == 'rpc_error', 'Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.')
 
     if method == 'trace_block' and isinstance(result,list):
         block=params[0]
@@ -157,8 +173,6 @@ def evaluate(case, observation, peers):
     failed=[f for f in frames if 'error' in f]
     if failed:
         check('H09', all('result' in f and ('revert' not in f['error'].lower() or isinstance(f['result'],dict) and 'output' in f['result'] and 'gasUsed' in f['result']) for f in failed), 'Failed frames have an explicit result; REVERT preserves return bytes and measured gas.')
-    if method=='trace_rawTransaction' and len(params)>2:
-        check('H12', status=='rpc_error' and response['error']['code']==-32602, 'The two-argument baseline rejects an extra block selector (extension policy remains open).')
     if name in ['call-tree-trace','call-tree-stateDiff','call-tree-vmTrace','call-constructor','call-empty-types'] and params[0].get('gasPrice')=='0x0':
         check('H15', status=='result' and isinstance(result,dict), 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
     contracts=context.get('contracts',{})

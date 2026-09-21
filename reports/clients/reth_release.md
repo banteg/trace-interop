@@ -2,7 +2,7 @@
 
 The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces.
 
-[All clients](../README.md) · [Source guide](../sources.md)
+[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -20,10 +20,17 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [Filter composition and mode](../decisions/H03.md)<br>Sender and recipient lists are combined with OR by default. | Differs<br>[Filter both](../cases/initial/filter-both.md) | Use AND between lists so a second filter narrows the search; preserve union only as an explicit extension.<br>[Address filtering](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L363) |
 | [Missing transactions and paths](../decisions/H06.md)<br>Missing individual replays return an error; verified pruned-history requests use `-32603`. | Differs<br>[Replay missing](../cases/initial/replay-missing.md) | Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error.<br>[Trace lookup](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L220) · [Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
 | [Replay transactionHash field](../decisions/H07.md)<br>Individual replay results omit `transactionHash`. | Differs<br>[Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) | Include the requested transaction hash in the replay envelope, consistently with block replay.<br>[Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
-| [Raw-transaction block argument](../decisions/H12.md)<br>Raw-transaction tracing accepts a third block-selector argument. | Differs<br>[Raw valid](../cases/initial/raw-valid.md) | Agree how to retain this extension alongside the draft’s two-argument baseline. This is a compatibility decision, not an execution defect.<br>[Signed transaction replay](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L121) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md)<br>EIP-7702 delegation code changes are missing from `stateDiff`. | Differs<br>[Auth clear](../cases/a/auth-clear.md) | Include authorization code set, replacement and clearing, even for existing accounts and when the subsequent execution reverts.<br>[State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) · [Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
 | [vmTrace executing bytecode](../decisions/H19.md)<br>Creation `vmTrace.code` does not contain the expected executing initcode. | Differs<br>[Call constructor](../cases/initial/call-constructor.md) | Attach the creation frame’s initcode to its VM trace, including in block replay.<br>[VM trace builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L317) · [Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
 | [Account deletion across Cancun](../decisions/H26.md)<br>Pre-Cancun account deletion loses code/nonce deletion markers. | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780.<br>[State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) |
+
+## Extension observations
+
+These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+
+| Build | Extension | Observed | Example |
+| --- | --- | --- | --- |
+| Release | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request returned a result; this does not prove which block state was used. | [Raw valid](../cases/initial/raw-valid.md) |
 
 **Reward record shape:** the checked PoW rewards omit `transactionHash` and `transactionPosition`; the draft requires explicit `null` values for non-transaction records. [Compare a reward response](../cases/forks/block-35.md).
 

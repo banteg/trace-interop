@@ -14,6 +14,10 @@ class ReportVerdictTests(unittest.TestCase):
         self.assertEqual(outcome(entry), 'RPC error `-32602`')
         self.assertEqual(verdict([{'status': 'matches'}]), 'Checked cases agree')
 
+    def test_extension_observation_is_neither_pass_nor_failure(self):
+        self.assertEqual(verdict([{'status': 'matches'}, {'status': 'observation'}]), 'Extension policy open')
+        self.assertEqual(verdict([{'status': 'change_needed'}, {'status': 'observation'}]), 'Differs')
+
     def test_setup_failure_cannot_be_reported_as_observed_behavior(self):
         entry = {'record': {'eligible': False, 'status': 'result'},
                  'observation': {'response': {'result': []}}}
@@ -71,7 +75,7 @@ class ReportVerdictTests(unittest.TestCase):
 
     def test_generated_reports_have_no_broken_local_file_links(self):
         root = Path(__file__).resolve().parents[1]
-        paths = [root/'README.md', root/'decisions/README.md', *(root/'reports').rglob('*.md')]
+        paths = [root/'README.md', root/'decisions/README.md', *(root/'reports').rglob('*.md'), *(root/'docs').rglob('*.md')]
         for path in paths:
             for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
                 if '://' in target or target.startswith('#'):

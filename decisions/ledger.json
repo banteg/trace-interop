@@ -195,7 +195,7 @@
       "id": "H10",
       "kind": "Spec decision / likely schema fix",
       "next_step": "Specify creationMethod if it is required; retain the successful mixed-creation probe and investigate historical-method metadata separately.",
-      "rationale": "Creation has two different bytecodes\u2014initcode and deployed code\u2014and their field meanings should remain distinct.",
+      "rationale": "Creation has two different bytecodes—initcode and deployed code—and their field meanings should remain distinct.",
       "recommendation": "Use result.address, result.code and result.gasUsed for successful creation. result.code is deployed runtime bytecode, including \"0x\" for an empty deployment. Use result.output for CALL results; vmTrace.code for executing initcode.",
       "title": "Creation result field names"
     },
@@ -217,9 +217,9 @@
       ],
       "id": "H12",
       "kind": "Spec / extension decision",
-      "next_step": "Decide whether to add the block selector later. Keep its acceptance test separate from raw transaction execution fidelity.",
+      "next_step": "Decide the extension contract with client teams. Keep extension requests and their results outside baseline assessment; preserve complete-response checks independently.",
       "rationale": "The baseline should be usable on all four today without silently changing which state is traced.",
-      "recommendation": "Standardize the existing two-argument baseline with an explicit default of latest state. Treat an optional third block selector as a separately negotiated extension until clients adopt it; reject unsupported extra arguments consistently.",
+      "recommendation": "Standardize the two-argument baseline with latest state. Observe an explicitly supplied third block selector as an extension, without marking its acceptance or rejection as baseline conformance. An accepted request alone does not prove that the selected state was used. Agree extension semantics and unsupported-argument errors separately.",
       "title": "Raw-transaction block argument"
     },
     {
@@ -233,10 +233,10 @@
         "repeat-01--raw-below-basefee"
       ],
       "id": "H13",
-      "kind": "Spec decision / likely client fix",
+      "kind": "Admission policy proposal",
       "next_step": "Agree admission semantics for signed raw transactions; fix malformed responses independently of that policy choice.",
       "rationale": "A signed transaction is a concrete transaction, so tracing should not silently rewrite its nonce or return a partial-looking success.",
-      "recommendation": "For trace_rawTransaction, honor the signed transaction\u2019s nonce and validity rules at the selected state. Reject nonce mismatch with a stable transaction-validation error. Use unsigned trace_call for hypothetical execution that deliberately relaxes admission rules.",
+      "recommendation": "For trace_rawTransaction, honor the signed transaction’s nonce and validity rules at the selected state. Reject nonce mismatch with a stable transaction-validation error. Use unsigned trace_call for hypothetical execution that deliberately relaxes admission rules.",
       "title": "Signed transaction nonce validation"
     },
     {
@@ -273,7 +273,7 @@
       "kind": "Spec decision / likely environment bug",
       "next_step": "Agree the fee-free simulation rule, then fix the block-environment discrepancy. The source contract confirms BASEFEE is returned as word 3; this is more than an error-message difference.",
       "rationale": "Relaxing transaction admission for a hypothetical call should not silently rewrite the block the caller selected.",
-      "recommendation": "Allow explicit zero-fee unsigned simulations without changing the selected block\u2019s BASEFEE or other block fields. With nonzero supplied fees, use those fees consistently in opcode context and simulated accounting. Apply the same policy to trace_call and trace_callMany; keep strict signed validation separate.",
+      "recommendation": "Allow explicit zero-fee unsigned simulations without changing the selected block’s BASEFEE or other block fields. With nonzero supplied fees, use those fees consistently in opcode context and simulated accounting. Apply the same policy to trace_call and trace_callMany; keep strict signed validation separate.",
       "title": "Unsigned simulation fees and block environment"
     },
     {
@@ -296,7 +296,7 @@
       "kind": "Spec decision / likely accounting bug",
       "next_step": "Resolve fee and environment rules while preserving the storage carry-over, revert rollback and simulation isolation. Broader warm-access/refund behavior remains to test.",
       "rationale": "A state diff should be internally coherent and reconstructible; an ordered multi-call simulation should have one predictable state timeline.",
-      "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15\u2019s documented policy consistently. Each callMany result should describe its own transition from the preceding call\u2019s post-state, not a cumulative diff from the original state.",
+      "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15’s documented policy consistently. Each callMany result should describe its own transition from the preceding call’s post-state, not a cumulative diff from the original state.",
       "title": "Fee accounting and sequential state diffs"
     },
     {

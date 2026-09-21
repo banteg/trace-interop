@@ -38,16 +38,16 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H09: 4 assertion checks</summary>
 
 - **change_needed** · `initial` / `transaction-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/transaction-tree.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^transaction-tree$" --output runs/reproduce`
 - **change_needed** · `initial` / `transaction-revert`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/transaction-revert.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^transaction-revert$" --output runs/reproduce`
 - **change_needed** · `initial` / `block-tree`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/block-tree.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^block-tree$" --output runs/reproduce`
 - **change_needed** · `initial` / `call-tree-trace-priced`: Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
 
 </details>
@@ -55,43 +55,43 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H01: 13 assertion checks</summary>
 
 - **unsupported** · `initial` / `replay-tree-trace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-tree-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-tree-trace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-tree-stateDiff`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-tree-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-tree-stateDiff$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-tree-vmTrace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-tree-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-tree-vmTrace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-revert-trace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-revert-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-revert-trace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-revert-stateDiff`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-revert-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-revert-stateDiff$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-revert-vmTrace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-revert-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-revert-vmTrace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-7702-trace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-7702-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-7702-trace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-7702-stateDiff`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-7702-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-7702-stateDiff$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-7702-vmTrace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-7702-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-7702-vmTrace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-missing`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-missing.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-missing$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-transfer-trace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-transfer-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-transfer-trace$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-transfer-stateDiff`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-transfer-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-transfer-stateDiff$" --output runs/reproduce`
 - **unsupported** · `initial` / `replay-transfer-vmTrace`: trace_replayTransaction Method coverage remains a profile decision.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/replay-transfer-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^replay-transfer-vmTrace$" --output runs/reproduce`
 
 </details>
@@ -99,10 +99,10 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H05: 2 assertion checks</summary>
 
 - **change_needed** · `initial` / `block-tree`: A PoS block has no synthetic PoW reward records.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/block-tree.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^block-tree$" --output runs/reproduce`
 - **change_needed** · `initial` / `block-transfer`: A PoS block has no synthetic PoW reward records.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/block-transfer.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^block-transfer$" --output runs/reproduce`
 
 </details>
@@ -110,16 +110,16 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H02: 4 assertion checks</summary>
 
 - **matches** · `initial` / `get-root`: Return one object whose traceAddress equals []. Observed [].
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-root.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-root$" --output runs/reproduce`
 - **matches** · `initial` / `get-zero`: Return one object whose traceAddress equals [0]. Observed [0].
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-zero.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-zero$" --output runs/reproduce`
 - **matches** · `initial` / `get-one`: Return one object whose traceAddress equals [1]. Observed [1].
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-one.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-one$" --output runs/reproduce`
 - **matches** · `initial` / `get-transfer-root`: Return one object whose traceAddress equals []. Observed [].
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-transfer-root.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-transfer-root$" --output runs/reproduce`
 
 </details>
@@ -127,16 +127,16 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H06: 4 assertion checks</summary>
 
 - **matches** · `initial` / `get-missing`: A missing transaction or tree path returns null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-missing.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-missing$" --output runs/reproduce`
 - **change_needed** · `initial` / `transaction-missing`: Unknown transaction returns null, not an empty collection or RPC error.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/transaction-missing.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^transaction-missing$" --output runs/reproduce`
 - **matches** · `initial` / `get-missing-tx`: A missing transaction or tree path returns null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-missing-tx.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-missing-tx$" --output runs/reproduce`
 - **matches** · `initial` / `get-missing-tx`: Unknown transaction returns null, not an empty collection or RPC error.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/get-missing-tx.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^get-missing-tx$" --output runs/reproduce`
 
 </details>
@@ -144,16 +144,16 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H03: 4 assertion checks</summary>
 
 - **matches** · `initial` / `filter-all`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/filter-all.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^filter-all$" --output runs/reproduce`
 - **matches** · `initial` / `filter-from`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 5 records from this client's block trace.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/filter-from.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^filter-from$" --output runs/reproduce`
 - **change_needed** · `initial` / `filter-to`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 2 records from this client's block trace.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/filter-to.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^filter-to$" --output runs/reproduce`
 - **matches** · `initial` / `filter-both`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/filter-both.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^filter-both$" --output runs/reproduce`
 
 </details>
@@ -161,7 +161,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H04: 1 assertion checks</summary>
 
 - **matches** · `initial` / `filter-empty`: Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 14 records from this client's block trace.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/filter-empty.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^filter-empty$" --output runs/reproduce`
 
 </details>
@@ -169,19 +169,19 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H15: 5 assertion checks</summary>
 
 - **change_needed** · `initial` / `call-tree-trace`: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace$" --output runs/reproduce`
 - **change_needed** · `initial` / `call-tree-stateDiff`: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-stateDiff$" --output runs/reproduce`
 - **change_needed** · `initial` / `call-tree-vmTrace`: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-vmTrace$" --output runs/reproduce`
 - **change_needed** · `initial` / `call-empty-types`: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types$" --output runs/reproduce`
 - **change_needed** · `initial` / `call-constructor`: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-constructor.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-constructor$" --output runs/reproduce`
 
 </details>
@@ -189,10 +189,10 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H11: 2 assertion checks</summary>
 
 - **change_needed** · `initial` / `call-empty-types`: An empty trace-type selection executes successfully.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types$" --output runs/reproduce`
 - **matches** · `initial` / `call-empty-types-priced`: An empty trace-type selection executes successfully.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types-priced$" --output runs/reproduce`
 
 </details>
@@ -200,16 +200,16 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H25: 4 assertion checks</summary>
 
 - **matches** · `initial` / `raw-valid`: Return one complete JSON-RPC response, including on validation failure.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid$" --output runs/reproduce`
 - **matches** · `initial` / `raw-invalid`: Return one complete JSON-RPC response, including on validation failure.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-invalid.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-invalid$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-default-block`: Return one complete JSON-RPC response, including on validation failure.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-default-block.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-default-block$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-current-nonce`: Return one complete JSON-RPC response, including on validation failure.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-current-nonce.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-current-nonce$" --output runs/reproduce`
 
 </details>
@@ -217,7 +217,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H12: 1 assertion checks</summary>
 
 - **matches** · `initial` / `raw-valid`: The two-argument baseline rejects an extra block selector (extension policy remains open).
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid$" --output runs/reproduce`
 
 </details>
@@ -225,7 +225,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H14: 1 assertion checks</summary>
 
 - **matches** · `initial` / `raw-invalid`: Malformed input returns invalid params (-32602).
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-invalid.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-invalid$" --output runs/reproduce`
 
 </details>
@@ -233,85 +233,85 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H08: 27 assertion checks</summary>
 
 - **matches** · `initial` / `call-tree-trace-priced`: Unrequested vmTrace is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-trace-priced`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-trace-priced`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-stateDiff-priced`: Unrequested trace is an empty array.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-stateDiff-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-stateDiff-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-stateDiff-priced`: Unrequested vmTrace is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-stateDiff-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-stateDiff-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-stateDiff-priced`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-stateDiff-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-stateDiff-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-vmTrace-priced`: Unrequested trace is an empty array.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-vmTrace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-vmTrace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-vmTrace-priced`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-vmTrace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-vmTrace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-tree-vmTrace-priced`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-vmTrace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-vmTrace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-empty-types-priced`: Unrequested trace is an empty array.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-empty-types-priced`: Unrequested vmTrace is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-empty-types-priced`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-empty-types-priced`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-empty-types-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-empty-types-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-constructor-priced`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-default-block`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-default-block.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-default-block$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-current-nonce`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-current-nonce.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-current-nonce$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-trace`: Unrequested vmTrace is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-trace$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-trace`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-trace$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-trace`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-trace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-trace$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-stateDiff`: Unrequested trace is an empty array.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-stateDiff$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-stateDiff`: Unrequested vmTrace is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-stateDiff$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-stateDiff`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-stateDiff.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-stateDiff$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-vmTrace`: Unrequested trace is an empty array.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-vmTrace$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-vmTrace`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-vmTrace$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-vmTrace`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-vmTrace$" --output runs/reproduce`
 - **matches** · `initial` / `call-identity`: Unrequested stateDiff is null.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-identity.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-identity$" --output runs/reproduce`
 - **matches** · `initial` / `call-identity`: Output remains a byte string under every trace selection.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-identity.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-identity$" --output runs/reproduce`
 
 </details>
@@ -319,10 +319,10 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H10: 2 assertion checks</summary>
 
 - **change_needed** · `initial` / `call-tree-trace-priced`: Successful creation uses address, code and gasUsed.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-trace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-trace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-constructor-priced`: Successful creation uses address, code and gasUsed.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
 
 </details>
@@ -330,22 +330,22 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H21: 6 assertion checks</summary>
 
 - **matches** · `initial` / `call-tree-vmTrace-priced`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-tree-vmTrace-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-tree-vmTrace-priced$" --output runs/reproduce`
 - **matches** · `initial` / `call-constructor-priced`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-default-block`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-default-block.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-default-block$" --output runs/reproduce`
 - **matches** · `initial` / `raw-valid-current-nonce`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/raw-valid-current-nonce.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^raw-valid-current-nonce$" --output runs/reproduce`
 - **matches** · `initial` / `call-transfer-vmTrace`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-transfer-vmTrace.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-transfer-vmTrace$" --output runs/reproduce`
 - **matches** · `initial` / `call-identity`: Stack words use minimal hex quantities at every depth.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-identity.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-identity$" --output runs/reproduce`
 
 </details>
@@ -353,7 +353,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H19: 1 assertion checks</summary>
 
 - **matches** · `initial` / `call-constructor-priced`: Creation vmTrace.code is executing initcode.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-constructor-priced.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-constructor-priced$" --output runs/reproduce`
 
 </details>
@@ -361,7 +361,7 @@ Matches mean only the linked assertions matched. They do not certify a whole dec
 <details><summary>H22: 1 assertion checks</summary>
 
 - **change_needed** · `initial` / `call-identity`: The identity precompile call frame preserves its input as return bytes.
-  [Raw responses](../../evidence/2026-09-21/initial/observations.json).
+  [Compare responses](../cases/initial/call-identity.md) · [Raw responses](../../evidence/2026-09-21/initial/observations.json).
   Reproduce: `uv run trace-interop run --lock evidence/2026-09-21/initial/manifest.json --clients besu_release --corpus initial --case "^call-identity$" --output runs/reproduce`
 
 </details>

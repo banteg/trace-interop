@@ -1,5 +1,6 @@
 """Generate client impact pages from dated decisions and independently checked runs."""
 from collections import defaultdict
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -21,7 +22,7 @@ def generate(root, runs, output):
     ledger=read(root/'decisions/ledger.json')
     decisions={x['id']:x for x in ledger['items']}
     impacts=read(root/'decisions/impact.json') if (root/'decisions/impact.json').exists() else {}
-    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]
+    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list)
     # Schemas are a generated artifact of the pinned fork, not another editable spec.
     spec=read(root/'spec/trace-openrpc.json') if (root/'spec/trace-openrpc.json').exists() else None
     if spec:
@@ -43,7 +44,7 @@ def generate(root, runs, output):
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
             for case in manifest['selected_cases']:
                 name=case['name']; observation=peers.get(name,{})
-                record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':summary['eligible'].get(client,False),'checks':[]}
+                record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':summary['eligible'].get(client,False),'checks':[],'spec_commit':lock['commit'] if spec else None}
                 if record['eligible'] and observation:
                     record['checks']=evaluate(dict(case,context=context),observation,peers)
                     if spec and observation.get('status')=='result' and case['request']['method'] in methods:
@@ -53,7 +54,29 @@ def generate(root, runs, output):
                 for check in record['checks']:
                     by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(folder/'observations.json',output/'clients')))
                 records.append(record)
+                case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
     write(output/'checks.json',records)
+    comparisons=[]
+    for (corpus,name),entries in sorted(case_pages.items()):
+        path=output/'cases'/corpus/(name+'.md');path.parent.mkdir(parents=True,exist_ok=True)
+        groups={}
+        text=f'# {corpus}/{name}\n\nExact observations; group size is not a correctness vote.\n\n```json\n'+json.dumps(entries[0]['request'],indent=2)+'\n```\n\n'
+        for entry in entries:
+            r=entry['record'];obs=entry['observation'];response=obs.get('response')
+            normalized={k:v for k,v in response.items() if k not in ['jsonrpc','id']} if isinstance(response,dict) else obs.get('raw_response',obs.get('status'))
+            fingerprint=hashlib.sha256(json.dumps(normalized,sort_keys=True).encode()).hexdigest()
+            groups.setdefault(fingerprint,[]).append({'client':r['client'],'version':r['version'],'status':r['status'],'eligible':r['eligible']})
+            text+=f'## {r["client"]} · {r["version"]}\n\nCapture: **{r["status"]}**; scenario eligible: **{r["eligible"]}**. [Full evidence]({link(entry["raw"],path.parent)}).\n\n'
+            for check in r['checks']:text+=f'- {check["topic"]}: **{check["status"]}** — {check["requirement"]}\n'
+            if 'schema' in r:
+                text+=f'\nDraft result schema: **{r["schema"]["status"]}**.\n'
+                for err in r['schema']['errors']:text+=f'- `{err["path"]}`: {escape(err["message"])}\n'
+            preview=json.dumps(response if response is not None else obs,indent=2)
+            if len(preview)>2000:preview=preview[:2000]+'\n… preview truncated; use the full evidence link above.'
+            text+='\n<details><summary>Response preview</summary>\n\n```json\n'+preview+'\n```\n\n</details>\n\n'
+        path.write_text('\n'.join(line.rstrip() for line in text.splitlines())+'\n')
+        comparisons.append({'corpus':corpus,'case':name,'groups':[{'sha256':h,'observations':clients} for h,clients in groups.items()]})
+    write(output/'comparisons.json',comparisons)
     write(output/'runs.json',run_rows)
     introduction='# Trace API draft impact\n\nProposals for review, not an adopted standard or a client ranking. '
     introduction+='Historical recommendations date to September 15. Fresh checks below are restricted to the exact pinned builds and selected cases. '
@@ -82,7 +105,7 @@ def generate(root, runs, output):
             text+=f'\n<details><summary>{id}: {len(checks)} assertion checks</summary>\n\n'
             for c in checks:
                 text+=f'- **{c["status"]}** · `{c["run"]}` / `{c["case"]}`: {c["requirement"]} {c.get("detail","")}\n'
-                text+=f'  [Raw responses]({c["evidence"]}).\n'
+                text+=f'  [Compare responses](../cases/{c["corpus"]}/{c["case"]}.md) · [Raw responses]({c["evidence"]}).\n'
                 text+=f'  Reproduce: `uv run trace-interop run --lock {c["lock"]} --clients {client} --corpus {c["corpus"]} --case "^{c["case"]}$" --output runs/reproduce`\n'
             text+='\n</details>\n'
         path.write_text('\n'.join(line.rstrip() for line in text.splitlines())+'\n')

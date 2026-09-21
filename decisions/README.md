@@ -1,6 +1,6 @@
 # Trace API decisions
 
-Each decision links proposed behavior, rationale, observations and open questions.
+[Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)
 
 | Decision | Question |
 | --- | --- |

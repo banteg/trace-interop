@@ -1,6 +1,23 @@
-# fork-followup/beacon-call-55
+# Beacon call 55
 
-Exact observations; group size is not a correctness vote.
+`trace_call` · fork-followup · [All reports](../../README.md)
+
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an explicit result; REVERT preserves return bytes and measured gas. Historical trace_call uses only system changes through the selected block.
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; nonempty output | Differs | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-fork-followup/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -23,436 +40,28 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-fork-followup/observations.json).
+- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
 
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **matches** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
+**Erigon · Release** (`3.6.1-0c4d9c91`)
 
-Draft result schema: **valid**.
+- [H28](../../decisions/H28.md): Historical trace_call uses only system changes through the selected block.
 
-<details><summary>Response preview</summary>
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "result": {
-          "gasUsed": "0x89c",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
+- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
+
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+
+- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **change_needed** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "revertReason": "0x",
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **matches** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "result": {
-          "gasUsed": "0x89c",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H28: **change_needed** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "result": {
-          "gasUsed": "0x10e0",
-          "output": "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **change_needed** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **change_needed** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **matches** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "result": {
-          "gasUsed": "0x89c",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **matches** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "result": {
-          "gasUsed": "0x89c",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json).
-
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Unrequested stateDiff is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H09: **change_needed** — Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
-- H28: **matches** — Historical trace_call uses only system changes through the selected block.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-          "gas": "0x8d520",
-          "input": "0x0000000000000000000000000000000000000000000000000000000000000230",
-          "to": "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
-          "value": "0x0"
-        },
-        "error": "Reverted",
-        "revertReason": "0x",
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-

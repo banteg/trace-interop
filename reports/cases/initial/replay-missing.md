@@ -1,6 +1,22 @@
-# initial/replay-missing
+# Replay missing
 
-Exact observations; group size is not a correctness vote.
+`trace_replayTransaction` · initial · [All reports](../../README.md)
+
+**What this checks:** Unknown transaction returns null, not an empty collection or RPC error. trace_replayTransaction
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | Method unavailable `-32601` | Method unavailable | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | Method unavailable `-32601` | Method unavailable | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | `null` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | `null` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | `null` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32001` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32001` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -16,189 +32,28 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json).
+- [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 
-- H06: **matches** — Unknown transaction returns null, not an empty collection or RPC error.
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-Draft result schema: **valid**.
+- [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 
-<details><summary>Response preview</summary>
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": null
-}
-```
+- [H06](../../decisions/H06.md): Unknown transaction returns null, not an empty collection or RPC error.
 
-</details>
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
+- [H06](../../decisions/H06.md): Unknown transaction returns null, not an empty collection or RPC error.
 
-Capture: **unsupported**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
+**Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- H01: **unsupported** — trace_replayTransaction
+- [H06](../../decisions/H06.md): Unknown transaction returns null, not an empty collection or RPC error.
 
-<details><summary>Response preview</summary>
+**Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
-```json
-{
-  "error": {
-    "code": -32601,
-    "message": "Method not found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
+- [H06](../../decisions/H06.md): Unknown transaction returns null, not an empty collection or RPC error.
 
 </details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **unsupported**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H01: **unsupported** — trace_replayTransaction
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32601,
-    "message": "Method not found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **matches** — Unknown transaction returns null, not an empty collection or RPC error.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": null
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **matches** — Unknown transaction returns null, not an empty collection or RPC error.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": null
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **change_needed** — Unknown transaction returns null, not an empty collection or RPC error.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **change_needed** — Unknown transaction returns null, not an empty collection or RPC error.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **change_needed** — Unknown transaction returns null, not an empty collection or RPC error.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32001,
-    "message": "transaction not found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H06: **change_needed** — Unknown transaction returns null, not an empty collection or RPC error.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32001,
-    "message": "transaction not found"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-

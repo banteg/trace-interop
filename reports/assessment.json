@@ -21,10 +21,12 @@
     "../evidence/2026-09-21/verified-repeat/manifest.json": "2212f013dd5dd6553f885bbf98e180dc412bfa2ae106ece58bbe187c5ab66511"
   },
   "sources": {
-    "decisions/impact.json": "f46136c3d13fa5bd876af311e652e6ea11e5d3c6758cb10a8a2edce63306d3a1",
+    "decisions/impact.json": "2697be9f0432a26ad9eda419dfb975dec49afc3798e6467837c1493c4fbc6d0b",
     "decisions/ledger.json": "63dba23ae9449a2ecba25dba5cf916d71affeb95f4669e7e201c9288907426c3",
+    "decisions/sources.json": "89305d0b14bd303fd487c03e22b50b5b5d1c6eaf792b947a808e2d2f08ecff22",
     "spec.lock.json": "9efc9a76a1c2b4a00d74f4fe70b1d5ef63a2b41262348af7b75beace9ee3e87f",
-    "trace_interop/report.py": "a9ea3f135857dcdad9bbbb1af16190dab822dd6b679bd4f7a0d8df04a36286eb",
+    "trace_interop/presentation.py": "d216badf410e0e46f1f907662060ce4195b9a0dad8f51275e278901620f9fb27",
+    "trace_interop/report.py": "4950f7ada65984457c606b4666f869018132727598207ef2decbf33c122c177a",
     "trace_interop/rules.py": "026a1db6765660a3ff9fc0d6f31bdfe4ad5dd0e6aed533d74021a17e94ef292b"
   },
   "spec_commit": "99a312e9c41724f180673a636c6e200f213beb7b"

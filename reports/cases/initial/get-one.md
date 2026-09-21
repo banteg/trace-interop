@@ -1,6 +1,22 @@
-# initial/get-one
+# Get one
 
-Exact observations; group size is not a correctness vote.
+`trace_get` · initial · [All reports](../../README.md)
+
+**What this checks:** Return the transaction-tree record at [1], or null if absent.
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | One frame, path `[1]` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | One frame, path `[1]` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 1 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 1 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | One frame, path `[0]` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | One frame, path `[0]` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -16,380 +32,30 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json).
+- Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
-- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-Draft result schema: **valid**.
+- Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
-<details><summary>Response preview</summary>
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xea60",
-      "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-      "value": "0x0"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "error": "Reverted",
-    "result": {
-      "gasUsed": "0x889",
-      "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      1
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
+- [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+- Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+- Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
+
+**Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
+
+- [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
+
+**Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
+
+- [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **invalid**.
-- ``: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xea60",
-      "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-      "value": "0x0"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "error": "Reverted",
-    "subtraces": 0,
-    "traceAddress": [
-      1
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **invalid**.
-- ``: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xea60",
-      "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-      "value": "0x0"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "error": "Reverted",
-    "subtraces": 0,
-    "traceAddress": [
-      1
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xea60",
-      "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-      "value": "0x0"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "error": "Reverted",
-    "result": {
-      "gasUsed": "0x889",
-      "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      1
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **matches** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xea60",
-      "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-      "value": "0x0"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "error": "Reverted",
-    "result": {
-      "gasUsed": "0x889",
-      "output": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      1
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **invalid**.
-- ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-        "gas": "0xea60",
-        "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-        "value": "0x0"
-      },
-      "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-      "blockNumber": 2,
-      "error": "Reverted",
-      "subtraces": 0,
-      "traceAddress": [
-        1
-      ],
-      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-      "transactionPosition": 1,
-      "type": "call"
-    }
-  ]
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **invalid**.
-- ``: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-        "gas": "0xea60",
-        "input": "0x0000000000000000000000000000000000000000000000000000000000000001",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-        "value": "0x0"
-      },
-      "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-      "blockNumber": 2,
-      "error": "Reverted",
-      "subtraces": 0,
-      "traceAddress": [
-        1
-      ],
-      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-      "transactionPosition": 1,
-      "type": "call"
-    }
-  ]
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xf35c",
-      "input": "0xff01",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
-      "value": "0x1"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "result": {
-      "gasUsed": "0x48",
-      "output": "0xffee"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H02: **change_needed** — Return the transaction-tree record at [1], or null if absent.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-      "gas": "0xf35c",
-      "input": "0xff01",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1",
-      "value": "0x1"
-    },
-    "blockHash": "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2",
-    "blockNumber": 2,
-    "result": {
-      "gasUsed": "0x48",
-      "output": "0xffee"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-    "transactionPosition": 1,
-    "type": "call"
-  }
-}
-```
-
-</details>
-

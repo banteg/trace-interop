@@ -1,6 +1,15 @@
-# pruned/_control/head
+# _control/head
 
-Exact observations; group size is not a correctness vote.
+`eth_getBlockByNumber` · pruned · [All reports](../../../README.md)
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Reth · Release](../../../clients/reth_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Release](../../../clients/reth_release.md) | Object returned | Not assessed | [Response](../../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+| [Reth · Development](../../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Development](../../../clients/reth_development.md) | Object returned | Not assessed | [Response](../../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -14,183 +23,4 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **False**. [Full evidence](../../../../evidence/2026-09-21/verified-pruned/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "baseFeePerGas": "0x199876",
-    "blobGasUsed": "0x0",
-    "difficulty": "0x0",
-    "excessBlobGas": "0x0",
-    "extraData": "0x",
-    "gasLimit": "0x5f5e100",
-    "gasUsed": "0xf618",
-    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0x0000000000000000000000000000000000000000",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "nonce": "0x0000000000000000",
-    "number": "0x30",
-    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
-    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
-    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
-    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x3b8",
-    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
-    "timestamp": "0x1e0",
-    "transactions": [
-      "0x8e96b39ab5e268215283ab40d65139edc6f281f4d79444b6b0a87861c5f8a1d5",
-      "0x7045e365111563c3f68594c54d9c4d7e3445f0cfc9671f68e8a0122f849f3f18",
-      "0xbe7d79a54b361c1515802fdf8e3843694b3a93350a9097b84c5582686c77163c"
-    ],
-    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
-    "un
-… preview truncated; use the full evidence link above.
-```
-
 </details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **False**. [Full evidence](../../../../evidence/2026-09-21/verified-pruned/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "baseFeePerGas": "0x199876",
-    "blobGasUsed": "0x0",
-    "difficulty": "0x0",
-    "excessBlobGas": "0x0",
-    "extraData": "0x",
-    "gasLimit": "0x5f5e100",
-    "gasUsed": "0xf618",
-    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0x0000000000000000000000000000000000000000",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "nonce": "0x0000000000000000",
-    "number": "0x30",
-    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
-    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
-    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
-    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x3b8",
-    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
-    "timestamp": "0x1e0",
-    "transactions": [
-      "0x8e96b39ab5e268215283ab40d65139edc6f281f4d79444b6b0a87861c5f8a1d5",
-      "0x7045e365111563c3f68594c54d9c4d7e3445f0cfc9671f68e8a0122f849f3f18",
-      "0xbe7d79a54b361c1515802fdf8e3843694b3a93350a9097b84c5582686c77163c"
-    ],
-    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
-    "un
-… preview truncated; use the full evidence link above.
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "baseFeePerGas": "0x199876",
-    "blobGasUsed": "0x0",
-    "difficulty": "0x0",
-    "excessBlobGas": "0x0",
-    "extraData": "0x",
-    "gasLimit": "0x5f5e100",
-    "gasUsed": "0xf618",
-    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0x0000000000000000000000000000000000000000",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "nonce": "0x0000000000000000",
-    "number": "0x30",
-    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
-    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
-    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
-    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x3b8",
-    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
-    "timestamp": "0x1e0",
-    "transactions": [
-      "0x8e96b39ab5e268215283ab40d65139edc6f281f4d79444b6b0a87861c5f8a1d5",
-      "0x7045e365111563c3f68594c54d9c4d7e3445f0cfc9671f68e8a0122f849f3f18",
-      "0xbe7d79a54b361c1515802fdf8e3843694b3a93350a9097b84c5582686c77163c"
-    ],
-    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
-    "un
-… preview truncated; use the full evidence link above.
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "baseFeePerGas": "0x199876",
-    "blobGasUsed": "0x0",
-    "difficulty": "0x0",
-    "excessBlobGas": "0x0",
-    "extraData": "0x",
-    "gasLimit": "0x5f5e100",
-    "gasUsed": "0xf618",
-    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0x0000000000000000000000000000000000000000",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "nonce": "0x0000000000000000",
-    "number": "0x30",
-    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
-    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
-    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
-    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x3b8",
-    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
-    "timestamp": "0x1e0",
-    "transactions": [
-      "0x8e96b39ab5e268215283ab40d65139edc6f281f4d79444b6b0a87861c5f8a1d5",
-      "0x7045e365111563c3f68594c54d9c4d7e3445f0cfc9671f68e8a0122f849f3f18",
-      "0xbe7d79a54b361c1515802fdf8e3843694b3a93350a9097b84c5582686c77163c"
-    ],
-    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
-    "un
-… preview truncated; use the full evidence link above.
-```
-
-</details>
-

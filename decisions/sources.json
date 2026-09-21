@@ -1,0 +1,363 @@
+{
+  "erigon": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "line": 135,
+      "anchor": "func (api *TraceAPIImpl) Get(ctx context.Context, txHash common.Hash, traceAddress []hexutil.Uint64, gasBailOut *bool, traceConfig *config.TraceConfig) (*ParityTrace, error) {",
+      "sha256": "f0d4fd126861ecde8ec980650b0c0c0fa9f446d3986fd2f882dc8f4850d04e82"
+    },
+    "filter": {
+      "label": "Address filtering",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "line": 311,
+      "anchor": "func (api *TraceAPIImpl) Filter(ctx context.Context, req TraceFilterRequest, gasBailOut *bool, traceConfig *config.TraceConfig, stream jsonstream.Stream) error {",
+      "sha256": "f0d4fd126861ecde8ec980650b0c0c0fa9f446d3986fd2f882dc8f4850d04e82"
+    },
+    "call": {
+      "label": "Call simulation",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 1056,
+      "anchor": "func (api *TraceAPIImpl) Call(ctx context.Context, args TraceCallParam, traceTypes []string, blockNrOrHash *rpc.BlockNumberOrHash, traceConfig *config.TraceConfig) (*TraceCallResult, error) {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 1656,
+      "anchor": "func (api *TraceAPIImpl) RawTransaction(ctx context.Context, encodedTx hexutil.Bytes, traceTypes []string) (*TraceCallResult, error) {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "replay": {
+      "label": "Replay results",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 880,
+      "anchor": "func (api *TraceAPIImpl) ReplayTransaction(ctx context.Context, txHash common.Hash, traceTypes []string, gasBailOut *bool, traceConfig *config.TraceConfig) (*TraceCallResult, error) {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "frames": {
+      "label": "Call frames and precompiles",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 357,
+      "anchor": "func (ot *OeTracer) captureStartOrEnter(deep bool, typ vm.OpCode, from accounts.Address, to accounts.Address, precompile bool, create bool, input []byte, gas uint64, value *uint256.Int, code []byte) {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "vm": {
+      "label": "VM execution deltas",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 545,
+      "anchor": "func (ot *OeTracer) OnOpcode(pc uint64, op byte, gas, cost uint64, scope tracing.OpContext, rData []byte, depth int, err error) {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "state": {
+      "label": "State differences",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 741,
+      "anchor": "func (sd *StateDiff) CompareStates(initialIbs, ibs *state.IntraBlockState) error {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    }
+  },
+  "nethermind": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 402,
+      "anchor": "public ResultWrapper<IEnumerable<ParityTxTraceFromStore>> trace_get(Hash256 txHash, long[] positions)",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
+    },
+    "filter": {
+      "label": "Address matching",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs",
+      "line": 56,
+      "anchor": "private bool MatchAddresses(Address? fromAddress, Address? toAddress) =>",
+      "sha256": "173551b9841ab439ceb0fd3e79a4db839272403392f4e8533f559054de56a46d"
+    },
+    "call": {
+      "label": "Call simulation",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 69,
+      "anchor": "public ResultWrapper<ParityTxTraceFromReplay> trace_call(TransactionForRpc call, string[] traceTypes, BlockParameter? blockParameter = null, Dictionary<Address, AccountOverride>? stateOverride = null)",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 141,
+      "anchor": "public ResultWrapper<ParityTxTraceFromReplay> trace_rawTransaction(byte[] data, string[] traceTypes)",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
+    },
+    "replay": {
+      "label": "Replay serialization",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs",
+      "line": 24,
+      "anchor": "public static void WriteTail(Utf8JsonWriter writer, ParityLikeTxTrace trace, bool includeTxHash, JsonSerializerOptions options)",
+      "sha256": "119c90c7b699d0984c16a57c220d7c5ede8cc8534ccbda7ac380ef6ca792552c"
+    },
+    "frames": {
+      "label": "Call frames and precompiles",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
+      "line": 413,
+      "anchor": "public override void ReportAction(ulong gas, UInt256 value, Address from, Address to, ReadOnlyMemory<byte> input,",
+      "sha256": "9cc246154ddc1baea2e0729a477721bb5a58cd98cb88f4cbf8f7e62393f00141"
+    },
+    "vm": {
+      "label": "VM step serialization",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs",
+      "line": 17,
+      "anchor": "public override void Write(",
+      "sha256": "7445fef265708949489ca1a54de39a133263223580dccaba836b6a26a22546c2"
+    },
+    "state": {
+      "label": "Code and nonce state changes",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
+      "line": 356,
+      "anchor": "public override void ReportCodeChange(Address address, byte[]? before, byte[]? after)",
+      "sha256": "9cc246154ddc1baea2e0729a477721bb5a58cd98cb88f4cbf8f7e62393f00141"
+    }
+  },
+  "besu": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceGet.java",
+      "line": 37,
+      "anchor": "public class TraceGet extends AbstractTraceByHash implements JsonRpcMethod {",
+      "sha256": "60f383885d776739dc57f372289930d00f0d68141609025cb24d031477f178d6"
+    },
+    "filter": {
+      "label": "Filter execution pipeline",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "line": 135,
+      "anchor": "private JsonRpcResponse traceFilterWithPipeline(",
+      "sha256": "bcd49f29649a3c8c23fb1761576730590c49b074c8661d5b57c6002181623bfa"
+    },
+    "call": {
+      "label": "Call simulation",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceCall.java",
+      "line": 40,
+      "anchor": "public abstract class AbstractTraceCall extends AbstractTraceByBlock {",
+      "sha256": "e489003aaa5208e351e49d0ab521bccd4f5d9a9a742e77c8d351ab91569d41cb"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceRawTransaction.java",
+      "line": 46,
+      "anchor": "public class TraceRawTransaction extends AbstractTraceByBlock implements JsonRpcMethod {",
+      "sha256": "1063c43b1cfda04e1ffdc962e018dfc29f80ca26bd8c44f3eccfd619397c2f79"
+    },
+    "replay": {
+      "label": "Block replay",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java",
+      "line": 58,
+      "anchor": "public class TraceReplayBlockTransactions extends AbstractBlockParameterMethod {",
+      "sha256": "b68d6a364800bf9530ae10b9815348279a60c6031cc1c7e91dcc2c8bf2537f14"
+    },
+    "frames": {
+      "label": "Call-frame inclusion",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/flat/FlatTraceGenerator.java",
+      "line": 284,
+      "anchor": "// don't log calls to calls that don't execute, such as insufficient value and precompiles",
+      "sha256": "c0e8188218798b3258abe9a8a0e159cfb777282722ed8ef73d866511d1adc8ff"
+    },
+    "vm": {
+      "label": "VM memory deltas",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/vm/VmTraceGenerator.java",
+      "line": 230,
+      "anchor": "private void generateTracingMemory(final VmOperationExecutionReport report) {",
+      "sha256": "a5857a3a0a4e911a18e1a979c49c6dd2d26f47421d968e27281c37ea9ba6a39f"
+    }
+  },
+  "reth": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 220,
+      "anchor": "pub async fn trace_get(",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "filter": {
+      "label": "Address filtering",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 363,
+      "anchor": "pub async fn trace_filter(",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "call": {
+      "label": "Call simulation",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 97,
+      "anchor": "pub async fn trace_call(",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 121,
+      "anchor": "pub async fn trace_raw_transaction(",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "replay": {
+      "label": "Replay results",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 195,
+      "anchor": "pub async fn replay_transaction(",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "vm": {
+      "label": "VM trace builder (revm-inspectors 0.43.0)",
+      "repository": "https://github.com/paradigmxyz/revm-inspectors",
+      "commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/builder/parity.rs",
+      "line": 317,
+      "anchor": "fn make_vm_trace(&self, start: &CallTraceNode) -> VmTrace {",
+      "sha256": "4d3ae5678361a678bf6c101e0f8e6585d53c6cad793071bbe7f0469bd85acf76"
+    },
+    "state": {
+      "label": "State-diff builder (revm-inspectors 0.43.0)",
+      "repository": "https://github.com/paradigmxyz/revm-inspectors",
+      "commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/builder/parity.rs",
+      "line": 509,
+      "anchor": "pub fn populate_state_diff<'a, DB, I>(",
+      "sha256": "4d3ae5678361a678bf6c101e0f8e6585d53c6cad793071bbe7f0469bd85acf76"
+    },
+    "frames": {
+      "label": "Precompile frame selection (revm-inspectors 0.43.0)",
+      "repository": "https://github.com/paradigmxyz/revm-inspectors",
+      "commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/mod.rs",
+      "line": 289,
+      "anchor": "fn is_precompile_call<CTX: ContextTr<Journal: JournalExt>>(",
+      "sha256": "2133f1d3042a165430b3ad1096e37f52b90b5e7499a45f4c2173d6e1e7c8d050"
+    }
+  },
+  "geth": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_namespace.go",
+      "line": 153,
+      "anchor": "func (api *TraceAPI) Get(ctx context.Context, hash common.Hash, position TracePosition) (*TraceFrame, error) {",
+      "sha256": "29112674dfba1505bdd4b43e7f96fe3c2aae35c75c0499c0ffb923eae2cca531"
+    },
+    "filter": {
+      "label": "Address filtering",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_namespace.go",
+      "line": 186,
+      "anchor": "func (api *TraceAPI) Filter(ctx context.Context, filter TraceFilter) ([]*TraceFrame, error) {",
+      "sha256": "29112674dfba1505bdd4b43e7f96fe3c2aae35c75c0499c0ffb923eae2cca531"
+    },
+    "call": {
+      "label": "Call simulation",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_namespace.go",
+      "line": 52,
+      "anchor": "func (api *TraceAPI) Call(ctx context.Context, args TraceCallArgs, kinds TraceTypes, number *rpc.BlockNumber) (*TraceExecution, error) {",
+      "sha256": "29112674dfba1505bdd4b43e7f96fe3c2aae35c75c0499c0ffb923eae2cca531"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_namespace.go",
+      "line": 97,
+      "anchor": "func (api *TraceAPI) RawTransaction(ctx context.Context, input hexutil.Bytes, kinds TraceTypes) (*TraceExecution, error) {",
+      "sha256": "29112674dfba1505bdd4b43e7f96fe3c2aae35c75c0499c0ffb923eae2cca531"
+    },
+    "replay": {
+      "label": "Replay results",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_namespace.go",
+      "line": 122,
+      "anchor": "func (api *TraceAPI) ReplayTransaction(ctx context.Context, hash common.Hash, kinds TraceTypes) (*TraceExecution, error) {",
+      "sha256": "29112674dfba1505bdd4b43e7f96fe3c2aae35c75c0499c0ffb923eae2cca531"
+    },
+    "frames": {
+      "label": "Call frames and precompiles",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_capture.go",
+      "line": 123,
+      "anchor": "func (c *traceCapture) enter(depth int, typ byte, from, to common.Address, input []byte, gas uint64, value *big.Int) {",
+      "sha256": "41c472b5637539ca1072e579d148ff6b131b0a1f00283137dd8eb5934a2a6edc"
+    },
+    "vm": {
+      "label": "VM execution deltas",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_capture.go",
+      "line": 264,
+      "anchor": "func (c *traceCapture) opcode(pc uint64, op byte, gas, cost uint64, context tracing.OpContext, returnData []byte, depth int, err error) {",
+      "sha256": "41c472b5637539ca1072e579d148ff6b131b0a1f00283137dd8eb5934a2a6edc"
+    },
+    "state": {
+      "label": "State differences",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "path": "eth/tracers/trace_capture.go",
+      "line": 233,
+      "anchor": "func (c *traceCapture) stateDiff() map[common.Address]*traceAccountDiff {",
+      "sha256": "41c472b5637539ca1072e579d148ff6b131b0a1f00283137dd8eb5934a2a6edc"
+    }
+  }
+}

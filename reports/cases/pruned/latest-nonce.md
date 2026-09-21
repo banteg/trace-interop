@@ -1,6 +1,15 @@
-# pruned/latest-nonce
+# Latest nonce
 
-Exact observations; group size is not a correctness vote.
+`eth_getTransactionCount` · pruned · [All reports](../../README.md)
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Reth · Release](../../clients/reth_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -14,71 +23,4 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-pruned/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x85"
-}
-```
-
 </details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-pruned/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x85"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x85"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x85"
-}
-```
-
-</details>
-

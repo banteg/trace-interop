@@ -2,8 +2,8 @@
 
 Start with [your client's impact page](../reports/README.md), then follow a decision ID.
 Each record contains proposed behavior, rationale, observations and open questions.
-Assertion results identify exact builds and cases. Response previews link
-to the immutable source evidence.
+Release and development results appear side by side. Each example links the exact
+request, response evidence and relevant client code.
 
 For a disagreement, record:
 
@@ -29,3 +29,14 @@ upstream reusable runner improvements independently.
 
 Geth-based `rpctestgen` support and optional-method policy remain upstream decisions.
 Neither is silently assumed by this project. No upstream PR is created by these tools.
+
+## Maintaining the reports
+
+Edit human descriptions and proposed client changes in `decisions/impact.json`;
+keep the behavior decisions in `decisions/ledger.json`. Source entry points live in
+`decisions/sources.json`, pinned to a tested revision with a line anchor and file hash.
+When updating a source link, fetch that revision and verify both the anchor and hash.
+
+Run `uv run python scripts/build_reports.py` to regenerate the pages. Keep summaries
+focused on what a maintainer needs to change. Full assertions, run inventories and
+schema diagnostics belong in the linked examples and technical appendix.

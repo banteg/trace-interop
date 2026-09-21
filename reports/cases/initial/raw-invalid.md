@@ -1,6 +1,22 @@
-# initial/raw-invalid
+# Raw invalid
 
-Exact observations; group size is not a correctness vote.
+`trace_rawTransaction` · initial · [All reports](../../README.md)
+
+**What this checks:** Return one complete JSON-RPC response, including on validation failure. Malformed input returns invalid params (-32602).
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | RPC error `-32602` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | RPC error `-32602` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32602` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32602` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -16,201 +32,20 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json).
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
 
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **matches** — Malformed input returns invalid params (-32602).
+**Erigon · Release** (`3.6.1-0c4d9c91`)
 
-<details><summary>Response preview</summary>
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
 
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "invalid transaction: typed transaction too short"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **matches** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "Invalid transaction params (missing or incorrect)"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **matches** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "Invalid transaction params (missing or incorrect)"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **change_needed** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "short input: 1"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **change_needed** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "short input: 1"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **change_needed** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "Invalid RLP."
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **change_needed** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "Invalid RLP."
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **matches** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "failed to decode signed transaction"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H14: **matches** — Malformed input returns invalid params (-32602).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "failed to decode signed transaction"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-

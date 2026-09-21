@@ -1,0 +1,58 @@
+# Nethermind: changes to review
+
+Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement.
+
+[All clients](../README.md) · [Source guide](../sources.md)
+
+| Build | Tested version |
+| --- | --- |
+| Release | `1.39.3+28cbe2a0` |
+| Development | `2.1.0-unstable+a404c4f0` |
+
+Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
+
+## Changes to discuss
+
+| Behavior | Release | Development | Proposed change |
+| --- | --- | --- | --- |
+| [trace_get selector and return shape](../decisions/H02.md)<br>`trace_get` returns a list and treats positions differently from a nested path; `[]` returns `[]`. | Differs<br>[Get nested parent](../cases/a/get-nested-parent.md) | Differs<br>[Get nested parent](../cases/a/get-nested-parent.md) | Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type.<br>[Trace lookup](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L402) |
+| [Empty address lists](../decisions/H04.md)<br>Empty address lists suppress matches. | Differs<br>[Filter from empty to set](../cases/a/filter-from-empty-to-set.md) | Differs<br>[Filter from empty to set](../cases/a/filter-from-empty-to-set.md) | Treat `[]` as unrestricted, just like an omitted address list.<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) |
+| [Post-merge reward records](../decisions/H05.md)<br>PoS blocks include a synthetic PoW reward record. | Differs<br>[Block 2](../cases/a/block-2.md) | Differs<br>[Block 2](../cases/a/block-2.md) | Remove the placeholder reward and exclude it from pagination.<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) · [Call frames and precompiles](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L413) |
+| [Missing transactions and paths](../decisions/H06.md)<br>Missing transactions or paths can produce exceptions/RPC errors. | Differs<br>[Get missing](../cases/initial/get-missing.md) | Differs<br>[Get missing](../cases/initial/get-missing.md) | Return `null` for an absent transaction or path, while preserving distinct unavailable-history errors.<br>[Trace lookup](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L402) · [Replay serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L24) |
+| [Empty output and unrequested components](../decisions/H08.md)<br>Selecting only `stateDiff` loses nonempty execution output. | Differs<br>[State only nonempty output](../cases/a/state-only-nonempty-output.md) | Differs<br>[State only nonempty output](../cases/a/state-only-nonempty-output.md) | Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested.<br>[Replay serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L24) · [Call simulation](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L69) |
+| [Failed frame results and error labels](../decisions/H09.md)<br>Failed frames omit their result. | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Keep an explicit result: preserve revert output and measured gas where available, otherwise return `null`.<br>[Call frames and precompiles](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L413) |
+| [Empty trace-type selection](../decisions/H11.md)<br>An empty trace selection triggers an internal reduction error. | Differs<br>[Empty types](../cases/a/empty-types.md) | Differs<br>[Empty types](../cases/a/empty-types.md) | Execute the call and return its output with the unrequested components empty/null.<br>[Call simulation](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L69) |
+| [Signed transaction nonce validation](../decisions/H13.md)<br>A signed transaction with a nonce above the account nonce is accepted. | Differs<br>[Raw nonce high](../cases/a/raw-nonce-high.md) | Differs<br>[Raw nonce high](../cases/a/raw-nonce-high.md) | Reject the mismatch without rewriting the signed nonce.<br>[Signed transaction replay](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L141) |
+| [Invalid-parameter error codes](../decisions/H14.md)<br>Malformed raw transaction input uses a different error code. | Differs<br>[Raw invalid](../cases/initial/raw-invalid.md) | Differs<br>[Raw invalid](../cases/initial/raw-invalid.md) | Return invalid params (`-32602`) for malformed encoding.<br>[Signed transaction replay](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L141) · [Call simulation](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L69) |
+| [Unsigned simulation fees and block environment](../decisions/H15.md)<br>The empty-selection call fails; the other checked zero-fee calls do not. | Differs<br>[Call empty types](../cases/initial/call-empty-types.md) | Differs<br>[Call empty types](../cases/initial/call-empty-types.md) | Resolve the empty-selection error (H11). These results do not establish a general zero-fee admission bug.<br>[Call simulation](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L69) |
+| [vmTrace numeric and optional metadata encoding](../decisions/H21.md)<br>VM stack words use padded byte strings. | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Serialize stack words as minimal hex quantities, e.g. `0x2a` rather than a 32-byte padded string.<br>[VM step serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs#L17) |
+| [Well-formed errors for rejected raw transactions](../decisions/H25.md)<br>Rejected signed transactions can leave truncated JSON on the wire. | Differs<br>[Raw below basefee](../cases/a/raw-below-basefee.md) | Differs<br>[Raw below basefee](../cases/a/raw-below-basefee.md) | Finish validation before committing a streamed result, or ensure the error path returns one complete JSON-RPC response.<br>[Signed transaction replay](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L141) · [Replay serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L24) |
+| [Account deletion across Cancun](../decisions/H26.md)<br>Pre-Cancun account deletion does not report the expected code/nonce deletion markers. | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Report the removed code and nonce with deletion markers before Cancun; retain existing accounts under EIP-6780.<br>[Code and nonce state changes](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L356) |
+
+Result-shape differences are also recorded on the [case pages](../technical.md#result-shape-checks), including failures without a dedicated semantic assertion.
+
+<details><summary>Behaviors with no difference in the checked cases</summary>
+
+| Behavior | Examples |
+| --- | --- |
+| [Filter composition and mode](../decisions/H03.md) | [Filter all](../cases/a/filter-all.md) · [Filter all](../cases/initial/filter-all.md) |
+| [Replay transactionHash field](../decisions/H07.md) | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
+| [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) |
+| [Fee accounting and sequential state diffs](../decisions/H16.md) | [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) · [Many storage write revert read](../cases/repeat/many-storage-write-revert-read.md) |
+| [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) |
+| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
+| [vmTrace executing bytecode](../decisions/H19.md) | [Call constructor](../cases/initial/call-constructor.md) · [Call constructor priced](../cases/initial/call-constructor-priced.md) |
+| [vmTrace step timing and deltas](../decisions/H20.md) | [Call mcopy](../cases/a/call-mcopy.md) · [Call mcopy](../cases/repeat/call-mcopy.md) |
+| [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
+| [Special-action address matching](../decisions/H23.md) | [Filter created to](../cases/a/filter-created-to.md) · [Filter creator from](../cases/a/filter-creator-from.md) |
+| [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call value0 failed](../cases/precompiles/nested-call-value0-failed.md) |
+| [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
+| [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
+| [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call value0 failed](../cases/precompiles/nested-call-value0-failed.md) · [Nested call value0 success](../cases/precompiles/nested-call-value0-success.md) |
+
+</details>
+
+[Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)
+
+For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).

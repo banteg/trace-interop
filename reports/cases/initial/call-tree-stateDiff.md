@@ -1,6 +1,22 @@
-# initial/call-tree-stateDiff
+# Call tree statediff
 
-Exact observations; group size is not a correctness vote.
+`trace_call` · initial · [All reports](../../README.md)
+
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | RPC error `-32603` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | RPC error `-32603` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 0 call frames; output `null` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 0 call frames; output `null` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 0 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 0 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -23,489 +39,30 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json).
+- [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
-- H08: **matches** — Unrequested trace is an empty array.
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H15: **matches** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-Draft result schema: **valid**.
+- [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
-<details><summary>Response preview</summary>
+**Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0xffee",
-    "stateDiff": {
-      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
-        "balance": "=",
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0x85",
-            "to": "0x86"
-          }
-        },
-        "storage": {}
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
-        "balance": {
-          "*": {
-            "from": "0x3b9ac9f2",
-            "to": "0x3b9ac9f1"
-          }
-        },
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "storage": {
-          "0x0000000000000000000000000000000000000000000000000000000000000000": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
-            }
-          },
-          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
-            }
-          }
-        }
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
-        "balance": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      }
-    },
-    "trace": [],
-    "vmTrace": null
-  }
-}
-```
+- [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
+
+**Erigon · Release** (`3.6.1-0c4d9c91`)
+
+- [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
+
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+
+- [H08](../../decisions/H08.md): Output remains a byte string under every trace selection.
+- Result shape at `output`: None is not of type 'string'
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H08](../../decisions/H08.md): Output remains a byte string under every trace selection.
+- Result shape at `output`: None is not of type 'string'
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H15: **change_needed** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "Internal error"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H15: **change_needed** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "Internal error"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H15: **change_needed** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H15: **change_needed** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H08: **matches** — Unrequested trace is an empty array.
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **change_needed** — Output remains a byte string under every trace selection.
-- H15: **matches** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-Draft result schema: **invalid**.
-- `output`: None is not of type 'string'
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": null,
-    "stateDiff": {
-      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
-        "balance": "=",
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0x85",
-            "to": "0x86"
-          }
-        },
-        "storage": {}
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
-        "balance": {
-          "*": {
-            "from": "0x3b9ac9f2",
-            "to": "0x3b9ac9f1"
-          }
-        },
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "storage": {
-          "0x0000000000000000000000000000000000000000000000000000000000000000": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
-            }
-          },
-          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
-            }
-          }
-        }
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
-        "balance": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      }
-    },
-    "trace": [],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H08: **matches** — Unrequested trace is an empty array.
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **change_needed** — Output remains a byte string under every trace selection.
-- H15: **matches** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-Draft result schema: **invalid**.
-- `output`: None is not of type 'string'
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": null,
-    "stateDiff": {
-      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
-        "balance": "=",
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0x85",
-            "to": "0x86"
-          }
-        },
-        "storage": {}
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
-        "balance": {
-          "*": {
-            "from": "0x3b9ac9f2",
-            "to": "0x3b9ac9f1"
-          }
-        },
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "storage": {
-          "0x0000000000000000000000000000000000000000000000000000000000000000": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
-            }
-          },
-          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
-            }
-          }
-        }
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
-        "balance": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      }
-    },
-    "trace": [],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H08: **matches** — Unrequested trace is an empty array.
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H15: **matches** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0xffee",
-    "stateDiff": {
-      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
-        "balance": "=",
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0x85",
-            "to": "0x86"
-          }
-        },
-        "storage": {}
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
-        "balance": {
-          "*": {
-            "from": "0x3b9ac9f2",
-            "to": "0x3b9ac9f1"
-          }
-        },
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "storage": {
-          "0x0000000000000000000000000000000000000000000000000000000000000000": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
-            }
-          },
-          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
-            }
-          }
-        }
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
-        "balance": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      }
-    },
-    "trace": [],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-initial/observations.json).
-
-- H08: **matches** — Unrequested trace is an empty array.
-- H08: **matches** — Unrequested vmTrace is null.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H15: **matches** — Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0xffee",
-    "stateDiff": {
-      "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
-        "balance": "=",
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0x85",
-            "to": "0x86"
-          }
-        },
-        "storage": {}
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
-        "balance": {
-          "*": {
-            "from": "0x3b9ac9f2",
-            "to": "0x3b9ac9f1"
-          }
-        },
-        "code": "=",
-        "nonce": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "storage": {
-          "0x0000000000000000000000000000000000000000000000000000000000000000": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000e",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000f"
-            }
-          },
-          "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c": {
-            "*": {
-              "from": "0x000000000000000000000000000000000000000000000000000000000000000d",
-              "to": "0x000000000000000000000000000000000000000000000000000000000000000e"
-            }
-          }
-        }
-      },
-      "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
-        "balance": {
-          "*": {
-            "from": "0xe",
-            "to": "0xf"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      }
-    },
-    "trace": [],
-    "vmTrace": null
-  }
-}
-```
-
-</details>
-

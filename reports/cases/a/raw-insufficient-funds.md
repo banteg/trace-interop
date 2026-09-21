@@ -1,6 +1,23 @@
-# a/raw-insufficient-funds
+# Raw insufficient funds
 
-Exact observations; group size is not a correctness vote.
+`trace_rawTransaction` · a · [All reports](../../README.md)
+
+**What this checks:** Return one complete JSON-RPC response, including on validation failure. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 1 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a-besu-retry/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32000` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32003` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32003` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -18,377 +35,20 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-a/observations.json).
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-<details><summary>Response preview</summary>
+- [H25](../../decisions/H25.md): Return one complete JSON-RPC response, including on validation failure.
 
-```json
-{
-  "error": {
-    "code": -32000,
-    "message": "insufficient funds for gas * price + value: address 0x5CbDd86a2FA8Dc4bDdd8a8f69dBa48572EeC07FB have 0 want 42000000000001"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H25](../../decisions/H25.md): Return one complete JSON-RPC response, including on validation failure.
+
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H21: **matches** — Stack words use minimal hex quantities at every depth.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb",
-          "input": "0x",
-          "to": "0x0000000000000000000000000000000000001234",
-          "value": "0x1"
-        },
-        "result": {
-          "gasUsed": "0x0",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": {
-      "code": "0x",
-      "ops": []
-    }
-  }
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H21: **matches** — Stack words use minimal hex quantities at every depth.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": {
-      "0x0000000000000000000000000000000000000000": {
-        "balance": {
-          "*": {
-            "from": "0x66863b",
-            "to": "0x262aafd8968b"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      },
-      "0x0000000000000000000000000000000000001234": {
-        "balance": {
-          "+": "0x1"
-        },
-        "code": {
-          "+": "0x"
-        },
-        "nonce": {
-          "+": "0x0"
-        },
-        "storage": {}
-      },
-      "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb": {
-        "balance": {
-          "+": "0x0"
-        },
-        "code": {
-          "+": "0x"
-        },
-        "nonce": {
-          "+": "0x1"
-        },
-        "storage": {}
-      }
-    },
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb",
-          "gas": "0x0",
-          "input": "0x",
-          "to": "0x0000000000000000000000000000000000001234",
-          "value": "0x1"
-        },
-        "result": {
-          "gasUsed": "0x0",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": {
-      "code": "0x",
-      "ops": []
-    }
-  }
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H21: **matches** — Stack words use minimal hex quantities at every depth.
-
-Draft result schema: **valid**.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": {
-      "0x0000000000000000000000000000000000000000": {
-        "balance": {
-          "*": {
-            "from": "0x66863b",
-            "to": "0x262aafd8968b"
-          }
-        },
-        "code": "=",
-        "nonce": "=",
-        "storage": {}
-      },
-      "0x0000000000000000000000000000000000001234": {
-        "balance": {
-          "+": "0x1"
-        },
-        "code": {
-          "+": "0x"
-        },
-        "nonce": {
-          "+": "0x0"
-        },
-        "storage": {}
-      },
-      "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb": {
-        "balance": {
-          "+": "0x0"
-        },
-        "code": {
-          "+": "0x"
-        },
-        "nonce": {
-          "+": "0x1"
-        },
-        "storage": {}
-      }
-    },
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb",
-          "gas": "0x0",
-          "input": "0x",
-          "to": "0x0000000000000000000000000000000000001234",
-          "value": "0x1"
-        },
-        "result": {
-          "gasUsed": "0x0",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": {
-      "code": "0x",
-      "ops": []
-    }
-  }
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **malformed_json**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **change_needed** — Return one complete JSON-RPC response, including on validation failure.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "raw_response": "{\"jsonrpc\":\"2.0\",\"result\":{\"vmTrace\":\"output\":null,\"stateDiff\":{},\"trace\":[]}",
-  "status": "malformed_json"
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **malformed_json**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **change_needed** — Return one complete JSON-RPC response, including on validation failure.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "raw_response": "{\"jsonrpc\":\"2.0\",\"result\":{\"vmTrace\":\"output\":null,\"stateDiff\":{},\"trace\":[]}",
-  "status": "malformed_json"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32003,
-    "message": "insufficient funds for gas * price + value: have 0 want 42000000000001"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32003,
-    "message": "insufficient funds for gas * price + value: have 0 want 42000000000001"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
-
-- H25: **matches** — Return one complete JSON-RPC response, including on validation failure.
-- H08: **matches** — Output remains a byte string under every trace selection.
-- H21: **matches** — Stack words use minimal hex quantities at every depth.
-
-Draft result schema: **invalid**.
-- `trace/0`: {'action': {'callType': 'call', 'from': '0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [
-      {
-        "action": {
-          "callType": "call",
-          "from": "0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb",
-          "input": "0x",
-          "to": "0x0000000000000000000000000000000000001234",
-          "value": "0x1"
-        },
-        "result": {
-          "gasUsed": "0x0",
-          "output": "0x"
-        },
-        "subtraces": 0,
-        "traceAddress": [],
-        "type": "call"
-      }
-    ],
-    "vmTrace": {
-      "code": "0x",
-      "ops": []
-    }
-  }
-}
-```
-
-</details>
-

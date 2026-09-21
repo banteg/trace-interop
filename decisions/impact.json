@@ -1,120 +1,268 @@
 {
-  "H01": {
-    "besu": "Decide whether to add trace_replayTransaction or declare it unsupported in the agreed profile."
+  "clients": {
+    "besu": {
+      "name": "Besu",
+      "summary": "Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision."
+    },
+    "erigon": {
+      "name": "Erigon",
+      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition and signed nonce validation still need attention."
+    },
+    "nethermind": {
+      "name": "Nethermind",
+      "summary": "Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement."
+    },
+    "reth": {
+      "name": "Reth",
+      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces."
+    },
+    "geth": {
+      "name": "Geth draft fork",
+      "summary": "The experimental fork matches the selected assertions. It is a place to try the draft, not upstream Geth support; historical filtering is a bounded scan and pruning coverage remains incomplete."
+    }
   },
-  "H02": {
-    "reth": "Replace flat/offset selection with one traceAddress path; [] must select root. Existing callers may depend on old indexing.",
-    "nethermind": "Use one nested path and return a singular object/null instead of a list; this changes the response type."
-  },
-  "H03": {
-    "reth": "Change the default from union to intersection between address lists; explicit union would remain an extension.",
-    "erigon": "Change default union to intersection and avoid suppressing one-sided intersection queries."
-  },
-  "H04": {
-    "nethermind": "Treat [] address lists as unrestricted rather than matching nothing.",
-    "erigon": "The draft rejects null filters; accepts null, so stricter validation is a compatibility change.",
-    "besu": "The draft rejects null filters; accepts null, so stricter validation is a compatibility change."
-  },
-  "H05": {
-    "nethermind": "Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change.",
-    "besu": "Remove synthetic zero PoW reward records on PoS blocks; pagination counts will change."
-  },
-  "H06": {
-    "besu": "Return null rather than [] for unknown transaction lookup.",
-    "nethermind": "Replace unknown-transaction/path exceptions with null; distinguish unavailable history.",
-    "reth": "Return null for unknown individual replay rather than a missing-transaction error."
-  },
-  "H07": {
-    "reth": "Add transactionHash to individual replay envelopes."
-  },
-  "H08": {
-    "nethermind": "Preserve actual output bytes when only stateDiff is selected; null loses nonempty output too."
-  },
-  "H09": {
-    "nethermind": "Retain failed-frame result information where available instead of omitting result.",
-    "besu": "Retain revert bytes and gas where available; use null for inapplicable result."
-  },
-  "H10": {
-    "besu": "Use address, code and gasUsed consistently for successful creation frames."
-  },
-  "H11": {
-    "nethermind": "Accept empty trace selections without an internal reduction exception."
-  },
-  "H12": {
-    "reth": "The baseline rejects a third block argument; preserve existing extension only under a separate profile.",
-    "erigon": "Keep the two-argument baseline; document any block-selector extension."
-  },
-  "H13": {
-    "erigon": "Reject signed nonce mismatches without substituting the account nonce.",
-    "nethermind": "Reject signed nonce mismatches without substituting the account nonce.",
-    "besu": "Reject signed nonce mismatches without substituting the account nonce."
-  },
-  "H14": {
-    "reth": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
-    "erigon": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
-    "nethermind": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers.",
-    "besu": "Normalize malformed input to -32602 and separate it from valid-but-rejected transactions; code changes affect consumers."
-  },
-  "H15": {
-    "reth": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
-    "erigon": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
-    "nethermind": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks.",
-    "besu": "Review zero-fee unsigned calls without changing BASEFEE; fee admission and opcode context need separate checks."
-  },
-  "H16": {
-    "reth": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
-    "erigon": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
-    "nethermind": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule.",
-    "besu": "Confirm actual fee accounting and per-entry callMany diffs; storage sequencing alone does not prove the entire rule."
-  },
-  "H17": {
-    "reth": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
-    "erigon": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
-    "nethermind": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts.",
-    "besu": "Review new-account + markers for empty code and zero nonce, independently of prefunded existing accounts."
-  },
-  "H18": {
-    "reth": "Capture EIP-7702 code set/replace/clear changes even when the account already exists; preserve authorization changes across execution revert."
-  },
-  "H19": {
-    "reth": "Populate vmTrace.code with executing initcode for creation frames."
-  },
-  "H20": {
-    "reth": "Refresh after the merged inspector fix; old gas/memory/call-return findings may now be resolved.",
-    "erigon": "Include the MCOPY memory write; compare release and development results.",
-    "besu": "Review same-step VM memory effects, including MCOPY."
-  },
-  "H21": {
-    "reth": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
-    "erigon": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
-    "nethermind": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers.",
-    "besu": "Review stack word canonicalization; optional op/idx must not become mandatory for consumers."
-  },
-  "H22": {
-    "besu": "Preserve precompile return bytes in the call-frame result as well as the execution envelope."
-  },
-  "H23": {
-    "reth": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
-    "erigon": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
-    "nethermind": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters.",
-    "besu": "Verify CREATE and SELFDESTRUCT matching against explicit from/to equivalents; do not infer behavior from ordinary CALL filters."
-  },
-  "H24": {
-    "besu": "Keep sibling frame failure status isolated; a reverting sibling must not taint a successful one."
-  },
-  "H25": {
-    "nethermind": "Avoid partial/malformed JSON when signed-transaction validation fails."
-  },
-  "H26": {
-    "reth": "Report real pre-Cancun deletion of account fields; preserve existing accounts after EIP-6780."
-  },
-  "H27": {
-    "besu": "Investigate range/per-block discrepancies at fork boundaries; select fork rules separately per block."
-  },
-  "H28": {
-    "erigon": "Exclude the next block system update from historical state; compare release and development results."
-  },
-  "H29": {
-    "besu": "Retain nested precompile frames with nonzero transferred or inherited value; keep root and parent failure status tied to their own execution."
+  "topics": {
+    "H01": {
+      "besu": {
+        "observed": "Individual transaction replay is unavailable.",
+        "change": "Add `trace_replayTransaction`, or agree that it is outside the supported profile."
+      }
+    },
+    "H03": {
+      "besu": {
+        "observed": "Filtering by recipient alone does not return the expected subset of the same block trace.",
+        "change": "Make a recipient-only query select every matching call. An omitted sender list should impose no restriction."
+      },
+      "erigon": {
+        "observed": "Supplying both sender and recipient lists broadens the search by default (OR).",
+        "change": "Use AND between the two lists, so adding a recipient filter narrows a sender query. Keep union as an explicit extension if desired."
+      },
+      "reth": {
+        "observed": "Sender and recipient lists are combined with OR by default.",
+        "change": "Use AND between lists so a second filter narrows the search; preserve union only as an explicit extension."
+      }
+    },
+    "H04": {
+      "besu": {
+        "observed": "An empty sender list with a populated recipient list loses expected matches.",
+        "change": "Treat `[]` like an omitted list, then apply the populated list normally."
+      },
+      "nethermind": {
+        "observed": "Empty address lists suppress matches.",
+        "change": "Treat `[]` as unrestricted, just like an omitted address list."
+      }
+    },
+    "H05": {
+      "besu": {
+        "observed": "PoS blocks include a synthetic PoW reward record.",
+        "change": "Remove the placeholder reward. This also changes which records pagination counts."
+      },
+      "nethermind": {
+        "observed": "PoS blocks include a synthetic PoW reward record.",
+        "change": "Remove the placeholder reward and exclude it from pagination."
+      }
+    },
+    "H06": {
+      "besu": {
+        "observed": "An unknown transaction returns `[]`.",
+        "change": "Return `null` for an unknown transaction, so callers can distinguish absence from a transaction with no call records."
+      },
+      "erigon": {
+        "observed": "Looking up a missing transaction with `trace_get` returns an RPC error.",
+        "change": "Return `null` for a missing transaction or path; reserve errors for unavailable history and invalid requests."
+      },
+      "nethermind": {
+        "observed": "Missing transactions or paths can produce exceptions/RPC errors.",
+        "change": "Return `null` for an absent transaction or path, while preserving distinct unavailable-history errors."
+      },
+      "reth": {
+        "observed": "Missing individual replays return an error; verified pruned-history requests use `-32603`.",
+        "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error."
+      }
+    },
+    "H09": {
+      "besu": {
+        "observed": "Failed frames lose result information; a failed root precompile can also lack an error.",
+        "change": "Keep the error on the failing frame. Preserve revert bytes and measured gas when available; otherwise use an explicit `null` result."
+      },
+      "nethermind": {
+        "observed": "Failed frames omit their result.",
+        "change": "Keep an explicit result: preserve revert output and measured gas where available, otherwise return `null`."
+      }
+    },
+    "H10": {
+      "besu": {
+        "observed": "A successful creation reports deployed bytecode under `output`.",
+        "change": "Use `code` for deployed bytecode, alongside `address` and `gasUsed`."
+      }
+    },
+    "H11": {
+      "besu": {
+        "observed": "The zero-fee call with an empty trace selection is rejected.",
+        "change": "Recheck after the unsigned-call fee change (H15). This case alone does not establish a separate empty-selection bug."
+      },
+      "erigon": {
+        "observed": "Empty-selection requests include rejected calls; the zero-fee case also fails the fee rule.",
+        "change": "Accept an empty selection and return the execution envelope. Recheck alongside H15 before treating every rejection as a separate selection bug."
+      },
+      "nethermind": {
+        "observed": "An empty trace selection triggers an internal reduction error.",
+        "change": "Execute the call and return its output with the unrequested components empty/null."
+      }
+    },
+    "H13": {
+      "besu": {
+        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
+        "change": "Reject the nonce mismatch; do not replace a signed transaction’s nonce for simulation."
+      },
+      "erigon": {
+        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
+        "change": "Reject the nonce mismatch instead of substituting the account nonce."
+      },
+      "nethermind": {
+        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
+        "change": "Reject the mismatch without rewriting the signed nonce."
+      }
+    },
+    "H15": {
+      "besu": {
+        "observed": "Explicit zero-fee unsigned calls are rejected.",
+        "change": "Allow zero-fee `trace_call` simulations while retaining the selected block’s `BASEFEE` opcode value."
+      },
+      "erigon": {
+        "observed": "Explicit zero-fee unsigned calls are rejected.",
+        "change": "Allow zero-fee unsigned simulation without changing the block’s `BASEFEE` opcode value."
+      },
+      "nethermind": {
+        "observed": "The empty-selection call fails; the other checked zero-fee calls do not.",
+        "change": "Resolve the empty-selection error (H11). These results do not establish a general zero-fee admission bug."
+      }
+    },
+    "H20": {
+      "besu": {
+        "observed": "The `MCOPY` step omits its memory write.",
+        "change": "Include the bytes written at offset 32 in that step’s memory delta."
+      },
+      "erigon": {
+        "observed": "The `MCOPY` step omits its memory write.",
+        "change": "Record the same-step memory delta, including the copied word at offset 32."
+      }
+    },
+    "H22": {
+      "besu": {
+        "observed": "The identity precompile returns bytes in the execution envelope but not its call frame.",
+        "change": "Copy the precompile’s return bytes into the call-frame result as well."
+      }
+    },
+    "H23": {
+      "besu": {
+        "observed": "CREATE and SELFDESTRUCT address queries disagree with the corresponding block trace.",
+        "change": "Match creation by creator/created address, and SELFDESTRUCT by destroyed account/beneficiary."
+      }
+    },
+    "H24": {
+      "besu": {
+        "observed": "A handled child failure can mark a successful parent or sibling as failed.",
+        "change": "Track errors per frame; a caught failure must not change the outcome of another frame."
+      }
+    },
+    "H27": {
+      "besu": {
+        "observed": "A range filter differs from concatenating the same blocks’ traces across a fork boundary.",
+        "change": "Use each block’s own execution rules and make range filtering agree with per-block tracing."
+      }
+    },
+    "H29": {
+      "besu": {
+        "observed": "Nested precompile frames are omitted even when their value is nonzero.",
+        "change": "Retain nested precompile frames with transferred or inherited nonzero value. Continue omitting zero-value nested frames and retaining root frames."
+      }
+    },
+    "H02": {
+      "erigon": {
+        "observed": "Root and nested `trace_get` requests fail or select the wrong record.",
+        "change": "Interpret the selector as one `traceAddress` path: `[]` selects the root, `[0]` its first child."
+      },
+      "nethermind": {
+        "observed": "`trace_get` returns a list and treats positions differently from a nested path; `[]` returns `[]`.",
+        "change": "Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type."
+      },
+      "reth": {
+        "observed": "The selector uses a flat index; `[]` returns `null` and nested paths do not work.",
+        "change": "Walk one `traceAddress` path instead. Return the root for `[]`, and one object or `null` for other paths. Existing flat-index callers will need a migration path."
+      }
+    },
+    "H08": {
+      "erigon": {
+        "observed": "An unrequested `trace` component is `null`.",
+        "change": "Return `trace: []` when call traces were not requested; keep the execution output independently."
+      },
+      "nethermind": {
+        "observed": "Selecting only `stateDiff` loses nonempty execution output.",
+        "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
+      }
+    },
+    "H14": {
+      "erigon": {
+        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`.",
+        "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection."
+      },
+      "nethermind": {
+        "observed": "Malformed raw transaction input uses a different error code.",
+        "change": "Return invalid params (`-32602`) for malformed encoding."
+      }
+    },
+    "H28": {
+      "erigon": {
+        "observed": "A historical beacon-root lookup includes a following block’s system update.",
+        "change": "Read the selected block’s post-state, before applying the next block’s system operations."
+      }
+    },
+    "H21": {
+      "nethermind": {
+        "observed": "VM stack words use padded byte strings.",
+        "change": "Serialize stack words as minimal hex quantities, e.g. `0x2a` rather than a 32-byte padded string."
+      }
+    },
+    "H25": {
+      "nethermind": {
+        "observed": "Rejected signed transactions can leave truncated JSON on the wire.",
+        "change": "Finish validation before committing a streamed result, or ensure the error path returns one complete JSON-RPC response."
+      }
+    },
+    "H26": {
+      "nethermind": {
+        "observed": "Pre-Cancun account deletion does not report the expected code/nonce deletion markers.",
+        "change": "Report the removed code and nonce with deletion markers before Cancun; retain existing accounts under EIP-6780."
+      },
+      "reth": {
+        "observed": "Pre-Cancun account deletion loses code/nonce deletion markers.",
+        "change": "Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780."
+      }
+    },
+    "H07": {
+      "reth": {
+        "observed": "Individual replay results omit `transactionHash`.",
+        "change": "Include the requested transaction hash in the replay envelope, consistently with block replay."
+      }
+    },
+    "H12": {
+      "reth": {
+        "observed": "Raw-transaction tracing accepts a third block-selector argument.",
+        "change": "Agree how to retain this extension alongside the draft’s two-argument baseline. This is a compatibility decision, not an execution defect."
+      }
+    },
+    "H18": {
+      "reth": {
+        "observed": "EIP-7702 delegation code changes are missing from `stateDiff`.",
+        "change": "Include authorization code set, replacement and clearing, even for existing accounts and when the subsequent execution reverts."
+      }
+    },
+    "H19": {
+      "reth": {
+        "observed": "Creation `vmTrace.code` does not contain the expected executing initcode.",
+        "change": "Attach the creation frame’s initcode to its VM trace, including in block replay."
+      }
+    }
   }
 }

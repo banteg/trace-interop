@@ -1,6 +1,17 @@
-# pruned/old-filter
+# Old filter
 
-Exact observations; group size is not a correctness vote.
+`trace_filter` · pruned · [All reports](../../README.md)
+
+**What this checks:** Unavailable historical state uses the proposed pruned-history error (4444).
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Reth · Release](../../clients/reth_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32603` | Differs | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32603` | Differs | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -16,85 +27,12 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## reth_development · Reth Version: 2.5.2+03cb186c
+**Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
-Capture: **rpc_error**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-pruned/observations.json).
+- [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
 
+**Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
+- [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
 
 </details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-pruned/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-- H06: **change_needed** — Unavailable historical state uses the proposed pruned-history error (4444).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-pruned-ready/observations.json).
-
-- H06: **change_needed** — Unavailable historical state uses the proposed pruned-history error (4444).
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32603,
-    "message": "failed to apply blockhash contract call: database error: Database error: insufficient changesets to revert to block #1. Available changeset range: 43..=48"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-

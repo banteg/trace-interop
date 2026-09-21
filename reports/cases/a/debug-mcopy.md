@@ -1,6 +1,21 @@
-# a/debug-mcopy
+# Debug mcopy
 
-Exact observations; group size is not a correctness vote.
+`debug_traceCall` · a · [All reports](../../README.md)
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a-besu-retry/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -23,241 +38,4 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-    "gas": "0x927c0",
-    "gasUsed": "0x5226",
-    "input": "0x",
-    "to": "0x000000000000000000000000000000000000100a",
-    "type": "CALL",
-    "value": "0x0"
-  }
-}
-```
-
-</details>
-

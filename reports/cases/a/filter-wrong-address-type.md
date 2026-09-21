@@ -1,6 +1,21 @@
-# a/filter-wrong-address-type
+# Filter wrong address type
 
-Exact observations; group size is not a correctness vote.
+`trace_filter` · a · [All reports](../../README.md)
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 5 records | Not assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a-besu-retry/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 5 records | Not assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
 
 ```json
 {
@@ -17,304 +32,12 @@ Exact observations; group size is not a correctness vote.
 }
 ```
 
-## go-ethereum_trace · Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/geth-e29edff-a/observations.json).
+- Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "invalid argument 0: json: cannot unmarshal string into Go struct field plain.fromAddress of type []common.Address"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
+- Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 </details>
-
-## besu_development · besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-Draft result schema: **invalid**.
-- `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x13488",
-        "input": "0x01",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "error": "Reverted",
-      "revertReason": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
-      "subtraces": 0,
-      "traceAddress": [],
-      "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
-      "transactionPosition": 0,
-      "type": "call"
-    },
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x8d5b8",
-        "input": "0x",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "result": {
-        "gasUsed": "0x2343f",
-        "output": "0xffee"
-      },
-      "subtraces": 7,
-      "traceAddress": [],
-      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-      "transactionPosition": 1,
-      "type": "call"
-    },
-    {
-      "action": {
-        "creationMethod": "create",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x4b0e",
-        "init": "0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "result": {
-        "address": "0x4055cae5c7d838cda10d40f9d07106c7f5f3be1c",
-        "code": "0x36156009575f355f555b305f525f
-… preview truncated; use the full evidence link above.
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **not_observed**; scenario eligible: **False**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{}
-```
-
-</details>
-
-## erigon_development · 3.8.0-dev-c25b8e47
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "invalid argument 0: json: cannot unmarshal string into Go struct field TraceFilterRequest.fromAddress of type []*common.Address"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## erigon_release · 3.6.1-0c4d9c91
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "invalid argument 0: json: cannot unmarshal string into Go struct field TraceFilterRequest.fromAddress of type []*common.Address"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_development · 2.1.0-unstable+a404c4f0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "Invalid params"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## nethermind_release · 1.39.3+28cbe2a0
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "message": "Invalid params"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_development · Reth Version: 2.5.2+03cb186c
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "data": "invalid type: string \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f\", expected a sequence at line 1 column 98",
-    "message": "Invalid params"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## reth_release · Reth Version: 2.6.0+73a3a008
-
-Capture: **rpc_error**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a/observations.json).
-
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "error": {
-    "code": -32602,
-    "data": "invalid type: string \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f\", expected a sequence at line 1 column 98",
-    "message": "Invalid params"
-  },
-  "id": 1,
-  "jsonrpc": "2.0"
-}
-```
-
-</details>
-
-## besu_release · besu/v26.8.1/linux-x86_64/openjdk-java-25
-
-Capture: **result**; scenario eligible: **True**. [Full evidence](../../../evidence/2026-09-21/verified-a-besu-retry/observations.json).
-
-
-Draft result schema: **invalid**.
-- `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
-
-<details><summary>Response preview</summary>
-
-```json
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x13488",
-        "input": "0x01",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "error": "Reverted",
-      "revertReason": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72",
-      "subtraces": 0,
-      "traceAddress": [],
-      "transactionHash": "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
-      "transactionPosition": 0,
-      "type": "call"
-    },
-    {
-      "action": {
-        "callType": "call",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x8d5b8",
-        "input": "0x",
-        "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "result": {
-        "gasUsed": "0x2343f",
-        "output": "0xffee"
-      },
-      "subtraces": 7,
-      "traceAddress": [],
-      "transactionHash": "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
-      "transactionPosition": 1,
-      "type": "call"
-    },
-    {
-      "action": {
-        "creationMethod": "create",
-        "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-        "gas": "0x4b0e",
-        "init": "0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3",
-        "value": "0x0"
-      },
-      "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
-      "blockNumber": 2,
-      "result": {
-        "address": "0x4055cae5c7d838cda10d40f9d07106c7f5f3be1c",
-        "code": "0x36156009575f355f555b305f525f
-… preview truncated; use the full evidence link above.
-```
-
-</details>
-

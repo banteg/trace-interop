@@ -36,6 +36,8 @@ Edit human descriptions and proposed client changes in `decisions/impact.json`;
 keep the behavior decisions in `decisions/ledger.json`. Source entry points live in
 `decisions/sources.json`, pinned to a tested revision with a line anchor and file hash.
 When updating a source link, fetch that revision and verify both the anchor and hash.
+Record exact tested versions and upstream committer timestamps in
+`locks/source-revisions.json`; image creation dates do not establish source chronology.
 
 Run `uv run python scripts/build_reports.py` to regenerate the pages. Keep summaries
 focused on what a maintainer needs to change. Full assertions, run inventories and

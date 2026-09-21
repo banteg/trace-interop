@@ -1,5 +1,6 @@
 """Maintainer-facing views of the independently evaluated observations."""
 from collections import defaultdict
+from datetime import datetime, timezone
 import json
 import os
 
@@ -54,6 +55,37 @@ def verdict(checks):
     if 'matches' in statuses:
         return 'Checked cases agree'
     return 'Not assessed'
+
+
+def utc_date(timestamp):
+    if not timestamp:
+        return 'Not recorded'
+    return datetime.fromisoformat(timestamp.replace('Z', '+00:00')).astimezone(timezone.utc).date().isoformat()
+
+
+def build_rows(selected, runs, revisions, parent):
+    """Pair exact tested versions with source commits, never infer from a channel label."""
+    groups = {}
+    for client in selected:
+        for run in runs:
+            if client not in run['manifest']['clients']:
+                continue
+            version = run['versions'].get(client, 'unknown')
+            dates = groups.setdefault((client, version), {})
+            tested = utc_date(run['manifest'].get('started_at'))
+            dates.setdefault(tested, run['path'])
+    rows = []
+    for (client, version), dates in groups.items():
+        refs = [ref for ref in revisions.get(client, []) if ref['version'] == version]
+        if len(refs) > 1:
+            raise ValueError(f'ambiguous source revision for {client}: {version}')
+        committed = 'Not recorded'
+        if refs:
+            ref = refs[0]
+            committed = f'[{utc_date(ref["committed_at"])}]({ref["repository"]}/commit/{ref["commit"]})'
+        tested = '<br>'.join(f'[{date}]({relative(path, parent)})' for date,path in sorted(dates.items()))
+        rows.append([channel(client), f'`{version}`', committed, tested])
+    return rows
 
 
 def source_url(source):
@@ -121,8 +153,11 @@ def note(editorial, client, topic, checks):
 def render(root, output, records, by_client, case_pages, run_rows, decisions, lock):
     editorial = json.loads((root/'decisions/impact.json').read_text())
     sources = json.loads((root/'decisions/sources.json').read_text())
+    revisions = json.loads((root/'locks/source-revisions.json').read_text())
     clients = sorted({r['client'] for r in records})
     run_manifests = {row['name']: output/row['manifest'] for row in run_rows}
+    build_runs = [{'manifest': json.loads(run_manifests[row['name']].read_text()),
+                   'versions': row['versions'], 'path': run_manifests[row['name']]} for row in run_rows]
     availability = defaultdict(lambda: defaultdict(set))
     for entries in case_pages.values():
         for e in entries:
@@ -177,7 +212,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     def client_page(f, selected, path):
         profile = editorial['clients'][f]
         text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Source guide](../sources.md)\n\n'
-        text += table(['Build', 'Tested version'], [[channel(c), '<br>'.join(f'`{v}`' for v in sorted({r['version'] for r in records if r['client'] == c}))] for c in selected])
+        text += table(['Build', 'Tested version', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
+        versions = {r['version'] for r in records if r['client'] in selected}
+        for build_note in profile.get('build_notes', []):
+            if versions and versions <= set(build_note['versions']):
+                text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
         rows = []; matched = []; untested = []
         for topic, d in decisions.items():

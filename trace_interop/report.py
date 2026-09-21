@@ -51,7 +51,7 @@ def generate(root, runs, output):
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
     write(output/'assessment.json', {
         'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','trace_interop/presentation.py','decisions/sources.json','spec.lock.json','decisions/ledger.json','decisions/impact.json']},
+        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','trace_interop/presentation.py','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},
     })
     write(output/'checks.json',records)

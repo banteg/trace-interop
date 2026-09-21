@@ -4,7 +4,7 @@ import re
 import unittest
 from pathlib import Path
 
-from trace_interop.presentation import outcome, verdict, examples, source_url
+from trace_interop.presentation import outcome, verdict, examples, source_url, build_rows
 
 
 class ReportVerdictTests(unittest.TestCase):
@@ -36,6 +36,26 @@ class ReportVerdictTests(unittest.TestCase):
         checks = [{'status': 'matches', 'corpus': 'a', 'case': 'first'},
                   {'status': 'change_needed', 'corpus': 'z', 'case': 'counterexample'}]
         self.assertIn('counterexample.md', examples(Path('/reports'), Path('/reports/clients'), checks, 1))
+
+    def test_commit_dates_match_exact_version_not_image_or_channel(self):
+        runs = [
+            {'path': Path('/reports/run1.json'), 'versions': {'reth_development': 'old'},
+             'manifest': {'started_at': '2026-09-21T01:00:00+04:00', 'clients': {
+                 'reth_development': {'image_id': 'one', 'created': '2026-09-19T05:00:00Z',
+                                      'labels': {'org.opencontainers.image.created': '2000-01-01T00:00:00Z'}}}}},
+            {'path': Path('/reports/run2.json'), 'versions': {'reth_development': 'new'},
+             'manifest': {'started_at': '2026-09-21T12:00:00Z', 'clients': {
+                 'reth_development': {'image_id': 'two'}}}},
+        ]
+        revisions = {'reth_development': [{'version': 'old', 'committed_at': '2026-09-18T12:00:00Z',
+                                             'repository': 'https://github.com/paradigmxyz/reth', 'commit': 'a' * 40}]}
+        rows = build_rows(['reth_development'], runs, revisions, Path('/reports/clients'))
+        self.assertEqual(rows[0][1], '`old`')
+        self.assertIn('[2026-09-18]', rows[0][2])
+        self.assertIn('/commit/' + 'a' * 40, rows[0][2])
+        self.assertIn('2026-09-20', rows[0][3])
+        self.assertEqual(rows[1][1:3], ['`new`', 'Not recorded'])
+        self.assertIn('2026-09-21', rows[1][3])
 
     def test_source_catalog_uses_immutable_revisions_and_line_anchors(self):
         root = Path(__file__).resolve().parents[1]

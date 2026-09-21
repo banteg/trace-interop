@@ -4,9 +4,9 @@ The experimental fork matches the selected assertions. It is a place to try the 
 
 [All clients](../README.md) · [Source guide](../sources.md)
 
-| Build | Tested version |
-| --- | --- |
-| Draft fork | `Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1` |
+| Build | Tested version | Commit date (UTC) | Tested (UTC) |
+| --- | --- | --- | --- |
+| Draft fork | `Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1` | [2026-09-21](https://github.com/banteg/go-ethereum/commit/e29edff514a08c38ed0b08ab67d26a0644c79548) | [2026-09-21](../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

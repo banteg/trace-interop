@@ -4,9 +4,11 @@ The main changes are tree-path lookup, filter composition, replay metadata, and 
 
 [All clients](../README.md) · [Source guide](../sources.md)
 
-| Build | Tested version |
-| --- | --- |
-| Release | `Reth Version: 2.6.0+73a3a008` |
+| Build | Tested version | Commit date (UTC) | Tested (UTC) |
+| --- | --- | --- | --- |
+| Release | `Reth Version: 2.6.0+73a3a008` | [2026-09-17](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json) |
+
+**The nightly is newer despite its lower version number.** Its commit is from September 20, while the release commit is from September 17. The release-only version bump set `2.6.0`; the nightly still declares `2.5.2`. [Compare the tested revisions](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...03cb186c1d36eebbacc7bda08f36e25711d0804e).
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

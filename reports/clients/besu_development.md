@@ -4,9 +4,9 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Source guide](../sources.md)
 
-| Build | Tested version |
-| --- | --- |
-| Development | `besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25` |
+| Build | Tested version | Commit date (UTC) | Tested (UTC) |
+| --- | --- | --- | --- |
+| Development | `besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25` | [2026-09-21](https://github.com/besu-eth/besu/commit/d997aad7b3be6333464c0687d3761c568ee63524) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

@@ -1,0 +1,74 @@
+{
+  "reth_release": [
+    {
+      "version": "Reth Version: 2.6.0+73a3a008",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "73a3a00862a8f14f89e30da8de001456f18cfae0",
+      "committed_at": "2026-09-17T12:49:52Z"
+    }
+  ],
+  "reth_development": [
+    {
+      "version": "Reth Version: 2.5.2+03cb186c",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "committed_at": "2026-09-20T08:57:29Z"
+    }
+  ],
+  "erigon_release": [
+    {
+      "version": "3.6.1-0c4d9c91",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "0c4d9c91dbaffd52890235f7ea395b0231738501",
+      "committed_at": "2026-09-09T13:45:41Z"
+    }
+  ],
+  "erigon_development": [
+    {
+      "version": "3.8.0-dev-c25b8e47",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "committed_at": "2026-09-21T15:41:15Z"
+    }
+  ],
+  "besu_release": [
+    {
+      "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d97cbd61976a52bb109e637196fef9a8ebf2b617",
+      "committed_at": "2026-08-28T19:24:04Z"
+    }
+  ],
+  "besu_development": [
+    {
+      "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "committed_at": "2026-09-21T14:13:36Z"
+    }
+  ],
+  "nethermind_release": [
+    {
+      "version": "1.39.3+28cbe2a0",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "28cbe2a0ae28373f66abdc584f3eaf21516e84b3",
+      "committed_at": "2026-08-03T22:24:10Z"
+    }
+  ],
+  "nethermind_development": [
+    {
+      "version": "2.1.0-unstable+a404c4f0",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "committed_at": "2026-09-21T14:16:56Z"
+    }
+  ],
+  "go-ethereum_trace": [
+    {
+      "version": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e29edff514a08c38ed0b08ab67d26a0644c79548",
+      "committed_at": "2026-09-21T18:18:27Z"
+    }
+  ]
+}

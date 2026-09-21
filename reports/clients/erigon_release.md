@@ -4,9 +4,9 @@ The tested development build agrees on several cases that differ in the release,
 
 [All clients](../README.md) · [Source guide](../sources.md)
 
-| Build | Tested version |
-| --- | --- |
-| Release | `3.6.1-0c4d9c91` |
+| Build | Tested version | Commit date (UTC) | Tested (UTC) |
+| --- | --- | --- | --- |
+| Release | `3.6.1-0c4d9c91` | [2026-09-09](https://github.com/erigontech/erigon/commit/0c4d9c91dbaffd52890235f7ea395b0231738501) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

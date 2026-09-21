@@ -4,10 +4,10 @@ Prioritize complete error responses, retained execution output, and empty trace 
 
 [All clients](../README.md) · [Source guide](../sources.md)
 
-| Build | Tested version |
-| --- | --- |
-| Release | `1.39.3+28cbe2a0` |
-| Development | `2.1.0-unstable+a404c4f0` |
+| Build | Tested version | Commit date (UTC) | Tested (UTC) |
+| --- | --- | --- | --- |
+| Release | `1.39.3+28cbe2a0` | [2026-08-03](https://github.com/NethermindEth/nethermind/commit/28cbe2a0ae28373f66abdc584f3eaf21516e84b3) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json) |
+| Development | `2.1.0-unstable+a404c4f0` | [2026-09-21](https://github.com/NethermindEth/nethermind/commit/a404c4f06a67aee52cc448216b8d37a77062f106) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

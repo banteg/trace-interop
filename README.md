@@ -10,6 +10,20 @@ All nine traditional methods: `trace_call`, `trace_callMany`, `trace_rawTransact
 
 Erigon, Reth, Nethermind and Besu are the initial clients. Hive owns client startup and fixture execution. This project owns case selection, immutable observations, proposed assertions and generated impact reports.
 
+## Start here
+
+- [Client impact reports](reports/README.md): changes proposed for each client, with fresh assertions.
+- [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.
+- [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.
+- [Review workflow](docs/review.md): distinguish API decisions from execution defects.
+
+```sh
+uv sync --locked
+uv run trace-interop verify
+uv run python scripts/check_schema.py
+uv run python scripts/build_reports.py
+```
+
 ## Existing evidence
 
 The [decision ledger](decisions/README.md) imports 28 proposals from the September 15 investigation. [Historical evidence](evidence/2026-09-15/) retains exact responses and provenance. It is dated evidence, not a statement about current releases.

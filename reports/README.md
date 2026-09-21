@@ -6,15 +6,20 @@ Draft: [1143c7b33b93](https://github.com/banteg/execution-apis/commit/1143c7b33b
 
 ## Client impact
 
+- [besu_development](clients/besu_development.md)
 - [besu_release](clients/besu_release.md)
+- [erigon_development](clients/erigon_development.md)
 - [erigon_release](clients/erigon_release.md)
+- [nethermind_development](clients/nethermind_development.md)
 - [nethermind_release](clients/nethermind_release.md)
+- [reth_development](clients/reth_development.md)
 - [reth_release](clients/reth_release.md)
 
 ## Runs
 
 | Run | Corpus | Capture complete | Versions |
 | --- | --- | --- | --- |
+| [initial](../evidence/2026-09-21/initial/manifest.json) | initial | True | {'besu_development': 'besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25', 'besu_release': 'besu/v26.8.1/linux-x86_64/openjdk-java-25', 'erigon_development': '3.8.0-dev-c25b8e47', 'erigon_release': '3.6.1-0c4d9c91', 'nethermind_development': '2.1.0-unstable+a404c4f0', 'nethermind_release': '1.39.3+28cbe2a0', 'reth_development': 'Reth Version: 2.5.2+03cb186c', 'reth_release': 'Reth Version: 2.6.0+73a3a008'} |
 
 ## Review decisions
 

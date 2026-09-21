@@ -7,6 +7,7 @@ import re
 def evaluate(case, observation, peers):
     """Return independently scoped rule checks; absence means no automated assertion."""
     name, request = case['name'], case['request']
+    context = case.get('context', {})
     method, params = request['method'], request.get('params', [])
     response = observation.get('response') or {}
     result = response.get('result')
@@ -121,4 +122,51 @@ def evaluate(case, observation, peers):
         check('H14', status == 'rpc_error' and response['error']['code'] == -32602, 'Malformed input returns invalid params (-32602).')
     if name in ['raw-nonce-high','raw-valid-current-nonce-high']:
         check('H13', status == 'rpc_error', 'A signed nonce mismatch is rejected rather than replaced.')
+
+    if method == 'trace_block' and isinstance(result,list):
+        block=params[0]
+        headers=context.get('headers',[])
+        header=next((h for h in headers if h.get('number')==block),None)
+        if header is None and context.get('_chain')=='initial':
+            header={'difficulty':'0x0'}
+        if header and int(header.get('difficulty','0x1'),16)==0:
+            check('H05', not any(f.get('type')=='reward' for f in result), 'A PoS block has no synthetic PoW reward records.')
+    frames=result.get('trace',[]) if isinstance(result,dict) else result if method in ['trace_block','trace_transaction'] and isinstance(result,list) else []
+    failed=[f for f in frames if 'error' in f]
+    if failed:
+        check('H09', all('result' in f and ('revert' not in f['error'].lower() or isinstance(f['result'],dict) and 'output' in f['result'] and 'gasUsed' in f['result']) for f in failed), 'Failed frames have an explicit result; REVERT preserves return bytes and measured gas.')
+    if method=='trace_rawTransaction' and len(params)>2:
+        check('H12', status=='rpc_error' and response['error']['code']==-32602, 'The two-argument baseline rejects an extra block selector (extension policy remains open).')
+    if name in ['call-tree-trace','call-tree-stateDiff','call-tree-vmTrace','call-constructor','call-empty-types'] and params[0].get('gasPrice')=='0x0':
+        check('H15', status=='result' and isinstance(result,dict), 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
+    contracts=context.get('contracts',{})
+    if name=='prefunded-empty' and isinstance(result,dict):
+        change=(result.get('stateDiff') or {}).get(params[0]['to'],{})
+        check('H17', change.get('code')=='=' and change.get('nonce')=='=', 'An existing prefunded account does not acquire creation markers for empty code or zero nonce.')
+    if name in ['auth-set','auth-replace','auth-clear','auth-set-revert'] and contracts:
+        authority='undelegated' if name in ['auth-set','auth-set-revert'] else 'delegated'
+        destination={'auth-set':'return42','auth-replace':'revert','auth-set-revert':'revert'}.get(name)
+        before='0x'+contracts[authority]['code'];after='0xef0100'+contracts[destination]['address'][2:] if destination else '0x'
+        change=(result.get('stateDiff') or {}).get(contracts[authority]['address'],{}).get('code') if isinstance(result,dict) else None
+        check('H18', change=={'*':{'from':before,'to':after}}, 'EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.')
+    if name in ['destroy-trace-55','destroy-trace-56']:
+        change=(result.get('stateDiff') or {}).get(params[0]['to'],{}) if isinstance(result,dict) else {}
+        before_cancun=name.endswith('55')
+        ok=isinstance(change.get('code'),dict) and '-' in change['code'] and isinstance(change.get('nonce'),dict) and '-' in change['nonce'] if before_cancun else change.get('code')=='=' and change.get('nonce')=='='
+        check('H26', ok, 'Delete code/nonce before Cancun; preserve an existing account after EIP-6780.')
+    if name.startswith('filter-across-'):
+        boundary=int(name.rsplit('-',1)[1]); a,b=other('block-'+str(boundary-1)),other('block-'+str(boundary))
+        if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')
+    if name.startswith('filter-') and name.removeprefix('filter-').isdigit():
+        block=other('block-'+name.removeprefix('filter-'))
+        if isinstance(block,list):check('H27', result==block, 'A single-block filter agrees with trace_block at the same fork.')
+    if name.startswith('system-beacon-'):
+        _,_,block,slot=name.split('-'); headers=context.get('headers',[])
+        h=next((h for h in headers if h.get('number')=='0x38'),None)
+        if h:
+            expected='0x'+('0'*64 if int(block)<56 else f'{560:064x}' if slot=='560' else h['parentBeaconBlockRoot'][2:])
+            check('H28', status=='result' and result==expected, 'Historical beacon-root storage excludes the following block system update.')
+    if name in ['beacon-call-55','beacon-call-56']:
+        h=next((h for h in context.get('headers',[]) if h.get('number')=='0x38'),None)
+        if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
     return checks

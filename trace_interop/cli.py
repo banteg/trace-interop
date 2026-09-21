@@ -15,7 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
-          'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks'}
+          'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
+          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a'}
 IMAGES = {
     'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
@@ -139,6 +140,11 @@ def execute(args):
         raise ValueError('client selection must contain distinct locked clients')
     corpus = read(ROOT / 'fixtures/corpora' / (args.corpus + '.json'))
     cases = selected_cases(corpus, args.case)
+    if args.corpus in ['reorg', 'reorg-safe']:
+        cases = corpus['cases']  # Canonical transitions require all three phases.
+    elif any(c['request']['method'] == 'trace_filter' for c in cases):
+        names_selected = {c['name'] for c in cases}
+        cases += [c for c in corpus['cases'] if c['name'] not in names_selected and (c['name'] in ['transaction-tree', 'block-tree'] or c['name'].startswith('block-'))]
     chain = ROOT / 'fixtures/chains' / CHAINS[args.corpus]
     head = read(chain / 'headblock.json')
     cases = [{'name': '_control/head', 'request': {'jsonrpc': '2.0', 'id': 1,
@@ -161,6 +167,8 @@ def execute(args):
                          {'jsonrpc': '2.0', 'id': 1, 'result': {'capture_only': True}}) + '\n')
     write(sim / 'openrpc.json', {'openrpc': '1.2.6', 'info': {'title': 'Observations', 'version': '0'}, 'methods': []})
     (sim / 'Dockerfile').write_text(DOCKERFILE)
+    from .scenarios import prepare
+    prepare(hive, corpus, args.corpus, {n: lock['clients'][n] for n in names})
     out.mkdir(parents=True)
     entries = []
     for name in names:
@@ -194,7 +202,8 @@ def execute(args):
     manifest['finished_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
     write(out / 'manifest.json', manifest)
     result = collect(out)
-    if process.returncode or not result['complete']:
+    # rpc-compat exits nonzero for the deliberate capture placeholders.
+    if not result['complete']:
         raise ValueError(f'run incomplete; evidence saved to {out}')
     print(f'Captured {result["exchange_count"]} responses in {out}')
 
@@ -255,9 +264,16 @@ def collect(out):
     for client in manifest['clients']:
         actual = observations.get('_control/head', {}).get(client, {}).get('response', {}).get('result')
         eligibility[client] = isinstance(actual, dict) and all(actual.get(k) == manifest['head'].get(k) for k in ['hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot'])
+    scenario_status = {}
+    from .scenarios import verify_state
+    corpus = read(ROOT / 'fixtures/corpora' / (manifest['corpus'] + '.json')) if manifest.get('corpus') else {}
+    for client in manifest['clients']:
+        ok, detail = verify_state(manifest.get('corpus', ''), corpus, observations, client)
+        scenario_status[client] = {'verified': ok, 'detail': detail}
+        eligibility[client] = eligibility[client] and ok
     missing = [[case, client] for case in cases for client in manifest['clients'] if client not in observations[case]]
     transport = [[case, client] for case, clients in observations.items() for client, obs in clients.items() if obs['status'] in ['harness_error', 'transport_error']]
-    summary = {'versions': versions, 'eligible': eligibility, 'missing': missing,
+    summary = {'versions': versions, 'scenario': scenario_status, 'eligible': eligibility, 'missing': missing,
                'transport_errors': transport, 'launches': launches,
                'complete': not missing and not transport and all(eligibility.values()) and all(x['pass'] for x in launches),
                'exchange_count': sum(len(v) for v in observations.values()),
@@ -294,7 +310,14 @@ def main():
         elif args.command == 'resolve':
             resolve(args)
         elif args.command == 'run':
-            execute(args)
+            import fcntl
+            (ROOT / '.cache').mkdir(exist_ok=True)
+            with (ROOT / '.cache/run.lock').open('w') as guard:
+                try:
+                    fcntl.flock(guard, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except BlockingIOError:
+                    raise ValueError('another run owns the Hive build context')
+                execute(args)
         elif args.command == 'collect':
             result = collect(args.run)
             print(json.dumps({k: v for k, v in result.items() if k != 'launches'}, indent=2))

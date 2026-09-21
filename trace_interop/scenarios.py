@@ -1,0 +1,103 @@
+"""Small scenario overlays on the pinned Hive simulator; no production node access."""
+import json
+from pathlib import Path
+import subprocess
+
+REORG = r'''package main
+import (
+ "encoding/json"
+ "fmt"
+ "os"
+ "regexp"
+ "time"
+ "github.com/ethereum/hive/hivesim"
+)
+type interopRequest struct { Method string `json:"method"`; Params []any `json:"params"` }
+func runInteropScenario(t *hivesim.T, c *hivesim.Client) bool {
+ data,err:=os.ReadFile("tests/reorg.json")
+ if os.IsNotExist(err) { return false }; if err!=nil { t.Fatal(err) }
+ var plan struct { Payloads []interopRequest `json:"payloads"`; Switch interopRequest `json:"switch"`; Restore interopRequest `json:"restore"` }
+ if err:=json.Unmarshal(data,&plan);err!=nil { t.Fatal(err) }
+ phase:=func(name string) {
+  for _,test:=range loadTests(t,"tests/interop/"+name,regexp.MustCompile(".*")) {
+   test:=test
+   t.Run(hivesim.TestSpec{Name:fmt.Sprintf("interop/%s/%s (%s)",name,test.name,c.Type),Run:func(t *hivesim.T){if err:=runTest(t,c,&test);err!=nil {t.Fatal(err)}}})
+  }
+ }
+ phase("_control"); phase("before")
+ for _,req:=range plan.Payloads {
+  var reply map[string]any
+  err:=c.EngineAPI().Call(&reply,req.Method,req.Params...)
+  t.Logf("interop Engine %s: reply=%v error=%v",req.Method,reply,err)
+  if err!=nil || reply["status"]=="INVALID" { t.Fatal("alternate payload rejected",err,reply) }
+ }
+ move:=func(req interopRequest) {
+  for i:=0;i<150;i++ {
+   var reply struct { PayloadStatus struct { Status string `json:"status"` } `json:"payloadStatus"` }
+   err:=c.EngineAPI().Call(&reply,req.Method,req.Params...)
+   if err!=nil { t.Fatal(err) }
+   if reply.PayloadStatus.Status=="VALID" { t.Logf("interop forkchoice accepted: %v",req.Params); return }
+   if reply.PayloadStatus.Status=="INVALID" {t.Fatal("forkchoice invalid")}
+   time.Sleep(200*time.Millisecond)
+  }
+  t.Fatal("forkchoice timed out")
+ }
+ move(plan.Switch); phase("after"); move(plan.Restore); phase("restored")
+ return true
+}
+'''
+
+PRUNE = '''# Prune only the disposable imported test database, retaining headers/receipts.
+cat > /trace-prune.toml <<'CONFIG'
+[prune]
+block_interval = 1
+minimum_pruning_distance = 0
+[prune.segments]
+account_history = { before = 44 }
+storage_history = { before = 44 }
+CONFIG
+$reth prune --datadir "$DATADIR" --chain /genesis.json --config /trace-prune.toml || exit 1
+FLAGS="$FLAGS --config /trace-prune.toml"
+
+'''
+
+
+def prepare(hive, corpus, name, clients):
+    sim=hive/'simulators/ethereum/rpc-compat'
+    # Only restore files this adapter owns inside our dedicated dependency checkout.
+    for relative in ['simulators/ethereum/rpc-compat/main.go','clients/reth/reth.sh']:
+        original=subprocess.check_output(['git','show','HEAD:'+relative],cwd=hive)
+        (hive/relative).write_bytes(original)
+    (sim/'interop_scenario.go').unlink(missing_ok=True)
+    if name in ['reorg','reorg-safe']:
+        # A complete scenario is small; case-level selection still needs all phase controls.
+        (sim/'tests/reorg.json').write_text(json.dumps(corpus['plan'])+'\n')
+        if 'initial_fcu' in corpus:
+            (sim/'tests/headfcu.json').write_text(json.dumps(corpus['initial_fcu'])+'\n')
+        p=sim/'main.go';text=p.read_text();needle='sendForkchoiceUpdated(t, c)'
+        if text.count(needle)!=1:raise ValueError('pinned Hive scenario insertion point changed')
+        p.write_text(text.replace(needle,needle+'\n\t\t\tif runInteropScenario(t, c) { return }'))
+        (sim/'interop_scenario.go').write_text(REORG)
+    if name=='pruned':
+        if any(c['client']!='reth' for c in clients.values()):
+            raise ValueError('pruned scenario has a verified Reth adapter only; select Reth clients')
+        p=hive/'clients/reth/reth.sh';text=p.read_text();needle='# Launch the main client.'
+        if text.count(needle)!=1:raise ValueError('pinned Reth pruning insertion point changed')
+        p.write_text(text.replace(needle,PRUNE+needle))
+
+
+def verify_state(corpus_name, corpus, observations, client):
+    def result(name):return observations.get(name,{}).get(client,{}).get('response',{}).get('result')
+    if corpus_name in ['reorg','reorg-safe']:
+        for phase,key in [('before','heads_a'),('after','heads_b'),('restored','heads_a')]:
+            header=result(phase+'/head')
+            if not isinstance(header,dict) or header.get('hash')!=corpus[key][-1]['hash']:
+                return False, 'canonical '+phase+' head not established'
+        return True, 'canonical switch and restoration verified'
+    if corpus_name=='pruned':
+        errors=[observations.get(n,{}).get(client,{}).get('response',{}).get('error') for n in ['old-transaction','old-replay','old-block','old-filter']]
+        header,receipt,latest=result('old-header'),result('old-receipt'),result('latest-call')
+        valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'
+        valid=valid and all(isinstance(e,dict) and 'prun' in e.get('message','').lower() for e in errors)
+        return bool(valid), 'requires retained old header/receipt, successful latest call, and explicit pruned-state errors'
+    return True, 'ordinary imported-chain scenario'

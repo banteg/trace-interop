@@ -37,19 +37,21 @@ def generate(root, runs, output):
         for name, value in read(folder/'checksums.json').items():
             if sha(folder/name) != value:raise ValueError(f'evidence modified: {folder.name}/{name}')
         run_rows.append({'name':folder.name,'manifest':link(folder/'manifest.json',output),'corpus':manifest['corpus'],'complete':summary['complete'],'versions':summary['versions'],'digest':digest})
+        context=read(root/'fixtures/corpora'/(manifest['corpus']+'.json'))
+        context['_chain']=manifest['corpus']
         for client in manifest['clients']:
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
             for case in manifest['selected_cases']:
                 name=case['name']; observation=peers.get(name,{})
                 record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':summary['eligible'].get(client,False),'checks':[]}
                 if record['eligible'] and observation:
-                    record['checks']=evaluate(case,observation,peers)
+                    record['checks']=evaluate(dict(case,context=context),observation,peers)
                     if spec and observation.get('status')=='result' and case['request']['method'] in methods:
                         schema=methods[case['request']['method']]['result']['schema']
                         errors=list(Draft201909Validator(schema).iter_errors(observation['response']['result']))
                         record['schema']={'status':'invalid' if errors else 'valid','errors':[{'path':'/'.join(map(str,e.absolute_path)), 'message':e.message[:300]} for e in errors[:8]]}
                 for check in record['checks']:
-                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus']))
+                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(folder/'observations.json',output/'clients')))
                 records.append(record)
     write(output/'checks.json',records)
     write(output/'runs.json',run_rows)
@@ -77,11 +79,13 @@ def generate(root, runs, output):
             text+=f'| [{id} — {escape(d["title"])}](../decisions/{id}.md) | {verdict} | {escape(impact)} |\n'
         for id,checks in by_client[client].items():
             if not checks:continue
-            text+=f'\n## {id} assertion evidence\n\n'
+            text+=f'\n<details><summary>{id}: {len(checks)} assertion checks</summary>\n\n'
             for c in checks:
                 text+=f'- **{c["status"]}** · `{c["run"]}` / `{c["case"]}`: {c["requirement"]} {c.get("detail","")}\n'
-                text+=f'  Reproduce: `uv run trace-interop run --lock clients.lock.json --clients {client} --corpus {c["corpus"]} --case "^{c["case"]}$" --output runs/reproduce`\n'
-        path.write_text(text)
+                text+=f'  [Raw responses]({c["evidence"]}).\n'
+                text+=f'  Reproduce: `uv run trace-interop run --lock {c["lock"]} --clients {client} --corpus {c["corpus"]} --case "^{c["case"]}$" --output runs/reproduce`\n'
+            text+='\n</details>\n'
+        path.write_text('\n'.join(line.rstrip() for line in text.splitlines())+'\n')
     introduction+='\n## Runs\n\n| Run | Corpus | Capture complete | Versions |\n| --- | --- | --- | --- |\n'
     for row in run_rows:introduction+=f'| [{row["name"]}]({row["manifest"]}) | {row["corpus"]} | {row["complete"]} | {escape(row["versions"])} |\n'
     introduction+='\n## Review decisions\n\n'
@@ -99,6 +103,6 @@ def generate(root, runs, output):
             for c in topics[id]:
                 found=True;text+=f'- {client}: **{c["status"]}**, `{c["run"]}/{c["case"]}` — {c["requirement"]}\n'
         if not found:text+='No automated assertion for this decision in the selected runs. Review remains manual.\n'
-        path.write_text(text)
+        path.write_text('\n'.join(line.rstrip() for line in text.splitlines())+'\n')
     (output/'README.md').write_text(introduction)
     print(f'Generated {len(records)} observation assessments and {len(decisions)} decision pages in {output}')

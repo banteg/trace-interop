@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "complete": true,
+    "corpus": "initial",
+    "digest": "62226f498c922aee67f920da9b699cad22d4ff66ef9697614d63a32a014ec7c4",
+    "manifest": "../evidence/2026-09-21/initial/manifest.json",
+    "name": "initial",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  }
+]

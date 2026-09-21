@@ -227,10 +227,10 @@ def parse_exchange(log, expected):
     raw, response = replies[0]
     if response is None:
         return {'status': 'malformed_json', 'raw_response': raw}
-    if not isinstance(response, dict) or response.get('jsonrpc') != '2.0' or response.get('id') != expected['id'] or ('result' in response) == ('error' in response):
+    if not isinstance(response, dict) or response.get('jsonrpc') != '2.0' or type(response.get('id')) is not type(expected['id']) or response.get('id') != expected['id'] or ('result' in response) == ('error' in response):
         return {'status': 'invalid_envelope', 'raw_response': raw, 'response': response}
     error = response.get('error')
-    if error is not None and (not isinstance(error, dict) or not isinstance(error.get('code'), int) or not isinstance(error.get('message'), str)):
+    if 'error' in response and (not isinstance(error, dict) or type(error.get('code')) is not int or not isinstance(error.get('message'), str)):
         return {'status': 'invalid_envelope', 'raw_response': raw, 'response': response}
     status = 'unsupported' if isinstance(error, dict) and error.get('code') == -32601 else 'rpc_error' if error is not None else 'result'
     return {'status': status, 'raw_response': raw, 'response': response}
@@ -239,7 +239,13 @@ def parse_exchange(log, expected):
 def collect(out):
     out = Path(out)
     manifest = read(out / 'manifest.json')
+    if not manifest['selected_cases'] or not manifest['clients']:
+        raise ValueError('capture manifest must select cases and clients')
     cases = {c['name']: c['request'] for c in manifest['selected_cases']}
+    if len(cases) != len(manifest['selected_cases']):
+        raise ValueError('duplicate case names in capture manifest')
+    if '_control/head' not in cases:
+        raise ValueError('capture manifest is missing the chain identity control')
     observations = {c: {} for c in cases}
     versions, launches = {}, []
     for file in sorted((out / 'hive').glob('*.json')):

@@ -1,0 +1,11 @@
+{
+  "evidence": {
+    "../evidence/2026-09-21/initial/manifest.json": "62226f498c922aee67f920da9b699cad22d4ff66ef9697614d63a32a014ec7c4"
+  },
+  "sources": {
+    "spec.lock.json": "c65770d6011044974bca0d03dd00fe17e72116ef788c29ec488e59d8e9d0e2f8",
+    "trace_interop/report.py": "8f2cdf8d4bcbbbeeda148b4b4fb469baa597ccc1ed607233c44d48e0aaa87ab0",
+    "trace_interop/rules.py": "a9da0936415ca085a4dbf7196c8b766e9a9d115d6c40170078bcae8b27c79598"
+  },
+  "spec_commit": "1143c7b33b93841d4e89f6f63d12d3e8f95d8b3c"
+}

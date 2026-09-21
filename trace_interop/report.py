@@ -55,6 +55,11 @@ def generate(root, runs, output):
                     by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(folder/'observations.json',output/'clients')))
                 records.append(record)
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
+    write(output/'assessment.json', {
+        'spec_commit': lock['commit'] if spec else None,
+        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','spec.lock.json']},
+        'evidence': {row['manifest']:row['digest'] for row in run_rows},
+    })
     write(output/'checks.json',records)
     comparisons=[]
     for (corpus,name),entries in sorted(case_pages.items()):

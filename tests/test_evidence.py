@@ -28,6 +28,21 @@ class CaptureTests(unittest.TestCase):
         for reply in [{'jsonrpc':'2.0','id':2,'result':None}, {'jsonrpc':'2.0','id':1,'result':None,'error':{'code':-1,'message':'x'}}]:
             self.assertEqual(self.exchange(json.dumps(reply))['status'],'invalid_envelope')
 
+    def test_null_error_and_boolean_numbers_are_invalid(self):
+        for reply in [
+            {'jsonrpc':'2.0','id':1,'error':None},
+            {'jsonrpc':'2.0','id':True,'result':None},
+            {'jsonrpc':'2.0','id':1,'error':{'code':False,'message':'x'}},
+        ]:
+            self.assertEqual(self.exchange(json.dumps(reply))['status'],'invalid_envelope')
+
+    def test_empty_manifest_cannot_make_green_run(self):
+        for cases, clients in [([], {'reth_release':{}}), ([{'name':'_control/head','request':REQ}], {})]:
+            with tempfile.TemporaryDirectory() as d:
+                path=Path(d)
+                write(path/'manifest.json',{'selected_cases':cases,'clients':clients})
+                with self.assertRaises(ValueError):collect(path)
+
     def test_error_categories(self):
         for code,expected in [(-32601,'unsupported'),(-32000,'rpc_error')]:
             self.assertEqual(self.exchange(json.dumps({'jsonrpc':'2.0','id':1,'error':{'code':code,'message':'x'}}))['status'],expected)

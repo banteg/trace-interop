@@ -4,7 +4,7 @@ Upstream changes arising from the trace comparison. Status checked **2026-09-22*
 A merged patch, a tested build and agreement with the proposed API are separate milestones.
 The [client reports](../reports/README.md) describe the behavior; this page tracks the work to change it.
 
-**17 pending · 8 merged**
+**19 pending · 8 merged**
 
 ## Pending
 
@@ -25,7 +25,7 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | PR | Fix | Evidence and next step |
 | --- | --- | --- |
 | [Nethermind #13665](https://github.com/NethermindEth/nethermind/pull/13665) | Preserve return and revert bytes in state-only traces ([H08](../reports/decisions/H08.md)) | Four original output regressions and 13 review regressions reproduce failures before their fixes. Output-only callbacks avoid unused actions; streamed VM-only actions return pooled inputs; stored replay retains output and filters calls/rewards correctly. Trace RPC/Parity: 123 passed, one existing skip; TraceStore: 21 passed. Review and matrix retest remain. |
-| [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Return complete errors for early streamed execution failures ([H25](../reports/decisions/H25.md)) | Preserves response byte limits, flush accounting and internal-error classification while buffering early failures. Seven review regressions fail before the follow-up; 188 response-writer, service and log tests pass afterward. Review and matrix retest remain. |
+| [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Return complete errors for early streamed execution failures ([H25](../reports/decisions/H25.md)) | Preserves response byte limits, flush accounting and internal-error classification while buffering early failures. Seven review regressions fail before the first follow-up; 188 response-writer, service and log tests pass. A [cancellation follow-up](../evidence/2026-09-22/streaming-and-system-errors/README.md) prevents partial successes after timeout: six new regressions fail before it and all 179 selected streaming/service tests pass afterward. Review and matrix retest remain. |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept an empty trace-type selection ([H11](../reports/decisions/H11.md)) | Depends on [#13665](https://github.com/NethermindEth/nethermind/pull/13665), including its allocation and stored-output fixes. Covers calls and stored transaction/block replay with empty selections. Trace RPC/Parity: 129 passed, one existing skip; TraceStore: 25 passed. Review and matrix retest remain. |
 | [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deleted account fields with deletion markers ([H26](../reports/decisions/H26.md)) | Five regressions reproduce changes to null instead of `-` markers. Serializer and streamed/buffered RPC tests cover pre-Cancun deletion, zero/empty fields and retained accounts after Cancun: 120 related tests passed, one existing skip. Review and matrix retest remain. |
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve `trace_get` failures and guard position bounds | Preserves lookup/state errors and bounds checks, and disposes materialized streams on success or failure. Three lifetime checks cover timeout cleanup and exactly-once materialization. All 82 trace RPC tests and 17 TraceStore module tests pass. Existing position semantics are preserved; tree-path agreement remains separate. |
@@ -35,6 +35,8 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 
 | PR | Fix | Evidence and next step |
 | --- | --- | --- |
+| [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system-call error sources ([H06](../reports/decisions/H06.md)) | Six real-EVM regressions fail before the fix; default/no-default workspace tests and all-feature Clippy pass. [Validation](../evidence/2026-09-22/streaming-and-system-errors/README.md). Reth also needs #27378 and dependency uptake. |
+| [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve existing pruned-history errors through execution wrappers ([H06](../reports/decisions/H06.md)) | All 50 package tests and package Clippy pass. Handles the BAL database wrapper as well as ordinary sources. Full-workspace Clippy needs LLVM 22. System-call fixes require Alloy EVM #411; rerun after both land in a development build. |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return `null` for a missing replay transaction ([H06](../reports/decisions/H06.md)) | Open; no rerun until merged into Reth's development branch (`main`). Execution failures still return errors. |
 | [Reth #27366](https://github.com/paradigmxyz/reth/pull/27366) | Select `trace_get` results by tree path ([H02](../reports/decisions/H02.md)) | Open; no rerun until merged into `main`. This is a proposed contract change, not evidence of cross-client agreement. |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay | The PR has native block/individual replay regression tests. Obtain review and rerun the affected cases after merge. Related to [H19](../reports/decisions/H19.md), but it does not by itself establish a fix for the separate creation-initcode case. |
@@ -66,7 +68,7 @@ Matthias Seitz opened the six Reth/Alloy proposals above. Four have merged: two 
 Reth and two in Alloy. Reth's locked Alloy version does not yet contain those changes.
 Only the two fixes already included in Reth `main` were rerun; see the
 [replay and pruning results](../evidence/2026-09-22/reth-main-534c60db/README.md).
-No dependency overrides or unmerged PR branches were tested.
+No dependency overrides or unmerged PR branches were included in that cross-client run; native regression tests for pending patches are tracked separately.
 
 ## Related work
 

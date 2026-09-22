@@ -47,10 +47,10 @@
     "../evidence/2026-09-23/raw-validation-native/manifest.json": "1cacf9c2b3ed0fdd949a882023911f9938a422edf1f855b7578996adaa902f05"
   },
   "sources": {
-    "decisions/impact.json": "4bc3a24edf8c7905d5f879446a42e334888e6eeae011c203ed790c1e6f4fabc0",
-    "decisions/ledger.json": "86b289a92e071bd7e8b2b944bfd89fe92960ade2727b8fc94497cbe259c185cd",
+    "decisions/impact.json": "932f416d18ab1465a4b98f40257016f208ad2ddb09ca31039309626ee4f53005",
+    "decisions/ledger.json": "de000eaaa0091a5cfec33ce9c38a4f08d6322a708c43484c402dea98eaa05f8a",
     "decisions/sources.json": "14654e5e1243cbda33582c944bf0759607cedd4bdfbc01e5c881e94da7775afc",
-    "decisions/status.json": "3aaae37de293bf81ab256d02a93527bc952cbbf36a4d91611f8f8a92b1160ffa",
+    "decisions/status.json": "05203507ee828c58216f05a0afbd43ba5b912e8aa0882ee97f18320396b64e5b",
     "locks/source-revisions.json": "9145e7c733915e286fafa7c7788b88e224f9be7087180d03d52c12c88134f9e6",
     "reports.lock.json": "d3ca8a44073aae953e2640a478c6553bee140edc761fcb609a131a791d3694c8",
     "spec.lock.json": "f24f620098830d283736951a6b159938a953eb1d4b5d940e9b3193e48c5b1008",

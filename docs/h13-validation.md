@@ -17,7 +17,7 @@ post-state; it does not reconstruct the pre-state of a transaction inside that b
 Use transaction replay for that purpose. H12's portable two-argument/latest baseline is
 separate from this policy.
 
-## What the fresh reproducers establish
+## What the reproducers establish
 
 The [capture](../evidence/2026-09-23/raw-validation-native/summary.json) has 560 responses:
 56 signed requests and 14 controls per build, across eight digest-pinned native builds.
@@ -96,23 +96,12 @@ TRACE_H13_OUTPUT=/fresh/output GOTOOLCHAIN=go1.26.1 \
 The output directory must not already exist. Frozen artifacts and checksums are the
 reproduction inputs. This corpus does not exhaust typed-transaction fee relationships,
 blob rules, every signature constraint, fork transitions or local pool policies. The
-new run does not cover the experimental Geth fork; its earlier evidence stays separate.
+corpus does not cover the experimental Geth fork; its evidence is evaluated separately.
 
-## Erigon feedback and recommendation timing
+## Client agreement
 
-- The [original gist revision](https://gist.github.com/banteg/d32a87ed2c47dfa4dbf1958235f8bf82/47fd6ec6f9b7644be94545f69383e595c8b5d391#h13)
-  was last updated September 14 at 22:11:56 UTC and still recommended strict validation.
-- The temporary relaxed-policy commits were created September 22 at 20:36:58 UTC
-  (execution-apis `a636383a`) and 20:38:08 UTC (trace-interop `922c12f`). Commit times
-  do not establish when a reader saw a page.
-- [Erigon's comment](https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408)
-  was created and last updated September 22 at 21:05:09 UTC. Its text explicitly favors
-  strict validation, broadens the discussion to balances and EIP-3607, and asks about codes.
-
-The comment is later than the relaxed commits, so chronology alone cannot establish
-agreement with the page as it then stood. Reading the unchanged strict gist is plausible;
-we cannot prove which document/revision was read. The comment supports the restored
-strict direction on its own wording. The converged badge records that direction, not
-unanimous approval of every detail or harmonized implementations. Erigon's account of
-OpenEthereum's permissive nonce/balance behavior is attributed historical context,
-not an independently rerun OpenEthereum measurement.
+[Erigon supports strict execution validation](https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408),
+including balance and EIP-3607 checks. The converged status records agreement on that
+direction. Error-code mapping and compatibility migration remain open, and the measured
+implementations are not harmonized. Erigon describes OpenEthereum's permissive nonce
+and balance behavior; OpenEthereum was not independently measured in this corpus.

@@ -6,7 +6,7 @@
     },
     "erigon": {
       "name": "Erigon",
-      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the restored proposal."
+      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal."
     },
     "nethermind": {
       "name": "Nethermind",
@@ -14,7 +14,7 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation now matches the restored direction; error codes still need alignment.",
+      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment.",
       "build_notes": [
         {
           "versions": [
@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation now matches the restored direction; error codes still need alignment."
+      "summary": "The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation matches the proposed requirements; error codes still need alignment."
     }
   },
   "topics": {
@@ -134,19 +134,19 @@
     },
     "H13": {
       "besu": {
-        "observed": "Fresh marker probes execute wrong-chain and ordinary-code-sender transactions. Nonce, funds, intrinsic-gas and base-fee failures instead return empty success-shaped traces; these do not prove execution.",
+        "observed": "Marker probes execute wrong-chain and ordinary-code-sender transactions. Nonce, funds, intrinsic-gas and base-fee failures instead return empty success-shaped traces; these do not prove execution.",
         "change": "Apply selected-state execution validity before running signed transactions. Distinguish validation rejection from execution failure, and use the proposed -32003 code for validation errors."
       },
       "erigon": {
-        "observed": "Fresh marker probes execute nonce mismatches, both insufficient-funds cases and ordinary-code-sender transactions. CREATE uses the state-nonce address. Chain, intrinsic-gas and base-fee failures are rejected with -32000. Review feedback supports stricter validation.",
+        "observed": "Marker probes execute nonce mismatches, both insufficient-funds cases and ordinary-code-sender transactions. CREATE uses the state-nonce address. Chain, intrinsic-gas and base-fee failures are rejected with -32000. Review feedback supports stricter validation.",
         "change": "Apply selected-state execution validity before running signed transactions. Distinguish validation rejection from execution failure, and use the proposed -32003 code for validation errors."
       },
       "nethermind": {
-        "observed": "Fresh marker probes execute nonce mismatches and ordinary-code-sender transactions; CREATE uses the state-nonce address. Other invalid probes produce malformed JSON, which does not establish skipped validation.",
+        "observed": "Marker probes execute nonce mismatches and ordinary-code-sender transactions; CREATE uses the state-nonce address. Other invalid probes produce malformed JSON, which does not establish skipped validation.",
         "change": "Apply selected-state execution validity before running signed transactions. Distinguish validation rejection from execution failure, and use the proposed -32003 code for validation errors."
       },
       "reth": {
-        "observed": "All fresh invalid probes are rejected, using -32000 or -32003. Valid EOA/delegated controls execute, and valid execution-OOG returns a trace halt.",
+        "observed": "All invalid probes in the validation corpus are rejected, using -32000 or -32003. Valid EOA/delegated controls execute, and valid execution-OOG returns a trace halt.",
         "change": "Retain execution validation and align rejection codes with the proposed -32003 mapping once agreed."
       },
       "geth": {

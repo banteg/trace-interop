@@ -7,10 +7,10 @@ The clients already share much of the `trace_*` API. These reports show where ad
 | Client | Main review areas |
 | --- | --- |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
-| [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the restored proposal. |
-| [Geth draft fork](clients/geth.md) | The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation now matches the restored direction; error codes still need alignment. |
+| [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. |
+| [Geth draft fork](clients/geth.md) | The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation matches the proposed requirements; error codes still need alignment. |
 | [Nethermind](clients/nethermind.md) | Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement. |
-| [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation now matches the restored direction; error codes still need alignment. |
+| [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment. |
 
 ## Decisions to review
 

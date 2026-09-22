@@ -1,6 +1,6 @@
 # Geth draft fork: changes to review
 
-The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation now matches the restored direction; error codes still need alignment.
+The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation matches the proposed requirements; error codes still need alignment.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 

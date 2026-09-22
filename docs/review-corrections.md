@@ -62,15 +62,14 @@ Earlier corpora were reassessed without rerunning unchanged client binaries. Fre
 cover the new discriminator fixtures and the corrected pruning setup. Reports are
 regenerated deterministically and retain source, schema and evidence hashes.
 
-## H13 policy correction
+## H13 execution validation
 
-The temporary nonce-permissive recommendation is superseded by selected-state execution
-validation. This restores the original direction while distinguishing execution validity
-from local transaction-pool admission policy. It is a compatibility change, not evidence
+H13 proposes selected-state execution validation, distinct from local transaction-pool
+admission policy. It is a compatibility change, not evidence
 that legacy diagnostic workflows are illegitimate. Rejection and the proposed `-32003`
 code are assessed separately; malformed JSON does not prove permissive execution.
 
-The [H13 validation study](h13-validation.md) records the Erigon/gist timing and a fresh
+The [H13 validation study](h13-validation.md) documents client agreement and a
 560-response capture with nonce, funds, chain-ID, intrinsic-gas, base-fee and sender-code
 discriminators. Successful output, storage changes and CREATE addresses distinguish
 execution from empty result envelopes. Valid EIP-7702 delegation and execution-OOG

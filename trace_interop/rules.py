@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import re
 
+from .oracles import anchored_reference, REVERT_OUTPUT, REVERT_GAS
+
 
 def is_extension_request(request):
     return request['method'] == 'trace_rawTransaction' and len(request.get('params', [])) > 2
@@ -61,7 +63,11 @@ def evaluate(case, observation, peers, invalid_params=None):
         return checks
 
     def other(n):
-        return mapping(mapping(peers.get(n)).get('response')).get('result')
+        obs = mapping(peers.get(n))
+        return mapping(obs.get('response')).get('result') if obs.get('status') == 'result' else None
+
+    def reference(n):
+        return anchored_reference(context, peers, n)
 
     if invalid_params:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
@@ -77,21 +83,19 @@ def evaluate(case, observation, peers, invalid_params=None):
         if missing and name != 'get-missing-tx':
             check('H06', status == 'result' and result is None, 'A missing transaction or tree path returns null.')
         elif not missing:
-            tree = other('transaction-tree')
+            tree_name = next((c['name'] for c in context.get('cases', [])
+                              if c['request']['method'] == 'trace_transaction' and c['request']['params'] == params[:1]), 'transaction-tree')
+            tree = reference(tree_name)
             reference = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
             if reference:
                 expected = next((f for f in reference if f.get('traceAddress') == path),None)
                 check('H02', status == 'result' and result == expected,
                       f'Return the transaction-tree record at {path}, or null if absent.',
                       'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.')
-            elif name in ['get-root','get-transfer-root','get-zero','get-one']:
-                check('H02', isinstance(result,dict) and result.get('traceAddress') == path,
-                      f'Return one object whose traceAddress equals {path}.',
-                      f'Observed {result.get("traceAddress") if isinstance(result,dict) else type(result).__name__}.')
             else:
                 checks.append({'topic': 'H02', 'status': 'unassessed',
                                'requirement': 'Compare the requested path with the transaction tree.',
-                               'detail': 'The reference transaction tree was unavailable; path selection was not assessed.'})
+                               'detail': 'The reference tree did not establish the independent fixture inventory; path selection was not assessed.'})
     if name in ['transaction-missing','replay-missing','get-missing-tx']:
         check('H06', status == 'result' and result is None, 'Unknown transaction returns null, not an empty collection or RPC error.')
     if method == 'trace_replayTransaction' and isinstance(result, dict):
@@ -122,6 +126,18 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H29', root is not None and root.get('subtraces') == expected and len(children) == expected
                   and (not expected or children[0].get('traceAddress') == [0]),
                   'Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.')
+            if expected:
+                child = children[0] if len(children) == 1 else {}
+                action = mapping(child.get('action'))
+                call_type = name.split('-')[1]
+                caller = case.get('funded_creation_address', '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41')
+                success = case.get('expected_call_success', name.endswith('-success'))
+                input_bytes = '0x'+f'{0 if success else 42:064x}'+'0'*192
+                check('H29', child.get('type') == 'call' and all(action.get(k) == v for k,v in
+                      [('from',caller), ('to','0x'+'0'*39+'6'), ('callType',call_type), ('value',hex(value)), ('input',input_bytes)])
+                      and (not child.get('error') and mapping(child.get('result')).get('output') == '0x'+'0'*128 if success
+                           else isinstance(child.get('error'), str) and bool(child['error'])),
+                      'The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.')
             check('H24', root is not None and 'error' not in root,
                   'A handled precompile failure must not mark the successful parent as failed.')
             if 'expected_call_success' in case:
@@ -207,8 +223,8 @@ def evaluate(case, observation, peers, invalid_params=None):
                 recipients=[address(v) for v in sequence(filt.get('toAddress'))]
                 sides=[s for s,values in [(address(frm) in senders, senders), (address(to) in recipients, recipients)] if values]
                 return any(sides) if filt.get('mode') == 'union' and sides else all(sides)
-            baseline = other('block-tree')
-            if not isinstance(baseline, list): baseline = other('block-2')
+            baseline = reference('block-tree')
+            if not isinstance(baseline, list): baseline = reference('block-2')
             topic='H23' if any(t in name for t in ['created','creator','suicide']) else 'H04' if any(t in name for t in ['empty','null']) else 'H03'
             if isinstance(baseline,list) and all(isinstance(f,dict) for f in baseline):
                 expected=[f for f in baseline if matches(f)]
@@ -218,11 +234,13 @@ def evaluate(case, observation, peers, invalid_params=None):
                       f'Expected {len(expected)} records from this client\'s block trace.')
             else:
                 checks.append({'topic': topic, 'status': 'unassessed', 'requirement': 'Compare filtering with the block trace.',
-                               'detail': 'The reference block trace was unavailable.'})
+                               'detail': 'The reference block trace did not establish the independent fixture inventory.'})
     if name == 'filter-two-blocks':
-        a,b=other('block-2'),other('block-3')
+        a,b=reference('block-2'),reference('block-3')
         if isinstance(a,list) and isinstance(b,list):
             check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.')
+    if name == 'filter-two-blocks' and not any(c['topic']=='H27' for c in checks):
+        checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
     if method == 'trace_callMany' and params and isinstance(params[0], list):
         check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
               and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
@@ -248,6 +266,28 @@ def evaluate(case, observation, peers, invalid_params=None):
     if method == 'trace_rawTransaction' and case.get('validation') == 'execute':
         check('H13', status == 'result' and mapping(result).get('output') == case['expected_output'] and not embedded_error(response),
               'The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.')
+        modes = params[1] if isinstance(params[1], list) else []
+        if 'stateDiff' in modes:
+            diff = mapping(result).get('stateDiff')
+            check('H13', isinstance(diff, dict) and bool(diff), 'Requested stateDiff records the signed execution state changes.')
+            if not case.get('expected_execution_error'):
+                if 'signed_create_address' in case:
+                    account = mapping(mapping(diff).get(case['signed_create_address'].lower()))
+                    code = mapping(account.get('code'))
+                    ok = code.get('+', mapping(code.get('*')).get('to')) == case['expected_output']
+                    requirement = 'Creation stateDiff installs the constructor ADDRESS bytes at the signed creation address.'
+                else:
+                    slot = mapping(mapping(mapping(diff).get(case['marker'].lower())).get('storage')).get('0x'+'0'*64)
+                    ok = mapping(slot).get('*') == {'from':'0x'+'0'*64, 'to':'0x'+f'{42:064x}'} or mapping(slot).get('+') == '0x'+f'{42:064x}'
+                    requirement = 'Marker stateDiff records slot zero changing from zero to word 42.'
+                check('H13', ok, requirement)
+        if 'vmTrace' in modes:
+            vm = mapping(mapping(result).get('vmTrace'))
+            code = '0x3060005260206000f3' if 'signed_create_address' in case else '0x602a600055602a60005260206000f3'
+            expected_pcs = [0] if case.get('expected_execution_error') else [0,1,3,4,6,8] if 'signed_create_address' in case else [0,2,4,5,7,9,10,12,14]
+            ops = sequence(vm.get('ops'))
+            check('H13', vm.get('code') == code and [mapping(op).get('pc') for op in ops] == expected_pcs,
+                  'Requested vmTrace contains the executing fixture bytecode and its opcode sequence.')
         if isinstance(params[1], list) and 'trace' in params[1]:
             trace = sequence(mapping(result).get('trace'))
             root = next((f for f in trace if isinstance(f, dict) and f.get('traceAddress') == []), {})
@@ -292,9 +332,11 @@ def evaluate(case, observation, peers, invalid_params=None):
     if revert_path is not None and trace_selected and status == 'result':
         reverted = next((f for f in frames if f.get('traceAddress') == revert_path), None)
         value = mapping(mapping(reverted).get('result'))
+        expected_output, expected_gas = ('0x', '0x6') if name.startswith('call-siblings-') else (REVERT_OUTPUT, REVERT_GAS)
         check('H09', reverted is not None and isinstance(reverted.get('error'), str)
-              and isinstance(value.get('output'), str) and isinstance(value.get('gasUsed'), str),
-              'The fixture REVERT frame preserves return bytes and measured gas regardless of its error wording.')
+              and bool(reverted['error']) and value.get('output') == expected_output and value.get('gasUsed') == expected_gas,
+              'The fixture REVERT frame preserves its exact return bytes and opcode gas, regardless of error wording.',
+              f'Expected output {expected_output}, gasUsed {expected_gas}; derived from frozen bytecode.')
     calls = params[:1] if method == 'trace_call' else [p[0] for p in params[0] if isinstance(p,list) and p] if method == 'trace_callMany' and params and isinstance(params[0],list) else []
     if any(mapping(call).get('gasPrice') == '0x0' for call in calls):
         ok = status == 'result' and not embedded_error(response) and (isinstance(result,dict) if method == 'trace_call' else isinstance(result,list) and len(result) == len(calls))
@@ -316,11 +358,13 @@ def evaluate(case, observation, peers, invalid_params=None):
         ok=isinstance(mapping(change).get('code'),dict) and '-' in change['code'] and isinstance(mapping(change).get('nonce'),dict) and '-' in change['nonce'] if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
         check('H26', ok, 'Delete code/nonce before Cancun; preserve an existing account after EIP-6780.')
     if name.startswith('filter-across-'):
-        boundary=int(name.rsplit('-',1)[1]); a,b=other('block-'+str(boundary-1)),other('block-'+str(boundary))
+        boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
         if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')
     if name.startswith('filter-') and name.removeprefix('filter-').isdigit():
-        block=other('block-'+name.removeprefix('filter-'))
+        block=reference('block-'+name.removeprefix('filter-'))
         if isinstance(block,list):check('H27', result==block, 'A single-block filter agrees with trace_block at the same fork.')
+    if (name.startswith('filter-across-') or name.removeprefix('filter-').isdigit()) and not any(c['topic']=='H27' for c in checks):
+        checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
     if name.startswith('system-beacon-'):
         _,_,block,slot=name.split('-'); headers=context.get('headers',[])
         h=next((h for h in headers if h.get('number')=='0x38'),None)

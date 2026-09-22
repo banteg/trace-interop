@@ -32,9 +32,9 @@ class RawValidationFixtures(unittest.TestCase):
             self.assertNotEqual(cases[name]['signed_create_address'], cases[name]['state_create_address'])
 
     def test_setup_checks_every_independent_control(self):
-        observations = {name: {'c': {'response': {'result': expected}}}
+        observations = {name: {'c': {'status':'result', 'response': {'result': expected}}}
                         for name, expected in self.corpus['controls'].items()}
-        observations['_control/head'] = {'c': {'response': {'result': {'baseFeePerGas': self.corpus['base_fee']}}}}
+        observations['_control/head'] = {'c': {'status':'result', 'response': {'result': {'baseFeePerGas': self.corpus['base_fee']}}}}
         self.assertTrue(verify_state('raw-validation', self.corpus, observations, 'c')[0])
         for name in observations:
             broken = copy.deepcopy(observations); broken.pop(name)

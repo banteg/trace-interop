@@ -114,21 +114,26 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(malformed[0]['status'], 'change_needed')
 
     def test_tree_path_rejects_flat_root_selection(self):
-        case={'name':'get-zero','request':{'method':'trace_get','params':['0xhash',['0x0']]}}
-        obs={'status':'result','response':{'result':{'traceAddress':[]}}}
-        checks=evaluate(case,obs,{})
-        self.assertEqual(checks[0]['topic'],'H02')
-        self.assertEqual(checks[0]['status'],'change_needed')
+        from test_harness_regressions import captured
+        case, obs, peers = captured('2026-09-23/geth-40eecf3-initial','get-zero','go-ethereum_trace')
+        obs['response']['result'] = peers['transaction-tree']['response']['result'][0]
+        self.assertEqual(evaluate(case,obs,peers)[0]['status'], 'change_needed')
 
     def test_get_path_uses_same_transaction_tree_with_precompile_siblings(self):
-        case={'name':'get-nested-positive','request':{'method':'trace_get','params':['tx',['0x6','0x0']]}}
-        frame={'traceAddress':[7,0],'transactionHash':'tx','type':'suicide'}
-        peers={'transaction-tree':{'response':{'result':[frame]}}}
-        obs={'status':'result','response':{'result':None}}
+        from test_harness_regressions import captured
+        case, obs, peers = captured('2026-09-23/geth-40eecf3-a','get-nested-positive','go-ethereum_trace')
+        tree = peers['transaction-tree']['response']['result']
+        tree[0]['subtraces'] += 1
+        for frame in tree:
+            if frame['traceAddress'] and frame['traceAddress'][0] == 6:
+                frame['traceAddress'][0] = 7
+        precompile = copy.deepcopy(tree[1]); precompile['traceAddress'] = [6]
+        precompile['action']['to'] = '0x'+'0'*39+'4'; tree.insert(-2,precompile)
+        obs['response']['result'] = None
         self.assertEqual(evaluate(case,obs,peers)[0]['status'],'matches')
-        obs['response']['result']=frame
+        obs['response']['result'] = tree[-1]
         self.assertEqual(evaluate(case,obs,peers)[0]['status'],'change_needed')
-        case['request']['params'][1]=['0x7','0x0']
+        case['request']['params'][1] = ['0x7','0x0']
         self.assertEqual(evaluate(case,obs,peers)[0]['status'],'matches')
 
     def test_unsupported_is_not_empty_success(self):
@@ -142,14 +147,11 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(next(c for c in checks if c['topic']=='H21')['status'],'change_needed')
 
     def test_filter_composition_does_not_reuse_other_client_as_oracle(self):
-        def frame(sender,target,path):return {'type':'call','action':{'from':sender,'to':target},'traceAddress':path,'transactionHash':'tx'}
-        a,b=frame('A','X',[]),frame('B','Y',[0])
-        case={'name':'filter-both','request':{'method':'trace_filter','params':[{'fromAddress':['A'],'toAddress':['Y']}]}}
-        peers={'transaction-tree':{'response':{'result':[a,b]}},'block-tree':{'response':{'result':[a,b]}}}
-        obs={'status':'result','response':{'result':[a,b]}}
-        self.assertEqual(evaluate(case,obs,peers)[0]['status'],'change_needed')
-        obs['response']['result']=[]
+        from test_harness_regressions import captured
+        case, obs, peers = captured('2026-09-23/geth-40eecf3-initial','filter-both','go-ethereum_trace')
         self.assertEqual(evaluate(case,obs,peers)[0]['status'],'matches')
+        obs['response']['result'] = peers['block-tree']['response']['result']
+        self.assertEqual(evaluate(case,obs,peers)[0]['status'],'change_needed')
 
 
 if __name__=='__main__':unittest.main()

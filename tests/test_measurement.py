@@ -10,9 +10,14 @@ from trace_interop.presentation import outcome
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def assess(name, result, method='trace_call', params=None, peers=None):
-    return evaluate({'name': name, 'request': {'method': method, 'params': params or [{}, ['trace']]}},
+def assess(name, result, method='trace_call', params=None, peers=None, context=None):
+    return evaluate({'name': name, 'context':context or {}, 'request': {'method': method, 'params': params or [{}, ['trace']]}},
                     {'status': 'result', 'response': {'result': result}}, peers or {})
+
+
+def reference_context(frames):
+    return {'cases':[{'name':'block-tree','request':{'method':'trace_block','params':['0x2']}}],
+            'txinfo':{'tx-transfer-legacy':[{'txhash':f['transactionHash'],'sender':f['action']['from'],'block':'0x2'} for f in frames]}}
 
 
 class RuleSafetyTests(unittest.TestCase):
@@ -63,7 +68,7 @@ class RuleSafetyTests(unittest.TestCase):
         frame = {'traceAddress': [0], 'error': 'client specific label', 'result': None}
         checks = assess('call-siblings-revert-ok', {'trace': [frame]})
         self.assertIn('change_needed', [c['status'] for c in checks if c['topic'] == 'H09'])
-        frame['result'] = {'output': '0xdead', 'gasUsed': '0x1'}
+        frame['result'] = {'output': '0x', 'gasUsed': '0x6'}
         self.assertTrue(all(c['status'] == 'matches' for c in assess('call-siblings-revert-ok', {'trace': [frame]}) if c['topic'] == 'H09'))
 
     def test_revert_frame_is_only_required_when_trace_is_selected(self):
@@ -132,18 +137,20 @@ class CoverageTests(unittest.TestCase):
 
     def test_filter_addresses_compare_bytes(self):
         address = '0x'+'ab'*20
-        frame = {'action': {'from': address, 'to': '0x'+'cd'*20}, 'type': 'call', 'traceAddress': []}
-        peers = {'block-tree': {'response': {'result': [frame]}}}
-        checks = assess('filter-from', [frame], 'trace_filter', [{'fromAddress': ['0x'+address[2:].upper()]}], peers)
+        frame = {'action': {'from': address, 'to': '0x'+'cd'*20}, 'type': 'call', 'traceAddress': [], 'transactionHash':'tx', 'subtraces':0}
+        peers = {'block-tree': {'status':'result', 'response': {'result': [frame]}}}
+        context = reference_context([frame])
+        checks = assess('filter-from', [frame], 'trace_filter', [{'fromAddress': ['0x'+address[2:].upper()]}], peers, context)
         self.assertEqual([c['status'] for c in checks if c['topic'] == 'H03'], ['matches'])
 
     def test_filter_mode_composes_populated_lists(self):
         a, b, c = '0x'+'aa'*20, '0x'+'bb'*20, '0x'+'cc'*20
-        frames = [{'action': {'from': f, 'to': t}, 'type': 'call', 'traceAddress': [i]}
+        frames = [{'action': {'from': f, 'to': t}, 'type': 'call', 'traceAddress': [], 'transactionHash':str(i), 'subtraces':0}
                   for i, (f, t) in enumerate([(a, b), (a, c), (c, b), (c, c)])]
-        peers = {'block-tree': {'response': {'result': frames}}}
+        peers = {'block-tree': {'status':'result', 'response': {'result': frames}}}
+        context = reference_context(frames)
         def status(name, filt, result):
-            return [q['status'] for q in assess(name, result, 'trace_filter', [filt], peers) if q['topic'] == 'H03']
+            return [q['status'] for q in assess(name, result, 'trace_filter', [filt], peers, context) if q['topic'] == 'H03']
         both = {'fromAddress': [a], 'toAddress': [b]}
         self.assertEqual(status('filter-intersection', dict(both, mode='intersection'), frames[:1]), ['matches'])
         self.assertEqual(status('filter-union', dict(both, mode='union'), frames[:3]), ['matches'])

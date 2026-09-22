@@ -3,20 +3,20 @@
   "items": [
     {
       "cases": [
-        "replay-7702-stateDiff",
-        "replay-7702-trace",
-        "replay-7702-vmTrace",
-        "replay-block-tree",
-        "replay-missing",
-        "replay-revert-stateDiff",
-        "replay-revert-trace",
-        "replay-revert-vmTrace",
-        "replay-transfer-stateDiff",
-        "replay-transfer-trace",
-        "replay-transfer-vmTrace",
-        "replay-tree-stateDiff",
-        "replay-tree-trace",
-        "replay-tree-vmTrace"
+        "initial/replay-7702-stateDiff",
+        "initial/replay-7702-trace",
+        "initial/replay-7702-vmTrace",
+        "initial/replay-block-tree",
+        "initial/replay-missing",
+        "initial/replay-revert-stateDiff",
+        "initial/replay-revert-trace",
+        "initial/replay-revert-vmTrace",
+        "initial/replay-transfer-stateDiff",
+        "initial/replay-transfer-trace",
+        "initial/replay-transfer-vmTrace",
+        "initial/replay-tree-stateDiff",
+        "initial/replay-tree-trace",
+        "initial/replay-tree-vmTrace"
       ],
       "id": "H01",
       "kind": "Scope decision",
@@ -27,33 +27,33 @@
     },
     {
       "cases": [
-        "get-missing",
-        "get-missing-tx",
-        "get-nested",
-        "get-one",
-        "get-root",
-        "get-transfer-root",
-        "get-zero",
-        "semantic-01--get-nested-positive",
-        "semantic-01--get-nested-parent"
+        "a/get-nested-parent",
+        "a/get-nested-positive",
+        "initial/get-missing",
+        "initial/get-missing-tx",
+        "initial/get-nested",
+        "initial/get-one",
+        "initial/get-root",
+        "initial/get-transfer-root",
+        "initial/get-zero"
       ],
       "id": "H02",
       "kind": "Spec decision",
       "next_step": "Choose the tree-path contract and align Reth/Nethermind; the positive nested discriminator is now available.",
       "rationale": "The lookup argument should identify the same path that traceAddress describes, with a singular result matching the method name.",
-      "recommendation": "Treat the argument as one traceAddress path: [] is root, [0] first child, [6,0] a nested child. Return one trace object, or null when the transaction/path does not exist. Specify the wire encoding of indices explicitly (prefer hex quantities for compatibility with these requests).",
+      "recommendation": "Treat the argument as one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] a nested child. Return one trace object or null for a missing transaction/path. Convert output traceAddress integers to minimal hex quantities; integer request entries return -32602.",
       "title": "trace_get selector and return shape"
     },
     {
       "cases": [
-        "filter-both",
-        "filter-from",
-        "filter-intersection",
-        "filter-to",
-        "filter-union",
-        "semantic-01--filter-from-only-intersection",
-        "semantic-01--filter-to-only-intersection",
-        "semantic-01--filter-both-unknown-mode"
+        "a/filter-both-unknown-mode",
+        "a/filter-from-only-intersection",
+        "a/filter-to-only-intersection",
+        "initial/filter-both",
+        "initial/filter-from",
+        "initial/filter-intersection",
+        "initial/filter-to",
+        "initial/filter-union"
       ],
       "id": "H03",
       "kind": "Spec decision",
@@ -64,29 +64,31 @@
     },
     {
       "cases": [
-        "filter-all",
-        "filter-empty",
-        "semantic-01--filter-both-null",
-        "semantic-01--filter-from-empty-to-set",
-        "semantic-01--filter-to-empty-from-set"
+        "a/filter-both-null",
+        "a/filter-from-empty-to-set",
+        "a/filter-from-null",
+        "a/filter-to-empty-from-set",
+        "a/filter-to-null",
+        "initial/filter-all",
+        "initial/filter-empty"
       ],
       "id": "H04",
       "kind": "Spec decision",
-      "next_step": "Agree whether null is legal; distinguish that schema choice from empty-array matching and special-action membership.",
+      "next_step": "Review the compatibility choice to accept null alongside omitted and empty lists; retain separate checks for special-action membership.",
       "rationale": "Programmatically adding an empty optional filter should not erase all results.",
-      "recommendation": "Treat an omitted list or [] as no restriction. If null is accepted, give it the same meaning; document whether null is accepted at all. A supplied nonempty list restricts that side.",
+      "recommendation": "Treat an omitted, null or empty address list as no restriction. A nonempty list restricts that side. Compare address bytes independently of hex letter case.",
       "title": "Empty address lists"
     },
     {
       "cases": [
-        "block-transfer",
-        "block-tree",
-        "filter-all",
-        "filter-empty",
-        "fork-followup-01--withdrawal-balance-51",
-        "fork-followup-01--withdrawal-balance-52",
-        "fork-followup-01--withdrawal-filter-52",
-        "fork-followup-01--withdrawal-block-52"
+        "fork-followup/withdrawal-balance-51",
+        "fork-followup/withdrawal-balance-52",
+        "fork-followup/withdrawal-block-52",
+        "fork-followup/withdrawal-filter-52",
+        "initial/block-transfer",
+        "initial/block-tree",
+        "initial/filter-all",
+        "initial/filter-empty"
       ],
       "id": "H05",
       "kind": "Spec decision",
@@ -97,42 +99,45 @@
     },
     {
       "cases": [
-        "get-missing",
-        "get-missing-tx",
-        "get-nested",
-        "replay-missing",
-        "transaction-missing",
-        "pruned-02--old-header",
-        "pruned-02--old-receipt",
-        "pruned-02--latest-call",
-        "pruned-02--old-transaction",
-        "pruned-02--old-replay",
-        "pruned-02--old-block",
-        "pruned-02--old-filter"
+        "a/missing-block-block",
+        "a/missing-block-call",
+        "a/missing-block-filter",
+        "initial/get-missing",
+        "initial/get-missing-tx",
+        "initial/get-nested",
+        "initial/replay-missing",
+        "initial/transaction-missing",
+        "pruned/latest-call",
+        "pruned/old-block",
+        "pruned/old-filter",
+        "pruned/old-header",
+        "pruned/old-receipt",
+        "pruned/old-replay",
+        "pruned/old-transaction"
       ],
       "id": "H06",
       "kind": "Spec decision / client exception",
       "next_step": "Choose an unavailable-history error contract. Extend the retention fixture to Erigon, Nethermind and Besu; the current pruning result is Reth-only.",
       "rationale": "Not found, empty, unsupported and unavailable are different states that callers need to distinguish.",
-      "recommendation": "Return null for a well-formed lookup of an unknown transaction or trace path, consistently across these methods. Reserve [] for a successfully evaluated collection with no elements. Preserve -32601 for unsupported methods and use errors for unavailable/pruned state instead of pretending data is absent.",
+      "recommendation": "Return null for a well-formed lookup of an unknown transaction or trace path, consistently across these methods. Reserve [] for a successfully evaluated collection with no elements. Preserve -32601 for unsupported methods and use errors for unavailable/pruned state instead of pretending data is absent. Unknown selected blocks and range endpoints return -32001 (Resource not found), separately from 4444 for pruned required state.",
       "title": "Missing transactions and paths"
     },
     {
       "cases": [
-        "replay-7702-stateDiff",
-        "replay-7702-trace",
-        "replay-7702-vmTrace",
-        "replay-block-tree",
-        "replay-missing",
-        "replay-revert-stateDiff",
-        "replay-revert-trace",
-        "replay-revert-vmTrace",
-        "replay-transfer-stateDiff",
-        "replay-transfer-trace",
-        "replay-transfer-vmTrace",
-        "replay-tree-stateDiff",
-        "replay-tree-trace",
-        "replay-tree-vmTrace"
+        "initial/replay-7702-stateDiff",
+        "initial/replay-7702-trace",
+        "initial/replay-7702-vmTrace",
+        "initial/replay-block-tree",
+        "initial/replay-missing",
+        "initial/replay-revert-stateDiff",
+        "initial/replay-revert-trace",
+        "initial/replay-revert-vmTrace",
+        "initial/replay-transfer-stateDiff",
+        "initial/replay-transfer-trace",
+        "initial/replay-transfer-vmTrace",
+        "initial/replay-tree-stateDiff",
+        "initial/replay-tree-trace",
+        "initial/replay-tree-vmTrace"
       ],
       "id": "H07",
       "kind": "Spec decision",
@@ -143,12 +148,12 @@
     },
     {
       "cases": [
-        "call-transfer-stateDiff",
-        "replay-7702-stateDiff",
-        "replay-revert-stateDiff",
-        "replay-transfer-stateDiff",
-        "replay-tree-stateDiff",
-        "repeat-01--state-only-nonempty-output"
+        "initial/call-transfer-stateDiff",
+        "initial/replay-7702-stateDiff",
+        "initial/replay-revert-stateDiff",
+        "initial/replay-transfer-stateDiff",
+        "initial/replay-tree-stateDiff",
+        "repeat/state-only-nonempty-output"
       ],
       "id": "H08",
       "kind": "Spec decision / likely reporting fix",
@@ -159,20 +164,20 @@
     },
     {
       "cases": [
-        "block-tree",
-        "call-many",
-        "call-many-priced",
-        "call-many-transfers",
-        "call-tree-trace",
-        "call-tree-trace-priced",
-        "filter-all",
-        "filter-from",
-        "filter-to",
-        "filter-union",
-        "replay-revert-trace",
-        "replay-tree-trace",
-        "transaction-revert",
-        "transaction-tree"
+        "initial/block-tree",
+        "initial/call-many",
+        "initial/call-many-priced",
+        "initial/call-many-transfers",
+        "initial/call-tree-trace",
+        "initial/call-tree-trace-priced",
+        "initial/filter-all",
+        "initial/filter-from",
+        "initial/filter-to",
+        "initial/filter-union",
+        "initial/replay-revert-trace",
+        "initial/replay-tree-trace",
+        "initial/transaction-revert",
+        "initial/transaction-tree"
       ],
       "id": "H09",
       "kind": "Spec decision",
@@ -183,26 +188,26 @@
     },
     {
       "cases": [
-        "block-tree",
-        "call-constructor",
-        "call-constructor-priced",
-        "call-tree-trace-priced",
-        "replay-block-tree",
-        "transaction-tree",
-        "repeat-01--call-mixed-create",
-        "repeat-01--debug-mixed-create"
+        "initial/block-tree",
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-tree-trace-priced",
+        "initial/replay-block-tree",
+        "initial/transaction-tree",
+        "repeat/call-mixed-create",
+        "repeat/debug-mixed-create"
       ],
       "id": "H10",
       "kind": "Spec decision / likely schema fix",
       "next_step": "Specify creationMethod if it is required; retain the successful mixed-creation probe and investigate historical-method metadata separately.",
-      "rationale": "Creation has two different bytecodes—initcode and deployed code—and their field meanings should remain distinct.",
+      "rationale": "Creation has two different bytecodes\u2014initcode and deployed code\u2014and their field meanings should remain distinct.",
       "recommendation": "Use result.address, result.code and result.gasUsed for successful creation. result.code is deployed runtime bytecode, including \"0x\" for an empty deployment. Use result.output for CALL results; vmTrace.code for executing initcode.",
       "title": "Creation result field names"
     },
     {
       "cases": [
-        "call-empty-types",
-        "call-empty-types-priced"
+        "initial/call-empty-types",
+        "initial/call-empty-types-priced"
       ],
       "id": "H11",
       "kind": "Likely client bug",
@@ -213,7 +218,7 @@
     },
     {
       "cases": [
-        "raw-valid"
+        "initial/raw-valid"
       ],
       "id": "H12",
       "kind": "Spec / extension decision",
@@ -224,29 +229,37 @@
     },
     {
       "cases": [
-        "raw-valid-current-nonce",
-        "raw-valid-default-block",
-        "repeat-01--raw-nonce-high",
-        "repeat-01--raw-wrong-chain",
-        "repeat-01--raw-insufficient-funds",
-        "repeat-01--raw-low-gas",
-        "repeat-01--raw-below-basefee"
+        "initial/raw-valid-current-nonce",
+        "initial/raw-valid-default-block",
+        "repeat/raw-below-basefee",
+        "repeat/raw-insufficient-funds",
+        "repeat/raw-low-gas",
+        "repeat/raw-nonce-high",
+        "repeat/raw-wrong-chain"
       ],
       "id": "H13",
       "kind": "Admission policy proposal",
       "next_step": "Agree admission semantics for signed raw transactions; fix malformed responses independently of that policy choice.",
       "rationale": "A signed transaction is a concrete transaction, so tracing should not silently rewrite its nonce or return a partial-looking success.",
-      "recommendation": "For trace_rawTransaction, honor the signed transaction’s nonce and validity rules at the selected state. Reject nonce mismatch with a stable transaction-validation error. Use unsigned trace_call for hypothetical execution that deliberately relaxes admission rules.",
+      "recommendation": "For trace_rawTransaction, honor the signed transaction\u2019s nonce and validity rules at the selected state. Reject nonce mismatch with a stable transaction-validation error. Use unsigned trace_call for hypothetical execution that deliberately relaxes admission rules.",
       "title": "Signed transaction nonce validation"
     },
     {
       "cases": [
-        "get-missing-tx",
-        "raw-invalid",
-        "raw-valid",
-        "semantic-01--filter-wrong-address-type",
-        "semantic-01--filter-negative-count",
-        "semantic-01--filter-unknown-field"
+        "a/call-null-mode",
+        "a/call-scalar-mode",
+        "a/call-unknown-field",
+        "a/call-unknown-mode",
+        "a/call-wrong-type",
+        "a/filter-both-unknown-mode",
+        "a/filter-from-only-intersection",
+        "a/filter-negative-count",
+        "a/filter-to-only-intersection",
+        "a/filter-unknown-field",
+        "a/filter-wrong-address-type",
+        "a/get-integer-path",
+        "a/get-path-wrong-type",
+        "initial/raw-invalid"
       ],
       "id": "H14",
       "kind": "Spec decision",
@@ -257,59 +270,59 @@
     },
     {
       "cases": [
-        "call-constructor",
-        "call-constructor-priced",
-        "call-many",
-        "call-many-priced",
-        "call-many-transfers",
-        "call-tree-stateDiff",
-        "call-tree-stateDiff-priced",
-        "call-tree-trace",
-        "call-tree-trace-priced",
-        "call-tree-vmTrace",
-        "call-tree-vmTrace-priced"
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-many",
+        "initial/call-many-priced",
+        "initial/call-many-transfers",
+        "initial/call-tree-stateDiff",
+        "initial/call-tree-stateDiff-priced",
+        "initial/call-tree-trace",
+        "initial/call-tree-trace-priced",
+        "initial/call-tree-vmTrace",
+        "initial/call-tree-vmTrace-priced"
       ],
       "id": "H15",
       "kind": "Spec decision / likely environment bug",
       "next_step": "Agree the fee-free simulation rule, then fix the block-environment discrepancy. The source contract confirms BASEFEE is returned as word 3; this is more than an error-message difference.",
       "rationale": "Relaxing transaction admission for a hypothetical call should not silently rewrite the block the caller selected.",
-      "recommendation": "Allow explicit zero-fee unsigned simulations without changing the selected block’s BASEFEE or other block fields. With nonzero supplied fees, use those fees consistently in opcode context and simulated accounting. Apply the same policy to trace_call and trace_callMany; keep strict signed validation separate.",
+      "recommendation": "Allow explicit zero-fee unsigned simulations without changing the selected block\u2019s BASEFEE or other block fields. With nonzero supplied fees, use those fees consistently in opcode context and simulated accounting. Apply the same policy to trace_call and trace_callMany; keep strict signed validation separate.",
       "title": "Unsigned simulation fees and block environment"
     },
     {
       "cases": [
-        "call-many",
-        "call-many-priced",
-        "call-many-transfers",
-        "call-transfer-stateDiff",
-        "call-tree-stateDiff",
-        "call-tree-stateDiff-priced",
-        "raw-valid-current-nonce",
-        "raw-valid-default-block",
-        "replay-block-tree",
-        "replay-tree-stateDiff",
-        "semantic-01--many-storage-write-read",
-        "semantic-01--many-storage-write-revert-read",
-        "semantic-01--control-storage-after-many"
+        "a/control-storage-after-many",
+        "a/many-storage-write-read",
+        "a/many-storage-write-revert-read",
+        "initial/call-many",
+        "initial/call-many-priced",
+        "initial/call-many-transfers",
+        "initial/call-transfer-stateDiff",
+        "initial/call-tree-stateDiff",
+        "initial/call-tree-stateDiff-priced",
+        "initial/raw-valid-current-nonce",
+        "initial/raw-valid-default-block",
+        "initial/replay-block-tree",
+        "initial/replay-tree-stateDiff"
       ],
       "id": "H16",
       "kind": "Spec decision / likely accounting bug",
       "next_step": "Resolve fee and environment rules while preserving the storage carry-over, revert rollback and simulation isolation. Broader warm-access/refund behavior remains to test.",
       "rationale": "A state diff should be internally coherent and reconstructible; an ordered multi-call simulation should have one predictable state timeline.",
-      "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15’s documented policy consistently. Each callMany result should describe its own transition from the preceding call’s post-state, not a cumulative diff from the original state.",
+      "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15\u2019s documented policy consistently. Each callMany result should describe its own transition from the preceding call\u2019s post-state, not a cumulative diff from the original state.",
       "title": "Fee accounting and sequential state diffs"
     },
     {
       "cases": [
-        "call-constructor",
-        "call-constructor-priced",
-        "call-many-transfers",
-        "call-transfer-stateDiff",
-        "raw-valid",
-        "raw-valid-current-nonce",
-        "raw-valid-default-block",
-        "replay-block-tree",
-        "replay-tree-stateDiff"
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-many-transfers",
+        "initial/call-transfer-stateDiff",
+        "initial/raw-valid",
+        "initial/raw-valid-current-nonce",
+        "initial/raw-valid-default-block",
+        "initial/replay-block-tree",
+        "initial/replay-tree-stateDiff"
       ],
       "id": "H17",
       "kind": "Spec decision / likely serializer fix",
@@ -320,14 +333,14 @@
     },
     {
       "cases": [
-        "replay-7702-stateDiff",
-        "replay-block-tree",
-        "semantic-01--auth-set",
-        "semantic-01--auth-replace",
-        "semantic-01--auth-clear",
-        "semantic-01--auth-set-revert",
-        "fixed-01--auth-clear",
-        "fixed-01--auth-set-revert"
+        "a/auth-clear",
+        "a/auth-replace",
+        "a/auth-set",
+        "a/auth-set-revert",
+        "initial/replay-7702-stateDiff",
+        "initial/replay-block-tree",
+        "repeat/auth-clear",
+        "repeat/auth-set-revert"
       ],
       "id": "H18",
       "kind": "Likely client bug",
@@ -338,17 +351,19 @@
     },
     {
       "cases": [
-        "call-constructor",
-        "call-constructor-priced",
-        "call-tree-vmTrace",
-        "call-tree-vmTrace-priced",
-        "replay-block-tree",
-        "replay-tree-vmTrace",
-        "semantic-01--auth-set",
-        "semantic-01--auth-replace",
-        "fixed-01--constructor",
-        "fixed-01--auth-clear",
-        "fixed-01--auth-set-revert"
+        "a/auth-clear",
+        "a/auth-replace",
+        "a/auth-set",
+        "a/auth-set-revert",
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-tree-vmTrace",
+        "initial/call-tree-vmTrace-priced",
+        "initial/replay-block-tree",
+        "initial/replay-tree-vmTrace",
+        "repeat/auth-clear",
+        "repeat/auth-set-revert",
+        "repeat/constructor"
       ],
       "id": "H19",
       "kind": "Likely client bug",
@@ -359,21 +374,22 @@
     },
     {
       "cases": [
-        "call-constructor",
-        "call-constructor-priced",
-        "call-tree-vmTrace",
-        "call-tree-vmTrace-priced",
-        "replay-block-tree",
-        "replay-revert-vmTrace",
-        "replay-tree-vmTrace",
-        "repeat-01--call-gas7400",
-        "repeat-01--debug-gas7400-opcodes",
-        "repeat-01--constructor",
-        "repeat-01--call-mcopy",
-        "fixed-01--constructor",
-        "fixed-01--call-return42",
-        "fixed-01--call-mcopy",
-        "fixed-01--call-siblings-revert-ok"
+        "a/call-mcopy",
+        "a/call-return42",
+        "a/call-siblings-revert-ok",
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-tree-vmTrace",
+        "initial/call-tree-vmTrace-priced",
+        "initial/replay-block-tree",
+        "initial/replay-revert-vmTrace",
+        "initial/replay-tree-vmTrace",
+        "repeat/call-gas7400",
+        "repeat/call-mcopy",
+        "repeat/call-return42",
+        "repeat/call-siblings-revert-ok",
+        "repeat/constructor",
+        "repeat/debug-gas7400-opcodes"
       ],
       "id": "H20",
       "kind": "Implementation alignment / release retest",
@@ -384,13 +400,13 @@
     },
     {
       "cases": [
-        "call-constructor",
-        "call-constructor-priced",
-        "call-tree-vmTrace",
-        "call-tree-vmTrace-priced",
-        "replay-block-tree",
-        "replay-revert-vmTrace",
-        "replay-tree-vmTrace"
+        "initial/call-constructor",
+        "initial/call-constructor-priced",
+        "initial/call-tree-vmTrace",
+        "initial/call-tree-vmTrace-priced",
+        "initial/replay-block-tree",
+        "initial/replay-revert-vmTrace",
+        "initial/replay-tree-vmTrace"
       ],
       "id": "H21",
       "kind": "Spec decision",
@@ -401,7 +417,7 @@
     },
     {
       "cases": [
-        "call-identity"
+        "initial/call-identity"
       ],
       "id": "H22",
       "kind": "Likely client bug",
@@ -412,10 +428,10 @@
     },
     {
       "cases": [
-        "semantic-01--filter-created-to",
-        "semantic-01--filter-suicide-from",
-        "semantic-01--filter-suicide-beneficiary",
-        "semantic-01--transaction-tree"
+        "a/filter-created-to",
+        "a/filter-suicide-beneficiary",
+        "a/filter-suicide-from",
+        "a/transaction-tree"
       ],
       "id": "H23",
       "kind": "Spec decision / client discrepancy",
@@ -426,8 +442,8 @@
     },
     {
       "cases": [
-        "repeat-01--call-siblings-revert-ok",
-        "repeat-01--debug-siblings-revert-ok"
+        "repeat/call-siblings-revert-ok",
+        "repeat/debug-siblings-revert-ok"
       ],
       "id": "H24",
       "kind": "Reproduced reporting defect",
@@ -438,10 +454,10 @@
     },
     {
       "cases": [
-        "repeat-01--raw-below-basefee",
-        "repeat-01--raw-below-basefee-trace",
-        "repeat-01--raw-below-basefee-stateDiff",
-        "repeat-01--raw-below-basefee-vmTrace"
+        "repeat/raw-below-basefee",
+        "repeat/raw-below-basefee-stateDiff",
+        "repeat/raw-below-basefee-trace",
+        "repeat/raw-below-basefee-vmTrace"
       ],
       "id": "H25",
       "kind": "Reproduced response serialization defect",
@@ -452,8 +468,8 @@
     },
     {
       "cases": [
-        "fork-followup-01--destroy-trace-55",
-        "fork-followup-01--destroy-trace-56"
+        "fork-followup/destroy-trace-55",
+        "fork-followup/destroy-trace-56"
       ],
       "id": "H26",
       "kind": "Reproduced stateDiff discrepancy",
@@ -464,16 +480,11 @@
     },
     {
       "cases": [
-        "forks-01--block-35",
-        "forks-01--block-36",
-        "forks-01--filter-across-36",
-        "forks-01--filter-across-56",
-        "forks-01--filter-across-60",
-        "boundary-repeat-01--block-35",
-        "boundary-repeat-01--block-36",
-        "boundary-repeat-01--filter-across-36",
-        "boundary-repeat-01--filter-across-56",
-        "boundary-repeat-01--filter-across-60"
+        "forks/block-35",
+        "forks/block-36",
+        "forks/filter-across-36",
+        "forks/filter-across-56",
+        "forks/filter-across-60"
       ],
       "id": "H27",
       "kind": "Reproduced cross-method discrepancy",
@@ -484,11 +495,11 @@
     },
     {
       "cases": [
-        "fork-followup-01--system-beacon-55-560",
-        "fork-followup-01--system-beacon-56-560",
-        "fork-followup-01--system-beacon-55-8751",
-        "fork-followup-01--beacon-call-55",
-        "fork-followup-01--beacon-call-56"
+        "fork-followup/beacon-call-55",
+        "fork-followup/beacon-call-56",
+        "fork-followup/system-beacon-55-560",
+        "fork-followup/system-beacon-55-8751",
+        "fork-followup/system-beacon-56-560"
       ],
       "id": "H28",
       "kind": "Reproduced historical-state discrepancy; cause unresolved",
@@ -501,9 +512,26 @@
       "id": "H29",
       "title": "Precompile call-frame inclusion",
       "kind": "Spec decision / client alignment",
-      "cases": [],
+      "cases": [
+        "precompiles/nested-call-value0-success",
+        "precompiles/nested-call-value0-failed",
+        "precompiles/nested-call-value1-success",
+        "precompiles/nested-call-value1-failed",
+        "precompiles/nested-staticcall-value0-success",
+        "precompiles/nested-staticcall-value0-failed",
+        "precompiles/nested-delegatecall-value0-success",
+        "precompiles/nested-delegatecall-value0-failed",
+        "precompiles/nested-delegatecall-value1-success",
+        "precompiles/nested-delegatecall-value1-failed",
+        "precompiles/nested-callcode-value0-success",
+        "precompiles/nested-callcode-value0-failed",
+        "precompiles/nested-callcode-value1-success",
+        "precompiles/nested-callcode-value1-failed",
+        "precompiles/root-success",
+        "precompiles/root-failed"
+      ],
       "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
-      "rationale": "All four tested clients omit nested zero-value precompiles. Erigon, Reth and Nethermind retain nonzero-value CALL, CALLCODE and DELEGATECALL frames; Besu omits them. Preserving this shared exception avoids changing existing tree paths and retains the value-bearing action context.",
+      "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Existing matched-value fixtures establish current behavior but do not distinguish parent value from the explicit CALL/CALLCODE operand; separate crossed-value fixtures are needed.",
       "next_step": "Review the nonzero-value exception with Besu and confirm it for additional precompiles and fork activations. The precompiles corpus uses BN254 addition, with valid and invalid inputs, across CALL, STATICCALL, CALLCODE and DELEGATECALL. Frame inclusion is separate from failure propagation and return-byte correctness."
     }
   ]

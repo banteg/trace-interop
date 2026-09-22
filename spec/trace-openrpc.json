@@ -13,7 +13,7 @@
   },
   "methods": [
     {
-      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -22,6 +22,10 @@
         {
           "code": -32602,
           "message": "Invalid params"
+        },
+        {
+          "code": -32001,
+          "message": "Resource not found"
         },
         {
           "code": 4444,
@@ -77,11 +81,35 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "else": {
+              "properties": {
+                "transactionHash": {
+                  "pattern": "^0x[0-9a-f]{64}$",
+                  "title": "32 byte hex value",
+                  "type": "string"
+                },
+                "transactionPosition": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              }
+            },
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "reward"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
             "oneOf": [
               {
                 "oneOf": [
                   {
+                    "description": "Successful frame; result is required and error must be absent.",
                     "not": {
                       "required": [
                         "error"
@@ -111,13 +139,16 @@
                     },
                     "required": [
                       "result"
-                    ]
+                    ],
+                    "title": "Successful CALL"
                   },
                   {
+                    "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                     "required": [
                       "error",
                       "result"
-                    ]
+                    ],
+                    "title": "Failed CALL"
                   }
                 ],
                 "properties": {
@@ -169,29 +200,6 @@
                     "title": "TraceCallAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "error": {
                     "type": "string"
                   },
@@ -237,29 +245,6 @@
                     "title": "TraceAddress",
                     "type": "array"
                   },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "type": {
                     "const": "call"
                   }
@@ -275,6 +260,7 @@
               {
                 "oneOf": [
                   {
+                    "description": "Successful frame; result is required and error must be absent.",
                     "not": {
                       "required": [
                         "error"
@@ -310,13 +296,16 @@
                     },
                     "required": [
                       "result"
-                    ]
+                    ],
+                    "title": "Successful CREATE"
                   },
                   {
+                    "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                     "required": [
                       "error",
                       "result"
-                    ]
+                    ],
+                    "title": "Failed CREATE"
                   }
                 ],
                 "properties": {
@@ -351,29 +340,6 @@
                     ],
                     "title": "TraceCreateAction",
                     "type": "object"
-                  },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "error": {
                     "type": "string"
@@ -445,29 +411,6 @@
                     },
                     "title": "TraceAddress",
                     "type": "array"
-                  },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "type": {
                     "const": "create"
@@ -509,29 +452,6 @@
                     "title": "TraceSuicideAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "result": {
                     "type": "null"
                   },
@@ -546,29 +466,6 @@
                     },
                     "title": "TraceAddress",
                     "type": "array"
-                  },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "type": {
                     "const": "suicide"
@@ -612,29 +509,6 @@
                     "title": "TraceRewardAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "result": {
                     "type": "null"
                   },
@@ -650,29 +524,6 @@
                     "title": "TraceAddress",
                     "type": "array"
                   },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "type": {
                     "const": "reward"
                   }
@@ -686,13 +537,34 @@
                 "type": "object"
               }
             ],
+            "properties": {
+              "blockHash": {
+                "pattern": "^0x[0-9a-f]{64}$",
+                "title": "32 byte hex value",
+                "type": "string"
+              },
+              "blockNumber": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
             "required": [
               "blockHash",
               "blockNumber",
               "transactionHash",
               "transactionPosition"
             ],
-            "title": "TraceLocalizedFrame",
+            "then": {
+              "properties": {
+                "transactionHash": {
+                  "type": "null"
+                },
+                "transactionPosition": {
+                  "type": "null"
+                }
+              }
+            },
+            "title": "Historical call trace record or protocol reward",
             "type": "object"
           },
           "title": "TraceLocalizedFrames",
@@ -702,7 +574,7 @@
       "summary": "Returns localized call traces for a block."
     },
     {
-      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -711,6 +583,10 @@
         {
           "code": -32602,
           "message": "Invalid params"
+        },
+        {
+          "code": -32001,
+          "message": "Resource not found"
         },
         {
           "code": 4444,
@@ -756,8 +632,25 @@
           "name": "Call",
           "required": true,
           "schema": {
-            "additionalProperties": false,
-            "description": "Unsigned simulation. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty, nonce from selected state, fees zero. Omitted gas uses the client execution cap. data is a compatibility alias for input; when both are present they MUST agree. Legacy gasPrice and dynamic fee fields MUST NOT be combined. Blob and authorization overrides remain outside this first profile.",
+            "additionalProperties": true,
+            "description": "Unsigned simulation. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty, nonce from selected state, fees zero. Omitted gas uses the client execution cap. data is a compatibility alias for input; when both are present they MUST agree. Legacy gasPrice and dynamic fee fields MUST NOT be combined. Standard eth_call transaction fields retain their eth_call meaning, including blob context and authorization lists when supported by the selected fork. Unknown fields MUST be ignored for forward compatibility; acceptance alone does not establish support for an extension. Additional positional state or block overrides remain outside this profile.",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "maxFeePerGas"
+                  ]
+                },
+                {
+                  "required": [
+                    "maxPriorityFeePerGas"
+                  ]
+                }
+              ],
+              "required": [
+                "gasPrice"
+              ]
+            },
             "properties": {
               "accessList": {
                 "items": {
@@ -787,6 +680,69 @@
                 "title": "Access list",
                 "type": "array"
               },
+              "authorizationList": {
+                "description": "List of authorizations for the transaction",
+                "items": {
+                  "properties": {
+                    "address": {
+                      "pattern": "^0x[0-9a-fA-F]{40}$",
+                      "title": "hex encoded address",
+                      "type": "string"
+                    },
+                    "chainId": {
+                      "description": "Chain ID on which this transaction is valid",
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                      "title": "chainId",
+                      "type": "string"
+                    },
+                    "nonce": {
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                      "title": "nonce",
+                      "type": "string"
+                    },
+                    "r": {
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                      "title": "r",
+                      "type": "string"
+                    },
+                    "s": {
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                      "title": "s",
+                      "type": "string"
+                    },
+                    "yParity": {
+                      "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
+                      "pattern": "^0x[0-9a-f]{1,2}$",
+                      "title": "yParity",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "nonce",
+                    "address",
+                    "yParity",
+                    "r",
+                    "s"
+                  ],
+                  "type": "object"
+                },
+                "title": "Authorization List",
+                "type": "array"
+              },
+              "blobVersionedHashes": {
+                "items": {
+                  "pattern": "^0x[0-9a-f]{64}$",
+                  "title": "32 byte hex value",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "chainId": {
+                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                "title": "hex encoded 256 bit unsigned integer",
+                "type": "string"
+              },
               "data": {
                 "pattern": "^0x([0-9a-f]{2})*$",
                 "title": "Trace byte string",
@@ -810,6 +766,11 @@
               "input": {
                 "pattern": "^0x([0-9a-f]{2})*$",
                 "title": "Trace byte string",
+                "type": "string"
+              },
+              "maxFeePerBlobGas": {
+                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                "title": "hex encoded 256 bit unsigned integer",
                 "type": "string"
               },
               "maxFeePerGas": {
@@ -1205,11 +1166,36 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "blockHash"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blockNumber"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "transactionHash"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "transactionPosition"
+                      ]
+                    }
+                  ]
+                },
                 "oneOf": [
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -1239,13 +1225,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CALL"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CALL"
                       }
                     ],
                     "properties": {
@@ -1297,29 +1286,6 @@
                         "title": "TraceCallAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "error": {
                         "type": "string"
                       },
@@ -1365,29 +1331,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "call"
                       }
@@ -1403,6 +1346,7 @@
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -1438,13 +1382,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CREATE"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CREATE"
                       }
                     ],
                     "properties": {
@@ -1479,29 +1426,6 @@
                         ],
                         "title": "TraceCreateAction",
                         "type": "object"
-                      },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "error": {
                         "type": "string"
@@ -1573,29 +1497,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "create"
@@ -1637,29 +1538,6 @@
                         "title": "TraceSuicideAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -1674,29 +1552,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "suicide"
@@ -1740,29 +1595,6 @@
                         "title": "TraceRewardAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -1778,29 +1610,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "reward"
                       }
@@ -1814,7 +1623,17 @@
                     "type": "object"
                   }
                 ],
-                "title": "Flat call trace record"
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "call",
+                      "create",
+                      "suicide"
+                    ]
+                  }
+                },
+                "title": "Call trace record inside an execution envelope",
+                "type": "object"
               },
               "title": "TraceFrames",
               "type": "array"
@@ -1976,7 +1795,7 @@
       "summary": "Executes an unsigned call and returns selected traces."
     },
     {
-      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -1987,11 +1806,67 @@
           "message": "Invalid params"
         },
         {
+          "code": -32001,
+          "message": "Resource not found"
+        },
+        {
           "code": 4444,
           "message": "Pruned history unavailable"
         }
       ],
       "examples": [
+        {
+          "description": "Illustrative sequence assuming the first sender has at least one wei, the second sender initially has zero balance, and both recipients have no code. Each call selects no trace families and uses zero fees. The second call spends the wei received from the first call; canonical state is unchanged.",
+          "name": "Fund an account then spend its simulated balance",
+          "params": [
+            {
+              "name": "Calls",
+              "value": [
+                [
+                  {
+                    "from": "0x1111111111111111111111111111111111111111",
+                    "gas": "0x5208",
+                    "gasPrice": "0x0",
+                    "to": "0x2222222222222222222222222222222222222222",
+                    "value": "0x1"
+                  },
+                  []
+                ],
+                [
+                  {
+                    "from": "0x2222222222222222222222222222222222222222",
+                    "gas": "0x5208",
+                    "gasPrice": "0x0",
+                    "to": "0x3333333333333333333333333333333333333333",
+                    "value": "0x1"
+                  },
+                  []
+                ]
+              ]
+            },
+            {
+              "name": "Block",
+              "value": "latest"
+            }
+          ],
+          "result": {
+            "name": "Result",
+            "value": [
+              {
+                "output": "0x",
+                "stateDiff": null,
+                "trace": [],
+                "vmTrace": null
+              },
+              {
+                "output": "0x",
+                "stateDiff": null,
+                "trace": [],
+                "vmTrace": null
+              }
+            ]
+          }
+        },
         {
           "description": "Illustrative response shape; exact execution depends on chain state.",
           "name": "trace_callMany result shape",
@@ -2020,8 +1895,25 @@
             "items": {
               "items": [
                 {
-                  "additionalProperties": false,
-                  "description": "Unsigned simulation. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty, nonce from selected state, fees zero. Omitted gas uses the client execution cap. data is a compatibility alias for input; when both are present they MUST agree. Legacy gasPrice and dynamic fee fields MUST NOT be combined. Blob and authorization overrides remain outside this first profile.",
+                  "additionalProperties": true,
+                  "description": "Unsigned simulation. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty, nonce from selected state, fees zero. Omitted gas uses the client execution cap. data is a compatibility alias for input; when both are present they MUST agree. Legacy gasPrice and dynamic fee fields MUST NOT be combined. Standard eth_call transaction fields retain their eth_call meaning, including blob context and authorization lists when supported by the selected fork. Unknown fields MUST be ignored for forward compatibility; acceptance alone does not establish support for an extension. Additional positional state or block overrides remain outside this profile.",
+                  "not": {
+                    "anyOf": [
+                      {
+                        "required": [
+                          "maxFeePerGas"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "maxPriorityFeePerGas"
+                        ]
+                      }
+                    ],
+                    "required": [
+                      "gasPrice"
+                    ]
+                  },
                   "properties": {
                     "accessList": {
                       "items": {
@@ -2051,6 +1943,69 @@
                       "title": "Access list",
                       "type": "array"
                     },
+                    "authorizationList": {
+                      "description": "List of authorizations for the transaction",
+                      "items": {
+                        "properties": {
+                          "address": {
+                            "pattern": "^0x[0-9a-fA-F]{40}$",
+                            "title": "hex encoded address",
+                            "type": "string"
+                          },
+                          "chainId": {
+                            "description": "Chain ID on which this transaction is valid",
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                            "title": "chainId",
+                            "type": "string"
+                          },
+                          "nonce": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                            "title": "nonce",
+                            "type": "string"
+                          },
+                          "r": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "r",
+                            "type": "string"
+                          },
+                          "s": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "s",
+                            "type": "string"
+                          },
+                          "yParity": {
+                            "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
+                            "pattern": "^0x[0-9a-f]{1,2}$",
+                            "title": "yParity",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "nonce",
+                          "address",
+                          "yParity",
+                          "r",
+                          "s"
+                        ],
+                        "type": "object"
+                      },
+                      "title": "Authorization List",
+                      "type": "array"
+                    },
+                    "blobVersionedHashes": {
+                      "items": {
+                        "pattern": "^0x[0-9a-f]{64}$",
+                        "title": "32 byte hex value",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "chainId": {
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                      "title": "hex encoded 256 bit unsigned integer",
+                      "type": "string"
+                    },
                     "data": {
                       "pattern": "^0x([0-9a-f]{2})*$",
                       "title": "Trace byte string",
@@ -2074,6 +2029,11 @@
                     "input": {
                       "pattern": "^0x([0-9a-f]{2})*$",
                       "title": "Trace byte string",
+                      "type": "string"
+                    },
+                    "maxFeePerBlobGas": {
+                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                      "title": "hex encoded 256 bit unsigned integer",
                       "type": "string"
                     },
                     "maxFeePerGas": {
@@ -2474,11 +2434,36 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "not": {
+                    "anyOf": [
+                      {
+                        "required": [
+                          "blockHash"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "blockNumber"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "transactionHash"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "transactionPosition"
+                        ]
+                      }
+                    ]
+                  },
                   "oneOf": [
                     {
                       "oneOf": [
                         {
+                          "description": "Successful frame; result is required and error must be absent.",
                           "not": {
                             "required": [
                               "error"
@@ -2508,13 +2493,16 @@
                           },
                           "required": [
                             "result"
-                          ]
+                          ],
+                          "title": "Successful CALL"
                         },
                         {
+                          "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                           "required": [
                             "error",
                             "result"
-                          ]
+                          ],
+                          "title": "Failed CALL"
                         }
                       ],
                       "properties": {
@@ -2566,29 +2554,6 @@
                           "title": "TraceCallAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "error": {
                           "type": "string"
                         },
@@ -2634,29 +2599,6 @@
                           "title": "TraceAddress",
                           "type": "array"
                         },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "type": {
                           "const": "call"
                         }
@@ -2672,6 +2614,7 @@
                     {
                       "oneOf": [
                         {
+                          "description": "Successful frame; result is required and error must be absent.",
                           "not": {
                             "required": [
                               "error"
@@ -2707,13 +2650,16 @@
                           },
                           "required": [
                             "result"
-                          ]
+                          ],
+                          "title": "Successful CREATE"
                         },
                         {
+                          "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                           "required": [
                             "error",
                             "result"
-                          ]
+                          ],
+                          "title": "Failed CREATE"
                         }
                       ],
                       "properties": {
@@ -2748,29 +2694,6 @@
                           ],
                           "title": "TraceCreateAction",
                           "type": "object"
-                        },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "error": {
                           "type": "string"
@@ -2842,29 +2765,6 @@
                           },
                           "title": "TraceAddress",
                           "type": "array"
-                        },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "type": {
                           "const": "create"
@@ -2906,29 +2806,6 @@
                           "title": "TraceSuicideAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "result": {
                           "type": "null"
                         },
@@ -2943,29 +2820,6 @@
                           },
                           "title": "TraceAddress",
                           "type": "array"
-                        },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "type": {
                           "const": "suicide"
@@ -3009,29 +2863,6 @@
                           "title": "TraceRewardAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "result": {
                           "type": "null"
                         },
@@ -3047,29 +2878,6 @@
                           "title": "TraceAddress",
                           "type": "array"
                         },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "type": {
                           "const": "reward"
                         }
@@ -3083,7 +2891,17 @@
                       "type": "object"
                     }
                   ],
-                  "title": "Flat call trace record"
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "call",
+                        "create",
+                        "suicide"
+                      ]
+                    }
+                  },
+                  "title": "Call trace record inside an execution envelope",
+                  "type": "object"
                 },
                 "title": "TraceFrames",
                 "type": "array"
@@ -3247,7 +3065,7 @@
       "summary": "Executes dependent unsigned calls in order."
     },
     {
-      "description": "Apply OR within each address list and AND between the lists; omitted/empty lists are unrestricted. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Apply OR within each address list and AND between the lists; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -3256,6 +3074,10 @@
         {
           "code": -32602,
           "message": "Invalid params"
+        },
+        {
+          "code": -32001,
+          "message": "Resource not found"
         },
         {
           "code": 4444,
@@ -3288,7 +3110,7 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "Inclusive block range; defaults fromBlock earliest, toBlock latest, after 0, count unlimited subject to an explicit server limit. OR within each address list; AND between lists. Missing or empty lists are unrestricted; null is invalid. mode is outside this baseline. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. Return an error rather than silently truncate when a server limit is exceeded (H03,H04,H23,H27).",
+            "description": "Inclusive block range; defaults fromBlock earliest, toBlock latest, after 0, count unlimited subject to an explicit server limit. OR within each address list; AND between lists. Missing, null or empty lists are unrestricted. Compare address bytes independently of hex letter case. mode is outside this baseline. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. Return an error rather than silently truncate when a server limit is exceeded (H03,H04,H23,H27).",
             "properties": {
               "after": {
                 "minimum": 0,
@@ -3304,7 +3126,10 @@
                   "title": "hex encoded address",
                   "type": "string"
                 },
-                "type": "array"
+                "type": [
+                  "array",
+                  "null"
+                ]
               },
               "fromBlock": {
                 "oneOf": [
@@ -3334,7 +3159,10 @@
                   "title": "hex encoded address",
                   "type": "string"
                 },
-                "type": "array"
+                "type": [
+                  "array",
+                  "null"
+                ]
               },
               "toBlock": {
                 "oneOf": [
@@ -3369,11 +3197,35 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+            "else": {
+              "properties": {
+                "transactionHash": {
+                  "pattern": "^0x[0-9a-f]{64}$",
+                  "title": "32 byte hex value",
+                  "type": "string"
+                },
+                "transactionPosition": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              }
+            },
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "reward"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
             "oneOf": [
               {
                 "oneOf": [
                   {
+                    "description": "Successful frame; result is required and error must be absent.",
                     "not": {
                       "required": [
                         "error"
@@ -3403,13 +3255,16 @@
                     },
                     "required": [
                       "result"
-                    ]
+                    ],
+                    "title": "Successful CALL"
                   },
                   {
+                    "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                     "required": [
                       "error",
                       "result"
-                    ]
+                    ],
+                    "title": "Failed CALL"
                   }
                 ],
                 "properties": {
@@ -3461,29 +3316,6 @@
                     "title": "TraceCallAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "error": {
                     "type": "string"
                   },
@@ -3529,29 +3361,6 @@
                     "title": "TraceAddress",
                     "type": "array"
                   },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "type": {
                     "const": "call"
                   }
@@ -3567,6 +3376,7 @@
               {
                 "oneOf": [
                   {
+                    "description": "Successful frame; result is required and error must be absent.",
                     "not": {
                       "required": [
                         "error"
@@ -3602,13 +3412,16 @@
                     },
                     "required": [
                       "result"
-                    ]
+                    ],
+                    "title": "Successful CREATE"
                   },
                   {
+                    "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                     "required": [
                       "error",
                       "result"
-                    ]
+                    ],
+                    "title": "Failed CREATE"
                   }
                 ],
                 "properties": {
@@ -3643,29 +3456,6 @@
                     ],
                     "title": "TraceCreateAction",
                     "type": "object"
-                  },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "error": {
                     "type": "string"
@@ -3737,29 +3527,6 @@
                     },
                     "title": "TraceAddress",
                     "type": "array"
-                  },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "type": {
                     "const": "create"
@@ -3801,29 +3568,6 @@
                     "title": "TraceSuicideAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "result": {
                     "type": "null"
                   },
@@ -3838,29 +3582,6 @@
                     },
                     "title": "TraceAddress",
                     "type": "array"
-                  },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
                   },
                   "type": {
                     "const": "suicide"
@@ -3904,29 +3625,6 @@
                     "title": "TraceRewardAction",
                     "type": "object"
                   },
-                  "blockHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "blockNumber": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "result": {
                     "type": "null"
                   },
@@ -3942,29 +3640,6 @@
                     "title": "TraceAddress",
                     "type": "array"
                   },
-                  "transactionHash": {
-                    "anyOf": [
-                      {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "transactionPosition": {
-                    "anyOf": [
-                      {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
                   "type": {
                     "const": "reward"
                   }
@@ -3978,13 +3653,34 @@
                 "type": "object"
               }
             ],
+            "properties": {
+              "blockHash": {
+                "pattern": "^0x[0-9a-f]{64}$",
+                "title": "32 byte hex value",
+                "type": "string"
+              },
+              "blockNumber": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
             "required": [
               "blockHash",
               "blockNumber",
               "transactionHash",
               "transactionPosition"
             ],
-            "title": "TraceLocalizedFrame",
+            "then": {
+              "properties": {
+                "transactionHash": {
+                  "type": "null"
+                },
+                "transactionPosition": {
+                  "type": "null"
+                }
+              }
+            },
+            "title": "Historical call trace record or protocol reward",
             "type": "object"
           },
           "title": "TraceLocalizedFrames",
@@ -3994,7 +3690,7 @@
       "summary": "Returns localized traces matching an address filter."
     },
     {
-      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Integer path entries are invalid params (-32602); convert traceAddress integers to hex quantities. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
       "errors": [
         {
           "code": -32601,
@@ -4044,7 +3740,7 @@
           "name": "Position",
           "required": true,
           "schema": {
-            "description": "One path into the call tree: [] selects the root, [\"0x0\"] its first child (H02). Output traceAddress uses JSON integers; the input path uses hex quantities.",
+            "description": "One path into the call tree: [] selects the root, [\"0x0\"] its first child (H02). Output traceAddress uses JSON integers; the input path uses hex quantities for compatibility with existing callers. Convert each output integer to a minimal hex quantity before querying. Integer path entries are invalid parameters (-32602), not missing paths.",
             "items": {
               "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
               "title": "hex encoded 64 bit unsigned integer",
@@ -4060,11 +3756,35 @@
         "schema": {
           "anyOf": [
             {
-              "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+              "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+              "else": {
+                "properties": {
+                  "transactionHash": {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "32 byte hex value",
+                    "type": "string"
+                  },
+                  "transactionPosition": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                }
+              },
+              "if": {
+                "properties": {
+                  "type": {
+                    "const": "reward"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
               "oneOf": [
                 {
                   "oneOf": [
                     {
+                      "description": "Successful frame; result is required and error must be absent.",
                       "not": {
                         "required": [
                           "error"
@@ -4094,13 +3814,16 @@
                       },
                       "required": [
                         "result"
-                      ]
+                      ],
+                      "title": "Successful CALL"
                     },
                     {
+                      "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                       "required": [
                         "error",
                         "result"
-                      ]
+                      ],
+                      "title": "Failed CALL"
                     }
                   ],
                   "properties": {
@@ -4152,29 +3875,6 @@
                       "title": "TraceCallAction",
                       "type": "object"
                     },
-                    "blockHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "blockNumber": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
                     "error": {
                       "type": "string"
                     },
@@ -4220,29 +3920,6 @@
                       "title": "TraceAddress",
                       "type": "array"
                     },
-                    "transactionHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "transactionPosition": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
                     "type": {
                       "const": "call"
                     }
@@ -4258,6 +3935,7 @@
                 {
                   "oneOf": [
                     {
+                      "description": "Successful frame; result is required and error must be absent.",
                       "not": {
                         "required": [
                           "error"
@@ -4293,13 +3971,16 @@
                       },
                       "required": [
                         "result"
-                      ]
+                      ],
+                      "title": "Successful CREATE"
                     },
                     {
+                      "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                       "required": [
                         "error",
                         "result"
-                      ]
+                      ],
+                      "title": "Failed CREATE"
                     }
                   ],
                   "properties": {
@@ -4334,29 +4015,6 @@
                       ],
                       "title": "TraceCreateAction",
                       "type": "object"
-                    },
-                    "blockHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "blockNumber": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
                     },
                     "error": {
                       "type": "string"
@@ -4428,29 +4086,6 @@
                       },
                       "title": "TraceAddress",
                       "type": "array"
-                    },
-                    "transactionHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "transactionPosition": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
                     },
                     "type": {
                       "const": "create"
@@ -4492,29 +4127,6 @@
                       "title": "TraceSuicideAction",
                       "type": "object"
                     },
-                    "blockHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "blockNumber": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
                     "result": {
                       "type": "null"
                     },
@@ -4529,29 +4141,6 @@
                       },
                       "title": "TraceAddress",
                       "type": "array"
-                    },
-                    "transactionHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "transactionPosition": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
                     },
                     "type": {
                       "const": "suicide"
@@ -4595,29 +4184,6 @@
                       "title": "TraceRewardAction",
                       "type": "object"
                     },
-                    "blockHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "blockNumber": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
                     "result": {
                       "type": "null"
                     },
@@ -4633,29 +4199,6 @@
                       "title": "TraceAddress",
                       "type": "array"
                     },
-                    "transactionHash": {
-                      "anyOf": [
-                        {
-                          "pattern": "^0x[0-9a-f]{64}$",
-                          "title": "32 byte hex value",
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "transactionPosition": {
-                      "anyOf": [
-                        {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
                     "type": {
                       "const": "reward"
                     }
@@ -4669,13 +4212,41 @@
                   "type": "object"
                 }
               ],
+              "properties": {
+                "blockHash": {
+                  "pattern": "^0x[0-9a-f]{64}$",
+                  "title": "32 byte hex value",
+                  "type": "string"
+                },
+                "blockNumber": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "type": {
+                  "enum": [
+                    "call",
+                    "create",
+                    "suicide"
+                  ]
+                }
+              },
               "required": [
                 "blockHash",
                 "blockNumber",
                 "transactionHash",
                 "transactionPosition"
               ],
-              "title": "TraceLocalizedFrame",
+              "then": {
+                "properties": {
+                  "transactionHash": {
+                    "type": "null"
+                  },
+                  "transactionPosition": {
+                    "type": "null"
+                  }
+                }
+              },
+              "title": "Historical transaction call trace record",
               "type": "object"
             },
             {
@@ -5062,11 +4633,36 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "blockHash"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blockNumber"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "transactionHash"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "transactionPosition"
+                      ]
+                    }
+                  ]
+                },
                 "oneOf": [
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -5096,13 +4692,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CALL"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CALL"
                       }
                     ],
                     "properties": {
@@ -5154,29 +4753,6 @@
                         "title": "TraceCallAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "error": {
                         "type": "string"
                       },
@@ -5222,29 +4798,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "call"
                       }
@@ -5260,6 +4813,7 @@
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -5295,13 +4849,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CREATE"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CREATE"
                       }
                     ],
                     "properties": {
@@ -5336,29 +4893,6 @@
                         ],
                         "title": "TraceCreateAction",
                         "type": "object"
-                      },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "error": {
                         "type": "string"
@@ -5430,29 +4964,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "create"
@@ -5494,29 +5005,6 @@
                         "title": "TraceSuicideAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -5531,29 +5019,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "suicide"
@@ -5597,29 +5062,6 @@
                         "title": "TraceRewardAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -5635,29 +5077,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "reward"
                       }
@@ -5671,7 +5090,17 @@
                     "type": "object"
                   }
                 ],
-                "title": "Flat call trace record"
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "call",
+                      "create",
+                      "suicide"
+                    ]
+                  }
+                },
+                "title": "Call trace record inside an execution envelope",
+                "type": "object"
               },
               "title": "TraceFrames",
               "type": "array"
@@ -5833,7 +5262,7 @@
       "summary": "Simulates a signed transaction at latest state."
     },
     {
-      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -5842,6 +5271,10 @@
         {
           "code": -32602,
           "message": "Invalid params"
+        },
+        {
+          "code": -32001,
+          "message": "Resource not found"
         },
         {
           "code": 4444,
@@ -6221,11 +5654,36 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                  "not": {
+                    "anyOf": [
+                      {
+                        "required": [
+                          "blockHash"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "blockNumber"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "transactionHash"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "transactionPosition"
+                        ]
+                      }
+                    ]
+                  },
                   "oneOf": [
                     {
                       "oneOf": [
                         {
+                          "description": "Successful frame; result is required and error must be absent.",
                           "not": {
                             "required": [
                               "error"
@@ -6255,13 +5713,16 @@
                           },
                           "required": [
                             "result"
-                          ]
+                          ],
+                          "title": "Successful CALL"
                         },
                         {
+                          "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                           "required": [
                             "error",
                             "result"
-                          ]
+                          ],
+                          "title": "Failed CALL"
                         }
                       ],
                       "properties": {
@@ -6313,29 +5774,6 @@
                           "title": "TraceCallAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "error": {
                           "type": "string"
                         },
@@ -6381,29 +5819,6 @@
                           "title": "TraceAddress",
                           "type": "array"
                         },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "type": {
                           "const": "call"
                         }
@@ -6419,6 +5834,7 @@
                     {
                       "oneOf": [
                         {
+                          "description": "Successful frame; result is required and error must be absent.",
                           "not": {
                             "required": [
                               "error"
@@ -6454,13 +5870,16 @@
                           },
                           "required": [
                             "result"
-                          ]
+                          ],
+                          "title": "Successful CREATE"
                         },
                         {
+                          "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                           "required": [
                             "error",
                             "result"
-                          ]
+                          ],
+                          "title": "Failed CREATE"
                         }
                       ],
                       "properties": {
@@ -6495,29 +5914,6 @@
                           ],
                           "title": "TraceCreateAction",
                           "type": "object"
-                        },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "error": {
                           "type": "string"
@@ -6589,29 +5985,6 @@
                           },
                           "title": "TraceAddress",
                           "type": "array"
-                        },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "type": {
                           "const": "create"
@@ -6653,29 +6026,6 @@
                           "title": "TraceSuicideAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "result": {
                           "type": "null"
                         },
@@ -6690,29 +6040,6 @@
                           },
                           "title": "TraceAddress",
                           "type": "array"
-                        },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
                         },
                         "type": {
                           "const": "suicide"
@@ -6756,29 +6083,6 @@
                           "title": "TraceRewardAction",
                           "type": "object"
                         },
-                        "blockHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "blockNumber": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "result": {
                           "type": "null"
                         },
@@ -6794,29 +6098,6 @@
                           "title": "TraceAddress",
                           "type": "array"
                         },
-                        "transactionHash": {
-                          "anyOf": [
-                            {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "transactionPosition": {
-                          "anyOf": [
-                            {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "type": {
                           "const": "reward"
                         }
@@ -6830,7 +6111,17 @@
                       "type": "object"
                     }
                   ],
-                  "title": "Flat call trace record"
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "call",
+                        "create",
+                        "suicide"
+                      ]
+                    }
+                  },
+                  "title": "Call trace record inside an execution envelope",
+                  "type": "object"
                 },
                 "title": "TraceFrames",
                 "type": "array"
@@ -7372,11 +6663,36 @@
                 },
                 "trace": {
                   "items": {
-                    "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                    "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "blockHash"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "blockNumber"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "transactionHash"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "transactionPosition"
+                          ]
+                        }
+                      ]
+                    },
                     "oneOf": [
                       {
                         "oneOf": [
                           {
+                            "description": "Successful frame; result is required and error must be absent.",
                             "not": {
                               "required": [
                                 "error"
@@ -7406,13 +6722,16 @@
                             },
                             "required": [
                               "result"
-                            ]
+                            ],
+                            "title": "Successful CALL"
                           },
                           {
+                            "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                             "required": [
                               "error",
                               "result"
-                            ]
+                            ],
+                            "title": "Failed CALL"
                           }
                         ],
                         "properties": {
@@ -7464,29 +6783,6 @@
                             "title": "TraceCallAction",
                             "type": "object"
                           },
-                          "blockHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "blockNumber": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
                           "error": {
                             "type": "string"
                           },
@@ -7532,29 +6828,6 @@
                             "title": "TraceAddress",
                             "type": "array"
                           },
-                          "transactionHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "transactionPosition": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
                           "type": {
                             "const": "call"
                           }
@@ -7570,6 +6843,7 @@
                       {
                         "oneOf": [
                           {
+                            "description": "Successful frame; result is required and error must be absent.",
                             "not": {
                               "required": [
                                 "error"
@@ -7605,13 +6879,16 @@
                             },
                             "required": [
                               "result"
-                            ]
+                            ],
+                            "title": "Successful CREATE"
                           },
                           {
+                            "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                             "required": [
                               "error",
                               "result"
-                            ]
+                            ],
+                            "title": "Failed CREATE"
                           }
                         ],
                         "properties": {
@@ -7646,29 +6923,6 @@
                             ],
                             "title": "TraceCreateAction",
                             "type": "object"
-                          },
-                          "blockHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "blockNumber": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
                           },
                           "error": {
                             "type": "string"
@@ -7740,29 +6994,6 @@
                             },
                             "title": "TraceAddress",
                             "type": "array"
-                          },
-                          "transactionHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "transactionPosition": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
                           },
                           "type": {
                             "const": "create"
@@ -7804,29 +7035,6 @@
                             "title": "TraceSuicideAction",
                             "type": "object"
                           },
-                          "blockHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "blockNumber": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
                           "result": {
                             "type": "null"
                           },
@@ -7841,29 +7049,6 @@
                             },
                             "title": "TraceAddress",
                             "type": "array"
-                          },
-                          "transactionHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "transactionPosition": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
                           },
                           "type": {
                             "const": "suicide"
@@ -7907,29 +7092,6 @@
                             "title": "TraceRewardAction",
                             "type": "object"
                           },
-                          "blockHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "blockNumber": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
                           "result": {
                             "type": "null"
                           },
@@ -7945,29 +7107,6 @@
                             "title": "TraceAddress",
                             "type": "array"
                           },
-                          "transactionHash": {
-                            "anyOf": [
-                              {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
-                          "transactionPosition": {
-                            "anyOf": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
-                          },
                           "type": {
                             "const": "reward"
                           }
@@ -7981,7 +7120,17 @@
                         "type": "object"
                       }
                     ],
-                    "title": "Flat call trace record"
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "call",
+                          "create",
+                          "suicide"
+                        ]
+                      }
+                    },
+                    "title": "Call trace record inside an execution envelope",
+                    "type": "object"
                   },
                   "title": "TraceFrames",
                   "type": "array"
@@ -8203,11 +7352,35 @@
           "anyOf": [
             {
               "items": {
-                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Localization fields are required on historical records; null transaction fields are allowed only for protocol reward records. Simulation records omit localization. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "description": "Preorder traversal. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. Failed frames require error and result, retaining revert bytes and measured gas when available, otherwise result is null. Stable error-kind vocabulary is an open decision (H05,H09,H10,H24).",
+                "else": {
+                  "properties": {
+                    "transactionHash": {
+                      "pattern": "^0x[0-9a-f]{64}$",
+                      "title": "32 byte hex value",
+                      "type": "string"
+                    },
+                    "transactionPosition": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "reward"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                },
                 "oneOf": [
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -8237,13 +7410,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CALL"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CALL"
                       }
                     ],
                     "properties": {
@@ -8295,29 +7471,6 @@
                         "title": "TraceCallAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "error": {
                         "type": "string"
                       },
@@ -8363,29 +7516,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "call"
                       }
@@ -8401,6 +7531,7 @@
                   {
                     "oneOf": [
                       {
+                        "description": "Successful frame; result is required and error must be absent.",
                         "not": {
                           "required": [
                             "error"
@@ -8436,13 +7567,16 @@
                         },
                         "required": [
                           "result"
-                        ]
+                        ],
+                        "title": "Successful CREATE"
                       },
                       {
+                        "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
                         "required": [
                           "error",
                           "result"
-                        ]
+                        ],
+                        "title": "Failed CREATE"
                       }
                     ],
                     "properties": {
@@ -8477,29 +7611,6 @@
                         ],
                         "title": "TraceCreateAction",
                         "type": "object"
-                      },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "error": {
                         "type": "string"
@@ -8571,29 +7682,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "create"
@@ -8635,29 +7723,6 @@
                         "title": "TraceSuicideAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -8672,29 +7737,6 @@
                         },
                         "title": "TraceAddress",
                         "type": "array"
-                      },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
                       },
                       "type": {
                         "const": "suicide"
@@ -8738,29 +7780,6 @@
                         "title": "TraceRewardAction",
                         "type": "object"
                       },
-                      "blockHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "blockNumber": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "result": {
                         "type": "null"
                       },
@@ -8776,29 +7795,6 @@
                         "title": "TraceAddress",
                         "type": "array"
                       },
-                      "transactionHash": {
-                        "anyOf": [
-                          {
-                            "pattern": "^0x[0-9a-f]{64}$",
-                            "title": "32 byte hex value",
-                            "type": "string"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
-                      "transactionPosition": {
-                        "anyOf": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      },
                       "type": {
                         "const": "reward"
                       }
@@ -8812,16 +7808,44 @@
                     "type": "object"
                   }
                 ],
+                "properties": {
+                  "blockHash": {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "32 byte hex value",
+                    "type": "string"
+                  },
+                  "blockNumber": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "type": {
+                    "enum": [
+                      "call",
+                      "create",
+                      "suicide"
+                    ]
+                  }
+                },
                 "required": [
                   "blockHash",
                   "blockNumber",
                   "transactionHash",
                   "transactionPosition"
                 ],
-                "title": "TraceLocalizedFrame",
+                "then": {
+                  "properties": {
+                    "transactionHash": {
+                      "type": "null"
+                    },
+                    "transactionPosition": {
+                      "type": "null"
+                    }
+                  }
+                },
+                "title": "Historical transaction call trace record",
                 "type": "object"
               },
-              "title": "TraceLocalizedFrames",
+              "title": "Historical transaction call traces",
               "type": "array"
             },
             {

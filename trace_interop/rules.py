@@ -21,7 +21,7 @@ def embedded_error(response):
     return isinstance(value, dict) and value.get('jsonrpc') == '2.0' and 'error' in value
 
 
-def evaluate(case, observation, peers):
+def evaluate(case, observation, peers, invalid_params=None):
     """Return independently scoped rule checks; absence means no automated assertion."""
     name, request = case['name'], case['request']
     context = case.get('context', {})
@@ -63,6 +63,14 @@ def evaluate(case, observation, peers):
     def other(n):
         return mapping(mapping(peers.get(n)).get('response')).get('result')
 
+    if invalid_params:
+        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+              'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
+        if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
+            check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+                  'The portable filter profile rejects the mode extension as invalid params.')
+        return checks
+
     if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):
         path = [int(x, 16) for x in params[1]]
         missing = 'missing' in name or '0xffff' in params[1]
@@ -80,6 +88,10 @@ def evaluate(case, observation, peers):
                 check('H02', isinstance(result,dict) and result.get('traceAddress') == path,
                       f'Return one object whose traceAddress equals {path}.',
                       f'Observed {result.get("traceAddress") if isinstance(result,dict) else type(result).__name__}.')
+            else:
+                checks.append({'topic': 'H02', 'status': 'unassessed',
+                               'requirement': 'Compare the requested path with the transaction tree.',
+                               'detail': 'The reference transaction tree was unavailable; path selection was not assessed.'})
     if name in ['transaction-missing','replay-missing','get-missing-tx']:
         check('H06', status == 'result' and result is None, 'Unknown transaction returns null, not an empty collection or RPC error.')
     if method == 'trace_replayTransaction' and isinstance(result, dict):
@@ -154,37 +166,59 @@ def evaluate(case, observation, peers):
                     valid &= isinstance(push, list) and all(isinstance(v,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)',v) is not None for v in sequence(push))
                 if op.get('sub') is not None: stack.append(op['sub'])
         check('H21', valid, 'Stack words use minimal hex quantities at every depth.')
-    if method == 'trace_filter' and isinstance(params[0],dict):
+    if method == 'trace_filter' and params and isinstance(params[0],dict):
         filt = params[0]
-        if name in ['filter-both','filter-from','filter-to','filter-empty','filter-all','filter-from-empty-to-set','filter-to-empty-from-set','filter-created-to','filter-creator-from','filter-suicide-from','filter-suicide-beneficiary']:
-            tree = other('transaction-tree')
-            if isinstance(tree,list) and 'mode' not in filt:
-                def matches(frame):
-                    action=mapping(mapping(frame).get('action')); kind=mapping(frame).get('type')
-                    frm=action.get('from'); to=action.get('to')
-                    if kind=='create': to=mapping(frame.get('result')).get('address')
-                    if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
-                    if kind=='reward': frm,to=None,action.get('author')
-                    return (not filt.get('fromAddress') or frm in filt['fromAddress']) and (not filt.get('toAddress') or to in filt['toAddress'])
-                # The fixture block contains multiple transactions; use block-wide baseline when available.
-                baseline = other('block-tree') or other('block-2')
-                if isinstance(baseline,list):
-                    expected=[f for f in baseline if matches(f)]
-                    identity=lambda f:(mapping(f).get('transactionHash'),mapping(f).get('traceAddress'),mapping(f).get('type'),mapping(f).get('action'))
-                    topic='H23' if any(s in name for s in ['created','creator','suicide']) else 'H04' if 'empty' in name else 'H03'
-                    check(topic, isinstance(result,list) and [identity(f) for f in result] == [identity(f) for f in expected],
-                          'Address matching is OR within each list, AND across lists, with action-specific endpoints.',
-                          f'Expected {len(expected)} records from this client\'s block trace.')
+        filter_cases = ['filter-both','filter-from','filter-to','filter-empty','filter-all',
+                        'filter-from-null','filter-to-null','filter-both-null',
+                        'filter-from-empty-to-set','filter-to-empty-from-set','filter-created-to',
+                        'filter-creator-from','filter-suicide-from','filter-suicide-beneficiary',
+                        'filter-from-only-intersection','filter-to-only-intersection']
+        if name in filter_cases and 'mode' not in filt:
+            def address(value):
+                return value.lower() if isinstance(value, str) else None
+            def matches(frame):
+                action=mapping(mapping(frame).get('action')); kind=mapping(frame).get('type')
+                frm=action.get('from'); to=action.get('to')
+                if kind=='create': to=mapping(frame.get('result')).get('address')
+                if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
+                if kind=='reward': frm,to=None,action.get('author')
+                return (not filt.get('fromAddress') or address(frm) in [address(v) for v in sequence(filt['fromAddress'])]) and (not filt.get('toAddress') or address(to) in [address(v) for v in sequence(filt['toAddress'])])
+            baseline = other('block-tree')
+            if not isinstance(baseline, list): baseline = other('block-2')
+            topic='H23' if any(t in name for t in ['created','creator','suicide']) else 'H04' if any(t in name for t in ['empty','null']) else 'H03'
+            if isinstance(baseline,list) and all(isinstance(f,dict) for f in baseline):
+                expected=[f for f in baseline if matches(f)]
+                identity=lambda f:(mapping(f).get('transactionHash'),mapping(f).get('traceAddress'),mapping(f).get('type'),mapping(f).get('action'))
+                check(topic, isinstance(result,list) and all(isinstance(f,dict) for f in result) and [identity(f) for f in result] == [identity(f) for f in expected],
+                      'Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted.',
+                      f'Expected {len(expected)} records from this client\'s block trace.')
+            else:
+                checks.append({'topic': topic, 'status': 'unassessed', 'requirement': 'Compare filtering with the block trace.',
+                               'detail': 'The reference block trace was unavailable.'})
     if name == 'filter-two-blocks':
         a,b=other('block-2'),other('block-3')
         if isinstance(a,list) and isinstance(b,list):
             check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.')
+    if method == 'trace_callMany' and params and isinstance(params[0], list):
+        check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
+              and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
+              'Return one execution envelope per input call, in order.')
+    if name == 'many-storage-write-read':
+        check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}']*2,
+              'The second call reads the first call’s simulated write.')
     if name == 'many-storage-write-revert-read':
         check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
-    if name in ['raw-nonce-high','raw-valid-current-nonce-high']:
+    if name == 'raw-nonce-high' or name.startswith('raw-nonce-high-'):
         check('H13', status == 'rpc_error', 'Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.')
+
+    if name.startswith('missing-block-'):
+        check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,
+              'An unknown selected block or range endpoint returns Resource not found (-32001).')
+    if name == 'call-unknown-field':
+        check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
+              'Unknown call-object fields are ignored without changing execution output.')
 
     if method == 'trace_block' and isinstance(result,list):
         block=params[0]
@@ -214,8 +248,10 @@ def evaluate(case, observation, peers):
         check('H09', reverted is not None and isinstance(reverted.get('error'), str)
               and isinstance(value.get('output'), str) and isinstance(value.get('gasUsed'), str),
               'The fixture REVERT frame preserves return bytes and measured gas regardless of its error wording.')
-    if name in ['call-tree-trace','call-tree-stateDiff','call-tree-vmTrace','call-constructor','call-empty-types'] and params[0].get('gasPrice')=='0x0':
-        check('H15', status=='result' and isinstance(result,dict), 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
+    calls = params[:1] if method == 'trace_call' else [p[0] for p in params[0] if isinstance(p,list) and p] if method == 'trace_callMany' and params and isinstance(params[0],list) else []
+    if any(mapping(call).get('gasPrice') == '0x0' for call in calls):
+        ok = status == 'result' and not embedded_error(response) and (isinstance(result,dict) if method == 'trace_call' else isinstance(result,list) and len(result) == len(calls))
+        check('H15', ok, 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
     contracts=context.get('contracts',{})
     if name=='prefunded-empty' and isinstance(result,dict):
         change=mapping(result.get('stateDiff')).get(params[0]['to'],{})

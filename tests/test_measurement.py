@@ -56,3 +56,63 @@ class RuleSafetyTests(unittest.TestCase):
                                {'vmTrace': {'ops': [None, {'ex': 4, 'sub': 7}]}}, {'stateDiff': []}]:
                     with self.subTest(corpus=path.stem, case=case['name'], result=result):
                         evaluate(dict(case, context=context), {'status': 'result', 'response': {'result': result}}, {})
+
+class CoverageTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from trace_interop.validation import request_errors
+        cls.methods = {m['name']: m for m in json.loads((ROOT/'spec/trace-openrpc.json').read_text())['methods']}
+
+    def test_validation_cases_use_the_pinned_request_schemas(self):
+        from trace_interop.validation import request_errors
+        cases = json.loads((ROOT/'fixtures/corpora/a.json').read_text())['cases']
+        negative = {'filter-wrong-address-type', 'filter-negative-count', 'get-integer-path',
+                    'filter-both-unknown-mode', 'call-null-mode', 'call-scalar-mode'}
+        seen = set()
+        for case in cases:
+            errors = request_errors(case['request'], self.methods)
+            if case['name'] in negative:
+                seen.add(case['name']); self.assertTrue(errors, case['name'])
+                for status, response, expected in [('result', {'result': []}, 'change_needed'),
+                                                  ('rpc_error', {'error': {'code': -32602}}, 'matches')]:
+                    checks = evaluate(case, {'status': status, 'response': response}, {}, errors)
+                    self.assertEqual([c['status'] for c in checks if c['topic'] == 'H14'], [expected])
+            if case['name'] in ['call-unknown-field', 'filter-from-null', 'filter-to-null', 'filter-both-null']:
+                self.assertFalse(errors, (case['name'], errors))
+        self.assertEqual(seen, negative)
+
+    def test_missing_reference_and_unchecked_topic_are_partial(self):
+        from trace_interop.inventory import cover_topics
+        from trace_interop.presentation import verdict
+        checks = assess('get-nested-positive', None, 'trace_get', ['0x'+'00'*32, ['0x6', '0x0']])
+        self.assertEqual([c['status'] for c in checks], ['unassessed'])
+        checks = cover_topics([{'topic': 'H02', 'status': 'matches'}], ['H02', 'H09'])
+        self.assertEqual(verdict(checks), 'Partially assessed')
+        self.assertEqual(verdict(cover_topics([], ['H09'])), 'Not assessed')
+
+    def test_filter_addresses_compare_bytes(self):
+        address = '0x'+'ab'*20
+        frame = {'action': {'from': address, 'to': '0x'+'cd'*20}, 'type': 'call', 'traceAddress': []}
+        peers = {'block-tree': {'response': {'result': [frame]}}}
+        checks = assess('filter-from', [frame], 'trace_filter', [{'fromAddress': ['0x'+address[2:].upper()]}], peers)
+        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H03'], ['matches'])
+
+    def test_zero_fee_many_errors_and_cardinality(self):
+        params = [[ [{'gasPrice': '0x0'}, ['trace']] ], 'latest']
+        for result in [None, {}, [], {'jsonrpc': '2.0', 'error': {'code': -32603}}]:
+            checks = assess('call-many', result, 'trace_callMany', params)
+            self.assertEqual([c['status'] for c in checks if c['topic'] in ['H15','H16']], ['change_needed']*2)
+
+    def test_inventory_rejects_empty_and_stale_references(self):
+        import tempfile
+        from trace_interop.inventory import verify_inventory
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root/'evidence/run').mkdir(parents=True); (root/'decisions').mkdir()
+            (root/'reports.lock.json').write_text(json.dumps({'runs':['evidence/run']}))
+            (root/'evidence/run/manifest.json').write_text(json.dumps({'corpus':'precompiles', 'selected_cases':[{'name':'root-success'}]}))
+            for references in [[], ['initial/old-case']]:
+                (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':references}]}))
+                with self.assertRaises(ValueError): verify_inventory(root)
+            (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':['precompiles/root-success']}]}))
+            self.assertEqual(verify_inventory(root), 1)

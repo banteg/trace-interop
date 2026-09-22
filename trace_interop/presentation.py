@@ -52,6 +52,8 @@ def verdict(checks):
         return 'Method unavailable'
     if 'change_needed' in statuses:
         return 'Differs'
+    if 'unassessed' in statuses:
+        return 'Partially assessed' if statuses - {'unassessed'} else 'Not assessed'
     if 'observation' in statuses:
         return 'Extension policy open'
     if 'matches' in statuses:
@@ -149,7 +151,7 @@ def outcome(entry):
 def note(editorial, client, topic, checks):
     entry = editorial['topics'].get(topic, {}).get(family(client))
     if entry:
-        return entry['observed'], entry['change']
+        return entry['observed'], entry['change'] + ' Checked requirements: ' + ' '.join(dict.fromkeys(c['requirement'] for c in checks if c['status'] in BAD))
     failed = list(dict.fromkeys(c['requirement'] for c in checks if c['status'] in BAD))
     return 'The linked case differs from the proposed behavior.', ' '.join(failed)
 
@@ -199,7 +201,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += table(['Build', 'Returned', 'Compared with draft', 'Evidence'], rows)
         text += '<details><summary>Request and assertion details</summary>\n\n```json\n' + json.dumps(entries[0]['request'], indent=2) + '\n```\n\n'
         for e in entries:
-            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD or c['status'] == 'observation']
+            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD or c['status'] in {'observation','unassessed'}]
             errors = r.get('schema', {}).get('errors', [])
             if not failures and not errors:
                 continue
@@ -222,7 +224,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
-        rows = []; matched = []; untested = []; extensions = []
+        rows = []; matched = []; untested = []; extensions = []; partial = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
             if checks and all(q['status'] == 'observation' for q in checks):
@@ -230,7 +232,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 continue
             if not any(q['status'] in BAD for q in checks):
                 if topic != 'H01':
-                    (matched if checks else untested).append(topic)
+                    (partial if any(q['status']=='unassessed' for q in checks) else matched if checks else untested).append(topic)
                 continue
             affected = next(c for c in selected if any(q['status'] in BAD for q in by_client[c].get(topic, [])))
             observed, change = note(editorial, affected, topic, checks)
@@ -256,14 +258,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                         detail = ' '.join(dict.fromkeys(q['detail'] for q in checks))
                         extension_rows.append([channel(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
             text += table(['Build', 'Extension', 'Observed', 'Example'], extension_rows)
-        if f in ('reth', 'erigon'):
-            schema_records = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
-            if schema_records:
-                text += '**Reward record shape:** the checked PoW rewards omit `transactionHash` and `transactionPosition`; the draft requires explicit `null` values for non-transaction records. '
-                text += case_link(output, path.parent, schema_records[0], 'Compare a reward response') + '.\n\n'
         other_schema = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
-        if other_schema and f not in ('reth', 'erigon'):
-            text += 'Result-shape differences are also recorded on the [case pages](../technical.md#result-shape-checks), including failures without a dedicated semantic assertion.\n\n'
+        if other_schema:
+            text += 'Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.\n\n'
+        if partial:
+            text += '**Partially assessed:** some declared cases lack an evaluated assertion. ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in partial) + '.\n\n'
         if matched:
             text += '<details><summary>Behaviors with no difference in the checked cases</summary>\n\n'
             text += table(['Behavior', 'Examples'], [[f'[{decisions[t]["title"]}](../decisions/{t}.md)', examples(output, path.parent, [q for c in selected for q in by_client[c].get(t, [])])] for t in matched])
@@ -293,6 +292,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if affected:
                 observed, change = note(editorial, affected, topic, checks)
                 behavior = observed + '<br>**Proposed:** ' + change
+            elif any(q['status'] == 'unassessed' for q in checks):
+                behavior = 'Some declared cases were not assessed. Matching checks do not establish agreement for this topic.'
             elif any(q['status'] == 'observation' for q in checks):
                 behavior = ' '.join(dict.fromkeys(q['detail'] for q in checks)) + ' Extension policy remains open; no baseline change is required by this observation.'
             else:

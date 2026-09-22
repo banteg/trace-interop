@@ -61,12 +61,10 @@ def verify():
         names = [c['name'] for c in cases]
         if not names or len(set(names)) != len(names):
             raise ValueError(f'empty or duplicate cases: {corpus.name}')
-    ledger = read(ROOT / 'decisions/ledger.json')
-    for item in ledger['items']:
-        for name in item['cases']:
-            if not (ROOT / 'evidence/2026-09-15/cases' / (name + '.json')).exists():
-                raise ValueError(f'missing evidence: {item["id"]}/{name}')
-    print(f'Verified {len(manifest)} frozen inputs and {len(ledger["items"])} decisions.')
+    from .inventory import verify_inventory
+    decisions = verify_inventory(ROOT)
+    print(f'Verified {len(manifest)} frozen inputs and {decisions} decisions against the report inventory.')
+
 
 
 def resolve(args):

@@ -1,5 +1,6 @@
 from pathlib import Path
 from trace_interop.report import generate
 root=Path(__file__).resolve().parents[1]
-runs=sorted(p.parent for p in (root/'evidence/2026-09-21').glob('*/manifest.json'))
+from trace_interop.inventory import report_runs
+runs=report_runs(root)
 generate(root,runs,root/'reports')

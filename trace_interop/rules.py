@@ -261,7 +261,8 @@ def evaluate(case, observation, peers, invalid_params=None):
               'Failed frames have an error string and an explicit object or null result.')
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
-    if revert_path is not None and status == 'result':
+    trace_selected = method in ['trace_transaction','trace_block','trace_filter','trace_get'] or (len(params)>1 and isinstance(params[1],list) and 'trace' in params[1])
+    if revert_path is not None and trace_selected and status == 'result':
         reverted = next((f for f in frames if f.get('traceAddress') == revert_path), None)
         value = mapping(mapping(reverted).get('result'))
         check('H09', reverted is not None and isinstance(reverted.get('error'), str)

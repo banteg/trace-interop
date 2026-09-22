@@ -134,6 +134,8 @@ def outcome(entry):
     if isinstance(value, list):
         return f'{len(value)} records' if value else '`[]`'
     if isinstance(value, dict):
+        if value.get('jsonrpc') == '2.0' and 'error' in value:
+            return 'Error envelope nested inside result'
         if 'traceAddress' in value:
             return f'One frame, path `{json.dumps(value["traceAddress"])}`'
         if 'output' in value:

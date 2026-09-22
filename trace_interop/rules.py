@@ -8,12 +8,25 @@ def is_extension_request(request):
     return request['method'] == 'trace_rawTransaction' and len(request.get('params', [])) > 2
 
 
+def mapping(value):
+    return value if isinstance(value, dict) else {}
+
+
+def sequence(value):
+    return value if isinstance(value, list) else []
+
+
+def embedded_error(response):
+    value = mapping(response).get('result')
+    return isinstance(value, dict) and value.get('jsonrpc') == '2.0' and 'error' in value
+
+
 def evaluate(case, observation, peers):
     """Return independently scoped rule checks; absence means no automated assertion."""
     name, request = case['name'], case['request']
     context = case.get('context', {})
     method, params = request['method'], request.get('params', [])
-    response = observation.get('response') or {}
+    response = mapping(observation.get('response'))
     result = response.get('result')
     status = observation['status']
     checks = []
@@ -29,16 +42,16 @@ def evaluate(case, observation, peers):
             return checks
         if status in ['harness_error', 'transport_error']:
             return checks
-        if method == 'trace_rawTransaction':
-            check('H25', status not in ['malformed_json', 'invalid_envelope'],
-                  'Return one complete JSON-RPC response, including on validation failure.')
+        if method == 'trace_rawTransaction' or embedded_error(response):
+            check('H25', status not in ['malformed_json', 'invalid_envelope'] and not embedded_error(response),
+                  'Return one complete JSON-RPC response; never wrap an error envelope as a successful result.')
         if status in ['malformed_json', 'invalid_envelope']:
             return checks
 
     if is_extension_request(request):
         if status == 'result':
             detail = 'The third-argument request returned a result; this does not prove which block state was used.'
-        elif status == 'rpc_error' and response['error']['code'] == -32602:
+        elif status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602:
             detail = 'The third-argument request was rejected as invalid params.'
         else:
             detail = 'The third-argument request returned an error; extension support is not established.'
@@ -48,14 +61,14 @@ def evaluate(case, observation, peers):
         return checks
 
     def other(n):
-        return peers.get(n, {}).get('response', {}).get('result')
+        return mapping(mapping(peers.get(n)).get('response')).get('result')
 
-    if method == 'trace_get' and isinstance(params[1], list) and all(isinstance(x,str) for x in params[1]):
+    if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):
         path = [int(x, 16) for x in params[1]]
         missing = 'missing' in name or '0xffff' in params[1]
-        if missing:
+        if missing and name != 'get-missing-tx':
             check('H06', status == 'result' and result is None, 'A missing transaction or tree path returns null.')
-        else:
+        elif not missing:
             tree = other('transaction-tree')
             reference = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
             if reference:
@@ -72,7 +85,7 @@ def evaluate(case, observation, peers):
     if method == 'trace_replayTransaction' and isinstance(result, dict):
         check('H07', result.get('transactionHash') == params[0], 'Individual replay includes its transactionHash.')
     if method in ['trace_call','trace_rawTransaction','trace_replayTransaction'] and isinstance(result,dict):
-        modes = params[1]
+        modes = params[1] if len(params) > 1 else None
         if isinstance(modes,list):
             if 'trace' not in modes: check('H08', result.get('trace') == [], 'Unrequested trace is an empty array.')
             for key in ['vmTrace','stateDiff']:
@@ -84,7 +97,7 @@ def evaluate(case, observation, peers):
     if name in ['empty-types','call-empty-types','call-empty-types-priced']:
         check('H11', status == 'result' and isinstance(result,dict), 'An empty trace-type selection executes successfully.')
     if context.get('_chain') == 'precompiles' and method == 'trace_call':
-        frames = result.get('trace',[]) if isinstance(result,dict) else []
+        frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
         root = next((f for f in frames if f.get('traceAddress') == []),None)
         if name.startswith('nested-'):
             value = int(params[0].get('value','0x0'),16)
@@ -101,33 +114,45 @@ def evaluate(case, observation, peers):
                 check('H09', root is not None and bool(root.get('error')),
                       'A failed root precompile reports its own execution error.')
     if name == 'call-identity':
-        frames = result.get('trace',[]) if isinstance(result,dict) else []
-        check('H22', bool(frames) and frames[0].get('result',{}).get('output') == params[0].get('data', params[0].get('input','0x')),
+        frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
+        check('H22', bool(frames) and mapping(frames[0].get('result')).get('output') == params[0].get('data', params[0].get('input','0x')),
               'The identity precompile call frame preserves its input as return bytes.')
     if name == 'call-siblings-revert-ok':
-        frames = result.get('trace',[]) if isinstance(result,dict) else []
+        frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
         good = next((f for f in frames if f.get('traceAddress') == [1]),None)
-        check('H24', good is not None and 'error' not in good and good.get('result',{}).get('output') == '0x'+f'{42:064x}',
+        check('H24', good is not None and 'error' not in good and mapping(good.get('result')).get('output') == '0x'+f'{42:064x}',
               'The successful second sibling retains its output and has no error.')
     if name in ['constructor','call-constructor','call-constructor-priced'] and isinstance(result,dict) and result.get('vmTrace') is not None:
-        check('H19', result['vmTrace'].get('code') == params[0].get('data',params[0].get('input','0x')), 'Creation vmTrace.code is executing initcode.')
+        check('H19', mapping(result['vmTrace']).get('code') == params[0].get('data',params[0].get('input','0x')), 'Creation vmTrace.code is executing initcode.')
     if method == 'trace_call' and isinstance(result,dict):
-        for frame in result.get('trace',[]):
+        raw_frames = result.get('trace', [])
+        if not isinstance(raw_frames, list) or any(not isinstance(f, dict) for f in raw_frames):
+            check('H08', False, 'The execution trace is an array of frame objects.')
+        for frame in (f for f in sequence(raw_frames) if isinstance(f, dict)):
             if frame.get('type') == 'create' and 'error' not in frame:
-                value = frame.get('result') or {}
+                value = mapping(frame.get('result'))
                 check('H10', all(k in value for k in ['address','code','gasUsed']), 'Successful creation uses address, code and gasUsed.')
     if name == 'call-mcopy' and isinstance(result,dict):
-        vm = result.get('vmTrace') or {}
-        op = next((o for o in vm.get('ops',[]) if o.get('pc') == 11),{})
-        check('H20', (op.get('ex') or {}).get('mem') == {'off':32,'data':'0x'+f'{42:064x}'}, 'MCOPY reports its same-step write of word 42 at offset 32.')
+        vm = mapping(result.get('vmTrace'))
+        op = next((o for o in sequence(vm.get('ops')) if isinstance(o, dict) and o.get('pc') == 11),{})
+        check('H20', mapping(op.get('ex')).get('mem') == {'off':32,'data':'0x'+f'{42:064x}'}, 'MCOPY reports its same-step write of word 42 at offset 32.')
     if isinstance(result,dict) and result.get('vmTrace'):
         stack = [result['vmTrace']]
         valid = True
         while stack:
             vm = stack.pop()
-            for op in vm.get('ops',[]):
-                valid &= all(isinstance(v,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)',v) is not None for v in (op.get('ex') or {}).get('push',[]))
-                if op.get('sub'): stack.append(op['sub'])
+            if not isinstance(vm, dict) or not isinstance(vm.get('ops'), list):
+                valid = False
+                continue
+            for op in vm['ops']:
+                if not isinstance(op, dict):
+                    valid = False
+                    continue
+                ex = op.get('ex')
+                if ex is not None:
+                    push = mapping(ex).get('push')
+                    valid &= isinstance(push, list) and all(isinstance(v,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)',v) is not None for v in sequence(push))
+                if op.get('sub') is not None: stack.append(op['sub'])
         check('H21', valid, 'Stack words use minimal hex quantities at every depth.')
     if method == 'trace_filter' and isinstance(params[0],dict):
         filt = params[0]
@@ -135,9 +160,9 @@ def evaluate(case, observation, peers):
             tree = other('transaction-tree')
             if isinstance(tree,list) and 'mode' not in filt:
                 def matches(frame):
-                    action=frame['action']; kind=frame['type']
+                    action=mapping(mapping(frame).get('action')); kind=mapping(frame).get('type')
                     frm=action.get('from'); to=action.get('to')
-                    if kind=='create': to=(frame.get('result') or {}).get('address')
+                    if kind=='create': to=mapping(frame.get('result')).get('address')
                     if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
                     if kind=='reward': frm,to=None,action.get('author')
                     return (not filt.get('fromAddress') or frm in filt['fromAddress']) and (not filt.get('toAddress') or to in filt['toAddress'])
@@ -145,7 +170,7 @@ def evaluate(case, observation, peers):
                 baseline = other('block-tree') or other('block-2')
                 if isinstance(baseline,list):
                     expected=[f for f in baseline if matches(f)]
-                    identity=lambda f:(f.get('transactionHash'),f.get('traceAddress'),f.get('type'),f.get('action'))
+                    identity=lambda f:(mapping(f).get('transactionHash'),mapping(f).get('traceAddress'),mapping(f).get('type'),mapping(f).get('action'))
                     topic='H23' if any(s in name for s in ['created','creator','suicide']) else 'H04' if 'empty' in name else 'H03'
                     check(topic, isinstance(result,list) and [identity(f) for f in result] == [identity(f) for f in expected],
                           'Address matching is OR within each list, AND across lists, with action-specific endpoints.',
@@ -155,9 +180,9 @@ def evaluate(case, observation, peers):
         if isinstance(a,list) and isinstance(b,list):
             check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.')
     if name == 'many-storage-write-revert-read':
-        check('H16', isinstance(result,list) and [r.get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
+        check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
-        check('H14', status == 'rpc_error' and response['error']['code'] == -32602, 'Malformed input returns invalid params (-32602).')
+        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
     if name in ['raw-nonce-high','raw-valid-current-nonce-high']:
         check('H13', status == 'rpc_error', 'Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.')
 
@@ -168,27 +193,44 @@ def evaluate(case, observation, peers):
         if header is None and context.get('_chain')=='initial':
             header={'difficulty':'0x0'}
         if header and int(header.get('difficulty','0x1'),16)==0:
-            check('H05', not any(f.get('type')=='reward' for f in result), 'A PoS block has no synthetic PoW reward records.')
-    frames=result.get('trace',[]) if isinstance(result,dict) else result if method in ['trace_block','trace_transaction'] and isinstance(result,list) else []
-    failed=[f for f in frames if 'error' in f]
+            check('H05', not any(mapping(f).get('type')=='reward' for f in result), 'A PoS block has no synthetic PoW reward records.')
+    envelopes = [result] if isinstance(result, dict) else sequence(result) if method in ['trace_callMany', 'trace_replayBlockTransactions'] else []
+    frame_values = [mapping(e).get('trace', []) for e in envelopes]
+    if method in ['trace_block', 'trace_transaction', 'trace_filter']:
+        frame_values = [result] if isinstance(result, list) else []
+    elif method == 'trace_get' and isinstance(result, dict):
+        frame_values = [[result]]
+    frames = [f for values in frame_values for f in sequence(values) if isinstance(f, dict)]
+    failed = [f for f in frames if 'error' in f]
     if failed:
-        check('H09', all('result' in f and ('revert' not in f['error'].lower() or isinstance(f['result'],dict) and 'output' in f['result'] and 'gasUsed' in f['result']) for f in failed), 'Failed frames have an explicit result; REVERT preserves return bytes and measured gas.')
+        check('H09', all(isinstance(f['error'], str) and bool(f['error']) and 'result' in f
+              and (f['result'] is None or isinstance(f['result'], dict)) for f in failed),
+              'Failed frames have an error string and an explicit object or null result.')
+    # Identify known REVERT paths from the fixture, never from implementation-specific error text.
+    revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
+    if revert_path is not None and frames:
+        reverted = next((f for f in frames if f.get('traceAddress') == revert_path), None)
+        value = mapping(mapping(reverted).get('result'))
+        check('H09', reverted is not None and isinstance(reverted.get('error'), str)
+              and isinstance(value.get('output'), str) and isinstance(value.get('gasUsed'), str),
+              'The fixture REVERT frame preserves return bytes and measured gas regardless of its error wording.')
     if name in ['call-tree-trace','call-tree-stateDiff','call-tree-vmTrace','call-constructor','call-empty-types'] and params[0].get('gasPrice')=='0x0':
         check('H15', status=='result' and isinstance(result,dict), 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
     contracts=context.get('contracts',{})
     if name=='prefunded-empty' and isinstance(result,dict):
-        change=(result.get('stateDiff') or {}).get(params[0]['to'],{})
-        check('H17', change.get('code')=='=' and change.get('nonce')=='=', 'An existing prefunded account does not acquire creation markers for empty code or zero nonce.')
+        change=mapping(result.get('stateDiff')).get(params[0]['to'],{})
+        check('H17', mapping(change).get('code')=='=' and mapping(change).get('nonce')=='=', 'An existing prefunded account does not acquire creation markers for empty code or zero nonce.')
     if name in ['auth-set','auth-replace','auth-clear','auth-set-revert'] and contracts:
         authority='undelegated' if name in ['auth-set','auth-set-revert'] else 'delegated'
         destination={'auth-set':'return42','auth-replace':'revert','auth-set-revert':'revert'}.get(name)
         before='0x'+contracts[authority]['code'];after='0xef0100'+contracts[destination]['address'][2:] if destination else '0x'
-        change=(result.get('stateDiff') or {}).get(contracts[authority]['address'],{}).get('code') if isinstance(result,dict) else None
+        change=mapping(result.get('stateDiff')).get(contracts[authority]['address'],{}) if isinstance(result,dict) else {}
+        change = mapping(change).get('code') if isinstance(result,dict) else None
         check('H18', change=={'*':{'from':before,'to':after}}, 'EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.')
     if name in ['destroy-trace-55','destroy-trace-56']:
-        change=(result.get('stateDiff') or {}).get(params[0]['to'],{}) if isinstance(result,dict) else {}
+        change=mapping(result.get('stateDiff')).get(params[0]['to'],{}) if isinstance(result,dict) else {}
         before_cancun=name.endswith('55')
-        ok=isinstance(change.get('code'),dict) and '-' in change['code'] and isinstance(change.get('nonce'),dict) and '-' in change['nonce'] if before_cancun else change.get('code')=='=' and change.get('nonce')=='='
+        ok=isinstance(mapping(change).get('code'),dict) and '-' in change['code'] and isinstance(mapping(change).get('nonce'),dict) and '-' in change['nonce'] if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
         check('H26', ok, 'Delete code/nonce before Cancun; preserve an existing account after EIP-6780.')
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=other('block-'+str(boundary-1)),other('block-'+str(boundary))
@@ -206,5 +248,5 @@ def evaluate(case, observation, peers):
         h=next((h for h in context.get('headers',[]) if h.get('number')=='0x38'),None)
         if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
     if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
-        check('H06', status=='rpc_error' and response['error']['code']==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
+        check('H06', status=='rpc_error' and mapping(response.get('error')).get('code')==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
     return checks

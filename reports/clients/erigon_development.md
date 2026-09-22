@@ -6,7 +6,7 @@ The tested development build agrees on several cases that differ in the release,
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-21](../../evidence/2026-09-21/precompiles-final/manifest.json)<br>[2026-09-22](../../evidence/2026-09-23/h03-modes-a/manifest.json) |
+| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

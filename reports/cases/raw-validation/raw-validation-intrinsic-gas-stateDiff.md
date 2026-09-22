@@ -6,14 +6,14 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | Incomplete or malformed JSON | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

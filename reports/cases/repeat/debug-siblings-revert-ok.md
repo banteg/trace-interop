@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/geth-40eecf3-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-repeat/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-geth-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | Object returned | Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -38,6 +38,10 @@
   ]
 }
 ```
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+
+- [H24](../../decisions/H24.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
@@ -68,10 +72,6 @@
 - [H24](../../decisions/H24.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
-
-- [H24](../../decisions/H24.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
 
 - [H24](../../decisions/H24.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 

@@ -2,19 +2,19 @@
 
 `trace_callMany` · precompile-values · [All reports](../../README.md)
 
-**What this checks:** Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. A handled precompile failure must not mark the successful parent as failed. The constructor returns the precompile call success bit; a funded successful call must return one. The preceding simulated transfer funds the actual zero-value creation address with one wei. Return one execution envelope per input call, in order. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome. A handled precompile failure must not mark the successful parent as failed. The constructor returns the precompile call success bit; a funded successful call must return one. The preceding simulated transfer funds the actual zero-value creation address with one wei. Return one execution envelope per input call, in order. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/geth-40eecf3-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-precompile-values/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/precompile-values-native/observations.json) · [Build/run](../../../evidence/2026-09-23/precompile-values-native/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 2 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -63,6 +63,7 @@
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+- [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `1/trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f52', 'init': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'value': '0x0'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
@@ -70,6 +71,7 @@
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
+- [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `1/trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f52', 'init': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'value': '0x0'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema

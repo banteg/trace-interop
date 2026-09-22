@@ -2,18 +2,18 @@
 
 `trace_rawTransaction` · raw-validation · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection. Requested vmTrace contains the executing fixture bytecode and its opcode sequence.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 0 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 0 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/raw-validation-native/observations.json) · [Build/run](../../../evidence/2026-09-23/raw-validation-native/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 0 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 0 call frames; output `0x` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 0 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 0 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -38,5 +38,13 @@
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `vmTrace`: {'code': '0x602a600055602a60005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': -3}, 'pc': 0, 'sub': None}]} is not valid under any of the given schemas
+
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+
+- [H13](../../decisions/H13.md): Requested vmTrace contains the executing fixture bytecode and its opcode sequence.
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H13](../../decisions/H13.md): Requested vmTrace contains the executing fixture bytecode and its opcode sequence.
 
 </details>

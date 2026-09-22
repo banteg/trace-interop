@@ -19,13 +19,13 @@ uv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \
 
 ## Assertion coverage
 
-Coverage below counts eligible trace observations, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.
+Coverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1902 |
-| partial | 610 |
-| unassessed | 223 |
+| assessed | 1788 |
+| partial | 554 |
+| unassessed | 213 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
 
@@ -33,12 +33,9 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 
 | Build | Scenario | Run evidence |
 | --- | --- | --- |
-| Besu · Development | fork-followup | [verified-fork-followup](../evidence/2026-09-21/verified-fork-followup/summary.json) |
-| Besu · Release | a | [verified-a](../evidence/2026-09-21/verified-a/summary.json) |
-| Erigon · Development | reorg-safe | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/summary.json) |
-| Erigon · Development | reorg-safe | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/summary.json) |
-| Reth · Development | reorg-safe | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/summary.json) |
-| Reth · Development | reorg-safe | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/summary.json) |
+| Erigon · Development | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
+| Reth · Development | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
+| Reth · Release | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
 
 ## Result-shape checks
 
@@ -249,28 +246,21 @@ These cases returned results that differ from the draft schema. The case pages r
 
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [precompiles-final](../evidence/2026-09-21/precompiles-final/manifest.json) | precompiles | Yes |
-| [verified-a](../evidence/2026-09-21/verified-a/manifest.json) | a | No |
-| [verified-a-besu-retry](../evidence/2026-09-21/verified-a-besu-retry/manifest.json) | a | Yes |
-| [verified-fork-followup](../evidence/2026-09-21/verified-fork-followup/manifest.json) | fork-followup | No |
-| [verified-fork-followup-besu-retry](../evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json) | fork-followup | Yes |
-| [verified-forks](../evidence/2026-09-21/verified-forks/manifest.json) | forks | Yes |
-| [verified-initial](../evidence/2026-09-21/verified-initial/manifest.json) | initial | Yes |
-| [verified-pruned](../evidence/2026-09-21/verified-pruned/manifest.json) | pruned | No |
-| [verified-pruned-ready](../evidence/2026-09-21/verified-pruned-ready/manifest.json) | pruned | Yes |
-| [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/manifest.json) | reorg-safe | No |
-| [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/manifest.json) | reorg-safe | No |
-| [verified-repeat](../evidence/2026-09-21/verified-repeat/manifest.json) | repeat | Yes |
-| [geth-40eecf3-a](../evidence/2026-09-23/geth-40eecf3-a/manifest.json) | a | Yes |
-| [geth-40eecf3-fork-followup](../evidence/2026-09-23/geth-40eecf3-fork-followup/manifest.json) | fork-followup | Yes |
-| [geth-40eecf3-forks](../evidence/2026-09-23/geth-40eecf3-forks/manifest.json) | forks | Yes |
-| [geth-40eecf3-initial](../evidence/2026-09-23/geth-40eecf3-initial/manifest.json) | initial | Yes |
-| [geth-40eecf3-precompile-values](../evidence/2026-09-23/geth-40eecf3-precompile-values/manifest.json) | precompile-values | Yes |
-| [geth-40eecf3-precompiles](../evidence/2026-09-23/geth-40eecf3-precompiles/manifest.json) | precompiles | Yes |
-| [geth-40eecf3-reorg-safe](../evidence/2026-09-23/geth-40eecf3-reorg-safe/manifest.json) | reorg-safe | Yes |
-| [geth-40eecf3-repeat](../evidence/2026-09-23/geth-40eecf3-repeat/manifest.json) | repeat | Yes |
-| [h03-modes-a](../evidence/2026-09-23/h03-modes-a/manifest.json) | a | Yes |
-| [h03-modes-initial](../evidence/2026-09-23/h03-modes-initial/manifest.json) | initial | Yes |
-| [precompile-values-native](../evidence/2026-09-23/precompile-values-native/manifest.json) | precompile-values | Yes |
-| [pruned-review](../evidence/2026-09-23/pruned-review/manifest.json) | pruned | Yes |
-| [raw-validation-native](../evidence/2026-09-23/raw-validation-native/manifest.json) | raw-validation | Yes |
+| [harness-audit-geth-a](../evidence/2026-09-23/harness-audit-geth-a/manifest.json) | a | Yes |
+| [harness-audit-geth-fork-followup](../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) | fork-followup | Yes |
+| [harness-audit-geth-forks](../evidence/2026-09-23/harness-audit-geth-forks/manifest.json) | forks | Yes |
+| [harness-audit-geth-initial](../evidence/2026-09-23/harness-audit-geth-initial/manifest.json) | initial | Yes |
+| [harness-audit-geth-precompile-values](../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) | precompile-values | Yes |
+| [harness-audit-geth-precompiles](../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) | precompiles | Yes |
+| [harness-audit-geth-reorg-safe](../evidence/2026-09-23/harness-audit-geth-reorg-safe/manifest.json) | reorg-safe | Yes |
+| [harness-audit-geth-repeat](../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json) | repeat | Yes |
+| [harness-audit-native-a](../evidence/2026-09-23/harness-audit-native-a/manifest.json) | a | Yes |
+| [harness-audit-native-fork-followup](../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) | fork-followup | Yes |
+| [harness-audit-native-forks](../evidence/2026-09-23/harness-audit-native-forks/manifest.json) | forks | Yes |
+| [harness-audit-native-initial](../evidence/2026-09-23/harness-audit-native-initial/manifest.json) | initial | Yes |
+| [harness-audit-native-precompile-values](../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) | precompile-values | Yes |
+| [harness-audit-native-precompiles](../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) | precompiles | Yes |
+| [harness-audit-native-pruned](../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) | pruned | Yes |
+| [harness-audit-native-raw-validation](../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) | raw-validation | Yes |
+| [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/manifest.json) | reorg-safe | No |
+| [harness-audit-native-repeat](../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) | repeat | Yes |

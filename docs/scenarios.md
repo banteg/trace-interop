@@ -39,11 +39,10 @@ ordinary replay or historical-query probes on fully retained fixture chains.
 
 ## Tested matrix
 
-Both release and development builds of Besu and Nethermind, plus release builds of
-Erigon and Reth, complete the canonical switch and restoration. The pinned Erigon
-development build rejects the alternate forkchoice; the pinned Reth development
-build accepts restoration but does not publish the restored RPC head within 30 seconds.
-Those two scenarios are excluded from trace assessments. The Engine and head-control
+Both release and development builds of Besu and Nethermind, plus the release build of
+Erigon, complete the canonical switch and restoration. The pinned Erigon
+development build rejects the alternate forkchoice; both pinned Reth builds accept restoration but do not publish the restored RPC head within 30 seconds.
+Those three client scenarios are excluded from trace assessments. The Engine and head-control
 logs are retained with their runs.
 
 Both pinned Reth builds retain old headers and receipts after pruning, allow latest-state

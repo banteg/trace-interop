@@ -27,6 +27,7 @@ Erigon, Reth, Nethermind and Besu are the initial clients. An experimental [Geth
 - [Geth draft implementation](docs/geth.md): evaluated fork, coverage and build reproduction.
 - [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.
 - [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.
+- [Harness assertion audit](docs/harness-audit.md): false-positive regressions and independent fixture checks.
 - [Review workflow](docs/review.md): distinguish API decisions from execution defects.
 
 ```sh

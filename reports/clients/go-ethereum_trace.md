@@ -6,7 +6,7 @@ The experimental fork implements an earlier draft; unknown call fields and the p
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Draft fork | `Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1` | [2026-09-22](https://github.com/banteg/go-ethereum/commit/40eecf3647f26546df9dbf72ce48f372df469ef2) | [2026-09-22](../../evidence/2026-09-23/geth-40eecf3-a/manifest.json) |
+| Draft fork | `Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1` | [2026-09-22](https://github.com/banteg/go-ethereum/commit/40eecf3647f26546df9dbf72ce48f372df469ef2) | [2026-09-22](../../evidence/2026-09-23/harness-audit-geth-a/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 

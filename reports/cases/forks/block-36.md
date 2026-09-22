@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 12 records | Partially assessed | [Response](../../../evidence/2026-09-23/geth-40eecf3-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-forks/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 12 records | Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-geth-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-forks/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 12 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 12 records | Partially assessed; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -28,6 +28,10 @@
   ]
 }
 ```
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+
+- [H27](../../decisions/H27.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
@@ -90,9 +94,5 @@
 - [H27](../../decisions/H27.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - Result shape at `11`: 'transactionHash' is a required property
 - Result shape at `11`: 'transactionPosition' is a required property
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
-
-- [H27](../../decisions/H27.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 </details>

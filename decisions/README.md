@@ -42,4 +42,4 @@
 - 🧪 **Harmonized · dev:** converged and all declared cases pass on the captured development builds of Besu, Erigon, Nethermind and Reth.
 - ✅ **Harmonized · stable:** the same is also verified on their captured releases.
 
-Missing cases, ineligible runs, unsupported methods, unchecked assertions and invalid result schemas prevent harmonization. These are milestones for the declared cases at the linked revisions, not full conformance or a claim about the latest builds. The experimental Geth fork is reported separately and is not a policy vote.
+Missing cases, ineligible runs, unsupported methods, unchecked assertions and invalid result schemas prevent harmonization. Each client/channel uses its most recently captured immutable build; evidence from different builds is never combined. These are milestones for the declared cases at the linked revisions, not full conformance or a claim about the latest builds. The experimental Geth fork is reported separately and is not a policy vote.

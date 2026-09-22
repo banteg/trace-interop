@@ -16,7 +16,7 @@
 | [H10](../reports/decisions/H10.md) | ⚪ Under review | Creation result field names |
 | [H11](../reports/decisions/H11.md) | ⚪ Under review | Empty trace-type selection |
 | [H12](../reports/decisions/H12.md) | ⚪ Under review | Raw-transaction block argument |
-| [H13](../reports/decisions/H13.md) | 🔀 Diverging | Nonce-mismatch policy for signed simulation |
+| [H13](../reports/decisions/H13.md) | 🤝 Converged | Signed transaction execution validity |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | Invalid-parameter error codes |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | Unsigned simulation fees and block environment |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | Fee accounting and sequential state diffs |

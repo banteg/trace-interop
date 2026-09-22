@@ -23,8 +23,8 @@ Coverage below counts eligible trace observations, separately from schema valida
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1535 |
-| partial | 546 |
+| assessed | 1911 |
+| partial | 618 |
 | unassessed | 223 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
@@ -179,6 +179,46 @@ These cases returned results that differ from the draft schema. The case pages r
 | [precompiles/nested-staticcall-value0-failed](cases/precompiles/nested-staticcall-value0-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [precompiles/nested-staticcall-value0-success](cases/precompiles/nested-staticcall-value0-success.md) | Nethermind Development, Nethermind Release |
 | [precompiles/root-failed](cases/precompiles/root-failed.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-below-basefee-all](cases/raw-validation/raw-validation-below-basefee-all.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-below-basefee-trace](cases/raw-validation/raw-validation-below-basefee-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-code-sender-all](cases/raw-validation/raw-validation-code-sender-all.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-code-sender-stateDiff](cases/raw-validation/raw-validation-code-sender-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-code-sender-vmTrace](cases/raw-validation/raw-validation-code-sender-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-high-all](cases/raw-validation/raw-validation-create-nonce-high-all.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-high-stateDiff](cases/raw-validation/raw-validation-create-nonce-high-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-high-trace](cases/raw-validation/raw-validation-create-nonce-high-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-create-nonce-high-vmTrace](cases/raw-validation/raw-validation-create-nonce-high-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-low-all](cases/raw-validation/raw-validation-create-nonce-low-all.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-low-stateDiff](cases/raw-validation/raw-validation-create-nonce-low-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-nonce-low-trace](cases/raw-validation/raw-validation-create-nonce-low-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-create-nonce-low-vmTrace](cases/raw-validation/raw-validation-create-nonce-low-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-valid-all](cases/raw-validation/raw-validation-create-valid-all.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-valid-stateDiff](cases/raw-validation/raw-validation-create-valid-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-create-valid-vmTrace](cases/raw-validation/raw-validation-create-valid-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-delegated-sender-valid-all](cases/raw-validation/raw-validation-delegated-sender-valid-all.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-delegated-sender-valid-stateDiff](cases/raw-validation/raw-validation-delegated-sender-valid-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-delegated-sender-valid-vmTrace](cases/raw-validation/raw-validation-delegated-sender-valid-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-execution-oog-valid-all](cases/raw-validation/raw-validation-execution-oog-valid-all.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-execution-oog-valid-stateDiff](cases/raw-validation/raw-validation-execution-oog-valid-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-execution-oog-valid-trace](cases/raw-validation/raw-validation-execution-oog-valid-trace.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-execution-oog-valid-vmTrace](cases/raw-validation/raw-validation-execution-oog-valid-vmTrace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-funds-gas-all](cases/raw-validation/raw-validation-funds-gas-all.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-funds-gas-trace](cases/raw-validation/raw-validation-funds-gas-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-funds-value-all](cases/raw-validation/raw-validation-funds-value-all.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-funds-value-trace](cases/raw-validation/raw-validation-funds-value-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-intrinsic-gas-all](cases/raw-validation/raw-validation-intrinsic-gas-all.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-intrinsic-gas-trace](cases/raw-validation/raw-validation-intrinsic-gas-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-nonce-high-all](cases/raw-validation/raw-validation-nonce-high-all.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-nonce-high-stateDiff](cases/raw-validation/raw-validation-nonce-high-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-nonce-high-trace](cases/raw-validation/raw-validation-nonce-high-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-nonce-high-vmTrace](cases/raw-validation/raw-validation-nonce-high-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-nonce-low-all](cases/raw-validation/raw-validation-nonce-low-all.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-nonce-low-stateDiff](cases/raw-validation/raw-validation-nonce-low-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-nonce-low-trace](cases/raw-validation/raw-validation-nonce-low-trace.md) | Besu Development, Besu Release |
+| [raw-validation/raw-validation-nonce-low-vmTrace](cases/raw-validation/raw-validation-nonce-low-vmTrace.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-valid-all](cases/raw-validation/raw-validation-valid-all.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-valid-stateDiff](cases/raw-validation/raw-validation-valid-stateDiff.md) | Nethermind Development, Nethermind Release |
+| [raw-validation/raw-validation-valid-vmTrace](cases/raw-validation/raw-validation-valid-vmTrace.md) | Nethermind Development, Nethermind Release |
 | [reorg-safe/after/block-tail](cases/reorg-safe/after/block-tail.md) | Nethermind Development, Nethermind Release |
 | [reorg-safe/after/filter-tail](cases/reorg-safe/after/filter-tail.md) | Nethermind Development, Nethermind Release |
 | [reorg-safe/before/block-tail](cases/reorg-safe/before/block-tail.md) | Nethermind Development, Nethermind Release |
@@ -235,3 +275,4 @@ These cases returned results that differ from the draft schema. The case pages r
 | [precompile-values-geth](../evidence/2026-09-23/precompile-values-geth/manifest.json) | precompile-values | Yes |
 | [precompile-values-native](../evidence/2026-09-23/precompile-values-native/manifest.json) | precompile-values | Yes |
 | [pruned-review](../evidence/2026-09-23/pruned-review/manifest.json) | pruned | Yes |
+| [raw-validation-native](../evidence/2026-09-23/raw-validation-native/manifest.json) | raw-validation | Yes |

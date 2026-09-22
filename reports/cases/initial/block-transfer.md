@@ -6,14 +6,23 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | 3 records | Differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Besu · Release](../../clients/besu_release.md) | 3 records | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | 3 records | Differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Besu · Development](../../clients/besu_development.md) | 3 records | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 | [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-geth-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-geth-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 3 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 3 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 3 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 3 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Reth · Development](../../clients/reth_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
@@ -28,6 +37,26 @@
   ]
 }
 ```
+
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+
+**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- Result shape at `2`: 'transactionHash' is a required property
+- Result shape at `2`: 'transactionPosition' is a required property
+
+**Nethermind · Release** (`1.39.3+28cbe2a0`)
+
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- Result shape at `2`: 'transactionHash' is a required property
+- Result shape at `2`: 'transactionPosition' is a required property
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 

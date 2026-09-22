@@ -1,0 +1,251 @@
+Sep 23 01:06:29.333 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 01:06:29.357 INF building 8 clients...
+Sep 23 01:06:29.357 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744
+Sep 23 01:06:29.387 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 23 01:06:29.412 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002
+Sep 23 01:06:29.440 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 23 01:07:04.069 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182
+Sep 23 01:07:04.102 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59
+Sep 23 01:07:04.136 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86
+Sep 23 01:07:04.163 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 23 01:07:04.191 INF building 1 simulators...
+Sep 23 01:07:04.192 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 01:07:04.296 INF creating output directory folder=/home/banteg/dev/trace-interop/evidence/2026-09-23/h03-modes-a/hive
+Sep 23 01:07:04.305 INF running simulation: ethereum/rpc-compat
+Sep 23 01:07:04.461 INF hiveproxy started container=2c4502bf91b9 addr=172.17.0.2:8081
+Sep 23 01:07:04.653 INF API: suite started suite=0 name=rpc-compat
+Sep 23 01:07:04.655 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 23 01:07:14.154 INF API: client besu_development started suite=0 test=1 container=6d0611cd
+Sep 23 01:07:14.469 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 23 01:07:14.527 INF API: test ended suite=0 test=2 pass=false
+Sep 23 01:07:14.528 INF API: test started suite=0 test=3 name="interop/_control/version (besu_development)"
+Sep 23 01:07:14.539 INF API: test ended suite=0 test=3 pass=false
+Sep 23 01:07:14.540 INF API: test started suite=0 test=4 name="interop/block-2 (besu_development)"
+Sep 23 01:07:15.638 INF API: test ended suite=0 test=4 pass=false
+Sep 23 01:07:15.640 INF API: test started suite=0 test=5 name="interop/block-3 (besu_development)"
+Sep 23 01:07:15.665 INF API: test ended suite=0 test=5 pass=false
+Sep 23 01:07:15.666 INF API: test started suite=0 test=6 name="interop/filter-both-null (besu_development)"
+Sep 23 01:07:15.716 INF API: test ended suite=0 test=6 pass=false
+Sep 23 01:07:15.718 INF API: test started suite=0 test=7 name="interop/filter-both-unknown-mode (besu_development)"
+Sep 23 01:07:15.736 INF API: test ended suite=0 test=7 pass=false
+Sep 23 01:07:15.737 INF API: test started suite=0 test=8 name="interop/filter-from-null (besu_development)"
+Sep 23 01:07:15.763 INF API: test ended suite=0 test=8 pass=false
+Sep 23 01:07:15.765 INF API: test started suite=0 test=9 name="interop/filter-from-only-intersection (besu_development)"
+Sep 23 01:07:15.778 INF API: test ended suite=0 test=9 pass=false
+Sep 23 01:07:15.779 INF API: test started suite=0 test=10 name="interop/filter-from-only-union (besu_development)"
+Sep 23 01:07:15.793 INF API: test ended suite=0 test=10 pass=false
+Sep 23 01:07:15.794 INF API: test started suite=0 test=11 name="interop/filter-to-null (besu_development)"
+Sep 23 01:07:15.819 INF API: test ended suite=0 test=11 pass=false
+Sep 23 01:07:15.820 INF API: test started suite=0 test=12 name="interop/filter-to-only-intersection (besu_development)"
+Sep 23 01:07:15.832 INF API: test ended suite=0 test=12 pass=false
+Sep 23 01:07:15.833 INF API: test started suite=0 test=13 name="interop/filter-to-only-union (besu_development)"
+Sep 23 01:07:15.847 INF API: test ended suite=0 test=13 pass=false
+Sep 23 01:07:15.848 INF API: test started suite=0 test=14 name="interop/transaction-tree (besu_development)"
+Sep 23 01:07:15.878 INF API: test ended suite=0 test=14 pass=false
+Sep 23 01:07:16.210 INF API: test ended suite=0 test=1 pass=true
+Sep 23 01:07:16.212 INF API: test started suite=0 test=15 name="client launch (besu_release)"
+Sep 23 01:07:26.026 INF API: client besu_release started suite=0 test=15 container=45e3bb84
+Sep 23 01:07:26.310 INF API: test started suite=0 test=16 name="interop/_control/head (besu_release)"
+Sep 23 01:07:26.362 INF API: test ended suite=0 test=16 pass=false
+Sep 23 01:07:26.363 INF API: test started suite=0 test=17 name="interop/_control/version (besu_release)"
+Sep 23 01:07:26.375 INF API: test ended suite=0 test=17 pass=false
+Sep 23 01:07:26.376 INF API: test started suite=0 test=18 name="interop/block-2 (besu_release)"
+Sep 23 01:07:26.467 INF API: test ended suite=0 test=18 pass=false
+Sep 23 01:07:26.468 INF API: test started suite=0 test=19 name="interop/block-3 (besu_release)"
+Sep 23 01:07:26.490 INF API: test ended suite=0 test=19 pass=false
+Sep 23 01:07:26.491 INF API: test started suite=0 test=20 name="interop/filter-both-null (besu_release)"
+Sep 23 01:07:26.534 INF API: test ended suite=0 test=20 pass=false
+Sep 23 01:07:26.536 INF API: test started suite=0 test=21 name="interop/filter-both-unknown-mode (besu_release)"
+Sep 23 01:07:26.555 INF API: test ended suite=0 test=21 pass=false
+Sep 23 01:07:26.556 INF API: test started suite=0 test=22 name="interop/filter-from-null (besu_release)"
+Sep 23 01:07:26.578 INF API: test ended suite=0 test=22 pass=false
+Sep 23 01:07:26.579 INF API: test started suite=0 test=23 name="interop/filter-from-only-intersection (besu_release)"
+Sep 23 01:07:26.594 INF API: test ended suite=0 test=23 pass=false
+Sep 23 01:07:26.595 INF API: test started suite=0 test=24 name="interop/filter-from-only-union (besu_release)"
+Sep 23 01:07:26.601 INF API: test ended suite=0 test=24 pass=false
+Sep 23 01:07:26.601 INF API: test started suite=0 test=25 name="interop/filter-to-null (besu_release)"
+Sep 23 01:07:26.615 INF API: test ended suite=0 test=25 pass=false
+Sep 23 01:07:26.616 INF API: test started suite=0 test=26 name="interop/filter-to-only-intersection (besu_release)"
+Sep 23 01:07:26.623 INF API: test ended suite=0 test=26 pass=false
+Sep 23 01:07:26.624 INF API: test started suite=0 test=27 name="interop/filter-to-only-union (besu_release)"
+Sep 23 01:07:26.631 INF API: test ended suite=0 test=27 pass=false
+Sep 23 01:07:26.632 INF API: test started suite=0 test=28 name="interop/transaction-tree (besu_release)"
+Sep 23 01:07:26.650 INF API: test ended suite=0 test=28 pass=false
+Sep 23 01:07:26.976 INF API: test ended suite=0 test=15 pass=true
+Sep 23 01:07:26.978 INF API: test started suite=0 test=29 name="client launch (erigon_development)"
+Sep 23 01:07:28.513 INF API: client erigon_development started suite=0 test=29 container=a309eefb
+Sep 23 01:07:28.521 INF API: test started suite=0 test=30 name="interop/_control/head (erigon_development)"
+Sep 23 01:07:28.523 INF API: test ended suite=0 test=30 pass=false
+Sep 23 01:07:28.524 INF API: test started suite=0 test=31 name="interop/_control/version (erigon_development)"
+Sep 23 01:07:28.525 INF API: test ended suite=0 test=31 pass=false
+Sep 23 01:07:28.526 INF API: test started suite=0 test=32 name="interop/block-2 (erigon_development)"
+Sep 23 01:07:28.530 INF API: test ended suite=0 test=32 pass=false
+Sep 23 01:07:28.531 INF API: test started suite=0 test=33 name="interop/block-3 (erigon_development)"
+Sep 23 01:07:28.533 INF API: test ended suite=0 test=33 pass=false
+Sep 23 01:07:28.534 INF API: test started suite=0 test=34 name="interop/filter-both-null (erigon_development)"
+Sep 23 01:07:28.540 INF API: test ended suite=0 test=34 pass=false
+Sep 23 01:07:28.541 INF API: test started suite=0 test=35 name="interop/filter-both-unknown-mode (erigon_development)"
+Sep 23 01:07:28.546 INF API: test ended suite=0 test=35 pass=false
+Sep 23 01:07:28.546 INF API: test started suite=0 test=36 name="interop/filter-from-null (erigon_development)"
+Sep 23 01:07:28.549 INF API: test ended suite=0 test=36 pass=false
+Sep 23 01:07:28.550 INF API: test started suite=0 test=37 name="interop/filter-from-only-intersection (erigon_development)"
+Sep 23 01:07:28.551 INF API: test ended suite=0 test=37 pass=false
+Sep 23 01:07:28.551 INF API: test started suite=0 test=38 name="interop/filter-from-only-union (erigon_development)"
+Sep 23 01:07:28.553 INF API: test ended suite=0 test=38 pass=false
+Sep 23 01:07:28.554 INF API: test started suite=0 test=39 name="interop/filter-to-null (erigon_development)"
+Sep 23 01:07:28.557 INF API: test ended suite=0 test=39 pass=false
+Sep 23 01:07:28.558 INF API: test started suite=0 test=40 name="interop/filter-to-only-intersection (erigon_development)"
+Sep 23 01:07:28.559 INF API: test ended suite=0 test=40 pass=false
+Sep 23 01:07:28.559 INF API: test started suite=0 test=41 name="interop/filter-to-only-union (erigon_development)"
+Sep 23 01:07:28.561 INF API: test ended suite=0 test=41 pass=false
+Sep 23 01:07:28.561 INF API: test started suite=0 test=42 name="interop/transaction-tree (erigon_development)"
+Sep 23 01:07:28.563 INF API: test ended suite=0 test=42 pass=false
+Sep 23 01:07:28.850 INF API: test ended suite=0 test=29 pass=true
+Sep 23 01:07:28.852 INF API: test started suite=0 test=43 name="client launch (erigon_release)"
+Sep 23 01:07:30.553 INF API: client erigon_release started suite=0 test=43 container=742e47c8
+Sep 23 01:07:30.559 INF API: test started suite=0 test=44 name="interop/_control/head (erigon_release)"
+Sep 23 01:07:30.561 INF API: test ended suite=0 test=44 pass=false
+Sep 23 01:07:30.562 INF API: test started suite=0 test=45 name="interop/_control/version (erigon_release)"
+Sep 23 01:07:30.564 INF API: test ended suite=0 test=45 pass=false
+Sep 23 01:07:30.564 INF API: test started suite=0 test=46 name="interop/block-2 (erigon_release)"
+Sep 23 01:07:30.568 INF API: test ended suite=0 test=46 pass=false
+Sep 23 01:07:30.569 INF API: test started suite=0 test=47 name="interop/block-3 (erigon_release)"
+Sep 23 01:07:30.571 INF API: test ended suite=0 test=47 pass=false
+Sep 23 01:07:30.572 INF API: test started suite=0 test=48 name="interop/filter-both-null (erigon_release)"
+Sep 23 01:07:30.575 INF API: test ended suite=0 test=48 pass=false
+Sep 23 01:07:30.576 INF API: test started suite=0 test=49 name="interop/filter-both-unknown-mode (erigon_release)"
+Sep 23 01:07:30.578 INF API: test ended suite=0 test=49 pass=false
+Sep 23 01:07:30.579 INF API: test started suite=0 test=50 name="interop/filter-from-null (erigon_release)"
+Sep 23 01:07:30.582 INF API: test ended suite=0 test=50 pass=false
+Sep 23 01:07:30.583 INF API: test started suite=0 test=51 name="interop/filter-from-only-intersection (erigon_release)"
+Sep 23 01:07:30.584 INF API: test ended suite=0 test=51 pass=false
+Sep 23 01:07:30.585 INF API: test started suite=0 test=52 name="interop/filter-from-only-union (erigon_release)"
+Sep 23 01:07:30.588 INF API: test ended suite=0 test=52 pass=false
+Sep 23 01:07:30.588 INF API: test started suite=0 test=53 name="interop/filter-to-null (erigon_release)"
+Sep 23 01:07:30.592 INF API: test ended suite=0 test=53 pass=false
+Sep 23 01:07:30.593 INF API: test started suite=0 test=54 name="interop/filter-to-only-intersection (erigon_release)"
+Sep 23 01:07:30.594 INF API: test ended suite=0 test=54 pass=false
+Sep 23 01:07:30.595 INF API: test started suite=0 test=55 name="interop/filter-to-only-union (erigon_release)"
+Sep 23 01:07:30.596 INF API: test ended suite=0 test=55 pass=false
+Sep 23 01:07:30.597 INF API: test started suite=0 test=56 name="interop/transaction-tree (erigon_release)"
+Sep 23 01:07:30.598 INF API: test ended suite=0 test=56 pass=false
+Sep 23 01:07:30.906 INF API: test ended suite=0 test=43 pass=true
+Sep 23 01:07:30.908 INF API: test started suite=0 test=57 name="client launch (nethermind_development)"
+Sep 23 01:07:39.228 INF API: client nethermind_development started suite=0 test=57 container=e96ff72c
+Sep 23 01:07:39.325 INF API: test started suite=0 test=58 name="interop/_control/head (nethermind_development)"
+Sep 23 01:07:39.396 INF API: test ended suite=0 test=58 pass=false
+Sep 23 01:07:39.397 INF API: test started suite=0 test=59 name="interop/_control/version (nethermind_development)"
+Sep 23 01:07:39.401 INF API: test ended suite=0 test=59 pass=false
+Sep 23 01:07:39.402 INF API: test started suite=0 test=60 name="interop/block-2 (nethermind_development)"
+Sep 23 01:07:39.515 INF API: test ended suite=0 test=60 pass=false
+Sep 23 01:07:39.517 INF API: test started suite=0 test=61 name="interop/block-3 (nethermind_development)"
+Sep 23 01:07:39.521 INF API: test ended suite=0 test=61 pass=false
+Sep 23 01:07:39.521 INF API: test started suite=0 test=62 name="interop/filter-both-null (nethermind_development)"
+Sep 23 01:07:39.531 INF API: test ended suite=0 test=62 pass=false
+Sep 23 01:07:39.532 INF API: test started suite=0 test=63 name="interop/filter-both-unknown-mode (nethermind_development)"
+Sep 23 01:07:39.537 INF API: test ended suite=0 test=63 pass=false
+Sep 23 01:07:39.538 INF API: test started suite=0 test=64 name="interop/filter-from-null (nethermind_development)"
+Sep 23 01:07:39.543 INF API: test ended suite=0 test=64 pass=false
+Sep 23 01:07:39.544 INF API: test started suite=0 test=65 name="interop/filter-from-only-intersection (nethermind_development)"
+Sep 23 01:07:39.547 INF API: test ended suite=0 test=65 pass=false
+Sep 23 01:07:39.548 INF API: test started suite=0 test=66 name="interop/filter-from-only-union (nethermind_development)"
+Sep 23 01:07:39.550 INF API: test ended suite=0 test=66 pass=false
+Sep 23 01:07:39.551 INF API: test started suite=0 test=67 name="interop/filter-to-null (nethermind_development)"
+Sep 23 01:07:39.555 INF API: test ended suite=0 test=67 pass=false
+Sep 23 01:07:39.556 INF API: test started suite=0 test=68 name="interop/filter-to-only-intersection (nethermind_development)"
+Sep 23 01:07:39.559 INF API: test ended suite=0 test=68 pass=false
+Sep 23 01:07:39.560 INF API: test started suite=0 test=69 name="interop/filter-to-only-union (nethermind_development)"
+Sep 23 01:07:39.562 INF API: test ended suite=0 test=69 pass=false
+Sep 23 01:07:39.563 INF API: test started suite=0 test=70 name="interop/transaction-tree (nethermind_development)"
+Sep 23 01:07:39.571 INF API: test ended suite=0 test=70 pass=false
+Sep 23 01:07:39.868 INF API: test ended suite=0 test=57 pass=true
+Sep 23 01:07:39.869 INF API: test started suite=0 test=71 name="client launch (nethermind_release)"
+Sep 23 01:07:47.131 INF API: client nethermind_release started suite=0 test=71 container=c9ec5273
+Sep 23 01:07:47.215 INF API: test started suite=0 test=72 name="interop/_control/head (nethermind_release)"
+Sep 23 01:07:47.319 INF API: test ended suite=0 test=72 pass=false
+Sep 23 01:07:47.320 INF API: test started suite=0 test=73 name="interop/_control/version (nethermind_release)"
+Sep 23 01:07:47.324 INF API: test ended suite=0 test=73 pass=false
+Sep 23 01:07:47.325 INF API: test started suite=0 test=74 name="interop/block-2 (nethermind_release)"
+Sep 23 01:07:47.418 INF API: test ended suite=0 test=74 pass=false
+Sep 23 01:07:47.420 INF API: test started suite=0 test=75 name="interop/block-3 (nethermind_release)"
+Sep 23 01:07:47.423 INF API: test ended suite=0 test=75 pass=false
+Sep 23 01:07:47.424 INF API: test started suite=0 test=76 name="interop/filter-both-null (nethermind_release)"
+Sep 23 01:07:47.433 INF API: test ended suite=0 test=76 pass=false
+Sep 23 01:07:47.433 INF API: test started suite=0 test=77 name="interop/filter-both-unknown-mode (nethermind_release)"
+Sep 23 01:07:47.437 INF API: test ended suite=0 test=77 pass=false
+Sep 23 01:07:47.437 INF API: test started suite=0 test=78 name="interop/filter-from-null (nethermind_release)"
+Sep 23 01:07:47.441 INF API: test ended suite=0 test=78 pass=false
+Sep 23 01:07:47.442 INF API: test started suite=0 test=79 name="interop/filter-from-only-intersection (nethermind_release)"
+Sep 23 01:07:47.446 INF API: test ended suite=0 test=79 pass=false
+Sep 23 01:07:47.446 INF API: test started suite=0 test=80 name="interop/filter-from-only-union (nethermind_release)"
+Sep 23 01:07:47.449 INF API: test ended suite=0 test=80 pass=false
+Sep 23 01:07:47.450 INF API: test started suite=0 test=81 name="interop/filter-to-null (nethermind_release)"
+Sep 23 01:07:47.453 INF API: test ended suite=0 test=81 pass=false
+Sep 23 01:07:47.454 INF API: test started suite=0 test=82 name="interop/filter-to-only-intersection (nethermind_release)"
+Sep 23 01:07:47.456 INF API: test ended suite=0 test=82 pass=false
+Sep 23 01:07:47.457 INF API: test started suite=0 test=83 name="interop/filter-to-only-union (nethermind_release)"
+Sep 23 01:07:47.460 INF API: test ended suite=0 test=83 pass=false
+Sep 23 01:07:47.460 INF API: test started suite=0 test=84 name="interop/transaction-tree (nethermind_release)"
+Sep 23 01:07:47.467 INF API: test ended suite=0 test=84 pass=false
+Sep 23 01:07:47.826 INF API: test ended suite=0 test=71 pass=true
+Sep 23 01:07:47.827 INF API: test started suite=0 test=85 name="client launch (reth_development)"
+Sep 23 01:07:49.972 INF API: client reth_development started suite=0 test=85 container=ef180299
+Sep 23 01:07:49.988 INF API: test started suite=0 test=86 name="interop/_control/head (reth_development)"
+Sep 23 01:07:49.991 INF API: test ended suite=0 test=86 pass=false
+Sep 23 01:07:49.992 INF API: test started suite=0 test=87 name="interop/_control/version (reth_development)"
+Sep 23 01:07:49.994 INF API: test ended suite=0 test=87 pass=false
+Sep 23 01:07:49.994 INF API: test started suite=0 test=88 name="interop/block-2 (reth_development)"
+Sep 23 01:07:50.000 INF API: test ended suite=0 test=88 pass=false
+Sep 23 01:07:50.001 INF API: test started suite=0 test=89 name="interop/block-3 (reth_development)"
+Sep 23 01:07:50.003 INF API: test ended suite=0 test=89 pass=false
+Sep 23 01:07:50.003 INF API: test started suite=0 test=90 name="interop/filter-both-null (reth_development)"
+Sep 23 01:07:50.005 INF API: test ended suite=0 test=90 pass=false
+Sep 23 01:07:50.006 INF API: test started suite=0 test=91 name="interop/filter-both-unknown-mode (reth_development)"
+Sep 23 01:07:50.007 INF API: test ended suite=0 test=91 pass=false
+Sep 23 01:07:50.007 INF API: test started suite=0 test=92 name="interop/filter-from-null (reth_development)"
+Sep 23 01:07:50.009 INF API: test ended suite=0 test=92 pass=false
+Sep 23 01:07:50.009 INF API: test started suite=0 test=93 name="interop/filter-from-only-intersection (reth_development)"
+Sep 23 01:07:50.011 INF API: test ended suite=0 test=93 pass=false
+Sep 23 01:07:50.012 INF API: test started suite=0 test=94 name="interop/filter-from-only-union (reth_development)"
+Sep 23 01:07:50.014 INF API: test ended suite=0 test=94 pass=false
+Sep 23 01:07:50.015 INF API: test started suite=0 test=95 name="interop/filter-to-null (reth_development)"
+Sep 23 01:07:50.016 INF API: test ended suite=0 test=95 pass=false
+Sep 23 01:07:50.016 INF API: test started suite=0 test=96 name="interop/filter-to-only-intersection (reth_development)"
+Sep 23 01:07:50.018 INF API: test ended suite=0 test=96 pass=false
+Sep 23 01:07:50.019 INF API: test started suite=0 test=97 name="interop/filter-to-only-union (reth_development)"
+Sep 23 01:07:50.022 INF API: test ended suite=0 test=97 pass=false
+Sep 23 01:07:50.022 INF API: test started suite=0 test=98 name="interop/transaction-tree (reth_development)"
+Sep 23 01:07:50.026 INF API: test ended suite=0 test=98 pass=false
+Sep 23 01:07:50.321 INF API: test ended suite=0 test=85 pass=true
+Sep 23 01:07:50.322 INF API: test started suite=0 test=99 name="client launch (reth_release)"
+Sep 23 01:07:52.514 INF API: client reth_release started suite=0 test=99 container=61e4ceb7
+Sep 23 01:07:52.531 INF API: test started suite=0 test=100 name="interop/_control/head (reth_release)"
+Sep 23 01:07:52.534 INF API: test ended suite=0 test=100 pass=false
+Sep 23 01:07:52.535 INF API: test started suite=0 test=101 name="interop/_control/version (reth_release)"
+Sep 23 01:07:52.536 INF API: test ended suite=0 test=101 pass=false
+Sep 23 01:07:52.537 INF API: test started suite=0 test=102 name="interop/block-2 (reth_release)"
+Sep 23 01:07:52.541 INF API: test ended suite=0 test=102 pass=false
+Sep 23 01:07:52.541 INF API: test started suite=0 test=103 name="interop/block-3 (reth_release)"
+Sep 23 01:07:52.543 INF API: test ended suite=0 test=103 pass=false
+Sep 23 01:07:52.544 INF API: test started suite=0 test=104 name="interop/filter-both-null (reth_release)"
+Sep 23 01:07:52.545 INF API: test ended suite=0 test=104 pass=false
+Sep 23 01:07:52.546 INF API: test started suite=0 test=105 name="interop/filter-both-unknown-mode (reth_release)"
+Sep 23 01:07:52.547 INF API: test ended suite=0 test=105 pass=false
+Sep 23 01:07:52.547 INF API: test started suite=0 test=106 name="interop/filter-from-null (reth_release)"
+Sep 23 01:07:52.548 INF API: test ended suite=0 test=106 pass=false
+Sep 23 01:07:52.549 INF API: test started suite=0 test=107 name="interop/filter-from-only-intersection (reth_release)"
+Sep 23 01:07:52.551 INF API: test ended suite=0 test=107 pass=false
+Sep 23 01:07:52.551 INF API: test started suite=0 test=108 name="interop/filter-from-only-union (reth_release)"
+Sep 23 01:07:52.553 INF API: test ended suite=0 test=108 pass=false
+Sep 23 01:07:52.554 INF API: test started suite=0 test=109 name="interop/filter-to-null (reth_release)"
+Sep 23 01:07:52.554 INF API: test ended suite=0 test=109 pass=false
+Sep 23 01:07:52.555 INF API: test started suite=0 test=110 name="interop/filter-to-only-intersection (reth_release)"
+Sep 23 01:07:52.556 INF API: test ended suite=0 test=110 pass=false
+Sep 23 01:07:52.557 INF API: test started suite=0 test=111 name="interop/filter-to-only-union (reth_release)"
+Sep 23 01:07:52.559 INF API: test ended suite=0 test=111 pass=false
+Sep 23 01:07:52.559 INF API: test started suite=0 test=112 name="interop/transaction-tree (reth_release)"
+Sep 23 01:07:52.563 INF API: test ended suite=0 test=112 pass=false
+Sep 23 01:07:52.862 INF API: test ended suite=0 test=99 pass=true
+Sep 23 01:07:52.877 INF API: suite ended suite=0
+Sep 23 01:07:53.373 INF simulation ethereum/rpc-compat finished suites=1 tests=112 failed=104
+104 tests failed

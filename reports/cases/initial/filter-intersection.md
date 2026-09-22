@@ -6,14 +6,23 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
+| [Besu · Release](../../clients/besu_release.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Besu · Release](../../clients/besu_release.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Besu · Development](../../clients/besu_development.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Release](../../clients/erigon_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Erigon · Development](../../clients/erigon_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 | [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-23/h03-modes-geth-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-geth-initial/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-initial/manifest.json) |
 | [Reth · Development](../../clients/reth_development.md) | 1 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
@@ -38,6 +47,18 @@
   ]
 }
 ```
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
+
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+
+**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+
+**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 **Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
 

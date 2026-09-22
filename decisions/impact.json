@@ -40,20 +40,24 @@
     "H03": {
       "append_checked_requirements": false,
       "besu": {
-        "observed": "Filtering by recipient alone does not return the expected subset of the same block trace.",
-        "change": "Make a recipient-only query select every matching call. An omitted sender list should impose no restriction."
+        "observed": "A recipient-only filter returns 1 of the 2 expected calls. Every recognized `mode` value is rejected with `-32602`, including `intersection` and `union`.",
+        "change": "Make a one-sided query select every call matching the populated list. Accept `intersection` as the default and `union` as an explicit option; reject only unknown values."
       },
       "erigon": {
-        "observed": "Supplying both sender and recipient lists broadens the search by default (OR).",
-        "change": "Use AND between the two lists by default, so adding a recipient filter narrows a sender query. Keep union as an explicit mode."
+        "observed": "Both lists are combined with OR by default (6 records instead of 1). With `mode: \"intersection\"`, a one-sided filter returns `[]` instead of treating the empty side as unrestricted. The unrecognized `mode: \"garbage\"` is accepted and treated as union.",
+        "change": "Make intersection the default. Under either mode, ignore an omitted, null or empty side. Reject unknown mode values with `-32602`."
+      },
+      "geth": {
+        "observed": "The draft fork implements the earlier baseline: it rejects `mode: \"intersection\"` and `mode: \"union\"` with `-32602`.",
+        "change": "Accept `intersection` (identical to the default) and `union` (match either populated list); keep rejecting unknown values."
       },
       "reth": {
-        "observed": "Sender and recipient lists are combined with OR by default.",
-        "change": "Use AND between lists by default so a second filter narrows the search; preserve union as an explicit mode."
+        "observed": "Both lists are combined with OR by default (6 records instead of 1). One-sided and explicit-mode queries agree.",
+        "change": "Take up Alloy #4216, which makes intersection the default and keeps explicit union, then retest."
       },
       "nethermind": {
-        "observed": "The tested builds accept the unrecognized `mode: \"garbage\"` value.",
-        "change": "Reject unknown mode values with `-32602`; continue accepting recognized `union` and `intersection` modes."
+        "observed": "`mode: \"union\"` returns the intersection (1 record instead of 6). The unrecognized `mode: \"garbage\"` is accepted.",
+        "change": "Implement `union` as matching either populated list. Reject unknown mode values with `-32602`."
       }
     },
     "H04": {

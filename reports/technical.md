@@ -23,8 +23,8 @@ Coverage below counts eligible trace observations, separately from schema valida
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1423 |
-| partial | 487 |
+| assessed | 1535 |
+| partial | 546 |
 | unassessed | 223 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
@@ -62,6 +62,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [a/filter-creator-from](cases/a/filter-creator-from.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [a/filter-from-null](cases/a/filter-from-null.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [a/filter-from-only-intersection](cases/a/filter-from-only-intersection.md) | Nethermind Development, Nethermind Release |
+| [a/filter-from-only-union](cases/a/filter-from-only-union.md) | Nethermind Development, Nethermind Release |
 | [a/filter-page-0](cases/a/filter-page-0.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [a/filter-page-1](cases/a/filter-page-1.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [a/filter-page-2](cases/a/filter-page-2.md) | Besu Development, Besu Release |
@@ -227,6 +228,10 @@ These cases returned results that differ from the draft schema. The case pages r
 | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/manifest.json) | reorg-safe | No |
 | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/manifest.json) | reorg-safe | No |
 | [verified-repeat](../evidence/2026-09-21/verified-repeat/manifest.json) | repeat | Yes |
+| [h03-modes-a](../evidence/2026-09-23/h03-modes-a/manifest.json) | a | Yes |
+| [h03-modes-geth-a](../evidence/2026-09-23/h03-modes-geth-a/manifest.json) | a | Yes |
+| [h03-modes-geth-initial](../evidence/2026-09-23/h03-modes-geth-initial/manifest.json) | initial | Yes |
+| [h03-modes-initial](../evidence/2026-09-23/h03-modes-initial/manifest.json) | initial | Yes |
 | [precompile-values-geth](../evidence/2026-09-23/precompile-values-geth/manifest.json) | precompile-values | Yes |
 | [precompile-values-native](../evidence/2026-09-23/precompile-values-native/manifest.json) | precompile-values | Yes |
 | [pruned-review](../evidence/2026-09-23/pruned-review/manifest.json) | pruned | Yes |

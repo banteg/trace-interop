@@ -192,6 +192,7 @@ def evaluate(case, observation, peers, invalid_params=None):
                         'filter-from-empty-to-set','filter-to-empty-from-set','filter-created-to',
                         'filter-creator-from','filter-suicide-from','filter-suicide-beneficiary',
                         'filter-from-only-intersection','filter-to-only-intersection',
+                        'filter-from-only-union','filter-to-only-union',
                         'filter-intersection','filter-union']
         if name in filter_cases:
             def address(value):

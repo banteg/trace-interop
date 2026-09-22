@@ -135,6 +135,22 @@ class CoverageTests(unittest.TestCase):
         checks = assess('filter-from', [frame], 'trace_filter', [{'fromAddress': ['0x'+address[2:].upper()]}], peers)
         self.assertEqual([c['status'] for c in checks if c['topic'] == 'H03'], ['matches'])
 
+    def test_filter_mode_composes_populated_lists(self):
+        a, b, c = '0x'+'aa'*20, '0x'+'bb'*20, '0x'+'cc'*20
+        frames = [{'action': {'from': f, 'to': t}, 'type': 'call', 'traceAddress': [i]}
+                  for i, (f, t) in enumerate([(a, b), (a, c), (c, b), (c, c)])]
+        peers = {'block-tree': {'response': {'result': frames}}}
+        def status(name, filt, result):
+            return [q['status'] for q in assess(name, result, 'trace_filter', [filt], peers) if q['topic'] == 'H03']
+        both = {'fromAddress': [a], 'toAddress': [b]}
+        self.assertEqual(status('filter-intersection', dict(both, mode='intersection'), frames[:1]), ['matches'])
+        self.assertEqual(status('filter-union', dict(both, mode='union'), frames[:3]), ['matches'])
+        self.assertEqual(status('filter-union', dict(both, mode='union'), frames[:1]), ['change_needed'])
+        # A one-sided filter selects the same records under either mode.
+        for mode in ['intersection', 'union']:
+            self.assertEqual(status('filter-from-only-'+mode, {'fromAddress': [a], 'mode': mode}, frames[:2]), ['matches'])
+            self.assertEqual(status('filter-from-only-'+mode, {'fromAddress': [a], 'mode': mode}, []), ['change_needed'])
+
     def test_zero_fee_many_errors_and_cardinality(self):
         params = [[ [{'gasPrice': '0x0'}, ['trace']] ], 'latest']
         for result in [None, {}, [], {'jsonrpc': '2.0', 'error': {'code': -32603}}]:

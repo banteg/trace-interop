@@ -51,3 +51,9 @@ Both PRs were validated independently on upstream `caab45ca`, without #11350:
 Both pass module Spotless checks. The upstream Forest trace suite remains skipped.
 The PRs contain the final tests and changelog entries; the probe diffs above preserve
 the initial reproduction. No fresh cross-client matrix has been run.
+
+The #11352 child-halt regressions also verify bytecode retention: the same `0xfe`
+or `0x50` program reports its code at the root but loses it as a child before the
+follow-up. Both cases fail at the bytecode comparison on `b58a5299`; after the
+follow-up, all 812 trace and 400 debug-trace HTTP tests pass. See
+[`bytecode-validation.json`](bytecode-validation.json) for the recorded failures and suite results.

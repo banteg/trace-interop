@@ -1,0 +1,54 @@
+{
+  "pr": "https://github.com/besu-eth/besu/pull/11352",
+  "before": "b58a52992dbdca5b521bc46763b7d7d3a6989257",
+  "after": "363036b026ad728cd222ae37bc7f699b285add7e",
+  "failures": [
+    {
+      "test": "[1] fe",
+      "message": "org.opentest4j.AssertionFailedError: \nexpected: \"0xfe\"\n but was: \"0x\""
+    },
+    {
+      "test": "[2] 50",
+      "message": "org.opentest4j.AssertionFailedError: \nexpected: \"0x50\"\n but was: \"0x\""
+    }
+  ],
+  "suites": [
+    {
+      "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.DebugGethTraceJsonRpcHttpBySpecTest",
+      "tests": "368",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.DebugTraceJsonRpcHttpBySpecTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+      "tests": "812",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "org.hyperledger.besu.ethereum.api.jsonrpc.forest.DebugTraceJsonRpcHttpBySpecTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "org.hyperledger.besu.ethereum.api.jsonrpc.forest.TraceJsonRpcHttpBySpecTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1"
+    }
+  ],
+  "spotlessCheck": "passed",
+  "crossClientMatrix": "not rerun"
+}

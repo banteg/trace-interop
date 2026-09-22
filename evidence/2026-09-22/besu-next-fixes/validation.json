@@ -18,7 +18,7 @@
   "upstreamSubmissions": [
     {
       "pr": "https://github.com/besu-eth/besu/pull/11352",
-      "head": "b58a52992dbdca5b521bc46763b7d7d3a6989257",
+      "head": "363036b026ad728cd222ae37bc7f699b285add7e",
       "baselineRegressions": 3,
       "baselineFailures": 3,
       "after": [
@@ -57,7 +57,8 @@
           "errors": "0",
           "skipped": "1"
         }
-      ]
+      ],
+      "bytecodeValidation": "bytecode-validation.json"
     },
     {
       "pr": "https://github.com/besu-eth/besu/pull/11353",

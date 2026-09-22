@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · repeat · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response, including on validation failure. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

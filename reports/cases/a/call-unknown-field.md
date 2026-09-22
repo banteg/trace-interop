@@ -2,7 +2,7 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection.
+**What this checks:** Unknown call-object fields are ignored without changing execution output. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -11,7 +11,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Not assessed | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 1 call frames; nonempty output | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
@@ -40,5 +40,9 @@
   ]
 }
 ```
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
+
+- [H14](../../decisions/H14.md): Unknown call-object fields are ignored without changing execution output.
 
 </details>

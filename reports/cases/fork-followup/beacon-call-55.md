@@ -2,7 +2,7 @@
 
 `trace_call` · fork-followup · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an explicit result; REVERT preserves return bytes and measured gas. Historical trace_call uses only system changes through the selected block.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string and an explicit object or null result. Historical trace_call uses only system changes through the selected block.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -42,7 +42,7 @@
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
@@ -51,17 +51,17 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddre
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d520', 'input': '0x0000000000000000000000000000000000000000000000000000000000000230', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x', 'subt
 
 </details>

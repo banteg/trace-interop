@@ -2,12 +2,12 @@
 
 `trace_get` · initial · [All reports](../../README.md)
 
-**What this checks:** Return the transaction-tree record at [1], or null if absent.
+**What this checks:** Return the transaction-tree record at [1], or null if absent. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | One frame, path `[1]` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | One frame, path `[1]` | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Release](../../clients/besu_release.md) | One frame, path `[1]` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
+| [Besu · Development](../../clients/besu_development.md) | One frame, path `[1]` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-initial/manifest.json) |
 | [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-initial/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-initial/manifest.json) |
@@ -34,10 +34,12 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)

@@ -246,5 +246,43 @@
       "reth_development": "Reth Version: 2.5.2+03cb186c",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
     }
+  },
+  {
+    "complete": true,
+    "corpus": "precompile-values",
+    "digest": "010c4d103a012d021a7e52866578e2d8be13a6a34fff1d6b049c5789d1cba502",
+    "manifest": "../evidence/2026-09-23/precompile-values-geth/manifest.json",
+    "name": "precompile-values-geth",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "precompile-values",
+    "digest": "7955934358612334a6d056e8ea35d1f3faaf0eab9635e64a31e5ee260617184e",
+    "manifest": "../evidence/2026-09-23/precompile-values-native/manifest.json",
+    "name": "precompile-values-native",
+    "versions": {
+      "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-c25b8e47",
+      "erigon_release": "3.6.1-0c4d9c91",
+      "nethermind_development": "2.1.0-unstable+a404c4f0",
+      "nethermind_release": "1.39.3+28cbe2a0",
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "pruned",
+    "digest": "fb744f757123d31de133b1b9744b7904519c704977200bc83e5c01d326d81222",
+    "manifest": "../evidence/2026-09-23/pruned-review/manifest.json",
+    "name": "pruned-review",
+    "versions": {
+      "reth_development": "Reth Version: 2.5.2+03cb186c",
+      "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
   }
 ]

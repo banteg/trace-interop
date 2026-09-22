@@ -42,10 +42,10 @@
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not one of ['trace', 'stateDiff', 'vmTrace']
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602).
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not one of ['trace', 'stateDiff', 'vmTrace']
 
 </details>

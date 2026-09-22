@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Address matching is OR within each list, AND across lists, with action-specific endpoints.
+**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -38,10 +38,10 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H23](../../decisions/H23.md): Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
+- [H23](../../decisions/H23.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H23](../../decisions/H23.md): Address matching is OR within each list, AND across lists, with action-specific endpoints. Expected 1 records from this client's block trace.
+- [H23](../../decisions/H23.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 </details>

@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/f26e2468b3e5409e777deb137254c2954ce70bc7) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/7ec8544af41e281d12d9d347e3d48939f4c87664) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 ## Start with your client
 
@@ -8,7 +8,7 @@ The clients already share much of the `trace_*` API. These reports show where ad
 | --- | --- |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
 | [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition and signed nonce validation still need attention. |
-| [Geth draft fork](clients/geth.md) | The experimental fork matches the selected assertions. It is a place to try the draft, not upstream Geth support; historical filtering is a bounded scan and pruning coverage remains incomplete. |
+| [Geth draft fork](clients/geth.md) | The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. |
 | [Nethermind](clients/nethermind.md) | Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement. |
 | [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. |
 

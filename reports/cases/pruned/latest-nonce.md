@@ -4,9 +4,11 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · Release](../../clients/reth_release.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-23/pruned-review/observations.json) · [Build/run](../../../evidence/2026-09-23/pruned-review/manifest.json) |
+| [Reth · Release](../../clients/reth_release.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-23/pruned-review/observations.json) · [Build/run](../../../evidence/2026-09-23/pruned-review/manifest.json) |
+| [Reth · Development](../../clients/reth_development.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned/manifest.json) |
 | [Reth · Development](../../clients/reth_development.md) | `0x85` | Not assessed | [Response](../../../evidence/2026-09-21/verified-pruned-ready/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-pruned-ready/manifest.json) |
 
 <details><summary>Request and assertion details</summary>

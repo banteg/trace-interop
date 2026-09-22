@@ -35,6 +35,15 @@ class RuleSafetyTests(unittest.TestCase):
         frame['result'] = {'output': '0xdead', 'gasUsed': '0x1'}
         self.assertTrue(all(c['status'] == 'matches' for c in assess('call-siblings-revert-ok', {'trace': [frame]}) if c['topic'] == 'H09'))
 
+    def test_revert_frame_is_only_required_when_trace_is_selected(self):
+        for selection in [['stateDiff'], ['vmTrace'], []]:
+            checks=assess('replay-revert-stateDiff', {'trace':[], 'output':'0x'},
+                          'trace_replayTransaction', ['0x'+'11'*32, selection])
+            self.assertFalse(any(c['topic']=='H09' and c['status']=='change_needed' for c in checks))
+        checks=assess('replay-revert-trace', {'trace':[], 'output':'0x'},
+                      'trace_replayTransaction', ['0x'+'11'*32, ['trace']])
+        self.assertIn('change_needed', [c['status'] for c in checks if c['topic']=='H09'])
+
     def test_nested_error_is_never_a_success(self):
         result = {'jsonrpc': '2.0', 'id': 1, 'error': {'code': -32000, 'message': 'bad'}}
         checks = assess('call-many', result, 'trace_callMany', [[[]]])
@@ -149,3 +158,40 @@ class PrecompileValueTests(unittest.TestCase):
         self.assertTrue(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
         observations['_control/create-nonce']['c']['response']['result']='0x86'
         self.assertFalse(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
+
+class PublishedAssessmentTests(unittest.TestCase):
+    def test_frozen_counterexamples_are_present_in_reports(self):
+        records=json.loads((ROOT/'reports/checks.json').read_text())
+        for corpus, case, client, topic in [
+            ('a','filter-wrong-address-type','besu_release','H14'),
+            ('a','filter-negative-count','nethermind_release','H14'),
+            ('a','get-integer-path','reth_release','H14'),
+            ('initial','call-many','besu_release','H25'),
+            ('initial','call-many','erigon_release','H15'),
+            ('a','filter-both-unknown-mode','nethermind_release','H03'),
+        ]:
+            with self.subTest(case=case, client=client):
+                matching=[r for r in records if r['corpus']==corpus and r['case']==case and r['client']==client and r['eligible']]
+                self.assertTrue(matching)
+                self.assertTrue(all(any(c['topic']==topic and c['status']=='change_needed' for c in r['checks']) for r in matching))
+
+    def test_report_provenance_matches_current_assessment_sources(self):
+        import hashlib
+        assessment=json.loads((ROOT/'reports/assessment.json').read_text())
+        for name,digest in assessment['sources'].items():
+            with self.subTest(name=name):
+                self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest)
+
+    def test_new_value_capture_has_independent_setup_and_success_proof(self):
+        records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
+                 if r['corpus']=='precompile-values' and not r['case'].startswith('_control')]
+        self.assertEqual(len(records), 72)  # Eight discriminators on nine pinned builds.
+        self.assertEqual(len({r['client'] for r in records}), 9)
+        for r in records:
+            self.assertTrue(r['eligible'])
+            success=[c for c in r['checks'] if 'success bit' in c['requirement']]
+            self.assertEqual([c['status'] for c in success],['matches'])
+            if r['client'].startswith(('reth_','erigon_','nethermind_')) or r['client']=='go-ethereum_trace':
+                self.assertTrue(all(c['status']=='matches' for c in r['checks'] if c['topic']=='H29'))
+            if r['client'].startswith('besu_') and r['case'].endswith('failed'):
+                self.assertIn('change_needed',[c['status'] for c in r['checks'] if c['topic']=='H24'])

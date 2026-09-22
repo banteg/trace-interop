@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. A handled precompile failure must not mark the successful parent as failed. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+**What this checks:** Output remains a byte string under every trace selection. Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. A handled precompile failure must not mark the successful parent as failed. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -45,27 +45,27 @@
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f72', 'init': '0x602a600052604060006080600060016006620186a0f15060006000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f72', 'init': '0x602a600052604060006080600060016006620186a0f15060006000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/1`: {'action': {'callType': 'call', 'from': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'gas': '0x18f9c', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f15060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995183}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995180}, 'pc': 2, 'sub': None}, {'cost': 6,
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/1`: {'action': {'callType': 'call', 'from': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'gas': '0x18f9c', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f15060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995183}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995180}, 'pc': 2, 'sub': None}, {'cost': 6,
 

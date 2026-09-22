@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork matches the selected assertions. It is a place to try the draft, not upstream Geth support; historical filtering is a bounded scan and pruning coverage remains incomplete."
+      "summary": "The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete."
     }
   },
   "topics": {
@@ -49,6 +49,10 @@
       "reth": {
         "observed": "Sender and recipient lists are combined with OR by default.",
         "change": "Use AND between lists so a second filter narrows the search; preserve union only as an explicit extension."
+      },
+      "nethermind": {
+        "observed": "The tested builds accept mode parameters that this portable profile rejects.",
+        "change": "Reject the baseline mode argument with -32602; define extensions separately."
       }
     },
     "H04": {
@@ -59,6 +63,14 @@
       "nethermind": {
         "observed": "Empty address lists suppress matches.",
         "change": "Treat `[]` as unrestricted, just like an omitted address list."
+      },
+      "reth": {
+        "observed": "Null address lists are rejected, while the revised draft treats them as unrestricted.",
+        "change": "Accept null like an omitted or empty list, then apply the other filter normally."
+      },
+      "geth": {
+        "observed": "Null address lists are rejected, while the revised draft treats them as unrestricted.",
+        "change": "Accept null like an omitted or empty list, then apply the other filter normally."
       }
     },
     "H05": {
@@ -73,11 +85,11 @@
     },
     "H06": {
       "besu": {
-        "observed": "An unknown transaction returns `[]`.",
+        "observed": "Unknown transactions can return [] and an unknown selected block returns null.",
         "change": "Return `null` for an unknown transaction, so callers can distinguish absence from a transaction with no call records."
       },
       "erigon": {
-        "observed": "Looking up a missing transaction with `trace_get` returns an RPC error.",
+        "observed": "Missing-transaction lookup can return an RPC error, and an unknown filter endpoint can return [].",
         "change": "Return `null` for a missing transaction or path; reserve errors for unavailable history and invalid requests."
       },
       "nethermind": {
@@ -87,6 +99,10 @@
       "reth": {
         "observed": "Missing individual replays return an error; verified pruned-history requests use `-32603`.",
         "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error."
+      },
+      "geth": {
+        "observed": "Unknown selected blocks use a different error code from the revised draft.",
+        "change": "Use -32001 for unknown blocks, preserving null for missing transactions and 4444 for pruned state."
       }
     },
     "H09": {
@@ -135,12 +151,12 @@
     },
     "H15": {
       "besu": {
-        "observed": "Explicit zero-fee unsigned calls are rejected.",
-        "change": "Allow zero-fee `trace_call` simulations while retaining the selected block’s `BASEFEE` opcode value."
+        "observed": "Zero-fee unsigned simulations fail; callMany can wrap that failure inside result.",
+        "change": "Allow zero-fee `trace_call` simulations while retaining the selected block\u2019s `BASEFEE` opcode value."
       },
       "erigon": {
         "observed": "Explicit zero-fee unsigned calls are rejected.",
-        "change": "Allow zero-fee unsigned simulation without changing the block’s `BASEFEE` opcode value."
+        "change": "Allow zero-fee unsigned simulation without changing the block\u2019s `BASEFEE` opcode value."
       },
       "nethermind": {
         "observed": "The empty-selection call fails; the other checked zero-fee calls do not.",
@@ -150,7 +166,7 @@
     "H20": {
       "besu": {
         "observed": "The `MCOPY` step omits its memory write.",
-        "change": "Include the bytes written at offset 32 in that step’s memory delta."
+        "change": "Include the bytes written at offset 32 in that step\u2019s memory delta."
       },
       "erigon": {
         "observed": "The `MCOPY` step omits its memory write.",
@@ -160,7 +176,7 @@
     "H22": {
       "besu": {
         "observed": "The identity precompile returns bytes in the execution envelope but not its call frame.",
-        "change": "Copy the precompile’s return bytes into the call-frame result as well."
+        "change": "Copy the precompile\u2019s return bytes into the call-frame result as well."
       }
     },
     "H23": {
@@ -177,8 +193,8 @@
     },
     "H27": {
       "besu": {
-        "observed": "A range filter differs from concatenating the same blocks’ traces across a fork boundary.",
-        "change": "Use each block’s own execution rules and make range filtering agree with per-block tracing."
+        "observed": "A range filter differs from concatenating the same blocks\u2019 traces across a fork boundary.",
+        "change": "Use each block\u2019s own execution rules and make range filtering agree with per-block tracing."
       }
     },
     "H29": {
@@ -217,14 +233,26 @@
         "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection."
       },
       "nethermind": {
-        "observed": "Malformed raw transaction input uses a different error code.",
+        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds.",
         "change": "Return invalid params (`-32602`) for malformed encoding."
+      },
+      "besu": {
+        "observed": "Wrong address-list types and negative count can return results rather than invalid params.",
+        "change": "Validate filter types and bounds and return -32602 for invalid request shapes."
+      },
+      "reth": {
+        "observed": "An integer trace_get path returns null instead of invalid params.",
+        "change": "Reject integer path entries with -32602; callers must convert output path integers to hex quantities."
+      },
+      "geth": {
+        "observed": "Unknown call-object fields are rejected by the older draft implementation.",
+        "change": "Ignore unknown call fields for forward compatibility while validating known fields."
       }
     },
     "H28": {
       "erigon": {
-        "observed": "A historical beacon-root lookup includes a following block’s system update.",
-        "change": "Read the selected block’s post-state, before applying the next block’s system operations."
+        "observed": "A historical beacon-root lookup includes a following block\u2019s system update.",
+        "change": "Read the selected block\u2019s post-state, before applying the next block\u2019s system operations."
       }
     },
     "H21": {
@@ -237,6 +265,10 @@
       "nethermind": {
         "observed": "Rejected signed transactions can leave truncated JSON on the wire.",
         "change": "Finish validation before committing a streamed result, or ensure the error path returns one complete JSON-RPC response."
+      },
+      "besu": {
+        "observed": "The initial zero-fee callMany result contains a complete JSON-RPC error envelope nested inside result.",
+        "change": "Return a top-level error when execution is rejected; never serialize an error envelope as a successful result."
       }
     },
     "H26": {
@@ -264,7 +296,7 @@
     "H19": {
       "reth": {
         "observed": "Creation `vmTrace.code` does not contain the expected executing initcode.",
-        "change": "Attach the creation frame’s initcode to its VM trace, including in block replay."
+        "change": "Attach the creation frame\u2019s initcode to its VM trace, including in block replay."
       }
     }
   }

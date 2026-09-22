@@ -59,7 +59,7 @@
       "kind": "Spec decision",
       "next_step": "Settle boolean composition and extension validation together; one-sided and unknown-mode fixtures are available.",
       "rationale": "Supplying a second filter normally narrows a search; combining two sets of alternatives should be explicit.",
-      "recommendation": "Use OR within each address list and AND between fromAddress and toAddress. One unconstrained side should not suppress matches. If union is retained, expose it explicitly as an optional extension and reject unsupported mode values rather than silently ignoring their meaning.",
+      "recommendation": "Use OR within each address list and AND between fromAddress and toAddress. One unconstrained side should not suppress matches. The portable baseline rejects the mode extension with -32602; optional extension semantics require separate agreement.",
       "title": "Filter composition and mode"
     },
     {
@@ -513,26 +513,34 @@
       "title": "Precompile call-frame inclusion",
       "kind": "Spec decision / client alignment",
       "cases": [
-        "precompiles/nested-call-value0-success",
+        "precompile-values/nested-call-outer0-value1-failed",
+        "precompile-values/nested-call-outer0-value1-success",
+        "precompile-values/nested-call-outer1-value0-failed",
+        "precompile-values/nested-call-outer1-value0-success",
+        "precompile-values/nested-callcode-outer0-value1-failed",
+        "precompile-values/nested-callcode-outer0-value1-success",
+        "precompile-values/nested-callcode-outer1-value0-failed",
+        "precompile-values/nested-callcode-outer1-value0-success",
         "precompiles/nested-call-value0-failed",
-        "precompiles/nested-call-value1-success",
+        "precompiles/nested-call-value0-success",
         "precompiles/nested-call-value1-failed",
-        "precompiles/nested-staticcall-value0-success",
-        "precompiles/nested-staticcall-value0-failed",
-        "precompiles/nested-delegatecall-value0-success",
-        "precompiles/nested-delegatecall-value0-failed",
-        "precompiles/nested-delegatecall-value1-success",
-        "precompiles/nested-delegatecall-value1-failed",
-        "precompiles/nested-callcode-value0-success",
+        "precompiles/nested-call-value1-success",
         "precompiles/nested-callcode-value0-failed",
-        "precompiles/nested-callcode-value1-success",
+        "precompiles/nested-callcode-value0-success",
         "precompiles/nested-callcode-value1-failed",
-        "precompiles/root-success",
-        "precompiles/root-failed"
+        "precompiles/nested-callcode-value1-success",
+        "precompiles/nested-delegatecall-value0-failed",
+        "precompiles/nested-delegatecall-value0-success",
+        "precompiles/nested-delegatecall-value1-failed",
+        "precompiles/nested-delegatecall-value1-success",
+        "precompiles/nested-staticcall-value0-failed",
+        "precompiles/nested-staticcall-value0-success",
+        "precompiles/root-failed",
+        "precompiles/root-success"
       ],
       "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
-      "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Existing matched-value fixtures establish current behavior but do not distinguish parent value from the explicit CALL/CALLCODE operand; separate crossed-value fixtures are needed.",
-      "next_step": "Review the nonzero-value exception with Besu and confirm it for additional precompiles and fork activations. The precompiles corpus uses BN254 addition, with valid and invalid inputs, across CALL, STATICCALL, CALLCODE and DELEGATECALL. Frame inclusion is separate from failure propagation and return-byte correctness."
+      "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Crossed-value CALL/CALLCODE fixtures confirm that Erigon, Reth and Nethermind use the explicit child value rather than the outer value. Besu still omits the nonzero-value child. The independent Geth draft implementation also matches these checks; it is not an independent vote for the policy.",
+      "next_step": "Review the inherited DELEGATECALL exception as a compatibility choice and extend to more precompiles/forks. The precompile-values corpus separates outer and child values, pre-funds zero-value creations with a preceding simulated transfer, and returns the call success bit. Parent error propagation remains a separate H24 issue."
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · a · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response, including on validation failure. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -41,11 +41,11 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H25](../../decisions/H25.md): Return one complete JSON-RPC response, including on validation failure.
+- [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H25](../../decisions/H25.md): Return one complete JSON-RPC response, including on validation failure.
+- [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 

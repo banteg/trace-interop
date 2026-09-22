@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** A fork-crossing range equals the corresponding per-block traces.
+**What this checks:** Failed frames have an error string and an explicit object or null result. A fork-crossing range equals the corresponding per-block traces.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -11,8 +11,8 @@
 | [Erigon · Release](../../clients/erigon_release.md) | 7 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 7 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 7 records | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-forks/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 9 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 9 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
+| [Nethermind · Release](../../clients/nethermind_release.md) | 9 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
+| [Nethermind · Development](../../clients/nethermind_development.md) | 9 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 7 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Reth · Development](../../clients/reth_development.md) | 7 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 
@@ -50,6 +50,7 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `2`: 'transactionHash' is a required property
 - Result shape at `2`: 'transactionPosition' is a required property
 - Result shape at `7`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x9732abf48d7d692097d80da5ae6d726f466d264bee9b657ab9e89544453d2767', 'blockNumber': 60, 'error':
@@ -58,6 +59,7 @@
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `2`: 'transactionHash' is a required property
 - Result shape at `2`: 'transactionPosition' is a required property
 - Result shape at `7`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x9732abf48d7d692097d80da5ae6d726f466d264bee9b657ab9e89544453d2767', 'blockNumber': 60, 'error':

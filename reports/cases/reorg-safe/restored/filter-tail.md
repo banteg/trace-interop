@@ -2,23 +2,25 @@
 
 `trace_filter` · reorg-safe · [All reports](../../../README.md)
 
+**What this checks:** Failed frames have an error string and an explicit object or null result.
+
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../../clients/besu_release.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Besu · Release](../../../clients/besu_release.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
-| [Besu · Development](../../../clients/besu_development.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Besu · Development](../../../clients/besu_development.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
-| [Erigon · Release](../../../clients/erigon_release.md) | 41 records | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Erigon · Release](../../../clients/erigon_release.md) | 41 records | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Besu · Release](../../../clients/besu_release.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Besu · Release](../../../clients/besu_release.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Besu · Development](../../../clients/besu_development.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Besu · Development](../../../clients/besu_development.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Erigon · Release](../../../clients/erigon_release.md) | 41 records | Checked cases agree | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Erigon · Release](../../../clients/erigon_release.md) | 41 records | Checked cases agree | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
 | [Erigon · Development](../../../clients/erigon_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
 | [Erigon · Development](../../../clients/erigon_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
-| [Geth draft fork · Draft fork](../../../clients/go-ethereum_trace.md) | 41 records | Not assessed | [Response](../../../../evidence/2026-09-21/geth-e29edff-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/geth-e29edff-reorg-safe/manifest.json) |
-| [Nethermind · Release](../../../clients/nethermind_release.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Nethermind · Release](../../../clients/nethermind_release.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
-| [Nethermind · Development](../../../clients/nethermind_development.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Nethermind · Development](../../../clients/nethermind_development.md) | 50 records | Not assessed; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
-| [Reth · Release](../../../clients/reth_release.md) | 41 records | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
-| [Reth · Release](../../../clients/reth_release.md) | 41 records | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Geth draft fork · Draft fork](../../../clients/go-ethereum_trace.md) | 41 records | Checked cases agree | [Response](../../../../evidence/2026-09-21/geth-e29edff-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/geth-e29edff-reorg-safe/manifest.json) |
+| [Nethermind · Release](../../../clients/nethermind_release.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Nethermind · Release](../../../clients/nethermind_release.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Nethermind · Development](../../../clients/nethermind_development.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Nethermind · Development](../../../clients/nethermind_development.md) | 50 records | Differs; result shape differs | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
+| [Reth · Release](../../../clients/reth_release.md) | 41 records | Checked cases agree | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
+| [Reth · Release](../../../clients/reth_release.md) | 41 records | Checked cases agree | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
 | [Reth · Development](../../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-ready/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-ready/manifest.json) |
 | [Reth · Development](../../../clients/reth_development.md) | Setup incomplete; not assessed | Not assessed | [Response](../../../../evidence/2026-09-21/verified-reorg-safe/observations.json) · [Build/run](../../../../evidence/2026-09-21/verified-reorg-safe/manifest.json) |
 
@@ -40,6 +42,7 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `9`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434', 'blockNumber': 42, 'error':
 - Result shape at `13`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e52
 - Result shape at `15`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe', 'blockNumber': 43, 'erro
@@ -51,6 +54,7 @@
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `9`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434', 'blockNumber': 42, 'error':
 - Result shape at `13`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e52
 - Result shape at `15`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe', 'blockNumber': 43, 'erro
@@ -62,6 +66,7 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 - Result shape at `7`: 'transactionHash' is a required property
@@ -73,6 +78,7 @@
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 - Result shape at `7`: 'transactionHash' is a required property
@@ -84,6 +90,7 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `9`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434', 'blockNumber': 42, 'error':
 - Result shape at `13`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e52
 - Result shape at `15`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe', 'blockNumber': 43, 'erro
@@ -95,6 +102,7 @@
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `9`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434', 'blockNumber': 42, 'error':
 - Result shape at `13`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e52
 - Result shape at `15`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe', 'blockNumber': 43, 'erro
@@ -106,6 +114,7 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 - Result shape at `7`: 'transactionHash' is a required property
@@ -117,6 +126,7 @@
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
+- [H09](../../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 - Result shape at `7`: 'transactionHash' is a required property

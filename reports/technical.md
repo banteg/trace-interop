@@ -17,6 +17,18 @@ uv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \
   --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce
 ```
 
+## Assertion coverage
+
+Coverage below counts eligible trace observations, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.
+
+| Coverage | Observations |
+| --- | --- |
+| assessed | 1401 |
+| partial | 509 |
+| unassessed | 223 |
+
+Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
+
 ## Setup gaps
 
 | Build | Scenario | Run evidence |
@@ -25,10 +37,8 @@ uv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \
 | Besu · Release | a | [verified-a](../evidence/2026-09-21/verified-a/summary.json) |
 | Erigon · Development | reorg-safe | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/summary.json) |
 | Erigon · Development | reorg-safe | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/summary.json) |
-| Reth · Development | pruned | [verified-pruned](../evidence/2026-09-21/verified-pruned/summary.json) |
 | Reth · Development | reorg-safe | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/summary.json) |
 | Reth · Development | reorg-safe | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/summary.json) |
-| Reth · Release | pruned | [verified-pruned](../evidence/2026-09-21/verified-pruned/summary.json) |
 
 ## Result-shape checks
 
@@ -145,6 +155,14 @@ These cases returned results that differ from the draft schema. The case pages r
 | [initial/replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) | Nethermind Development, Nethermind Release, Reth Development, Reth Release |
 | [initial/transaction-revert](cases/initial/transaction-revert.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [initial/transaction-tree](cases/initial/transaction-tree.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [precompile-values/nested-call-outer0-value1-failed](cases/precompile-values/nested-call-outer0-value1-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [precompile-values/nested-call-outer0-value1-success](cases/precompile-values/nested-call-outer0-value1-success.md) | Nethermind Development, Nethermind Release |
+| [precompile-values/nested-call-outer1-value0-failed](cases/precompile-values/nested-call-outer1-value0-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [precompile-values/nested-call-outer1-value0-success](cases/precompile-values/nested-call-outer1-value0-success.md) | Nethermind Development, Nethermind Release |
+| [precompile-values/nested-callcode-outer0-value1-failed](cases/precompile-values/nested-callcode-outer0-value1-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [precompile-values/nested-callcode-outer0-value1-success](cases/precompile-values/nested-callcode-outer0-value1-success.md) | Nethermind Development, Nethermind Release |
+| [precompile-values/nested-callcode-outer1-value0-failed](cases/precompile-values/nested-callcode-outer1-value0-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
+| [precompile-values/nested-callcode-outer1-value0-success](cases/precompile-values/nested-callcode-outer1-value0-success.md) | Nethermind Development, Nethermind Release |
 | [precompiles/nested-call-value0-failed](cases/precompiles/nested-call-value0-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [precompiles/nested-call-value0-success](cases/precompiles/nested-call-value0-success.md) | Nethermind Development, Nethermind Release |
 | [precompiles/nested-call-value1-failed](cases/precompiles/nested-call-value1-failed.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
@@ -209,3 +227,6 @@ These cases returned results that differ from the draft schema. The case pages r
 | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/manifest.json) | reorg-safe | No |
 | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/manifest.json) | reorg-safe | No |
 | [verified-repeat](../evidence/2026-09-21/verified-repeat/manifest.json) | repeat | Yes |
+| [precompile-values-geth](../evidence/2026-09-23/precompile-values-geth/manifest.json) | precompile-values | Yes |
+| [precompile-values-native](../evidence/2026-09-23/precompile-values-native/manifest.json) | precompile-values | Yes |
+| [pruned-review](../evidence/2026-09-23/pruned-review/manifest.json) | pruned | Yes |

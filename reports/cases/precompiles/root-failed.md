@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Failed frames have an explicit result; REVERT preserves return bytes and measured gas. Stack words use minimal hex quantities at every depth.
+**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Failed frames have an error string and an explicit object or null result. Stack words use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -51,12 +51,12 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xfabec', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H09](../../decisions/H09.md): Failed frames have an explicit result; REVERT preserves return bytes and measured gas.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xfabec', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 </details>

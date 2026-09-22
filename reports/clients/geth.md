@@ -1,18 +1,22 @@
 # Geth draft fork: changes to review
 
-The experimental fork matches the selected assertions. It is a place to try the draft, not upstream Geth support; historical filtering is a bounded scan and pruning coverage remains incomplete.
+The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Draft fork | `Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1` | [2026-09-21](https://github.com/banteg/go-ethereum/commit/e29edff514a08c38ed0b08ab67d26a0644c79548) | [2026-09-21](../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| Draft fork | `Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1` | [2026-09-21](https://github.com/banteg/go-ethereum/commit/e29edff514a08c38ed0b08ab67d26a0644c79548) | [2026-09-21](../../evidence/2026-09-21/geth-e29edff-a/manifest.json)<br>[2026-09-22](../../evidence/2026-09-23/precompile-values-geth/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 
 ## Changes to discuss
 
-No differences were found by the selected semantic assertions.
+| Behavior | Draft fork | Proposed change |
+| --- | --- | --- |
+| [Empty address lists](../decisions/H04.md)<br>Null address lists are rejected, while the revised draft treats them as unrestricted. | Differs<br>[Filter both null](../cases/a/filter-both-null.md) | Accept null like an omitted or empty list, then apply the other filter normally. Checked requirements: Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted.<br>[Address filtering](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L186) |
+| [Missing transactions and paths](../decisions/H06.md)<br>Unknown selected blocks use a different error code from the revised draft. | Differs<br>[Missing block block](../cases/a/missing-block-block.md) | Use -32001 for unknown blocks, preserving null for missing transactions and 4444 for pruned state. Checked requirements: An unknown selected block or range endpoint returns Resource not found (-32001).<br>[Trace lookup](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L153) · [Replay results](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L122) |
+| [Invalid-parameter error codes](../decisions/H14.md)<br>Unknown call-object fields are rejected by the older draft implementation. | Differs<br>[Call unknown field](../cases/a/call-unknown-field.md) | Ignore unknown call fields for forward compatibility while validating known fields. Checked requirements: Unknown call-object fields are ignored without changing execution output.<br>[Signed transaction replay](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L97) · [Call simulation](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L52) |
 
 ## Extension observations
 
@@ -22,37 +26,20 @@ These requests explicitly select behavior outside the portable baseline. Accepta
 | --- | --- | --- | --- |
 | Draft fork | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
+**Partially assessed:** some declared cases lack an evaluated assertion. [trace_get selector and return shape](../decisions/H02.md), [Post-merge reward records](../decisions/H05.md), [Replay transactionHash field](../decisions/H07.md), [Failed frame results and error labels](../decisions/H09.md), [Creation result field names](../decisions/H10.md), [Signed transaction nonce validation](../decisions/H13.md), [Unsigned simulation fees and block environment](../decisions/H15.md), [Fee accounting and sequential state diffs](../decisions/H16.md), [New-account stateDiff encoding](../decisions/H17.md), [EIP-7702 code changes in stateDiff](../decisions/H18.md), [vmTrace executing bytecode](../decisions/H19.md), [vmTrace step timing and deltas](../decisions/H20.md), [vmTrace numeric and optional metadata encoding](../decisions/H21.md), [Special-action address matching](../decisions/H23.md), [Sibling failure isolation](../decisions/H24.md), [Filter execution across fork boundaries](../decisions/H27.md).
+
 <details><summary>Behaviors with no difference in the checked cases</summary>
 
 | Behavior | Examples |
 | --- | --- |
-| [trace_get selector and return shape](../decisions/H02.md) | [Get nested parent](../cases/a/get-nested-parent.md) · [Get nested positive](../cases/a/get-nested-positive.md) |
-| [Filter composition and mode](../decisions/H03.md) | [Filter all](../cases/a/filter-all.md) · [Filter all](../cases/initial/filter-all.md) |
-| [Empty address lists](../decisions/H04.md) | [Filter from empty to set](../cases/a/filter-from-empty-to-set.md) · [Filter to empty from set](../cases/a/filter-to-empty-from-set.md) |
-| [Post-merge reward records](../decisions/H05.md) | [Block 2](../cases/a/block-2.md) · [Block 3](../cases/a/block-3.md) |
-| [Missing transactions and paths](../decisions/H06.md) | [Get missing](../cases/initial/get-missing.md) · [Get missing tx](../cases/initial/get-missing-tx.md) |
-| [Replay transactionHash field](../decisions/H07.md) | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
+| [Filter composition and mode](../decisions/H03.md) | [Filter all](../cases/a/filter-all.md) · [Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) |
 | [Empty output and unrequested components](../decisions/H08.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [Failed frame results and error labels](../decisions/H09.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
-| [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
-| [Signed transaction nonce validation](../decisions/H13.md) | [Raw nonce high](../cases/a/raw-nonce-high.md) · [Raw nonce high](../cases/repeat/raw-nonce-high.md) |
-| [Invalid-parameter error codes](../decisions/H14.md) | [Call scalar mode](../cases/a/call-scalar-mode.md) · [Call unknown mode](../cases/a/call-unknown-mode.md) |
-| [Unsigned simulation fees and block environment](../decisions/H15.md) | [Call constructor](../cases/initial/call-constructor.md) · [Call empty types](../cases/initial/call-empty-types.md) |
-| [Fee accounting and sequential state diffs](../decisions/H16.md) | [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) · [Many storage write revert read](../cases/repeat/many-storage-write-revert-read.md) |
-| [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) |
-| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [vmTrace executing bytecode](../decisions/H19.md) | [Call constructor](../cases/initial/call-constructor.md) · [Call constructor priced](../cases/initial/call-constructor-priced.md) |
-| [vmTrace step timing and deltas](../decisions/H20.md) | [Call mcopy](../cases/a/call-mcopy.md) · [Call mcopy](../cases/repeat/call-mcopy.md) |
-| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set](../cases/a/auth-set.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
-| [Special-action address matching](../decisions/H23.md) | [Filter created to](../cases/a/filter-created-to.md) · [Filter creator from](../cases/a/filter-creator-from.md) |
-| [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call value0 failed](../cases/precompiles/nested-call-value0-failed.md) |
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
-| [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
-| [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call value0 failed](../cases/precompiles/nested-call-value0-failed.md) · [Nested call value0 success](../cases/precompiles/nested-call-value0-success.md) |
+| [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
 
 </details>
 

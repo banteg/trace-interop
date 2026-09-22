@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response, including on validation failure. Malformed input returns invalid params (-32602).
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Malformed input returns invalid params (-32602).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

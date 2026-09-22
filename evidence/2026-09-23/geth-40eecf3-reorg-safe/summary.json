@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "eligible": {
+    "go-ethereum_trace": true
+  },
+  "exchange_count": 17,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0x23a229f69acd6ffb1d98dbae859e4fde6bcb6db51786ec54d07085d74bf473d4 status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0xb643aaad7876814b2319a5ac15e3efd4c5a928f711683d4d3abee5b525fc349d status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0x59c52ea8dd1dfdb037aec4a2f28907fb1cf4ca5401b48590182eaa5415e8e6f3 status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0x3ae39139cb5ef4492f48c7ed41f861621a0f7af2c15ee458b09914e7fc97dfe9 status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0x008d1333b89a6507babffba8a8605f2426aa21a829ad0c20131d40dc72300628 status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110 status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0xced04ae80b11fac8e3619bba83e9f8a3490159e045f1ac504955e69a783dbbcd status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0xa3b4b86837197906688c55979962fcf57fc43f7d1796cdacce350f2a4590ef8e status:VALID validationError:<nil>] error=<nil>\ninterop Engine engine_newPayloadV4: reply=map[latestValidHash:0x89760635a073492746414d5e8ea50ceaaaf035f603e37543a36328af11d6de32 status:VALID validationError:<nil>] error=<nil>\ninterop forkchoice accepted: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0x89760635a073492746414d5e8ea50ceaaaf035f603e37543a36328af11d6de32 safeBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c] <nil>]\ninterop forkchoice accepted: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c] <nil>]\n",
+      "name": "client launch (go-ethereum_trace)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "go-ethereum_trace": {
+      "detail": "canonical switch and restoration verified",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  }
+}

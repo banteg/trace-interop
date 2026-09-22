@@ -1,0 +1,51 @@
+Sep 23 01:38:47.983 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 01:38:48.013 INF building 1 clients...
+Sep 23 01:38:48.013 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849
+Sep 23 01:38:48.051 INF building 1 simulators...
+Sep 23 01:38:48.052 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 01:38:48.073 INF creating output directory folder=/home/banteg/geth40/geth-40eecf3-precompiles/hive
+Sep 23 01:38:48.082 INF running simulation: ethereum/rpc-compat
+Sep 23 01:38:48.245 INF hiveproxy started container=85884158d823 addr=172.17.0.2:8081
+Sep 23 01:38:48.429 INF API: suite started suite=0 name=rpc-compat
+Sep 23 01:38:48.431 INF API: test started suite=0 test=1 name="client launch (go-ethereum_trace)"
+Sep 23 01:38:49.117 INF API: client go-ethereum_trace started suite=0 test=1 container=a28f636b
+Sep 23 01:38:49.124 INF API: test started suite=0 test=2 name="interop/_control/head (go-ethereum_trace)"
+Sep 23 01:38:49.128 INF API: test ended suite=0 test=2 pass=false
+Sep 23 01:38:49.129 INF API: test started suite=0 test=3 name="interop/_control/version (go-ethereum_trace)"
+Sep 23 01:38:49.131 INF API: test ended suite=0 test=3 pass=false
+Sep 23 01:38:49.132 INF API: test started suite=0 test=4 name="interop/nested-call-value0-failed (go-ethereum_trace)"
+Sep 23 01:38:49.138 INF API: test ended suite=0 test=4 pass=false
+Sep 23 01:38:49.139 INF API: test started suite=0 test=5 name="interop/nested-call-value0-success (go-ethereum_trace)"
+Sep 23 01:38:49.144 INF API: test ended suite=0 test=5 pass=false
+Sep 23 01:38:49.145 INF API: test started suite=0 test=6 name="interop/nested-call-value1-failed (go-ethereum_trace)"
+Sep 23 01:38:49.150 INF API: test ended suite=0 test=6 pass=false
+Sep 23 01:38:49.151 INF API: test started suite=0 test=7 name="interop/nested-call-value1-success (go-ethereum_trace)"
+Sep 23 01:38:49.158 INF API: test ended suite=0 test=7 pass=false
+Sep 23 01:38:49.159 INF API: test started suite=0 test=8 name="interop/nested-callcode-value0-failed (go-ethereum_trace)"
+Sep 23 01:38:49.165 INF API: test ended suite=0 test=8 pass=false
+Sep 23 01:38:49.182 INF API: test started suite=0 test=9 name="interop/nested-callcode-value0-success (go-ethereum_trace)"
+Sep 23 01:38:49.187 INF API: test ended suite=0 test=9 pass=false
+Sep 23 01:38:49.188 INF API: test started suite=0 test=10 name="interop/nested-callcode-value1-failed (go-ethereum_trace)"
+Sep 23 01:38:49.192 INF API: test ended suite=0 test=10 pass=false
+Sep 23 01:38:49.192 INF API: test started suite=0 test=11 name="interop/nested-callcode-value1-success (go-ethereum_trace)"
+Sep 23 01:38:49.196 INF API: test ended suite=0 test=11 pass=false
+Sep 23 01:38:49.197 INF API: test started suite=0 test=12 name="interop/nested-delegatecall-value0-failed (go-ethereum_trace)"
+Sep 23 01:38:49.200 INF API: test ended suite=0 test=12 pass=false
+Sep 23 01:38:49.201 INF API: test started suite=0 test=13 name="interop/nested-delegatecall-value0-success (go-ethereum_trace)"
+Sep 23 01:38:49.205 INF API: test ended suite=0 test=13 pass=false
+Sep 23 01:38:49.206 INF API: test started suite=0 test=14 name="interop/nested-delegatecall-value1-failed (go-ethereum_trace)"
+Sep 23 01:38:49.209 INF API: test ended suite=0 test=14 pass=false
+Sep 23 01:38:49.210 INF API: test started suite=0 test=15 name="interop/nested-delegatecall-value1-success (go-ethereum_trace)"
+Sep 23 01:38:49.214 INF API: test ended suite=0 test=15 pass=false
+Sep 23 01:38:49.215 INF API: test started suite=0 test=16 name="interop/nested-staticcall-value0-failed (go-ethereum_trace)"
+Sep 23 01:38:49.219 INF API: test ended suite=0 test=16 pass=false
+Sep 23 01:38:49.220 INF API: test started suite=0 test=17 name="interop/nested-staticcall-value0-success (go-ethereum_trace)"
+Sep 23 01:38:49.224 INF API: test ended suite=0 test=17 pass=false
+Sep 23 01:38:49.225 INF API: test started suite=0 test=18 name="interop/root-failed (go-ethereum_trace)"
+Sep 23 01:38:49.228 INF API: test ended suite=0 test=18 pass=false
+Sep 23 01:38:49.229 INF API: test started suite=0 test=19 name="interop/root-success (go-ethereum_trace)"
+Sep 23 01:38:49.233 INF API: test ended suite=0 test=19 pass=false
+Sep 23 01:38:49.424 INF API: test ended suite=0 test=1 pass=true
+Sep 23 01:38:49.435 INF API: suite ended suite=0
+Sep 23 01:38:49.734 INF simulation ethereum/rpc-compat finished suites=1 tests=19 failed=18
+18 tests failed

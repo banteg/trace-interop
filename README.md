@@ -10,6 +10,8 @@ The [execution-apis standardization discussion (#890)](https://github.com/ethere
 
 The draft is a proposal for review. The reports keep observed behavior separate from recommended changes.
 
+Join the [trace working group on Telegram](https://t.me/+2jfwc-YvwkliMzIy) to discuss the proposal and coordinate client work.
+
 ## Scope
 
 All nine traditional methods: `trace_call`, `trace_callMany`, `trace_rawTransaction`, `trace_replayTransaction`, `trace_replayBlockTransactions`, `trace_block`, `trace_transaction`, `trace_get`, and `trace_filter`. Output families include call traces, `stateDiff`, and `vmTrace`.

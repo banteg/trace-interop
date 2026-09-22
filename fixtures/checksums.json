@@ -33,7 +33,7 @@
   "chains/initial/headblock.json": "83a24e3a902c365746d34fcb7484b452a02266184d92373258c3202a449e4eff",
   "chains/initial/headfcu.json": "6e589d6aeb5f0e964fed60a01901f029dfc9bb2367f0cd5a53f0adb06bdfaaef",
   "chains/initial/txinfo.json": "cba0af201e6d23cc598ec4b38687110f74853f9c9452a9290c15e87b03a100bf",
-  "corpora/a.json": "0fd50d3e1f8d2aba957d9e01cf02f885947e5309206ab4b822719314ade05cc9",
+  "corpora/a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
   "corpora/boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
   "corpora/fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
   "corpora/fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",

@@ -1,6 +1,6 @@
 {
   "contexts": {
-    "a.json": "0fd50d3e1f8d2aba957d9e01cf02f885947e5309206ab4b822719314ade05cc9",
+    "a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
     "boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
     "fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
     "fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
@@ -14,8 +14,8 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 1437,
-    "partial": 473,
+    "assessed": 1423,
+    "partial": 487,
     "unassessed": 223
   },
   "evidence": {
@@ -48,13 +48,13 @@
     "decisions/sources.json": "89305d0b14bd303fd487c03e22b50b5b5d1c6eaf792b947a808e2d2f08ecff22",
     "locks/source-revisions.json": "0cc622d583eb692f7d5b128936e1fe2dc8ea95a97d52a54c25caed25959559a5",
     "reports.lock.json": "97b79343bc25409e599866b42b237f00cb912168385fe9435d71973aa6e4f7f5",
-    "spec.lock.json": "f655ff4284c30e0655022ba12073b416b71725ad53913d2356da710d8bb177ac",
+    "spec.lock.json": "b4ee318c59c70994e6579758087623e3179c4109546f9a334639f1a3ed1162e2",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
     "trace_interop/presentation.py": "bf972aa62c745b611226a61ed64a76ce4df5642794b909471db677cfdc47a10d",
     "trace_interop/report.py": "19b3972e5d0419bd7b353a5120587514faeab6ed840306140c8f51b45b449fa6",
-    "trace_interop/rules.py": "3a997f9ea1b93bb6d48c67df50f8088e487612099253c45b0662be5416a92e48",
+    "trace_interop/rules.py": "2fc314462de67676af3f36a9eb70b375265915c893c92dd14403dfe538803e19",
     "trace_interop/scenarios.py": "8a8ded0d625dc08836889751f949f814fee73a266dd0136f79b81a6aec2c0b0d",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"
   },
-  "spec_commit": "a636383af0c99f5ce6304ad6d6342deb23e294c2"
+  "spec_commit": "e38fc96c9942f201b683e231f69432729d2737df"
 }

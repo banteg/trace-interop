@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result. Assess this declared topic case.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -66,12 +66,12 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 14 records from this client's block trace.
+- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 14 records from this client's block trace.
 - [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 14 records from this client's block trace.
+- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 14 records from this client's block trace.
 - [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)

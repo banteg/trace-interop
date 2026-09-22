@@ -23,8 +23,8 @@ Coverage below counts eligible trace observations, separately from schema valida
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1437 |
-| partial | 473 |
+| assessed | 1423 |
+| partial | 487 |
 | unassessed | 223 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.

@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/a636383af0c99f5ce6304ad6d6342deb23e294c2) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/e38fc96c9942f201b683e231f69432729d2737df) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 ## Start with your client
 

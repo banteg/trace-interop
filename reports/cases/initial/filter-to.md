@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Assess this declared topic case.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -41,12 +41,12 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 2 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 2 records from this client's block trace.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 2 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 2 records from this client's block trace.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)

@@ -68,7 +68,7 @@ def evaluate(case, observation, peers, invalid_params=None):
               'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
             check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.')
+                  'Unknown mode values return invalid params (-32602).')
         return checks
 
     if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):
@@ -191,8 +191,9 @@ def evaluate(case, observation, peers, invalid_params=None):
                         'filter-from-null','filter-to-null','filter-both-null',
                         'filter-from-empty-to-set','filter-to-empty-from-set','filter-created-to',
                         'filter-creator-from','filter-suicide-from','filter-suicide-beneficiary',
-                        'filter-from-only-intersection','filter-to-only-intersection']
-        if name in filter_cases and 'mode' not in filt:
+                        'filter-from-only-intersection','filter-to-only-intersection',
+                        'filter-intersection','filter-union']
+        if name in filter_cases:
             def address(value):
                 return value.lower() if isinstance(value, str) else None
             def matches(frame):
@@ -201,7 +202,10 @@ def evaluate(case, observation, peers, invalid_params=None):
                 if kind=='create': to=mapping(frame.get('result')).get('address')
                 if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
                 if kind=='reward': frm,to=None,action.get('author')
-                return (not filt.get('fromAddress') or address(frm) in [address(v) for v in sequence(filt['fromAddress'])]) and (not filt.get('toAddress') or address(to) in [address(v) for v in sequence(filt['toAddress'])])
+                senders=[address(v) for v in sequence(filt.get('fromAddress'))]
+                recipients=[address(v) for v in sequence(filt.get('toAddress'))]
+                sides=[s for s,values in [(address(frm) in senders, senders), (address(to) in recipients, recipients)] if values]
+                return any(sides) if filt.get('mode') == 'union' and sides else all(sides)
             baseline = other('block-tree')
             if not isinstance(baseline, list): baseline = other('block-2')
             topic='H23' if any(t in name for t in ['created','creator','suicide']) else 'H04' if any(t in name for t in ['empty','null']) else 'H03'
@@ -209,7 +213,7 @@ def evaluate(case, observation, peers, invalid_params=None):
                 expected=[f for f in baseline if matches(f)]
                 identity=lambda f:(mapping(f).get('transactionHash'),mapping(f).get('traceAddress'),mapping(f).get('type'),mapping(f).get('action'))
                 check(topic, isinstance(result,list) and all(isinstance(f,dict) for f in result) and [identity(f) for f in result] == [identity(f) for f in expected],
-                      'Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted.',
+                      'Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted.',
                       f'Expected {len(expected)} records from this client\'s block trace.')
             else:
                 checks.append({'topic': topic, 'status': 'unassessed', 'requirement': 'Compare filtering with the block trace.',

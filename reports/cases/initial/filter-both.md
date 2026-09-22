@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -40,18 +40,18 @@
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
+- [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 1 records from this client's block trace.
 
 </details>

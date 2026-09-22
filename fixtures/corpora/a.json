@@ -455,6 +455,46 @@
       "expected_control": null
     },
     {
+      "name": "filter-from-only-union",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "mode": "union"
+          }
+        ]
+      },
+      "category": "semantic",
+      "expected_control": null
+    },
+    {
+      "name": "filter-to-only-union",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "mode": "union"
+          }
+        ]
+      },
+      "category": "semantic",
+      "expected_control": null
+    },
+    {
       "name": "filter-both-unknown-mode",
       "request": {
         "jsonrpc": "2.0",

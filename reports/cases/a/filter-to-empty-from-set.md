@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -44,11 +44,11 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 5 records from this client's block trace.
+- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 5 records from this client's block trace.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Expected 5 records from this client's block trace.
+- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 5 records from this client's block trace.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 

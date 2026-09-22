@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

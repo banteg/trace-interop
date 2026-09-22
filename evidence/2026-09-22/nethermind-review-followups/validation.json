@@ -56,6 +56,39 @@
       ],
       "failed": 0,
       "whitespace": "passed"
+    },
+    {
+      "pr": "https://github.com/NethermindEth/nethermind/pull/13676",
+      "before": "2552115601b7e16798e9a062b64d88a05535a7ea",
+      "after": "2df2e5d9614d0959f01bc69cd740dbb921f524f4",
+      "suites": [
+        {
+          "name": "TraceRpcModuleTests",
+          "passed": 82,
+          "skipped": 0
+        },
+        {
+          "name": "TraceStoreRpcModuleTests",
+          "passed": 17,
+          "skipped": 0
+        }
+      ],
+      "failed": 0,
+      "whitespace": "passed"
+    },
+    {
+      "pr": "https://github.com/NethermindEth/nethermind/pull/13677",
+      "before": "3fecd04b9cf3925938d07ce53611bc6af8198fbd",
+      "after": "a0ef0ffc5bac67c682bd13f6a265b545cb342ab3",
+      "suites": [
+        {
+          "name": "TraceRpcModuleTests",
+          "passed": 89,
+          "skipped": 0
+        }
+      ],
+      "failed": 0,
+      "whitespace": "passed"
     }
   ]
 }

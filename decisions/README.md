@@ -16,7 +16,7 @@
 | [H10](../reports/decisions/H10.md) | Creation result field names |
 | [H11](../reports/decisions/H11.md) | Empty trace-type selection |
 | [H12](../reports/decisions/H12.md) | Raw-transaction block argument |
-| [H13](../reports/decisions/H13.md) | Signed transaction nonce validation |
+| [H13](../reports/decisions/H13.md) | Nonce-mismatch policy for signed simulation |
 | [H14](../reports/decisions/H14.md) | Invalid-parameter error codes |
 | [H15](../reports/decisions/H15.md) | Unsigned simulation fees and block environment |
 | [H16](../reports/decisions/H16.md) | Fee accounting and sequential state diffs |

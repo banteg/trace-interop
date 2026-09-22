@@ -6,7 +6,7 @@
     },
     "erigon": {
       "name": "Erigon",
-      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition and signed nonce validation still need attention."
+      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed nonce-mismatch simulation matches the revised proposal."
     },
     "nethermind": {
       "name": "Nethermind",
@@ -14,7 +14,7 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces.",
+      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed nonce-mismatch rejection differs from the revised simulation proposal.",
       "build_notes": [
         {
           "versions": [
@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete."
+      "summary": "The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed nonce-mismatch rejection differs from the revised simulation proposal."
     }
   },
   "topics": {
@@ -136,17 +136,13 @@
       }
     },
     "H13": {
-      "besu": {
-        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
+      "reth": {
+        "observed": "The high-nonce signed transfer is rejected instead of simulated.",
+        "change": "If the proposed nonce policy is adopted, permit nonce-mismatch simulation. This is a compatibility decision, not evidence of a nonce-rewriting bug; other validation checks remain separate."
       },
-      "erigon": {
-        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
-      },
-      "nethermind": {
-        "observed": "A signed transaction with a nonce above the account nonce is accepted.",
-        "change": "If the proposed admission policy is adopted, reject nonce mismatches without rewriting the signed nonce. This is a contract decision, separate from well-formed error reporting."
+      "geth": {
+        "observed": "The high-nonce signed transfer is rejected instead of simulated.",
+        "change": "If the proposed nonce policy is adopted, permit nonce-mismatch simulation. This is a compatibility decision, not evidence of a nonce-rewriting bug; other validation checks remain separate."
       }
     },
     "H15": {

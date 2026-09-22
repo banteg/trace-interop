@@ -230,7 +230,14 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
     if name == 'raw-nonce-high' or name.startswith('raw-nonce-high-'):
-        check('H13', status == 'rpc_error', 'Proposed admission policy: reject a signed nonce mismatch rather than replace it; client agreement is pending.')
+        # Output retention is an independent H08 check, not evidence of nonce rejection.
+        accepted = status == 'result' and isinstance(result, dict) and isinstance(result.get('trace'), list) and 'error' not in result
+        if len(params) > 1 and isinstance(params[1], list) and 'trace' in params[1]:
+            trace = sequence(mapping(result).get('trace'))
+            accepted = accepted and len(trace) == 1 and isinstance(trace[0], dict) and trace[0].get('traceAddress') == [] and 'error' not in trace[0] and isinstance(trace[0].get('result'), dict)
+        check('H13', accepted,
+              'Proposed nonce policy: simulate this otherwise valid transfer despite its signed nonce being above the state nonce.',
+              'Acceptance does not establish nonce rewriting or CREATE-address semantics. Other validity checks are separate; client agreement is pending.')
 
     if name.startswith('missing-block-'):
         check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,

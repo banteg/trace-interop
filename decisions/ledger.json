@@ -229,20 +229,18 @@
     },
     {
       "cases": [
-        "initial/raw-valid-current-nonce",
-        "initial/raw-valid-default-block",
-        "repeat/raw-below-basefee",
-        "repeat/raw-insufficient-funds",
-        "repeat/raw-low-gas",
+        "a/raw-nonce-high",
         "repeat/raw-nonce-high",
-        "repeat/raw-wrong-chain"
+        "repeat/raw-nonce-high-trace",
+        "repeat/raw-nonce-high-stateDiff",
+        "repeat/raw-nonce-high-vmTrace"
       ],
       "id": "H13",
-      "kind": "Admission policy proposal",
-      "next_step": "Agree admission semantics for signed raw transactions; fix malformed responses independently of that policy choice.",
-      "rationale": "A signed transaction is a concrete transaction, so tracing should not silently rewrite its nonce or return a partial-looking success.",
-      "recommendation": "For trace_rawTransaction, honor the signed transaction\u2019s nonce and validity rules at the selected state. Reject nonce mismatch with a stable transaction-validation error. Use unsigned trace_call for hypothetical execution that deliberately relaxes admission rules.",
-      "title": "Signed transaction nonce validation"
+      "kind": "Simulation policy proposal",
+      "next_step": "Agree the nonce-mismatch simulation policy with client teams. Add a mismatched-nonce CREATE fixture before specifying address derivation; review other validation policies separately. Complete error responses remain independently required.",
+      "rationale": "Besu, Erigon and Nethermind execute the high-nonce transfer; Reth and the tested Geth draft reject it. Acceptance alone does not demonstrate rewriting the signed nonce. The transfer fixture does not discriminate nonce effects on CREATE addresses. This proposal favors compatibility with observed simulation behavior, rather than treating majority behavior as proof of correctness.",
+      "recommendation": "Permit trace_rawTransaction simulation despite a mismatch between the signed nonce and the sender\u2019s state nonce. This does not relax signature, chain identity, funds, intrinsic gas or fee checks; their policies remain separate. Simulation success does not establish block-inclusion validity.",
+      "title": "Nonce-mismatch policy for signed simulation"
     },
     {
       "cases": [

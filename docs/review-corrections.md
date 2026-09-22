@@ -39,7 +39,7 @@ nonce and empty target. See [scenario details](scenarios.md#crossed-precompile-v
 
 ## Validation
 
-- 45 Python tests pass, including assertions over the published counterexamples and
+- 50 Python tests pass, including assertions over the published counterexamples and
   current report-source hashes. Request/result schemas and recursive negative vectors pass.
 - Execution-apis uncached Go tests, go vet, generated schema build and speccheck
   fixture checks pass. All five renderer tests and the documentation production build
@@ -61,3 +61,14 @@ conformance: Hive placeholder mismatches intentionally retain actual responses.
 Earlier corpora were reassessed without rerunning unchanged client binaries. Fresh runs
 cover the new discriminator fixtures and the corrected pruning setup. Reports are
 regenerated deterministically and retain source, schema and evidence hashes.
+
+## H13 policy correction
+
+H13 now proposes nonce-mismatch simulation, matching the observed high-nonce transfer
+in Besu, Erigon and Nethermind. Reth and the tested Geth draft reject that transfer;
+their reports now identify a difference from the revised proposal, not a demonstrated
+implementation defect. Acceptance does not establish nonce rewriting, and these transfer
+fixtures do not settle CREATE-address derivation. H13 references only the nonce-mismatch
+cases; other validation cases remain in the reports, without acquiring a new semantic
+pass from this policy change. Their admission policies need separate review. This update
+reassesses frozen observations; it does not rerun client binaries.

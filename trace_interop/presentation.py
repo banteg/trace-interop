@@ -328,7 +328,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         ['[How do address filters combine?](decisions/H03.md)', 'OR within each list, AND between sender and recipient lists.'],
         ['[What survives a failed call?](decisions/H09.md)', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'],
         ['[Which precompile frames are visible?](decisions/H29.md)', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'],
-        ['[Should signed nonces be rewritten?](decisions/H13.md)', 'Proposed: reject a nonce mismatch without rewriting the transaction. Admission policy needs client agreement.'],
+        ['[Nonce-mismatch policy for signed simulation](decisions/H13.md)', 'Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending.'],
     ])
     text += '[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
     text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'

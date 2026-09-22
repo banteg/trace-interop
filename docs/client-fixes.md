@@ -61,6 +61,10 @@ it is outside the `trace_*` specification and does not count toward alignment he
 
 ## Remaining work
 
+[The next prepared wave](next-fixes.md) contains two Besu VM-trace fixes with three
+reproduced failures and candidate patches. They have no upstream PRs yet and are not
+included in the pending count above.
+
 The open client fixes have native regression tests. Nethermind #13667 is stacked on #13665
 because empty selections also need its output-capture fix; the other patches were tested on
 separate upstream bases. They have not yet been built into a fresh cross-client matrix.

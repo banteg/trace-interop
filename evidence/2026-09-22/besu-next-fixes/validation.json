@@ -1,0 +1,18 @@
+{
+  "testedBase": "4839f5a480c43e23513f7e9111378b49e7d36662",
+  "upstreamBase": "caab45ca02a3edf38d85a1d11842c8cc77e0d2b1",
+  "before": {
+    "probes": 3,
+    "failed": 3
+  },
+  "after": {
+    "traceHttpPassed": 816,
+    "debugTraceHttpPassed": 400,
+    "upstreamForestTraceSuiteSkipped": 1
+  },
+  "probes": [
+    "nextWaveRepeatedFailedCallsUseOwnResumption()",
+    "nextWaveParentResumesAfterInvalidChild()",
+    "nextWaveRootOutOfGasHasNoStackEffects()"
+  ]
+}

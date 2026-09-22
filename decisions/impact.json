@@ -38,21 +38,22 @@
       }
     },
     "H03": {
+      "append_checked_requirements": false,
       "besu": {
         "observed": "Filtering by recipient alone does not return the expected subset of the same block trace.",
         "change": "Make a recipient-only query select every matching call. An omitted sender list should impose no restriction."
       },
       "erigon": {
         "observed": "Supplying both sender and recipient lists broadens the search by default (OR).",
-        "change": "Use AND between the two lists, so adding a recipient filter narrows a sender query. Keep union as an explicit extension if desired."
+        "change": "Use AND between the two lists by default, so adding a recipient filter narrows a sender query. Keep union as an explicit mode."
       },
       "reth": {
         "observed": "Sender and recipient lists are combined with OR by default.",
-        "change": "Use AND between lists so a second filter narrows the search; preserve union only as an explicit extension."
+        "change": "Use AND between lists by default so a second filter narrows the search; preserve union as an explicit mode."
       },
       "nethermind": {
-        "observed": "The tested builds accept mode parameters that this portable profile rejects.",
-        "change": "Reject the baseline mode argument with -32602; define extensions separately."
+        "observed": "The tested builds accept the unrecognized `mode: \"garbage\"` value.",
+        "change": "Reject unknown mode values with `-32602`; continue accepting recognized `union` and `intersection` modes."
       }
     },
     "H04": {

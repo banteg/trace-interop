@@ -10,6 +10,8 @@ The experimental fork implements an earlier draft; nullable filters, unknown cal
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 
+Mode-related verdicts use the pinned earlier draft, which rejected every `mode` value. The [revised H03 recommendation](../decisions/H03.md) accepts recognized modes.
+
 ## Changes to discuss
 
 | Behavior | Draft fork | Proposed change |

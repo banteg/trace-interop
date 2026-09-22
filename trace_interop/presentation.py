@@ -149,9 +149,12 @@ def outcome(entry):
 
 
 def note(editorial, client, topic, checks):
-    entry = editorial['topics'].get(topic, {}).get(family(client))
+    topic_notes = editorial['topics'].get(topic, {})
+    entry = topic_notes.get(family(client))
     if entry:
-        return entry['observed'], entry['change'] + ' Checked requirements: ' + ' '.join(dict.fromkeys(c['requirement'] for c in checks if c['status'] in BAD))
+        requirements = list(dict.fromkeys(c['requirement'] for c in checks if c['status'] in BAD))
+        suffix = ' Checked requirements: ' + ' '.join(requirements) if requirements and topic_notes.get('append_checked_requirements', True) else ''
+        return entry['observed'], entry['change'] + suffix
     failed = list(dict.fromkeys(c['requirement'] for c in checks if c['status'] in BAD))
     return 'The linked case differs from the proposed behavior.', ' '.join(failed)
 
@@ -224,6 +227,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
+        text += 'Mode-related verdicts use the pinned earlier draft, which rejected every `mode` value. The [revised H03 recommendation](../decisions/H03.md) accepts recognized modes.\n\n'
         rows = []; matched = []; untested = []; extensions = []; partial = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
@@ -299,6 +303,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 behavior = 'Some declared cases were not assessed. Matching checks do not establish agreement for this topic.'
             elif any(q['status'] == 'observation' for q in checks):
                 behavior = ' '.join(dict.fromkeys(q['detail'] for q in checks)) + ' Extension policy remains open; no baseline change is required by this observation.'
+            elif topic == 'H03':
+                behavior = 'The pinned draft checks agree; recognized mode values still need reassessment.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
             build_cells = '<br>'.join(f'{channel(c)}: {verdict(by_client[c].get(topic, []))}' for c in selected)

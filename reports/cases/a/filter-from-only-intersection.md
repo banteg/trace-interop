@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602). The portable filter profile rejects the mode extension as invalid params.
+**What this checks:** Malformed input returns invalid params (-32602). The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -40,33 +40,33 @@
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 
 </details>

@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602). The portable filter profile rejects the mode extension as invalid params. Assess this declared topic case.
+**What this checks:** Malformed input returns invalid params (-32602). The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -54,37 +54,37 @@
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). Additional properties are not allowed ('mode' was unexpected)
-- [H03](../../decisions/H03.md): The portable filter profile rejects the mode extension as invalid params.
+- [H03](../../decisions/H03.md): The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.
 - [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 </details>

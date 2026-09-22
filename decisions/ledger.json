@@ -63,9 +63,9 @@
       "background": [
         "In [Erigon #2119](https://github.com/erigontech/erigon/issues/2119), banteg asked in June 2021 for an intersection option to narrow calls from a sender set to a recipient set. Erigon merged the [mode implementation in #3167](https://github.com/erigontech/erigon/pull/3167) in January 2022, corrected the list-level boolean composition in [#3304](https://github.com/erigontech/erigon/pull/3304), and [backported it to stable in #3305](https://github.com/erigontech/erigon/pull/3305). This is established client precedent for retaining an explicit mode.",
         "[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216), merged on 2026-09-22, cites H03 and changes the default from union to intersection while retaining explicit union. Its tests cover OR within each list, AND between lists, empty lists, and both recognized modes. Reth uses [Alloy's matcher](https://github.com/paradigmxyz/reth/blob/main/crates/rpc/rpc/src/trace.rs), but the tested Reth builds and [main@534c60db9d](https://github.com/paradigmxyz/reth/blob/534c60db9d/Cargo.lock) still lock Alloy 2.4.2, which predates the PR. Reth needs dependency uptake and a retest before its observed result changes.",
-        "The client verdicts below were scored against the pinned earlier draft, which rejected every mode value. Mode-related proposed changes and failure labels in that comparison are historical; they have not been reassessed against this recommendation."
+        "The client verdicts below were scored against the pinned earlier draft, which rejected every mode value. Mode-related failure labels and checked requirements in the linked case pages are historical; they have not been reassessed against this recommendation. The proposed changes here reflect the revised recommendation."
       ],
-      "comparison_heading": "Pinned draft comparison (before mode revision)",
+      "comparison_heading": "Client observations and pinned-draft verdicts",
       "title": "Filter composition and mode"
     },
     {

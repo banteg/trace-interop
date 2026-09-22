@@ -68,7 +68,7 @@ def evaluate(case, observation, peers, invalid_params=None):
               'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
             check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'The portable filter profile rejects the mode extension as invalid params.')
+                  'The pinned draft rejected every mode value; the revised H03 recommendation accepts recognized modes.')
         return checks
 
     if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):

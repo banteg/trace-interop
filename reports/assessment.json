@@ -46,14 +46,16 @@
     "decisions/impact.json": "e59dfcb8798e685ce923bf9411231b27d822419a32470819c4dcb24261c475d2",
     "decisions/ledger.json": "ccc7da306c787593fd0403c843007564359b8e4c2f809e406f862f02cab37e0a",
     "decisions/sources.json": "89305d0b14bd303fd487c03e22b50b5b5d1c6eaf792b947a808e2d2f08ecff22",
+    "decisions/status.json": "b48ad5db2224b1be17fc5ca3b1ab113fda14131520924a5534a63ea60cdbf4cb",
     "locks/source-revisions.json": "0cc622d583eb692f7d5b128936e1fe2dc8ea95a97d52a54c25caed25959559a5",
     "reports.lock.json": "97b79343bc25409e599866b42b237f00cb912168385fe9435d71973aa6e4f7f5",
     "spec.lock.json": "b4ee318c59c70994e6579758087623e3179c4109546f9a334639f1a3ed1162e2",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
-    "trace_interop/presentation.py": "bf972aa62c745b611226a61ed64a76ce4df5642794b909471db677cfdc47a10d",
-    "trace_interop/report.py": "19b3972e5d0419bd7b353a5120587514faeab6ed840306140c8f51b45b449fa6",
+    "trace_interop/presentation.py": "b403b67e44f04279d2acf050bdebdfba1a58940017e36f6fb263dbe67caabebe",
+    "trace_interop/report.py": "b89051f53f6c54af149484ff85525e59de86f32ce95ca882dbcc740eaa9a64a5",
     "trace_interop/rules.py": "2fc314462de67676af3f36a9eb70b375265915c893c92dd14403dfe538803e19",
     "trace_interop/scenarios.py": "8a8ded0d625dc08836889751f949f814fee73a266dd0136f79b81a6aec2c0b0d",
+    "trace_interop/status.py": "f8ee1ca349654ffa00fb364972830d3a17769ebaa624689c0aa740ceaf2d4d9a",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"
   },
   "spec_commit": "e38fc96c9942f201b683e231f69432729d2737df"

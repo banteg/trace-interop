@@ -16,13 +16,15 @@ The clients already share much of the `trace_*` API. These reports show where ad
 
 The largest API choices are [tree-path lookup](decisions/H02.md), [address-filter composition](decisions/H03.md), and [failed-frame results](decisions/H09.md). Other rows concern missing information or inconsistent execution/reporting. All recommendations remain proposals for client review.
 
-| Question | Proposed behavior |
-| --- | --- |
-| [How does trace_get select a frame?](decisions/H02.md) | Follow one tree path; return one object or null. An empty path selects the root. |
-| [How do address filters combine?](decisions/H03.md) | OR within each list, AND between sender and recipient lists. |
-| [What survives a failed call?](decisions/H09.md) | Keep the error on that frame and preserve revert bytes and measured gas when available. |
-| [Which precompile frames are visible?](decisions/H29.md) | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |
-| [Nonce-mismatch policy for signed simulation](decisions/H13.md) | Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending. |
+| Question | Status | Proposed behavior |
+| --- | --- | --- |
+| [How does trace_get select a frame?](decisions/H02.md) | ⚪ Under review | Follow one tree path; return one object or null. An empty path selects the root. |
+| [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
+| [What survives a failed call?](decisions/H09.md) | ⚪ Under review | Keep the error on that frame and preserve revert bytes and measured gas when available. |
+| [Which precompile frames are visible?](decisions/H29.md) | ⚪ Under review | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |
+| [Nonce-mismatch policy for signed simulation](decisions/H13.md) | 🔀 Diverging | Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending. |
+
+[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.
 
 [All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
 

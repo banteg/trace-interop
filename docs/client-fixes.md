@@ -12,24 +12,24 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | Erigon | Include MCOPY memory writes ([H20](../reports/decisions/H20.md)) | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) merged September 14 | The [same case](../reports/cases/a/call-mcopy.md) agrees on the tested development build but differs on release 3.6.1. Retest a release containing the fix before marking release verification complete. |
 | Reth | Populate VM bytecode in block replay | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) open; review required | The PR has native block/individual replay regression tests. Obtain review and rerun the affected cases after merge. Related to [H19](../reports/decisions/H19.md), but it does not by itself establish a fix for the separate creation-initcode case. |
 | Besu | Include MCOPY memory updates ([H20](../reports/decisions/H20.md)) | [Besu #11286](https://github.com/besu-eth/besu/pull/11286) open; review required | The [checked builds](../reports/cases/a/call-mcopy.md) still omit the write. The PR has a native regression test; obtain review and retest after merge. Supersedes closed #11285. |
+| Reth / revm-inspectors | Include EIP-7702 code changes in stateDiff ([H18](../reports/decisions/H18.md)) | [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) merged September 15 | Upstream already fixed this. Our pinned Reth builds use an older library revision; rerun with the fix before updating the observed result. |
+| Reth / revm-inspectors | Report pre-Cancun selfdestruct deletions ([H26](../reports/decisions/H26.md)) | [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) merged September 15 | Upstream already fixed this. Dependency uptake and a fresh matrix run remain to be verified. |
+| Reth / revm-inspectors | Record executed bytecode, including constructor initcode ([H19](../reports/decisions/H19.md)) | [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) open | The existing PR covers creation and delegated/executing bytecode with native tests. Follow its review rather than submit a duplicate. This is separate from Reth #27213 above. |
+| Nethermind | Preserve return and revert bytes in state-only traces ([H08](../reports/decisions/H08.md)) | [Nethermind #13665](https://github.com/NethermindEth/nethermind/pull/13665) open | Four new regressions reproduce the loss before the fix. The trace RPC suite passes (79 tests); related Parity tests also pass. Review and matrix retest remain. |
+| Nethermind | Return complete errors for rejected streamed transactions ([H25](../reports/decisions/H25.md)) | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) open | Reproduced rejected-transaction failures; the patch buffers the initial response before committing bytes. Related tests: 130 passed, one existing skip; streaming tests: 26 passed. Review and matrix retest remain. |
+| Besu | Preserve root precompile return bytes ([H22](../reports/decisions/H22.md)) | [Besu #11346](https://github.com/besu-eth/besu/pull/11346) open | Unit regression reproduced the missing bytes. Three unit tests and 810 HTTP trace fixtures pass, including a new identity-precompile fixture. Review and matrix retest remain. |
+| Besu | Keep sibling and handled precompile failures local ([H24](../reports/decisions/H24.md)) | [Besu #11345](https://github.com/besu-eth/besu/pull/11345) open | Regressions cover both sibling orders and all four CALL variants. Seven unit tests and 809 HTTP trace fixtures pass. Review and matrix retest remain. |
 
 The [Geth draft fork](geth.md) is an implementation experiment, with no upstream PR tracked here.
 Its passing selected cases do not establish upstream acceptance or production readiness.
 [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) is related open Otterscan work;
 it is outside the `trace_*` specification and does not count toward alignment here.
 
-## Candidate fixes
+## Remaining work
 
-These are preparation priorities, not commitments from client teams. No upstream patch is tracked for these rows yet.
-
-| Client | Problem | Next step |
-| --- | --- | --- |
-| Nethermind | [Rejected signed transactions can produce incomplete JSON (H25)](../reports/decisions/H25.md) | Isolate the actual wire-response error path in a native test. Fix serialization independently of nonce or fee-admission policy. |
-| Reth / revm-inspectors | [EIP-7702 code transitions missing from stateDiff (H18)](../reports/decisions/H18.md) | Add a native authorization-code regression, including an execution revert, then patch the state-diff builder. |
-| Reth / revm-inspectors | [Creation initcode missing from vmTrace.code (H19)](../reports/decisions/H19.md) | Distinguish the constructor case from the existing block-replay PR before proposing another change. |
-| Nethermind | [State-only tracing loses return bytes (H08)](../reports/decisions/H08.md) | Preserve the execution output independently of selected trace components. |
-| Besu | [Precompile return bytes missing from the call frame (H22)](../reports/decisions/H22.md) | Add a native identity-precompile output regression; keep frame-inclusion policy separate. |
-| Besu | [Child failure affects another frame's status (H24)](../reports/decisions/H24.md) | Test a handled failure followed by successful execution; keep error state local to its frame. |
+The four new PRs have native regression tests and were checked independently against current
+upstream bases. They have not yet been built into a fresh cross-client matrix. The reports and
+frozen captures continue to describe their pinned builds, not the proposed patches.
 
 Tree-path lookup, filter composition, signed nonce admission and precompile inclusion remain
 [contract decisions](../decisions/README.md). A patch to one of those needs an agreed behavior

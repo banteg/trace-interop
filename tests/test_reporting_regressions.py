@@ -51,3 +51,22 @@ class ReportingRegressions(unittest.TestCase):
         # A newly observed build in a different corpus still prevents stale badges.
         records.append(dict(records[-1], corpus='new', case='unrelated', build_id='v3', captured_at='2026-09-23T00:00:00+00:00', checks=[]))
         self.assertEqual(decision_status(decision, records, position), '🧪 Harmonized · dev')
+
+    def test_report_rechecks_control_status_instead_of_trusting_capture_eligibility(self):
+        from trace_interop.report import generate
+        source = ROOT/'evidence/2026-09-23/geth-40eecf3-initial'
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp); folder = base/'invalid-control'; folder.mkdir()
+            manifest, summary, obs = [read(source/f) for f in ['manifest.json','summary.json','observations.json']]
+            # All bytes/roots are correct but the numbered control had a bad envelope.
+            obs['_control/head']['go-ethereum_trace']['status'] = 'invalid_envelope'
+            obs['_control/latest'] = copy.deepcopy(obs['_control/head'])
+            obs['_control/latest']['go-ethereum_trace']['status'] = 'result'
+            manifest['selected_cases'].append({'name':'_control/latest','request':{'method':'eth_getBlockByNumber','params':['latest',False]}})
+            for name, value in [('manifest',manifest),('summary',summary),('observations',obs)]: write(folder/(name+'.json'),value)
+            write(folder/'checksums.json',{file.name:sha(file) for file in folder.iterdir()})
+            with patch('trace_interop.presentation.render'), contextlib.redirect_stdout(io.StringIO()): generate(ROOT,[folder],base/'report')
+            row=next(r for r in read(base/'report/checks.json') if r['case']=='filter-both')
+            self.assertTrue(row['capture_eligible'])
+            self.assertFalse(row['eligible'])
+            self.assertEqual(row['assessment'],'unassessed')

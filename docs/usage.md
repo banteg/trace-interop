@@ -22,10 +22,10 @@ uv run trace-interop run --lock locks/clients-2026-09-21.json \
 uv run trace-interop report --run runs/reth-root --output runs/reth-root-report
 ```
 
-The runner imports a disposable chain, verifies its head/state/transaction/receipt roots,
+The runner imports a disposable chain, waits for the canonical RPC head, verifies its hash and state/transaction/receipt roots both by number and via `latest`,
 and records the response. Read `summary.json` before interpreting results. Client launch
 or state-setup failures cannot count as semantic mismatches. Filters and tree-path queries automatically include
-the block/transaction reference queries needed by relational assertions.
+the block/transaction reference queries needed by relational assertions. Case selection also retains independent setup controls; each must have a valid, correlated JSON-RPC result before its value can establish eligibility.
 
 ## Run the matrix
 
@@ -130,7 +130,7 @@ that run. Retain the original lock and observations unchanged.
 `trace_get` assertions compare with the same transaction's `trace_transaction`
 response where available. Precompile inclusion can shift sibling indexes, so a
 path called “positive” in a frozen corpus is not assumed to exist in every client.
-This checks selector consistency; it does not by itself prove tree completeness.
+The reference must first contain the frozen transaction roots and the call-tree fixture’s required ordinary calls, creation and self-destruct. A missing or unanchored reference is unassessed. These minimum anchors prevent joint omission from passing; they are not a general proof of full trace correctness.
 
 The fork scans blocks for `trace_filter`; no address index or performance claim is
 implied. The current pruning scenario has a verified Reth adapter only, so Geth's
@@ -148,5 +148,18 @@ Malformed requests are checked against the pinned request schemas. Semantic asse
 and result-schema validation remain separate: valid JSON does not prove correct execution.
 A declared topic case without an evaluated assertion is `unassessed`; mixing it with
 matching checks yields “Partially assessed”, not agreement. The technical appendix also
-counts eligible trace observations with no assertion at all. This makes remaining coverage
+counts all selected trace observations, including missing responses and ineligible setup, with no assertion at all. This makes remaining coverage
 gaps explicit rather than implying that every ledger recommendation is implemented.
+
+
+Harmonization requires every declared case on one immutable image per client/channel.
+The most recently captured build is selected using capture timestamps across all corpora;
+passing cases from earlier builds cannot fill its gaps. Missing build identity or timestamps
+prevent a harmonization badge. Historical run completeness is retained separately from
+current report eligibility, so stronger setup rules can make an old capture unassessed.
+
+Fixture-specific checks compare known REVERT bytes and gas, signed marker storage and
+executed VM opcodes, and retained precompile child identity/value/outcome. Their independent
+anchors live in `trace_interop/oracles.py` and the frozen corpora. Regression tests jointly
+corrupt references and target responses, remove requested outputs, and preserve schema-valid
+shapes so schema validation cannot mask weak semantic assertions.

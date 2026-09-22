@@ -5,6 +5,9 @@ Each record contains proposed behavior, rationale, observations and open questio
 Release and development results appear side by side. Each example links the exact
 request, response evidence and relevant client code.
 
+Discuss specification changes on [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895).
+The PR is a draft; client agreement and upstream fixture integration remain open.
+
 For a disagreement, record:
 
 1. The proposed rule and a minimal discriminating case.

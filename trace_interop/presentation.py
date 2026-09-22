@@ -294,7 +294,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += f'**Status: {statuses[topic]}** · [Status definitions](../../decisions/README.md#status-key)\n\n'
         text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
         if position.get('sources'):
-            text += 'Policy evidence: ' + ' · '.join(f'[Source {i}]({url})' for i, url in enumerate(position['sources'], 1)) + '.\n\n'
+            text += 'Policy evidence: ' + ' · '.join(f'[{source["label"]}]({source["url"]})' for source in position['sources']) + '.\n\n'
         sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
         if topic in sections:
             text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'

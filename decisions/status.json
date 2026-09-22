@@ -3,15 +3,24 @@
     "policy": "converged",
     "note": "Converged on direction: AND by default, retaining explicit union and intersection and rejecting unknown modes. This records direction, not unanimous formal approval or implementation uptake. Document the migration for both-lists/no-mode queries.",
     "sources": [
-      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408",
-      "https://github.com/alloy-rs/alloy/pull/4216"
+      {
+        "label": "Erigon\u2019s trace API review",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+      },
+      {
+        "label": "Alloy #4216: default to intersection filtering",
+        "url": "https://github.com/alloy-rs/alloy/pull/4216"
+      }
     ]
   },
   "H13": {
     "policy": "converged",
     "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error-code mapping and compatibility migration remain open; client implementations are not harmonized.",
     "sources": [
-      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+      {
+        "label": "Erigon\u2019s trace API review",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+      }
     ]
   }
 }

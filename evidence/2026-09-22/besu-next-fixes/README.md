@@ -1,6 +1,6 @@
 # Besu VM trace regression probes
 
-Prepared 2026-09-22. The [next-fixes note](../../../docs/next-fixes.md) explains the two proposed patches.
+Prepared 2026-09-22. The [fix summary](../../../docs/next-fixes.md) explains the two proposed patches.
 
 ## Reproduce
 
@@ -30,7 +30,7 @@ The executed build uses upstream `caab45ca` plus the already-submitted
 [CALL-memory correction #11350](https://github.com/besu-eth/besu/pull/11350), at commit
 `4839f5a480c43e23513f7e9111378b49e7d36662`. All three probes fail before these candidate
 changes. Both production diffs and the regression diff also apply together to clean
-upstream `caab45ca`; a standalone upstream build remains part of PR preparation.
+upstream `caab45ca`; independent upstream validation is recorded below.
 
 The regression patch here contains only the three new probes, excluding #11350's tests.
 Tests ran with Java 25. No fresh cross-client matrix has been run for these candidates.
@@ -38,3 +38,16 @@ Tests ran with Java 25. No fresh cross-client matrix has been run for these cand
 With both final candidate patches, **816 trace HTTP tests and 400 debug-trace HTTP tests
 pass**, including the three regressions. One upstream Forest trace suite remains skipped.
 No existing response fixtures were changed by these candidate patches.
+
+## Upstream submissions
+
+Both PRs were validated independently on upstream `caab45ca`, without #11350:
+
+| PR | Regressions before the fix | After the fix |
+| --- | --- | --- |
+| [#11352](https://github.com/besu-eth/besu/pull/11352) | INVALID and stack-underflow child halts, and repeated failed calls: all three fail. | 812 trace HTTP tests and 400 debug-trace HTTP tests pass. |
+| [#11353](https://github.com/besu-eth/besu/pull/11353) | Out-of-gas ADD fails; the sufficient-gas control passes. | 811 trace HTTP tests and 400 debug-trace HTTP tests pass. |
+
+Both pass module Spotless checks. The upstream Forest trace suite remains skipped.
+The PRs contain the final tests and changelog entries; the probe diffs above preserve
+the initial reproduction. No fresh cross-client matrix has been run.

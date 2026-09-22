@@ -1,12 +1,12 @@
-# Next client fixes
+# Besu VM trace fixes
 
-Two Besu patches are worth pursuing next. Three real-EVM HTTP regressions reproduce
-incorrect `vmTrace` output; none requires choosing between competing API contracts.
+Two Besu patches address incorrect `vmTrace` output reproduced through the real EVM
+and HTTP service. Neither requires choosing between competing API contracts.
 
-| Proposed patch | What goes wrong | Least surprising behavior |
+| Pull request | What goes wrong | Least surprising behavior |
 | --- | --- | --- |
-| Keep frame bookkeeping aligned when an opcode is omitted | A child that immediately executes `INVALID` absorbs its parent's subsequent instructions. Separately, after enough failed calls in a loop, CALL gas is taken from an earlier iteration. | Parent instructions stay in the parent trace, and each CALL uses its own resumption frame. |
-| Suppress execution effects for root out-of-gas steps | With six execution gas, `PUSH1 1; PUSH1 2; ADD` reports a successful ADD push and **−3 remaining gas**, despite an out-of-gas error. | Use `ex: null`, as Besu already does for nested out-of-gas steps. |
+| [#11352: keep frame bookkeeping aligned when an opcode is omitted](https://github.com/besu-eth/besu/pull/11352) | A child that immediately executes `INVALID` absorbs its parent's subsequent instructions. Separately, after enough failed calls in a loop, CALL gas is taken from an earlier iteration. | Parent instructions stay in the parent trace, and each CALL uses its own resumption frame. |
+| [#11353: suppress execution effects for root out-of-gas steps](https://github.com/besu-eth/besu/pull/11353) | With six execution gas, `PUSH1 1; PUSH1 2; ADD` reports a successful ADD push and **−3 remaining gas**, despite an out-of-gas error. | Use `ex: null`, as Besu already does for nested out-of-gas steps. |
 
 ## Why these are bugs
 
@@ -30,15 +30,18 @@ no new error wording or result format is needed.
 Both fixes are in
 [`VmTraceGenerator`](https://github.com/besu-eth/besu/blob/caab45ca02a3edf38d85a1d11842c8cc77e0d2b1/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/vm/VmTraceGenerator.java#L87).
 
-## Preparation
+## Validation
 
-[Regression probes and candidate patches](../evidence/2026-09-22/besu-next-fixes/README.md)
-include minimal bytecode, failing responses and the proposed implementation changes.
-All three new probes fail before the fixes; afterward, 816 trace HTTP tests and 400
-debug-trace HTTP tests pass. One upstream suite remains skipped. No existing response
-fixtures needed changes. These are preparation artifacts, not submitted PRs. Split the three probes between the
-two patches and apply the project's formatting and changelog requirements before submission.
-The patches can target upstream independently of the existing CALL-memory fix.
+Both PRs target upstream `caab45ca` independently, without the earlier CALL-memory fix.
+For #11352, the INVALID, stack-underflow and repeated-call regressions all fail before
+its fix; afterward, 812 trace HTTP tests and 400 debug-trace HTTP tests pass.
+For #11353, the out-of-gas regression fails before its fix while the sufficient-gas
+control passes; afterward, 811 trace HTTP tests and 400 debug-trace HTTP tests pass.
+The existing Forest trace suite remains skipped. No existing response fixtures changed.
+
+[Reproducers and evidence](../evidence/2026-09-22/besu-next-fixes/README.md) include the
+minimal bytecode and failing responses. Both PRs include formatted native tests and
+changelog entries. Cross-client matrix verification remains outstanding.
 
 ## Existing work to validate
 

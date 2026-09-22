@@ -4,7 +4,7 @@ Upstream changes arising from the trace comparison. Status checked **2026-09-22*
 A merged patch, a tested build and agreement with the proposed API are separate milestones.
 The [client reports](../reports/README.md) describe the behavior; this page tracks the work to change it.
 
-**13 pending · 4 merged**
+**15 pending · 4 merged**
 
 ## Pending
 
@@ -17,6 +17,8 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | [Besu #11346](https://github.com/besu-eth/besu/pull/11346) | Preserve root precompile return bytes ([H22](../reports/decisions/H22.md)) | Unit regression reproduced the missing bytes. Three unit tests and 810 HTTP trace fixtures pass, including a new identity-precompile fixture. Review and matrix retest remain. |
 | [Besu #11347](https://github.com/besu-eth/besu/pull/11347) | Preserve errors from failed root precompiles ([H09](../reports/decisions/H09.md)) | A regression reproduces the lost exceptional-halt reason. After the fix, 29 tracer tests, one flat-trace test and 810 HTTP trace fixtures pass, including invalid bn128Add input. This covers root precompile error reporting, not every H09 difference. Review and matrix retest remain. |
 | [Besu #11350](https://github.com/besu-eth/besu/pull/11350) | Remove fabricated CALL memory writes from `vmTrace` ([H20](../reports/decisions/H20.md)) | Real-EVM HTTP tests reproduce parent RETURN bytes being attributed to earlier CALL/DELEGATECALL operations. Four cases cover zero output and real writes at offset 32; all 813 active HTTP trace tests pass. Corrected 45 fabricated memory deltas in 27 existing fixtures. The upstream Forest suite remains disabled. |
+| [Besu #11352](https://github.com/besu-eth/besu/pull/11352) | Preserve VM frame ownership and CALL resumption gas after omitted opcodes | Three real-EVM regressions fail before the fix: immediate INVALID and stack-underflow child halts, plus repeated failed calls. Independently tested on upstream: 812 trace HTTP tests and 400 debug-trace HTTP tests pass. Review and matrix retest remain. |
+| [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit execution effects for root out-of-gas steps | Regression reproduces a fabricated ADD result and negative remaining gas; a sufficient-gas control still records the result. Independently tested on upstream: 811 trace HTTP tests and 400 debug-trace HTTP tests pass. Review and matrix retest remain. |
 
 ### Nethermind
 
@@ -61,9 +63,9 @@ it is outside the `trace_*` specification and does not count toward alignment he
 
 ## Remaining work
 
-[The next prepared wave](next-fixes.md) contains two Besu VM-trace fixes with three
-reproduced failures and candidate patches. They have no upstream PRs yet and are not
-included in the pending count above.
+[The Besu VM-trace follow-ups](next-fixes.md) are submitted as #11352 and #11353 and
+included above. Both target upstream independently; neither depends on #11350.
+Their upstream Forest trace suite remains disabled and skipped.
 
 The open client fixes have native regression tests. Nethermind #13667 is stacked on #13665
 because empty selections also need its output-capture fix; the other patches were tested on

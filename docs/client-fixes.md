@@ -88,7 +88,7 @@ because empty selections also need its output-capture fix; the other patches wer
 separate upstream bases. They have not yet been built into a fresh cross-client matrix.
 The reports and frozen captures continue to describe their pinned builds, not the proposed patches.
 
-Tree-path lookup, filter composition, signed nonce-mismatch simulation and precompile inclusion remain
+Tree-path lookup, filter composition, signed transaction execution validation and precompile inclusion remain
 [contract decisions](../decisions/README.md). The tree-path and filter-default proposals above are now being implemented by Reth/Alloy;
 client patches do not settle the cross-client decision or compatibility plan.
 

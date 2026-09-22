@@ -1,7 +1,7 @@
 # Measurement and draft review corrections
 
 The September 23 review corrections preserve all earlier wire observations. Reports
-now reassess 3,304 observations against the pinned draft and record incomplete
+now reassess 4,071 observations against the pinned draft and record incomplete
 assertion coverage explicitly. See the [technical appendix](../reports/technical.md)
 and [assessment provenance](../reports/assessment.json).
 
@@ -39,7 +39,7 @@ nonce and empty target. See [scenario details](scenarios.md#crossed-precompile-v
 
 ## Validation
 
-- 50 Python tests pass, including assertions over the published counterexamples and
+- 63 Python tests pass, including assertions over the published counterexamples and
   current report-source hashes. Request/result schemas and recursive negative vectors pass.
 - Execution-apis uncached Go tests, go vet, generated schema build and speccheck
   fixture checks pass. All five renderer tests and the documentation production build
@@ -64,11 +64,14 @@ regenerated deterministically and retain source, schema and evidence hashes.
 
 ## H13 policy correction
 
-H13 now proposes nonce-mismatch simulation, matching the observed high-nonce transfer
-in Besu, Erigon and Nethermind. Reth and the tested Geth draft reject that transfer;
-their reports now identify a difference from the revised proposal, not a demonstrated
-implementation defect. Acceptance does not establish nonce rewriting, and these transfer
-fixtures do not settle CREATE-address derivation. H13 references only the nonce-mismatch
-cases; other validation cases remain in the reports, without acquiring a new semantic
-pass from this policy change. Their admission policies need separate review. This update
-reassesses frozen observations; it does not rerun client binaries.
+The temporary nonce-permissive recommendation is superseded by selected-state execution
+validation. This restores the original direction while distinguishing execution validity
+from local transaction-pool admission policy. It is a compatibility change, not evidence
+that legacy diagnostic workflows are illegitimate. Rejection and the proposed `-32003`
+code are assessed separately; malformed JSON does not prove permissive execution.
+
+The [H13 validation study](h13-validation.md) records the Erigon/gist timing and a fresh
+560-response capture with nonce, funds, chain-ID, intrinsic-gas, base-fee and sender-code
+discriminators. Successful output, storage changes and CREATE addresses distinguish
+execution from empty result envelopes. Valid EIP-7702 delegation and execution-OOG
+controls protect the boundary between validation failure and an EVM halt.

@@ -66,3 +66,10 @@ code controls require that sender nonce and an empty unfunded target before scor
 The H29 rule uses the fixture's explicit precompile value, verifies the funding
 transfer and actual creation address, and checks the returned success bit. This is
 separate from the inherited DELEGATECALL compatibility rule.
+
+### Signed transaction validation
+
+`raw-validation` uses independent chain ID, nonce, balance, sender code, base fee and
+marker storage controls. Actual output, storage writes and CREATE ADDRESS bytes
+distinguish execution from result-shaped failures. See the [H13 study](h13-validation.md)
+for the client matrix, fixture generator and reproduction commands.

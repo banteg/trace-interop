@@ -347,7 +347,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             ('H03', 'How do address filters combine?', 'OR within each list, AND between sender and recipient lists.'),
             ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
             ('H29', 'Which precompile frames are visible?', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'),
-            ('H13', 'Nonce-mismatch policy for signed simulation', 'Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending.'),
+            ('H13', 'Signed transaction execution validity', 'Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; propose -32003 for validation rejection.'),
         ]])
     text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
     text += '[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'

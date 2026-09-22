@@ -16,34 +16,36 @@ def assess(name, result, method='trace_call', params=None, peers=None):
 
 
 class RuleSafetyTests(unittest.TestCase):
-    def test_nonce_mismatch_simulation_under_each_selection(self):
-        for selection in [['trace'], ['stateDiff'], ['vmTrace'], ['trace', 'stateDiff', 'vmTrace']]:
-            result = {'output': '0x', 'trace': [{'traceAddress': [], 'result': {'output': '0x'}}] if 'trace' in selection else []}
-            checks = assess('raw-nonce-high', result, 'trace_rawTransaction', ['0x01', selection])
-            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['matches'])
+    def test_signed_invalid_cases_require_rejection_under_each_selection(self):
+        for name in ['raw-nonce-high', 'raw-valid-default-block', 'raw-wrong-chain',
+                     'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']:
+            for selection in [['trace'], ['stateDiff'], ['vmTrace'], ['trace', 'stateDiff', 'vmTrace']]:
+                case = {'name': name, 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', selection]}}
+                for code in [-32003, -32000]:
+                    observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'invalid transaction'}}}
+                    checks = [c for c in evaluate(case, observation, {}) if c['topic'] == 'H13']
+                    self.assertEqual(checks[0]['status'], 'matches')
+                    self.assertEqual(checks[1]['status'], 'matches' if code == -32003 else 'change_needed')
+                checks = assess(name, {'output': '0x', 'trace': []}, 'trace_rawTransaction', case['request']['params'])
+                self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['change_needed'])
 
-    def test_nonce_rejection_and_failed_execution_do_not_match(self):
-        case = {'name': 'raw-nonce-high', 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', ['trace']]}}
-        rejected = {'status': 'rpc_error', 'response': {'error': {'code': -32000, 'message': 'nonce too high'}}}
-        self.assertEqual([c['status'] for c in evaluate(case, rejected, {}) if c['topic'] == 'H13'], ['change_needed'])
-        for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32000}},
-                       {'output': '0x', 'trace': []},
-                       {'output': '0x', 'trace': [{'traceAddress': [], 'error': 'invalid nonce', 'result': None}]}]:
-            checks = assess('raw-nonce-high', result, 'trace_rawTransaction', case['request']['params'])
+    def test_nested_and_partial_results_are_not_validation_rejection(self):
+        for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
+                       {'output': '0x', 'trace': [{'error': 'insufficient funds', 'traceAddress': []}]}]:
+            checks = assess('raw-insufficient-funds', result, 'trace_rawTransaction', ['0x01', ['trace']])
             self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['change_needed'])
 
-    def test_nonce_policy_does_not_relax_other_validation(self):
-        for name in ['raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee', 'raw-invalid']:
-            checks = assess(name, {'output': '0x', 'trace': []}, 'trace_rawTransaction', ['0x01', ['trace']])
-            self.assertFalse(any(c['topic'] == 'H13' for c in checks))
-            if name == 'raw-invalid':
-                self.assertEqual([c['status'] for c in checks if c['topic'] == 'H14'], ['change_needed'])
+    def test_malformed_response_does_not_prove_validation_was_skipped(self):
+        case = {'name': 'raw-low-gas', 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', ['trace']]}}
+        checks = evaluate(case, {'status': 'malformed_json', 'raw_response': '{'}, {})
+        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H25'], ['change_needed'])
+        self.assertFalse(any(c['topic'] == 'H13' for c in checks))
 
-    def test_nonce_acceptance_is_separate_from_output_retention(self):
-        checks = assess('raw-nonce-high-stateDiff', {'trace': [], 'output': None, 'stateDiff': {}, 'vmTrace': None},
-                        'trace_rawTransaction', ['0x01', ['stateDiff']])
-        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['matches'])
-        self.assertIn('change_needed', [c['status'] for c in checks if c['topic'] == 'H08'])
+    def test_malformed_signed_input_remains_invalid_params(self):
+        case = {'name': 'raw-invalid', 'request': {'method': 'trace_rawTransaction', 'params': ['0x00', ['trace']]}}
+        checks = evaluate(case, {'status': 'rpc_error', 'response': {'error': {'code': -32602}}}, {})
+        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H14'], ['matches'])
+        self.assertFalse(any(c['topic'] == 'H13' for c in checks))
 
     def test_malformed_trace_is_a_failure(self):
         for trace in [None, {}, 1, 'bad', [None], [1]]:
@@ -205,14 +207,16 @@ class PrecompileValueTests(unittest.TestCase):
         self.assertFalse(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
 
 class PublishedAssessmentTests(unittest.TestCase):
-    def test_nonce_policy_matches_accepting_clients_in_frozen_evidence(self):
+    def test_nonce_policy_requires_rejection_in_frozen_evidence(self):
         records = [r for r in json.loads((ROOT/'reports/checks.json').read_text())
                    if r['eligible'] and r['case'].startswith('raw-nonce-high')]
         seen = set()
         for r in records:
             family = r['client'].split('_')[0]
-            expected = 'matches' if family in ['besu', 'erigon', 'nethermind'] else 'change_needed'
-            self.assertEqual([c['status'] for c in r['checks'] if c['topic'] == 'H13'], [expected], r['client'])
+            expected = 'change_needed' if family in ['besu', 'erigon', 'nethermind'] else 'matches'
+            checks = [c for c in r['checks'] if c['topic'] == 'H13']
+            self.assertTrue(checks)
+            self.assertEqual(checks[0]['status'], expected, r['client'])
             seen.add(family)
         self.assertEqual(seen, {'besu', 'erigon', 'nethermind', 'reth', 'go-ethereum'})
 

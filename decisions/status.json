@@ -8,10 +8,11 @@
     ]
   },
   "H13": {
-    "policy": "diverging",
-    "note": "The current draft permits nonce-mismatch simulation. Erigon explicitly favors full transaction validation instead, including nonce, balance and EIP-3607. A mismatched-nonce CREATE fixture is needed to test the execution consequences before settling the policy.",
+    "policy": "converged",
+    "note": "Restored strict execution validation aligns with Erigon\u2019s explicit position and our original gist. This is convergence on direction, not unanimous client approval, code agreement or harmonized builds. The gist predates the relaxed revision; the comment was posted afterward, and which revision its author read is unknown. Error-code mapping and compatibility migration still need review.",
     "sources": [
-      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408",
+      "https://gist.github.com/banteg/d32a87ed2c47dfa4dbf1958235f8bf82/47fd6ec6f9b7644be94545f69383e595c8b5d391#h13"
     ]
   }
 }

@@ -54,7 +54,7 @@ class DecisionStatusTests(unittest.TestCase):
         index = (root/'decisions/README.md').read_text()
         overview = (root/'reports/README.md').read_text()
         self.assertIn('## Status key', index)
-        for topic, label in [('H03', '🤝 Converged'), ('H13', '🔀 Diverging')]:
+        for topic, label in [('H03', '🤝 Converged'), ('H13', '🤝 Converged')]:
             page = (root/f'reports/decisions/{topic}.md').read_text()
             self.assertIn(f'**Status: {label}**', page)
             self.assertIn('Policy evidence:', page)

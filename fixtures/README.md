@@ -15,3 +15,7 @@ retained in the prior evidence archive; frozen inputs are authoritative here.
 
 Consensus/state roots, contract bytecode and expected heads are checked before interpreting
 trace differences. Reorg and pruning require scenario setup beyond an ordinary import.
+
+`raw-validation` adds a two-block Prague chain for H13. Its public keys 1, 2 and 3,
+Go generator, isolated validation probes and reproduction commands are documented in
+[the H13 study](../docs/h13-validation.md#reproduction-and-controls).

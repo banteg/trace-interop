@@ -234,15 +234,30 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
-    if name == 'raw-nonce-high' or name.startswith('raw-nonce-high-'):
-        # Output retention is an independent H08 check, not evidence of nonce rejection.
-        accepted = status == 'result' and isinstance(result, dict) and isinstance(result.get('trace'), list) and 'error' not in result
-        if len(params) > 1 and isinstance(params[1], list) and 'trace' in params[1]:
+    invalid_raw = ['raw-nonce-high', 'raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']
+    reject_raw = (any(name == n or name.startswith(n+'-') for n in invalid_raw)
+                  or name == 'raw-valid-default-block' or case.get('validation') == 'reject')
+    if method == 'trace_rawTransaction' and reject_raw:
+        check('H13', status == 'rpc_error',
+              'Reject a signed transaction that fails execution validity at the selected state before EVM execution.',
+              case.get('reason', 'Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.'))
+        if status == 'rpc_error':
+            check('H13', mapping(response.get('error')).get('code') == -32003,
+                  'Proposed transaction-validation error code: -32003 (Transaction rejected).',
+                  'Error-code alignment is separate from whether validation occurred; current clients also use -32000.')
+    if method == 'trace_rawTransaction' and case.get('validation') == 'execute':
+        check('H13', status == 'result' and mapping(result).get('output') == case['expected_output'] and not embedded_error(response),
+              'The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.')
+        if isinstance(params[1], list) and 'trace' in params[1]:
             trace = sequence(mapping(result).get('trace'))
-            accepted = accepted and len(trace) == 1 and isinstance(trace[0], dict) and trace[0].get('traceAddress') == [] and 'error' not in trace[0] and isinstance(trace[0].get('result'), dict)
-        check('H13', accepted,
-              'Proposed nonce policy: simulate this otherwise valid transfer despite its signed nonce being above the state nonce.',
-              'Acceptance does not establish nonce rewriting or CREATE-address semantics. Other validity checks are separate; client agreement is pending.')
+            root = next((f for f in trace if isinstance(f, dict) and f.get('traceAddress') == []), {})
+            root_ok = bool(root) and 'error' not in root and isinstance(root.get('result'), dict)
+            if case.get('expected_execution_error'):
+                root_ok = bool(root) and isinstance(root.get('error'), str) and bool(root['error'])
+            check('H13', root_ok, 'The valid signed control reports its expected execution success or halt in a root frame.')
+            if 'signed_create_address' in case:
+                check('H13', str(mapping(root.get('result')).get('address', '')).lower() == case['signed_create_address'].lower(),
+                      'Valid creation uses the address derived from the matching signed and state nonce.')
 
     if name.startswith('missing-block-'):
         check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,

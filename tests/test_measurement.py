@@ -116,3 +116,36 @@ class CoverageTests(unittest.TestCase):
                 with self.assertRaises(ValueError): verify_inventory(root)
             (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':['precompiles/root-success']}]}))
             self.assertEqual(verify_inventory(root), 1)
+
+class PrecompileValueTests(unittest.TestCase):
+    def test_child_value_not_outer_value_controls_inclusion(self):
+        corpus = json.loads((ROOT/'fixtures/corpora/precompile-values.json').read_text())
+        case = next(c for c in corpus['cases'] if c['name'] == 'nested-call-outer1-value0-success')
+        root = {'traceAddress': [], 'subtraces': 0, 'type':'create', 'result': {'address':'0x'+'11'*20}}
+        result = {'trace': [root], 'output': '0x'+f'{1:064x}'}
+        obs = {'status':'result', 'response': {'result':result}}
+        context = dict(corpus, _chain='precompile-values')
+        checks = evaluate(dict(case, context=context), obs, {})
+        self.assertTrue(all(c['status']=='matches' for c in checks if c['topic']=='H29'))
+        root['subtraces']=1; result['trace'].append({'traceAddress':[0]})
+        self.assertIn('change_needed', [c['status'] for c in evaluate(dict(case, context=context),obs,{}) if c['topic']=='H29'])
+
+    def test_zero_outer_value_fixture_funds_before_creation(self):
+        corpus = json.loads((ROOT/'fixtures/corpora/precompile-values.json').read_text())
+        for case in corpus['cases']:
+            if 'outer0' not in case['name']:continue
+            funding, creation = case['request']['params'][0]
+            self.assertEqual(funding[0]['value'],'0x1')
+            self.assertEqual(funding[0]['to'], corpus['funded_creation_address'])
+            self.assertEqual(creation[0]['value'],'0x0')
+            self.assertEqual(int(creation[0]['nonce'],16),int(funding[0]['nonce'],16)+1)
+            self.assertEqual(case['precompile_value'],1)
+
+    def test_fixture_setup_uses_independent_state_controls(self):
+        from trace_interop.scenarios import verify_state
+        controls={'_control/create-nonce':'0x85','_control/target-balance':'0x0',
+                  '_control/target-nonce':'0x0','_control/target-code':'0x'}
+        observations={n:{'c':{'response':{'result':v}}} for n,v in controls.items()}
+        self.assertTrue(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
+        observations['_control/create-nonce']['c']['response']['result']='0x86'
+        self.assertFalse(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])

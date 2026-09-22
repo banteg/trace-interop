@@ -134,6 +134,12 @@ def verify_state(corpus_name, corpus, observations, client):
             if not isinstance(header,dict) or header.get('hash')!=corpus[key][-1]['hash']:
                 return False, 'canonical '+phase+' head not established'
         return True, 'canonical switch and restoration verified'
+    if corpus_name=='precompile-values':
+        ok=(result('_control/create-nonce') == hex(corpus['sender_nonce'])
+            and result('_control/target-balance') == '0x0'
+            and result('_control/target-nonce') == '0x0'
+            and result('_control/target-code') == '0x')
+        return ok, 'requires sender nonce 133 and an empty, unfunded future creation address'
     if corpus_name=='pruned':
         header,receipt,latest=result('old-header'),result('old-receipt'),result('latest-call')
         valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'

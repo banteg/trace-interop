@@ -108,11 +108,15 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H08', isinstance(result,dict) and result.get('output') == '0x'+f'{42:064x}', 'The return42 contract still returns word 42.')
     if name in ['empty-types','call-empty-types','call-empty-types-priced']:
         check('H11', status == 'result' and isinstance(result,dict), 'An empty trace-type selection executes successfully.')
-    if context.get('_chain') == 'precompiles' and method == 'trace_call':
-        frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
+    if context.get('_chain') in ['precompiles','precompile-values'] and method in ['trace_call','trace_callMany']:
+        execution = result
+        if 'execution_index' in case:
+            index=case['execution_index']
+            execution=result[index] if isinstance(result,list) and len(result)>index else None
+        frames = [f for f in sequence(mapping(execution).get('trace')) if isinstance(f, dict)]
         root = next((f for f in frames if f.get('traceAddress') == []),None)
         if name.startswith('nested-'):
-            value = int(params[0].get('value','0x0'),16)
+            value = case['precompile_value'] if 'precompile_value' in case else int(params[0].get('value','0x0'),16)
             children = [f for f in frames if f.get('traceAddress') != []]
             expected = 1 if value else 0
             check('H29', root is not None and root.get('subtraces') == expected and len(children) == expected
@@ -120,6 +124,17 @@ def evaluate(case, observation, peers, invalid_params=None):
                   'Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.')
             check('H24', root is not None and 'error' not in root,
                   'A handled precompile failure must not mark the successful parent as failed.')
+            if 'expected_call_success' in case:
+                check('H29', mapping(execution).get('output') == '0x'+f'{int(case["expected_call_success"]):064x}',
+                      'The constructor returns the precompile call success bit; a funded successful call must return one.')
+                if 'funded_creation_address' in case:
+                    funding=mapping(result[0]) if isinstance(result,list) and result else {}
+                    funding_frames=sequence(funding.get('trace'))
+                    funding_root=next((f for f in funding_frames if isinstance(f,dict) and f.get('traceAddress')==[]),{})
+                    check('H29', mapping(mapping(root).get('result')).get('address') == case['funded_creation_address']
+                          and 'error' not in funding_root and mapping(funding_root.get('action')).get('to') == case['funded_creation_address']
+                          and mapping(funding_root.get('action')).get('value') == '0x1',
+                          'The preceding simulated transfer funds the actual zero-value creation address with one wei.')
         else:
             check('H29', len(frames) == 1 and root is not None, 'Retain the root precompile frame, even with zero value.')
             if name == 'root-failed':

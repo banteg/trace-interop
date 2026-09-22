@@ -49,3 +49,20 @@ logs are retained with their runs.
 Both pinned Reth builds retain old headers and receipts after pruning, allow latest-state
 execution, and reject old state access. Their trace errors use -32603 with an insufficient
 changesets message; the draft proposes the existing execution-apis pruned-history code 4444.
+
+### Crossed precompile values
+
+`precompile-values` uses the same frozen chain as `precompiles`, with separate
+CALL/CALLCODE operands and outer creation values: `(outer=1, child=0)` and
+`(outer=0, child=1)`, for successful and failed BN254 addition. The latter is a
+`trace_callMany` sequence: fund the future creation address with one wei, then
+create with zero outer value. The constructor returns the call success bit as its
+runtime bytes, so insufficient funds cannot masquerade as successful execution.
+
+The first simulated transfer uses sender nonce 133 and the creation uses nonce 134.
+`cast compute-address 0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f --nonce 134`
+computes `0x93216e4a663e3a680a0fe006285935f47caa5738`. Independent nonce, balance and
+code controls require that sender nonce and an empty unfunded target before scoring.
+The H29 rule uses the fixture's explicit precompile value, verifies the funding
+transfer and actual creation address, and checks the returned success bit. This is
+separate from the inherited DELEGATECALL compatibility rule.

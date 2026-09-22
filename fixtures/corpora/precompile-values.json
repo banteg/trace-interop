@@ -1,0 +1,347 @@
+{
+  "description": "Separate the outer call value from CALL/CALLCODE operands; fund the future creation address before zero-value creation. Controls require sender nonce 133 and empty target. The constructor returns the precompile success bit.",
+  "sender_nonce": 133,
+  "funded_creation_address": "0x93216e4a663e3a680a0fe006285935f47caa5738",
+  "cases": [
+    {
+      "name": "_control/create-nonce",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/target-balance",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getBalance",
+        "params": [
+          "0x93216e4a663e3a680a0fe006285935f47caa5738",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/target-nonce",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x93216e4a663e3a680a0fe006285935f47caa5738",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/target-code",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getCode",
+        "params": [
+          "0x93216e4a663e3a680a0fe006285935f47caa5738",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "nested-call-outer0-value1-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x93216e4a663e3a680a0fe006285935f47caa5738",
+                "value": "0x1",
+                "gas": "0x5208",
+                "gasPrice": "0x3b9aca00",
+                "nonce": "0x85"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x100000",
+                "gasPrice": "0x3b9aca00",
+                "value": "0x0",
+                "data": "0x6000600052604060006080600060016006620186a0f160005260206000f3",
+                "nonce": "0x86"
+              },
+              [
+                "trace",
+                "stateDiff",
+                "vmTrace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 1,
+      "expected_call_success": true,
+      "execution_index": 1,
+      "funded_creation_address": "0x93216e4a663e3a680a0fe006285935f47caa5738"
+    },
+    {
+      "name": "nested-call-outer0-value1-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x93216e4a663e3a680a0fe006285935f47caa5738",
+                "value": "0x1",
+                "gas": "0x5208",
+                "gasPrice": "0x3b9aca00",
+                "nonce": "0x85"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x100000",
+                "gasPrice": "0x3b9aca00",
+                "value": "0x0",
+                "data": "0x602a600052604060006080600060016006620186a0f160005260206000f3",
+                "nonce": "0x86"
+              },
+              [
+                "trace",
+                "stateDiff",
+                "vmTrace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 1,
+      "expected_call_success": false,
+      "execution_index": 1,
+      "funded_creation_address": "0x93216e4a663e3a680a0fe006285935f47caa5738"
+    },
+    {
+      "name": "nested-call-outer1-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x6000600052604060006080600060006006620186a0f160005260206000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 0,
+      "expected_call_success": true
+    },
+    {
+      "name": "nested-call-outer1-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x602a600052604060006080600060006006620186a0f160005260206000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 0,
+      "expected_call_success": false
+    },
+    {
+      "name": "nested-callcode-outer0-value1-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x93216e4a663e3a680a0fe006285935f47caa5738",
+                "value": "0x1",
+                "gas": "0x5208",
+                "gasPrice": "0x3b9aca00",
+                "nonce": "0x85"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x100000",
+                "gasPrice": "0x3b9aca00",
+                "value": "0x0",
+                "data": "0x6000600052604060006080600060016006620186a0f260005260206000f3",
+                "nonce": "0x86"
+              },
+              [
+                "trace",
+                "stateDiff",
+                "vmTrace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 1,
+      "expected_call_success": true,
+      "execution_index": 1,
+      "funded_creation_address": "0x93216e4a663e3a680a0fe006285935f47caa5738"
+    },
+    {
+      "name": "nested-callcode-outer0-value1-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x93216e4a663e3a680a0fe006285935f47caa5738",
+                "value": "0x1",
+                "gas": "0x5208",
+                "gasPrice": "0x3b9aca00",
+                "nonce": "0x85"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x100000",
+                "gasPrice": "0x3b9aca00",
+                "value": "0x0",
+                "data": "0x602a600052604060006080600060016006620186a0f260005260206000f3",
+                "nonce": "0x86"
+              },
+              [
+                "trace",
+                "stateDiff",
+                "vmTrace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 1,
+      "expected_call_success": false,
+      "execution_index": 1,
+      "funded_creation_address": "0x93216e4a663e3a680a0fe006285935f47caa5738"
+    },
+    {
+      "name": "nested-callcode-outer1-value0-success",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x6000600052604060006080600060006006620186a0f260005260206000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 0,
+      "expected_call_success": true
+    },
+    {
+      "name": "nested-callcode-outer1-value0-failed",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1",
+            "data": "0x602a600052604060006080600060006006620186a0f260005260206000f3"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "category": "precompile",
+      "precompile_value": 0,
+      "expected_call_success": false
+    }
+  ]
+}

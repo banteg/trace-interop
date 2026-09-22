@@ -111,7 +111,10 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name in ['state-only-nonempty-output','vm-only-nonempty-output']:
         check('H08', isinstance(result,dict) and result.get('output') == '0x'+f'{42:064x}', 'The return42 contract still returns word 42.')
     if name in ['empty-types','call-empty-types','call-empty-types-priced']:
-        check('H11', status == 'result' and isinstance(result,dict), 'An empty trace-type selection executes successfully.')
+        expected = '0x'+f'{42:064x}' if name == 'empty-types' else '0xffee'
+        check('H11', status == 'result' and mapping(result).get('output') == expected,
+              'An empty trace-type selection executes and preserves the fixture return bytes.',
+              'Expected '+expected)
     if context.get('_chain') in ['precompiles','precompile-values'] and method in ['trace_call','trace_callMany']:
         execution = result
         if 'execution_index' in case:
@@ -245,11 +248,30 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
               and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
               'Return one execution envelope per input call, in order.')
-    if name == 'many-storage-write-read':
+    probe = name.rsplit('/',1)[-1]
+    if probe == 'many-storage-write-read':
         check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}']*2,
               'The second call reads the first call’s simulated write.')
-    if name == 'many-storage-write-revert-read':
+    if probe == 'many-storage-write-revert-read':
         check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
+    if probe in ['many-storage-write-read','many-storage-write-revert-read']:
+        # Both storage probes use nonce 133 at the frozen chain-a head. No gas
+        # accounting policy is inferred: only nonce progression and storage are checked.
+        sender, target = params[0][0][0]['from'], params[0][0][0]['to']
+        slot, value = '0x'+'00'*32, '0x'+f'{42:064x}'
+        diffs = [mapping(r).get('stateDiff') for r in sequence(result)]
+        valid = len(diffs) == len(params[0]) and all(isinstance(d,dict) for d in diffs)
+        nonce = context.get('nonce')
+        check('H16', valid and isinstance(nonce,int) and all(
+            mapping(mapping(d).get(sender)).get('nonce') == {'*':{'from':hex(nonce+i),'to':hex(nonce+i+1)}}
+            for i,d in enumerate(diffs)), 'Each call reports its own sender nonce transition, including a reverted call.')
+        storage = [mapping(mapping(d).get(target)).get('storage',{}) for d in diffs]
+        # Zero-slot creation and zero-to-value modification encode the same
+        # transition here; marker style is a separate compatibility decision.
+        first = storage[0] if storage else None
+        check('H16', valid and first in [{slot:{'+':value}}, {slot:{'*':{'from':slot,'to':value}}}]
+              and all(s == {} or s == {slot:'='} for s in storage[1:]),
+              'Only the first call writes slot zero; reverted writes and later reads add no storage transition.')
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
     invalid_raw = ['raw-nonce-high', 'raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']
@@ -359,8 +381,12 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name in ['destroy-trace-55','destroy-trace-56']:
         change=mapping(result.get('stateDiff')).get(params[0]['to'],{}) if isinstance(result,dict) else {}
         before_cancun=name.endswith('55')
-        ok=isinstance(mapping(change).get('code'),dict) and '-' in change['code'] and isinstance(mapping(change).get('nonce'),dict) and '-' in change['nonce'] if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
-        check('H26', ok, 'Delete code/nonce before Cancun; preserve an existing account after EIP-6780.')
+        # This fixture account has genesis code 0x611008ff, nonce zero and no storage;
+        # it is untouched by the mined fixture transactions.
+        ok=(mapping(change).get('code') == {'-':'0x611008ff'}
+            and mapping(change).get('nonce') == {'-':'0x0'}
+            and mapping(change).get('storage') == {}) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
+        check('H26', ok, 'Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
         if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')

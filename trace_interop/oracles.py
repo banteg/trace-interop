@@ -17,8 +17,10 @@ def anchored_reference(context, peers, name):
     Optional precompile frames may shift paths; emitted paths must form a tree.
     """
     obs = peers.get(name, {})
-    frames = obs.get('response', {}).get('result')
-    if obs.get('status') != 'result' or not isinstance(frames, list) or any(not isinstance(f, dict) or not isinstance(f.get('action'), dict) for f in frames):
+    if not isinstance(obs, dict) or obs.get('status') != 'result' or not isinstance(obs.get('response'), dict):
+        return None
+    frames = obs['response'].get('result')
+    if not isinstance(frames, list) or any(not isinstance(f, dict) or not isinstance(f.get('action'), dict) for f in frames):
         return None
     request = next((c['request'] for c in context.get('cases', []) if c['name'] == name), {})
     params = request.get('params', [])

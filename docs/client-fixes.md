@@ -19,6 +19,9 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | Nethermind | Return complete errors for rejected streamed transactions ([H25](../reports/decisions/H25.md)) | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) open | Reproduced rejected-transaction failures; the patch buffers the initial response before committing bytes. Related tests: 130 passed, one existing skip; streaming tests: 26 passed. Review and matrix retest remain. |
 | Besu | Preserve root precompile return bytes ([H22](../reports/decisions/H22.md)) | [Besu #11346](https://github.com/besu-eth/besu/pull/11346) open | Unit regression reproduced the missing bytes. Three unit tests and 810 HTTP trace fixtures pass, including a new identity-precompile fixture. Review and matrix retest remain. |
 | Besu | Keep sibling and handled precompile failures local ([H24](../reports/decisions/H24.md)) | [Besu #11345](https://github.com/besu-eth/besu/pull/11345) open | Regressions cover both sibling orders and all four CALL variants. Seven unit tests and 809 HTTP trace fixtures pass. Review and matrix retest remain. |
+| Nethermind | Accept an empty trace-type selection ([H11](../reports/decisions/H11.md)) | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) open; depends on #13665 | Six empty-selection regressions fail before the fix. The patch covers `trace_call` and `trace_callMany`, including streamed responses: 124 related tests passed, one existing skip. Review and matrix retest remain. |
+| Besu | Preserve errors from failed root precompiles ([H09](../reports/decisions/H09.md)) | [Besu #11347](https://github.com/besu-eth/besu/pull/11347) open | A regression reproduces the lost exceptional-halt reason. After the fix, 29 tracer tests, one flat-trace test and 810 HTTP trace fixtures pass, including invalid bn128Add input. This covers root precompile error reporting, not every H09 difference. Review and matrix retest remain. |
+| Nethermind | Serialize deleted account fields with deletion markers ([H26](../reports/decisions/H26.md)) | [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) open | Five regressions reproduce changes to null instead of `-` markers. Serializer and streamed/buffered RPC tests cover pre-Cancun deletion, zero/empty fields and retained accounts after Cancun: 120 related tests passed, one existing skip. Review and matrix retest remain. |
 
 The [Geth draft fork](geth.md) is an implementation experiment, with no upstream PR tracked here.
 Its passing selected cases do not establish upstream acceptance or production readiness.
@@ -27,9 +30,10 @@ it is outside the `trace_*` specification and does not count toward alignment he
 
 ## Remaining work
 
-The four new PRs have native regression tests and were checked independently against current
-upstream bases. They have not yet been built into a fresh cross-client matrix. The reports and
-frozen captures continue to describe their pinned builds, not the proposed patches.
+The open client fixes have native regression tests. Nethermind #13667 is stacked on #13665
+because empty selections also need its output-capture fix; the other patches were tested on
+separate upstream bases. They have not yet been built into a fresh cross-client matrix.
+The reports and frozen captures continue to describe their pinned builds, not the proposed patches.
 
 Tree-path lookup, filter composition, signed nonce admission and precompile inclusion remain
 [contract decisions](../decisions/README.md). A patch to one of those needs an agreed behavior

@@ -1,0 +1,103 @@
+Sep 23 03:15:39.452 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 03:15:39.516 INF building 1 clients...
+Sep 23 03:15:39.516 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849
+Sep 23 03:15:39.708 INF building 1 simulators...
+Sep 23 03:15:39.709 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 03:15:39.780 INF creating output directory folder=/home/banteg/dev/trace-harness-audit/evidence/2026-09-23/harness-audit-geth-repeat/hive
+Sep 23 03:15:39.789 INF running simulation: ethereum/rpc-compat
+Sep 23 03:15:40.120 INF hiveproxy started container=0646fef723e9 addr=172.17.0.2:8081
+Sep 23 03:15:40.437 INF API: suite started suite=0 name=rpc-compat
+Sep 23 03:15:40.439 INF API: test started suite=0 test=1 name="client launch (go-ethereum_trace)"
+Sep 23 03:15:43.981 INF API: client go-ethereum_trace started suite=0 test=1 container=920dcc1e
+Sep 23 03:15:43.997 INF API: test started suite=0 test=2 name="interop/_control/head (go-ethereum_trace)"
+Sep 23 03:15:44.000 INF API: test ended suite=0 test=2 pass=false
+Sep 23 03:15:44.002 INF API: test started suite=0 test=3 name="interop/_control/latest (go-ethereum_trace)"
+Sep 23 03:15:44.003 INF API: test ended suite=0 test=3 pass=false
+Sep 23 03:15:44.004 INF API: test started suite=0 test=4 name="interop/_control/version (go-ethereum_trace)"
+Sep 23 03:15:44.005 INF API: test ended suite=0 test=4 pass=false
+Sep 23 03:15:44.006 INF API: test started suite=0 test=5 name="interop/auth-clear (go-ethereum_trace)"
+Sep 23 03:15:44.008 INF API: test ended suite=0 test=5 pass=false
+Sep 23 03:15:44.009 INF API: test started suite=0 test=6 name="interop/auth-set-revert (go-ethereum_trace)"
+Sep 23 03:15:44.012 INF API: test ended suite=0 test=6 pass=false
+Sep 23 03:15:44.012 INF API: test started suite=0 test=7 name="interop/call-gas7400 (go-ethereum_trace)"
+Sep 23 03:15:44.020 INF API: test ended suite=0 test=7 pass=false
+Sep 23 03:15:44.022 INF API: test started suite=0 test=8 name="interop/call-mcopy (go-ethereum_trace)"
+Sep 23 03:15:44.024 INF API: test ended suite=0 test=8 pass=false
+Sep 23 03:15:44.024 INF API: test started suite=0 test=9 name="interop/call-mixed-create (go-ethereum_trace)"
+Sep 23 03:15:44.027 INF API: test ended suite=0 test=9 pass=false
+Sep 23 03:15:44.028 INF API: test started suite=0 test=10 name="interop/call-return42 (go-ethereum_trace)"
+Sep 23 03:15:44.029 INF API: test ended suite=0 test=10 pass=false
+Sep 23 03:15:44.030 INF API: test started suite=0 test=11 name="interop/call-siblings-revert-ok (go-ethereum_trace)"
+Sep 23 03:15:44.033 INF API: test ended suite=0 test=11 pass=false
+Sep 23 03:15:44.034 INF API: test started suite=0 test=12 name="interop/constructor (go-ethereum_trace)"
+Sep 23 03:15:44.035 INF API: test ended suite=0 test=12 pass=false
+Sep 23 03:15:44.036 INF API: test started suite=0 test=13 name="interop/control-code-gas7400 (go-ethereum_trace)"
+Sep 23 03:15:44.037 INF API: test ended suite=0 test=13 pass=false
+Sep 23 03:15:44.038 INF API: test started suite=0 test=14 name="interop/control-code-siblings-revert-ok (go-ethereum_trace)"
+Sep 23 03:15:44.039 INF API: test ended suite=0 test=14 pass=false
+Sep 23 03:15:44.040 INF API: test started suite=0 test=15 name="interop/control-head (go-ethereum_trace)"
+Sep 23 03:15:44.041 INF API: test ended suite=0 test=15 pass=false
+Sep 23 03:15:44.042 INF API: test started suite=0 test=16 name="interop/control-height (go-ethereum_trace)"
+Sep 23 03:15:44.043 INF API: test ended suite=0 test=16 pass=false
+Sep 23 03:15:44.046 INF API: test started suite=0 test=17 name="interop/debug-gas7400-opcodes (go-ethereum_trace)"
+Sep 23 03:15:44.048 INF API: test ended suite=0 test=17 pass=false
+Sep 23 03:15:44.049 INF API: test started suite=0 test=18 name="interop/debug-mixed-create (go-ethereum_trace)"
+Sep 23 03:15:44.051 INF API: test ended suite=0 test=18 pass=false
+Sep 23 03:15:44.052 INF API: test started suite=0 test=19 name="interop/debug-siblings-revert-ok (go-ethereum_trace)"
+Sep 23 03:15:44.054 INF API: test ended suite=0 test=19 pass=false
+Sep 23 03:15:44.055 INF API: test started suite=0 test=20 name="interop/many-storage-write-revert-read (go-ethereum_trace)"
+Sep 23 03:15:44.057 INF API: test ended suite=0 test=20 pass=false
+Sep 23 03:15:44.058 INF API: test started suite=0 test=21 name="interop/raw-below-basefee-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.069 INF API: test ended suite=0 test=21 pass=false
+Sep 23 03:15:44.070 INF API: test started suite=0 test=22 name="interop/raw-below-basefee-trace (go-ethereum_trace)"
+Sep 23 03:15:44.074 INF API: test ended suite=0 test=22 pass=false
+Sep 23 03:15:44.075 INF API: test started suite=0 test=23 name="interop/raw-below-basefee-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.078 INF API: test ended suite=0 test=23 pass=false
+Sep 23 03:15:44.078 INF API: test started suite=0 test=24 name="interop/raw-below-basefee (go-ethereum_trace)"
+Sep 23 03:15:44.081 INF API: test ended suite=0 test=24 pass=false
+Sep 23 03:15:44.082 INF API: test started suite=0 test=25 name="interop/raw-insufficient-funds-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.084 INF API: test ended suite=0 test=25 pass=false
+Sep 23 03:15:44.084 INF API: test started suite=0 test=26 name="interop/raw-insufficient-funds-trace (go-ethereum_trace)"
+Sep 23 03:15:44.086 INF API: test ended suite=0 test=26 pass=false
+Sep 23 03:15:44.087 INF API: test started suite=0 test=27 name="interop/raw-insufficient-funds-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.089 INF API: test ended suite=0 test=27 pass=false
+Sep 23 03:15:44.089 INF API: test started suite=0 test=28 name="interop/raw-insufficient-funds (go-ethereum_trace)"
+Sep 23 03:15:44.091 INF API: test ended suite=0 test=28 pass=false
+Sep 23 03:15:44.092 INF API: test started suite=0 test=29 name="interop/raw-low-gas-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.094 INF API: test ended suite=0 test=29 pass=false
+Sep 23 03:15:44.095 INF API: test started suite=0 test=30 name="interop/raw-low-gas-trace (go-ethereum_trace)"
+Sep 23 03:15:44.096 INF API: test ended suite=0 test=30 pass=false
+Sep 23 03:15:44.097 INF API: test started suite=0 test=31 name="interop/raw-low-gas-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.098 INF API: test ended suite=0 test=31 pass=false
+Sep 23 03:15:44.099 INF API: test started suite=0 test=32 name="interop/raw-low-gas (go-ethereum_trace)"
+Sep 23 03:15:44.100 INF API: test ended suite=0 test=32 pass=false
+Sep 23 03:15:44.101 INF API: test started suite=0 test=33 name="interop/raw-nonce-high-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.102 INF API: test ended suite=0 test=33 pass=false
+Sep 23 03:15:44.103 INF API: test started suite=0 test=34 name="interop/raw-nonce-high-trace (go-ethereum_trace)"
+Sep 23 03:15:44.104 INF API: test ended suite=0 test=34 pass=false
+Sep 23 03:15:44.105 INF API: test started suite=0 test=35 name="interop/raw-nonce-high-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.106 INF API: test ended suite=0 test=35 pass=false
+Sep 23 03:15:44.107 INF API: test started suite=0 test=36 name="interop/raw-nonce-high (go-ethereum_trace)"
+Sep 23 03:15:44.108 INF API: test ended suite=0 test=36 pass=false
+Sep 23 03:15:44.109 INF API: test started suite=0 test=37 name="interop/raw-valid-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.111 INF API: test ended suite=0 test=37 pass=false
+Sep 23 03:15:44.112 INF API: test started suite=0 test=38 name="interop/raw-valid-trace (go-ethereum_trace)"
+Sep 23 03:15:44.113 INF API: test ended suite=0 test=38 pass=false
+Sep 23 03:15:44.114 INF API: test started suite=0 test=39 name="interop/raw-valid-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.115 INF API: test ended suite=0 test=39 pass=false
+Sep 23 03:15:44.116 INF API: test started suite=0 test=40 name="interop/raw-valid (go-ethereum_trace)"
+Sep 23 03:15:44.118 INF API: test ended suite=0 test=40 pass=false
+Sep 23 03:15:44.119 INF API: test started suite=0 test=41 name="interop/raw-wrong-chain-stateDiff (go-ethereum_trace)"
+Sep 23 03:15:44.120 INF API: test ended suite=0 test=41 pass=false
+Sep 23 03:15:44.121 INF API: test started suite=0 test=42 name="interop/raw-wrong-chain-trace (go-ethereum_trace)"
+Sep 23 03:15:44.122 INF API: test ended suite=0 test=42 pass=false
+Sep 23 03:15:44.123 INF API: test started suite=0 test=43 name="interop/raw-wrong-chain-vmTrace (go-ethereum_trace)"
+Sep 23 03:15:44.124 INF API: test ended suite=0 test=43 pass=false
+Sep 23 03:15:44.125 INF API: test started suite=0 test=44 name="interop/raw-wrong-chain (go-ethereum_trace)"
+Sep 23 03:15:44.126 INF API: test ended suite=0 test=44 pass=false
+Sep 23 03:15:44.126 INF API: test started suite=0 test=45 name="interop/state-only-nonempty-output (go-ethereum_trace)"
+Sep 23 03:15:44.128 INF API: test ended suite=0 test=45 pass=false
+Sep 23 03:15:44.488 INF API: test ended suite=0 test=1 pass=true
+Sep 23 03:15:44.496 INF API: suite ended suite=0
+Sep 23 03:15:44.938 INF simulation ethereum/rpc-compat finished suites=1 tests=45 failed=44
+44 tests failed

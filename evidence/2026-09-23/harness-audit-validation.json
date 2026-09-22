@@ -1,0 +1,243 @@
+{
+  "assessment_source_commit": "0bc87b4554fa41b13d6cd0d8045e43a8d1bbd567",
+  "capture_source_commit": "caf32ff54b6fd98964a27ae246e2ed5bb09635ee",
+  "capture_source_state": "Fedora tracked files unchanged; only the 18 new evidence directories were untracked. Original source_dirty flags retained.",
+  "deterministic_report_files": 477,
+  "runs": [
+    {
+      "complete": true,
+      "exchanges": 91,
+      "manifest_sha256": "4f1b73704b374e38d79afd6c639de73f19c123b5872b0fb091cdda6663ae9460",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-a",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 21,
+      "manifest_sha256": "9873144a00fd5dc64ecf1434d633db268fedd433261a3e16d308f584fd0783f3",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-fork-followup",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 65,
+      "manifest_sha256": "d0f72cfe2ca3327cdbf11460f12307b39e13f3a27176e27abc0e67f5ef459797",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-forks",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 69,
+      "manifest_sha256": "477ffd4554ff73cae66e77df995bcd755e5167f00895929e99e1ae25959fbc9f",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-initial",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 15,
+      "manifest_sha256": "28fdf909f1a4514b527d70a9fa4676a5f300ea53664af526e869160f6e7dbffb",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-precompile-values",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 19,
+      "manifest_sha256": "479b1bd624ac71370b29e673e25bd26fa468f1710bcd8c9a6df8b66d41496f8b",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-precompiles",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 18,
+      "manifest_sha256": "a364e0639fff58671a23335c533f20c2c5a01d67401acf77bfb7e30ae152e3a0",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-reorg-safe",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 44,
+      "manifest_sha256": "c8fb0f6ec2c540b2ac80c864aada30fec0611d18cbb308a50d68e9e1c64554c8",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-geth-repeat",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 728,
+      "manifest_sha256": "fc51e338bbefc482ee32fa1469ef97195256517e189f40d3c3231bf340e14b9a",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-a",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 168,
+      "manifest_sha256": "6fa156af56aa4b5c9cd74178fa1494c476ec8b7b2c6f65755aa6049e3fd3a0ad",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-fork-followup",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 520,
+      "manifest_sha256": "a3afad6c562b2934bca7f7039db3047bfcb037f8149fb4d27c05207142f90d32",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-forks",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 552,
+      "manifest_sha256": "c5177b3909dc2452f68c1634c0a12b300f30a1bb63173878095bd30513f29cc4",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-initial",
+      "source_dirty": false
+    },
+    {
+      "complete": true,
+      "exchanges": 120,
+      "manifest_sha256": "b710afa9ebd04ce070f083beb7128429b7bed9810b86c2fb39c017f17b610104",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-precompile-values",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 152,
+      "manifest_sha256": "da8e304f612b035bd308fb85a21ca9ec57687ff6545da6ae985c29d9e420df47",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-precompiles",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 26,
+      "manifest_sha256": "b9dbaa58f51849f747772dd2c0d3508ca8d8eb8fbf1e36eacc29492039d6c59d",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-pruned",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 568,
+      "manifest_sha256": "73422232023a0ddab7b44c4f0fc9b3f703704f6c7beaba69b1a806c88d7c8a6b",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-raw-validation",
+      "source_dirty": true
+    },
+    {
+      "complete": false,
+      "exchanges": 124,
+      "manifest_sha256": "1e3ba0c98beae37b03b109381c8ba5bbd85c2a96712b82a5525c6d19f15e897a",
+      "missing": [
+        [
+          "after/head",
+          "erigon_development"
+        ],
+        [
+          "after/height",
+          "erigon_development"
+        ],
+        [
+          "after/filter-tail",
+          "erigon_development"
+        ],
+        [
+          "after/block-tail",
+          "erigon_development"
+        ],
+        [
+          "restored/head",
+          "erigon_development"
+        ],
+        [
+          "restored/head",
+          "reth_development"
+        ],
+        [
+          "restored/head",
+          "reth_release"
+        ],
+        [
+          "restored/height",
+          "erigon_development"
+        ],
+        [
+          "restored/height",
+          "reth_development"
+        ],
+        [
+          "restored/height",
+          "reth_release"
+        ],
+        [
+          "restored/filter-tail",
+          "erigon_development"
+        ],
+        [
+          "restored/filter-tail",
+          "reth_development"
+        ],
+        [
+          "restored/filter-tail",
+          "reth_release"
+        ],
+        [
+          "restored/block-tail",
+          "erigon_development"
+        ],
+        [
+          "restored/block-tail",
+          "reth_development"
+        ],
+        [
+          "restored/block-tail",
+          "reth_release"
+        ],
+        [
+          "after/tail-receipt",
+          "erigon_development"
+        ],
+        [
+          "restored/tail-receipt",
+          "erigon_development"
+        ],
+        [
+          "restored/tail-receipt",
+          "reth_development"
+        ],
+        [
+          "restored/tail-receipt",
+          "reth_release"
+        ]
+      ],
+      "path": "evidence/2026-09-23/harness-audit-native-reorg-safe",
+      "source_dirty": true
+    },
+    {
+      "complete": true,
+      "exchanges": 352,
+      "manifest_sha256": "ea16a9e50caadc2b484f77386993f66079a28bd56bb8a9100bca5452a266ef83",
+      "missing": [],
+      "path": "evidence/2026-09-23/harness-audit-native-repeat",
+      "source_dirty": true
+    }
+  ],
+  "tests": {
+    "command": "uv run --no-sync python -m unittest discover -s tests",
+    "passed": 84
+  },
+  "verification": [
+    "trace-interop verify: 54 frozen inputs, 29 decisions",
+    "check_schema.py: nine method schemas and recursive negative vectors",
+    "all imported evidence checksums verified",
+    "second report generation byte-identical"
+  ]
+}

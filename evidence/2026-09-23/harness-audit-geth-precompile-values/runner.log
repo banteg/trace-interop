@@ -1,0 +1,45 @@
+Sep 23 03:15:57.530 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 03:15:57.587 INF building 1 clients...
+Sep 23 03:15:57.587 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849
+Sep 23 03:15:57.744 INF building 1 simulators...
+Sep 23 03:15:57.744 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 03:15:57.807 INF creating output directory folder=/home/banteg/dev/trace-harness-audit/evidence/2026-09-23/harness-audit-geth-precompile-values/hive
+Sep 23 03:15:57.815 INF running simulation: ethereum/rpc-compat
+Sep 23 03:15:58.149 INF hiveproxy started container=d7266607d013 addr=172.17.0.2:8081
+Sep 23 03:15:58.618 INF API: suite started suite=0 name=rpc-compat
+Sep 23 03:15:58.620 INF API: test started suite=0 test=1 name="client launch (go-ethereum_trace)"
+Sep 23 03:16:00.640 INF API: client go-ethereum_trace started suite=0 test=1 container=b49f311e
+Sep 23 03:16:00.653 INF API: test started suite=0 test=2 name="interop/_control/create-nonce (go-ethereum_trace)"
+Sep 23 03:16:00.665 INF API: test ended suite=0 test=2 pass=false
+Sep 23 03:16:00.667 INF API: test started suite=0 test=3 name="interop/_control/head (go-ethereum_trace)"
+Sep 23 03:16:00.668 INF API: test ended suite=0 test=3 pass=false
+Sep 23 03:16:00.669 INF API: test started suite=0 test=4 name="interop/_control/latest (go-ethereum_trace)"
+Sep 23 03:16:00.671 INF API: test ended suite=0 test=4 pass=false
+Sep 23 03:16:00.672 INF API: test started suite=0 test=5 name="interop/_control/target-balance (go-ethereum_trace)"
+Sep 23 03:16:00.673 INF API: test ended suite=0 test=5 pass=false
+Sep 23 03:16:00.673 INF API: test started suite=0 test=6 name="interop/_control/target-code (go-ethereum_trace)"
+Sep 23 03:16:00.675 INF API: test ended suite=0 test=6 pass=false
+Sep 23 03:16:00.675 INF API: test started suite=0 test=7 name="interop/_control/target-nonce (go-ethereum_trace)"
+Sep 23 03:16:00.677 INF API: test ended suite=0 test=7 pass=false
+Sep 23 03:16:00.678 INF API: test started suite=0 test=8 name="interop/_control/version (go-ethereum_trace)"
+Sep 23 03:16:00.679 INF API: test ended suite=0 test=8 pass=false
+Sep 23 03:16:00.680 INF API: test started suite=0 test=9 name="interop/nested-call-outer0-value1-failed (go-ethereum_trace)"
+Sep 23 03:16:00.683 INF API: test ended suite=0 test=9 pass=false
+Sep 23 03:16:00.683 INF API: test started suite=0 test=10 name="interop/nested-call-outer0-value1-success (go-ethereum_trace)"
+Sep 23 03:16:00.686 INF API: test ended suite=0 test=10 pass=false
+Sep 23 03:16:00.686 INF API: test started suite=0 test=11 name="interop/nested-call-outer1-value0-failed (go-ethereum_trace)"
+Sep 23 03:16:00.689 INF API: test ended suite=0 test=11 pass=false
+Sep 23 03:16:00.690 INF API: test started suite=0 test=12 name="interop/nested-call-outer1-value0-success (go-ethereum_trace)"
+Sep 23 03:16:00.693 INF API: test ended suite=0 test=12 pass=false
+Sep 23 03:16:00.694 INF API: test started suite=0 test=13 name="interop/nested-callcode-outer0-value1-failed (go-ethereum_trace)"
+Sep 23 03:16:00.696 INF API: test ended suite=0 test=13 pass=false
+Sep 23 03:16:00.698 INF API: test started suite=0 test=14 name="interop/nested-callcode-outer0-value1-success (go-ethereum_trace)"
+Sep 23 03:16:00.700 INF API: test ended suite=0 test=14 pass=false
+Sep 23 03:16:00.701 INF API: test started suite=0 test=15 name="interop/nested-callcode-outer1-value0-failed (go-ethereum_trace)"
+Sep 23 03:16:00.702 INF API: test ended suite=0 test=15 pass=false
+Sep 23 03:16:00.703 INF API: test started suite=0 test=16 name="interop/nested-callcode-outer1-value0-success (go-ethereum_trace)"
+Sep 23 03:16:00.705 INF API: test ended suite=0 test=16 pass=false
+Sep 23 03:16:01.014 INF API: test ended suite=0 test=1 pass=true
+Sep 23 03:16:01.024 INF API: suite ended suite=0
+Sep 23 03:16:01.437 INF simulation ethereum/rpc-compat finished suites=1 tests=16 failed=15
+15 tests failed

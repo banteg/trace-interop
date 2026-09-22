@@ -1,0 +1,220 @@
+INFO [09-22|23:15:46.630] Maximum peer count                       ETH=50 total=50
+INFO [09-22|23:15:46.633] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-22|23:15:46.636] Set global gas cap                       cap=50,000,000
+INFO [09-22|23:15:46.637] Engine API maximum reorg depth           depth=32
+WARN [09-22|23:15:46.637] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-22|23:15:46.637] Initializing the KZG library             backend=gokzg
+INFO [09-22|23:15:46.640] Defaulting to pebble as the backing database
+INFO [09-22|23:15:46.640] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-22|23:15:46.817] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-22|23:15:46.817] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-22|23:15:46.817] State scheme set by user                 scheme=path
+INFO [09-22|23:15:46.817] Load database journal from disk
+WARN [09-22|23:15:46.817] Head block is not reachable
+INFO [09-22|23:15:46.926] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-22|23:15:46.926] State snapshot generator is not found
+INFO [09-22|23:15:46.926] Starting snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="5.862µs"
+INFO [09-22|23:15:46.926] Initialized path database                triecache=16.00MiB statecache=16.00MiB buffer=64.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-22|23:15:46.926] Writing custom genesis block
+INFO [09-22|23:15:46.926] Resuming snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="194.318µs"
+INFO [09-22|23:15:46.926] Generated snapshot                       accounts=0 slots=0 storage=0.00B dangling=0 elapsed="346.914µs"
+INFO [09-22|23:15:46.930] Successfully wrote genesis state         database=chaindata hash=cf99eb..98e409
+Loading initial blockchain...
+INFO [09-22|23:15:47.141] Maximum peer count                       ETH=50 total=50
+INFO [09-22|23:15:47.145] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-22|23:15:47.151] Set global gas cap                       cap=50,000,000
+INFO [09-22|23:15:47.151] Engine API maximum reorg depth           depth=32
+WARN [09-22|23:15:47.151] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-22|23:15:47.152] Initializing the KZG library             backend=gokzg
+INFO [09-22|23:15:47.152] Using pebble as the backing database
+INFO [09-22|23:15:47.152] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-22|23:15:47.256] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-22|23:15:47.256] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-22|23:15:47.256] State scheme set by user                 scheme=path
+WARN [09-22|23:15:47.257] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-22|23:15:47.257] Load database journal from disk
+INFO [09-22|23:15:47.257] Failed to load journal, discard it       err="journal not found"
+INFO [09-22|23:15:47.314] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-22|23:15:47.314] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-22|23:15:47.315] Chain ID:  3503995874084926 (unknown)
+INFO [09-22|23:15:47.315] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] Pre-Merge hard forks (block based):
+INFO [09-22|23:15:47.315]  - Homestead:                   #0       
+INFO [09-22|23:15:47.315]  - Tangerine Whistle (EIP 150): #4       
+INFO [09-22|23:15:47.315]  - Spurious Dragon/1 (EIP 155): #8       
+INFO [09-22|23:15:47.315]  - Spurious Dragon/2 (EIP 158): #8       
+INFO [09-22|23:15:47.315]  - Byzantium:                   #12      
+INFO [09-22|23:15:47.315]  - Constantinople:              #16      
+INFO [09-22|23:15:47.315]  - Petersburg:                  #20      
+INFO [09-22|23:15:47.315]  - Istanbul:                    #24      
+INFO [09-22|23:15:47.315]  - Muir Glacier:                #28      
+INFO [09-22|23:15:47.315]  - Berlin:                      #32      
+INFO [09-22|23:15:47.315]  - London:                      #36      
+INFO [09-22|23:15:47.315]  - Arrow Glacier:               #40      
+INFO [09-22|23:15:47.315]  - Gray Glacier:                #44      
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] Merge configured:
+INFO [09-22|23:15:47.315]  - Total terminal difficulty:  6329152
+INFO [09-22|23:15:47.315]  - Merge netsplit block:       #48      
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] Post-Merge hard forks (timestamp based):
+INFO [09-22|23:15:47.315]  - Shanghai:                    @520       
+INFO [09-22|23:15:47.315]  - Cancun:                      @560        blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-22|23:15:47.315]  - Prague:                      @600        blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-22|23:15:47.315] 
+INFO [09-22|23:15:47.315] Loaded most recent local block           number=0 hash=cf99eb..98e409 age=57y6mo2w
+INFO [09-22|23:15:47.316] Importing blockchain                     file=/chain.rlp
+INFO [09-22|23:15:47.429] Imported new chain segment               number=72 hash=b3ba03..6f2316 blocks=72 txs=175 mgas=7.866 elapsed=111.183ms mgasps=70.750 age=57y6mo2w triediffs=274.03KiB triedirty=0.00B
+INFO [09-22|23:15:47.429] Persisting dirty state                   head=72 root=42da2e..50aac4 layers=72
+INFO [09-22|23:15:47.496] Persisted dirty state to file            path=/root/.ethereum/geth/triedb/merkle.journal size=266.06KiB elapsed=67.085ms
+INFO [09-22|23:15:47.535] Blockchain stopped
+Import done in 220.510549ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  28KB |     0     0B |     0     0B |     1   17KB |    0B |   0 0.62 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   17KB     0B       0 |    - 0.00 0.00 |    0B |     0     0B |     1   17KB |     0     0B |    0B |   1    0 |    0B      0B
+total |     1   17KB     0B       0 |    -    -    - | 157KB |     0     0B |     1   17KB |     1  175KB |    0B |   1 1.11 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (129KB)  in: 128KB  written: 157KB (23% overhead)
+Flushes: 1
+Compactions: 1  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 0  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (512KB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 17KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 7 entries (30KB)  hit rate: 98.8%
+File cache: 1 tables, 0 blobfiles (496B)  hit rate: 99.7%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 1.7MB  block cache: 212KB (data: 30KB, maps: 182KB, entries: 0B)  memtables: 1.5MB
+
+Object memory: 14.066 MB current, 11.435 MB peak
+System memory: 46.217 MB current, 45.678 MB peak
+Allocations:   0.445 million
+GC pause:      3.10715ms
+
+Compacting entire database...
+Compaction done in 60.878259ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 | 157KB |     0     0B |     0     0B |     2   83KB |    0B |   0 0.53 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   81KB     0B       0 |    - 0.00 0.00 |  66KB |     0     0B |     1   17KB |     1   81KB |  83KB |   1 1.23 |    0B      0B
+total |     1   81KB     0B       0 |    -    -    - | 157KB |     0     0B |     1   17KB |     3  321KB |  83KB |   1 2.04 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (0B)  in: 128KB  written: 157KB (23% overhead)
+Flushes: 2
+Compactions: 2  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 1  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (1.0MB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 81KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 0 entries (0B)  hit rate: 94.3%
+File cache: 0 tables, 0 blobfiles (0B)  hit rate: 99.4%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 2.2MB  block cache: 182KB (data: 0B, maps: 182KB, entries: 0B)  memtables: 2.0MB
+
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running go-ethereum with flags --state.scheme=path --verbosity=3 --bootnodes= --networkid 3503995874084926 --syncmode full --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.port=8545 --http.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --ws --ws.addr=0.0.0.0 --ws.origins "*" --ws.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.jwtsecret /jwtsecret --nat=extip:172.17.0.4 --datadir.minfreedisk=0
+INFO [09-22|23:15:47.696] Maximum peer count                       ETH=50 total=50
+INFO [09-22|23:15:47.697] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-22|23:15:47.701] Set global gas cap                       cap=50,000,000
+INFO [09-22|23:15:47.701] Engine API maximum reorg depth           depth=32
+WARN [09-22|23:15:47.701] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-22|23:15:47.702] Initializing the KZG library             backend=gokzg
+INFO [09-22|23:15:47.704] Allocated trie memory caches             clean=614.00MiB dirty=1.00GiB
+INFO [09-22|23:15:47.704] Using pebble as the backing database
+INFO [09-22|23:15:47.704] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-22|23:15:47.807] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-22|23:15:47.807] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-22|23:15:47.808] State scheme set by user                 scheme=path
+INFO [09-22|23:15:47.808] Initialising Ethereum protocol           network=3,503,995,874,084,926 dbversion=<nil>
+WARN [09-22|23:15:47.808] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-22|23:15:47.808] Load database journal from file          path=/root/.ethereum/geth/triedb/merkle.journal
+INFO [09-22|23:15:47.870] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-22|23:15:47.871] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-22|23:15:47.871] Chain ID:  3503995874084926 (unknown)
+INFO [09-22|23:15:47.871] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] Pre-Merge hard forks (block based):
+INFO [09-22|23:15:47.871]  - Homestead:                   #0       
+INFO [09-22|23:15:47.871]  - Tangerine Whistle (EIP 150): #4       
+INFO [09-22|23:15:47.871]  - Spurious Dragon/1 (EIP 155): #8       
+INFO [09-22|23:15:47.871]  - Spurious Dragon/2 (EIP 158): #8       
+INFO [09-22|23:15:47.871]  - Byzantium:                   #12      
+INFO [09-22|23:15:47.871]  - Constantinople:              #16      
+INFO [09-22|23:15:47.871]  - Petersburg:                  #20      
+INFO [09-22|23:15:47.871]  - Istanbul:                    #24      
+INFO [09-22|23:15:47.871]  - Muir Glacier:                #28      
+INFO [09-22|23:15:47.871]  - Berlin:                      #32      
+INFO [09-22|23:15:47.871]  - London:                      #36      
+INFO [09-22|23:15:47.871]  - Arrow Glacier:               #40      
+INFO [09-22|23:15:47.871]  - Gray Glacier:                #44      
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] Merge configured:
+INFO [09-22|23:15:47.871]  - Total terminal difficulty:  6329152
+INFO [09-22|23:15:47.871]  - Merge netsplit block:       #48      
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] Post-Merge hard forks (timestamp based):
+INFO [09-22|23:15:47.871]  - Shanghai:                    @520       
+INFO [09-22|23:15:47.871]  - Cancun:                      @560        blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-22|23:15:47.871]  - Prague:                      @600        blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-22|23:15:47.871] 
+INFO [09-22|23:15:47.871] Loaded most recent local block           number=72 hash=b3ba03..6f2316 age=57y6mo2w
+INFO [09-22|23:15:47.871] Initialized transaction indexer          range="last 2350000 blocks"
+INFO [09-22|23:15:47.873] Indexed transactions                     blocks=73 txs=175 tail=0 elapsed=1.287ms
+INFO [09-22|23:15:48.098] Enabled full-sync                        head=72 hash=b3ba03..6f2316
+INFO [09-22|23:15:48.098] Gasprice oracle is ignoring threshold set threshold=2
+INFO [09-22|23:15:48.098] Registered sync override service
+INFO [09-22|23:15:48.098] Starting peer-to-peer node               instance=Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1
+INFO [09-22|23:15:48.144] New local node record                    seq=1,790,118,948,143 id=52948121bcf9431f      ip=172.17.0.4 udp=30303 tcp=30303
+INFO [09-22|23:15:48.144] Started P2P networking                   self=enode://2cc0fce5393692cd6aab3324e459b9ceb17ca7ec998c17a2e801191d49df33cf82d806adf26cadb5916514b3564c55302d0dc65f01ad08d3432ebc3739bb5265@172.17.0.4:30303
+INFO [09-22|23:15:48.145] IPC endpoint opened                      url=/root/.ethereum/geth.ipc
+INFO [09-22|23:15:48.145] Loaded JWT secret file                   path=/jwtsecret crc32=0xb0a0f6e6
+INFO [09-22|23:15:48.146] HTTP server started                      endpoint=[::]:8545 auth=false prefix= cors= vhosts=localhost
+INFO [09-22|23:15:48.146] WebSocket enabled                        url=ws://[::]:8546
+INFO [09-22|23:15:48.146] WebSocket enabled                        url=ws://[::]:8551
+INFO [09-22|23:15:48.146] HTTP server started                      endpoint=[::]:8551 auth=true  prefix= cors=localhost vhosts=localhost
+INFO [09-22|23:15:48.146] Started log indexer

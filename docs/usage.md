@@ -135,3 +135,18 @@ This checks selector consistency; it does not by itself prove tree completeness.
 The fork scans blocks for `trace_filter`; no address index or performance claim is
 implied. The current pruning scenario has a verified Reth adapter only, so Geth's
 unavailable-history behavior is not yet verified by that scenario.
+
+## Report inventory and assertion coverage
+
+`reports.lock.json` selects the retained run directories used by both report generation
+and `trace-interop verify`. Ledger references use `corpus/case` identities and must be
+nonempty and present in those runs. Original evidence is checksum verified and never
+rewritten. Report eligibility is recalculated from the recorded head and independent
+scenario controls; `capture_eligible` keeps the old decision for comparison.
+
+Malformed requests are checked against the pinned request schemas. Semantic assertions
+and result-schema validation remain separate: valid JSON does not prove correct execution.
+A declared topic case without an evaluated assertion is `unassessed`; mixing it with
+matching checks yields “Partially assessed”, not agreement. The technical appendix also
+counts eligible trace observations with no assertion at all. This makes remaining coverage
+gaps explicit rather than implying that every ledger recommendation is implemented.

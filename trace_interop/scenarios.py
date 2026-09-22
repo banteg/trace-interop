@@ -145,7 +145,8 @@ def verify_state(corpus_name, corpus, observations, client):
         valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'
         nonce_error=observations.get('old-nonce',{}).get(client,{}).get('response',{}).get('error')
         def unavailable(error):
-            message=error.get('message','').lower() if isinstance(error,dict) else ''
+            message=error.get('message','') if isinstance(error,dict) else ''
+            message=message.lower() if isinstance(message,str) else ''
             return isinstance(error,dict) and (error.get('code') in (4444, -32002) or 'prun' in message or 'insufficient changesets to revert' in message)
         valid=valid and unavailable(nonce_error)
         return bool(valid), 'requires retained old header/receipt, successful latest call, and independently unavailable old state'

@@ -46,14 +46,15 @@ def generate(root, runs, output):
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
             for case in manifest['selected_cases']:
                 name=case['name']; observation=peers.get(name,{})
-                record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':eligible,'capture_eligible':summary['eligible'].get(client,False),'eligibility_detail':scenario_detail,'checks':[],'spec_commit':lock['commit'] if spec else None}
+                record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'method':case['request']['method'],'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':eligible,'capture_eligible':summary['eligible'].get(client,False),'eligibility_detail':scenario_detail if chain_ok else 'Imported head identity does not match the frozen manifest','checks':[],'spec_commit':lock['commit'] if spec else None}
                 if record['eligible'] and observation:
                     errors=request_errors(case['request'],methods) if spec and not is_extension_request(case['request']) else []
                     record['request_errors']=errors
                     checks=evaluate(dict(case,context=context),observation,peers,invalid_params=errors)
                     expected=[t for t,d in decisions.items() if manifest['corpus']+'/'+name in d['cases']]
                     record['checks']=cover_topics(checks,expected)
-                    record['assessment']='partial' if any(c['status']=='unassessed' for c in record['checks']) and checks else 'assessed' if checks else 'unassessed'
+                    scored=any(c['status']!='unassessed' for c in record['checks'])
+                    record['assessment']='unassessed' if not scored else 'partial' if any(c['status']=='unassessed' for c in record['checks']) else 'assessed'
                     if spec and observation.get('status')=='result' and case['request']['method'] in methods and not is_extension_request(case['request']):
                         schema=methods[case['request']['method']]['result']['schema']
                         errors=list(Draft201909Validator(schema).iter_errors(observation['response']['result']))
@@ -66,7 +67,7 @@ def generate(root, runs, output):
         'spec_commit': lock['commit'] if spec else None,
         'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json']},
         'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
-        'coverage': {status:sum(r.get('assessment')==status for r in records) for status in ['assessed','partial','unassessed']},
+        'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_') and r['eligible']) for status in ['assessed','partial','unassessed']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},
     })
     write(output/'checks.json',records)

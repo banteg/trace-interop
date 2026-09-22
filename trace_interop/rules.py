@@ -42,7 +42,7 @@ def evaluate(case, observation, peers, invalid_params=None):
             return checks
         if status in ['harness_error', 'transport_error']:
             return checks
-        if method == 'trace_rawTransaction' or embedded_error(response):
+        if method == 'trace_rawTransaction' or embedded_error(response) or status in ['malformed_json','invalid_envelope']:
             check('H25', status not in ['malformed_json', 'invalid_envelope'] and not embedded_error(response),
                   'Return one complete JSON-RPC response; never wrap an error envelope as a successful result.')
         if status in ['malformed_json', 'invalid_envelope']:
@@ -131,8 +131,12 @@ def evaluate(case, observation, peers, invalid_params=None):
                     funding=mapping(result[0]) if isinstance(result,list) and result else {}
                     funding_frames=sequence(funding.get('trace'))
                     funding_root=next((f for f in funding_frames if isinstance(f,dict) and f.get('traceAddress')==[]),{})
-                    check('H29', mapping(mapping(root).get('result')).get('address') == case['funded_creation_address']
-                          and 'error' not in funding_root and mapping(funding_root.get('action')).get('to') == case['funded_creation_address']
+                    target=case['funded_creation_address']
+                    created=mapping(mapping(root).get('result')).get('address')
+                    code_change=mapping(mapping(mapping(execution).get('stateDiff')).get(target)).get('code')
+                    installed=mapping(mapping(code_change).get('*')).get('to', mapping(code_change).get('+'))
+                    creation_verified=created == target if created is not None else installed == mapping(execution).get('output') and isinstance(installed,str)
+                    check('H29', creation_verified and 'error' not in funding_root and mapping(funding_root.get('action')).get('to') == case['funded_creation_address']
                           and mapping(funding_root.get('action')).get('value') == '0x1',
                           'The preceding simulated transfer funds the actual zero-value creation address with one wei.')
         else:
@@ -257,7 +261,7 @@ def evaluate(case, observation, peers, invalid_params=None):
               'Failed frames have an error string and an explicit object or null result.')
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
-    if revert_path is not None and frames:
+    if revert_path is not None and status == 'result':
         reverted = next((f for f in frames if f.get('traceAddress') == revert_path), None)
         value = mapping(mapping(reverted).get('result'))
         check('H09', reverted is not None and isinstance(reverted.get('error'), str)

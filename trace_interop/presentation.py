@@ -348,6 +348,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += '[checks.json](checks.json) retains every assertion; [comparisons.json](comparisons.json) groups exact responses; [assessment.json](assessment.json) pins the specification and assessment source hashes. Each case links its original response and run manifest.\n\n'
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'
     gaps = sorted({(r['client'],r['run'],r['corpus']) for r in records if not r['eligible']})
+    text += '## Assertion coverage\n\nCoverage below counts eligible trace observations, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
+    text += table(['Coverage', 'Observations'], [[status, sum(r.get('assessment')==status for r in records if r['eligible'] and r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
+    text += 'Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.\n\n'
     text += '## Setup gaps\n\n'
     text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+channel(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'
     text += '## Result-shape checks\n\nThese cases returned results that differ from the draft schema. The case pages retain the validation details; an unclassified schema failure is not silently counted as agreement.\n\n'

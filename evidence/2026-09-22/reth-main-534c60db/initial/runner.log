@@ -1,0 +1,43 @@
+Sep 22 18:16:26.890 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 22 18:16:26.957 INF building 1 clients...
+Sep 22 18:16:26.957 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=55f59663847ef277fdaf9e8fe36de9208ba36839611d46ba9ed7933775e51660
+Sep 22 18:16:48.969 INF building 1 simulators...
+Sep 22 18:16:48.969 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 22 18:16:49.462 INF creating output directory folder=/home/banteg/dev/trace-interop/runs/reth-main-534c60db/initial/hive
+Sep 22 18:16:49.472 INF running simulation: ethereum/rpc-compat
+Sep 22 18:16:49.775 INF hiveproxy started container=98db5ad6b01f addr=172.17.0.2:8081
+Sep 22 18:16:50.156 INF API: suite started suite=0 name=rpc-compat
+Sep 22 18:16:50.159 INF API: test started suite=0 test=1 name="client launch (reth_development)"
+Sep 22 18:16:53.721 INF API: client reth_development started suite=0 test=1 container=a1b3df8c
+Sep 22 18:16:53.737 INF API: test started suite=0 test=2 name="interop/_control/head (reth_development)"
+Sep 22 18:16:53.742 INF API: test ended suite=0 test=2 pass=false
+Sep 22 18:16:53.747 INF API: test started suite=0 test=3 name="interop/_control/version (reth_development)"
+Sep 22 18:16:53.749 INF API: test ended suite=0 test=3 pass=false
+Sep 22 18:16:53.750 INF API: test started suite=0 test=4 name="interop/replay-7702-stateDiff (reth_development)"
+Sep 22 18:16:53.761 INF API: test ended suite=0 test=4 pass=false
+Sep 22 18:16:53.762 INF API: test started suite=0 test=5 name="interop/replay-7702-trace (reth_development)"
+Sep 22 18:16:53.770 INF API: test ended suite=0 test=5 pass=false
+Sep 22 18:16:53.770 INF API: test started suite=0 test=6 name="interop/replay-7702-vmTrace (reth_development)"
+Sep 22 18:16:53.779 INF API: test ended suite=0 test=6 pass=false
+Sep 22 18:16:53.780 INF API: test started suite=0 test=7 name="interop/replay-revert-stateDiff (reth_development)"
+Sep 22 18:16:53.785 INF API: test ended suite=0 test=7 pass=false
+Sep 22 18:16:53.786 INF API: test started suite=0 test=8 name="interop/replay-revert-trace (reth_development)"
+Sep 22 18:16:53.792 INF API: test ended suite=0 test=8 pass=false
+Sep 22 18:16:53.792 INF API: test started suite=0 test=9 name="interop/replay-revert-vmTrace (reth_development)"
+Sep 22 18:16:53.801 INF API: test ended suite=0 test=9 pass=false
+Sep 22 18:16:53.802 INF API: test started suite=0 test=10 name="interop/replay-transfer-stateDiff (reth_development)"
+Sep 22 18:16:53.809 INF API: test ended suite=0 test=10 pass=false
+Sep 22 18:16:53.810 INF API: test started suite=0 test=11 name="interop/replay-transfer-trace (reth_development)"
+Sep 22 18:16:53.817 INF API: test ended suite=0 test=11 pass=false
+Sep 22 18:16:53.818 INF API: test started suite=0 test=12 name="interop/replay-transfer-vmTrace (reth_development)"
+Sep 22 18:16:53.824 INF API: test ended suite=0 test=12 pass=false
+Sep 22 18:16:53.825 INF API: test started suite=0 test=13 name="interop/replay-tree-stateDiff (reth_development)"
+Sep 22 18:16:53.835 INF API: test ended suite=0 test=13 pass=false
+Sep 22 18:16:53.836 INF API: test started suite=0 test=14 name="interop/replay-tree-trace (reth_development)"
+Sep 22 18:16:53.847 INF API: test ended suite=0 test=14 pass=false
+Sep 22 18:16:53.848 INF API: test started suite=0 test=15 name="interop/replay-tree-vmTrace (reth_development)"
+Sep 22 18:16:53.885 INF API: test ended suite=0 test=15 pass=false
+Sep 22 18:16:54.279 INF API: test ended suite=0 test=1 pass=true
+Sep 22 18:16:54.288 INF API: suite ended suite=0
+Sep 22 18:16:54.687 INF simulation ethereum/rpc-compat finished suites=1 tests=15 failed=14
+14 tests failed

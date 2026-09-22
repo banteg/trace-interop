@@ -4,7 +4,7 @@ Upstream changes arising from the trace comparison. Status checked **2026-09-22*
 A merged patch, a tested build and agreement with the proposed API are separate milestones.
 The [client reports](../reports/README.md) describe the behavior; this page tracks the work to change it.
 
-**15 pending · 4 merged**
+**17 pending · 8 merged**
 
 ## Pending
 
@@ -31,12 +31,14 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve `trace_get` failures and guard position bounds | Six regressions reproduce lost lookup/state errors or invalid array indexes across the regular and trace-store paths. All 81 trace RPC tests and 24 trace-store tests pass. Existing successful position semantics are preserved; tree-path agreement remains separate. |
 | [Nethermind #13677](https://github.com/NethermindEth/nethermind/pull/13677) | Reject incomplete `trace_filter` queries when history is unavailable | Six regressions reproduce successful empty or partial results with missing state at either end of a range or its initial parent, in both response modes. Preflight now returns the existing error before replay. All 81 trace RPC tests pass. |
 
-### Reth / revm-inspectors
+### Reth / Alloy / revm-inspectors
 
 | PR | Fix | Evidence and next step |
 | --- | --- | --- |
+| [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return `null` for a missing replay transaction ([H06](../reports/decisions/H06.md)) | Open; no rerun until merged into Reth's development branch (`main`). Execution failures still return errors. |
+| [Reth #27366](https://github.com/paradigmxyz/reth/pull/27366) | Select `trace_get` results by tree path ([H02](../reports/decisions/H02.md)) | Open; no rerun until merged into `main`. This is a proposed contract change, not evidence of cross-client agreement. |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay | The PR has native block/individual replay regression tests. Obtain review and rerun the affected cases after merge. Related to [H19](../reports/decisions/H19.md), but it does not by itself establish a fix for the separate creation-initcode case. |
-| [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode, including constructor initcode ([H19](../reports/decisions/H19.md)) | The existing PR covers creation and delegated/executing bytecode with native tests. Follow its review rather than submit a duplicate. This is separate from Reth #27213 above. |
+| [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode, including constructor initcode ([H19](../reports/decisions/H19.md)) | The existing PR covers creation and delegated/executing bytecode with native tests. Resolve the current merge conflict and follow review rather than submit a duplicate. This is separate from Reth #27213 above. |
 
 ## Merged
 
@@ -46,13 +48,25 @@ The [client reports](../reports/README.md) describe the behavior; this page trac
 | --- | --- | --- | --- |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes ([H20](../reports/decisions/H20.md)) | 2026-09-14 | The [MCOPY case](../reports/cases/a/call-mcopy.md) agrees on the tested development build but differs on release 3.6.1. Retest a release containing the fix before marking release verification complete. |
 
-### Reth / revm-inspectors
+### Reth / Alloy / revm-inspectors
 
 | PR | Fix | Merged (UTC) | Verification remaining |
 | --- | --- | --- | --- |
+| [Reth #27365](https://github.com/paradigmxyz/reth/pull/27365) | Include `transactionHash` in individual replay results ([H07](../reports/decisions/H07.md)) | 2026-09-22 | Verified on `main@534c60db9d`: all 12 individual replay cases return the requested hash. [Results and evidence](../evidence/2026-09-22/reth-main-534c60db/README.md). Release verification remains. |
+| [Reth #27367](https://github.com/paradigmxyz/reth/pull/27367) | Classify pruned changeset errors as unavailable history ([H06](../reports/decisions/H06.md)) | 2026-09-22 | Verified on `main@534c60db9d`: old-state nonce access returns `4444`, but all four historical trace methods still return `-32603` through the blockhash system-call wrapper. [Partial result and evidence](../evidence/2026-09-22/reth-main-534c60db/README.md). H06 remains open. |
+| [Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216) | Default address filtering to AND; retain explicit union ([H03](../reports/decisions/H03.md)) | 2026-09-22 | Awaiting Reth dependency uptake. `main@534c60db9d` locks `alloy-rpc-types-trace 2.4.2`, which predates the fix; no rerun. This implements a proposed contract choice, not group consensus. |
+| [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent reward transaction fields as explicit `null` | 2026-09-22 | Awaiting Reth dependency uptake. The locked Alloy 2.4.2 does not contain this fix; no rerun. |
 | [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete VM execution deltas ([H20](../reports/decisions/H20.md)) | 2026-09-14 | The selected [MCOPY checks](../reports/cases/a/call-mcopy.md) agree in both tested Reth builds. That check does not establish coverage of every delta handled by the patch. |
-| [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Include EIP-7702 code changes in stateDiff ([H18](../reports/decisions/H18.md)) | 2026-09-15 | Upstream already fixed this. Our pinned Reth builds use an older library revision; rerun with the fix before updating the observed result. |
-| [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) | Report pre-Cancun selfdestruct deletions ([H26](../reports/decisions/H26.md)) | 2026-09-15 | Upstream already fixed this. Dependency uptake and a fresh matrix run remain to be verified. |
+| [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Include EIP-7702 code changes in stateDiff ([H18](../reports/decisions/H18.md)) | 2026-09-15 | `main@534c60db9d` still locks `revm-inspectors 0.43.0`, which predates this fix. No rerun until dependency uptake; the pinned observations remain unchanged. |
+| [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) | Report pre-Cancun selfdestruct deletions ([H26](../reports/decisions/H26.md)) | 2026-09-15 | `main@534c60db9d` still locks `revm-inspectors 0.43.0`, which predates this fix. No rerun until dependency uptake. |
+
+## Development verification
+
+Matthias Seitz opened the six Reth/Alloy proposals above. Four have merged: two in
+Reth and two in Alloy. Reth's locked Alloy version does not yet contain those changes.
+Only the two fixes already included in Reth `main` were rerun; see the
+[replay and pruning results](../evidence/2026-09-22/reth-main-534c60db/README.md).
+No dependency overrides or unmerged PR branches were tested.
 
 ## Related work
 
@@ -73,8 +87,8 @@ separate upstream bases. They have not yet been built into a fresh cross-client 
 The reports and frozen captures continue to describe their pinned builds, not the proposed patches.
 
 Tree-path lookup, filter composition, signed nonce admission and precompile inclusion remain
-[contract decisions](../decisions/README.md). A patch to one of those needs an agreed behavior
-and compatibility plan; it should not be filed as a routine compliance fix.
+[contract decisions](../decisions/README.md). The tree-path and filter-default proposals above are now being implemented by Reth/Alloy;
+client patches do not settle the cross-client decision or compatibility plan.
 
 ## Keeping this current
 

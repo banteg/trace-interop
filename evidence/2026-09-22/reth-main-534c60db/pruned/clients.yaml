@@ -1,0 +1,10 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "55f59663847ef277fdaf9e8fe36de9208ba36839611d46ba9ed7933775e51660"
+    },
+    "client": "reth",
+    "nametag": "development"
+  }
+]

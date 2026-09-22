@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "eligible": {
+    "reth_development": true
+  },
+  "exchange_count": 14,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:<nil> status:SYNCING validationError:<nil>]]\n",
+      "name": "client launch (reth_development)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "reth_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "reth_development": "Reth Version: 2.5.2+534c60db"
+  }
+}

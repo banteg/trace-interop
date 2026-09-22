@@ -1,0 +1,210 @@
+[
+  {
+    "case": "replay-tree-trace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-tree-stateDiff",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-tree-vmTrace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-revert-trace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-revert-stateDiff",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-revert-vmTrace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-7702-trace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-7702-stateDiff",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-7702-vmTrace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-transfer-trace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-transfer-stateDiff",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "replay-transfer-vmTrace",
+    "corpus": "initial",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Individual replay includes its transactionHash.",
+        "status": "matches",
+        "topic": "H07"
+      }
+    ]
+  },
+  {
+    "case": "old-transaction",
+    "corpus": "pruned",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Unavailable historical state uses the proposed pruned-history error (4444).",
+        "status": "change_needed",
+        "topic": "H06"
+      }
+    ]
+  },
+  {
+    "case": "old-replay",
+    "corpus": "pruned",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Unavailable historical state uses the proposed pruned-history error (4444).",
+        "status": "change_needed",
+        "topic": "H06"
+      }
+    ]
+  },
+  {
+    "case": "old-block",
+    "corpus": "pruned",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Unavailable historical state uses the proposed pruned-history error (4444).",
+        "status": "change_needed",
+        "topic": "H06"
+      }
+    ]
+  },
+  {
+    "case": "old-filter",
+    "corpus": "pruned",
+    "eligible": true,
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Unavailable historical state uses the proposed pruned-history error (4444).",
+        "status": "change_needed",
+        "topic": "H06"
+      }
+    ]
+  }
+]

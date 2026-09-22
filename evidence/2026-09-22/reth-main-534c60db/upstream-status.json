@@ -1,0 +1,287 @@
+{
+  "reth_main": "534c60db9d4be32d349e5b31456416ecb4b4dbee",
+  "pull_requests": [
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13665,
+      "state": "OPEN",
+      "title": "fix(tracing): retain output in state-only Parity traces",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13665",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13666,
+      "state": "OPEN",
+      "title": "fix(rpc): preserve error responses for streamed traces",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13666",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13667,
+      "state": "OPEN",
+      "title": "fix(rpc): accept empty Parity trace selections",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13667",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13668,
+      "state": "OPEN",
+      "title": "fix(tracing): serialize deleted account fields with deletion markers",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13668",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13676,
+      "state": "OPEN",
+      "title": "fix(rpc): preserve trace_get errors and bound positions",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13676",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "master",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 13677,
+      "state": "OPEN",
+      "title": "fix(rpc): reject trace filters with unavailable history",
+      "url": "https://github.com/NethermindEth/nethermind/pull/13677",
+      "repository": "NethermindEth/nethermind"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "cc7adc0d2acb2276be3e8ae084b322d004a6e556"
+      },
+      "mergedAt": "2026-09-22T13:33:37Z",
+      "number": 4216,
+      "state": "MERGED",
+      "title": "fix(rpc-types-trace): default address filters to intersection",
+      "url": "https://github.com/alloy-rs/alloy/pull/4216",
+      "repository": "alloy-rs/alloy"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "aa4f896fd6cb987a624505cee40c278fe4a751d8"
+      },
+      "mergedAt": "2026-09-22T13:33:48Z",
+      "number": 4218,
+      "state": "MERGED",
+      "title": "fix(rpc-types-trace): serialize absent transaction fields as null",
+      "url": "https://github.com/alloy-rs/alloy/pull/4218",
+      "repository": "alloy-rs/alloy"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11286,
+      "state": "OPEN",
+      "title": "fix(rpc): include MCOPY memory updates in vmTrace",
+      "url": "https://github.com/besu-eth/besu/pull/11286",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11345,
+      "state": "OPEN",
+      "title": "fix(rpc): keep Parity trace failures local to their call frame",
+      "url": "https://github.com/besu-eth/besu/pull/11345",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11346,
+      "state": "OPEN",
+      "title": "fix(rpc): retain precompile output in Parity call frames",
+      "url": "https://github.com/besu-eth/besu/pull/11346",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11347,
+      "state": "OPEN",
+      "title": "fix(tracing): retain root precompile halt reasons",
+      "url": "https://github.com/besu-eth/besu/pull/11347",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11350,
+      "state": "OPEN",
+      "title": "fix(tracing): avoid attributing parent return memory to calls",
+      "url": "https://github.com/besu-eth/besu/pull/11350",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11352,
+      "state": "OPEN",
+      "title": "fix(tracing): retain VM frame positions across omitted opcodes",
+      "url": "https://github.com/besu-eth/besu/pull/11352",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 11353,
+      "state": "OPEN",
+      "title": "fix(tracing): omit root out-of-gas execution effects",
+      "url": "https://github.com/besu-eth/besu/pull/11353",
+      "repository": "besu-eth/besu"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "94aae64c4fbe387fc8ec53bef590bb5f2fe1e168"
+      },
+      "mergedAt": "2026-09-14T02:40:05Z",
+      "number": 23952,
+      "state": "MERGED",
+      "title": "fix(rpc): include MCOPY memory writes in vmTrace",
+      "url": "https://github.com/erigontech/erigon/pull/23952",
+      "repository": "erigontech/erigon"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 27213,
+      "state": "OPEN",
+      "title": "fix(rpc): populate VM bytecode in block replay traces",
+      "url": "https://github.com/paradigmxyz/reth/pull/27213",
+      "repository": "paradigmxyz/reth"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 27364,
+      "state": "OPEN",
+      "title": "fix(rpc): return null for missing transaction replays",
+      "url": "https://github.com/paradigmxyz/reth/pull/27364",
+      "repository": "paradigmxyz/reth"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "3dd806a43352cdcf975f26e3399aa21f09e6c784"
+      },
+      "mergedAt": "2026-09-22T13:51:47Z",
+      "number": 27365,
+      "state": "MERGED",
+      "title": "fix(rpc): include transaction hash in individual replays",
+      "url": "https://github.com/paradigmxyz/reth/pull/27365",
+      "repository": "paradigmxyz/reth"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 27366,
+      "state": "OPEN",
+      "title": "fix(rpc): select trace_get results by tree path",
+      "url": "https://github.com/paradigmxyz/reth/pull/27366",
+      "repository": "paradigmxyz/reth"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "534c60db9d4be32d349e5b31456416ecb4b4dbee"
+      },
+      "mergedAt": "2026-09-22T14:07:17Z",
+      "number": 27367,
+      "state": "MERGED",
+      "title": "fix(rpc): classify pruned changeset errors as unavailable history",
+      "url": "https://github.com/paradigmxyz/reth/pull/27367",
+      "repository": "paradigmxyz/reth"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "19746b981132035fdfb7ca89c3faab6258104a18"
+      },
+      "mergedAt": "2026-09-14T13:58:57Z",
+      "number": 504,
+      "state": "MERGED",
+      "title": "fix(tracing): record complete Parity VM execution deltas",
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/504",
+      "repository": "paradigmxyz/revm-inspectors"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "0d7549cc47aaf7be230b638c4e8ff5c8cc60087d"
+      },
+      "mergedAt": "2026-09-15T23:34:29Z",
+      "number": 509,
+      "state": "MERGED",
+      "title": "fix(parity): report EIP-7702 code changes in state diffs",
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509",
+      "repository": "paradigmxyz/revm-inspectors"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": {
+        "oid": "898b161eafe9daf02785b90037e820ae2b68b3db"
+      },
+      "mergedAt": "2026-09-15T23:44:41Z",
+      "number": 510,
+      "state": "MERGED",
+      "title": "fix(parity): report selfdestructed account deletions",
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510",
+      "repository": "paradigmxyz/revm-inspectors"
+    },
+    {
+      "baseRefName": "main",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 511,
+      "state": "OPEN",
+      "title": "fix(parity): record executed bytecode in VM traces",
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",
+      "repository": "paradigmxyz/revm-inspectors"
+    }
+  ],
+  "dependencies": {
+    "alloy-rpc-types-trace": {
+      "version": "2.4.2",
+      "release_commit": "07869ce43bdae623d89e7671622319c8731bb9fd",
+      "contains_4216": false,
+      "contains_4218": false
+    },
+    "revm-inspectors": {
+      "version": "0.43.0",
+      "release_commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "contains_509": false,
+      "contains_510": false
+    }
+  },
+  "cargo_lock_sha256": "0b4a6d4c834f3a4f7a150cfd42d729ff43588487197f46793ea8d323c12d0022",
+  "checked_on": "2026-09-22"
+}

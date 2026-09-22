@@ -1,0 +1,39 @@
+Sep 22 18:16:54.895 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 22 18:16:54.951 INF building 1 clients...
+Sep 22 18:16:54.952 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=55f59663847ef277fdaf9e8fe36de9208ba36839611d46ba9ed7933775e51660
+Sep 22 18:16:57.530 INF building 1 simulators...
+Sep 22 18:16:57.530 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 22 18:16:57.609 INF creating output directory folder=/home/banteg/dev/trace-interop/runs/reth-main-534c60db/pruned/hive
+Sep 22 18:16:57.619 INF running simulation: ethereum/rpc-compat
+Sep 22 18:16:57.928 INF hiveproxy started container=2c4091595d1d addr=172.17.0.2:8081
+Sep 22 18:16:58.261 INF API: suite started suite=0 name=rpc-compat
+Sep 22 18:16:58.263 INF API: test started suite=0 test=1 name="client launch (reth_development)"
+Sep 22 18:17:02.515 INF API: client reth_development started suite=0 test=1 container=6012851d
+Sep 22 18:17:02.531 INF API: test started suite=0 test=2 name="interop/_control/head (reth_development)"
+Sep 22 18:17:02.538 INF API: test ended suite=0 test=2 pass=false
+Sep 22 18:17:02.539 INF API: test started suite=0 test=3 name="interop/_control/version (reth_development)"
+Sep 22 18:17:02.541 INF API: test ended suite=0 test=3 pass=false
+Sep 22 18:17:02.542 INF API: test started suite=0 test=4 name="interop/control-head (reth_development)"
+Sep 22 18:17:02.546 INF API: test ended suite=0 test=4 pass=false
+Sep 22 18:17:02.547 INF API: test started suite=0 test=5 name="interop/latest-call (reth_development)"
+Sep 22 18:17:02.552 INF API: test ended suite=0 test=5 pass=false
+Sep 22 18:17:02.553 INF API: test started suite=0 test=6 name="interop/latest-nonce (reth_development)"
+Sep 22 18:17:02.556 INF API: test ended suite=0 test=6 pass=false
+Sep 22 18:17:02.558 INF API: test started suite=0 test=7 name="interop/old-block (reth_development)"
+Sep 22 18:17:02.562 INF API: test ended suite=0 test=7 pass=false
+Sep 22 18:17:02.563 INF API: test started suite=0 test=8 name="interop/old-filter (reth_development)"
+Sep 22 18:17:02.566 INF API: test ended suite=0 test=8 pass=false
+Sep 22 18:17:02.567 INF API: test started suite=0 test=9 name="interop/old-header (reth_development)"
+Sep 22 18:17:02.571 INF API: test ended suite=0 test=9 pass=false
+Sep 22 18:17:02.572 INF API: test started suite=0 test=10 name="interop/old-nonce (reth_development)"
+Sep 22 18:17:02.574 INF API: test ended suite=0 test=10 pass=false
+Sep 22 18:17:02.575 INF API: test started suite=0 test=11 name="interop/old-receipt (reth_development)"
+Sep 22 18:17:02.581 INF API: test ended suite=0 test=11 pass=false
+Sep 22 18:17:02.581 INF API: test started suite=0 test=12 name="interop/old-replay (reth_development)"
+Sep 22 18:17:02.585 INF API: test ended suite=0 test=12 pass=false
+Sep 22 18:17:02.586 INF API: test started suite=0 test=13 name="interop/old-transaction (reth_development)"
+Sep 22 18:17:02.592 INF API: test ended suite=0 test=13 pass=false
+Sep 22 18:17:03.004 INF API: test ended suite=0 test=1 pass=true
+Sep 22 18:17:03.012 INF API: suite ended suite=0
+Sep 22 18:17:03.382 INF simulation ethereum/rpc-compat finished suites=1 tests=13 failed=12
+12 tests failed

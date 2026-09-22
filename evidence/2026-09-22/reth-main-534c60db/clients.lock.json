@@ -1,0 +1,33 @@
+{
+  "resolved_at": "2026-09-22T14:16:25.493910+00:00",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "clients": {
+    "reth_development": {
+      "client": "reth",
+      "requested": "paradigmxyz/reth:main@534c60db9d4be32d349e5b31456416ecb4b4dbee",
+      "local_image": "trace-interop/reth-source:534c60db9d",
+      "image_id": "sha256:55f59663847ef277fdaf9e8fe36de9208ba36839611d46ba9ed7933775e51660",
+      "architecture": "amd64",
+      "source": {
+        "repository": "https://github.com/paradigmxyz/reth",
+        "commit": "534c60db9d4be32d349e5b31456416ecb4b4dbee",
+        "dirty": false,
+        "archive_sha256": "459a39415736635c5071fa939be9e899dc845e8cd5a7bee85376e2a5cc6111a2"
+      },
+      "build": {
+        "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+        "command": "cargo build --locked --bin reth --no-default-features",
+        "environment": {
+          "CARGO_PROFILE_DEV_DEBUG": "0",
+          "CARGO_BUILD_JOBS": "12",
+          "VERGEN_GIT_SHA": "534c60db9d4be32d349e5b31456416ecb4b4dbee",
+          "VERGEN_GIT_DESCRIBE": "534c60db9d",
+          "VERGEN_GIT_DIRTY": "false"
+        },
+        "binary_sha256": "91e2953150b11835f29fdad1ab21fdadb3675174dd89bf1b13f458d4d0524c30",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY reth /usr/local/bin/reth\nENTRYPOINT [\"/usr/local/bin/reth\"]\n",
+        "runtime_version": "Reth Version: 2.5.2\nCommit SHA: 534c60db9d4be32d349e5b31456416ecb4b4dbee\nBuild Timestamp: 2026-09-22T14:15:34.448629194Z\nBuild Features:\nBuild Profile: debug\n"
+      }
+    }
+  }
+}

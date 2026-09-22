@@ -1,0 +1,277 @@
+{
+  "clients": {
+    "reth_development": {
+      "architecture": "amd64",
+      "build": {
+        "binary_sha256": "91e2953150b11835f29fdad1ab21fdadb3675174dd89bf1b13f458d4d0524c30",
+        "command": "cargo build --locked --bin reth --no-default-features",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY reth /usr/local/bin/reth\nENTRYPOINT [\"/usr/local/bin/reth\"]\n",
+        "environment": {
+          "CARGO_BUILD_JOBS": "12",
+          "CARGO_PROFILE_DEV_DEBUG": "0",
+          "VERGEN_GIT_DESCRIBE": "534c60db9d",
+          "VERGEN_GIT_DIRTY": "false",
+          "VERGEN_GIT_SHA": "534c60db9d4be32d349e5b31456416ecb4b4dbee"
+        },
+        "runtime_version": "Reth Version: 2.5.2\nCommit SHA: 534c60db9d4be32d349e5b31456416ecb4b4dbee\nBuild Timestamp: 2026-09-22T14:15:34.448629194Z\nBuild Features:\nBuild Profile: debug\n",
+        "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)"
+      },
+      "client": "reth",
+      "image_id": "sha256:55f59663847ef277fdaf9e8fe36de9208ba36839611d46ba9ed7933775e51660",
+      "local_image": "trace-interop/reth-source:534c60db9d",
+      "requested": "paradigmxyz/reth:main@534c60db9d4be32d349e5b31456416ecb4b4dbee",
+      "source": {
+        "archive_sha256": "459a39415736635c5071fa939be9e899dc845e8cd5a7bee85376e2a5cc6111a2",
+        "commit": "534c60db9d4be32d349e5b31456416ecb4b4dbee",
+        "dirty": false,
+        "repository": "https://github.com/paradigmxyz/reth"
+      }
+    }
+  },
+  "corpus": "initial",
+  "finished_at": "2026-09-22T14:16:54.689004+00:00",
+  "fixture_manifest_sha256": "dbe4fb6b77404a6f32d9965762dea1b24d3db80804833c76a917879609036943",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x49efb89bc8d0142ac4ad09280950583c3050ee48988e66772dded8aba7087bc9",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "73735657cdcb54af87319f2a5c3d16c2e36eeb64f46429a0ee0397d2b466efae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    }
+  ],
+  "source_commit": "f34628780cee911b0dbc285321a0c332249bc803",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "f26e2468b3e5409e777deb137254c2954ce70bc7",
+    "generated_sha256": "c0975b48c7156d5b4b3906d557491a0997e321faee20124e486451394677e956",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-22T14:16:26.836194+00:00"
+}

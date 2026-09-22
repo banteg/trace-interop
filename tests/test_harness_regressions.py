@@ -41,6 +41,24 @@ class SetupRegressions(unittest.TestCase):
         observations['_control/head'] = {'c': {'status': 'invalid_envelope', 'response': {'result': {'baseFeePerGas': corpus['base_fee']}}}}
         self.assertFalse(verify_state('raw-validation', corpus, observations, 'c')[0])
 
+    def test_case_selector_keeps_setup_controls(self):
+        from trace_interop.cli import selected_cases
+        for corpus_name, probe in [('a','call-mcopy'), ('raw-validation','raw-validation-valid-all'), ('precompile-values','nested-call-outer0-value1-success')]:
+            corpus = read(ROOT/f'fixtures/corpora/{corpus_name}.json')
+            names = {c['name'] for c in selected_cases(corpus,'^'+probe+'$')}
+            controls = {c['name'] for c in corpus['cases'] if c['name'].startswith(('control-','_control/')) or c.get('expected_control') is not None}
+            self.assertTrue(controls <= names)
+            self.assertIn(probe,names)
+
+    def test_non_object_control_envelopes_block_setup_without_crashing(self):
+        from trace_interop.scenarios import verify_setup
+        manifest = read(ROOT/'evidence/2026-09-23/geth-40eecf3-initial/manifest.json')
+        corpus = read(ROOT/'fixtures/corpora/initial.json')
+        request = next(c['request'] for c in manifest['selected_cases'] if c['name']=='_control/head')
+        for response in [[], None, 3, 'bad']:
+            observation = parse_exchange('>> '+json.dumps(request)+'\n<< '+json.dumps(response),request)
+            self.assertFalse(verify_setup(manifest,corpus,{'_control/head':{'c':observation}},'c')[0])
+
     def test_collector_requires_canonical_head_and_valid_controls(self):
         head = read(ROOT/'fixtures/chains/a/headblock.json')
         corpus = read(ROOT/'fixtures/corpora/a.json')
@@ -119,6 +137,11 @@ class SemanticRegressions(unittest.TestCase):
             else:
                 o['response']['result'][key]['ops'] = []
             self.assert_rejected(c, o, p, 'H13')
+
+    def test_out_of_gas_cannot_fabricate_marker_storage(self):
+        c,o,p = captured('2026-09-23/raw-validation-native','raw-validation-execution-oog-valid-all','reth_release')
+        o['response']['result']['stateDiff'][c['marker']] = {'storage':{'0x'+'0'*64:{'+':'0x'+f'{42:064x}'}}}
+        self.assert_rejected(c,o,p,'H13')
 
     def test_original_positive_controls_still_match(self):
         for run,name,client,topic in [

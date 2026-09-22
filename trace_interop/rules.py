@@ -270,7 +270,11 @@ def evaluate(case, observation, peers, invalid_params=None):
         if 'stateDiff' in modes:
             diff = mapping(result).get('stateDiff')
             check('H13', isinstance(diff, dict) and bool(diff), 'Requested stateDiff records the signed execution state changes.')
-            if not case.get('expected_execution_error'):
+            if case.get('expected_execution_error'):
+                marker = mapping(diff).get(case['marker'].lower())
+                check('H13', marker is None or isinstance(marker, dict) and marker.get('storage', {}) == {},
+                      'The first-opcode out-of-gas control cannot commit a marker storage write.')
+            else:
                 if 'signed_create_address' in case:
                     account = mapping(mapping(diff).get(case['signed_create_address'].lower()))
                     code = mapping(account.get('code'))

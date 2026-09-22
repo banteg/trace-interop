@@ -175,7 +175,8 @@ def verify_setup(manifest, corpus, observations, client):
     for name, block in [('_control/head', head.get('number')), ('_control/latest', 'latest')]:
         request = requests.get(name, {})
         observation = observations.get(name, {}).get(client, {})
-        actual = observation.get('response', {}).get('result')
+        response = observation.get('response')
+        actual = response.get('result') if isinstance(response, dict) else None
         if (request.get('method') != 'eth_getBlockByNumber' or request.get('params') != [block, False]
                 or observation.get('status') != 'result' or not isinstance(actual, dict)
                 or not all(key in head and actual.get(key) == head[key]

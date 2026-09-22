@@ -34,6 +34,14 @@ class DecisionStatusTests(unittest.TestCase):
             self.assertEqual(self.label(records), '🤝 Converged')
         self.assertEqual(self.label(self.records[1:]), '🤝 Converged')
 
+    def test_build_provenance_is_required(self):
+        for change in [{'build_id':None}, {'captured_at':None}, {'captured_at':'bad'}, {'captured_at':'2026-09-23'}]:
+            records = copy.deepcopy(self.records); records[0].update(change)
+            self.assertEqual(self.label(records),'🤝 Converged')
+        records = copy.deepcopy(self.records)
+        records.append(dict(records[0],build_id='ambiguous-build'))
+        self.assertEqual(self.label(records),'🤝 Converged')
+
     def test_missing_declared_case_and_empty_scope_block_harmonization(self):
         self.decision['cases'].append('a/uncaptured')
         self.assertEqual(self.label(), '🤝 Converged')

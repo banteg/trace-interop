@@ -150,7 +150,7 @@ def execute(args):
         cases = corpus['cases']  # Canonical transitions require all three phases.
     elif any(c['request']['method'] in ['trace_filter', 'trace_get'] for c in cases):
         names_selected = {c['name'] for c in cases}
-        cases += [c for c in corpus['cases'] if c['name'] not in names_selected and (c['name'] in ['transaction-tree', 'block-tree'] or c['name'].startswith('block-'))]
+        cases += [c for c in corpus['cases'] if c['name'] not in names_selected and (c['request']['method'] == 'trace_transaction' or c['name'] == 'block-tree' or c['name'].startswith('block-'))]
     chain = ROOT / 'fixtures/chains' / CHAINS[args.corpus]
     head = read(chain / 'headblock.json')
     cases = [{'name': '_control/head', 'request': {'jsonrpc': '2.0', 'id': 1,

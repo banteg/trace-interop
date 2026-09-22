@@ -1,0 +1,61 @@
+{
+  "client": "Nethermind",
+  "sdk": "10.0.300",
+  "crossClientMatrix": "not rerun; PR follow-ups are not merged upstream",
+  "results": [
+    {
+      "pr": "https://github.com/NethermindEth/nethermind/pull/13665",
+      "before": "4e793e84bdcac3dd490858c6f59f639771b042c1",
+      "after": "d2064e46b0ae8dcec329e8a6b39228e9a0c631c5",
+      "newRegressionsFailingBefore": 13,
+      "suites": [
+        {
+          "name": "TraceRpcModuleTests and Parity",
+          "passed": 123,
+          "skipped": 1
+        },
+        {
+          "name": "TraceStoreRpcModuleTests",
+          "passed": 21,
+          "skipped": 0
+        }
+      ],
+      "failed": 0,
+      "whitespace": "passed"
+    },
+    {
+      "pr": "https://github.com/NethermindEth/nethermind/pull/13666",
+      "before": "281f262e431e3677a891588045ef34911a1f6cfc",
+      "after": "8d6958e48127c8846469c3c7fa9ce8c030b69b6e",
+      "newRegressionsFailingBefore": 7,
+      "suites": [
+        {
+          "name": "JsonRpcResponseWriterStreamingIdTests, JsonRpcServiceTests and Eth_get_logs",
+          "passed": 188,
+          "skipped": 0
+        }
+      ],
+      "failed": 0,
+      "whitespace": "passed"
+    },
+    {
+      "pr": "https://github.com/NethermindEth/nethermind/pull/13667",
+      "before": "a6817b865827d5a6c57ffe0bec19ea97b452ff96",
+      "after": "eae879f79987eaf96c78236174fb655343574234",
+      "suites": [
+        {
+          "name": "TraceRpcModuleTests and Parity",
+          "passed": 129,
+          "skipped": 1
+        },
+        {
+          "name": "TraceStoreRpcModuleTests",
+          "passed": 25,
+          "skipped": 0
+        }
+      ],
+      "failed": 0,
+      "whitespace": "passed"
+    }
+  ]
+}

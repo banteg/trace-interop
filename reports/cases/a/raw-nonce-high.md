@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · a · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject a signed transaction that fails execution validity at the selected state before EVM execution. Proposed transaction-validation error code: -32003 (Transaction rejected). Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Reject a signed transaction that fails execution validity at the selected state before EVM execution. Proposed transaction-validation error code: -32003 (Transaction rejected).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -11,7 +11,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-23/geth-40eecf3-a/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-a/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | RPC error `-32000` | Differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
@@ -34,10 +34,6 @@
   ]
 }
 ```
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
-
-- [H13](../../decisions/H13.md): Proposed transaction-validation error code: -32003 (Transaction rejected). Error-code alignment is separate from whether validation occurred; current clients also use -32000.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
@@ -72,5 +68,9 @@
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution. Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+
+- [H13](../../decisions/H13.md): Proposed transaction-validation error code: -32003 (Transaction rejected). Error-code alignment is separate from whether validation occurred; current clients also use -32000.
 
 </details>

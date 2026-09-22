@@ -1,76 +1,6 @@
 [
   {
     "complete": true,
-    "corpus": "a",
-    "digest": "b507f3e1c7cbeeae6c573cd8622c2ad55367b474f50489822fbea4bdea7d19c2",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-a/manifest.json",
-    "name": "geth-e29edff-a",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "fork-followup",
-    "digest": "4826d55085c46bb29bdf1a1442f58e58883b6316ab5a19a56fbb3b429a91969b",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-fork-followup/manifest.json",
-    "name": "geth-e29edff-fork-followup",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "forks",
-    "digest": "a7a9c42c6ab1fa9097e27b68fd6d51bff4ba9774c1aa48728c283df359b63f88",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-forks/manifest.json",
-    "name": "geth-e29edff-forks",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "initial",
-    "digest": "ce0a179a006163320c3f7c5fa8f9e28f5a06900e0947efbe9c3f6da5f7c24f83",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-initial/manifest.json",
-    "name": "geth-e29edff-initial",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "precompiles",
-    "digest": "d837aee3f0c37883381f30fc1e8d4f86550a0f985d877eeb29d368864b2158b0",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-precompiles/manifest.json",
-    "name": "geth-e29edff-precompiles",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "reorg-safe",
-    "digest": "5c650d6f063cebb33bc54f2d7ffaa7887ef604e4e679eddeb23344039ef34f36",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-reorg-safe/manifest.json",
-    "name": "geth-e29edff-reorg-safe",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "repeat",
-    "digest": "725c69820c5e7a0bd72f2c6cd32c6f0cac463ffb3274bb3a105638264ff4282a",
-    "manifest": "../evidence/2026-09-21/geth-e29edff-repeat/manifest.json",
-    "name": "geth-e29edff-repeat",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
     "corpus": "precompiles",
     "digest": "aeec010ea0b8f97b530d0146c5909a28f668aff1a0c8d205d37de4cfebbfbff9",
     "manifest": "../evidence/2026-09-21/precompiles-final/manifest.json",
@@ -250,6 +180,86 @@
   {
     "complete": true,
     "corpus": "a",
+    "digest": "5276cdb6df73cd399a0e5239cb1c6e52d7527e0a5d2fff72480acb471c5205f6",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-a/manifest.json",
+    "name": "geth-40eecf3-a",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "fork-followup",
+    "digest": "7d7f6098219d8aa651dafa8a998c4bc3c02cf9f2db26210438e00d82c6bab01e",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-fork-followup/manifest.json",
+    "name": "geth-40eecf3-fork-followup",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "forks",
+    "digest": "4c02c68c13c9b9568d6d808d16cb6deb857f8614453ccac4b367743675377ec4",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-forks/manifest.json",
+    "name": "geth-40eecf3-forks",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "initial",
+    "digest": "cf64f15e53ac7243cfd07df05c0790932a8e1a5a05d1b6b12c00fa7078a2254a",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-initial/manifest.json",
+    "name": "geth-40eecf3-initial",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "precompile-values",
+    "digest": "ffaef7a7ccd37602dd955a4c251e86e716e82eeb347419ad084c58b2db3cea96",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-precompile-values/manifest.json",
+    "name": "geth-40eecf3-precompile-values",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "precompiles",
+    "digest": "292341d01bbc19bed675c86072f8cb03b9ad78a7d4203c9343e68b4db2b59ffc",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-precompiles/manifest.json",
+    "name": "geth-40eecf3-precompiles",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "reorg-safe",
+    "digest": "9a16aa036fee559018a3edee9a529adead6c05afe94e157010a62a30e2a233fc",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-reorg-safe/manifest.json",
+    "name": "geth-40eecf3-reorg-safe",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "repeat",
+    "digest": "a19895d3ea578014bbf319ff08c286f0a90f5b43334249bcee56f2839279f132",
+    "manifest": "../evidence/2026-09-23/geth-40eecf3-repeat/manifest.json",
+    "name": "geth-40eecf3-repeat",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "a",
     "digest": "68c9842da9eed6fa4004fe20e32f33e48ba76cc91132b65197089cd0b1b92f3a",
     "manifest": "../evidence/2026-09-23/h03-modes-a/manifest.json",
     "name": "h03-modes-a",
@@ -262,26 +272,6 @@
       "nethermind_release": "1.39.3+28cbe2a0",
       "reth_development": "Reth Version: 2.5.2+03cb186c",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "a",
-    "digest": "d878315451e62400bc417088f064696a584d85b066d253f492748ba1ec9ab5d0",
-    "manifest": "../evidence/2026-09-23/h03-modes-geth-a/manifest.json",
-    "name": "h03-modes-geth-a",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "initial",
-    "digest": "ee9e7ce25321b18eb9e6b7feb481a2b2288b907662907d2ee7449b94a27f01a1",
-    "manifest": "../evidence/2026-09-23/h03-modes-geth-initial/manifest.json",
-    "name": "h03-modes-geth-initial",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
     }
   },
   {
@@ -299,16 +289,6 @@
       "nethermind_release": "1.39.3+28cbe2a0",
       "reth_development": "Reth Version: 2.5.2+03cb186c",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
-    }
-  },
-  {
-    "complete": true,
-    "corpus": "precompile-values",
-    "digest": "010c4d103a012d021a7e52866578e2d8be13a6a34fff1d6b049c5789d1cba502",
-    "manifest": "../evidence/2026-09-23/precompile-values-geth/manifest.json",
-    "name": "precompile-values-geth",
-    "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1"
     }
   },
   {

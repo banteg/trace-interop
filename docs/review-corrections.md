@@ -1,7 +1,7 @@
 # Measurement and draft review corrections
 
 The September 23 review corrections preserve all earlier wire observations. Reports
-now reassess 4,071 observations against the pinned draft and record incomplete
+now reassess 4,050 observations against the pinned draft and record incomplete
 assertion coverage explicitly. See the [technical appendix](../reports/technical.md)
 and [assessment provenance](../reports/assessment.json).
 

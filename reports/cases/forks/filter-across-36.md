@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string and an explicit object or null result. A fork-crossing range equals the corresponding per-block traces.
+**What this checks:** A fork-crossing range equals the corresponding per-block traces. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 8 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 16 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 16 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 16 records | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-forks/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 16 records | Checked cases agree | [Response](../../../evidence/2026-09-23/geth-40eecf3-forks/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-forks/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 16 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 16 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 16 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-21/verified-forks/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-forks/manifest.json) |

@@ -23,8 +23,8 @@ Coverage below counts eligible trace observations, separately from schema valida
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1911 |
-| partial | 618 |
+| assessed | 1902 |
+| partial | 610 |
 | unassessed | 223 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
@@ -249,13 +249,6 @@ These cases returned results that differ from the draft schema. The case pages r
 
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [geth-e29edff-a](../evidence/2026-09-21/geth-e29edff-a/manifest.json) | a | Yes |
-| [geth-e29edff-fork-followup](../evidence/2026-09-21/geth-e29edff-fork-followup/manifest.json) | fork-followup | Yes |
-| [geth-e29edff-forks](../evidence/2026-09-21/geth-e29edff-forks/manifest.json) | forks | Yes |
-| [geth-e29edff-initial](../evidence/2026-09-21/geth-e29edff-initial/manifest.json) | initial | Yes |
-| [geth-e29edff-precompiles](../evidence/2026-09-21/geth-e29edff-precompiles/manifest.json) | precompiles | Yes |
-| [geth-e29edff-reorg-safe](../evidence/2026-09-21/geth-e29edff-reorg-safe/manifest.json) | reorg-safe | Yes |
-| [geth-e29edff-repeat](../evidence/2026-09-21/geth-e29edff-repeat/manifest.json) | repeat | Yes |
 | [precompiles-final](../evidence/2026-09-21/precompiles-final/manifest.json) | precompiles | Yes |
 | [verified-a](../evidence/2026-09-21/verified-a/manifest.json) | a | No |
 | [verified-a-besu-retry](../evidence/2026-09-21/verified-a-besu-retry/manifest.json) | a | Yes |
@@ -268,11 +261,16 @@ These cases returned results that differ from the draft schema. The case pages r
 | [verified-reorg-ready](../evidence/2026-09-21/verified-reorg-ready/manifest.json) | reorg-safe | No |
 | [verified-reorg-safe](../evidence/2026-09-21/verified-reorg-safe/manifest.json) | reorg-safe | No |
 | [verified-repeat](../evidence/2026-09-21/verified-repeat/manifest.json) | repeat | Yes |
+| [geth-40eecf3-a](../evidence/2026-09-23/geth-40eecf3-a/manifest.json) | a | Yes |
+| [geth-40eecf3-fork-followup](../evidence/2026-09-23/geth-40eecf3-fork-followup/manifest.json) | fork-followup | Yes |
+| [geth-40eecf3-forks](../evidence/2026-09-23/geth-40eecf3-forks/manifest.json) | forks | Yes |
+| [geth-40eecf3-initial](../evidence/2026-09-23/geth-40eecf3-initial/manifest.json) | initial | Yes |
+| [geth-40eecf3-precompile-values](../evidence/2026-09-23/geth-40eecf3-precompile-values/manifest.json) | precompile-values | Yes |
+| [geth-40eecf3-precompiles](../evidence/2026-09-23/geth-40eecf3-precompiles/manifest.json) | precompiles | Yes |
+| [geth-40eecf3-reorg-safe](../evidence/2026-09-23/geth-40eecf3-reorg-safe/manifest.json) | reorg-safe | Yes |
+| [geth-40eecf3-repeat](../evidence/2026-09-23/geth-40eecf3-repeat/manifest.json) | repeat | Yes |
 | [h03-modes-a](../evidence/2026-09-23/h03-modes-a/manifest.json) | a | Yes |
-| [h03-modes-geth-a](../evidence/2026-09-23/h03-modes-geth-a/manifest.json) | a | Yes |
-| [h03-modes-geth-initial](../evidence/2026-09-23/h03-modes-geth-initial/manifest.json) | initial | Yes |
 | [h03-modes-initial](../evidence/2026-09-23/h03-modes-initial/manifest.json) | initial | Yes |
-| [precompile-values-geth](../evidence/2026-09-23/precompile-values-geth/manifest.json) | precompile-values | Yes |
 | [precompile-values-native](../evidence/2026-09-23/precompile-values-native/manifest.json) | precompile-values | Yes |
 | [pruned-review](../evidence/2026-09-23/pruned-review/manifest.json) | pruned | Yes |
 | [raw-validation-native](../evidence/2026-09-23/raw-validation-native/manifest.json) | raw-validation | Yes |

@@ -59,13 +59,13 @@
       ],
       "id": "H03",
       "kind": "Spec decision",
-      "next_step": "Confirm the default and the two recognized modes with client teams. Retest Reth after it picks up Alloy #4216, and retest the Geth draft fork after it accepts recognized modes.",
+      "next_step": "Confirm the default and the two recognized modes with client teams. Retest Reth after it picks up Alloy #4216.",
       "rationale": "Adding a second filter should narrow a search. This matches `eth_getLogs`, where each topic position accepts a list of alternatives (OR) and all positions must match (AND); a null position is a wildcard, just as an omitted or empty address list is here. Explicit union is still useful when callers need one globally paginated result across both address sets.",
       "recommendation": "Use OR within each address list and AND between `fromAddress` and `toAddress` by default. An omitted, null, or empty side imposes no restriction. Accept optional `mode: \"intersection\"` (the default) and `mode: \"union\"` (match either populated side); reject unknown mode values with `-32602`.",
       "background": [
         "In [Erigon #2119](https://github.com/erigontech/erigon/issues/2119), banteg asked in June 2021 for an intersection option to narrow calls from a sender set to a recipient set. Erigon merged the [mode implementation in #3167](https://github.com/erigontech/erigon/pull/3167) in January 2022, corrected the list-level boolean composition in [#3304](https://github.com/erigontech/erigon/pull/3304), and [backported it to stable in #3305](https://github.com/erigontech/erigon/pull/3305). This is established client precedent for retaining an explicit mode.",
         "[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216), merged on 2026-09-22, cites H03 and changes the default from union to intersection while retaining explicit union. Its tests cover OR within each list, AND between lists, empty lists, and both recognized modes. Reth uses [Alloy's matcher](https://github.com/paradigmxyz/reth/blob/main/crates/rpc/rpc/src/trace.rs), but the tested Reth builds and [main@47c2166bc4](https://github.com/paradigmxyz/reth/blob/47c2166bc48bba25b95787c1f0640ec42bb9dee0/Cargo.lock) (checked 2026-09-23) still lock Alloy 2.4.2, which predates the PR. Reth needs dependency uptake and a retest before its observed result changes.",
-        "Verdicts use execution-apis `e38fc96c`, which accepts recognized modes. The mode cases were recaptured on 2026-09-23 against every tested build, including one-sided `union` queries. The null-list rejections seen on Reth and the Geth draft fork are tracked under [H04](H04.md)."
+        "The pinned draft accepts recognized modes. The mode cases were recaptured on 2026-09-23 against every tested build, including one-sided `union` queries. The Geth draft fork adopted recognized modes and nullable address lists at [40eecf3647](https://github.com/banteg/go-ethereum/commit/40eecf3647f26546df9dbf72ce48f372df469ef2). Reth's null-list rejections are tracked under [H04](H04.md)."
       ],
       "comparison_heading": "Client observations and verdicts",
       "title": "Filter composition and mode"

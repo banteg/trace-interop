@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · repeat · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert. Assess this declared topic case. Stack words use minimal hex quantities at every depth.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/geth-e29edff-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-repeat/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-23/geth-40eecf3-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-repeat/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | Partially assessed | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 1 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-21/verified-repeat/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-repeat/manifest.json) |
@@ -33,10 +33,6 @@
   ]
 }
 ```
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
-
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
@@ -70,6 +66,10 @@
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H18](../../decisions/H18.md): EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.
+- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+
 - [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 </details>

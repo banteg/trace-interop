@@ -31,14 +31,14 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 
 | Area | Source | Revision |
 | --- | --- | --- |
-| Lookup | [Trace lookup](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L153) | `e29edff514a0` |
-| Filter | [Address filtering](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L186) | `e29edff514a0` |
-| Call | [Call simulation](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L52) | `e29edff514a0` |
-| Raw | [Signed transaction replay](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L97) | `e29edff514a0` |
-| Replay | [Replay results](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_namespace.go#L122) | `e29edff514a0` |
-| Frames | [Call frames and precompiles](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_capture.go#L123) | `e29edff514a0` |
-| Vm | [VM execution deltas](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_capture.go#L264) | `e29edff514a0` |
-| State | [State differences](https://github.com/banteg/go-ethereum/blob/e29edff514a08c38ed0b08ab67d26a0644c79548/eth/tracers/trace_capture.go#L233) | `e29edff514a0` |
+| Lookup | [Trace lookup](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L153) | `40eecf3647f2` |
+| Filter | [Address filtering](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L186) | `40eecf3647f2` |
+| Call | [Call simulation](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L52) | `40eecf3647f2` |
+| Raw | [Signed transaction replay](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L97) | `40eecf3647f2` |
+| Replay | [Replay results](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L122) | `40eecf3647f2` |
+| Frames | [Call frames and precompiles](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_capture.go#L123) | `40eecf3647f2` |
+| Vm | [VM execution deltas](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_capture.go#L264) | `40eecf3647f2` |
+| State | [State differences](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_capture.go#L233) | `40eecf3647f2` |
 
 ## Nethermind
 

@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Failed frames have an error string and an explicit object or null result. Stack words use minimal hex quantities at every depth.
+**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Stack words use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 1 call frames; nonempty output | Differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-precompiles/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/geth-40eecf3-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-precompiles/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |

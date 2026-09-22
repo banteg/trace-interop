@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. A handled precompile failure must not mark the successful parent as failed. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Output remains a byte string under every trace selection. Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. A handled precompile failure must not mark the successful parent as failed. Stack words use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result. Successful creation uses address, code and gasUsed.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/geth-e29edff-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-precompiles/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/geth-40eecf3-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-precompiles/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-21/precompiles-final/observations.json) · [Build/run](../../../evidence/2026-09-21/precompiles-final/manifest.json) |

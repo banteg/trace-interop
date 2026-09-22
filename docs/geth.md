@@ -5,18 +5,21 @@ implements all nine `trace_*` methods and the `trace`, `stateDiff` and `vmTrace`
 output families. It is a candidate implementation of this project's proposal,
 not upstream Geth support or an independent vote for the draft.
 
-The evaluated source is [e29edff514](https://github.com/banteg/go-ethereum/commit/e29edff514a08c38ed0b08ab67d26a0644c79548).
+The evaluated source is [40eecf3647](https://github.com/banteg/go-ethereum/commit/40eecf3647f26546df9dbf72ce48f372df469ef2).
 The [build lock](../locks/geth-trace.json) pins its source, toolchain, base image,
 binary hash and local image identity. Rebuilding with that lock reproduced the
 same binary hash.
 
 ## Measured coverage
 
-The [client report](../reports/clients/go-ethereum_trace.md) includes 318 eligible
+The [client report](../reports/clients/go-ethereum_trace.md) includes 334 eligible
 RPC observations across `initial`, `a`, `repeat`, `forks`, `fork-followup`,
-`reorg-safe` and `precompiles`. All 428 applicable semantic assertions matched,
-and all 174 schema-checked results were valid. The extra raw-transaction block
-argument is recorded separately as an extension observation. The 49 RPC errors include the
+`reorg-safe`, `precompiles` and `precompile-values`. Of 592 evaluated semantic assertions,
+562 matched and 30 differ: proposed transaction-validation error codes (H13, 26 checks),
+unknown-block error codes (H06, three) and an unknown `trace_call` field (H14, one).
+All 191 schema-checked results were valid. Another 88 declared-topic checks remain
+unassessed; matching evaluated assertions does not imply complete topic coverage. The extra raw-transaction block
+argument is recorded separately as an extension observation. The 42 RPC errors include the
 corpora's deliberate malformed or invalid requests; controls and out-of-profile
 queries are recorded separately from result-schema checks.
 
@@ -30,6 +33,15 @@ unavailable-history behavior has not been verified with the pruning scenario,
 which currently has a Reth-specific setup. Large-range performance and resource
 exhaustion are not measured by this matrix. The fork implements bounded block
 scanning for `trace_filter`, with no address index or database migration.
+
+## Filter modes (H03/H04)
+
+The pushed fix accepts `intersection` (also the default) and explicit `union`,
+uses OR within address lists, and leaves an omitted, null or empty side unrestricted.
+Unknown modes return `-32602`. The captured cases cover both populated lists, both
+one-sided modes, nullable/empty lists and unknown modes; all evaluated H03/H04
+assertions match. The Geth chain/filter and RPC-validation regressions were rerun
+uncached on Fedora at the published commit and passed.
 
 ## Precompile compatibility
 

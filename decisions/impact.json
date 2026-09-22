@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork implements an earlier draft; nullable filters, unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation now matches the restored direction; error codes still need alignment."
+      "summary": "The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation now matches the restored direction; error codes still need alignment."
     }
   },
   "topics": {
@@ -46,10 +46,6 @@
       "erigon": {
         "observed": "Both lists are combined with OR by default (6 records instead of 1). With `mode: \"intersection\"`, a one-sided filter returns `[]` instead of treating the empty side as unrestricted. The unrecognized `mode: \"garbage\"` is accepted and treated as union.",
         "change": "Make intersection the default. Under either mode, ignore an omitted, null or empty side. Reject unknown mode values with `-32602`."
-      },
-      "geth": {
-        "observed": "The draft fork implements the earlier baseline: it rejects `mode: \"intersection\"` and `mode: \"union\"` with `-32602`.",
-        "change": "Accept `intersection` (identical to the default) and `union` (match either populated list); keep rejecting unknown values."
       },
       "reth": {
         "observed": "Both lists are combined with OR by default (6 records instead of 1). One-sided and explicit-mode queries agree.",
@@ -70,10 +66,6 @@
         "change": "Treat `[]` as unrestricted, just like an omitted address list."
       },
       "reth": {
-        "observed": "Null address lists are rejected, while the revised draft treats them as unrestricted.",
-        "change": "Accept null like an omitted or empty list, then apply the other filter normally."
-      },
-      "geth": {
         "observed": "Null address lists are rejected, while the revised draft treats them as unrestricted.",
         "change": "Accept null like an omitted or empty list, then apply the other filter normally."
       }

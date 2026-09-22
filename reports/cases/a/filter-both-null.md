@@ -15,8 +15,7 @@
 | [Erigon · Release](../../clients/erigon_release.md) | 13 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 13 records | Checked cases agree | [Response](../../../evidence/2026-09-23/h03-modes-a/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-a/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | 13 records | Checked cases agree | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-21/geth-e29edff-a/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-a/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | Differs | [Response](../../../evidence/2026-09-23/h03-modes-geth-a/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-geth-a/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 13 records | Checked cases agree | [Response](../../../evidence/2026-09-23/geth-40eecf3-a/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-a/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 14 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/h03-modes-a/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-a/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | 14 records | Differs; result shape differs | [Response](../../../evidence/2026-09-21/verified-a/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-a/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | 14 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/h03-modes-a/observations.json) · [Build/run](../../../evidence/2026-09-23/h03-modes-a/manifest.json) |
@@ -44,10 +43,6 @@
 }
 ```
 
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
-
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 13 records from this client's block trace.
-
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
@@ -129,10 +124,6 @@
 - [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 13 records from this client's block trace.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
-
-- [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 13 records from this client's block trace.
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
 
 - [H04](../../decisions/H04.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 13 records from this client's block trace.
 

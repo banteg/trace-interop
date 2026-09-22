@@ -11,7 +11,7 @@
 | [Besu · Development](../../clients/besu_development.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup-besu-retry/manifest.json) |
 | [Erigon · Release](../../clients/erigon_release.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
 | [Erigon · Development](../../clients/erigon_development.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/geth-e29edff-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/geth-e29edff-fork-followup/manifest.json) |
+| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-23/geth-40eecf3-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-40eecf3-fork-followup/manifest.json) |
 | [Nethermind · Release](../../clients/nethermind_release.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
 | [Nethermind · Development](../../clients/nethermind_development.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
 | [Reth · Release](../../clients/reth_release.md) | `0xc097ce7bc90715b34b9f274876e806` | Not assessed | [Response](../../../evidence/2026-09-21/verified-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-21/verified-fork-followup/manifest.json) |
@@ -30,10 +30,6 @@
   ]
 }
 ```
-
-**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
-
-- [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
@@ -64,6 +60,10 @@
 - [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+
+- [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+
+**Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
 
 - [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 

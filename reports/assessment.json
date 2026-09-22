@@ -14,8 +14,8 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 1401,
-    "partial": 509,
+    "assessed": 1437,
+    "partial": 473,
     "unassessed": 223
   },
   "evidence": {
@@ -43,18 +43,18 @@
     "../evidence/2026-09-23/pruned-review/manifest.json": "fb744f757123d31de133b1b9744b7904519c704977200bc83e5c01d326d81222"
   },
   "sources": {
-    "decisions/impact.json": "2268eb581ae1c9f8829779c0d74962f1dd70dc4ee43e38b1767f6d8348c27ee7",
-    "decisions/ledger.json": "0704c395d0c3150aba0baf40bc66219f58c314d462b48244891462a29ab56278",
+    "decisions/impact.json": "b7dc0e5c88109a5749cd8db547d55d1719e0c0aeb4f386d420f9e8783a666f60",
+    "decisions/ledger.json": "e87a177ec833bc703b6bfaa141c0a7c5a0d2c353371b27fd6cc15a801e6352bc",
     "decisions/sources.json": "89305d0b14bd303fd487c03e22b50b5b5d1c6eaf792b947a808e2d2f08ecff22",
     "locks/source-revisions.json": "0cc622d583eb692f7d5b128936e1fe2dc8ea95a97d52a54c25caed25959559a5",
     "reports.lock.json": "97b79343bc25409e599866b42b237f00cb912168385fe9435d71973aa6e4f7f5",
-    "spec.lock.json": "a36320ab23bbf03e5bcdbd22a35a620f6a3b9b96ac0c33717beb100899e23dbe",
+    "spec.lock.json": "f655ff4284c30e0655022ba12073b416b71725ad53913d2356da710d8bb177ac",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
-    "trace_interop/presentation.py": "1da30d8b66be5c7d5856e47c0e02717253a1933e67429a9ef24a8d99851adecb",
+    "trace_interop/presentation.py": "648c4fa868a1e121fb05c82e000bf928d8ce978202d2b77e3ac49baceda3c283",
     "trace_interop/report.py": "19b3972e5d0419bd7b353a5120587514faeab6ed840306140c8f51b45b449fa6",
-    "trace_interop/rules.py": "a1ec640e8ee4d48ef1592bd98579dd3fad612c9b34bdcc282a240ead806f2a66",
+    "trace_interop/rules.py": "b0ad3e99f4815ad724151b30555284316fbac073617d9cc28e8cdb69743b6fa8",
     "trace_interop/scenarios.py": "8a8ded0d625dc08836889751f949f814fee73a266dd0136f79b81a6aec2c0b0d",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"
   },
-  "spec_commit": "7ec8544af41e281d12d9d347e3d48939f4c87664"
+  "spec_commit": "a636383af0c99f5ce6304ad6d6342deb23e294c2"
 }

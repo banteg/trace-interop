@@ -36,57 +36,48 @@
 
 **Geth draft fork · Draft fork** (`Geth/v1.17.6-unstable-e29edff5-2026-09-21/linux-amd64/go1.26.1`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H16](../../decisions/H16.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 

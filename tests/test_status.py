@@ -9,7 +9,7 @@ class DecisionStatusTests(unittest.TestCase):
     def setUp(self):
         self.decision = {'id': 'H03', 'cases': ['a/filter']}
         self.position = {'policy': 'converged', 'note': 'Direction agreed.', 'sources': [{'label': 'Client review', 'url': 'https://example.org/review'}]}
-        self.records = [dict(client=f'{family}_{channel}', corpus='a', case='filter', eligible=True,
+        self.records = [dict(build_id='sha256:build', captured_at='2026-09-23T00:00:00+00:00', client=f'{family}_{channel}', corpus='a', case='filter', eligible=True,
                              checks=[{'topic': 'H03', 'status': 'matches'}], schema={'status': 'valid'})
                         for family in NATIVE_CLIENTS for channel in ['development', 'release']]
 

@@ -1,5 +1,7 @@
 """Policy progress is editorial; implementation milestones require captured evidence."""
 
+from datetime import datetime
+
 NATIVE_CLIENTS = ('besu', 'erigon', 'nethermind', 'reth')
 POLICY_LABELS = {'review': '⚪ Under review', 'diverging': '🔀 Diverging', 'converged': '🤝 Converged'}
 LEGEND = (
@@ -9,7 +11,7 @@ LEGEND = (
     '\n- 🧪 **Harmonized · dev:** converged and all declared cases pass on the captured development builds of Besu, Erigon, Nethermind and Reth. '
     '\n- ✅ **Harmonized · stable:** the same is also verified on their captured releases. '
     '\n\nMissing cases, ineligible runs, unsupported methods, unchecked assertions and invalid result schemas prevent harmonization. '
-    'These are milestones for the declared cases at the linked revisions, not full conformance or a claim about the latest builds. '
+    'Each client/channel uses its most recently captured immutable build; evidence from different builds is never combined. These are milestones for the declared cases at the linked revisions, not full conformance or a claim about the latest builds. '
     'The experimental Geth fork is reported separately and is not a policy vote.'
 )
 
@@ -20,7 +22,21 @@ def channel_harmonized(decision, records, channel):
         return False
     topic = decision['id']
     for family in NATIVE_CLIENTS:
-        relevant = [r for r in records if r['client'] == f'{family}_{channel}'
+        captured = [r for r in records if r['client'] == f'{family}_{channel}']
+        if not captured or any(not r.get('build_id') or not r.get('captured_at') for r in captured):
+            return False
+        try:
+            times = [datetime.fromisoformat(r['captured_at']) for r in captured]
+            if any(t.tzinfo is None for t in times):
+                return False
+            newest = max(times)
+        except (ValueError, TypeError):
+            return False
+        builds = {r['build_id'] for r,t in zip(captured,times) if t == newest}
+        if len(builds) != 1:
+            return False
+        current = next(iter(builds))
+        relevant = [r for r in captured if r['build_id'] == current
                     and (r['corpus']+'/'+r['case'] in required
                          or any(c['topic'] == topic for c in r['checks']))]
         if not required <= {r['corpus']+'/'+r['case'] for r in relevant}:

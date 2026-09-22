@@ -1,0 +1,12 @@
+{
+  "_control/head": {},
+  "_control/latest": {},
+  "_control/version": {},
+  "after-write-read/storage": {},
+  "after-write-revert-read/storage": {},
+  "before/code": {},
+  "before/control-nonce": {},
+  "before/storage": {},
+  "write-read/many-storage-write-read": {},
+  "write-revert-read/many-storage-write-revert-read": {}
+}

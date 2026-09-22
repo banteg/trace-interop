@@ -143,3 +143,19 @@ class IsolationScenario(unittest.TestCase):
             self.assertIn('runInteropOrdered(t, c)',(sim/'main.go').read_text())
             self.assertIn('for _,phase:=range phases',ORDERED)
             self.assertIn('t.Run(hivesim.TestSpec',ORDERED)
+
+    def test_captured_requests_follow_the_declared_phase_order(self):
+        import re
+        for run in ['native-isolation-verified','geth-isolation']:
+            folder=ROOT/'evidence/2026-09-23'/('harness-audit-2-'+run)
+            manifest=read(folder/'manifest.json')
+            observed={client:[] for client in manifest['clients']}
+            for line in (folder/'runner.log').read_text().splitlines():
+                if 'test started' not in line:continue
+                match=re.search(r'name="interop/(.*?) \(([^)]+)\)"',line)
+                if match:observed[match[2]].append(match[1])
+            expected=[c['name'] for phase in ['_control']+manifest['scenario_phases']
+                      for c in sorted(manifest['selected_cases'],key=lambda c:c['name'])
+                      if c['name'].split('/')[0]==phase]
+            for client,names in observed.items():
+                with self.subTest(run=run,client=client):self.assertEqual(names,expected)

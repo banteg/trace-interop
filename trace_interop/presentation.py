@@ -161,7 +161,16 @@ def note(editorial, client, topic, checks):
     return 'The linked case differs from the proposed behavior.', ' '.join(failed)
 
 
+def prune_case_pages(output, cases):
+    """Keep generated case pages aligned with the active report inventory."""
+    expected = {output/'cases'/corpus/(name+'.md') for corpus,name in cases}
+    for path in (output/'cases').rglob('*.md'):
+        if path not in expected:
+            path.unlink()
+
+
 def render(root, output, records, by_client, case_pages, run_rows, decisions, lock):
+    prune_case_pages(output, case_pages)
     editorial = json.loads((root/'decisions/impact.json').read_text())
     positions = json.loads((root/'decisions/status.json').read_text())
     if set(positions) - set(decisions):
@@ -368,8 +377,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += '[checks.json](checks.json) retains every assertion; [comparisons.json](comparisons.json) groups exact responses; [assessment.json](assessment.json) pins the specification and assessment source hashes. Each case links its original response and run manifest.\n\n'
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'
     gaps = sorted({(r['client'],r['run'],r['corpus']) for r in records if not r['eligible']})
-    text += '## Assertion coverage\n\nCoverage below counts eligible trace observations, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
-    text += table(['Coverage', 'Observations'], [[status, sum(r.get('assessment')==status for r in records if r['eligible'] and r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
+    text += '## Assertion coverage\n\nCoverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
+    text += table(['Coverage', 'Observations'], [[status, sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
     text += 'Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.\n\n'
     text += '## Setup gaps\n\n'
     text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+channel(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'

@@ -70,3 +70,14 @@ class ReportingRegressions(unittest.TestCase):
             self.assertTrue(row['capture_eligible'])
             self.assertFalse(row['eligible'])
             self.assertEqual(row['assessment'],'unassessed')
+
+    def test_case_pages_follow_active_inventory(self):
+        from trace_interop.presentation import prune_case_pages
+        with tempfile.TemporaryDirectory() as tmp:
+            output=Path(tmp)
+            for name in ['cases/a/current.md','cases/old/stale.md','README.md']:
+                path=output/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('page')
+            prune_case_pages(output,{('a','current'):[]})
+            self.assertTrue((output/'cases/a/current.md').exists())
+            self.assertFalse((output/'cases/old/stale.md').exists())
+            self.assertTrue((output/'README.md').exists())

@@ -128,6 +128,12 @@ def prepare(hive, corpus, name, clients):
 
 def verify_state(corpus_name, corpus, observations, client):
     def result(name):return observations.get(name,{}).get(client,{}).get('response',{}).get('result')
+    if corpus_name == 'raw-validation':
+        controls = corpus.get('controls', {})
+        head = result('_control/head')
+        ok = bool(controls) and all(result(name) == expected for name, expected in controls.items())
+        ok = ok and isinstance(head, dict) and head.get('baseFeePerGas') == corpus['base_fee']
+        return ok, 'requires independently verified nonce, balance, sender code, chain ID, base fee and marker code/storage'
     if corpus_name in ['reorg','reorg-safe']:
         for phase,key in [('before','heads_a'),('after','heads_b'),('restored','heads_a')]:
             header=result(phase+'/head')

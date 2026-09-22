@@ -33,6 +33,12 @@
   "chains/initial/headblock.json": "83a24e3a902c365746d34fcb7484b452a02266184d92373258c3202a449e4eff",
   "chains/initial/headfcu.json": "6e589d6aeb5f0e964fed60a01901f029dfc9bb2367f0cd5a53f0adb06bdfaaef",
   "chains/initial/txinfo.json": "cba0af201e6d23cc598ec4b38687110f74853f9c9452a9290c15e87b03a100bf",
+  "chains/raw-validation/chain.rlp": "4ee69730cc6519d99d72ec4b767e1ce620956b1b7db4d8dc63d5f32e6ed3432f",
+  "chains/raw-validation/forkenv.json": "9a4c10db310ca09fe9cb22ecd60156ba91cf2d6873ecc29141643dc5aa5463e4",
+  "chains/raw-validation/genesis.json": "bf13fb304ca111dbb42c4bdb1ee4cbe2f91f30ab68c2701c778cab0c4981859e",
+  "chains/raw-validation/headblock.json": "3f68dac4e11b29ce6fa734315793a05a84607cb994cf7fa7c175ff85fabf6ec1",
+  "chains/raw-validation/headfcu.json": "9032056534afd418e9e444d42e5ca3c8633dce6773bdab5873a07d08a2a458d7",
+  "chains/raw-validation/headstate.json": "28fd26f540d2acb81e385ce6bea1ef5dc4a463ce20664d60e6a6cffb5cc18bfe",
   "corpora/a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
   "corpora/boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
   "corpora/fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
@@ -42,7 +48,9 @@
   "corpora/precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
   "corpora/precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
   "corpora/pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
+  "corpora/raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
   "corpora/reorg-safe.json": "94fcf58315bde761030752dbca1a675d8b34e8f0f6f581e2283938f59d785d30",
   "corpora/reorg.json": "444ebbaaf7088feb3587bf8d3e0d340e1ccfc611f848942006042fa2c9da0249",
-  "corpora/repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
+  "corpora/repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
+  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403"
 }

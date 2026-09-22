@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
-          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a'}
+          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation'}
 IMAGES = {
     'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),

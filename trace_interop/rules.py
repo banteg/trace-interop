@@ -272,6 +272,26 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H16', valid and first in [{slot:{'+':value}}, {slot:{'*':{'from':slot,'to':value}}}]
               and all(s == {} or s == {slot:'='} for s in storage[1:]),
               'Only the first call writes slot zero; reverted writes and later reads add no storage transition.')
+    if context.get('_chain') == 'callmany-isolation' and case.get('isolation_after'):
+        before, simulation = case['isolation_before'], case['isolation_after']
+        phases = context.get('_scenario_phases')
+        ordered = phases == context.get('scenario_phases') and isinstance(phases,list)
+        phases_needed = [n.split('/')[0] for n in [before,simulation,name]]
+        ordered = ordered and all(p in phases for p in phases_needed)
+        ordered = ordered and phases.index(phases_needed[0]) < phases.index(phases_needed[1]) < phases.index(phases_needed[2])
+        word42 = '0x'+f'{42:064x}'
+        executions = other(simulation)
+        ran = isinstance(executions,list) and len(executions) == (3 if 'revert' in simulation else 2)
+        # The write must actually have executed; an unsupported/error response
+        # followed by an unchanged slot cannot establish simulation isolation.
+        ran = ran and all(isinstance(r,dict) for r in executions) and executions[0].get('output') == word42 and executions[-1].get('output') == word42
+        if ordered and other(before) == '0x'+'00'*32 and ran:
+            check('H16', status == 'result' and result == '0x'+'00'*32,
+                  'Canonical storage remains unchanged after the ordered multi-call simulation.')
+        else:
+            checks.append({'topic':'H16','status':'unassessed',
+                           'requirement':'Check canonical storage after the ordered simulation.',
+                           'detail':'Ordered capture, initial zero slot or successful simulated write/read not established.'})
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
     invalid_raw = ['raw-nonce-high', 'raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']

@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
-          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation'}
+          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'callmany-isolation': 'a'}
 IMAGES = {
     'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
@@ -120,6 +120,9 @@ def selected_cases(corpus, pattern):
     cases = [c for c in corpus['cases'] if re.search(pattern, c['name'])]
     if not cases:
         raise ValueError('case selector matched zero cases')
+    if corpus.get('scenario_phases'):
+        from .scenarios import ordered_cases
+        return ordered_cases(corpus)
     selected = {c['name'] for c in cases}
     # Setup controls remain mandatory even for a single selected probe.
     cases += [c for c in corpus['cases'] if c['name'] not in selected
@@ -201,6 +204,8 @@ def execute(args):
                 'source_commit': source_commit,
                 'source_dirty': source_dirty,
                 'runner_sha256': sha(Path(__file__)), 'hive_binary_sha256': sha(hive / 'hive'), 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
+    if corpus.get('scenario_phases'):
+        manifest['scenario_phases'] = corpus['scenario_phases']
     write(out / 'manifest.json', manifest)
     command = [str(hive / 'hive'), '--client-file', str(out / 'clients.yaml'),
                '--sim', 'ethereum/rpc-compat', '--sim.limit', '/interop',

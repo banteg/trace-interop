@@ -78,6 +78,42 @@ func runInteropScenario(t *hivesim.T, c *hivesim.Client) bool {
 }
 '''
 
+ORDERED = r'''package main
+import (
+ "encoding/json"
+ "fmt"
+ "os"
+ "regexp"
+ "github.com/ethereum/hive/hivesim"
+)
+func runInteropOrdered(t *hivesim.T, c *hivesim.Client) {
+ data,err:=os.ReadFile("tests/ordered.json"); if err!=nil {t.Fatal(err)}
+ var phases []string
+ if err:=json.Unmarshal(data,&phases);err!=nil {t.Fatal(err)}
+ // Each Run completes before the next request starts, even when the deliberate
+ // capture placeholder fails. Never schedule these phases with RunParallel.
+ for _,phase:=range phases {
+  for _,test:=range loadTests(t,"tests/interop/"+phase,regexp.MustCompile(".*")) {
+   test:=test
+   t.Run(hivesim.TestSpec{Name:fmt.Sprintf("interop/%s/%s (%s)",phase,test.name,c.Type),Run:func(t *hivesim.T){if err:=runTest(t,c,&test);err!=nil {t.Fatal(err)}}})
+  }
+ }
+}
+'''
+
+
+def ordered_cases(corpus):
+    """Validate phase coverage before selecting an indivisible ordered scenario."""
+    phases = corpus['scenario_phases']
+    if (not phases or len(set(phases)) != len(phases)
+            or any(not isinstance(p,str) or not p or '/' in p or p in ['.','..','_control'] for p in phases)):
+        raise ValueError('invalid ordered scenario phases')
+    used = {c['name'].split('/')[0] for c in corpus['cases'] if '/' in c['name']}
+    if used != set(phases) or any('/' not in c['name'] for c in corpus['cases']):
+        raise ValueError('ordered scenario phases must cover every case')
+    return corpus['cases']
+
+
 PRUNE = '''# Prune only the disposable imported test database, retaining headers/receipts.
 cat > /trace-prune.toml <<'CONFIG'
 [prune]
@@ -121,6 +157,13 @@ def prepare(hive, corpus, name, clients, head_hash):
     else:
         p=sim/'main.go';text=p.read_text()
         p.write_text(text.replace(needle, needle+'\n\t\t\twaitInteropHead(t, c, '+json.dumps(head_hash)+')'))
+        if corpus.get('scenario_phases'):
+            ordered_cases(corpus)
+            (sim/'tests/ordered.json').write_text(json.dumps(['_control']+corpus['scenario_phases'])+'\n')
+            (sim/'interop_scenario.go').write_text(ORDERED)
+            text=p.read_text();needle='runAllTests(t, c, c.Type)'
+            if text.count(needle)!=1:raise ValueError('pinned Hive ordered insertion point changed')
+            p.write_text(text.replace(needle,'runInteropOrdered(t, c)'))
     if name=='pruned':
         if any(c['client']!='reth' for c in clients.values()):
             raise ValueError('pruned scenario has a verified Reth adapter only; select Reth clients')
@@ -171,6 +214,11 @@ def verify_state(corpus_name, corpus, observations, client):
 def verify_setup(manifest, corpus, observations, client):
     """Require correlated controls for both imported identity and canonical RPC head."""
     requests = {c['name']: c['request'] for c in manifest['selected_cases']}
+    if corpus.get('scenario_phases'):
+        ordered_cases(corpus)
+        if (manifest.get('scenario_phases') != corpus['scenario_phases']
+                or any(requests.get(c['name']) != c['request'] for c in corpus['cases'])):
+            return False, 'Ordered scenario plan or requests not established by the capture'
     head = manifest['head']
     for name, block in [('_control/head', head.get('number')), ('_control/latest', 'latest')]:
         request = requests.get(name, {})

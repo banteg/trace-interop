@@ -72,3 +72,24 @@ separate from the inherited DELEGATECALL compatibility rule.
 marker storage controls. Actual output, storage writes and CREATE ADDRESS bytes
 distinguish execution from result-shaped failures. See the [H13 study](h13-validation.md)
 for the client matrix, fixture generator and reproduction commands.
+
+### Multi-call simulation isolation
+
+`callmany-isolation` uses an explicit phase plan on the frozen chain-a head:
+independent nonce, contract code and storage controls; write/read simulation;
+`eth_getStorageAt`; write/revert/read simulation; another `eth_getStorageAt`.
+The same disposable client handles all phases, synchronously. Selecting one case
+retains the whole scenario. The recorded plan and requests are required for setup
+eligibility; a missing or failed simulation leaves its isolation check unassessed.
+An after-read returning changed storage is a behavior failure, not a setup failure.
+
+```sh
+uv run trace-interop run --lock locks/clients-2026-09-21.json \
+  --corpus callmany-isolation --output runs/callmany-isolation
+```
+
+The older `a/control-storage-after-many` observation runs before the multi-call
+probes in Hive's lexical order and has no isolation assertion. It remains in the
+historical evidence but is not used as proof that simulations leave state unchanged.
+The new scenario also checks per-call nonce progression and storage transitions;
+fee amounts and warm-access/refund semantics remain outside these assertions.

@@ -38,6 +38,7 @@ def generate(root, runs, output):
         run_rows.append({'name':folder.name,'manifest':link(folder/'manifest.json',output),'corpus':manifest['corpus'],'complete':summary['complete'],'versions':summary['versions'],'digest':digest})
         context=read(root/'fixtures/corpora'/(manifest['corpus']+'.json'))
         context['_chain']=manifest['corpus']
+        context['_scenario_phases']=manifest.get('scenario_phases')
         for client in manifest['clients']:
             eligible, scenario_detail=verify_setup(manifest,context,obs,client)
             peers={name:clients.get(client,{}) for name,clients in obs.items()}

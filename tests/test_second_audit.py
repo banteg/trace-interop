@@ -86,3 +86,60 @@ class ReferenceErrors(unittest.TestCase):
                 dependent=next(r for r in records if r['case']=='filter-both')
                 self.assertEqual([c['status'] for c in dependent['checks'] if c['topic']=='H03'],['unassessed'])
 
+
+class IsolationScenario(unittest.TestCase):
+    def test_case_selection_keeps_every_ordered_phase(self):
+        from trace_interop.cli import selected_cases
+        from trace_interop.scenarios import ordered_cases
+        corpus=read(ROOT/'fixtures/corpora/callmany-isolation.json')
+        self.assertEqual(selected_cases(corpus,'^after-write-read/storage$'),corpus['cases'])
+        for bad in [['before'],['before','before'],['../escape']]:
+            with self.subTest(phases=bad),self.assertRaises(ValueError):
+                ordered_cases(dict(corpus,scenario_phases=bad))
+
+    def test_capture_plan_is_required_for_eligibility(self):
+        from trace_interop.scenarios import verify_setup
+        corpus=read(ROOT/'fixtures/corpora/callmany-isolation.json')
+        manifest=read(ROOT/'evidence/2026-09-23/harness-audit-geth-a/manifest.json')
+        manifest['corpus']='callmany-isolation'
+        manifest['selected_cases']=[c for c in manifest['selected_cases'] if c['name'].startswith('_control/')]+corpus['cases']
+        self.assertIn('Ordered scenario',verify_setup(manifest,corpus,{},'c')[1])
+
+    def test_isolation_requires_order_and_execution_and_checks_after_value(self):
+        corpus=read(ROOT/'fixtures/corpora/callmany-isolation.json')
+        corpus.update(_chain='callmany-isolation',_scenario_phases=corpus['scenario_phases'])
+        zero='0x'+'00'*32
+        for kind in ['write-read','write-revert-read']:
+            c=next(c for c in corpus['cases'] if c['name']=='after-'+kind+'/storage')
+            c=dict(c,context=corpus)
+            _,simulation,_=captured('2026-09-23/harness-audit-geth-a','many-storage-'+kind,'go-ethereum_trace')
+            obs={'status':'result','response':{'result':zero}}
+            peers={c['isolation_before']:copy.deepcopy(obs),c['isolation_after']:simulation}
+            checks=lambda: [x for x in evaluate(c,obs,peers) if x['topic']=='H16']
+            self.assertEqual([x['status'] for x in checks()],['matches'])
+            obs['response']['result']='0x'+f'{42:064x}'
+            self.assertEqual([x['status'] for x in checks()],['change_needed'])
+            obs['response']['result']=zero
+            for bad in [None,list(reversed(corpus['scenario_phases']))]:
+                corpus['_scenario_phases']=bad
+                self.assertEqual([x['status'] for x in checks()],['unassessed'])
+            corpus['_scenario_phases']=corpus['scenario_phases']
+            peers[c['isolation_after']]={'status':'unsupported','response':{'error':{'code':-32601}}}
+            self.assertEqual([x['status'] for x in checks()],['unassessed'])
+
+    def test_ordered_adapter_uses_phase_plan_instead_of_global_lexical_order(self):
+        from trace_interop.scenarios import prepare, ORDERED
+        corpus=read(ROOT/'fixtures/corpora/callmany-isolation.json')
+        with tempfile.TemporaryDirectory() as tmp:
+            hive=Path(tmp);sim=hive/'simulators/ethereum/rpc-compat';(sim/'tests').mkdir(parents=True)
+            for path in ['clients/reth','clients/go-ethereum']:(hive/path).mkdir(parents=True)
+            def original(args,**kwargs):
+                if args[-1].endswith('/main.go'):return b'sendForkchoiceUpdated(t, c)\nrunAllTests(t, c, c.Type)\n'
+                return b''
+            with patch('trace_interop.scenarios.subprocess.check_output',side_effect=original):
+                prepare(hive,corpus,'callmany-isolation',{},'0xhead')
+            self.assertEqual(read(sim/'tests/ordered.json'),['_control']+corpus['scenario_phases'])
+            self.assertNotIn('runAllTests', (sim/'main.go').read_text())
+            self.assertIn('runInteropOrdered(t, c)',(sim/'main.go').read_text())
+            self.assertIn('for _,phase:=range phases',ORDERED)
+            self.assertIn('t.Run(hivesim.TestSpec',ORDERED)

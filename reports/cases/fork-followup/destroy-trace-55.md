@@ -2,7 +2,7 @@
 
 `trace_call` · fork-followup · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -43,20 +43,20 @@
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H26](../../decisions/H26.md): Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+- [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H26](../../decisions/H26.md): Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+- [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
 
 **Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- [H26](../../decisions/H26.md): Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+- [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
 **Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H26](../../decisions/H26.md): Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+- [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
 </details>

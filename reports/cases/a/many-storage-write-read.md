@@ -2,7 +2,7 @@
 
 `trace_callMany` · a · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. The second call reads the first call’s simulated write.
+**What this checks:** Return one execution envelope per input call, in order. The second call reads the first call’s simulated write. Each call reports its own sender nonce transition, including a reverted call. Only the first call writes slot zero; reverted writes and later reads add no storage transition.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

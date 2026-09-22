@@ -17,6 +17,8 @@
     "evidence/2026-09-23/harness-audit-native-pruned",
     "evidence/2026-09-23/harness-audit-native-raw-validation",
     "evidence/2026-09-23/harness-audit-native-reorg-safe",
-    "evidence/2026-09-23/harness-audit-native-repeat"
+    "evidence/2026-09-23/harness-audit-native-repeat",
+    "evidence/2026-09-23/harness-audit-2-native-isolation-verified",
+    "evidence/2026-09-23/harness-audit-2-geth-isolation"
   ]
 }

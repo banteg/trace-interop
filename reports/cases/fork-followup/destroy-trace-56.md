@@ -2,7 +2,7 @@
 
 `trace_call` · fork-followup · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Delete code/nonce before Cancun; preserve an existing account after EIP-6780.
+**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

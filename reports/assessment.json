@@ -2,6 +2,7 @@
   "contexts": {
     "a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
     "boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
+    "callmany-isolation.json": "c9353e868ef1d43ecd59e73540aff2ca80e73bfc543d2ae77fbb5fe0f359b8e9",
     "fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
     "fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
     "forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
@@ -15,11 +16,13 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 1788,
-    "partial": 554,
+    "assessed": 1815,
+    "partial": 545,
     "unassessed": 213
   },
   "evidence": {
+    "../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json": "c02ee597e3b2d3370b2fc91df69e59e9550d97e357f6bcc115ef571eff18477b",
+    "../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json": "3bb9b4b8f8e91771cb1cfe339cf8d442efd03f0a93a7ea02e9e2d9f502441193",
     "../evidence/2026-09-23/harness-audit-geth-a/manifest.json": "4f1b73704b374e38d79afd6c639de73f19c123b5872b0fb091cdda6663ae9460",
     "../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json": "9873144a00fd5dc64ecf1434d633db268fedd433261a3e16d308f584fd0783f3",
     "../evidence/2026-09-23/harness-audit-geth-forks/manifest.json": "d0f72cfe2ca3327cdbf11460f12307b39e13f3a27176e27abc0e67f5ef459797",
@@ -41,18 +44,18 @@
   },
   "sources": {
     "decisions/impact.json": "932f416d18ab1465a4b98f40257016f208ad2ddb09ca31039309626ee4f53005",
-    "decisions/ledger.json": "de000eaaa0091a5cfec33ce9c38a4f08d6322a708c43484c402dea98eaa05f8a",
+    "decisions/ledger.json": "9c96ab2e8ff660c7b051aa7abcbdb41771990e01b77c629e601822177abaaee0",
     "decisions/sources.json": "14654e5e1243cbda33582c944bf0759607cedd4bdfbc01e5c881e94da7775afc",
     "decisions/status.json": "55a883db76f72734b94eb1e4b41fb385ab848624d5626cd102dc6cd3f77efa50",
     "locks/source-revisions.json": "9145e7c733915e286fafa7c7788b88e224f9be7087180d03d52c12c88134f9e6",
-    "reports.lock.json": "1b8c551b09e677ed1aefd509326f2a18371783c9b509786ce95050b728495a80",
+    "reports.lock.json": "c8647b9d66dda339cfa82774f5a0397b0661820bf2ec1e71ee761e69192e7c4f",
     "spec.lock.json": "f24f620098830d283736951a6b159938a953eb1d4b5d940e9b3193e48c5b1008",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
-    "trace_interop/oracles.py": "64812d1cbdeaaf858a6134ca89321f187b4bec5b95558c78d8dd91416339288e",
+    "trace_interop/oracles.py": "192cee56e18b7cbe50de56309aca73d024d3f5726c5462aa9a7362ae1c904a2a",
     "trace_interop/presentation.py": "e8003fe6d3ed3fb8b7e69e868ed2c1a7479379157641bf319169f96752018f92",
-    "trace_interop/report.py": "ab83cde8cfd950221d8a3122d71d3be0e846f498bad2aab91b94ae4360e95df6",
-    "trace_interop/rules.py": "5a740a5f848b0986154147700601e225ae75c4dce60f746bba776f21fe8546af",
-    "trace_interop/scenarios.py": "e584ea645bb22093c5cfd53529ab8a405ddbce1e7c3c7e27055bea2badd3ec1e",
+    "trace_interop/report.py": "156f0a14ff4778fbfe3123b3035ef93f962452faaeb6c1c6e60300a264a01ea1",
+    "trace_interop/rules.py": "2d5c22aba39ea2da8a86cc0e86947795d876658a28e5ccf83f17af877e39de72",
+    "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",
     "trace_interop/status.py": "049357518a07bcd5a7cd310b06c502104fcb34daf3eb4ed466c8131699ee5aa5",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"
   },

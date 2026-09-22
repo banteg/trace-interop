@@ -2,7 +2,7 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. An empty trace-type selection executes successfully.
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. An empty trace-type selection executes and preserves the fixture return bytes.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -39,14 +39,14 @@
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0x000000000000000000000000000000000000000000000000000000000000002a
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0x000000000000000000000000000000000000000000000000000000000000002a
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0x000000000000000000000000000000000000000000000000000000000000002a
 
 </details>

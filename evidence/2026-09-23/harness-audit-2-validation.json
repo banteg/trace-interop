@@ -1,0 +1,42 @@
+{
+  "assessment_commits": [
+    "e8afedf",
+    "f2c76c0"
+  ],
+  "assessment_records": 3762,
+  "before_fix": {
+    "error_subtests": 4,
+    "failed_subtests": 19,
+    "test_functions": 6
+  },
+  "deterministic_report_artifacts": 488,
+  "hive_adapter_go_tests": "passed on Fedora",
+  "notes": [
+    "Mutated responses are harness counterexamples, not client findings.",
+    "No new failing client cases in the preceding 18 captures under stricter value assertions.",
+    "Tracked capture source was unchanged; source_dirty reflects untracked earlier evidence.",
+    "Two Docker shim protocol failures occurred before simulator startup and are excluded from reports."
+  ],
+  "ordered_capture_h16_checks": {
+    "clients": 9,
+    "matches": 90
+  },
+  "python_tests": 95,
+  "runs": {
+    "harness-audit-2-geth-isolation": {
+      "complete": true,
+      "exchanges": 10,
+      "manifest_sha256": "c02ee597e3b2d3370b2fc91df69e59e9550d97e357f6bcc115ef571eff18477b",
+      "source_commit": "f2c76c0f2cc0d0077fc503a1a6e60f8b0932df8f",
+      "source_dirty": true
+    },
+    "harness-audit-2-native-isolation-verified": {
+      "complete": true,
+      "exchanges": 80,
+      "manifest_sha256": "3bb9b4b8f8e91771cb1cfe339cf8d442efd03f0a93a7ea02e9e2d9f502441193",
+      "source_commit": "f2c76c0f2cc0d0077fc503a1a6e60f8b0932df8f",
+      "source_dirty": true
+    }
+  },
+  "verified_report_runs": 20
+}

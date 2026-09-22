@@ -376,7 +376,6 @@
     },
     {
       "cases": [
-        "a/control-storage-after-many",
         "a/many-storage-write-read",
         "a/many-storage-write-revert-read",
         "initial/call-many",
@@ -388,7 +387,11 @@
         "initial/raw-valid-current-nonce",
         "initial/raw-valid-default-block",
         "initial/replay-block-tree",
-        "initial/replay-tree-stateDiff"
+        "initial/replay-tree-stateDiff",
+        "callmany-isolation/write-read/many-storage-write-read",
+        "callmany-isolation/after-write-read/storage",
+        "callmany-isolation/write-revert-read/many-storage-write-revert-read",
+        "callmany-isolation/after-write-revert-read/storage"
       ],
       "id": "H16",
       "kind": "Spec decision / likely accounting bug",

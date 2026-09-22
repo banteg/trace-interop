@@ -46,3 +46,40 @@ Validation: 84 unit/regression tests, the frozen-input/inventory verifier, all n
 schemas and recursive negative schema vectors pass. Report generation is deterministic.
 The original nine counterexamples are rejected by the new assertions; unmodified positive
 controls remain accepted for the properties those tests exercise.
+
+## Second review pass
+
+Five additional gaps are covered by `tests/test_second_audit.py`:
+
+- Malformed reference envelopes remain recorded failures; dependent comparisons become
+  unassessed instead of aborting report generation.
+- Empty trace selections must preserve the fixture's exact return bytes (`0xffee`
+  for the call tree and word 42 for `return42`).
+- Multi-call storage probes check per-call sender nonce progression, the initial slot
+  write and absence of storage transitions from reverted writes or subsequent reads.
+  These checks accept both zero-slot addition and zero-to-value modification encoding;
+  they do not impose a fee-accounting policy.
+- Pre-Cancun deletion checks compare actual old code and nonce with the frozen fixture,
+  and require its empty storage map. Nonempty storage deletion needs a separate fixture.
+- [The ordered isolation scenario](scenarios.md#multi-call-simulation-isolation) uses
+  independent `eth_getStorageAt` calls after each simulation. The older
+  `control-storage-after-many` observation is retained but cannot prove isolation.
+
+The mutation tests use copies of observations. They demonstrate weaknesses in the old
+assertions, not additional client defects. Reassessing the preceding 18 runs with the
+stricter value checks identifies no new failing client cases.
+
+The ordered scenario captured **90 responses** on the same eight native builds and
+Geth fork image. All nine builds pass its ten H16 assertions: two envelope checks,
+two output-sequence checks, two nonce checks, two storage-transition checks and two
+canonical-storage isolation checks. This establishes the named storage/nonce
+properties, not agreement on the unresolved fee policy. Existing schema differences
+in reverted trace results remain visible separately.
+
+Captures use source `f2c76c0`; tracked source stayed clean. Their `source_dirty` flags
+reflect preceding untracked evidence directories. Two earlier attempts failed before
+simulator startup with a Docker/containerd shim protocol error; both are retained
+outside the report inventory. The generated Hive adapter passes its Go tests, and
+captured request-order regressions verify phase order for every client. Validation
+now passes **95 Python tests**, the frozen-input/inventory verifier and the method
+schema checks. The report inventory contains 20 runs and 3,762 assessment records.

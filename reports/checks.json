@@ -1707,8 +1707,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -1764,6 +1764,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "go-ethereum_trace",
@@ -1802,6 +1814,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -1823,7 +1847,7 @@
     "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
     "capture_eligible": true,
     "captured_at": "2026-09-22T23:15:34.998130+00:00",
@@ -1846,12 +1870,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "go-ethereum_trace",
@@ -2816,7 +2834,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -2857,7 +2875,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -4626,7 +4644,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -4744,7 +4762,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -6555,8 +6573,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       },
@@ -7070,8 +7088,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -10219,6 +10237,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -13123,8 +13153,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -13180,6 +13210,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "besu_development",
@@ -13218,6 +13260,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -13244,7 +13298,7 @@
     "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -13267,12 +13321,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "besu_development",
@@ -16146,8 +16194,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -16203,6 +16251,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "besu_release",
@@ -16241,6 +16301,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -16267,7 +16339,7 @@
     "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -16290,12 +16362,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "besu_release",
@@ -19076,8 +19142,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -19133,6 +19199,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "erigon_development",
@@ -19171,6 +19249,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -19192,7 +19282,7 @@
     "version": "3.8.0-dev-c25b8e47"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -19215,12 +19305,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "erigon_development",
@@ -21842,8 +21926,8 @@
     "case": "empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -21895,6 +21979,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "erigon_release",
@@ -21933,6 +22029,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -21954,7 +22062,7 @@
     "version": "3.6.1-0c4d9c91"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -21977,12 +22085,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "erigon_release",
@@ -24795,8 +24897,8 @@
     "case": "empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -24848,6 +24950,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "nethermind_development",
@@ -24886,6 +25000,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -24912,7 +25038,7 @@
     "version": "2.1.0-unstable+a404c4f0"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -24935,12 +25061,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "nethermind_development",
@@ -27817,8 +27937,8 @@
     "case": "empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -27870,6 +27990,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "nethermind_release",
@@ -27908,6 +28040,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -27934,7 +28078,7 @@
     "version": "1.39.3+28cbe2a0"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -27957,12 +28101,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "nethermind_release",
@@ -30635,8 +30773,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -30692,6 +30830,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "reth_development",
@@ -30730,6 +30880,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -30751,7 +30913,7 @@
     "version": "Reth Version: 2.5.2+03cb186c"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -30774,12 +30936,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "reth_development",
@@ -33373,8 +33529,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0x000000000000000000000000000000000000000000000000000000000000002a",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -33430,6 +33586,18 @@
         "requirement": "The second call reads the first call\u2019s simulated write.",
         "status": "matches",
         "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
       }
     ],
     "client": "reth_release",
@@ -33468,6 +33636,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -33489,7 +33669,7 @@
     "version": "Reth Version: 2.6.0+73a3a008"
   },
   {
-    "assessment": "partial",
+    "assessment": "assessed",
     "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
     "capture_eligible": true,
     "captured_at": "2026-09-22T22:58:11.900259+00:00",
@@ -33512,12 +33692,6 @@
         "requirement": "Output remains a byte string under every trace selection.",
         "status": "matches",
         "topic": "H08"
-      },
-      {
-        "detail": "No semantic assertion evaluated this topic for the captured response.",
-        "requirement": "Assess this declared topic case.",
-        "status": "unassessed",
-        "topic": "H16"
       }
     ],
     "client": "reth_release",
@@ -34516,7 +34690,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -34557,7 +34731,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -35077,7 +35251,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -35118,7 +35292,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -35638,7 +35812,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -35679,7 +35853,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -36194,7 +36368,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -36235,7 +36409,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -36744,7 +36918,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -36790,7 +36964,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -37310,7 +37484,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -37356,7 +37530,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -37876,7 +38050,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -37917,7 +38091,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -38432,7 +38606,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -38473,7 +38647,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -40427,7 +40601,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -40550,7 +40724,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -42323,7 +42497,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -42446,7 +42620,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -44162,7 +44336,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -44280,7 +44454,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -45996,7 +46170,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -46114,7 +46288,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -48143,7 +48317,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -48275,7 +48449,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -50309,7 +50483,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -50441,7 +50615,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -52162,7 +52336,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -52280,7 +52454,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -53996,7 +54170,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "change_needed",
         "topic": "H26"
       }
@@ -54114,7 +54288,7 @@
       },
       {
         "detail": "",
-        "requirement": "Delete code/nonce before Cancun; preserve an existing account after EIP-6780.",
+        "requirement": "Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.",
         "status": "matches",
         "topic": "H26"
       }
@@ -55723,8 +55897,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -56244,8 +56418,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -58357,8 +58531,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -58878,8 +59052,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -61109,8 +61283,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -61606,8 +61780,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -63869,8 +64043,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -64362,8 +64536,8 @@
     "case": "call-empty-types-priced",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -66840,8 +67014,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -67356,8 +67530,8 @@
     "case": "call-empty-types-priced",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -69884,8 +70058,8 @@
     "case": "call-empty-types",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       },
@@ -70400,8 +70574,8 @@
     "case": "call-empty-types-priced",
     "checks": [
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "change_needed",
         "topic": "H11"
       }
@@ -72844,8 +73018,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       },
@@ -73355,8 +73529,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -75762,8 +75936,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       },
@@ -76273,8 +76447,8 @@
         "topic": "H08"
       },
       {
-        "detail": "",
-        "requirement": "An empty trace-type selection executes successfully.",
+        "detail": "Expected 0xffee",
+        "requirement": "An empty trace-type selection executes and preserves the fixture return bytes.",
         "status": "matches",
         "topic": "H11"
       }
@@ -119608,6 +119782,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -121598,6 +121784,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -123579,6 +123777,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -125313,6 +125523,18 @@
       {
         "detail": "",
         "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
         "status": "matches",
         "topic": "H16"
       },
@@ -127091,6 +127313,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -128733,6 +128967,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "change_needed",
         "topic": "H09"
@@ -130341,6 +130587,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -131952,6 +132210,18 @@
       },
       {
         "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
         "requirement": "Failed frames have an error string and an explicit object or null result.",
         "status": "matches",
         "topic": "H09"
@@ -133064,5 +133334,2347 @@
     "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
     "status": "result",
     "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "change_needed",
+        "topic": "H09"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [
+        {
+          "message": "{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d4a0', 'input': '0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x0000000000000000000000000000000000001001', '",
+          "path": "1/trace/0"
+        }
+      ],
+      "status": "invalid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "change_needed",
+        "topic": "H09"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [
+        {
+          "message": "{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d4a0', 'input': '0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x0000000000000000000000000000000000001001', '",
+          "path": "1/trace/0"
+        }
+      ],
+      "status": "invalid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "matches",
+        "topic": "H09"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.8.0-dev-c25b8e47"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "matches",
+        "topic": "H09"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "3.6.1-0c4d9c91"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "change_needed",
+        "topic": "H09"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [
+        {
+          "message": "{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d4a0', 'input': '0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x0000000000000000000000000000000000001001', '",
+          "path": "1/trace/0"
+        }
+      ],
+      "status": "invalid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "2.1.0-unstable+a404c4f0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "change_needed",
+        "topic": "H09"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [
+        {
+          "message": "{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d4a0', 'input': '0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x0000000000000000000000000000000000001001', '",
+          "path": "1/trace/0"
+        }
+      ],
+      "status": "invalid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "1.39.3+28cbe2a0"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "matches",
+        "topic": "H09"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.5.2+03cb186c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:48:45.686882+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "matches",
+        "topic": "H09"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-native-isolation-verified",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Reth Version: 2.6.0+73a3a008"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "before/control-nonce",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionCount",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "before/code",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getCode",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "before/storage",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "after-write-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "after-write-revert-read/storage",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Canonical storage remains unchanged after the ordered multi-call simulation.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getStorageAt",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "write-read/many-storage-write-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "The second call reads the first call\u2019s simulated write.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:da6869fd3865980fef80bfa418746c825c6854d3dca32b9fa2ec92738be4e849",
+    "capture_eligible": true,
+    "captured_at": "2026-09-22T23:50:51.592860+00:00",
+    "case": "write-revert-read/many-storage-write-revert-read",
+    "checks": [
+      {
+        "detail": "",
+        "requirement": "Return one execution envelope per input call, in order.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Sequential calls retain prior writes and roll back reverted writes.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Each call reports its own sender nonce transition, including a reverted call.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Only the first call writes slot zero; reverted writes and later reads add no storage transition.",
+        "status": "matches",
+        "topic": "H16"
+      },
+      {
+        "detail": "",
+        "requirement": "Failed frames have an error string and an explicit object or null result.",
+        "status": "matches",
+        "topic": "H09"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "callmany-isolation",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_callMany",
+    "request_errors": [],
+    "run": "harness-audit-2-geth-isolation",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "82a2836bb5c7a0a677253fcee501745b5320e0c1",
+    "status": "result",
+    "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
   }
 ]

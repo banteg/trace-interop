@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. An empty trace-type selection executes successfully. Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. An empty trace-type selection executes and preserves the fixture return bytes. Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -39,32 +39,32 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 **Erigon · Development** (`3.8.0-dev-c25b8e47`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 **Erigon · Release** (`3.6.1-0c4d9c91`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes successfully.
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
 
 </details>

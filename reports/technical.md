@@ -23,8 +23,8 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1788 |
-| partial | 554 |
+| assessed | 1815 |
+| partial | 545 |
 | unassessed | 213 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
@@ -81,6 +81,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [a/state-only-nonempty-output](cases/a/state-only-nonempty-output.md) | Nethermind Development, Nethermind Release |
 | [a/transaction-tree](cases/a/transaction-tree.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [a/vm-only-nonempty-output](cases/a/vm-only-nonempty-output.md) | Nethermind Development, Nethermind Release |
+| [callmany-isolation/write-revert-read/many-storage-write-revert-read](cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [fork-followup/beacon-call-55](cases/fork-followup/beacon-call-55.md) | Besu Development, Besu Release, Nethermind Development, Nethermind Release |
 | [fork-followup/destroy-trace-55](cases/fork-followup/destroy-trace-55.md) | Nethermind Development, Nethermind Release |
 | [forks/block-35](cases/forks/block-35.md) | Erigon Development, Erigon Release, Nethermind Development, Nethermind Release, Reth Development, Reth Release |
@@ -264,3 +265,5 @@ These cases returned results that differ from the draft schema. The case pages r
 | [harness-audit-native-raw-validation](../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) | raw-validation | Yes |
 | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/manifest.json) | reorg-safe | No |
 | [harness-audit-native-repeat](../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) | repeat | Yes |
+| [harness-audit-2-native-isolation-verified](../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json) | callmany-isolation | Yes |
+| [harness-audit-2-geth-isolation](../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json) | callmany-isolation | Yes |

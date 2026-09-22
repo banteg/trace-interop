@@ -27,8 +27,11 @@ uv run trace-interop run --lock locks/clients-2026-09-21.json \
 
 Only Reth has a verified pruning adapter in this milestone. It imports the tiny chain,
 prunes account/storage history before block 44, and starts the RPC node. Old headers and
-receipts must remain readable, a latest-state call must succeed, and historical traces
-must report unavailable-state errors. A separate nonce query independently confirms that the old state is unavailable; the exact trace error code is assessed separately against the draft. Merely enabling a pruning flag is not proof.
+receipts must remain readable and a latest-state call must succeed. A separate nonce
+query must establish that the old state is unavailable, using a recognized unavailable-state
+code or the pinned client's legacy pruning diagnostic. Historical trace responses do not
+control eligibility: null, empty results and unexpected errors remain eligible and are
+assessed by H06 against the draft. Merely enabling a pruning flag is not proof.
 
 Erigon, Nethermind and Besu retention scenarios remain an explicit coverage gap. Selecting
 them with `pruned` fails before client execution. This limitation does not affect their

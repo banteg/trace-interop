@@ -74,6 +74,24 @@ class ScenarioTests(unittest.TestCase):
         obs['old-nonce']=result('0x1')
         self.assertFalse(verify_state('pruned',{},obs,'c')[0])
 
+    def test_pruning_eligibility_does_not_depend_on_trace_results(self):
+        def response(value): return {'c': {'response': value}}
+        controls = {
+            'old-header': response({'result': {'number': '0x2'}}),
+            'old-receipt': response({'result': {}}),
+            'latest-call': response({'result': {'output': '0x'+f'{42:064x}'}}),
+            'old-nonce': response({'error': {'code': 4444, 'message': 'History unavailable'}}),
+        }
+        for trace in [{'result': None}, {'result': []}, {'error': {'code': 4444, 'message': 'gone'}},
+                      {'error': {'code': -32603, 'message': 'unexpected'}}]:
+            with self.subTest(trace=trace):
+                obs = dict(controls)
+                for name in ['old-transaction', 'old-replay', 'old-block', 'old-filter']:
+                    obs[name] = response(trace)
+                self.assertTrue(verify_state('pruned', {}, obs, 'c')[0])
+        for nonce in [{'result': '0x0'}, {'error': {'code': -32603, 'message': 'Internal error'}}]:
+            self.assertFalse(verify_state('pruned', {}, dict(controls, **{'old-nonce': response(nonce)}), 'c')[0])
+
     def test_reorg_requires_restored_head_not_just_accepted_switch(self):
         corpus={'heads_a':[{'hash':'A'}],'heads_b':[{'hash':'B'}]}
         obs={phase+'/head':{'c':{'response':{'result':{'hash':h}}}} for phase,h in [('before','A'),('after','B'),('restored','B')]}

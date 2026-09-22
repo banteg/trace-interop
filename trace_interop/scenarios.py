@@ -93,7 +93,7 @@ FLAGS="$FLAGS --config /trace-prune.toml"
 '''
 
 
-def prepare(hive, corpus, name, clients):
+def prepare(hive, corpus, name, clients, head_hash):
     sim=hive/'simulators/ethereum/rpc-compat'
     # Only restore files this adapter owns inside our dedicated dependency checkout.
     for relative in ['simulators/ethereum/rpc-compat/main.go','clients/reth/reth.sh','clients/go-ethereum/geth.sh']:
@@ -118,6 +118,9 @@ def prepare(hive, corpus, name, clients):
         if text.count(needle)!=1:raise ValueError('pinned Hive scenario insertion point changed')
         p.write_text(text.replace(needle,needle+'\n\t\t\tif runInteropScenario(t, c) { return }'))
         (sim/'interop_scenario.go').write_text(REORG)
+    else:
+        p=sim/'main.go';text=p.read_text()
+        p.write_text(text.replace(needle, needle+'\n\t\t\twaitInteropHead(t, c, '+json.dumps(head_hash)+')'))
     if name=='pruned':
         if any(c['client']!='reth' for c in clients.values()):
             raise ValueError('pruned scenario has a verified Reth adapter only; select Reth clients')
@@ -127,7 +130,12 @@ def prepare(hive, corpus, name, clients):
 
 
 def verify_state(corpus_name, corpus, observations, client):
-    def result(name):return observations.get(name,{}).get(client,{}).get('response',{}).get('result')
+    def result(name):
+        observation = observations.get(name, {}).get(client, {})
+        return observation.get('response', {}).get('result') if observation.get('status') == 'result' else None
+    for case in corpus.get('cases', []):
+        if case.get('expected_control') is not None and result(case['name']) != case['expected_control']:
+            return False, 'Independent setup control failed or unavailable: '+case['name']
     if corpus_name == 'raw-validation':
         controls = corpus.get('controls', {})
         head = result('_control/head')
@@ -149,7 +157,8 @@ def verify_state(corpus_name, corpus, observations, client):
     if corpus_name=='pruned':
         header,receipt,latest=result('old-header'),result('old-receipt'),result('latest-call')
         valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'
-        nonce_error=observations.get('old-nonce',{}).get(client,{}).get('response',{}).get('error')
+        nonce_observation=observations.get('old-nonce',{}).get(client,{})
+        nonce_error=nonce_observation.get('response',{}).get('error') if nonce_observation.get('status') == 'rpc_error' else None
         def unavailable(error):
             message=error.get('message','') if isinstance(error,dict) else ''
             message=message.lower() if isinstance(message,str) else ''
@@ -157,3 +166,25 @@ def verify_state(corpus_name, corpus, observations, client):
         valid=valid and unavailable(nonce_error)
         return bool(valid), 'requires retained old header/receipt, successful latest call, and independently unavailable old state'
     return True, 'ordinary imported-chain scenario'
+
+
+def verify_setup(manifest, corpus, observations, client):
+    """Require correlated controls for both imported identity and canonical RPC head."""
+    requests = {c['name']: c['request'] for c in manifest['selected_cases']}
+    head = manifest['head']
+    for name, block in [('_control/head', head.get('number')), ('_control/latest', 'latest')]:
+        request = requests.get(name, {})
+        observation = observations.get(name, {}).get(client, {})
+        actual = observation.get('response', {}).get('result')
+        if (request.get('method') != 'eth_getBlockByNumber' or request.get('params') != [block, False]
+                or observation.get('status') != 'result' or not isinstance(actual, dict)
+                or not all(key in head and actual.get(key) == head[key]
+                           for key in ['number', 'hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot'])):
+            return False, 'Valid '+name+' does not establish the frozen canonical head'
+    # Legacy controls without an expected_control field still have a known height.
+    for case in manifest['selected_cases']:
+        if case['request']['method'] == 'eth_blockNumber':
+            obs = observations.get(case['name'], {}).get(client, {})
+            if obs.get('status') != 'result' or obs.get('response', {}).get('result') != head['number']:
+                return False, 'Canonical height control failed: '+case['name']
+    return verify_state(manifest.get('corpus', ''), corpus, observations, client)

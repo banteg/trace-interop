@@ -65,8 +65,8 @@ class CaptureTests(unittest.TestCase):
 
 class ScenarioTests(unittest.TestCase):
     def test_pruning_requires_independent_state_failure_and_live_control(self):
-        def result(value):return {'c':{'response':{'result':value}}}
-        def error(message):return {'c':{'response':{'error':{'code':-32603,'message':message}}}}
+        def result(value):return {'c':{'status':'result','response':{'result':value}}}
+        def error(message):return {'c':{'status':'rpc_error','response':{'error':{'code':-32603,'message':message}}}}
         obs={'old-header':result({'number':'0x2'}),'old-receipt':result({}), 'latest-call':result({'output':'0x'+f'{42:064x}'})}
         for n in ['old-transaction','old-replay','old-block','old-filter','old-nonce']:
             obs[n]=error('insufficient changesets to revert to block #1')
@@ -75,7 +75,7 @@ class ScenarioTests(unittest.TestCase):
         self.assertFalse(verify_state('pruned',{},obs,'c')[0])
 
     def test_pruning_eligibility_does_not_depend_on_trace_results(self):
-        def response(value): return {'c': {'response': value}}
+        def response(value): return {'c': {'status': 'result' if 'result' in value else 'rpc_error', 'response': value}}
         controls = {
             'old-header': response({'result': {'number': '0x2'}}),
             'old-receipt': response({'result': {}}),
@@ -94,7 +94,7 @@ class ScenarioTests(unittest.TestCase):
 
     def test_reorg_requires_restored_head_not_just_accepted_switch(self):
         corpus={'heads_a':[{'hash':'A'}],'heads_b':[{'hash':'B'}]}
-        obs={phase+'/head':{'c':{'response':{'result':{'hash':h}}}} for phase,h in [('before','A'),('after','B'),('restored','B')]}
+        obs={phase+'/head':{'c':{'status':'result','response':{'result':{'hash':h}}}} for phase,h in [('before','A'),('after','B'),('restored','B')]}
         self.assertFalse(verify_state('reorg-safe',corpus,obs,'c')[0])
         obs['restored/head']['c']['response']['result']['hash']='A'
         self.assertTrue(verify_state('reorg-safe',corpus,obs,'c')[0])

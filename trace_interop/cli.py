@@ -120,6 +120,11 @@ def selected_cases(corpus, pattern):
     cases = [c for c in corpus['cases'] if re.search(pattern, c['name'])]
     if not cases:
         raise ValueError('case selector matched zero cases')
+    selected = {c['name'] for c in cases}
+    # Setup controls remain mandatory even for a single selected probe.
+    cases += [c for c in corpus['cases'] if c['name'] not in selected
+              and (c['name'].startswith(('control-', '_control/'))
+                   or c.get('expected_control') is not None)]
     return cases
 
 
@@ -150,6 +155,8 @@ def execute(args):
     head = read(chain / 'headblock.json')
     cases = [{'name': '_control/head', 'request': {'jsonrpc': '2.0', 'id': 1,
               'method': 'eth_getBlockByNumber', 'params': [head['number'], False]}},
+             {'name': '_control/latest', 'request': {'jsonrpc': '2.0', 'id': 1,
+              'method': 'eth_getBlockByNumber', 'params': ['latest', False]}},
              {'name': '_control/version', 'request': {'jsonrpc': '2.0', 'id': 1,
               'method': 'web3_clientVersion', 'params': []}}] + cases
     hive = checkout()
@@ -169,7 +176,7 @@ def execute(args):
     write(sim / 'openrpc.json', {'openrpc': '1.2.6', 'info': {'title': 'Observations', 'version': '0'}, 'methods': []})
     (sim / 'Dockerfile').write_text(DOCKERFILE)
     from .scenarios import prepare
-    prepare(hive, corpus, args.corpus, {n: lock['clients'][n] for n in names})
+    prepare(hive, corpus, args.corpus, {n: lock['clients'][n] for n in names}, head['hash'])
     out.mkdir(parents=True)
     entries = []
     for name in names:
@@ -220,8 +227,10 @@ def parse_exchange(log, expected):
             continue
         raw = match[2]
         try:
-            value = json.loads(raw)
-        except json.JSONDecodeError:
+            def reject_constant(value):
+                raise ValueError(f'Not a JSON number: {value}')
+            value = json.loads(raw, parse_constant=reject_constant)
+        except ValueError:
             value = invalid_json
         (requests if match[1] == '>>' else replies).append((raw, value))
     if len(requests) != 1 or requests[0][1] != expected:
@@ -270,17 +279,13 @@ def collect(out):
             if name not in cases or client not in manifest['clients'] or client in observations[name]:
                 raise ValueError(f'unexpected or duplicate result: {name}/{client}')
             observations[name][client] = parse_exchange(log, cases[name])
-    eligibility = {}
-    for client in manifest['clients']:
-        actual = observations.get('_control/head', {}).get(client, {}).get('response', {}).get('result')
-        eligibility[client] = isinstance(actual, dict) and all(actual.get(k) == manifest['head'].get(k) for k in ['hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot'])
-    scenario_status = {}
-    from .scenarios import verify_state
+    eligibility, scenario_status = {}, {}
+    from .scenarios import verify_setup
     corpus = read(ROOT / 'fixtures/corpora' / (manifest['corpus'] + '.json')) if manifest.get('corpus') else {}
     for client in manifest['clients']:
-        ok, detail = verify_state(manifest.get('corpus', ''), corpus, observations, client)
+        ok, detail = verify_setup(manifest, corpus, observations, client)
+        eligibility[client] = ok
         scenario_status[client] = {'verified': ok, 'detail': detail}
-        eligibility[client] = eligibility[client] and ok
     missing = [[case, client] for case in cases for client in manifest['clients'] if client not in observations[case]]
     transport = [[case, client] for case, clients in observations.items() for client, obs in clients.items() if obs['status'] in ['harness_error', 'transport_error']]
     summary = {'versions': versions, 'scenario': scenario_status, 'eligible': eligibility, 'missing': missing,

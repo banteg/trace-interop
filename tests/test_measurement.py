@@ -201,7 +201,7 @@ class PrecompileValueTests(unittest.TestCase):
         from trace_interop.scenarios import verify_state
         controls={'_control/create-nonce':'0x85','_control/target-balance':'0x0',
                   '_control/target-nonce':'0x0','_control/target-code':'0x'}
-        observations={n:{'c':{'response':{'result':v}}} for n,v in controls.items()}
+        observations={n:{'c':{'status':'result','response':{'result':v}}} for n,v in controls.items()}
         self.assertTrue(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
         observations['_control/create-nonce']['c']['response']['result']='0x86'
         self.assertFalse(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])

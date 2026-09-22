@@ -1,0 +1,17 @@
+{
+  "H03": {
+    "policy": "converged",
+    "note": "Converged on direction: AND by default, retaining explicit union and intersection and rejecting unknown modes. This records direction, not unanimous formal approval or implementation uptake. Document the migration for both-lists/no-mode queries.",
+    "sources": [
+      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408",
+      "https://github.com/alloy-rs/alloy/pull/4216"
+    ]
+  },
+  "H13": {
+    "policy": "diverging",
+    "note": "The current draft permits nonce-mismatch simulation. Erigon explicitly favors full transaction validation instead, including nonce, balance and EIP-3607. A mismatched-nonce CREATE fixture is needed to test the execution consequences before settling the policy.",
+    "sources": [
+      "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+    ]
+  }
+}

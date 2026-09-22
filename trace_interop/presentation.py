@@ -4,6 +4,8 @@ from datetime import datetime, timezone
 import json
 import os
 
+from .status import decision_status, LEGEND
+
 
 SOURCE_GROUPS = {
     'H01': ['replay'], 'H02': ['lookup'], 'H03': ['filter'],
@@ -161,6 +163,10 @@ def note(editorial, client, topic, checks):
 
 def render(root, output, records, by_client, case_pages, run_rows, decisions, lock):
     editorial = json.loads((root/'decisions/impact.json').read_text())
+    positions = json.loads((root/'decisions/status.json').read_text())
+    if set(positions) - set(decisions):
+        raise ValueError('Policy status references an unknown decision')
+    statuses = {topic: decision_status(d, records, positions.get(topic, {})) for topic, d in decisions.items()}
     sources = json.loads((root/'decisions/sources.json').read_text())
     revisions = json.loads((root/'locks/source-revisions.json').read_text())
     clients = sorted({r['client'] for r in records})
@@ -285,6 +291,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     for topic, d in decisions.items():
         path = output/'decisions'/(topic + '.md')
         text = f'# {d["title"]}\n\n{topic} · {d["kind"]} · [All decisions](../README.md#decisions-to-review)\n\n'
+        position = positions.get(topic, {})
+        text += f'**Status: {statuses[topic]}** · [Status definitions](../../decisions/README.md#status-key)\n\n'
+        text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
+        if position.get('sources'):
+            text += 'Policy evidence: ' + ' · '.join(f'[Source {i}]({url})' for i, url in enumerate(position['sources'], 1)) + '.\n\n'
         sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
         if topic in sections:
             text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'
@@ -332,13 +343,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += table(['Client', 'Main review areas'], [[f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', editorial['clients'][f]['summary']] for f in families])
     text += '## Decisions to review\n\n'
     text += 'The largest API choices are [tree-path lookup](decisions/H02.md), [address-filter composition](decisions/H03.md), and [failed-frame results](decisions/H09.md). Other rows concern missing information or inconsistent execution/reporting. All recommendations remain proposals for client review.\n\n'
-    text += table(['Question', 'Proposed behavior'], [
-        ['[How does trace_get select a frame?](decisions/H02.md)', 'Follow one tree path; return one object or null. An empty path selects the root.'],
-        ['[How do address filters combine?](decisions/H03.md)', 'OR within each list, AND between sender and recipient lists.'],
-        ['[What survives a failed call?](decisions/H09.md)', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'],
-        ['[Which precompile frames are visible?](decisions/H29.md)', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'],
-        ['[Nonce-mismatch policy for signed simulation](decisions/H13.md)', 'Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending.'],
-    ])
+    text += table(['Question', 'Status', 'Proposed behavior'], [
+        [f'[{title}](decisions/{topic}.md)', statuses[topic], behavior]
+        for topic, title, behavior in [
+            ('H02', 'How does trace_get select a frame?', 'Follow one tree path; return one object or null. An empty path selects the root.'),
+            ('H03', 'How do address filters combine?', 'OR within each list, AND between sender and recipient lists.'),
+            ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
+            ('H29', 'Which precompile frames are visible?', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'),
+            ('H13', 'Nonce-mismatch policy for signed simulation', 'Proposed: permit simulation despite a nonce mismatch. Acceptance does not demonstrate nonce rewriting; client agreement is pending.'),
+        ]])
+    text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
     text += '[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
     text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
@@ -373,5 +387,6 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     save(output/'technical.md', text)
     if output == (root/'reports').resolve():
         text = '# Trace API decisions\n\n[Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)\n\n'
-        text += table(['Decision', 'Question'], [[f'[{t}](../reports/decisions/{t}.md)',d['title']] for t,d in decisions.items()])
+        text += table(['Decision', 'Status', 'Question'], [[f'[{t}](../reports/decisions/{t}.md)',statuses[t],d['title']] for t,d in decisions.items()])
+        text += '## Status key\n\n' + LEGEND + '\n'
         save(root/'decisions/README.md', text)

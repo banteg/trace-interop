@@ -65,7 +65,7 @@ def generate(root, runs, output):
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
     write(output/'assessment.json', {
         'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json']},
+        'sources': {name:sha(root/name) for name in ['trace_interop/rules.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
         'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
         'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_') and r['eligible']) for status in ['assessed','partial','unassessed']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},

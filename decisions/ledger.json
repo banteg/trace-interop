@@ -57,9 +57,15 @@
       ],
       "id": "H03",
       "kind": "Spec decision",
-      "next_step": "Settle boolean composition and extension validation together; one-sided and unknown-mode fixtures are available.",
-      "rationale": "Supplying a second filter normally narrows a search; combining two sets of alternatives should be explicit.",
-      "recommendation": "Use OR within each address list and AND between fromAddress and toAddress. One unconstrained side should not suppress matches. The portable baseline rejects the mode extension with -32602; optional extension semantics require separate agreement.",
+      "next_step": "Update the draft and checks to allow recognized mode values, then reassess the one-sided and unknown-mode fixtures and retest Reth after Alloy dependency uptake.",
+      "rationale": "Supplying a second filter normally narrows a search. An explicit union remains useful when callers need one globally paginated result across both address sets.",
+      "recommendation": "Use OR within each address list and AND between `fromAddress` and `toAddress` by default. An omitted, null, or empty side imposes no restriction. Accept optional `mode: \"intersection\"` (the default) and `mode: \"union\"` (match either populated side); reject unknown mode values with `-32602`.",
+      "background": [
+        "In [Erigon #2119](https://github.com/erigontech/erigon/issues/2119), banteg asked in June 2021 for an intersection option to narrow calls from a sender set to a recipient set. Erigon merged the [mode implementation in #3167](https://github.com/erigontech/erigon/pull/3167) in January 2022, corrected the list-level boolean composition in [#3304](https://github.com/erigontech/erigon/pull/3304), and [backported it to stable in #3305](https://github.com/erigontech/erigon/pull/3305). This is established client precedent for retaining an explicit mode.",
+        "[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216), merged on 2026-09-22, cites H03 and changes the default from union to intersection while retaining explicit union. Its tests cover OR within each list, AND between lists, empty lists, and both recognized modes. Reth uses [Alloy's matcher](https://github.com/paradigmxyz/reth/blob/main/crates/rpc/rpc/src/trace.rs), but the tested Reth builds and [main@534c60db9d](https://github.com/paradigmxyz/reth/blob/534c60db9d/Cargo.lock) still lock Alloy 2.4.2, which predates the PR. Reth needs dependency uptake and a retest before its observed result changes.",
+        "The client verdicts below were scored against the pinned earlier draft, which rejected every mode value. Mode-related proposed changes and failure labels in that comparison are historical; they have not been reassessed against this recommendation."
+      ],
+      "comparison_heading": "Pinned draft comparison (before mode revision)",
       "title": "Filter composition and mode"
     },
     {

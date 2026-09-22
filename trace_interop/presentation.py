@@ -284,7 +284,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
         if topic in sections:
             text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'
-        text += f'## Recommendation\n\n{d["recommendation"]}\n\n{d["rationale"]}\n\n## What changes for clients\n\n'
+        text += f'## Recommendation\n\n{d["recommendation"]}\n\n{d["rationale"]}\n\n'
+        if d.get('background'):
+            text += '## Background\n\n' + '\n\n'.join(d['background']) + '\n\n'
+        text += f'## {d.get("comparison_heading", "What changes for clients")}\n\n'
         rows = []
         for f, selected in by_family.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]

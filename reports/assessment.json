@@ -55,7 +55,7 @@
     "spec.lock.json": "47bdaf63e73a2da563076afd7491666aa243930788457c1f43b009113937638c",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
     "trace_interop/oracles.py": "192cee56e18b7cbe50de56309aca73d024d3f5726c5462aa9a7362ae1c904a2a",
-    "trace_interop/presentation.py": "3be682b4dfd8c3efaa758a87bb4bc5c64a33f1a4eaa3f7931372d6adcc922158",
+    "trace_interop/presentation.py": "e82e9977b55e322bf9a5caa0a90798ba9a5250a27090b66cc9d08d1cb3c75980",
     "trace_interop/report.py": "156f0a14ff4778fbfe3123b3035ef93f962452faaeb6c1c6e60300a264a01ea1",
     "trace_interop/rules.py": "858648f77a4b2f954740a00c2574f747b0daad2161d158416e7f0f93d1d806d9",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",

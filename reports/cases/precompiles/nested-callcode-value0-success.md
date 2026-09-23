@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 1 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,12 +41,12 @@
 }
 ```
 
-**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - Result shape at `vmTrace`: {'code': '0x6000600052604060006080600060006006620186a0f25060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995207}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995204}, 'pc': 2, 'sub': None}, {'cost': 6,
 
-**Nethermind · Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - Result shape at `vmTrace`: {'code': '0x6000600052604060006080600060006006620186a0f25060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995207}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995204}, 'pc': 2, 'sub': None}, {'cost': 6,

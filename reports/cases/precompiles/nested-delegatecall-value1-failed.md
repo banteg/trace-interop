@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 1 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompiles/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,7 +41,7 @@
 }
 ```
 
-**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
@@ -49,7 +49,7 @@
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f92', 'init': '0x602a60005260406000608060006006620186a0f45060006000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
 
-**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
@@ -57,14 +57,14 @@
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f92', 'init': '0x602a60005260406000608060006006620186a0f45060006000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
 
-**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/1`: {'action': {'callType': 'delegatecall', 'from': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'gas': '0x186a0', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `vmTrace`: {'code': '0x602a60005260406000608060006006620186a0f45060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995215}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995212}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex
 
-**Nethermind · Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.

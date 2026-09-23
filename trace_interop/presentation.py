@@ -46,7 +46,9 @@ def family(client):
 
 
 def channel(client):
-    return 'Draft fork' if client == 'go-ethereum_trace' else client.split('_', 1)[1].capitalize()
+    name = 'Draft fork' if client == 'go-ethereum_trace' else client.split('_', 1)[1].capitalize()
+    icon = {'Release': '📦', 'Development': '🛠️', 'Draft fork': '🧪'}.get(name, '🏷️')
+    return f'{icon} {name}'
 
 
 def verdict(checks):
@@ -62,6 +64,19 @@ def verdict(checks):
     if 'matches' in statuses:
         return 'Checked cases agree'
     return 'Not assessed'
+
+
+def display_verdict(checks):
+    label = verdict(checks)
+    icon = {
+        'Checked cases agree': '✅',
+        'Differs': '⚠️',
+        'Method unavailable': '⛔',
+        'Partially assessed': '🟡',
+        'Not assessed': '⚪',
+        'Policy open': '❔',
+    }[label]
+    return f'{icon} {label}'
 
 
 def utc_date(timestamp):
@@ -213,9 +228,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         rows = []
         for e in sorted(entries, key=lambda e: (family(e['record']['client']), e['record']['client'].endswith('_development'), e['record']['run'])):
             r = e['record']; client = r['client']
-            assessment = verdict(r['checks']) if r['eligible'] else 'Not assessed'
+            assessment = display_verdict(r['checks'] if r['eligible'] else [])
             if r.get('schema', {}).get('status') == 'invalid':
-                assessment += '; result shape differs'
+                assessment += '; ⚠️ result shape differs'
             rows.append([f'[{names[client]} · {channel(client)}]({relative(output/"clients"/(client+".md"), path.parent)})', outcome(e), assessment, f'[Response]({relative(e["raw"], path.parent)}) · [Build/run]({relative(run_manifests[r["run"]], path.parent)})'])
         text += table(['Build', 'Returned', 'Compared with draft', 'Evidence'], rows)
         text += '<details><summary>Request and assertion details</summary>\n\n```json\n' + json.dumps(entries[0]['request'], indent=2) + '\n```\n\n'
@@ -242,7 +257,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         for build_note in profile.get('build_notes', []):
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
-        text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
+        text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).\n\n'
         rows = []; matched = []; untested = []; observations = []; partial = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
@@ -259,7 +274,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             statuses = []
             for c in selected:
                 cchecks = by_client[c].get(topic, [])
-                value = verdict(cchecks)
+                value = display_verdict(cchecks)
                 if cchecks:
                     value += '<br>' + examples(output, path.parent, cchecks, 1)
                 statuses.append(value)
@@ -281,13 +296,13 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         if other_schema:
             text += 'Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.\n\n'
         if partial:
-            text += '**Partially assessed:** some declared cases lack an evaluated assertion. ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in partial) + '.\n\n'
+            text += '**🟡 Partially assessed:** some declared cases lack an evaluated assertion. ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in partial) + '.\n\n'
         if matched:
-            text += '<details><summary>Behaviors with no difference in the checked cases</summary>\n\n'
+            text += '<details><summary>✅ Behaviors with no difference in the checked cases</summary>\n\n'
             text += table(['Behavior', 'Examples'], [[f'[{decisions[t]["title"]}](../decisions/{t}.md)', examples(output, path.parent, [q for c in selected for q in by_client[c].get(t, [])])] for t in matched])
             text += '</details>\n\n'
         if untested:
-            text += '**Still needs review:** ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in untested) + '.\n\n'
+            text += '**⚪ Still needs review:** ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in untested) + '.\n\n'
         text += '[Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)\n\n'
         text += 'For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).\n'
         save(path, text)
@@ -312,6 +327,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         if d.get('background'):
             text += '## Background\n\n' + '\n\n'.join(d['background']) + '\n\n'
         text += f'## {d.get("comparison_heading", "What changes for clients")}\n\n'
+        text += '[Test status key](../technical.md#test-status-key) · Build labels identify captured releases, development builds and the experimental draft fork.\n\n'
         rows = []
         for f, selected in by_family.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
@@ -331,7 +347,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 behavior = '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
-            build_cells = '<br>'.join(f'{channel(c)}: {verdict(by_client[c].get(topic, []))}' for c in selected)
+            build_cells = '<br>'.join(f'{channel(c)}: {display_verdict(by_client[c].get(topic, []))}' for c in selected)
             links = examples(output, path.parent, checks)
             code = source_links(sources, selected[0], topic)
             evidence_links = '<br>'.join(x for x in (
@@ -387,6 +403,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text = '# Technical appendix\n\n[Back to the maintainer overview](README.md)\n\n'
     text += 'The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Release and development labels refer to the captured builds; they do not imply version ordering.\n\n'
     text += 'The experimental Geth fork implements the draft and is not an independent vote for its decisions. No verified pruning scenario is included for that fork.\n\n'
+    text += ('## Test status key\n\n'
+             '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
+             '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
+             '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
+             '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
+             '- ⚪ **Not assessed:** no evaluated assertion establishes an outcome.\n'
+             '- ❔ **Policy open:** observed behavior is recorded without a settled assertion.\n\n'
+             'Build labels: 📦 **Release** · 🛠️ **Development** · 🧪 **Draft fork**. '
+             'These identify build channels, not test outcomes. Test outcomes are separate from '
+             '[policy agreement and harmonization](../decisions/README.md#status-key).\n\n')
     text += '## Reproduction and machine-readable results\n\nSee [usage](../docs/usage.md) for commands and [stateful scenarios](../docs/scenarios.md) for setup requirements. '
     text += '[checks.json](checks.json) retains every assertion; [comparisons.json](comparisons.json) groups exact responses; [assessment.json](assessment.json) pins the specification and assessment source hashes. Each case links its original response and run manifest.\n\n'
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'

@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 2 call frames; output `0x` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 2 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 2 call frames; output `0x` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 2 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 2 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,21 +41,21 @@
 }
 ```
 
-**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
 
-**Nethermind · Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
 
-**Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
+**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
-**Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H26](../../decisions/H26.md): Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 

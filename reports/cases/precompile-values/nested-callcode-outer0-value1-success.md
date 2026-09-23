@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | 2 records | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | 2 records | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 2 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 2 records | Checked cases agree; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | 2 records | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -60,21 +60,21 @@
 }
 ```
 
-**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 
-**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 
-**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - Result shape at `1/vmTrace`: {'code': '0x6000600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995163}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995160}, 'pc': 2, 'sub': None}, {'cost'
 
-**Nethermind · Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - Result shape at `1/vmTrace`: {'code': '0x6000600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995163}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995160}, 'pc': 2, 'sub': None}, {'cost'
 

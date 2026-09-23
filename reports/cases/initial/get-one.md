@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · Release](../../clients/besu_release.md) | One frame, path `[1]` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Besu · Development](../../clients/besu_development.md) | One frame, path `[1]` | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · Release](../../clients/erigon_release.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · Development](../../clients/erigon_development.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Geth draft fork · Draft fork](../../clients/go-ethereum_trace.md) | One frame, path `[1]` | Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-initial/manifest.json) |
-| [Nethermind · Release](../../clients/nethermind_release.md) | 1 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Nethermind · Development](../../clients/nethermind_development.md) | 1 records | Differs; result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · Release](../../clients/reth_release.md) | One frame, path `[0]` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · Development](../../clients/reth_development.md) | One frame, path `[0]` | Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | One frame, path `[1]` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | One frame, path `[1]` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | One frame, path `[1]` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | One frame, path `[1]` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | One frame, path `[1]` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-geth-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-initial/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 1 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 1 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | One frame, path `[0]` | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | One frame, path `[0]` | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,31 +32,31 @@
 }
 ```
 
-**Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
-**Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `/`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64b
 
-**Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
 - Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
 
-**Nethermind · Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
 - Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xad340c8620df478fa43b66e0ff842b64
 
-**Reth · Development** (`Reth Version: 2.5.2+03cb186c`)
+**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
 
-**Reth · Release** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H02](../../decisions/H02.md): Return the transaction-tree record at [1], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
 

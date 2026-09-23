@@ -48,3 +48,5 @@ The target is a useful, precise contract. Historical implementations explain com
 - ✅ **Harmonized · stable:** the same is also verified on their captured releases.
 
 Missing cases, ineligible runs, unsupported methods, unchecked assertions and invalid result schemas prevent harmonization. Each client/channel uses its most recently captured immutable build; evidence from different builds is never combined. These are milestones for the declared cases at the linked revisions, not full conformance or a claim about the latest builds. The experimental Geth fork is reported separately and is not a policy vote.
+
+Decision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change a verdict for the pinned builds; [client fixes](../docs/client-fixes.md) tracks implementation and retesting separately.

@@ -35,6 +35,8 @@ below describe the earlier regression proofs.
 | [Besu #11352](https://github.com/besu-eth/besu/pull/11352) | Preserve VM frame ownership, child bytecode and CALL resumption gas after omitted opcodes | Three real-EVM regressions fail before the fix: immediate INVALID and stack-underflow child halts, plus repeated failed calls. Both child-halt cases also verify bytecode retention, failing before the follow-up. Independently tested on upstream: 812 trace HTTP tests and 400 debug-trace HTTP tests pass. Review and matrix retest remain. |
 | [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit execution effects for root out-of-gas steps | Regression reproduces a fabricated ADD result and negative remaining gas; a sufficient-gas control still records the result. Independently tested on upstream: 811 trace HTTP tests and 400 debug-trace HTTP tests pass. Review and matrix retest remain. |
 
+The separate [Besu #11357 method-coverage request](https://github.com/besu-eth/besu/issues/11357), opened 2026-09-23, asks for `trace_replayTransaction` or an explicit scope decision ([H01](../reports/decisions/H01.md)). It is an issue, not a submitted fix; the pinned Besu builds still return `-32601`.
+
 ### Nethermind
 
 | PR | Fix | Evidence and next step |

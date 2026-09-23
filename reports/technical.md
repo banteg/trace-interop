@@ -34,9 +34,9 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| assessed | 1903 |
-| partial | 545 |
-| unassessed | 229 |
+| 🔎 Assessed | 1903 |
+| 🟡 Partial | 545 |
+| ⚪ Unassessed | 229 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
 
@@ -256,27 +256,29 @@ These cases returned results that differ from the draft schema. The case pages r
 
 ## Runs
 
+Capture completeness records whether requests finished, not whether their results match the proposal.
+
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [harness-audit-geth-a](../evidence/2026-09-23/harness-audit-geth-a/manifest.json) | a | Yes |
-| [harness-audit-geth-fork-followup](../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) | fork-followup | Yes |
-| [harness-audit-geth-forks](../evidence/2026-09-23/harness-audit-geth-forks/manifest.json) | forks | Yes |
-| [harness-audit-geth-initial](../evidence/2026-09-23/harness-audit-geth-initial/manifest.json) | initial | Yes |
-| [harness-audit-geth-precompile-values](../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) | precompile-values | Yes |
-| [harness-audit-geth-precompiles](../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) | precompiles | Yes |
-| [harness-audit-geth-reorg-safe](../evidence/2026-09-23/harness-audit-geth-reorg-safe/manifest.json) | reorg-safe | Yes |
-| [harness-audit-geth-repeat](../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json) | repeat | Yes |
-| [harness-audit-native-a](../evidence/2026-09-23/harness-audit-native-a/manifest.json) | a | Yes |
-| [harness-audit-native-fork-followup](../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) | fork-followup | Yes |
-| [harness-audit-native-forks](../evidence/2026-09-23/harness-audit-native-forks/manifest.json) | forks | Yes |
-| [harness-audit-native-initial](../evidence/2026-09-23/harness-audit-native-initial/manifest.json) | initial | Yes |
-| [harness-audit-native-precompile-values](../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) | precompile-values | Yes |
-| [harness-audit-native-precompiles](../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) | precompiles | Yes |
-| [harness-audit-native-pruned](../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) | pruned | Yes |
-| [harness-audit-native-raw-validation](../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) | raw-validation | Yes |
-| [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/manifest.json) | reorg-safe | No |
-| [harness-audit-native-repeat](../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) | repeat | Yes |
-| [harness-audit-2-native-isolation-verified](../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json) | callmany-isolation | Yes |
-| [harness-audit-2-geth-isolation](../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json) | callmany-isolation | Yes |
-| [h30-dev-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) | h30 | Yes |
-| [h30-release-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) | h30 | Yes |
+| [harness-audit-geth-a](../evidence/2026-09-23/harness-audit-geth-a/manifest.json) | a | ✅ Yes |
+| [harness-audit-geth-fork-followup](../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) | fork-followup | ✅ Yes |
+| [harness-audit-geth-forks](../evidence/2026-09-23/harness-audit-geth-forks/manifest.json) | forks | ✅ Yes |
+| [harness-audit-geth-initial](../evidence/2026-09-23/harness-audit-geth-initial/manifest.json) | initial | ✅ Yes |
+| [harness-audit-geth-precompile-values](../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json) | precompile-values | ✅ Yes |
+| [harness-audit-geth-precompiles](../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json) | precompiles | ✅ Yes |
+| [harness-audit-geth-reorg-safe](../evidence/2026-09-23/harness-audit-geth-reorg-safe/manifest.json) | reorg-safe | ✅ Yes |
+| [harness-audit-geth-repeat](../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json) | repeat | ✅ Yes |
+| [harness-audit-native-a](../evidence/2026-09-23/harness-audit-native-a/manifest.json) | a | ✅ Yes |
+| [harness-audit-native-fork-followup](../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) | fork-followup | ✅ Yes |
+| [harness-audit-native-forks](../evidence/2026-09-23/harness-audit-native-forks/manifest.json) | forks | ✅ Yes |
+| [harness-audit-native-initial](../evidence/2026-09-23/harness-audit-native-initial/manifest.json) | initial | ✅ Yes |
+| [harness-audit-native-precompile-values](../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) | precompile-values | ✅ Yes |
+| [harness-audit-native-precompiles](../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) | precompiles | ✅ Yes |
+| [harness-audit-native-pruned](../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) | pruned | ✅ Yes |
+| [harness-audit-native-raw-validation](../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) | raw-validation | ✅ Yes |
+| [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
+| [harness-audit-native-repeat](../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) | repeat | ✅ Yes |
+| [harness-audit-2-native-isolation-verified](../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json) | callmany-isolation | ✅ Yes |
+| [harness-audit-2-geth-isolation](../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json) | callmany-isolation | ✅ Yes |
+| [h30-dev-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) | h30 | ✅ Yes |
+| [h30-release-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) | h30 | ✅ Yes |

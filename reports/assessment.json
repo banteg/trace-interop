@@ -47,7 +47,7 @@
   },
   "sources": {
     "decisions/impact.json": "cc7d95fafb6f8e2391bdaa45a3c5595753edccbffb57fdb2dccb864871fee46a",
-    "decisions/ledger.json": "e40b267c68fdffafe8d0b518c3da3f42f8983ba265d00cb31bd1d0fafe75ba06",
+    "decisions/ledger.json": "25bf79eceacfee9e41c975f401a9e71772ef684a760b5721a4dbdb9028ef8390",
     "decisions/sources.json": "61ae03648002808181557c56b1f4a07c7450e631063b2a92a66a5ddc5c5e62f6",
     "decisions/status.json": "55a883db76f72734b94eb1e4b41fb385ab848624d5626cd102dc6cd3f77efa50",
     "locks/source-revisions.json": "9145e7c733915e286fafa7c7788b88e224f9be7087180d03d52c12c88134f9e6",
@@ -55,7 +55,7 @@
     "spec.lock.json": "47bdaf63e73a2da563076afd7491666aa243930788457c1f43b009113937638c",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
     "trace_interop/oracles.py": "192cee56e18b7cbe50de56309aca73d024d3f5726c5462aa9a7362ae1c904a2a",
-    "trace_interop/presentation.py": "e82e9977b55e322bf9a5caa0a90798ba9a5250a27090b66cc9d08d1cb3c75980",
+    "trace_interop/presentation.py": "d6ec18dff06468bbdd66dc325170e274e305cbbdc52d7183db368228e1924c3b",
     "trace_interop/report.py": "156f0a14ff4778fbfe3123b3035ef93f962452faaeb6c1c6e60300a264a01ea1",
     "trace_interop/rules.py": "858648f77a4b2f954740a00c2574f747b0daad2161d158416e7f0f93d1d806d9",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",

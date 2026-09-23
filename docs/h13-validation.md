@@ -27,19 +27,21 @@ and development builds show the same validation categories below for the all-tra
 selection; individual selections are also retained, including unrelated output-field
 bugs. These results concern trace RPC simulation, not block consensus validation.
 
+Icons describe observed outcomes, not pass/fail: ⚙️ execution, 🛑 EVM halt, ↩️ rejection, ⚪ empty result, ⚠️ malformed response, 🧭 state-derived creation address.
+
 | Probe | Besu | Erigon | Nethermind | Reth |
 |---|---|---|---|---|
-| Valid EOA | Executes | Executes | Executes | Executes |
-| Valid delegated sender | Executes | Executes | Executes | Executes |
-| Valid transaction, execution OOG | Trace halt | Trace halt | Trace halt | Trace halt |
-| Nonce low / high | Empty result | Executes | Executes | Rejects `-32000` |
-| Wrong chain ID | Executes | Rejects `-32000` | Malformed JSON | Rejects `-32000` |
-| Value exceeds balance | Empty result | Executes | Malformed JSON | Rejects `-32003` |
-| Value affordable, upfront gas unaffordable | Empty result | Executes | Malformed JSON | Rejects `-32003` |
-| Intrinsic gas short by one | Empty result | Rejects `-32000` | Malformed JSON | Rejects `-32000` |
-| Gas price below base fee | Empty result | Rejects `-32000` | Malformed JSON | Rejects `-32000` |
-| Ordinary code at sender (EIP-3607) | Executes | Executes | Executes | Rejects `-32003` |
-| CREATE with low / high nonce | Empty result | State-nonce address | State-nonce address | Rejects `-32000` |
+| Valid EOA | ⚙️ Executes | ⚙️ Executes | ⚙️ Executes | ⚙️ Executes |
+| Valid delegated sender | ⚙️ Executes | ⚙️ Executes | ⚙️ Executes | ⚙️ Executes |
+| Valid transaction, execution OOG | 🛑 Trace halt | 🛑 Trace halt | 🛑 Trace halt | 🛑 Trace halt |
+| Nonce low / high | ⚪ Empty result | ⚙️ Executes | ⚙️ Executes | ↩️ Rejects `-32000` |
+| Wrong chain ID | ⚙️ Executes | ↩️ Rejects `-32000` | ⚠️ Malformed JSON | ↩️ Rejects `-32000` |
+| Value exceeds balance | ⚪ Empty result | ⚙️ Executes | ⚠️ Malformed JSON | ↩️ Rejects `-32003` |
+| Value affordable, upfront gas unaffordable | ⚪ Empty result | ⚙️ Executes | ⚠️ Malformed JSON | ↩️ Rejects `-32003` |
+| Intrinsic gas short by one | ⚪ Empty result | ↩️ Rejects `-32000` | ⚠️ Malformed JSON | ↩️ Rejects `-32000` |
+| Gas price below base fee | ⚪ Empty result | ↩️ Rejects `-32000` | ⚠️ Malformed JSON | ↩️ Rejects `-32000` |
+| Ordinary code at sender (EIP-3607) | ⚙️ Executes | ⚙️ Executes | ⚙️ Executes | ↩️ Rejects `-32003` |
+| CREATE with low / high nonce | ⚪ Empty result | 🧭 State-nonce address | 🧭 State-nonce address | ↩️ Rejects `-32000` |
 
 “Executes” means the target returns word `42`, records the expected slot-0 write and
 has VM operations in the all-tracers response. Merely receiving a `result` envelope

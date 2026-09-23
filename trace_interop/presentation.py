@@ -208,10 +208,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     def method_status(method, client):
         statuses = availability[method][client]
         if 'unsupported' in statuses:
-            return 'Unavailable' if statuses == {'unsupported'} else 'Mixed responses'
+            return '⛔ Unavailable' if statuses == {'unsupported'} else '🟡 Mixed responses'
         if 'result' in statuses:
-            return 'Returns results'
-        return 'Errors only' if statuses else 'Not observed'
+            return '📬 Returns results'
+        return '↩️ Errors only' if statuses else '⚪ Not observed'
 
     families = sorted({family(c) for c in clients})
     names = {c: editorial['clients'][family(c)]['name'] for c in clients}
@@ -356,7 +356,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             ) if x)
             rows.append([f'[{editorial["clients"][f]["name"]}](../clients/{f}.md)', build_cells, behavior, evidence_links])
         if topic == 'H01':
-            text += 'A returned result establishes method availability, not conformance. Errors for malformed input are expected.\n\n'
+            text += '📬 Returned results establish method availability, not conformance. ⛔ Unavailable means unsupported; 🟡 marks mixed availability, ↩️ errors only, and ⚪ no observation. Errors for malformed input are expected.\n\n'
             method_rows = []
             for method in sorted(m for m in availability if m.startswith('trace_')):
                 values = []
@@ -418,7 +418,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'
     gaps = sorted({(r['client'],r['run'],r['corpus']) for r in records if not r['eligible']})
     text += '## Assertion coverage\n\nCoverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
-    text += table(['Coverage', 'Observations'], [[status, sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
+    text += table(['Coverage', 'Observations'], [[{'assessed': '🔎 Assessed', 'partial': '🟡 Partial', 'unassessed': '⚪ Unassessed'}[status], sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
     text += 'Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.\n\n'
     text += '## Setup gaps\n\n'
     text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+channel(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'
@@ -428,8 +428,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         if r.get('schema', {}).get('status') == 'invalid':
             shape[(r['corpus'],r['case'])].append(r['client'])
     text += table(['Case', 'Affected builds'], [[f'[{corpus}/{case}](cases/{corpus}/{case}.md)', ', '.join(names[c]+' '+channel(c) for c in sorted(set(cs)))] for (corpus,case),cs in sorted(shape.items())])
-    text += '## Runs\n\n'
-    text += table(['Run', 'Corpus', 'Capture complete'], [[f'[{row["name"]}]({row["manifest"]})',row['corpus'],'Yes' if row['complete'] else 'No'] for row in run_rows])
+    text += '## Runs\n\nCapture completeness records whether requests finished, not whether their results match the proposal.\n\n'
+    text += table(['Run', 'Corpus', 'Capture complete'], [[f'[{row["name"]}]({row["manifest"]})',row['corpus'],'✅ Yes' if row['complete'] else '⚠️ No'] for row in run_rows])
     save(output/'technical.md', text)
     if output == (root/'reports').resolve():
         text = '# Trace API decisions\n\n[Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)\n\n'
@@ -438,4 +438,5 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                  'explicit migration cost; observed agreement alone does not establish correctness.\n\n')
         text += table(['Decision', 'Status', 'Question'], [[f'[{t}](../reports/decisions/{t}.md)',statuses[t],d['title']] for t,d in decisions.items()])
         text += '## Status key\n\n' + LEGEND + '\n'
+        text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change a verdict for the pinned builds; [client fixes](../docs/client-fixes.md) tracks implementation and retesting separately.\n'
         save(root/'decisions/README.md', text)

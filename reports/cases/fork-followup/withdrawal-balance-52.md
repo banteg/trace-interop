@@ -10,7 +10,7 @@
 | [Besu · 🛠️ Development](../../clients/besu_development.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
 | [Erigon · 📦 Release](../../clients/erigon_release.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
 | [Erigon · 🛠️ Development](../../clients/erigon_development.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-fork-followup/manifest.json) |
 | [Nethermind · 📦 Release](../../clients/nethermind_release.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
 | [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
 | [Reth · 📦 Release](../../clients/reth_release.md) | `0xc097ce7bc90715b34b9f274876e806` | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-fork-followup/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) |
@@ -30,7 +30,7 @@
 }
 ```
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
 
 - [H05](../../decisions/H05.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 

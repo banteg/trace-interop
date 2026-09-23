@@ -10,7 +10,7 @@
 | [Besu · 🛠️ Development](../../clients/besu_development.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
 | [Erigon · 📦 Release](../../clients/erigon_release.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
 | [Erigon · 🛠️ Development](../../clients/erigon_development.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-geth-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-repeat/manifest.json) |
 | [Nethermind · 📦 Release](../../clients/nethermind_release.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
 | [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
 | [Reth · 📦 Release](../../clients/reth_release.md) | Object returned | ⚪ Not assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-repeat/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) |
@@ -39,7 +39,7 @@
 }
 ```
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1`)
+**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
 
 - [H24](../../decisions/H24.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 

@@ -1,0 +1,8 @@
+build/cache/protoc-27.1-linux-x86_64.zip is up-to-date
+build/cache/protoc-gen-go.v1.34.2.linux.amd64.tar.gz is up-to-date
+>>> /home/banteg/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.1.linux-amd64/bin/go generate ./...
+(in ./cmd/keeper) >>> /home/banteg/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.1.linux-amd64/bin/go generate ./...
+No stale files detected.
+>>> /home/banteg/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.1.linux-amd64/bin/go mod tidy -diff
+(in ./cmd/keeper) >>> /home/banteg/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.1.linux-amd64/bin/go mod tidy -diff
+No untidy module files detected.

@@ -1,0 +1,12 @@
+{
+  "geth-contract-before-final.log": "07cef823e09a39ce63ae1359715f9f506d8a9e0bd3c8b7e13c1cac13d7138c2e",
+  "geth-contract-build.log": "ef84d4513d5e22c9e84da683013cdc9985026bdb925636b47a9a2aae9b822cb9",
+  "geth-contract-deps.log": "0ac2708bff627eaa008d308f382dcd28f3a415dcdbbe021ab80ec17fae4101f3",
+  "geth-contract-full-v2.log": "d818acc6a052dfa4f758fbcc4ce8c55e0a1b8e17fdb5640b7a86e04e98bb6b58",
+  "geth-contract-generate.log": "7c3aaed44f1f59d6e0be13e38abbf5c08b6ba369661cbb7c50a936091274654c",
+  "geth-contract-lint.log": "df24e7ce007cbc32886c278ce4ed86a52180be98df793ed1370b1fa8b4d3feb1",
+  "geth-contract-published-build.log": "aa34277a3c61bb76d84db0dc5efc2945ad0e18763664aedafd9200343d37005d",
+  "geth-contract-race.log": "c58229005e25c80c1b311d4fda8e64e1a2363b696605321b08710a5dbac1093f",
+  "geth-contract-rebuild.log": "eabb8f0cd0541afa1951800faf175103ecfefbfda863d01f17cc431f1b250b2e",
+  "geth-contract-tests.json": "6dd660622040f3d26a4004fb4316d0fe92508e85688bd393498ee93f5b9bb307"
+}

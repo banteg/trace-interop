@@ -1,0 +1,57 @@
+Sep 23 17:17:10.794 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 17:17:10.857 INF building 1 clients...
+Sep 23 17:17:10.857 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=351f4131517b32d6a34d884f30dd5d6db83e1c008297f920e87b02b269f9874e
+Sep 23 17:17:11.062 INF building 1 simulators...
+Sep 23 17:17:11.063 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 17:17:11.156 INF creating output directory folder=/home/banteg/dev/trace-geth-contract-evidence/geth-contract-fork-followup/hive
+Sep 23 17:17:11.164 INF running simulation: ethereum/rpc-compat
+Sep 23 17:17:11.474 INF hiveproxy started container=d21fcd15bb33 addr=172.17.0.2:8081
+Sep 23 17:17:11.792 INF API: suite started suite=0 name=rpc-compat
+Sep 23 17:17:11.795 INF API: test started suite=0 test=1 name="client launch (go-ethereum_trace)"
+Sep 23 17:17:14.084 INF API: client go-ethereum_trace started suite=0 test=1 container=d7a352ed
+Sep 23 17:17:14.098 INF API: test started suite=0 test=2 name="interop/_control/head (go-ethereum_trace)"
+Sep 23 17:17:14.103 INF API: test ended suite=0 test=2 pass=false
+Sep 23 17:17:14.104 INF API: test started suite=0 test=3 name="interop/_control/latest (go-ethereum_trace)"
+Sep 23 17:17:14.108 INF API: test ended suite=0 test=3 pass=false
+Sep 23 17:17:14.109 INF API: test started suite=0 test=4 name="interop/_control/version (go-ethereum_trace)"
+Sep 23 17:17:14.111 INF API: test ended suite=0 test=4 pass=false
+Sep 23 17:17:14.112 INF API: test started suite=0 test=5 name="interop/beacon-call-55 (go-ethereum_trace)"
+Sep 23 17:17:14.117 INF API: test ended suite=0 test=5 pass=false
+Sep 23 17:17:14.118 INF API: test started suite=0 test=6 name="interop/beacon-call-56 (go-ethereum_trace)"
+Sep 23 17:17:14.121 INF API: test ended suite=0 test=6 pass=false
+Sep 23 17:17:14.122 INF API: test started suite=0 test=7 name="interop/control-head (go-ethereum_trace)"
+Sep 23 17:17:14.124 INF API: test ended suite=0 test=7 pass=false
+Sep 23 17:17:14.125 INF API: test started suite=0 test=8 name="interop/destroy-trace-55 (go-ethereum_trace)"
+Sep 23 17:17:14.127 INF API: test ended suite=0 test=8 pass=false
+Sep 23 17:17:14.129 INF API: test started suite=0 test=9 name="interop/destroy-trace-56 (go-ethereum_trace)"
+Sep 23 17:17:14.131 INF API: test ended suite=0 test=9 pass=false
+Sep 23 17:17:14.132 INF API: test started suite=0 test=10 name="interop/system-beacon-55-560 (go-ethereum_trace)"
+Sep 23 17:17:14.134 INF API: test ended suite=0 test=10 pass=false
+Sep 23 17:17:14.135 INF API: test started suite=0 test=11 name="interop/system-beacon-55-8751 (go-ethereum_trace)"
+Sep 23 17:17:14.137 INF API: test ended suite=0 test=11 pass=false
+Sep 23 17:17:14.138 INF API: test started suite=0 test=12 name="interop/system-beacon-56-560 (go-ethereum_trace)"
+Sep 23 17:17:14.139 INF API: test ended suite=0 test=12 pass=false
+Sep 23 17:17:14.140 INF API: test started suite=0 test=13 name="interop/system-beacon-56-8751 (go-ethereum_trace)"
+Sep 23 17:17:14.142 INF API: test ended suite=0 test=13 pass=false
+Sep 23 17:17:14.142 INF API: test started suite=0 test=14 name="interop/withdrawal-balance-51 (go-ethereum_trace)"
+Sep 23 17:17:14.144 INF API: test ended suite=0 test=14 pass=false
+Sep 23 17:17:14.144 INF API: test started suite=0 test=15 name="interop/withdrawal-balance-52 (go-ethereum_trace)"
+Sep 23 17:17:14.146 INF API: test ended suite=0 test=15 pass=false
+Sep 23 17:17:14.146 INF API: test started suite=0 test=16 name="interop/withdrawal-balance-53 (go-ethereum_trace)"
+Sep 23 17:17:14.148 INF API: test ended suite=0 test=16 pass=false
+Sep 23 17:17:14.149 INF API: test started suite=0 test=17 name="interop/withdrawal-block-51 (go-ethereum_trace)"
+Sep 23 17:17:14.152 INF API: test ended suite=0 test=17 pass=false
+Sep 23 17:17:14.153 INF API: test started suite=0 test=18 name="interop/withdrawal-block-52 (go-ethereum_trace)"
+Sep 23 17:17:14.156 INF API: test ended suite=0 test=18 pass=false
+Sep 23 17:17:14.157 INF API: test started suite=0 test=19 name="interop/withdrawal-block-53 (go-ethereum_trace)"
+Sep 23 17:17:14.160 INF API: test ended suite=0 test=19 pass=false
+Sep 23 17:17:14.162 INF API: test started suite=0 test=20 name="interop/withdrawal-filter-51 (go-ethereum_trace)"
+Sep 23 17:17:14.164 INF API: test ended suite=0 test=20 pass=false
+Sep 23 17:17:14.165 INF API: test started suite=0 test=21 name="interop/withdrawal-filter-52 (go-ethereum_trace)"
+Sep 23 17:17:14.167 INF API: test ended suite=0 test=21 pass=false
+Sep 23 17:17:14.167 INF API: test started suite=0 test=22 name="interop/withdrawal-filter-53 (go-ethereum_trace)"
+Sep 23 17:17:14.169 INF API: test ended suite=0 test=22 pass=false
+Sep 23 17:17:14.464 INF API: test ended suite=0 test=1 pass=true
+Sep 23 17:17:14.472 INF API: suite ended suite=0
+Sep 23 17:17:14.835 INF simulation ethereum/rpc-compat finished suites=1 tests=22 failed=21
+21 tests failed

@@ -2,81 +2,81 @@
   {
     "complete": true,
     "corpus": "a",
-    "digest": "4f1b73704b374e38d79afd6c639de73f19c123b5872b0fb091cdda6663ae9460",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-a/manifest.json",
-    "name": "harness-audit-geth-a",
+    "digest": "0e5709f19290e94b702b2ee3ad2c56c1f3c67d8531ac0a53125c53841b17af4b",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-a/manifest.json",
+    "name": "geth-contract-a",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "fork-followup",
-    "digest": "9873144a00fd5dc64ecf1434d633db268fedd433261a3e16d308f584fd0783f3",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-fork-followup/manifest.json",
-    "name": "harness-audit-geth-fork-followup",
+    "digest": "7d8096c46ef5287f77d4c2b1dda1de9aa3e0696032fbfeb2da92d284380384f4",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-fork-followup/manifest.json",
+    "name": "geth-contract-fork-followup",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "forks",
-    "digest": "d0f72cfe2ca3327cdbf11460f12307b39e13f3a27176e27abc0e67f5ef459797",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-forks/manifest.json",
-    "name": "harness-audit-geth-forks",
+    "digest": "814bf1b02aa3b172495fc8d880be5e475db89b5a39140a4bfec99896eb1b2221",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-forks/manifest.json",
+    "name": "geth-contract-forks",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "initial",
-    "digest": "477ffd4554ff73cae66e77df995bcd755e5167f00895929e99e1ae25959fbc9f",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-initial/manifest.json",
-    "name": "harness-audit-geth-initial",
+    "digest": "a26277cf020be352a2fd6e609f57d495709ba56aa621fc8a790eccb692cb0c30",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json",
+    "name": "geth-contract-initial",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "precompile-values",
-    "digest": "28fdf909f1a4514b527d70a9fa4676a5f300ea53664af526e869160f6e7dbffb",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-precompile-values/manifest.json",
-    "name": "harness-audit-geth-precompile-values",
+    "digest": "986f93c41f1811a9324de64e60780672c480abef7dc0a815812bc1d4ff20eb66",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-precompile-values/manifest.json",
+    "name": "geth-contract-precompile-values",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "precompiles",
-    "digest": "479b1bd624ac71370b29e673e25bd26fa468f1710bcd8c9a6df8b66d41496f8b",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-precompiles/manifest.json",
-    "name": "harness-audit-geth-precompiles",
+    "digest": "f45b571c30ea732ab3a42228cc98ff575b816811c535dda91bb1a42c1d235a7d",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-precompiles/manifest.json",
+    "name": "geth-contract-precompiles",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "reorg-safe",
-    "digest": "a364e0639fff58671a23335c533f20c2c5a01d67401acf77bfb7e30ae152e3a0",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-reorg-safe/manifest.json",
-    "name": "harness-audit-geth-reorg-safe",
+    "digest": "2847f5fe5d086a3a01ca3aa11b380e036261136caf14a89e11eede9d007e1791",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-reorg-safe/manifest.json",
+    "name": "geth-contract-reorg-safe",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
     "complete": true,
     "corpus": "repeat",
-    "digest": "c8fb0f6ec2c540b2ac80c864aada30fec0611d18cbb308a50d68e9e1c64554c8",
-    "manifest": "../evidence/2026-09-23/harness-audit-geth-repeat/manifest.json",
-    "name": "harness-audit-geth-repeat",
+    "digest": "9673580d789dbc52fc3b034e4dfe68446bc3b9cdfffd9c3c43dff00b19f6a632",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-repeat/manifest.json",
+    "name": "geth-contract-repeat",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
@@ -263,11 +263,11 @@
   {
     "complete": true,
     "corpus": "callmany-isolation",
-    "digest": "c02ee597e3b2d3370b2fc91df69e59e9550d97e357f6bcc115ef571eff18477b",
-    "manifest": "../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json",
-    "name": "harness-audit-2-geth-isolation",
+    "digest": "32cae60145dea311b50dd394d570653d4ac7f3e724bcba7814e6725c5dd8287d",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-callmany-isolation/manifest.json",
+    "name": "geth-contract-callmany-isolation",
     "versions": {
-      "go-ethereum_trace": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1"
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   },
   {
@@ -294,6 +294,26 @@
       "erigon_release": "3.6.1-0c4d9c91",
       "nethermind_release": "1.39.3+28cbe2a0",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "raw-validation",
+    "digest": "daad86d3184d5dda6b8402a239a62235876a1d5a8a7178c33e9703a3b770bc74",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-raw-validation/manifest.json",
+    "name": "geth-contract-raw-validation",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
+    }
+  },
+  {
+    "complete": true,
+    "corpus": "h30",
+    "digest": "05bda8a859abbe4bcd1b9059e18f588d67d2f48324dcad253e0c95f2b837ddf0",
+    "manifest": "../evidence/2026-09-23/geth-contract-sync/geth-contract-h30/manifest.json",
+    "name": "geth-contract-h30",
+    "versions": {
+      "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
     }
   }
 ]

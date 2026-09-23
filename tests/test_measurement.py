@@ -266,7 +266,7 @@ class PublishedAssessmentTests(unittest.TestCase):
     def test_block_selector_decisions_use_controlled_live_capture(self):
         records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
                  if r['corpus']=='h30' and not r['case'].startswith('_control')]
-        self.assertEqual(len(records), 13 * 8)
+        self.assertEqual(len(records), 13 * 9)
         self.assertTrue(all(r['eligible'] for r in records))
         by_key={(r['client'],r['case']):r for r in records}
 
@@ -286,3 +286,10 @@ class PublishedAssessmentTests(unittest.TestCase):
                 self.assertIn('observation',verdict(build,'filter-pending','H32'))
                 self.assertIn('observation',verdict(build,'call-number-pending','H32'))
                 self.assertIn('observation',verdict(build,'many-number-pending','H32'))
+
+        for case,topic in [('filter-no-bounds','H30'), ('filter-to-2-implicit-from','H30'),
+                           ('many-number-default','H31'), ('many-number-latest','H31'),
+                           ('filter-earliest','H32'), ('filter-safe','H32')]:
+            self.assertEqual(verdict('go-ethereum_trace',case,topic),['matches'])
+        for case in ['filter-pending','call-number-pending','many-number-pending']:
+            self.assertIn('observation',verdict('go-ethereum_trace',case,'H32'))

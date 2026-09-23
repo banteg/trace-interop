@@ -1,0 +1,35 @@
+Sep 23 17:17:26.680 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 17:17:26.744 INF building 1 clients...
+Sep 23 17:17:26.744 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=351f4131517b32d6a34d884f30dd5d6db83e1c008297f920e87b02b269f9874e
+Sep 23 17:17:26.925 INF building 1 simulators...
+Sep 23 17:17:26.925 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 17:17:27.012 INF creating output directory folder=/home/banteg/dev/trace-geth-contract-evidence/geth-contract-callmany-isolation/hive
+Sep 23 17:17:27.020 INF running simulation: ethereum/rpc-compat
+Sep 23 17:17:27.409 INF hiveproxy started container=e538b6afe068 addr=172.17.0.2:8081
+Sep 23 17:17:27.736 INF API: suite started suite=0 name=rpc-compat
+Sep 23 17:17:27.738 INF API: test started suite=0 test=1 name="client launch (go-ethereum_trace)"
+Sep 23 17:17:29.554 INF API: client go-ethereum_trace started suite=0 test=1 container=bda412c5
+Sep 23 17:17:29.566 INF API: test started suite=0 test=2 name="interop/_control/head (go-ethereum_trace)"
+Sep 23 17:17:29.569 INF API: test ended suite=0 test=2 pass=false
+Sep 23 17:17:29.569 INF API: test started suite=0 test=3 name="interop/_control/latest (go-ethereum_trace)"
+Sep 23 17:17:29.572 INF API: test ended suite=0 test=3 pass=false
+Sep 23 17:17:29.572 INF API: test started suite=0 test=4 name="interop/_control/version (go-ethereum_trace)"
+Sep 23 17:17:29.573 INF API: test ended suite=0 test=4 pass=false
+Sep 23 17:17:29.577 INF API: test started suite=0 test=5 name="interop/before/code (go-ethereum_trace)"
+Sep 23 17:17:29.579 INF API: test ended suite=0 test=5 pass=false
+Sep 23 17:17:29.579 INF API: test started suite=0 test=6 name="interop/before/control-nonce (go-ethereum_trace)"
+Sep 23 17:17:29.581 INF API: test ended suite=0 test=6 pass=false
+Sep 23 17:17:29.582 INF API: test started suite=0 test=7 name="interop/before/storage (go-ethereum_trace)"
+Sep 23 17:17:29.583 INF API: test ended suite=0 test=7 pass=false
+Sep 23 17:17:29.584 INF API: test started suite=0 test=8 name="interop/write-read/many-storage-write-read (go-ethereum_trace)"
+Sep 23 17:17:29.586 INF API: test ended suite=0 test=8 pass=false
+Sep 23 17:17:29.588 INF API: test started suite=0 test=9 name="interop/after-write-read/storage (go-ethereum_trace)"
+Sep 23 17:17:29.589 INF API: test ended suite=0 test=9 pass=false
+Sep 23 17:17:29.590 INF API: test started suite=0 test=10 name="interop/write-revert-read/many-storage-write-revert-read (go-ethereum_trace)"
+Sep 23 17:17:29.594 INF API: test ended suite=0 test=10 pass=false
+Sep 23 17:17:29.595 INF API: test started suite=0 test=11 name="interop/after-write-revert-read/storage (go-ethereum_trace)"
+Sep 23 17:17:29.597 INF API: test ended suite=0 test=11 pass=false
+Sep 23 17:17:29.817 INF API: test ended suite=0 test=1 pass=true
+Sep 23 17:17:29.824 INF API: suite ended suite=0
+Sep 23 17:17:30.179 INF simulation ethereum/rpc-compat finished suites=1 tests=11 failed=10
+10 tests failed

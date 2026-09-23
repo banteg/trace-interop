@@ -398,52 +398,52 @@
     "lookup": {
       "label": "Trace lookup",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_namespace.go",
-      "line": 153,
+      "line": 154,
       "anchor": "func (api *TraceAPI) Get(ctx context.Context, hash common.Hash, position TracePosition) (*TraceFrame, error) {",
-      "sha256": "52b7664716b406f27cc2b7c6c4ec8021f768fc547cc68505cbae51c4c7696e48"
+      "sha256": "b8550c8b2f118d02912901b49b3fbd651bb17c5dcebfba02d734872a44653283"
     },
     "filter": {
       "label": "Address filtering",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_namespace.go",
-      "line": 186,
+      "line": 187,
       "anchor": "func (api *TraceAPI) Filter(ctx context.Context, filter TraceFilter) ([]*TraceFrame, error) {",
-      "sha256": "52b7664716b406f27cc2b7c6c4ec8021f768fc547cc68505cbae51c4c7696e48"
+      "sha256": "b8550c8b2f118d02912901b49b3fbd651bb17c5dcebfba02d734872a44653283"
     },
     "call": {
       "label": "Call simulation",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_namespace.go",
-      "line": 52,
+      "line": 53,
       "anchor": "func (api *TraceAPI) Call(ctx context.Context, args TraceCallArgs, kinds TraceTypes, number *rpc.BlockNumber) (*TraceExecution, error) {",
-      "sha256": "52b7664716b406f27cc2b7c6c4ec8021f768fc547cc68505cbae51c4c7696e48"
+      "sha256": "b8550c8b2f118d02912901b49b3fbd651bb17c5dcebfba02d734872a44653283"
     },
     "raw": {
       "label": "Signed transaction replay",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_namespace.go",
-      "line": 97,
+      "line": 98,
       "anchor": "func (api *TraceAPI) RawTransaction(ctx context.Context, input hexutil.Bytes, kinds TraceTypes) (*TraceExecution, error) {",
-      "sha256": "52b7664716b406f27cc2b7c6c4ec8021f768fc547cc68505cbae51c4c7696e48"
+      "sha256": "b8550c8b2f118d02912901b49b3fbd651bb17c5dcebfba02d734872a44653283"
     },
     "replay": {
       "label": "Replay results",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_namespace.go",
-      "line": 122,
+      "line": 123,
       "anchor": "func (api *TraceAPI) ReplayTransaction(ctx context.Context, hash common.Hash, kinds TraceTypes) (*TraceExecution, error) {",
-      "sha256": "52b7664716b406f27cc2b7c6c4ec8021f768fc547cc68505cbae51c4c7696e48"
+      "sha256": "b8550c8b2f118d02912901b49b3fbd651bb17c5dcebfba02d734872a44653283"
     },
     "frames": {
       "label": "Call frames and precompiles",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_capture.go",
       "line": 123,
       "anchor": "func (c *traceCapture) enter(depth int, typ byte, from, to common.Address, input []byte, gas uint64, value *big.Int) {",
@@ -452,7 +452,7 @@
     "vm": {
       "label": "VM execution deltas",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_capture.go",
       "line": 264,
       "anchor": "func (c *traceCapture) opcode(pc uint64, op byte, gas, cost uint64, context tracing.OpContext, returnData []byte, depth int, err error) {",
@@ -461,7 +461,7 @@
     "state": {
       "label": "State differences",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
       "path": "eth/tracers/trace_capture.go",
       "line": 233,
       "anchor": "func (c *traceCapture) stateDiff() map[common.Address]*traceAccountDiff {",

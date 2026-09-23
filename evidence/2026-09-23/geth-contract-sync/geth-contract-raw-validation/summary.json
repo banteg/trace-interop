@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "eligible": {
+    "go-ethereum_trace": true
+  },
+  "exchange_count": 71,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 headBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 safeBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (go-ethereum_trace)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "go-ethereum_trace": {
+      "detail": "requires independently verified nonce, balance, sender code, chain ID, base fee and marker code/storage",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "go-ethereum_trace": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1"
+  }
+}

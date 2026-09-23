@@ -1,0 +1,1051 @@
+{
+  "clients": {
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "09221759120b5309160772458954b24bbc43849424cb0e1cbc4e6ed33d1ea871",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9882508810ecaffc757b903cbaa241b321a7cd2afaf1be44a5cb103d2be259d0",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:351f4131517b32d6a34d884f30dd5d6db83e1c008297f920e87b02b269f9874e",
+      "local_image": "trace-interop/geth-source:09221759120b5309160772458954b24bbc43849424cb0e1cbc4e6ed33d1ea871",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "f740855ce0ad54a6c1498bf67999a58f3b078699631a91cbb1b3dadbaf78499e"
+      }
+    }
+  },
+  "corpus": "forks",
+  "finished_at": "2026-09-23T13:17:10.546236+00:00",
+  "fixture_manifest_sha256": "bb2ab1b7708880a8719ecd86277f664748d48179cd9fd9681f9ee0a1e27965a0",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x7d97fd",
+    "blobGasUsed": "0x20000",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x18d04",
+    "hash": "0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000002000000000000000000002000000000000000000000000000800000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000800000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x48",
+    "parentBeaconBlockRoot": "0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd",
+    "parentHash": "0x7964ce394f9773783863d05cf0826d125024c5f5dac03c07d5d7832c551a40de",
+    "receiptsRoot": "0x8242a788eddcd94326c2acb0a6cb547ca411104a65e3c6c5f751ce1c7f14cd15",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x42da2e489b18e750a877106cd83e76fd16d4234d530e8290eda403582c50aac4",
+    "timestamp": "0x2d0",
+    "transactionsRoot": "0x4a0b6fa744634b80a04463acab0cad7eb4aa563337ed6f95ec3728d7ef745a99",
+    "withdrawalsRoot": "0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "685741ec0495c6073a617e7b638c51af84cf003490e0366e2b92debd58678b8f",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": "0x48",
+      "name": "control-height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "control-version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x23",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x23"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x23",
+            "toBlock": "0x23"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x23",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x24",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x24"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x24",
+            "toBlock": "0x24"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x24",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-47",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x2f",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-47",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2f"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-47",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2f",
+            "toBlock": "0x2f"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-47",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x2f",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x30"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x30",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x30",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x33",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x33"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x33",
+            "toBlock": "0x33"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x33",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x34",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x34"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x34",
+            "toBlock": "0x34"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x34",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x37",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x37",
+            "toBlock": "0x37"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x37",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x38",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x38",
+            "toBlock": "0x38"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x38",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-59",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x3b",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-59",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-59",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3b",
+            "toBlock": "0x3b"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-59",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x3b",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "header-60",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x3c",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "block-60",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-60",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3c",
+            "toBlock": "0x3c"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "replay-60",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x3c",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-across-36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x23",
+            "toBlock": "0x24"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-across-48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2f",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-across-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x33",
+            "toBlock": "0x34"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-across-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x37",
+            "toBlock": "0x38"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "filter-across-60",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3b",
+            "toBlock": "0x3c"
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-prestate-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          "0x37",
+          {
+            "tracer": "prestateTracer",
+            "tracerConfig": {
+              "diffMode": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "mcopy-trace-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "mcopy-prestate-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          "0x37",
+          {
+            "tracer": "prestateTracer",
+            "tracerConfig": {
+              "diffMode": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-prestate-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          "0x38",
+          {
+            "tracer": "prestateTracer",
+            "tracerConfig": {
+              "diffMode": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "mcopy-trace-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "mcopy-prestate-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          "0x38",
+          {
+            "tracer": "prestateTracer",
+            "tracerConfig": {
+              "diffMode": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-57-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x39"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-57-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x39"
+        ]
+      }
+    }
+  ],
+  "source_commit": "1ace6fb7e850ae6f1da794b91f803c5df03c3025",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "9317297a1fcdf1055baac989d1747e340291c61a",
+    "generated_sha256": "226d941b28771cc50b8a09be065aed48a90b59270fba078b75753c5526c037ab",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-23T13:17:06.504468+00:00"
+}

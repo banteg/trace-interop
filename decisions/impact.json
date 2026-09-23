@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork implements an earlier draft; unknown call fields and the proposed unknown-block code need updates. It is not upstream Geth support. Filtering remains a bounded scan and pruning coverage is incomplete. Signed execution validation matches the proposed requirements; error codes still need alignment."
+      "summary": "The experimental fork matches all evaluated semantic assertions in the current captures, including signed-transaction rejection codes, unknown-block errors, call-field handling and filter bounds. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage."
     }
   },
   "topics": {
@@ -96,10 +96,6 @@
       "reth": {
         "observed": "Missing individual replays return an error; verified pruned-history requests use `-32603`.",
         "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error."
-      },
-      "geth": {
-        "observed": "Unknown selected blocks use a different error code from the revised draft.",
-        "change": "Use -32001 for unknown blocks, preserving null for missing transactions and 4444 for pruned state."
       }
     },
     "H09": {
@@ -148,10 +144,6 @@
       "reth": {
         "observed": "All invalid probes in the validation corpus are rejected, using -32000 or -32003. Valid EOA/delegated controls execute, and valid execution-OOG returns a trace halt.",
         "change": "Retain execution validation and align rejection codes with the proposed -32003 mapping once agreed."
-      },
-      "geth": {
-        "observed": "The draft fork rejects nonce mismatches, but rejection codes need alignment with the proposed -32003 mapping.",
-        "change": "Apply selected-state execution validity before running signed transactions. Distinguish validation rejection from execution failure, and use the proposed -32003 code for validation errors."
       }
     },
     "H15": {
@@ -248,10 +240,6 @@
       "reth": {
         "observed": "An integer trace_get path returns null instead of invalid params.",
         "change": "Reject integer path entries with -32602; callers must convert output path integers to hex quantities."
-      },
-      "geth": {
-        "observed": "Unknown call-object fields are rejected by the older draft implementation.",
-        "change": "Ignore unknown call fields for forward compatibility while validating known fields."
       }
     },
     "H28": {

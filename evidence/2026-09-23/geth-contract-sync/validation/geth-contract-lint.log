@@ -1,0 +1,6 @@
+build/cache/golangci-lint-2.13.1-linux-amd64.tar.gz is up-to-date
+>>> /home/banteg/dev/geth-trace-contract-sync/build/cache/golangci-lint-2.13.1-linux-amd64/golangci-lint run --config /home/banteg/dev/geth-trace-contract-sync/.golangci.yml ./...
+0 issues.
+(in ./cmd/keeper) >>> /home/banteg/dev/geth-trace-contract-sync/build/cache/golangci-lint-2.13.1-linux-amd64/golangci-lint run --config /home/banteg/dev/geth-trace-contract-sync/.golangci.yml ./...
+0 issues.
+You have achieved perfection.

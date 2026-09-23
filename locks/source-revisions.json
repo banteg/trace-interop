@@ -65,10 +65,10 @@
   ],
   "go-ethereum_trace": [
     {
-      "version": "Geth/v1.17.6-unstable-40eecf36-2026-09-23/linux-amd64/go1.26.1",
+      "version": "Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1",
       "repository": "https://github.com/banteg/go-ethereum",
-      "commit": "40eecf3647f26546df9dbf72ce48f372df469ef2",
-      "committed_at": "2026-09-22T21:35:52Z"
+      "commit": "c36ee43e3827331276d045bd56d1297e4c3c9b15",
+      "committed_at": "2026-09-23T13:16:08Z"
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
   "runs": [
-    "evidence/2026-09-23/harness-audit-geth-a",
-    "evidence/2026-09-23/harness-audit-geth-fork-followup",
-    "evidence/2026-09-23/harness-audit-geth-forks",
-    "evidence/2026-09-23/harness-audit-geth-initial",
-    "evidence/2026-09-23/harness-audit-geth-precompile-values",
-    "evidence/2026-09-23/harness-audit-geth-precompiles",
-    "evidence/2026-09-23/harness-audit-geth-reorg-safe",
-    "evidence/2026-09-23/harness-audit-geth-repeat",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-a",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-fork-followup",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-forks",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-initial",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-precompile-values",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-precompiles",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-reorg-safe",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-repeat",
     "evidence/2026-09-23/harness-audit-native-a",
     "evidence/2026-09-23/harness-audit-native-fork-followup",
     "evidence/2026-09-23/harness-audit-native-forks",
@@ -19,8 +19,10 @@
     "evidence/2026-09-23/harness-audit-native-reorg-safe",
     "evidence/2026-09-23/harness-audit-native-repeat",
     "evidence/2026-09-23/harness-audit-2-native-isolation-verified",
-    "evidence/2026-09-23/harness-audit-2-geth-isolation",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-callmany-isolation",
     "evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923",
-    "evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923"
+    "evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-raw-validation",
+    "evidence/2026-09-23/geth-contract-sync/geth-contract-h30"
   ]
 }

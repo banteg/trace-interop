@@ -664,7 +664,11 @@
       "next_step": "Align deletion encoding and fix missing Reth deletion data. The separate Besu prestateTracer probe had no complete response and is not used as an execution oracle.",
       "rationale": "Deletion and a zero balance with retained code are observably different states. Apply the rules of the selected block.",
       "recommendation": "Represent genuine account deletion with the deletion marker, including code, nonce and storage. After EIP-6780, an existing account survives SELFDESTRUCT; do not report code deletion.",
-      "title": "Account deletion across Cancun"
+      "title": "Account deletion across Cancun",
+      "background": [
+        "Parity's [original account diff](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/pod/src/account.rs#L103-L140) distinguishes a present account becoming absent (`Died` for balance, nonce, code and each prior storage slot) from an account that remains present with changed values. Its [transaction finalizer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/machine/src/executive.rs#L1132-L1181) actually removed SELFDESTRUCT accounts at the end of execution under those pre-Cancun rules. The deletion markers therefore describe account existence, not merely a zeroed balance.",
+        "[EIP-6780](https://eips.ethereum.org/EIPS/eip-6780) deliberately changed that premise: SELFDESTRUCT normally transfers the balance without deleting a pre-existing account's code or storage, preserving deletion only for a contract created in the same transaction. This explains why the selected block's fork rules determine the stateDiff, and why the Nethermind/Reth pre-Cancun missing code and nonce markers are meaningful. **Recommendation risk:** `stateDiff` compares the before and after account snapshots. A contract created and destroyed within the same transaction can leave no account at either endpoint, so even genuine transient deletion need not produce a `Died` entry; an execution trace is needed to see that event."
+      ]
     },
     {
       "cases": [

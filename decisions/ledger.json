@@ -480,7 +480,11 @@
       "next_step": "Review account-creation markers separately from the prefunded-empty-account check. Agree the existence model across balance, code, nonce and storage deltas.",
       "rationale": "Absent and existing-but-empty are different states; consumers should be able to reconstruct the change without guessing.",
       "recommendation": "Make account existence explicit: + for fields of a newly created account (including empty code and nonce zero), - for deletion, * for a changed existing value, = for unchanged existing fields. If an address already existed with empty code, do not mark it as newly created.",
-      "title": "New-account stateDiff encoding"
+      "title": "New-account stateDiff encoding",
+      "background": [
+        "Parity's [account diff algorithm](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/pod/src/account.rs#L103-L134) compares optional account existence before comparing fields: absent-to-present marks balance, nonce, code and present storage as Born; present-to-absent marks them Died; present-to-present uses Same or Changed. Its [RPC serializer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L160-L207) encodes those variants as `+`, `-`, `=` and `*`. The [original create/delete test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/pod/src/state.rs#L88-L114) explicitly expects a newly created account's zero nonce and empty code to be `+`.",
+        "This history explains why `+` is an existence marker, not shorthand for a nonzero or nonempty value. A pre-existing empty-code account is therefore a changed or unchanged account, not a birth. The linked modern stateDiff cases should be checked against pre-state existence as well as byte values; output shape alone cannot establish whether a client classified the account correctly."
+      ]
     },
     {
       "cases": [

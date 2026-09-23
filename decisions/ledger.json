@@ -457,7 +457,11 @@
       "next_step": "Resolve fee and environment rules while preserving the storage carry-over, revert rollback and simulation isolation. Broader warm-access/refund behavior remains to test.",
       "rationale": "A state diff should be internally coherent and reconstructible; an ordered multi-call simulation should have one predictable state timeline.",
       "recommendation": "For signed/raw and mined replay, report the complete actual transition: sender pays value plus gas, fee recipient gets the tip, base fee is burned. For unsigned calls use H15\u2019s documented policy consistently. Each callMany result should describe its own transition from the preceding call\u2019s post-state, not a cumulative diff from the original state.",
-      "title": "Fee accounting and sequential state diffs"
+      "title": "Fee accounting and sequential state diffs",
+      "background": [
+        "Parity's [multi-call executor](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/src/client/client.rs#L1518-L1538) applies each call to one mutable state in order. Its [virtual-call helper](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/src/client/client.rs#L1218-L1237) clones state immediately before a requested state diff, so each result describes that call relative to the preceding call's post-state. The [OpenEthereum multi-call guide](https://openethereum.github.io/JSONRPC-trace-module#trace_callmany) describes the same dependent-call purpose. This is stronger historical grounding than treating each result as an independent `trace_call` from the original block.",
+        "Parity's pre-1559 [transaction finalizer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/machine/src/executive.rs#L1160-L1175) refunded the sender and credited the block author with fees. [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559#specification) later split the effective gas price into a burned base fee and a beneficiary tip. Thus replay and signed raw traces should reflect the fork-correct actual state transition, while unsigned calls need the separate H15 fee policy. The pinned client state-diff sources and linked cases test the modern result; Parity alone cannot establish post-1559 accounting."
+      ]
     },
     {
       "cases": [

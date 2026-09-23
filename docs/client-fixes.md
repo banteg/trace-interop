@@ -15,6 +15,7 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [Besu #11350](https://github.com/besu-eth/besu/pull/11350) | Avoid attributing parent return memory to calls |
 | [Besu #11352](https://github.com/besu-eth/besu/pull/11352) | Retain VM frame positions across omitted opcodes |
 | [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit root out-of-gas execution effects |
+| [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace filters to intersection |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) (draft) | Pair instruction trace completions with starts |

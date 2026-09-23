@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** An omitted fromBlock starts at the earliest available block before count is applied.
+**What this checks:** An omitted fromBlock starts at the genesis (earliest) block before count is applied.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -33,18 +33,18 @@
 
 **Besu · Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock starts at the earliest available block before count is applied.
+- [H30](../../decisions/H30.md): An omitted fromBlock starts at the genesis (earliest) block before count is applied.
 
 **Nethermind · Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock starts at the earliest available block before count is applied.
+- [H30](../../decisions/H30.md): An omitted fromBlock starts at the genesis (earliest) block before count is applied.
 
 **Besu · Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock starts at the earliest available block before count is applied.
+- [H30](../../decisions/H30.md): An omitted fromBlock starts at the genesis (earliest) block before count is applied.
 
 **Nethermind · Release** (`1.39.3+28cbe2a0`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock starts at the earliest available block before count is applied.
+- [H30](../../decisions/H30.md): An omitted fromBlock starts at the genesis (earliest) block before count is applied.
 
 </details>

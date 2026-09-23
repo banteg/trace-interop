@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/82a2836bb5c7a0a677253fcee501745b5320e0c1) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/9317297a1fcdf1055baac989d1747e340291c61a) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 ## Start with your client
 
@@ -20,7 +20,7 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | --- | --- | --- |
 | [How does trace_get select a frame?](decisions/H02.md) | ⚪ Under review | Follow one tree path; return one object or null. An empty path selects the root. |
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
-| [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Search from the earliest available block through latest. |
+| [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Search from the genesis (earliest) block through latest. |
 | [What block does trace_callMany use by default?](decisions/H31.md) | ⚪ Under review | Accept an omitted block and use latest, matching trace_call. |
 | [Which tags and pending state can trace methods use?](decisions/H32.md) | ⚪ Under review | Resolve mined-block tags; agree pending state and localization per method. |
 | [What survives a failed call?](decisions/H09.md) | ⚪ Under review | Keep the error on that frame and preserve revert bytes and measured gas when available. |

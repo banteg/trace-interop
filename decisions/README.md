@@ -2,6 +2,8 @@
 
 [Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)
 
+The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
+
 | Decision | Status | Question |
 | --- | --- | --- |
 | [H01](../reports/decisions/H01.md) | ⚪ Under review | Method coverage |

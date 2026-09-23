@@ -13,7 +13,7 @@
   },
   "methods": [
     {
-      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
+      "description": "Return transaction traces in transaction-index order, each in preorder. Historical PoW block and uncle rewards follow transaction records. Do not emit synthetic zero PoW rewards after the Merge; withdrawals are outside this call-trace profile. Unknown blocks and unavailable history are errors (H05,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -301,6 +301,48 @@
                   },
                   {
                     "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                    "properties": {
+                      "result": {
+                        "anyOf": [
+                          {
+                            "not": {
+                              "anyOf": [
+                                {
+                                  "required": [
+                                    "address"
+                                  ]
+                                },
+                                {
+                                  "required": [
+                                    "code"
+                                  ]
+                                }
+                              ]
+                            },
+                            "properties": {
+                              "gasUsed": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "hex encoded 256 bit unsigned integer",
+                                "type": "string"
+                              },
+                              "output": {
+                                "pattern": "^0x([0-9a-f]{2})*$",
+                                "title": "Trace byte string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "gasUsed",
+                              "output"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
                     "required": [
                       "error",
                       "result"
@@ -574,7 +616,7 @@
       "summary": "Returns localized call traces for a block."
     },
     {
-      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
+      "description": "Execute against the state at the end of the selected block, default latest, preserving its fork rules and block environment. Explicit zero fees are permitted without rewriting BASEFEE. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H15,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -875,7 +917,7 @@
               "anyOf": [
                 {
                   "additionalProperties": false,
-                  "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state (H16-H18,H26).",
+                  "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. Account deletion clears all storage; exhaustive enumeration of untouched deleted slots remains an open policy question (H16-H18,H26).",
                   "patternProperties": {
                     "^0x[0-9a-f]{40}$": {
                       "properties": {
@@ -1387,6 +1429,48 @@
                       },
                       {
                         "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                        "properties": {
+                          "result": {
+                            "anyOf": [
+                              {
+                                "not": {
+                                  "anyOf": [
+                                    {
+                                      "required": [
+                                        "address"
+                                      ]
+                                    },
+                                    {
+                                      "required": [
+                                        "code"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "properties": {
+                                  "gasUsed": {
+                                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                    "title": "hex encoded 256 bit unsigned integer",
+                                    "type": "string"
+                                  },
+                                  "output": {
+                                    "pattern": "^0x([0-9a-f]{2})*$",
+                                    "title": "Trace byte string",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "gasUsed",
+                                  "output"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
                         "required": [
                           "error",
                           "result"
@@ -1642,7 +1726,7 @@
               "anyOf": [
                 {
                   "$id": "https://ethereum.github.io/execution-apis/schemas/trace-vm.json",
-                  "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
+                  "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. mem is null for no byte write, including MLOAD and zero-length copies; memory expansion alone is not a write. CALL output excludes untouched bytes past the returned data. These deltas do not encode allocated memory size. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
                   "properties": {
                     "code": {
                       "pattern": "^0x([0-9a-f]{2})*$",
@@ -1795,7 +1879,7 @@
       "summary": "Executes an unsigned call and returns selected traces."
     },
     {
-      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
+      "description": "Each [call, traceTypes] pair executes against the preceding simulated post-state. Reverted writes roll back; subsequent calls continue. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns [] (H15,H16). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -2143,7 +2227,7 @@
                 "anyOf": [
                   {
                     "additionalProperties": false,
-                    "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state (H16-H18,H26).",
+                    "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. Account deletion clears all storage; exhaustive enumeration of untouched deleted slots remains an open policy question (H16-H18,H26).",
                     "patternProperties": {
                       "^0x[0-9a-f]{40}$": {
                         "properties": {
@@ -2655,6 +2739,48 @@
                         },
                         {
                           "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                          "properties": {
+                            "result": {
+                              "anyOf": [
+                                {
+                                  "not": {
+                                    "anyOf": [
+                                      {
+                                        "required": [
+                                          "address"
+                                        ]
+                                      },
+                                      {
+                                        "required": [
+                                          "code"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "properties": {
+                                    "gasUsed": {
+                                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                      "title": "hex encoded 256 bit unsigned integer",
+                                      "type": "string"
+                                    },
+                                    "output": {
+                                      "pattern": "^0x([0-9a-f]{2})*$",
+                                      "title": "Trace byte string",
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "gasUsed",
+                                    "output"
+                                  ],
+                                  "type": "object"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
                           "required": [
                             "error",
                             "result"
@@ -2910,7 +3036,7 @@
                 "anyOf": [
                   {
                     "$id": "https://ethereum.github.io/execution-apis/schemas/trace-vm.json",
-                    "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
+                    "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. mem is null for no byte write, including MLOAD and zero-length copies; memory expansion alone is not a write. CALL output excludes untouched bytes past the returned data. These deltas do not encode allocated memory size. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
                     "properties": {
                       "code": {
                         "pattern": "^0x([0-9a-f]{2})*$",
@@ -3065,7 +3191,7 @@
       "summary": "Executes dependent unsigned calls in order."
     },
     {
-      "description": "Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
+      "description": "Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Omitted bounds mean genesis (earliest) through latest, not the retained-history boundary. Required unavailable history and resource limits produce errors, never silently narrowed ranges. count limits returned records, not scan or replay work. Indexed retrieval and replay must yield the same fork-correct per-block records. Match CALL sender/recipient, CREATE creator/created address, SELFDESTRUCT destroyed account/refund beneficiary. Failed CREATE has no created-address match. Reward author matches toAddress and has no fromAddress. Sort by block, transaction, preorder, then rewards; paginate after matching. Capture one canonical snapshot for the request and error if required history is unavailable (H03-H06,H23,H27). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references. An unknown selected block or range endpoint returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -3110,7 +3236,7 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "Inclusive block range; defaults fromBlock earliest, toBlock latest, after 0, count unlimited subject to an explicit server limit. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. Return an error rather than silently truncate when a server limit is exceeded (H03,H04,H23,H27).",
+            "description": "Inclusive block range; defaults fromBlock genesis (earliest), toBlock latest, after 0, count unlimited subject to an explicit server limit. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. Return an error rather than silently truncate when a server limit is exceeded. Never replace genesis or an explicit endpoint with a retention boundary; return 4444 if required history is unavailable. count limits results, not scan or replay work (H03,H04,H23,H27,H30).",
             "properties": {
               "after": {
                 "minimum": 0,
@@ -3433,6 +3559,48 @@
                   },
                   {
                     "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                    "properties": {
+                      "result": {
+                        "anyOf": [
+                          {
+                            "not": {
+                              "anyOf": [
+                                {
+                                  "required": [
+                                    "address"
+                                  ]
+                                },
+                                {
+                                  "required": [
+                                    "code"
+                                  ]
+                                }
+                              ]
+                            },
+                            "properties": {
+                              "gasUsed": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "hex encoded 256 bit unsigned integer",
+                                "type": "string"
+                              },
+                              "output": {
+                                "pattern": "^0x([0-9a-f]{2})*$",
+                                "title": "Trace byte string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "gasUsed",
+                              "output"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
                     "required": [
                       "error",
                       "result"
@@ -3706,7 +3874,7 @@
       "summary": "Returns localized traces matching an address filter."
     },
     {
-      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Integer path entries are invalid params (-32602); convert traceAddress integers to hex quantities. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object or null if the transaction/path does not exist. Integer path entries are invalid params (-32602); convert traceAddress integers to hex quantities. Unavailable state is an error (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -3992,6 +4160,48 @@
                     },
                     {
                       "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                      "properties": {
+                        "result": {
+                          "anyOf": [
+                            {
+                              "not": {
+                                "anyOf": [
+                                  {
+                                    "required": [
+                                      "address"
+                                    ]
+                                  },
+                                  {
+                                    "required": [
+                                      "code"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "properties": {
+                                "gasUsed": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                  "title": "hex encoded 256 bit unsigned integer",
+                                  "type": "string"
+                                },
+                                "output": {
+                                  "pattern": "^0x([0-9a-f]{2})*$",
+                                  "title": "Trace byte string",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "gasUsed",
+                                "output"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
                       "required": [
                         "error",
                         "result"
@@ -4274,7 +4484,7 @@
       "summary": "Returns the trace at one tree path."
     },
     {
-      "description": "Decode the signed transaction and validate it for execution against latest state before simulating it (H13). Apply the transaction validity rules of the selected fork, including signature, chain identity, nonce equality, sufficient balance for value and upfront gas, intrinsic gas, fees and sender-code restrictions (including permitted EIP-7702 delegation). Reject both low and high nonces; do not replace signed fields, override the sender nonce or top up its balance. This is execution validation, not transaction-pool admission; do not impose local replacement, already-known or minimum-tip policies. For a decodable transaction that fails validation, the proposed error is -32003 (Transaction rejected); malformed encodings or request parameters use -32602. A valid transaction that REVERTs or exceptionally halts returns an execution trace, not a validation error. The portable baseline defines two parameters and latest state. An explicitly supplied block-selector extension is outside this baseline; accepting it is not a baseline failure. Extension semantics require separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result (H12-H14,H25). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Decode the signed transaction and validate it for execution against latest state before simulating it (H13). Apply the transaction validity rules of the selected fork, including signature, chain identity, nonce equality, sufficient balance for value and upfront gas, intrinsic gas, fees and sender-code restrictions (including permitted EIP-7702 delegation). Reject both low and high nonces; do not replace signed fields, override the sender nonce or top up its balance. This is execution validation, not transaction-pool admission; do not impose local replacement, already-known or minimum-tip policies. For a decodable transaction that fails validation, the proposed error is -32003 (Transaction rejected); malformed encodings or request parameters use -32602. A valid transaction that REVERTs or exceptionally halts returns an execution trace, not a validation error. The portable baseline defines two parameters and latest state. An explicitly supplied block-selector extension is outside this baseline; accepting it is not a baseline failure. Extension semantics require separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result (H12-H14,H25). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -4362,7 +4572,7 @@
               "anyOf": [
                 {
                   "additionalProperties": false,
-                  "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state (H16-H18,H26).",
+                  "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. Account deletion clears all storage; exhaustive enumeration of untouched deleted slots remains an open policy question (H16-H18,H26).",
                   "patternProperties": {
                     "^0x[0-9a-f]{40}$": {
                       "properties": {
@@ -4874,6 +5084,48 @@
                       },
                       {
                         "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                        "properties": {
+                          "result": {
+                            "anyOf": [
+                              {
+                                "not": {
+                                  "anyOf": [
+                                    {
+                                      "required": [
+                                        "address"
+                                      ]
+                                    },
+                                    {
+                                      "required": [
+                                        "code"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "properties": {
+                                  "gasUsed": {
+                                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                    "title": "hex encoded 256 bit unsigned integer",
+                                    "type": "string"
+                                  },
+                                  "output": {
+                                    "pattern": "^0x([0-9a-f]{2})*$",
+                                    "title": "Trace byte string",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "gasUsed",
+                                  "output"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
                         "required": [
                           "error",
                           "result"
@@ -5129,7 +5381,7 @@
               "anyOf": [
                 {
                   "$id": "https://ethereum.github.io/execution-apis/schemas/trace-vm.json",
-                  "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
+                  "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. mem is null for no byte write, including MLOAD and zero-length copies; memory expansion alone is not a write. CALL output excludes untouched bytes past the returned data. These deltas do not encode allocated memory size. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
                   "properties": {
                     "code": {
                       "pattern": "^0x([0-9a-f]{2})*$",
@@ -5282,7 +5534,7 @@
       "summary": "Simulates a signed transaction at latest state."
     },
     {
-      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references. An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
+      "description": "Default block is not implicit: Block is required. Return envelopes in transaction order, each with its transactionHash. Empty blocks return []. Unknown blocks and unavailable history are errors. Do not attribute the next block system operations to this block (H07,H16,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references. An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444.",
       "errors": [
         {
           "code": -32601,
@@ -5383,7 +5635,7 @@
                 "anyOf": [
                   {
                     "additionalProperties": false,
-                    "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state (H16-H18,H26).",
+                    "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. Account deletion clears all storage; exhaustive enumeration of untouched deleted slots remains an open policy question (H16-H18,H26).",
                     "patternProperties": {
                       "^0x[0-9a-f]{40}$": {
                         "properties": {
@@ -5895,6 +6147,48 @@
                         },
                         {
                           "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                          "properties": {
+                            "result": {
+                              "anyOf": [
+                                {
+                                  "not": {
+                                    "anyOf": [
+                                      {
+                                        "required": [
+                                          "address"
+                                        ]
+                                      },
+                                      {
+                                        "required": [
+                                          "code"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "properties": {
+                                    "gasUsed": {
+                                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                      "title": "hex encoded 256 bit unsigned integer",
+                                      "type": "string"
+                                    },
+                                    "output": {
+                                      "pattern": "^0x([0-9a-f]{2})*$",
+                                      "title": "Trace byte string",
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "gasUsed",
+                                    "output"
+                                  ],
+                                  "type": "object"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
                           "required": [
                             "error",
                             "result"
@@ -6155,7 +6449,7 @@
                 "anyOf": [
                   {
                     "$id": "https://ethereum.github.io/execution-apis/schemas/trace-vm.json",
-                    "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
+                    "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. mem is null for no byte write, including MLOAD and zero-length copies; memory expansion alone is not a write. CALL output excludes untouched bytes past the returned data. These deltas do not encode allocated memory size. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
                     "properties": {
                       "code": {
                         "pattern": "^0x([0-9a-f]{2})*$",
@@ -6311,7 +6605,7 @@
       "summary": "Replays every transaction in a block."
     },
     {
-      "description": "Reconstruct the state immediately before this transaction, including preceding transactions and applicable system operations. Return null for an unknown transaction; error for unavailable history. Use the transaction block fork rules and report its actual committed state transition (H06,H07,H16,H18,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Reconstruct the state immediately before this transaction, including preceding transactions and applicable system operations. Return null for an unknown transaction; error for unavailable history. Use the transaction block fork rules and report its actual committed state transition (H06,H07,H16,H18,H28). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -6392,7 +6686,7 @@
                   "anyOf": [
                     {
                       "additionalProperties": false,
-                      "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state (H16-H18,H26).",
+                      "description": "Net committed state changes for this execution. + means created, - deleted, * changed, = unchanged. New accounts include zero nonce and empty code creation markers. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. Account deletion clears all storage; exhaustive enumeration of untouched deleted slots remains an open policy question (H16-H18,H26).",
                       "patternProperties": {
                         "^0x[0-9a-f]{40}$": {
                           "properties": {
@@ -6904,6 +7198,48 @@
                           },
                           {
                             "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                            "properties": {
+                              "result": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "anyOf": [
+                                        {
+                                          "required": [
+                                            "address"
+                                          ]
+                                        },
+                                        {
+                                          "required": [
+                                            "code"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "properties": {
+                                      "gasUsed": {
+                                        "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                        "title": "hex encoded 256 bit unsigned integer",
+                                        "type": "string"
+                                      },
+                                      "output": {
+                                        "pattern": "^0x([0-9a-f]{2})*$",
+                                        "title": "Trace byte string",
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "gasUsed",
+                                      "output"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            },
                             "required": [
                               "error",
                               "result"
@@ -7164,7 +7500,7 @@
                   "anyOf": [
                     {
                       "$id": "https://ethereum.github.io/execution-apis/schemas/trace-vm.json",
-                      "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
+                      "description": "code is the actually executed bytecode, including initcode and resolved delegated code. ex records same-step effects; used is gas remaining after the operation. push contains replacement stack suffix words as minimal quantities; mem contains bytes written at off; store records the storage write. mem is null for no byte write, including MLOAD and zero-length copies; memory expansion alone is not a write. CALL output excludes untouched bytes past the returned data. These deltas do not encode allocated memory size. sub recursively describes the child execution caused by this opcode. op and idx are optional annotations. Exact nested-call stipend/refund accounting and failed-op ex conventions remain provisional (H19-H21).",
                       "properties": {
                         "code": {
                           "pattern": "^0x([0-9a-f]{2})*$",
@@ -7323,7 +7659,7 @@
       "summary": "Replays a mined transaction with selected traces."
     },
     {
-      "description": "Return a flat preorder tree, including the root. Unknown transactions return null; unavailable state is an error. traceAddress is a path, not a flat list index (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its H01-H29 decision references.",
+      "description": "Return a flat preorder tree, including the root. Unknown transactions return null; unavailable state is an error. traceAddress is a path, not a flat list index (H02,H06). This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -7592,6 +7928,48 @@
                       },
                       {
                         "description": "Failed frame; error and result are required. Preserve revert bytes and measured gas when available; otherwise result is null.",
+                        "properties": {
+                          "result": {
+                            "anyOf": [
+                              {
+                                "not": {
+                                  "anyOf": [
+                                    {
+                                      "required": [
+                                        "address"
+                                      ]
+                                    },
+                                    {
+                                      "required": [
+                                        "code"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "properties": {
+                                  "gasUsed": {
+                                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                    "title": "hex encoded 256 bit unsigned integer",
+                                    "type": "string"
+                                  },
+                                  "output": {
+                                    "pattern": "^0x([0-9a-f]{2})*$",
+                                    "title": "Trace byte string",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "gasUsed",
+                                  "output"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
                         "required": [
                           "error",
                           "result"

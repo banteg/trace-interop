@@ -82,7 +82,7 @@ def evaluate(case, observation, peers, invalid_params=None):
         if name in ['filter-no-bounds', 'filter-to-2-implicit-from']:
             check('H30', status == 'result' and isinstance(result, list) and len(result) == 3
                   and all(isinstance(frame, dict) and frame.get('blockNumber') == 1 for frame in result),
-                  'An omitted fromBlock starts at the earliest available block before count is applied.')
+                  'An omitted fromBlock starts at the genesis (earliest) block before count is applied.')
         if name in ['call-number-default', 'call-number-latest']:
             check('H31', status == 'result' and mapping(result).get('output') == number_48,
                   'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).')

@@ -365,7 +365,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         for topic, title, behavior in [
             ('H02', 'How does trace_get select a frame?', 'Follow one tree path; return one object or null. An empty path selects the root.'),
             ('H03', 'How do address filters combine?', 'OR within each list, AND between sender and recipient lists.'),
-            ('H30', 'Where does an unbounded filter start?', 'Search from the earliest available block through latest.'),
+            ('H30', 'Where does an unbounded filter start?', 'Search from the genesis (earliest) block through latest.'),
             ('H31', 'What block does trace_callMany use by default?', 'Accept an omitted block and use latest, matching trace_call.'),
             ('H32', 'Which tags and pending state can trace methods use?', 'Resolve mined-block tags; agree pending state and localization per method.'),
             ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
@@ -407,6 +407,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     save(output/'technical.md', text)
     if output == (root/'reports').resolve():
         text = '# Trace API decisions\n\n[Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)\n\n'
+        text += ('The target is a useful, precise contract. Historical implementations explain compatibility costs, '
+                 'but do not decide the recommendation. Intentional departures need a concrete benefit and an '
+                 'explicit migration cost; observed agreement alone does not establish correctness.\n\n')
         text += table(['Decision', 'Status', 'Question'], [[f'[{t}](../reports/decisions/{t}.md)',statuses[t],d['title']] for t,d in decisions.items()])
         text += '## Status key\n\n' + LEGEND + '\n'
         save(root/'decisions/README.md', text)

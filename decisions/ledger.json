@@ -427,7 +427,11 @@
       "next_step": "Agree the fee-free simulation rule, then fix the block-environment discrepancy. The source contract confirms BASEFEE is returned as word 3; this is more than an error-message difference.",
       "rationale": "Relaxing transaction admission for a hypothetical call should not silently rewrite the block the caller selected.",
       "recommendation": "Allow explicit zero-fee unsigned simulations without changing the selected block\u2019s BASEFEE or other block fields. With nonzero supplied fees, use those fees consistently in opcode context and simulated accounting. Apply the same policy to trace_call and trace_callMany; keep strict signed validation separate.",
-      "title": "Unsigned simulation fees and block environment"
+      "title": "Unsigned simulation fees and block environment",
+      "background": [
+        "Parity's [call-request adapter](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/helpers/fake_sign.rs#L24-L37) defaulted an unsigned call's `gasPrice` to zero and fake-signed it for the same [virtual execution path](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/src/client/client.rs#L1206-L1233) used by `trace_call` and `trace_callMany`. That path disabled nonce checks and used the requested block's header; it treated simulations as extra-block execution rather than pool admission. This explains the zero-fee precedent, but Parity predates `BASEFEE`.",
+        "[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559#specification) makes the block base fee a separate environmental value and defines `GASPRICE` from the effective transaction price. The H15 probes show why a client should not make a zero-fee simulation succeed by silently changing the selected block's BASEFEE. **Recommendation risk:** pre-1559 Parity behavior cannot settle the modern relationship among zero-fee unsigned calls, typed fee fields, `GASPRICE` and simulated balance changes. The draft needs those observable rules, especially for `trace_callMany`, before this recommendation can be called historically least surprising."
+      ]
     },
     {
       "cases": [

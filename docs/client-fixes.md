@@ -4,13 +4,19 @@ Upstream changes arising from the trace comparison. Status checked **2026-09-23*
 A merged patch, a tested build and agreement with the proposed API are separate milestones.
 The [client reports](../reports/README.md) describe the behavior; this page tracks the work to change it.
 
-**16 pending · 11 merged**
+**17 pending · 11 merged**
 
 ## Pending
 
-The full workflows on these 16 PRs are awaiting maintainer approval. Passing DCO
+The full workflows on these 17 PRs are awaiting maintainer approval. Passing DCO
 and label checks do not establish that the test workflows passed. Review and CI
 follow-ups are recorded in the [2026-09-23 status snapshot](../evidence/2026-09-23/pr-followup/README.md).
+
+### Erigon
+
+| PR | Fix | Evidence and next step |
+| --- | --- | --- |
+| [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default address filtering to AND, retain explicit modes, fix empty-side intersection and reject unknown modes ([H03](../reports/decisions/H03.md)) | [Native validation](../evidence/2026-09-23/erigon-h03/README.md): ten regression subtests fail before the fix; all 649 top-level JSON-RPC tests pass, as do lint and both binary builds. Migration guidance documents explicit union for both-list activity queries. CI approval, review and a post-merge matrix retest remain. One pre-existing documentation assertion is disclosed in the PR. |
 
 ### Besu
 

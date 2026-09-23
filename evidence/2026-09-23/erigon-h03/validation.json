@@ -1,0 +1,38 @@
+{
+  "pr": "https://github.com/erigontech/erigon/pull/24255",
+  "base": "12b6b3391b8038d0dc89fac593fcad8e5ea022f8",
+  "head": "64f1ab04f8d1fc0fd3d02549ce2e9b08b101c6aa",
+  "baseline_failing_subtests": [
+    "TestFilterAddressIntersection/default",
+    "TestFilterAddressIntersection/self_activity_default",
+    "TestFilterAddressIntersection/from_only",
+    "TestFilterAddressIntersection/to_only",
+    "TestFilterAddressIntersection/from_with_empty_to",
+    "TestFilterAddressIntersection/to_with_empty_from",
+    "TestFilterModeValidation/garbage",
+    "TestFilterModeValidation/INTERSECTION",
+    "TestFilterModeValidation/#00",
+    "TestFilterModeValidation/<nil>"
+  ],
+  "rpc_package": {
+    "top_level_passed": 649,
+    "including_subtests_passed": 3333,
+    "failed": 0,
+    "skipped": 0,
+    "command": "go test ./rpc/jsonrpc -count=1 -timeout 20m -json"
+  },
+  "checks": {
+    "make lint": "passed, both passes report 0 issues; go.mod/go.sum unchanged",
+    "make erigon integration": "passed",
+    "npm run build": "passed",
+    "generate-llms.py --check": "passed, all four generated files match",
+    "documentation_tests": {
+      "passed": 225,
+      "failed": 1,
+      "failure": "RealMarkupTests.test_every_chrome_class_matches_a_real_token: theme-doc-footer absent",
+      "baseline_reproduced": true
+    }
+  },
+  "ci": "awaiting maintainer approval",
+  "ci_gate": "https://github.com/erigontech/erigon/actions/runs/35851717201"
+}

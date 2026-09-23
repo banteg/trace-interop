@@ -2234,13 +2234,13 @@
         "detail": "",
         "requirement": "The declared state-diff fixture returns the requested account changes.",
         "status": "change_needed",
-        "topic": "H17"
+        "topic": "H16"
       },
       {
         "detail": "",
         "requirement": "The declared state-diff fixture returns the requested account changes.",
         "status": "change_needed",
-        "topic": "H16"
+        "topic": "H17"
       }
     ],
     "client": "besu_development",
@@ -5198,13 +5198,13 @@
         "detail": "",
         "requirement": "The declared state-diff fixture returns the requested account changes.",
         "status": "change_needed",
-        "topic": "H17"
+        "topic": "H16"
       },
       {
         "detail": "",
         "requirement": "The declared state-diff fixture returns the requested account changes.",
         "status": "change_needed",
-        "topic": "H16"
+        "topic": "H17"
       }
     ],
     "client": "besu_release",

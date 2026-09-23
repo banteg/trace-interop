@@ -155,7 +155,7 @@ def assess(case, observation, peers, topics):
         params=case['request']['params']
         modes=params[0][i][1] if method=='trace_callMany' else params[1] if len(params)>1 else []
         state_requested=isinstance(modes,list) and 'stateDiff' in modes
-        for topic in topics & {'H16','H17'} if state_requested else []:
+        for topic in sorted(topics & {'H16','H17'}) if state_requested else []:
             if not isinstance(diff,dict):
                 add(topic,False,'The declared state-diff fixture returns the requested account changes.')
         exists,codes=prestate(context,block,index)

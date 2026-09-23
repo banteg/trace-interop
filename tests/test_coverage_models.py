@@ -166,6 +166,11 @@ class DispositionTests(unittest.TestCase):
         case={'name':'call-many','context':{},'request':{'method':'trace_callMany','params':[[[call,['trace']]],'latest']}}
         self.assertEqual(assess(case,{'status':'result','response':{'result':[{'trace':[],'stateDiff':None}]}},{},{'H16'}),[])
 
+    def test_missing_state_assertions_have_stable_topic_order(self):
+        case={'name':'call','context':{},'request':{'method':'trace_call','params':[{},['stateDiff']]}}
+        checks=assess(case,{'status':'result','response':{'result':{}}},{},{'H17','H16'})
+        self.assertEqual([c['topic'] for c in checks],['H16','H17'])
+
 
 class TransferModelTests(unittest.TestCase):
     def fixture(self):

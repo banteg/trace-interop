@@ -37,15 +37,15 @@
 **Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution. Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.
-- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
 - [H16](../../decisions/H16.md): The declared state-diff fixture returns the requested account changes.
+- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution. Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.
-- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
 - [H16](../../decisions/H16.md): The declared state-diff fixture returns the requested account changes.
+- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)

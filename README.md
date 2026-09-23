@@ -39,7 +39,7 @@ uv run python scripts/build_reports.py
 
 ## Decisions and evidence
 
-The [decision ledger](decisions/README.md) tracks 29 questions with recommended behavior, rationale, evidence and remaining review work. [Comparison reports](reports/README.md) show how the draft affects each tested client build.
+The [decision ledger](decisions/README.md) tracks questions with recommended behavior, rationale, evidence and remaining review work. [Comparison reports](reports/README.md) show how the draft affects each tested client build.
 
 ## Review target
 

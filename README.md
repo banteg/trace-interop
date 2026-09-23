@@ -22,7 +22,7 @@ Erigon, Reth, Nethermind and Besu are the initial clients. An experimental [Geth
 
 - [Draft specification PR #895](https://github.com/ethereum/execution-apis/pull/895): review the proposed requirements and unresolved compatibility choices.
 - [Client impact reports](reports/README.md): observed differences, proposed changes, and links to client source code.
-- [Client fixes](docs/client-fixes.md): upstream patches, tested outcomes, and remaining work.
+- [Related pull requests](docs/client-fixes.md): open and merged client, specification and test-suite changes.
 - [Upstream acceptance](docs/upstream-acceptance.md): documented requirements and lessons from recent reviews.
 - [Geth draft implementation](docs/geth.md): evaluated fork, coverage and build reproduction.
 - [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.

@@ -1,4 +1,4 @@
-# Reth merged-fix verification
+# Reth replay and pruned-state capture
 
 Tested upstream [`main@534c60db9d`](https://github.com/paradigmxyz/reth/commit/534c60db9d4be32d349e5b31456416ecb4b4dbee) on 2026-09-22. This includes the merged replay-hash and pruned-history patches, with the original locked dependencies and no unmerged changes.
 
@@ -17,13 +17,13 @@ The pruning scenario retained the old header and receipt, successfully executed 
 | `trace_block` | Same wrapped system-call error |
 | `trace_filter` | Same wrapped system-call error |
 
-No reruns were made for open #27364/#27366 or for the Alloy/inspector fixes absent from Reth's locked dependency versions. These results supplement the pinned client reports; they do not replace the full matrix or establish release verification.
+These results supplement the pinned client reports; they do not replace the full matrix or establish release verification.
 
 ## Evidence
 
 - [Replay responses](initial/observations.json) and [run controls](initial/summary.json).
 - [Pruned-state responses](pruned/observations.json) and [run controls](pruned/summary.json).
-- [Scoped assertions](checks.json), [client build lock](clients.lock.json), and [upstream merge/dependency status](upstream-status.json).
+- [Scoped assertions](checks.json) and [client build lock](clients.lock.json).
 - Each run retains its original manifest, raw Hive logs and checksums. The runner source was clean at `f34628780cee911b0dbc285321a0c332249bc803`.
 
 The source-built binary uses Rust 1.96.0, the dev profile with debug information disabled, `--locked --no-default-features`, and the source commit recorded in its version metadata. Source files were byte-compared with the commit archive before execution. The lock records the source archive, binary and Docker image hashes. This is a functional check, not a performance comparison with release or nightly builds.

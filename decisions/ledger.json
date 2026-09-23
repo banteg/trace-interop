@@ -683,7 +683,11 @@
       "next_step": "The repeated fixtures are ready for a focused processor-context investigation and regression.",
       "rationale": "The same block must not trace differently depending on the other blocks included in a query.",
       "recommendation": "Execute each block with its own fork rules and state, then filter and paginate the resulting ordered records. A range query should agree with the corresponding per-block queries.",
-      "title": "Filter execution across fork boundaries"
+      "title": "Filter execution across fork boundaries",
+      "background": [
+        "Parity's [original trace database filter](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/db.rs#L349-L365) searched indexed trace blooms over the requested range, loaded each stored block's traces, and filtered those records. The trace namespace thus established per-block result consistency without requiring a range request to execute blocks again. This matters across forks because each stored trace was produced with the rules in force when its block was imported.",
+        "The pinned [Besu range pipeline](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java#L142-L202) obtains one `protocolSpec` and transaction processor from its first block header, then feeds a list of blocks to the pipeline. That is a plausible cause of the reproduced difference between a cross-fork filter and the same individual block traces; the fixture comparison, rather than code inspection alone, establishes the defect. **Recommendation risk:** the instruction to *execute each block* is stronger than the historical result contract. A client with indexed traces can satisfy per-block equivalence without re-execution; the policy should specify output consistency and correct fork provenance, leaving the retrieval mechanism open."
+      ]
     },
     {
       "cases": [

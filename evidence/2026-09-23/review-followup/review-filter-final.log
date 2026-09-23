@@ -1,0 +1,11 @@
+/home/banteg/.nuget/packages/microsoft.build.tasks.git/10.0.401/build/Microsoft.Build.Tasks.Git.targets(25,5): warning : Unable to locate repository with working directory that contains directory '/home/banteg/dev/trace-client-fixes/review-neth-filter/src/Nethermind/Nethermind.Kademlia'. [/home/banteg/dev/trace-client-fixes/review-neth-filter/src/Nethermind/Nethermind.Kademlia/Nethermind.Kademlia.csproj]
+/home/banteg/.nuget/packages/microsoft.sourcelink.common/10.0.401/build/Microsoft.SourceLink.Common.targets(56,5): warning : Source control information is not available - the generated source link is empty. [/home/banteg/dev/trace-client-fixes/review-neth-filter/src/Nethermind/Nethermind.Kademlia/Nethermind.Kademlia.csproj]
+Running tests from /home/banteg/dev/trace-client-fixes/review-neth-filter/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64)
+/home/banteg/dev/trace-client-fixes/review-neth-filter/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64) passed (13s 455ms)
+
+Test run summary: Passed!
+  total: 64
+  failed: 0
+  succeeded: 64
+  skipped: 0
+  duration: 13s 747ms

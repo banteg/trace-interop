@@ -782,15 +782,15 @@
     {
       "background": [
         "Parity's [original replay path](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/src/client/client.rs#L1639-L1667) obtained `state_at_beginning(block)` from the parent block's post-state, then applied the selected block's transactions in order with its own environment. That is the lineage for distinguishing replay's pre-block starting state from the post-state used by a historical simulated call. Parity predates the current beacon-root and block-hash system writes, so its transaction-only loop is not a complete modern replay recipe.",
-        "[EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) and [EIP-2935](https://eips.ethereum.org/EIPS/eip-2935) explicitly perform their system updates at the start of the selected block, before transactions. Consequently, block N's post-state includes those writes and block N+1's does not belong in a query at N. The pinned [Erigon `trace_call` state selection](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056-L1105) is the relevant modern entrypoint; the beacon-root fixtures demonstrate the one-block-ahead result, while the exact offset inside its state reader still needs investigation."
+        "[EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) and [EIP-2935](https://eips.ethereum.org/EIPS/eip-2935) perform their system updates at the start of the selected block, before transactions. Consequently, block N's post-state includes those writes and block N+1's does not belong in a query at N. Erigon [PR #24056](https://github.com/erigontech/erigon/pull/24056), merged on 2026-09-18 as [66571d04390](https://github.com/erigontech/erigon/commit/66571d043907723f190fbe1f882008c27008fa29), identified a history reader opened one transaction index too late: Min(N+1)+1 included the next block's system call. It changes the historical trace_call, debug_traceCall and default-index debug_traceCallMany readers from txnIndex 0 to -1 and adds TestTraceCallExcludesNextBlockSystemCall. The maintainer explicitly retained 0 for trace_callMany because that method selects the parent block. The captured v3.6.1 release predates the fix; development c25b8e47 contains it and passes the H28 checks."
       ],
       "cases": [
         "fork-followup/beacon-call-55",
         "fork-followup/beacon-call-56"
       ],
       "id": "H28",
-      "kind": "Reproduced historical-state discrepancy; cause unresolved",
-      "next_step": "Compare the affected release and development builds at system-operation boundaries. Extend coverage to transaction ordering and additional system operations.",
+      "kind": "Historical-state discrepancy fixed on Erigon main",
+      "next_step": "Verify release uptake of Erigon #24056. All captured native development builds match H28; unrelated H09 schema failures still block the stricter harmonization milestone. Extend coverage to transaction ordering and additional system operations.",
       "rationale": "A future system write must not appear in an earlier block's state. This is an execution-context issue, not a cosmetic trace encoding choice.",
       "recommendation": "Historical state at block N should include that block's changes, including system operations, but none from N+1. Replay should start from the appropriate parent state and apply each system transition once.",
       "references": [

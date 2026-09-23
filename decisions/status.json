@@ -22,5 +22,19 @@
         "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
       }
     ]
+  },
+  "H28": {
+    "policy": "converged",
+    "note": "Historical-state semantics agree on all captured native development builds. Erigon fixed the one-transaction-late history boundary in #24056, merged 2026-09-18; the captured v3.6.1 release predates it. The stricter Harmonized milestone is still blocked by unrelated H09 failed-frame result-schema errors in the Besu and Nethermind beacon-call responses. This records agreement on the checked block boundary, not complete system-operation coverage or unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Erigon #24056: read account state at the end of the requested block",
+        "url": "https://github.com/erigontech/erigon/pull/24056"
+      },
+      {
+        "label": "Maintainer explanation and trace-call regression",
+        "url": "https://github.com/erigontech/erigon/pull/24056#issuecomment-5725162229"
+      }
+    ]
   }
 }

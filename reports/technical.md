@@ -13,6 +13,8 @@ The experimental Geth fork implements the draft and is not an independent vote f
 - ⛔ **Method unavailable:** the tested method is unsupported.
 - 🟡 **Partially assessed:** some declared cases or topics were not evaluated.
 - ⚪ **Not assessed:** no evaluated assertion establishes an outcome.
+- 🚧 **Blocked:** a missing response, failed setup or earlier failure prevents this check.
+- 🔎 **Control / not applicable:** reference evidence or a property that does not apply; never a semantic pass.
 - ❔ **Policy open:** observed behavior is recorded without a settled assertion.
 
 Build labels: 📦 **Release** · 🛠️ **Development** · 🧪 **Draft fork**. These identify build channels, not test outcomes. Test outcomes are separate from [policy agreement and harmonization](../decisions/README.md#status-key).
@@ -34,9 +36,50 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 1970 |
-| 🟡 Partial | 545 |
-| ⚪ Unassessed | 231 |
+| 🔎 Assessed | 2553 |
+| 🟡 Partial | 139 |
+| ⚪ Unassessed | 0 |
+| 🚧 Blocked | 36 |
+| 🔎 Control | 18 |
+
+
+### Unevaluated properties
+
+Each row names the reason; controls and inapplicable properties do not count as passes. Counts are topic obligations, so one response may appear more than once.
+
+| Topic | Disposition | Reason | Observations |
+| --- | --- | --- | --- |
+| H03 | blocked | The per-block reference lacks an independent transaction inventory. | 27 |
+| H06 | blocked | Cannot inspect this property: unsupported. | 2 |
+| H06 | control | Latest execution is the successful control for the unavailable-history probe. | 2 |
+| H07 | blocked | Cannot inspect this property: unsupported. | 26 |
+| H07 | not_applicable | A missing transaction has no replay envelope or transactionHash; H06 checks null. | 7 |
+| H08 | blocked | Cannot inspect this property: unsupported. | 8 |
+| H09 | blocked | Cannot inspect this property: unsupported. | 4 |
+| H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 11 |
+| H10 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
+| H14 | not_applicable | A one-sided intersection filter is valid input; H03 checks its result. Invalid-input codes do not apply. | 18 |
+| H16 | blocked | Cannot inspect this property: unsupported. | 2 |
+| H16 | blocked | No receipt gas or execution-gas witness was captured. | 12 |
+| H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H16 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 3 |
+| H17 | blocked | Cannot inspect this property: unsupported. | 2 |
+| H17 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H17 | not_applicable | The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior. | 9 |
+| H17 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 3 |
+| H18 | blocked | Cannot inspect this property: unsupported. | 2 |
+| H19 | blocked | Cannot inspect this property: unsupported. | 2 |
+| H19 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H20 | blocked | Cannot inspect this property: unsupported. | 4 |
+| H20 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H21 | blocked | Cannot inspect this property: unsupported. | 4 |
+| H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H23 | control | This transaction trace anchors CREATE/SELFDESTRUCT identities for the address-filter probes. | 9 |
+| H27 | control | Per-block reference for the independently anchored fork-crossing filter comparison. | 18 |
+| H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
+| H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
 

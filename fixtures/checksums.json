@@ -42,9 +42,11 @@
   "corpora/a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
   "corpora/boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
   "corpora/callmany-isolation.json": "c9353e868ef1d43ecd59e73540aff2ca80e73bfc543d2ae77fbb5fe0f359b8e9",
+  "corpora/coverage.json": "c9e18ef72a931b1d1aca35ba36d5d03e56fb3e4fea856450f890a2e9a318483d",
   "corpora/fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
   "corpora/fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
   "corpora/forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
+  "corpora/h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0",
   "corpora/initial.json": "ad81a8c15cc8e75f870118f10137cc1ab8bb964de3ddfadea4417f5bc977bce0",
   "corpora/precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
   "corpora/precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
@@ -53,6 +55,5 @@
   "corpora/reorg-safe.json": "94fcf58315bde761030752dbca1a675d8b34e8f0f6f581e2283938f59d785d30",
   "corpora/reorg.json": "444ebbaaf7088feb3587bf8d3e0d340e1ccfc611f848942006042fa2c9da0249",
   "corpora/repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
-  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403",
-  "corpora/h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0"
+  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403"
 }

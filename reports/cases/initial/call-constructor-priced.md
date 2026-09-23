@@ -2,15 +2,15 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Creation vmTrace.code is executing initcode. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Assess this declared topic case.
+**What this checks:** Output remains a byte string under every trace selection. Creation vmTrace.code is executing initcode. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
 | [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 | [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 | [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
@@ -40,64 +40,32 @@
 }
 ```
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
-
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
-
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
-
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
-
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
-
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) ex: expected {'used': 46847, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46847}; step 1 (PUSH1) ex: expected {'used': 46844, 'push': ['0x0'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46844}; step 3 (PUSH1) ex: expected {'used': 46835, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46835}
 - Result shape at `vmTrace`: {'code': '0x60016000526001601ff3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46847}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46844}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x00000000000
 
 **Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) ex: expected {'used': 46847, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46847}; step 1 (PUSH1) ex: expected {'used': 46844, 'push': ['0x0'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46844}; step 3 (PUSH1) ex: expected {'used': 46835, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46835}
 - Result shape at `vmTrace`: {'code': '0x60016000526001601ff3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x01'], 'store': None, 'used': 46847}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46844}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x00000000000
 
 **Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H19](../../decisions/H19.md): Creation vmTrace.code is executing initcode.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x60016000526001601ff3.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 0 pc outside executing bytecode; operation 1 pc outside executing bytecode; operation 2 pc outside executing bytecode; operation 3 pc outside executing bytecode
+- [H19](../../decisions/H19.md): Root VM bytecode equals the independently frozen execution source.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) ex: expected {'used': 46847, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': ['0x1'], 'store': None, 'used': 46850}; step 1 (PUSH1) ex: expected {'used': 46844, 'push': ['0x0'], 'mem': None, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': ['0x0'], 'store': None, 'used': 46847}; step 2 (MSTORE) ex: expected {'used': 46838, 'push': [], 'mem': {'off': 0, 'data': '0x0000000000000000000000000000000000000000000000000000000000000001'}, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': [], 'store': None, 'used': 46844}; step 3 (PUSH1) ex: expected {'used': 46835, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': {'data': '0x0000000000000000000000000000000000000000000000000000000000000001', 'off': 32}, 'push': ['0x1'], 'store': None, 'used': 46838}
 
 **Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H19](../../decisions/H19.md): Creation vmTrace.code is executing initcode.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x60016000526001601ff3.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 0 pc outside executing bytecode; operation 1 pc outside executing bytecode; operation 2 pc outside executing bytecode; operation 3 pc outside executing bytecode
+- [H19](../../decisions/H19.md): Root VM bytecode equals the independently frozen execution source.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) ex: expected {'used': 46847, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': ['0x1'], 'store': None, 'used': 46850}; step 1 (PUSH1) ex: expected {'used': 46844, 'push': ['0x0'], 'mem': None, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': ['0x0'], 'store': None, 'used': 46847}; step 2 (MSTORE) ex: expected {'used': 46838, 'push': [], 'mem': {'off': 0, 'data': '0x0000000000000000000000000000000000000000000000000000000000000001'}, 'store': None}, got {'mem': {'data': '0x', 'off': 0}, 'push': [], 'store': None, 'used': 46844}; step 3 (PUSH1) ex: expected {'used': 46835, 'push': ['0x1'], 'mem': None, 'store': None}, got {'mem': {'data': '0x0000000000000000000000000000000000000000000000000000000000000001', 'off': 32}, 'push': ['0x1'], 'store': None, 'used': 46838}
 
 </details>

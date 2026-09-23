@@ -7,7 +7,13 @@ name = "trace-interop"
 version = "0.1.0"
 description = "Reproducible evidence and draft conformance checks for Ethereum trace APIs"
 requires-python = ">=3.11"
-dependencies = ["jsonschema>=4.23,<5", "PyYAML>=6,<7"]
+dependencies = [
+    "eth-hash[pycryptodome]>=0.7,<1",
+    "eth-keys>=0.7,<0.8",
+    "jsonschema>=4.23,<5",
+    "PyYAML>=6,<7",
+    "rlp>=4,<5",
+]
 
 [project.scripts]
 trace-interop = "trace_interop.cli:main"

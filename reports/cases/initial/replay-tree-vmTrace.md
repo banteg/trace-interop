@@ -2,15 +2,15 @@
 
 `trace_replayTransaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Individual replay includes its transactionHash. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Assess this declared topic case. trace_replayTransaction
+**What this checks:** Individual replay includes its transactionHash. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. The method responds without Method not found (-32601). The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. trace_replayTransaction Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Besu · 📦 Release](../../clients/besu_release.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 | [Besu · 🛠️ Development](../../clients/besu_development.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
 | [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 | [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 | [Reth · 📦 Release](../../clients/reth_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
@@ -34,68 +34,52 @@
 
 **Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
 
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. subtrace 30: operation 21 mnemonic disagrees with bytecode; subtrace 49: operation 23 pc outside executing bytecode
 
 **Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
-- [H07](../../decisions/H07.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H21](../../decisions/H21.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H07](../../decisions/H07.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H19](../../decisions/H19.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H20](../../decisions/H20.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H21](../../decisions/H21.md): Assess the declared property. Cannot inspect this property: unsupported.
 
 **Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
-- [H07](../../decisions/H07.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H21](../../decisions/H21.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H07](../../decisions/H07.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H19](../../decisions/H19.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H20](../../decisions/H20.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H21](../../decisions/H21.md): Assess the declared property. Cannot inspect this property: unsupported.
 
 **Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
 
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. subtrace 30: operation 21 mnemonic disagrees with bytecode; subtrace 49: operation 23 pc outside executing bytecode
 
 **Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
 
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. subtrace 30: operation 21 mnemonic disagrees with bytecode; subtrace 49: operation 23 pc outside executing bytecode
 
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - Result shape at `/`: {'output': '0xffee', 'stateDiff': None, 'trace': [], 'transactionHash': '0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738', 'vmTrace': {'code': '0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d
 
 **Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
 - Result shape at `/`: {'output': '0xffee', 'stateDiff': None, 'trace': [], 'transactionHash': '0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738', 'vmTrace': {'code': '0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d
 
 **Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
 - [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 2 post-step gas does not deduct this operation cost; operation 3 post-step gas does not deduct this operation cost; subtrace 10: operation 1 post-step gas does not deduct this operation cost; subtrace 10: operation 4 post-step gas does not deduct this operation cost
 - Result shape at `/`: {'output': '0xffee', 'stateDiff': None, 'trace': [], 'vmTrace': {'code': '0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60
 
 **Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
-- [H01](../../decisions/H01.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H19](../../decisions/H19.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H20](../../decisions/H20.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 2 post-step gas does not deduct this operation cost; operation 3 post-step gas does not deduct this operation cost; subtrace 10: operation 1 post-step gas does not deduct this operation cost; subtrace 10: operation 4 post-step gas does not deduct this operation cost
 - Result shape at `/`: {'output': '0xffee', 'stateDiff': None, 'trace': [], 'vmTrace': {'code': '0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60
 
 </details>

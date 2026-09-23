@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Failed frames have an error string and an explicit object or null result. Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks. Assess this declared topic case.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Failed frames have an error string and an explicit object or null result. Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -42,22 +42,22 @@
 **Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 

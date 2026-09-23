@@ -2,12 +2,12 @@
 
 `trace_call` · pruned · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Assess this declared topic case.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-pruned/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-pruned/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-pruned/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-pruned/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,10 +32,10 @@
 
 **Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- [H06](../../decisions/H06.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H06](../../decisions/H06.md): Assess the declared property. Latest execution is the successful control for the unavailable-history probe.
 
 **Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H06](../../decisions/H06.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H06](../../decisions/H06.md): Assess the declared property. Latest execution is the successful control for the unavailable-history probe.
 
 </details>

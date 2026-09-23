@@ -2,7 +2,7 @@
 
 `trace_filter` · reorg-safe · [All reports](../../../README.md)
 
-**What this checks:** Failed frames have an error string and an explicit object or null result.
+**What this checks:** Failed frames have an error string and an explicit object or null result. Every phase range has exactly the frozen canonical roots and block hashes; restoration returns the original inventory.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

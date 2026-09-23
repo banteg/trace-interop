@@ -2,19 +2,19 @@
 
 `trace_callMany` · initial · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. Assess this declared topic case.
+**What this checks:** Return one execution envelope per input call, in order. Each transfer has one successful root, with no fabricated failure. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../clients/besu_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Besu · 🛠️ Development](../../clients/besu_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
-| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · 📦 Release](../../clients/reth_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -59,58 +59,34 @@
 }
 ```
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
-
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
-
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
-**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
-
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-
 **Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
 
 **Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
 
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000001234: new account lacks creation markers for all fields
 
 **Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000001234: new account lacks creation markers for all fields
 
 **Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000001234: new account lacks creation markers for all fields
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
 
 **Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H15](../../decisions/H15.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
-- [H17](../../decisions/H17.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000001234: new account lacks creation markers for all fields
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
+- [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=41964773970000, burn=35226030000.
 
 </details>

@@ -30,10 +30,10 @@ class ReportingRegressions(unittest.TestCase):
                 with patch('trace_interop.report.verify_setup', return_value=(eligible, 'setup test')), patch('trace_interop.presentation.render'), contextlib.redirect_stdout(io.StringIO()):
                     generate(ROOT, [folder], base/'report')
                 row = next(r for r in read(base/'report/checks.json') if r['case'] == 'filter-both')
-                self.assertEqual(row['assessment'], 'unassessed')
-                self.assertEqual([c['status'] for c in row['checks'] if c['topic'] == 'H03'], ['unassessed'])
+                self.assertEqual(row['assessment'], 'blocked')
+                self.assertEqual([c['status'] for c in row['checks'] if c['topic'] == 'H03'], ['blocked'])
                 self.assertEqual(row['eligible'], eligible)
-                self.assertGreater(read(base/'report/assessment.json')['coverage']['unassessed'], 0)
+                self.assertGreater(read(base/'report/assessment.json')['coverage']['blocked'], 0)
 
     def test_mixed_builds_do_not_harmonize_and_new_complete_build_supersedes_old(self):
         from trace_interop.status import decision_status, NATIVE_CLIENTS
@@ -69,7 +69,7 @@ class ReportingRegressions(unittest.TestCase):
             row=next(r for r in read(base/'report/checks.json') if r['case']=='filter-both')
             self.assertTrue(row['capture_eligible'])
             self.assertFalse(row['eligible'])
-            self.assertEqual(row['assessment'],'unassessed')
+            self.assertEqual(row['assessment'],'blocked')
 
     def test_case_pages_follow_active_inventory(self):
         from trace_interop.presentation import prune_case_pages

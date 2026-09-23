@@ -2,7 +2,7 @@
 
 `trace_block` · a · [All reports](../../README.md)
 
-**What this checks:** A PoS block has no synthetic PoW reward records. Failed frames have an error string and an explicit object or null result.
+**What this checks:** A PoS block has no synthetic PoW reward records. Failed frames have an error string and an explicit object or null result. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

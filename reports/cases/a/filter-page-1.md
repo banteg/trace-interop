@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string and an explicit object or null result.
+**What this checks:** Failed frames have an error string and an explicit object or null result. Apply after/count to the anchored canonical trace sequence, including count zero and past-end pages.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

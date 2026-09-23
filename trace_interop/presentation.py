@@ -57,12 +57,17 @@ def verdict(checks):
         return 'Method unavailable'
     if 'change_needed' in statuses:
         return 'Differs'
-    if 'unassessed' in statuses:
-        return 'Partially assessed' if statuses - {'unassessed'} else 'Not assessed'
+    substantive = statuses - {'control','not_applicable'}
+    if 'unassessed' in substantive or 'blocked' in substantive:
+        if substantive & {'matches','observation'}:
+            return 'Partially assessed'
+        return 'Not assessed' if 'unassessed' in substantive else 'Blocked'
     if 'observation' in statuses:
         return 'Policy open'
     if 'matches' in statuses:
         return 'Checked cases agree'
+    if statuses and not substantive:
+        return 'Control / not applicable'
     return 'Not assessed'
 
 
@@ -75,6 +80,8 @@ def display_verdict(checks):
         'Partially assessed': '🟡',
         'Not assessed': '⚪',
         'Policy open': '❔',
+        'Blocked': '🚧',
+        'Control / not applicable': '🔎',
     }[label]
     return f'{icon} {label}'
 
@@ -235,7 +242,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += table(['Build', 'Returned', 'Compared with draft', 'Evidence'], rows)
         text += '<details><summary>Request and assertion details</summary>\n\n```json\n' + json.dumps(entries[0]['request'], indent=2) + '\n```\n\n'
         for e in entries:
-            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD or c['status'] in {'observation','unassessed'}]
+            r = e['record']; failures = [c for c in r['checks'] if c['status'] in BAD or c['status'] in {'observation','unassessed','blocked','control','not_applicable'}]
             errors = r.get('schema', {}).get('errors', [])
             if not failures and not errors:
                 continue
@@ -266,7 +273,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 continue
             if not any(q['status'] in BAD for q in checks):
                 if topic != 'H01':
-                    (partial if any(q['status']=='unassessed' for q in checks) else matched if checks else untested).append(topic)
+                    (partial if any(q['status'] in ['unassessed','blocked'] for q in checks) else matched if any(q['status']=='matches' for q in checks) else untested).append(topic)
                 continue
             affected = next(c for c in selected if any(q['status'] in BAD for q in by_client[c].get(topic, [])))
             observed, change = note(editorial, affected, topic, checks)
@@ -335,7 +342,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if affected:
                 observed, change = note(editorial, affected, topic, checks)
                 behavior = observed + '<br>**Proposed:** ' + change
-            elif any(q['status'] == 'unassessed' for q in checks):
+            elif any(q['status'] in ['unassessed','blocked'] for q in checks):
                 behavior = 'Some declared cases were not assessed. Matching checks do not establish agreement for this topic.'
             elif any(q['status'] == 'observation' for q in checks):
                 details = []
@@ -409,6 +416,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
              '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
              '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
              '- ⚪ **Not assessed:** no evaluated assertion establishes an outcome.\n'
+             '- 🚧 **Blocked:** a missing response, failed setup or earlier failure prevents this check.\n'
+             '- 🔎 **Control / not applicable:** reference evidence or a property that does not apply; never a semantic pass.\n'
              '- ❔ **Policy open:** observed behavior is recorded without a settled assertion.\n\n'
              'Build labels: 📦 **Release** · 🛠️ **Development** · 🧪 **Draft fork**. '
              'These identify build channels, not test outcomes. Test outcomes are separate from '
@@ -418,7 +427,15 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'
     gaps = sorted({(r['client'],r['run'],r['corpus']) for r in records if not r['eligible']})
     text += '## Assertion coverage\n\nCoverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
-    text += table(['Coverage', 'Observations'], [[{'assessed': '🔎 Assessed', 'partial': '🟡 Partial', 'unassessed': '⚪ Unassessed'}[status], sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed']])
+    text += table(['Coverage', 'Observations'], [[{'assessed': '🔎 Assessed', 'partial': '🟡 Partial', 'unassessed': '⚪ Unassessed', 'blocked':'🚧 Blocked', 'control':'🔎 Control'}[status], sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed','blocked','control']])
+    property_gaps = defaultdict(lambda: defaultdict(int))
+    for r in records:
+        if r['method'].startswith('trace_'):
+            for c in r['checks']:
+                if c['status'] in ['unassessed','blocked','control','not_applicable']:
+                    property_gaps[(c['topic'],c['status'],c.get('detail',''))][r['client']] += 1
+    text += '\n### Unevaluated properties\n\nEach row names the reason; controls and inapplicable properties do not count as passes. Counts are topic obligations, so one response may appear more than once.\n\n'
+    text += table(['Topic','Disposition','Reason','Observations'], [[topic,kind,detail,sum(counts.values())] for (topic,kind,detail),counts in sorted(property_gaps.items())])
     text += 'Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.\n\n'
     text += '## Setup gaps\n\n'
     text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+channel(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'

@@ -3,6 +3,7 @@
     "a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
     "boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
     "callmany-isolation.json": "c9353e868ef1d43ecd59e73540aff2ca80e73bfc543d2ae77fbb5fe0f359b8e9",
+    "coverage.json": "c9e18ef72a931b1d1aca35ba36d5d03e56fb3e4fea856450f890a2e9a318483d",
     "fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
     "fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
     "forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
@@ -17,9 +18,11 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 1970,
-    "partial": 545,
-    "unassessed": 231
+    "assessed": 2553,
+    "blocked": 36,
+    "control": 18,
+    "partial": 139,
+    "unassessed": 0
   },
   "evidence": {
     "../evidence/2026-09-23/geth-contract-sync/geth-contract-a/manifest.json": "0e5709f19290e94b702b2ee3ad2c56c1f3c67d8531ac0a53125c53841b17af4b",
@@ -55,14 +58,18 @@
     "locks/source-revisions.json": "809f7b2149cb49395292947bf6dd82923f3f8e9eaa57c7aacf0bba1ed1c1e7f2",
     "reports.lock.json": "5e5f2f614f0fb201cb8e6e773a4681765737de39ce6ae0874db6029f469340d9",
     "spec.lock.json": "eb55b6abd35b9ee3e572b945535536fb09e94b8e7185990c4b4f2252cc50de13",
+    "trace_interop/chain_model.py": "cb06fccecf885e56e19fe0742ee6d50295fd8f73a25b9325321cb736cec821c8",
+    "trace_interop/coverage.py": "f752d88017f2e7d25375d97da2a77196cec5ff389ee66549ad86dd8490de0448",
+    "trace_interop/execution_models.py": "c25a316566ebaadb06a0073eb39a60c2107ee78baa3f9f11029c2ab1ede9044e",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
     "trace_interop/oracles.py": "192cee56e18b7cbe50de56309aca73d024d3f5726c5462aa9a7362ae1c904a2a",
-    "trace_interop/presentation.py": "631fb1686d7df596382457a7b1eef7634ee7780a2148702ec1dcc9026cdca9ae",
-    "trace_interop/report.py": "156f0a14ff4778fbfe3123b3035ef93f962452faaeb6c1c6e60300a264a01ea1",
+    "trace_interop/presentation.py": "6484159268448df74923b5956a96af85231e707c03c3fbf721456f2cf560f89e",
+    "trace_interop/report.py": "ded845cbf8948844329994219225083a48fa27dc5722c84bf63d0d5addd995e3",
     "trace_interop/rules.py": "3b9db062433187bd95621eb5ea95c7d029995d42a7b14eab392c40764951a189",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",
     "trace_interop/status.py": "049357518a07bcd5a7cd310b06c502104fcb34daf3eb4ed466c8131699ee5aa5",
-    "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"
+    "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85",
+    "trace_interop/vm_model.py": "1b21e512fe0a333c0b7bed306a8d04a037f2e0251f81b5fee07afcb12a66b4f3"
   },
   "spec_commit": "b979aefe57e4f63af0397b5a068237c04a9d6e3b"
 }

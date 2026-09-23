@@ -2,7 +2,7 @@
 
 `trace_transaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string and an explicit object or null result. The fixture REVERT frame preserves its exact return bytes and opcode gas, regardless of error wording.
+**What this checks:** Failed frames have an error string and an explicit object or null result. The fixture REVERT frame preserves its exact return bytes and opcode gas, regardless of error wording. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

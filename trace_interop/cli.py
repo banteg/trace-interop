@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
-          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a'}
+          'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'coverage': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a'}
 IMAGES = {
     'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
     'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
@@ -162,6 +162,36 @@ def execute(args):
               'method': 'eth_getBlockByNumber', 'params': ['latest', False]}},
              {'name': '_control/version', 'request': {'jsonrpc': '2.0', 'id': 1,
               'method': 'web3_clientVersion', 'params': []}}] + cases
+    # Receipt gas is independent of the trace under assessment. Retain one control
+    # per mined replay so accounting does not adopt a client's trace gas as truth.
+    from .chain_model import load_chain
+    blocks = load_chain(chain/'chain.rlp')
+    txhashes = set()
+    for case in list(cases):
+        request = case['request']
+        if request['method'] == 'trace_replayTransaction':
+            if any(t['hash']==request['params'][0] for b in blocks.values() for t in b['transactions']):
+                txhashes.add(request['params'][0])
+        elif request['method'] == 'trace_replayBlockTransactions':
+            txhashes.update(t['hash'] for t in blocks.get(request['params'][0],{}).get('transactions',[]))
+    cases += [{'name':'_control/receipt/'+h, 'request':{'jsonrpc':'2.0','id':1,'method':'eth_getTransactionReceipt','params':[h]}} for h in sorted(txhashes)]
+    if args.corpus not in ['reorg','reorg-safe'] and not corpus.get('scenario_phases'):
+        needed = set()
+        for case in cases:
+            request=case['request']
+            if request['method']!='trace_filter' or not request.get('params') or not isinstance(request['params'][0],dict):
+                continue
+            filt=request['params'][0]
+            def bound(value):
+                if value in ['latest','safe','finalized',None]:return int(head['number'],16)
+                if value=='earliest':return 0
+                try:return int(value,16)
+                except (ValueError,TypeError):return None
+            start,end=bound(filt.get('fromBlock')),bound(filt.get('toBlock'))
+            if start is not None and end is not None and 0<=end-start<=64:
+                needed.update(hex(n) for n in range(start,end+1) if hex(n) in blocks)
+        present={c['request']['params'][0] for c in cases if c['request']['method']=='trace_block'}
+        cases += [{'name':'_reference/block/'+n, 'request':{'jsonrpc':'2.0','id':1,'method':'trace_block','params':[n]},'role':'reference'} for n in sorted(needed-present,key=lambda n:int(n,16))]
     hive = checkout()
     sim = hive / 'simulators/ethereum/rpc-compat'
     tests = sim / 'tests'

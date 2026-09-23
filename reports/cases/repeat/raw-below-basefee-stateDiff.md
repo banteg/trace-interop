@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · repeat · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject a signed transaction that fails execution validity at the selected state before EVM execution. Proposed transaction-validation error code: -32003 (Transaction rejected). Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Assess this declared topic case.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject a signed transaction that fails execution validity at the selected state before EVM execution. Proposed transaction-validation error code: -32003 (Transaction rejected). Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -51,12 +51,12 @@
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H13](../../decisions/H13.md): Assess the declared property. Cannot inspect this property: malformed_json.
 
 **Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H13](../../decisions/H13.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H13](../../decisions/H13.md): Assess the declared property. Cannot inspect this property: malformed_json.
 
 **Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
 

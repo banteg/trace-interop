@@ -2,7 +2,7 @@
 
 `trace_replayBlockTransactions` · forks · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string and an explicit object or null result.
+**What this checks:** Failed frames have an error string and an explicit object or null result. Block replay has exactly one envelope per frozen transaction, with hashes in transaction order.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

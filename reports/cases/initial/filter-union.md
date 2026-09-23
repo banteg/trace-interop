@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result. Assess this declared topic case.
+**What this checks:** Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Failed frames have an error string and an explicit object or null result. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -42,21 +42,21 @@
 **Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 6 records from this client's block trace.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 6 records from this client's block trace.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
 
 - [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 6 records from this client's block trace.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. No failed frame is selected; the address-filter assertion independently checks the selected inventory.
 
 **Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
 
 - [H03](../../decisions/H03.md): Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted. Expected 6 records from this client's block trace.
-- [H09](../../decisions/H09.md): Assess this declared topic case. No semantic assertion evaluated this topic for the captured response.
+- [H09](../../decisions/H09.md): Assess the declared property. No failed frame is selected; the address-filter assertion independently checks the selected inventory.
 
 </details>

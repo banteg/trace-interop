@@ -2,7 +2,7 @@
 
 `trace_block` · initial · [All reports](../../README.md)
 
-**What this checks:** A PoS block has no synthetic PoW reward records.
+**What this checks:** A PoS block has no synthetic PoW reward records. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

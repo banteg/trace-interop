@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../clients/besu_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Besu · 🛠️ Development](../../clients/besu_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) |
-| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; output `0x` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; output `0x` | ❔ Policy open | [Response](../../../evidence/2026-09-23/harness-audit-native-initial/observations.json) · [Build/run](../../../evidence/2026-09-23/harness-audit-native-initial/manifest.json) |
+| [Besu · 📦 Release](../../clients/besu_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | RPC error `-32602` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; output `0x` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; output `0x` | ❔ Policy open | [Response](../../../evidence/2026-09-24/coverage-matrix/initial-clean/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -35,11 +35,6 @@
 }
 ```
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
-
-- [H12](../../decisions/H12.md): Observe the explicit block-selector extension separately from the two-argument baseline. The third-argument request was rejected as invalid params.
-- [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.
-
 **Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
 
 - [H12](../../decisions/H12.md): Observe the explicit block-selector extension separately from the two-argument baseline. The third-argument request was rejected as invalid params.
@@ -56,6 +51,11 @@
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.
 
 **Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
+
+- [H12](../../decisions/H12.md): Observe the explicit block-selector extension separately from the two-argument baseline. The third-argument request was rejected as invalid params.
+- [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.
+
+**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
 
 - [H12](../../decisions/H12.md): Observe the explicit block-selector extension separately from the two-argument baseline. The third-argument request was rejected as invalid params.
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.

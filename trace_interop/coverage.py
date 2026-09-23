@@ -10,7 +10,7 @@ from .vm_model import execute, intrinsic, differences, local_invariants, Unsuppo
 from .chain_model import decode_transaction
 import rlp
 from eth_hash.auto import keccak
-from .execution_models import assess as assess_execution, transactions
+from .execution_models import assess as assess_execution, empty_execution_indexes
 
 
 def obj(value):
@@ -52,6 +52,10 @@ def supplement(case, observation, peers, checks, expected):
 
     def covered(topic):
         return any(c['topic'] == topic for c in checks)
+
+    if case.get('role')=='reference':
+        explain('H27','control' if status=='result' else 'blocked',
+                'Per-block reference response for the filter comparison.' if status=='result' else 'Per-block reference unavailable: '+status)
 
     def other(n):
         observation = obj(peers.get(n))
@@ -111,7 +115,10 @@ def supplement(case, observation, peers, checks, expected):
                 'Each transfer has one successful root, with no fabricated failure.')
         else:
             if method == 'trace_filter':
-                explain('H09', 'not_applicable', 'No failed frame is selected; the address-filter assertion independently checks the selected inventory.')
+                if any(c['topic'] in ['H03','H04','H23'] and c['status']=='change_needed' for c in checks):
+                    explain('H09', 'blocked', 'Address selection differs from its reference; failure-bearing frame selection is not established.')
+                else:
+                    explain('H09', 'not_applicable', 'No failed frame is selected; the address-filter assertion independently checks the selected inventory.')
             else:
                 add('H09', False, 'The declared failing execution contains its failed frame.',
                     'No failed frame was returned for this failure-bearing fixture.')
@@ -138,12 +145,22 @@ def supplement(case, observation, peers, checks, expected):
                     baseline = anchored_reference(context, peers, c['name'])
                     break
             if baseline is not None:
-                if not filt.get('toAddress'):
-                    senders=[s.lower() for s in filt.get('fromAddress') or [] if isinstance(s,str)]
-                    baseline=[f for f in baseline if not senders or str(obj(f.get('action')).get('from','')).lower() in senders]
-                    after, count = filt.get('after', 0), filt.get('count', len(baseline))
-                    if type(after) is int and type(count) is int and after >= 0 and count >= 0:
-                        add('H03', result == baseline[after:after+count], 'Apply after/count to the anchored canonical trace sequence, including count zero and past-end pages.')
+                senders=[s.lower() for s in filt.get('fromAddress') or [] if isinstance(s,str)]
+                recipients=[s.lower() for s in filt.get('toAddress') or [] if isinstance(s,str)]
+                def selected(frame):
+                    action=obj(frame.get('action'));kind=frame.get('type')
+                    sender,target=action.get('from'),action.get('to')
+                    if kind=='create':target=obj(frame.get('result')).get('address')
+                    elif kind=='suicide':sender,target=action.get('address'),action.get('refundAddress')
+                    elif kind=='reward':sender,target=None,action.get('author')
+                    sides=[]
+                    if senders:sides.append(str(sender).lower() in senders)
+                    if recipients:sides.append(str(target).lower() in recipients)
+                    return any(sides) if filt.get('mode')=='union' and sides else all(sides)
+                baseline=[f for f in baseline if selected(f)]
+                after, count = filt.get('after', 0), filt.get('count', len(baseline))
+                if type(after) is int and type(count) is int and after >= 0 and count >= 0:
+                    add('H03', result == baseline[after:after+count], 'Filter the anchored canonical inventory before applying after/count, including count zero and past-end pages.')
             elif name in ['filter-transfer','withdrawal-filter-51','withdrawal-filter-52','withdrawal-filter-53'] or any(t in name for t in ['page','filter-zero']):
                 explain('H03', 'blocked', 'The per-block reference lacks an independent transaction inventory.')
     if 'H05' in declared and not covered('H05') and status == 'result':
@@ -163,7 +180,7 @@ def supplement(case, observation, peers, checks, expected):
             'Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment.')
 
     if status=='result':
-        checks.extend(assess_execution(case,observation,peers,declared & {'H16','H17','H18','H19'}))
+        checks.extend(assess_execution(case,observation,peers,declared & {'H16','H17','H18','H19','H20'}))
 
     # Independently decoded transaction roots make reference-only pages useful
     # without adopting the client's own list as its inventory.
@@ -173,7 +190,7 @@ def supplement(case, observation, peers, checks, expected):
         else:
             selected_blocks=context.get('_alternate_blocks',{}) if name.startswith('after/') else blocks
             wanted=selected_blocks.get(params[0],{}).get('transactions')
-        if wanted is not None:
+        if wanted is not None and (method=='trace_block' or wanted):
             roots=[f for f in frames if f.get('traceAddress')==[] and f.get('type') in ['call','create']]
             add('H02',isinstance(result,list) and [f.get('transactionHash') for f in roots]==[t['hash'] for t in wanted]
                 and all(obj(f.get('action')).get('from')==t['sender'] for f,t in zip(roots,wanted)),
@@ -190,7 +207,9 @@ def supplement(case, observation, peers, checks, expected):
     # Replay arrays need the same numeric/metadata walk as individual envelopes.
     if 'H21' in declared and not covered('H21') and status == 'result':
         vms = [obj(e).get('vmTrace') for e in envelopes]
-        valid = bool(vms) and all(isinstance(v, dict) for v in vms)
+        empty=empty_execution_indexes(case)
+        valid = bool(vms) and all(isinstance(v, dict) or v is None and i in empty for i,v in enumerate(vms))
+        vms=[v for i,v in enumerate(vms) if not (v is None and i in empty)]
         while vms:
             vm = vms.pop()
             valid &= isinstance(vm, dict) and isinstance(obj(vm).get('ops'), list)
@@ -206,7 +225,8 @@ def supplement(case, observation, peers, checks, expected):
 
     if 'H20' in declared and status=='result':
         vms=[obj(e).get('vmTrace') for e in envelopes]
-        errors=[error for vm in vms for error in local_invariants(vm)]
+        empty=empty_execution_indexes(case)
+        errors=[error for i,vm in enumerate(vms) if not (vm is None and i in empty) for error in local_invariants(vm)]
         add('H20',bool(vms) and not errors,
             'At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded.',
             '; '.join(errors[:4]))
@@ -240,6 +260,12 @@ def supplement(case, observation, peers, checks, expected):
                 errors = differences(vm, want)
                 add('H20', status == 'result' and not errors, 'Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects.', '; '.join(errors[:4]))
                 add('H08', obj(result).get('output') == output, 'Modelled execution returns exactly the independently computed bytes.')
+                if reverted:
+                    root=next((f for f in frames if f.get('traceAddress')==[]),{})
+                    used=gas-want['ops'][-1]['ex']['used']
+                    add('H09',bool(root.get('error')) and obj(root.get('result')).get('output')==output
+                        and integer(obj(root.get('result')).get('gasUsed'))==used,
+                        'The modelled REVERT root retains its exact return bytes and independently calculated execution gas.')
                 if model and model.get('environment'):
                     add('H15', obj(result).get('output') == output,
                         'GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.')
@@ -255,12 +281,14 @@ def supplement(case, observation, peers, checks, expected):
 
     model = case.get('transfer_model')
     if model:
+        count = 2 if method == 'trace_callMany' else 1
+        add('H08',len(envelopes)==count and all(obj(e).get('output')=='0x' for e in envelopes),
+            'Every transfer to the independently empty-code recipient returns empty bytes.')
         base = context['_environment']['BASEFEE']
         before_miner = integer(other('_control/miner-balance'))
         if before_miner is None:
             explain('H16', 'blocked', 'Independent fee-recipient balance unavailable.')
         else:
-            count = 2 if method == 'trace_callMany' else 1
             add('H16', len(envelopes) == count, 'Return one execution envelope per modelled transfer.')
             for i in range(count):
                 envelope = obj(envelopes[i]) if i < len(envelopes) else {}

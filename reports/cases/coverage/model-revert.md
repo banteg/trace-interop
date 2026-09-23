@@ -1,0 +1,101 @@
+# Model revert
+
+`trace_call` · coverage · [All reports](../../README.md)
+
+**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+
+| Build | Returned | Compared with draft | Evidence |
+| --- | --- | --- | --- |
+| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Erigon · 📦 Release](../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+
+<details><summary>Request and assertion details</summary>
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "trace_call",
+  "params": [
+    {
+      "data": "0x602a60005260206000fd",
+      "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "gas": "0x493e0",
+      "gasPrice": "0x77359400"
+    },
+    [
+      "trace",
+      "stateDiff",
+      "vmTrace"
+    ],
+    "latest"
+  ]
+}
+```
+
+**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x000000000000000000000000000000000000000000000000000000000000002a', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is n
+
+**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0x000000000000000000000000000000000000000000000000000000000000002a', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is n
+
+**Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
+
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000000000000000000
+
+**Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
+
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000000000000000000
+
+**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
+
+- [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
+- Result shape at `vmTrace`: {'code': '0x602a60005260206000fd', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 246859}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246856}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x000000000
+
+**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
+
+- [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
+- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
+- Result shape at `vmTrace`: {'code': '0x602a60005260206000fd', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 246859}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246856}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x000000000
+
+**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
+
+- [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x602a60005260206000fd.
+- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 246859, got 246862; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246856, got 246859; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 0 mnemonic disagrees with bytecode; operation 1 pc outside executing bytecode; operation 2 pc outside executing bytecode; operation 3 pc outside executing bytecode
+- [H19](../../decisions/H19.md): Root VM bytecode equals the independently frozen execution source.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) used: expected 246859, got 246862; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246856, got 246859; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000000000000000000
+
+**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
+
+- [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x602a60005260206000fd.
+- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 246859, got 246862; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246856, got 246859; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
+- [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 0 mnemonic disagrees with bytecode; operation 1 pc outside executing bytecode; operation 2 pc outside executing bytecode; operation 3 pc outside executing bytecode
+- [H19](../../decisions/H19.md): Root VM bytecode equals the independently frozen execution source.
+- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) used: expected 246859, got 246862; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246856, got 246859; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
+- [H09](../../decisions/H09.md): The modelled REVERT root retains its exact return bytes and independently calculated execution gas.
+- Result shape at `trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c44e', 'init': '0x602a60005260206000fd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000000000000000000
+
+</details>

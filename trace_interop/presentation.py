@@ -333,6 +333,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += f'## Recommendation\n\n{d["recommendation"]}\n\n{d["rationale"]}\n\n'
         if d.get('background'):
             text += '## Background\n\n' + '\n\n'.join(d['background']) + '\n\n'
+        if d.get('references'):
+            text += 'Supporting controls (not standalone assertions): ' + ' · '.join(
+                f'[{ref}](../cases/{ref}.md)' for ref in d['references']) + '.\n\n'
         text += f'## {d.get("comparison_heading", "What changes for clients")}\n\n'
         text += '[Test status key](../technical.md#test-status-key) · Build labels identify captured releases, development builds and the experimental draft fork.\n\n'
         rows = []

@@ -19,6 +19,9 @@ def link(path, output):
 def generate(root, runs, output):
     output=output.resolve();output.mkdir(parents=True,exist_ok=True)
     verify_inventory(root)
+    for name,digest in read(root/'fixtures/checksums.json').items():
+        if sha(root/'fixtures'/name)!=digest:
+            raise ValueError(f'fixture modified: {name}')
     ledger=read(root/'decisions/ledger.json')
     decisions={x['id']:x for x in ledger['items']}
     by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list)
@@ -46,6 +49,7 @@ def generate(root, runs, output):
         header = read(chain/'headblock.json')
         context['_codes'] = {'0x'+a.removeprefix('0x').lower(): v.get('code','0x') for a,v in genesis['alloc'].items()}
         context['_alloc'] = {'0x'+a.removeprefix('0x').lower(): v for a,v in genesis['alloc'].items()}
+        context['_chain_id'] = genesis['config']['chainId']
         from .chain_model import load_chain
         context['_blocks'] = load_chain(chain/'chain.rlp')
         context['_head'] = header
@@ -54,8 +58,8 @@ def generate(root, runs, output):
             for number,b in context['_blocks'].items() for i,t in enumerate(b['transactions'])])
         if manifest['corpus'] in ['reorg','reorg-safe']:
             context['_alternate_blocks'] = load_chain(root/'fixtures/chains/b/chain.rlp')
-        rule_context = dict(context, cases=manifest['selected_cases'])
         context['_environment'] = {k:int(header[v],16) for k,v in [('BASEFEE','baseFeePerGas'),('NUMBER','number'),('TIMESTAMP','timestamp'),('GASLIMIT','gasLimit')] if v in header}
+        rule_context = dict(context, cases=manifest['selected_cases'])
         for client in manifest['clients']:
             eligible, scenario_detail=verify_setup(manifest,context,obs,client)
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
@@ -66,6 +70,7 @@ def generate(root, runs, output):
                 record['build_id']=info.get('image_id') or info.get('digest')
                 record['captured_at']=manifest.get('started_at')
                 expected=[t for t,d in decisions.items() if manifest['corpus']+'/'+name in d['cases']]
+                references=[t for t,d in decisions.items() if manifest['corpus']+'/'+name in d.get('references', [])]
                 if record['eligible'] and observation:
                     errors=request_errors(case['request'],methods) if spec and not is_extension_request(case['request']) else []
                     record['request_errors']=errors
@@ -77,6 +82,8 @@ def generate(root, runs, output):
                         errors=list(Draft201909Validator(schema).iter_errors(observation['response']['result']))
                         record['schema']={'status':'invalid' if errors else 'valid','errors':[{'path':'/'.join(map(str,e.absolute_path)), 'message':e.message[:300]} for e in errors[:8]]}
                 record['checks']=cover_topics(record['checks'],expected)
+                record['checks'] += [dict(topic=t,status='control',requirement='Retain supporting reference evidence.',
+                    detail='Ledger reference; executable requirements are assessed by the linked topic cases.') for t in references]
                 if not record['eligible'] or not observation:
                     for check in record['checks']:
                         check['status']='blocked'
@@ -93,7 +100,7 @@ def generate(root, runs, output):
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
     write(output/'assessment.json', {
         'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
+        'sources': {name:sha(root/name) for name in ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
         'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
         'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_')) for status in ['assessed','partial','unassessed','blocked','control']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},

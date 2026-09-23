@@ -1,0 +1,601 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "osaka": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "amsterdam": {
+        "target": 14,
+        "max": 21,
+        "baseFeeUpdateFraction": 11684671
+      },
+      "bpo1": {
+        "target": 10,
+        "max": 15,
+        "baseFeeUpdateFraction": 8346193
+      },
+      "bpo2": {
+        "target": 14,
+        "max": 21,
+        "baseFeeUpdateFraction": 11684671
+      },
+      "bpo3": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      },
+      "bpo4": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      },
+      "bpo5": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0x0000000000000000000000000000000000001002": {
+      "code": "0x602a600055602a60005260206000f3",
+      "balance": "0x0"
+    },
+    "0x00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "0x000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0x0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf": {
+      "code": "0x00",
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "0x2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "0x5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x6813eb9362372eef6200f3b1dbc3f819671cba69": {
+      "code": "0xef01000000000000000000000000000000000000001002",
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "0x717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf": {
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "0x83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "0x8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xe7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xeda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+test.json
+{
+  "Init": {
+    "WebSocketsEnabled": true,
+    "UseMemDb": true,
+    "ChainSpecPath": "/genesis.json",
+    "BaseDbPath": "nethermind_db/hive",
+    "LogFileName": "/hive.logs.txt"
+  },
+  "JsonRpc": {
+    "Enabled": true,
+    "Host": "0.0.0.0",
+    "Port": 8545,
+    "GasCap": 50000000,
+    "WebSocketsPort": 8546,
+    "JwtSecretFile": "/jwt.secret",
+    "EnabledModules": [
+      "Debug",
+      "Eth",
+      "Subscribe",
+      "Trace",
+      "TxPool",
+      "Web3",
+      "Personal",
+      "Proof",
+      "Net",
+      "Parity",
+      "Health",
+      "Admin",
+      "Testing"
+    ],
+    "AdditionalRpcUrls": [
+      "http://0.0.0.0:8550|http;ws|debug;net;eth;subscribe;engine;web3;client;admin|no-auth",
+      "http://0.0.0.0:8551|http;ws|debug;net;eth;subscribe;engine;web3;client;admin"
+    ]
+  },
+  "Network": {
+    "DiscoveryPort": 30303,
+    "P2PPort": 30303,
+    "ExternalIp": "127.0.0.1"
+  },
+  "Hive": {
+    "ChainFile": "/chain.rlp",
+    "GenesisFilePath": "/genesis.json",
+    "BlocksDir": "/blocks",
+    "KeysDir": "/keys"
+  },
+  "Sync": {
+    "SnapServingEnabled": true,
+    "SnapSync": false
+  },
+  "Discovery": {
+    "DiscoveryVersion": "All"
+  },
+  "Merge": {
+    "Enabled": true,
+    "TerminalTotalDifficulty": "131072"
+  },
+  "TxPool": {
+    "BlobsSupport": "StorageWithReorgs"
+  },
+  "Blocks": {
+    "TargetBlockGasLimit": 60000000
+  }
+}
+Running Nethermind...
+23 Sep 21:24:41 | Nethermind is starting up 
+23 Sep 21:24:41 | Version: 2.1.0-unstable+a404c4f0 
+23 Sep 21:24:42 | Loading embedded plugins 
+23 Sep 21:24:42 |   Found plugin type Nethermind.PortfolioViewer.Plugin.PortfolioViewerPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.BalRecorder.BalRecorderPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.BlockProfiler.BlockProfilerPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.CensorshipDetector.Plugin.CensorshipDetectorPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Consensus.AuRa.AuRaPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Consensus.Clique.CliquePlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Consensus.Ethash.EthashPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Consensus.Ethash.NethDevPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.EthStats.EthStatsPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Flashbots.Flashbots 
+23 Sep 21:24:42 |   Found plugin type Nethermind.HealthChecks.HealthChecksPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Hive.HivePlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Init.Snapshot.SnapshotPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Merge.AuRa.AuRaMergePlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Merge.Plugin.MergePlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Optimism.OptimismPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Shutter.ShutterPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Taiko.TaikoPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.UPnP.Plugin.UPnPPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Xdc.XdcPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.Xdc.XdcSubnetPlugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.StateDiffsWriter.StateDiffsWriterPlugin 
+23 Sep 21:24:42 | Loading 18 assemblies from /nethermind/plugins 
+23 Sep 21:24:42 | Loading assembly Nethermind.Consensus.AuRa 
+23 Sep 21:24:42 | Loading assembly Nethermind.Init 
+23 Sep 21:24:42 | Loading assembly Nethermind.StateDiff.Core 
+23 Sep 21:24:42 | Loading assembly Nethermind.StateDiffsWriter 
+23 Sep 21:24:42 | Loading assembly Nethermind.Merge.AuRa 
+23 Sep 21:24:42 | Loading assembly Nethermind.Taiko 
+23 Sep 21:24:42 | Loading assembly Nethermind.ExternalSigner.Plugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.ExternalSigner.Plugin 
+23 Sep 21:24:42 | Loading assembly Nethermind.CensorshipDetector.Plugin 
+23 Sep 21:24:42 | Loading assembly Nethermind.Api 
+23 Sep 21:24:42 | Loading assembly Nethermind.JsonRpc.TraceStore 
+23 Sep 21:24:42 |   Found plugin type Nethermind.JsonRpc.TraceStore 
+23 Sep 21:24:42 | Loading assembly Nethermind.EthStats 
+23 Sep 21:24:42 | Loading assembly Nethermind.Flashbots 
+23 Sep 21:24:42 | Loading assembly Nethermind.Merge.Plugin 
+23 Sep 21:24:42 | Loading assembly Nethermind.Optimism 
+23 Sep 21:24:42 | Loading assembly Nethermind.HealthChecks 
+23 Sep 21:24:42 | Loading assembly Nethermind.Shutter 
+23 Sep 21:24:42 | Loading assembly Nethermind.OpcodeTracing.Plugin 
+23 Sep 21:24:42 |   Found plugin type Nethermind.OpcodeTracing.Plugin 
+23 Sep 21:24:42 | Loading assembly Nethermind.Init.Snapshot 
+23 Sep 21:24:42 | Loading configuration from /configs/test.json 
+23 Sep 21:24:42 | Configuration complete 
+23 Sep 21:24:42 | Configuration: 19 non-default value(s):
+  Blocks.TargetBlockGasLimit = "0x3938700"
+  Config = "/configs/test.json"
+  Init.ChainSpecPath = "/genesis.json"
+  Init.BaseDbPath = "nethermind_db/hive"
+  Init.LogFileName = "/hive.logs.txt"
+  Init.DiagnosticMode = 1
+  JsonRpc.Enabled = true
+  JsonRpc.Host = "0.0.0.0"
+  JsonRpc.WebSocketsPort = 8546
+  JsonRpc.EnabledModules = ["Debug","Eth","Subscribe","Trace","TxPool","Web3","Personal","Proof","Net","Parity","Health","Admin","Testing"]
+  JsonRpc.AdditionalRpcUrls = ["http://0.0.0.0:8550|http;ws|debug;net;eth;subscribe;engine;web3;client;admin|no-auth","http://0.0.0.0:8551|http;ws|debug;net;eth;subscribe;engine;web3;client;admin"]
+  JsonRpc.GasCap = "0x2faf080"
+  JsonRpc.JwtSecretFile = "/jwt.secret"
+  Sync.SnapServingEnabled = true
+  Hive.Enabled = true
+  Merge.TerminalTotalDifficulty = "131072"
+  Merge.TerminalTotalDifficultyParsed = "0x20000"
+  Network.ExternalIp = "127.0.0.1"
+  Discovery.DiscoveryVersion = 3 
+23 Sep 21:24:42 | RocksDB: v11.8.1 
+23 Sep 21:24:42 | Did not find ChainSpec in embedded resources: /genesis.json 
+23 Sep 21:24:42 | Loading ChainSpec from file: /genesis.json 
+23 Sep 21:24:42 | Detected 25 plugins 
+23 Sep 21:24:42 |   HealthChecks by Nethermind     Enabled 
+23 Sep 21:24:42 |   Clique by Nethermind           Disabled 
+23 Sep 21:24:42 |   AuRa by Nethermind             Disabled 
+23 Sep 21:24:42 |   Ethash by Nethermind           Enabled 
+23 Sep 21:24:42 |   Optimism by Nethermind         Disabled 
+23 Sep 21:24:42 |   Shutter by Nethermind          Disabled 
+23 Sep 21:24:42 |   Taiko by Nethermind            Disabled 
+23 Sep 21:24:42 |   AuRaMerge by Nethermind        Disabled 
+23 Sep 21:24:42 |   Merge by Nethermind            Enabled 
+23 Sep 21:24:42 |   Hive by Nethermind             Enabled 
+23 Sep 21:24:42 |   BalRecorder by Nethermind      Disabled 
+23 Sep 21:24:42 |   BlockProfiler by Nethermind    Disabled 
+23 Sep 21:24:42 |   CensorshipDetector by Nethermind Disabled 
+23 Sep 21:24:42 |   Clef signer by Nethermind      Disabled 
+23 Sep 21:24:42 |   EthStats by Nethermind         Disabled 
+23 Sep 21:24:42 |   Flashbots by Nethermind        Disabled 
+23 Sep 21:24:42 |   NethDev by Nethermind          Disabled 
+23 Sep 21:24:42 |   Opcode tracing by Nethermind   Disabled 
+23 Sep 21:24:42 |   PortfolioViewer by Nethermind  Disabled 
+23 Sep 21:24:42 |   Snapshot by Nethermind         Disabled 
+23 Sep 21:24:42 |   StateDiffsWriter by Nethermind Disabled 
+23 Sep 21:24:42 |   TraceStore by Nethermind       Disabled 
+23 Sep 21:24:42 |   UPnP by Nethermind             Disabled 
+23 Sep 21:24:42 |   Xdc by Nethermind              Disabled 
+23 Sep 21:24:42 |   XdcSubnet by Nethermind        Disabled 
+23 Sep 21:24:43 | Loading Ckzg trusted setup from file /nethermind/kzg_trusted_setup.txt 
+23 Sep 21:24:43 | CPU: Intel(R) Core(TM) Ultra 9 185H (16C22T) 
+23 Sep 21:24:43 | Grafana / Prometheus metrics are disabled in configuration 
+23 Sep 21:24:43 | System.Diagnostics.Metrics disabled 
+23 Sep 21:24:43 | State backend: flat (fresh node, flat DB enabled). 
+23 Sep 21:24:43 | Block tree initialized, last processed is 0, best queued is 0, best known is 0, lowest inserted header , lowest sync inserted block number  
+23 Sep 21:24:47 | Generated new FlatDb compaction offset 254442171 
+23 Sep 21:24:47 | Client started with TTD: 131072, TTD reached: True, Terminal Block Number , FinalTotalDifficulty: 131072 
+23 Sep 21:24:47 | BlockchainProcessor started. 
+23 Sep 21:24:47 | Reached terminal block Hash: 0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e
+Number: 0
+Parent: 0x0000000000000000000000000000000000000000000000000000000000000000
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 0
+Timestamp: 0
+Extra Data: 68697665636861696e
+Difficulty: 131072
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+Receipts Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+State Root: 0xd578a06ca3864b8c89fcf46fafa5e5524088308910b3936ea861d1981c01a739
+BaseFeePerGas: 1000000000
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x0000000000000000000000000000000000000000000000000000000000000000
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: False
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ 
+23 Sep 21:24:47 | FlatDbManager FlushCache started. 
+23 Sep 21:24:47 | FlatDbManager FlushCache completed. Persisted to StateId { BlockNumber = 0, StateRoot = 0xd578a06ca3864b8c89fcf46fafa5e5524088308910b3936ea861d1981c01a739 }. 
+23 Sep 21:24:47 | No block tree levels to review for fixes. All fine. 
+23 Sep 21:24:47 | Startup fixer         0 /          0 (  0.00 %) [                                     ] current       0 Blk/s 
+23 Sep 21:24:47 | Now syncing nodes starting from root of block 0 
+23 Sep 21:24:47 | External IP override: NetworkConfig.ExternalIp = 127.0.0.1 is not a routable public address and may be discarded by peers. 
+23 Sep 21:24:47 | Using the external IP override: NetworkConfig.ExternalIp = 127.0.0.1 
+23 Sep 21:24:47 | No bootnodes specified in configuration 
+23 Sep 21:24:47 | Discv5 bootnodes accepted: 0 (0/0 configured, 0/0 default, duplicates: 0, skipped: 0, use default discv5 bootnodes: False). 
+23 Sep 21:24:47 | No discv5 bootnodes specified in configuration 
+23 Sep 21:24:48 | No current state db key scheme. 
+23 Sep 21:24:48 | Loaded 0 nodes from /nethermind/static-nodes.json 
+23 Sep 21:24:48 | Loaded 0 nodes from /nethermind/trusted-nodes.json 
+23 Sep 21:24:48 | Skipping pivot update 
+23 Sep 21:24:48 | Hive is starting 
+23 Sep 21:24:48 | HIVE initialization started 
+23 Sep 21:24:48 | HIVE_CHAIN_ID: 3503995874084926 
+23 Sep 21:24:48 | HIVE_BOOTNODE: null 
+23 Sep 21:24:48 | HIVE_TESTNET: null 
+23 Sep 21:24:48 | HIVE_NODETYPE: null 
+23 Sep 21:24:48 | HIVE_FORK_HOMESTEAD: 0 
+23 Sep 21:24:48 | HIVE_FORK_DAO_BLOCK: null 
+23 Sep 21:24:48 | HIVE_FORK_DAO_VOTE: null 
+23 Sep 21:24:48 | HIVE_FORK_TANGERINE: 0 
+23 Sep 21:24:48 | HIVE_FORK_SPURIOUS: 0 
+23 Sep 21:24:48 | HIVE_FORK_METROPOLIS: null 
+23 Sep 21:24:48 | HIVE_FORK_BYZANTIUM: 0 
+23 Sep 21:24:48 | HIVE_FORK_CONSTANTINOPLE: 0 
+23 Sep 21:24:48 | HIVE_FORK_PETERSBURG: 0 
+23 Sep 21:24:48 | HIVE_MINER: null 
+23 Sep 21:24:48 | HIVE_MINER_EXTRA: null 
+23 Sep 21:24:48 | HIVE_FORK_BERLIN: 0 
+23 Sep 21:24:48 | HIVE_FORK_LONDON: 0 
+23 Sep 21:24:48 | HIVE_MERGE_BLOCK_ID: 0 
+23 Sep 21:24:48 | HIVE_SHANGHAI_TIMESTAMP: 0 
+23 Sep 21:24:48 | HIVE_CANCUN_TIMESTAMP: 0 
+23 Sep 21:24:48 | HIVE_CANCUN_BLOB_TARGET: 3 
+23 Sep 21:24:48 | HIVE_CANCUN_BLOB_MAX: 6 
+23 Sep 21:24:48 | HIVE_CANCUN_BLOB_BASE_FEE_UPDATE_FRACTION: 3338477 
+23 Sep 21:24:48 | HIVE_PRAGUE_TIMESTAMP: 0 
+23 Sep 21:24:48 | HIVE_PRAGUE_BLOB_TARGET: 6 
+23 Sep 21:24:48 | HIVE_PRAGUE_BLOB_MAX: 9 
+23 Sep 21:24:48 | HIVE_PRAGUE_BLOB_BASE_FEE_UPDATE_FRACTION: 5007716 
+23 Sep 21:24:48 | HIVE_OSAKA_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_OSAKA_BLOB_TARGET: 6 
+23 Sep 21:24:48 | HIVE_OSAKA_BLOB_MAX: 9 
+23 Sep 21:24:48 | HIVE_OSAKA_BLOB_BASE_FEE_UPDATE_FRACTION: 5007716 
+23 Sep 21:24:48 | HIVE_AMSTERDAM_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_AMSTERDAM_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_AMSTERDAM_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_AMSTERDAM_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE_BPO1_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_BPO1_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_BPO1_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_BPO1_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE_BPO2_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_BPO2_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_BPO2_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_BPO2_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE_BPO3_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_BPO3_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_BPO3_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_BPO3_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE_BPO4_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_BPO4_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_BPO4_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_BPO4_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE_BPO5_TIMESTAMP: null 
+23 Sep 21:24:48 | HIVE_BPO5_BLOB_TARGET: null 
+23 Sep 21:24:48 | HIVE_BPO5_BLOB_MAX: null 
+23 Sep 21:24:48 | HIVE_BPO5_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+23 Sep 21:24:48 | HIVE Blocks dir does not exist: /blocks, skipping 
+23 Sep 21:24:48 | HIVE Loading blocks from /chain.rlp 
+23 Sep 21:24:48 | HIVE Processing a chain.rlp block 1 (0x112d8d...3e385b) 
+23 Sep 21:24:48 | Starting Ethash block producer & sealer 
+23 Sep 21:24:48 | HIVE block added to main: 0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b 
+23 Sep 21:24:48 | HIVE suggested 1 (0x112d8d...3e385b), now best suggested header Hash: 0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b
+Number: 1
+Parent: 0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 0
+Timestamp: 10
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+Receipts Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+State Root: 0x55d0020a4ca0bae32460fab2bbe9dadb1b41211b1f904a8e498b97e75d5a2174
+BaseFeePerGas: 875000000
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 1 (0x112d8d...3e385b) 
+23 Sep 21:24:48 | HIVE Processing a chain.rlp block 2 (0xece1ea...cf7956) 
+23 Sep 21:24:48 | HIVE block added to main: 0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 
+23 Sep 21:24:48 | HIVE suggested 2 (0xece1ea...cf7956), now best suggested header Hash: 0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956
+Number: 2
+Parent: 0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 0
+Timestamp: 20
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+Receipts Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+State Root: 0x842ee32b527dc0e28b92a8479b9a8ec6b7bbdf85c5d055e1fafbac3c2d19b1a1
+BaseFeePerGas: 765625000
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 2 (0xece1ea...cf7956) 
+23 Sep 21:24:48 | HIVE initialization completed 
+23 Sep 21:24:48 | Reading authentication secret from '/jwt.secret' 
+23 Sep 21:24:48 | JSON-RPC is listening on http://0.0.0.0:8545 ; http://0.0.0.0:8546 ; http://0.0.0.0:8550 ; http://0.0.0.0:8551 
+23 Sep 21:24:48 | 
+
+                  [36m        ------                [38;5;208m~~~~~~~~        [0m
+                  [36m     --------- ----        [38;5;208m~~~~~~~~~~~~~~     [0m
+                  [36m   -  -------  ------        [38;5;208m~~~~~~~~~~~~~~   [0m
+                  [36m -----  -      ----           [38;5;208m~~~    ~~~~~~~~ [0m
+                  [36m ------         -                      [38;5;208m~~~        [0m
+                  [36m-------                                   ----[0m
+                  [36m----                                   -------[0m
+                  [38;5;208m    ~~~                  [36m    -         ------ [0m
+                  [38;5;208m ~~~~~~~~      ~         [36m  ----      -  ----- [0m
+                  [38;5;208m   ~~~~~~~~~~~~~~        [36m------  -------  -   [0m
+                  [38;5;208m     ~~~~~~~~~~~~~~      [36m  ---- ---------     [0m
+                  [38;5;208m        ~~~~~~~~         [36m       ------        [0m
+
+
+
+        [2m _   _ ______ _______ _    _ ______ _____  __  __ _____ _   _ _____  [0m
+        [2m| \ | |  ____|__   __| |  | |  ____|  __ \|  \/  |_   _| \ | |  __ \ [0m
+        [2m|  \| | |__     | |  | |__| | |__  | |__) | \  / | | | |  \| | |  | |[0m
+        [2m| . ` |  __|    | |  |  __  |  __| |  _  /| |\/| | | | | . ` | |  | |[0m
+        [2m| |\  | |____   | |  | |  | | |____| | \ \| |  | |_| |_| |\  | |__| |[0m
+        [2m|_| \_|______|  |_|  |_|  |_|______|_|  \_\_|  |_|_____|_| \_|_____/ [0m
+
+
+                              https://www.nethermind.io
+
+-----------------------------  Initialization Completed  -----------------------------
+
+This node    : enode://8e24b31fb822c8265ad913cc2c9ea4420d42dac7c5a2ee295631c405a4513af80a69d8407258cc0aa3a861e4d87726aed72a26818f10d3a9c73c980cae587d72@127.0.0.1:30303 
+RPC modules  : Admin, Debug, Eth, Health, Net, Parity, Personal, Proof, Subscribe, Testing, Trace, TxPool, Web3
+Public id    : Nethermind/v2.1.0-unstable+a404c4f0-f/linux-x64/dotnet10.0.12
+Node address : 0x57314768c47ccdeb31b50e00a7297dfbe91e19b0 (do not use as an account)
+JSON RPC     : http://0.0.0.0:8545 ; http://0.0.0.0:8546 ; http://0.0.0.0:8550 ; http://0.0.0.0:8551
+Genesis hash : 0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e
+Gaslimit     : 60,000,000
+ExtraData    : Nethermind v2.1.0a
+External IP  : 127.0.0.1
+Ethereum     : tcp://127.0.0.1:30303 
+Discovery    : udp://127.0.0.1:30303
+Client id    : Nethermind/v2.1.0-unstable+a404c4f0/linux-x64/dotnet10.0.12
+Chainspec    : /genesis.json
+Chain head   : 0
+Chain ID     : 3503995874084926
+-------------------------------------------------------------------------------------- 
+23 Sep 21:24:48 | Received ForkChoice: 2 (0xece1ea...cf7956), Safe: 2 (0xece1ea...cf7956), Finalized: 2 (0xece1ea...cf7956) 

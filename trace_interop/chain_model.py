@@ -42,6 +42,7 @@ def _decode_transaction(raw):
         digest = keccak(bytes([kind])+rlp.encode(fields[:-3]))
     sender = Signature(vrs=(parity,number(r),number(s))).recover_public_key_from_msg_hash(digest).to_address()
     authorizations = []
+    access_list=fields[7] if kind==1 else fields[8] if kind else []
     if kind == 4:
         for auth in fields[9]:
             authority = Signature(vrs=(number(auth[3]),number(auth[4]),number(auth[5]))).recover_public_key_from_msg_hash(
@@ -49,6 +50,7 @@ def _decode_transaction(raw):
             authorizations.append({'authority':authority,'address':'0x'+auth[1].hex(),'nonce':number(auth[2]),'chain_id':number(auth[0])})
     return {'hash':'0x'+keccak(wire).hex(), 'sender':sender, 'nonce':number(nonce),
             'gas':number(gas),'price_cap':number(price),'tip_cap':tip,'type':kind,
+            'intrinsic_extra':2400*len(access_list)+1900*sum(len(a[1]) for a in access_list)+25000*len(authorizations),
             'to':'0x'+to.hex() if to else None,'value':number(value),'data':'0x'+data.hex(),
             'authorizations':authorizations}
 
@@ -62,7 +64,9 @@ def load_chain(path):
         header, transactions = block[:2]
         n = number(header[8])
         blocks[hex(n)] = {'number':n,'hash':'0x'+keccak(rlp.encode(header)).hex(),
+                         'difficulty':number(header[7]),
                          'miner':'0x'+header[2].hex(),'timestamp':number(header[11]),
                          'gas_limit':number(header[9]),'base_fee':number(header[15]) if len(header)>15 else 0,
+                         'prev_randao':number(header[13]),
                          'transactions':[decode_transaction(t) for t in transactions]}
     return blocks

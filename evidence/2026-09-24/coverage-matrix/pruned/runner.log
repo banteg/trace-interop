@@ -1,0 +1,79 @@
+Sep 24 01:27:38.812 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 01:27:38.837 INF building 2 clients...
+Sep 24 01:27:38.837 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 01:27:38.868 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86
+Sep 24 01:27:38.900 INF building 1 simulators...
+Sep 24 01:27:38.900 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 01:27:38.994 INF creating output directory folder=/home/banteg/dev/trace-coverage-20260924/evidence/2026-09-24/coverage-matrix/pruned/hive
+Sep 24 01:27:39.002 INF running simulation: ethereum/rpc-compat
+Sep 24 01:27:39.137 INF hiveproxy started container=3c75f053e4e4 addr=172.17.0.2:8081
+Sep 24 01:27:39.300 INF API: suite started suite=0 name=rpc-compat
+Sep 24 01:27:39.302 INF API: test started suite=0 test=1 name="client launch (reth_release)"
+Sep 24 01:27:40.360 INF API: client reth_release started suite=0 test=1 container=60697655
+Sep 24 01:27:40.371 INF API: test started suite=0 test=2 name="interop/_control/head (reth_release)"
+Sep 24 01:27:40.374 INF API: test ended suite=0 test=2 pass=false
+Sep 24 01:27:40.379 INF API: test started suite=0 test=3 name="interop/_control/latest (reth_release)"
+Sep 24 01:27:40.382 INF API: test ended suite=0 test=3 pass=false
+Sep 24 01:27:40.384 INF API: test started suite=0 test=4 name="interop/_control/receipt/0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738 (reth_release)"
+Sep 24 01:27:40.390 INF API: test ended suite=0 test=4 pass=false
+Sep 24 01:27:40.394 INF API: test started suite=0 test=5 name="interop/_control/version (reth_release)"
+Sep 24 01:27:40.397 INF API: test ended suite=0 test=5 pass=false
+Sep 24 01:27:40.401 INF API: test started suite=0 test=6 name="interop/_reference/block/0x3 (reth_release)"
+Sep 24 01:27:40.405 INF API: test ended suite=0 test=6 pass=false
+Sep 24 01:27:40.408 INF API: test started suite=0 test=7 name="interop/control-head (reth_release)"
+Sep 24 01:27:40.414 INF API: test ended suite=0 test=7 pass=false
+Sep 24 01:27:40.416 INF API: test started suite=0 test=8 name="interop/latest-call (reth_release)"
+Sep 24 01:27:40.420 INF API: test ended suite=0 test=8 pass=false
+Sep 24 01:27:40.421 INF API: test started suite=0 test=9 name="interop/latest-nonce (reth_release)"
+Sep 24 01:27:40.424 INF API: test ended suite=0 test=9 pass=false
+Sep 24 01:27:40.425 INF API: test started suite=0 test=10 name="interop/old-block (reth_release)"
+Sep 24 01:27:40.430 INF API: test ended suite=0 test=10 pass=false
+Sep 24 01:27:40.432 INF API: test started suite=0 test=11 name="interop/old-filter (reth_release)"
+Sep 24 01:27:40.436 INF API: test ended suite=0 test=11 pass=false
+Sep 24 01:27:40.437 INF API: test started suite=0 test=12 name="interop/old-header (reth_release)"
+Sep 24 01:27:40.441 INF API: test ended suite=0 test=12 pass=false
+Sep 24 01:27:40.442 INF API: test started suite=0 test=13 name="interop/old-nonce (reth_release)"
+Sep 24 01:27:40.445 INF API: test ended suite=0 test=13 pass=false
+Sep 24 01:27:40.446 INF API: test started suite=0 test=14 name="interop/old-receipt (reth_release)"
+Sep 24 01:27:40.451 INF API: test ended suite=0 test=14 pass=false
+Sep 24 01:27:40.453 INF API: test started suite=0 test=15 name="interop/old-replay (reth_release)"
+Sep 24 01:27:40.456 INF API: test ended suite=0 test=15 pass=false
+Sep 24 01:27:40.458 INF API: test started suite=0 test=16 name="interop/old-transaction (reth_release)"
+Sep 24 01:27:40.462 INF API: test ended suite=0 test=16 pass=false
+Sep 24 01:27:40.614 INF API: test ended suite=0 test=1 pass=true
+Sep 24 01:27:40.615 INF API: test started suite=0 test=17 name="client launch (reth_development)"
+Sep 24 01:27:41.375 INF API: client reth_development started suite=0 test=17 container=a053d7f3
+Sep 24 01:27:41.390 INF API: test started suite=0 test=18 name="interop/_control/head (reth_development)"
+Sep 24 01:27:41.392 INF API: test ended suite=0 test=18 pass=false
+Sep 24 01:27:41.393 INF API: test started suite=0 test=19 name="interop/_control/latest (reth_development)"
+Sep 24 01:27:41.395 INF API: test ended suite=0 test=19 pass=false
+Sep 24 01:27:41.395 INF API: test started suite=0 test=20 name="interop/_control/receipt/0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738 (reth_development)"
+Sep 24 01:27:41.398 INF API: test ended suite=0 test=20 pass=false
+Sep 24 01:27:41.399 INF API: test started suite=0 test=21 name="interop/_control/version (reth_development)"
+Sep 24 01:27:41.401 INF API: test ended suite=0 test=21 pass=false
+Sep 24 01:27:41.402 INF API: test started suite=0 test=22 name="interop/_reference/block/0x3 (reth_development)"
+Sep 24 01:27:41.403 INF API: test ended suite=0 test=22 pass=false
+Sep 24 01:27:41.404 INF API: test started suite=0 test=23 name="interop/control-head (reth_development)"
+Sep 24 01:27:41.405 INF API: test ended suite=0 test=23 pass=false
+Sep 24 01:27:41.406 INF API: test started suite=0 test=24 name="interop/latest-call (reth_development)"
+Sep 24 01:27:41.408 INF API: test ended suite=0 test=24 pass=false
+Sep 24 01:27:41.409 INF API: test started suite=0 test=25 name="interop/latest-nonce (reth_development)"
+Sep 24 01:27:41.410 INF API: test ended suite=0 test=25 pass=false
+Sep 24 01:27:41.411 INF API: test started suite=0 test=26 name="interop/old-block (reth_development)"
+Sep 24 01:27:41.413 INF API: test ended suite=0 test=26 pass=false
+Sep 24 01:27:41.414 INF API: test started suite=0 test=27 name="interop/old-filter (reth_development)"
+Sep 24 01:27:41.415 INF API: test ended suite=0 test=27 pass=false
+Sep 24 01:27:41.416 INF API: test started suite=0 test=28 name="interop/old-header (reth_development)"
+Sep 24 01:27:41.417 INF API: test ended suite=0 test=28 pass=false
+Sep 24 01:27:41.418 INF API: test started suite=0 test=29 name="interop/old-nonce (reth_development)"
+Sep 24 01:27:41.419 INF API: test ended suite=0 test=29 pass=false
+Sep 24 01:27:41.420 INF API: test started suite=0 test=30 name="interop/old-receipt (reth_development)"
+Sep 24 01:27:41.422 INF API: test ended suite=0 test=30 pass=false
+Sep 24 01:27:41.423 INF API: test started suite=0 test=31 name="interop/old-replay (reth_development)"
+Sep 24 01:27:41.424 INF API: test ended suite=0 test=31 pass=false
+Sep 24 01:27:41.425 INF API: test started suite=0 test=32 name="interop/old-transaction (reth_development)"
+Sep 24 01:27:41.427 INF API: test ended suite=0 test=32 pass=false
+Sep 24 01:27:42.540 INF API: test ended suite=0 test=17 pass=true
+Sep 24 01:27:42.550 INF API: suite ended suite=0
+Sep 24 01:27:43.222 INF simulation ethereum/rpc-compat finished suites=1 tests=32 failed=30
+30 tests failed

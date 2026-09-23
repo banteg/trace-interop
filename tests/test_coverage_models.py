@@ -49,6 +49,8 @@ class VMModelTests(unittest.TestCase):
         self.assertTrue(differences(actual,expected))
         actual=copy.deepcopy(expected);actual['ops'][0]['op']='STOP'
         self.assertTrue(differences(actual,expected))
+        actual=copy.deepcopy(expected);actual['ops'][0]['ex']['push']=['0x002a']
+        self.assertFalse(differences(actual,expected))  # H21 owns quantity encoding.
 
     def test_prague_intrinsic_is_not_the_calldata_floor(self):
         self.assertEqual(intrinsic('0x0001'),21020)
@@ -59,6 +61,20 @@ class VMModelTests(unittest.TestCase):
         vm['ops'][0]['sub']=copy.deepcopy(vm)
         vm['ops'][0]['sub']['ops'][0]['ex']['push']=['0x2']
         self.assertTrue(local_invariants(vm))
+        self.assertTrue(local_invariants({'code':'0x600100','ops':[]}))
+
+    def test_dup_reports_affected_stack_and_implicit_stop_is_legal(self):
+        vm,_,_=execute('0x60018000',100)
+        self.assertEqual(vm['ops'][1]['ex']['push'],['0x1','0x1'])
+        vm['code']='0x600180'  # STOP at pc 3 is now implicit.
+        self.assertFalse(local_invariants(vm))
+        vm['ops'][-1]['pc']=9
+        self.assertTrue(local_invariants(vm))
+
+    def test_difficulty_mnemonic_alias_is_not_a_semantic_mismatch(self):
+        vm,_,_=execute('0x4400',100,environment={'PREVRANDAO':0})
+        vm['ops'][0]['op']='DIFFICULTY'
+        self.assertFalse(local_invariants(vm))
 
 
 class ChainModelTests(unittest.TestCase):
@@ -73,6 +89,28 @@ class ChainModelTests(unittest.TestCase):
         self.assertEqual(auth['authority'],info['account'])
         self.assertEqual(auth['address'],info['proxyAddr'])
 
+    def test_authorization_replay_cannot_omit_or_change_delegation(self):
+        blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
+        tx=blocks['0x2']['transactions'][3]
+        authority=tx['authorizations'][0]['authority']
+        target=tx['authorizations'][0]['address']
+        corpus=read(ROOT/'fixtures/chains/initial/genesis.json')
+        context={'_blocks':blocks,'_alloc':{'0x'+a:v for a,v in corpus['alloc'].items()},
+                 '_codes':{'0x'+a:v.get('code','0x') for a,v in corpus['alloc'].items()}}
+        case={'name':'replay','context':context,'request':{'method':'trace_replayTransaction','params':[tx['hash'],['stateDiff']]}}
+        for change,expected in [({'*':{'from':'0x','to':'0xef0100'+target[2:]}},'matches'),('=','change_needed'),(None,'change_needed')]:
+            result={'stateDiff':{authority:{'code':change}}}
+            checks=assess(case,{'status':'result','response':{'result':result}},{},{'H18'})
+            self.assertEqual([c['status'] for c in checks],[expected])
+
+    def test_known_empty_execution_accepts_null_vm(self):
+        blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
+        tx=blocks['0x2']['transactions'][3]
+        case={'name':'replay','context':{'_blocks':blocks},
+              'request':{'method':'trace_replayTransaction','params':[tx['hash'],['vmTrace']]}}
+        checks=assess(case,{'status':'result','response':{'result':{'vmTrace':None}}},{},{'H19','H20'})
+        self.assertEqual([c['status'] for c in checks],['matches'])
+
     def test_empty_or_truncated_block_replay_cannot_pass(self):
         blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
         case={'name':'replay-block-tree','request':{'method':'trace_replayBlockTransactions','params':['0x2',['trace']]},
@@ -81,6 +119,22 @@ class ChainModelTests(unittest.TestCase):
         for corrupted in [[],result[:-1],list(reversed(result))]:
             checks=supplement(case,{'status':'result','response':{'result':corrupted}}, {}, [], ['H07'])
             self.assertIn('change_needed',[c['status'] for c in checks if c['topic']=='H07'])
+
+    def test_missing_transaction_is_not_an_empty_inventory_failure(self):
+        blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
+        case={'name':'transaction-missing','context':{'_blocks':blocks},
+              'request':{'method':'trace_transaction','params':['0x'+'00'*32]}}
+        checks=supplement(case,{'status':'result','response':{'result':None}},{},[{'topic':'H06','status':'matches'}],['H06'])
+        self.assertEqual([c['status'] for c in checks],['matches'])
+
+    def test_empty_reference_needs_decoded_empty_pos_block(self):
+        from trace_interop.oracles import anchored_reference
+        context={'cases':[{'name':'block','request':{'method':'trace_block','params':['0x2']}}],
+                 '_blocks':{'0x2':{'transactions':[],'difficulty':0}}}
+        peers={'block':{'status':'result','response':{'result':[]}}}
+        self.assertEqual(anchored_reference(context,peers,'block'),[])
+        context['_blocks']['0x2']['transactions']=[{'hash':'required'}]
+        self.assertIsNone(anchored_reference(context,peers,'block'))
 
 
 class DispositionTests(unittest.TestCase):
@@ -106,3 +160,37 @@ class DispositionTests(unittest.TestCase):
               'context':{'_alloc':{sender:{}},'_codes':{sender:'0x'}}}
         response={'stateDiff':{sender:{'balance':{'+':'0x1'},'nonce':{'+':'0x0'},'code':{'+':'0x'}}}}
         self.assertIn('change_needed',[c['status'] for c in assess(case,{'status':'result','response':{'result':response}},{},{'H17'})])
+
+    def test_trace_only_many_does_not_require_state_diff(self):
+        call={'from':'0x'+'11'*20,'to':'0x'+'22'*20}
+        case={'name':'call-many','context':{},'request':{'method':'trace_callMany','params':[[[call,['trace']]],'latest']}}
+        self.assertEqual(assess(case,{'status':'result','response':{'result':[{'trace':[],'stateDiff':None}]}},{},{'H16'}),[])
+
+
+class TransferModelTests(unittest.TestCase):
+    def fixture(self):
+        sender,target,miner=['0x'+byte*20 for byte in ['11','22','33']]
+        model={'sender':sender,'target':target,'miner':miner,'balance':1_000_000,'nonce':7,'value':7,'price':2,'miner_absent':True}
+        case={'name':'model-transfer','transfer_model':model,'context':{'_environment':{'BASEFEE':1}},
+              'request':{'method':'trace_call','params':[{'from':sender,'to':target},['trace','stateDiff']]}}
+        result={'output':'0x','trace':[],'stateDiff':{
+            sender:{'balance':{'*':{'from':hex(1_000_000),'to':hex(957_993)}},'nonce':{'*':{'from':'0x7','to':'0x8'}},'code':'=','storage':{}},
+            target:{'balance':{'+':'0x7'},'nonce':{'+':'0x0'},'code':{'+':'0x'},'storage':{}},
+            miner:{'balance':{'+':hex(21000)},'nonce':{'+':'0x0'},'code':{'+':'0x'},'storage':{}}}}
+        peers={'_control/miner-balance':{'status':'result','response':{'result':'0x0'}}}
+        return case,result,peers
+
+    def test_fee_nonce_and_existence_mutations(self):
+        case,result,peers=self.fixture()
+        def checks(value):return supplement(case,{'status':'result','response':{'result':value}},peers,[],[])
+        self.assertTrue(all(c['status']=='matches' for c in checks(result)))
+        model=case['transfer_model']
+        for who,field in [('sender','balance'),('sender','nonce'),('target','balance'),('miner','balance'),('target','code'),('target','nonce')]:
+            value=copy.deepcopy(result);value['stateDiff'][model[who]][field]='='
+            self.assertIn('change_needed',[c['status'] for c in checks(value)],(who,field))
+
+    def test_invalid_control_cannot_establish_accounting(self):
+        case,result,peers=self.fixture()
+        peers['_control/miner-balance']['status']='invalid_envelope'
+        checks=supplement(case,{'status':'result','response':{'result':result}},peers,[],[])
+        self.assertEqual([c['status'] for c in checks if c['topic']=='H16'],['blocked'])

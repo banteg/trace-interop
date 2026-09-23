@@ -1,0 +1,274 @@
+{
+  "clients": {
+    "erigon_development": {
+      "architecture": "amd64",
+      "client": "erigon",
+      "created": "2026-09-21T16:26:57.680576532Z",
+      "digest": "erigontech/erigon@sha256:c05ab37a37f9d6461d5471a4e1dad5fbc9fb31bf4116c8ab3b15b2be7f8041f8",
+      "image_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-09-21T16:25:06Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "c25b8e4",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec"
+      },
+      "requested": "erigontech/erigon:main-latest"
+    }
+  },
+  "corpus": "reorg-safe",
+  "finished_at": "2026-09-23T21:30:38.461350+00:00",
+  "fixture_manifest_sha256": "481508b8fb8b5389d16e3b31bdd5b018e5b38df03128d2d060edef06a1b3684e",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "8287a3f3e5a7486dc53bcf50a6f489ab4977205b82005596ee71af763d3704e6",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "before/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "before/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "before/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "before/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "after/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "after/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "after/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "after/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "restored/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "restored/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "restored/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "restored/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "before/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    },
+    {
+      "name": "after/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    },
+    {
+      "name": "restored/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    }
+  ],
+  "source_commit": "429987ce9958faa34a721e27d180be067afeea56",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "b979aefe57e4f63af0397b5a068237c04a9d6e3b",
+    "generated_sha256": "c73f5cf5c78cb98a6862e2f62df5ef7c0ed5ed5d061a8187c04dc9453086133d",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-23T21:30:36.767707+00:00"
+}

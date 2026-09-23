@@ -31,6 +31,10 @@ def anchored_reference(context, peers, name):
                     and (tx.get('txhash') == params[0] if request.get('method') == 'trace_transaction'
                          else tx.get('block') == params[0])]
     if not transactions:
+        block=context.get('_blocks',{}).get(params[0])
+        if (request.get('method')=='trace_block' and isinstance(block,dict)
+                and block.get('transactions')==[] and block.get('difficulty')==0):
+            return [] if frames==[] else None  # Independently decoded empty PoS block.
         return None  # No independent inventory, including purported empty blocks.
     for kind, tx in transactions:
         tree = [f for f in frames if f.get('transactionHash') == tx['txhash']]

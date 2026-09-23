@@ -1,0 +1,351 @@
+Sep 24 01:26:50.985 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 01:26:51.020 INF building 9 clients...
+Sep 24 01:26:51.020 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744
+Sep 24 01:26:51.059 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 24 01:26:51.087 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002
+Sep 24 01:26:51.118 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 24 01:26:51.152 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=351f4131517b32d6a34d884f30dd5d6db83e1c008297f920e87b02b269f9874e
+Sep 24 01:26:51.187 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182
+Sep 24 01:26:51.220 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59
+Sep 24 01:26:51.251 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86
+Sep 24 01:26:51.279 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 01:26:51.307 INF building 1 simulators...
+Sep 24 01:26:51.307 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 01:26:51.331 INF creating output directory folder=/home/banteg/dev/trace-coverage-20260924/evidence/2026-09-24/coverage-matrix/reorg-safe/hive
+Sep 24 01:26:51.338 INF running simulation: ethereum/rpc-compat
+Sep 24 01:26:51.487 INF hiveproxy started container=48d6dd33b476 addr=172.17.0.2:8081
+Sep 24 01:26:51.686 INF API: suite started suite=0 name=rpc-compat
+Sep 24 01:26:51.688 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 24 01:27:00.248 INF API: client besu_development started suite=0 test=1 container=ee17d0ce
+Sep 24 01:27:00.479 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 24 01:27:00.524 INF API: test ended suite=0 test=2 pass=false
+Sep 24 01:27:00.525 INF API: test started suite=0 test=3 name="interop/_control/latest (besu_development)"
+Sep 24 01:27:00.532 INF API: test ended suite=0 test=3 pass=false
+Sep 24 01:27:00.533 INF API: test started suite=0 test=4 name="interop/_control/version (besu_development)"
+Sep 24 01:27:00.539 INF API: test ended suite=0 test=4 pass=false
+Sep 24 01:27:00.541 INF API: test started suite=0 test=5 name="interop/before/block-tail (besu_development)"
+Sep 24 01:27:00.599 INF API: test ended suite=0 test=5 pass=false
+Sep 24 01:27:00.600 INF API: test started suite=0 test=6 name="interop/before/filter-tail (besu_development)"
+Sep 24 01:27:00.667 INF API: test ended suite=0 test=6 pass=false
+Sep 24 01:27:00.668 INF API: test started suite=0 test=7 name="interop/before/head (besu_development)"
+Sep 24 01:27:00.676 INF API: test ended suite=0 test=7 pass=false
+Sep 24 01:27:00.677 INF API: test started suite=0 test=8 name="interop/before/height (besu_development)"
+Sep 24 01:27:00.683 INF API: test ended suite=0 test=8 pass=false
+Sep 24 01:27:00.684 INF API: test started suite=0 test=9 name="interop/before/tail-receipt (besu_development)"
+Sep 24 01:27:00.701 INF API: test ended suite=0 test=9 pass=false
+Sep 24 01:27:00.856 INF API: test started suite=0 test=10 name="interop/after/block-tail (besu_development)"
+Sep 24 01:27:02.863 INF API: test ended suite=0 test=10 pass=false
+Sep 24 01:27:02.865 INF API: test started suite=0 test=11 name="interop/after/filter-tail (besu_development)"
+Sep 24 01:27:02.875 INF API: test ended suite=0 test=11 pass=false
+Sep 24 01:27:02.876 INF API: test started suite=0 test=12 name="interop/after/head (besu_development)"
+Sep 24 01:27:02.881 INF API: test ended suite=0 test=12 pass=false
+Sep 24 01:27:02.882 INF API: test started suite=0 test=13 name="interop/after/height (besu_development)"
+Sep 24 01:27:02.888 INF API: test ended suite=0 test=13 pass=false
+Sep 24 01:27:02.889 INF API: test started suite=0 test=14 name="interop/after/tail-receipt (besu_development)"
+Sep 24 01:27:02.892 INF API: test ended suite=0 test=14 pass=false
+Sep 24 01:27:02.915 INF API: test started suite=0 test=15 name="interop/restored/block-tail (besu_development)"
+Sep 24 01:27:02.924 INF API: test ended suite=0 test=15 pass=false
+Sep 24 01:27:02.925 INF API: test started suite=0 test=16 name="interop/restored/filter-tail (besu_development)"
+Sep 24 01:27:02.949 INF API: test ended suite=0 test=16 pass=false
+Sep 24 01:27:02.950 INF API: test started suite=0 test=17 name="interop/restored/head (besu_development)"
+Sep 24 01:27:02.956 INF API: test ended suite=0 test=17 pass=false
+Sep 24 01:27:02.957 INF API: test started suite=0 test=18 name="interop/restored/height (besu_development)"
+Sep 24 01:27:02.962 INF API: test ended suite=0 test=18 pass=false
+Sep 24 01:27:02.963 INF API: test started suite=0 test=19 name="interop/restored/tail-receipt (besu_development)"
+Sep 24 01:27:02.967 INF API: test ended suite=0 test=19 pass=false
+Sep 24 01:27:03.135 INF API: test ended suite=0 test=1 pass=true
+Sep 24 01:27:03.136 INF API: test started suite=0 test=20 name="client launch (besu_release)"
+Sep 24 01:27:11.512 INF API: client besu_release started suite=0 test=20 container=fa7470f1
+Sep 24 01:27:11.697 INF API: test started suite=0 test=21 name="interop/_control/head (besu_release)"
+Sep 24 01:27:11.744 INF API: test ended suite=0 test=21 pass=false
+Sep 24 01:27:11.745 INF API: test started suite=0 test=22 name="interop/_control/latest (besu_release)"
+Sep 24 01:27:11.753 INF API: test ended suite=0 test=22 pass=false
+Sep 24 01:27:11.754 INF API: test started suite=0 test=23 name="interop/_control/version (besu_release)"
+Sep 24 01:27:11.758 INF API: test ended suite=0 test=23 pass=false
+Sep 24 01:27:11.760 INF API: test started suite=0 test=24 name="interop/before/block-tail (besu_release)"
+Sep 24 01:27:11.809 INF API: test ended suite=0 test=24 pass=false
+Sep 24 01:27:11.811 INF API: test started suite=0 test=25 name="interop/before/filter-tail (besu_release)"
+Sep 24 01:27:11.881 INF API: test ended suite=0 test=25 pass=false
+Sep 24 01:27:11.882 INF API: test started suite=0 test=26 name="interop/before/head (besu_release)"
+Sep 24 01:27:11.888 INF API: test ended suite=0 test=26 pass=false
+Sep 24 01:27:11.889 INF API: test started suite=0 test=27 name="interop/before/height (besu_release)"
+Sep 24 01:27:11.895 INF API: test ended suite=0 test=27 pass=false
+Sep 24 01:27:11.896 INF API: test started suite=0 test=28 name="interop/before/tail-receipt (besu_release)"
+Sep 24 01:27:11.910 INF API: test ended suite=0 test=28 pass=false
+Sep 24 01:27:12.070 INF API: test started suite=0 test=29 name="interop/after/block-tail (besu_release)"
+Sep 24 01:27:14.092 INF API: test ended suite=0 test=29 pass=false
+Sep 24 01:27:14.093 INF API: test started suite=0 test=30 name="interop/after/filter-tail (besu_release)"
+Sep 24 01:27:14.100 INF API: test ended suite=0 test=30 pass=false
+Sep 24 01:27:14.101 INF API: test started suite=0 test=31 name="interop/after/head (besu_release)"
+Sep 24 01:27:14.106 INF API: test ended suite=0 test=31 pass=false
+Sep 24 01:27:14.107 INF API: test started suite=0 test=32 name="interop/after/height (besu_release)"
+Sep 24 01:27:14.111 INF API: test ended suite=0 test=32 pass=false
+Sep 24 01:27:14.112 INF API: test started suite=0 test=33 name="interop/after/tail-receipt (besu_release)"
+Sep 24 01:27:14.116 INF API: test ended suite=0 test=33 pass=false
+Sep 24 01:27:14.146 INF API: test started suite=0 test=34 name="interop/restored/block-tail (besu_release)"
+Sep 24 01:27:14.153 INF API: test ended suite=0 test=34 pass=false
+Sep 24 01:27:14.154 INF API: test started suite=0 test=35 name="interop/restored/filter-tail (besu_release)"
+Sep 24 01:27:14.181 INF API: test ended suite=0 test=35 pass=false
+Sep 24 01:27:14.182 INF API: test started suite=0 test=36 name="interop/restored/head (besu_release)"
+Sep 24 01:27:14.188 INF API: test ended suite=0 test=36 pass=false
+Sep 24 01:27:14.189 INF API: test started suite=0 test=37 name="interop/restored/height (besu_release)"
+Sep 24 01:27:14.192 INF API: test ended suite=0 test=37 pass=false
+Sep 24 01:27:14.193 INF API: test started suite=0 test=38 name="interop/restored/tail-receipt (besu_release)"
+Sep 24 01:27:14.198 INF API: test ended suite=0 test=38 pass=false
+Sep 24 01:27:14.428 INF API: test ended suite=0 test=20 pass=true
+Sep 24 01:27:14.429 INF API: test started suite=0 test=39 name="client launch (erigon_development)"
+Sep 24 01:27:15.602 INF API: client erigon_development started suite=0 test=39 container=6ff96926
+Sep 24 01:27:15.615 INF API: test started suite=0 test=40 name="interop/_control/head (erigon_development)"
+Sep 24 01:27:15.626 INF API: test ended suite=0 test=40 pass=false
+Sep 24 01:27:15.626 INF API: test started suite=0 test=41 name="interop/_control/latest (erigon_development)"
+Sep 24 01:27:15.629 INF API: test ended suite=0 test=41 pass=false
+Sep 24 01:27:15.630 INF API: test started suite=0 test=42 name="interop/_control/version (erigon_development)"
+Sep 24 01:27:15.631 INF API: test ended suite=0 test=42 pass=false
+Sep 24 01:27:15.633 INF API: test started suite=0 test=43 name="interop/before/block-tail (erigon_development)"
+Sep 24 01:27:15.635 INF API: test ended suite=0 test=43 pass=false
+Sep 24 01:27:15.636 INF API: test started suite=0 test=44 name="interop/before/filter-tail (erigon_development)"
+Sep 24 01:27:15.643 INF API: test ended suite=0 test=44 pass=false
+Sep 24 01:27:15.644 INF API: test started suite=0 test=45 name="interop/before/head (erigon_development)"
+Sep 24 01:27:15.646 INF API: test ended suite=0 test=45 pass=false
+Sep 24 01:27:15.647 INF API: test started suite=0 test=46 name="interop/before/height (erigon_development)"
+Sep 24 01:27:15.649 INF API: test ended suite=0 test=46 pass=false
+Sep 24 01:27:15.649 INF API: test started suite=0 test=47 name="interop/before/tail-receipt (erigon_development)"
+Sep 24 01:27:15.651 INF API: test ended suite=0 test=47 pass=false
+Sep 24 01:27:16.111 INF API: test ended suite=0 test=39 pass=false
+Sep 24 01:27:16.112 INF API: test started suite=0 test=48 name="client launch (erigon_release)"
+Sep 24 01:27:16.954 INF API: client erigon_release started suite=0 test=48 container=482b9fb7
+Sep 24 01:27:16.958 INF API: test started suite=0 test=49 name="interop/_control/head (erigon_release)"
+Sep 24 01:27:16.963 INF API: test ended suite=0 test=49 pass=false
+Sep 24 01:27:16.964 INF API: test started suite=0 test=50 name="interop/_control/latest (erigon_release)"
+Sep 24 01:27:16.966 INF API: test ended suite=0 test=50 pass=false
+Sep 24 01:27:16.967 INF API: test started suite=0 test=51 name="interop/_control/version (erigon_release)"
+Sep 24 01:27:16.970 INF API: test ended suite=0 test=51 pass=false
+Sep 24 01:27:16.971 INF API: test started suite=0 test=52 name="interop/before/block-tail (erigon_release)"
+Sep 24 01:27:16.974 INF API: test ended suite=0 test=52 pass=false
+Sep 24 01:27:16.975 INF API: test started suite=0 test=53 name="interop/before/filter-tail (erigon_release)"
+Sep 24 01:27:16.986 INF API: test ended suite=0 test=53 pass=false
+Sep 24 01:27:16.987 INF API: test started suite=0 test=54 name="interop/before/head (erigon_release)"
+Sep 24 01:27:16.990 INF API: test ended suite=0 test=54 pass=false
+Sep 24 01:27:16.991 INF API: test started suite=0 test=55 name="interop/before/height (erigon_release)"
+Sep 24 01:27:16.993 INF API: test ended suite=0 test=55 pass=false
+Sep 24 01:27:16.993 INF API: test started suite=0 test=56 name="interop/before/tail-receipt (erigon_release)"
+Sep 24 01:27:16.996 INF API: test ended suite=0 test=56 pass=false
+Sep 24 01:27:17.109 INF API: test started suite=0 test=57 name="interop/after/block-tail (erigon_release)"
+Sep 24 01:27:17.112 INF API: test ended suite=0 test=57 pass=false
+Sep 24 01:27:17.113 INF API: test started suite=0 test=58 name="interop/after/filter-tail (erigon_release)"
+Sep 24 01:27:17.116 INF API: test ended suite=0 test=58 pass=false
+Sep 24 01:27:17.116 INF API: test started suite=0 test=59 name="interop/after/head (erigon_release)"
+Sep 24 01:27:17.119 INF API: test ended suite=0 test=59 pass=false
+Sep 24 01:27:17.120 INF API: test started suite=0 test=60 name="interop/after/height (erigon_release)"
+Sep 24 01:27:17.122 INF API: test ended suite=0 test=60 pass=false
+Sep 24 01:27:17.123 INF API: test started suite=0 test=61 name="interop/after/tail-receipt (erigon_release)"
+Sep 24 01:27:17.125 INF API: test ended suite=0 test=61 pass=false
+Sep 24 01:27:17.145 INF API: test started suite=0 test=62 name="interop/restored/block-tail (erigon_release)"
+Sep 24 01:27:17.148 INF API: test ended suite=0 test=62 pass=false
+Sep 24 01:27:17.149 INF API: test started suite=0 test=63 name="interop/restored/filter-tail (erigon_release)"
+Sep 24 01:27:17.160 INF API: test ended suite=0 test=63 pass=false
+Sep 24 01:27:17.161 INF API: test started suite=0 test=64 name="interop/restored/head (erigon_release)"
+Sep 24 01:27:17.164 INF API: test ended suite=0 test=64 pass=false
+Sep 24 01:27:17.165 INF API: test started suite=0 test=65 name="interop/restored/height (erigon_release)"
+Sep 24 01:27:17.167 INF API: test ended suite=0 test=65 pass=false
+Sep 24 01:27:17.168 INF API: test started suite=0 test=66 name="interop/restored/tail-receipt (erigon_release)"
+Sep 24 01:27:17.170 INF API: test ended suite=0 test=66 pass=false
+Sep 24 01:27:17.296 INF API: test ended suite=0 test=48 pass=true
+Sep 24 01:27:17.297 INF API: test started suite=0 test=67 name="client launch (go-ethereum_trace)"
+Sep 24 01:27:17.943 INF API: client go-ethereum_trace started suite=0 test=67 container=b71af834
+Sep 24 01:27:17.947 INF API: test started suite=0 test=68 name="interop/_control/head (go-ethereum_trace)"
+Sep 24 01:27:17.950 INF API: test ended suite=0 test=68 pass=false
+Sep 24 01:27:17.951 INF API: test started suite=0 test=69 name="interop/_control/latest (go-ethereum_trace)"
+Sep 24 01:27:17.954 INF API: test ended suite=0 test=69 pass=false
+Sep 24 01:27:17.955 INF API: test started suite=0 test=70 name="interop/_control/version (go-ethereum_trace)"
+Sep 24 01:27:17.957 INF API: test ended suite=0 test=70 pass=false
+Sep 24 01:27:17.958 INF API: test started suite=0 test=71 name="interop/before/block-tail (go-ethereum_trace)"
+Sep 24 01:27:17.962 INF API: test ended suite=0 test=71 pass=false
+Sep 24 01:27:17.963 INF API: test started suite=0 test=72 name="interop/before/filter-tail (go-ethereum_trace)"
+Sep 24 01:27:17.979 INF API: test ended suite=0 test=72 pass=false
+Sep 24 01:27:17.980 INF API: test started suite=0 test=73 name="interop/before/head (go-ethereum_trace)"
+Sep 24 01:27:17.983 INF API: test ended suite=0 test=73 pass=false
+Sep 24 01:27:17.984 INF API: test started suite=0 test=74 name="interop/before/height (go-ethereum_trace)"
+Sep 24 01:27:17.986 INF API: test ended suite=0 test=74 pass=false
+Sep 24 01:27:17.987 INF API: test started suite=0 test=75 name="interop/before/tail-receipt (go-ethereum_trace)"
+Sep 24 01:27:17.990 INF API: test ended suite=0 test=75 pass=false
+Sep 24 01:27:18.005 INF API: test started suite=0 test=76 name="interop/after/block-tail (go-ethereum_trace)"
+Sep 24 01:27:18.006 INF API: test ended suite=0 test=76 pass=false
+Sep 24 01:27:18.007 INF API: test started suite=0 test=77 name="interop/after/filter-tail (go-ethereum_trace)"
+Sep 24 01:27:18.008 INF API: test ended suite=0 test=77 pass=false
+Sep 24 01:27:18.009 INF API: test started suite=0 test=78 name="interop/after/head (go-ethereum_trace)"
+Sep 24 01:27:18.010 INF API: test ended suite=0 test=78 pass=false
+Sep 24 01:27:18.011 INF API: test started suite=0 test=79 name="interop/after/height (go-ethereum_trace)"
+Sep 24 01:27:18.013 INF API: test ended suite=0 test=79 pass=false
+Sep 24 01:27:18.013 INF API: test started suite=0 test=80 name="interop/after/tail-receipt (go-ethereum_trace)"
+Sep 24 01:27:18.016 INF API: test ended suite=0 test=80 pass=false
+Sep 24 01:27:18.020 INF API: test started suite=0 test=81 name="interop/restored/block-tail (go-ethereum_trace)"
+Sep 24 01:27:18.022 INF API: test ended suite=0 test=81 pass=false
+Sep 24 01:27:18.023 INF API: test started suite=0 test=82 name="interop/restored/filter-tail (go-ethereum_trace)"
+Sep 24 01:27:18.029 INF API: test ended suite=0 test=82 pass=false
+Sep 24 01:27:18.030 INF API: test started suite=0 test=83 name="interop/restored/head (go-ethereum_trace)"
+Sep 24 01:27:18.032 INF API: test ended suite=0 test=83 pass=false
+Sep 24 01:27:18.033 INF API: test started suite=0 test=84 name="interop/restored/height (go-ethereum_trace)"
+Sep 24 01:27:18.035 INF API: test ended suite=0 test=84 pass=false
+Sep 24 01:27:18.036 INF API: test started suite=0 test=85 name="interop/restored/tail-receipt (go-ethereum_trace)"
+Sep 24 01:27:18.038 INF API: test ended suite=0 test=85 pass=false
+Sep 24 01:27:18.158 INF API: test ended suite=0 test=67 pass=true
+Sep 24 01:27:18.159 INF API: test started suite=0 test=86 name="client launch (nethermind_development)"
+Sep 24 01:27:26.214 INF API: client nethermind_development started suite=0 test=86 container=0dde863e
+Sep 24 01:27:26.310 INF API: test started suite=0 test=87 name="interop/_control/head (nethermind_development)"
+Sep 24 01:27:26.373 INF API: test ended suite=0 test=87 pass=false
+Sep 24 01:27:26.374 INF API: test started suite=0 test=88 name="interop/_control/latest (nethermind_development)"
+Sep 24 01:27:26.378 INF API: test ended suite=0 test=88 pass=false
+Sep 24 01:27:26.379 INF API: test started suite=0 test=89 name="interop/_control/version (nethermind_development)"
+Sep 24 01:27:26.383 INF API: test ended suite=0 test=89 pass=false
+Sep 24 01:27:26.384 INF API: test started suite=0 test=90 name="interop/before/block-tail (nethermind_development)"
+Sep 24 01:27:26.487 INF API: test ended suite=0 test=90 pass=false
+Sep 24 01:27:26.488 INF API: test started suite=0 test=91 name="interop/before/filter-tail (nethermind_development)"
+Sep 24 01:27:26.519 INF API: test ended suite=0 test=91 pass=false
+Sep 24 01:27:26.520 INF API: test started suite=0 test=92 name="interop/before/head (nethermind_development)"
+Sep 24 01:27:26.523 INF API: test ended suite=0 test=92 pass=false
+Sep 24 01:27:26.524 INF API: test started suite=0 test=93 name="interop/before/height (nethermind_development)"
+Sep 24 01:27:26.530 INF API: test ended suite=0 test=93 pass=false
+Sep 24 01:27:26.531 INF API: test started suite=0 test=94 name="interop/before/tail-receipt (nethermind_development)"
+Sep 24 01:27:26.555 INF API: test ended suite=0 test=94 pass=false
+Sep 24 01:27:26.619 INF API: test started suite=0 test=95 name="interop/after/block-tail (nethermind_development)"
+Sep 24 01:27:26.623 INF API: test ended suite=0 test=95 pass=false
+Sep 24 01:27:26.623 INF API: test started suite=0 test=96 name="interop/after/filter-tail (nethermind_development)"
+Sep 24 01:27:26.633 INF API: test ended suite=0 test=96 pass=false
+Sep 24 01:27:26.634 INF API: test started suite=0 test=97 name="interop/after/head (nethermind_development)"
+Sep 24 01:27:26.637 INF API: test ended suite=0 test=97 pass=false
+Sep 24 01:27:26.637 INF API: test started suite=0 test=98 name="interop/after/height (nethermind_development)"
+Sep 24 01:27:26.640 INF API: test ended suite=0 test=98 pass=false
+Sep 24 01:27:26.640 INF API: test started suite=0 test=99 name="interop/after/tail-receipt (nethermind_development)"
+Sep 24 01:27:26.643 INF API: test ended suite=0 test=99 pass=false
+Sep 24 01:27:26.646 INF API: test started suite=0 test=100 name="interop/restored/block-tail (nethermind_development)"
+Sep 24 01:27:26.650 INF API: test ended suite=0 test=100 pass=false
+Sep 24 01:27:26.651 INF API: test started suite=0 test=101 name="interop/restored/filter-tail (nethermind_development)"
+Sep 24 01:27:26.667 INF API: test ended suite=0 test=101 pass=false
+Sep 24 01:27:26.669 INF API: test started suite=0 test=102 name="interop/restored/head (nethermind_development)"
+Sep 24 01:27:26.671 INF API: test ended suite=0 test=102 pass=false
+Sep 24 01:27:26.672 INF API: test started suite=0 test=103 name="interop/restored/height (nethermind_development)"
+Sep 24 01:27:26.675 INF API: test ended suite=0 test=103 pass=false
+Sep 24 01:27:26.676 INF API: test started suite=0 test=104 name="interop/restored/tail-receipt (nethermind_development)"
+Sep 24 01:27:26.678 INF API: test ended suite=0 test=104 pass=false
+Sep 24 01:27:26.826 INF API: test ended suite=0 test=86 pass=true
+Sep 24 01:27:26.828 INF API: test started suite=0 test=105 name="client launch (nethermind_release)"
+Sep 24 01:27:33.883 INF API: client nethermind_release started suite=0 test=105 container=4795640b
+Sep 24 01:27:33.962 INF API: test started suite=0 test=106 name="interop/_control/head (nethermind_release)"
+Sep 24 01:27:34.038 INF API: test ended suite=0 test=106 pass=false
+Sep 24 01:27:34.039 INF API: test started suite=0 test=107 name="interop/_control/latest (nethermind_release)"
+Sep 24 01:27:34.043 INF API: test ended suite=0 test=107 pass=false
+Sep 24 01:27:34.044 INF API: test started suite=0 test=108 name="interop/_control/version (nethermind_release)"
+Sep 24 01:27:34.047 INF API: test ended suite=0 test=108 pass=false
+Sep 24 01:27:34.048 INF API: test started suite=0 test=109 name="interop/before/block-tail (nethermind_release)"
+Sep 24 01:27:34.110 INF API: test ended suite=0 test=109 pass=false
+Sep 24 01:27:34.112 INF API: test started suite=0 test=110 name="interop/before/filter-tail (nethermind_release)"
+Sep 24 01:27:34.134 INF API: test ended suite=0 test=110 pass=false
+Sep 24 01:27:34.135 INF API: test started suite=0 test=111 name="interop/before/head (nethermind_release)"
+Sep 24 01:27:34.138 INF API: test ended suite=0 test=111 pass=false
+Sep 24 01:27:34.139 INF API: test started suite=0 test=112 name="interop/before/height (nethermind_release)"
+Sep 24 01:27:34.144 INF API: test ended suite=0 test=112 pass=false
+Sep 24 01:27:34.145 INF API: test started suite=0 test=113 name="interop/before/tail-receipt (nethermind_release)"
+Sep 24 01:27:34.161 INF API: test ended suite=0 test=113 pass=false
+Sep 24 01:27:34.215 INF API: test started suite=0 test=114 name="interop/after/block-tail (nethermind_release)"
+Sep 24 01:27:34.218 INF API: test ended suite=0 test=114 pass=false
+Sep 24 01:27:34.219 INF API: test started suite=0 test=115 name="interop/after/filter-tail (nethermind_release)"
+Sep 24 01:27:34.227 INF API: test ended suite=0 test=115 pass=false
+Sep 24 01:27:34.227 INF API: test started suite=0 test=116 name="interop/after/head (nethermind_release)"
+Sep 24 01:27:34.230 INF API: test ended suite=0 test=116 pass=false
+Sep 24 01:27:34.231 INF API: test started suite=0 test=117 name="interop/after/height (nethermind_release)"
+Sep 24 01:27:34.233 INF API: test ended suite=0 test=117 pass=false
+Sep 24 01:27:34.234 INF API: test started suite=0 test=118 name="interop/after/tail-receipt (nethermind_release)"
+Sep 24 01:27:34.235 INF API: test ended suite=0 test=118 pass=false
+Sep 24 01:27:34.239 INF API: test started suite=0 test=119 name="interop/restored/block-tail (nethermind_release)"
+Sep 24 01:27:34.243 INF API: test ended suite=0 test=119 pass=false
+Sep 24 01:27:34.244 INF API: test started suite=0 test=120 name="interop/restored/filter-tail (nethermind_release)"
+Sep 24 01:27:34.258 INF API: test ended suite=0 test=120 pass=false
+Sep 24 01:27:34.259 INF API: test started suite=0 test=121 name="interop/restored/head (nethermind_release)"
+Sep 24 01:27:34.261 INF API: test ended suite=0 test=121 pass=false
+Sep 24 01:27:34.262 INF API: test started suite=0 test=122 name="interop/restored/height (nethermind_release)"
+Sep 24 01:27:34.264 INF API: test ended suite=0 test=122 pass=false
+Sep 24 01:27:34.265 INF API: test started suite=0 test=123 name="interop/restored/tail-receipt (nethermind_release)"
+Sep 24 01:27:34.267 INF API: test ended suite=0 test=123 pass=false
+Sep 24 01:27:34.428 INF API: test ended suite=0 test=105 pass=true
+Sep 24 01:27:34.430 INF API: test started suite=0 test=124 name="client launch (reth_development)"
+Sep 24 01:27:35.084 INF API: client reth_development started suite=0 test=124 container=43a2b416
+Sep 24 01:27:35.087 INF API: test started suite=0 test=125 name="interop/_control/head (reth_development)"
+Sep 24 01:27:35.090 INF API: test ended suite=0 test=125 pass=false
+Sep 24 01:27:35.091 INF API: test started suite=0 test=126 name="interop/_control/latest (reth_development)"
+Sep 24 01:27:35.096 INF API: test ended suite=0 test=126 pass=false
+Sep 24 01:27:35.097 INF API: test started suite=0 test=127 name="interop/_control/version (reth_development)"
+Sep 24 01:27:35.099 INF API: test ended suite=0 test=127 pass=false
+Sep 24 01:27:35.100 INF API: test started suite=0 test=128 name="interop/before/block-tail (reth_development)"
+Sep 24 01:27:35.103 INF API: test ended suite=0 test=128 pass=false
+Sep 24 01:27:35.104 INF API: test started suite=0 test=129 name="interop/before/filter-tail (reth_development)"
+Sep 24 01:27:35.109 INF API: test ended suite=0 test=129 pass=false
+Sep 24 01:27:35.110 INF API: test started suite=0 test=130 name="interop/before/head (reth_development)"
+Sep 24 01:27:35.113 INF API: test ended suite=0 test=130 pass=false
+Sep 24 01:27:35.113 INF API: test started suite=0 test=131 name="interop/before/height (reth_development)"
+Sep 24 01:27:35.116 INF API: test ended suite=0 test=131 pass=false
+Sep 24 01:27:35.116 INF API: test started suite=0 test=132 name="interop/before/tail-receipt (reth_development)"
+Sep 24 01:27:35.119 INF API: test ended suite=0 test=132 pass=false
+Sep 24 01:27:35.158 INF API: test started suite=0 test=133 name="interop/after/block-tail (reth_development)"
+Sep 24 01:27:35.161 INF API: test ended suite=0 test=133 pass=false
+Sep 24 01:27:35.162 INF API: test started suite=0 test=134 name="interop/after/filter-tail (reth_development)"
+Sep 24 01:27:35.166 INF API: test ended suite=0 test=134 pass=false
+Sep 24 01:27:35.166 INF API: test started suite=0 test=135 name="interop/after/head (reth_development)"
+Sep 24 01:27:35.170 INF API: test ended suite=0 test=135 pass=false
+Sep 24 01:27:35.171 INF API: test started suite=0 test=136 name="interop/after/height (reth_development)"
+Sep 24 01:27:35.174 INF API: test ended suite=0 test=136 pass=false
+Sep 24 01:27:35.175 INF API: test started suite=0 test=137 name="interop/after/tail-receipt (reth_development)"
+Sep 24 01:27:35.178 INF API: test ended suite=0 test=137 pass=false
+Sep 24 01:27:35.180 INF API: test started suite=0 test=138 name="interop/restored/block-tail (reth_development)"
+Sep 24 01:27:35.183 INF API: test ended suite=0 test=138 pass=false
+Sep 24 01:27:35.184 INF API: test started suite=0 test=139 name="interop/restored/filter-tail (reth_development)"
+Sep 24 01:27:35.189 INF API: test ended suite=0 test=139 pass=false
+Sep 24 01:27:35.190 INF API: test started suite=0 test=140 name="interop/restored/head (reth_development)"
+Sep 24 01:27:35.194 INF API: test ended suite=0 test=140 pass=false
+Sep 24 01:27:35.195 INF API: test started suite=0 test=141 name="interop/restored/height (reth_development)"
+Sep 24 01:27:35.198 INF API: test ended suite=0 test=141 pass=false
+Sep 24 01:27:35.199 INF API: test started suite=0 test=142 name="interop/restored/tail-receipt (reth_development)"
+Sep 24 01:27:35.203 INF API: test ended suite=0 test=142 pass=false
+Sep 24 01:27:35.333 INF API: test ended suite=0 test=124 pass=true
+Sep 24 01:27:35.335 INF API: test started suite=0 test=143 name="client launch (reth_release)"
+Sep 24 01:27:35.987 INF API: client reth_release started suite=0 test=143 container=3b4d74cf
+Sep 24 01:27:35.991 INF API: test started suite=0 test=144 name="interop/_control/head (reth_release)"
+Sep 24 01:27:35.994 INF API: test ended suite=0 test=144 pass=false
+Sep 24 01:27:35.995 INF API: test started suite=0 test=145 name="interop/_control/latest (reth_release)"
+Sep 24 01:27:35.997 INF API: test ended suite=0 test=145 pass=false
+Sep 24 01:27:35.998 INF API: test started suite=0 test=146 name="interop/_control/version (reth_release)"
+Sep 24 01:27:36.000 INF API: test ended suite=0 test=146 pass=false
+Sep 24 01:27:36.001 INF API: test started suite=0 test=147 name="interop/before/block-tail (reth_release)"
+Sep 24 01:27:36.005 INF API: test ended suite=0 test=147 pass=false
+Sep 24 01:27:36.006 INF API: test started suite=0 test=148 name="interop/before/filter-tail (reth_release)"
+Sep 24 01:27:36.011 INF API: test ended suite=0 test=148 pass=false
+Sep 24 01:27:36.013 INF API: test started suite=0 test=149 name="interop/before/head (reth_release)"
+Sep 24 01:27:36.017 INF API: test ended suite=0 test=149 pass=false
+Sep 24 01:27:36.018 INF API: test started suite=0 test=150 name="interop/before/height (reth_release)"
+Sep 24 01:27:36.020 INF API: test ended suite=0 test=150 pass=false
+Sep 24 01:27:36.020 INF API: test started suite=0 test=151 name="interop/before/tail-receipt (reth_release)"
+Sep 24 01:27:36.023 INF API: test ended suite=0 test=151 pass=false
+Sep 24 01:27:36.065 INF API: test started suite=0 test=152 name="interop/after/block-tail (reth_release)"
+Sep 24 01:27:36.066 INF API: test ended suite=0 test=152 pass=false
+Sep 24 01:27:36.067 INF API: test started suite=0 test=153 name="interop/after/filter-tail (reth_release)"
+Sep 24 01:27:36.068 INF API: test ended suite=0 test=153 pass=false
+Sep 24 01:27:36.069 INF API: test started suite=0 test=154 name="interop/after/head (reth_release)"
+Sep 24 01:27:36.070 INF API: test ended suite=0 test=154 pass=false
+Sep 24 01:27:36.071 INF API: test started suite=0 test=155 name="interop/after/height (reth_release)"
+Sep 24 01:27:36.072 INF API: test ended suite=0 test=155 pass=false
+Sep 24 01:27:36.072 INF API: test started suite=0 test=156 name="interop/after/tail-receipt (reth_release)"
+Sep 24 01:27:36.073 INF API: test ended suite=0 test=156 pass=false
+Sep 24 01:27:36.075 INF API: test started suite=0 test=157 name="interop/restored/block-tail (reth_release)"
+Sep 24 01:27:36.077 INF API: test ended suite=0 test=157 pass=false
+Sep 24 01:27:36.078 INF API: test started suite=0 test=158 name="interop/restored/filter-tail (reth_release)"
+Sep 24 01:27:36.081 INF API: test ended suite=0 test=158 pass=false
+Sep 24 01:27:36.082 INF API: test started suite=0 test=159 name="interop/restored/head (reth_release)"
+Sep 24 01:27:36.084 INF API: test ended suite=0 test=159 pass=false
+Sep 24 01:27:36.085 INF API: test started suite=0 test=160 name="interop/restored/height (reth_release)"
+Sep 24 01:27:36.086 INF API: test ended suite=0 test=160 pass=false
+Sep 24 01:27:36.086 INF API: test started suite=0 test=161 name="interop/restored/tail-receipt (reth_release)"
+Sep 24 01:27:36.087 INF API: test ended suite=0 test=161 pass=false
+Sep 24 01:27:36.211 INF API: test ended suite=0 test=143 pass=true
+Sep 24 01:27:36.220 INF API: suite ended suite=0
+Sep 24 01:27:36.432 INF simulation ethereum/rpc-compat finished suites=1 tests=161 failed=153
+153 tests failed

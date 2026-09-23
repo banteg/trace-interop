@@ -163,3 +163,8 @@ executed VM opcodes, and retained precompile child identity/value/outcome. Their
 anchors live in `trace_interop/oracles.py` and the frozen corpora. Regression tests jointly
 corrupt references and target responses, remove requested outputs, and preserve schema-valid
 shapes so schema validation cannot mask weak semantic assertions.
+
+See [assertion models](assertion-models.md) for independent chain decoding, bounded
+VM execution, exact fee/account models, blocked/control dispositions and model
+limits. `scripts/run_matrix.py --output runs/coverage-matrix` runs the complete
+pinned matrix and retains every incomplete capture for inspection.

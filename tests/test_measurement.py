@@ -265,7 +265,7 @@ class PublishedAssessmentTests(unittest.TestCase):
 
     def test_block_selector_decisions_use_controlled_live_capture(self):
         records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
-                 if r['corpus']=='h30' and not r['case'].startswith('_control')]
+                 if r['corpus']=='h30' and not r['case'].startswith(('_control','_reference/'))]
         self.assertEqual(len(records), 13 * 9)
         self.assertTrue(all(r['eligible'] for r in records))
         by_key={(r['client'],r['case']):r for r in records}

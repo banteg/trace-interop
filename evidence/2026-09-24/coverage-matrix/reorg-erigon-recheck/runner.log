@@ -1,0 +1,31 @@
+Sep 24 01:30:36.805 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 01:30:36.825 INF building 1 clients...
+Sep 24 01:30:36.825 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002
+Sep 24 01:30:36.851 INF building 1 simulators...
+Sep 24 01:30:36.851 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 01:30:36.872 INF creating output directory folder=/home/banteg/dev/trace-coverage-20260924/evidence/2026-09-24/coverage-matrix/reorg-erigon-recheck/hive
+Sep 24 01:30:36.880 INF running simulation: ethereum/rpc-compat
+Sep 24 01:30:37.025 INF hiveproxy started container=76c0193c2ce0 addr=172.17.0.2:8081
+Sep 24 01:30:37.184 INF API: suite started suite=0 name=rpc-compat
+Sep 24 01:30:37.185 INF API: test started suite=0 test=1 name="client launch (erigon_development)"
+Sep 24 01:30:37.938 INF API: client erigon_development started suite=0 test=1 container=bcfc064a
+Sep 24 01:30:37.944 INF API: test started suite=0 test=2 name="interop/_control/head (erigon_development)"
+Sep 24 01:30:37.947 INF API: test ended suite=0 test=2 pass=false
+Sep 24 01:30:37.950 INF API: test started suite=0 test=3 name="interop/_control/latest (erigon_development)"
+Sep 24 01:30:37.953 INF API: test ended suite=0 test=3 pass=false
+Sep 24 01:30:37.954 INF API: test started suite=0 test=4 name="interop/_control/version (erigon_development)"
+Sep 24 01:30:37.956 INF API: test ended suite=0 test=4 pass=false
+Sep 24 01:30:37.958 INF API: test started suite=0 test=5 name="interop/before/block-tail (erigon_development)"
+Sep 24 01:30:37.961 INF API: test ended suite=0 test=5 pass=false
+Sep 24 01:30:37.962 INF API: test started suite=0 test=6 name="interop/before/filter-tail (erigon_development)"
+Sep 24 01:30:37.974 INF API: test ended suite=0 test=6 pass=false
+Sep 24 01:30:37.975 INF API: test started suite=0 test=7 name="interop/before/head (erigon_development)"
+Sep 24 01:30:37.978 INF API: test ended suite=0 test=7 pass=false
+Sep 24 01:30:37.979 INF API: test started suite=0 test=8 name="interop/before/height (erigon_development)"
+Sep 24 01:30:37.981 INF API: test ended suite=0 test=8 pass=false
+Sep 24 01:30:37.982 INF API: test started suite=0 test=9 name="interop/before/tail-receipt (erigon_development)"
+Sep 24 01:30:37.984 INF API: test ended suite=0 test=9 pass=false
+Sep 24 01:30:38.221 INF API: test ended suite=0 test=1 pass=false
+Sep 24 01:30:38.229 INF API: suite ended suite=0
+Sep 24 01:30:38.460 INF simulation ethereum/rpc-compat finished suites=1 tests=9 failed=9
+9 tests failed

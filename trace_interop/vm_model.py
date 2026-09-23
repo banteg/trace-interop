@@ -35,6 +35,12 @@ def execute(code, gas, calldata='0x', environment=None):
     env = dict(environment or {})
     stack, memory, steps = [], bytearray(), []
     pc, output, reverted = 0, '0x', False
+    jumpdests=set()
+    cursor=0
+    while cursor<len(raw):
+        op=raw[cursor]
+        if op==0x5b:jumpdests.add(cursor)
+        cursor+=1+(op-0x5f if 0x60<=op<=0x7f else 0)
 
     def expand(offset, size):
         if not size:
@@ -65,7 +71,7 @@ def execute(code, gas, calldata='0x', environment=None):
             elif 0x80 <= op <= 0x8f:
                 value = stack[-(op-0x7f)]
                 stack.append(value)
-                cost, push = 3, [value]
+                cost, push = 3, stack[-(op-0x7f+1):]
             elif 0x90 <= op <= 0x9f:
                 depth = op-0x8f
                 stack[-1], stack[-1-depth] = stack[-1-depth], stack[-1]
@@ -84,7 +90,7 @@ def execute(code, gas, calldata='0x', environment=None):
                 condition=stack.pop() if op==0x57 else 1
                 cost=10 if op==0x57 else 8
                 if condition:
-                    if target>=len(raw) or raw[target]!=0x5b:
+                    if target not in jumpdests:
                         raise UnsupportedProgram('invalid jump destination')
                     pc=target
             elif op==0x5b:
@@ -133,7 +139,7 @@ def execute(code, gas, calldata='0x', environment=None):
                 value = {0x36: len(data), 0x38: len(raw), 0x58: at, 0x59: len(memory), 0x5a: gas-cost}[op]
                 stack.append(value)
                 push = [value]
-            elif op in [0x30, 0x34, 0x3a, 0x41, 0x42, 0x43, 0x45, 0x48]:
+            elif op in [0x30, 0x32, 0x33, 0x34, 0x3a, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x48]:
                 key = NAMES[op]
                 if key not in env:
                     raise UnsupportedProgram('unanchored environment: '+key)
@@ -169,10 +175,24 @@ def differences(actual, expected):
         if not isinstance(got, dict):
             errors.append(f'step {i} is not an object')
             continue
-        for key in ['pc', 'cost', 'ex', 'sub']:
-            if got.get(key) != want[key]:
+        for key in ['pc', 'cost', 'sub']:
+            if got.get(key) != want[key] or key in ['pc','cost'] and type(got.get(key)) is not int:
                 errors.append(f'step {i} ({want["op"]}) {key}: expected {want[key]}, got {got.get(key)}')
-        if 'op' in got and got['op'] != want['op']:
+        ex=got.get('ex')
+        if not isinstance(ex,dict):
+            errors.append(f'step {i} execution effects missing')
+        else:
+            for key in ['used','mem','store']:
+                if ex.get(key)!=want['ex'][key] or key=='used' and type(ex.get(key)) is not int:
+                    errors.append(f'step {i} ({want["op"]}) {key}: expected {want["ex"][key]}, got {ex.get(key)}')
+            # Numeric equality belongs to execution semantics; minimal wire
+            # encoding is independently checked by H21.
+            try:
+                valid=isinstance(ex.get('push'),list) and [int(v,16) for v in ex['push']]==[int(v,16) for v in want['ex']['push']]
+            except (ValueError,TypeError):
+                valid=False
+            if not valid:errors.append(f'step {i} pushed stack values disagree with the model')
+        if 'op' in got and got['op'] != want['op'] and {got['op'],want['op']} != {'DIFFICULTY','PREVRANDAO'}:
             errors.append(f'step {i} mnemonic disagrees with executing bytecode')
     return errors
 
@@ -191,15 +211,19 @@ models additionally derive costs and effects independently of recorded values.
         code=bytes.fromhex(vm.get('code','0x')[2:])
     except (ValueError,TypeError):
         return ['VM bytecode malformed']
+    if code and not vm['ops']:
+        return ['nonempty executing bytecode has no operations']
     previous=None
+    fallthrough=0
     for i,op in enumerate(vm['ops']):
         if not isinstance(op,dict):
             errors.append(f'operation {i} malformed');continue
         pc=op.get('pc');ex=op.get('ex')
-        if type(pc) is not int or pc<0 or pc>=len(code):
+        if type(pc) is not int or pc<0 or pc>=len(code) and pc!=fallthrough:
             errors.append(f'operation {i} pc outside executing bytecode');continue
-        opcode=code[pc]
-        if 'op' in op and opcode in NAMES and op['op']!=NAMES[opcode]:
+        opcode=code[pc] if pc<len(code) else 0  # EVM's implicit STOP past code end.
+        fallthrough=pc+1+(opcode-0x5f if 0x60<=opcode<=0x7f else 0)
+        if 'op' in op and opcode in NAMES and op['op']!=NAMES[opcode] and not (opcode==0x44 and op['op']=='DIFFICULTY'):
             errors.append(f'operation {i} mnemonic disagrees with bytecode')
         if isinstance(ex,dict):
             used,cost=ex.get('used'),op.get('cost')

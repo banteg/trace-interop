@@ -36,11 +36,11 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 2553 |
-| 🟡 Partial | 139 |
+| 🔎 Assessed | 2759 |
+| 🟡 Partial | 134 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 36 |
-| 🔎 Control | 18 |
+| 🚧 Blocked | 8 |
+| 🔎 Control | 9 |
 
 
 ### Unevaluated properties
@@ -49,35 +49,38 @@ Each row names the reason; controls and inapplicable properties do not count as 
 
 | Topic | Disposition | Reason | Observations |
 | --- | --- | --- | --- |
-| H03 | blocked | The per-block reference lacks an independent transaction inventory. | 27 |
 | H06 | blocked | Cannot inspect this property: unsupported. | 2 |
-| H06 | control | Latest execution is the successful control for the unavailable-history probe. | 2 |
-| H07 | blocked | Cannot inspect this property: unsupported. | 26 |
-| H07 | not_applicable | A missing transaction has no replay envelope or transactionHash; H06 checks null. | 7 |
+| H06 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 2 |
+| H07 | blocked | Cannot inspect this property: unsupported. | 24 |
+| H07 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 9 |
 | H08 | blocked | Cannot inspect this property: unsupported. | 8 |
+| H08 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H09 | blocked | Address selection differs from its reference; failure-bearing frame selection is not established. | 4 |
 | H09 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
-| H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 11 |
-| H10 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 7 |
+| H10 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
-| H14 | not_applicable | A one-sided intersection filter is valid input; H03 checks its result. Invalid-input codes do not apply. | 18 |
+| H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 2 |
-| H16 | blocked | No receipt gas or execution-gas witness was captured. | 12 |
+| H16 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
 | H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
 | H16 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 3 |
 | H17 | blocked | Cannot inspect this property: unsupported. | 2 |
-| H17 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H17 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H17 | not_applicable | The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior. | 9 |
 | H17 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 3 |
 | H18 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H19 | blocked | Cannot inspect this property: unsupported. | 2 |
-| H19 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H19 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
 | H20 | blocked | Cannot inspect this property: unsupported. | 4 |
-| H20 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
+| H20 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
 | H21 | blocked | Cannot inspect this property: unsupported. | 4 |
-| H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
-| H23 | control | This transaction trace anchors CREATE/SELFDESTRUCT identities for the address-filter probes. | 9 |
-| H27 | control | Per-block reference for the independently anchored fork-crossing filter comparison. | 18 |
+| H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
+| H23 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 9 |
+| H27 | blocked | Per-block reference unavailable: rpc_error | 2 |
+| H27 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
+| H27 | control | Per-block reference response for the filter comparison. | 54 |
 | H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
 
@@ -87,9 +90,7 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 
 | Build | Scenario | Run evidence |
 | --- | --- | --- |
-| Erigon · 🛠️ Development | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
-| Reth · 🛠️ Development | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
-| Reth · 📦 Release | reorg-safe | [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/summary.json) |
+| Erigon · 🛠️ Development | reorg-safe | [reorg-safe](../evidence/2026-09-24/coverage-matrix/reorg-safe/summary.json) |
 
 ## Result-shape checks
 
@@ -136,6 +137,19 @@ These cases returned results that differ from the draft schema. The case pages r
 | [a/transaction-tree](cases/a/transaction-tree.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [a/vm-only-nonempty-output](cases/a/vm-only-nonempty-output.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [callmany-isolation/write-revert-read/many-storage-write-revert-read](cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-empty-runtime](cases/coverage/model-empty-runtime.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-environment](cases/coverage/model-environment.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-environment-free](cases/coverage/model-environment-free.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-mcopy](cases/coverage/model-mcopy.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-mcopy-overlap](cases/coverage/model-mcopy-overlap.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-mcopy-zero](cases/coverage/model-mcopy-zero.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-mload-existing](cases/coverage/model-mload-existing.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-mload-expansion](cases/coverage/model-mload-expansion.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-return42](cases/coverage/model-return42.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [coverage/model-revert](cases/coverage/model-revert.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fork-followup/_reference/block/0x33](cases/fork-followup/_reference/block/0x33.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fork-followup/_reference/block/0x34](cases/fork-followup/_reference/block/0x34.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fork-followup/_reference/block/0x35](cases/fork-followup/_reference/block/0x35.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [fork-followup/beacon-call-55](cases/fork-followup/beacon-call-55.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [fork-followup/destroy-trace-55](cases/fork-followup/destroy-trace-55.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [forks/block-35](cases/forks/block-35.md) | Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
@@ -170,6 +184,9 @@ These cases returned results that differ from the draft schema. The case pages r
 | [forks/replay-48](cases/forks/replay-48.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [forks/replay-51](cases/forks/replay-51.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [forks/replay-60](cases/forks/replay-60.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [h30/_reference/block/0x1](cases/h30/_reference/block/0x1.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [h30/_reference/block/0x2](cases/h30/_reference/block/0x2.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [h30/_reference/block/0x30](cases/h30/_reference/block/0x30.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [initial/block-transfer](cases/initial/block-transfer.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [initial/block-tree](cases/initial/block-tree.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [initial/call-constructor](cases/initial/call-constructor.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
@@ -303,27 +320,16 @@ Capture completeness records whether requests finished, not whether their result
 
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [geth-contract-a](../evidence/2026-09-23/geth-contract-sync/geth-contract-a/manifest.json) | a | ✅ Yes |
-| [geth-contract-fork-followup](../evidence/2026-09-23/geth-contract-sync/geth-contract-fork-followup/manifest.json) | fork-followup | ✅ Yes |
-| [geth-contract-forks](../evidence/2026-09-23/geth-contract-sync/geth-contract-forks/manifest.json) | forks | ✅ Yes |
-| [geth-contract-initial](../evidence/2026-09-23/geth-contract-sync/geth-contract-initial/manifest.json) | initial | ✅ Yes |
-| [geth-contract-precompile-values](../evidence/2026-09-23/geth-contract-sync/geth-contract-precompile-values/manifest.json) | precompile-values | ✅ Yes |
-| [geth-contract-precompiles](../evidence/2026-09-23/geth-contract-sync/geth-contract-precompiles/manifest.json) | precompiles | ✅ Yes |
-| [geth-contract-reorg-safe](../evidence/2026-09-23/geth-contract-sync/geth-contract-reorg-safe/manifest.json) | reorg-safe | ✅ Yes |
-| [geth-contract-repeat](../evidence/2026-09-23/geth-contract-sync/geth-contract-repeat/manifest.json) | repeat | ✅ Yes |
-| [harness-audit-native-a](../evidence/2026-09-23/harness-audit-native-a/manifest.json) | a | ✅ Yes |
-| [harness-audit-native-fork-followup](../evidence/2026-09-23/harness-audit-native-fork-followup/manifest.json) | fork-followup | ✅ Yes |
-| [harness-audit-native-forks](../evidence/2026-09-23/harness-audit-native-forks/manifest.json) | forks | ✅ Yes |
-| [harness-audit-native-initial](../evidence/2026-09-23/harness-audit-native-initial/manifest.json) | initial | ✅ Yes |
-| [harness-audit-native-precompile-values](../evidence/2026-09-23/harness-audit-native-precompile-values/manifest.json) | precompile-values | ✅ Yes |
-| [harness-audit-native-precompiles](../evidence/2026-09-23/harness-audit-native-precompiles/manifest.json) | precompiles | ✅ Yes |
-| [harness-audit-native-pruned](../evidence/2026-09-23/harness-audit-native-pruned/manifest.json) | pruned | ✅ Yes |
-| [harness-audit-native-raw-validation](../evidence/2026-09-23/harness-audit-native-raw-validation/manifest.json) | raw-validation | ✅ Yes |
-| [harness-audit-native-reorg-safe](../evidence/2026-09-23/harness-audit-native-reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
-| [harness-audit-native-repeat](../evidence/2026-09-23/harness-audit-native-repeat/manifest.json) | repeat | ✅ Yes |
-| [harness-audit-2-native-isolation-verified](../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json) | callmany-isolation | ✅ Yes |
-| [geth-contract-callmany-isolation](../evidence/2026-09-23/geth-contract-sync/geth-contract-callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
-| [h30-dev-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) | h30 | ✅ Yes |
-| [h30-release-controlled-20260923](../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) | h30 | ✅ Yes |
-| [geth-contract-raw-validation](../evidence/2026-09-23/geth-contract-sync/geth-contract-raw-validation/manifest.json) | raw-validation | ✅ Yes |
-| [geth-contract-h30](../evidence/2026-09-23/geth-contract-sync/geth-contract-h30/manifest.json) | h30 | ✅ Yes |
+| [initial-clean](../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) | initial | ✅ Yes |
+| [a](../evidence/2026-09-24/coverage-matrix/a/manifest.json) | a | ✅ Yes |
+| [repeat](../evidence/2026-09-24/coverage-matrix/repeat/manifest.json) | repeat | ✅ Yes |
+| [forks](../evidence/2026-09-24/coverage-matrix/forks/manifest.json) | forks | ✅ Yes |
+| [fork-followup](../evidence/2026-09-24/coverage-matrix/fork-followup/manifest.json) | fork-followup | ✅ Yes |
+| [precompiles](../evidence/2026-09-24/coverage-matrix/precompiles/manifest.json) | precompiles | ✅ Yes |
+| [precompile-values](../evidence/2026-09-24/coverage-matrix/precompile-values/manifest.json) | precompile-values | ✅ Yes |
+| [raw-validation](../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) | raw-validation | ✅ Yes |
+| [coverage](../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) | coverage | ✅ Yes |
+| [callmany-isolation](../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
+| [h30](../evidence/2026-09-24/coverage-matrix/h30/manifest.json) | h30 | ✅ Yes |
+| [reorg-safe](../evidence/2026-09-24/coverage-matrix/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
+| [pruned](../evidence/2026-09-24/coverage-matrix/pruned/manifest.json) | pruned | ✅ Yes |

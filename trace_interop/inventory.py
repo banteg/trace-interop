@@ -23,7 +23,9 @@ def verify_inventory(root):
     for item in items:
         if not item['cases']:
             raise ValueError(f'empty evidence references: {item["id"]}')
-        for reference in item['cases']:
+        if set(item['cases']) & set(item.get('references', [])):
+            raise ValueError(f'case is also a reference: {item["id"]}')
+        for reference in item['cases'] + item.get('references', []):
             if reference not in available:
                 raise ValueError(f'missing report evidence: {item["id"]}/{reference}')
     return len(items)

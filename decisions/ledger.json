@@ -596,7 +596,11 @@
       "next_step": "A focused Besu reporting fix and regression fixture can proceed without waiting on broad API policy.",
       "rationale": "Two views of the same successful call should not disagree about its return value.",
       "recommendation": "Report the actual return bytes in both the execution envelope and the corresponding successful call-frame result, including precompiles with no EVM bytecode.",
-      "title": "Precompile return bytes"
+      "title": "Precompile return bytes",
+      "background": [
+        "Parity's [executive tracer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/executive_tracer.rs#L41-L106) records a root precompile as a call frame and writes the actual bytes passed to `done_trace_call` into that frame's `result.output`. The separate [execution envelope](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L625-L646) carries `output` from the completed execution even when no VM bytecode operations exist. Thus the two output locations refer to the same return bytes for a successful root call; the absence of EVM code is not a reason to empty either one.",
+        "The pinned [Besu flat-trace generator](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/flat/FlatTraceGenerator.java#L70-L125) special-cases a precompiled gas cost while constructing the root frame. The linked identity-precompile case is a direct discriminator: an execution envelope with correct return bytes does not prove the corresponding frame's result was populated. H29 separately decides which nested precompile frames exist."
+      ]
     },
     {
       "cases": [

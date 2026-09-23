@@ -47,7 +47,7 @@
   },
   "sources": {
     "decisions/impact.json": "5bb3e1c4028b1da363979c59f7c964760f19759c05c6dfc97caf10bb979e735a",
-    "decisions/ledger.json": "415481fd2815ec3d604b10e82d15c8504f582aa300b902a7027e23750cf5cacc",
+    "decisions/ledger.json": "91d19ba1c8f18f939f45d747143b045df8a349d2b7e7bd9134ff24c8762ae741",
     "decisions/sources.json": "61ae03648002808181557c56b1f4a07c7450e631063b2a92a66a5ddc5c5e62f6",
     "decisions/status.json": "55a883db76f72734b94eb1e4b41fb385ab848624d5626cd102dc6cd3f77efa50",
     "locks/source-revisions.json": "9145e7c733915e286fafa7c7788b88e224f9be7087180d03d52c12c88134f9e6",

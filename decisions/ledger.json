@@ -23,7 +23,11 @@
       "next_step": "Agree the optional-method/conformance model with client teams; no assumption of adopted optional status or Geth support.",
       "rationale": "A caller should be able to distinguish an unsupported operation from a valid query with no trace.",
       "recommendation": "Specify each method independently; make the implemented subset discoverable or explicitly declared. An unsupported method should return -32601, never a fabricated empty result. Add individual replay to Besu when practical rather than removing it from the common API.",
-      "title": "Method coverage"
+      "title": "Method coverage",
+      "background": [
+        "The [Parity RPC trait at 55c90d4](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/traits/traces.rs#L28-L70) exposes nine distinct methods. They did not arrive as one indivisible feature: [multi-call was added in 2017](https://github.com/openethereum/parity-ethereum/commit/f157461ee19740c8d013bb9885d3aa0aa5f91a8a) and [block replay in 2018](https://github.com/openethereum/parity-ethereum/commit/df5d27d5163e8d6f6d00f4f8996ce384fcf804cf). The [OpenEthereum trace guide](https://openethereum.github.io/JSONRPC-trace-module) also distinguishes ad hoc execution from indexed historical filtering, which requires tracing to have been enabled. This history supports specifying method contracts separately; it does not establish that every modern client must implement every method.",
+        "The [2026 standardization issue](https://github.com/ethereum/execution-apis/issues/890) records that Erigon, Reth and Nethermind expose the nine-method namespace, while Besu lacks individual replay and Geth has a different debug tracing API. The [draft PR](https://github.com/ethereum/execution-apis/pull/895) leaves method scope and support policy for review. An unimplemented method must remain distinguishable from an implemented lookup that found no records; whether the profile is optional or split between execution and historical search is still a policy decision, not client agreement."
+      ]
     },
     {
       "cases": [
@@ -42,7 +46,12 @@
       "next_step": "Choose the tree-path contract and align Reth/Nethermind; the positive nested discriminator is now available.",
       "rationale": "The lookup argument should identify the same path that traceAddress describes, with a singular result matching the method name.",
       "recommendation": "Treat the argument as one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] a nested child. Return one trace object or null for a missing transaction/path. Convert output traceAddress integers to minimal hex quantities; integer request entries return -32602.",
-      "title": "trace_get selector and return shape"
+      "title": "trace_get selector and return shape",
+      "background": [
+        "Parity modeled `trace_get` as a [single `Vec<Index>` path returning an optional object](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/impls/traces.rs#L84-L93). Its [trace database compares the full path](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/db.rs#L267-L286), so an empty path identifies the root rather than a flat position. Parity [fixed `traceAddress` handling in 2016](https://github.com/openethereum/parity-ethereum/commit/948b614f4072d89678810c34b5ae23a1eb7bdf00). Its [Index deserializer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/index.rs#L23-L64) accepted hex and decimal strings, but not JSON number tokens.",
+        "The pinned [Erigon lookup](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_filtering.go#L134-L149) also compares the whole path; [Reth](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L220-L242) uses the first supplied index as a flat position; [Nethermind](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L402-L424) returns a collection. The path and singular-result proposal follows Parity, but changing either client needs compatibility review.",
+        "**Recommendation risk:** Parity's [localized-trace serializer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L501-L535) writes `traceAddress` from `Vec<usize>` as JSON numbers, and its [serialization test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L694-L720) expects `[10]`. The recommendation to convert response elements to hex quantities would break this inherited output format and the modern integer-array representations; it needs an explicit wire-format reason before adoption. Decimal-string request indices were also accepted historically, so any decision to exclude them should be explicit."
+      ]
     },
     {
       "cases": [
@@ -63,6 +72,7 @@
       "rationale": "Adding a second filter should narrow a search. This matches `eth_getLogs`, where each topic position accepts a list of alternatives (OR) and all positions must match (AND); a null position is a wildcard, just as an omitted or empty address list is here. Explicit union is still useful when callers need one globally paginated result across both address sets.",
       "recommendation": "Use OR within each address list and AND between `fromAddress` and `toAddress` by default. An omitted, null, or empty side imposes no restriction. Accept optional `mode: \"intersection\"` (the default) and `mode: \"union\"` (match either populated side); reject unknown mode values with `-32602`.",
       "background": [
+        "Parity's [original matcher](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/types/filter.rs#L42-L111) treats each address list as alternatives, combines sender and recipient with `&&`, and builds the Cartesian product of address blooms for indexed search. An empty list matches all addresses. The [RPC filter type](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace_filter.rs#L28-L68) had no `mode` field and rejected unknown fields. Thus intersection follows the Parity implementation, while explicit union is a later Erigon compatibility extension, not an original namespace option.",
         "In [Erigon #2119](https://github.com/erigontech/erigon/issues/2119), banteg asked in June 2021 for an intersection option to narrow calls from a sender set to a recipient set. Erigon merged the [mode implementation in #3167](https://github.com/erigontech/erigon/pull/3167) in January 2022, corrected the list-level boolean composition in [#3304](https://github.com/erigontech/erigon/pull/3304), and [backported it to stable in #3305](https://github.com/erigontech/erigon/pull/3305). This is established client precedent for retaining an explicit mode.",
         "[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216), merged on 2026-09-22, cites H03 and changes the default from union to intersection while retaining explicit union. Its tests cover OR within each list, AND between lists, empty lists, and both recognized modes. Reth uses [Alloy's matcher](https://github.com/paradigmxyz/reth/blob/main/crates/rpc/rpc/src/trace.rs), but the tested Reth builds and [main@47c2166bc4](https://github.com/paradigmxyz/reth/blob/47c2166bc48bba25b95787c1f0640ec42bb9dee0/Cargo.lock) (checked 2026-09-23) still lock Alloy 2.4.2, which predates the PR. Reth needs dependency uptake and a retest before its observed result changes.",
         "The pinned draft accepts recognized modes. The mode cases were recaptured on 2026-09-23 against every tested build, including one-sided `union` queries. The Geth draft fork adopted recognized modes and nullable address lists at [40eecf3647](https://github.com/banteg/go-ethereum/commit/40eecf3647f26546df9dbf72ce48f372df469ef2). Reth's null-list rejections are tracked under [H04](H04.md)."
@@ -85,7 +95,11 @@
       "next_step": "Review the compatibility choice to accept null alongside omitted and empty lists; retain separate checks for special-action membership.",
       "rationale": "Programmatically adding an empty optional filter should not erase all results.",
       "recommendation": "Treat an omitted, null or empty address list as no restriction. A nonempty list restricts that side. Compare address bytes independently of hex letter case.",
-      "title": "Empty address lists"
+      "title": "Empty address lists",
+      "background": [
+        "Parity's [RPC filter type](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace_filter.rs#L28-L67) made both address arrays optional and converted an omitted or JSON-null field to an empty vector. Its [address matcher](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/types/filter.rs#L28-L63) explicitly treats that vector as matching all addresses; the bloom path gives it an unrestricted bloom rather than a zero-match search. This is an inherited API convention, not merely an intuition about empty filters.",
+        "The modern clients differ at both input decoding and matching. The pinned [Nethermind matcher](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) and [Erigon filter](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_filtering.go#L311) must be read together with the linked empty/null cases: accepting a JSON field does not prove it is treated as unrestricted. H03 determines how nonempty sides compose; this decision only establishes when a side has no constraint."
+      ]
     },
     {
       "cases": [
@@ -103,7 +117,11 @@
       "next_step": "Specify which protocol operations belong in this namespace. Keep withdrawals and system transitions separate from transaction call traces unless explicitly included.",
       "rationale": "A reward trace should correspond to a real protocol operation, not a zero-value placeholder that changes pagination.",
       "recommendation": "Do not emit a synthetic PoW block reward on a PoS block. Represent real protocol balance changes only under explicitly defined semantics; keep transaction tips in transaction accounting. Define nullable localization fields separately for non-transaction records.",
-      "title": "Post-merge reward records"
+      "title": "Post-merge reward records",
+      "background": [
+        "Parity [added reward traces in 2017](https://github.com/openethereum/parity-ethereum/commit/06862c7dee400e3b9f37c6cfdae52c081ee9d7f1) for consensus payouts and then [made transaction IDs optional](https://github.com/openethereum/parity-ethereum/commit/1f3f91136ca9438336e5eb824ce31555ac116fae) because a reward is not a transaction. Its [serializer test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L814-L831) expects a `reward` action with null transaction localization. This explains why the trace model has non-transaction records at all.",
+        "[EIP-3675](https://eips.ethereum.org/EIPS/eip-3675#block-and-ommer-rewards) removed the PoW block and ommer balance increases at the Merge while leaving transaction fees in place. [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) later introduced withdrawals as block-level balance changes, but neither Parity's reward encoding nor that EIP defines a `trace_*` withdrawal action. The observed Besu and Nethermind zero-value reward placeholders therefore should not be treated as actual post-Merge rewards; whether to include withdrawals or other system changes needs an explicit separate trace contract."
+      ]
     },
     {
       "cases": [
@@ -128,7 +146,12 @@
       "next_step": "Choose an unavailable-history error contract. Extend the retention fixture to Erigon, Nethermind and Besu; the current pruning result is Reth-only.",
       "rationale": "Not found, empty, unsupported and unavailable are different states that callers need to distinguish.",
       "recommendation": "Return null for a well-formed lookup of an unknown transaction or trace path, consistently across these methods. Reserve [] for a successfully evaluated collection with no elements. Preserve -32601 for unsupported methods and use errors for unavailable/pruned state instead of pretending data is absent. Unknown selected blocks and range endpoints return -32001 (Resource not found), separately from 4444 for pruned required state.",
-      "title": "Missing transactions and paths"
+      "title": "Missing transactions and paths",
+      "background": [
+        "Parity's [trace lookup methods](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/src/client/client.rs#L2052-L2110) returned `Option`: absent transaction, missing trace data and disabled tracing could all become JSON `null`; [mocked RPC tests](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/tests/mocked/traces.rs#L83-L166) confirm null for missing trace storage. By contrast, its [ad hoc call path](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/impls/traces.rs#L108-L127) raises an explicit state-pruned error when required state is absent. Separating absence from unavailability improves on a real historical ambiguity.",
+        "[EIP-1474](https://eips.ethereum.org/EIPS/eip-1474#error-codes) names `-32001` Resource not found and `-32002` Resource unavailable. [execution-apis #636](https://github.com/ethereum/execution-apis/pull/636) proposes `4444` for pruned chain data and its discussion says an `eth_getLogs` range crossing the pruning cutoff should error rather than return partial results; that PR is open, so this is precedent, not agreed `trace_*` policy. [Reth #27367](https://github.com/paradigmxyz/reth/pull/27367) and the linked pruning cases show why a trace implementation must classify unavailable state before serializing an apparent empty result.",
+        "**Recommendation risk:** [EIP-4444's JSON-RPC discussion](https://eips.ethereum.org/EIPS/eip-4444#json-rpc-changes) notes that a node with pruned history may be unable to distinguish an invalid hash from an old one. The recommendation's `null`-versus-`4444` distinction is only implementable when the node still has enough transaction or block indexing to know which condition occurred. The draft should define behavior for that ambiguous case rather than promise a distinction every pruned node can always make."
+      ]
     },
     {
       "cases": [
@@ -152,7 +175,11 @@
       "next_step": "Confirm the envelope schema and add one serialization test; treat missing support in Besu separately under H01.",
       "rationale": "A replay object should keep its identity when stored or moved out of its original request context.",
       "recommendation": "Include transactionHash in both individual and per-transaction block-replay envelopes. Do not require it for unsigned trace_call or trace_callMany simulations.",
-      "title": "Replay transactionHash field"
+      "title": "Replay transactionHash field",
+      "background": [
+        "[Parity issue #8725](https://github.com/openethereum/parity-ethereum/issues/8725) reported that `trace_replayBlockTransactions` returned per-transaction state diffs without hashes, forcing callers to pair array positions with block transactions. [The 2018 fix](https://github.com/openethereum/parity-ethereum/commit/526c61e2c053f7ef98be93b118120ab585f4aaad) added a distinct `TraceResultsWithTransactionHash` type for block replay. The [Parity RPC trait](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/traits/traces.rs#L59-L70) and [response structs](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L625-L671) retained a plain `TraceResults` for individual replay, whose request already supplies the hash.",
+        "The [OpenEthereum examples](https://openethereum.github.io/JSONRPC-trace-module) show `transactionHash` in each block-replay item and omit it in individual replay. The pinned [Reth replay implementation](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs) follows the latter shape. **Recommendation risk:** requiring a hash in individual replay is a new additive wire-contract requirement, not a restoration of the Parity behavior that #8725 fixed. It may help detached responses, but schema compatibility and client feedback should be checked before calling its absence a defect."
+      ]
     },
     {
       "cases": [
@@ -168,7 +195,11 @@
       "next_step": "Preserve the execution return bytes independently of which optional trace components are requested.",
       "rationale": "Empty bytes and an unavailable value are different, and selecting an auxiliary view should not change the primary call result.",
       "recommendation": "Keep a stable envelope: output is the execution return bytes (\"0x\" when empty); trace is [] when not requested; stateDiff and vmTrace are null when not requested. Requesting a different tracer must not change or erase the returned execution output.",
-      "title": "Empty output and unrequested components"
+      "title": "Empty output and unrequested components",
+      "background": [
+        "Parity's [trace-option mapping](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/impls/traces.rs#L36-L42) toggles transaction, VM and state tracers independently. Its [common response type](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L625-L646) always carries execution `output` and a trace vector, while VM and state components are optional. The [OpenEthereum `trace_call` example](https://openethereum.github.io/JSONRPC-trace-module#trace_call) shows empty bytes as `0x` and unrequested components as `null`; Parity's [mocked RPC test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/tests/mocked/traces.rs#L169-L177) confirms the stable envelope with an empty trace array.",
+        "The pinned [Erigon response type](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L81-L88) permits a nil trace slice, which serializes as `null` unless initialized. Nethermind's [replay writer](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L14-L58) writes `output` from the trace object independently of the selected details; the observed stateDiff-only loss therefore needs tracing/data-flow investigation, not a different response schema."
+      ]
     },
     {
       "cases": [
@@ -192,7 +223,12 @@
       "next_step": "Agree exact field placement and stable failure kinds. Separate REVERT, exceptional halt and SELFDESTRUCT/no-result cases in fixtures; do not require identical free-text descriptions.",
       "rationale": "Consumers need the raw revert data and failure identity without parsing implementation-specific English or mistaking a failure for success.",
       "recommendation": "Always mark failure explicitly, preserve REVERT return bytes and measured gasUsed when available, and define a small stable set of failure kinds. Human-readable explanations or decoded revertReason may be optional. Use null for an inapplicable result; never manufacture a successful result for an exceptional halt.",
-      "title": "Failed frame results and error labels"
+      "title": "Failed frame results and error labels",
+      "background": [
+        "Parity [added explicit trace errors in 2016](https://github.com/openethereum/parity-ethereum/commit/da2c2e5fc67010dbd6e6300d856b0dfa06f0b569). Its [failure enum](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/trace/src/types/error.rs#L24-L95) maps VM failures to stable labels including Reverted and Out of gas; its [trace serializer](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L501-L536) emits an `error` field on failure and omits `result`. Parity's [failure serialization test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L722-L743) locks this shape. The pinned [Nethermind writer](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L94-L105) follows the same error-versus-result branch.",
+        "[EIP-140](https://eips.ethereum.org/EIPS/eip-140#specification) requires REVERT to retain returndata and unused gas for the caller, unlike an exceptional out-of-gas halt. That execution fact motivates preserving observed revert bytes and measured gas where a trace format can express them, but it does not itself define a failed-frame JSON `result`. The Besu and Nethermind cases should be separated into missing failure status, missing execution data, and wire-shape choices.",
+        "**Recommendation risk:** A mandatory `result: null` or populated `result` on every failed frame would change Parity's error-only failure shape and the current Nethermind serializer. Decide whether failure data belongs in optional fields, in a new failed-result variant, or only in the top-level output before treating omitted `result` as nonconformant."
+      ]
     },
     {
       "cases": [

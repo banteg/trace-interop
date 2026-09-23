@@ -334,7 +334,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             build_cells = '<br>'.join(f'{channel(c)}: {verdict(by_client[c].get(topic, []))}' for c in selected)
             links = examples(output, path.parent, checks)
             code = source_links(sources, selected[0], topic)
-            rows.append([f'[{editorial["clients"][f]["name"]}](../clients/{f}.md)', build_cells, behavior, '<br>'.join(x for x in (links, code) if x)])
+            evidence_links = '<br>'.join(x for x in (
+                '🧪 Tests: ' + links if links else '',
+                '💻 Client code: ' + code if code else '',
+            ) if x)
+            rows.append([f'[{editorial["clients"][f]["name"]}](../clients/{f}.md)', build_cells, behavior, evidence_links])
         if topic == 'H01':
             text += 'A returned result establishes method availability, not conformance. Errors for malformed input are expected.\n\n'
             method_rows = []

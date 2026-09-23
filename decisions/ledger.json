@@ -502,7 +502,12 @@
       "next_step": "Fix account code-change reporting separately; these cases persist after the VM-delta fix.",
       "rationale": "stateDiff must include code that changed, even if the account already existed.",
       "recommendation": "Report every actual delegation-code transition, including set, replace and clear, independently of account-creation flags. Preserve authorization changes when later execution reverts, according to execution semantics.",
-      "title": "EIP-7702 code changes in stateDiff"
+      "title": "EIP-7702 code changes in stateDiff",
+      "background": [
+        "Parity's [state-diff algorithm](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/ethcore/pod/src/account.rs#L103-L136) compares account code in the pre- and post-state independently of trace actions. That predates EIP-7702 but supplies the right historical meaning of `stateDiff.code`: changed existing code uses `*`, new-account code uses `+`, and deletion uses `-`. The pinned [Reth state-diff path](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs) and linked authorization cases show an implementation can miss code written during transaction preprocessing even when later EVM execution is traced.",
+        "[EIP-7702](https://eips.ethereum.org/EIPS/eip-7702#behavior) writes a delegation indicator or clears code while processing authorizations before the execution portion. It explicitly preserves processed authorizations even if the later execution reverts. The EIP's rationale explains why delegation was made persistent. A complete transaction state diff therefore has to include the authorization-side code change despite a failed call frame.",
+        "**Recommendation risk:** EIP-7702 also permits multiple valid tuples from one authority in a transaction, with the last valid code write winning. Parity-style `stateDiff` is a net pre/post comparison, so it cannot report every intermediate set/replace/clear write if the account's final code equals its starting code or if several writes occurred. If `every actual transition` means each intermediate write, that needs a separate event-level trace; the state-diff rule should be understood as net effects unless expanded deliberately."
+      ]
     },
     {
       "cases": [

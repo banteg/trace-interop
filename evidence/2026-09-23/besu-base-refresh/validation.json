@@ -1,0 +1,525 @@
+{
+  "validated_at": "2026-09-23T20:22:50.021281+00:00",
+  "base": "a7867768741ffe7239bab07c38926d065ab16229",
+  "scope": "Seven Besu PRs whose required up-to-date gate reported BEHIND",
+  "method": "Normal signed-off merges, previous PR head as first parent; no rewritten history",
+  "patch_comparison": "Diffs against old and new upstream bases are identical after removing index lines containing blob IDs. Only CHANGELOG.md blob IDs changed.",
+  "branches": [
+    {
+      "pr": 11286,
+      "path": "/private/tmp/trace-besu-mcopy",
+      "branch": "fix/vmtrace-mcopy-signed",
+      "old_head": "c00216d5f8a627c25fff88a9a7a381211981d7f9",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "f9a26052e9b8c607522af67da9bf846653af1f5e",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 254.4,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:06:19.412Z",
+          "hostname": "fedora",
+          "time": "2.241",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "809",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:06:21.666Z",
+          "hostname": "fedora",
+          "time": "62.384",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:06:19.181Z",
+          "hostname": "fedora",
+          "time": "3.097",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.vm.VmTraceGeneratorTest",
+          "tests": "3",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:07:24.075Z",
+          "hostname": "fedora",
+          "time": "0.364",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:06:19.300Z",
+          "hostname": "fedora",
+          "time": "2.913",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "1",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:06:22.217Z",
+          "hostname": "fedora",
+          "time": "0.54",
+          "module": "api"
+        }
+      ]
+    },
+    {
+      "pr": 11345,
+      "path": "/private/tmp/trace-besu-errors",
+      "branch": "feat/trace-frame-errors",
+      "old_head": "d787df60ad6e334396e6ca29a3864f09930b45dd",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "bb4ad7397b8a2d10d72e9f0cd3dbce7dee02d0f9",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 132.0,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:08:49.828Z",
+          "hostname": "fedora",
+          "time": "2.672",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "809",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:08:52.514Z",
+          "hostname": "fedora",
+          "time": "47.767",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:08:54.262Z",
+          "hostname": "fedora",
+          "time": "0.249",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:08:50.451Z",
+          "hostname": "fedora",
+          "time": "3.038",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:08:53.495Z",
+          "hostname": "fedora",
+          "time": "0.764",
+          "module": "api"
+        }
+      ]
+    },
+    {
+      "pr": 11346,
+      "path": "/private/tmp/trace-besu-output",
+      "branch": "feat/trace-precompile-output",
+      "old_head": "3236946fc2bad7c3861168dfabb3fa23138098d2",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "4b11054610c5a032a6d0413ed7023ab1e82f5ceb",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 138.8,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:11:04.924Z",
+          "hostname": "fedora",
+          "time": "1.834",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "810",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:11:06.770Z",
+          "hostname": "fedora",
+          "time": "55.985",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:11:08.274Z",
+          "hostname": "fedora",
+          "time": "0.201",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:11:05.324Z",
+          "hostname": "fedora",
+          "time": "2.22",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "3",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:11:07.548Z",
+          "hostname": "fedora",
+          "time": "0.724",
+          "module": "api"
+        }
+      ]
+    },
+    {
+      "pr": 11347,
+      "path": "/private/tmp/trace-besu-root-error",
+      "branch": "feat/trace-root-precompile-error",
+      "old_head": "f10f76facb967bbeeeed8202e2a939ac2c6ae43f",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "f3edcaf00ff9668cb6716e44d8c88feae447924f",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest' --tests '*DebugTraceBlockStreamerPrecompileTest' :ethereum:core:cleanTest :ethereum:core:test --tests '*DebugOperationTracerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 186.7,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:13:46.042Z",
+          "hostname": "fedora",
+          "time": "1.943",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.methods.DebugTraceBlockStreamerPrecompileTest",
+          "tests": "3",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:14:47.551Z",
+          "hostname": "fedora",
+          "time": "0.337",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "811",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:13:48.002Z",
+          "hostname": "fedora",
+          "time": "59.531",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:13:49.155Z",
+          "hostname": "fedora",
+          "time": "0.312",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:13:46.263Z",
+          "hostname": "fedora",
+          "time": "2.324",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "1",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:13:48.592Z",
+          "hostname": "fedora",
+          "time": "0.557",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.vm.DebugOperationTracerTest",
+          "tests": "29",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:14:51.736Z",
+          "hostname": "fedora",
+          "time": "21.99",
+          "module": "core"
+        }
+      ]
+    },
+    {
+      "pr": 11350,
+      "path": "/private/tmp/trace-besu-memory",
+      "branch": "feat/trace-call-memory",
+      "old_head": "6aca59ef2e1d61f59a43612d44f28745ecd8fb0f",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "6426f704a8d31c41c59692bab249d600c1ef1e01",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 134.2,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:16:38.188Z",
+          "hostname": "fedora",
+          "time": "2.325",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "813",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:16:40.526Z",
+          "hostname": "fedora",
+          "time": "50.365",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:16:41.947Z",
+          "hostname": "fedora",
+          "time": "0.269",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:16:38.437Z",
+          "hostname": "fedora",
+          "time": "2.933",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "1",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:16:41.375Z",
+          "hostname": "fedora",
+          "time": "0.569",
+          "module": "api"
+        }
+      ]
+    },
+    {
+      "pr": 11352,
+      "path": "/private/tmp/trace-besu-skipped",
+      "branch": "feat/vmtrace-skipped-frames",
+      "old_head": "76bcc6c494fa1de59794265974160b98cec57a00",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "c30d008ac64697f279ca8af4a719a9706667f369",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 129.0,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:18:54.692Z",
+          "hostname": "fedora",
+          "time": "1.816",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "812",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:18:56.521Z",
+          "hostname": "fedora",
+          "time": "47.929",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:18:58.061Z",
+          "hostname": "fedora",
+          "time": "0.228",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:18:55.142Z",
+          "hostname": "fedora",
+          "time": "2.345",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "1",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:18:57.490Z",
+          "hostname": "fedora",
+          "time": "0.565",
+          "module": "api"
+        }
+      ]
+    },
+    {
+      "pr": 11353,
+      "path": "/private/tmp/trace-besu-oog",
+      "branch": "feat/vmtrace-root-out-of-gas",
+      "old_head": "012eed7be9f9052c477d3287d9bb2581f4e7f3a5",
+      "base": "a7867768741ffe7239bab07c38926d065ab16229",
+      "new_head": "320ee27cf465b52703e31e3dfeae26ee8f7e23f4",
+      "patch_preserved_excluding_blob_ids": true,
+      "validation_command": "cd /home/banteg/dev/trace-client-fixes/pr-followup-besu && JAVA_HOME=/home/banteg/dev/trace-client-fixes/jdk ./gradlew --no-daemon --max-workers=4 -Dorg.gradle.jvmargs=-Xmx4g :ethereum:api:cleanTest :ethereum:api:test --tests '*bonsai.TraceJsonRpcHttpBySpecTest' --tests '*VmTraceGeneratorTest' --tests '*FlatTraceGeneratorTest' --tests '*StreamBackpressureTest' --tests '*JsonResponseStreamerTest'",
+      "validation_exit_code": 0,
+      "validation_seconds": 134.6,
+      "suites": [
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.StreamBackpressureTest",
+          "tests": "12",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:21:09.751Z",
+          "hostname": "fedora",
+          "time": "1.777",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.bonsai.TraceJsonRpcHttpBySpecTest",
+          "tests": "815",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:21:11.540Z",
+          "hostname": "fedora",
+          "time": "51.096",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.websocket.JsonResponseStreamerTest",
+          "tests": "7",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:21:13.101Z",
+          "hostname": "fedora",
+          "time": "0.313",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.JsonResponseStreamerTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:21:10.301Z",
+          "hostname": "fedora",
+          "time": "2.219",
+          "module": "api"
+        },
+        {
+          "name": "org.hyperledger.besu.ethereum.api.jsonrpc.internal.results.tracing.flat.FlatTraceGeneratorTest",
+          "tests": "1",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-09-23T20:21:12.525Z",
+          "hostname": "fedora",
+          "time": "0.571",
+          "module": "api"
+        }
+      ]
+    }
+  ]
+}

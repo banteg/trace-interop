@@ -22,10 +22,10 @@ records the pushed fixes, native tests, review resolutions and remaining gates.
 
 ### Besu
 
-All seven branches were refreshed with merge commits from `main@e2c207869c`,
-preserving their history. The [follow-up validation](../evidence/2026-09-23/pr-followup/README.md)
-records the pushed heads and targeted Fedora results. Counts in individual rows
-below describe the earlier regression proofs.
+All seven branches were refreshed with merge commits from `main@a786776874`,
+preserving their history. The [latest base-refresh validation](../evidence/2026-09-23/besu-base-refresh/README.md)
+records the pushed heads, unchanged PR patches and passing trace/streaming tests
+on Fedora. Counts in individual rows below describe the earlier regression proofs.
 
 | PR | Fix | Evidence and next step |
 | --- | --- | --- |

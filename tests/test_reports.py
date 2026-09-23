@@ -15,7 +15,7 @@ class ReportVerdictTests(unittest.TestCase):
         self.assertEqual(verdict([{'status': 'matches'}]), 'Checked cases agree')
 
     def test_extension_observation_is_neither_pass_nor_failure(self):
-        self.assertEqual(verdict([{'status': 'matches'}, {'status': 'observation'}]), 'Extension policy open')
+        self.assertEqual(verdict([{'status': 'matches'}, {'status': 'observation'}]), 'Policy open')
         self.assertEqual(verdict([{'status': 'change_needed'}, {'status': 'observation'}]), 'Differs')
 
     def test_setup_failure_cannot_be_reported_as_observed_behavior(self):

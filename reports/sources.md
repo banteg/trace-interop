@@ -13,6 +13,9 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 | Replay | [Block replay](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java#L58) | `d997aad7b3be` |
 | Frames | [Call-frame inclusion](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/flat/FlatTraceGenerator.java#L284) | `d997aad7b3be` |
 | Vm | [VM memory deltas](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/vm/VmTraceGenerator.java#L230) | `d997aad7b3be` |
+| Bounds | [Filter range defaults](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java#L66) | `d997aad7b3be` |
+| Many | [Batched call argument count](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java#L92) | `d997aad7b3be` |
+| Tags | [Filter block-tag resolver](https://github.com/besu-eth/besu/blob/d997aad7b3be6333464c0687d3761c568ee63524/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java#L275) | `d997aad7b3be` |
 
 ## Erigon
 
@@ -26,6 +29,9 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 | Frames | [Call frames and precompiles](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L357) | `c25b8e47dc1a` |
 | Vm | [VM execution deltas](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L545) | `c25b8e47dc1a` |
 | State | [State differences](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L741) | `c25b8e47dc1a` |
+| Bounds | [Filter range defaults](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_filtering.go#L335) | `c25b8e47dc1a` |
+| Many | [Batched call block default](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1287) | `c25b8e47dc1a` |
+| Tags | [Filter pending-tag check](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_filtering.go#L312) | `c25b8e47dc1a` |
 
 ## Geth draft fork
 
@@ -52,6 +58,9 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 | Frames | [Call frames and precompiles](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L413) | `a404c4f06a67` |
 | Vm | [VM step serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs#L17) | `a404c4f06a67` |
 | State | [Code and nonce state changes](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L356) | `a404c4f06a67` |
+| Bounds | [Filter range defaults](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L280) | `a404c4f06a67` |
+| Many | [Batched call block default](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L90) | `a404c4f06a67` |
+| Tags | [Filter tag lookup](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L278) | `a404c4f06a67` |
 
 ## Reth
 
@@ -65,5 +74,8 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 | Vm | [VM trace builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L317) | `453c67d7ccdf` |
 | State | [State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) | `453c67d7ccdf` |
 | Frames | [Precompile frame selection (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/mod.rs#L289) | `453c67d7ccdf` |
+| Bounds | [Filter range defaults](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L370) | `03cb186c1d36` |
+| Many | [Batched call block default](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L155) | `03cb186c1d36` |
+| Tags | [Filter block-selector type](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L365) | `03cb186c1d36` |
 
 Reth’s inspector links point into its locked `revm-inspectors` 0.43.0 dependency. File hashes and anchor text are retained in [the source catalog](../decisions/sources.json).

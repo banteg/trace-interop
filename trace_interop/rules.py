@@ -77,6 +77,46 @@ def evaluate(case, observation, peers, invalid_params=None):
                   'Unknown mode values return invalid params (-32602).')
         return checks
 
+    if context.get('_chain') == 'h30':
+        number_48 = '0x' + f'{48:064x}'
+        if name in ['filter-no-bounds', 'filter-to-2-implicit-from']:
+            check('H30', status == 'result' and isinstance(result, list) and len(result) == 3
+                  and all(isinstance(frame, dict) and frame.get('blockNumber') == 1 for frame in result),
+                  'An omitted fromBlock starts at the earliest available block before count is applied.')
+        if name in ['call-number-default', 'call-number-latest']:
+            check('H31', status == 'result' and mapping(result).get('output') == number_48,
+                  'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).')
+        if name in ['many-number-default', 'many-number-latest']:
+            check('H31', status == 'result' and isinstance(result, list) and len(result) == 1
+                  and mapping(result[0]).get('output') == number_48,
+                  'trace_callMany accepts an omitted block and uses latest (NUMBER 48).')
+        if name == 'filter-earliest':
+            explicit = other('filter-0-to-2')
+            check('H32', status == 'result' and isinstance(result, list) and isinstance(explicit, list)
+                  and result == explicit,
+                  'The earliest tag resolves like explicit block 0 on this fixture.')
+        if name == 'filter-safe':
+            check('H32', status == 'result' and isinstance(result, list) and len(result) == 3
+                  and all(isinstance(frame, dict) and frame.get('blockNumber') == 48 for frame in result),
+                  'The safe tag resolves to the fixture safe head, block 48.')
+        if name in ['filter-pending', 'call-number-pending', 'many-number-pending']:
+            if status == 'rpc_error':
+                code = mapping(response.get('error')).get('code')
+                detail = f'{name}: RPC error {code}.'
+            elif name == 'filter-pending' and isinstance(result, list):
+                blocks = sorted({frame.get('blockNumber') for frame in result if isinstance(frame, dict)})
+                detail = f'{name}: {len(result)} records from blocks {blocks}.'
+            else:
+                execution = result[0] if isinstance(result, list) and result else result
+                output = mapping(execution).get('output')
+                detail = f'{name}: NUMBER {int(output, 16)}.' if isinstance(output, str) and output.startswith('0x') else f'{name}: {status}.'
+            checks.append({'topic': 'H32', 'status': 'observation',
+                           'requirement': 'Record pending behavior without assuming a settled state or localization policy.',
+                           'detail': detail})
+            if name == 'filter-pending':
+                check('H32', status != 'rpc_error' or mapping(response.get('error')).get('code') != -32603,
+                      'A valid pending tag must not trigger an internal error; support remains a policy choice.')
+
     if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):
         path = [int(x, 16) for x in params[1]]
         missing = 'missing' in name or '0xffff' in params[1]
@@ -244,7 +284,7 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.')
     if name == 'filter-two-blocks' and not any(c['topic']=='H27' for c in checks):
         checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
-    if method == 'trace_callMany' and params and isinstance(params[0], list):
+    if method == 'trace_callMany' and context.get('_chain') != 'h30' and params and isinstance(params[0], list):
         check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
               and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
               'Return one execution envelope per input call, in order.')

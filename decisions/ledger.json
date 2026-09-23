@@ -629,6 +629,57 @@
       "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
       "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Crossed-value CALL/CALLCODE fixtures confirm that Erigon, Reth and Nethermind use the explicit child value rather than the outer value. Besu still omits the nonzero-value child. The independent Geth draft implementation also matches these checks; it is not an independent vote for the policy.",
       "next_step": "Review the inherited DELEGATECALL exception as a compatibility choice and extend to more precompiles/forks. The precompile-values corpus separates outer and child values, pre-funds zero-value creations with a preceding simulated transfer, and returns the call success bit. Parent error propagation remains a separate H24 issue."
+    },
+    {
+      "id": "H30",
+      "title": "Omitted trace_filter range bounds",
+      "kind": "Spec decision / compatibility",
+      "cases": [
+        "h30/filter-no-bounds",
+        "h30/filter-to-2-implicit-from"
+      ],
+      "recommendation": "Default an omitted fromBlock to the earliest available block and an omitted toBlock to latest. Respect an explicitly supplied endpoint, then apply after/count to the ordered result over that full range.",
+      "rationale": "A filter with only toBlock should reach earlier history, and an unbounded filter should not silently search only the head block. The captured chain has its first matching records in block 1 and head 48, so count: 3 exposes this default without relying on trace field formatting.",
+      "next_step": "Agree the earliest-available boundary on pruned nodes and document the compatibility change for clients whose existing default is latest. Keep address matching and pagination as separate decisions.",
+      "background": [
+        "The pinned draft already describes an earliest-to-latest default. Both pinned Besu and Nethermind builds start at head 48; Erigon and Reth start at block 1. An explicit head-only query succeeds on all four. See the [live capture](../../evidence/2026-09-23/h30-code-review/README.md)."
+      ]
+    },
+    {
+      "id": "H31",
+      "title": "Omitted trace_callMany block",
+      "kind": "Spec decision / compatibility",
+      "cases": [
+        "h30/call-number-default",
+        "h30/call-number-latest",
+        "h30/many-number-default",
+        "h30/many-number-latest"
+      ],
+      "recommendation": "Make the trace_callMany block argument optional and default it to latest, matching trace_call. An explicit block selector must override that default; explicit pending is handled under H32.",
+      "rationale": "The same unsigned simulation should not silently change its block environment when batched. The frozen NUMBER constructor returns 48 at latest and 49 in Reth's pending environment, making the difference observable without mempool transactions.",
+      "next_step": "Confirm optionality and the latest default with client teams; document the migration for Besu callers that currently must pass a block and Reth callers that rely on an omitted block selecting pending.",
+      "background": [
+        "All tested builds return NUMBER 48 for trace_callMany at explicit latest and for trace_call with omitted or explicit latest. With trace_callMany's block omitted, Besu rejects the argument count, Erigon and Nethermind return 48, and Reth returns 49. The pinned schema marks the block argument optional; see the [live capture](../../evidence/2026-09-23/h30-code-review/README.md)."
+      ]
+    },
+    {
+      "id": "H32",
+      "title": "Trace block tags and pending state",
+      "kind": "Spec decision / client discrepancy",
+      "cases": [
+        "h30/filter-earliest",
+        "h30/filter-safe",
+        "h30/filter-pending",
+        "h30/call-number-pending",
+        "h30/many-number-pending"
+      ],
+      "recommendation": "Accept resolvable earliest, latest, safe and finalized selectors where the trace method takes a block or range endpoint. Specify pending separately for collection queries and simulations: whether it is supported, which state and next-block environment it uses, and how pending trace records are localized. Until that contract is agreed, report unsupported pending explicitly; a valid tag must not produce an internal error.",
+      "rationale": "A caller must be able to tell whether a tag was rejected, resolved to a mined block, or evaluated in a pending environment. In the frozen fixture, safe resolves to head 48, while Reth's pending call environment exposes NUMBER 49. These observations do not establish mempool transaction inclusion.",
+      "next_step": "Agree per-method tag support and pending semantics, then add finalized/unavailable-finality and pending-transaction fixtures. Track Nethermind's genesis-range omission through its existing fix rather than treating it as a tag-default result.",
+      "background": [
+        "The pinned filter schema lists earliest, finalized, safe, latest and pending, while the draft profile leaves pending-state behavior and pending localization open. In the live capture, Erigon and Nethermind resolve safe filter bounds; Besu returns -32603 and Reth -32602. Erigon development rejects pending with -32000 while its release resolves it to mined block 48. See the [live capture](../../evidence/2026-09-23/h30-code-review/README.md).",
+        "The explicit earliest-to-block-2 filter is compared with an explicit block-0-to-block-2 control. Nethermind returns [] for both because of its separately tracked history issue; that equivalence is evidence about tag parsing, not complete trace retrieval. Finalized and unavailable safe/finalized were not exercised."
+      ]
     }
   ]
 }

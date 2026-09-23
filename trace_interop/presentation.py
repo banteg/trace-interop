@@ -17,6 +17,7 @@ SOURCE_GROUPS = {
     'H20': ['vm'], 'H21': ['vm'], 'H22': ['frames'], 'H23': ['filter'],
     'H24': ['frames'], 'H25': ['raw', 'replay'], 'H26': ['state'],
     'H27': ['filter'], 'H28': ['call'], 'H29': ['frames'],
+    'H30': ['bounds'], 'H31': ['many'], 'H32': ['tags', 'many'],
 }
 BAD = {'change_needed', 'unsupported'}
 
@@ -57,7 +58,7 @@ def verdict(checks):
     if 'unassessed' in statuses:
         return 'Partially assessed' if statuses - {'unassessed'} else 'Not assessed'
     if 'observation' in statuses:
-        return 'Extension policy open'
+        return 'Policy open'
     if 'matches' in statuses:
         return 'Checked cases agree'
     return 'Not assessed'
@@ -242,11 +243,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.\n\n'
-        rows = []; matched = []; untested = []; extensions = []; partial = []
+        rows = []; matched = []; untested = []; observations = []; partial = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
-            if checks and all(q['status'] == 'observation' for q in checks):
-                extensions.append(topic)
+            if checks and any(q['status'] == 'observation' for q in checks) and not any(q['status'] in BAD for q in checks):
+                observations.append(topic)
                 continue
             if not any(q['status'] in BAD for q in checks):
                 if topic != 'H01':
@@ -266,16 +267,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             rows.append([subject, *statuses, change + ('<br>' + links if links else '')])
         text += '## Changes to discuss\n\n'
         text += table(['Behavior', *[channel(c) for c in selected], 'Proposed change'], rows) if rows else 'No differences were found by the selected semantic assertions.\n\n'
-        if extensions:
-            text += '## Extension observations\n\nThese requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.\n\n'
-            extension_rows = []
-            for topic in extensions:
+        if observations:
+            text += '## Open policy observations\n\nThese results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.\n\n'
+            observation_rows = []
+            for topic in observations:
                 for c in selected:
                     checks = by_client[c].get(topic, [])
                     if checks:
-                        detail = ' '.join(dict.fromkeys(q['detail'] for q in checks))
-                        extension_rows.append([channel(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
-            text += table(['Build', 'Extension', 'Observed', 'Example'], extension_rows)
+                        detail = ' '.join(dict.fromkeys(q['detail'] for q in checks if q['status'] == 'observation'))
+                        observation_rows.append([channel(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
+            text += table(['Build', 'Decision', 'Observed', 'Example'], observation_rows)
         other_schema = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
         if other_schema:
             text += 'Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.\n\n'
@@ -321,7 +322,13 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             elif any(q['status'] == 'unassessed' for q in checks):
                 behavior = 'Some declared cases were not assessed. Matching checks do not establish agreement for this topic.'
             elif any(q['status'] == 'observation' for q in checks):
-                behavior = ' '.join(dict.fromkeys(q['detail'] for q in checks)) + ' Extension policy remains open; no baseline change is required by this observation.'
+                details = []
+                for c in selected:
+                    observed = list(dict.fromkeys(q['detail'] for q in by_client[c].get(topic, [])
+                                                  if q['status'] == 'observation' and q['detail']))
+                    if observed:
+                        details.append(f'{channel(c)}: ' + ' '.join(observed))
+                behavior = '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
             build_cells = '<br>'.join(f'{channel(c)}: {verdict(by_client[c].get(topic, []))}' for c in selected)
@@ -354,12 +361,15 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         for topic, title, behavior in [
             ('H02', 'How does trace_get select a frame?', 'Follow one tree path; return one object or null. An empty path selects the root.'),
             ('H03', 'How do address filters combine?', 'OR within each list, AND between sender and recipient lists.'),
+            ('H30', 'Where does an unbounded filter start?', 'Search from the earliest available block through latest.'),
+            ('H31', 'What block does trace_callMany use by default?', 'Accept an omitted block and use latest, matching trace_call.'),
+            ('H32', 'Which tags and pending state can trace methods use?', 'Resolve mined-block tags; agree pending state and localization per method.'),
             ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
             ('H29', 'Which precompile frames are visible?', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'),
             ('H13', 'Signed transaction execution validity', 'Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; propose -32003 for validation rejection.'),
         ]])
     text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
-    text += '[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
+    text += f'[All {len(decisions)} decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
     text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
 

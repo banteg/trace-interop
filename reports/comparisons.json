@@ -14096,6 +14096,1105 @@
   },
   {
     "case": "_control/head",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "f09f9ae71c5e69306dfb0c51d36bc06ccac2e7cca1761103f9bb51522410a0aa"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "10d91e4736f133a8bf2f2625c2cb615f50ba72200c53b04448acc12f38015a9b"
+      }
+    ]
+  },
+  {
+    "case": "_control/latest",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "f09f9ae71c5e69306dfb0c51d36bc06ccac2e7cca1761103f9bb51522410a0aa"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "10d91e4736f133a8bf2f2625c2cb615f50ba72200c53b04448acc12f38015a9b"
+      }
+    ]
+  },
+  {
+    "case": "_control/version",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "10918b745dcb2e1ea432907d268bf13612a64bd82b31c9f9780a64d4c945a180"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          }
+        ],
+        "sha256": "3f70e450ea6730071cf1c99927f4be043df68f63481aeba66ae8d6963cbd6104"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          }
+        ],
+        "sha256": "6f613b3ee11d2f348603e0cf0a7cd67a85318147d78271ebb646db73fd4de30a"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          }
+        ],
+        "sha256": "67692873f256aba6946b7b1dcf6befe6b379b6d89da31867d0af0895c855a1c6"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "230daf70e1b62a3a15f883a20766358c059c41b9d9deabb97bb0e3a2ae435a45"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          }
+        ],
+        "sha256": "7161d7df0c3767ae9bf8d2345a0619a06484139eaff78fc94045e3f6a4dae010"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "1e1b274b10fd05ac0de4823b97eaa25ddc3ca5d1deb1c24d2a812e37312a2adb"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "cb997a858dabc1d77e01938c0b60ba02247d7322d421f37de7e04f64e1bb0edc"
+      }
+    ]
+  },
+  {
+    "case": "call-number-default",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "f8badae89ac9a1f597219dcb03e3bbe8ebf882ef76f1c0fdc49daf9519dc1abf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "5cf8e72f8a6d7e3ecca9dcc6bcb9c4e26991a351959ee58556242f08191e058e"
+      }
+    ]
+  },
+  {
+    "case": "call-number-latest",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "f8badae89ac9a1f597219dcb03e3bbe8ebf882ef76f1c0fdc49daf9519dc1abf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "5cf8e72f8a6d7e3ecca9dcc6bcb9c4e26991a351959ee58556242f08191e058e"
+      }
+    ]
+  },
+  {
+    "case": "call-number-pending",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "f8badae89ac9a1f597219dcb03e3bbe8ebf882ef76f1c0fdc49daf9519dc1abf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-c25b8e47"
+          }
+        ],
+        "sha256": "3e134f8fa0c18eee048275e8a5f6969342660ee739afee7ca39c3938d631c7d1"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "5cf8e72f8a6d7e3ecca9dcc6bcb9c4e26991a351959ee58556242f08191e058e"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "17d5b780ebb1e2e9cdd6a1c641f1e9c0e3121dcbb470286d4a84e412f3520499"
+      }
+    ]
+  },
+  {
+    "case": "filter-0-to-2",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "9039a2461adbb40a2fe546c6f0ec023e9b0d2da467b149b961dfd626d9756263"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "0157919069c7c67969781dc254ef3bf2ee21aa2e1c818f05ff9afb5cb9715e0a"
+      }
+    ]
+  },
+  {
+    "case": "filter-earliest",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          }
+        ],
+        "sha256": "9039a2461adbb40a2fe546c6f0ec023e9b0d2da467b149b961dfd626d9756263"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "0157919069c7c67969781dc254ef3bf2ee21aa2e1c818f05ff9afb5cb9715e0a"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "49c165312f427e142891ebb0cd05b2eb831b0362668adcedfce7c158ab20b944"
+      }
+    ]
+  },
+  {
+    "case": "filter-head-only",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "3ebb82b60f39c22738bfcdc814bcd3513054b3312b41697cf25214faaeebe2d7"
+      }
+    ]
+  },
+  {
+    "case": "filter-no-bounds",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "3ebb82b60f39c22738bfcdc814bcd3513054b3312b41697cf25214faaeebe2d7"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "9039a2461adbb40a2fe546c6f0ec023e9b0d2da467b149b961dfd626d9756263"
+      }
+    ]
+  },
+  {
+    "case": "filter-pending",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-c25b8e47"
+          }
+        ],
+        "sha256": "3e134f8fa0c18eee048275e8a5f6969342660ee739afee7ca39c3938d631c7d1"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "3ebb82b60f39c22738bfcdc814bcd3513054b3312b41697cf25214faaeebe2d7"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "921713ab16a250bb4f428438dafd649e762a162ab1b3d62fbf7fede164f2aca4"
+      }
+    ]
+  },
+  {
+    "case": "filter-safe",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "3ebb82b60f39c22738bfcdc814bcd3513054b3312b41697cf25214faaeebe2d7"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "47cc11cf5785eb452c4d104795e9a775d81cf540c6cb787e7370d32f61c1eee4"
+      }
+    ]
+  },
+  {
+    "case": "filter-to-2-implicit-from",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "c7aba7ae425de6b245b887dd9b953ffe7594104d5265a890f4f8b38cc79e5978"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "9039a2461adbb40a2fe546c6f0ec023e9b0d2da467b149b961dfd626d9756263"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "8ee69526001afc41a67e8022623326db598e274bb110aedd6ca5b2e3f0437cee"
+      }
+    ]
+  },
+  {
+    "case": "many-number-default",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "920b984a28199bafc6082b7ed9c8a457842695971cee8af12d2539f1c1c5c021"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "8f8c4a39e46b9d22ae489eb26ac55d299570c8015ca1d14e816359a6237b9170"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "64a13f5be0d42fc6f54015b3a0f191bdee91d696b6379836b3da07db83affdbb"
+      }
+    ]
+  },
+  {
+    "case": "many-number-latest",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0a8bf97deff5ca85acdd496e13943b8984f0cc0c00d90bd608029538305554e3"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-c25b8e47"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "8f8c4a39e46b9d22ae489eb26ac55d299570c8015ca1d14e816359a6237b9170"
+      }
+    ]
+  },
+  {
+    "case": "many-number-pending",
+    "corpus": "h30",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0a8bf97deff5ca85acdd496e13943b8984f0cc0c00d90bd608029538305554e3"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-c25b8e47"
+          }
+        ],
+        "sha256": "3e134f8fa0c18eee048275e8a5f6969342660ee739afee7ca39c3938d631c7d1"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0-unstable+a404c4f0"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.6.1-0c4d9c91"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "1.39.3+28cbe2a0"
+          }
+        ],
+        "sha256": "8f8c4a39e46b9d22ae489eb26ac55d299570c8015ca1d14e816359a6237b9170"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.5.2+03cb186c"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.6.0+73a3a008"
+          }
+        ],
+        "sha256": "64a13f5be0d42fc6f54015b3a0f191bdee91d696b6379836b3da07db83affdbb"
+      }
+    ]
+  },
+  {
+    "case": "_control/head",
     "corpus": "initial",
     "groups": [
       {

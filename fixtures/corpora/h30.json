@@ -1,0 +1,236 @@
+{
+  "cases": [
+    {
+      "name": "filter-to-2-implicit-from",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "toBlock": "0x2",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-0-to-2",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x0",
+            "toBlock": "0x2",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-no-bounds",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-head-only",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x30",
+            "toBlock": "0x30",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-safe",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "safe",
+            "toBlock": "safe",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-earliest",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "earliest",
+            "toBlock": "0x2",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-pending",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "pending",
+            "toBlock": "pending",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "call-number-default",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "data": "0x4360005260206000f3"
+          },
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-number-latest",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "data": "0x4360005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-number-pending",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "data": "0x4360005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "pending"
+        ]
+      }
+    },
+    {
+      "name": "many-number-default",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "data": "0x4360005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "name": "many-number-latest",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "data": "0x4360005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-number-pending",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "data": "0x4360005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "pending"
+        ]
+      }
+    }
+  ]
+}

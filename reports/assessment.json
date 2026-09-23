@@ -6,6 +6,7 @@
     "fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
     "fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
     "forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
+    "h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0",
     "initial.json": "ad81a8c15cc8e75f870118f10137cc1ab8bb964de3ddfadea4417f5bc977bce0",
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
@@ -16,11 +17,13 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 1815,
+    "assessed": 1903,
     "partial": 545,
-    "unassessed": 213
+    "unassessed": 229
   },
   "evidence": {
+    "../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json": "94bd2df193fd62ddc8dd616a8e1d62a2912b719ae8a572d325a27804b87dd002",
+    "../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json": "5397ba527eb73a30e40e2f2054161dbdfb13cb5db0b5a7dc889c582c2e6cc464",
     "../evidence/2026-09-23/harness-audit-2-geth-isolation/manifest.json": "c02ee597e3b2d3370b2fc91df69e59e9550d97e357f6bcc115ef571eff18477b",
     "../evidence/2026-09-23/harness-audit-2-native-isolation-verified/manifest.json": "3bb9b4b8f8e91771cb1cfe339cf8d442efd03f0a93a7ea02e9e2d9f502441193",
     "../evidence/2026-09-23/harness-audit-geth-a/manifest.json": "4f1b73704b374e38d79afd6c639de73f19c123b5872b0fb091cdda6663ae9460",
@@ -43,18 +46,18 @@
     "../evidence/2026-09-23/harness-audit-native-repeat/manifest.json": "ea16a9e50caadc2b484f77386993f66079a28bd56bb8a9100bca5452a266ef83"
   },
   "sources": {
-    "decisions/impact.json": "932f416d18ab1465a4b98f40257016f208ad2ddb09ca31039309626ee4f53005",
-    "decisions/ledger.json": "9c96ab2e8ff660c7b051aa7abcbdb41771990e01b77c629e601822177abaaee0",
-    "decisions/sources.json": "14654e5e1243cbda33582c944bf0759607cedd4bdfbc01e5c881e94da7775afc",
+    "decisions/impact.json": "5bb3e1c4028b1da363979c59f7c964760f19759c05c6dfc97caf10bb979e735a",
+    "decisions/ledger.json": "3ffff72243bedd77121317a1a57236c8f8267328f9b2b69ebedabbf8cdf8ec75",
+    "decisions/sources.json": "61ae03648002808181557c56b1f4a07c7450e631063b2a92a66a5ddc5c5e62f6",
     "decisions/status.json": "55a883db76f72734b94eb1e4b41fb385ab848624d5626cd102dc6cd3f77efa50",
     "locks/source-revisions.json": "9145e7c733915e286fafa7c7788b88e224f9be7087180d03d52c12c88134f9e6",
-    "reports.lock.json": "c8647b9d66dda339cfa82774f5a0397b0661820bf2ec1e71ee761e69192e7c4f",
+    "reports.lock.json": "3521157790253a32233a0574bc7cf6507e331d9f078370669b293f2b3f42cd36",
     "spec.lock.json": "f24f620098830d283736951a6b159938a953eb1d4b5d940e9b3193e48c5b1008",
     "trace_interop/inventory.py": "1180c5ca66c4f516b7d9e4b0026e80ba8a6b9eb68c5f1b26c4c977e914b4fceb",
     "trace_interop/oracles.py": "192cee56e18b7cbe50de56309aca73d024d3f5726c5462aa9a7362ae1c904a2a",
-    "trace_interop/presentation.py": "e8003fe6d3ed3fb8b7e69e868ed2c1a7479379157641bf319169f96752018f92",
+    "trace_interop/presentation.py": "c71156d895d79176b6ff737f3958a06094d2532d007a0d40b98750e251e1c5b5",
     "trace_interop/report.py": "156f0a14ff4778fbfe3123b3035ef93f962452faaeb6c1c6e60300a264a01ea1",
-    "trace_interop/rules.py": "2d5c22aba39ea2da8a86cc0e86947795d876658a28e5ccf83f17af877e39de72",
+    "trace_interop/rules.py": "47c8c526d9fea6d8ff34a448ec752fcfb896f5bb06439569bf11e9aaaf3dd8e3",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",
     "trace_interop/status.py": "049357518a07bcd5a7cd310b06c502104fcb34daf3eb4ed466c8131699ee5aa5",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85"

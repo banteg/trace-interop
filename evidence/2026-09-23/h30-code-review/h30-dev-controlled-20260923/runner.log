@@ -1,0 +1,155 @@
+Sep 23 14:45:05.865 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 23 14:45:06.063 INF building 4 clients...
+Sep 23 14:45:06.063 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744
+Sep 23 14:45:06.345 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002
+Sep 23 14:45:06.625 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182
+Sep 23 14:45:06.983 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86
+Sep 23 14:45:07.097 INF building 1 simulators...
+Sep 23 14:45:07.097 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 23 14:45:07.226 INF creating output directory folder=/home/banteg/dev/trace-h30-capture/evidence/h30-dev-controlled-20260923/hive
+Sep 23 14:45:07.233 INF running simulation: ethereum/rpc-compat
+Sep 23 14:45:07.377 INF hiveproxy started container=c270404b93a9 addr=172.17.0.2:8081
+Sep 23 14:45:07.543 INF API: suite started suite=0 name=rpc-compat
+Sep 23 14:45:07.545 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 23 14:45:16.815 INF API: client besu_development started suite=0 test=1 container=16313360
+Sep 23 14:45:17.478 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 23 14:45:17.612 INF API: test ended suite=0 test=2 pass=false
+Sep 23 14:45:17.614 INF API: test started suite=0 test=3 name="interop/_control/latest (besu_development)"
+Sep 23 14:45:17.635 INF API: test ended suite=0 test=3 pass=false
+Sep 23 14:45:17.638 INF API: test started suite=0 test=4 name="interop/_control/version (besu_development)"
+Sep 23 14:45:17.653 INF API: test ended suite=0 test=4 pass=false
+Sep 23 14:45:17.657 INF API: test started suite=0 test=5 name="interop/call-number-default (besu_development)"
+Sep 23 14:45:17.860 INF API: test ended suite=0 test=5 pass=false
+Sep 23 14:45:17.862 INF API: test started suite=0 test=6 name="interop/call-number-latest (besu_development)"
+Sep 23 14:45:17.872 INF API: test ended suite=0 test=6 pass=false
+Sep 23 14:45:17.874 INF API: test started suite=0 test=7 name="interop/call-number-pending (besu_development)"
+Sep 23 14:45:17.883 INF API: test ended suite=0 test=7 pass=false
+Sep 23 14:45:17.884 INF API: test started suite=0 test=8 name="interop/filter-0-to-2 (besu_development)"
+Sep 23 14:45:19.008 INF API: test ended suite=0 test=8 pass=false
+Sep 23 14:45:19.010 INF API: test started suite=0 test=9 name="interop/filter-earliest (besu_development)"
+Sep 23 14:45:19.028 INF API: test ended suite=0 test=9 pass=false
+Sep 23 14:45:19.030 INF API: test started suite=0 test=10 name="interop/filter-head-only (besu_development)"
+Sep 23 14:45:19.042 INF API: test ended suite=0 test=10 pass=false
+Sep 23 14:45:19.044 INF API: test started suite=0 test=11 name="interop/filter-no-bounds (besu_development)"
+Sep 23 14:45:19.053 INF API: test ended suite=0 test=11 pass=false
+Sep 23 14:45:19.054 INF API: test started suite=0 test=12 name="interop/filter-pending (besu_development)"
+Sep 23 14:45:19.072 INF API: test ended suite=0 test=12 pass=false
+Sep 23 14:45:19.073 INF API: test started suite=0 test=13 name="interop/filter-safe (besu_development)"
+Sep 23 14:45:19.084 INF API: test ended suite=0 test=13 pass=false
+Sep 23 14:45:19.087 INF API: test started suite=0 test=14 name="interop/filter-to-2-implicit-from (besu_development)"
+Sep 23 14:45:19.107 INF API: test ended suite=0 test=14 pass=false
+Sep 23 14:45:19.108 INF API: test started suite=0 test=15 name="interop/many-number-default (besu_development)"
+Sep 23 14:45:19.116 INF API: test ended suite=0 test=15 pass=false
+Sep 23 14:45:19.117 INF API: test started suite=0 test=16 name="interop/many-number-latest (besu_development)"
+Sep 23 14:45:19.146 INF API: test ended suite=0 test=16 pass=false
+Sep 23 14:45:19.147 INF API: test started suite=0 test=17 name="interop/many-number-pending (besu_development)"
+Sep 23 14:45:19.155 INF API: test ended suite=0 test=17 pass=false
+Sep 23 14:45:19.458 INF API: test ended suite=0 test=1 pass=true
+Sep 23 14:45:19.460 INF API: test started suite=0 test=18 name="client launch (erigon_development)"
+Sep 23 14:45:21.830 INF API: client erigon_development started suite=0 test=18 container=7db37d7f
+Sep 23 14:45:21.837 INF API: test started suite=0 test=19 name="interop/_control/head (erigon_development)"
+Sep 23 14:45:21.841 INF API: test ended suite=0 test=19 pass=false
+Sep 23 14:45:21.841 INF API: test started suite=0 test=20 name="interop/_control/latest (erigon_development)"
+Sep 23 14:45:21.846 INF API: test ended suite=0 test=20 pass=false
+Sep 23 14:45:21.847 INF API: test started suite=0 test=21 name="interop/_control/version (erigon_development)"
+Sep 23 14:45:21.854 INF API: test ended suite=0 test=21 pass=false
+Sep 23 14:45:21.855 INF API: test started suite=0 test=22 name="interop/call-number-default (erigon_development)"
+Sep 23 14:45:21.859 INF API: test ended suite=0 test=22 pass=false
+Sep 23 14:45:21.860 INF API: test started suite=0 test=23 name="interop/call-number-latest (erigon_development)"
+Sep 23 14:45:21.862 INF API: test ended suite=0 test=23 pass=false
+Sep 23 14:45:21.863 INF API: test started suite=0 test=24 name="interop/call-number-pending (erigon_development)"
+Sep 23 14:45:21.865 INF API: test ended suite=0 test=24 pass=false
+Sep 23 14:45:21.866 INF API: test started suite=0 test=25 name="interop/filter-0-to-2 (erigon_development)"
+Sep 23 14:45:21.870 INF API: test ended suite=0 test=25 pass=false
+Sep 23 14:45:21.870 INF API: test started suite=0 test=26 name="interop/filter-earliest (erigon_development)"
+Sep 23 14:45:21.874 INF API: test ended suite=0 test=26 pass=false
+Sep 23 14:45:21.875 INF API: test started suite=0 test=27 name="interop/filter-head-only (erigon_development)"
+Sep 23 14:45:21.878 INF API: test ended suite=0 test=27 pass=false
+Sep 23 14:45:21.879 INF API: test started suite=0 test=28 name="interop/filter-no-bounds (erigon_development)"
+Sep 23 14:45:21.881 INF API: test ended suite=0 test=28 pass=false
+Sep 23 14:45:21.882 INF API: test started suite=0 test=29 name="interop/filter-pending (erigon_development)"
+Sep 23 14:45:21.884 INF API: test ended suite=0 test=29 pass=false
+Sep 23 14:45:21.885 INF API: test started suite=0 test=30 name="interop/filter-safe (erigon_development)"
+Sep 23 14:45:21.888 INF API: test ended suite=0 test=30 pass=false
+Sep 23 14:45:21.889 INF API: test started suite=0 test=31 name="interop/filter-to-2-implicit-from (erigon_development)"
+Sep 23 14:45:21.892 INF API: test ended suite=0 test=31 pass=false
+Sep 23 14:45:21.892 INF API: test started suite=0 test=32 name="interop/many-number-default (erigon_development)"
+Sep 23 14:45:21.895 INF API: test ended suite=0 test=32 pass=false
+Sep 23 14:45:21.896 INF API: test started suite=0 test=33 name="interop/many-number-latest (erigon_development)"
+Sep 23 14:45:21.898 INF API: test ended suite=0 test=33 pass=false
+Sep 23 14:45:21.899 INF API: test started suite=0 test=34 name="interop/many-number-pending (erigon_development)"
+Sep 23 14:45:21.902 INF API: test ended suite=0 test=34 pass=false
+Sep 23 14:45:22.056 INF API: test ended suite=0 test=18 pass=true
+Sep 23 14:45:22.058 INF API: test started suite=0 test=35 name="client launch (nethermind_development)"
+Sep 23 14:45:29.738 INF API: client nethermind_development started suite=0 test=35 container=49c9af96
+Sep 23 14:45:29.821 INF API: test started suite=0 test=36 name="interop/_control/head (nethermind_development)"
+Sep 23 14:45:29.884 INF API: test ended suite=0 test=36 pass=false
+Sep 23 14:45:29.886 INF API: test started suite=0 test=37 name="interop/_control/latest (nethermind_development)"
+Sep 23 14:45:29.889 INF API: test ended suite=0 test=37 pass=false
+Sep 23 14:45:29.890 INF API: test started suite=0 test=38 name="interop/_control/version (nethermind_development)"
+Sep 23 14:45:29.893 INF API: test ended suite=0 test=38 pass=false
+Sep 23 14:45:29.894 INF API: test started suite=0 test=39 name="interop/call-number-default (nethermind_development)"
+Sep 23 14:45:30.002 INF API: test ended suite=0 test=39 pass=false
+Sep 23 14:45:30.003 INF API: test started suite=0 test=40 name="interop/call-number-latest (nethermind_development)"
+Sep 23 14:45:30.007 INF API: test ended suite=0 test=40 pass=false
+Sep 23 14:45:30.008 INF API: test started suite=0 test=41 name="interop/call-number-pending (nethermind_development)"
+Sep 23 14:45:30.013 INF API: test ended suite=0 test=41 pass=false
+Sep 23 14:45:30.013 INF API: test started suite=0 test=42 name="interop/filter-0-to-2 (nethermind_development)"
+Sep 23 14:45:30.025 INF API: test ended suite=0 test=42 pass=false
+Sep 23 14:45:30.027 INF API: test started suite=0 test=43 name="interop/filter-earliest (nethermind_development)"
+Sep 23 14:45:30.030 INF API: test ended suite=0 test=43 pass=false
+Sep 23 14:45:30.030 INF API: test started suite=0 test=44 name="interop/filter-head-only (nethermind_development)"
+Sep 23 14:45:30.053 INF API: test ended suite=0 test=44 pass=false
+Sep 23 14:45:30.054 INF API: test started suite=0 test=45 name="interop/filter-no-bounds (nethermind_development)"
+Sep 23 14:45:30.058 INF API: test ended suite=0 test=45 pass=false
+Sep 23 14:45:30.059 INF API: test started suite=0 test=46 name="interop/filter-pending (nethermind_development)"
+Sep 23 14:45:30.063 INF API: test ended suite=0 test=46 pass=false
+Sep 23 14:45:30.063 INF API: test started suite=0 test=47 name="interop/filter-safe (nethermind_development)"
+Sep 23 14:45:30.067 INF API: test ended suite=0 test=47 pass=false
+Sep 23 14:45:30.068 INF API: test started suite=0 test=48 name="interop/filter-to-2-implicit-from (nethermind_development)"
+Sep 23 14:45:30.072 INF API: test ended suite=0 test=48 pass=false
+Sep 23 14:45:30.073 INF API: test started suite=0 test=49 name="interop/many-number-default (nethermind_development)"
+Sep 23 14:45:30.085 INF API: test ended suite=0 test=49 pass=false
+Sep 23 14:45:30.086 INF API: test started suite=0 test=50 name="interop/many-number-latest (nethermind_development)"
+Sep 23 14:45:30.091 INF API: test ended suite=0 test=50 pass=false
+Sep 23 14:45:30.092 INF API: test started suite=0 test=51 name="interop/many-number-pending (nethermind_development)"
+Sep 23 14:45:30.095 INF API: test ended suite=0 test=51 pass=false
+Sep 23 14:45:30.283 INF API: test ended suite=0 test=35 pass=true
+Sep 23 14:45:30.284 INF API: test started suite=0 test=52 name="client launch (reth_development)"
+Sep 23 14:45:30.951 INF API: client reth_development started suite=0 test=52 container=d21fc966
+Sep 23 14:45:30.954 INF API: test started suite=0 test=53 name="interop/_control/head (reth_development)"
+Sep 23 14:45:30.958 INF API: test ended suite=0 test=53 pass=false
+Sep 23 14:45:30.959 INF API: test started suite=0 test=54 name="interop/_control/latest (reth_development)"
+Sep 23 14:45:30.961 INF API: test ended suite=0 test=54 pass=false
+Sep 23 14:45:30.962 INF API: test started suite=0 test=55 name="interop/_control/version (reth_development)"
+Sep 23 14:45:30.964 INF API: test ended suite=0 test=55 pass=false
+Sep 23 14:45:30.965 INF API: test started suite=0 test=56 name="interop/call-number-default (reth_development)"
+Sep 23 14:45:30.967 INF API: test ended suite=0 test=56 pass=false
+Sep 23 14:45:30.968 INF API: test started suite=0 test=57 name="interop/call-number-latest (reth_development)"
+Sep 23 14:45:30.970 INF API: test ended suite=0 test=57 pass=false
+Sep 23 14:45:30.971 INF API: test started suite=0 test=58 name="interop/call-number-pending (reth_development)"
+Sep 23 14:45:30.974 INF API: test ended suite=0 test=58 pass=false
+Sep 23 14:45:30.974 INF API: test started suite=0 test=59 name="interop/filter-0-to-2 (reth_development)"
+Sep 23 14:45:30.979 INF API: test ended suite=0 test=59 pass=false
+Sep 23 14:45:30.980 INF API: test started suite=0 test=60 name="interop/filter-earliest (reth_development)"
+Sep 23 14:45:30.985 INF API: test ended suite=0 test=60 pass=false
+Sep 23 14:45:30.985 INF API: test started suite=0 test=61 name="interop/filter-head-only (reth_development)"
+Sep 23 14:45:30.989 INF API: test ended suite=0 test=61 pass=false
+Sep 23 14:45:30.989 INF API: test started suite=0 test=62 name="interop/filter-no-bounds (reth_development)"
+Sep 23 14:45:30.993 INF API: test ended suite=0 test=62 pass=false
+Sep 23 14:45:30.994 INF API: test started suite=0 test=63 name="interop/filter-pending (reth_development)"
+Sep 23 14:45:30.996 INF API: test ended suite=0 test=63 pass=false
+Sep 23 14:45:30.997 INF API: test started suite=0 test=64 name="interop/filter-safe (reth_development)"
+Sep 23 14:45:30.999 INF API: test ended suite=0 test=64 pass=false
+Sep 23 14:45:31.000 INF API: test started suite=0 test=65 name="interop/filter-to-2-implicit-from (reth_development)"
+Sep 23 14:45:31.003 INF API: test ended suite=0 test=65 pass=false
+Sep 23 14:45:31.004 INF API: test started suite=0 test=66 name="interop/many-number-default (reth_development)"
+Sep 23 14:45:31.007 INF API: test ended suite=0 test=66 pass=false
+Sep 23 14:45:31.007 INF API: test started suite=0 test=67 name="interop/many-number-latest (reth_development)"
+Sep 23 14:45:31.010 INF API: test ended suite=0 test=67 pass=false
+Sep 23 14:45:31.010 INF API: test started suite=0 test=68 name="interop/many-number-pending (reth_development)"
+Sep 23 14:45:31.013 INF API: test ended suite=0 test=68 pass=false
+Sep 23 14:45:31.158 INF API: test ended suite=0 test=52 pass=true
+Sep 23 14:45:31.166 INF API: suite ended suite=0
+Sep 23 14:45:31.415 INF simulation ethereum/rpc-compat finished suites=1 tests=68 failed=64
+64 tests failed

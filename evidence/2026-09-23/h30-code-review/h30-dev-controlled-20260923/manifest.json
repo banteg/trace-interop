@@ -1,0 +1,379 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "client": "besu",
+      "created": "2026-09-21T14:26:04.230551624Z",
+      "digest": "hyperledger/besu@sha256:c01ddb5af3e614a03ec1672fa03585025d91255d8982c4fe7f20927e287bc06e",
+      "image_id": "sha256:a85249905183f65c98c9e8c282955e40487c4ff8af8db8b8e306d58292231744",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "d997aad7b3be6333464c0687d3761c568ee63524",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "requested": "hyperledger/besu:develop"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "client": "erigon",
+      "created": "2026-09-21T16:26:57.680576532Z",
+      "digest": "erigontech/erigon@sha256:c05ab37a37f9d6461d5471a4e1dad5fbc9fb31bf4116c8ab3b15b2be7f8041f8",
+      "image_id": "sha256:8269576669f1b4a55572ee7d1a7e4489244cd57bb545293391d1ebd5e0fac002",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-09-21T16:25:06Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "c25b8e4",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec"
+      },
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "client": "nethermind",
+      "created": "2026-09-21T14:16:56Z",
+      "digest": "nethermindeth/nethermind@sha256:24e6633ed14acac1bc4f44161763a0eb0a599f16404b73274165e040023b7bc9",
+      "image_id": "sha256:e68f6cd253c312443b306b7e1e61381a38fd174dd16fe7e9bc55487245718182",
+      "labels": {
+        "org.opencontainers.image.created": "2026-09-12T10:25:59.825539+00:00",
+        "org.opencontainers.image.description": "The Ubuntu container image maintained by Canonical\n\nUbuntu is a Debian-based Linux operating system that runs from the desktop to the cloud, to all your internet connected things.\nIt is the world's most popular operating system across public clouds and OpenStack clouds.\nIt is the number one platform for containers; from Docker to Kubernetes to LXD, Ubuntu can run your containers at scale.\nFast, secure and simple, Ubuntu powers millions of PCs worldwide.\n",
+        "org.opencontainers.image.title": "ubuntu",
+        "org.opencontainers.image.version": "26.04"
+      },
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "client": "reth",
+      "created": "2026-09-21T01:37:06.420556256Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:85ebc35aba5fb8afceaba809cae82dbc8314d48e1927366882a1824150e551bd",
+      "image_id": "sha256:1d6a97ef686d7c6099c5426c77334ca5891ce5d362fe5f3049ac2ea0df76de86",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    }
+  },
+  "corpus": "h30",
+  "finished_at": "2026-09-23T10:45:31.417059+00:00",
+  "fixture_manifest_sha256": "b325cdad9b14b6674a48b068de042b71b8c7369a3be4e514bba3d2cd6f76d81c",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "729fda918eae3d84f6db6f56f5ba8473fd5999507f1149194ba73dac82bc1cfb",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "filter-to-2-implicit-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-0-to-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "fromBlock": "0x0",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-no-bounds",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-head-only",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "fromBlock": "0x30",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-safe",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "fromBlock": "safe",
+            "toBlock": "safe"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-earliest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "fromBlock": "earliest",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-pending",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 3,
+            "fromBlock": "pending",
+            "toBlock": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "name": "call-number-default",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x4360005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-number-latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x4360005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-number-pending",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x4360005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "pending"
+        ]
+      }
+    },
+    {
+      "name": "many-number-default",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x4360005260206000f3",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "name": "many-number-latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x4360005260206000f3",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-number-pending",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x4360005260206000f3",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "pending"
+        ]
+      }
+    }
+  ],
+  "source_commit": "88ec753bd8759a762e6f118287abd80631224897",
+  "source_dirty": true,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "e38fc96c9942f201b683e231f69432729d2737df",
+    "generated_sha256": "216d868c087a159a5fe0ec4f9b7d93ad1fc02e782a10b9356ceb2b5828936d2a",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-23T10:45:05.830588+00:00"
+}

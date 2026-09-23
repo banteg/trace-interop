@@ -6,7 +6,7 @@ The main changes are tree-path lookup, filter composition, replay metadata, and 
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Release | `Reth Version: 2.6.0+73a3a008` | [2026-09-17](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
+| Release | `Reth Version: 2.6.0+73a3a008` | [2026-09-17](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) |
 
 **The nightly is newer despite its lower version number.** Its commit is from September 20, while the release commit is from September 17. The release-only version bump set `2.6.0`; the nightly still declares `2.5.2`. [Compare the tested revisions](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...03cb186c1d36eebbacc7bda08f36e25711d0804e).
 
@@ -26,12 +26,14 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md)<br>EIP-7702 delegation code changes are missing from `stateDiff`. | Differs<br>[Auth clear](../cases/a/auth-clear.md) | Include authorization code set, replacement and clearing, even for existing accounts and when the subsequent execution reverts. Checked requirements: EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.<br>[State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) · [Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
 | [vmTrace executing bytecode](../decisions/H19.md)<br>Creation `vmTrace.code` does not contain the expected executing initcode. | Differs<br>[Call constructor](../cases/initial/call-constructor.md) | Attach the creation frame’s initcode to its VM trace, including in block replay. Checked requirements: Creation vmTrace.code is executing initcode.<br>[VM trace builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L317) · [Replay results](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L195) |
 | [Account deletion across Cancun](../decisions/H26.md)<br>Pre-Cancun account deletion loses code/nonce deletion markers. | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780. Checked requirements: Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.<br>[State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) |
+| [Omitted trace_callMany block](../decisions/H31.md)<br>An omitted trace_callMany block returns NUMBER 49, while explicit latest and trace_call defaults return 48. | Differs<br>[Many number default](../cases/h30/many-number-default.md) | Default trace_callMany to latest; retain pending only when explicitly requested and supported.<br>[Batched call block default](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L155) |
+| [Trace block tags and pending state](../decisions/H32.md)<br>trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work. Explicit pending call simulations return NUMBER 49. | Differs<br>[Filter earliest](../cases/h30/filter-earliest.md) | Accept resolvable mined-block tags for filter bounds. Decide pending filter support separately from its simulation behavior.<br>[Filter block-selector type](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L365) · [Batched call block default](https://github.com/paradigmxyz/reth/blob/03cb186c1d36eebbacc7bda08f36e25711d0804e/crates/rpc/rpc/src/trace.rs#L155) |
 
-## Extension observations
+## Open policy observations
 
-These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+These results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.
 
-| Build | Extension | Observed | Example |
+| Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | Release | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request returned a result; this does not prove which block state was used. | [Raw valid](../cases/initial/raw-valid.md) |
 
@@ -49,6 +51,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
+| [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 
 </details>
 

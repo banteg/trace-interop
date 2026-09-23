@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "eligible": {
+    "besu_development": true,
+    "erigon_development": true,
+    "nethermind_development": true,
+    "reth_development": true
+  },
+  "exchange_count": 64,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (besu_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (erigon_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (nethermind_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (reth_development)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "besu_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "erigon_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "nethermind_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "reth_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "besu_development": "besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25",
+    "erigon_development": "3.8.0-dev-c25b8e47",
+    "nethermind_development": "2.1.0-unstable+a404c4f0",
+    "reth_development": "Reth Version: 2.5.2+03cb186c"
+  }
+}

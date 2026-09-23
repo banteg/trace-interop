@@ -1,0 +1,34 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/besu",
+      "tag": "f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b"
+    },
+    "client": "besu",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/erigon",
+      "tag": "8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac"
+    },
+    "client": "erigon",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/nethermind",
+      "tag": "a5098d75bfa8d4da1992ba8404b357fde6d53241315396e26b88e16e5f67bb59"
+    },
+    "client": "nethermind",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7"
+    },
+    "client": "reth",
+    "nametag": "release"
+  }
+]

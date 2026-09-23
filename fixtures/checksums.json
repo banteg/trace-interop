@@ -53,5 +53,6 @@
   "corpora/reorg-safe.json": "94fcf58315bde761030752dbca1a675d8b34e8f0f6f581e2283938f59d785d30",
   "corpora/reorg.json": "444ebbaaf7088feb3587bf8d3e0d340e1ccfc611f848942006042fa2c9da0249",
   "corpora/repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
-  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403"
+  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403",
+  "corpora/h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0"
 }

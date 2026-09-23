@@ -6,7 +6,7 @@ The tested development build agrees on several cases that differ in the release,
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
+| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 
@@ -22,13 +22,14 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [Unsigned simulation fees and block environment](../decisions/H15.md)<br>Explicit zero-fee unsigned calls are rejected. | Differs<br>[Call constructor](../cases/initial/call-constructor.md) | Allow zero-fee unsigned simulation without changing the block’s `BASEFEE` opcode value. Checked requirements: Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.<br>[Call simulation](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056) |
 | [Fee accounting and sequential state diffs](../decisions/H16.md)<br>The linked case differs from the proposed behavior. | Differs<br>[Call many](../cases/initial/call-many.md) | Return one execution envelope per input call, in order.<br>[Call simulation](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056) · [State differences](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L741) |
 
-## Extension observations
+## Open policy observations
 
-These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+These results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.
 
-| Build | Extension | Observed | Example |
+| Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | Development | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| Development | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: RPC error -32000. call-number-pending: RPC error -32000. many-number-pending: RPC error -32000. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -44,6 +45,8 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
+| [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
+| [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
 

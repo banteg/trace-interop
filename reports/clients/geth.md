@@ -18,11 +18,11 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [Signed transaction execution validity](../decisions/H13.md)<br>The draft fork rejects nonce mismatches, but rejection codes need alignment with the proposed -32003 mapping. | Differs<br>[Raw below basefee](../cases/a/raw-below-basefee.md) | Apply selected-state execution validity before running signed transactions. Distinguish validation rejection from execution failure, and use the proposed -32003 code for validation errors. Checked requirements: Proposed transaction-validation error code: -32003 (Transaction rejected).<br>[Signed transaction replay](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L97) |
 | [Invalid-parameter error codes](../decisions/H14.md)<br>Unknown call-object fields are rejected by the older draft implementation. | Differs<br>[Call unknown field](../cases/a/call-unknown-field.md) | Ignore unknown call fields for forward compatibility while validating known fields. Checked requirements: Unknown call-object fields are ignored without changing execution output.<br>[Signed transaction replay](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L97) · [Call simulation](https://github.com/banteg/go-ethereum/blob/40eecf3647f26546df9dbf72ce48f372df469ef2/eth/tracers/trace_namespace.go#L52) |
 
-## Extension observations
+## Open policy observations
 
-These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+These results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.
 
-| Build | Extension | Observed | Example |
+| Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | Draft fork | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
@@ -42,6 +42,8 @@ These requests explicitly select behavior outside the portable baseline. Accepta
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
 
 </details>
+
+**Still needs review:** [Omitted trace_filter range bounds](../decisions/H30.md), [Omitted trace_callMany block](../decisions/H31.md), [Trace block tags and pending state](../decisions/H32.md).
 
 [Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)
 

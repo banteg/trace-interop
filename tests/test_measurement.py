@@ -262,3 +262,27 @@ class PublishedAssessmentTests(unittest.TestCase):
                 self.assertTrue(all(c['status']=='matches' for c in r['checks'] if c['topic']=='H29'))
             if r['client'].startswith('besu_') and r['case'].endswith('failed'):
                 self.assertIn('change_needed',[c['status'] for c in r['checks'] if c['topic']=='H24'])
+
+    def test_block_selector_decisions_use_controlled_live_capture(self):
+        records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
+                 if r['corpus']=='h30' and not r['case'].startswith('_control')]
+        self.assertEqual(len(records), 13 * 8)
+        self.assertTrue(all(r['eligible'] for r in records))
+        by_key={(r['client'],r['case']):r for r in records}
+
+        def verdict(client, case, topic):
+            return [c['status'] for c in by_key[client,case]['checks'] if c['topic']==topic]
+
+        for channel in ['release','development']:
+            for client in ['besu','erigon','nethermind','reth']:
+                build=f'{client}_{channel}'
+                self.assertEqual(verdict(build,'filter-no-bounds','H30'),
+                                 ['change_needed' if client in ['besu','nethermind'] else 'matches'])
+                self.assertEqual(verdict(build,'many-number-default','H31'),
+                                 ['change_needed' if client in ['besu','reth'] else 'matches'])
+                self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])
+                self.assertEqual(verdict(build,'filter-safe','H32'),
+                                 ['change_needed' if client in ['besu','reth'] else 'matches'])
+                self.assertIn('observation',verdict(build,'filter-pending','H32'))
+                self.assertIn('observation',verdict(build,'call-number-pending','H32'))
+                self.assertIn('observation',verdict(build,'many-number-pending','H32'))

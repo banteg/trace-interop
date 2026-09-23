@@ -303,6 +303,39 @@
         "observed": "Creation `vmTrace.code` does not contain the expected executing initcode.",
         "change": "Attach the creation frame\u2019s initcode to its VM trace, including in block replay."
       }
+    },
+    "H30": {
+      "append_checked_requirements": false,
+      "besu": {
+        "observed": "Omitting fromBlock starts at head 48. Supplying only toBlock 2 fails because the implicit start is later than the end.",
+        "change": "Start at the earliest available block when fromBlock is omitted; keep the supplied toBlock."
+      },
+      "nethermind": {
+        "observed": "Omitting fromBlock starts at head 48. A toBlock-only query errors with from 48 greater than to 2.",
+        "change": "Use the earliest available start for an omitted fromBlock and preserve the requested end."
+      }
+    },
+    "H31": {
+      "append_checked_requirements": false,
+      "besu": {
+        "observed": "trace_callMany with one argument returns -32602 Invalid number of params; explicit latest returns NUMBER 48.",
+        "change": "Accept an omitted block argument and execute against latest."
+      },
+      "reth": {
+        "observed": "An omitted trace_callMany block returns NUMBER 49, while explicit latest and trace_call defaults return 48.",
+        "change": "Default trace_callMany to latest; retain pending only when explicitly requested and supported."
+      }
+    },
+    "H32": {
+      "append_checked_requirements": false,
+      "besu": {
+        "observed": "trace_filter with safe or pending bounds returns -32603 Internal error; earliest succeeds. Pending call simulations return NUMBER 48.",
+        "change": "Resolve safe/finalized tags when available. Define or explicitly reject pending per method, without an internal error."
+      },
+      "reth": {
+        "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work. Explicit pending call simulations return NUMBER 49.",
+        "change": "Accept resolvable mined-block tags for filter bounds. Decide pending filter support separately from its simulation behavior."
+      }
     }
   }
 }

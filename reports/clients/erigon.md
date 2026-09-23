@@ -6,8 +6,8 @@ The tested development build agrees on several cases that differ in the release,
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Release | `3.6.1-0c4d9c91` | [2026-09-09](https://github.com/erigontech/erigon/commit/0c4d9c91dbaffd52890235f7ea395b0231738501) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
-| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
+| Release | `3.6.1-0c4d9c91` | [2026-09-09](https://github.com/erigontech/erigon/commit/0c4d9c91dbaffd52890235f7ea395b0231738501) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) |
+| Development | `3.8.0-dev-c25b8e47` | [2026-09-21](https://github.com/erigontech/erigon/commit/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 
@@ -27,14 +27,16 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [vmTrace step timing and deltas](../decisions/H20.md)<br>The `MCOPY` step omits its memory write. | Differs<br>[Call mcopy](../cases/a/call-mcopy.md) | Partially assessed<br>[Call mcopy](../cases/a/call-mcopy.md) | Record the same-step memory delta, including the copied word at offset 32. Checked requirements: MCOPY reports its same-step write of word 42 at offset 32.<br>[VM execution deltas](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L545) |
 | [Historical state at system-operation boundaries](../decisions/H28.md)<br>A historical beacon-root lookup includes a following block’s system update. | Differs<br>[Beacon call 55](../cases/fork-followup/beacon-call-55.md) | Checked cases agree<br>[Beacon call 55](../cases/fork-followup/beacon-call-55.md) | Read the selected block’s post-state, before applying the next block’s system operations. Checked requirements: Historical beacon-root storage excludes the following block system update. Historical trace_call uses only system changes through the selected block.<br>[Call simulation](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056) |
 
-## Extension observations
+## Open policy observations
 
-These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+These results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.
 
-| Build | Extension | Observed | Example |
+| Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | Release | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 | Development | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| Release | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: 3 records from blocks [48]. call-number-pending: NUMBER 48. many-number-pending: NUMBER 48. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
+| Development | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: RPC error -32000. call-number-pending: RPC error -32000. many-number-pending: RPC error -32000. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -48,6 +50,8 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
+| [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
+| [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
 

@@ -20,12 +20,15 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | --- | --- | --- |
 | [How does trace_get select a frame?](decisions/H02.md) | ⚪ Under review | Follow one tree path; return one object or null. An empty path selects the root. |
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
+| [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Search from the earliest available block through latest. |
+| [What block does trace_callMany use by default?](decisions/H31.md) | ⚪ Under review | Accept an omitted block and use latest, matching trace_call. |
+| [Which tags and pending state can trace methods use?](decisions/H32.md) | ⚪ Under review | Resolve mined-block tags; agree pending state and localization per method. |
 | [What survives a failed call?](decisions/H09.md) | ⚪ Under review | Keep the error on that frame and preserve revert bytes and measured gas when available. |
 | [Which precompile frames are visible?](decisions/H29.md) | ⚪ Under review | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |
 | [Signed transaction execution validity](decisions/H13.md) | 🤝 Converged | Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; propose -32003 for validation rejection. |
 
 [Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.
 
-[All 29 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
+[All 32 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
 
 [Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)

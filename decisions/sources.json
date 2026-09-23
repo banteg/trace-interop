@@ -71,6 +71,33 @@
       "line": 741,
       "anchor": "func (sd *StateDiff) CompareStates(initialIbs, ibs *state.IntraBlockState) error {",
       "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "bounds": {
+      "label": "Filter range defaults",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "line": 335,
+      "anchor": "if req.FromBlock == nil {",
+      "sha256": "f0d4fd126861ecde8ec980650b0c0c0fa9f446d3986fd2f882dc8f4850d04e82"
+    },
+    "many": {
+      "label": "Batched call block default",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "line": 1287,
+      "anchor": "if parentNrOrHash == nil {",
+      "sha256": "51335d0938be0be3fca21b4cd286f4cb6c92c16d670d372680d98c7b97953f10"
+    },
+    "tags": {
+      "label": "Filter pending-tag check",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "line": 312,
+      "anchor": "if req.FromBlock != nil {",
+      "sha256": "f0d4fd126861ecde8ec980650b0c0c0fa9f446d3986fd2f882dc8f4850d04e82"
     }
   },
   "nethermind": {
@@ -145,6 +172,33 @@
       "line": 356,
       "anchor": "public override void ReportCodeChange(Address address, byte[]? before, byte[]? after)",
       "sha256": "9cc246154ddc1baea2e0729a477721bb5a58cd98cb88f4cbf8f7e62393f00141"
+    },
+    "bounds": {
+      "label": "Filter range defaults",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 280,
+      "anchor": "BlockParameter fromBlock = traceFilterForRpc.FromBlock ?? BlockParameter.Latest;",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
+    },
+    "many": {
+      "label": "Batched call block default",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 90,
+      "anchor": "blockParameter ??= BlockParameter.Latest;",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
+    },
+    "tags": {
+      "label": "Filter tag lookup",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "a404c4f06a67aee52cc448216b8d37a77062f106",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "line": 278,
+      "anchor": "public ResultWrapper<IEnumerable<ParityTxTraceFromStore>> trace_filter(TraceFilterForRpc traceFilterForRpc)",
+      "sha256": "6dd07b85204dacc18ebc347ca1740feba5413c89fc0e221a08958eb5bbdb5b7d"
     }
   },
   "besu": {
@@ -210,6 +264,33 @@
       "line": 230,
       "anchor": "private void generateTracingMemory(final VmOperationExecutionReport report) {",
       "sha256": "a5857a3a0a4e911a18e1a979c49c6dd2d26f47421d968e27281c37ea9ba6a39f"
+    },
+    "bounds": {
+      "label": "Filter range defaults",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+      "line": 66,
+      "anchor": "this.fromBlock = fromBlock != null ? fromBlock : BlockParameter.LATEST;",
+      "sha256": "c1df587c85d624a0a8942a4765e4646977b9a32ff90606d17edc126890a5eada"
+    },
+    "many": {
+      "label": "Batched call argument count",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java",
+      "line": 92,
+      "anchor": "if (requestContext.getRequest().getParamLength() != 2) {",
+      "sha256": "19c7c0b97d4f341747c4daf1658b8ffa91c5c7c597d28f51433aabe505407fc0"
+    },
+    "tags": {
+      "label": "Filter block-tag resolver",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d997aad7b3be6333464c0687d3761c568ee63524",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "line": 275,
+      "anchor": "private long resolveBlockNumber(final BlockParameter param) {",
+      "sha256": "bcd49f29649a3c8c23fb1761576730590c49b074c8661d5b57c6002181623bfa"
     }
   },
   "reth": {
@@ -284,6 +365,33 @@
       "line": 289,
       "anchor": "fn is_precompile_call<CTX: ContextTr<Journal: JournalExt>>(",
       "sha256": "2133f1d3042a165430b3ad1096e37f52b90b5e7499a45f4c2173d6e1e7c8d050"
+    },
+    "bounds": {
+      "label": "Filter range defaults",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 370,
+      "anchor": "let start = from_block.unwrap_or(0);",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "many": {
+      "label": "Batched call block default",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 155,
+      "anchor": "let at = block_id.unwrap_or(BlockId::pending());",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
+    },
+    "tags": {
+      "label": "Filter block-selector type",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "03cb186c1d36eebbacc7bda08f36e25711d0804e",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "line": 365,
+      "anchor": "filter: TraceFilter,",
+      "sha256": "1f2b48db7a9b0c5b44ba1a3500bccc59507e18d68de96bde6fd840d4a5b94b77"
     }
   },
   "geth": {

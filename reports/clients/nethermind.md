@@ -6,8 +6,8 @@ Prioritize complete error responses, retained execution output, and empty trace 
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| Release | `1.39.3+28cbe2a0` | [2026-08-03](https://github.com/NethermindEth/nethermind/commit/28cbe2a0ae28373f66abdc584f3eaf21516e84b3) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
-| Development | `2.1.0-unstable+a404c4f0` | [2026-09-21](https://github.com/NethermindEth/nethermind/commit/a404c4f06a67aee52cc448216b8d37a77062f106) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json) |
+| Release | `1.39.3+28cbe2a0` | [2026-08-03](https://github.com/NethermindEth/nethermind/commit/28cbe2a0ae28373f66abdc584f3eaf21516e84b3) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-release-controlled-20260923/manifest.json) |
+| Development | `2.1.0-unstable+a404c4f0` | [2026-09-21](https://github.com/NethermindEth/nethermind/commit/a404c4f06a67aee52cc448216b8d37a77062f106) | [2026-09-22](../../evidence/2026-09-23/harness-audit-native-a/manifest.json)<br>[2026-09-23](../../evidence/2026-09-23/h30-code-review/h30-dev-controlled-20260923/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method.
 
@@ -29,15 +29,18 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md)<br>VM stack words use padded byte strings. | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Differs<br>[Auth replace](../cases/a/auth-replace.md) | Serialize stack words as minimal hex quantities, e.g. `0x2a` rather than a 32-byte padded string. Checked requirements: Stack words use minimal hex quantities at every depth.<br>[VM step serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs#L17) |
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md)<br>Rejected signed transactions can leave truncated JSON on the wire. | Differs<br>[Raw below basefee](../cases/a/raw-below-basefee.md) | Differs<br>[Raw below basefee](../cases/a/raw-below-basefee.md) | Finish validation before committing a streamed result, or ensure the error path returns one complete JSON-RPC response. Checked requirements: Return one complete JSON-RPC response; never wrap an error envelope as a successful result.<br>[Signed transaction replay](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L141) · [Replay serialization](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L24) |
 | [Account deletion across Cancun](../decisions/H26.md)<br>Pre-Cancun account deletion does not report the expected code/nonce deletion markers. | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Differs<br>[Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) | Report the removed code and nonce with deletion markers before Cancun; retain existing accounts under EIP-6780. Checked requirements: Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.<br>[Code and nonce state changes](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L356) |
+| [Omitted trace_filter range bounds](../decisions/H30.md)<br>Omitting fromBlock starts at head 48. A toBlock-only query errors with from 48 greater than to 2. | Differs<br>[Filter no bounds](../cases/h30/filter-no-bounds.md) | Differs<br>[Filter no bounds](../cases/h30/filter-no-bounds.md) | Use the earliest available start for an omitted fromBlock and preserve the requested end.<br>[Filter range defaults](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L280) |
 
-## Extension observations
+## Open policy observations
 
-These requests explicitly select behavior outside the portable baseline. Acceptance or rejection is not a conformance verdict.
+These results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.
 
-| Build | Extension | Observed | Example |
+| Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | Release | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 | Development | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| Release | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: 3 records from blocks [48]. call-number-pending: NUMBER 48. many-number-pending: NUMBER 48. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
+| Development | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: 3 records from blocks [48]. call-number-pending: NUMBER 48. many-number-pending: NUMBER 48. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -50,6 +53,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
+| [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
 

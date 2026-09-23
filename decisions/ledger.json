@@ -195,7 +195,11 @@
       "next_step": "Preserve the execution return bytes independently of which optional trace components are requested.",
       "rationale": "Empty bytes and an unavailable value are different, and selecting an auxiliary view should not change the primary call result.",
       "recommendation": "Keep a stable envelope: output is the execution return bytes (\"0x\" when empty); trace is [] when not requested; stateDiff and vmTrace are null when not requested. Requesting a different tracer must not change or erase the returned execution output.",
-      "title": "Empty output and unrequested components"
+      "title": "Empty output and unrequested components",
+      "background": [
+        "Parity's [trace-option mapping](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/impls/traces.rs#L36-L42) toggles transaction, VM and state tracers independently. Its [common response type](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/types/trace.rs#L625-L646) always carries execution `output` and a trace vector, while VM and state components are optional. The [OpenEthereum `trace_call` example](https://openethereum.github.io/JSONRPC-trace-module#trace_call) shows empty bytes as `0x` and unrequested components as `null`; Parity's [mocked RPC test](https://github.com/openethereum/parity-ethereum/blob/55c90d4016505317034e3e98f699af07f5404b63/rpc/src/v1/tests/mocked/traces.rs#L169-L177) confirms the stable envelope with an empty trace array.",
+        "The pinned [Erigon response type](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L81-L88) permits a nil trace slice, which serializes as `null` unless initialized. Nethermind's [replay writer](https://github.com/NethermindEth/nethermind/blob/a404c4f06a67aee52cc448216b8d37a77062f106/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs#L14-L58) writes `output` from the trace object independently of the selected details; the observed stateDiff-only loss therefore needs tracing/data-flow investigation, not a different response schema."
+      ]
     },
     {
       "cases": [

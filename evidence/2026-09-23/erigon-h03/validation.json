@@ -1,7 +1,7 @@
 {
   "pr": "https://github.com/erigontech/erigon/pull/24255",
-  "base": "12b6b3391b8038d0dc89fac593fcad8e5ea022f8",
-  "head": "64f1ab04f8d1fc0fd3d02549ce2e9b08b101c6aa",
+  "base": "a102803756a1b7ee32512a3ee10ae3ea062ba5f1",
+  "head": "4e536c1b15d94818b7ec5d0afcb50b899d4820e9",
   "baseline_failing_subtests": [
     "TestFilterAddressIntersection/default",
     "TestFilterAddressIntersection/self_activity_default",
@@ -30,9 +30,12 @@
       "passed": 225,
       "failed": 1,
       "failure": "RealMarkupTests.test_every_chrome_class_matches_a_real_token: theme-doc-footer absent",
-      "baseline_reproduced": true
+      "baseline_reproduced": true,
+      "baseline_base": "12b6b3391b8038d0dc89fac593fcad8e5ea022f8",
+      "baseline_docs_unchanged_after_rebase": true
     }
   },
   "ci": "awaiting maintainer approval",
-  "ci_gate": "https://github.com/erigontech/erigon/actions/runs/35851717201"
+  "baseline_reproduction_base": "12b6b3391b8038d0dc89fac593fcad8e5ea022f8",
+  "ci_gate": "https://github.com/erigontech/erigon/actions/runs/35853016926"
 }

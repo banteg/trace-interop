@@ -37,7 +37,7 @@ Both fixes are in
 
 ## Validation
 
-Both PRs target upstream `caab45ca` independently, without the earlier CALL-memory fix.
+The original validation targeted upstream `caab45ca` independently, without the earlier CALL-memory fix.
 For #11352, the INVALID, stack-underflow and repeated-call regressions all fail before
 its fix. The expanded child-halt tests also fail on missing bytecode before the
 bytecode follow-up; afterward, 812 trace HTTP tests and 400 debug-trace HTTP tests pass.
@@ -55,9 +55,9 @@ Avoid duplicating these upstream patches:
 
 | Client | Existing patch | Useful follow-through |
 | --- | --- | --- |
-| Besu | [#10953: block pre-execution before tracing](https://github.com/besu-eth/besu/pull/10953) | Run our fork-context and system-contract cases against the patch. |
+| Besu | [#10953: block pre-execution before tracing](https://github.com/besu-eth/besu/pull/10953) | Only `CHANGELOG.md` conflicts with `main@e2c207869c`; [author refresh requested](https://github.com/besu-eth/besu/pull/10953#issuecomment-5791971795). Then run fork-context and system-contract cases. |
 | Nethermind | [#13551: pair instruction completions with starts](https://github.com/NethermindEth/nethermind/pull/13551) | Retest VM traces around CALL/CREATE failure and resumption. |
-| Nethermind | [#13622: terminal output for top-level action traces](https://github.com/NethermindEth/nethermind/pull/13622) | Retest direct and nested precompile output, returns and reverts. |
-| Reth / revm-inspectors | [#511: executed bytecode](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Retest constructor and delegated-code cases after dependency uptake. |
+| Nethermind | [#13622: terminal output for top-level action traces](https://github.com/NethermindEth/nethermind/pull/13622) | [Author follow-up](https://github.com/NethermindEth/nethermind/pull/13622#issuecomment-5791972160): investigate the no-intrinsics `walletReorganizeOwners_Paris` failure, clarify stale child return data and add CALL-then-STOP coverage. Then retest output cases. |
+| Reth / revm-inspectors | [#511: executed bytecode](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Merged 2026-09-22; Reth still locks 0.43.0. Retest constructor and delegated-code cases after dependency uptake. |
 
 These checks could supply useful review evidence without another competing implementation.

@@ -381,7 +381,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         for topic, title, behavior in [
             ('H02', 'How does trace_get select a frame?', 'Follow one tree path; return one object or null. An empty path selects the root.'),
             ('H03', 'How do address filters combine?', 'OR within each list, AND between sender and recipient lists.'),
-            ('H30', 'Where does an unbounded filter start?', 'Search from the genesis (earliest) block through latest.'),
+            ('H30', 'Where does an unbounded filter start?', 'Default both omitted bounds to latest; historical searches specify fromBlock.'),
             ('H31', 'What block does trace_callMany use by default?', 'Accept an omitted block and use latest, matching trace_call.'),
             ('H32', 'Which tags and pending state can trace methods use?', 'Resolve mined-block tags; agree pending state and localization per method.'),
             ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
@@ -389,7 +389,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             ('H13', 'Signed transaction execution validity', 'Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; propose -32003 for validation rejection.'),
         ]])
     text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
-    text += f'[All {len(decisions)} decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
+    text += '[All decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
     text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
 

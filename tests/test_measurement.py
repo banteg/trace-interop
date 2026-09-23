@@ -277,7 +277,9 @@ class PublishedAssessmentTests(unittest.TestCase):
             for client in ['besu','erigon','nethermind','reth']:
                 build=f'{client}_{channel}'
                 self.assertEqual(verdict(build,'filter-no-bounds','H30'),
-                                 ['change_needed' if client in ['besu','nethermind'] else 'matches'])
+                                 ['matches' if client in ['besu','nethermind'] else 'change_needed'])
+                self.assertEqual(verdict(build,'filter-to-2-implicit-from','H30'),
+                                 ['matches' if client in ['besu','nethermind'] else 'change_needed'])
                 self.assertEqual(verdict(build,'many-number-default','H31'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
                 self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])
@@ -287,9 +289,10 @@ class PublishedAssessmentTests(unittest.TestCase):
                 self.assertIn('observation',verdict(build,'call-number-pending','H32'))
                 self.assertIn('observation',verdict(build,'many-number-pending','H32'))
 
-        for case,topic in [('filter-no-bounds','H30'), ('filter-to-2-implicit-from','H30'),
-                           ('many-number-default','H31'), ('many-number-latest','H31'),
+        for case,topic in [('many-number-default','H31'), ('many-number-latest','H31'),
                            ('filter-earliest','H32'), ('filter-safe','H32')]:
             self.assertEqual(verdict('go-ethereum_trace',case,topic),['matches'])
+        for case in ['filter-no-bounds','filter-to-2-implicit-from']:
+            self.assertEqual(verdict('go-ethereum_trace',case,'H30'),['change_needed'])
         for case in ['filter-pending','call-number-pending','many-number-pending']:
             self.assertIn('observation',verdict('go-ethereum_trace',case,'H32'))

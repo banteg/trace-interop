@@ -112,7 +112,7 @@ separate upstream bases. They have not yet been built into a fresh cross-client 
 The reports and frozen captures continue to describe their pinned builds, not the proposed patches.
 
 Tree-path lookup, filter composition, signed transaction execution validation and precompile inclusion remain
-[contract decisions](../decisions/README.md). The tree-path and filter-default proposals above are now being implemented by Reth/Alloy;
+[contract decisions](../decisions/README.md). The tree-path and address-filter default proposals above are now being implemented by Reth/Alloy;
 client patches do not settle the cross-client decision or compatibility plan.
 
 ## Keeping this current

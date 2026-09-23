@@ -50,9 +50,11 @@ each client would include.
 ## Decisions recorded
 
 1. **[H30](../../../reports/decisions/H30.md): `trace_filter` omitted bounds.** Decide whether an omitted
-   `fromBlock` means earliest available or latest. The current draft describes
-   earliest-to-latest, but the observed clients split 2–2. The behavior on a
-   pruned node, where block zero is unavailable, still needs a separate check.
+   `fromBlock` means earliest available or latest. At capture time, the draft
+   described earliest-to-latest and the observed clients split 2–2. H30 now
+   proposes latest/latest after reviewing the originating Parity behavior and
+   `eth_getLogs`. Explicit historical queries on a pruned node still need a
+   separate check.
 2. **[H31](../../../reports/decisions/H31.md): `trace_callMany` block default and optionality.** Decide whether the
    block argument is optional and, if omitted, whether calls use latest or
    pending. The draft profile says trace calls default to latest. Besu requires

@@ -18,10 +18,10 @@ RPC observations across eleven corpora: `initial`, `a`, `repeat`, `forks`,
 `callmany-isolation`, `raw-validation` and `h30`. These include 304 `trace_*`
 requests and 135 setup, state-isolation and comparison queries.
 
-All 875 evaluated semantic assertions match, and all 220 schema-checked results
-are valid. Another 87 declared-topic checks remain unassessed; matching evaluated
-assertions does not imply complete topic coverage. The raw-transaction third
-argument and three pending-tag requests are recorded as policy observations.
+The current checks record 861 semantic matches and two H30 differences; all 220
+schema-checked results are valid. Another 81 declared-topic checks remain
+unassessed, so matching checks do not imply complete topic coverage. The
+raw-transaction third argument and three pending-tag requests are policy observations.
 The 84 trace RPC errors include deliberate malformed or invalid requests, rather
 than indicating 84 conformance failures.
 
@@ -56,8 +56,10 @@ closes the previously measured H06, H13 and H14 differences:
 - Unknown call fields are ignored. Standard chain ID, blob context and authorization
   fields are supported, with known-field and transaction-type validation.
 - `earliest` selects genesis in the trace namespace, including when the backend's
-  retention boundary is later. The H30–H32 captures confirm the tested filter bounds,
-  latest defaults and safe tag. Pending remains explicitly unsupported.
+  retention boundary is later. The H30 capture shows that omitted filter bounds
+  also start at genesis; this differs from the revised latest/latest proposal.
+  H31 and H32 cover call defaults and the safe tag. Pending remains explicitly
+  unsupported.
 
 Real-EVM RPC tests cover unsigned blob and authorization execution, beyond the
 current frozen corpora. Lookup-pruning classification is tested with an injected

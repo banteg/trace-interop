@@ -1,16 +1,16 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/9317297a1fcdf1055baac989d1747e340291c61a) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/b979aefe57e4f63af0397b5a068237c04a9d6e3b) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 ## Start with your client
 
 | Client | Main review areas |
 | --- | --- |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
-| [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. |
-| [Geth draft fork](clients/geth.md) | The experimental fork matches all evaluated semantic assertions in the current captures, including signed-transaction rejection codes, unknown-block errors, call-field handling and filter bounds. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage. |
+| [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
+| [Geth draft fork](clients/geth.md) | The experimental fork matches most evaluated semantic assertions, including signed-transaction rejection codes, unknown-block errors and call-field handling. Its omitted trace_filter bounds still follow the earlier historical-search draft and differ from the proposed latest/latest default. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage. |
 | [Nethermind](clients/nethermind.md) | Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement. |
-| [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment. |
+| [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
 
 ## Decisions to review
 
@@ -20,7 +20,7 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | --- | --- | --- |
 | [How does trace_get select a frame?](decisions/H02.md) | ⚪ Under review | Follow one tree path; return one object or null. An empty path selects the root. |
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
-| [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Search from the genesis (earliest) block through latest. |
+| [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Default both omitted bounds to latest; historical searches specify fromBlock. |
 | [What block does trace_callMany use by default?](decisions/H31.md) | ⚪ Under review | Accept an omitted block and use latest, matching trace_call. |
 | [Which tags and pending state can trace methods use?](decisions/H32.md) | ⚪ Under review | Resolve mined-block tags; agree pending state and localization per method. |
 | [What survives a failed call?](decisions/H09.md) | ⚪ Under review | Keep the error on that frame and preserve revert bytes and measured gas when available. |
@@ -29,6 +29,6 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 
 [Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.
 
-[All 32 decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
+[All decisions](../decisions/README.md) · [Method availability](decisions/H01.md)
 
 [Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)

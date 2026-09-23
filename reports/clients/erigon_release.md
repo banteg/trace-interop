@@ -1,6 +1,6 @@
 # Erigon: changes to review
 
-The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal.
+The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
@@ -25,6 +25,7 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [Fee accounting and sequential state diffs](../decisions/H16.md)<br>The linked case differs from the proposed behavior. | ⚠️ Differs<br>[Call many](../cases/initial/call-many.md) | Return one execution envelope per input call, in order.<br>[Call simulation](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056) · [State differences](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L741) |
 | [vmTrace step timing and deltas](../decisions/H20.md)<br>The `MCOPY` step omits its memory write. | ⚠️ Differs<br>[Call mcopy](../cases/a/call-mcopy.md) | Record the same-step memory delta, including the copied word at offset 32. Checked requirements: MCOPY reports its same-step write of word 42 at offset 32.<br>[VM execution deltas](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L545) |
 | [Historical state at system-operation boundaries](../decisions/H28.md)<br>A historical beacon-root lookup includes a following block’s system update. | ⚠️ Differs<br>[Beacon call 55](../cases/fork-followup/beacon-call-55.md) | Read the selected block’s post-state, before applying the next block’s system operations. Checked requirements: Historical beacon-root storage excludes the following block system update. Historical trace_call uses only system changes through the selected block.<br>[Call simulation](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_adhoc.go#L1056) |
+| [Omitted trace_filter range bounds](../decisions/H30.md)<br>Omitting both bounds starts at block 1 rather than head 48. Supplying only toBlock 2 searches the early range. | ⚠️ Differs<br>[Filter no bounds](../cases/h30/filter-no-bounds.md) | Default an omitted fromBlock to latest. Limit an entirely unbounded request to the current head; return a range error when an explicit end precedes that implicit start.<br>[Filter range defaults](https://github.com/erigontech/erigon/blob/c25b8e47dc1a77ecdbd15d38ba3beae1d29530ec/rpc/jsonrpc/trace_filtering.go#L335) |
 
 ## Open policy observations
 
@@ -47,7 +48,6 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
-| [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>

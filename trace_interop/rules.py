@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 
-from .oracles import anchored_reference, REVERT_OUTPUT, REVERT_GAS
+from .oracles import anchor, REVERT_OUTPUT, REVERT_GAS
 from .vm_model import encoding_valid
 
 
@@ -67,8 +67,11 @@ def evaluate(case, observation, peers, invalid_params=None):
         obs = mapping(peers.get(n))
         return mapping(obs.get('response')).get('result') if obs.get('status') == 'result' else None
 
+    mismatched = []
     def reference(n):
-        return anchored_reference(context, peers, n)
+        frames, mismatch = anchor(context, peers, n)
+        if mismatch: mismatched.append(f'{n}: {mismatch}')
+        return frames
 
     if invalid_params:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
@@ -473,4 +476,9 @@ def evaluate(case, observation, peers, invalid_params=None):
         if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
     if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
         check('H06', status=='rpc_error' and mapping(response.get('error')).get('code')==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
+    # A reference that contradicts its anchored fixture actions is a client
+    # difference, not an unestablished inventory.
+    for c in checks:
+        if c['status'] == 'unassessed' and mismatched:
+            c.update(status='change_needed', detail='Reference frames contradict the fixture: '+'; '.join(mismatched))
     return checks

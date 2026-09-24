@@ -5,7 +5,7 @@ properties and blocked checks are retained, without turning them into passes.
 """
 import re
 
-from .oracles import anchored_reference
+from .oracles import anchor
 from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, UnsupportedProgram, NAMES
 from .chain_model import decode_transaction
 import rlp
@@ -137,17 +137,21 @@ def supplement(case, observation, peers, checks, expected):
     if method == 'trace_filter' and params and isinstance(params[0], dict) and status == 'result':
         filt = params[0]
         if 'H04' in declared and not covered('H04'):
-            baseline = anchored_reference(context, peers, 'block-tree')
-            if baseline is not None:
-                add('H04', result == baseline, 'Omitted address lists impose no address restriction.')
+            baseline, mismatch = anchor(context, peers, 'block-tree')
+            if baseline is not None or mismatch:
+                add('H04', result == baseline, 'Omitted address lists impose no address restriction.',
+                    'Reference frames contradict the fixture: '+mismatch if mismatch else '')
         if 'after' in filt or 'count' in filt or name in ['filter-transfer', 'withdrawal-filter-51', 'withdrawal-filter-52', 'withdrawal-filter-53']:
-            baseline = None
+            baseline, mismatch = None, None
             for c in context.get('cases', []):
                 req = c['request']
                 if req['method'] == 'trace_block' and req['params'][0] == filt.get('fromBlock') == filt.get('toBlock'):
-                    baseline = anchored_reference(context, peers, c['name'])
+                    baseline, mismatch = anchor(context, peers, c['name'])
                     break
-            if baseline is not None:
+            if mismatch:
+                add('H03', False, 'Filter the anchored canonical inventory before applying after/count.',
+                    'Reference frames contradict the fixture: '+mismatch)
+            elif baseline is not None:
                 senders=[s.lower() for s in filt.get('fromAddress') or [] if isinstance(s,str)]
                 recipients=[s.lower() for s in filt.get('toAddress') or [] if isinstance(s,str)]
                 def selected(frame):

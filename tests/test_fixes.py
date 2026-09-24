@@ -1,5 +1,8 @@
 """Submitted fixes mark measured differences in the reports; they never replace the captured checks."""
 from datetime import date, datetime
+import importlib.util
+import io
+import contextlib
 import json
 from pathlib import Path
 import tempfile
@@ -39,12 +42,14 @@ class FixCatalogTests(unittest.TestCase):
                 self.assertEqual(pr['merged_at'] is not None, pr['state'] == 'merged')
                 if pr['merged_at']:
                     datetime.fromisoformat(pr['merged_at'].replace('Z', '+00:00'))
+                self.assertLessEqual(set(pr.get('partial', [])), set(pr['decisions']))
+                self.assertIn(pr.get('awaiting_uptake', False), [True, False])
         check_fixes(fixes, DECISIONS, FAMILIES)
 
     def test_invalid_entries_are_rejected(self):
         for change in [{'client': 'parity'}, {'decisions': ['H99']}, {'state': 'draft'}, {'state': 'merged'},
                        {'merged_at': '2026-09-23T00:00:00Z'}, {'url': 'https://github.com/unknown/repo/pull/1'},
-                       {'url': 'https://example.org/pull/1'}]:
+                       {'url': 'https://example.org/pull/1'}, {'partial': ['H09']}, {'awaiting_uptake': 'yes'}]:
             with self.subTest(change=change), self.assertRaises(ValueError):
                 catalog(change)
         with self.assertRaises(ValueError):
@@ -76,12 +81,28 @@ class FixSubmittedTests(unittest.TestCase):
         self.assertEqual(self.verdict(DIFFERS, fixes, topic='H09'), '⚠️ Differs')
         self.assertEqual(self.verdict(DIFFERS, catalog({'state': 'closed'})), '⚠️ Differs')
         self.assertEqual(self.verdict(DIFFERS, catalog({'client': None})), '⚠️ Differs')
-        self.assertEqual(pending_fixes(fixes, 'besu_development', 'H10', BUILT), fixes['prs'])
+        self.assertEqual(pending_fixes(fixes, 'besu_development', 'H10', BUILT), [(fixes['prs'][0], False)])
+
+    def test_partial_fixes_are_linked_without_hiding_the_difference(self):
+        partial = {'decisions': ['H09', 'H10'], 'partial': ['H10']}
+        link = '[Besu #1](https://github.com/besu-eth/besu/pull/1) (partial fix)'
+        self.assertEqual(self.verdict(DIFFERS, catalog(partial)), f'⚠️ Differs · {link}')
+        self.assertEqual(self.verdict([{'status': 'matches'}, {'status': 'unassessed'}], catalog(partial)), f'🟡 Partially assessed · {link}')
+        self.assertTrue(self.verdict(DIFFERS, catalog(partial), topic='H09').startswith('🛠️ Fix submitted'))
+        self.assertEqual(self.verdict(DIFFERS, catalog(partial, {})),
+                         f'🛠️ Fix submitted: {link} · [Besu #2](https://github.com/besu-eth/besu/pull/2)')
+
+    def test_merged_library_fix_awaiting_uptake_counts_as_submitted(self):
+        merged = {'state': 'merged', 'merged_at': '2026-09-20T00:00:00Z'}
+        self.assertEqual(self.verdict(DIFFERS, catalog(merged)), '⚠️ Differs')
+        self.assertTrue(self.verdict(DIFFERS, catalog(merged | {'awaiting_uptake': True})).startswith('🛠️'))
+        self.assertTrue(self.verdict(DIFFERS, catalog(merged | {'awaiting_uptake': True}), built=None).startswith('🛠️'))
+        self.assertEqual(self.verdict(DIFFERS, catalog({'state': 'closed', 'awaiting_uptake': True})), '⚠️ Differs')
 
 
 class FixesPageTests(unittest.TestCase):
     def test_page_groups_prs_by_state_with_decision_tags(self):
-        fixes = catalog({'state': 'merged', 'merged_at': '2026-09-23T01:00:00Z', 'title': 'Serialize markers', 'decisions': ['H17', 'H26']},
+        fixes = catalog({'state': 'merged', 'merged_at': '2026-09-23T01:00:00Z', 'title': 'Serialize markers', 'decisions': ['H17', 'H26'], 'partial': ['H26']},
                         {'draft': True, 'note': 'verified locally'},
                         {'url': 'https://github.com/ethereum/execution-apis/pull/895', 'client': None, 'decisions': [], 'title': 'feat(trace): add schemas'})
         text = fixes_page(fixes, ROOT, ROOT/'docs')
@@ -89,7 +110,7 @@ class FixesPageTests(unittest.TestCase):
         self.assertNotIn('## Closed', text)
         self.assertIn('| [Besu #2](https://github.com/besu-eth/besu/pull/2) (draft) | Report code; verified locally | [H10](../reports/decisions/H10.md) |', text)
         self.assertIn('| [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) | Add schemas | — |', text)
-        self.assertIn('| [Besu #1](https://github.com/besu-eth/besu/pull/1) | Serialize markers | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | 2026-09-23 |', text)
+        self.assertIn('| [Besu #1](https://github.com/besu-eth/besu/pull/1) | Serialize markers | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) (partial) | 2026-09-23 |', text)
         self.assertLess(text.index('Besu #2'), text.index('execution-apis #895'))
 
     def test_published_page_is_generated_from_the_catalog(self):
@@ -100,6 +121,23 @@ class FixesPageTests(unittest.TestCase):
         self.assertEqual((ROOT/'docs/client-fixes.md').read_text(), expected)
         for pr in fixes['prs']:
             self.assertEqual(expected.count(f']({pr["url"]})'), 1, pr['url'])
+
+
+class RefreshFixesTests(unittest.TestCase):
+    def test_refresh_updates_github_fields_and_keeps_editorial_ones(self):
+        spec = importlib.util.spec_from_file_location('refresh_fixes', ROOT/'scripts/refresh_fixes.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        pr = dict(url='https://github.com/paradigmxyz/revm-inspectors/pull/1', title='old', client='reth', decisions=['H20'],
+                  partial=['H20'], state='open', draft=True, merged_at=None, awaiting_uptake=True, note='kept')
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/'fixes.json'
+            path.write_text(json.dumps({'checked_at': '2026-01-01', 'repositories': {}, 'prs': [pr]}))
+            view = lambda url: {'title': 'new', 'state': 'MERGED', 'isDraft': False, 'mergedAt': '2026-09-24T00:00:00Z'}
+            with contextlib.redirect_stdout(io.StringIO()):
+                module.refresh(path, view)
+            refreshed = json.loads(path.read_text())
+        self.assertEqual(refreshed['prs'][0], pr | dict(title='new', state='merged', draft=False, merged_at='2026-09-24T00:00:00Z'))
+        self.assertNotEqual(refreshed['checked_at'], '2026-01-01')
 
 
 if __name__ == '__main__':

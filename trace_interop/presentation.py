@@ -85,10 +85,8 @@ def verdict(checks):
 
 
 def display_verdict(checks, fixes=()):
-    """A submitted fix replaces a difference or partial assessment, and is linked; checks are unchanged."""
+    """Link submitted (pr, partial) fixes to a difference or partial assessment; only a complete fix replaces it."""
     label = verdict(checks)
-    if fixes and label in ('Differs', 'Partially assessed'):
-        return '🛠️ Fix submitted: ' + ' · '.join(f'[{pr["label"]}]({pr["url"]})' for pr in fixes)
     icon = {
         'Checked cases agree': '✅',
         'Differs': '⚠️',
@@ -99,7 +97,10 @@ def display_verdict(checks, fixes=()):
         'Blocked': '🚧',
         'Control / not applicable': '🔎',
     }[label]
-    return f'{icon} {label}'
+    if not fixes or label not in ('Differs', 'Partially assessed'):
+        return f'{icon} {label}'
+    links = ' · '.join(f'[{pr["label"]}]({pr["url"]})' + (' (partial fix)' if partial else '') for pr, partial in fixes)
+    return f'{icon} {label} · {links}' if all(partial for _, partial in fixes) else f'🛠️ Fix submitted: {links}'
 
 
 def timestamp(value):
@@ -114,8 +115,9 @@ def check_fixes(fixes, decisions, families):
     for pr in fixes['prs']:
         match = re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)', pr['url'])
         if (not match or match[1] not in fixes['repositories'] or pr['client'] not in {*families, None}
-                or not set(pr['decisions']) <= set(decisions) or pr['state'] not in ('open', 'merged', 'closed')
-                or (pr['state'] == 'merged') != bool(pr['merged_at'])):
+                or not set(pr['decisions']) <= set(decisions) or not set(pr.get('partial', [])) <= set(pr['decisions'])
+                or pr['state'] not in ('open', 'merged', 'closed') or (pr['state'] == 'merged') != bool(pr['merged_at'])
+                or not isinstance(pr.get('awaiting_uptake', False), bool)):
             raise ValueError(f'invalid fix PR: {pr["url"]}')
         pr['label'] = f'{fixes["repositories"][match[1]]} #{match[2]}'
         pr['order'] = (fixes['repositories'][match[1]].lower(), int(match[2]))
@@ -123,10 +125,11 @@ def check_fixes(fixes, decisions, families):
 
 
 def pending_fixes(fixes, client, topic, built):
-    """PRs for this build and decision that are open, or merged after the build's commit."""
-    return sorted((pr for pr in fixes['prs'] if pr['client'] == family(client) and topic in pr['decisions']
-                   and (pr['state'] == 'open' or pr['state'] == 'merged' and built is not None and timestamp(pr['merged_at']) > built)),
-                  key=lambda pr: pr['order'])
+    """(pr, partial) for this build and decision: open, merged after the build's commit, or merged but awaiting uptake."""
+    return [(pr, topic in pr.get('partial', [])) for pr in sorted(fixes['prs'], key=lambda pr: pr['order'])
+            if pr['client'] == family(client) and topic in pr['decisions']
+            and (pr['state'] == 'open' or pr['state'] == 'merged' and (pr.get('awaiting_uptake')
+                 or built is not None and timestamp(pr['merged_at']) > built))]
 
 
 def fix_change(pr):
@@ -139,13 +142,15 @@ def fixes_page(fixes, root, parent):
     text = ('# Related pull requests\n\n'
             f'Related client, specification and test-suite PRs. Status checked **{fixes["checked_at"]}**.\n\n'
             'Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a PR tagged with its client and decision '
-            'is open, or was merged after the build’s commit. Generated from [fixes.json](../decisions/fixes.json); '
+            'is open, was merged after the build’s commit, or awaits uptake of the merged library change. A PR marked partial is linked '
+            'but leaves ⚠️ or 🟡 in place, since part of the measured difference has no submitted fix. Generated from [fixes.json](../decisions/fixes.json); '
             'refresh PR states with `uv run python scripts/refresh_fixes.py`.\n\n')
     for state in ['open', 'merged', 'closed']:
         prs = sorted((pr for pr in fixes['prs'] if pr['state'] == state), key=lambda pr: pr['order'])
         merged = ['Merged (UTC)'] if state == 'merged' else []
         rows = [[f'[{pr["label"]}]({pr["url"]})' + (' (draft)' if pr['draft'] else ''), fix_change(pr),
-                 ', '.join(f'[{t}]({relative(root/"reports/decisions"/(t + ".md"), parent)})' for t in pr['decisions']) or '—',
+                 ', '.join(f'[{t}]({relative(root/"reports/decisions"/(t + ".md"), parent)})' + (' (partial)' if t in pr.get('partial', []) else '')
+                           for t in pr['decisions']) or '—',
                  *([utc_date(pr['merged_at'])] if merged else [])] for pr in prs]
         if rows:
             text += f'## {state.capitalize()}\n\n' + table(['PR', 'Change', 'Decisions', *merged], rows)
@@ -412,7 +417,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                     if gaps:
                         fix = build_verdict(c, t)
                         gap_rows.append([f'[{decisions[t]["title"]}](../decisions/{t}.md)', label(c),
-                                         coverage_summary(checks) + (f'<br>{fix}' if fix.startswith('🛠️') else ''),
+                                         coverage_summary(checks) + (f'<br>{fix}' if fix != display_verdict(checks) else ''),
                                          examples(output, path.parent, gaps)])
             text += table(['Decision', 'Build', 'Reason', 'Example'], gap_rows)
         if matched:
@@ -530,8 +535,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += ('## Test status key\n\n'
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
              '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
-             '- 🛠️ **Fix submitted:** the build differs or is partially assessed, and a linked PR for its client and decision is open or was merged after the build’s commit. '
-             'The captured checks are unchanged; retesting a build that contains the fix replaces this marker. [Related PRs](../docs/client-fixes.md).\n'
+             '- 🛠️ **Fix submitted:** the build differs or is partially assessed, and linked PRs for its client and decision cover the measured difference. '
+             'Each is open, merged after the build’s commit, or merged in a library the build has not yet taken up. The captured checks are unchanged; '
+             'retesting a build that contains the fix replaces this marker. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. '
+             '[Related PRs](../docs/client-fixes.md).\n'
              '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
              '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
              '- ⚪ **Not assessed:** no evaluated assertion establishes an outcome.\n'
@@ -586,8 +593,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'
         text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · '
                  '🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. '
-                 '🛠️ replaces ⚠️ or 🟡 while a [related PR](../docs/client-fixes.md) for that client and decision is open, '
-                 'or was merged after the build’s commit; the captured checks are unchanged. '
+                 '🛠️ replaces ⚠️ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference '
+                 'and are not yet in the build; partial fixes leave ⚠️ or 🟡 in place. The captured checks are unchanged. '
                  '[Outcome details](../reports/technical.md#test-status-key).\n\n')
         text += '### Policy status\n\n' + LEGEND + '\n'
         text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.\n'

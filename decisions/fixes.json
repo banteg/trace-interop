@@ -21,9 +21,13 @@
       "decisions": [
         "H06"
       ],
+      "partial": [
+        "H06"
+      ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/10953",
@@ -42,6 +46,9 @@
       "title": "fix(rpc): include MCOPY memory updates in vmTrace",
       "client": "besu",
       "decisions": [
+        "H20"
+      ],
+      "partial": [
         "H20"
       ],
       "state": "open",
@@ -77,6 +84,9 @@
       "decisions": [
         "H09"
       ],
+      "partial": [
+        "H09"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -86,6 +96,9 @@
       "title": "fix(tracing): avoid attributing parent return memory to calls",
       "client": "besu",
       "decisions": [
+        "H20"
+      ],
+      "partial": [
         "H20"
       ],
       "state": "open",
@@ -99,6 +112,9 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -108,6 +124,9 @@
       "title": "fix(tracing): omit root out-of-gas execution effects",
       "client": "besu",
       "decisions": [
+        "H20"
+      ],
+      "partial": [
         "H20"
       ],
       "state": "open",
@@ -132,6 +151,9 @@
       "decisions": [
         "H10"
       ],
+      "partial": [
+        "H10"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -141,6 +163,9 @@
       "title": "fix(tracing): start each trace_callMany call at a transaction boundary",
       "client": "besu",
       "decisions": [
+        "H16"
+      ],
+      "partial": [
         "H16"
       ],
       "state": "open",
@@ -172,6 +197,9 @@
       "title": "fix(rpc/jsonrpc): no vmTrace sub for SELFDESTRUCT or for calls that fail their precheck",
       "client": "erigon",
       "decisions": [
+        "H20"
+      ],
+      "partial": [
         "H20"
       ],
       "state": "open",
@@ -223,6 +251,9 @@
         "H15",
         "H25"
       ],
+      "partial": [
+        "H15"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -232,6 +263,9 @@
       "title": "fix(tracing): report vmTrace store without stateDiff",
       "client": "nethermind",
       "decisions": [
+        "H20"
+      ],
+      "partial": [
         "H20"
       ],
       "state": "open",
@@ -256,6 +290,9 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -267,6 +304,9 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -276,6 +316,9 @@
       "title": "fix(rpc): return no traces for the genesis block in trace_block",
       "client": "nethermind",
       "decisions": [
+        "H05"
+      ],
+      "partial": [
         "H05"
       ],
       "state": "open",
@@ -309,6 +352,9 @@
       "decisions": [
         "H06"
       ],
+      "partial": [
+        "H06"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -331,9 +377,13 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/erigontech/silkworm/pull/2885",
@@ -354,6 +404,9 @@
         "H08",
         "H11"
       ],
+      "partial": [
+        "H08"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-24T10:51:12Z"
@@ -365,6 +418,9 @@
       "decisions": [
         "H06"
       ],
+      "partial": [
+        "H06"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-24T12:08:15Z"
@@ -374,6 +430,9 @@
       "title": "fix(rpc): reject trace filters with unavailable history",
       "client": "nethermind",
       "decisions": [
+        "H06"
+      ],
+      "partial": [
         "H06"
       ],
       "state": "merged",
@@ -420,6 +479,9 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-14T02:40:05Z"
@@ -455,6 +517,9 @@
       "decisions": [
         "H06"
       ],
+      "partial": [
+        "H06"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-22T14:37:11Z"
@@ -488,6 +553,9 @@
       "decisions": [
         "H06"
       ],
+      "partial": [
+        "H06"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-22T14:07:17Z"
@@ -499,9 +567,13 @@
       "decisions": [
         "H20"
       ],
+      "partial": [
+        "H20"
+      ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-14T13:58:57Z"
+      "merged_at": "2026-09-14T13:58:57Z",
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509",
@@ -512,7 +584,8 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-15T23:34:29Z"
+      "merged_at": "2026-09-15T23:34:29Z",
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510",
@@ -523,7 +596,8 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-15T23:44:41Z"
+      "merged_at": "2026-09-15T23:44:41Z",
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",
@@ -534,7 +608,8 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-22T14:12:33Z"
+      "merged_at": "2026-09-22T14:12:33Z",
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/526",
@@ -545,7 +620,8 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-24T14:31:09Z"
+      "merged_at": "2026-09-24T14:31:09Z",
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/erigontech/rpc-tests/pull/604",

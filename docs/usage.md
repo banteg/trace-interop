@@ -128,10 +128,14 @@ assertion updates and regenerated reports together.
 
 [`decisions/fixes.json`](../decisions/fixes.json) lists related PRs with their client family
 (`null` for specification and test-suite repositories) and the decisions they address.
+List a decision under `partial` as well when the PR leaves part of that client’s measured
+difference unaddressed, and set `awaiting_uptake` when the fix reaches the client through a
+library it pins at an older release; remove it once a captured build contains the fix.
 Report generation renders [client fixes](client-fixes.md) from it and shows 🛠️ Fix submitted
-for a differing or partially assessed build when a tagged PR is open, or was merged after the
-build’s commit. Captured checks and harmonization milestones are unchanged. Refresh PR titles
-and states from GitHub, then regenerate:
+for a differing or partially assessed build when a non-partial tagged PR is open, merged after
+the build’s commit, or awaiting uptake; partial PRs are linked without replacing ⚠️ or 🟡.
+Captured checks and harmonization milestones are unchanged. Refresh PR titles and states from
+GitHub, then regenerate:
 
 ```sh
 uv run python scripts/refresh_fixes.py

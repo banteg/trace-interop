@@ -1,7 +1,8 @@
 """Bounded, independent straight-line Prague EVM model for trace discriminators.
 
 No client response is an input. Unsupported programs fail closed. This is not a
-general EVM: calls, jumps, storage and exceptional halts need separate fixtures.
+general EVM: calls and exceptional halts need separate fixtures. Storage is limited to
+slots whose transaction-start values the fixture anchors in STORAGE.
 """
 import re
 
@@ -36,7 +37,11 @@ def execute(code, gas, calldata='0x', environment=None):
     data = bytes.fromhex(calldata.removeprefix('0x'))
     env = dict(environment or {})
     stack, memory, steps = [], bytearray(), []
-    pc, output, reverted = 0, '0x', False
+    pc, output, reverted, refund = 0, '0x', False, 0
+    # STORAGE holds each anchored slot's original (transaction-start) value; writes
+    # change only the current values.
+    original = env.get('STORAGE', {})
+    current = dict(original)
     jumpdests=set()
     cursor=0
     while cursor<len(raw):
@@ -60,7 +65,7 @@ def execute(code, gas, calldata='0x', environment=None):
                 raise UnsupportedProgram('model step bound exceeded')
             at, op = pc, raw[pc]
             pc += 1
-            cost, push, mem = 0, [], None
+            cost, push, mem, store = 0, [], None, None
             if 0x60 <= op <= 0x7f:
                 size = op-0x5f
                 value = int.from_bytes(raw[pc:pc+size].ljust(size, b'\0'), 'big')
@@ -99,13 +104,38 @@ def execute(code, gas, calldata='0x', environment=None):
                 cost=1
             elif op==0x54:
                 slot=stack.pop()
-                storage=env.get('STORAGE',{})
-                if slot not in storage:
+                if slot not in current:
                     raise UnsupportedProgram('unanchored storage read')
                 warm=env.setdefault('_warm_slots',set())
                 cost=100 if slot in warm else 2100
                 warm.add(slot)
-                stack.append(storage[slot]);push=[storage[slot]]
+                stack.append(current[slot]);push=[current[slot]]
+            elif op==0x55:
+                # EIP-2200 with EIP-2929 access costs and EIP-3529 refunds.
+                slot,value=stack.pop(),stack.pop()
+                if slot not in current:
+                    raise UnsupportedProgram('unanchored storage write')
+                if gas<=2300:
+                    raise UnsupportedProgram('SSTORE sentry requires an OOG model')
+                warm=env.setdefault('_warm_slots',set())
+                cost=0 if slot in warm else 2100
+                warm.add(slot)
+                before,now=original[slot],current[slot]
+                if now==value:
+                    cost+=100
+                elif before==now:
+                    cost+=20000 if before==0 else 2900
+                    refund+=4800 if before and not value else 0
+                else:
+                    cost+=100
+                    if before and not now:
+                        refund-=4800
+                    elif before and not value:
+                        refund+=4800
+                    if before==value:
+                        refund+=19900 if before==0 else 2800
+                current[slot]=value
+                store={'key':hex(slot),'val':hex(value)}
             elif op == 0x50:
                 stack.pop()
                 cost = 2
@@ -159,12 +189,13 @@ def execute(code, gas, calldata='0x', environment=None):
                 raise UnsupportedProgram('exceptional halt requires an OOG model')
             gas -= cost
             steps.append({'pc': at, 'cost': cost, 'op': NAMES[op], 'sub': None,
-                          'ex': {'used': gas, 'push': [hex(v) for v in push], 'mem': mem, 'store': None}})
+                          'ex': {'used': gas, 'push': [hex(v) for v in push], 'mem': mem, 'store': store}})
             if op in [0, 0xf3, 0xfd]:
                 break
     except (IndexError, OverflowError) as exc:
         raise UnsupportedProgram('invalid model program') from exc
-    return {'code': code, 'ops': steps}, output, reverted
+    # refund is the EIP-3529 counter before the one-fifth cap; a REVERT discards it.
+    return {'code': code, 'ops': steps, 'refund': 0 if reverted else refund}, output, reverted
 
 
 def differences(actual, expected):

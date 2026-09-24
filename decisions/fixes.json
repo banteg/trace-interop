@@ -647,6 +647,26 @@
       "state": "closed",
       "draft": false,
       "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24292",
+      "title": "fix(execution/execmodule): apply safe and finalized from a same-head fork choice",
+      "client": "erigon",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "unblocks the reorg scenario: import-time finality made the sibling-branch forkchoice return -38002 (fixes #24028)"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27429",
+      "title": "fix(engine): don't treat stale persisted fcu head as canonical",
+      "client": "reth",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "fixes the intermittent reorg scenario restoration: a stale on-disk head was taken as already canonical"
     }
   ]
 }

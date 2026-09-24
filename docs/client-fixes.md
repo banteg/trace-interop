@@ -23,6 +23,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) |
 | [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input` | — |
 | [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck | [H20](../reports/decisions/H20.md) (partial) |
+| [Erigon #24292](https://github.com/erigontech/erigon/pull/24292) | Apply safe and finalized from a same-head fork choice; unblocks the reorg scenario: import-time finality made the sibling-branch forkchoice return -38002 (fixes #24028) | — |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas | — |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) | Pair instruction trace completions with starts | — |
@@ -36,6 +37,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers | [H06](../reports/decisions/H06.md) (partial) |
+| [Reth #27429](https://github.com/paradigmxyz/reth/pull/27429) | Don't treat stale persisted fcu head as canonical; fixes the intermittent reorg scenario restoration: a stale on-disk head was taken as already canonical | — |
 | [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) |
 | [Silkworm #2885](https://github.com/erigontech/silkworm/pull/2885) (draft) | Capture missing vmTrace opcode effects | [H20](../reports/decisions/H20.md) |
 

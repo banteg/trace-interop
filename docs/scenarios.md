@@ -56,14 +56,19 @@ returns -38002 `Invalid forkchoice state`. All nine captured runs of `c25b8e47` 
 tip as safe and finalized; Hive's startup forkchoice update with an earlier finalized
 block takes a short-circuit path that does not commit it, and the new finality guard
 then rejects a sibling branch forking below the imported tip. The update's own
-finalized block is an ancestor of its head, so -38002 is the wrong response. This
-reading comes from logs and source and awaits an upstream report.
+finalized block is an ancestor of its head, so -38002 is the wrong response. The root
+cause is a same-head forkchoice update discarding the new safe and finalized blocks
+([#24028](https://github.com/erigontech/erigon/issues/24028)); the fix is
+[#24292](https://github.com/erigontech/erigon/pull/24292).
 
 Reth accepts the restoring forkchoice update as VALID but intermittently never moves its
 head back, on identical builds: development failed five of eight captures and release
 three of eight. The source suggests a race between restoration and the background removal
 of the abandoned branch's blocks, during which a stale on-disk header is treated as
-already canonical. The failure is intermittent, not a property of a particular build.
+already canonical. The failure is intermittent, not a property of a particular build. The fix,
+[#27429](https://github.com/paradigmxyz/reth/pull/27429), checks that a persisted head is
+canonical at its height and not above the canonical head, extending the guard
+[#27247](https://github.com/paradigmxyz/reth/pull/27247) added for safe and finalized blocks.
 
 Both pinned Reth builds retain old headers and receipts after pruning, allow latest-state
 execution, and reject old state access. Their trace errors use -32603 with an insufficient

@@ -60,6 +60,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 </details>
 
-[Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)
+[Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 
 For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).

@@ -360,7 +360,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             text += '</details>\n\n'
         if untested:
             text += '**⚪ Still needs review:** ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in untested) + '.\n\n'
-        text += '[Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)\n\n'
+        text += '[Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)\n\n'
         text += 'For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).\n'
         save(path, text)
 
@@ -371,7 +371,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
 
     for topic, d in decisions.items():
         path = output/'decisions'/(topic + '.md')
-        text = f'# {d["title"]}\n\n{topic} · {d["kind"]} · [All decisions](../README.md#decisions-to-review)\n\n'
+        text = f'# {d["title"]}\n\n{topic} · {d["kind"]} · [All decisions](../../decisions/README.md)\n\n'
         position = positions.get(topic, {})
         text += f'**Status: {statuses[topic]}** · [Status definitions](../../decisions/README.md#status-key)\n\n'
         text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
@@ -504,11 +504,27 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += table(['Run', 'Corpus', 'Capture complete'], [[f'[{row["name"]}]({row["manifest"]})',row['corpus'],'✅ Yes' if row['complete'] else '⚠️ No'] for row in run_rows])
     save(output/'technical.md', text)
     if output == (root/'reports').resolve():
-        text = '# Trace API decisions\n\n[Client impact overview](../reports/README.md) · [Source guide](../reports/sources.md)\n\n'
+        text = '# Trace API decisions\n\n[Client reports](../reports/README.md) · [Tested builds and coverage](../reports/technical.md) · [Source guide](../reports/sources.md)\n\n'
+        index_families = ['besu', 'erigon', 'nethermind', 'reth', 'geth']
         text += ('The target is a useful, precise contract. Historical implementations explain compatibility costs, '
                  'but do not decide the recommendation. Intentional departures need a concrete benefit and an '
                  'explicit migration cost; observed agreement alone does not establish correctness.\n\n')
-        text += table(['Decision', 'Status', 'Question'], [[f'[{t}](../reports/decisions/{t}.md)',statuses[t],d['title']] for t,d in decisions.items()])
-        text += '## Status key\n\n' + LEGEND + '\n'
+        def channel_symbols(topic, channel):
+            symbols = []
+            for f in index_families:
+                client = 'go-ethereum_trace' if f == 'geth' else f'{f}_{channel}'
+                symbols.append('—' if f == 'geth' and channel == 'release' else
+                               display_verdict(by_client.get(client, {}).get(topic, [])).split(' ', 1)[0])
+            return ''.join(symbols)
+        text += table(['Decision', 'Status', 'Question', 'Stable', 'Dev'], [
+            [f'[{t}](../reports/decisions/{t}.md)', statuses[t], d['title'],
+             channel_symbols(t, 'release'), channel_symbols(t, 'development')]
+            for t,d in decisions.items()])
+        text += '## Status key\n\n### Client checks\n\n'
+        text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'
+        text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · ⛔ unavailable · '
+                 '🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. '
+                 '[Outcome details](../reports/technical.md#test-status-key).\n\n')
+        text += '### Policy status\n\n' + LEGEND + '\n'
         text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change a verdict for the pinned builds; [client fixes](../docs/client-fixes.md) tracks implementation and retesting separately.\n'
         save(root/'decisions/README.md', text)

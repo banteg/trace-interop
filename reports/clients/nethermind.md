@@ -65,6 +65,6 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 </details>
 
-[Method availability](../decisions/H01.md) · [All behavior decisions](../../decisions/README.md)
+[Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 
 For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).

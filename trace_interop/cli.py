@@ -42,6 +42,39 @@ def run(*args, cwd=None, capture=False):
                           stdout=subprocess.PIPE if capture else None).stdout
 
 
+def docker_state():
+    """Dangling volumes and tagged Hive image IDs, to find what one capture leaves behind."""
+    volumes = set(run('docker', 'volume', 'ls', '-q', '--filter', 'dangling=true', capture=True).split())
+    images = set(run('docker', 'images', '-q', '--no-trunc', '--filter', 'reference=hive/*/*', capture=True).split())
+    return volumes, images
+
+
+def remove_capture_leftovers(before):
+    """Remove what one capture left: Hive removes client containers but not their anonymous
+    volumes, and it untags the previous hive/* image when it rebuilds one. Everything else,
+    including the current images and their layers, stays for the next capture."""
+    volumes, images = before
+    left = set(run('docker', 'volume', 'ls', '-q', '--filter', 'dangling=true',
+                   '--filter', 'label=com.docker.volume.anonymous', capture=True).split()) - volumes
+    untagged = images - set(run('docker', 'images', '-q', '--no-trunc', '--filter', 'reference=hive/*/*', capture=True).split())
+    dangling = set(run('docker', 'images', '-q', '--no-trunc', '--filter', 'dangling=true', capture=True).split())
+    for kind, names in [('volume', sorted(left)), ('image', sorted(untagged & dangling))]:
+        if names:
+            subprocess.run(['docker', kind, 'rm', *names], stdout=subprocess.DEVNULL, check=False)
+
+
+def untag_superseded_builds(lock):
+    """Drop trace-interop/* build tags that a new matrix lock no longer uses, so superseded
+    builds become removable while the locked builds stay warm."""
+    keep = {'trace-interop/' + c['client'] + ':' + c['image_id'].split(':')[1] for c in lock['clients'].values()}
+    keep |= {c['local_image'] for c in lock['clients'].values() if c.get('local_image')}
+    tags = run('docker', 'images', '--format', '{{.Repository}}:{{.Tag}}', '--filter', 'reference=trace-interop/*', capture=True).split()
+    stale = sorted(set(tags) - keep)
+    if stale:
+        # Removing the last tag deletes the image; layers shared with kept images remain.
+        subprocess.run(['docker', 'rmi', *stale], stdout=subprocess.DEVNULL, check=False)
+
+
 def verify():
     manifest = read(ROOT / 'fixtures/checksums.json')
     for name, expected in manifest.items():
@@ -220,8 +253,10 @@ def execute(args):
                '--sim', 'ethereum/rpc-compat', '--sim.limit', '/interop',
                '--sim.parallelism', '1', '--sim.timelimit', args.timeout,
                '--client.checktimelimit', '5m', '--results-root', str(out / 'hive')]
+    before = docker_state()
     with (out / 'runner.log').open('w') as log:
         process = subprocess.run(command, cwd=hive, stdout=log, stderr=subprocess.STDOUT)
+    remove_capture_leftovers(before)
     manifest['runner_exit_code'] = process.returncode
     manifest['finished_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
     write(out / 'manifest.json', manifest)

@@ -187,6 +187,22 @@ uv run python scripts/refresh_fixes.py
 uv run python scripts/build_reports.py
 ```
 
+## Record client positions
+
+[`decisions/status.json`](../decisions/status.json) keeps each decision's overall policy status
+and, separately, what each native client team has said about it:
+
+```json
+"positions": {"erigon": {"position": "agree", "note": "Agrees, provided ...",
+                         "sources": [{"label": "Erigon’s trace API review", "url": "https://..."}]}}
+```
+
+`position` is `agree`, `conditional` or `object`; the note records any conditions, and every
+position needs a source. Record only stated positions. A merged, non-partial PR in `fixes.json`
+already counts as agreement by implementation for its client and decisions, so it is not repeated
+here; a recorded position takes precedence and keeps the PR among its sources. Decision pages and
+the [decision index](../decisions/README.md) show the positions, with “no response” for the rest.
+
 ## Evaluate the Geth fork
 
 The experimental `banteg/go-ethereum` branch `feat/trace` is built locally on Linux.

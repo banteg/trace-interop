@@ -63,3 +63,35 @@ def decision_status(decision, records, position):
             return '✅ Harmonized · stable'
         return '🧪 Harmonized · dev'
     return POLICY_LABELS[policy]
+
+
+POSITIONS = {'agree': '👍 Agrees', 'conditional': '✋ Conditional', 'object': '👎 Objects'}
+NO_POSITION = '· No response'
+POSITION_LEGEND = (
+    '**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · `·` no response. '
+    'A position is a client team’s stated view of the recommendation, or a maintainer-merged fix that implements it '
+    '(a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Positions are separate from the policy status and from the captured checks.'
+)
+
+
+def check_positions(status, decisions):
+    """Recorded client positions name a known decision and native client, with a note and sources."""
+    for topic, entry in status.items():
+        if topic not in decisions:
+            raise ValueError(f'Policy status references an unknown decision: {topic}')
+        for client, position in entry.get('positions', {}).items():
+            if (client not in NATIVE_CLIENTS or position.get('position') not in POSITIONS or not position.get('note')
+                    or not position.get('sources') or any(not s.get('label') or not s.get('url') for s in position['sources'])):
+                raise ValueError(f'invalid client position: {topic}/{client}')
+    return status
+
+
+def client_positions(recorded, merged):
+    """Recorded positions, plus agreement by implementation from merged (client, source) fixes; a recorded position wins."""
+    positions = {}
+    for client, source in merged:
+        positions.setdefault(client, {'position': 'agree', 'note': 'Merged a fix implementing the recommendation.', 'sources': []})['sources'].append(source)
+    for client, position in recorded.items():
+        known = {s['url'] for s in position['sources']}
+        positions[client] = dict(position, sources=position['sources'] + [s for s in positions.get(client, {}).get('sources', []) if s['url'] not in known])
+    return positions

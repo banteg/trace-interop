@@ -5,7 +5,7 @@ import json
 import os
 import re
 
-from .status import decision_status, LEGEND
+from .status import decision_status, LEGEND, NATIVE_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
 
 
 SOURCE_GROUPS = {
@@ -130,6 +130,12 @@ def pending_fixes(fixes, client, topic, built):
             if pr['client'] == family(client) and topic in pr['decisions']
             and (pr['state'] == 'open' or pr['state'] == 'merged' and (pr.get('awaiting_uptake')
                  or built is not None and timestamp(pr['merged_at']) > built))]
+
+
+def merged_fixes(fixes, topic):
+    """(client, source) for merged, complete native-client fixes of a decision: agreement by implementation."""
+    return [(pr['client'], {'label': pr['label'], 'url': pr['url']}) for pr in sorted(fixes['prs'], key=lambda pr: pr['order'])
+            if pr['state'] == 'merged' and pr['client'] in NATIVE_CLIENTS and topic in pr['decisions'] and topic not in pr.get('partial', [])]
 
 
 def fix_change(pr):
@@ -281,14 +287,13 @@ def prune_case_pages(output, cases):
 def render(root, output, records, by_client, case_pages, run_rows, decisions, lock):
     prune_case_pages(output, case_pages)
     editorial = json.loads((root/'decisions/impact.json').read_text())
-    positions = json.loads((root/'decisions/status.json').read_text())
-    if set(positions) - set(decisions):
-        raise ValueError('Policy status references an unknown decision')
+    positions = check_positions(json.loads((root/'decisions/status.json').read_text()), decisions)
     statuses = {topic: decision_status(d, records, positions.get(topic, {})) for topic, d in decisions.items()}
     sources = json.loads((root/'decisions/sources.json').read_text())
     revisions = json.loads((root/'locks/source-revisions.json').read_text())
     clients = sorted({r['client'] for r in records})
     fixes = check_fixes(json.loads((root/'decisions/fixes.json').read_text()), decisions, editorial['clients'])
+    stances = {topic: client_positions(positions.get(topic, {}).get('positions', {}), merged_fixes(fixes, topic)) for topic in decisions}
     built = {c: max((timestamp(ref['committed_at']) for v in {r['version'] for r in records if r['client'] == c}
                      if (ref := source_revision(c, v, revisions))), default=None) for c in clients}
 
@@ -443,6 +448,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
         if position.get('sources'):
             text += 'Policy evidence: ' + ' · '.join(f'[{source["label"]}]({source["url"]})' for source in position['sources']) + '.\n\n'
+        key = '[Client positions](../../decisions/README.md#client-positions)'
+        text += f'{key}: none recorded.\n\n' if not stances[topic] else f'{key}:\n\n' + table(['Client', 'Position', 'Note', 'Sources'], [
+            [editorial['clients'][c]['name'], POSITIONS[s['position']], s['note'], ' · '.join(f'[{source["label"]}]({source["url"]})' for source in s['sources'])]
+            if (s := stances[topic].get(c)) else [editorial['clients'][c]['name'], NO_POSITION, '', ''] for c in NATIVE_CLIENTS])
         sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
         if topic in sections:
             text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'
@@ -585,9 +594,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 client = 'go-ethereum_trace' if f == 'geth' else f'{f}_{channel}'
                 symbols.append('—' if f == 'geth' and channel == 'release' else build_verdict(client, topic).split(' ', 1)[0])
             return ''.join(symbols)
-        text += table(['Decision', 'Status', 'Question', 'Stable', 'Dev'], [
-            [f'[{t}](../reports/decisions/{t}.md)', statuses[t], d['title'],
-             channel_symbols(t, 'release'), channel_symbols(t, 'development')]
+        text += table(['Decision', 'Status', 'Positions', 'Question', 'Stable', 'Dev'], [
+            [f'[{t}](../reports/decisions/{t}.md)', statuses[t],
+             ''.join(POSITIONS[stances[t][c]['position']].split(' ')[0] if c in stances[t] else NO_POSITION.split(' ')[0] for c in NATIVE_CLIENTS),
+             d['title'], channel_symbols(t, 'release'), channel_symbols(t, 'development')]
             for t,d in decisions.items()])
         text += '## Status key\n\n### Client checks\n\n'
         text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'
@@ -596,7 +606,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                  '🛠️ replaces ⚠️ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference '
                  'and are not yet in the build; partial fixes leave ⚠️ or 🟡 in place. The captured checks are unchanged. '
                  '[Outcome details](../reports/technical.md#test-status-key).\n\n')
-        text += '### Policy status\n\n' + LEGEND + '\n'
+        text += '### Policy status\n\n' + LEGEND + '\n\n### Client positions\n\n' + POSITION_LEGEND + '\n'
         text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.\n'
         save(root/'decisions/README.md', text)
         save(root/'docs/client-fixes.md', fixes_page(fixes, root, root/'docs'))

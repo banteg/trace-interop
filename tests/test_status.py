@@ -2,7 +2,8 @@ import copy
 from pathlib import Path
 import unittest
 
-from trace_interop.status import decision_status, NATIVE_CLIENTS
+from trace_interop.presentation import check_fixes, merged_fixes
+from trace_interop.status import check_positions, client_positions, decision_status, NATIVE_CLIENTS
 
 
 class DecisionStatusTests(unittest.TestCase):
@@ -68,3 +69,46 @@ class DecisionStatusTests(unittest.TestCase):
             self.assertIn('Policy evidence:', page)
             self.assertTrue(any(topic in line and label in line for line in index.splitlines()))
             self.assertTrue(any(topic in line and label in line for line in overview.splitlines()))
+
+
+class ClientPositionTests(unittest.TestCase):
+    source = {'label': 'Client review', 'url': 'https://example.org/review'}
+
+    def entry(self, **change):
+        return {'position': 'agree', 'note': 'Agrees.', 'sources': [self.source]} | change
+
+    def test_positions_need_known_clients_decisions_and_provenance(self):
+        check_positions({'H03': {'positions': {'erigon': self.entry()}}}, {'H03'})
+        for status in [{'H99': {'positions': {}}}, {'H03': {'positions': {'geth': self.entry()}}},
+                       *({'H03': {'positions': {'erigon': self.entry(**change)}}} for change in
+                         [{'position': 'maybe'}, {'note': ''}, {'sources': []}, {'sources': [{'label': 'No link'}]}])]:
+            with self.subTest(status=status), self.assertRaises(ValueError):
+                check_positions(status, {'H03'})
+
+    def test_merged_complete_fixes_imply_agreement(self):
+        prs = [dict(url=f'https://github.com/paradigmxyz/reth/pull/{n}', title='fix: trace', client=client, decisions=['H03'],
+                    state=state, draft=False, merged_at='2026-09-22T00:00:00Z' if state == 'merged' else None, **extra)
+               for n, (client, state, extra) in enumerate([('reth', 'merged', {}), ('reth', 'open', {}), ('reth', 'merged', {'partial': ['H03']}),
+                                                           ('geth', 'merged', {}), (None, 'merged', {}), ('erigon', 'merged', {'awaiting_uptake': True})], 1)]
+        fixes = check_fixes({'repositories': {'paradigmxyz/reth': 'Reth'}, 'prs': prs}, {'H03', 'H04'}, [*NATIVE_CLIENTS, 'geth'])
+        self.assertEqual(merged_fixes(fixes, 'H03'), [('reth', {'label': 'Reth #1', 'url': prs[0]['url']}),
+                                                      ('erigon', {'label': 'Reth #6', 'url': prs[5]['url']})])
+        self.assertEqual(merged_fixes(fixes, 'H04'), [])
+
+    def test_recorded_positions_win_and_keep_fix_sources(self):
+        fix = {'label': 'Erigon #1', 'url': 'https://example.org/fix'}
+        positions = client_positions({'erigon': self.entry(position='conditional')}, [('erigon', fix), ('reth', fix)])
+        self.assertEqual(positions['erigon'], self.entry(position='conditional', sources=[self.source, fix]))
+        self.assertEqual(positions['reth']['position'], 'agree')
+        self.assertEqual(positions['reth']['sources'], [fix])
+        self.assertEqual(client_positions({}, []), {})
+
+    def test_published_positions(self):
+        root = Path(__file__).resolve().parents[1]
+        page = (root/'reports/decisions/H03.md').read_text()
+        self.assertIn('| Erigon | 👍 Agrees |', page)
+        self.assertIn('| Besu | · No response |', page)
+        self.assertIn('[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216)', page)
+        index = (root/'decisions/README.md').read_text()
+        self.assertTrue(any('[H03]' in line and '| ·👍·👍 |' in line for line in index.splitlines()))
+        self.assertIn('### Client positions', index)

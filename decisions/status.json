@@ -21,7 +21,19 @@
         "label": "Alloy #4216: default to intersection filtering",
         "url": "https://github.com/alloy-rs/alloy/pull/4216"
       }
-    ]
+    ],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Agrees with AND by default and rejecting unknown modes, provided an explicit `mode: \"intersection\"` stays valid as a no-op and `mode: \"union\"` remains for migrating queries that supply both lists.",
+        "sources": [
+          {
+            "label": "Erigon\u2019s trace API review",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+          }
+        ]
+      }
+    }
   },
   "H07": {
     "policy": "converged",
@@ -41,7 +53,19 @@
         "label": "Erigon\u2019s trace API review",
         "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
       }
-    ]
+    ],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Agrees, widened to the full admission rules at the selected state: nonce, balance and EIP-3607. Asks that the error code be settled with the policy (Erigon rejects with -32000, Reth with -32000/-32003), and notes that the check interacts with any restored blockNumber field.",
+        "sources": [
+          {
+            "label": "Erigon\u2019s trace API review",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+          }
+        ]
+      }
+    }
   },
   "H18": {
     "policy": "converged",

@@ -129,3 +129,12 @@ citations come from source reading alone, without runtime evidence. Where a repo
 the prediction is untested until a capture runs. When a finding is accepted, rejected or superseded,
 record the disposition in the relevant decision rather than editing these reports, which describe the
 state on 2026-09-24.
+
+## Follow-up
+
+Client fixes opened from these findings are tracked in [client fixes](../client-fixes.md): Besu #11365,
+Erigon #24290 and #24291, Nethermind #13779–#13783, Reth #27423 and revm-inspectors #528.
+
+Filter-selection §3 (Nethermind `trace_filter` truncation) was already fixed on Nethermind master by
+[#13677](https://github.com/NethermindEth/nethermind/pull/13677) after the reviewed revision `ac02224f`.
+`trace_block(0)` still failed there; #13783 addresses it.

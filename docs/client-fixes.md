@@ -6,7 +6,6 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 
 | PR | Change |
 | --- | --- |
-| [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence for transfer and fee-recipient birth markers (H17) |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources |
 | [Besu #10953](https://github.com/besu-eth/besu/pull/10953) | Replay block pre-execution before tracing transactions |
 | [Besu #11286](https://github.com/besu-eth/besu/pull/11286) | Include MCOPY memory updates in vmTrace |
@@ -18,15 +17,25 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit root out-of-gas execution effects |
 | [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames |
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for nested creation ending in SELFDESTRUCT (H10) |
+| [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary (H16) |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace filters to intersection |
+| [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input` |
+| [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | Attach no vmTrace sub to SELFDESTRUCT or calls that fail their precheck |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Implement the nine Parity trace methods and all three output families while client harmonization and specification work continue |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) (draft) | Pair instruction trace completions with starts |
 | [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) (draft) | Report terminal output for top-level action traces |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces |
+| [Nethermind #13779](https://github.com/NethermindEth/nethermind/pull/13779) | Report vmTrace store without stateDiff |
+| [Nethermind #13780](https://github.com/NethermindEth/nethermind/pull/13780) | Serialize vmTrace store key and value as quantities (H21) |
+| [Nethermind #13781](https://github.com/NethermindEth/nethermind/pull/13781) | Report DUPn vmTrace push as n + 1 words |
+| [Nethermind #13782](https://github.com/NethermindEth/nethermind/pull/13782) | Include forwarded gas in streamed vmTrace create cost (H20) |
+| [Nethermind #13783](https://github.com/NethermindEth/nethermind/pull/13783) | Return no traces for the genesis block in trace_block |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers |
+| [Reth #27423](https://github.com/paradigmxyz/reth/pull/27423) | Omit genesis block reward traces |
+| [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands |
 | [Silkworm #2885](https://github.com/erigontech/silkworm/pull/2885) (draft) | Capture missing vmTrace opcode effects |
 
 ## Merged
@@ -50,6 +59,7 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs |
 | [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) | Report selfdestructed account deletions |
 | [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode in VM traces |
+| [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence for transfer and fee-recipient birth markers (H17) |
 | [rpc-tests #604](https://github.com/erigontech/rpc-tests/pull/604) | Make trace filter union fixtures explicit |
 
 ## Closed

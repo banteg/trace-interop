@@ -78,12 +78,14 @@
 
 **Geth draft fork · 1.17.7-unstable · fa8ecb92** (`Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1`)
 
+- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.
 
 **Nethermind · 2.1.0-unstable · 641592d2** (`2.1.0-unstable+641592d2`)
 
+- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.
@@ -91,6 +93,7 @@
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.

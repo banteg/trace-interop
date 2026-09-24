@@ -31,6 +31,22 @@ def deployed_code(initcode):
         return None
 
 
+def creation_outcome(initcode, gas, exists, address):
+    """Runtime code a top-level creation with this execution gas installs, False if it provably
+    creates nothing, or None when the model cannot establish the outcome."""
+    if address in exists:
+        return None  # A collision depends on the address's nonce and code.
+    try:
+        steps,output,reverted=execute(initcode,gas)
+    except UnsupportedProgram:
+        return None
+    runtime=bytes.fromhex(output[2:])
+    remaining=steps['ops'][-1]['ex']['used'] if steps['ops'] else gas
+    if reverted or len(runtime)>24576 or runtime[:1]==b'\xef' or remaining<200*len(runtime):
+        return False
+    return output
+
+
 def transactions(case):
     context = case['context']
     blocks = context.get('_blocks', {})
@@ -204,11 +220,14 @@ def assess(case, observation, peers, topics):
             nonce=nonces.get(prior['sender'],0)
             nonces[prior['sender']]=nonce+1
             if prior['to'] is None:
+                # Only a creation the model proves to survive, with the item's own gas, exists.
                 address=created_address(prior['sender'],nonce)
-                runtime=deployed_code(prior['data'])
+                # Omitted gas runs at the server's execution cap, beyond any modelled constructor.
+                gas=prior['gas']-intrinsic(prior['data'],True) if prior['gas'] else 10_000_000
+                runtime=creation_outcome(prior['data'],gas,exists,address)
                 if runtime is None:
                     unknown.add(address)
-                else:
+                elif runtime:
                     exists.add(address);codes[address]=runtime;nonces[address]=1
             elif prior['value']:
                 exists.add(prior['to'])
@@ -257,6 +276,8 @@ def assess(case, observation, peers, topics):
                          'CALLVALUE':tx['value'] or 0,'ORIGIN':int(tx['sender'],16),
                          'COINBASE':int(block.get('miner','0x0'),16),'CHAINID':context.get('_chain_id',0),
                          'PREVRANDAO':block.get('prev_randao',0)}
+                    # H15: an unsigned call with a zero effective price runs with BASEFEE 0.
+                    if method in ['trace_call','trace_callMany'] and env['GASPRICE']==0:env['BASEFEE']=0
                     # The frozen revert contract only reads this slot; no fixture
                     # transaction can change it. Its expected zero is independent.
                     if tx['to']=='0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3':env['STORAGE']={0x42ff:0}
@@ -330,7 +351,12 @@ def assess(case, observation, peers, topics):
         deltas=[balance_delta(mapping(a).get('balance')) for a in diff.values()]
         miner=balance_delta(mapping(diff.get(block.get('miner'))).get('balance','='))
         settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,blob)
+        detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee={blob}.'
+        if low!=gas and settled is not None:
+            # Settling within the refund bound is consistent but does not prove the refund.
+            checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',
+                               detail='The refund is not independently derived; balances settle within the refund bound. '+detail))
+            continue
         add('H16',settled is not None,
-            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee and blob fee.',
-            f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee={blob}.')
+            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee and blob fee.',detail)
     return checks

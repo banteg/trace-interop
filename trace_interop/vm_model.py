@@ -222,6 +222,15 @@ def words(push):
         return None
 
 
+def returned(sub):
+    """Whether a child frame's last operation is RETURN."""
+    last = sub['ops'][-1]
+    try:
+        return isinstance(last, dict) and bytes.fromhex(sub['code'][2:])[last['pc']] == 0xf3
+    except (ValueError, TypeError, KeyError, IndexError):
+        return False
+
+
 def leftover(sub):
     """Gas a child returns: its last operation's used if it ended normally, else 0."""
     last = sub['ops'][-1]
@@ -281,7 +290,9 @@ costs and effects independently of recorded values.
             if type(used) is not int or type(cost) is not int or used<0 or cost<0:
                 errors.append(f'operation {i} gas is not a nonnegative integer')
             elif previous is not None and opcode in CALLS+CREATES:
-                if isinstance(sub,dict) and isinstance(sub.get('ops'),list) and sub['ops'] and used!=previous-cost+leftover(sub):
+                # A creation that RETURNs still pays the code deposit and exit checks,
+                # which the child's steps do not show, so its returned gas is unknown here.
+                if isinstance(sub,dict) and isinstance(sub.get('ops'),list) and sub['ops'] and not (opcode in CREATES and returned(sub)) and used!=previous-cost+leftover(sub):
                     errors.append(f'operation {i} post-step gas does not deduct its cost and return the child leftover')
             elif previous is not None and used!=previous-cost:
                 errors.append(f'operation {i} post-step gas does not deduct this operation cost')

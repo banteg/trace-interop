@@ -38,8 +38,8 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 10442 |
-| 🟡 Partial | 946 |
+| 🔎 Assessed | 10420 |
+| 🟡 Partial | 968 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 513 |
 | 🔎 Control | 9 |
@@ -79,6 +79,11 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H16 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H16 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
 | H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
+| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee=0. | 5 |
+| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee=0. | 5 |
+| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee=0. | 20 |
+| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee=0. | 2 |
+| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee=0. | 20 |
 | H16 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 3 |
 | H17 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H17 | blocked | No state-diff object was returned; account markers cannot be assessed. | 2 |

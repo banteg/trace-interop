@@ -49,30 +49,19 @@ def docker_state():
     return volumes, images
 
 
-def remove_capture_leftovers(before):
+def remove_capture_leftovers(before, created_tags=()):
     """Remove what one capture left: Hive removes client containers but not their anonymous
-    volumes, and it untags the previous hive/* image when it rebuilds one. Everything else,
-    including the current images and their layers, stays for the next capture."""
+    volumes, and it untags the previous hive/* image when it rebuilds one; the capture's own
+    base tags follow. Everything else, including images still tagged elsewhere and their
+    layers, stays for the next capture."""
     volumes, images = before
     left = set(run('docker', 'volume', 'ls', '-q', '--filter', 'dangling=true',
                    '--filter', 'label=com.docker.volume.anonymous', capture=True).split()) - volumes
     untagged = images - set(run('docker', 'images', '-q', '--no-trunc', '--filter', 'reference=hive/*/*', capture=True).split())
     dangling = set(run('docker', 'images', '-q', '--no-trunc', '--filter', 'dangling=true', capture=True).split())
-    for kind, names in [('volume', sorted(left)), ('image', sorted(untagged & dangling))]:
+    for kind, names in [('volume', sorted(left)), ('image', sorted(untagged & dangling)), ('image', list(created_tags))]:
         if names:
             subprocess.run(['docker', kind, 'rm', *names], stdout=subprocess.DEVNULL, check=False)
-
-
-def untag_superseded_builds(lock):
-    """Drop trace-interop/* build tags that a new matrix lock no longer uses, so superseded
-    builds become removable while the locked builds stay warm."""
-    keep = {'trace-interop/' + c['client'] + ':' + c['image_id'].split(':')[1] for c in lock['clients'].values()}
-    keep |= {c['local_image'] for c in lock['clients'].values() if c.get('local_image')}
-    tags = run('docker', 'images', '--format', '{{.Repository}}:{{.Tag}}', '--filter', 'reference=trace-interop/*', capture=True).split()
-    stale = sorted(set(tags) - keep)
-    if stale:
-        # Removing the last tag deletes the image; layers shared with kept images remain.
-        subprocess.run(['docker', 'rmi', *stale], stdout=subprocess.DEVNULL, check=False)
 
 
 def verify():
@@ -224,6 +213,7 @@ def execute(args):
     prepare(hive, corpus, args.corpus, {n: lock['clients'][n] for n in names}, head['hash'])
     out.mkdir(parents=True)
     entries = []
+    created_tags = []
     for name in names:
         info = lock['clients'][name]
         image = info.get('local_image') or info['digest']
@@ -234,6 +224,12 @@ def execute(args):
             raise ValueError(f'image identity mismatch for {name}')
         local = 'trace-interop/' + info['client']
         tag = info['image_id'].split(':')[1]
+        # A tag this capture adds to a digest-pulled image is removed afterwards: the image
+        # can be pulled again, and an image still tagged upstream keeps its layers warm.
+        # Source-built images and tags that already existed are left alone.
+        if 'local_image' not in info and subprocess.run(['docker', 'image', 'inspect', local + ':' + tag],
+                                                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False).returncode:
+            created_tags.append(local + ':' + tag)
         run('docker', 'tag', image, local + ':' + tag)
         entries.append({'client': info['client'], 'nametag': name.removeprefix(info['client'] + '_'),
                         'build_args': {'baseimage': local, 'tag': tag}})
@@ -256,7 +252,7 @@ def execute(args):
     before = docker_state()
     with (out / 'runner.log').open('w') as log:
         process = subprocess.run(command, cwd=hive, stdout=log, stderr=subprocess.STDOUT)
-    remove_capture_leftovers(before)
+    remove_capture_leftovers(before, created_tags)
     manifest['runner_exit_code'] = process.returncode
     manifest['finished_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
     write(out / 'manifest.json', manifest)

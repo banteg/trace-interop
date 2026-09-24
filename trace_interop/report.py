@@ -28,6 +28,30 @@ def assessed_cases(captured, corpus):
             for c in captured]
 
 
+def run_context(root, manifest):
+    """The corpus definition plus the frozen chain facts every assessment of a captured run uses."""
+    from .cli import CHAINS
+    from .chain_model import load_chain
+    context=read(root/'fixtures/corpora'/(manifest['corpus']+'.json'))
+    context['_chain']=manifest['corpus']
+    context['_scenario_phases']=manifest.get('scenario_phases')
+    chain = root/'fixtures/chains'/CHAINS[manifest['corpus']]
+    genesis = read(chain/'genesis.json')
+    header = read(chain/'headblock.json')
+    context['_codes'] = {'0x'+a.removeprefix('0x').lower(): v.get('code','0x') for a,v in genesis['alloc'].items()}
+    context['_alloc'] = {'0x'+a.removeprefix('0x').lower(): v for a,v in genesis['alloc'].items()}
+    context['_chain_id'] = genesis['config']['chainId']
+    context['_blocks'] = load_chain(chain/'chain.rlp')
+    context['_head'] = header
+    context['txinfo'] = dict(context.get('txinfo', {}), _decoded=[
+        {'txhash':t['hash'],'sender':t['sender'],'block':number,'indexInBlock':i}
+        for number,b in context['_blocks'].items() for i,t in enumerate(b['transactions'])])
+    if manifest['corpus'] in ['reorg','reorg-safe']:
+        context['_alternate_blocks'] = load_chain(root/'fixtures/chains/b/chain.rlp')
+    context['_environment'] = {k:int(header[v],16) for k,v in [('BASEFEE','baseFeePerGas'),('NUMBER','number'),('TIMESTAMP','timestamp'),('GASLIMIT','gasLimit')] if v in header}
+    return context
+
+
 def generate(root, runs, output):
     output=output.resolve();output.mkdir(parents=True,exist_ok=True)
     verify_inventory(root)
@@ -52,25 +76,7 @@ def generate(root, runs, output):
         for name, value in read(folder/'checksums.json').items():
             if sha(folder/name) != value:raise ValueError(f'evidence modified: {folder.name}/{name}')
         run_rows.append({'name':folder.name,'manifest':link(folder/'manifest.json',output),'corpus':manifest['corpus'],'complete':summary['complete'],'versions':summary['versions'],'digest':digest})
-        context=read(root/'fixtures/corpora'/(manifest['corpus']+'.json'))
-        context['_chain']=manifest['corpus']
-        context['_scenario_phases']=manifest.get('scenario_phases')
-        from .cli import CHAINS
-        chain = root/'fixtures/chains'/CHAINS[manifest['corpus']]
-        genesis = read(chain/'genesis.json')
-        header = read(chain/'headblock.json')
-        context['_codes'] = {'0x'+a.removeprefix('0x').lower(): v.get('code','0x') for a,v in genesis['alloc'].items()}
-        context['_alloc'] = {'0x'+a.removeprefix('0x').lower(): v for a,v in genesis['alloc'].items()}
-        context['_chain_id'] = genesis['config']['chainId']
-        from .chain_model import load_chain
-        context['_blocks'] = load_chain(chain/'chain.rlp')
-        context['_head'] = header
-        context['txinfo'] = dict(context.get('txinfo', {}), _decoded=[
-            {'txhash':t['hash'],'sender':t['sender'],'block':number,'indexInBlock':i}
-            for number,b in context['_blocks'].items() for i,t in enumerate(b['transactions'])])
-        if manifest['corpus'] in ['reorg','reorg-safe']:
-            context['_alternate_blocks'] = load_chain(root/'fixtures/chains/b/chain.rlp')
-        context['_environment'] = {k:int(header[v],16) for k,v in [('BASEFEE','baseFeePerGas'),('NUMBER','number'),('TIMESTAMP','timestamp'),('GASLIMIT','gasLimit')] if v in header}
+        context=run_context(root, manifest)
         cases = assessed_cases(manifest['selected_cases'], context['cases'])
         rule_context = dict(context, cases=cases)
         for client in manifest['clients']:

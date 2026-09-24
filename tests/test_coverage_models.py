@@ -314,3 +314,77 @@ class AccountingTests(unittest.TestCase):
         self.assertEqual(settled_gas([-90*3, 90*1], 90, 80, 100, 1, 2, 0), 90)
         self.assertIsNone(settled_gas([-79*3, 79*1], 79, 80, 100, 1, 2, 0))
         self.assertIsNone(settled_gas([-90*3, 90*1], 90, 100, 100, 1, 2, 0))
+
+
+class UnsignedFeeEnvironmentTests(unittest.TestCase):
+    def test_zero_fee_call_models_base_fee_zero(self):
+        from trace_interop.report import run_context
+        folder = ROOT/'evidence/2026-09-24/adopted-stances/coverage'
+        manifest = read(folder/'manifest.json')
+        case = next(c for c in manifest['selected_cases'] if c['name'] == 'model-environment-free')
+        observation = read(folder/'observations.json')['model-environment-free']['go-ethereum_trace']
+        checks = [c for c in assess(dict(case, context=run_context(ROOT, manifest)), observation, {}, {'H20'}) if c['topic'] == 'H20']
+        self.assertTrue(checks)
+        self.assertEqual({c['status'] for c in checks}, {'matches'}, checks)
+
+
+class ReviewRegressionTests(unittest.TestCase):
+    """Counterexamples from the review of the harness stance changes."""
+    sender, miner = '0x'+'11'*20, '0x'+'22'*20
+
+    def test_create_returning_runtime_pays_an_unmodelled_code_deposit(self):
+        child = '0x60016000f3'
+        available = 99979-32002
+        forwarded = available-available//64
+        sub, _, _ = execute(child, forwarded)
+        returned = sub['ops'][-1]['ex']['used']-200  # one runtime byte costs 200 deposit gas
+        def ex(used, push, mem=None): return {'used': used, 'push': push, 'mem': mem, 'store': None}
+        ops = [{'pc': pc, 'cost': cost, 'ex': ex(used, push, mem), 'sub': None} for pc, cost, used, push, mem in [
+            (0, 3, 99997, ['0x60016000f3'], None), (6, 3, 99994, ['0x0'], None),
+            (8, 6, 99988, [], {'off': 0, 'data': '0x'+'00'*27+'60016000f3'}),
+            (9, 3, 99985, ['0x5'], None), (11, 3, 99982, ['0x1b'], None), (13, 3, 99979, ['0x0'], None)]]
+        ops.append({'pc': 15, 'cost': 32002+forwarded, 'ex': ex(available-forwarded+returned, ['0x'+'11'*20]), 'sub': sub})
+        ops.append({'pc': 16, 'cost': 0, 'ex': ex(ops[-1]['ex']['used'], []), 'sub': None})
+        self.assertEqual(local_invariants({'code': '0x6460016000f36000526005601b6000f000', 'ops': ops}), [])
+
+    def test_failed_callmany_creation_leaves_its_address_absent(self):
+        code = '0x60016000f3'
+        address = created_address(self.sender, 0)
+        case = {'name': 'failed-create-then-fund',
+                'context': {'_alloc': {self.sender: {'balance': '0x1000000'}}, '_codes': {self.sender: '0x'}},
+                'request': {'method': 'trace_callMany', 'params': [[
+                    [{'from': self.sender, 'data': code, 'gas': hex(intrinsic(code, True)+1)}, ['stateDiff']],
+                    [{'from': self.sender, 'to': address, 'gas': '0x5208', 'value': '0x1'}, ['stateDiff']]], 'latest']}}
+        first = {self.sender: {'balance': '=', 'nonce': {'*': {'from': '0x0', 'to': '0x1'}}, 'code': '=', 'storage': {}}}
+        second = {self.sender: {'balance': {'*': {'from': '0x1000000', 'to': '0xffffff'}}, 'nonce': {'*': {'from': '0x1', 'to': '0x2'}}, 'code': '=', 'storage': {}},
+                  address: {'balance': {'+': '0x1'}, 'nonce': {'+': '0x0'}, 'code': {'+': '0x'}, 'storage': {}}}
+        checks = assess(case, {'status': 'result', 'response': {'result': [{'stateDiff': first}, {'stateDiff': second}]}}, {}, {'H17'})
+        self.assertEqual({c['status'] for c in checks}, {'matches'}, checks)
+
+    def test_refund_bound_does_not_prove_exact_accounting(self):
+        target = '0x'+'33'*20
+        case = {'name': 'zero-to-one-no-refund',
+                'context': {'_head': {'number': '0x1'}, '_blocks': {'0x1': {'number': 1, 'base_fee': 1, 'miner': self.miner, 'transactions': []}},
+                            '_alloc': {self.sender: {'balance': '0x1000000'}, target: {'code': '0x600160005500'}},
+                            '_codes': {self.sender: '0x', target: '0x600160005500'}},
+                'request': {'method': 'trace_call', 'params': [{'from': self.sender, 'to': target, 'gas': '0x186a0', 'gasPrice': '0x2'}, ['trace', 'stateDiff'], 'latest']}}
+        charged = 40000  # the real charge is 43,106: a zero-to-one SSTORE has no refund
+        result = {'trace': [{'type': 'call', 'traceAddress': [], 'result': {'gasUsed': hex(22106), 'output': '0x'}}],
+                  'stateDiff': {self.sender: {'balance': {'*': {'from': hex(1000000), 'to': hex(1000000-2*charged)}}}, self.miner: {'balance': {'+': hex(charged)}}}}
+        checks = [c for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'}) if c['topic'] == 'H16']
+        self.assertTrue(checks)
+        self.assertNotIn('matches', {c['status'] for c in checks}, checks)
+
+    def test_capture_cleanup_only_removes_its_own_artifacts(self):
+        from unittest.mock import patch
+        from trace_interop import cli
+        listings = {('volume', 'ls'): 'old-volume\nnew-volume\n', ('images', '-q'): ''}
+        def fake(*args, capture=False):
+            return listings.get(args[1:3], '') if args[1] != 'images' or '--filter' not in args or 'dangling=true' not in args else ''
+        with patch.object(cli, 'run', side_effect=fake), patch.object(cli.subprocess, 'run') as command:
+            cli.remove_capture_leftovers(({'old-volume'}, set()), ['trace-interop/reth:abc'])
+        removed = [call.args[0] for call in command.call_args_list]
+        self.assertIn(['docker', 'volume', 'rm', 'new-volume'], removed)
+        self.assertIn(['docker', 'image', 'rm', 'trace-interop/reth:abc'], removed)
+        self.assertFalse(any('old-volume' in c for c in removed))
+        self.assertFalse(hasattr(cli, 'untag_superseded_builds'))

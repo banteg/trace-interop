@@ -4,7 +4,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-from trace_interop.cli import read, write, untag_superseded_builds
+from trace_interop.cli import read, write
 from trace_interop.versions import matrix_lock, check_current
 
 p=argparse.ArgumentParser(description=__doc__)
@@ -17,7 +17,6 @@ out.mkdir(parents=True,exist_ok=False)
 lock=matrix_lock(out/'clients.lock.json',args.reproduce_lock)
 write(out/'preflight.json', check_current(lock) if not args.reproduce_lock else
       {'status':'historical-reproduction','lock':str(Path(args.reproduce_lock).resolve())})
-untag_superseded_builds(lock)
 results=[]
 for corpus in args.corpora.split(','):
     command=[sys.executable,'-m','trace_interop','run','--lock',str(out/'clients.lock.json'),

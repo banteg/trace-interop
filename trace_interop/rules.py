@@ -496,10 +496,20 @@ def evaluate(case, observation, peers, invalid_params=None):
         before_cancun=name.endswith('55')
         # This fixture account has genesis code 0x611008ff, nonce zero and no storage;
         # it is untouched by the mined fixture transactions.
+        balance=mapping(context.get('_alloc',{}).get(params[0]['to'])).get('balance')
         ok=(mapping(change).get('code') == {'-':'0x611008ff'}
             and mapping(change).get('nonce') == {'-':'0x0'}
+            and (balance is None or mapping(change).get('balance') == {'-':hex(int(balance,16))})
             and mapping(change).get('storage') == {}) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
-        check('H26', ok, 'Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
+        check('H26', ok, 'Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
+    diffs = [mapping(e).get('stateDiff') for e in ([result] if isinstance(result, dict) else sequence(result)
+                                                   if method in ['trace_callMany', 'trace_replayBlockTransactions'] else [])]
+    deleted = [(address, account) for diff in diffs for address, account in mapping(diff).items()
+               if any(isinstance(mapping(account).get(k), dict) and '-' in account[k] for k in ['balance', 'nonce', 'code'])]
+    if deleted:
+        check('H26', all(mapping(account).get('storage') == {} for _, account in deleted),
+              'A deleted account reports storage {}; its account deletion implies every slot is wiped.',
+              '; '.join(address for address, account in deleted if mapping(account).get('storage') != {})[:200])
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
         if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')

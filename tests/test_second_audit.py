@@ -62,6 +62,21 @@ class SemanticChecks(unittest.TestCase):
                 o['response']['result']['stateDiff'][c['request']['params'][0]['to']][field]=bad
                 self.check_status(c,o,p,'H26','change_needed')
 
+    def test_deleted_balance_matches_genesis_and_storage_is_empty(self):
+        alloc=read(ROOT/'fixtures/chains/forks/genesis.json')['alloc']
+        for field,bad in [('balance',{'*':{'from':'0x64','to':None}}),('balance',{'-':'0x0'})]:
+            with self.subTest(field=field, bad=bad):
+                c,o,p=captured('2026-09-23/harness-audit-geth-fork-followup','destroy-trace-55','go-ethereum_trace')
+                c['context']['_alloc']={'0x'+a:v for a,v in alloc.items()}
+                self.check_status(c,o,p,'H26','matches')
+                o['response']['result']['stateDiff'][c['request']['params'][0]['to']][field]=bad
+                self.check_status(c,o,p,'H26','change_needed')
+        # Any deleted account, not only the fixture's, must report empty storage.
+        c,o,p=captured('2026-09-23/harness-audit-geth-fork-followup','destroy-trace-55','go-ethereum_trace')
+        other={'balance':{'-':'0x1'},'code':{'-':'0x00'},'nonce':{'-':'0x1'},'storage':{'0x'+'00'*32:{'*':{'from':'0x'+'01'*32,'to':'0x'+'00'*32}}}}
+        o['response']['result']['stateDiff']['0x'+'22'*20]=other
+        self.check_status(c,o,p,'H26','change_needed')
+
     def test_deletion_oracle_matches_genesis(self):
         alloc=read(ROOT/'fixtures/chains/forks/genesis.json')['alloc']
         account=alloc['0000000000000000000000000000000000001007']

@@ -259,8 +259,8 @@
     },
     "H21": {
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 641592d2 includes PR #13750 and emits minimal quantities.",
-        "change": "Ship the minimal-quantity encoding verified in 641592d2, e.g. 0x2a rather than a 32-byte padded string."
+        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 641592d2 includes PR #13750 and emits minimal stack quantities; both builds still encode storage operands as a padded key and non-minimal values such as 0x00.",
+        "change": "Ship the minimal-quantity stack encoding verified in 641592d2, e.g. 0x2a rather than a 32-byte padded string, and apply it to vmTrace store keys and values."
       }
     },
     "H25": {

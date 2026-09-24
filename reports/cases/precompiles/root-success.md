@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. Stack words use minimal hex quantities at every depth.
+**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. Stack words and storage operands use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

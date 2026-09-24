@@ -2,7 +2,7 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Observe unresolved fee defaults. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Successful creation uses address, code and gasUsed.
+**What this checks:** Observe unresolved fee defaults. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Successful creation uses address, code and gasUsed.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -67,7 +67,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
+- [H21](../../../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
 - [H15](../../../../decisions/H15.md): Observe unresolved fee defaults. Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict.
 - Result shape at `vmTrace`: {'code': '0x3a60005248602052436040524260605245608052333160a052413160c05260e06000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x0000000000000000000000000000000000000000000000000000000000000000'], 'store': None, 'used': 146458}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push':
 

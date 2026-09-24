@@ -2,7 +2,7 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth.
+**What this checks:** Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

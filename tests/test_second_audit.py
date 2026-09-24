@@ -34,7 +34,7 @@ class SemanticChecks(unittest.TestCase):
         for name in ['many-storage-write-read','many-storage-write-revert-read']:
             for mutation in ['repeat diff','repeat nonce','drop first write','commit reverted write','null diff']:
                 with self.subTest(name=name, mutation=mutation):
-                    c,o,p=captured('2026-09-23/harness-audit-geth-a',name,'go-ethereum_trace')
+                    c,o,p=captured('2026-09-23/harness-audit-native-a',name,'erigon_development')
                     self.check_status(c,o,p,'H16','matches')
                     r=o['response']['result'];sender=c['context']['sender'];target=c['request']['params'][0][0][0]['to']
                     if mutation=='repeat diff': r[1]['stateDiff']=copy.deepcopy(r[0]['stateDiff'])
@@ -44,11 +44,15 @@ class SemanticChecks(unittest.TestCase):
                     else: r[1]['stateDiff']=None
                     self.check_status(c,o,p,'H16','change_needed')
 
-    def test_storage_add_and_zero_to_value_encodings_are_equivalent_for_h16(self):
-        c,o,p=captured('2026-09-23/harness-audit-geth-a','many-storage-write-read','go-ethereum_trace')
-        target=c['request']['params'][0][0][0]['to'];slot='0x'+'00'*32
-        o['response']['result'][0]['stateDiff'][target]['storage'][slot]={'*':{'from':slot,'to':'0x'+f'{42:064x}'}}
+    def test_existing_account_slots_use_change_markers(self):
+        c,o,p=captured('2026-09-23/harness-audit-native-a','many-storage-write-read','erigon_development')
         self.check_status(c,o,p,'H16','matches')
+        target=c['request']['params'][0][0][0]['to'];slot='0x'+'00'*32
+        for index,marker in [(0,{'+':'0x'+f'{42:064x}'}),(1,'=')]:
+            with self.subTest(marker=marker):
+                mutated=copy.deepcopy(o)
+                mutated['response']['result'][index]['stateDiff'].setdefault(target,{})['storage']={slot:marker}
+                self.check_status(c,mutated,p,'H16','change_needed')
 
     def test_deletion_values_match_frozen_prestate(self):
         for field,bad in [('code',{'-':'0x'}),('nonce',{'-':'0xdead'}),('storage',{'0x'+'00'*32:{'-':'0x'+'01'*32}})]:

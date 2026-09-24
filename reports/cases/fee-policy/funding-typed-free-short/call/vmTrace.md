@@ -2,7 +2,7 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Identify a fee/funding validation rejection. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution. Successful creation uses address, code and gasUsed. Reject the independently invalid call for its fee/funding violation. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Assess the declared property.
+**What this checks:** Identify a fee/funding validation rejection. Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution. Successful creation uses address, code and gasUsed. Reject the independently invalid call for its fee/funding violation. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

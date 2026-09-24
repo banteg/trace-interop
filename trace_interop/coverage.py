@@ -6,11 +6,11 @@ properties and blocked checks are retained, without turning them into passes.
 import re
 
 from .oracles import anchored_reference
-from .vm_model import execute, intrinsic, differences, local_invariants, UnsupportedProgram, NAMES
+from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, UnsupportedProgram, NAMES
 from .chain_model import decode_transaction
 import rlp
 from eth_hash.auto import keccak
-from .execution_models import assess as assess_execution, empty_execution_indexes
+from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
 
 
@@ -210,9 +210,7 @@ def supplement(case, observation, peers, checks, expected):
     # Replay arrays need the same numeric/metadata walk as individual envelopes.
     if 'H21' in declared and not covered('H21') and status == 'result':
         vms = [obj(e).get('vmTrace') for e in envelopes]
-        empty=empty_execution_indexes(case)
-        valid = bool(vms) and all(isinstance(v, dict) or v is None and i in empty for i,v in enumerate(vms))
-        vms=[v for i,v in enumerate(vms) if not (v is None and i in empty)]
+        valid = bool(vms)
         while vms:
             vm = vms.pop()
             valid &= isinstance(vm, dict) and isinstance(obj(vm).get('ops'), list)
@@ -221,15 +219,14 @@ def supplement(case, observation, peers, checks, expected):
                 valid &= all(type(obj(op).get(k)) is int and obj(op)[k] >= 0 for k in ['pc','cost'])
                 if ex:
                     valid &= type(ex.get('used')) is int and ex['used'] >= 0
-                    valid &= isinstance(ex.get('push'), list) and all(isinstance(v,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)',v) for v in seq(ex.get('push')))
+                    valid &= encoding_valid(ex)
                 if obj(op).get('sub') is not None:
                     vms.append(op['sub'])
-        add('H21', bool(valid), 'Replay VM numeric fields use nonnegative integers and stack words use minimal quantities at every depth.')
+        add('H21', bool(valid), 'Replay VM numeric fields use nonnegative integers; stack words and storage operands use minimal quantities at every depth.')
 
     if 'H20' in declared and status=='result':
         vms=[obj(e).get('vmTrace') for e in envelopes]
-        empty=empty_execution_indexes(case)
-        errors=[error for i,vm in enumerate(vms) if not (vm is None and i in empty) for error in local_invariants(vm)]
+        errors=[error for vm in vms for error in local_invariants(vm)]
         add('H20',bool(vms) and not errors,
             'At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded.',
             '; '.join(errors[:4]))

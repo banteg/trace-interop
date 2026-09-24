@@ -108,14 +108,6 @@ def execution_code(tx,codes,exists):
     return code
 
 
-def empty_execution_indexes(case):
-    empty=set()
-    for i,(tx,block,index) in enumerate(transactions(case)):
-        exists,codes=prestate(case['context'],block,index)
-        if execution_code(tx,codes,exists)=='0x':empty.add(i)
-    return empty
-
-
 def balance_delta(change):
     if change == '=':
         return 0
@@ -193,8 +185,8 @@ def assess(case, observation, peers, topics):
             if code is not None:
                 vm=e.get('vmTrace')
                 if 'H19' in topics:
-                    add('H19',mapping(vm).get('code')==code or code=='0x' and vm is None,
-                        'The replay/raw root VM uses the frozen initcode or resolved one-hop execution code.',
+                    add('H19',isinstance(vm,dict) and vm.get('code')==code,
+                        'The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs.',
                         f'Expected source {code[:100]}.')
                 if 'H20' in topics and code not in ['0x','']:
                     env={'GASPRICE':min(tx['price_cap'],block.get('base_fee',0)+tx['tip_cap']),

@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 
 from .oracles import anchored_reference, REVERT_OUTPUT, REVERT_GAS
+from .vm_model import encoding_valid
 
 
 def is_extension_request(request):
@@ -243,12 +244,9 @@ def evaluate(case, observation, peers, invalid_params=None):
                 if not isinstance(op, dict):
                     valid = False
                     continue
-                ex = op.get('ex')
-                if ex is not None:
-                    push = mapping(ex).get('push')
-                    valid &= isinstance(push, list) and all(isinstance(v,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)',v) is not None for v in sequence(push))
+                valid &= encoding_valid(op.get('ex'))
                 if op.get('sub') is not None: stack.append(op['sub'])
-        check('H21', valid, 'Stack words use minimal hex quantities at every depth.')
+        check('H21', valid, 'Stack words and storage operands use minimal hex quantities at every depth.')
     if method == 'trace_filter' and params and isinstance(params[0],dict):
         filt = params[0]
         filter_cases = ['filter-both','filter-from','filter-to','filter-empty','filter-all',
@@ -314,11 +312,11 @@ def evaluate(case, observation, peers, invalid_params=None):
             mapping(mapping(d).get(sender)).get('nonce') == {'*':{'from':hex(nonce+i),'to':hex(nonce+i+1)}}
             for i,d in enumerate(diffs)), 'Each call reports its own sender nonce transition, including a reverted call.')
         storage = [mapping(mapping(d).get(target)).get('storage',{}) for d in diffs]
-        # Zero-slot creation and zero-to-value modification encode the same
-        # transition here; marker style is a separate compatibility decision.
+        # The target account exists at both endpoints, so its slots change with '*'
+        # even from zero, as in Parity and every native client; slots never use '='.
         first = storage[0] if storage else None
-        check('H16', valid and first in [{slot:{'+':value}}, {slot:{'*':{'from':slot,'to':value}}}]
-              and all(s == {} or s == {slot:'='} for s in storage[1:]),
+        check('H16', valid and first == {slot:{'*':{'from':slot,'to':value}}}
+              and all(s == {} for s in storage[1:]),
               'Only the first call writes slot zero; reverted writes and later reads add no storage transition.')
     if context.get('_chain') == 'callmany-isolation' and case.get('isolation_after'):
         before, simulation = case['isolation_before'], case['isolation_after']

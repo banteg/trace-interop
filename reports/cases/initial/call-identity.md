@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested stateDiff is null. Output remains a byte string under every trace selection. The identity precompile call frame preserves its input as return bytes. Stack words use minimal hex quantities at every depth.
+**What this checks:** Unrequested stateDiff is null. Output remains a byte string under every trace selection. The identity precompile call frame preserves its input as return bytes. Stack words and storage operands use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

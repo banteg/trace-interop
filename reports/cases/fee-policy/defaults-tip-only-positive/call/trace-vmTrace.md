@@ -2,7 +2,7 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Observe unresolved fee defaults. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Assess the declared property. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth.
+**What this checks:** Observe unresolved fee defaults. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Assess the declared property. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

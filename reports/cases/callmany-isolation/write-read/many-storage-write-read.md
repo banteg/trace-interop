@@ -10,7 +10,7 @@
 | [Besu · 26.9-develop · f9572aa8](../../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
 | [Erigon · 3.6.1 · 0c4d9c91](../../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
 | [Erigon · 3.8.0-dev · e26d9bd4](../../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../../clients/go-ethereum_trace.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
 | [Nethermind · 2.1.0-unstable · 641592d2](../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
 | [Reth · 2.6.0 · 73a3a008](../../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/h15-call-compat/callmany-isolation/manifest.json) |
@@ -66,6 +66,10 @@
 
 - [H16](../../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=43536 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=86998971407520, burn=73028592480.
 - [H16](../../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Gas=23137 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=46235189302090, burn=38810697910.
+
+**Geth draft fork · 1.17.7-unstable · fa8ecb92** (`Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1`)
+
+- [H16](../../../decisions/H16.md): Only the first call writes slot zero; reverted writes and later reads add no storage transition.
 
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 

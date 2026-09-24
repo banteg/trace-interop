@@ -103,13 +103,14 @@ class ChainModelTests(unittest.TestCase):
             checks=assess(case,{'status':'result','response':{'result':result}},{},{'H18'})
             self.assertEqual([c['status'] for c in checks],[expected])
 
-    def test_known_empty_execution_accepts_null_vm(self):
+    def test_known_empty_execution_requires_empty_vm_object(self):
         blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
         tx=blocks['0x2']['transactions'][3]
         case={'name':'replay','context':{'_blocks':blocks},
               'request':{'method':'trace_replayTransaction','params':[tx['hash'],['vmTrace']]}}
-        checks=assess(case,{'status':'result','response':{'result':{'vmTrace':None}}},{},{'H19','H20'})
-        self.assertEqual([c['status'] for c in checks],['matches'])
+        for vm,expected in [({'code':'0x','ops':[]},'matches'),(None,'change_needed')]:
+            checks=assess(case,{'status':'result','response':{'result':{'vmTrace':vm}}},{},{'H19','H20'})
+            self.assertEqual([c['status'] for c in checks],[expected])
 
     def test_empty_or_truncated_block_replay_cannot_pass(self):
         blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')

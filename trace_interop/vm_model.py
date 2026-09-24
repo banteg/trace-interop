@@ -3,6 +3,8 @@
 No client response is an input. Unsupported programs fail closed. This is not a
 general EVM: calls, jumps, storage and exceptional halts need separate fixtures.
 """
+import re
+
 
 NAMES = {0: 'STOP', 1: 'ADD', 0x30: 'ADDRESS', 0x34: 'CALLVALUE',
          0x35: 'CALLDATALOAD', 0x36: 'CALLDATASIZE', 0x37: 'CALLDATACOPY',
@@ -247,3 +249,21 @@ models additionally derive costs and effects independently of recorded values.
         if op.get('sub') is not None:
             errors.extend(f'subtrace {i}: '+e for e in local_invariants(op['sub']))
     return errors
+
+
+QUANTITY = re.compile(r'0x(?:0|[1-9a-f][0-9a-f]*)')
+DATA = re.compile(r'0x(?:[0-9a-f]{2})*')
+
+
+def encoding_valid(ex):
+    """Check a VM step's ex encoding: minimal quantities for push and store, integer offsets and even data for mem."""
+    if ex is None:
+        return True
+    if not isinstance(ex, dict):
+        return False
+    push, store, mem = ex.get('push'), ex.get('store'), ex.get('mem')
+    return (isinstance(push, list) and all(isinstance(v, str) and QUANTITY.fullmatch(v) for v in push)
+            and (store is None or isinstance(store, dict) and all(
+                isinstance(store.get(k), str) and QUANTITY.fullmatch(store[k]) for k in ['key', 'val']))
+            and (mem is None or isinstance(mem, dict) and type(mem.get('off')) is int and mem['off'] >= 0
+                 and isinstance(mem.get('data'), str) and DATA.fullmatch(mem['data']) is not None))

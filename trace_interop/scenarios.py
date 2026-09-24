@@ -211,8 +211,14 @@ def verify_state(corpus_name, corpus, observations, client):
     return True, 'ordinary imported-chain scenario'
 
 
-def verify_setup(manifest, corpus, observations, client):
+def verify_setup(manifest, corpus, observations, client, launches=()):
     """Require correlated controls for both imported identity and canonical RPC head."""
+    # A scenario that stopped at an Engine API step reports that step's error, not the
+    # first control it never reached.
+    for launch in launches:
+        if launch.get('name') == f'client launch ({client})' and not launch.get('pass'):
+            lines = [line for line in str(launch.get('log', '')).splitlines() if line.strip()]
+            return False, 'Scenario setup stopped: '+(lines[-1] if lines else 'client launch failed')
     requests = {c['name']: c['request'] for c in manifest['selected_cases']}
     if corpus.get('scenario_phases'):
         ordered_cases(corpus)

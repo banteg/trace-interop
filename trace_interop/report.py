@@ -80,7 +80,7 @@ def generate(root, runs, output):
         cases = assessed_cases(manifest['selected_cases'], context['cases'])
         rule_context = dict(context, cases=cases)
         for client in manifest['clients']:
-            eligible, scenario_detail=verify_setup(manifest,context,obs,client)
+            eligible, scenario_detail=verify_setup(manifest,context,obs,client,summary.get('launches',[]))
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
             for case in cases:
                 name=case['name']; observation=peers.get(name,{})

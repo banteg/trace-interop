@@ -328,7 +328,7 @@ def collect(out):
     from .scenarios import verify_setup
     corpus = read(ROOT / 'fixtures/corpora' / (manifest['corpus'] + '.json')) if manifest.get('corpus') else {}
     for client in manifest['clients']:
-        ok, detail = verify_setup(manifest, corpus, observations, client)
+        ok, detail = verify_setup(manifest, corpus, observations, client, launches)
         eligibility[client] = ok
         scenario_status[client] = {'verified': ok, 'detail': detail}
     missing = [[case, client] for case in cases for client in manifest['clients'] if client not in observations[case]]

@@ -388,3 +388,13 @@ class ReviewRegressionTests(unittest.TestCase):
         self.assertIn(['docker', 'image', 'rm', 'trace-interop/reth:abc'], removed)
         self.assertFalse(any('old-volume' in c for c in removed))
         self.assertFalse(hasattr(cli, 'untag_superseded_builds'))
+
+
+class ScenarioSetupTests(unittest.TestCase):
+    def test_failed_engine_step_is_reported_as_the_setup_cause(self):
+        from trace_interop.scenarios import verify_setup
+        launches = [{'name': 'client launch (erigon_development)', 'pass': False,
+                     'log': 'interop Engine engine_newPayloadV4: reply=VALID\nInvalid forkchoice state\n'},
+                    {'name': 'client launch (besu_release)', 'pass': True, 'log': ''}]
+        ok, detail = verify_setup({'selected_cases': [], 'head': {}}, {}, {}, 'erigon_development', launches)
+        self.assertEqual((ok, detail), (False, 'Scenario setup stopped: Invalid forkchoice state'))

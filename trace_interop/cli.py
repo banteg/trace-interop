@@ -17,16 +17,7 @@ HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
           'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'coverage': 'raw-validation', 'fee-policy': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a'}
-IMAGES = {
-    'reth_release': ('reth', 'ghcr.io/paradigmxyz/reth:v2.6.0'),
-    'reth_development': ('reth', 'ghcr.io/paradigmxyz/reth:nightly'),
-    'erigon_release': ('erigon', 'erigontech/erigon:v3.6.1'),
-    'erigon_development': ('erigon', 'erigontech/erigon:main-latest'),
-    'nethermind_release': ('nethermind', 'nethermind/nethermind:1.39.3'),
-    'nethermind_development': ('nethermind', 'nethermindeth/nethermind:master'),
-    'besu_release': ('besu', 'hyperledger/besu:26.8.1'),
-    'besu_development': ('besu', 'hyperledger/besu:develop'),
-}
+from .versions import NAMES
 
 
 def read(path):
@@ -68,20 +59,8 @@ def verify():
 
 
 def resolve(args):
-    output = Path(args.output)
-    if output.exists():
-        raise ValueError('use a new lock filename; existing locks are immutable')
-    clients = {}
-    for name in args.clients.split(','):
-        client, image = IMAGES[name]
-        run('docker', 'pull', image)
-        meta = json.loads(run('docker', 'image', 'inspect', image, capture=True))[0]
-        digest = next(x for x in meta['RepoDigests'] if x.startswith(image.rsplit(':', 1)[0] + '@'))
-        clients[name] = {'client': client, 'requested': image, 'digest': digest,
-                         'image_id': meta['Id'], 'architecture': meta['Architecture'],
-                         'created': meta['Created'], 'labels': meta['Config'].get('Labels') or {}}
-    write(output, {'resolved_at': dt.datetime.now(dt.timezone.utc).isoformat(),
-                   'hive_commit': HIVE, 'clients': clients})
+    from .versions import resolve_native
+    resolve_native(args.output, args.clients.split(','))
 
 
 DOCKERFILE = '''FROM golang:1.26.1-alpine AS builder
@@ -339,8 +318,11 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('verify')
     p = sub.add_parser('resolve', help='pull references and create an immutable client lock')
-    p.add_argument('--clients', default=','.join(IMAGES))
+    p.add_argument('--clients', default=','.join(NAMES))
     p.add_argument('--output', required=True)
+    p = sub.add_parser('check-versions', help='live preflight; reject a stale release/development lock')
+    p.add_argument('--lock', required=True)
+    p.add_argument('--output', help='optional preflight record')
     p = sub.add_parser('run', help='capture a corpus through Hive; differences are observations')
     p.add_argument('--lock', required=True)
     p.add_argument('--clients')
@@ -359,6 +341,12 @@ def main():
             verify()
         elif args.command == 'resolve':
             resolve(args)
+        elif args.command == 'check-versions':
+            from .versions import check_current
+            result = check_current(read(args.lock))
+            if args.output:
+                write(args.output,result)
+            print(json.dumps(result,indent=2))
         elif args.command == 'run':
             import fcntl
             (ROOT / '.cache').mkdir(exist_ok=True)

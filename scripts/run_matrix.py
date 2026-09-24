@@ -1,25 +1,22 @@
-"""Fresh sequential captures against immutable builds; retain incomplete runs."""
+"""Resolve latest releases/development builds, then capture one immutable matrix."""
 import argparse
 from pathlib import Path
 import subprocess
 import sys
 
 from trace_interop.cli import read, write
+from trace_interop.versions import matrix_lock, check_current
 
 p=argparse.ArgumentParser(description=__doc__)
-p.add_argument('--native-lock',default='locks/clients-2026-09-21.json')
-p.add_argument('--geth-lock',default='locks/geth-trace.json')
+p.add_argument('--reproduce-lock',help='explicitly reproduce a historical combined nine-build lock instead of refreshing')
 p.add_argument('--output',required=True)
 p.add_argument('--corpora',default='initial,a,repeat,forks,fork-followup,precompiles,precompile-values,raw-validation,coverage,fee-policy,callmany-isolation,h30,reorg-safe,pruned')
 args=p.parse_args()
 out=Path(args.output).resolve()
 out.mkdir(parents=True,exist_ok=False)
-lock=read(args.native_lock)
-geth=read(args.geth_lock)
-if lock['hive_commit']!=geth['hive_commit']:
-    raise ValueError('incompatible Hive revisions')
-lock['clients'].update(geth['clients'])
-write(out/'clients.lock.json',lock)
+lock=matrix_lock(out/'clients.lock.json',args.reproduce_lock)
+write(out/'preflight.json', check_current(lock) if not args.reproduce_lock else
+      {'status':'historical-reproduction','lock':str(Path(args.reproduce_lock).resolve())})
 results=[]
 for corpus in args.corpora.split(','):
     command=[sys.executable,'-m','trace_interop','run','--lock',str(out/'clients.lock.json'),

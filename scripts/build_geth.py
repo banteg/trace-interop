@@ -73,8 +73,8 @@ def main():
         tag = 'trace-interop/geth-source:'+binary_sha
         subprocess.run(['docker','build','-t',tag,str(work)],check=True)
         meta = json.loads(output('docker','image','inspect',tag))[0]
-    root = Path(__file__).resolve().parents[1]
-    hive = json.loads((root/'locks/clients-2026-09-21.json').read_text())['hive_commit']
+    from trace_interop.cli import HIVE
+    hive = HIVE
     lock = {'hive_commit':hive,'resolved_at':dt.datetime.now(dt.timezone.utc).isoformat(),
             'clients':{'go-ethereum_trace':{'client':'go-ethereum','requested':'banteg/go-ethereum:feat/trace',
                 'local_image':tag,'image_id':meta['Id'],'architecture':meta['Architecture'],

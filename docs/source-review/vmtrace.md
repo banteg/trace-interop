@@ -8,7 +8,7 @@ aac3544 (unreleased after 0.43.0), revm-context(-interface) 43.0.x, the Geth dra
 the pinned spec b979aefe (src/schemas/trace.yaml `TraceVm`, lines 535-613), and harness `vm_model.py`, `coverage.py`, `rules.py`,
 `execution_models.py`. Evidence: `evidence/2026-09-24/h15-call-compat` (the active report set). Other evidence was used only where it adds builds.
 
-Reproduce trace dumps with `scripts/compare_responses.py show <observations.json> <case> --family vmTrace`.
+Reproduce trace dumps with `uv run python scripts/compare_responses.py show <run dir> <case> --family vmTrace`.
 
 ---
 
@@ -272,7 +272,7 @@ Latent issues, none affecting current fixtures:
 
 ## Report log (how the evidence was obtained)
 
-- Dumps: `python3 scripts/compare_responses.py show evidence/2026-09-24/h15-call-compat/<corpus>/observations.json <case> --family vmTrace [--builds ...]`.
+- Dumps: `uv run python scripts/compare_responses.py show evidence/2026-09-24/h15-call-compat/<corpus> <case> --family vmTrace [--builds ...]`.
   Cases used: initial/replay-tree-vmTrace, call-tree-vmTrace-priced, replay-block-tree, call-transfer-vmTrace, replay-transfer-vmTrace;
   coverage/model-*; a/call-mcopy; a/auth-set.
 - Nested-gas invariant check: inline script (A2). The result per client was:

@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from trace_interop.cli import ROOT, collect, parse_exchange, read, sha, write
+from trace_interop.cli import ROOT, collect, load_observations, parse_exchange, read, sha, write
 from trace_interop.rules import evaluate
 from trace_interop.scenarios import verify_state
 
@@ -16,7 +16,7 @@ from trace_interop.scenarios import verify_state
 def captured(run, name, client):
     folder = ROOT/'evidence'/run
     manifest = read(folder/'manifest.json')
-    observations = read(folder/'observations.json')
+    observations = load_observations(folder)
     case = next(c for c in manifest['selected_cases'] if c['name'] == name)
     context = read(ROOT/'fixtures/corpora'/f"{manifest['corpus']}.json")
     context['_chain'] = manifest['corpus']

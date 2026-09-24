@@ -4,7 +4,7 @@ Sources read: Parity `55c90d40`; Besu main `07f0a4b2f8`; Erigon main `3b4861d103
 
 Evidence used: the active snapshot `evidence/2026-09-24/h15-call-compat/*/observations.json`.
 
-Reproduce with `scripts/compare_responses.py`: `show <observations.json> <case>` prints one case's stateDiff for every build, and `groups <evidence dir>` groups builds that return identical stateDiffs.
+Reproduce with `scripts/compare_responses.py`: `show <run dir> <case>` prints one case's stateDiff for every build, and `groups <evidence dir>` groups builds that return identical stateDiffs.
 
 Severity legend: **spec** = would change the spec, **verdict** = would change a client verdict, **cosmetic**.
 

@@ -7,15 +7,15 @@ import argparse
 import json
 from pathlib import Path
 
+from trace_interop.cli import COMPACT_OBSERVATIONS, OBSERVATIONS, load_observations
+
 FAMILIES = ['trace', 'stateDiff', 'vmTrace', 'output']
 
 
 def result(observation):
-    raw = observation['raw_response']
-    try:
-        response = json.loads(raw)
-    except json.JSONDecodeError:
-        return {'malformed': raw[:200]}
+    if 'response' not in observation:
+        return {'malformed': observation['raw_response'][:200]}
+    response = observation['response']
     return response['result'] if 'result' in response else {'error': response.get('error')}
 
 
@@ -29,7 +29,8 @@ def select(value, family):
 
 
 def show(args):
-    case = json.loads(Path(args.observations).read_text())[args.case]
+    path = Path(args.observations)
+    case = load_observations(path if path.is_dir() else path.parent)[args.case]
     for build, observation in case.items():
         if args.builds and not any(b in build for b in args.builds):
             continue
@@ -38,8 +39,9 @@ def show(args):
 
 
 def groups(args):
-    for path in sorted(Path(args.evidence).glob('*/observations.json')):
-        for name, case in json.loads(path.read_text()).items():
+    runs = {p.parent for name in [OBSERVATIONS, COMPACT_OBSERVATIONS] for p in Path(args.evidence).glob('*/'+name)}
+    for run in sorted(runs):
+        for name, case in load_observations(run).items():
             if name.startswith('_control'):
                 continue
             outputs = {}
@@ -49,14 +51,14 @@ def groups(args):
                     outputs.setdefault(json.dumps(value, sort_keys=True), []).append(build)
             if len(outputs) > 1:
                 ranked = sorted(outputs.values(), key=len, reverse=True)
-                print(path.parent.name, name, ' | '.join(','.join(sorted(g)) for g in ranked))
+                print(run.name, name, ' | '.join(','.join(sorted(g)) for g in ranked))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     commands = parser.add_subparsers(required=True)
     one = commands.add_parser('show', help="print one case's output for every build")
-    one.add_argument('observations', help='an observations.json file')
+    one.add_argument('observations', help='a run directory or its observations file (observations.json or observations.json.gz)')
     one.add_argument('case')
     one.add_argument('--family', choices=FAMILIES, default='stateDiff')
     one.add_argument('--builds', nargs='*', help='substrings selecting builds, e.g. besu reth_release')

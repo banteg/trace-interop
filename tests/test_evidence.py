@@ -1,13 +1,32 @@
 import copy
+import gzip
+import hashlib
 import json
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
 
-from trace_interop.cli import parse_exchange, selected_cases, collect, write
+from trace_interop.cli import (
+    COMPACT_OBSERVATIONS,
+    OBSERVATIONS,
+    ROOT,
+    collect,
+    compact_bytes,
+    compact_observations,
+    decode_response,
+    evidence_bytes,
+    expand_observations,
+    load_observations,
+    parse_exchange,
+    read,
+    selected_cases,
+    verify_evidence,
+    write,
+    write_observations,
+)
 from trace_interop.rules import evaluate
 from trace_interop.scenarios import verify_state
-
 
 REQ={'jsonrpc':'2.0','id':1,'method':'trace_call','params':[]}
 
@@ -61,6 +80,78 @@ class CaptureTests(unittest.TestCase):
             result=collect(path)
             self.assertFalse(result['complete'])
             self.assertEqual(result['missing'],[['_control/head','reth_release']])
+
+
+class CompactObservationTests(unittest.TestCase):
+    def exchange(self, response):
+        return parse_exchange('>> '+json.dumps(REQ)+'\n<< '+response, REQ)
+
+    def test_real_run_reconstructs_the_checksummed_original(self):
+        source = ROOT/'evidence/2026-09-23/raw-validation-native'
+        observations = load_observations(source)
+        self.assertIn('malformed_json', {e['status'] for clients in observations.values() for e in clients.values()})
+        with tempfile.TemporaryDirectory() as d:
+            folder = Path(d)
+            shutil.copy(source/'checksums.json', folder)
+            write_observations(folder, observations)
+            self.assertFalse((folder/OBSERVATIONS).exists())
+            restored = evidence_bytes(folder, OBSERVATIONS)
+            self.assertEqual(hashlib.sha256(restored).hexdigest(), read(folder/'checksums.json')[OBSERVATIONS])
+            # Identical observations give identical compact bytes, with no timestamp.
+            self.assertEqual(compact_bytes(load_observations(folder)), (folder/COMPACT_OBSERVATIONS).read_bytes())
+            self.assertEqual(gzip.decompress((folder/COMPACT_OBSERVATIONS).read_bytes())[:1], b'{')
+            self.assertEqual((folder/COMPACT_OBSERVATIONS).read_bytes()[4:8], bytes(4))
+
+    def test_only_a_response_the_decoder_derives_is_omitted(self):
+        raw = '{"jsonrpc":"2.0","id":1,"result":{"b":1,"a":[1.0,true]}}'
+        derived = self.exchange(raw)
+        self.assertEqual(derived['response'], decode_response(raw))
+        observations = {'case': {
+            'derived': derived,
+            'integer_for_float': dict(derived, response={'jsonrpc': '2.0', 'id': 1, 'result': {'a': [1, True], 'b': 1}}),
+            'number_for_boolean': dict(derived, response={'jsonrpc': '2.0', 'id': 1, 'result': {'a': [1.0, 1], 'b': 1}}),
+            'harness': {'status': 'harness_error', 'detail': 'request mismatch', 'raw_log': '>> x'},
+        }}
+        compact = compact_observations(copy.deepcopy(observations))['case']
+        self.assertEqual(compact['derived'], {'status': 'result', 'raw_response': raw})
+        for kept in ['integer_for_float', 'number_for_boolean', 'harness']:
+            self.assertEqual(compact[kept], observations['case'][kept])
+        restored = expand_observations(json.loads(json.dumps(compact_observations(observations))))
+        self.assertEqual(json.dumps(restored, indent=2, sort_keys=True), json.dumps(observations, indent=2, sort_keys=True))
+        self.assertEqual(list(restored['case']['derived']['response']['result']), ['a', 'b'])
+
+    def test_malformed_response_keeps_only_its_wire_string(self):
+        truncated = self.exchange('{"jsonrpc":"2.0","id":1,"result":')
+        not_json = self.exchange('{"jsonrpc":"2.0","id":1,"result":NaN}')
+        observations = {'case': {'truncated': truncated, 'not_json': not_json}}
+        self.assertEqual(compact_observations(observations), observations)
+        restored = expand_observations(copy.deepcopy(observations))
+        self.assertEqual(restored, observations)
+        self.assertNotIn('response', restored['case']['not_json'])
+        with self.assertRaises(ValueError):
+            compact_observations({'case': {'c': {'status': 'malformed_json', 'raw_response': '{}'}}})
+
+    def test_new_capture_checksums_its_compact_observations(self):
+        request = {'jsonrpc': '2.0', 'id': 1, 'method': 'eth_getBlockByNumber', 'params': ['0x1', False]}
+        reply = {'jsonrpc': '2.0', 'id': 1, 'result': {'number': '0x1'}}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d); (path/'hive').mkdir()
+            (path/'hive/details.log').write_text('')
+            write(path/'hive/suite.json', {'testDetailsLog': 'details.log', 'testCases': {'1': {
+                'name': 'interop/_control/head (reth_release)',
+                'summaryResult': {'pass': False, 'details': '>> '+json.dumps(request)+'\n<< '+json.dumps(reply)}}}})
+            write(path/'manifest.json', {'selected_cases': [{'name': '_control/head', 'request': request}],
+                                         'clients': {'reth_release': {}}, 'head': {'hash': '0x1'}})
+            collect(path)
+            self.assertFalse((path/OBSERVATIONS).exists())
+            self.assertIn(COMPACT_OBSERVATIONS, read(path/'checksums.json'))
+            self.assertNotIn(OBSERVATIONS, read(path/'checksums.json'))
+            self.assertEqual(load_observations(path)['_control/head']['reth_release']['response'], reply)
+            verify_evidence(path)
+            data = gzip.decompress((path/COMPACT_OBSERVATIONS).read_bytes())
+            (path/COMPACT_OBSERVATIONS).write_bytes(gzip.compress(data.replace(b'0x1', b'0x2'), mtime=0))
+            with self.assertRaises(ValueError):
+                verify_evidence(path)
 
 
 class ScenarioTests(unittest.TestCase):

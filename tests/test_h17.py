@@ -3,7 +3,7 @@ import copy
 import unittest
 
 from trace_interop.chain_model import load_chain
-from trace_interop.cli import ROOT, read, CHAINS
+from trace_interop.cli import ROOT, read, CHAINS, load_observations
 from trace_interop.coverage import supplement
 from trace_interop.execution_models import created_address, prestate
 
@@ -25,7 +25,7 @@ class H17CapturedRegressionTests(unittest.TestCase):
             context['_environment'] = {k:int(header[v],16) for k,v in
                 [('BASEFEE','baseFeePerGas'),('NUMBER','number'),('TIMESTAMP','timestamp'),('GASLIMIT','gasLimit')]}
             cls.corpora[name] = context
-            cls.observations[name] = read(ROOT/f'evidence/2026-09-24/current-matrix/{name}/observations.json')
+            cls.observations[name] = load_observations(ROOT/f'evidence/2026-09-24/current-matrix/{name}')
 
     def case(self, corpus, name):
         context = self.corpora[corpus]
@@ -94,7 +94,7 @@ class H17CapturedRegressionTests(unittest.TestCase):
             self.assertEqual([c['status'] for c in checks if c['topic']=='H17'],['matches'],client)
 
     def test_nethermind_fix_preserves_birth_and_subsequent_update_markers(self):
-        fresh = read(ROOT/'evidence/2026-09-24/h17-retest/coverage/observations.json')
+        fresh = load_observations(ROOT/'evidence/2026-09-24/h17-retest/coverage')
         client = 'nethermind_development'
         for name in ['model-transfer', 'model-many-transfers', 'model-empty-runtime']:
             with self.subTest(case=name):

@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from trace_interop.cli import ROOT, read
+from trace_interop.cli import ROOT, read, load_observations
 from trace_interop.coverage import supplement
 from trace_interop.fee_policy import assess, expected_steps, gas_used, SENDER, MINER, BALANCE, GAS
 from trace_interop.rules import evaluate
@@ -141,7 +141,7 @@ class FeePolicyTests(unittest.TestCase):
         self.assertEqual(assess(case,{'status':'malformed_json'})[0]['status'],'blocked')
 
     def test_captured_defaults_receive_verdicts(self):
-        observations = read(ROOT/'evidence/2026-09-24/current-matrix/fee-policy/observations.json')
+        observations = load_observations(ROOT/'evidence/2026-09-24/current-matrix/fee-policy')
         defaults = [name for name in self.cases if name.startswith('defaults-')]
         self.assertEqual(len(defaults), 80)
         # Reth executes omitted fees as zero-fee calls; the Geth draft keeps the real BASEFEE.

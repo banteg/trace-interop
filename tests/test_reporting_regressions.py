@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from trace_interop.cli import ROOT, collect, parse_exchange, read, sha, write
+from trace_interop.cli import ROOT, collect, load_observations, parse_exchange, read, sha, write
 from trace_interop.rules import evaluate
 from trace_interop.scenarios import verify_state
 
@@ -22,9 +22,9 @@ class ReportingRegressions(unittest.TestCase):
         for eligible in [True, False]:
             with self.subTest(eligible=eligible), tempfile.TemporaryDirectory() as tmp:
                 base = Path(tmp); folder = base/'partial'; folder.mkdir()
-                for file in ['manifest.json', 'summary.json', 'observations.json']:
+                for file in ['manifest.json', 'summary.json']:
                     write(folder/file, read(source/file))
-                obs = read(folder/'observations.json'); del obs['filter-both']['go-ethereum_trace']
+                obs = load_observations(source); del obs['filter-both']['go-ethereum_trace']
                 write(folder/'observations.json', obs)
                 write(folder/'checksums.json', {file.name: sha(file) for file in folder.iterdir()})
                 with patch('trace_interop.report.verify_setup', return_value=(eligible, 'setup test')), patch('trace_interop.presentation.render'), contextlib.redirect_stdout(io.StringIO()):
@@ -68,7 +68,7 @@ class ReportingRegressions(unittest.TestCase):
         source = ROOT/'evidence/2026-09-23/geth-40eecf3-initial'
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp); folder = base/'invalid-control'; folder.mkdir()
-            manifest, summary, obs = [read(source/f) for f in ['manifest.json','summary.json','observations.json']]
+            manifest, summary = [read(source/f) for f in ['manifest.json','summary.json']]; obs = load_observations(source)
             # All bytes/roots are correct but the numbered control had a bad envelope.
             obs['_control/head']['go-ethereum_trace']['status'] = 'invalid_envelope'
             obs['_control/latest'] = copy.deepcopy(obs['_control/head'])

@@ -3,7 +3,7 @@ import copy
 import unittest
 from pathlib import Path
 
-from trace_interop.cli import ROOT, read
+from trace_interop.cli import ROOT, read, load_observations
 from trace_interop.chain_model import load_chain, decode_transaction
 from trace_interop.coverage import supplement
 from trace_interop.execution_models import assess, balance_delta, created_address
@@ -286,7 +286,7 @@ class AccountingTests(unittest.TestCase):
     def replay(self, corpus, name, client):
         from trace_interop.cli import CHAINS
         folder = ROOT/'evidence/2026-09-24/h15-call-compat'/corpus
-        manifest, observations = read(folder/'manifest.json'), read(folder/'observations.json')
+        manifest, observations = read(folder/'manifest.json'), load_observations(folder)
         chain = ROOT/'fixtures/chains'/CHAINS[corpus]
         genesis = read(chain/'genesis.json')
         context = dict(read(ROOT/f'fixtures/corpora/{corpus}.json'), cases=manifest['selected_cases'],
@@ -322,7 +322,7 @@ class UnsignedFeeEnvironmentTests(unittest.TestCase):
         folder = ROOT/'evidence/2026-09-24/adopted-stances/coverage'
         manifest = read(folder/'manifest.json')
         case = next(c for c in manifest['selected_cases'] if c['name'] == 'model-environment-free')
-        observation = read(folder/'observations.json')['model-environment-free']['go-ethereum_trace']
+        observation = load_observations(folder)['model-environment-free']['go-ethereum_trace']
         checks = [c for c in assess(dict(case, context=run_context(ROOT, manifest)), observation, {}, {'H20'}) if c['topic'] == 'H20']
         self.assertTrue(checks)
         self.assertEqual({c['status'] for c in checks}, {'matches'}, checks)

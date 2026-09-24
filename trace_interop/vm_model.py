@@ -1,8 +1,9 @@
 """Bounded, independent straight-line Prague EVM model for trace discriminators.
 
 No client response is an input. Unsupported programs fail closed. This is not a
-general EVM: calls, creations and exceptional halts need separate fixtures, and
-storage is modelled only for anchored slots or a fresh (just-created) account.
+general EVM: calls, creations and exceptional halts need separate fixtures. Storage is
+modelled only for slots whose transaction-start values the fixture anchors in STORAGE, or
+for a fresh (just-created) account, whose slots start at zero.
 """
 import re
 
@@ -37,7 +38,7 @@ def execute(code, gas, calldata='0x', environment=None):
     data = bytes.fromhex(calldata.removeprefix('0x'))
     env = dict(environment or {})
     stack, memory, steps = [], bytearray(), []
-    pc, output, reverted = 0, '0x', False
+    pc, output, reverted, refund = 0, '0x', False, 0
     jumpdests=set()
     cursor=0
     while cursor<len(raw):
@@ -115,20 +116,32 @@ def execute(code, gas, calldata='0x', environment=None):
                 cost=1
             elif op in [0x54,0x55]:
                 slot=stack.pop()
-                current=slot_value(slot)
+                now=slot_value(slot)
                 warm=env.setdefault('_warm_slots',set())
                 cold=0 if slot in warm else 2100
                 warm.add(slot)
                 if op==0x54:
                     cost=cold or 100
-                    stack.append(current);push=[current]
+                    stack.append(now);push=[now]
                 else:
                     value=stack.pop()
                     if gas<=2300:
-                        raise UnsupportedProgram('exceptional halt requires an OOG model')
-                    original=original_value(slot)
-                    # EIP-2200 with EIP-2929 cold surcharges; refunds do not change cost.
-                    cost=cold+(100 if current==value or original!=current else 20000 if original==0 else 2900)
+                        raise UnsupportedProgram('SSTORE sentry requires an OOG model')
+                    before=original_value(slot)
+                    # EIP-2200 with EIP-2929 cold surcharges and EIP-3529 refunds.
+                    if now==value:
+                        cost=cold+100
+                    elif before==now:
+                        cost=cold+(20000 if before==0 else 2900)
+                        refund+=4800 if before and not value else 0
+                    else:
+                        cost=cold+100
+                        if before and not now:
+                            refund-=4800
+                        elif before and not value:
+                            refund+=4800
+                        if before==value:
+                            refund+=19900 if before==0 else 2800
                     written[slot]=value
                     store={'key':hex(slot),'val':hex(value)}
             elif op in [0x5c,0x5d]:
@@ -197,7 +210,8 @@ def execute(code, gas, calldata='0x', environment=None):
                 break
     except (IndexError, OverflowError) as exc:
         raise UnsupportedProgram('invalid model program') from exc
-    return {'code': code, 'ops': steps}, output, reverted
+    # refund is the EIP-3529 counter before the one-fifth cap; a REVERT discards it.
+    return {'code': code, 'ops': steps, 'refund': 0 if reverted else refund}, output, reverted
 
 
 def store_words(store):

@@ -69,7 +69,7 @@ This is not a public testnet, performance benchmark, general EVM fuzzer or clien
 
 **Methodology:** [reproduce and review](docs/usage.md) · [stateful scenarios](docs/scenarios.md) · [assertion models](docs/assertion-models.md) · [reviewing a proposed rule](docs/review.md)
 
-**Decision studies:** [H13 signed transaction validation](docs/h13-validation.md) · [H15 unsigned simulation fees](docs/h15-fee-policy.md) · [Nethermind truncated validation responses](docs/nethermind-streamed-errors.md)
+**Decision studies:** [H13 signed transaction validation](docs/h13-validation.md) · [mined transaction probes](docs/mined-probes.md) · [H15 unsigned simulation fees](docs/h15-fee-policy.md) · [Nethermind truncated validation responses](docs/nethermind-streamed-errors.md)
 
 **Reviews and audits:** [source review](docs/source-review/README.md) · historical records: [harness assertion audit](docs/harness-audit.md) · [H17 assessment audit](docs/h17-assessment-audit.md) · [measurement and draft review corrections](docs/review-corrections.md)
 

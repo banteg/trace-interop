@@ -13,6 +13,7 @@ from eth_hash.auto import keccak
 from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
 from .probes import assess as assess_probe
+from .mined_probes import assess as assess_mined_probes
 
 
 def obj(value):
@@ -83,6 +84,7 @@ def supplement(case, observation, peers, checks, expected):
         return checks
     if case.get('expected_control') is not None and method.startswith('trace_'):
         add('H27', result == case['expected_control'], 'The explicit trace control matches its fixture expectation.')
+    checks.extend(assess_mined_probes(case, observation, peers))
 
     if method == 'trace_get' and name in ['get-missing', 'get-missing-tx']:
         add('H02', status == 'result' and result is None, 'A missing selected frame is null, not an empty collection.')

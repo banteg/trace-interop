@@ -18,7 +18,8 @@ HIVE = '43ea47bef5761351e3da7b726050ea80ab362c52'
 CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
           'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'coverage': 'raw-validation', 'fee-policy': 'raw-validation', 'fee-compat': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a',
-          'probes-prague': 'raw-validation', 'probes-forks': 'forks'}
+          'probes-prague': 'raw-validation', 'probes-forks': 'forks',
+          'mined-probes': 'mined-probes'}
 from .versions import NAMES
 
 

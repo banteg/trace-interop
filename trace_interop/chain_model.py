@@ -67,7 +67,9 @@ def load_chain(path):
                          'difficulty':number(header[7]),
                          'miner':'0x'+header[2].hex(),'timestamp':number(header[11]),
                          'gas_limit':number(header[9]),'base_fee':number(header[15]) if len(header)>15 else 0,
-                         'prev_randao':number(header[13]),
+                         'prev_randao':number(header[13]),'parent_hash':'0x'+header[0].hex(),
+                         'excess_blob_gas':number(header[18]) if len(header)>18 else None,
+                         'parent_beacon_root':'0x'+header[19].hex() if len(header)>19 else None,
                          'uncles':[{'number':number(u[8]),'miner':'0x'+u[2].hex()} for u in uncles],
                          'transactions':[decode_transaction(t) for t in transactions]}
     return blocks

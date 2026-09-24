@@ -179,6 +179,11 @@ def verify_state(corpus_name, corpus, observations, client):
     for case in corpus.get('cases', []):
         if case.get('expected_control') is not None and result(case['name']) != case['expected_control']:
             return False, 'Independent setup control failed or unavailable: '+case['name']
+        # A control may pin only the fields it derives independently, such as receipt gas.
+        fields = case.get('expected_control_fields')
+        value = result(case['name']) if fields is not None else None
+        if fields is not None and (not isinstance(value, dict) or any(value.get(k) != v for k, v in fields.items())):
+            return False, 'Independent setup control failed or unavailable: '+case['name']
     if corpus_name == 'raw-validation':
         controls = corpus.get('controls', {})
         head = result('_control/head')

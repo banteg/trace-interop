@@ -145,6 +145,25 @@ def execution_code(tx,codes,exists,nonces,chain_id):
     return code
 
 
+def root_environment(tx, block, context, method):
+    """Independent block, transaction and anchored-storage inputs for executing a root frame."""
+    env={'GASPRICE':min(tx['price_cap'],block.get('base_fee',0)+tx['tip_cap']),
+         'BASEFEE':block.get('base_fee',0),'NUMBER':block.get('number',0),
+         'TIMESTAMP':block.get('timestamp',0),'GASLIMIT':block.get('gas_limit',0),
+         'CALLVALUE':tx['value'] or 0,'ORIGIN':int(tx['sender'],16),
+         'COINBASE':int(block.get('miner','0x0'),16),'CHAINID':context.get('_chain_id',0),
+         'PREVRANDAO':block.get('prev_randao',0)}
+    # H15: an unsigned call with a zero effective price runs with BASEFEE 0.
+    if method in ['trace_call','trace_callMany'] and env['GASPRICE']==0:env['BASEFEE']=0
+    # The frozen revert contract only reads this slot; no fixture
+    # transaction can change it. Its expected zero is independent.
+    if tx['to']=='0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3':env['STORAGE']={0x42ff:0}
+    # A corpus may anchor the root account's slots at a mined transaction's start.
+    anchors=context.get('storage_anchors',{}).get(tx.get('hash'))
+    if anchors:env['STORAGE']={int(k,16):int(v,16) for k,v in anchors.items()}
+    return env
+
+
 def opcodes(code):
     raw=bytes.fromhex(code[2:])
     i=0
@@ -153,8 +172,22 @@ def opcodes(code):
         i+=1+(raw[i]-0x5f if 0x60<=raw[i]<=0x7f else 0)
 
 
+def modelled_refund(tx, block, context, method, code):
+    """The refund counter of an independently executable root program, or None."""
+    if not isinstance(code,str) or code in ['0x','']:
+        return None
+    try:
+        gas=tx['gas']-intrinsic(tx['data'],tx['to'] is None)-tx.get('intrinsic_extra',0)
+        steps,_,_=execute(code,gas,'0x' if tx['to'] is None else tx['data'],root_environment(tx,block,context,method))
+    except (UnsupportedProgram,ValueError,KeyError):
+        return None
+    return steps['refund']
+
+
 def settled_gas(deltas, miner, low, high, tip_price, burn_price, blob):
-    """Return the charged gas in [low, high] that settles every observed balance exactly, if any."""
+    """Return the charged gas in [low, high] that settles every observed balance exactly, if any.
+
+    blob is wei removed from supply besides the base fee: the blob fee and any balance destroyed."""
     if any(v is None for v in deltas) or miner is None:
         return None
     total=sum(deltas)
@@ -270,17 +303,7 @@ def assess(case, observation, peers, topics):
                         'The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs.',
                         f'Expected source {code[:100]}.')
                 if 'H20' in topics and code not in ['0x','']:
-                    env={'GASPRICE':min(tx['price_cap'],block.get('base_fee',0)+tx['tip_cap']),
-                         'BASEFEE':block.get('base_fee',0),'NUMBER':block.get('number',0),
-                         'TIMESTAMP':block.get('timestamp',0),'GASLIMIT':block.get('gas_limit',0),
-                         'CALLVALUE':tx['value'] or 0,'ORIGIN':int(tx['sender'],16),
-                         'COINBASE':int(block.get('miner','0x0'),16),'CHAINID':context.get('_chain_id',0),
-                         'PREVRANDAO':block.get('prev_randao',0)}
-                    # H15: an unsigned call with a zero effective price runs with BASEFEE 0.
-                    if method in ['trace_call','trace_callMany'] and env['GASPRICE']==0:env['BASEFEE']=0
-                    # The frozen revert contract only reads this slot; no fixture
-                    # transaction can change it. Its expected zero is independent.
-                    if tx['to']=='0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3':env['STORAGE']={0x42ff:0}
+                    env=root_environment(tx,block,context,method)
                     try:
                         gas=tx['gas']-intrinsic(tx['data'],tx['to'] is None)-tx.get('intrinsic_extra',0)
                         want,output,reverted=execute(code,gas,'0x' if tx['to'] is None else tx['data'],env)
@@ -330,33 +353,42 @@ def assess(case, observation, peers, topics):
                 # is known not to refund.
                 code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
                 refundable=code is None or len(trace)>1 or 0x55 in opcodes(code)
-                gas,low=max(spent,floor),max(spent-spent//5 if refundable else spent,floor)
-                source='root execution gas plus independently calculated Prague intrinsic/floor cost'+(', less any refund' if refundable else '')
-        if gas is None and tx['to'] and tx['data']=='0x' and codes.get(tx['to'],'0x')=='0x':
+                refund=modelled_refund(tx,block,context,method,code) if refundable and len(trace)==1 else None
+                if refund is not None:
+                    # A modelled single-frame root has an exact EIP-3529 refund, capped at a fifth.
+                    gas=low=max(spent-min(refund,spent//5),floor)
+                    source=f'root execution gas plus independently calculated Prague intrinsic/floor cost, less the modelled refund {refund}'
+                else:
+                    gas,low=max(spent,floor),max(spent-spent//5 if refundable else spent,floor)
+                    source='root execution gas plus independently calculated Prague intrinsic/floor cost'+(', less any refund' if refundable else '')
+        if (gas is None and tx['to'] and tx['data']=='0x' and not tx.get('intrinsic_extra')
+                and execution_code(tx,codes,exists,nonces,context.get('_chain_id'))=='0x'):
             gas,low,source=21000,21000,'independent simple-transfer model'
         if gas is None:
             checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='No receipt gas or execution-gas witness was captured.'))
             continue
-        blob=0
+        # Wei destroyed by SELFDESTRUCT to self in the creating transaction (EIP-6780),
+        # as independently derived by the corpus; it leaves no balance behind.
+        removed=context.get('destroyed_wei',{}).get(tx.get('hash'),0)
         if tx.get('type')==3:
             blob_gas,blob_price=quantity(mapping(receipt).get('blobGasUsed')),quantity(mapping(receipt).get('blobGasPrice'))
             if blob_gas is None or blob_price is None:
                 checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='The receipt lacks blob gas used or blob gas price.'))
                 continue
-            blob=blob_gas*blob_price
+            removed+=blob_gas*blob_price
         base=block.get('base_fee',0)
         price=min(tx['price_cap'],base+tx['tip_cap'])
         # Fee-free calls explicitly bypass admission, but do not pay negative tips.
         tip_price,burn_price=max(price-base,0),min(price,base)
         deltas=[balance_delta(mapping(a).get('balance')) for a in diff.values()]
         miner=balance_delta(mapping(diff.get(block.get('miner'))).get('balance','='))
-        settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,blob)
-        detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee={blob}.'
+        settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,removed)
+        detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee and destroyed wei={removed}.'
         if low!=gas and settled is not None:
             # Settling within the refund bound is consistent but does not prove the refund.
             checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',
                                detail='The refund is not independently derived; balances settle within the refund bound. '+detail))
             continue
         add('H16',settled is not None,
-            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee and blob fee.',detail)
+            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys.',detail)
     return checks

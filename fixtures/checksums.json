@@ -1,5 +1,5 @@
 {
-  "README.md": "61d2707271c3ec2152c25304713524f27210730ab3eea18d121687e477e18e74",
+  "README.md": "6631944368bb9a961b2e41a56adc55a0b59cc064ac2af68bbdbead0bfbe6be91",
   "chains/a/chain.rlp": "41ff8aed5b94dd1d0a07911bde00f8896f3e4914cacb7afbf05d2e9b60f4d8ff",
   "chains/a/forkenv.json": "9a4c10db310ca09fe9cb22ecd60156ba91cf2d6873ecc29141643dc5aa5463e4",
   "chains/a/genesis.json": "757926d1674e2ac85d2993c31f74e2c9bd77e3c3b44606561cca1dd7a8bc7797",
@@ -33,6 +33,13 @@
   "chains/initial/headblock.json": "83a24e3a902c365746d34fcb7484b452a02266184d92373258c3202a449e4eff",
   "chains/initial/headfcu.json": "6e589d6aeb5f0e964fed60a01901f029dfc9bb2367f0cd5a53f0adb06bdfaaef",
   "chains/initial/txinfo.json": "cba0af201e6d23cc598ec4b38687110f74853f9c9452a9290c15e87b03a100bf",
+  "chains/mined-probes/chain.rlp": "9345dcf9a7ecfb36ccd28536267eb7e5523cf3a39966cc54f237be7bdf19eb75",
+  "chains/mined-probes/forkenv.json": "9a4c10db310ca09fe9cb22ecd60156ba91cf2d6873ecc29141643dc5aa5463e4",
+  "chains/mined-probes/genesis.json": "3cedc7c2827c3d905f375b73d4d575a4f6a980cbff3f3f2aa34db852d5427931",
+  "chains/mined-probes/headblock.json": "ead865935f3c1cfc5b1606c3e3cd0e82543be100f3f875b17658b2d429578ddf",
+  "chains/mined-probes/headfcu.json": "9f67e136422a67679961465c7dc9535f696c734c819e98ace357275979ac9693",
+  "chains/mined-probes/headstate.json": "6bfb4d7daa1000d4f88aed144eeb98357386265d65f322d946db991b071a8598",
+  "chains/mined-probes/txinfo.json": "8679eb8bbaa493d169a49b380a55996a1d08f508ea66dd0d41831b18fe63a4f2",
   "chains/raw-validation/chain.rlp": "4ee69730cc6519d99d72ec4b767e1ce620956b1b7db4d8dc63d5f32e6ed3432f",
   "chains/raw-validation/forkenv.json": "9a4c10db310ca09fe9cb22ecd60156ba91cf2d6873ecc29141643dc5aa5463e4",
   "chains/raw-validation/genesis.json": "bf13fb304ca111dbb42c4bdb1ee4cbe2f91f30ab68c2701c778cab0c4981859e",
@@ -50,6 +57,7 @@
   "corpora/forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
   "corpora/h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0",
   "corpora/initial.json": "ad81a8c15cc8e75f870118f10137cc1ab8bb964de3ddfadea4417f5bc977bce0",
+  "corpora/mined-probes.json": "0f2664db21aaac9b343d57437f4acef7d2505ee8924a1bb1326eef9fd33fecbb",
   "corpora/precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
   "corpora/precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
   "corpora/probes-forks.json": "0ef701363345e13bd2fa1f818f4167ee366a7614e341ca8c3c33f4bc27dbe279",
@@ -59,5 +67,6 @@
   "corpora/reorg-safe.json": "94fcf58315bde761030752dbca1a675d8b34e8f0f6f581e2283938f59d785d30",
   "corpora/reorg.json": "444ebbaaf7088feb3587bf8d3e0d340e1ccfc611f848942006042fa2c9da0249",
   "corpora/repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
-  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403"
+  "generators/h13_test.go": "ae5da0050252c5ca9a57c04eaa1151b1d0ea5e6a96392eebba650dadfeefe403",
+  "generators/mined_probes_test.go": "79d3235436241d8ff4a72584788c5984bac3a8cbefb93c883c3900b9e81e3ea5"
 }

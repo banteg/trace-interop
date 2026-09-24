@@ -60,7 +60,7 @@
     "../evidence/2026-09-24/adopted-stances/preflight.json": "69488d643ab7b80c77b3a47550f40eb7a0dc2fd4ef6ef097a10318a710c4e106"
   },
   "sources": {
-    "decisions/impact.json": "b8bffb0219b7debae8d9af5b291618caae5ecdc01a0fbbcae4a74316f714a20c",
+    "decisions/impact.json": "f35311216df2f8fb492e7631695f6b8a19410e3a38ed7640c7821f00632139cb",
     "decisions/ledger.json": "efe3da003d1ac74656c2969d4722469d852c58179bcee13b1c8f37ebc4c527df",
     "decisions/sources.json": "edceaf1d194d4fe31c642d84cdb10fc870f21154703d36392257e90974473155",
     "decisions/status.json": "13ce5da4bcfc68450439cc5b3eb55db2a642a6602bbe94be6245ff6f09fe8a5c",

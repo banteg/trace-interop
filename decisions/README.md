@@ -10,7 +10,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H02](../reports/decisions/H02.md) | 🤝 Converged | ···👍 | trace_get selector and return shape | ✅⚠️⚠️🛠️— | ✅✅⚠️✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍·👍 | Filter composition and mode | ⚠️🛠️⚠️🛠️— | ⚠️🛠️⚠️✅✅ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | ···· | Empty address lists | ⚠️✅⚠️⚠️— | ⚠️✅⚠️⚠️✅ |
-| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️⚠️⚠️🛠️— | ⚠️⚠️⚠️🛠️✅ |
+| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️🛠️⚠️🛠️— | ⚠️🛠️⚠️🛠️✅ |
 | [H06](../reports/decisions/H06.md) | ⚪ Under review | ···· | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | Replay transactionHash field | 🟡✅✅🛠️— | 🟡✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | ⚪ Under review | ···· | Empty output and unrequested components | 🟡⚠️⚠️✅— | 🟡⚠️⚠️✅✅ |
@@ -33,7 +33,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H25](../reports/decisions/H25.md) | ⚪ Under review | ···· | Well-formed errors for rejected raw transactions | ⚠️✅🛠️✅— | ⚠️✅🛠️✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | Account deletion across Cancun | 🛠️⚠️🛠️⚠️— | 🛠️✅✅⚠️✅ |
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | ···· | Filter execution across fork boundaries | 🛠️✅✅🟡— | 🛠️✅✅🟡✅ |
-| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | 🛠️🛠️✅✅— | 🛠️⚠️✅✅✅ |
+| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | 🛠️🛠️✅✅— | 🛠️🛠️✅✅✅ |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | Precompile call-frame inclusion | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H30](../reports/decisions/H30.md) | ⚪ Under review | ···· | Omitted trace_filter range bounds | ✅⚠️⚠️⚠️— | ✅⚠️⚠️⚠️✅ |
 | [H31](../reports/decisions/H31.md) | ⚪ Under review | ···· | Omitted trace_callMany block | ⚠️✅✅⚠️— | ⚠️✅✅⚠️✅ |

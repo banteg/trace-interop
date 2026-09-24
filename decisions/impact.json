@@ -76,7 +76,7 @@
         "change": "Remove the placeholder reward. This also changes which records pagination counts."
       },
       "nethermind": {
-        "observed": "PoS blocks include a synthetic PoW reward record. From source, genesis replay fails because the genesis parent lookup fails; #13783 fixes `trace_block(0)` but not `trace_replayBlockTransactions(0)`.",
+        "observed": "PoS blocks include a synthetic PoW reward record. From source, genesis replay fails because the genesis parent lookup fails; #13783 fixes `trace_block(0)` and open #13801 fixes `trace_replayBlockTransactions(0)`.",
         "change": "Remove the placeholder reward and exclude it from pagination. Return `[]` for the genesis block from block replay too."
       },
       "reth": {
@@ -279,7 +279,7 @@
     },
     "H14": {
       "erigon": {
-        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds only `input`.",
+        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds `input` and open #24294 adds `nonce`, `chainId`, `blobVersionedHashes` and `authorizationList`.",
         "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection. Decode `input`, `nonce`, `chainId`, `type`, `blobVersionedHashes` and `authorizationList`, or reject them."
       },
       "nethermind": {

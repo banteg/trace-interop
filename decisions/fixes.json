@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-24",
+  "checked_at": "2026-09-25",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -202,7 +202,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "adds `input` only; authorizationList, nonce, chainId and blob fields remain undecoded"
+      "note": "adds `input` only; #24294 adds the remaining call fields"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24291",
@@ -213,6 +213,43 @@
       ],
       "partial": [
         "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24293",
+      "title": "fix(rpc/jsonrpc): trace_callMany reads state at the end of the requested block",
+      "client": "erigon",
+      "decisions": [
+        "H28"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24294",
+      "title": "fix(rpc/jsonrpc): trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24295",
+      "title": "fix(rpc/jsonrpc): trace_filter reports no genesis block reward",
+      "client": "erigon",
+      "decisions": [
+        "H05"
       ],
       "state": "open",
       "draft": false,
@@ -337,6 +374,36 @@
       "draft": false,
       "merged_at": "2026-09-24T21:24:00Z",
       "note": "covers trace_block only; trace_replayBlockTransactions of genesis still fails its parent lookup"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13800",
+      "title": "fix(rpc): match rewards by author in trace_filter address filters",
+      "client": "nethermind",
+      "decisions": [
+        "H23"
+      ],
+      "partial": [
+        "H23"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "covers rewards only; failed-CREATE recipient matching remains an H23 policy change"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13801",
+      "title": "fix(rpc): return no traces for the genesis block in trace_replayBlockTransactions",
+      "client": "nethermind",
+      "decisions": [
+        "H05"
+      ],
+      "partial": [
+        "H05"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "covers genesis replay only; the PoS placeholder reward remains"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27213",

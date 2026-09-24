@@ -1,6 +1,6 @@
 # Related pull requests
 
-Related client, specification and test-suite PRs. Status checked **2026-09-24**.
+Related client, specification and test-suite PRs. Status checked **2026-09-25**.
 
 Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a PR tagged with its client and decision is open, was merged after the build’s commit, or awaits uptake of the merged library change. A PR marked partial is linked but leaves ⚠️ or 🟡 in place, since part of the measured difference has no submitted fix. Generated from [fixes.json](../decisions/fixes.json); refresh PR states with `uv run python scripts/refresh_fixes.py`.
 
@@ -21,15 +21,20 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) |
-| [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; authorizationList, nonce, chainId and blob fields remain undecoded | [H14](../reports/decisions/H14.md) (partial) |
+| [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; #24294 adds the remaining call fields | [H14](../reports/decisions/H14.md) (partial) |
 | [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck | [H20](../reports/decisions/H20.md) (partial) |
 | [Erigon #24292](https://github.com/erigontech/erigon/pull/24292) | Apply safe and finalized from a same-head fork choice; unblocks the reorg scenario: import-time finality made the sibling-branch forkchoice return -38002 (fixes #24028) | — |
+| [Erigon #24293](https://github.com/erigontech/erigon/pull/24293) | Trace_callMany reads state at the end of the requested block | [H28](../reports/decisions/H28.md) |
+| [Erigon #24294](https://github.com/erigontech/erigon/pull/24294) | Trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations; adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain | [H14](../reports/decisions/H14.md) (partial) |
+| [Erigon #24295](https://github.com/erigontech/erigon/pull/24295) | Trace_filter reports no genesis block reward | [H05](../reports/decisions/H05.md) |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas | — |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) | Pair instruction trace completions with starts | — |
 | [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) | Report terminal output for top-level action traces | — |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) |
 | [Nethermind #13779](https://github.com/NethermindEth/nethermind/pull/13779) | Report vmTrace store without stateDiff | [H20](../reports/decisions/H20.md) (partial) |
+| [Nethermind #13800](https://github.com/NethermindEth/nethermind/pull/13800) | Match rewards by author in trace_filter address filters; covers rewards only; failed-CREATE recipient matching remains an H23 policy change | [H23](../reports/decisions/H23.md) (partial) |
+| [Nethermind #13801](https://github.com/NethermindEth/nethermind/pull/13801) | Return no traces for the genesis block in trace_replayBlockTransactions; covers genesis replay only; the PoS placeholder reward remains | [H05](../reports/decisions/H05.md) (partial) |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers | [H06](../reports/decisions/H06.md) (partial) |

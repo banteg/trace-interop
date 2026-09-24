@@ -10,22 +10,28 @@ REVERT_GAS = hex(2100 + 85)
 
 
 def anchored_reference(context, peers, name):
-    """Return a reference only after checking its independent fixture inventory.
+    return anchor(context, peers, name)[0]
+
+
+def anchor(context, peers, name):
+    """Return (reference, mismatch) after checking the independent fixture inventory.
 
     This anchors required roots and the calltree's non-precompile children. It is
     deliberately a minimum inventory, not a general EVM or full trace oracle.
     Optional precompile frames may shift paths; emitted paths must form a tree.
+    An unestablished inventory gives (None, None); frames that contradict an
+    anchored action field give (None, description naming each field).
     """
     obs = peers.get(name, {})
     if not isinstance(obs, dict) or obs.get('status') != 'result' or not isinstance(obs.get('response'), dict):
-        return None
+        return None, None
     frames = obs['response'].get('result')
     if not isinstance(frames, list) or any(not isinstance(f, dict) or not isinstance(f.get('action'), dict) for f in frames):
-        return None
+        return None, None
     request = next((c['request'] for c in context.get('cases', []) if c['name'] == name), {})
     params = request.get('params', [])
     if not params:
-        return None
+        return None, None
     transactions = [(kind, tx) for kind, entries in context.get('txinfo', {}).items() if isinstance(entries, list)
                     for tx in entries if isinstance(tx, dict) and 'txhash' in tx
                     and (tx.get('txhash') == params[0] if request.get('method') == 'trace_transaction'
@@ -34,28 +40,32 @@ def anchored_reference(context, peers, name):
         block=context.get('_blocks',{}).get(params[0])
         if (request.get('method')=='trace_block' and isinstance(block,dict)
                 and block.get('transactions')==[] and block.get('difficulty')==0):
-            return [] if frames==[] else None  # Independently decoded empty PoS block.
-        return None  # No independent inventory, including purported empty blocks.
+            return ([] if frames==[] else None), None  # Independently decoded empty PoS block.
+        return None, None  # No independent inventory, including purported empty blocks.
+    mismatches = []
+    def expect(label, got, want):
+        if got != want:
+            mismatches.append(f'{label}: expected {want}, got {got}')
     for kind, tx in transactions:
         tree = [f for f in frames if f.get('transactionHash') == tx['txhash']]
         roots = [f for f in tree if f.get('traceAddress') == []]
-        if len(roots) != 1 or roots[0].get('action', {}).get('from') != tx.get('sender'):
-            return None
+        if len(roots) != 1:
+            return None, None
+        expect(f'{tx["txhash"]} root action.from', roots[0]['action'].get('from'), tx.get('sender'))
         paths = [f.get('traceAddress') for f in tree]
         if any(not isinstance(p, list) or any(type(i) is not int or i < 0 for i in p) for p in paths):
-            return None
+            return None, None
         if len({tuple(p) for p in paths}) != len(paths):
-            return None
+            return None, None
         for frame, path in zip(tree, paths):
             children = [p for p in paths if len(p) == len(path)+1 and p[:-1] == path]
             if frame.get('subtraces') != len(children) or sorted(p[-1] for p in children) != list(range(len(children))):
-                return None
+                return None, None
             if path and path[:-1] not in paths:
-                return None
+                return None, None
         if kind != 'tx-calltree':
             continue
-        if roots[0].get('action', {}).get('to') != TREE:
-            return None
+        expect('calltree root action.to', roots[0]['action'].get('to'), TREE)
         # Six ordinary calls followed by CREATE. The identity precompile between
         # CALLCODE and CREATE may be omitted by the client's emission policy.
         ordinary = [f for f in tree if len(f['traceAddress']) == 1
@@ -66,16 +76,16 @@ def anchored_reference(context, peers, name):
                  ('delegatecall', '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', '0x0'),
                  ('callcode', TREE[:-1]+'1', '0x0')]
         if len(ordinary) != 7:
-            return None
-        for frame, (call_type, target, value) in zip(ordinary, calls):
-            action = frame.get('action', {})
-            if frame.get('type') != 'call' or any(action.get(k) != v for k, v in
-                    [('from', TREE), ('to', target), ('callType', call_type), ('value', value)]):
-                return None
+            return None, None
+        for i, (frame, (call_type, target, value)) in enumerate(zip(ordinary, calls)):
+            expect(f'calltree call {i} type', frame.get('type'), 'call')
+            for key, want in [('from', TREE), ('to', target), ('callType', call_type), ('value', value)]:
+                expect(f'calltree {call_type} {i} action.{key}', frame['action'].get(key), want)
         creation = ordinary[-1]
-        if creation.get('type') != 'create' or creation.get('action', {}).get('init') != CHILD_INIT:
-            return None
+        expect('calltree creation type', creation.get('type'), 'create')
+        expect('calltree creation action.init', creation['action'].get('init'), CHILD_INIT)
         suicides = [f for f in tree if f.get('type') == 'suicide' and f['traceAddress'] == creation['traceAddress']+[0]]
-        if len(suicides) != 1 or suicides[0].get('action', {}).get('refundAddress') != TREE:
-            return None
-    return frames
+        if len(suicides) != 1:
+            return None, None
+        expect('calltree suicide action.refundAddress', suicides[0]['action'].get('refundAddress'), TREE)
+    return (None, '; '.join(mismatches)) if mismatches else (frames, None)

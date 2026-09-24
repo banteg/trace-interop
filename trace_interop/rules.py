@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 
-from .oracles import anchored_reference, REVERT_OUTPUT, REVERT_GAS
+from .oracles import anchor, REVERT_OUTPUT, REVERT_GAS
 from .vm_model import encoding_valid
 
 
@@ -17,6 +17,33 @@ def mapping(value):
 
 def sequence(value):
     return value if isinstance(value, list) else []
+
+
+# Signed-transaction fixtures and the independent violation each one carries.
+RAW_VIOLATIONS = [
+    ('raw-nonce-high', 'nonce_high'), ('raw-wrong-chain', 'chain'), ('raw-insufficient-funds', 'funds'),
+    ('raw-low-gas', 'intrinsic'), ('raw-below-basefee', 'base_fee'), ('raw-valid-default-block', 'nonce_low'),
+    ('nonce below selected state', 'nonce_low'), ('creation nonce below selected state', 'nonce_low'),
+    ('nonce above selected state', 'nonce_high'), ('creation nonce above selected state', 'nonce_high'),
+    ('wrong chain identity', 'chain'), ('insufficient balance for value alone', 'funds'),
+    ('value is affordable but upfront gas plus value is not', 'funds'),
+    ('gas limit below 21000 intrinsic gas', 'intrinsic'), ('gas price below selected block base fee', 'base_fee'),
+    ('EIP-3607 ordinary-code sender (not delegation)', 'sender')]
+# eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
+RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
+
+
+def violation(message):
+    """Classify a validation error message; None when it names no known violation."""
+    message = str(message).lower()
+    for kind, pattern in [('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
+                          ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
+                          ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
+                          ('priority', r'(?:priority|\btip\b).*(?:fee|cap)'),
+                          ('base_fee', r'base ?fee'), ('sender', r'\beoa\b')]:
+        if re.search(pattern, message):
+            return kind
+    return None
 
 
 def embedded_error(response):
@@ -67,8 +94,11 @@ def evaluate(case, observation, peers, invalid_params=None):
         obs = mapping(peers.get(n))
         return mapping(obs.get('response')).get('result') if obs.get('status') == 'result' else None
 
+    mismatched = []
     def reference(n):
-        return anchored_reference(context, peers, n)
+        frames, mismatch = anchor(context, peers, n)
+        if mismatch: mismatched.append(f'{n}: {mismatch}')
+        return frames
 
     if invalid_params:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
@@ -87,8 +117,8 @@ def evaluate(case, observation, peers, invalid_params=None):
                   and result == head,
                   'Omitting both range bounds selects latest only, as an explicit head-only query does.')
         if name == 'filter-to-2-implicit-from':
-            check('H30', status == 'rpc_error' and isinstance(response.get('error'), dict),
-                  'An omitted fromBlock resolves to latest; an earlier explicit toBlock gives a range error, not a historical search.')
+            check('H30', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+                  'An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.')
         if name in ['call-number-default', 'call-number-latest']:
             check('H31', status == 'result' and mapping(result).get('output') == number_48,
                   'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).')
@@ -132,9 +162,9 @@ def evaluate(case, observation, peers, invalid_params=None):
             tree_name = next((c['name'] for c in context.get('cases', [])
                               if c['request']['method'] == 'trace_transaction' and c['request']['params'] == params[:1]), 'transaction-tree')
             tree = reference(tree_name)
-            reference = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
-            if reference:
-                expected = next((f for f in reference if f.get('traceAddress') == path),None)
+            tx_frames = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
+            if tx_frames:
+                expected = next((f for f in tx_frames if f.get('traceAddress') == path),None)
                 check('H02', status == 'result' and result == expected,
                       f'Return the transaction-tree record at {path}, or null if absent.',
                       'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.')
@@ -262,7 +292,8 @@ def evaluate(case, observation, peers, invalid_params=None):
             def matches(frame):
                 action=mapping(mapping(frame).get('action')); kind=mapping(frame).get('type')
                 frm=action.get('from'); to=action.get('to')
-                if kind=='create': to=mapping(frame.get('result')).get('address')
+                # A failed CREATE has no recipient, even if a client reports its would-be address.
+                if kind=='create': to=None if 'error' in frame else mapping(frame.get('result')).get('address')
                 if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
                 if kind=='reward': frm,to=None,action.get('author')
                 senders=[address(v) for v in sequence(filt.get('fromAddress'))]
@@ -340,17 +371,25 @@ def evaluate(case, observation, peers, invalid_params=None):
                            'detail':'Ordered capture, initial zero slot or successful simulated write/read not established.'})
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
-    invalid_raw = ['raw-nonce-high', 'raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']
-    reject_raw = (any(name == n or name.startswith(n+'-') for n in invalid_raw)
-                  or name == 'raw-valid-default-block' or case.get('validation') == 'reject')
-    if method == 'trace_rawTransaction' and reject_raw:
-        check('H13', status == 'rpc_error',
-              'Reject a signed transaction that fails execution validity at the selected state before EVM execution.',
-              case.get('reason', 'Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.'))
-        if status == 'rpc_error':
-            check('H13', mapping(response.get('error')).get('code') == -32003,
-                  'Proposed transaction-validation error code: -32003 (Transaction rejected).',
-                  'Error-code alignment is separate from whether validation occurred; current clients also use -32000.')
+    expected_violation = next((kind for label, kind in RAW_VIOLATIONS
+                               if name == label or name.startswith(label+'-') or case.get('reason') == label), None)
+    if method == 'trace_rawTransaction' and expected_violation:
+        requirement = 'Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation.'
+        reason = case.get('reason') or 'Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.'
+        error = mapping(response.get('error'))
+        observed = violation(error.get('message'))
+        if status != 'rpc_error':
+            check('H13', False, requirement, reason)
+        elif observed is None:
+            checks.append({'topic': 'H13', 'status': 'blocked', 'requirement': requirement,
+                           'detail': 'The error message does not identify a validation failure: '+str(error.get('message'))[:120]})
+        else:
+            check('H13', observed == expected_violation, requirement,
+                  f'Expected {expected_violation}; the error identifies {observed}. {reason}')
+            codes = [-32003] + ([RAW_CODES[observed]] if observed in RAW_CODES else [])
+            check('H13', observed == expected_violation and error.get('code') in codes,
+                  'Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected).',
+                  f'Identified {observed}; code {error.get("code")}; accepted {codes}.')
     if method == 'trace_rawTransaction' and case.get('validation') == 'execute':
         check('H13', status == 'result' and mapping(result).get('output') == case['expected_output'] and not embedded_error(response),
               'The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.')
@@ -391,9 +430,12 @@ def evaluate(case, observation, peers, invalid_params=None):
                 check('H13', str(mapping(root.get('result')).get('address', '')).lower() == case['signed_create_address'].lower(),
                       'Valid creation uses the address derived from the matching signed and state nonce.')
 
-    if name.startswith('missing-block-'):
+    if name.startswith('missing-block-') and method == 'trace_filter':
+        check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+              'A range bound beyond the head returns invalid params (-32602), as eth_getLogs does; never a clamped or partial result.')
+    elif name.startswith('missing-block-'):
         check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,
-              'An unknown selected block or range endpoint returns Resource not found (-32001).')
+              'An unknown single selected block returns Resource not found (-32001).')
     if name == 'call-unknown-field':
         check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
               'Unknown call-object fields are ignored without changing execution output.')
@@ -415,9 +457,14 @@ def evaluate(case, observation, peers, invalid_params=None):
     frames = [f for values in frame_values for f in sequence(values) if isinstance(f, dict)]
     failed = [f for f in frames if 'error' in f]
     if failed:
-        check('H09', all(isinstance(f['error'], str) and bool(f['error']) and 'result' in f
-              and (f['result'] is None or isinstance(f['result'], dict)) for f in failed),
-              'Failed frames have an error string and an explicit object or null result.')
+        check('H09', all(isinstance(f['error'], str) and bool(f['error'])
+              and (f.get('result') is None or isinstance(f['result'], dict)) for f in failed),
+              'Failed frames have an error string; an exceptional halt omits result or sets it to null.')
+        reverted = [f for f in failed if f['error'] == 'Reverted']
+        if reverted:
+            check('H09', all(isinstance(f.get('result'), dict) and {'gasUsed', 'output'} <= set(f['result'])
+                             and not {'address', 'code'} & set(f['result']) for f in reverted),
+                  'A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.')
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
     trace_selected = method in ['trace_transaction','trace_block','trace_filter','trace_get'] or (len(params)>1 and isinstance(params[1],list) and 'trace' in params[1])
@@ -449,10 +496,20 @@ def evaluate(case, observation, peers, invalid_params=None):
         before_cancun=name.endswith('55')
         # This fixture account has genesis code 0x611008ff, nonce zero and no storage;
         # it is untouched by the mined fixture transactions.
+        balance=mapping(context.get('_alloc',{}).get(params[0]['to'])).get('balance')
         ok=(mapping(change).get('code') == {'-':'0x611008ff'}
             and mapping(change).get('nonce') == {'-':'0x0'}
+            and (balance is None or mapping(change).get('balance') == {'-':hex(int(balance,16))})
             and mapping(change).get('storage') == {}) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
-        check('H26', ok, 'Report the exact deleted code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
+        check('H26', ok, 'Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
+    diffs = [mapping(e).get('stateDiff') for e in ([result] if isinstance(result, dict) else sequence(result)
+                                                   if method in ['trace_callMany', 'trace_replayBlockTransactions'] else [])]
+    deleted = [(address, account) for diff in diffs for address, account in mapping(diff).items()
+               if any(isinstance(mapping(account).get(k), dict) and '-' in account[k] for k in ['balance', 'nonce', 'code'])]
+    if deleted:
+        check('H26', all(mapping(account).get('storage') == {} for _, account in deleted),
+              'A deleted account reports storage {}; its account deletion implies every slot is wiped.',
+              '; '.join(address for address, account in deleted if mapping(account).get('storage') != {})[:200])
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
         if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')
@@ -472,4 +529,9 @@ def evaluate(case, observation, peers, invalid_params=None):
         if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
     if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
         check('H06', status=='rpc_error' and mapping(response.get('error')).get('code')==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
+    # A reference that contradicts its anchored fixture actions is a client
+    # difference, not an unestablished inventory.
+    for c in checks:
+        if c['status'] == 'unassessed' and mismatched:
+            c.update(status='change_needed', detail='Reference frames contradict the fixture: '+'; '.join(mismatched))
     return checks

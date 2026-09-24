@@ -35,6 +35,17 @@ class ReportingRegressions(unittest.TestCase):
                 self.assertEqual(row['eligible'], eligible)
                 self.assertGreater(read(base/'report/assessment.json')['coverage']['blocked'], 0)
 
+    def test_current_corpus_expectations_apply_only_to_identical_requests(self):
+        from trace_interop.report import assessed_cases
+        request = {'method': 'trace_call', 'params': [{}, [], 'latest']}
+        captured = [dict(name='same', request=request, fee_policy={'admission': 'observe'}),
+                    dict(name='changed', request=request, fee_policy={'admission': 'observe'}),
+                    dict(name='_control/head', request=request)]
+        corpus = [dict(name='same', request=request, fee_policy={'admission': 'accept'}),
+                  dict(name='changed', request=dict(request, params=[{}, ['trace'], 'latest']), fee_policy={'admission': 'accept'})]
+        self.assertEqual([c.get('fee_policy') for c in assessed_cases(captured, corpus)],
+                         [{'admission': 'accept'}, {'admission': 'observe'}, None])
+
     def test_mixed_builds_do_not_harmonize_and_new_complete_build_supersedes_old(self):
         from trace_interop.status import decision_status, NATIVE_CLIENTS
         decision = {'id': 'H03', 'cases': ['a/one', 'a/two']}

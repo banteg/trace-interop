@@ -69,7 +69,12 @@ The assessment has two separate checks:
 
 Equal outputs can fail the independent policy check. Generic/internal errors,
 malformed responses, invalid output and unavailable baselines block comparison;
-they do not prove a matching validation reason. Defaults remain observational.
+they do not prove a matching validation reason. Omitted fee fields default to zero,
+as in eth_call and eth_simulateV1: omitted or zero-only fields are zero-fee calls, a
+cap alone is charged at the base fee, and a tip alone exceeds its zero cap. Rejections
+must carry the eth_simulateV1 code for the identified violation (-38014 funds, -38012
+base fee, -32602 tip above cap); -32000 is a difference whose detail still names the
+violation.
 Mutation tests cover shared wrong BASEFEE, missing upfront debit despite equal
 fee opcodes, mismatched rejection reasons and per-item fee-environment reset.
 
@@ -81,8 +86,7 @@ sender/beneficiary/value accounting, nonce and batch length to ensure the oracle
 detects errors that schema checks alone would miss.
 
 The scope is unsigned execution fees on a positive-base-fee Prague block. Blob
-fees, block/state overrides and omitted/incomplete-field normalization remain
-outside this policy assertion. Signed validation stays in H13's separate corpus.
+fees and block/state overrides remain outside this policy assertion. Signed validation stays in H13's separate corpus.
 These are proposed policy checks, not a claim of client-team agreement. The
 pinned OpenRPC artifact (`execution-apis` b979aefe) still describes the earlier
 BASEFEE-preserving proposal. Schema validation checks response structure; the
@@ -110,14 +114,13 @@ see [usage](usage.md). Captures retain the actual image IDs and runtime versions
 
 ## Reading the assessment status
 
-Unresolved omitted/incomplete fee defaults are **Policy open** observations, not
-missing tests. The draft Geth fork's earlier all-664 agreement was measured against
+The draft Geth fork's earlier all-664 agreement was measured against
 the previous policy. Its BASEFEE-preserving zero-fee trace calls now differ.
 Nethermind's earlier development captures also had 232 truncated JSON responses
-(216 defined-policy requests and 16 unresolved-default probes), which prevented
+(216 defined-policy requests and 16 default probes), which prevented
 semantic assessment. A malformed response cannot establish
 that the intended fee/funding validation occurred. Per-build report summaries
-name blocked cases and distinguish them from unresolved policy.
+name blocked cases.
 
 The [Nethermind investigation](nethermind-streamed-errors.md) traces those malformed
 responses to validation exceptions during deferred streaming and links the

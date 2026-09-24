@@ -90,12 +90,14 @@ def build():
     second = call(legacy(base+1), 'transfer', value=hex(BALANCE-GAS*(base+1)))
     emit('sequential-funding', [first, second], ['transfer', 'transfer'], 'reject',
          'Second call funding must use the post-fee balance of the first call.')
-    for name, fees in [('omitted', {}), ('cap-only-zero', {'maxFeePerGas':'0x0'}),
-                       ('cap-only-positive', {'maxFeePerGas':hex(2*base)}),
-                       ('tip-only-zero', {'maxPriorityFeePerGas':'0x0'}),
-                       ('tip-only-positive', {'maxPriorityFeePerGas':'0x1'})]:
-        emit('defaults-'+name, [call(fees)], ['environment'], 'observe', both=True)
-    return dict(description='H15 unsigned fee policy on the frozen Prague chain; all eight trace selections. Defaults are observational.', cases=cases)
+    # Omitted fee fields default to zero, as in eth_call and eth_simulateV1.
+    for name, fees, admission in [('omitted', {}, 'accept'), ('cap-only-zero', {'maxFeePerGas':'0x0'}, 'accept'),
+                                  ('cap-only-positive', {'maxFeePerGas':hex(2*base)}, 'accept'),
+                                  ('tip-only-zero', {'maxPriorityFeePerGas':'0x0'}, 'accept'),
+                                  ('tip-only-positive', {'maxPriorityFeePerGas':'0x1'}, 'reject')]:
+        emit('defaults-'+name, [call(fees)], ['environment'], admission,
+             'The omitted fee cap defaults to zero, below the supplied priority fee.' if admission == 'reject' else '', both=True)
+    return dict(description='H15 unsigned fee policy on the frozen Prague chain; all eight trace selections. Omitted fee fields default to zero.', cases=cases)
 
 
 if __name__ == '__main__':

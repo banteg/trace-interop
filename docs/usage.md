@@ -167,7 +167,9 @@ unavailable-history behavior is not yet verified by that scenario.
 `reports.lock.json` selects the retained run directories used by both report generation
 and `trace-interop verify`. Ledger references use `corpus/case` identities and must be
 nonempty and present in those runs. Original evidence is checksum verified and never
-rewritten. Report eligibility is recalculated from the recorded head and independent
+rewritten. A captured case is assessed with the current corpus definition when its request
+is identical, so a corrected expectation in a regenerated corpus reassesses old evidence;
+a case whose request has changed keeps the definition it was captured with. Report eligibility is recalculated from the recorded head and independent
 scenario controls; `capture_eligible` keeps the old decision for comparison.
 
 Malformed requests are checked against the pinned request schemas. Semantic assertions

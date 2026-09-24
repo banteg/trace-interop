@@ -73,10 +73,12 @@ class FeeCompatibilityTests(unittest.TestCase):
             self.assertEqual(assess_compatibility(case,obs,peers)[0]['status'],expected)
         self.assertEqual(assess_compatibility(case,error('base fee'),{})[0]['status'],'blocked')
 
-    def test_default_normalization_remains_observational(self):
-        case = self.case('defaults-omitted/trace/none')
-        peers = {case['fee_reference']:self.observation('0x01',eth=True)}
-        self.assertEqual(assess_compatibility(case,self.observation('0x02'),peers)[0]['status'],'observation')
+    def test_default_families_compare_with_eth_call(self):
+        for family in ['defaults-omitted', 'defaults-tip-only-positive']:
+            case = self.case(family+'/trace/none')
+            peers = {case['fee_reference']:self.observation('0x01',eth=True)}
+            self.assertEqual(assess_compatibility(case,self.observation('0x02'),peers)[0]['status'],'change_needed')
+            self.assertEqual(assess_compatibility(case,self.observation('0x01'),peers)[0]['status'],'matches')
 
     def test_eth_reference_codes_do_not_impose_trace_error_codes(self):
         case = self.case('legacy-below-base/trace/none')

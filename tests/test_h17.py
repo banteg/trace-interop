@@ -73,7 +73,7 @@ class H17CapturedRegressionTests(unittest.TestCase):
     def test_new_transfer_account_and_empty_contract_have_independent_prestate(self):
         context = self.corpora['coverage']
         block = context['_blocks'][context['_head']['number']]
-        exists,_ = prestate(context,block,None)
+        exists,_,_ = prestate(context,block,None)
         case = self.case('coverage','model-transfer')
         self.assertNotIn(case['transfer_model']['target'],exists)
         self.assertIn(case['transfer_model']['sender'],exists)

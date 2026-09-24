@@ -5,7 +5,7 @@ properties and blocked checks are retained, without turning them into passes.
 """
 import re
 
-from .oracles import anchored_reference
+from .oracles import anchor
 from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, UnsupportedProgram, NAMES
 from .chain_model import decode_transaction
 import rlp
@@ -137,23 +137,27 @@ def supplement(case, observation, peers, checks, expected):
     if method == 'trace_filter' and params and isinstance(params[0], dict) and status == 'result':
         filt = params[0]
         if 'H04' in declared and not covered('H04'):
-            baseline = anchored_reference(context, peers, 'block-tree')
-            if baseline is not None:
-                add('H04', result == baseline, 'Omitted address lists impose no address restriction.')
+            baseline, mismatch = anchor(context, peers, 'block-tree')
+            if baseline is not None or mismatch:
+                add('H04', result == baseline, 'Omitted address lists impose no address restriction.',
+                    'Reference frames contradict the fixture: '+mismatch if mismatch else '')
         if 'after' in filt or 'count' in filt or name in ['filter-transfer', 'withdrawal-filter-51', 'withdrawal-filter-52', 'withdrawal-filter-53']:
-            baseline = None
+            baseline, mismatch = None, None
             for c in context.get('cases', []):
                 req = c['request']
                 if req['method'] == 'trace_block' and req['params'][0] == filt.get('fromBlock') == filt.get('toBlock'):
-                    baseline = anchored_reference(context, peers, c['name'])
+                    baseline, mismatch = anchor(context, peers, c['name'])
                     break
-            if baseline is not None:
+            if mismatch:
+                add('H03', False, 'Filter the anchored canonical inventory before applying after/count.',
+                    'Reference frames contradict the fixture: '+mismatch)
+            elif baseline is not None:
                 senders=[s.lower() for s in filt.get('fromAddress') or [] if isinstance(s,str)]
                 recipients=[s.lower() for s in filt.get('toAddress') or [] if isinstance(s,str)]
                 def selected(frame):
                     action=obj(frame.get('action'));kind=frame.get('type')
                     sender,target=action.get('from'),action.get('to')
-                    if kind=='create':target=obj(frame.get('result')).get('address')
+                    if kind=='create':target=None if 'error' in frame else obj(frame.get('result')).get('address')
                     elif kind=='suicide':sender,target=action.get('address'),action.get('refundAddress')
                     elif kind=='reward':sender,target=None,action.get('author')
                     sides=[]
@@ -228,7 +232,7 @@ def supplement(case, observation, peers, checks, expected):
         vms=[obj(e).get('vmTrace') for e in envelopes]
         errors=[error for vm in vms for error in local_invariants(vm)]
         add('H20',bool(vms) and not errors,
-            'At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded.',
+            'At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem.',
             '; '.join(errors[:4]))
 
     # Execute independently supplied straight-line fixtures, including their exact

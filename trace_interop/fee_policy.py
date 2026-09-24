@@ -6,6 +6,7 @@ upfront payment and prior-call settlement observable even without stateDiff.
 import re
 
 from .execution_models import balance_delta, created_address, quantity
+from .rules import violation
 from .vm_model import intrinsic
 
 SENDER = '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf'
@@ -21,6 +22,10 @@ PROGRAMS = {
     'revert': '0x602a60005260206000fd',
     'out-of-gas': '0x63ffffffff51',
 }
+# eth_simulateV1 codes for trace_call/trace_callMany validation; tip above cap is invalid params.
+SIMULATE_CODES = {'funds': -38014, 'base_fee': -38012, 'priority': -32602}
+# Codes that can carry a validation rejection; internal, parse and method errors cannot.
+REJECTION_CODES = [-32000, -32003, -32602, *range(-38026, -38009)]
 
 
 def gas_used(program, gas_limit=GAS):
@@ -120,9 +125,6 @@ def assess(case, observation):
     status = observation.get('status')
     if status not in ['result', 'rpc_error']:
         return [dict(topic='H15', status='blocked', requirement='Inspect the fee-policy response.', detail=str(status))]
-    if policy['admission'] == 'observe':
-        return [dict(topic='H15', status='observation', requirement='Observe unresolved fee defaults.',
-                     detail='Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict.')]
     response = observation.get('response', {})
     if policy['admission'] == 'reject':
         error = response.get('error', {})
@@ -131,16 +133,16 @@ def assess(case, observation):
             add(False, 'Reject this independently invalid fee/funding request before execution.', policy['reason'])
             return checks
         message = str(error.get('message','')).lower()
-        kind = ('funds' if 'insufficient' in message and ('fund' in message or 'balance' in message) else
-                'base_fee' if 'base fee' in message or 'basefee' in message else
-                'priority' if ('priority' in message or 'tip' in message) and ('fee' in message or 'cap' in message) else None)
-        if error.get('code') not in [-32000,-32003,-32602] or kind is None:
+        kind = violation(message)
+        if error.get('code') not in REJECTION_CODES or kind not in SIMULATE_CODES:
             return [dict(topic='H15',status='blocked',requirement='Identify a fee/funding validation rejection.',
                          detail='A generic/internal/crash error does not prove validation: '+message)]
         named_index = re.search(r'(?:call |txindex )(\d+)', message)
-        add(kind in violations and (named_index is None or int(named_index[1]) == index),
-            'Reject the independently invalid call for its fee/funding violation.',
-            f'Expected call {index}: {" or ".join(sorted(violations))}; observed {kind}. '+policy['reason'])
+        add(kind in violations and (named_index is None or int(named_index[1]) == index)
+            and error.get('code') == SIMULATE_CODES[kind],
+            'Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code.',
+            f'Expected call {index}: {" or ".join(sorted(violations))}; observed {kind} with code {error.get("code")}, '
+            f'which requires {SIMULATE_CODES[kind]}. '+policy['reason'])
         return checks
     result = response.get('result')
     envelopes = result if case['request']['method'] == 'trace_callMany' else [result]
@@ -203,15 +205,11 @@ def assess_compatibility(case, observation, peers):
         if status == 'rpc_error':
             error = response.get('error', {})
             message = str(error.get('message', '')).lower()
-            kind = ('funds' if ('insufficient' in message and ('fund' in message or 'balance' in message)) or
-                    'upfront gas cost exceeds account balance' in message or
-                    'upfront cost exceeds account balance' in message else
-                    'base_fee' if 'base fee' in message or 'basefee' in message else
-                    'priority' if ('priority' in message or 'tip' in message) and ('fee' in message or 'cap' in message) else None)
+            kind = violation(message)
             # Besu eth_call uses dedicated base-fee/funding codes. Compare the
             # identified condition without imposing trace error-code policy on it.
-            codes = [-32000, -32003, -32602] + ([-32009, -32004] if eth else [])
-            if error.get('code') in codes and kind:
+            codes = REJECTION_CODES + ([-32009, -32004] if eth else [])
+            if error.get('code') in codes and kind in SIMULATE_CODES:
                 return ('rejection', kind), ''
             return None, 'unclassified RPC error: '+message
         return None, status
@@ -234,13 +232,7 @@ def assess_compatibility(case, observation, peers):
             detail += ' Differing words: '+'; '.join(differences)+'.'
         else:
             detail += ' Output bytes differ.'
-    if left is None or right is None:
-        status = 'blocked'
-    elif case['fee_policy']['admission'] == 'observe':
-        status = 'observation'
-        detail += ' Omitted/incomplete fee normalization remains open.'
-    else:
-        status = 'matches' if left == right else 'change_needed'
+    status = 'blocked' if left is None or right is None else 'matches' if left == right else 'change_needed'
     return [dict(topic='H15', status=status,
                  requirement='The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class.',
                  detail=detail)]

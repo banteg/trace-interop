@@ -52,8 +52,8 @@ class FeePolicyTests(unittest.TestCase):
             balances = {SENDER:BALANCE}
             invalid = False
             for call, program in zip(calls, policy['programs'], strict=True):
-                cap = int(call.get('gasPrice',call.get('maxFeePerGas')),16)
-                tip = int(call.get('gasPrice',call.get('maxPriorityFeePerGas')),16)
+                cap = int(call.get('gasPrice',call.get('maxFeePerGas','0x0')),16)
+                tip = int(call.get('gasPrice',call.get('maxPriorityFeePerGas','0x0')),16)
                 value, gas = int(call['value'],16), int(call['gas'],16)
                 balance = balances.get(call['from'],0)
                 if tip>cap or 0<cap<765625000 or balance<value+gas*cap:
@@ -104,9 +104,14 @@ class FeePolicyTests(unittest.TestCase):
 
     def test_free_funding_rejection_does_not_get_generic_acceptance_rule(self):
         case = self.case('funding-free-short/call/none')
-        observation = dict(status='rpc_error',response={'error':{'code':-32000,'message':'insufficient funds'}})
+        observation = dict(status='rpc_error',response={'error':{'code':-38014,'message':'insufficient funds'}})
         checks = supplement(case, observation, {}, evaluate(case,observation,{}), ['H15'])
         self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['matches'])
+        # A generic code is a difference, but the identified violation is retained.
+        observation['response']['error']['code']=-32000
+        check = assess(case,observation)[0]
+        self.assertEqual(check['status'],'change_needed')
+        self.assertIn('observed funds with code -32000, which requires -38014',check['detail'])
         for code in [-32603,-32601,-32700]:
             observation['response']['error']['code']=code
             self.assertEqual(assess(case,observation)[0]['status'],'blocked')
@@ -120,21 +125,30 @@ class FeePolicyTests(unittest.TestCase):
             self.assertEqual(assess(case,obs)[0]['status'],expected)
         case = self.case('mixed-legacy-free-then-invalid/many/trace')
         for index, expected in [(0,'change_needed'),(1,'matches')]:
-            obs=dict(status='rpc_error',response={'error':{'code':-32000,'message':f'first run for txIndex {index} error: fee cap less than block base fee'}})
+            obs=dict(status='rpc_error',response={'error':{'code':-38012,'message':f'first run for txIndex {index} error: fee cap less than block base fee'}})
             self.assertEqual(assess(case,obs)[0]['status'],expected)
 
-    def test_unresolved_defaults_do_not_receive_policy_passes(self):
-        case=self.case('defaults-omitted/call/none')
-        self.assertEqual(assess(case,self.response({'output':'0x'}))[0]['status'],'observation')
+    def test_omitted_fees_default_to_zero(self):
+        # GASPRICE and BASEFEE words per family, as eth_call and eth_simulateV1 default them.
+        for family, words in [('omitted',[0,0]),('cap-only-zero',[0,0]),('tip-only-zero',[0,0]),
+                              ('cap-only-positive',[765625000,765625000])]:
+            output = expected_steps(self.case('defaults-'+family+'/call/none'))[0]['output']
+            self.assertEqual([int(output[2+i*64:2+(i+1)*64],16) for i in range(2)], words, family)
+        case = self.case('defaults-tip-only-positive/call/none')
+        self.assertEqual(case['fee_policy']['admission'], 'reject')
+        obs = dict(status='rpc_error',response={'error':{'code':-32602,'message':'max priority fee per gas higher than max fee per gas'}})
+        self.assertEqual([c['status'] for c in assess(case,obs)], ['matches'])
         self.assertEqual(assess(case,{'status':'malformed_json'})[0]['status'],'blocked')
 
-    def test_captured_defaults_are_open_but_truncated_responses_remain_blocked(self):
+    def test_captured_defaults_receive_verdicts(self):
         observations = read(ROOT/'evidence/2026-09-24/current-matrix/fee-policy/observations.json')
-        defaults = [name for name,c in self.cases.items() if c.get('fee_policy',{}).get('admission')=='observe']
+        defaults = [name for name in self.cases if name.startswith('defaults-')]
         self.assertEqual(len(defaults), 80)
-        for name in defaults:
-            checks = supplement(self.case(name), observations[name]['go-ethereum_trace'], {}, [], ['H15'])
-            self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['observation'])
+        # Reth executes omitted fees as zero-fee calls; the Geth draft keeps the real BASEFEE.
+        for client, expected in [('reth_release', {'matches'}), ('go-ethereum_trace', {'matches','change_needed'})]:
+            name = 'defaults-omitted/call/none'
+            checks = supplement(self.case(name), observations[name][client], {}, [], ['H15'])
+            self.assertEqual({c['status'] for c in checks if c['topic']=='H15'}, expected)
         name = 'defaults-tip-only-positive/call/none'
         checks = supplement(self.case(name), observations[name]['nethermind_development'], {}, [], ['H15'])
         self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['blocked'])
@@ -147,11 +161,13 @@ class FeePolicyTests(unittest.TestCase):
 
     def test_any_violated_constraint_is_an_acceptable_rejection_reason(self):
         # A zero cap with a positive tip exceeds the cap and is below the base fee.
-        for message, expected in [('max fee per gas less than block base fee','matches'),
-                                  ('maxFeePerGas (0) < maxPriorityFeePerGas (1)','matches'),
-                                  ('insufficient funds for gas * price + value','change_needed')]:
-            with self.subTest(message=message):
-                obs=dict(status='rpc_error',response={'error':{'code':-32000,'message':message}})
+        for message, code, expected in [('max fee per gas less than block base fee',-38012,'matches'),
+                                        ('max priority fee per gas higher than max fee per gas',-32602,'matches'),
+                                        ('maxFeePerGas (0) < maxPriorityFeePerGas (1)',-32602,'matches'),
+                                        ('insufficient funds for gas * price + value',-38014,'change_needed'),
+                                        ('max fee per gas less than block base fee',-32000,'change_needed')]:
+            with self.subTest(message=message, code=code):
+                obs=dict(status='rpc_error',response={'error':{'code':code,'message':message}})
                 checks=assess(self.case('typed-zero-cap-positive-tip/call/none'),obs)
                 self.assertEqual([c['status'] for c in checks],[expected])
 

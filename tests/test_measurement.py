@@ -22,17 +22,41 @@ def reference_context(frames):
 
 class RuleSafetyTests(unittest.TestCase):
     def test_signed_invalid_cases_require_rejection_under_each_selection(self):
-        for name in ['raw-nonce-high', 'raw-valid-default-block', 'raw-wrong-chain',
-                     'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']:
+        for name, message, group in [('raw-nonce-high', 'nonce too high', 2), ('raw-valid-default-block', 'nonce too low', 1),
+                                     ('raw-wrong-chain', 'invalid chain id for signer', None),
+                                     ('raw-insufficient-funds', 'insufficient funds for gas * price + value', 809),
+                                     ('raw-low-gas', 'intrinsic gas too low', 800),
+                                     ('raw-below-basefee', 'max fee per gas less than block base fee', 806)]:
             for selection in [['trace'], ['stateDiff'], ['vmTrace'], ['trace', 'stateDiff', 'vmTrace']]:
                 case = {'name': name, 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', selection]}}
-                for code in [-32003, -32000]:
-                    observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'invalid transaction'}}}
+                for code in [-32003, -32000] + ([group] if group else []):
+                    observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': message}}}
                     checks = [c for c in evaluate(case, observation, {}) if c['topic'] == 'H13']
                     self.assertEqual(checks[0]['status'], 'matches')
-                    self.assertEqual(checks[1]['status'], 'matches' if code == -32003 else 'change_needed')
+                    self.assertEqual(checks[1]['status'], 'change_needed' if code == -32000 else 'matches')
                 checks = assess(name, {'output': '0x', 'trace': []}, 'trace_rawTransaction', case['request']['params'])
                 self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['change_needed'])
+
+    def test_signed_rejection_must_name_its_own_violation(self):
+        case = {'name': 'raw-nonce-high', 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', ['trace']]}}
+        for message, statuses in [('intrinsic gas too low', ['change_needed', 'change_needed']),
+                                  ('internal error', ['blocked'])]:
+            observation = {'status': 'rpc_error', 'response': {'error': {'code': -32003, 'message': message}}}
+            self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], statuses)
+        # Another violation's error group is not accepted either.
+        observation = {'status': 'rpc_error', 'response': {'error': {'code': 1, 'message': 'nonce too high'}}}
+        self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], ['matches', 'change_needed'])
+
+    def test_beyond_head_range_is_invalid_params_but_unknown_block_is_not_found(self):
+        for name, method, params, accepted in [
+                ('missing-block-filter', 'trace_filter', [{'fromBlock': '0x2f', 'toBlock': '0xffff'}], -32602),
+                ('missing-block-block', 'trace_block', ['0xffff'], -32001),
+                ('filter-to-2-implicit-from', 'trace_filter', [{'toBlock': '0x2'}], -32602)]:
+            case = {'name': name, 'context': {'_chain': 'h30'}, 'request': {'method': method, 'params': params}}
+            for code in [-32602, -32001]:
+                observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'x'}}}
+                self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']],
+                                 ['matches' if code == accepted else 'change_needed'])
 
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
@@ -61,8 +85,18 @@ class RuleSafetyTests(unittest.TestCase):
         for error in [1, None, {}, []]:
             checks = assess('call', {'trace': [{'error': error, 'result': None}]})
             self.assertIn('change_needed', [c['status'] for c in checks if c['topic'] == 'H09'])
-        checks = assess('call', {'trace': [{'error': 'Out of gas', 'result': None}]})
-        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches'])
+        for frame in [{'error': 'Out of gas', 'result': None}, {'error': 'Out of gas'}]:
+            checks = assess('call', {'trace': [frame]})
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches'])
+
+    def test_revert_frames_keep_gas_and_output_without_creation_fields(self):
+        for frame, expected in [({'type': 'call', 'result': {'gasUsed': '0x6', 'output': '0x'}}, 'matches'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'output': '0x'}}, 'matches'),
+                                ({'type': 'call'}, 'change_needed'), ({'type': 'call', 'result': None}, 'change_needed'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'address': '0x'+'11'*20, 'code': '0x'}}, 'change_needed'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'output': '0x', 'address': '0x'+'11'*20}}, 'change_needed')]:
+            checks = assess('call', {'trace': [dict(frame, error='Reverted')]})
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches', expected], frame)
 
     def test_revert_bytes_do_not_depend_on_error_wording(self):
         frame = {'traceAddress': [0], 'error': 'client specific label', 'result': None}
@@ -287,8 +321,9 @@ class HistoricalAssessmentTests(unittest.TestCase):
                 build=f'{client}_{channel}'
                 self.assertEqual(verdict(build,'filter-no-bounds','H30'),
                                  ['matches' if client in ['besu','nethermind'] else 'change_needed'])
+                # Nethermind rejects the reversed range with -32000, not -32602.
                 self.assertEqual(verdict(build,'filter-to-2-implicit-from','H30'),
-                                 ['matches' if client in ['besu','nethermind'] else 'change_needed'])
+                                 ['matches' if client == 'besu' else 'change_needed'])
                 self.assertEqual(verdict(build,'many-number-default','H31'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
                 self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])

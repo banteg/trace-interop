@@ -155,3 +155,21 @@ class SemanticRegressions(unittest.TestCase):
             checks=[x for x in evaluate(c,o,p) if x['topic']==topic]
             self.assertTrue(checks)
             self.assertTrue(all(x['status']=='matches' for x in checks), (name,checks))
+
+    def test_failed_create_has_no_filter_recipient(self):
+        c, o, p = captured('2026-09-23/geth-40eecf3-a', 'filter-created-to', 'go-ethereum_trace')
+        # A reverted CREATE whose would-be address is still reported in both the
+        # block trace and the filter result must not satisfy toAddress.
+        for frames in [p['block-2']['response']['result'], o['response']['result']]:
+            next(f for f in frames if f['type'] == 'create')['error'] = 'Reverted'
+        self.assert_rejected(c, o, p, 'H23')
+
+    def test_contradicted_reference_action_fails_naming_the_field(self):
+        from trace_interop.oracles import TREE
+        c, o, p = captured('2026-09-23/geth-40eecf3-initial', 'filter-both', 'go-ethereum_trace')
+        tree = p['block-tree']['response']['result']
+        # DELEGATECALL reported with the executing address as `to`.
+        next(f for f in tree if f['action'].get('callType') == 'delegatecall')['action']['to'] = TREE
+        checks = [x for x in evaluate(c, o, p) if x['topic'] == 'H03']
+        self.assertEqual([x['status'] for x in checks], ['change_needed'])
+        self.assertIn('delegatecall 4 action.to', checks[0]['detail'])

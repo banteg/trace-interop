@@ -96,12 +96,42 @@ class ChainModelTests(unittest.TestCase):
         target=tx['authorizations'][0]['address']
         corpus=read(ROOT/'fixtures/chains/initial/genesis.json')
         context={'_blocks':blocks,'_alloc':{'0x'+a:v for a,v in corpus['alloc'].items()},
-                 '_codes':{'0x'+a:v.get('code','0x') for a,v in corpus['alloc'].items()}}
+                 '_codes':{'0x'+a:v.get('code','0x') for a,v in corpus['alloc'].items()},
+                 '_chain_id':corpus['config']['chainId']}
         case={'name':'replay','context':context,'request':{'method':'trace_replayTransaction','params':[tx['hash'],['stateDiff']]}}
+        nonce={'*':{'from':'0x0','to':'0x1'}}
         for change,expected in [({'*':{'from':'0x','to':'0xef0100'+target[2:]}},'matches'),('=','change_needed'),(None,'change_needed')]:
-            result={'stateDiff':{authority:{'code':change}}}
+            result={'stateDiff':{authority:{'code':change,'nonce':nonce}}}
             checks=assess(case,{'status':'result','response':{'result':result}},{},{'H18'})
             self.assertEqual([c['status'] for c in checks],[expected])
+
+    def test_authorizations_fold_per_authority_and_skip_invalid_tuples(self):
+        blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
+        genesis=read(ROOT/'fixtures/chains/initial/genesis.json')
+        original=blocks['0x2']['transactions'][3]
+        auth=original['authorizations'][0]
+        absent='0x'+'ab'*20
+        def replay(authorizations, diff):
+            tx=dict(original,authorizations=authorizations)
+            chain=dict(blocks,**{'0x2':dict(blocks['0x2'],transactions=blocks['0x2']['transactions'][:3]+[tx])})
+            context={'_blocks':chain,'_alloc':{'0x'+a:v for a,v in genesis['alloc'].items()},
+                     '_codes':{'0x'+a:v.get('code','0x') for a,v in genesis['alloc'].items()},
+                     '_chain_id':genesis['config']['chainId']}
+            case={'name':'replay','context':context,'request':{'method':'trace_replayTransaction','params':[tx['hash'],['stateDiff']]}}
+            return [c['status'] for c in assess(case,{'status':'result','response':{'result':{'stateDiff':diff}}},{},{'H18'})]
+        second=dict(auth,address='0x'+'00'*19+'05',nonce=1)
+        delegated=lambda a:'0xef0100'+a[2:]
+        # Two tuples from one authority: the net diff ends at the second target, nonce +2.
+        net={auth['authority']:{'code':{'*':{'from':'0x','to':delegated(second['address'])}},'nonce':{'*':{'from':'0x0','to':'0x2'}}}}
+        self.assertEqual(replay([auth,second],net),['matches'])
+        # A stale nonce or foreign chain id skips the tuple; the authority is unchanged.
+        for invalid in [dict(auth,nonce=1),dict(auth,chain_id=1)]:
+            self.assertEqual(replay([invalid],{}),['matches'])
+            self.assertEqual(replay([invalid],{auth['authority']:{'code':{'*':{'from':'0x','to':delegated(auth['address'])}}}}),['change_needed'])
+        # An absent authority is born with creation markers.
+        born=dict(auth,authority=absent)
+        self.assertEqual(replay([born],{absent:{'code':{'+':delegated(auth['address'])},'nonce':{'+':'0x1'}}}),['matches'])
+        self.assertEqual(replay([born],{absent:{'code':{'*':{'from':'0x','to':delegated(auth['address'])}},'nonce':{'*':{'from':'0x0','to':'0x1'}}}}),['change_needed'])
 
     def test_known_empty_execution_requires_empty_vm_object(self):
         blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')

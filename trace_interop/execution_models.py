@@ -62,14 +62,35 @@ def transactions(case):
     return []
 
 
+def delegation(address):
+    return '0x' if int(address,16)==0 else '0xef0100'+address[2:]
+
+
+def authorize(tx, exists, codes, nonces, chain_id):
+    """Apply valid EIP-7702 tuples in order, after the sender nonce increment; return the applied tuples."""
+    applied=[]
+    for auth in tx['authorizations']:
+        authority=auth['authority']
+        code=codes.get(authority,'0x')
+        if (auth['chain_id'] not in [0,chain_id] or auth['nonce']!=nonces.get(authority,0)
+                or code not in ['0x',None] and not code.startswith('0xef0100')):
+            continue
+        exists.add(authority)
+        codes[authority]=delegation(auth['address'])
+        nonces[authority]=auth['nonce']+1
+        applied.append(auth)
+    return applied
+
+
 def prestate(context, block, index):
-    """Known endpoint existence/code from genesis and preceding signed fixtures.
+    """Known endpoint existence/code/nonce from genesis and preceding signed fixtures.
 
 The retained chains only create persistent contracts at top level. The calltree's
 internal constructor self-destructs within the same transaction.
 """
     codes = dict(context.get('_codes', {}))
     exists = set(context.get('_alloc', {}))
+    nonces = {a:int(v.get('nonce','0x0'),16) for a,v in context.get('_alloc', {}).items()}
     for b in context.get('_blocks', {}).values():
         if b['number'] > block.get('number',-1):
             continue
@@ -78,29 +99,29 @@ internal constructor self-destructs within the same transaction.
                 break
             exists.add(tx['sender'])
             codes.setdefault(tx['sender'],'0x')
+            nonces[tx['sender']]=tx['nonce']+1
             if tx['to'] is None:
                 address=created_address(tx['sender'],tx['nonce'])
                 exists.add(address)
                 runtime=deployed_code(tx['data'])
                 codes[address]=runtime
+                nonces[address]=1
             elif tx['value']:
                 exists.add(tx['to'])
                 codes.setdefault(tx['to'],'0x')
-            for auth in tx['authorizations']:
-                exists.add(auth['authority'])
-                codes[auth['authority']] = '0x' if int(auth['address'],16)==0 else '0xef0100'+auth['address'][2:]
+            authorize(tx,exists,codes,nonces,context.get('_chain_id'))
         # Fees create the recipient if nonzero. Every nonempty fixture block has
         # positive tips; the dedicated model chain has empty blocks and no miner.
         if b['transactions'] and (b['number'] < block.get('number',-1) or index is None or index>0):
             exists.add(b['miner'])
             codes.setdefault(b['miner'],'0x')
-    return exists,codes
+    return exists,codes,nonces
 
 
-def execution_code(tx,codes,exists):
-    codes=dict(codes)
-    for auth in tx['authorizations']:
-        codes[auth['authority']]='0x' if int(auth['address'],16)==0 else '0xef0100'+auth['address'][2:]
+def execution_code(tx,codes,exists,nonces,chain_id):
+    codes,exists,nonces=dict(codes),set(exists),dict(nonces)
+    nonces[tx['sender']]=nonces.get(tx['sender'],0)+1
+    authorize(tx,exists,codes,nonces,chain_id)
     code=tx['data'] if tx['to'] is None else codes.get(tx['to'],'0x' if tx['to'] not in exists else None)
     if isinstance(code,str) and code.startswith('0xef0100'):
         target='0x'+code[8:]
@@ -155,21 +176,27 @@ def assess(case, observation, peers, topics):
                         detail='No state-diff object was returned; account markers cannot be assessed.'))
                 else:
                     add(topic,False,'The declared state-diff fixture returns the requested account changes.')
-        exists,codes=prestate(context,block,index)
+        exists,codes,nonces=prestate(context,block,index)
         for prior,_,_ in models[:i] if method=='trace_callMany' else []:
             if prior['to'] and prior['value']:
                 exists.add(prior['to'])
             if prior['price_cap']>block.get('base_fee',0) and block.get('miner'):
                 exists.add(block['miner'])
-        if 'H18' in topics:
-            for auth in tx['authorizations']:
-                before=codes.get(auth['authority'],'0x')
-                after='0x' if int(auth['address'],16)==0 else '0xef0100'+auth['address'][2:]
-                want='=' if before==after else {'*':{'from':before,'to':after}}
-                add('H18',mapping(mapping(diff).get(auth['authority'])).get('code')==want,
-                    'The signed authorization changes the recovered authority from its independently reconstructed code to the delegation target.',
-                    f'Authority {auth["authority"]}; expected {want}.')
-                codes[auth['authority']]=after
+        if 'H18' in topics and tx['authorizations']:
+            after_exists,after_codes,after_nonces=set(exists),dict(codes),dict(nonces)
+            after_nonces[tx['sender']]=nonces.get(tx['sender'],0)+1
+            applied=authorize(tx,after_exists,after_codes,after_nonces,context.get('_chain_id'))
+            for authority in dict.fromkeys(a['authority'] for a in tx['authorizations']):
+                born=authority not in exists and authority in after_exists
+                def change(before,after):
+                    return {'+':after} if born else '=' if before==after else {'*':{'from':before,'to':after}}
+                want={'code':change(codes.get(authority,'0x'),after_codes.get(authority,'0x')),
+                      'nonce':change(hex(nonces.get(authority,0)),hex(after_nonces.get(authority,0)))}
+                account=mapping(mapping(diff).get(authority))
+                count=sum(a['authority']==authority for a in applied)
+                add('H18',isinstance(diff,dict) and all(account.get(k,'=')==v for k,v in want.items()),
+                    'Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing.',
+                    f'Authority {authority}; {count} of {sum(a["authority"]==authority for a in tx["authorizations"])} tuples valid; expected {want}.')
         if 'H17' in topics and state_requested and isinstance(diff,dict):
             bad=[]
             for address,account in diff.items():
@@ -181,7 +208,7 @@ def assess(case, observation, peers, topics):
                     bad.append(address+': new account lacks creation markers for all fields')
             add('H17',bool(diff) and not bad,'State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields.', '; '.join(bad[:4]))
         if topics & {'H19','H20'}:
-            code=execution_code(tx,codes,exists)
+            code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
             if code is not None:
                 vm=e.get('vmTrace')
                 if 'H19' in topics:

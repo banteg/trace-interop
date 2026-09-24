@@ -117,8 +117,8 @@ def evaluate(case, observation, peers, invalid_params=None):
                   and result == head,
                   'Omitting both range bounds selects latest only, as an explicit head-only query does.')
         if name == 'filter-to-2-implicit-from':
-            check('H30', status == 'rpc_error' and isinstance(response.get('error'), dict),
-                  'An omitted fromBlock resolves to latest; an earlier explicit toBlock gives a range error, not a historical search.')
+            check('H30', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+                  'An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.')
         if name in ['call-number-default', 'call-number-latest']:
             check('H31', status == 'result' and mapping(result).get('output') == number_48,
                   'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).')
@@ -430,9 +430,12 @@ def evaluate(case, observation, peers, invalid_params=None):
                 check('H13', str(mapping(root.get('result')).get('address', '')).lower() == case['signed_create_address'].lower(),
                       'Valid creation uses the address derived from the matching signed and state nonce.')
 
-    if name.startswith('missing-block-'):
+    if name.startswith('missing-block-') and method == 'trace_filter':
+        check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+              'A range bound beyond the head returns invalid params (-32602), as eth_getLogs does; never a clamped or partial result.')
+    elif name.startswith('missing-block-'):
         check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,
-              'An unknown selected block or range endpoint returns Resource not found (-32001).')
+              'An unknown single selected block returns Resource not found (-32001).')
     if name == 'call-unknown-field':
         check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
               'Unknown call-object fields are ignored without changing execution output.')

@@ -47,6 +47,17 @@ class RuleSafetyTests(unittest.TestCase):
         observation = {'status': 'rpc_error', 'response': {'error': {'code': 1, 'message': 'nonce too high'}}}
         self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], ['matches', 'change_needed'])
 
+    def test_beyond_head_range_is_invalid_params_but_unknown_block_is_not_found(self):
+        for name, method, params, accepted in [
+                ('missing-block-filter', 'trace_filter', [{'fromBlock': '0x2f', 'toBlock': '0xffff'}], -32602),
+                ('missing-block-block', 'trace_block', ['0xffff'], -32001),
+                ('filter-to-2-implicit-from', 'trace_filter', [{'toBlock': '0x2'}], -32602)]:
+            case = {'name': name, 'context': {'_chain': 'h30'}, 'request': {'method': method, 'params': params}}
+            for code in [-32602, -32001]:
+                observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'x'}}}
+                self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']],
+                                 ['matches' if code == accepted else 'change_needed'])
+
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
                        {'output': '0x', 'trace': [{'error': 'insufficient funds', 'traceAddress': []}]}]:
@@ -300,8 +311,9 @@ class HistoricalAssessmentTests(unittest.TestCase):
                 build=f'{client}_{channel}'
                 self.assertEqual(verdict(build,'filter-no-bounds','H30'),
                                  ['matches' if client in ['besu','nethermind'] else 'change_needed'])
+                # Nethermind rejects the reversed range with -32000, not -32602.
                 self.assertEqual(verdict(build,'filter-to-2-implicit-from','H30'),
-                                 ['matches' if client in ['besu','nethermind'] else 'change_needed'])
+                                 ['matches' if client == 'besu' else 'change_needed'])
                 self.assertEqual(verdict(build,'many-number-default','H31'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
                 self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])

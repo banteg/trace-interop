@@ -245,3 +245,37 @@ class TransferModelTests(unittest.TestCase):
         peers['_control/miner-balance']['status']='invalid_envelope'
         checks=supplement(case,{'status':'result','response':{'result':result}},peers,[],[])
         self.assertEqual([c['status'] for c in checks if c['topic']=='H16'],['blocked'])
+
+
+class AccountingTests(unittest.TestCase):
+    def replay(self, corpus, name, client):
+        from trace_interop.cli import CHAINS
+        folder = ROOT/'evidence/2026-09-24/h15-call-compat'/corpus
+        manifest, observations = read(folder/'manifest.json'), read(folder/'observations.json')
+        chain = ROOT/'fixtures/chains'/CHAINS[corpus]
+        genesis = read(chain/'genesis.json')
+        context = dict(read(ROOT/f'fixtures/corpora/{corpus}.json'), cases=manifest['selected_cases'],
+                       _blocks=load_chain(chain/'chain.rlp'), _chain_id=genesis['config']['chainId'],
+                       _alloc={'0x'+a.removeprefix('0x').lower(): v for a,v in genesis['alloc'].items()},
+                       _codes={'0x'+a.removeprefix('0x').lower(): v.get('code','0x') for a,v in genesis['alloc'].items()})
+        case = dict(next(c for c in manifest['selected_cases'] if c['name'] == name), context=context)
+        peers = {n: clients.get(client, {}) for n, clients in observations.items()}
+        return case, peers[name], peers
+
+    def test_blob_fee_is_debited_and_burned(self):
+        # Block 56 tx 0 carries one blob; every build debits 131072 wei of blob fee.
+        case, observation, peers = self.replay('forks', 'replay-56', 'reth_release')
+        statuses = [c['status'] for c in assess(case, observation, peers, {'H16'})]
+        self.assertTrue(statuses and all(s == 'matches' for s in statuses), statuses)
+        blob = observation['response']['result'][0]['stateDiff']
+        sender = next(a for a in blob.values() if isinstance(a.get('nonce'), dict))
+        pair = sender['balance']['*']
+        pair['to'] = hex(int(pair['to'], 16)+131072)
+        self.assertEqual(assess(case, observation, peers, {'H16'})[0]['status'], 'change_needed')
+
+    def test_root_gas_fallback_allows_the_refund_bound(self):
+        from trace_interop.execution_models import settled_gas
+        # 100 spent gas may settle at 80..100 when a refund is possible, never below.
+        self.assertEqual(settled_gas([-90*3, 90*1], 90, 80, 100, 1, 2, 0), 90)
+        self.assertIsNone(settled_gas([-79*3, 79*1], 79, 80, 100, 1, 2, 0))
+        self.assertIsNone(settled_gas([-90*3, 90*1], 90, 100, 100, 1, 2, 0))

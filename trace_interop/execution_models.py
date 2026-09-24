@@ -129,6 +129,23 @@ def execution_code(tx,codes,exists,nonces,chain_id):
     return code
 
 
+def opcodes(code):
+    raw=bytes.fromhex(code[2:])
+    i=0
+    while i<len(raw):
+        yield raw[i]
+        i+=1+(raw[i]-0x5f if 0x60<=raw[i]<=0x7f else 0)
+
+
+def settled_gas(deltas, miner, low, high, tip_price, burn_price, blob):
+    """Return the charged gas in [low, high] that settles every observed balance exactly, if any."""
+    if any(v is None for v in deltas) or miner is None:
+        return None
+    total=sum(deltas)
+    gas=miner//tip_price if tip_price else -(total+blob)//burn_price if burn_price else low
+    return gas if low<=gas<=high and miner==tip_price*gas and total==-(burn_price*gas+blob) else None
+
+
 def balance_delta(change):
     if change == '=':
         return 0
@@ -280,25 +297,40 @@ def assess(case, observation, peers, topics):
                     receipt=observed(c['name'])
                     gas=receipt_gas(receipt)
         source='independent receipt'
+        low=gas
         if gas is None and roots:
             used=quantity(mapping(roots[0].get('result')).get('gasUsed'))
             if used is not None:
                 data=bytes.fromhex(tx['data'][2:])
-                gas=max(intrinsic(tx['data'],tx['to'] is None)+used,21000+10*sum(1 if b==0 else 4 for b in data))
-                source='root execution gas plus independently calculated Prague intrinsic/floor cost'
+                floor=21000+10*sum(1 if b==0 else 4 for b in data)
+                spent=intrinsic(tx['data'],tx['to'] is None)+tx.get('intrinsic_extra',0)+used
+                # Root gasUsed precedes the EIP-3529 refund of at most a fifth of the
+                # spent gas. Only root code without SSTORE and without nested frames
+                # is known not to refund.
+                code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
+                refundable=code is None or len(trace)>1 or 0x55 in opcodes(code)
+                gas,low=max(spent,floor),max(spent-spent//5 if refundable else spent,floor)
+                source='root execution gas plus independently calculated Prague intrinsic/floor cost'+(', less any refund' if refundable else '')
         if gas is None and tx['to'] and tx['data']=='0x' and codes.get(tx['to'],'0x')=='0x':
-            gas,source=21000,'independent simple-transfer model'
+            gas,low,source=21000,21000,'independent simple-transfer model'
         if gas is None:
             checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='No receipt gas or execution-gas witness was captured.'))
             continue
+        blob=0
+        if tx.get('type')==3:
+            blob_gas,blob_price=quantity(mapping(receipt).get('blobGasUsed')),quantity(mapping(receipt).get('blobGasPrice'))
+            if blob_gas is None or blob_price is None:
+                checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='The receipt lacks blob gas used or blob gas price.'))
+                continue
+            blob=blob_gas*blob_price
         base=block.get('base_fee',0)
         price=min(tx['price_cap'],base+tx['tip_cap'])
         # Fee-free calls explicitly bypass admission, but do not pay negative tips.
-        tip=max(price-base,0)*gas
-        burn=min(price,base)*gas
+        tip_price,burn_price=max(price-base,0),min(price,base)
         deltas=[balance_delta(mapping(a).get('balance')) for a in diff.values()]
         miner=balance_delta(mapping(diff.get(block.get('miner'))).get('balance','='))
-        add('H16',all(v is not None for v in deltas) and sum(v or 0 for v in deltas)==-burn and miner==tip,
-            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee.',
-            f'Gas={gas} ({source}), price={price}, expected tip={tip}, burn={burn}.')
+        settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,blob)
+        add('H16',settled is not None,
+            'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee and blob fee.',
+            f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee={blob}.')
     return checks

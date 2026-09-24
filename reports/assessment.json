@@ -60,7 +60,7 @@
     "decisions/status.json": "13ce5da4bcfc68450439cc5b3eb55db2a642a6602bbe94be6245ff6f09fe8a5c",
     "fixtures/checksums.json": "3219e24e71d06167147a30a45ef8269f2b28fb076707d2ecf18edb57ee601491",
     "locks/source-revisions.json": "5dbec0b40516b381c419e27bb997210331399f7284194469917ad8651b0db7d4",
-    "pyproject.toml": "d11a3d19c2a0f2679369a28cec1800603f26b645ce5e73453532c5a8ed746146",
+    "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "f68d0ea6d3a05a2c135926b87158e2affa06a88d4c46496fb1a8f5b6c2660c21",
     "scripts/run_matrix.py": "af6acd9ad32b8af625888aacb6466ecb238933730c331fa228cc65fa1aa131f8",
     "spec.lock.json": "7237171f799a237793bd36bb06d2471597035c7cd36bcf33640485a099cb466c",
@@ -78,7 +78,7 @@
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85",
     "trace_interop/versions.py": "e12b98c5d4a0ddab66973b27909c222c8f57e02654605be5c21287928f5b610a",
     "trace_interop/vm_model.py": "673b594c2d1f54bbe4483bbb7683e58aa32abf78adbf62da974e34ed6d00e9f5",
-    "uv.lock": "a1c74849b49f115c9d974a5f5e569d95772acc1ca89bd40174e04f1dda5d08ef"
+    "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
   "spec_commit": "53ffb8571817ca095ff62ecc5ef7279f4bd6dec9"
 }

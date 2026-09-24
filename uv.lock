@@ -614,6 +614,7 @@ dependencies = [
     { name = "eth-keys" },
     { name = "jsonschema" },
     { name = "pyyaml" },
+    { name = "referencing" },
     { name = "rlp" },
 ]
 
@@ -623,6 +624,7 @@ requires-dist = [
     { name = "eth-keys", specifier = ">=0.7,<0.8" },
     { name = "jsonschema", specifier = ">=4.23,<5" },
     { name = "pyyaml", specifier = ">=6,<7" },
+    { name = "referencing", specifier = ">=0.37.0" },
     { name = "rlp", specifier = ">=4,<5" },
 ]
 

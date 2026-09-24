@@ -153,7 +153,7 @@ def supplement(case, observation, peers, checks, expected):
                 def selected(frame):
                     action=obj(frame.get('action'));kind=frame.get('type')
                     sender,target=action.get('from'),action.get('to')
-                    if kind=='create':target=obj(frame.get('result')).get('address')
+                    if kind=='create':target=None if 'error' in frame else obj(frame.get('result')).get('address')
                     elif kind=='suicide':sender,target=action.get('address'),action.get('refundAddress')
                     elif kind=='reward':sender,target=None,action.get('author')
                     sides=[]

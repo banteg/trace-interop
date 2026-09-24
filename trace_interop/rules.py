@@ -262,7 +262,8 @@ def evaluate(case, observation, peers, invalid_params=None):
             def matches(frame):
                 action=mapping(mapping(frame).get('action')); kind=mapping(frame).get('type')
                 frm=action.get('from'); to=action.get('to')
-                if kind=='create': to=mapping(frame.get('result')).get('address')
+                # A failed CREATE has no recipient, even if a client reports its would-be address.
+                if kind=='create': to=None if 'error' in frame else mapping(frame.get('result')).get('address')
                 if kind=='suicide': frm,to=action.get('address'),action.get('refundAddress')
                 if kind=='reward': frm,to=None,action.get('author')
                 senders=[address(v) for v in sequence(filt.get('fromAddress'))]

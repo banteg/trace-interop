@@ -1,0 +1,799 @@
+{
+  "cases": [
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/beacon-timestamp-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/beacon-root-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000230",
+      "name": "_control/beacon-timestamp-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd",
+      "name": "_control/beacon-root-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "rewards-to",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A reward matches toAddress by author, after its block's transactions: block reward, then uncle rewards in ommer order.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-intersection",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "A reward has no from side, so an intersection with a populated fromAddress excludes it.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-union",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x20f1a75baf485b3e05dbcf13ffeb10dfe11fae25e85c994900d918ad7225015e",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+                "value": "0x1"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x8422e05f9445c7ccabda85615c4ec61664212e8e30a3d45301485bc42e948797",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "In union mode a toAddress match by author suffices for a reward; sender roots precede their block's rewards.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sender-skip",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7",
+              "transactionPosition": 0,
+              "type": "call"
+            }
+          ],
+          "kind": "records",
+          "requirement": "Filter first, then skip after matching records and take count, across block boundaries.",
+          "topic": "H03"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 2,
+            "count": 3,
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-window",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A page over matching records crosses a block boundary and reward records in block, transaction, reward order.",
+          "topic": "H03"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 3,
+            "count": 5,
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x4"
+          }
+        ]
+      }
+    },
+    {
+      "name": "range-reversed",
+      "probes": [
+        {
+          "code": -32602,
+          "kind": "error",
+          "requirement": "An explicit fromBlock above toBlock is invalid params (-32602), as eth_getLogs does.",
+          "topic": "H06"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "genesis-block",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x0"
+        ]
+      }
+    },
+    {
+      "name": "genesis-replay",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records. Block replay returns [].",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x0",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "genesis-filter",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x0",
+            "toBlock": "0x0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "genesis-range-rewards",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97",
+              "blockNumber": 1,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x0",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "beacon-trace-55",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "trace_call at block 55 reads the beacon root of timestamp 560 only if block 55 stored it.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-many-55",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The first trace_callMany item at block 55 runs on the same post-block state as trace_call.",
+          "topic": "H28"
+        },
+        {
+          "index": 0,
+          "kind": "same-output",
+          "reference": "beacon-trace-55",
+          "requirement": "The one-item trace_callMany output equals trace_call at the same block.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-trace-56",
+      "probes": [
+        {
+          "expected": [
+            "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd"
+          ],
+          "kind": "outputs",
+          "requirement": "trace_call at block 56 reads the beacon root of timestamp 560 only if block 56 stored it.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "beacon-many-56",
+      "probes": [
+        {
+          "expected": [
+            "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd"
+          ],
+          "kind": "outputs",
+          "requirement": "The first trace_callMany item at block 56 runs on the same post-block state as trace_call.",
+          "topic": "H28"
+        },
+        {
+          "index": 0,
+          "kind": "same-output",
+          "reference": "beacon-trace-56",
+          "requirement": "The one-item trace_callMany output equals trace_call at the same block.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x38"
+        ]
+      }
+    }
+  ],
+  "description": "Reward matching and pagination, reversed range, genesis and the callMany beacon-root twin on the frozen PoW-to-PoS forks chain."
+}

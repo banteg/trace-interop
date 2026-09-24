@@ -1,7 +1,8 @@
 """Bounded, independent straight-line Prague EVM model for trace discriminators.
 
 No client response is an input. Unsupported programs fail closed. This is not a
-general EVM: calls, jumps, storage and exceptional halts need separate fixtures.
+general EVM: calls, creations and exceptional halts need separate fixtures, and
+storage is modelled only for anchored slots or a fresh (just-created) account.
 """
 import re
 
@@ -17,7 +18,7 @@ NAMES.update({i: 'PUSH'+str(i-0x5f) for i in range(0x60, 0x80)})
 NAMES.update({i: 'DUP'+str(i-0x7f) for i in range(0x80, 0x90)})
 NAMES.update({i: 'SWAP'+str(i-0x8f) for i in range(0x90, 0xa0)})
 NAMES.update({0x14:'EQ',0x15:'ISZERO',0x1c:'SHR',0x33:'CALLER',0x32:'ORIGIN',
-              0x44:'PREVRANDAO',0x46:'CHAINID',0x54:'SLOAD',0x55:'SSTORE',
+              0x44:'PREVRANDAO',0x46:'CHAINID',0x54:'SLOAD',0x55:'SSTORE',0x5c:'TLOAD',0x5d:'TSTORE',
               0x56:'JUMP',0x57:'JUMPI',0x5b:'JUMPDEST',0xa0:'LOG0',0xa1:'LOG1',
               0xf0:'CREATE',0xf1:'CALL',0xf2:'CALLCODE',0xf4:'DELEGATECALL',0xf5:'CREATE2',0xfa:'STATICCALL',0xff:'SELFDESTRUCT',3:'SUB'})
 
@@ -44,6 +45,21 @@ def execute(code, gas, calldata='0x', environment=None):
         if op==0x5b:jumpdests.add(cursor)
         cursor+=1+(op-0x5f if 0x60<=op<=0x7f else 0)
 
+    # STORAGE anchors known slots; a fresh account (a creation's own address)
+    # has only zero slots. Writes are tracked on top of the original values.
+    written, transient = {}, {}
+
+    def original_value(slot):
+        storage=env.get('STORAGE',{})
+        if slot in storage:
+            return storage[slot]
+        if env.get('FRESH_ACCOUNT'):
+            return 0
+        raise UnsupportedProgram('unanchored storage read')
+
+    def slot_value(slot):
+        return written[slot] if slot in written else original_value(slot)
+
     def expand(offset, size):
         if not size:
             return 0
@@ -60,7 +76,7 @@ def execute(code, gas, calldata='0x', environment=None):
                 raise UnsupportedProgram('model step bound exceeded')
             at, op = pc, raw[pc]
             pc += 1
-            cost, push, mem = 0, [], None
+            cost, push, mem, store = 0, [], None, None
             if 0x60 <= op <= 0x7f:
                 size = op-0x5f
                 value = int.from_bytes(raw[pc:pc+size].ljust(size, b'\0'), 'big')
@@ -97,15 +113,32 @@ def execute(code, gas, calldata='0x', environment=None):
                     pc=target
             elif op==0x5b:
                 cost=1
-            elif op==0x54:
+            elif op in [0x54,0x55]:
                 slot=stack.pop()
-                storage=env.get('STORAGE',{})
-                if slot not in storage:
-                    raise UnsupportedProgram('unanchored storage read')
+                current=slot_value(slot)
                 warm=env.setdefault('_warm_slots',set())
-                cost=100 if slot in warm else 2100
+                cold=0 if slot in warm else 2100
                 warm.add(slot)
-                stack.append(storage[slot]);push=[storage[slot]]
+                if op==0x54:
+                    cost=cold or 100
+                    stack.append(current);push=[current]
+                else:
+                    value=stack.pop()
+                    if gas<=2300:
+                        raise UnsupportedProgram('exceptional halt requires an OOG model')
+                    original=original_value(slot)
+                    # EIP-2200 with EIP-2929 cold surcharges; refunds do not change cost.
+                    cost=cold+(100 if current==value or original!=current else 20000 if original==0 else 2900)
+                    written[slot]=value
+                    store={'key':hex(slot),'val':hex(value)}
+            elif op in [0x5c,0x5d]:
+                slot=stack.pop()
+                cost=100
+                if op==0x5c:
+                    value=transient.get(slot,0)
+                    stack.append(value);push=[value]
+                else:
+                    transient[slot]=stack.pop()
             elif op == 0x50:
                 stack.pop()
                 cost = 2
@@ -159,12 +192,31 @@ def execute(code, gas, calldata='0x', environment=None):
                 raise UnsupportedProgram('exceptional halt requires an OOG model')
             gas -= cost
             steps.append({'pc': at, 'cost': cost, 'op': NAMES[op], 'sub': None,
-                          'ex': {'used': gas, 'push': [hex(v) for v in push], 'mem': mem, 'store': None}})
+                          'ex': {'used': gas, 'push': [hex(v) for v in push], 'mem': mem, 'store': store}})
             if op in [0, 0xf3, 0xfd]:
                 break
     except (IndexError, OverflowError) as exc:
         raise UnsupportedProgram('invalid model program') from exc
     return {'code': code, 'ops': steps}, output, reverted
+
+
+def store_words(store):
+    """Numeric (key, val) of a store delta; None when absent or malformed. H21 owns its encoding."""
+    try:
+        return (int(store['key'],16),int(store['val'],16)) if isinstance(store,dict) else None
+    except (KeyError,ValueError,TypeError):
+        return None
+
+
+def stack_window(opcode, stack):
+    """Expected push of DUPn/SWAPn from the stack before it: the top n+1 words after execution, deepest first."""
+    n=opcode-0x7f if opcode<0x90 else opcode-0x8f
+    if len(stack)<n+(opcode>=0x90):
+        return None
+    if opcode<0x90:
+        return stack[len(stack)-n:]+[stack[-n]]
+    window=stack[len(stack)-n-1:]
+    return [window[-1]]+window[1:-1]+[window[0]]
 
 
 def differences(actual, expected):
@@ -185,9 +237,11 @@ def differences(actual, expected):
         if not isinstance(ex,dict):
             errors.append(f'step {i} execution effects missing')
         else:
-            for key in ['used','mem','store']:
+            for key in ['used','mem']:
                 if ex.get(key)!=want['ex'][key] or key=='used' and type(ex.get(key)) is not int:
                     errors.append(f'step {i} ({want["op"]}) {key}: expected {want["ex"][key]}, got {ex.get(key)}')
+            if store_words(ex.get('store'))!=store_words(want['ex']['store']) or ex.get('store') is not None and store_words(ex['store']) is None:
+                errors.append(f'step {i} ({want["op"]}) store: expected {want["ex"]["store"]}, got {ex.get("store")}')
             # Numeric equality belongs to execution semantics; minimal wire
             # encoding is independently checked by H21.
             try:
@@ -252,7 +306,8 @@ def local_invariants(vm):
     """Check mandatory local step relations even in programs containing calls.
 
 Every step deducts its recorded cost; a call or creation that entered a child
-frame also receives the child's unused gas. Operand ranges come from the stack
+frame also receives the child's unused gas. DUPn and SWAPn push the top n+1 words,
+deepest first, of the stack reconstructed from earlier pushes (arity only once it is lost). Operand ranges come from the stack
 reconstructed from reported push words. Dedicated models additionally derive
 costs and effects independently of recorded values.
 """
@@ -279,7 +334,12 @@ costs and effects independently of recorded values.
         if sub is not None and (opcode not in CALLS+CREATES or not isinstance(ex,dict)):
             errors.append(f'operation {i} has a subtrace but entered no child frame')
         pushed=words(ex.get('push')) if isinstance(ex,dict) else None
-        operands=None
+        if 0x80<=opcode<=0x9f and pushed is not None:
+            want=stack_window(opcode,stack) if stack is not None else None
+            arity=opcode-0x7e if opcode<0x90 else opcode-0x8e
+            if len(pushed)!=(len(want) if want is not None else arity) or want is not None and pushed!=want:
+                errors.append(f'operation {i} {NAMES[opcode]} push is not the top {arity} words after execution, deepest first')
+                pushed=None
         if stack is not None and pushed is not None and opcode in INPUTS and len(stack)>=INPUTS[opcode]:
             operands=stack[len(stack)-INPUTS[opcode]:][::-1]
             stack=stack[:len(stack)-INPUTS[opcode]]+pushed

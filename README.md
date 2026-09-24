@@ -17,6 +17,7 @@ Join the [trace working group on Telegram](https://t.me/+2jfwc-YvwkliMzIy) to di
 1. [Your client's report](reports/README.md): each difference from the draft, with a minimal example, the proposed change and links into your source. 🛠️ marks differences already covered by a submitted fix.
 2. [Decision pages](decisions/README.md): the recommendation, rationale and cross-client observations behind each proposed change.
 3. [Related pull requests](docs/client-fixes.md): open and merged fixes, with the decisions each one addresses.
+4. [Changes since the previous matrix](reports/changes.md): verdicts that changed for each client build since the last capture.
 
 **Specification reviewers**
 

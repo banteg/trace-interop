@@ -126,3 +126,44 @@ class ResultValidatorTests(unittest.TestCase):
         errors = lambda validator: sorted((list(e.absolute_path), e.message) for e in validator.iter_errors(value))
         self.assertTrue(errors(result_validator(schema)))
         self.assertEqual(errors(result_validator(schema)), errors(Draft201909Validator(schema)))
+
+
+class ChangesPageTests(unittest.TestCase):
+    def test_flips_and_build_changes_are_grouped_by_client(self):
+        import tempfile
+        from collections import defaultdict
+        from trace_interop.presentation import changes_page
+        editorial = {'clients': {f: {'name': f.capitalize()} for f in ['besu', 'reth', 'geth']}}
+        decisions = {'H02': {'title': 'Lookup'}, 'H03': {'title': 'Filters'}}
+        def matrix(builds, checks):
+            by_client = defaultdict(lambda: defaultdict(list))
+            for (client, topic), status in checks.items():
+                by_client[client][topic].append({'status': status})
+            return [{'client': c, 'version': v} for c, v in builds.items()], by_client
+        before = matrix({'besu_development': 'a', 'reth_release': 'r', 'go-ethereum_trace': 'g'},
+                        {('besu_development', 'H02'): 'change_needed', ('besu_development', 'H03'): 'matches', ('reth_release', 'H02'): 'matches'})
+        after = matrix({'besu_development': 'b', 'reth_release': 'r', 'besu_release': 's'},
+                       {('besu_development', 'H02'): 'matches', ('besu_development', 'H03'): 'matches', ('reth_release', 'H02'): 'matches'})
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for name in ['old', 'new']:
+                (root/name).mkdir()
+                (root/name/'preflight.json').write_text(json.dumps({'checked_at': name}))
+            text = changes_page({'matrix': root/'old', 'records': before[0], 'by_client': before[1]}, *after,
+                                decisions, editorial, {}, root/'new', root/'reports')
+        rows = [line for line in text.splitlines() if line.startswith('| [')]
+        self.assertEqual(rows, ['| [H02 · Lookup](decisions/H02.md) | Besu dev | ⚠️ Differs | ✅ Checked cases agree |'])
+        self.assertIn('### [Besu](clients/besu.md)', text)
+        self.assertNotIn('### [Reth]', text)
+        for row in ['| Besu stable | — | s · commit not recorded | New |', '| Besu dev | a · commit not recorded | b · commit not recorded | Updated |',
+                    '| Geth | g · commit not recorded | — | Removed |', '| Reth stable | r · commit not recorded | r · commit not recorded | Unchanged |']:
+            self.assertIn(row, text)
+        self.assertIn('1 verdict changed for 1 client.', text)
+
+    def test_published_changes_page_is_linked(self):
+        root = Path(__file__).resolve().parents[1]
+        selection = json.loads((root/'reports.lock.json').read_text())
+        self.assertNotEqual(selection['previous'], selection['matrix'])
+        self.assertIn(selection['previous'], (root/'reports/changes.md').read_text())
+        self.assertIn('(changes.md)', (root/'reports/README.md').read_text())
+        self.assertIn('(reports/changes.md)', (root/'README.md').read_text())

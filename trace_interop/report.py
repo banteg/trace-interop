@@ -7,9 +7,11 @@ import os
 from .cli import read, write, sha, load_observations, observations_file, verify_evidence
 from .rules import evaluate, is_extension_request
 from .validation import request_errors
-from .inventory import verify_inventory, cover_topics
+from .inventory import verify_inventory, cover_topics, previous_runs
 from .scenarios import verify_setup
 from .coverage import supplement
+
+ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']
 
 
 def link(path, output):
@@ -69,15 +71,57 @@ def generate(root, runs, output):
             raise ValueError(f'fixture modified: {name}')
     ledger=read(root/'decisions/ledger.json')
     decisions={x['id']:x for x in ledger['items']}
-    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list)
     # Schemas are a generated artifact of the pinned fork, not another editable spec.
     spec=read(root/'spec/trace-openrpc.json') if (root/'spec/trace-openrpc.json').exists() else None
+    pinned=None
     if spec:
         lock=read(root/'spec.lock.json')
         if sha(root/'spec/trace-openrpc.json') != lock['generated_sha256']:
             raise ValueError('generated schema does not match spec lock')
         methods={m['name']:m for m in spec['methods']}
-        validators={name:result_validator(m['result']['schema']) for name,m in methods.items()}; shapes={}
+        pinned=(lock, methods, {name:result_validator(m['result']['schema']) for name,m in methods.items()}, {})
+    records, by_client, case_pages, run_rows = assess_runs(root, runs, output, decisions, pinned)
+    selection = read(root/'reports.lock.json')
+    selected = {(root/name).resolve() for name in selection['runs']}
+    matrix = root/selection['matrix'] if selection.get('matrix') and {p.resolve() for p in runs} == selected else None
+    previous = None
+    if matrix and selection.get('previous'):
+        # The same code, ledger and draft assess the previous matrix, so its verdicts differ only by evidence.
+        before = previous_runs(root)
+        prior, prior_checks = assess_runs(root, before, output, decisions, pinned)[:2]
+        previous = dict(matrix=before[0].parent, records=prior, by_client=prior_checks)
+    write(output/'assessment.json', {
+        'matrix': {link(matrix/name,output):sha(matrix/name) for name in ['clients.lock.json','preflight.json','matrix.json']} if matrix else None,
+        'previous': {link(previous['matrix']/name,output):sha(previous['matrix']/name) for name in ['clients.lock.json','preflight.json','matrix.json']} if previous else None,
+        'spec_commit': lock['commit'] if spec else None,
+        'sources': {name:sha(root/name) for name in ASSESSMENT_SOURCES},
+        'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
+        'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_')) for status in ['assessed','partial','unassessed','blocked','control']},
+        'evidence': {row['manifest']:row['digest'] for row in run_rows},
+    })
+    write(output/'checks.json',records)
+    comparisons=[]
+    for (corpus,name),entries in sorted(case_pages.items()):
+        groups={}
+        for entry in entries:
+            r=entry['record'];obs=entry['observation'];response=obs.get('response')
+            normalized={k:v for k,v in response.items() if k not in ['jsonrpc','id']} if isinstance(response,dict) else obs.get('raw_response',obs.get('status'))
+            fingerprint=hashlib.sha256(json.dumps(normalized,sort_keys=True).encode()).hexdigest()
+            groups.setdefault(fingerprint,[]).append({'client':r['client'],'version':r['version'],'status':r['status'],'eligible':r['eligible']})
+        comparisons.append({'corpus':corpus,'case':name,'groups':[{'sha256':h,'observations':clients} for h,clients in groups.items()]})
+    write(output/'comparisons.json',comparisons)
+    write(output/'runs.json',run_rows)
+    from .presentation import render
+    render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous)
+    print(f'Generated {len(records)} observation assessments and {len(decisions)} decision pages in {output}')
+
+
+def assess_runs(root, runs, output, decisions, pinned):
+    """Records, per-client checks, case pages and run rows for captured runs; `pinned` is
+    (spec lock, methods, result validators, memoized result shapes), or None without a pinned draft."""
+    spec = pinned is not None
+    lock, methods, validators, shapes = pinned or (None, {}, {}, {})
+    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list); requests={}
     for folder in runs:
         folder=folder.resolve()
         manifest=read(folder/'manifest.json'); summary=read(folder/'summary.json'); obs=load_observations(folder)
@@ -87,6 +131,7 @@ def generate(root, runs, output):
         context=run_context(root, manifest)
         cases = assessed_cases(manifest['selected_cases'], context['cases'])
         rule_context = dict(context, cases=cases)
+        lock_link, evidence_link = link(folder/'manifest.json',root), link(observations_file(folder),output/'clients')
         for client in manifest['clients']:
             eligible, scenario_detail=verify_setup(manifest,context,obs,client,summary.get('launches',[]))
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
@@ -99,7 +144,10 @@ def generate(root, runs, output):
                 expected=[t for t,d in decisions.items() if manifest['corpus']+'/'+name in d['cases']]
                 references=[t for t,d in decisions.items() if manifest['corpus']+'/'+name in d.get('references', [])]
                 if record['eligible'] and observation:
-                    errors=request_errors(case['request'],methods) if spec and not is_extension_request(case['request']) else []
+                    request=json.dumps(case['request'])  # every client and run sends the same request
+                    if request not in requests:
+                        requests[request]=request_errors(case['request'],methods) if spec and not is_extension_request(case['request']) else []
+                    errors=list(requests[request])
                     record['request_errors']=errors
                     checks=evaluate(dict(case,context=rule_context),observation,peers,invalid_params=errors)
                     checks=supplement(dict(case,context=rule_context),observation,peers,checks,expected)
@@ -124,32 +172,7 @@ def generate(root, runs, output):
                     'blocked' if any(c['status']=='blocked' for c in record['checks']) else
                     'control' if record['checks'] and all(c['status'] in ['control','not_applicable'] for c in record['checks']) else 'unassessed')
                 for check in record['checks']:
-                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(observations_file(folder),output/'clients')))
+                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=lock_link,evidence=evidence_link))
                 records.append(record)
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':observations_file(folder)})
-    selection = read(root/'reports.lock.json')
-    selected = {(root/name).resolve() for name in selection['runs']}
-    matrix = root/selection['matrix'] if selection.get('matrix') and {p.resolve() for p in runs} == selected else None
-    write(output/'assessment.json', {
-        'matrix': {link(matrix/name,output):sha(matrix/name) for name in ['clients.lock.json','preflight.json','matrix.json']} if matrix else None,
-        'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
-        'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
-        'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_')) for status in ['assessed','partial','unassessed','blocked','control']},
-        'evidence': {row['manifest']:row['digest'] for row in run_rows},
-    })
-    write(output/'checks.json',records)
-    comparisons=[]
-    for (corpus,name),entries in sorted(case_pages.items()):
-        groups={}
-        for entry in entries:
-            r=entry['record'];obs=entry['observation'];response=obs.get('response')
-            normalized={k:v for k,v in response.items() if k not in ['jsonrpc','id']} if isinstance(response,dict) else obs.get('raw_response',obs.get('status'))
-            fingerprint=hashlib.sha256(json.dumps(normalized,sort_keys=True).encode()).hexdigest()
-            groups.setdefault(fingerprint,[]).append({'client':r['client'],'version':r['version'],'status':r['status'],'eligible':r['eligible']})
-        comparisons.append({'corpus':corpus,'case':name,'groups':[{'sha256':h,'observations':clients} for h,clients in groups.items()]})
-    write(output/'comparisons.json',comparisons)
-    write(output/'runs.json',run_rows)
-    from .presentation import render
-    render(root, output, records, by_client, case_pages, run_rows, decisions, lock)
-    print(f'Generated {len(records)} observation assessments and {len(decisions)} decision pages in {output}')
+    return records, by_client, case_pages, run_rows

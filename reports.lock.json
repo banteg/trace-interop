@@ -1,5 +1,6 @@
 {
   "matrix": "evidence/2026-09-24/adopted-stances",
+  "previous": "evidence/2026-09-24/h15-call-compat",
   "runs": [
     "evidence/2026-09-24/adopted-stances/initial",
     "evidence/2026-09-24/adopted-stances/a",

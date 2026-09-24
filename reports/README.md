@@ -4,6 +4,8 @@ The clients already share much of the `trace_*` API. These reports show where ad
 
 Published builds checked at **2026-09-24T18:52:50.958598+00:00**. [Freshness preflight](../evidence/2026-09-24/adopted-stances/preflight.json) · [Nine-build lock](../evidence/2026-09-24/adopted-stances/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
+For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
+
 ## Start with your client
 
 | Client | Main review areas |

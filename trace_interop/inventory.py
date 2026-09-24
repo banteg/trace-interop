@@ -37,6 +37,19 @@ def report_runs(root):
     return paths
 
 
+def previous_runs(root):
+    """Every run of the previous matrix named by reports.lock.json, for the changes page."""
+    selection = json.loads((root/'reports.lock.json').read_text())
+    previous = (root/selection['previous']).resolve()
+    if (not previous.is_relative_to(root.resolve()/'evidence') or previous == (root/selection['matrix']).resolve()
+            or not (previous/'matrix.json').is_file()):
+        raise ValueError(f'invalid previous matrix: {previous}')
+    paths = [previous/r['corpus'] for r in json.loads((previous/'matrix.json').read_text())]
+    if not paths or any(not (path/'manifest.json').is_file() for path in paths):
+        raise ValueError(f'incomplete previous matrix: {previous}')
+    return paths
+
+
 def verify_inventory(root):
     available = set()
     for path in report_runs(root):

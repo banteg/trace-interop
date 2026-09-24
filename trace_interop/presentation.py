@@ -284,7 +284,43 @@ def prune_case_pages(output, cases):
             path.unlink()
 
 
-def render(root, output, records, by_client, case_pages, run_rows, decisions, lock):
+def changes_page(previous, records, by_client, decisions, editorial, revisions, matrix, output):
+    """Captured verdict flips per decision and build between the previous and current matrices."""
+    builds = {'previous': defaultdict(set), 'current': defaultdict(set)}
+    for side, rows in [('previous', previous['records']), ('current', records)]:
+        for r in rows:
+            builds[side][r['client']].add(r['version'])
+    clients = sorted(set(builds['previous']) | set(builds['current']), key=lambda c: (family(c), c.endswith('_development')))
+    name = lambda c: editorial['clients'][family(c)]['name'] + {'release': ' stable', 'development': ' dev'}.get(c.rsplit('_', 1)[1], '')
+    labels = {side: {c: '<br>'.join(build_label(c, v, revisions) for v in sorted(versions)) for c, versions in b.items()} for side, b in builds.items()}
+    checked = {side: json.loads((m/'preflight.json').read_text())['checked_at'] for side, m in [('previous', previous['matrix']), ('current', matrix)]}
+    text = '# Changes since the previous matrix\n\n[All reports](README.md) · [Test status key](technical.md#test-status-key)\n\n'
+    text += (f'Captured check verdicts per decision and build: the current matrix (builds checked at **{checked["current"]}**, [preflight]({relative(matrix/"preflight.json", output)})) '
+             f'against the previous one (checked at **{checked["previous"]}**, [preflight]({relative(previous["matrix"]/"preflight.json", output)})). '
+             'The same code, ledger, corpus expectations and pinned draft assess both, so a change comes from the captured builds and evidence, not from a reassessment. '
+             'Builds are paired by client and update channel. Submitted-fix markers (🛠️) are not compared; see [client fixes](../docs/client-fixes.md).\n\n')
+    status = lambda c: ('New' if c not in labels['previous'] else 'Removed' if c not in labels['current']
+                        else 'Updated' if labels['previous'][c] != labels['current'][c] else 'Unchanged')
+    text += '## Builds\n\n' + table(['Client', 'Previous', 'Current', 'Change'], [
+        [name(c), labels['previous'].get(c, '—'), labels['current'].get(c, '—'), status(c)] for c in clients])
+    flips = defaultdict(list)
+    for c in clients:
+        if c in labels['previous'] and c in labels['current']:
+            for topic, d in decisions.items():
+                before, after = (display_verdict(checks.get(c, {}).get(topic, [])) for checks in (previous['by_client'], by_client))
+                if before != after:
+                    flips[family(c)].append([f'[{topic} · {d["title"]}](decisions/{topic}.md)', name(c), before, after])
+    text += '## Verdict changes\n\n'
+    if not flips:
+        return text + 'No captured verdict changed.\n'
+    count = sum(map(len, flips.values()))
+    text += f'{count} {"verdict" if count == 1 else "verdicts"} changed for {len(flips)} {"client" if len(flips) == 1 else "clients"}.\n\n'
+    for f in sorted(flips):
+        text += f'### [{editorial["clients"][f]["name"]}](clients/{f}.md)\n\n' + table(['Decision', 'Build', 'Previous', 'Current'], flips[f])
+    return text
+
+
+def render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous=None):
     prune_case_pages(output, case_pages)
     editorial = json.loads((root/'decisions/impact.json').read_text())
     positions = check_positions(json.loads((root/'decisions/status.json').read_text()), decisions)
@@ -513,6 +549,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
 
     text = '# Trace API: what would change?\n\nThe clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](' + lock['repository'] + '/tree/' + lock['commit'] + ') would change their behavior. Start with your client, then use the examples and source links to review a proposed change.\n\n'
     text += freshness
+    if previous:
+        text += 'For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).\n\n'
     text += '## Start with your client\n\n'
     text += table(['Client', 'Main review areas'], [[f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', editorial['clients'][f]['summary']] for f in families])
     text += '## Decisions to review\n\n'
@@ -533,6 +571,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += '[All decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
     text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
+
+    if previous:
+        save(output/'changes.md', changes_page(previous, records, by_client, decisions, editorial, revisions, root/selection['matrix'], output))
+    else:
+        (output/'changes.md').unlink(missing_ok=True)
 
     text = '# Client source guide\n\nEntry points for reviewing the proposed changes. Links are pinned to the tested development revisions (or the experimental Geth fork), so line numbers remain stable. They identify relevant code, not necessarily the full fix.\n\n'
     for f in families:

@@ -244,7 +244,10 @@ unavailable-history behavior is not yet verified by that scenario.
 ## Report inventory and assertion coverage
 
 `reports.lock.json` selects the retained run directories used by both report generation
-and `trace-interop verify`. Ledger references use `corpus/case` identities and must be
+and `trace-interop verify`. Its `previous` field names the matrix that
+[changes since the previous matrix](../reports/changes.md) compares against: report generation
+assesses every run of that matrix with the same code, ledger and draft, and lists the captured
+verdicts that changed per decision and build, plus new, updated and removed builds. Ledger references use `corpus/case` identities and must be
 nonempty and present in those runs. Original evidence is checksum verified and never
 rewritten. A captured case is assessed with the current corpus definition when its request
 is identical, so a corrected expectation in a regenerated corpus reassesses old evidence;

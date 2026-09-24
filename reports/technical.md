@@ -39,8 +39,8 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 11140 |
-| 🟡 Partial | 990 |
+| 🔎 Assessed | 11138 |
+| 🟡 Partial | 992 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 509 |
 | 🔎 Control | 9 |
@@ -60,6 +60,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H08 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
 | H09 | blocked | Address selection differs from its reference; failure-bearing frame selection is not established. | 4 |
 | H09 | blocked | Cannot inspect this property: unsupported. | 12 |
+| H09 | blocked | No frame matches {'traceAddress': [1], 'type': 'create'}. | 2 |
 | H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 7 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |

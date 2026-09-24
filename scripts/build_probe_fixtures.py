@@ -164,10 +164,13 @@ def prague():
                0, 0, 0, 0, 0, int(marker, 16), 'GAS', 'CALL', 96, 'MSTORE', 96, 32, 'RETURN')
     child = '0x'+keccak(b'\xff'+bytes.fromhex(root[2:])+salt.to_bytes(32, 'big')+keccak(bytes.fromhex(child_init)))[12:].hex()
     action = {'from': root, 'value': '0x0', 'init': '0x'+child_init}
+    # H29 owns the frame's presence and place (any error label); H09 owns the label.
     case(cases, 'create2-collision', 'trace_call', [creation(code, gas='0x4c4b40'), ['trace'], 'latest'], probes=[
-        probe('H29', 'frames', 'A CREATE2 address collision emits a create frame with error "Contract address collision" and no result; the caller continues with a later sibling at [2].',
+        probe('H29', 'frames', 'A CREATE2 address collision emits a failed create frame with no result; the caller continues with a later sibling at [2].',
               expected=[root_frame(3), create_frame([0], error=None, action=action, result={'address': child, 'code': '0x'}),
-                        create_frame([1], error='Contract address collision', action=action, result=None), call_frame([2])]),
+                        create_frame([1], error='*', action=action, result=None), call_frame([2])]),
+        probe('H09', 'frame', 'A CREATE2 address collision frame has error "Contract address collision".',
+              select={'traceAddress': [1], 'type': 'create'}, expected={'error': 'Contract address collision'}),
         probe('H29', 'outputs', 'The collision pushes 0 and the caller continues to a successful CALL.',
               expected=[words(int(child, 16), 0, 1)])])
 

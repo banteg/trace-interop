@@ -17,14 +17,17 @@ def sequence(value):
 
 def same(actual, expected):
     """Compare a frame against its expected subset. Hex strings compare case-insensitively
-    (addresses), labels exactly; `error: None` requires no error; `absent` lists result keys that must be
-    missing; `result: None` requires an omitted or null result."""
+    (addresses), labels exactly; `error: None` requires no error and `error: '*'` any non-empty label;
+    `absent` lists result keys that must be missing; `result: None` requires an omitted or null result."""
     for key, want in expected.items():
         if key == 'absent':
             if set(want) & set(mapping(actual.get('result'))):
                 return False
         elif key == 'error' and want is None:
             if 'error' in actual:
+                return False
+        elif key == 'error' and want == '*':
+            if not isinstance(actual.get('error'), str) or not actual['error']:
                 return False
         elif key == 'result' and want is None:
             if actual.get('result') is not None:
@@ -123,6 +126,15 @@ def assess(case, observation, peers):
             frames = envelope(probe.get('index')).get('trace')
             detail = first_difference(frames, probe['expected'])
             add(topic, not detail, requirement, detail)
+        elif kind == 'frame':
+            # One frame's fields, where another probe owns whether the frame exists.
+            frame = next((f for f in sequence(envelope(probe.get('index')).get('trace'))
+                          if isinstance(f, dict) and same(f, probe['select'])), None)
+            if frame is None:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                               'detail': f'No frame matches {probe["select"]}.'})
+                continue
+            add(topic, same(frame, probe['expected']), requirement, f'Expected {probe["expected"]}; got {frame}')
         elif kind == 'account':
             diff = envelope(probe.get('index')).get('stateDiff')
             account = mapping(mapping(diff).get(probe['address']))

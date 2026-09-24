@@ -526,7 +526,7 @@
                 "init": "0x60006000f3",
                 "value": "0x0"
               },
-              "error": "Contract address collision",
+              "error": "*",
               "result": null,
               "subtraces": 0,
               "traceAddress": [
@@ -553,8 +553,22 @@
             }
           ],
           "kind": "frames",
-          "requirement": "A CREATE2 address collision emits a create frame with error \"Contract address collision\" and no result; the caller continues with a later sibling at [2].",
+          "requirement": "A CREATE2 address collision emits a failed create frame with no result; the caller continues with a later sibling at [2].",
           "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Contract address collision"
+          },
+          "kind": "frame",
+          "requirement": "A CREATE2 address collision frame has error \"Contract address collision\".",
+          "select": {
+            "traceAddress": [
+              1
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
         },
         {
           "expected": [

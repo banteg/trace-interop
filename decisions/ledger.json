@@ -272,7 +272,8 @@
         "mined-probes/replay-block-3",
         "mined-probes/block-3",
         "mined-probes/replay-block-5",
-        "mined-probes/block-5"
+        "mined-probes/block-5",
+        "probes-prague/create2-collision"
       ],
       "id": "H09",
       "kind": "Spec decision",

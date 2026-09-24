@@ -13,9 +13,12 @@ PRAGUE = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-prague.json')
 FORKS = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-forks.json')['cases']}
 
 
-def realize(spec):
-    """A response frame satisfying an expected subset, with the extra fields clients add."""
+def realize(spec, label='Reverted'):
+    """A response frame satisfying an expected subset, with the extra fields clients add;
+    `label` stands in for a wildcard error."""
     frame = {k: copy.deepcopy(v) for k, v in spec.items() if k != 'absent' and not (k in ['error', 'result'] and v is None)}
+    if frame.get('error') == '*':
+        frame['error'] = label
     frame.setdefault('transactionHash', None)
     return frame
 
@@ -110,9 +113,11 @@ class VMProbeTests(Probe):
 class FrameProbeTests(Probe):
     def envelope(self, name, **extra):
         case = PRAGUE[name]
-        frames = next(p for p in case['probes'] if p['kind'] == 'frames')['expected']
+        frames = [realize(f) for f in next(p for p in case['probes'] if p['kind'] == 'frames')['expected']]
+        for label in [p for p in case['probes'] if p['kind'] == 'frame']:
+            next(f for f in frames if all(f.get(k) == v for k, v in label['select'].items())).update(label['expected'])
         output = next(p for p in case['probes'] if p['kind'] == 'outputs')['expected'][0]
-        return case, dict({'output': output, 'trace': [realize(f) for f in frames], 'stateDiff': None, 'vmTrace': None}, **extra)
+        return case, dict({'output': output, 'trace': frames, 'stateDiff': None, 'vmTrace': None}, **extra)
 
     def vm_with_subs(self, case, sub_at):
         subs = next(p for p in case['probes'] if p['kind'] == 'subs')
@@ -147,13 +152,23 @@ class FrameProbeTests(Probe):
     def test_collision_frame_label_and_continuation(self):
         case, envelope = self.envelope('create2-collision')
         self.assertMatches(case, result(envelope))
-        for mutate in [lambda t: t[2].update(error='Out of gas'),                 # Parity's label
-                       lambda t: t[2].update(error='contract address collision'),  # Erigon and Geth lower case
-                       lambda t: t[2].update(result={'gasUsed': '0x0', 'output': '0x'}),
-                       lambda t: (t.pop(2), t[0].update(subtraces=2), t[2].update(traceAddress=[1]))]:  # Nethermind: no frame
+        by_topic = lambda wrong: {t: {c['status'] for c in assess(case, result(wrong), {}) if c['topic'] == t} for t in ['H09', 'H29']}
+        # A frame with another label has the right H29 shape; only H09 names the label.
+        for label in ['Out of gas', 'contract address collision', 'CreateCollision', 'Illegal state change']:  # Parity, Erigon, Reth, Besu
+            wrong = copy.deepcopy(envelope)
+            wrong['trace'][2]['error'] = label
+            self.assertEqual(by_topic(wrong), {'H09': {'change_needed'}, 'H29': {'matches'}}, label)
+        for mutate in [lambda t: t[2].update(error=''), lambda t: t[2].pop('error'),
+                       lambda t: t[2].update(result={'gasUsed': '0x0', 'output': '0x'})]:
             wrong = copy.deepcopy(envelope)
             mutate(wrong['trace'])
-            self.assertDiffers(case, result(wrong))
+            self.assertIn('change_needed', by_topic(wrong)['H29'])
+        # Nethermind: no frame. H29 differs; the label cannot be judged.
+        wrong = copy.deepcopy(envelope)
+        wrong['trace'].pop(2)
+        wrong['trace'][0]['subtraces'] = 2
+        wrong['trace'][2]['traceAddress'] = [1]
+        self.assertEqual(by_topic(wrong), {'H09': {'blocked'}, 'H29': {'change_needed', 'matches'}})
         wrong = dict(envelope, output=envelope['output'][:-64]+'0'*64)
         self.assertDiffers(case, result(wrong))
 

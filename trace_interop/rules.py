@@ -106,6 +106,9 @@ def evaluate(case, observation, peers, invalid_params=None):
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
             check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
                   'Unknown mode values return invalid params (-32602).')
+        if method == 'trace_filter' and params and isinstance(params[0],dict) and 'pending' in [params[0].get('fromBlock'), params[0].get('toBlock')]:
+            check('H32', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+                  'trace_filter range bounds exclude pending, as eth_getLogs does (-32602).')
         return checks
 
     if context.get('_chain') == 'h30':

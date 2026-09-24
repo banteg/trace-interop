@@ -20,8 +20,8 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_transaction",
   "params": [
     "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a"

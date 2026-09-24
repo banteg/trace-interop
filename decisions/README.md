@@ -11,7 +11,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | Filter composition and mode | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️✅✅ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | Empty address lists | ⚠️✅⚠️⚠️— | ⚠️✅⚠️⚠️✅ |
 | [H05](../reports/decisions/H05.md) | ⚪ Under review | Post-merge reward records | ⚠️✅⚠️✅— | ⚠️✅⚠️✅✅ |
-| [H06](../reports/decisions/H06.md) | ⚪ Under review | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
+| [H06](../reports/decisions/H06.md) | ⚪ Under review | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️⚠️ |
 | [H07](../reports/decisions/H07.md) | ⚪ Under review | Replay transactionHash field | 🟡✅✅⚠️— | 🟡✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | ⚪ Under review | Empty output and unrequested components | 🟡⚠️⚠️✅— | 🟡⚠️⚠️✅⚠️ |
 | [H09](../reports/decisions/H09.md) | ⚪ Under review | Failed frame results and error labels | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
@@ -35,9 +35,9 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | Filter execution across fork boundaries | ⚠️✅✅🟡— | ⚠️✅✅🟡✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | Historical state at system-operation boundaries | ✅⚠️✅✅— | ✅✅✅✅✅ |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | Precompile call-frame inclusion | ⚠️✅✅✅— | ⚠️✅✅✅✅ |
-| [H30](../reports/decisions/H30.md) | ⚪ Under review | Omitted trace_filter range bounds | ✅⚠️✅⚠️— | ✅⚠️✅⚠️⚠️ |
+| [H30](../reports/decisions/H30.md) | ⚪ Under review | Omitted trace_filter range bounds | ✅⚠️⚠️⚠️— | ✅⚠️⚠️⚠️⚠️ |
 | [H31](../reports/decisions/H31.md) | ⚪ Under review | Omitted trace_callMany block | ⚠️✅✅⚠️— | ⚠️✅✅⚠️✅ |
-| [H32](../reports/decisions/H32.md) | ⚪ Under review | Trace block tags and pending state | ⚠️❔❔⚠️— | ⚠️❔❔⚠️❔ |
+| [H32](../reports/decisions/H32.md) | ⚪ Under review | Trace block tags and pending state | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️❔ |
 
 ## Status key
 

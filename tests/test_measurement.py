@@ -329,7 +329,9 @@ class HistoricalAssessmentTests(unittest.TestCase):
                 self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])
                 self.assertEqual(verdict(build,'filter-safe','H32'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
-                self.assertIn('observation',verdict(build,'filter-pending','H32'))
+                # Filter bounds exclude pending as eth_getLogs does; only Reth returns -32602.
+                self.assertEqual(verdict(build,'filter-pending','H32'),
+                                 ['matches' if client == 'reth' else 'change_needed'])
                 self.assertIn('observation',verdict(build,'call-number-pending','H32'))
                 self.assertIn('observation',verdict(build,'many-number-pending','H32'))
 
@@ -338,7 +340,8 @@ class HistoricalAssessmentTests(unittest.TestCase):
             self.assertEqual(verdict('go-ethereum_trace',case,topic),['matches'])
         for case in ['filter-no-bounds','filter-to-2-implicit-from']:
             self.assertEqual(verdict('go-ethereum_trace',case,'H30'),['change_needed'])
-        for case in ['filter-pending','call-number-pending','many-number-pending']:
+        self.assertEqual(verdict('go-ethereum_trace','filter-pending','H32'),['matches'])
+        for case in ['call-number-pending','many-number-pending']:
             self.assertIn('observation',verdict('go-ethereum_trace',case,'H32'))
 
 

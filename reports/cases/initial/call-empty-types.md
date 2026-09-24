@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_call",
   "params": [
     {
-      "data": "0x",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
       "gas": "0x927c0",
       "gasPrice": "0x0",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+      "data": "0x"
     },
     [],
     "0x30"

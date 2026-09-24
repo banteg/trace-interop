@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · a · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert. The signed authorization changes the recovered authority from its independently reconstructed code to the delegation target. The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert. Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing. The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -20,8 +20,8 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_rawTransaction",
   "params": [
     "0x04f8d4870c72dd9d5e883e818501847735940083030d40941563915e194d8cfba1943570603f7606a31155088080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010028001a0909ccd479b49d4de221beaed4e2b48ee8623d1efe6c9ba4f10653c26855123d8a0489bae47a8c46d50d536a34d9695a07668c64e89e2e17e1df04d37acb228601501a0138e133d330b2ac9573aef02e8182d29d97e5669e09079e1828d4ffe7abb73b2a018efb64c0af5c267645bd3de711a50fa787eece3679231a6843a23b3f29892c1",
@@ -42,13 +42,13 @@
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
 - [H18](../../decisions/H18.md): EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.
-- [H18](../../decisions/H18.md): The signed authorization changes the recovered authority from its independently reconstructed code to the delegation target. Authority 0x1563915e194d8cfba1943570603f7606a3115508; expected {'*': {'from': '0x', 'to': '0xef01000000000000000000000000000000000000001002'}}.
+- [H18](../../decisions/H18.md): Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing. Authority 0x1563915e194d8cfba1943570603f7606a3115508; 1 of 1 tuples valid; expected {'code': {'*': {'from': '0x', 'to': '0xef01000000000000000000000000000000000000001002'}}, 'nonce': {'*': {'from': '0x0', 'to': '0x1'}}}.
 - [H19](../../decisions/H19.md): The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs. Expected source 0x602a60005260206000f3.
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H18](../../decisions/H18.md): EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.
-- [H18](../../decisions/H18.md): The signed authorization changes the recovered authority from its independently reconstructed code to the delegation target. Authority 0x1563915e194d8cfba1943570603f7606a3115508; expected {'*': {'from': '0x', 'to': '0xef01000000000000000000000000000000000000001002'}}.
+- [H18](../../decisions/H18.md): Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing. Authority 0x1563915e194d8cfba1943570603f7606a3115508; 1 of 1 tuples valid; expected {'code': {'*': {'from': '0x', 'to': '0xef01000000000000000000000000000000000000001002'}}, 'nonce': {'*': {'from': '0x0', 'to': '0x1'}}}.
 - [H19](../../decisions/H19.md): The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs. Expected source 0x602a60005260206000f3.
 
 </details>

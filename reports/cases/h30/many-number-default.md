@@ -20,17 +20,17 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_callMany",
   "params": [
     [
       [
         {
-          "data": "0x4360005260206000f3",
           "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
           "gas": "0x927c0",
-          "gasPrice": "0x77359400"
+          "gasPrice": "0x77359400",
+          "data": "0x4360005260206000f3"
         },
         [
           "trace"

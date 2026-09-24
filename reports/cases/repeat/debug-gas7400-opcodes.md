@@ -20,22 +20,22 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "debug_traceCall",
   "params": [
     {
-      "data": "0x",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "to": "0x0000000000000000000000000000000000001009",
       "gas": "0x927c0",
       "gasPrice": "0x77359400",
-      "to": "0x0000000000000000000000000000000000001009"
+      "data": "0x"
     },
     "0x30",
     {
       "disableMemory": true,
-      "disableStack": true,
-      "disableStorage": true
+      "disableStorage": true,
+      "disableStack": true
     }
   ]
 }

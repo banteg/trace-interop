@@ -10,9 +10,9 @@ A review of the draft against the original Parity implementation, current client
    negatives, cases that don't discriminate what they claim)?
 3. Which client behaviours are genuine bugs or divergences that no case covers?
 
-**Status: unreviewed proposals.** Nothing here has been applied to the [ledger](../../decisions/README.md),
-the pinned specification or the harness. The ledger remains the source of truth. Each finding needs
-review before it changes a recommendation or a verdict.
+**Status: adopted.** The recommendations were accepted on 2026-09-24 and are now reflected in the
+[ledger](../../decisions/README.md), the pinned specification and the harness; the ledger records each
+revision and remains the source of truth. These reports describe the state on the reviewed revisions.
 
 ## Reports
 
@@ -67,7 +67,7 @@ remaining claims rest on the reports' own citations.
 
 ## Highest-impact findings
 
-These are proposals, grouped by the question they answer. Details and citations are in the reports.
+Grouped by the question they answer. Details and citations are in the reports.
 
 **Recommendations to reconsider**
 

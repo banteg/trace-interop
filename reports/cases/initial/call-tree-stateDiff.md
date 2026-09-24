@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. Assess the declared property. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee.
+**What this checks:** Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. Assess the declared property. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee and blob fee.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_call",
   "params": [
     {
-      "data": "0x",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0",
       "gas": "0x927c0",
       "gasPrice": "0x0",
-      "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+      "data": "0x"
     },
     [
       "stateDiff"

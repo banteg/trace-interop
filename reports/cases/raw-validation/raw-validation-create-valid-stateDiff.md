@@ -37,5 +37,6 @@
 - [H08](../../decisions/H08.md): Output remains a byte string under every trace selection.
 - [H13](../../decisions/H13.md): The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.
 - Result shape at `output`: None is not of type 'string'
+- Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'+': '0xe893'}, 'code': '=', 'nonce': {'+': '0x0'}, 'storage': {}}, '0x00de48310d77a4d56aa400248b0b1613508f5b73': {'balance': {'+': '0x1'}, 'code': {'+': '0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73'}, 'nonce': {'+':
 
 </details>

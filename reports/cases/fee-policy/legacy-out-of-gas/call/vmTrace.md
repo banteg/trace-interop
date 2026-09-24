@@ -2,7 +2,7 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Execute each valid simulation and return one envelope per call. Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Unrequested trace is an empty array. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Execute each valid simulation and return one envelope per call. Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Failed frames have an error string; an exceptional halt omits result or sets it to null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

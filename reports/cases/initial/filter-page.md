@@ -20,15 +20,15 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_filter",
   "params": [
     {
-      "after": 1,
-      "count": 2,
       "fromBlock": "0x2",
-      "toBlock": "0x2"
+      "toBlock": "0x2",
+      "after": 1,
+      "count": 2
     }
   ]
 }

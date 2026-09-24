@@ -723,14 +723,6 @@
           "message": "Pruned history unavailable"
         },
         {
-          "code": -38010,
-          "message": "Transactions nonce is too low"
-        },
-        {
-          "code": -38011,
-          "message": "Transactions nonce is too high"
-        },
-        {
           "code": -38012,
           "message": "Transactions baseFeePerGas is too low"
         },
@@ -741,10 +733,6 @@
         {
           "code": -38014,
           "message": "Insufficient funds to pay for gas fees and value for a transaction"
-        },
-        {
-          "code": -38015,
-          "message": "Block gas limit exceeded by the block's transactions"
         },
         {
           "code": -38024,
@@ -2455,14 +2443,6 @@
           "message": "Pruned history unavailable"
         },
         {
-          "code": -38010,
-          "message": "Transactions nonce is too low"
-        },
-        {
-          "code": -38011,
-          "message": "Transactions nonce is too high"
-        },
-        {
           "code": -38012,
           "message": "Transactions baseFeePerGas is too low"
         },
@@ -2473,10 +2453,6 @@
         {
           "code": -38014,
           "message": "Insufficient funds to pay for gas fees and value for a transaction"
-        },
-        {
-          "code": -38015,
-          "message": "Block gas limit exceeded by the block's transactions"
         },
         {
           "code": -38024,

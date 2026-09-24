@@ -2,7 +2,7 @@
 
 `trace_call` · precompiles · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Stack words and storage operands use minimal hex quantities at every depth. Failed frames have an error string and an explicit object or null result.
+**What this checks:** Output remains a byte string under every trace selection. Retain the root precompile frame, even with zero value. A failed root precompile reports its own execution error. Stack words and storage operands use minimal hex quantities at every depth. Failed frames have an error string; an exceptional halt omits result or sets it to null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -11,8 +11,8 @@
 | [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 
@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_call",
   "params": [
     {
-      "data": "0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "to": "0x0000000000000000000000000000000000000006",
       "gas": "0x100000",
       "gasPrice": "0x3b9aca00",
-      "to": "0x0000000000000000000000000000000000000006"
+      "data": "0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
     },
     [
       "trace",
@@ -48,15 +48,5 @@
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): A failed root precompile reports its own execution error.
-
-**Nethermind · 2.1.0-unstable · 641592d2** (`2.1.0-unstable+641592d2`)
-
-- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
-- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xfabec', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
-
-- [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
-- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xfabec', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 </details>

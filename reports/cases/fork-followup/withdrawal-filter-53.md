@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_filter",
   "params": [
     {
       "fromBlock": "0x35",
+      "toBlock": "0x35",
       "toAddress": [
         "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
-      ],
-      "toBlock": "0x35"
+      ]
     }
   ]
 }

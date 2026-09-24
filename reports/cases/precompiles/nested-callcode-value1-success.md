@@ -6,8 +6,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompiles/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompiles/manifest.json) |
@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_call",
   "params": [
     {
-      "data": "0x6000600052604060006080600060016006620186a0f25060006000f3",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
       "gas": "0x100000",
       "gasPrice": "0x3b9aca00",
-      "value": "0x1"
+      "value": "0x1",
+      "data": "0x6000600052604060006080600060016006620186a0f25060006000f3"
     },
     [
       "trace",
@@ -45,15 +45,18 @@
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
+- Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f7e', 'init': '0x6000600052604060006080600060016006620186a0f25060006000f3', 'value': '0x1'}, 'result': {'address': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'code': '0x', 'gasUsed': '0x1b58'}, 'subtraces': 0, 'traceAdd
 
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H29](../../decisions/H29.md): Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree.
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
+- Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f7e', 'init': '0x6000600052604060006080600060016006620186a0f25060006000f3', 'value': '0x1'}, 'result': {'address': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'code': '0x', 'gasUsed': '0x1b58'}, 'subtraces': 0, 'traceAdd
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x66863b', 'to': '0x36d244e463bf'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f': {'balance': {'*': {'from': '0xc097ce7bc90715b34755ccb0391096', 'to': '0xc097ce7bc90715b3471ee2d6fb0
 - Result shape at `vmTrace`: {'code': '0x6000600052604060006080600060016006620186a0f25060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995195}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995192}, 'pc': 2, 'sub': None}, {'cost': 6,
 
 </details>

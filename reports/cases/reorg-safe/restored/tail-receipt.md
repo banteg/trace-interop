@@ -18,8 +18,8 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "eth_getTransactionReceipt",
   "params": [
     "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"

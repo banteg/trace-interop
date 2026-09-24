@@ -18,8 +18,8 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "eth_getBalance",
   "params": [
     "0x717f8aa2b982bee0e29f573d31df288663e1ce16",

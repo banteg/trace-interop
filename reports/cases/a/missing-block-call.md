@@ -2,7 +2,7 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** An unknown selected block or range endpoint returns Resource not found (-32001).
+**What this checks:** An unknown single selected block returns Resource not found (-32001).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -20,16 +20,16 @@
 
 ```json
 {
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "method": "trace_call",
   "params": [
     {
-      "data": "0x",
       "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "to": "0x0000000000000000000000000000000000001002",
       "gas": "0x927c0",
       "gasPrice": "0x77359400",
-      "to": "0x0000000000000000000000000000000000001002"
+      "data": "0x"
     },
     [
       "trace"
@@ -41,26 +41,26 @@
 
 **Besu · 26.9-develop · f9572aa8** (`besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 **Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 **Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 **Nethermind · 2.1.0-unstable · 641592d2** (`2.1.0-unstable+641592d2`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H06](../../decisions/H06.md): An unknown selected block or range endpoint returns Resource not found (-32001).
+- [H06](../../decisions/H06.md): An unknown single selected block returns Resource not found (-32001).
 
 </details>

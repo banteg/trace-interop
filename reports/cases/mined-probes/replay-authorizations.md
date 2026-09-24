@@ -58,7 +58,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9.
 - [H18](../../decisions/H18.md): Tuples fold per authority in order: two valid tuples replace A with B, the stale-nonce tuple is skipped, and the nonce advances once per applied tuple. 0x2b5ad5c4795c026514f8317c7a215e218dccd6cf: expected {'balance': '=', 'code': {'*': {'from': '0x', 'to': '0xef0100000000000000000000000000000000000007702b'}}, 'nonce': {'*': {'from': '0x5', 'to': '0x7'}}, 'storage': {}}, got {'balance': '=', 'code': '=', 'nonce': {'*': {'from': '0x5', 'to': '0x7'}}, 'storage': {}}.
 - [H18](../../decisions/H18.md): An absent authority is born with creation markers for zero balance, nonce one and its delegation. 0x6813eb9362372eef6200f3b1dbc3f819671cba69: expected {'balance': {'+': '0x0'}, 'code': {'+': '0xef0100000000000000000000000000000000000007702a'}, 'nonce': {'+': '0x1'}, 'storage': {}}, got {'balance': '=', 'code': '=', 'nonce': {'*': {'from': '0x0', 'to': '0x1'}}, 'storage': {}}.
 - [H18](../../decisions/H18.md): Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing. Authority 0x2b5ad5c4795c026514f8317c7a215e218dccd6cf; 2 of 3 tuples valid; expected {'code': {'*': {'from': '0x', 'to': '0xef0100000000000000000000000000000000000007702b'}}, 'nonce': {'*': {'from': '0x5', 'to': '0x7'}}}.

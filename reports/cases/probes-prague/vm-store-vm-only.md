@@ -49,7 +49,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 2: ex {"mem": null, "push": ["0x01"], "store": null, "used": 246604} (10 in total).
 - [H20](../../decisions/H20.md): store is set by each completed SSTORE with its key and value, including an unchanged warm write; SLOAD, TSTORE and TLOAD never set it. Its presence does not depend on selecting stateDiff. SSTORE at pc 4: expected {'key': '0x1', 'val': '0x2a'}, got None; SSTORE at pc 9: expected {'key': '0x1', 'val': '0x2a'}, got None
 - [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem. operation 14 DUP1 push is not the top 2 words after execution, deepest first
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 2 (SSTORE) store: expected {'key': '0x1', 'val': '0x2a'}, got None; step 5 (SSTORE) store: expected {'key': '0x1', 'val': '0x2a'}, got None; step 14 pushed stack values disagree with the model

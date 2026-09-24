@@ -50,12 +50,12 @@
 
 **Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 4: ex {"mem": null, "push": [], "store": {"key": "0x0000000000000000000000000000000000000000000000000000000000000001", "val": "0x2a"}, "used": 224504} (2 in total).
 - Result shape at `vmTrace`: {'code': '0x602a600155602a600155600254600760035d60035c600080f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 246607}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x1'], 'store': None, 'used': 246604}, 'pc': 2, 'sub': None}, {'cost': 22100, 'e
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 2: ex {"mem": null, "push": ["0x01"], "store": null, "used": 246604} (12 in total).
 - [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem. operation 14 DUP1 push is not the top 2 words after execution, deepest first
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 14 pushed stack values disagree with the model
 - [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, returned runtime and balance, including empty values.

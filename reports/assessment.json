@@ -80,7 +80,7 @@
     "trace_interop/presentation.py": "ab88b1729c32998a2cfa8a1a8bc333c4fb4b99a09884f4970c3575e879cccfb0",
     "trace_interop/probes.py": "bcca4fc6d9cf951d66821561895acd622fb05ad369fd0691093aac5e2986c9b7",
     "trace_interop/report.py": "e059e06db82ba5c9416b54d833f82262d2e7604be9c40b2d789f148f03f9f2bb",
-    "trace_interop/rules.py": "b795ab1c589cdd91775883d6f22679988926bdb32a356557207cb2edc53ce28f",
+    "trace_interop/rules.py": "f25bf17c4acf93332918b5a61de772ee78dda9b135e2d26be28a8f921db94e04",
     "trace_interop/scenarios.py": "f5bffebd322ba6258d42988f3293e514c6508500e2e199203e4aaef9d8a6b9c3",
     "trace_interop/status.py": "a102999d292509034973f62360779742e413064e9dbcd0ce005f2356586dd069",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85",

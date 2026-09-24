@@ -49,7 +49,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 3: ex {"mem": null, "push": ["0x00"], "store": null, "used": 578994} (2 in total).
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 3 (CALLDATACOPY) cost: expected 7400, got 9700
 - [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem. operation 3 post-step gas does not deduct this operation cost
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 3 (CALLDATACOPY) cost: expected 7400, got 9700

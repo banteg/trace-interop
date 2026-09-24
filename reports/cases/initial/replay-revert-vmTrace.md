@@ -48,7 +48,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x00"], "store": null, "used": 78981} (8 in total).
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 5 pushed stack values disagree with the model; step 6 pushed stack values disagree with the model
 - Result shape at `/`: {'output': '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72', 'stateDiff': None, 'trace': [], 'transactionHash': '0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae', 'vmTra
 
@@ -59,7 +59,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 78981, got 78984; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (CALLDATALOAD) used: expected 78978, got 78981; step 1 (CALLDATALOAD) mem: expected None, got {'data': '0x', 'off': 0}
 - [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem. operation 3 post-step gas does not deduct this operation cost; operation 4 post-step gas does not deduct this operation cost; operation 5 post-step gas does not deduct this operation cost; operation 8 post-step gas does not deduct this operation cost
 - Result shape at `/`: {'output': '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a75736572206572726f72', 'stateDiff': None, 'trace': [], 'vmTrace': {'code': '0x6000356142ff54501515603b577f4e487b71000000000000000000000000000000000000

@@ -44,7 +44,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe.
 - Result shape at `/`: {'output': '0x', 'stateDiff': None, 'trace': [{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x0', 'input': '0x', 'to': '0xd803681e487e6ac18053afc5a6cd813c86ec3e4d', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAd
 
 </details>

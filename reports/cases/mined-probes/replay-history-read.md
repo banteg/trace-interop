@@ -48,12 +48,12 @@
 
 **Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 37: ex {"mem": null, "push": [], "store": {"key": "0x0000000000000000000000000000000000000000000000000000000000000001", "val": "0x01"}, "used": 152041} (2 in total).
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x01"], "store": null, "used": 178997} (33 in total).
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
@@ -62,7 +62,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2.
 - [H20](../../decisions/H20.md): Each completed SSTORE reports its store {key, val}. SSTORE at pc [37, 41] reported no store, so the root writes cannot show the H28 values.
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 

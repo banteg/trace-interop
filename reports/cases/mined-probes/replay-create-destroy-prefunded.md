@@ -48,7 +48,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x00000002"], "store": null, "used": 178966} (8 in total).
 - [H26](../../decisions/H26.md): A prefunded address destroyed in its creating transaction is a deletion: - markers for its pre-state and storage {}. 0xedd09273eb6f5c2fcfb36f667405c3869a71bebb: expected {'balance': {'-': '0x1388'}, 'code': {'-': '0x'}, 'nonce': {'-': '0x0'}, 'storage': {}}, got {'balance': {'*': {'from': '0x1388', 'to': None}}, 'code': '=', 'nonce': {'*': {'from': '0x0', 'to': None}}, 'storage': {}}.
 - [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. Gas=58067 (independent receipt), price=2586633408, expected tip=2000000000/gas, burn=586633408/gas, blob fee and destroyed wei=5256.
 - Result shape at `/`: {'output': '0x000000000000000000000000edd09273eb6f5c2fcfb36f667405c3869a71bebb', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x2837913ce7400', 'to': '0x2ed18a19f7000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
@@ -60,7 +60,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b.
 - [H26](../../decisions/H26.md): A prefunded address destroyed in its creating transaction is a deletion: - markers for its pre-state and storage {}. 0xedd09273eb6f5c2fcfb36f667405c3869a71bebb: expected {'balance': {'-': '0x1388'}, 'code': {'-': '0x'}, 'nonce': {'-': '0x0'}, 'storage': {}}, got None.
 - [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. Gas=58067 (independent receipt), price=2586633408, expected tip=2000000000/gas, burn=586633408/gas, blob fee and destroyed wei=5256.
 - Result shape at `/`: {'output': '0x000000000000000000000000edd09273eb6f5c2fcfb36f667405c3869a71bebb', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x2837913ce7400', 'to': '0x2ed18a19f7000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0

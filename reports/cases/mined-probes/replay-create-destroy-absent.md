@@ -48,12 +48,12 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x00000002"], "store": null, "used": 178966} (8 in total).
 - Result shape at `/`: {'output': '0x000000000000000000000000eac0306941fda13b06e9e7a41c79b5f618cc67ce', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x219d985fd7800', 'to': '0x2837913ce7400'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284.
 - Result shape at `/`: {'output': '0x000000000000000000000000eac0306941fda13b06e9e7a41c79b5f618cc67ce', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x219d985fd7800', 'to': '0x2837913ce7400'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 </details>

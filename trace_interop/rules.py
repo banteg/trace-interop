@@ -1,6 +1,7 @@
 """Explicit proposed assertions. These are not a client-majority oracle."""
 from __future__ import annotations
 
+import json
 import re
 
 from .oracles import anchor, REVERT_OUTPUT, REVERT_GAS
@@ -178,7 +179,9 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name in ['transaction-missing','replay-missing','get-missing-tx']:
         check('H06', status == 'result' and result is None, 'Unknown transaction returns null, not an empty collection or RPC error.')
     if method == 'trace_replayTransaction' and isinstance(result, dict):
-        check('H07', result.get('transactionHash') == params[0], 'Individual replay includes its transactionHash.')
+        got = result.get('transactionHash', 'absent')
+        check('H07', got == params[0], 'Individual replay includes its transactionHash.',
+              '' if got == params[0] else f'transactionHash {got!r}, expected {params[0]}.')
     if method in ['trace_call','trace_rawTransaction','trace_replayTransaction'] and isinstance(result,dict):
         modes = params[1] if len(params) > 1 else None
         if isinstance(modes,list):
@@ -266,20 +269,22 @@ def evaluate(case, observation, peers, invalid_params=None):
         op = next((o for o in sequence(vm.get('ops')) if isinstance(o, dict) and o.get('pc') == 11),{})
         check('H20', mapping(op.get('ex')).get('mem') == {'off':32,'data':'0x'+f'{42:064x}'}, 'MCOPY reports its same-step write of word 42 at offset 32.')
     if isinstance(result,dict) and result.get('vmTrace'):
-        stack = [result['vmTrace']]
-        valid = True
+        stack = [(result['vmTrace'], 'root')]
+        invalid = []  # each offending step, named by its pc path from the root
         while stack:
-            vm = stack.pop()
+            vm, where = stack.pop(0)
             if not isinstance(vm, dict) or not isinstance(vm.get('ops'), list):
-                valid = False
+                invalid.append(f'{where}: no ops list')
                 continue
             for op in vm['ops']:
                 if not isinstance(op, dict):
-                    valid = False
+                    invalid.append(f'{where}: step {op!r}')
                     continue
-                valid &= encoding_valid(op.get('ex'))
-                if op.get('sub') is not None: stack.append(op['sub'])
-        check('H21', valid, 'Stack words and storage operands use minimal hex quantities at every depth.')
+                if not encoding_valid(op.get('ex')):
+                    invalid.append(f'{where} pc {op.get("pc")}: ex {json.dumps(op.get("ex"))[:200]}')
+                if op.get('sub') is not None: stack.append((op['sub'], f'{where} pc {op.get("pc")} sub'))
+        check('H21', not invalid, 'Stack words and storage operands use minimal hex quantities at every depth.',
+              f'First at {invalid[0]} ({len(invalid)} in total).' if invalid else '')
     if method == 'trace_filter' and params and isinstance(params[0],dict):
         filt = params[0]
         filter_cases = ['filter-both','filter-from','filter-to','filter-empty','filter-all',
@@ -459,15 +464,18 @@ def evaluate(case, observation, peers, invalid_params=None):
         frame_values = [[result]]
     frames = [f for values in frame_values for f in sequence(values) if isinstance(f, dict)]
     failed = [f for f in frames if 'error' in f]
+    def first(frames, ok):
+        bad = next((f for f in frames if not ok(f)), None)
+        return '' if bad is None else f'First at traceAddress {bad.get("traceAddress")}: error {bad.get("error")!r}, result {json.dumps(bad.get("result"))[:200]}.'
     if failed:
-        check('H09', all(isinstance(f['error'], str) and bool(f['error'])
-              and (f.get('result') is None or isinstance(f['result'], dict)) for f in failed),
-              'Failed frames have an error string; an exceptional halt omits result or sets it to null.')
+        detail = first(failed, lambda f: isinstance(f['error'], str) and bool(f['error'])
+                       and (f.get('result') is None or isinstance(f['result'], dict)))
+        check('H09', not detail, 'Failed frames have an error string; an exceptional halt omits result or sets it to null.', detail)
         reverted = [f for f in failed if f['error'] == 'Reverted']
         if reverted:
-            check('H09', all(isinstance(f.get('result'), dict) and {'gasUsed', 'output'} <= set(f['result'])
-                             and not {'address', 'code'} & set(f['result']) for f in reverted),
-                  'A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.')
+            detail = first(reverted, lambda f: isinstance(f.get('result'), dict) and {'gasUsed', 'output'} <= set(f['result'])
+                           and not {'address', 'code'} & set(f['result']))
+            check('H09', not detail, 'A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.', detail)
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
     trace_selected = method in ['trace_transaction','trace_block','trace_filter','trace_get'] or (len(params)>1 and isinstance(params[1],list) and 'trace' in params[1])

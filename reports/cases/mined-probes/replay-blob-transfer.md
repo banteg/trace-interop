@@ -61,7 +61,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089.
 - [H17](../../decisions/H17.md): An absent account funded by the transaction is born with balance, zero nonce and empty code markers. 0x000000000000000000000000000000000000b10b: expected {'balance': {'+': '0x7'}, 'code': {'+': '0x'}, 'nonce': {'+': '0x0'}, 'storage': {}}, got {'balance': {'*': {'from': '0x0', 'to': '0x7'}}, 'code': '=', 'nonce': '=', 'storage': {}}.
 - [H17](../../decisions/H17.md): An absent account funded by the transaction is born with balance, zero nonce and empty code markers. 0x0000000000000000000000000000000000000000: expected {'balance': {'+': '0x2632e314a000'}, 'code': {'+': '0x'}, 'nonce': {'+': '0x0'}, 'storage': {}}, got {'balance': {'*': {'from': '0x0', 'to': '0x2632e314a000'}}, 'code': '=', 'nonce': '=', 'storage': {}}.
 - [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000000000: new account lacks creation markers for all fields; 0x000000000000000000000000000000000000b10b: new account lacks creation markers for all fields

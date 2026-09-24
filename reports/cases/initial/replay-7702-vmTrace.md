@@ -44,7 +44,7 @@
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a.
 - Result shape at `/`: {'output': '0x', 'stateDiff': None, 'trace': [], 'vmTrace': {'code': '0x', 'ops': []}} is not valid under any of the given schemas
 
 </details>

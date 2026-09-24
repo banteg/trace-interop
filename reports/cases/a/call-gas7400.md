@@ -43,7 +43,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 3: ex {"mem": null, "push": ["0x00"], "store": null, "used": 578994} (2 in total).
 - Result shape at `vmTrace`: {'code': '0x6174e060006101803700', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x74e0'], 'store': None, 'used': 578997}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 578994}, 'pc': 3, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0
 
 </details>

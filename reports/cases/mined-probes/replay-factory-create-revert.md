@@ -50,39 +50,39 @@
 
 **Erigon · 3.8.0-dev · 01c118ee** (`3.8.0-dev-01c118ee`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result {"address": "0xd8353791c13be48589d7247c3284625edca5aa72", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result {"address": "0xd8353791c13be48589d7247c3284625edca5aa72", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result null.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x0000000c"], "store": null, "used": 178806} (11 in total).
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result null.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result {"address": "0xd8353791c13be48589d7247c3284625edca5aa72", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+- [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74.
+- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result {"address": "0xd8353791c13be48589d7247c3284625edca5aa72", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - Result shape at `/`: {'output': '0x0000000000000000000000000000000000000000000000000000000000000000', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x189b4a90c8800', 'to': '0x1ea8d660b1000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x000000000000000000000000000000000000fac0
 

@@ -85,7 +85,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
+- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x0000000000000000000000000000000000000000000000000000000000000000"], "store": null, "used": 246620} (7 in total).
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 3 pushed stack values disagree with the model; step 5 (MSTORE) mem: expected {'off': 32, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got {'data': '0x000000000000000000000000000000000000000000000000000000002da282a8', 'off': 32}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.

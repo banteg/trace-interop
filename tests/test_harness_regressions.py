@@ -173,3 +173,18 @@ class SemanticRegressions(unittest.TestCase):
         checks = [x for x in evaluate(c, o, p) if x['topic'] == 'H03']
         self.assertEqual([x['status'] for x in checks], ['change_needed'])
         self.assertIn('delegatecall 4 action.to', checks[0]['detail'])
+
+    def test_generic_checks_name_the_first_offending_value(self):
+        txhash = '0x'+'ab'*32
+        case = {'name': 'probe', 'request': {'jsonrpc': '2.0', 'id': 1, 'method': 'trace_replayTransaction',
+                                             'params': [txhash, ['trace', 'vmTrace']]}, 'context': {}}
+        step = lambda pc, push, sub=None: {'pc': pc, 'cost': 3, 'sub': sub, 'ex': {'used': 1, 'push': push, 'mem': None, 'store': None}}
+        result = {'output': '0x', 'stateDiff': None, 'transactionHash': None,
+                  'trace': [{'traceAddress': [], 'type': 'call', 'subtraces': 1, 'action': {}, 'result': {'gasUsed': '0x0', 'output': '0x'}},
+                            {'traceAddress': [0], 'type': 'call', 'subtraces': 0, 'action': {}, 'error': 'Reverted', 'result': None}],
+                  'vmTrace': {'code': '0x', 'ops': [step(0, ['0x1']), step(2, [], {'code': '0x', 'ops': [step(5, ['0x01'])]})]}}
+        checks = evaluate(case, {'status': 'result', 'response': {'result': result}}, {})
+        detail = lambda topic: [c['detail'] for c in checks if c['topic'] == topic and c['status'] == 'change_needed']
+        self.assertIn(f'expected {txhash}', detail('H07')[0])
+        self.assertIn('root pc 2 sub pc 5', detail('H21')[0])
+        self.assertIn('traceAddress [0]', detail('H09')[0])

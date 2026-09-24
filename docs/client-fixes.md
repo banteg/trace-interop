@@ -20,6 +20,7 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for nested creation ending in SELFDESTRUCT (H10) |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace filters to intersection |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas |
+| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Implement the nine Parity trace methods and all three output families while client harmonization and specification work continue |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) (draft) | Pair instruction trace completions with starts |
 | [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) (draft) | Report terminal output for top-level action traces |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces |

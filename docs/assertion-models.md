@@ -72,7 +72,8 @@ uv run python scripts/run_matrix.py --output runs/coverage-matrix
 ```
 
 The matrix runs sequentially because one Hive checkout owns the mutable simulator
-build context. It uses pinned images, retains failed/incomplete runs, and exits
+build context. It resolves current builds, checks freshness, freezes their identities
+for the suite, retains failed/incomplete runs, and exits
 nonzero if any capture is incomplete. Run output should remain under ignored
 `runs/` until it is frozen into evidence, so generated logs do not mark later
 captures as dirty. The experimental Geth fork participates separately; only the

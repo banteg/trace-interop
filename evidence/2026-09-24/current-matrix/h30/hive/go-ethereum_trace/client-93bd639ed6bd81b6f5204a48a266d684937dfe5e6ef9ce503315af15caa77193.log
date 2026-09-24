@@ -1,0 +1,447 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "terminalTotalDifficultyPassed": true,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000001001": {
+      "code": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001002": {
+      "code": "0x602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001003": {
+      "code": "0x60006000fd",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001004": {
+      "code": "0x6020600060006000600061100261ea60f1506020600060006000600061100361ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001005": {
+      "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001006": {
+      "code": "0x601761001b600039601760006000f050607b601760006000f55000600a61000d600039600a6000f3602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001007": {
+      "code": "0x611008ff",
+      "balance": "0x64"
+    },
+    "0000000000000000000000000000000000001009": {
+      "code": "0x6174e060006101803700",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100a": {
+      "code": "0x602a6000526020600060205e00",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100b": {
+      "balance": "0x1"
+    },
+    "00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1563915e194d8cfba1943570603f7606a3115508": {
+      "balance": "0x1"
+    },
+    "16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "19e7e376e7c213b7e7e7e46cc70a5dd086daff2a": {
+      "code": "0xef01000000000000000000000000000000000000001002",
+      "balance": "0x1"
+    },
+    "1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "c7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "d803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "e7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "eda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+Initializing database with genesis state...
+INFO [09-24|11:23:05.464] Maximum peer count                       ETH=50 total=50
+INFO [09-24|11:23:05.466] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|11:23:05.472] Set global gas cap                       cap=50,000,000
+INFO [09-24|11:23:05.472] Engine API maximum reorg depth           depth=32
+WARN [09-24|11:23:05.472] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|11:23:05.472] Initializing the KZG library             backend=gokzg
+INFO [09-24|11:23:05.474] Defaulting to pebble as the backing database
+INFO [09-24|11:23:05.474] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|11:23:05.507] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|11:23:05.507] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|11:23:05.507] State scheme set by user                 scheme=path
+INFO [09-24|11:23:05.507] Load database journal from disk
+WARN [09-24|11:23:05.508] Head block is not reachable
+INFO [09-24|11:23:05.524] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|11:23:05.524] State snapshot generator is not found
+INFO [09-24|11:23:05.524] Starting snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="3.077µs"
+INFO [09-24|11:23:05.524] Initialized path database                triecache=16.00MiB statecache=16.00MiB buffer=64.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|11:23:05.524] Writing custom genesis block
+INFO [09-24|11:23:05.524] Resuming snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="182.897µs"
+INFO [09-24|11:23:05.524] Generated snapshot                       accounts=0 slots=0 storage=0.00B dangling=0 elapsed="297.889µs"
+INFO [09-24|11:23:05.525] Successfully wrote genesis state         database=chaindata hash=3870d7..80d582
+Loading initial blockchain...
+INFO [09-24|11:23:05.590] Maximum peer count                       ETH=50 total=50
+INFO [09-24|11:23:05.594] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|11:23:05.599] Set global gas cap                       cap=50,000,000
+INFO [09-24|11:23:05.600] Engine API maximum reorg depth           depth=32
+WARN [09-24|11:23:05.600] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|11:23:05.600] Initializing the KZG library             backend=gokzg
+INFO [09-24|11:23:05.601] Using pebble as the backing database
+INFO [09-24|11:23:05.601] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|11:23:05.615] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|11:23:05.616] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|11:23:05.616] State scheme set by user                 scheme=path
+WARN [09-24|11:23:05.616] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|11:23:05.616] Load database journal from disk
+INFO [09-24|11:23:05.616] Failed to load journal, discard it       err="journal not found"
+INFO [09-24|11:23:05.623] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|11:23:05.623] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|11:23:05.623] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|11:23:05.623] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] Pre-Merge hard forks (block based):
+INFO [09-24|11:23:05.623]  - Homestead:                   #0       
+INFO [09-24|11:23:05.623]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|11:23:05.623]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|11:23:05.623]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|11:23:05.623]  - Byzantium:                   #0       
+INFO [09-24|11:23:05.623]  - Constantinople:              #0       
+INFO [09-24|11:23:05.623]  - Petersburg:                  #0       
+INFO [09-24|11:23:05.623]  - Istanbul:                    #0       
+INFO [09-24|11:23:05.623]  - Muir Glacier:                #0       
+INFO [09-24|11:23:05.623]  - Berlin:                      #0       
+INFO [09-24|11:23:05.623]  - London:                      #0       
+INFO [09-24|11:23:05.623]  - Arrow Glacier:               #0       
+INFO [09-24|11:23:05.623]  - Gray Glacier:                #0       
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] Merge configured:
+INFO [09-24|11:23:05.623]  - Total terminal difficulty:  131072
+INFO [09-24|11:23:05.623]  - Merge netsplit block:       #0       
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] Post-Merge hard forks (timestamp based):
+INFO [09-24|11:23:05.623]  - Shanghai:                    @0         
+INFO [09-24|11:23:05.623]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|11:23:05.623]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.623] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|11:23:05.623] 
+INFO [09-24|11:23:05.624] Loaded most recent local block           number=0 hash=3870d7..80d582 age=57y6mo2w
+INFO [09-24|11:23:05.625] Importing blockchain                     file=/chain.rlp
+INFO [09-24|11:23:05.679] Imported new chain segment               number=48 hash=f0b151..f15e84 blocks=48 txs=133 mgas=6.719 elapsed=47.354ms mgasps=141.887 age=57y6mo2w triediffs=287.79KiB triedirty=0.00B
+INFO [09-24|11:23:05.679] Persisting dirty state                   head=48 root=bce840..efdb26 layers=48
+INFO [09-24|11:23:05.691] Persisted dirty state to file            path=/root/.ethereum/geth/triedb/merkle.journal size=274.46KiB elapsed=11.358ms
+INFO [09-24|11:23:05.695] Blockchain stopped
+Import done in 71.474978ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  28KB |     0     0B |     0     0B |     1   17KB |    0B |   0 0.62 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   17KB     0B       0 |    - 0.00 0.00 |    0B |     0     0B |     1   17KB |     0     0B |    0B |   1    0 |    0B      0B
+total |     1   17KB     0B       0 |    -    -    - | 113KB |     0     0B |     1   17KB |     1  130KB |    0B |   1 1.15 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (85KB)  in: 84KB  written: 113KB (35% overhead)
+Flushes: 1
+Compactions: 1  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 0  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (512KB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 17KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 7 entries (30KB)  hit rate: 98.9%
+File cache: 1 tables, 0 blobfiles (496B)  hit rate: 99.8%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 1.7MB  block cache: 212KB (data: 30KB, maps: 182KB, entries: 0B)  memtables: 1.5MB
+
+Object memory: 14.079 MB current, 12.376 MB peak
+System memory: 46.307 MB current, 41.713 MB peak
+Allocations:   0.428 million
+GC pause:      2.191677ms
+
+Compacting entire database...
+Compaction done in 6.732576ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 | 113KB |     0     0B |     0     0B |     2   65KB |    0B |   0 0.58 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   63KB     0B       0 |    - 0.00 0.00 |  48KB |     0     0B |     1   17KB |     1   63KB |  65KB |   1 1.31 |    0B      0B
+total |     1   63KB     0B       0 |    -    -    - | 113KB |     0     0B |     1   17KB |     3  241KB |  65KB |   1 2.14 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (0B)  in: 84KB  written: 113KB (35% overhead)
+Flushes: 2
+Compactions: 2  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 1  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (1.0MB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 63KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 0 entries (0B)  hit rate: 96.2%
+File cache: 0 tables, 0 blobfiles (0B)  hit rate: 99.5%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 2.2MB  block cache: 182KB (data: 0B, maps: 182KB, entries: 0B)  memtables: 2.0MB
+
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running go-ethereum with flags --state.scheme=path --verbosity=3 --bootnodes= --networkid 3503995874084926 --syncmode full --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.port=8545 --http.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --ws --ws.addr=0.0.0.0 --ws.origins "*" --ws.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.jwtsecret /jwtsecret --nat=extip:172.17.0.4 --datadir.minfreedisk=0
+INFO [09-24|11:23:05.759] Maximum peer count                       ETH=50 total=50
+INFO [09-24|11:23:05.760] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|11:23:05.765] Set global gas cap                       cap=50,000,000
+INFO [09-24|11:23:05.765] Engine API maximum reorg depth           depth=32
+WARN [09-24|11:23:05.765] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|11:23:05.765] Initializing the KZG library             backend=gokzg
+INFO [09-24|11:23:05.767] Allocated trie memory caches             clean=614.00MiB dirty=1.00GiB
+INFO [09-24|11:23:05.767] Using pebble as the backing database
+INFO [09-24|11:23:05.767] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|11:23:05.781] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|11:23:05.784] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|11:23:05.787] State scheme set by user                 scheme=path
+INFO [09-24|11:23:05.788] Initialising Ethereum protocol           network=3,503,995,874,084,926 dbversion=<nil>
+WARN [09-24|11:23:05.788] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|11:23:05.788] Load database journal from file          path=/root/.ethereum/geth/triedb/merkle.journal
+INFO [09-24|11:23:05.808] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|11:23:05.808] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|11:23:05.808] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|11:23:05.808] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] Pre-Merge hard forks (block based):
+INFO [09-24|11:23:05.808]  - Homestead:                   #0       
+INFO [09-24|11:23:05.808]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|11:23:05.808]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|11:23:05.808]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|11:23:05.808]  - Byzantium:                   #0       
+INFO [09-24|11:23:05.808]  - Constantinople:              #0       
+INFO [09-24|11:23:05.808]  - Petersburg:                  #0       
+INFO [09-24|11:23:05.808]  - Istanbul:                    #0       
+INFO [09-24|11:23:05.808]  - Muir Glacier:                #0       
+INFO [09-24|11:23:05.808]  - Berlin:                      #0       
+INFO [09-24|11:23:05.808]  - London:                      #0       
+INFO [09-24|11:23:05.808]  - Arrow Glacier:               #0       
+INFO [09-24|11:23:05.808]  - Gray Glacier:                #0       
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] Merge configured:
+INFO [09-24|11:23:05.808]  - Total terminal difficulty:  131072
+INFO [09-24|11:23:05.808]  - Merge netsplit block:       #0       
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] Post-Merge hard forks (timestamp based):
+INFO [09-24|11:23:05.808]  - Shanghai:                    @0         
+INFO [09-24|11:23:05.808]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|11:23:05.808]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.808] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|11:23:05.808] 
+INFO [09-24|11:23:05.809] Loaded most recent local block           number=48 hash=f0b151..f15e84 age=57y6mo2w
+INFO [09-24|11:23:05.809] Initialized transaction indexer          range="last 2350000 blocks"
+INFO [09-24|11:23:05.812] Indexed transactions                     blocks=49 txs=133 tail=0 elapsed=2.675ms
+INFO [09-24|11:23:05.843] Enabled full-sync                        head=48 hash=f0b151..f15e84
+INFO [09-24|11:23:05.843] Gasprice oracle is ignoring threshold set threshold=2
+INFO [09-24|11:23:05.844] Registered sync override service
+INFO [09-24|11:23:05.844] Starting peer-to-peer node               instance=Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1
+INFO [09-24|11:23:05.852] IPC endpoint opened                      url=/root/.ethereum/geth.ipc
+INFO [09-24|11:23:05.852] Loaded JWT secret file                   path=/jwtsecret crc32=0xb0a0f6e6
+INFO [09-24|11:23:05.853] HTTP server started                      endpoint=[::]:8545 auth=false prefix= cors= vhosts=localhost
+INFO [09-24|11:23:05.853] New local node record                    seq=1,790,248,985,851 id=6aab21d0c08777cc      ip=172.17.0.4 udp=30303 tcp=30303
+INFO [09-24|11:23:05.853] WebSocket enabled                        url=ws://[::]:8546
+INFO [09-24|11:23:05.853] WebSocket enabled                        url=ws://[::]:8551
+INFO [09-24|11:23:05.853] HTTP server started                      endpoint=[::]:8551 auth=true  prefix= cors=localhost vhosts=localhost
+INFO [09-24|11:23:05.853] Started P2P networking                   self=enode://58fbe90823a366053932bc96bf5535244f7f797a6ffd9a023e54e2773a18774210f66037ad0d52f96b11812fe37ef33c2d76f5a1ed5a241a6939def22dea047c@172.17.0.4:30303
+INFO [09-24|11:23:05.853] Started log indexer
+WARN [09-24|11:23:05.946] Served trace_call                        conn=172.17.0.3:52714 reqid=1 duration="115.313µs" err="pending tracing is not supported"
+WARN [09-24|11:23:05.967] Served trace_filter                      conn=172.17.0.3:52714 reqid=1 duration="60.555µs" err="pending tracing is not supported"
+WARN [09-24|11:23:05.982] Served trace_callMany                    conn=172.17.0.3:52714 reqid=1 duration="137.003µs" err="pending tracing is not supported"

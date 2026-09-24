@@ -4,13 +4,36 @@ from pathlib import Path
 
 
 def report_runs(root):
-    names = json.loads((root/'reports.lock.json').read_text())['runs']
+    selection = json.loads((root/'reports.lock.json').read_text())
+    names = selection['runs']
     if not names or len(names) != len(set(names)):
         raise ValueError('empty or duplicate report runs')
     paths = [(root/name).resolve() for name in names]
     for path in paths:
         if not path.is_relative_to(root.resolve()/'evidence') or not (path/'manifest.json').is_file():
             raise ValueError(f'invalid report run: {path}')
+    if selection.get('matrix'):
+        matrix = (root/selection['matrix']).resolve()
+        if not matrix.is_relative_to(root.resolve()/'evidence'):
+            raise ValueError('matrix must be retained evidence')
+        pinned = json.loads((matrix/'clients.lock.json').read_text())
+        preflight = json.loads((matrix/'preflight.json').read_text())
+        builds = {n:v['image_id'] for n,v in pinned['clients'].items()}
+        from .versions import NAMES
+        if set(builds) != set(NAMES)|{'go-ethereum_trace'}:
+            raise ValueError('current report matrix requires all nine builds')
+        if preflight.get('status') != 'current' or preflight.get('clients') != builds or not preflight.get('checked_at'):
+            raise ValueError('current report matrix lacks a matching freshness preflight')
+        captured = json.loads((matrix/'matrix.json').read_text())
+        if {p.resolve() for p in paths} != {(matrix/r['corpus']).resolve() for r in captured}:
+            raise ValueError('report selection must retain the entire current matrix, including incomplete runs')
+        for path in paths:
+            manifest = json.loads((path/'manifest.json').read_text())
+            expected = {'reth_release','reth_development'} if manifest['corpus'] == 'pruned' else set(builds)
+            if set(manifest['clients']) != expected or any(
+                info != pinned['clients'].get(name) for name,info in manifest['clients'].items()
+            ):
+                raise ValueError(f'mixed or missing builds in current matrix: {path}')
     return paths
 
 

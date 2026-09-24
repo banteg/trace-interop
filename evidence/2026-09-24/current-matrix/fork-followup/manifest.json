@@ -1,0 +1,587 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-09-24T01:07:59.640107544Z",
+      "digest": "hyperledger/besu@sha256:9b7425b320540625e78bbdfc1b4dd6e704b7f9dc84999310e5fd677205dd70df",
+      "image_id": "sha256:0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "f9572aa82a2dadb3dd1b218d3ca97101540faf97",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-01T02:28:46.601819989Z",
+      "digest": "hyperledger/besu@sha256:6f3f21ce533383fcc8db3bce02252b59d5a9e776b72b5a1c8ecd2db011600042",
+      "image_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "d97cbd61976a52bb109e637196fef9a8ebf2b617",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.8.1"
+      },
+      "release": {
+        "published_at": "2026-09-01T03:03:16Z",
+        "tag": "26.8.1",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.8.1"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.8.1"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-09-24T09:01:27.096457195Z",
+      "digest": "erigontech/erigon@sha256:c08d80f58404697951fe6a2f26d3013c940d29abbefd4c1fb55a5704eaa97415",
+      "image_id": "sha256:96ed3bf9e6103fa7348e8223f07becfaf1d19b43fb66524f295bdb83e12dbee5",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-09-24T08:59:56Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "e26d9bd4056586e004488c31b561fb2663d46019",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "e26d9bd",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "e26d9bd4056586e004488c31b561fb2663d46019"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-09-09T14:29:37.894891949Z",
+      "digest": "erigontech/erigon@sha256:8cd3fbcbb35d8b16768225ff7494a0672b7b06c9bf13d466850aabb920ac0de7",
+      "image_id": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-09-09T14:26:14Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.6",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.6.1"
+      },
+      "release": {
+        "published_at": "2026-09-09T20:41:51Z",
+        "tag": "v3.6.1",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.6.1"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.6.1"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "ef639b1f4b7e3651eaa54eb42ef3bc6519af47d134b783fb65f95bc876c901a8",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:2a6e1bfcf91337fd9081f28b1a77efcf20c054ea99b30a316fa8a581c819fa74",
+      "local_image": "trace-interop/geth-source:ef639b1f4b7e3651eaa54eb42ef3bc6519af47d134b783fb65f95bc876c901a8",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "fa8ecb9242dda61858c44cf43c70d00548fbd7cd",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "d92696b0b5444778e1377a8535f903d5e70df0da56b242c86554a007676cbc95"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-09-24T10:55:45Z",
+      "digest": "nethermindeth/nethermind@sha256:fe5f2b1e77a7c39aff363d5e485bd1f0bc29e1c760c13a3da1f5d3077cc2fb5c",
+      "image_id": "sha256:dfee1f35965a2e111727d4bb8614be3b17705e89970688620f37a3acabbf7db3",
+      "labels": {
+        "org.opencontainers.image.created": "2026-09-12T10:25:59.825539+00:00",
+        "org.opencontainers.image.description": "The Ubuntu container image maintained by Canonical\n\nUbuntu is a Debian-based Linux operating system that runs from the desktop to the cloud, to all your internet connected things.\nIt is the world's most popular operating system across public clouds and OpenStack clouds.\nIt is the number one platform for containers; from Docker to Kubernetes to LXD, Ubuntu can run your containers at scale.\nFast, secure and simple, Ubuntu powers millions of PCs worldwide.\n",
+        "org.opencontainers.image.title": "ubuntu",
+        "org.opencontainers.image.version": "26.04"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-09-22T13:30:59Z",
+      "digest": "nethermind/nethermind@sha256:8156768beb584a1e62c3dcf0e0da7be61418dc08c89a80a4f9a3a48e5d247c12",
+      "image_id": "sha256:d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4",
+      "labels": {
+        "org.opencontainers.image.created": "2026-08-27T22:49:31.862025+00:00",
+        "org.opencontainers.image.description": "The Ubuntu container image maintained by Canonical\n\nUbuntu is a Debian-based Linux operating system that runs from the desktop to the cloud, to all your internet connected things.\nIt is the world's most popular operating system across public clouds and OpenStack clouds.\nIt is the number one platform for containers; from Docker to Kubernetes to LXD, Ubuntu can run your containers at scale.\nFast, secure and simple, Ubuntu powers millions of PCs worldwide.\n",
+        "org.opencontainers.image.title": "ubuntu",
+        "org.opencontainers.image.version": "26.04"
+      },
+      "release": {
+        "published_at": "2026-09-22T14:58:58Z",
+        "tag": "2.0.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.0.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.0.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-09-24T01:35:15.695891603Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:b15509fdadf5d2bc0adbb0039ea205c0aa35c72ac79d0fac56fdd47d8a67242e",
+      "image_id": "sha256:935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-17T13:08:25.158030166Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:8ce703acf113b2a20705b6e76adebed20f74ba8591bc7c9407203b2968aca70d",
+      "image_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-17T14:00:49Z",
+        "tag": "v2.6.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.6.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.6.0"
+    }
+  },
+  "corpus": "fork-followup",
+  "finished_at": "2026-09-24T11:16:49.902823+00:00",
+  "fixture_manifest_sha256": "9a56bf4c4dd34b3c979ccb1599c2fcada264dc8efe9f28de194af6b881ce7efb",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x7d97fd",
+    "blobGasUsed": "0x20000",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x18d04",
+    "hash": "0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000002000000000000000000002000000000000000000000000000800000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000800000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x48",
+    "parentBeaconBlockRoot": "0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd",
+    "parentHash": "0x7964ce394f9773783863d05cf0826d125024c5f5dac03c07d5d7832c551a40de",
+    "receiptsRoot": "0x8242a788eddcd94326c2acb0a6cb547ca411104a65e3c6c5f751ce1c7f14cd15",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x42da2e489b18e750a877106cd83e76fd16d4234d530e8290eda403582c50aac4",
+    "timestamp": "0x2d0",
+    "transactionsRoot": "0x4a0b6fa744634b80a04463acab0cad7eb4aa563337ed6f95ec3728d7ef745a99",
+    "withdrawalsRoot": "0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b"
+  },
+  "hive_binary_sha256": "c0d4ef8421c70518bedd71b8352b62a5cbd72e2e662d2e7f7c3ae558b3717190",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "d5622fe62b037b69b0bd84d74693253b7f3181e05125ee12bf64351c34c97b7f",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x33"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x33",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x33"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x33",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x34"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x34",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x34"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x34",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x35"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x35",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x35"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x35",
+          true
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "_reference/block/0x33",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x33"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x34",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x34"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x35"
+        ]
+      },
+      "role": "reference"
+    }
+  ],
+  "source_commit": "fd5a260b6ab893dd4cebdda5cf0644b5bb352b04",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "b979aefe57e4f63af0397b5a068237c04a9d6e3b",
+    "generated_sha256": "c73f5cf5c78cb98a6862e2f62df5ef7c0ed5ed5d061a8187c04dc9453086133d",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-24T11:16:00.118219+00:00"
+}

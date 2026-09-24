@@ -52,23 +52,21 @@ fees, block/state overrides and omitted/incomplete-field normalization remain
 outside this policy assertion. Signed validation stays in H13's separate corpus.
 These are proposed policy checks, not a claim of client-team agreement.
 
-The [Fedora capture](../evidence/2026-09-24/h15-fee-policy/README.md) retains all
+The [Fedora capture](../evidence/2026-09-24/current-matrix/README.md) retains all
 6,804 responses across nine pinned builds. Generic/internal/crash errors never
 prove validation; recognized errors must match the independent constraint and
 any reported batch position. Unrecognized diagnostic wording remains blocked.
 
-## Reproduction
+## Run current builds or reproduce history
 
 ```sh
 uv run python scripts/build_fee_policy_fixtures.py
 uv run python -m unittest discover -s tests -p test_fee_policy.py -v
-uv run trace-interop run --lock locks/clients-2026-09-21.json \
-  --corpus fee-policy --output runs/fee-policy
-uv run trace-interop report --run runs/fee-policy --output runs/fee-policy-report
+uv run python scripts/run_matrix.py --corpora fee-policy --output runs/fee-policy-current
+uv run trace-interop report --run runs/fee-policy-current/fee-policy --output runs/fee-policy-report
 ```
 
-To include the experimental Geth fork, rebuild the exact source with
-`scripts/build_geth.py --reference locks/geth-trace.json` and merge that returned
-local-image lock with the native lock, as `scripts/run_matrix.py` does. Captures
-must retain the actual image IDs and runtime versions; the September 24 source
-review in H15 is newer than some pinned release/development binaries.
+The matrix runner resolves latest published stable/development images and the current
+Geth draft branch, then requires a live freshness preflight. Omit `--corpora` for the
+full comparison. Use `--reproduce-lock` only to intentionally rerun a recorded snapshot;
+see [usage](usage.md). Captures retain the actual image IDs and runtime versions.

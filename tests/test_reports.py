@@ -4,7 +4,7 @@ import re
 import unittest
 from pathlib import Path
 
-from trace_interop.presentation import outcome, verdict, examples, source_url, build_rows
+from trace_interop.presentation import outcome, verdict, examples, source_url, build_rows, build_label, version_label
 
 
 class ReportVerdictTests(unittest.TestCase):
@@ -54,12 +54,24 @@ class ReportVerdictTests(unittest.TestCase):
         revisions = {'reth_development': [{'version': 'old', 'committed_at': '2026-09-18T12:00:00Z',
                                              'repository': 'https://github.com/paradigmxyz/reth', 'commit': 'a' * 40}]}
         rows = build_rows(['reth_development'], runs, revisions, Path('/reports/clients'))
-        self.assertEqual(rows[0][1], '`old`')
-        self.assertIn('[2026-09-18]', rows[0][2])
-        self.assertIn('/commit/' + 'a' * 40, rows[0][2])
+        self.assertEqual(rows[0][0], '`old`')
+        self.assertEqual(rows[0][2], '2026-09-18')
+        self.assertIn('/commit/' + 'a' * 40, rows[0][1])
         self.assertIn('2026-09-20', rows[0][3])
-        self.assertEqual(rows[1][1:3], ['`new`', 'Not recorded'])
+        self.assertEqual(rows[1][:3], ['`new`', 'Not recorded', 'Not recorded'])
+        self.assertEqual(build_label('reth_development', 'old', revisions), 'old · aaaaaaaa')
+        self.assertEqual(build_label('reth_development', 'new', revisions), 'new · commit not recorded')
         self.assertIn('2026-09-21', rows[1][3])
+
+    def test_build_versions_omit_platform_and_duplicate_commit(self):
+        for version,expected in [
+            ('Reth Version: 2.6.0+73a3a008','2.6.0'),
+            ('3.8.0-dev-e26d9bd4','3.8.0-dev'),
+            ('2.1.0-unstable+2a3b2531','2.1.0-unstable'),
+            ('besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25','26.9-develop'),
+            ('Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1','1.17.7-unstable'),
+        ]:
+            self.assertEqual(version_label(version), expected)
 
     def test_source_catalog_uses_immutable_revisions_and_line_anchors(self):
         root = Path(__file__).resolve().parents[1]

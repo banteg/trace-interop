@@ -3,6 +3,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 import json
 import os
+import re
 
 from .status import decision_status, LEGEND
 
@@ -45,10 +46,22 @@ def family(client):
     return 'geth' if client == 'go-ethereum_trace' else client.split('_')[0]
 
 
-def channel(client):
-    name = 'Draft fork' if client == 'go-ethereum_trace' else client.split('_', 1)[1].capitalize()
-    icon = {'Release': '📦', 'Development': '🛠️', 'Draft fork': '🧪'}.get(name, '🏷️')
-    return f'{icon} {name}'
+def source_revision(client, version, revisions):
+    refs = [ref for ref in revisions.get(client, []) if ref['version'] == version]
+    if len(refs) > 1:
+        raise ValueError(f'ambiguous source revision for {client}: {version}')
+    return refs[0] if refs else None
+
+
+def version_label(version):
+    compact = version.removeprefix('Reth Version: ').removeprefix('besu/v').removeprefix('Geth/v').split('/')[0]
+    return re.sub(r'[+-][0-9a-f]{7,40}(?:-\d{4}-\d{2}-\d{2})?$', '', compact)
+
+
+def build_label(client, version, revisions):
+    """Show the captured version and exact source identity, not its update channel."""
+    ref = source_revision(client, version, revisions)
+    return version_label(version) + ' · ' + (ref['commit'][:8] if ref else 'commit not recorded')
 
 
 def verdict(checks):
@@ -105,15 +118,11 @@ def build_rows(selected, runs, revisions, parent):
             dates.setdefault(tested, run['path'])
     rows = []
     for (client, version), dates in groups.items():
-        refs = [ref for ref in revisions.get(client, []) if ref['version'] == version]
-        if len(refs) > 1:
-            raise ValueError(f'ambiguous source revision for {client}: {version}')
-        committed = 'Not recorded'
-        if refs:
-            ref = refs[0]
-            committed = f'[{utc_date(ref["committed_at"])}]({ref["repository"]}/commit/{ref["commit"]})'
+        ref = source_revision(client, version, revisions)
+        commit = f'[`{ref["commit"][:8]}`]({ref["repository"]}/commit/{ref["commit"]})' if ref else 'Not recorded'
+        committed = utc_date(ref['committed_at']) if ref else 'Not recorded'
         tested = '<br>'.join(f'[{date}]({relative(path, parent)})' for date,path in sorted(dates.items()))
-        rows.append([channel(client), f'`{version}`', committed, tested])
+        rows.append([f'`{version_label(version)}`', commit, committed, tested])
     return rows
 
 
@@ -205,6 +214,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     run_manifests = {row['name']: output/row['manifest'] for row in run_rows}
     build_runs = [{'manifest': json.loads(run_manifests[row['name']].read_text()),
                    'versions': row['versions'], 'path': run_manifests[row['name']]} for row in run_rows]
+    def label(client, version=None):
+        versions = [version] if version is not None else sorted({r['version'] for r in records if r['client'] == client})
+        return '<br>'.join(build_label(client, v, revisions) for v in versions)
+
+    freshness = ''
+    selection = json.loads((root/'reports.lock.json').read_text())
+    if selection.get('matrix') and {p.parent.resolve() for p in run_manifests.values()} == {(root/name).resolve() for name in selection['runs']}:
+        matrix = root/selection['matrix']
+        preflight = json.loads((matrix/'preflight.json').read_text())
+        freshness = f'Published builds checked at **{preflight["checked_at"]}**. [Freshness preflight]({relative(matrix/"preflight.json", output)}) · [Nine-build lock]({relative(matrix/"clients.lock.json", output)}). All corpora use this snapshot; later upstream changes require a new capture.\n\n'
     availability = defaultdict(lambda: defaultdict(set))
     for entries in case_pages.values():
         for e in entries:
@@ -238,7 +257,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             assessment = display_verdict(r['checks'] if r['eligible'] else [])
             if r.get('schema', {}).get('status') == 'invalid':
                 assessment += '; ⚠️ result shape differs'
-            rows.append([f'[{names[client]} · {channel(client)}]({relative(output/"clients"/(client+".md"), path.parent)})', outcome(e), assessment, f'[Response]({relative(e["raw"], path.parent)}) · [Build/run]({relative(run_manifests[r["run"]], path.parent)})'])
+            rows.append([f'[{names[client]} · {label(client, r["version"])}]({relative(output/"clients"/(client+".md"), path.parent)})', outcome(e), assessment, f'[Response]({relative(e["raw"], path.parent)}) · [Build/run]({relative(run_manifests[r["run"]], path.parent)})'])
         text += table(['Build', 'Returned', 'Compared with draft', 'Evidence'], rows)
         text += '<details><summary>Request and assertion details</summary>\n\n```json\n' + json.dumps(entries[0]['request'], indent=2) + '\n```\n\n'
         for e in entries:
@@ -246,7 +265,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             errors = r.get('schema', {}).get('errors', [])
             if not failures and not errors:
                 continue
-            text += f'**{names[r["client"]]} · {channel(r["client"])}** (`{r["version"]}`)\n\n'
+            text += f'**{names[r["client"]]} · {label(r["client"], r["version"])}** (`{r["version"]}`)\n\n'
             for c in failures:
                 text += f'- [{c["topic"]}]({relative(output/"decisions"/(c["topic"]+".md"), path.parent)}): {c["requirement"]} {c.get("detail", "")}\n'
             for err in errors:
@@ -259,7 +278,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     def client_page(f, selected, path):
         profile = editorial['clients'][f]
         text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)\n\n'
-        text += table(['Build', 'Tested version', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
+        text += table(['Tested version', 'Commit', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
         versions = {r['version'] for r in records if r['client'] in selected}
         for build_note in profile.get('build_notes', []):
             if versions and versions <= set(build_note['versions']):
@@ -288,7 +307,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             links = source_links(sources, affected, topic)
             rows.append([subject, *statuses, change + ('<br>' + links if links else '')])
         text += '## Changes to discuss\n\n'
-        text += table(['Behavior', *[channel(c) for c in selected], 'Proposed change'], rows) if rows else 'No differences were found by the selected semantic assertions.\n\n'
+        text += table(['Behavior', *[label(c) for c in selected], 'Proposed change'], rows) if rows else 'No differences were found by the selected semantic assertions.\n\n'
         if observations:
             text += '## Open policy observations\n\nThese results record behavior whose policy is unresolved. Passing a checked part of a topic does not settle the remaining choices.\n\n'
             observation_rows = []
@@ -297,7 +316,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                     checks = by_client[c].get(topic, [])
                     if checks:
                         detail = ' '.join(dict.fromkeys(q['detail'] for q in checks if q['status'] == 'observation'))
-                        observation_rows.append([channel(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
+                        observation_rows.append([label(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
             text += table(['Build', 'Decision', 'Observed', 'Example'], observation_rows)
         other_schema = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
         if other_schema:
@@ -337,7 +356,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             text += 'Supporting controls (not standalone assertions): ' + ' · '.join(
                 f'[{ref}](../cases/{ref}.md)' for ref in d['references']) + '.\n\n'
         text += f'## {d.get("comparison_heading", "What changes for clients")}\n\n'
-        text += '[Test status key](../technical.md#test-status-key) · Build labels identify captured releases, development builds and the experimental draft fork.\n\n'
+        text += '[Test status key](../technical.md#test-status-key) · Build labels show the captured version and source commit.\n\n'
         rows = []
         for f, selected in by_family.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
@@ -353,11 +372,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                     observed = list(dict.fromkeys(q['detail'] for q in by_client[c].get(topic, [])
                                                   if q['status'] == 'observation' and q['detail']))
                     if observed:
-                        details.append(f'{channel(c)}: ' + ' '.join(observed))
+                        details.append(f'{label(c)}: ' + ' '.join(observed))
                 behavior = '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
-            build_cells = '<br>'.join(f'{channel(c)}: {display_verdict(by_client[c].get(topic, []))}' for c in selected)
+            build_cells = '<br>'.join(f'{label(c)}: {display_verdict(by_client[c].get(topic, []))}' for c in selected)
             links = examples(output, path.parent, checks)
             code = source_links(sources, selected[0], topic)
             evidence_links = '<br>'.join(x for x in (
@@ -372,7 +391,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 values = []
                 for f, selected in by_family.items():
                     labels = [method_status(method, c) for c in selected]
-                    values.append(labels[0] if len(set(labels)) == 1 else '<br>'.join(f'{channel(c)}: {value}' for c,value in zip(selected,labels)))
+                    values.append(labels[0] if len(set(labels)) == 1 else '<br>'.join(f'{label(c)}: {value}' for c,value in zip(selected,labels)))
                 method_rows.append([f'`{method}`', *values])
             text += table(['Method', *[editorial['clients'][f]['name'] for f in families]], method_rows)
             text += 'Besu needs individual transaction replay or an agreed exclusion from the profile; the [block replay implementation](' + source_url(sources['besu']['replay']) + ') is a starting point.\n\n'
@@ -382,6 +401,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         save(path, text)
 
     text = '# Trace API: what would change?\n\nThe clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](' + lock['repository'] + '/tree/' + lock['commit'] + ') would change their behavior. Start with your client, then use the examples and source links to review a proposed change.\n\n'
+    text += freshness
     text += '## Start with your client\n\n'
     text += table(['Client', 'Main review areas'], [[f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', editorial['clients'][f]['summary']] for f in families])
     text += '## Decisions to review\n\n'
@@ -411,7 +431,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     save(output/'sources.md', text)
 
     text = '# Technical appendix\n\n[Back to the maintainer overview](README.md)\n\n'
-    text += 'The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Release and development labels refer to the captured builds; they do not imply version ordering.\n\n'
+    text += freshness
+    text += 'The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Version and commit labels identify captured builds; channel identifiers in raw artifacts describe how updates are discovered.\n\n'
     text += 'The experimental Geth fork implements the draft and is not an independent vote for its decisions. No verified pruning scenario is included for that fork.\n\n'
     text += ('## Test status key\n\n'
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
@@ -422,8 +443,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
              '- 🚧 **Blocked:** a missing response, failed setup or earlier failure prevents this check.\n'
              '- 🔎 **Control / not applicable:** reference evidence or a property that does not apply; never a semantic pass.\n'
              '- ❔ **Policy open:** observed behavior is recorded without a settled assertion.\n\n'
-             'Build labels: 📦 **Release** · 🛠️ **Development** · 🧪 **Draft fork**. '
-             'These identify build channels, not test outcomes. Test outcomes are separate from '
+             'Build labels show versions and source commits. Test outcomes are separate from '
              '[policy agreement and harmonization](../decisions/README.md#status-key).\n\n')
     text += '## Reproduction and machine-readable results\n\nSee [usage](../docs/usage.md) for commands and [stateful scenarios](../docs/scenarios.md) for setup requirements. '
     text += '[checks.json](checks.json) retains every assertion; [comparisons.json](comparisons.json) groups exact responses; [assessment.json](assessment.json) pins the specification and assessment source hashes. Each case links its original response and run manifest.\n\n'
@@ -441,13 +461,13 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += table(['Topic','Disposition','Reason','Observations'], [[topic,kind,detail,sum(counts.values())] for (topic,kind,detail),counts in sorted(property_gaps.items())])
     text += 'Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.\n\n'
     text += '## Setup gaps\n\n'
-    text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+channel(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'
+    text += table(['Build', 'Scenario', 'Run evidence'], [[names[c]+' · '+label(c), corpus, f'[{run}]({relative(run_manifests[run].parent/"summary.json", output)})'] for c,run,corpus in gaps]) if gaps else 'All selected runs passed their scenario eligibility checks.\n\n'
     text += '## Result-shape checks\n\nThese cases returned results that differ from the draft schema. The case pages retain the validation details; an unclassified schema failure is not silently counted as agreement.\n\n'
     shape = defaultdict(list)
     for r in records:
         if r.get('schema', {}).get('status') == 'invalid':
             shape[(r['corpus'],r['case'])].append(r['client'])
-    text += table(['Case', 'Affected builds'], [[f'[{corpus}/{case}](cases/{corpus}/{case}.md)', ', '.join(names[c]+' '+channel(c) for c in sorted(set(cs)))] for (corpus,case),cs in sorted(shape.items())])
+    text += table(['Case', 'Affected builds'], [[f'[{corpus}/{case}](cases/{corpus}/{case}.md)', ', '.join(names[c]+' '+label(c) for c in sorted(set(cs)))] for (corpus,case),cs in sorted(shape.items())])
     text += '## Runs\n\nCapture completeness records whether requests finished, not whether their results match the proposal.\n\n'
     text += table(['Run', 'Corpus', 'Capture complete'], [[f'[{row["name"]}]({row["manifest"]})',row['corpus'],'✅ Yes' if row['complete'] else '⚠️ No'] for row in run_rows])
     save(output/'technical.md', text)

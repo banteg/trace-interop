@@ -1,18 +1,19 @@
 {
+  "matrix": "evidence/2026-09-24/current-matrix",
   "runs": [
-    "evidence/2026-09-24/coverage-matrix/initial-clean",
-    "evidence/2026-09-24/coverage-matrix/a",
-    "evidence/2026-09-24/coverage-matrix/repeat",
-    "evidence/2026-09-24/coverage-matrix/forks",
-    "evidence/2026-09-24/coverage-matrix/fork-followup",
-    "evidence/2026-09-24/coverage-matrix/precompiles",
-    "evidence/2026-09-24/coverage-matrix/precompile-values",
-    "evidence/2026-09-24/coverage-matrix/raw-validation",
-    "evidence/2026-09-24/coverage-matrix/coverage",
-    "evidence/2026-09-24/coverage-matrix/callmany-isolation",
-    "evidence/2026-09-24/coverage-matrix/h30",
-    "evidence/2026-09-24/coverage-matrix/reorg-safe",
-    "evidence/2026-09-24/coverage-matrix/pruned",
-    "evidence/2026-09-24/h15-fee-policy/h15-matrix"
+    "evidence/2026-09-24/current-matrix/initial",
+    "evidence/2026-09-24/current-matrix/a",
+    "evidence/2026-09-24/current-matrix/repeat",
+    "evidence/2026-09-24/current-matrix/forks",
+    "evidence/2026-09-24/current-matrix/fork-followup",
+    "evidence/2026-09-24/current-matrix/precompiles",
+    "evidence/2026-09-24/current-matrix/precompile-values",
+    "evidence/2026-09-24/current-matrix/raw-validation",
+    "evidence/2026-09-24/current-matrix/coverage",
+    "evidence/2026-09-24/current-matrix/fee-policy",
+    "evidence/2026-09-24/current-matrix/callmany-isolation",
+    "evidence/2026-09-24/current-matrix/h30",
+    "evidence/2026-09-24/current-matrix/reorg-safe",
+    "evidence/2026-09-24/current-matrix/pruned"
   ]
 }

@@ -93,3 +93,43 @@ class VersionTests(unittest.TestCase):
             native.assert_not_called(); geth.assert_not_called()
             with self.assertRaisesRegex(ValueError, 'immutable'):
                 matrix_lock(second, first)
+
+
+class MatrixInventoryTests(unittest.TestCase):
+    def test_current_reports_cannot_mix_builds_drop_failed_runs_or_claim_historical_freshness(self):
+        from trace_interop.inventory import report_runs
+        from trace_interop.cli import write
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            matrix = root/'evidence/current'
+            clients = {n:dict(image_id=n, requested=n) for n in NAMES+['go-ethereum_trace']}
+            manifests = {c:dict(corpus=c, clients=copy.deepcopy(clients)) for c in ['initial','a']}
+            for c,manifest in manifests.items(): write(matrix/c/'manifest.json', manifest)
+            write(matrix/'clients.lock.json',dict(clients=clients))
+            preflight = dict(status='current', checked_at='2026-09-24T00:00:00Z',
+                             clients={n:v['image_id'] for n,v in clients.items()})
+            write(matrix/'preflight.json',preflight)
+            write(matrix/'matrix.json',[dict(corpus='initial',complete=True),dict(corpus='a',complete=False)])
+            selection = dict(matrix='evidence/current',runs=['evidence/current/initial','evidence/current/a'])
+            write(root/'reports.lock.json',selection)
+            self.assertEqual(len(report_runs(root)),2)
+            write(root/'reports.lock.json',dict(selection,runs=selection['runs'][:1]))
+            with self.assertRaisesRegex(ValueError, 'entire current matrix'): report_runs(root)
+            write(root/'reports.lock.json',selection)
+            manifests['a']['clients']['reth_release']['image_id']='old'
+            write(matrix/'a/manifest.json',manifests['a'])
+            with self.assertRaisesRegex(ValueError, 'mixed or missing'): report_runs(root)
+            manifests['a']['clients']=clients
+            write(matrix/'a/manifest.json',manifests['a'])
+            write(matrix/'preflight.json',dict(preflight,status='historical-reproduction'))
+            with self.assertRaisesRegex(ValueError, 'freshness preflight'): report_runs(root)
+
+    @patch('trace_interop.versions.matrix_lock', return_value={})
+    @patch('trace_interop.versions.check_current', side_effect=ValueError('stale'))
+    @patch('subprocess.run')
+    def test_suite_stops_before_corpus_on_failed_preflight(self, run, check, resolve):
+        import runpy
+        with tempfile.TemporaryDirectory() as folder, patch('sys.argv', ['run_matrix.py','--output',folder+'/run']):
+            with self.assertRaisesRegex(ValueError,'stale'):
+                runpy.run_path(str(Path(__file__).resolve().parents[1]/'scripts/run_matrix.py'))
+        run.assert_not_called()

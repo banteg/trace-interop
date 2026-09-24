@@ -2,6 +2,10 @@
 
 All mutations below target disposable Hive databases. They never connect to an existing node.
 
+The explicit dated locks below reproduce historical builds. For a current comparison,
+use `uv run python scripts/run_matrix.py --output runs/current-matrix`; it refreshes
+and checks all builds before running these scenarios.
+
 ## Canonical reorg and restoration
 
 ```sh

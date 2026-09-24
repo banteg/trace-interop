@@ -1,0 +1,479 @@
+Sep 24 15:19:18.361 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 15:19:18.379 INF building 9 clients...
+Sep 24 15:19:18.379 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d
+Sep 24 15:19:18.413 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 24 15:19:18.443 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=96ed3bf9e6103fa7348e8223f07becfaf1d19b43fb66524f295bdb83e12dbee5
+Sep 24 15:19:18.473 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 24 15:19:18.498 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=2a6e1bfcf91337fd9081f28b1a77efcf20c054ea99b30a316fa8a581c819fa74
+Sep 24 15:19:18.525 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=dfee1f35965a2e111727d4bb8614be3b17705e89970688620f37a3acabbf7db3
+Sep 24 15:19:18.554 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4
+Sep 24 15:19:18.589 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf
+Sep 24 15:19:18.615 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 15:19:18.638 INF building 1 simulators...
+Sep 24 15:19:18.638 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 15:19:18.729 INF creating output directory folder=/home/banteg/dev/trace-current-20260924/runs/current-matrix/coverage/hive
+Sep 24 15:19:18.737 INF running simulation: ethereum/rpc-compat
+Sep 24 15:19:18.872 INF hiveproxy started container=6fd72557afad addr=172.17.0.2:8081
+Sep 24 15:19:19.028 INF API: suite started suite=0 name=rpc-compat
+Sep 24 15:19:19.029 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 24 15:19:27.381 INF API: client besu_development started suite=0 test=1 container=23925dd2
+Sep 24 15:19:27.633 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 24 15:19:27.641 INF API: test ended suite=0 test=2 pass=false
+Sep 24 15:19:27.643 INF API: test started suite=0 test=3 name="interop/_control/latest (besu_development)"
+Sep 24 15:19:27.650 INF API: test ended suite=0 test=3 pass=false
+Sep 24 15:19:27.652 INF API: test started suite=0 test=4 name="interop/_control/miner-balance (besu_development)"
+Sep 24 15:19:27.684 INF API: test ended suite=0 test=4 pass=false
+Sep 24 15:19:27.685 INF API: test started suite=0 test=5 name="interop/_control/miner-code (besu_development)"
+Sep 24 15:19:27.692 INF API: test ended suite=0 test=5 pass=false
+Sep 24 15:19:27.693 INF API: test started suite=0 test=6 name="interop/_control/miner-nonce (besu_development)"
+Sep 24 15:19:27.699 INF API: test ended suite=0 test=6 pass=false
+Sep 24 15:19:27.700 INF API: test started suite=0 test=7 name="interop/_control/sender-balance (besu_development)"
+Sep 24 15:19:27.705 INF API: test ended suite=0 test=7 pass=false
+Sep 24 15:19:27.706 INF API: test started suite=0 test=8 name="interop/_control/sender-code (besu_development)"
+Sep 24 15:19:27.710 INF API: test ended suite=0 test=8 pass=false
+Sep 24 15:19:27.711 INF API: test started suite=0 test=9 name="interop/_control/sender-nonce (besu_development)"
+Sep 24 15:19:27.716 INF API: test ended suite=0 test=9 pass=false
+Sep 24 15:19:27.717 INF API: test started suite=0 test=10 name="interop/_control/target-balance (besu_development)"
+Sep 24 15:19:27.722 INF API: test ended suite=0 test=10 pass=false
+Sep 24 15:19:27.723 INF API: test started suite=0 test=11 name="interop/_control/target-code (besu_development)"
+Sep 24 15:19:27.728 INF API: test ended suite=0 test=11 pass=false
+Sep 24 15:19:27.729 INF API: test started suite=0 test=12 name="interop/_control/target-nonce (besu_development)"
+Sep 24 15:19:27.735 INF API: test ended suite=0 test=12 pass=false
+Sep 24 15:19:27.736 INF API: test started suite=0 test=13 name="interop/_control/version (besu_development)"
+Sep 24 15:19:27.741 INF API: test ended suite=0 test=13 pass=false
+Sep 24 15:19:27.742 INF API: test started suite=0 test=14 name="interop/model-empty-runtime (besu_development)"
+Sep 24 15:19:27.839 INF API: test ended suite=0 test=14 pass=false
+Sep 24 15:19:27.840 INF API: test started suite=0 test=15 name="interop/model-environment-free (besu_development)"
+Sep 24 15:19:27.857 INF API: test ended suite=0 test=15 pass=false
+Sep 24 15:19:27.858 INF API: test started suite=0 test=16 name="interop/model-environment (besu_development)"
+Sep 24 15:19:27.874 INF API: test ended suite=0 test=16 pass=false
+Sep 24 15:19:27.875 INF API: test started suite=0 test=17 name="interop/model-many-transfers (besu_development)"
+Sep 24 15:19:27.898 INF API: test ended suite=0 test=17 pass=false
+Sep 24 15:19:27.899 INF API: test started suite=0 test=18 name="interop/model-mcopy-overlap (besu_development)"
+Sep 24 15:19:27.910 INF API: test ended suite=0 test=18 pass=false
+Sep 24 15:19:27.911 INF API: test started suite=0 test=19 name="interop/model-mcopy-zero (besu_development)"
+Sep 24 15:19:27.920 INF API: test ended suite=0 test=19 pass=false
+Sep 24 15:19:27.921 INF API: test started suite=0 test=20 name="interop/model-mcopy (besu_development)"
+Sep 24 15:19:27.930 INF API: test ended suite=0 test=20 pass=false
+Sep 24 15:19:27.931 INF API: test started suite=0 test=21 name="interop/model-mload-existing (besu_development)"
+Sep 24 15:19:27.940 INF API: test ended suite=0 test=21 pass=false
+Sep 24 15:19:27.941 INF API: test started suite=0 test=22 name="interop/model-mload-expansion (besu_development)"
+Sep 24 15:19:27.949 INF API: test ended suite=0 test=22 pass=false
+Sep 24 15:19:27.950 INF API: test started suite=0 test=23 name="interop/model-return42 (besu_development)"
+Sep 24 15:19:27.963 INF API: test ended suite=0 test=23 pass=false
+Sep 24 15:19:27.965 INF API: test started suite=0 test=24 name="interop/model-revert (besu_development)"
+Sep 24 15:19:27.979 INF API: test ended suite=0 test=24 pass=false
+Sep 24 15:19:27.980 INF API: test started suite=0 test=25 name="interop/model-transfer (besu_development)"
+Sep 24 15:19:27.989 INF API: test ended suite=0 test=25 pass=false
+Sep 24 15:19:28.408 INF API: test ended suite=0 test=1 pass=true
+Sep 24 15:19:28.409 INF API: test started suite=0 test=26 name="client launch (besu_release)"
+Sep 24 15:19:35.973 INF API: client besu_release started suite=0 test=26 container=2af26c99
+Sep 24 15:19:36.210 INF API: test started suite=0 test=27 name="interop/_control/head (besu_release)"
+Sep 24 15:19:36.217 INF API: test ended suite=0 test=27 pass=false
+Sep 24 15:19:36.218 INF API: test started suite=0 test=28 name="interop/_control/latest (besu_release)"
+Sep 24 15:19:36.224 INF API: test ended suite=0 test=28 pass=false
+Sep 24 15:19:36.225 INF API: test started suite=0 test=29 name="interop/_control/miner-balance (besu_release)"
+Sep 24 15:19:36.236 INF API: test ended suite=0 test=29 pass=false
+Sep 24 15:19:36.237 INF API: test started suite=0 test=30 name="interop/_control/miner-code (besu_release)"
+Sep 24 15:19:36.242 INF API: test ended suite=0 test=30 pass=false
+Sep 24 15:19:36.243 INF API: test started suite=0 test=31 name="interop/_control/miner-nonce (besu_release)"
+Sep 24 15:19:36.249 INF API: test ended suite=0 test=31 pass=false
+Sep 24 15:19:36.250 INF API: test started suite=0 test=32 name="interop/_control/sender-balance (besu_release)"
+Sep 24 15:19:36.255 INF API: test ended suite=0 test=32 pass=false
+Sep 24 15:19:36.256 INF API: test started suite=0 test=33 name="interop/_control/sender-code (besu_release)"
+Sep 24 15:19:36.263 INF API: test ended suite=0 test=33 pass=false
+Sep 24 15:19:36.264 INF API: test started suite=0 test=34 name="interop/_control/sender-nonce (besu_release)"
+Sep 24 15:19:36.272 INF API: test ended suite=0 test=34 pass=false
+Sep 24 15:19:36.273 INF API: test started suite=0 test=35 name="interop/_control/target-balance (besu_release)"
+Sep 24 15:19:36.280 INF API: test ended suite=0 test=35 pass=false
+Sep 24 15:19:36.281 INF API: test started suite=0 test=36 name="interop/_control/target-code (besu_release)"
+Sep 24 15:19:36.287 INF API: test ended suite=0 test=36 pass=false
+Sep 24 15:19:36.288 INF API: test started suite=0 test=37 name="interop/_control/target-nonce (besu_release)"
+Sep 24 15:19:36.294 INF API: test ended suite=0 test=37 pass=false
+Sep 24 15:19:36.295 INF API: test started suite=0 test=38 name="interop/_control/version (besu_release)"
+Sep 24 15:19:36.301 INF API: test ended suite=0 test=38 pass=false
+Sep 24 15:19:36.302 INF API: test started suite=0 test=39 name="interop/model-empty-runtime (besu_release)"
+Sep 24 15:19:36.387 INF API: test ended suite=0 test=39 pass=false
+Sep 24 15:19:36.388 INF API: test started suite=0 test=40 name="interop/model-environment-free (besu_release)"
+Sep 24 15:19:36.413 INF API: test ended suite=0 test=40 pass=false
+Sep 24 15:19:36.414 INF API: test started suite=0 test=41 name="interop/model-environment (besu_release)"
+Sep 24 15:19:36.431 INF API: test ended suite=0 test=41 pass=false
+Sep 24 15:19:36.432 INF API: test started suite=0 test=42 name="interop/model-many-transfers (besu_release)"
+Sep 24 15:19:36.461 INF API: test ended suite=0 test=42 pass=false
+Sep 24 15:19:36.462 INF API: test started suite=0 test=43 name="interop/model-mcopy-overlap (besu_release)"
+Sep 24 15:19:36.474 INF API: test ended suite=0 test=43 pass=false
+Sep 24 15:19:36.475 INF API: test started suite=0 test=44 name="interop/model-mcopy-zero (besu_release)"
+Sep 24 15:19:36.485 INF API: test ended suite=0 test=44 pass=false
+Sep 24 15:19:36.486 INF API: test started suite=0 test=45 name="interop/model-mcopy (besu_release)"
+Sep 24 15:19:36.494 INF API: test ended suite=0 test=45 pass=false
+Sep 24 15:19:36.495 INF API: test started suite=0 test=46 name="interop/model-mload-existing (besu_release)"
+Sep 24 15:19:36.505 INF API: test ended suite=0 test=46 pass=false
+Sep 24 15:19:36.507 INF API: test started suite=0 test=47 name="interop/model-mload-expansion (besu_release)"
+Sep 24 15:19:36.515 INF API: test ended suite=0 test=47 pass=false
+Sep 24 15:19:36.516 INF API: test started suite=0 test=48 name="interop/model-return42 (besu_release)"
+Sep 24 15:19:36.525 INF API: test ended suite=0 test=48 pass=false
+Sep 24 15:19:36.526 INF API: test started suite=0 test=49 name="interop/model-revert (besu_release)"
+Sep 24 15:19:36.539 INF API: test ended suite=0 test=49 pass=false
+Sep 24 15:19:36.540 INF API: test started suite=0 test=50 name="interop/model-transfer (besu_release)"
+Sep 24 15:19:36.547 INF API: test ended suite=0 test=50 pass=false
+Sep 24 15:19:36.796 INF API: test ended suite=0 test=26 pass=true
+Sep 24 15:19:36.798 INF API: test started suite=0 test=51 name="client launch (erigon_development)"
+Sep 24 15:19:37.449 INF API: client erigon_development started suite=0 test=51 container=71180b77
+Sep 24 15:19:37.453 INF API: test started suite=0 test=52 name="interop/_control/head (erigon_development)"
+Sep 24 15:19:37.456 INF API: test ended suite=0 test=52 pass=false
+Sep 24 15:19:37.457 INF API: test started suite=0 test=53 name="interop/_control/latest (erigon_development)"
+Sep 24 15:19:37.460 INF API: test ended suite=0 test=53 pass=false
+Sep 24 15:19:37.461 INF API: test started suite=0 test=54 name="interop/_control/miner-balance (erigon_development)"
+Sep 24 15:19:37.462 INF API: test ended suite=0 test=54 pass=false
+Sep 24 15:19:37.463 INF API: test started suite=0 test=55 name="interop/_control/miner-code (erigon_development)"
+Sep 24 15:19:37.465 INF API: test ended suite=0 test=55 pass=false
+Sep 24 15:19:37.466 INF API: test started suite=0 test=56 name="interop/_control/miner-nonce (erigon_development)"
+Sep 24 15:19:37.468 INF API: test ended suite=0 test=56 pass=false
+Sep 24 15:19:37.469 INF API: test started suite=0 test=57 name="interop/_control/sender-balance (erigon_development)"
+Sep 24 15:19:37.471 INF API: test ended suite=0 test=57 pass=false
+Sep 24 15:19:37.472 INF API: test started suite=0 test=58 name="interop/_control/sender-code (erigon_development)"
+Sep 24 15:19:37.475 INF API: test ended suite=0 test=58 pass=false
+Sep 24 15:19:37.475 INF API: test started suite=0 test=59 name="interop/_control/sender-nonce (erigon_development)"
+Sep 24 15:19:37.477 INF API: test ended suite=0 test=59 pass=false
+Sep 24 15:19:37.478 INF API: test started suite=0 test=60 name="interop/_control/target-balance (erigon_development)"
+Sep 24 15:19:37.480 INF API: test ended suite=0 test=60 pass=false
+Sep 24 15:19:37.481 INF API: test started suite=0 test=61 name="interop/_control/target-code (erigon_development)"
+Sep 24 15:19:37.483 INF API: test ended suite=0 test=61 pass=false
+Sep 24 15:19:37.484 INF API: test started suite=0 test=62 name="interop/_control/target-nonce (erigon_development)"
+Sep 24 15:19:37.486 INF API: test ended suite=0 test=62 pass=false
+Sep 24 15:19:37.487 INF API: test started suite=0 test=63 name="interop/_control/version (erigon_development)"
+Sep 24 15:19:37.489 INF API: test ended suite=0 test=63 pass=false
+Sep 24 15:19:37.490 INF API: test started suite=0 test=64 name="interop/model-empty-runtime (erigon_development)"
+Sep 24 15:19:37.494 INF API: test ended suite=0 test=64 pass=false
+Sep 24 15:19:37.495 INF API: test started suite=0 test=65 name="interop/model-environment-free (erigon_development)"
+Sep 24 15:19:37.498 INF API: test ended suite=0 test=65 pass=false
+Sep 24 15:19:37.498 INF API: test started suite=0 test=66 name="interop/model-environment (erigon_development)"
+Sep 24 15:19:37.501 INF API: test ended suite=0 test=66 pass=false
+Sep 24 15:19:37.502 INF API: test started suite=0 test=67 name="interop/model-many-transfers (erigon_development)"
+Sep 24 15:19:37.507 INF API: test ended suite=0 test=67 pass=false
+Sep 24 15:19:37.507 INF API: test started suite=0 test=68 name="interop/model-mcopy-overlap (erigon_development)"
+Sep 24 15:19:37.510 INF API: test ended suite=0 test=68 pass=false
+Sep 24 15:19:37.511 INF API: test started suite=0 test=69 name="interop/model-mcopy-zero (erigon_development)"
+Sep 24 15:19:37.513 INF API: test ended suite=0 test=69 pass=false
+Sep 24 15:19:37.514 INF API: test started suite=0 test=70 name="interop/model-mcopy (erigon_development)"
+Sep 24 15:19:37.517 INF API: test ended suite=0 test=70 pass=false
+Sep 24 15:19:37.518 INF API: test started suite=0 test=71 name="interop/model-mload-existing (erigon_development)"
+Sep 24 15:19:37.520 INF API: test ended suite=0 test=71 pass=false
+Sep 24 15:19:37.521 INF API: test started suite=0 test=72 name="interop/model-mload-expansion (erigon_development)"
+Sep 24 15:19:37.523 INF API: test ended suite=0 test=72 pass=false
+Sep 24 15:19:37.524 INF API: test started suite=0 test=73 name="interop/model-return42 (erigon_development)"
+Sep 24 15:19:37.527 INF API: test ended suite=0 test=73 pass=false
+Sep 24 15:19:37.527 INF API: test started suite=0 test=74 name="interop/model-revert (erigon_development)"
+Sep 24 15:19:37.530 INF API: test ended suite=0 test=74 pass=false
+Sep 24 15:19:37.531 INF API: test started suite=0 test=75 name="interop/model-transfer (erigon_development)"
+Sep 24 15:19:37.533 INF API: test ended suite=0 test=75 pass=false
+Sep 24 15:19:37.659 INF API: test ended suite=0 test=51 pass=true
+Sep 24 15:19:37.660 INF API: test started suite=0 test=76 name="client launch (erigon_release)"
+Sep 24 15:19:38.507 INF API: client erigon_release started suite=0 test=76 container=07ba22fb
+Sep 24 15:19:38.512 INF API: test started suite=0 test=77 name="interop/_control/head (erigon_release)"
+Sep 24 15:19:38.515 INF API: test ended suite=0 test=77 pass=false
+Sep 24 15:19:38.516 INF API: test started suite=0 test=78 name="interop/_control/latest (erigon_release)"
+Sep 24 15:19:38.519 INF API: test ended suite=0 test=78 pass=false
+Sep 24 15:19:38.520 INF API: test started suite=0 test=79 name="interop/_control/miner-balance (erigon_release)"
+Sep 24 15:19:38.522 INF API: test ended suite=0 test=79 pass=false
+Sep 24 15:19:38.524 INF API: test started suite=0 test=80 name="interop/_control/miner-code (erigon_release)"
+Sep 24 15:19:38.526 INF API: test ended suite=0 test=80 pass=false
+Sep 24 15:19:38.527 INF API: test started suite=0 test=81 name="interop/_control/miner-nonce (erigon_release)"
+Sep 24 15:19:38.530 INF API: test ended suite=0 test=81 pass=false
+Sep 24 15:19:38.530 INF API: test started suite=0 test=82 name="interop/_control/sender-balance (erigon_release)"
+Sep 24 15:19:38.532 INF API: test ended suite=0 test=82 pass=false
+Sep 24 15:19:38.533 INF API: test started suite=0 test=83 name="interop/_control/sender-code (erigon_release)"
+Sep 24 15:19:38.536 INF API: test ended suite=0 test=83 pass=false
+Sep 24 15:19:38.536 INF API: test started suite=0 test=84 name="interop/_control/sender-nonce (erigon_release)"
+Sep 24 15:19:38.539 INF API: test ended suite=0 test=84 pass=false
+Sep 24 15:19:38.540 INF API: test started suite=0 test=85 name="interop/_control/target-balance (erigon_release)"
+Sep 24 15:19:38.542 INF API: test ended suite=0 test=85 pass=false
+Sep 24 15:19:38.543 INF API: test started suite=0 test=86 name="interop/_control/target-code (erigon_release)"
+Sep 24 15:19:38.545 INF API: test ended suite=0 test=86 pass=false
+Sep 24 15:19:38.546 INF API: test started suite=0 test=87 name="interop/_control/target-nonce (erigon_release)"
+Sep 24 15:19:38.548 INF API: test ended suite=0 test=87 pass=false
+Sep 24 15:19:38.549 INF API: test started suite=0 test=88 name="interop/_control/version (erigon_release)"
+Sep 24 15:19:38.551 INF API: test ended suite=0 test=88 pass=false
+Sep 24 15:19:38.552 INF API: test started suite=0 test=89 name="interop/model-empty-runtime (erigon_release)"
+Sep 24 15:19:38.554 INF API: test ended suite=0 test=89 pass=false
+Sep 24 15:19:38.555 INF API: test started suite=0 test=90 name="interop/model-environment-free (erigon_release)"
+Sep 24 15:19:38.557 INF API: test ended suite=0 test=90 pass=false
+Sep 24 15:19:38.558 INF API: test started suite=0 test=91 name="interop/model-environment (erigon_release)"
+Sep 24 15:19:38.561 INF API: test ended suite=0 test=91 pass=false
+Sep 24 15:19:38.562 INF API: test started suite=0 test=92 name="interop/model-many-transfers (erigon_release)"
+Sep 24 15:19:38.565 INF API: test ended suite=0 test=92 pass=false
+Sep 24 15:19:38.566 INF API: test started suite=0 test=93 name="interop/model-mcopy-overlap (erigon_release)"
+Sep 24 15:19:38.569 INF API: test ended suite=0 test=93 pass=false
+Sep 24 15:19:38.569 INF API: test started suite=0 test=94 name="interop/model-mcopy-zero (erigon_release)"
+Sep 24 15:19:38.572 INF API: test ended suite=0 test=94 pass=false
+Sep 24 15:19:38.573 INF API: test started suite=0 test=95 name="interop/model-mcopy (erigon_release)"
+Sep 24 15:19:38.576 INF API: test ended suite=0 test=95 pass=false
+Sep 24 15:19:38.577 INF API: test started suite=0 test=96 name="interop/model-mload-existing (erigon_release)"
+Sep 24 15:19:38.579 INF API: test ended suite=0 test=96 pass=false
+Sep 24 15:19:38.580 INF API: test started suite=0 test=97 name="interop/model-mload-expansion (erigon_release)"
+Sep 24 15:19:38.583 INF API: test ended suite=0 test=97 pass=false
+Sep 24 15:19:38.584 INF API: test started suite=0 test=98 name="interop/model-return42 (erigon_release)"
+Sep 24 15:19:38.587 INF API: test ended suite=0 test=98 pass=false
+Sep 24 15:19:38.587 INF API: test started suite=0 test=99 name="interop/model-revert (erigon_release)"
+Sep 24 15:19:38.590 INF API: test ended suite=0 test=99 pass=false
+Sep 24 15:19:38.591 INF API: test started suite=0 test=100 name="interop/model-transfer (erigon_release)"
+Sep 24 15:19:38.594 INF API: test ended suite=0 test=100 pass=false
+Sep 24 15:19:38.732 INF API: test ended suite=0 test=76 pass=true
+Sep 24 15:19:38.733 INF API: test started suite=0 test=101 name="client launch (go-ethereum_trace)"
+Sep 24 15:19:39.390 INF API: client go-ethereum_trace started suite=0 test=101 container=9494bfb6
+Sep 24 15:19:39.396 INF API: test started suite=0 test=102 name="interop/_control/head (go-ethereum_trace)"
+Sep 24 15:19:39.399 INF API: test ended suite=0 test=102 pass=false
+Sep 24 15:19:39.400 INF API: test started suite=0 test=103 name="interop/_control/latest (go-ethereum_trace)"
+Sep 24 15:19:39.403 INF API: test ended suite=0 test=103 pass=false
+Sep 24 15:19:39.404 INF API: test started suite=0 test=104 name="interop/_control/miner-balance (go-ethereum_trace)"
+Sep 24 15:19:39.406 INF API: test ended suite=0 test=104 pass=false
+Sep 24 15:19:39.407 INF API: test started suite=0 test=105 name="interop/_control/miner-code (go-ethereum_trace)"
+Sep 24 15:19:39.410 INF API: test ended suite=0 test=105 pass=false
+Sep 24 15:19:39.411 INF API: test started suite=0 test=106 name="interop/_control/miner-nonce (go-ethereum_trace)"
+Sep 24 15:19:39.413 INF API: test ended suite=0 test=106 pass=false
+Sep 24 15:19:39.414 INF API: test started suite=0 test=107 name="interop/_control/sender-balance (go-ethereum_trace)"
+Sep 24 15:19:39.416 INF API: test ended suite=0 test=107 pass=false
+Sep 24 15:19:39.417 INF API: test started suite=0 test=108 name="interop/_control/sender-code (go-ethereum_trace)"
+Sep 24 15:19:39.420 INF API: test ended suite=0 test=108 pass=false
+Sep 24 15:19:39.421 INF API: test started suite=0 test=109 name="interop/_control/sender-nonce (go-ethereum_trace)"
+Sep 24 15:19:39.422 INF API: test ended suite=0 test=109 pass=false
+Sep 24 15:19:39.423 INF API: test started suite=0 test=110 name="interop/_control/target-balance (go-ethereum_trace)"
+Sep 24 15:19:39.426 INF API: test ended suite=0 test=110 pass=false
+Sep 24 15:19:39.427 INF API: test started suite=0 test=111 name="interop/_control/target-code (go-ethereum_trace)"
+Sep 24 15:19:39.429 INF API: test ended suite=0 test=111 pass=false
+Sep 24 15:19:39.430 INF API: test started suite=0 test=112 name="interop/_control/target-nonce (go-ethereum_trace)"
+Sep 24 15:19:39.432 INF API: test ended suite=0 test=112 pass=false
+Sep 24 15:19:39.433 INF API: test started suite=0 test=113 name="interop/_control/version (go-ethereum_trace)"
+Sep 24 15:19:39.435 INF API: test ended suite=0 test=113 pass=false
+Sep 24 15:19:39.436 INF API: test started suite=0 test=114 name="interop/model-empty-runtime (go-ethereum_trace)"
+Sep 24 15:19:39.439 INF API: test ended suite=0 test=114 pass=false
+Sep 24 15:19:39.440 INF API: test started suite=0 test=115 name="interop/model-environment-free (go-ethereum_trace)"
+Sep 24 15:19:39.443 INF API: test ended suite=0 test=115 pass=false
+Sep 24 15:19:39.443 INF API: test started suite=0 test=116 name="interop/model-environment (go-ethereum_trace)"
+Sep 24 15:19:39.447 INF API: test ended suite=0 test=116 pass=false
+Sep 24 15:19:39.448 INF API: test started suite=0 test=117 name="interop/model-many-transfers (go-ethereum_trace)"
+Sep 24 15:19:39.450 INF API: test ended suite=0 test=117 pass=false
+Sep 24 15:19:39.451 INF API: test started suite=0 test=118 name="interop/model-mcopy-overlap (go-ethereum_trace)"
+Sep 24 15:19:39.457 INF API: test ended suite=0 test=118 pass=false
+Sep 24 15:19:39.458 INF API: test started suite=0 test=119 name="interop/model-mcopy-zero (go-ethereum_trace)"
+Sep 24 15:19:39.461 INF API: test ended suite=0 test=119 pass=false
+Sep 24 15:19:39.462 INF API: test started suite=0 test=120 name="interop/model-mcopy (go-ethereum_trace)"
+Sep 24 15:19:39.465 INF API: test ended suite=0 test=120 pass=false
+Sep 24 15:19:39.466 INF API: test started suite=0 test=121 name="interop/model-mload-existing (go-ethereum_trace)"
+Sep 24 15:19:39.469 INF API: test ended suite=0 test=121 pass=false
+Sep 24 15:19:39.470 INF API: test started suite=0 test=122 name="interop/model-mload-expansion (go-ethereum_trace)"
+Sep 24 15:19:39.473 INF API: test ended suite=0 test=122 pass=false
+Sep 24 15:19:39.474 INF API: test started suite=0 test=123 name="interop/model-return42 (go-ethereum_trace)"
+Sep 24 15:19:39.477 INF API: test ended suite=0 test=123 pass=false
+Sep 24 15:19:39.478 INF API: test started suite=0 test=124 name="interop/model-revert (go-ethereum_trace)"
+Sep 24 15:19:39.482 INF API: test ended suite=0 test=124 pass=false
+Sep 24 15:19:39.483 INF API: test started suite=0 test=125 name="interop/model-transfer (go-ethereum_trace)"
+Sep 24 15:19:39.486 INF API: test ended suite=0 test=125 pass=false
+Sep 24 15:19:39.613 INF API: test ended suite=0 test=101 pass=true
+Sep 24 15:19:39.614 INF API: test started suite=0 test=126 name="client launch (nethermind_development)"
+Sep 24 15:19:47.168 INF API: client nethermind_development started suite=0 test=126 container=b0a86f6a
+Sep 24 15:19:47.312 INF API: test started suite=0 test=127 name="interop/_control/head (nethermind_development)"
+Sep 24 15:19:47.316 INF API: test ended suite=0 test=127 pass=false
+Sep 24 15:19:47.318 INF API: test started suite=0 test=128 name="interop/_control/latest (nethermind_development)"
+Sep 24 15:19:47.321 INF API: test ended suite=0 test=128 pass=false
+Sep 24 15:19:47.323 INF API: test started suite=0 test=129 name="interop/_control/miner-balance (nethermind_development)"
+Sep 24 15:19:47.329 INF API: test ended suite=0 test=129 pass=false
+Sep 24 15:19:47.330 INF API: test started suite=0 test=130 name="interop/_control/miner-code (nethermind_development)"
+Sep 24 15:19:47.332 INF API: test ended suite=0 test=130 pass=false
+Sep 24 15:19:47.332 INF API: test started suite=0 test=131 name="interop/_control/miner-nonce (nethermind_development)"
+Sep 24 15:19:47.337 INF API: test ended suite=0 test=131 pass=false
+Sep 24 15:19:47.338 INF API: test started suite=0 test=132 name="interop/_control/sender-balance (nethermind_development)"
+Sep 24 15:19:47.340 INF API: test ended suite=0 test=132 pass=false
+Sep 24 15:19:47.341 INF API: test started suite=0 test=133 name="interop/_control/sender-code (nethermind_development)"
+Sep 24 15:19:47.343 INF API: test ended suite=0 test=133 pass=false
+Sep 24 15:19:47.343 INF API: test started suite=0 test=134 name="interop/_control/sender-nonce (nethermind_development)"
+Sep 24 15:19:47.346 INF API: test ended suite=0 test=134 pass=false
+Sep 24 15:19:47.346 INF API: test started suite=0 test=135 name="interop/_control/target-balance (nethermind_development)"
+Sep 24 15:19:47.348 INF API: test ended suite=0 test=135 pass=false
+Sep 24 15:19:47.349 INF API: test started suite=0 test=136 name="interop/_control/target-code (nethermind_development)"
+Sep 24 15:19:47.351 INF API: test ended suite=0 test=136 pass=false
+Sep 24 15:19:47.351 INF API: test started suite=0 test=137 name="interop/_control/target-nonce (nethermind_development)"
+Sep 24 15:19:47.353 INF API: test ended suite=0 test=137 pass=false
+Sep 24 15:19:47.354 INF API: test started suite=0 test=138 name="interop/_control/version (nethermind_development)"
+Sep 24 15:19:47.357 INF API: test ended suite=0 test=138 pass=false
+Sep 24 15:19:47.357 INF API: test started suite=0 test=139 name="interop/model-empty-runtime (nethermind_development)"
+Sep 24 15:19:47.536 INF API: test ended suite=0 test=139 pass=false
+Sep 24 15:19:47.537 INF API: test started suite=0 test=140 name="interop/model-environment-free (nethermind_development)"
+Sep 24 15:19:47.561 INF API: test ended suite=0 test=140 pass=false
+Sep 24 15:19:47.562 INF API: test started suite=0 test=141 name="interop/model-environment (nethermind_development)"
+Sep 24 15:19:47.568 INF API: test ended suite=0 test=141 pass=false
+Sep 24 15:19:47.569 INF API: test started suite=0 test=142 name="interop/model-many-transfers (nethermind_development)"
+Sep 24 15:19:47.592 INF API: test ended suite=0 test=142 pass=false
+Sep 24 15:19:47.593 INF API: test started suite=0 test=143 name="interop/model-mcopy-overlap (nethermind_development)"
+Sep 24 15:19:47.603 INF API: test ended suite=0 test=143 pass=false
+Sep 24 15:19:47.604 INF API: test started suite=0 test=144 name="interop/model-mcopy-zero (nethermind_development)"
+Sep 24 15:19:47.607 INF API: test ended suite=0 test=144 pass=false
+Sep 24 15:19:47.608 INF API: test started suite=0 test=145 name="interop/model-mcopy (nethermind_development)"
+Sep 24 15:19:47.611 INF API: test ended suite=0 test=145 pass=false
+Sep 24 15:19:47.612 INF API: test started suite=0 test=146 name="interop/model-mload-existing (nethermind_development)"
+Sep 24 15:19:47.620 INF API: test ended suite=0 test=146 pass=false
+Sep 24 15:19:47.620 INF API: test started suite=0 test=147 name="interop/model-mload-expansion (nethermind_development)"
+Sep 24 15:19:47.624 INF API: test ended suite=0 test=147 pass=false
+Sep 24 15:19:47.624 INF API: test started suite=0 test=148 name="interop/model-return42 (nethermind_development)"
+Sep 24 15:19:47.627 INF API: test ended suite=0 test=148 pass=false
+Sep 24 15:19:47.628 INF API: test started suite=0 test=149 name="interop/model-revert (nethermind_development)"
+Sep 24 15:19:47.640 INF API: test ended suite=0 test=149 pass=false
+Sep 24 15:19:47.641 INF API: test started suite=0 test=150 name="interop/model-transfer (nethermind_development)"
+Sep 24 15:19:47.645 INF API: test ended suite=0 test=150 pass=false
+Sep 24 15:19:47.815 INF API: test ended suite=0 test=126 pass=true
+Sep 24 15:19:47.817 INF API: test started suite=0 test=151 name="client launch (nethermind_release)"
+Sep 24 15:19:54.881 INF API: client nethermind_release started suite=0 test=151 container=7f160286
+Sep 24 15:19:54.994 INF API: test started suite=0 test=152 name="interop/_control/head (nethermind_release)"
+Sep 24 15:19:55.009 INF API: test ended suite=0 test=152 pass=false
+Sep 24 15:19:55.011 INF API: test started suite=0 test=153 name="interop/_control/latest (nethermind_release)"
+Sep 24 15:19:55.012 INF API: test ended suite=0 test=153 pass=false
+Sep 24 15:19:55.013 INF API: test started suite=0 test=154 name="interop/_control/miner-balance (nethermind_release)"
+Sep 24 15:19:55.020 INF API: test ended suite=0 test=154 pass=false
+Sep 24 15:19:55.021 INF API: test started suite=0 test=155 name="interop/_control/miner-code (nethermind_release)"
+Sep 24 15:19:55.023 INF API: test ended suite=0 test=155 pass=false
+Sep 24 15:19:55.024 INF API: test started suite=0 test=156 name="interop/_control/miner-nonce (nethermind_release)"
+Sep 24 15:19:55.028 INF API: test ended suite=0 test=156 pass=false
+Sep 24 15:19:55.029 INF API: test started suite=0 test=157 name="interop/_control/sender-balance (nethermind_release)"
+Sep 24 15:19:55.030 INF API: test ended suite=0 test=157 pass=false
+Sep 24 15:19:55.031 INF API: test started suite=0 test=158 name="interop/_control/sender-code (nethermind_release)"
+Sep 24 15:19:55.032 INF API: test ended suite=0 test=158 pass=false
+Sep 24 15:19:55.033 INF API: test started suite=0 test=159 name="interop/_control/sender-nonce (nethermind_release)"
+Sep 24 15:19:55.033 INF API: test ended suite=0 test=159 pass=false
+Sep 24 15:19:55.034 INF API: test started suite=0 test=160 name="interop/_control/target-balance (nethermind_release)"
+Sep 24 15:19:55.037 INF API: test ended suite=0 test=160 pass=false
+Sep 24 15:19:55.038 INF API: test started suite=0 test=161 name="interop/_control/target-code (nethermind_release)"
+Sep 24 15:19:55.039 INF API: test ended suite=0 test=161 pass=false
+Sep 24 15:19:55.039 INF API: test started suite=0 test=162 name="interop/_control/target-nonce (nethermind_release)"
+Sep 24 15:19:55.040 INF API: test ended suite=0 test=162 pass=false
+Sep 24 15:19:55.041 INF API: test started suite=0 test=163 name="interop/_control/version (nethermind_release)"
+Sep 24 15:19:55.046 INF API: test ended suite=0 test=163 pass=false
+Sep 24 15:19:55.046 INF API: test started suite=0 test=164 name="interop/model-empty-runtime (nethermind_release)"
+Sep 24 15:19:55.164 INF API: test ended suite=0 test=164 pass=false
+Sep 24 15:19:55.165 INF API: test started suite=0 test=165 name="interop/model-environment-free (nethermind_release)"
+Sep 24 15:19:55.170 INF API: test ended suite=0 test=165 pass=false
+Sep 24 15:19:55.171 INF API: test started suite=0 test=166 name="interop/model-environment (nethermind_release)"
+Sep 24 15:19:55.176 INF API: test ended suite=0 test=166 pass=false
+Sep 24 15:19:55.177 INF API: test started suite=0 test=167 name="interop/model-many-transfers (nethermind_release)"
+Sep 24 15:19:55.194 INF API: test ended suite=0 test=167 pass=false
+Sep 24 15:19:55.195 INF API: test started suite=0 test=168 name="interop/model-mcopy-overlap (nethermind_release)"
+Sep 24 15:19:55.200 INF API: test ended suite=0 test=168 pass=false
+Sep 24 15:19:55.200 INF API: test started suite=0 test=169 name="interop/model-mcopy-zero (nethermind_release)"
+Sep 24 15:19:55.204 INF API: test ended suite=0 test=169 pass=false
+Sep 24 15:19:55.204 INF API: test started suite=0 test=170 name="interop/model-mcopy (nethermind_release)"
+Sep 24 15:19:55.208 INF API: test ended suite=0 test=170 pass=false
+Sep 24 15:19:55.209 INF API: test started suite=0 test=171 name="interop/model-mload-existing (nethermind_release)"
+Sep 24 15:19:55.212 INF API: test ended suite=0 test=171 pass=false
+Sep 24 15:19:55.212 INF API: test started suite=0 test=172 name="interop/model-mload-expansion (nethermind_release)"
+Sep 24 15:19:55.217 INF API: test ended suite=0 test=172 pass=false
+Sep 24 15:19:55.218 INF API: test started suite=0 test=173 name="interop/model-return42 (nethermind_release)"
+Sep 24 15:19:55.221 INF API: test ended suite=0 test=173 pass=false
+Sep 24 15:19:55.221 INF API: test started suite=0 test=174 name="interop/model-revert (nethermind_release)"
+Sep 24 15:19:55.234 INF API: test ended suite=0 test=174 pass=false
+Sep 24 15:19:55.235 INF API: test started suite=0 test=175 name="interop/model-transfer (nethermind_release)"
+Sep 24 15:19:55.239 INF API: test ended suite=0 test=175 pass=false
+Sep 24 15:19:55.548 INF API: test ended suite=0 test=151 pass=true
+Sep 24 15:19:55.550 INF API: test started suite=0 test=176 name="client launch (reth_development)"
+Sep 24 15:19:58.153 INF API: client reth_development started suite=0 test=176 container=9f77d04d
+Sep 24 15:19:58.170 INF API: test started suite=0 test=177 name="interop/_control/head (reth_development)"
+Sep 24 15:19:58.175 INF API: test ended suite=0 test=177 pass=false
+Sep 24 15:19:58.178 INF API: test started suite=0 test=178 name="interop/_control/latest (reth_development)"
+Sep 24 15:19:58.183 INF API: test ended suite=0 test=178 pass=false
+Sep 24 15:19:58.184 INF API: test started suite=0 test=179 name="interop/_control/miner-balance (reth_development)"
+Sep 24 15:19:58.187 INF API: test ended suite=0 test=179 pass=false
+Sep 24 15:19:58.189 INF API: test started suite=0 test=180 name="interop/_control/miner-code (reth_development)"
+Sep 24 15:19:58.192 INF API: test ended suite=0 test=180 pass=false
+Sep 24 15:19:58.193 INF API: test started suite=0 test=181 name="interop/_control/miner-nonce (reth_development)"
+Sep 24 15:19:58.197 INF API: test ended suite=0 test=181 pass=false
+Sep 24 15:19:58.198 INF API: test started suite=0 test=182 name="interop/_control/sender-balance (reth_development)"
+Sep 24 15:19:58.201 INF API: test ended suite=0 test=182 pass=false
+Sep 24 15:19:58.202 INF API: test started suite=0 test=183 name="interop/_control/sender-code (reth_development)"
+Sep 24 15:19:58.204 INF API: test ended suite=0 test=183 pass=false
+Sep 24 15:19:58.205 INF API: test started suite=0 test=184 name="interop/_control/sender-nonce (reth_development)"
+Sep 24 15:19:58.207 INF API: test ended suite=0 test=184 pass=false
+Sep 24 15:19:58.214 INF API: test started suite=0 test=185 name="interop/_control/target-balance (reth_development)"
+Sep 24 15:19:58.216 INF API: test ended suite=0 test=185 pass=false
+Sep 24 15:19:58.218 INF API: test started suite=0 test=186 name="interop/_control/target-code (reth_development)"
+Sep 24 15:19:58.221 INF API: test ended suite=0 test=186 pass=false
+Sep 24 15:19:58.223 INF API: test started suite=0 test=187 name="interop/_control/target-nonce (reth_development)"
+Sep 24 15:19:58.226 INF API: test ended suite=0 test=187 pass=false
+Sep 24 15:19:58.229 INF API: test started suite=0 test=188 name="interop/_control/version (reth_development)"
+Sep 24 15:19:58.233 INF API: test ended suite=0 test=188 pass=false
+Sep 24 15:19:58.237 INF API: test started suite=0 test=189 name="interop/model-empty-runtime (reth_development)"
+Sep 24 15:19:58.240 INF API: test ended suite=0 test=189 pass=false
+Sep 24 15:19:58.242 INF API: test started suite=0 test=190 name="interop/model-environment-free (reth_development)"
+Sep 24 15:19:58.250 INF API: test ended suite=0 test=190 pass=false
+Sep 24 15:19:58.252 INF API: test started suite=0 test=191 name="interop/model-environment (reth_development)"
+Sep 24 15:19:58.259 INF API: test ended suite=0 test=191 pass=false
+Sep 24 15:19:58.260 INF API: test started suite=0 test=192 name="interop/model-many-transfers (reth_development)"
+Sep 24 15:19:58.267 INF API: test ended suite=0 test=192 pass=false
+Sep 24 15:19:58.268 INF API: test started suite=0 test=193 name="interop/model-mcopy-overlap (reth_development)"
+Sep 24 15:19:58.272 INF API: test ended suite=0 test=193 pass=false
+Sep 24 15:19:58.274 INF API: test started suite=0 test=194 name="interop/model-mcopy-zero (reth_development)"
+Sep 24 15:19:58.279 INF API: test ended suite=0 test=194 pass=false
+Sep 24 15:19:58.282 INF API: test started suite=0 test=195 name="interop/model-mcopy (reth_development)"
+Sep 24 15:19:58.286 INF API: test ended suite=0 test=195 pass=false
+Sep 24 15:19:58.293 INF API: test started suite=0 test=196 name="interop/model-mload-existing (reth_development)"
+Sep 24 15:19:58.298 INF API: test ended suite=0 test=196 pass=false
+Sep 24 15:19:58.303 INF API: test started suite=0 test=197 name="interop/model-mload-expansion (reth_development)"
+Sep 24 15:19:58.308 INF API: test ended suite=0 test=197 pass=false
+Sep 24 15:19:58.310 INF API: test started suite=0 test=198 name="interop/model-return42 (reth_development)"
+Sep 24 15:19:58.315 INF API: test ended suite=0 test=198 pass=false
+Sep 24 15:19:58.317 INF API: test started suite=0 test=199 name="interop/model-revert (reth_development)"
+Sep 24 15:19:58.322 INF API: test ended suite=0 test=199 pass=false
+Sep 24 15:19:58.325 INF API: test started suite=0 test=200 name="interop/model-transfer (reth_development)"
+Sep 24 15:19:58.329 INF API: test ended suite=0 test=200 pass=false
+Sep 24 15:19:58.640 INF API: test ended suite=0 test=176 pass=true
+Sep 24 15:19:58.643 INF API: test started suite=0 test=201 name="client launch (reth_release)"
+Sep 24 15:20:01.147 INF API: client reth_release started suite=0 test=201 container=6b4c8f5e
+Sep 24 15:20:01.162 INF API: test started suite=0 test=202 name="interop/_control/head (reth_release)"
+Sep 24 15:20:01.164 INF API: test ended suite=0 test=202 pass=false
+Sep 24 15:20:01.165 INF API: test started suite=0 test=203 name="interop/_control/latest (reth_release)"
+Sep 24 15:20:01.167 INF API: test ended suite=0 test=203 pass=false
+Sep 24 15:20:01.168 INF API: test started suite=0 test=204 name="interop/_control/miner-balance (reth_release)"
+Sep 24 15:20:01.171 INF API: test ended suite=0 test=204 pass=false
+Sep 24 15:20:01.172 INF API: test started suite=0 test=205 name="interop/_control/miner-code (reth_release)"
+Sep 24 15:20:01.173 INF API: test ended suite=0 test=205 pass=false
+Sep 24 15:20:01.174 INF API: test started suite=0 test=206 name="interop/_control/miner-nonce (reth_release)"
+Sep 24 15:20:01.175 INF API: test ended suite=0 test=206 pass=false
+Sep 24 15:20:01.176 INF API: test started suite=0 test=207 name="interop/_control/sender-balance (reth_release)"
+Sep 24 15:20:01.178 INF API: test ended suite=0 test=207 pass=false
+Sep 24 15:20:01.179 INF API: test started suite=0 test=208 name="interop/_control/sender-code (reth_release)"
+Sep 24 15:20:01.182 INF API: test ended suite=0 test=208 pass=false
+Sep 24 15:20:01.183 INF API: test started suite=0 test=209 name="interop/_control/sender-nonce (reth_release)"
+Sep 24 15:20:01.184 INF API: test ended suite=0 test=209 pass=false
+Sep 24 15:20:01.184 INF API: test started suite=0 test=210 name="interop/_control/target-balance (reth_release)"
+Sep 24 15:20:01.186 INF API: test ended suite=0 test=210 pass=false
+Sep 24 15:20:01.186 INF API: test started suite=0 test=211 name="interop/_control/target-code (reth_release)"
+Sep 24 15:20:01.188 INF API: test ended suite=0 test=211 pass=false
+Sep 24 15:20:01.189 INF API: test started suite=0 test=212 name="interop/_control/target-nonce (reth_release)"
+Sep 24 15:20:01.192 INF API: test ended suite=0 test=212 pass=false
+Sep 24 15:20:01.193 INF API: test started suite=0 test=213 name="interop/_control/version (reth_release)"
+Sep 24 15:20:01.194 INF API: test ended suite=0 test=213 pass=false
+Sep 24 15:20:01.194 INF API: test started suite=0 test=214 name="interop/model-empty-runtime (reth_release)"
+Sep 24 15:20:01.197 INF API: test ended suite=0 test=214 pass=false
+Sep 24 15:20:01.198 INF API: test started suite=0 test=215 name="interop/model-environment-free (reth_release)"
+Sep 24 15:20:01.203 INF API: test ended suite=0 test=215 pass=false
+Sep 24 15:20:01.204 INF API: test started suite=0 test=216 name="interop/model-environment (reth_release)"
+Sep 24 15:20:01.206 INF API: test ended suite=0 test=216 pass=false
+Sep 24 15:20:01.207 INF API: test started suite=0 test=217 name="interop/model-many-transfers (reth_release)"
+Sep 24 15:20:01.211 INF API: test ended suite=0 test=217 pass=false
+Sep 24 15:20:01.212 INF API: test started suite=0 test=218 name="interop/model-mcopy-overlap (reth_release)"
+Sep 24 15:20:01.214 INF API: test ended suite=0 test=218 pass=false
+Sep 24 15:20:01.215 INF API: test started suite=0 test=219 name="interop/model-mcopy-zero (reth_release)"
+Sep 24 15:20:01.216 INF API: test ended suite=0 test=219 pass=false
+Sep 24 15:20:01.217 INF API: test started suite=0 test=220 name="interop/model-mcopy (reth_release)"
+Sep 24 15:20:01.221 INF API: test ended suite=0 test=220 pass=false
+Sep 24 15:20:01.221 INF API: test started suite=0 test=221 name="interop/model-mload-existing (reth_release)"
+Sep 24 15:20:01.223 INF API: test ended suite=0 test=221 pass=false
+Sep 24 15:20:01.224 INF API: test started suite=0 test=222 name="interop/model-mload-expansion (reth_release)"
+Sep 24 15:20:01.228 INF API: test ended suite=0 test=222 pass=false
+Sep 24 15:20:01.229 INF API: test started suite=0 test=223 name="interop/model-return42 (reth_release)"
+Sep 24 15:20:01.231 INF API: test ended suite=0 test=223 pass=false
+Sep 24 15:20:01.232 INF API: test started suite=0 test=224 name="interop/model-revert (reth_release)"
+Sep 24 15:20:01.234 INF API: test ended suite=0 test=224 pass=false
+Sep 24 15:20:01.235 INF API: test started suite=0 test=225 name="interop/model-transfer (reth_release)"
+Sep 24 15:20:01.238 INF API: test ended suite=0 test=225 pass=false
+Sep 24 15:20:01.476 INF API: test ended suite=0 test=201 pass=true
+Sep 24 15:20:01.487 INF API: suite ended suite=0
+Sep 24 15:20:02.073 INF simulation ethereum/rpc-compat finished suites=1 tests=225 failed=216
+216 tests failed

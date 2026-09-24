@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../../clients/besu_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Besu · 🛠️ Development](../../../clients/besu_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Erigon · 📦 Release](../../../clients/erigon_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Erigon · 🛠️ Development](../../../clients/erigon_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../../clients/go-ethereum_trace.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Nethermind · 📦 Release](../../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Nethermind · 🛠️ Development](../../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Reth · 📦 Release](../../../clients/reth_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
-| [Reth · 🛠️ Development](../../../clients/reth_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/coverage-matrix/callmany-isolation/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../../clients/besu_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../../clients/besu_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../../clients/erigon_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../../clients/erigon_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../../clients/go-ethereum_trace.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 2a3b2531](../../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../clients/reth_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../../clients/reth_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/observations.json) · [Build/run](../../../../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,39 +31,39 @@
 }
 ```
 
-**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · f9572aa8** (`besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+**Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
+**Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
+**Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Geth draft fork · 🧪 Draft fork** (`Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.7-unstable · fa8ecb92** (`Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
+**Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H16](../../../decisions/H16.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

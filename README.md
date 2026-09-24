@@ -25,7 +25,7 @@ Erigon, Reth, Nethermind and Besu are the initial clients. An experimental [Geth
 - [Related pull requests](docs/client-fixes.md): open and merged client, specification and test-suite changes.
 - [Upstream acceptance](docs/upstream-acceptance.md): documented requirements and lessons from recent reviews.
 - [Geth draft implementation](docs/geth.md): evaluated fork, coverage and build reproduction.
-- [Run a case or the matrix](docs/usage.md): pinned images, frozen chains, and exact commands.
+- [Run a case or the matrix](docs/usage.md): fresh builds, frozen chains, and exact reproduction commands.
 - [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.
 - [Harness assertion audit](docs/harness-audit.md): false-positive regressions and independent fixture checks.
 - [Review workflow](docs/review.md): distinguish API decisions from execution defects.
@@ -35,6 +35,13 @@ uv sync --locked
 uv run trace-interop verify
 uv run python scripts/check_schema.py
 uv run python scripts/build_reports.py
+```
+
+On Linux with Docker, capture a current comparison (latest stable releases, development
+images and Geth draft head, checked before the suite):
+
+```sh
+uv run python scripts/run_matrix.py --output runs/current-matrix
 ```
 
 ## Decisions and evidence

@@ -10,18 +10,18 @@
     },
     "nethermind": {
       "name": "Nethermind",
-      "summary": "Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement."
+      "summary": "2.1.0-unstable \u00b7 2a3b2531 fixes empty trace selections and retains state-only output; 2.0.0 \u00b7 bec830cd still differs. Complete validation errors, tree lookup, stack-word encoding and state-diff details remain review areas."
     },
     "reth": {
       "name": "Reth",
-      "summary": "The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default.",
+      "summary": "Reth 2.5.2 \u00b7 58a51b3e fixes tree-path lookup, default filter intersection, missing-replay nulls and replay transaction hashes that still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, state/VM trace details, error-code alignment and omitted filter bounds.",
       "build_notes": [
         {
           "versions": [
             "Reth Version: 2.6.0+73a3a008",
-            "Reth Version: 2.5.2+03cb186c"
+            "Reth Version: 2.5.2+58a51b3e"
           ],
-          "text": "**The nightly is newer despite its lower version number.** Its commit is from September 20, while the release commit is from September 17. The release-only version bump set `2.6.0`; the nightly still declares `2.5.2`. [Compare the tested revisions](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...03cb186c1d36eebbacc7bda08f36e25711d0804e)."
+          "text": "**The 2.5.2 build has newer source than 2.6.0.** The version number on the development branch has not received the release-only bump. Use the commit dates above and [revision comparison](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...58a51b3ee3f6714ded9207b244a273c8afb592fd)."
         }
       ]
     },
@@ -48,8 +48,8 @@
         "change": "Make intersection the default. Under either mode, ignore an omitted, null or empty side. Reject unknown mode values with `-32602`."
       },
       "reth": {
-        "observed": "Both lists are combined with OR by default (6 records instead of 1). One-sided and explicit-mode queries agree.",
-        "change": "Take up Alloy #4216, which makes intersection the default and keeps explicit union, then retest."
+        "observed": "2.6.0 \u00b7 73a3a008 combines both lists with OR by default (6 records instead of 1). 2.5.2 \u00b7 58a51b3e uses intersection; one-sided and explicit-mode queries agree.",
+        "change": "Ship the default-intersection behavior already present in 58a51b3e, retaining explicit union."
       },
       "nethermind": {
         "observed": "`mode: \"union\"` returns the intersection (1 record instead of 6). The unrecognized `mode: \"garbage\"` is accepted.",
@@ -94,7 +94,7 @@
         "change": "Return `null` for an absent transaction or path, while preserving distinct unavailable-history errors."
       },
       "reth": {
-        "observed": "Missing individual replays return an error; verified pruned-history requests use `-32603`.",
+        "observed": "Missing individual replays error in 2.6.0 \u00b7 73a3a008 and return null in 2.5.2 \u00b7 58a51b3e. See the linked pruning cases for unavailable-history classification.",
         "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error."
       }
     },
@@ -124,7 +124,7 @@
         "change": "Accept an empty selection and return the execution envelope. Recheck alongside H15 before treating every rejection as a separate selection bug."
       },
       "nethermind": {
-        "observed": "An empty trace selection triggers an internal reduction error.",
+        "observed": "2.0.0 \u00b7 bec830cd fails empty trace selections; 2.1.0-unstable \u00b7 2a3b2531 executes them.",
         "change": "Execute the call and return its output with the unrequested components empty/null."
       }
     },
@@ -156,8 +156,8 @@
         "change": "Preserve explicit zero fees and the selected block environment. Enforce funding for priced calls and simulate sender payment, refunds and beneficiary tips consistently across trace selections."
       },
       "nethermind": {
-        "observed": "Observable execution matches the fee/accounting model. Empty selections fail, stateDiff-only loses output, and many invalid requests produce malformed JSON.",
-        "change": "Resolve empty selections and preserve output independently of trace components. Return complete validation errors; these results do not establish a general fee-accounting bug."
+        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 2a3b2531 fixes both. Many invalid requests still produce malformed JSON in both builds.",
+        "change": "Ship the selection/output fixes present in 2a3b2531 and return complete validation errors. These results do not establish a general fee-accounting bug."
       },
       "reth": {
         "observed": "Zero fees rewrite BASEFEE. Positive underpriced legacy calls execute; underpriced typed caps are rejected. Priced calls omit gas charging and funding probes can execute.",
@@ -214,8 +214,8 @@
         "change": "Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type."
       },
       "reth": {
-        "observed": "The selector uses a flat index; `[]` returns `null` and nested paths do not work.",
-        "change": "Walk one `traceAddress` path instead. Return the root for `[]`, and one object or `null` for other paths. Existing flat-index callers will need a migration path."
+        "observed": "2.6.0 \u00b7 73a3a008 uses a flat selector; 2.5.2 \u00b7 58a51b3e selects the requested tree path and matches these cases.",
+        "change": "Ship the tree-path implementation already present in 58a51b3e. Existing flat-index callers need a migration path."
       }
     },
     "H08": {
@@ -224,7 +224,7 @@
         "change": "Return `trace: []` when call traces were not requested; keep the execution output independently."
       },
       "nethermind": {
-        "observed": "Selecting only `stateDiff` loses nonempty execution output.",
+        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 2a3b2531 retains it.",
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
       }
     },
@@ -280,8 +280,8 @@
     },
     "H07": {
       "reth": {
-        "observed": "Individual replay results omit `transactionHash`.",
-        "change": "Include the requested transaction hash in the replay envelope, consistently with block replay."
+        "observed": "2.6.0 \u00b7 73a3a008 omits transactionHash in individual replays; 2.5.2 \u00b7 58a51b3e includes it.",
+        "change": "Ship the replay metadata fix already present in 58a51b3e."
       }
     },
     "H18": {

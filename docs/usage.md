@@ -30,13 +30,32 @@ the block/transaction reference queries needed by relational assertions. Case se
 ## Run the matrix
 
 ```sh
-uv run trace-interop run --lock locks/clients-2026-09-21.json \
-  --corpus a --output runs/semantic
-uv run trace-interop run --lock locks/clients-2026-09-21.json \
-  --corpus forks --output runs/forks
-uv run trace-interop report --run runs/semantic --run runs/forks \
-  --output runs/combined-report
+uv run python scripts/run_matrix.py --output runs/current-matrix
 ```
+
+This is the default command for a new comparison. It discovers the latest published
+stable release of each native client through GitHub, pulls the moving development
+images, and builds the current `banteg/go-ethereum` `feat/trace` head in an isolated
+cache. Before any corpus starts, a live preflight checks release references, image
+digests and the Geth branch head again. Missing network/registry data and stale
+builds stop the suite. No old lock is used as a fallback.
+
+`clients.lock.json` freezes those nine builds for the entire matrix; `preflight.json`
+records when they were checked. Tags are not refreshed between corpora. Thus results
+show the current published builds **as of the preflight**, not a promise that upstream
+has stayed unchanged since then. The Geth cache refuses dirty source.
+
+For an intentional historical reproduction, supply the combined nine-build lock:
+
+```sh
+uv run python scripts/run_matrix.py --reproduce-lock runs/current-matrix/clients.lock.json \
+  --output runs/reproduction
+```
+
+Historical mode is explicit in its preflight artifact and does not claim freshness.
+A Geth local image must still exist, or be rebuilt using its recorded source/base
+image and the resulting image identity (see below). Single-corpus `run --lock` is
+also a frozen-build reproduction tool; use the matrix command for current comparisons.
 
 `initial` covers all nine methods; `a` contains focused semantic discriminators;
 `repeat` checks reproducibility and trace-type combinations; `forks` and
@@ -49,17 +68,18 @@ One runner owns a checkout's Hive build context at a time.
 accounting across every trace selection. See [the H15 probe guide](h15-fee-policy.md)
 for independent gas models, sequential checks and unresolved-default captures.
 
-## Refresh versions intentionally
+## Check or resolve versions
 
 ```sh
-uv run trace-interop resolve --output clients-next.lock.json
+uv run trace-interop check-versions --lock runs/current-matrix/clients.lock.json
+uv run trace-interop resolve --output runs/native-next.lock.json
 ```
 
-The candidate release tags are explicit in `trace_interop/cli.py`; update them after
-checking upstream releases. Development tags move, so resolve them to digests once per
-comparison. The lock records the requested reference, image ID, digest, architecture,
-labels and creation date. Reports show the runtime version, including the actual commit
-where the client exposes it. A development build is not another independent client vote.
+`check-versions` contacts upstream and exits nonzero on drift. `resolve` discovers
+and locks current native images; the matrix command also builds Geth. Release and
+development remain internal update channels. Reports identify tested builds by their
+runtime **version and source commit**, with source and capture dates. A development
+build is not another independent client vote.
 
 ## Observation and proposal checks
 
@@ -171,4 +191,4 @@ shapes so schema validation cannot mask weak semantic assertions.
 See [assertion models](assertion-models.md) for independent chain decoding, bounded
 VM execution, exact fee/account models, blocked/control dispositions and model
 limits. `scripts/run_matrix.py --output runs/coverage-matrix` runs the complete
-pinned matrix and retains every incomplete capture for inspection.
+freshly resolved matrix and retains every incomplete capture for inspection.

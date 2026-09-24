@@ -2,6 +2,8 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/b979aefe57e4f63af0397b5a068237c04a9d6e3b) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
+Published builds checked at **2026-09-24T11:07:58.191756+00:00**. [Freshness preflight](../evidence/2026-09-24/current-matrix/preflight.json) · [Nine-build lock](../evidence/2026-09-24/current-matrix/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+
 ## Start with your client
 
 | Client | Main review areas |
@@ -9,8 +11,8 @@ The clients already share much of the `trace_*` API. These reports show where ad
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
 | [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
 | [Geth draft fork](clients/geth.md) | The experimental fork matches most evaluated semantic assertions, including signed-transaction rejection codes, unknown-block errors and call-field handling. Its omitted trace_filter bounds still follow the earlier historical-search draft and differ from the proposed latest/latest default. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage. |
-| [Nethermind](clients/nethermind.md) | Prioritize complete error responses, retained execution output, and empty trace selections. Tree lookup and stack-word encoding also need API agreement. |
-| [Reth](clients/reth.md) | The main changes are tree-path lookup, filter composition, replay metadata, and missing code changes in state/VM traces. Signed execution validation matches the proposed requirements; error codes still need alignment. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
+| [Nethermind](clients/nethermind.md) | 2.1.0-unstable · 2a3b2531 fixes empty trace selections and retains state-only output; 2.0.0 · bec830cd still differs. Complete validation errors, tree lookup, stack-word encoding and state-diff details remain review areas. |
+| [Reth](clients/reth.md) | Reth 2.5.2 · 58a51b3e fixes tree-path lookup, default filter intersection, missing-replay nulls and replay transaction hashes that still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, state/VM trace details, error-code alignment and omitted filter bounds. |
 
 ## Decisions to review
 

@@ -83,8 +83,7 @@ its first opcode; the 20,999-gas negative must fail before execution. The delega
 sender protects against incorrectly rejecting every code-bearing sender.
 
 ```sh
-uv run trace-interop run --lock locks/clients-2026-09-21.json \
-  --corpus raw-validation --output evidence/local/raw-validation
+uv run python scripts/run_matrix.py --corpora raw-validation --output runs/raw-validation-current
 ```
 
 To regenerate the chain, copy `fixtures/generators/h13_test.go` into `cmd/hivechain/`
@@ -98,7 +97,8 @@ TRACE_H13_OUTPUT=/fresh/output GOTOOLCHAIN=go1.26.1 \
 The output directory must not already exist. Frozen artifacts and checksums are the
 reproduction inputs. This corpus does not exhaust typed-transaction fee relationships,
 blob rules, every signature constraint, fork transitions or local pool policies. The
-corpus does not cover the experimental Geth fork; its evidence is evaluated separately.
+current matrix also captures the experimental Geth fork; its results remain separate
+from upstream Geth support.
 
 ## Client agreement
 

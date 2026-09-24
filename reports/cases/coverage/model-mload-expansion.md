@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Besu · 🛠️ Development](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Reth · 📦 Release](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/coverage/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 2a3b2531](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -40,31 +40,31 @@
 }
 ```
 
-**Besu · 🛠️ Development** (`besu/v26.9-develop-d997aad/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · f9572aa8** (`besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25`)
 
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 
-**Besu · 📦 Release** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
+**Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 
-**Erigon · 🛠️ Development** (`3.8.0-dev-c25b8e47`)
+**Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)
 
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 
-**Erigon · 📦 Release** (`3.6.1-0c4d9c91`)
+**Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
 
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 
-**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000000000: new account lacks creation markers for all fields; 0x00de48310d77a4d56aa400248b0b1613508f5b73: new account lacks creation markers for all fields
@@ -74,7 +74,7 @@
 - [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 - Result shape at `vmTrace`: {'code': '0x6040515060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x40'], 'store': None, 'used': 246875}, 'pc': 0, 'sub': None}, {'cost': 12, 'ex': {'mem': {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}, 'push': ['0x000000000000000000000000
 
-**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000000000: new account lacks creation markers for all fields; 0x00de48310d77a4d56aa400248b0b1613508f5b73: new account lacks creation markers for all fields
@@ -84,7 +84,7 @@
 - [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 - Result shape at `vmTrace`: {'code': '0x6040515060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x40'], 'store': None, 'used': 246875}, 'pc': 0, 'sub': None}, {'cost': 12, 'ex': {'mem': {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}, 'push': ['0x000000000000000000000000
 
-**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
+**Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
 - [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x6040515060006000f3.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 246875, got 246878; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (MLOAD) used: expected 246863, got 246875; step 1 (MLOAD) mem: expected None, got {'data': '0x', 'off': 0}
@@ -92,7 +92,7 @@
 - [H19](../../decisions/H19.md): Root VM bytecode equals the independently frozen execution source.
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) used: expected 246875, got 246878; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (MLOAD) used: expected 246863, got 246875; step 1 (MLOAD) mem: expected None, got {'data': '0x', 'off': 0}
 
-**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H19](../../decisions/H19.md): The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. Expected source 0x6040515060006000f3.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 246875, got 246878; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (MLOAD) used: expected 246863, got 246875; step 1 (MLOAD) mem: expected None, got {'data': '0x', 'off': 0}

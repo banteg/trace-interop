@@ -98,9 +98,13 @@ def generate(root, runs, output):
                     by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(folder/'observations.json',output/'clients')))
                 records.append(record)
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
+    selection = read(root/'reports.lock.json')
+    selected = {(root/name).resolve() for name in selection['runs']}
+    matrix = root/selection['matrix'] if selection.get('matrix') and {p.resolve() for p in runs} == selected else None
     write(output/'assessment.json', {
+        'matrix': {link(matrix/name,output):sha(matrix/name) for name in ['clients.lock.json','preflight.json','matrix.json']} if matrix else None,
         'spec_commit': lock['commit'] if spec else None,
-        'sources': {name:sha(root/name) for name in ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
+        'sources': {name:sha(root/name) for name in ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']},
         'contexts': {p.name:sha(p) for p in sorted((root/'fixtures/corpora').glob('*.json'))},
         'coverage': {status:sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_')) for status in ['assessed','partial','unassessed','blocked','control']},
         'evidence': {row['manifest']:row['digest'] for row in run_rows},

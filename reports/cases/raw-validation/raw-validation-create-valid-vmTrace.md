@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 📦 Release](../../clients/besu_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Besu · 🛠️ Development](../../clients/besu_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Erigon · 📦 Release](../../clients/erigon_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Erigon · 🛠️ Development](../../clients/erigon_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Geth draft fork · 🧪 Draft fork](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Nethermind · 📦 Release](../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Nethermind · 🛠️ Development](../../clients/nethermind_development.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Reth · 📦 Release](../../clients/reth_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-24/coverage-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 2a3b2531](../../clients/nethermind_development.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/raw-validation/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,21 +32,21 @@
 }
 ```
 
-**Nethermind · 🛠️ Development** (`2.1.0-unstable+a404c4f0`)
+**Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - Result shape at `vmTrace`: {'code': '0x3060005260206000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x00de48310d77a4d56aa400248b0b1613508f5b73'], 'store': None, 'used': 46876}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46873}, 'pc': 1, 'sub': None}, {'cost': 6, '
 
-**Nethermind · 📦 Release** (`1.39.3+28cbe2a0`)
+**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
 - Result shape at `vmTrace`: {'code': '0x3060005260206000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x00de48310d77a4d56aa400248b0b1613508f5b73'], 'store': None, 'used': 46876}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46873}, 'pc': 1, 'sub': None}, {'cost': 6, '
 
-**Reth · 🛠️ Development** (`Reth Version: 2.5.2+03cb186c`)
+**Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
 - [H13](../../decisions/H13.md): Requested vmTrace contains the executing fixture bytecode and its opcode sequence.
 
-**Reth · 📦 Release** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H13](../../decisions/H13.md): Requested vmTrace contains the executing fixture bytecode and its opcode sequence.
 

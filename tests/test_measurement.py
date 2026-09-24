@@ -213,9 +213,25 @@ class PrecompileValueTests(unittest.TestCase):
         observations['_control/create-nonce']['c']['response']['result']='0x86'
         self.assertFalse(verify_state('precompile-values',{'sender_nonce':133},observations,'c')[0])
 
-class PublishedAssessmentTests(unittest.TestCase):
+class HistoricalAssessmentTests(unittest.TestCase):
+    """Freeze known counterexamples; upstream fixes must not fail harness tests."""
+    @classmethod
+    def setUpClass(cls):
+        import contextlib
+        import io
+        import tempfile
+        from unittest.mock import patch
+        from trace_interop.report import generate
+        cls.output = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(cls.output.cleanup)
+        runs = [ROOT/'evidence/2026-09-24/coverage-matrix'/name for name in
+                ['initial-clean','a','raw-validation','precompile-values','h30']]
+        with patch('trace_interop.presentation.render'), contextlib.redirect_stdout(io.StringIO()):
+            generate(ROOT, runs, Path(cls.output.name))
+        cls.records = json.loads((Path(cls.output.name)/'checks.json').read_text())
+
     def test_nonce_policy_requires_rejection_in_frozen_evidence(self):
-        records = [r for r in json.loads((ROOT/'reports/checks.json').read_text())
+        records = [r for r in self.records
                    if r['eligible'] and r['case'].startswith('raw-nonce-high')]
         seen = set()
         for r in records:
@@ -228,7 +244,7 @@ class PublishedAssessmentTests(unittest.TestCase):
         self.assertEqual(seen, {'besu', 'erigon', 'nethermind', 'reth', 'go-ethereum'})
 
     def test_frozen_counterexamples_are_present_in_reports(self):
-        records=json.loads((ROOT/'reports/checks.json').read_text())
+        records=self.records
         for corpus, case, client, topic in [
             ('a','filter-wrong-address-type','besu_release','H14'),
             ('a','filter-negative-count','nethermind_release','H14'),
@@ -242,15 +258,8 @@ class PublishedAssessmentTests(unittest.TestCase):
                 self.assertTrue(matching)
                 self.assertTrue(all(any(c['topic']==topic and c['status']=='change_needed' for c in r['checks']) for r in matching))
 
-    def test_report_provenance_matches_current_assessment_sources(self):
-        import hashlib
-        assessment=json.loads((ROOT/'reports/assessment.json').read_text())
-        for name,digest in assessment['sources'].items():
-            with self.subTest(name=name):
-                self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest)
-
     def test_new_value_capture_has_independent_setup_and_success_proof(self):
-        records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
+        records=[r for r in self.records
                  if r['corpus']=='precompile-values' and not r['case'].startswith('_control')]
         self.assertEqual(len(records), 72)  # Eight discriminators on nine pinned builds.
         self.assertEqual(len({r['client'] for r in records}), 9)
@@ -264,7 +273,7 @@ class PublishedAssessmentTests(unittest.TestCase):
                 self.assertIn('change_needed',[c['status'] for c in r['checks'] if c['topic']=='H24'])
 
     def test_block_selector_decisions_use_controlled_live_capture(self):
-        records=[r for r in json.loads((ROOT/'reports/checks.json').read_text())
+        records=[r for r in self.records
                  if r['corpus']=='h30' and not r['case'].startswith(('_control','_reference/'))]
         self.assertEqual(len(records), 13 * 9)
         self.assertTrue(all(r['eligible'] for r in records))
@@ -296,3 +305,22 @@ class PublishedAssessmentTests(unittest.TestCase):
             self.assertEqual(verdict('go-ethereum_trace',case,'H30'),['change_needed'])
         for case in ['filter-pending','call-number-pending','many-number-pending']:
             self.assertIn('observation',verdict('go-ethereum_trace',case,'H32'))
+
+
+class PublishedAssessmentTests(unittest.TestCase):
+    def test_report_provenance_matches_current_assessment_sources(self):
+        import hashlib
+        assessment=json.loads((ROOT/'reports/assessment.json').read_text())
+        for name,digest in assessment['sources'].items():
+            with self.subTest(name=name):
+                self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest)
+
+    def test_current_reports_retain_full_controlled_coverage(self):
+        records = json.loads((ROOT/'reports/checks.json').read_text())
+        for corpus, expected in [('precompile-values',72),('h30',117),('fee-policy',744*9)]:
+            rows = [r for r in records if r['corpus']==corpus and r['method'].startswith('trace_')
+                    and not r['case'].startswith(('_control','_reference/'))]
+            self.assertEqual(len(rows), expected, corpus)
+            self.assertEqual(len({r['client'] for r in rows}), 9)
+            self.assertTrue(all(r['checks'] for r in rows))
+            self.assertTrue(all(r['assessment']=='blocked' for r in rows if not r['eligible']))

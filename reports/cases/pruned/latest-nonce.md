@@ -4,8 +4,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 📦 Release](../../clients/reth_release.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/coverage-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/pruned/manifest.json) |
-| [Reth · 🛠️ Development](../../clients/reth_development.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/coverage-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/coverage-matrix/pruned/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/current-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/pruned/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/current-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

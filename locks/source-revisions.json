@@ -41,6 +41,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "e26d9bd4056586e004488c31b561fb2663d46019",
       "committed_at": "2026-09-24T08:20:23Z"
+    },
+    {
+      "version": "3.8.0-dev-01c118ee",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "01c118ee1fb0f0df4bcf2b9085602f75f5607b19",
+      "committed_at": "2026-09-24T18:14:17Z"
     }
   ],
   "besu_release": [
@@ -69,6 +75,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "85b32978312c5ec290c24e2dc4c346c368bf9258",
       "committed_at": "2026-09-24T12:49:13Z"
+    },
+    {
+      "version": "besu/v26.9-develop-cf89071/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "cf89071f9d6dddf7997f35e09929fe059f82ecd1",
+      "committed_at": "2026-09-24T19:45:55Z"
     }
   ],
   "nethermind_release": [
@@ -115,6 +127,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "ce501a9734ac0b39b5a5195fd93a5bf67ba9c161",
       "committed_at": "2026-09-24T15:41:46Z"
+    },
+    {
+      "version": "2.1.0-preview+54b760cd",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "54b760cd22ca56f960ddeb298dd639c169946ba0",
+      "committed_at": "2026-09-24T21:23:59Z"
     }
   ],
   "go-ethereum_trace": [
@@ -135,6 +153,12 @@
       "repository": "https://github.com/banteg/go-ethereum",
       "commit": "bb5c4682a5e0765159edefe779f9606db8115483",
       "committed_at": "2026-09-24T18:22:33Z"
+    },
+    {
+      "version": "Geth/v1.17.7-unstable-0a663f3c-2026-09-24/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "0a663f3cd1245f3510ccbbe5146fdfc7007cd290",
+      "committed_at": "2026-09-24T18:56:06Z"
     }
   ]
 }

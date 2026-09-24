@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Besu · 26.9-develop · 85b32978](../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · bb5c4682](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Nethermind · 2.1.0-preview · ce501a97](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Besu · 26.9-develop · cf89071f](../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · 01c118ee](../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Nethermind · 2.1.0-preview · 54b760cd](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -59,7 +59,7 @@
 }
 ```
 
-**Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)
+**Erigon · 3.8.0-dev · 01c118ee** (`3.8.0-dev-01c118ee`)
 
 - [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=1234375000/gas, burn=765625000/gas, blob fee and destroyed wei=0.
 - [H16](../../decisions/H16.md): Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. Gas=21000 (root execution gas plus independently calculated Prague intrinsic/floor cost), price=2000000000, expected tip=1234375000/gas, burn=765625000/gas, blob fee and destroyed wei=0.

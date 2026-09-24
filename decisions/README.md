@@ -10,7 +10,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H02](../reports/decisions/H02.md) | 🤝 Converged | ···👍 | trace_get selector and return shape | ✅⚠️⚠️🛠️— | ✅✅⚠️✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍·👍 | Filter composition and mode | ⚠️🛠️⚠️🛠️— | ⚠️🛠️⚠️✅✅ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | ···· | Empty address lists | ⚠️✅⚠️⚠️— | ⚠️✅⚠️⚠️✅ |
-| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️✅⚠️✅— | ⚠️✅⚠️✅✅ |
+| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️🟡⚠️🛠️— | ⚠️⚠️⚠️🛠️✅ |
 | [H06](../reports/decisions/H06.md) | ⚪ Under review | ···· | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | Replay transactionHash field | 🟡✅✅🛠️— | 🟡✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | ⚪ Under review | ···· | Empty output and unrequested components | 🟡⚠️⚠️✅— | 🟡⚠️⚠️✅✅ |
@@ -19,7 +19,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H11](../reports/decisions/H11.md) | ⚪ Under review | ··👍· | Empty trace-type selection | ⚠️⚠️🛠️✅— | ⚠️⚠️✅✅✅ |
 | [H12](../reports/decisions/H12.md) | ⚪ Under review | ···· | Raw-transaction block argument | ❔❔❔❔— | ❔❔❔❔❔ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | Signed transaction execution validity | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
-| [H14](../reports/decisions/H14.md) | ⚪ Under review | ···· | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
+| [H14](../reports/decisions/H14.md) | ⚪ Under review | ···· | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️⚠️ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ···· | Unsigned simulation fees and block environment | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | Fee accounting and sequential state diffs | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️🟡 |
 | [H17](../reports/decisions/H17.md) | ⚪ Under review | ··👍👍 | New-account stateDiff encoding | 🟡🟡🛠️🛠️— | 🟡🟡✅🛠️✅ |
@@ -28,13 +28,13 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H20](../reports/decisions/H20.md) | ⚪ Under review | ···· | vmTrace step timing and deltas | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H21](../reports/decisions/H21.md) | ⚪ Under review | ··👍· | vmTrace numeric and optional metadata encoding | 🟡🟡🛠️✅— | 🟡🟡🛠️✅✅ |
 | [H22](../reports/decisions/H22.md) | ⚪ Under review | ···· | Precompile return bytes | 🛠️✅✅✅— | 🛠️✅✅✅✅ |
-| [H23](../reports/decisions/H23.md) | ⚪ Under review | ···· | Special-action address matching | ⚠️✅✅✅— | ⚠️✅✅✅✅ |
+| [H23](../reports/decisions/H23.md) | ⚪ Under review | ···· | Special-action address matching | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H24](../reports/decisions/H24.md) | ⚪ Under review | ···· | Sibling failure isolation | 🛠️✅✅✅— | 🛠️✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | ⚪ Under review | ···· | Well-formed errors for rejected raw transactions | ⚠️✅🛠️✅— | ⚠️✅🛠️✅✅ |
-| [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | Account deletion across Cancun | ✅✅🛠️⚠️— | ✅✅✅⚠️✅ |
+| [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | Account deletion across Cancun | ⚠️⚠️🛠️⚠️— | ⚠️✅✅⚠️✅ |
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | ···· | Filter execution across fork boundaries | 🛠️✅✅🟡— | 🛠️✅✅🟡✅ |
-| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | ✅🛠️✅✅— | ✅✅✅✅✅ |
-| [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | Precompile call-frame inclusion | 🛠️✅✅✅— | 🛠️✅✅✅✅ |
+| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | 🛠️🛠️⚠️⚠️— | 🛠️⚠️⚠️⚠️✅ |
+| [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | Precompile call-frame inclusion | 🛠️⚠️⚠️⚠️— | 🛠️⚠️⚠️⚠️✅ |
 | [H30](../reports/decisions/H30.md) | ⚪ Under review | ···· | Omitted trace_filter range bounds | ✅⚠️⚠️⚠️— | ✅⚠️⚠️⚠️✅ |
 | [H31](../reports/decisions/H31.md) | ⚪ Under review | ···· | Omitted trace_callMany block | ⚠️✅✅⚠️— | ⚠️✅✅⚠️✅ |
 | [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | Trace block tags and pending state | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️❔ |

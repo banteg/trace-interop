@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-09-24T21:54:10.993904+00:00",
+  "clients": {
+    "besu_development": "sha256:bcdc03d4b5a6d2aabd393c67c13f2357cbbca4d8312a0ec0cbbcfc8e13a24994",
+    "besu_release": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+    "erigon_development": "sha256:5c8cb84613246a9c20f21ca12113e4a6c6927c3d242cbb714b6e0af51117bb55",
+    "erigon_release": "sha256:8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac",
+    "go-ethereum_trace": "sha256:4a2c0ae8e15e62677ea7a84e6d7f4846644e1bedd388c0645da199bdafa92e5d",
+    "nethermind_development": "sha256:2ac2c99f6b741e76f67122503dc3b0f3e709ea7ad3fc4348b866faf90c9be360",
+    "nethermind_release": "sha256:d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4",
+    "reth_development": "sha256:935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf",
+    "reth_release": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7"
+  },
+  "status": "current"
+}

@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Besu · 26.9-develop · 85b32978](../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · bb5c4682](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 0 call frames; output `null` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Nethermind · 2.1.0-preview · ce501a97](../../clients/nethermind_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-24/adopted-stances/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Besu · 26.9-develop · cf89071f](../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Erigon · 3.8.0-dev · 01c118ee](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 0 call frames; output `null` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Nethermind · 2.1.0-preview · 54b760cd](../../clients/nethermind_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-25/fixture-wave/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -39,7 +39,7 @@
 }
 ```
 
-**Besu · 26.9-develop · 85b32978** (`besu/v26.9-develop-85b3297/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · cf89071f** (`besu/v26.9-develop-cf89071/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H16](../../decisions/H16.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
@@ -49,7 +49,7 @@
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H16](../../decisions/H16.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
-**Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)
+**Erigon · 3.8.0-dev · 01c118ee** (`3.8.0-dev-01c118ee`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H16](../../decisions/H16.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
@@ -59,11 +59,11 @@
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H16](../../decisions/H16.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
-**Geth draft fork · 1.17.7-unstable · bb5c4682** (`Geth/v1.17.7-unstable-bb5c4682-2026-09-24/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.7-unstable · 0a663f3c** (`Geth/v1.17.7-unstable-0a663f3c-2026-09-24/linux-amd64/go1.26.1`)
 
 - [H16](../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0.
 
-**Nethermind · 2.1.0-preview · ce501a97** (`2.1.0-preview+ce501a97`)
+**Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
 
 - [H16](../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0.
 

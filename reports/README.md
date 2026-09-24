@@ -2,7 +2,7 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/53ffb8571817ca095ff62ecc5ef7279f4bd6dec9) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-09-24T18:52:50.958598+00:00**. [Freshness preflight](../evidence/2026-09-24/adopted-stances/preflight.json) · [Nine-build lock](../evidence/2026-09-24/adopted-stances/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-24T21:54:10.993904+00:00**. [Freshness preflight](../evidence/2026-09-25/fixture-wave/preflight.json) · [Nine-build lock](../evidence/2026-09-25/fixture-wave/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 

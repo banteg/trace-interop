@@ -132,9 +132,9 @@ def evaluate(case, observation, peers, invalid_params=None):
             tree_name = next((c['name'] for c in context.get('cases', [])
                               if c['request']['method'] == 'trace_transaction' and c['request']['params'] == params[:1]), 'transaction-tree')
             tree = reference(tree_name)
-            reference = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
-            if reference:
-                expected = next((f for f in reference if f.get('traceAddress') == path),None)
+            tx_frames = [f for f in tree if isinstance(f,dict) and f.get('transactionHash') == params[0]] if isinstance(tree,list) else []
+            if tx_frames:
+                expected = next((f for f in tx_frames if f.get('traceAddress') == path),None)
                 check('H02', status == 'result' and result == expected,
                       f'Return the transaction-tree record at {path}, or null if absent.',
                       'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.')

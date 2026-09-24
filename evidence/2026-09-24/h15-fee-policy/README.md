@@ -78,3 +78,30 @@ is conservatively blocked; the model does not prescribe exact error text.
 
 Regression tests cover these distinctions. Assessment code hashes are recorded
 in `reports/assessment.json`, separately from immutable capture provenance.
+
+## Erigon empty-selection crash investigation
+
+All **26** `method handler crashed` responses in Erigon release are `trace_call`
+requests with `traceTypes: []`. The development build has zero such responses.
+For example, [legacy-at-base/call/none](../../../reports/cases/fee-policy/legacy-at-base/call/none.md)
+supplies a valid price exactly equal to B and reaches the same panic.
+
+In release commit `0c4d9c91`, [Call initializes `ot.r` only when a trace type is
+selected](https://github.com/erigontech/erigon/blob/0c4d9c91dbaffd52890235f7ea395b0231738501/rpc/jsonrpc/trace_adhoc.go#L1172-L1175),
+but [attaches its hooks unconditionally](https://github.com/erigontech/erigon/blob/0c4d9c91dbaffd52890235f7ea395b0231738501/rpc/jsonrpc/trace_adhoc.go#L1209).
+The first `OnEnter` reaches `captureStartOrEnter`, which [dereferences
+`ot.r.VmTrace`](https://github.com/erigontech/erigon/blob/0c4d9c91dbaffd52890235f7ea395b0231738501/rpc/jsonrpc/trace_adhoc.go#L375-L376).
+The retained [client log](h15-matrix/hive/erigon_release/client-188c6445660347e875ba09ce9d830ef1b394c6f5e5c00fc8f5ec7b0510b89e93.log)
+records that exact nil-pointer stack at lines 313–315. The RPC callback's
+[recovery handler](https://github.com/erigontech/erigon/blob/0c4d9c91dbaffd52890235f7ea395b0231738501/rpc/service.go#L228-L233)
+turns it into the error response; the client process continues serving requests.
+Fee validation can reject a request before it reaches this hook, explaining why
+some other empty-selection requests return validation errors instead.
+
+Upstream [PR #23572](https://github.com/erigontech/erigon/pull/23572), merged on
+2026-08-27 as `d0514ffdaea1abb3214f5d2d3ec2af5765b247ee`, already fixes this by
+attaching the tracer only for `trace` or `vmTrace`. It includes regression tests
+for empty-selection `trace_call` and `trace_rawTransaction`. The tested development
+commit `c25b8e47` contains the fix; tested release `0c4d9c91` does not.
+The release's `callMany` path already guards hook installation separately and
+does not share this nil-result initialization defect. No new client patch is needed.

@@ -1,5 +1,7 @@
 # H17 account-existence assessment audit
 
+> **Historical record (2026-09-24).** This audit describes the H17 assessment and the captures of that date. For current H17 results see the [decision page](../reports/decisions/H17.md) and the [client reports](../reports/README.md), built from the matrix selected by [reports.lock.json](../reports.lock.json).
+
 The environment-error discussion below records the original H15 policy. H15
 subsequently adopted a zero-fee BASEFEE override for eth_call compatibility:
 Reth's zero-fee BASEFEE result now agrees with that recommendation. H17's marker

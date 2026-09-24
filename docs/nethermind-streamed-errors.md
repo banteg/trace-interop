@@ -1,5 +1,7 @@
 # Nethermind truncated validation responses
 
+> **Investigation as of 2026-09-24.** The later [adopted-stances matrix](../evidence/2026-09-24/adopted-stances/README.md) still contains the same 203 release / 232 development malformed `fee-policy` responses. For current verdicts see the [Nethermind report](../reports/clients/nethermind.md).
+
 The 2026-09-24 H15 capture exposes a deferred execution error in Nethermind's
 streamed trace responses. Fee/funding validation rejects the request internally,
 but its exception escapes after the writer has started a success envelope. The

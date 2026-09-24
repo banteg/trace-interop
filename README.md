@@ -71,6 +71,6 @@ This is not a public testnet, performance benchmark, general EVM fuzzer or clien
 
 **Decision studies:** [H13 signed transaction validation](docs/h13-validation.md) · [H15 unsigned simulation fees](docs/h15-fee-policy.md) · [Nethermind truncated validation responses](docs/nethermind-streamed-errors.md)
 
-**Reviews and audits:** [source review](docs/source-review/README.md) · [harness assertion audit](docs/harness-audit.md) · [H17 assessment audit](docs/h17-assessment-audit.md) · [measurement and draft review corrections](docs/review-corrections.md)
+**Reviews and audits:** [source review](docs/source-review/README.md) · historical records: [harness assertion audit](docs/harness-audit.md) · [H17 assessment audit](docs/h17-assessment-audit.md) · [measurement and draft review corrections](docs/review-corrections.md)
 
 **Upstream work:** [related pull requests](docs/client-fixes.md) · [upstream acceptance](docs/upstream-acceptance.md) · [Geth draft implementation](docs/geth.md)

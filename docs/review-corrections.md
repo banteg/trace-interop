@@ -1,5 +1,7 @@
 # Measurement and draft review corrections
 
+> **Historical record (2026-09-23).** These corrections describe the reports and draft of that date; the observation counts and rules have since changed. For current results see the [client reports](../reports/README.md), built from the matrix selected by [reports.lock.json](../reports.lock.json).
+
 The September 23 review corrections preserve all earlier wire observations. Reports
 now reassess 4,050 observations against the pinned draft and record incomplete
 assertion coverage explicitly. See the [technical appendix](../reports/technical.md)

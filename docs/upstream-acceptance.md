@@ -1,5 +1,7 @@
 # What execution-apis needs to accept a tracing proposal
 
+> **Snapshot of 2026-09-22.** Upstream guidance, precedents and PR states are as of that date and may have changed. For the current state of the proposal see the [decision index](../decisions/README.md) and [related pull requests](client-fixes.md).
+
 Assessment as of **2026-09-22**, based on upstream main at `465d1b98d43e` and the reviews below.
 The practical target is a reviewable contract, explicit client support, and fixtures that can
 be validated and replayed upstream. No published fixed vote count or universal all-clients-pass

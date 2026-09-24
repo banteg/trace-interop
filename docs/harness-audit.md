@@ -1,9 +1,10 @@
 # Harness assertion audit
 
+> **Historical record (2026-09-23).** This audit describes the harness and captures of that date; its counts and verdicts are superseded. For current results see the [client reports](../reports/README.md), built from the matrix selected by [reports.lock.json](../reports.lock.json).
+
 This page records earlier harness audits and their historical capture counts.
-The [current matrix](../evidence/2026-09-24/current-matrix/README.md) uses freshly
-resolved builds and a live preflight; the [report inventory](../reports.lock.json)
-selects its evidence. Historical observations below remain unchanged.
+The later [2026-09-24 matrix](../evidence/2026-09-24/current-matrix/README.md) used freshly
+resolved builds and a live preflight. Historical observations below remain unchanged.
 
 The September 23 audit reproduced nine ways an incomplete or invalid observation could
 receive a successful assessment. The regression tests mutate copies of captured responses;

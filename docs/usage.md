@@ -124,6 +124,20 @@ generated file agrees with a fresh build. The generated trace-only OpenRPC docum
 immutable build artifact; edit YAML in the fork, not this file. Commit the new lock, artifact,
 assertion updates and regenerated reports together.
 
+## Track client fixes
+
+[`decisions/fixes.json`](../decisions/fixes.json) lists related PRs with their client family
+(`null` for specification and test-suite repositories) and the decisions they address.
+Report generation renders [client fixes](client-fixes.md) from it and shows 🛠️ Fix submitted
+for a differing or partially assessed build when a tagged PR is open, or was merged after the
+build’s commit. Captured checks and harmonization milestones are unchanged. Refresh PR titles
+and states from GitHub, then regenerate:
+
+```sh
+uv run python scripts/refresh_fixes.py
+uv run python scripts/build_reports.py
+```
+
 ## Evaluate the Geth fork
 
 The experimental `banteg/go-ethereum` branch `feat/trace` is built locally on Linux.

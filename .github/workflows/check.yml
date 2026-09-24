@@ -13,7 +13,7 @@ jobs:
       - run: uv run python -m unittest discover -s tests -v
       - run: uv run python scripts/check_schema.py
       - run: uv run python scripts/build_reports.py
-      - run: git diff --exit-code -- reports decisions/README.md
+      - run: git diff --exit-code -- reports decisions/README.md docs/client-fixes.md
   specification:
     runs-on: ubuntu-latest
     steps:

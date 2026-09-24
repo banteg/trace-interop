@@ -1,0 +1,573 @@
+{
+  "checked_at": "2026-09-24",
+  "repositories": {
+    "alloy-rs/alloy": "Alloy",
+    "alloy-rs/evm": "Alloy EVM",
+    "besu-eth/besu": "Besu",
+    "erigontech/erigon": "Erigon",
+    "erigontech/rpc-tests": "rpc-tests",
+    "erigontech/silkworm": "Silkworm",
+    "ethereum/execution-apis": "execution-apis",
+    "ethereum/go-ethereum": "Geth",
+    "NethermindEth/nethermind": "Nethermind",
+    "paradigmxyz/reth": "Reth",
+    "paradigmxyz/revm-inspectors": "revm-inspectors"
+  },
+  "prs": [
+    {
+      "url": "https://github.com/alloy-rs/evm/pull/411",
+      "title": "fix(evm): preserve fatal system call error sources",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/10953",
+      "title": "Replay block pre-execution before tracing transactions",
+      "client": "besu",
+      "decisions": [
+        "H27",
+        "H28"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11286",
+      "title": "fix(rpc): include MCOPY memory updates in vmTrace",
+      "client": "besu",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11345",
+      "title": "fix(rpc): keep Parity trace failures local to their call frame",
+      "client": "besu",
+      "decisions": [
+        "H24"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11346",
+      "title": "fix(rpc): retain precompile output in Parity call frames",
+      "client": "besu",
+      "decisions": [
+        "H22"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11347",
+      "title": "fix(tracing): retain root precompile halt reasons",
+      "client": "besu",
+      "decisions": [
+        "H09"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11350",
+      "title": "fix(tracing): avoid attributing parent return memory to calls",
+      "client": "besu",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11352",
+      "title": "fix(tracing): retain VM frame positions across omitted opcodes",
+      "client": "besu",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11353",
+      "title": "fix(tracing): omit root out-of-gas execution effects",
+      "client": "besu",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11360",
+      "title": "fix(rpc): retain nonzero-value precompile trace frames",
+      "client": "besu",
+      "decisions": [
+        "H29"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11362",
+      "title": "fix(rpc): report empty code for self-destructing creations",
+      "client": "besu",
+      "decisions": [
+        "H10"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11365",
+      "title": "fix(tracing): start each trace_callMany call at a transaction boundary",
+      "client": "besu",
+      "decisions": [
+        "H16"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24255",
+      "title": "fix(rpc/jsonrpc): default trace_filter address lists to intersection",
+      "client": "erigon",
+      "decisions": [
+        "H03"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24290",
+      "title": "fix(rpc/jsonrpc): read trace_call calldata from `input`",
+      "client": "erigon",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24291",
+      "title": "fix(rpc/jsonrpc): no vmTrace sub for SELFDESTRUCT or for calls that fail their precheck",
+      "client": "erigon",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/ethereum/execution-apis/pull/895",
+      "title": "feat(trace): Parity trace methods and output schemas",
+      "client": null,
+      "decisions": [],
+      "state": "open",
+      "draft": true,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/pull/35791",
+      "title": "eth/tracers: add Parity trace RPC namespace",
+      "client": "geth",
+      "decisions": [],
+      "state": "open",
+      "draft": true,
+      "merged_at": null,
+      "note": "implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13551",
+      "title": "Pair instruction trace completions with starts",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13622",
+      "title": "Report terminal output for top-level action traces",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13666",
+      "title": "fix(rpc): preserve error responses for streamed traces",
+      "client": "nethermind",
+      "decisions": [
+        "H15",
+        "H25"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13779",
+      "title": "fix(tracing): report vmTrace store without stateDiff",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13780",
+      "title": "fix(tracing): serialize vmTrace store key and value as quantities",
+      "client": "nethermind",
+      "decisions": [
+        "H21"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13781",
+      "title": "fix(evm): report DUPn vmTrace push as n + 1 words",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13782",
+      "title": "fix(tracing): include forwarded gas in streamed vmTrace create cost",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13783",
+      "title": "fix(rpc): return no traces for the genesis block in trace_block",
+      "client": "nethermind",
+      "decisions": [
+        "H05"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27213",
+      "title": "fix(rpc): populate VM bytecode in block replay traces",
+      "client": "reth",
+      "decisions": [
+        "H19"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27217",
+      "title": "fix(rpc): correct Otterscan block and transaction responses",
+      "client": "reth",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27378",
+      "title": "fix(rpc): preserve pruned history errors through execution wrappers",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27423",
+      "title": "fix(rpc): omit genesis block reward traces",
+      "client": "reth",
+      "decisions": [
+        "H05"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T18:17:41Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/528",
+      "title": "fix(parity): report vmTrace store from SSTORE operands",
+      "client": "reth",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/silkworm/pull/2885",
+      "title": "fix(rpc): capture missing vmTrace opcode effects",
+      "client": null,
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": true,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13667",
+      "title": "fix(rpc): accept empty Parity trace selections",
+      "client": "nethermind",
+      "decisions": [
+        "H08",
+        "H11"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T10:51:12Z"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13676",
+      "title": "fix(rpc): preserve trace_get errors and bound positions",
+      "client": "nethermind",
+      "decisions": [
+        "H06"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T12:08:15Z"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13677",
+      "title": "fix(rpc): reject trace filters with unavailable history",
+      "client": "nethermind",
+      "decisions": [
+        "H06"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T10:55:46Z"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13750",
+      "title": "fix: serialize Parity VM stack values as quantities",
+      "client": "nethermind",
+      "decisions": [
+        "H21"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T11:46:46Z"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4216",
+      "title": "fix(rpc-types-trace): default address filters to intersection",
+      "client": "reth",
+      "decisions": [
+        "H03"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T13:33:37Z"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4218",
+      "title": "fix(rpc-types-trace): serialize absent transaction fields as null",
+      "client": "reth",
+      "decisions": [
+        "H05"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T13:33:48Z"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/23952",
+      "title": "fix(rpc): include MCOPY memory writes in vmTrace",
+      "client": "erigon",
+      "decisions": [
+        "H20"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-14T02:40:05Z"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24056",
+      "title": "rpc/jsonrpc: read account state at the end of the requested block",
+      "client": "erigon",
+      "decisions": [
+        "H28"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-18T07:01:01Z"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13668",
+      "title": "fix(tracing): serialize deleted account fields with deletion markers",
+      "client": "nethermind",
+      "decisions": [
+        "H17",
+        "H26"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T12:08:00Z",
+      "note": "verified in development build 9d6e8b8d"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27364",
+      "title": "fix(rpc): return null for missing transaction replays",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T14:37:11Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27365",
+      "title": "fix(rpc): include transaction hash in individual replays",
+      "client": "reth",
+      "decisions": [
+        "H07"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T13:51:47Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27366",
+      "title": "fix(rpc): select trace_get results by tree path",
+      "client": "reth",
+      "decisions": [
+        "H02"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T16:17:30Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27367",
+      "title": "fix(rpc): classify pruned changeset errors as unavailable history",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T14:07:17Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/504",
+      "title": "fix(tracing): record complete Parity VM execution deltas",
+      "client": "reth",
+      "decisions": [
+        "H20"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-14T13:58:57Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509",
+      "title": "fix(parity): report EIP-7702 code changes in state diffs",
+      "client": "reth",
+      "decisions": [
+        "H18"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-15T23:34:29Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510",
+      "title": "fix(parity): report selfdestructed account deletions",
+      "client": "reth",
+      "decisions": [
+        "H26"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-15T23:44:41Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",
+      "title": "fix(parity): record executed bytecode in VM traces",
+      "client": "reth",
+      "decisions": [
+        "H19"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-22T14:12:33Z"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/526",
+      "title": "fix(parity): preserve account existence in state diffs",
+      "client": "reth",
+      "decisions": [
+        "H17"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T14:31:09Z"
+    },
+    {
+      "url": "https://github.com/erigontech/rpc-tests/pull/604",
+      "title": "test: make trace filter union fixtures explicit",
+      "client": null,
+      "decisions": [
+        "H03"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-23T21:02:57Z"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13665",
+      "title": "fix(tracing): retain output in state-only Parity traces",
+      "client": "nethermind",
+      "decisions": [
+        "H08"
+      ],
+      "state": "closed",
+      "draft": false,
+      "merged_at": null
+    }
+  ]
+}

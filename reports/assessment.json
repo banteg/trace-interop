@@ -65,7 +65,7 @@
     "trace_interop/fee_policy.py": "12918b1686e883481527faf59481bd140263063f38bd553f3770cd377ee2bc72",
     "trace_interop/inventory.py": "ac33d44a4ddb552ed0764aad950f56c8fecb6224ccecaa76f5c9c35cfd7d2729",
     "trace_interop/oracles.py": "6bf48e260ebd5cebb7bb19748cca00b28864b103fb3403efdfaf91aa7b91c7ef",
-    "trace_interop/presentation.py": "ea87d00bd8ca2af58651bb4480c745f5e091e58cf0bd6959ad8b961e08a6c443",
+    "trace_interop/presentation.py": "f349888d5a0d453456cc75964f0a4a0e4e3442a7585d03af90718854ae4aaf52",
     "trace_interop/report.py": "f72f5d095c989fc40ae5acebb5dcf4f009dd9993121b758ebb553f284954ec72",
     "trace_interop/rules.py": "b795ab1c589cdd91775883d6f22679988926bdb32a356557207cb2edc53ce28f",
     "trace_interop/scenarios.py": "535cb73ddbcde3821f2c3086000e818c83d3cefa093147ef457a2771791822aa",

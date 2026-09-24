@@ -84,8 +84,11 @@ def verdict(checks):
     return 'Not assessed'
 
 
-def display_verdict(checks):
+def display_verdict(checks, fixes=()):
+    """A submitted fix replaces a difference or partial assessment, and is linked; checks are unchanged."""
     label = verdict(checks)
+    if fixes and label in ('Differs', 'Partially assessed'):
+        return '🛠️ Fix submitted: ' + ' · '.join(f'[{pr["label"]}]({pr["url"]})' for pr in fixes)
     icon = {
         'Checked cases agree': '✅',
         'Differs': '⚠️',
@@ -97,6 +100,56 @@ def display_verdict(checks):
         'Control / not applicable': '🔎',
     }[label]
     return f'{icon} {label}'
+
+
+def timestamp(value):
+    return datetime.fromisoformat(value.replace('Z', '+00:00'))
+
+
+def check_fixes(fixes, decisions, families):
+    """Validate related PRs against the decision ledger and client families, and label them."""
+    urls = [pr['url'] for pr in fixes['prs']]
+    if len(urls) != len(set(urls)):
+        raise ValueError('duplicate fix PR')
+    for pr in fixes['prs']:
+        match = re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)', pr['url'])
+        if (not match or match[1] not in fixes['repositories'] or pr['client'] not in {*families, None}
+                or not set(pr['decisions']) <= set(decisions) or pr['state'] not in ('open', 'merged', 'closed')
+                or (pr['state'] == 'merged') != bool(pr['merged_at'])):
+            raise ValueError(f'invalid fix PR: {pr["url"]}')
+        pr['label'] = f'{fixes["repositories"][match[1]]} #{match[2]}'
+        pr['order'] = (fixes['repositories'][match[1]].lower(), int(match[2]))
+    return fixes
+
+
+def pending_fixes(fixes, client, topic, built):
+    """PRs for this build and decision that are open, or merged after the build's commit."""
+    return sorted((pr for pr in fixes['prs'] if pr['client'] == family(client) and topic in pr['decisions']
+                   and (pr['state'] == 'open' or pr['state'] == 'merged' and built is not None and timestamp(pr['merged_at']) > built)),
+                  key=lambda pr: pr['order'])
+
+
+def fix_change(pr):
+    """The PR title without its conventional-commit scope, plus any tracking note."""
+    change = re.sub(r'^[\w./-]+(\([^)]*\))?!?: ', '', pr['title'])
+    return change[:1].upper() + change[1:] + (f'; {pr["note"]}' if pr.get('note') else '')
+
+
+def fixes_page(fixes, root, parent):
+    text = ('# Related pull requests\n\n'
+            f'Related client, specification and test-suite PRs. Status checked **{fixes["checked_at"]}**.\n\n'
+            'Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a PR tagged with its client and decision '
+            'is open, or was merged after the build’s commit. Generated from [fixes.json](../decisions/fixes.json); '
+            'refresh PR states with `uv run python scripts/refresh_fixes.py`.\n\n')
+    for state in ['open', 'merged', 'closed']:
+        prs = sorted((pr for pr in fixes['prs'] if pr['state'] == state), key=lambda pr: pr['order'])
+        merged = ['Merged (UTC)'] if state == 'merged' else []
+        rows = [[f'[{pr["label"]}]({pr["url"]})' + (' (draft)' if pr['draft'] else ''), fix_change(pr),
+                 ', '.join(f'[{t}]({relative(root/"reports/decisions"/(t + ".md"), parent)})' for t in pr['decisions']) or '—',
+                 *([utc_date(pr['merged_at'])] if merged else [])] for pr in prs]
+        if rows:
+            text += f'## {state.capitalize()}\n\n' + table(['PR', 'Change', 'Decisions', *merged], rows)
+    return text
 
 
 def coverage_summary(checks):
@@ -230,6 +283,12 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     sources = json.loads((root/'decisions/sources.json').read_text())
     revisions = json.loads((root/'locks/source-revisions.json').read_text())
     clients = sorted({r['client'] for r in records})
+    fixes = check_fixes(json.loads((root/'decisions/fixes.json').read_text()), decisions, editorial['clients'])
+    built = {c: max((timestamp(ref['committed_at']) for v in {r['version'] for r in records if r['client'] == c}
+                     if (ref := source_revision(c, v, revisions))), default=None) for c in clients}
+
+    def build_verdict(client, topic):
+        return display_verdict(by_client.get(client, {}).get(topic, []), pending_fixes(fixes, client, topic, built.get(client)))
     run_manifests = {row['name']: output/row['manifest'] for row in run_rows}
     build_runs = [{'manifest': json.loads(run_manifests[row['name']].read_text()),
                    'versions': row['versions'], 'path': run_manifests[row['name']]} for row in run_rows]
@@ -319,7 +378,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             statuses = []
             for c in selected:
                 cchecks = by_client[c].get(topic, [])
-                value = display_verdict(cchecks)
+                value = build_verdict(c, topic)
                 if coverage_summary(cchecks):
                     value += '<br>' + coverage_summary(cchecks)
                 if cchecks:
@@ -351,8 +410,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                     checks = by_client[c].get(t, [])
                     gaps = [q for q in checks if q['status'] in ['blocked','unassessed']]
                     if gaps:
+                        fix = build_verdict(c, t)
                         gap_rows.append([f'[{decisions[t]["title"]}](../decisions/{t}.md)', label(c),
-                                         coverage_summary(checks), examples(output, path.parent, gaps)])
+                                         coverage_summary(checks) + (f'<br>{fix}' if fix.startswith('🛠️') else ''),
+                                         examples(output, path.parent, gaps)])
             text += table(['Decision', 'Build', 'Reason', 'Example'], gap_rows)
         if matched:
             text += '<details><summary>✅ Behaviors with no difference in the checked cases</summary>\n\n'
@@ -407,7 +468,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 behavior = ('Evaluated requirements agree in the checked cases. ' if any(q['status']=='matches' for q in checks) else '') + '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
-            build_cells = '<br>'.join(f'{label(c)}: {display_verdict(by_client[c].get(topic, []))}' +
+            build_cells = '<br>'.join(f'{label(c)}: {build_verdict(c, topic)}' +
                 (f'<br>{coverage_summary(by_client[c].get(topic, []))}' if coverage_summary(by_client[c].get(topic, [])) else '') for c in selected)
             links = examples(output, path.parent, checks)
             code = source_links(sources, selected[0], topic)
@@ -469,6 +530,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += ('## Test status key\n\n'
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
              '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
+             '- 🛠️ **Fix submitted:** the build differs or is partially assessed, and a linked PR for its client and decision is open or was merged after the build’s commit. '
+             'The captured checks are unchanged; retesting a build that contains the fix replaces this marker. [Related PRs](../docs/client-fixes.md).\n'
              '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
              '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
              '- ⚪ **Not assessed:** no evaluated assertion establishes an outcome.\n'
@@ -513,8 +576,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             symbols = []
             for f in index_families:
                 client = 'go-ethereum_trace' if f == 'geth' else f'{f}_{channel}'
-                symbols.append('—' if f == 'geth' and channel == 'release' else
-                               display_verdict(by_client.get(client, {}).get(topic, [])).split(' ', 1)[0])
+                symbols.append('—' if f == 'geth' and channel == 'release' else build_verdict(client, topic).split(' ', 1)[0])
             return ''.join(symbols)
         text += table(['Decision', 'Status', 'Question', 'Stable', 'Dev'], [
             [f'[{t}](../reports/decisions/{t}.md)', statuses[t], d['title'],
@@ -522,9 +584,12 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             for t,d in decisions.items()])
         text += '## Status key\n\n### Client checks\n\n'
         text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'
-        text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · ⛔ unavailable · '
+        text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · '
                  '🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. '
+                 '🛠️ replaces ⚠️ or 🟡 while a [related PR](../docs/client-fixes.md) for that client and decision is open, '
+                 'or was merged after the build’s commit; the captured checks are unchanged. '
                  '[Outcome details](../reports/technical.md#test-status-key).\n\n')
         text += '### Policy status\n\n' + LEGEND + '\n'
-        text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change a verdict for the pinned builds; [client fixes](../docs/client-fixes.md) tracks implementation and retesting separately.\n'
+        text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.\n'
         save(root/'decisions/README.md', text)
+        save(root/'docs/client-fixes.md', fixes_page(fixes, root, root/'docs'))

@@ -3,6 +3,9 @@
 A case lists `probes`: each names its decision topic, a kind and the expected values
 its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
+A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
+the error cannot separate its property from that dependency. A probe with `observe` (a
+reason) records its outcome as an observation, never as a verdict.
 """
 from .vm_model import UnsupportedProgram, execute, store_words, words
 
@@ -74,6 +77,10 @@ def assess(case, observation, peers):
     checks = []
 
     def add(topic, ok, requirement, detail=''):
+        if 'observe' in probe:
+            checks.append({'topic': topic, 'status': 'observation', 'requirement': requirement,
+                           'detail': probe['observe']+(' Observed: '+detail if detail else '')})
+            return
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
                        'requirement': requirement, 'detail': detail})
 
@@ -99,7 +106,12 @@ def assess(case, observation, peers):
             continue
         if status != 'result':
             error = mapping(response.get('error'))
-            add(topic, False, requirement, f'Expected a result; observed {status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip())
+            observed = f'{status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip()
+            if 'depends' in probe:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                               'detail': f'Depends on {probe["depends"]["topic"]}: {probe["depends"]["reason"]} Observed {observed}.'})
+                continue
+            add(topic, False, requirement, f'Expected a result; observed {observed}')
             continue
         if kind == 'records':
             detail = first_difference(result, probe['expected'])

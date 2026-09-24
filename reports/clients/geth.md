@@ -12,9 +12,7 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 ## Changes to discuss
 
-| Behavior | 1.17.7-unstable · 0a663f3c | Proposed change |
-| --- | --- | --- |
-| [Invalid-parameter error codes](../decisions/H14.md)<br>The linked case differs from the proposed behavior. | ⚠️ Differs<br>[Field authorization](../cases/probes-prague/field-authorization.md) | A valid authorization delegates key 1 to the marker contract, which returns word 42.<br>[Signed transaction replay](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L98) · [Call simulation](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L53) |
+No differences were found by the selected semantic assertions.
 
 ## Open policy observations
 
@@ -23,6 +21,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 1.17.7-unstable · 0a663f3c | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 1.17.7-unstable · 0a663f3c | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it. Observed: Expected a result; observed rpc_error -32602 gasPrice conflicts with blob or authorization fields | [Field authorization](../cases/probes-prague/field-authorization.md) |
 | 1.17.7-unstable · 0a663f3c | [Trace block tags and pending state](../decisions/H32.md) | 2 policy-open cases. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Many number pending](../cases/h30/many-number-pending.md) |
 
 ## Assessment gaps

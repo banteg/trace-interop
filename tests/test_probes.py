@@ -226,7 +226,10 @@ class FieldProbeTests(Probe):
             if not name.startswith('field-') or 'probes' not in case:
                 continue
             kinds = {p['kind'] for p in case['probes']}
-            if kinds == {'error'}:
+            if any('observe' in p for p in case['probes']):
+                for observation in [result({'output': '0x', 'trace': []}), error(-32602), error(-32603)]:
+                    self.assertEqual(set(statuses(case, observation)), {'observation'}, name)
+            elif kinds == {'error'}:
                 self.assertMatches(case, error(-32602))
                 self.assertDiffers(case, result({'output': '0x'+f'{42:064x}', 'trace': []}))
                 if any('code' in p for p in case['probes']):
@@ -236,7 +239,8 @@ class FieldProbeTests(Probe):
                 self.assertMatches(case, result({'output': want, 'trace': []}))
                 # Erigon drops input and authorizationList; an ignored access list reads cold.
                 self.assertDiffers(case, result({'output': '0x' if want != '0x' else '0x'+f'{42:064x}', 'trace': []}))
-                self.assertDiffers(case, error(-32602))
+                # Besu: an unfunded zero-address sender under a base-fee default fails on H15, not the field.
+                self.assertEqual(statuses(case, error(-32603)), ['blocked' if 'depends' in case['probes'][0] else 'change_needed'], name)
 
     def test_omitted_gas_is_the_eth_call_cap(self):
         case = PRAGUE['field-gas-omitted']
@@ -310,6 +314,15 @@ class ForksProbeTests(Probe):
         self.assertMatches(FORKS['range-reversed'], error(-32602))
         self.assertDiffers(FORKS['range-reversed'], error(-32000))  # Erigon, Nethermind
         self.assertDiffers(FORKS['range-reversed'], result([]))     # Parity
+
+    def test_rewards_intersection_mode_dependency(self):
+        for name in ['rewards-intersection', 'rewards-intersection-default']:
+            self.assertMatches(FORKS[name], result([]))
+            self.assertDiffers(FORKS[name], result(self.records('rewards-to')))
+        # Besu rejects the explicit mode field (H03), which says nothing about reward matching.
+        self.assertEqual(statuses(FORKS['rewards-intersection'], error(-32602)), ['blocked'])
+        self.assertNotIn('mode', FORKS['rewards-intersection-default']['request']['params'][0])
+        self.assertDiffers(FORKS['rewards-intersection-default'], error(-32602))
 
     def test_block_55_reads_are_h28_probes_not_setup(self):
         folder = ROOT/'evidence/2026-09-25/fixture-wave/probes-forks'

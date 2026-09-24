@@ -60,6 +60,37 @@ The VM comparator treats pushed words numerically. H21 separately checks minimal
 wire quantities. Optional mnemonic labels must agree with bytecode when present;
 the models do not invent a convention for optional `idx` numbering.
 
+### Isolating the property under test
+
+Each probe names one property, so a response must not fail it for another topic's
+reason. Mined SSTORE effects (H28) compare `store` values numerically; a missing
+`store` is reported as H20 and an unparsable one as H21. A frame-shape probe (H29)
+accepts any non-empty `error` (`"*"`), and a separate H09 probe checks the label on
+the frame it selects, blocked when that frame is absent. A probe may declare
+`depends` on another topic: an error response then blocks it, since the error cannot
+separate the two. A probe with `observe` records what a server did without a verdict,
+for requests that cannot isolate their property. Setup controls establish only chain
+state that every build must show; a read whose value is itself a decision property,
+such as the block-55 beacon-root slots (H28), is a probe.
+
+Controls and expectations come from the current corpus definition whenever the
+captured request is byte-identical, so a corrected fixture reassesses retained
+evidence. A changed request keeps the definition it was captured with.
+
+### Pending next capture
+
+These corrected siblings are generated but not yet registered in
+`decisions/ledger.json`, because no retained run has captured them. Register them
+after the next matrix capture. Until then, their flawed predecessors carry the
+downgraded assertion shown.
+
+| Case | Replaces the assertion of | Correction |
+| --- | --- | --- |
+| `probes-prague/field-authorization-1559` | `field-authorization` (H14, now an observation) | EIP-1559 fees instead of legacy `gasPrice`, which cannot carry an `authorizationList`. |
+| `probes-prague/field-authorization-absent-1559` | `field-authorization-absent` (H14, still asserted: a legacy call without a list is valid) | The same fee fields as its authorization twin. |
+| `probes-prague/field-from-omitted-zero-fee` | `field-from-omitted` (H14, blocked on an error through its H15 dependency) | Explicit zero fees, the H15 exemption for an unfunded zero-address sender, and `data` instead of `input`. |
+| `probes-forks/rewards-intersection-default` | `rewards-intersection` (H23, blocked on an error through its H03 dependency) | `mode` omitted: intersection is the default, so a server that rejects `mode` still answers. |
+
 The Prague intrinsic/floor distinction follows
 [EIP-7623](https://eips.ethereum.org/EIPS/eip-7623), creation metering follows
 [EIP-3860](https://eips.ethereum.org/EIPS/eip-3860), and tip/burn accounting follows

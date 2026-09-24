@@ -200,6 +200,10 @@
       "name": "rewards-intersection",
       "probes": [
         {
+          "depends": {
+            "reason": "The request names the default mode explicitly, so a server that rejects the mode field fails before matching rewards.",
+            "topic": "H03"
+          },
           "expected": [],
           "kind": "records",
           "requirement": "A reward has no from side, so an intersection with a populated fromAddress excludes it.",
@@ -217,6 +221,34 @@
             ],
             "fromBlock": "0x2",
             "mode": "intersection",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-intersection-default",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "A reward has no from side, so an intersection with a populated fromAddress excludes it. Intersection is the default mode.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
             "toAddress": [
               "0x0000000000000000000000000000000000000000"
             ],

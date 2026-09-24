@@ -1116,6 +1116,7 @@
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
+          "observe": "Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it.",
           "requirement": "A valid authorization delegates key 1 to the marker contract, which returns word 42.",
           "topic": "H14"
         }
@@ -1181,9 +1182,87 @@
       }
     },
     {
+      "name": "field-authorization-1559",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A valid authorization on an EIP-1559-priced call delegates key 1 to the marker contract, which returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-authorization-absent-1559",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "Without the authorization the same EIP-1559-priced call reaches an EOA and returns no bytes.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
       "name": "field-from-omitted",
       "probes": [
         {
+          "depends": {
+            "reason": "The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default.",
+            "topic": "H15"
+          },
           "expected": [
             "0x0000000000000000000000000000000000000000000000000000000000000000"
           ],
@@ -1200,6 +1279,39 @@
           {
             "gas": "0x493e0",
             "input": "0x3360005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-from-omitted-zero-fee",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default.",
+            "topic": "H15"
+          },
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "An omitted from defaults to the zero address, observed by CALLER, on an explicitly zero-fee call.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3360005260206000f3",
+            "gas": "0x493e0",
+            "gasPrice": "0x0"
           },
           [
             "trace"

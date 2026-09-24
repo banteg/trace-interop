@@ -39,10 +39,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 11138 |
+| 🔎 Assessed | 11134 |
 | 🟡 Partial | 992 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 509 |
+| 🚧 Blocked | 513 |
 | 🔎 Control | 9 |
 
 
@@ -64,6 +64,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 7 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
+| H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 2 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 489 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: method handler crashed | 10 |
@@ -99,6 +100,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H20 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
 | H21 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
+| H23 | blocked | Depends on H03: The request names the default mode explicitly, so a server that rejects the mode field fails before matching rewards. Observed rpc_error -32602 Invalid filter params. | 2 |
 | H23 | blocked | The RPC returned an error, so there is no execution result to inspect. | 2 |
 | H23 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 9 |
 | H26 | blocked | Cannot inspect this property: unsupported. | 6 |

@@ -244,12 +244,25 @@ def prague():
     authorization = {'chainId': hex(chain_id), 'address': marker, 'nonce': hex(nonce), 'yParity': hex(signature.v),
                      'r': hex(signature.r), 's': hex(signature.s)}
     delegated = {'from': funder, 'to': sender, 'gas': gas, 'gasPrice': price, 'data': '0x'}
+    # Legacy gasPrice with an authorizationList is no transaction type, so this capture
+    # records what each server does; the -1559 twins below carry the H14 assertion.
     case(cases, 'field-authorization', 'trace_call', [dict(delegated, authorizationList=[authorization]), ['trace'], 'latest'],
-         probes=[effect('A valid authorization delegates key 1 to the marker contract, which returns word 42.', words(42))])
+         probes=[dict(effect('A valid authorization delegates key 1 to the marker contract, which returns word 42.', words(42)),
+                      observe='Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it.')])
     case(cases, 'field-authorization-absent', 'trace_call', [delegated, ['trace'], 'latest'],
          probes=[effect('Without the authorization the same call reaches an EOA and returns no bytes.', '0x')])
-    case(cases, 'field-from-omitted', 'trace_call', [{'gas': gas, 'input': '0x'+asm('CALLER', 0, 'MSTORE', 32, 0, 'RETURN')}, ['trace'], 'latest'],
-         probes=[effect('An omitted from defaults to the zero address, observed by CALLER.', words(0))])
+    typed = {'from': funder, 'to': sender, 'gas': gas, 'maxFeePerGas': price, 'maxPriorityFeePerGas': price, 'data': '0x'}
+    case(cases, 'field-authorization-1559', 'trace_call', [dict(typed, authorizationList=[authorization]), ['trace'], 'latest'],
+         probes=[effect('A valid authorization on an EIP-1559-priced call delegates key 1 to the marker contract, which returns word 42.', words(42))])
+    case(cases, 'field-authorization-absent-1559', 'trace_call', [typed, ['trace'], 'latest'],
+         probes=[effect('Without the authorization the same EIP-1559-priced call reaches an EOA and returns no bytes.', '0x')])
+    caller = '0x'+asm('CALLER', 0, 'MSTORE', 32, 0, 'RETURN')
+    fee_default = {'topic': 'H15', 'reason': 'The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default.'}
+    case(cases, 'field-from-omitted', 'trace_call', [{'gas': gas, 'input': caller}, ['trace'], 'latest'],
+         probes=[dict(effect('An omitted from defaults to the zero address, observed by CALLER.', words(0)), depends=fee_default)])
+    # Explicit zero fees (the H15 exemption) and data rather than input (H14) leave only the from default under test.
+    case(cases, 'field-from-omitted-zero-fee', 'trace_call', [{'gas': gas, 'gasPrice': '0x0', 'data': caller}, ['trace'], 'latest'],
+         probes=[dict(effect('An omitted from defaults to the zero address, observed by CALLER, on an explicitly zero-fee call.', words(0)), depends=fee_default)])
     gas_call = {'from': sender, 'input': '0x'+asm('GAS', 0, 'MSTORE', 32, 0, 'RETURN')}
     case(cases, 'field-gas-omitted-eth-call', 'eth_call', [gas_call, 'latest'])
     case(cases, 'field-gas-omitted', 'trace_call', [gas_call, ['trace'], 'latest'],
@@ -321,8 +334,13 @@ def forks():
     requirement = 'A reward matches toAddress by author, after its block\'s transactions: block reward, then uncle rewards in ommer order.'
     case(cases, 'rewards-to', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x5', 'toAddress': [coinbase]}],
          probes=[probe('H23', 'records', requirement, expected=rewards)])
+    intersection = 'A reward has no from side, so an intersection with a populated fromAddress excludes it.'
     case(cases, 'rewards-intersection', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x5', 'fromAddress': [sender], 'toAddress': [coinbase], 'mode': 'intersection'}],
-         probes=[probe('H23', 'records', 'A reward has no from side, so an intersection with a populated fromAddress excludes it.', expected=[])])
+         probes=[probe('H23', 'records', intersection, expected=[],
+                       depends={'topic': 'H03', 'reason': 'The request names the default mode explicitly, so a server that rejects the mode field fails before matching rewards.'})])
+    # Intersection is the default: omitting mode leaves only reward matching under test.
+    case(cases, 'rewards-intersection-default', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x5', 'fromAddress': [sender], 'toAddress': [coinbase]}],
+         probes=[probe('H23', 'records', intersection+' Intersection is the default mode.', expected=[])])
     union = [r for r in records(2, 3) if to_coinbase(r) or from_sender(r)]
     case(cases, 'rewards-union', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x3', 'fromAddress': [sender], 'toAddress': [coinbase], 'mode': 'union'}],
          probes=[probe('H23', 'records', 'In union mode a toAddress match by author suffices for a reward; sender roots precede their block\'s rewards.', expected=union)])

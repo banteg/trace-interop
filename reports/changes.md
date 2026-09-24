@@ -48,7 +48,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
-| [H14 · Invalid-parameter error codes](decisions/H14.md) | Geth draft fork | ✅ Checked cases agree | ⚠️ Differs |
+| [H14 · Invalid-parameter error codes](decisions/H14.md) | Geth draft fork | ✅ Checked cases agree | ❔ Policy open |
 
 ### [Nethermind](clients/nethermind.md)
 

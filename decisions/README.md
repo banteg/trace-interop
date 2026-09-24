@@ -19,7 +19,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H11](../reports/decisions/H11.md) | ⚪ Under review | ··👍· | Empty trace-type selection | ⚠️⚠️🛠️✅— | ⚠️⚠️✅✅✅ |
 | [H12](../reports/decisions/H12.md) | ⚪ Under review | ···· | Raw-transaction block argument | ❔❔❔❔— | ❔❔❔❔❔ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | Signed transaction execution validity | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
-| [H14](../reports/decisions/H14.md) | ⚪ Under review | ···· | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️⚠️ |
+| [H14](../reports/decisions/H14.md) | ⚪ Under review | ···· | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️❔ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ···· | Unsigned simulation fees and block environment | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | Fee accounting and sequential state diffs | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️🟡 |
 | [H17](../reports/decisions/H17.md) | ⚪ Under review | ··👍👍 | New-account stateDiff encoding | 🟡🟡🛠️🛠️— | 🟡🟡✅🛠️✅ |

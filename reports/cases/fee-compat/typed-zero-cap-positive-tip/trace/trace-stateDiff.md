@@ -13,8 +13,8 @@
 | [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../../../clients/go-ethereum_trace.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
 | [Nethermind · 2.1.0-unstable · 641592d2](../../../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../../../clients/reth_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/observations.json) · [Build/run](../../../../../evidence/2026-09-24/h15-call-compat/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -50,13 +50,5 @@
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
-
-**Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation. Expected call 0: priority; observed base_fee. Positive cap/price below BASEFEE or priority cap above total cap.
-
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation. Expected call 0: priority; observed base_fee. Positive cap/price below BASEFEE or priority cap above total cap.
 
 </details>

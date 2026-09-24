@@ -145,6 +145,16 @@ class FeePolicyTests(unittest.TestCase):
             checks=evaluate(self.case(name),obs,{})
             self.assertFalse(any(c['topic']=='H16' for c in checks))
 
+    def test_any_violated_constraint_is_an_acceptable_rejection_reason(self):
+        # A zero cap with a positive tip exceeds the cap and is below the base fee.
+        for message, expected in [('max fee per gas less than block base fee','matches'),
+                                  ('maxFeePerGas (0) < maxPriorityFeePerGas (1)','matches'),
+                                  ('insufficient funds for gas * price + value','change_needed')]:
+            with self.subTest(message=message):
+                obs=dict(status='rpc_error',response={'error':{'code':-32000,'message':message}})
+                checks=assess(self.case('typed-zero-cap-positive-tip/call/none'),obs)
+                self.assertEqual([c['status'] for c in checks],[expected])
+
     def test_refund_revert_and_oog_settlement_reaches_next_call(self):
         for program, used, sent in [('refund',60320,7),('revert',53156,0),('out-of-gas',200000,0)]:
             steps=expected_steps(self.case('legacy-'+program+'-then-observe/many/none'))

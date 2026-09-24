@@ -87,7 +87,10 @@ def expected_steps(case):
 
 
 def first_invalid(case):
-    """Identify the first violated constraint without consulting any response."""
+    """Identify the first invalid call and every constraint it violates, without consulting any response.
+
+    Validation order is not specified, so a client may report any violated constraint.
+    """
     params = case['request']['params']
     calls = [p[0] for p in params[0]] if case['request']['method']=='trace_callMany' else [params[0]]
     balances = {SENDER:BALANCE}
@@ -97,12 +100,11 @@ def first_invalid(case):
         tip = int(call.get('gasPrice', call.get('maxPriorityFeePerGas', '0x0')),16)
         value, limit = int(call.get('value','0x0'),16), int(call['gas'],16)
         balance = balances.get(call['from'],0)
-        if tip>cap:
-            return index, 'priority'
-        if 0<cap<base:
-            return index, 'base_fee'
+        violations = ({'priority'} if tip>cap else set()) | ({'base_fee'} if cap<base and (cap or tip) else set())
         if balance<value+limit*cap:
-            return index, 'funds'
+            violations.add('funds')
+        if violations:
+            return index, violations
         balances[call['from']] = balance-gas_used(program,limit)*min(cap,base+tip)-(0 if program in ['revert','out-of-gas'] else value)
     raise ValueError('Rejection fixture has no independent violation: '+case['name'])
 
@@ -124,7 +126,7 @@ def assess(case, observation):
     response = observation.get('response', {})
     if policy['admission'] == 'reject':
         error = response.get('error', {})
-        index, violation = first_invalid(case)
+        index, violations = first_invalid(case)
         if status != 'rpc_error':
             add(False, 'Reject this independently invalid fee/funding request before execution.', policy['reason'])
             return checks
@@ -136,9 +138,9 @@ def assess(case, observation):
             return [dict(topic='H15',status='blocked',requirement='Identify a fee/funding validation rejection.',
                          detail='A generic/internal/crash error does not prove validation: '+message)]
         named_index = re.search(r'(?:call |txindex )(\d+)', message)
-        add(kind == violation and (named_index is None or int(named_index[1]) == index),
+        add(kind in violations and (named_index is None or int(named_index[1]) == index),
             'Reject the independently invalid call for its fee/funding violation.',
-            f'Expected call {index}: {violation}; observed {kind}. '+policy['reason'])
+            f'Expected call {index}: {" or ".join(sorted(violations))}; observed {kind}. '+policy['reason'])
         return checks
     result = response.get('result')
     envelopes = result if case['request']['method'] == 'trace_callMany' else [result]

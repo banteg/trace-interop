@@ -62,7 +62,7 @@
     "trace_interop/chain_model.py": "392a57171f81d5b905248d1b36351ac13f6c903a0ea6fa1af7e12527f58612f6",
     "trace_interop/coverage.py": "31a83333181b168345509ab426338f5dfe37bf7499fe53c235a4e3b9352e7717",
     "trace_interop/execution_models.py": "460c0fd08db6f67365e25d6016ad205dee44d2fcd881c5e7e79bd55b5521415f",
-    "trace_interop/fee_policy.py": "7e331d44e4ca05a9a606f10587b68d791c4fa65f6581de5877f2661afeef2c7d",
+    "trace_interop/fee_policy.py": "437c0dc0e336deb8f4b03a621db39609d4a2e6719fad0348b85bce8004cf2600",
     "trace_interop/inventory.py": "ac33d44a4ddb552ed0764aad950f56c8fecb6224ccecaa76f5c9c35cfd7d2729",
     "trace_interop/oracles.py": "831a2a3a9a156fcd2430cf881dc26c63ae825f432dc12f39a01c4e9011b26ef3",
     "trace_interop/presentation.py": "ea87d00bd8ca2af58651bb4480c745f5e091e58cf0bd6959ad8b961e08a6c443",

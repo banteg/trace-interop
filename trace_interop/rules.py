@@ -39,7 +39,7 @@ def violation(message):
     for kind, pattern in [('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
                           ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
                           ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
-                          ('priority', r'\b(?:priority|tip)\b.*(?:fee|cap)'),
+                          ('priority', r'(?:priority|\btip\b).*(?:fee|cap)'),
                           ('base_fee', r'base ?fee'), ('sender', r'\beoa\b')]:
         if re.search(pattern, message):
             return kind

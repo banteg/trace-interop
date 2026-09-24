@@ -23493,7 +23493,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23518,7 +23518,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23547,7 +23547,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23574,7 +23574,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23605,7 +23605,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23632,7 +23632,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23663,7 +23663,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23690,7 +23690,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23721,7 +23721,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23749,7 +23749,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23781,7 +23781,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23809,7 +23809,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23841,7 +23841,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23869,7 +23869,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23901,7 +23901,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23930,7 +23930,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23963,7 +23963,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -23989,7 +23989,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24019,7 +24019,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24047,7 +24047,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24079,7 +24079,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24107,7 +24107,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24139,7 +24139,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24167,7 +24167,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24199,7 +24199,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24228,7 +24228,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24261,7 +24261,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24290,7 +24290,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24323,7 +24323,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24352,7 +24352,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24385,7 +24385,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24415,7 +24415,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24449,7 +24449,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24475,7 +24475,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24505,7 +24505,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24533,7 +24533,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24565,7 +24565,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24593,7 +24593,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24625,7 +24625,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24653,7 +24653,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24685,7 +24685,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24714,7 +24714,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24747,7 +24747,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24776,7 +24776,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24809,7 +24809,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24838,7 +24838,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24871,7 +24871,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24901,7 +24901,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24935,7 +24935,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24961,7 +24961,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -24991,7 +24991,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25019,7 +25019,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25051,7 +25051,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25079,7 +25079,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25111,7 +25111,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25139,7 +25139,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25171,7 +25171,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25200,7 +25200,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25233,7 +25233,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25262,7 +25262,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25295,7 +25295,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25324,7 +25324,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25357,7 +25357,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25387,7 +25387,7 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "accept",
         "programs": [
           "environment"
         ],
@@ -25421,11 +25421,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/none",
       "request": {
@@ -25447,11 +25447,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/none",
       "request": {
@@ -25477,11 +25477,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/trace",
       "request": {
@@ -25505,11 +25505,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/trace",
       "request": {
@@ -25537,11 +25537,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/stateDiff",
       "request": {
@@ -25565,11 +25565,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/stateDiff",
       "request": {
@@ -25597,11 +25597,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/vmTrace",
       "request": {
@@ -25625,11 +25625,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/vmTrace",
       "request": {
@@ -25657,11 +25657,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/trace-stateDiff",
       "request": {
@@ -25686,11 +25686,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/trace-stateDiff",
       "request": {
@@ -25719,11 +25719,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/trace-vmTrace",
       "request": {
@@ -25748,11 +25748,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/trace-vmTrace",
       "request": {
@@ -25781,11 +25781,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/stateDiff-vmTrace",
       "request": {
@@ -25810,11 +25810,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/stateDiff-vmTrace",
       "request": {
@@ -25843,11 +25843,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/call/trace-stateDiff-vmTrace",
       "request": {
@@ -25873,11 +25873,11 @@
     },
     {
       "fee_policy": {
-        "admission": "observe",
+        "admission": "reject",
         "programs": [
           "environment"
         ],
-        "reason": ""
+        "reason": "The omitted fee cap defaults to zero, below the supplied priority fee."
       },
       "name": "defaults-tip-only-positive/many/trace-stateDiff-vmTrace",
       "request": {
@@ -25906,5 +25906,5 @@
       }
     }
   ],
-  "description": "H15 unsigned fee policy on the frozen Prague chain; all eight trace selections. Defaults are observational."
+  "description": "H15 unsigned fee policy on the frozen Prague chain; all eight trace selections. Omitted fee fields default to zero."
 }

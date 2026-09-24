@@ -192,6 +192,21 @@ class DispositionTests(unittest.TestCase):
         response={'stateDiff':{sender:{'balance':{'+':'0x1'},'nonce':{'+':'0x0'},'code':{'+':'0x'}}}}
         self.assertIn('change_needed',[c['status'] for c in assess(case,{'status':'result','response':{'result':response}},{},{'H17'})])
 
+    def test_earlier_bundle_items_create_accounts(self):
+        sender='0x'+'11'*20
+        created=created_address(sender,0)
+        calls=[[{'from':sender,'data':'0x60016000f3'},['stateDiff']],[{'from':sender,'to':created},['stateDiff']]]
+        case={'name':'call-many','context':{},'request':{'method':'trace_callMany','params':[calls,'latest']}}
+        # The unfunded default sender and the created contract exist after the first item.
+        second={sender:{'balance':'=','nonce':{'*':{'from':'0x1','to':'0x2'}},'code':'=','storage':{}}}
+        first={sender:{'balance':{'+':'0x0'},'nonce':{'+':'0x1'},'code':{'+':'0x'},'storage':{}},
+               created:{'balance':{'+':'0x0'},'nonce':{'+':'0x1'},'code':{'+':'0x00'},'storage':{}}}
+        checks=assess(case,{'status':'result','response':{'result':[{'stateDiff':first},{'stateDiff':second}]}},{},{'H17'})
+        self.assertEqual([c['status'] for c in checks],['matches','matches'])
+        second[created]={'balance':{'+':'0x0'},'nonce':{'+':'0x1'},'code':{'+':'0x00'},'storage':{}}
+        checks=assess(case,{'status':'result','response':{'result':[{'stateDiff':first},{'stateDiff':second}]}},{},{'H17'})
+        self.assertEqual([c['status'] for c in checks],['matches','change_needed'])
+
     def test_trace_only_many_does_not_require_state_diff(self):
         call={'from':'0x'+'11'*20,'to':'0x'+'22'*20}
         case={'name':'call-many','context':{},'request':{'method':'trace_callMany','params':[[[call,['trace']]],'latest']}}

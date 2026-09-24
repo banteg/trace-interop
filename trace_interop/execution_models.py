@@ -177,9 +177,25 @@ def assess(case, observation, peers, topics):
                 else:
                     add(topic,False,'The declared state-diff fixture returns the requested account changes.')
         exists,codes,nonces=prestate(context,block,index)
+        # Earlier bundle items persist: the sender's nonce, a modelled creation and
+        # a funded recipient. Internal value recipients are not modelled, and an
+        # unmodelled creation leaves its address undetermined.
+        unknown=set()
         for prior,_,_ in models[:i] if method=='trace_callMany' else []:
-            if prior['to'] and prior['value']:
+            exists.add(prior['sender'])
+            codes.setdefault(prior['sender'],'0x')
+            nonce=nonces.get(prior['sender'],0)
+            nonces[prior['sender']]=nonce+1
+            if prior['to'] is None:
+                address=created_address(prior['sender'],nonce)
+                runtime=deployed_code(prior['data'])
+                if runtime is None:
+                    unknown.add(address)
+                else:
+                    exists.add(address);codes[address]=runtime;nonces[address]=1
+            elif prior['value']:
                 exists.add(prior['to'])
+                codes.setdefault(prior['to'],'0x')
             if prior['price_cap']>block.get('base_fee',0) and block.get('miner'):
                 exists.add(block['miner'])
         if 'H18' in topics and tx['authorizations']:
@@ -201,6 +217,8 @@ def assess(case, observation, peers, topics):
             bad=[]
             for address,account in diff.items():
                 account=mapping(account)
+                if address.lower() in unknown:
+                    continue
                 if address.lower() in exists:
                     if any(isinstance(account.get(k),dict) and '+' in account[k] for k in ['balance','nonce','code']):
                         bad.append(address+': existing account has creation markers')

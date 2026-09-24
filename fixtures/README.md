@@ -19,3 +19,8 @@ trace differences. Reorg and pruning require scenario setup beyond an ordinary i
 `raw-validation` adds a two-block Prague chain for H13. Its public keys 1, 2 and 3,
 Go generator, isolated validation probes and reproduction commands are documented in
 [the H13 study](../docs/h13-validation.md#reproduction-and-controls).
+
+`mined-probes` is a six-block Prague chain of mined probes: own-block EIP-4788/2935
+reads, failed and self-destructing creations, SSTORE refunds, folded EIP-7702 tuples and
+a blob fee. Its public keys 1–4, Go generator, corpus builder and reproduction commands
+are documented in [the mined-probes study](../docs/mined-probes.md#reproduction).

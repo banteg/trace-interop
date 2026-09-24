@@ -1,0 +1,64 @@
+{
+  "trace-mined-probes": {
+    "authorities": {
+      "absent": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "existing": "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf",
+      "restoring": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718"
+    },
+    "authorizations": {
+      "block": "0x6",
+      "indexInBlock": 0,
+      "txhash": "0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9"
+    },
+    "beacon-root-read": {
+      "block": "0x2",
+      "indexInBlock": 0,
+      "txhash": "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36"
+    },
+    "blob-transfer": {
+      "block": "0x1",
+      "indexInBlock": 0,
+      "txhash": "0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089"
+    },
+    "create-destroy-absent": {
+      "block": "0x4",
+      "indexInBlock": 1,
+      "txhash": "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284"
+    },
+    "create-destroy-prefunded": {
+      "block": "0x4",
+      "indexInBlock": 2,
+      "txhash": "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b"
+    },
+    "create-revert": {
+      "block": "0x3",
+      "indexInBlock": 0,
+      "txhash": "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb"
+    },
+    "factory-create-revert": {
+      "block": "0x3",
+      "indexInBlock": 1,
+      "txhash": "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74"
+    },
+    "history-read": {
+      "block": "0x2",
+      "indexInBlock": 1,
+      "txhash": "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2"
+    },
+    "refund-capped": {
+      "block": "0x5",
+      "indexInBlock": 1,
+      "txhash": "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e"
+    },
+    "refund-clear": {
+      "block": "0x5",
+      "indexInBlock": 0,
+      "txhash": "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a"
+    },
+    "selfdestruct-self": {
+      "block": "0x4",
+      "indexInBlock": 0,
+      "txhash": "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2"
+    }
+  }
+}

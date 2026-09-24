@@ -429,7 +429,7 @@ def evaluate(case, observation, peers, invalid_params=None):
               'The fixture REVERT frame preserves its exact return bytes and opcode gas, regardless of error wording.',
               f'Expected output {expected_output}, gasUsed {expected_gas}; derived from frozen bytecode.')
     calls = params[:1] if method == 'trace_call' else [p[0] for p in params[0] if isinstance(p,list) and p] if method == 'trace_callMany' and params and isinstance(params[0],list) else []
-    if any(mapping(call).get('gasPrice') == '0x0' for call in calls):
+    if not case.get('fee_policy') and any(mapping(call).get('gasPrice') == '0x0' for call in calls):
         ok = status == 'result' and not embedded_error(response) and (isinstance(result,dict) if method == 'trace_call' else isinstance(result,list) and len(result) == len(calls))
         check('H15', ok, 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
     contracts=context.get('contracts',{})

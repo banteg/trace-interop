@@ -11,6 +11,7 @@ from .chain_model import decode_transaction
 import rlp
 from eth_hash.auto import keccak
 from .execution_models import assess as assess_execution, empty_execution_indexes
+from .fee_policy import assess as assess_fee_policy
 
 
 def obj(value):
@@ -68,6 +69,7 @@ def supplement(case, observation, peers, checks, expected):
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'blocked', f'Cannot inspect this property: {status}.')
         return checks
+    checks.extend(assess_fee_policy(case, observation))
     if method == 'trace_rawTransaction' and len(params)>2:
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.')

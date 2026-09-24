@@ -43,7 +43,7 @@ outer envelope's ID and closing brace. Other affected cases include insufficient
 funds and a later call becoming invalid in a sequential batch. These failures
 occur with all eight trace selections in the development build.
 
-The [development log](../evidence/2026-09-24/current-matrix/fee-policy/hive/nethermind_development/client-f81f721dc18c9bed67e9fdbf4df01b4e9ae4b729bc7d2dea80935759d5b5f66a.log#L603)
+The [development log](../evidence/2026-09-24/current-matrix/fee-policy/hive/nethermind_development/client-f81f721dc18c9bed67e9fdbf4df01b4e9ae4b729bc7d2dea80935759d5b5f66a.log.gz) (line 603)
 records the rejected fee/funding condition, followed by a stack through trace
 execution, `StreamingResultBase.WriteJsonToAsync`,
 `JsonRpcResponseWriter.WriteStreamableAsync` and the HTTP response sink.

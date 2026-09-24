@@ -22,20 +22,20 @@ Pruned-index classification is unit-tested; the full pruning capture remains Ret
 
 ## Regression and repository checks
 
-The [final regression tests on the old head](validation/geth-contract-before-final.log)
+The [final regression tests on the old head](validation/geth-contract-before-final.log.gz)
 fail for all eight targeted groups. A Go overlay supplied the new tests without editing
 the old checkout. The fixed source passed [32 namespace tests/subtests](validation/geth-contract-tests.json)
-and the [race-enabled namespace suite](validation/geth-contract-race.log).
+and the [race-enabled namespace suite](validation/geth-contract-race.log.gz).
 
 The same file hashes were verified between the tested checkout and committed source.
 Required checks passed with Go 1.26.1:
 
-- `make all`: [build log](validation/geth-contract-build.log).
+- `make all`: [build log](validation/geth-contract-build.log.gz).
 - `go run ./build/ci.go test`, without `-short`, including execution-spec fixtures and
-  the keeper module: [full log](validation/geth-contract-full-v2.log).
-- `go run ./build/ci.go lint`: [lint log](validation/geth-contract-lint.log).
-- `go run ./build/ci.go check_generate`: [generated code and tidy log](validation/geth-contract-generate.log).
-- `go run ./build/ci.go check_baddeps`: [dependency log](validation/geth-contract-deps.log).
+  the keeper module: [full log](validation/geth-contract-full-v2.log.gz).
+- `go run ./build/ci.go lint`: [lint log](validation/geth-contract-lint.log.gz).
+- `go run ./build/ci.go check_generate`: [generated code and tidy log](validation/geth-contract-generate.log.gz).
+- `go run ./build/ci.go check_baddeps`: [dependency log](validation/geth-contract-deps.log.gz).
 - Modified Go files were formatted with `gofmt` and `goimports`.
 
 The full suite used an isolated network namespace to avoid test-port collisions.

@@ -24,7 +24,7 @@ canonical-head control within the scenario timeout. Twenty exchanges are missing
 all three builds' reorg observations remain blocked. No earlier passing run fills
 these gaps. Both Reth pruning captures completed.
 
-The [reorg summary](reorg-safe/summary.json) and [original logs](reorg-safe/runner.log)
+The [reorg summary](reorg-safe/summary.json) and [original logs](reorg-safe/runner.log.gz)
 retain the setup evidence. Reports contain 11,361 assessment records, including the
 missing exchanges; capture completeness is separate from policy agreement.
 

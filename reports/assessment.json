@@ -19,10 +19,10 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 8768,
+    "assessed": 8766,
     "blocked": 260,
     "control": 9,
-    "partial": 569,
+    "partial": 571,
     "unassessed": 0
   },
   "evidence": {
@@ -47,9 +47,9 @@
     "../evidence/2026-09-24/current-matrix/preflight.json": "3b69834560493164f54a4272a0bbbac47cbca3bc47018dae4934bb10464d18c6"
   },
   "sources": {
-    "decisions/impact.json": "1149bb9fca5cd003db36f500f2e71b7b068c69228c1dfc56c059d3536a42c56c",
-    "decisions/ledger.json": "422ae26b1e88ddbd4d6ffd25c7cc29d89599fe740580cf33a6d2632a33e16992",
-    "decisions/sources.json": "5a1b061dcd02addc765284499c21ad5385c808fed32c3583445fbaeaebfcc03d",
+    "decisions/impact.json": "966a377055abff77b3c68436c749170fc3961cffb26f6112136a550e5c3f1b09",
+    "decisions/ledger.json": "2c700e21caa8aebe8919a60cb32cec0df4b68ccba80624f762daa4e4bcd19d23",
+    "decisions/sources.json": "e40f6f461f50c15bfa6628095619a651a2a00a07f1ce31d7193d12bb8f493ccc",
     "decisions/status.json": "60da384a4daf466d17732272d1d5017f1201f41a6c3619ab3a9f0785b1393774",
     "fixtures/checksums.json": "9a56bf4c4dd34b3c979ccb1599c2fcada264dc8efe9f28de194af6b881ce7efb",
     "locks/source-revisions.json": "00fb8b62fe3f738c380307f0b46c72e86904a80c5ca82776c7d77e56a5543769",
@@ -58,8 +58,8 @@
     "scripts/run_matrix.py": "77bbc29099c39635aa40e7d3ba09b0dbee9f4803ed6fae0bc1ae7d09cb62283d",
     "spec.lock.json": "eb55b6abd35b9ee3e572b945535536fb09e94b8e7185990c4b4f2252cc50de13",
     "trace_interop/chain_model.py": "392a57171f81d5b905248d1b36351ac13f6c903a0ea6fa1af7e12527f58612f6",
-    "trace_interop/coverage.py": "6d150e4ce044592a647d93c1f4bddd1158fafe1c3614b9511c044121931a44af",
-    "trace_interop/execution_models.py": "4b8a31aba948e7743082012ec7d3af06daa823f6a566e3440823f00530a56ce2",
+    "trace_interop/coverage.py": "7a53c3fe33111139cf74d6c9a32005aedea42f3f1c830b3dcc7c9564c26218b3",
+    "trace_interop/execution_models.py": "d9ec2aeae98efcc47edfd80a72e24e5ec59255a5db3aaf44b6b35185be0c2dd5",
     "trace_interop/fee_policy.py": "1214a42a8b81d0db8e6ac96e091b3ba51d03e6f4b8ef142f2c98fa8df8d48b58",
     "trace_interop/inventory.py": "ac33d44a4ddb552ed0764aad950f56c8fecb6224ccecaa76f5c9c35cfd7d2729",
     "trace_interop/oracles.py": "831a2a3a9a156fcd2430cf881dc26c63ae825f432dc12f39a01c4e9011b26ef3",

@@ -2194,7 +2194,7 @@
     "version": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25"
   },
   {
-    "assessment": "assessed",
+    "assessment": "partial",
     "build_id": "sha256:0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d",
     "capture_eligible": true,
     "captured_at": "2026-09-24T11:08:05.063923+00:00",
@@ -2231,9 +2231,9 @@
         "topic": "H16"
       },
       {
-        "detail": "",
-        "requirement": "The declared state-diff fixture returns the requested account changes.",
-        "status": "change_needed",
+        "detail": "No state-diff object was returned; account markers cannot be assessed.",
+        "requirement": "Inspect account-existence markers in the requested state diff.",
+        "status": "blocked",
         "topic": "H17"
       }
     ],
@@ -5152,7 +5152,7 @@
     "version": "besu/v26.8.1/linux-x86_64/openjdk-java-25"
   },
   {
-    "assessment": "assessed",
+    "assessment": "partial",
     "build_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
     "capture_eligible": true,
     "captured_at": "2026-09-24T11:08:05.063923+00:00",
@@ -5189,9 +5189,9 @@
         "topic": "H16"
       },
       {
-        "detail": "",
-        "requirement": "The declared state-diff fixture returns the requested account changes.",
-        "status": "change_needed",
+        "detail": "No state-diff object was returned; account markers cannot be assessed.",
+        "requirement": "Inspect account-existence markers in the requested state diff.",
+        "status": "blocked",
         "topic": "H17"
       }
     ],
@@ -145091,7 +145091,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145180,7 +145180,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145269,7 +145269,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145358,7 +145358,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145447,7 +145447,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145536,7 +145536,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145625,7 +145625,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -145869,7 +145869,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146334,7 +146334,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146423,7 +146423,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146512,7 +146512,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146601,7 +146601,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146690,7 +146690,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146779,7 +146779,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -146868,7 +146868,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147112,7 +147112,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147577,7 +147577,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147666,7 +147666,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147755,7 +147755,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147844,7 +147844,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -147933,7 +147933,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -148022,7 +148022,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -148111,7 +148111,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -148355,8 +148355,8 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
-        "status": "change_needed",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
+        "status": "matches",
         "topic": "H17"
       }
     ],
@@ -148820,7 +148820,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -148909,7 +148909,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -148998,7 +148998,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -149087,7 +149087,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -149176,7 +149176,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -149265,7 +149265,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -149354,7 +149354,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -149598,8 +149598,8 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
-        "status": "change_needed",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
+        "status": "matches",
         "topic": "H17"
       }
     ],
@@ -150063,7 +150063,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150152,7 +150152,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150241,7 +150241,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150330,7 +150330,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150419,7 +150419,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150508,7 +150508,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150597,7 +150597,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150781,7 +150781,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -150882,7 +150882,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -151341,7 +151341,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -151435,7 +151435,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -151529,7 +151529,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -151623,7 +151623,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -151717,7 +151717,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -151811,7 +151811,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -151905,7 +151905,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -152103,7 +152103,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -152209,7 +152209,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -152679,7 +152679,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -152773,7 +152773,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -152867,7 +152867,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -152961,7 +152961,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -153055,7 +153055,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -153149,7 +153149,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -153243,7 +153243,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "change_needed",
         "topic": "H17"
       }
@@ -153441,7 +153441,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -153547,7 +153547,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154017,7 +154017,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154106,7 +154106,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154195,7 +154195,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154284,7 +154284,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154373,7 +154373,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154462,7 +154462,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154551,7 +154551,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -154740,8 +154740,8 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
-        "status": "change_needed",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
+        "status": "matches",
         "topic": "H17"
       }
     ],
@@ -154841,7 +154841,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155306,7 +155306,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155395,7 +155395,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155484,7 +155484,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155573,7 +155573,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155662,7 +155662,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155751,7 +155751,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -155840,7 +155840,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }
@@ -156029,8 +156029,8 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
-        "status": "change_needed",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
+        "status": "matches",
         "topic": "H17"
       }
     ],
@@ -156130,7 +156130,7 @@
       },
       {
         "detail": "",
-        "requirement": "A new contract has creation markers for nonce one, deployed code and balance, including empty values.",
+        "requirement": "A new contract has creation markers for nonce one, returned runtime and balance, including empty values.",
         "status": "matches",
         "topic": "H17"
       }

@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Reject a signed transaction that fails execution validity at the selected state before EVM execution. The declared state-diff fixture returns the requested account changes. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Proposed transaction-validation error code: -32003 (Transaction rejected). Assess the declared property.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words use minimal hex quantities at every depth. Reject a signed transaction that fails execution validity at the selected state before EVM execution. The declared state-diff fixture returns the requested account changes. Inspect account-existence markers in the requested state diff. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee. Proposed transaction-validation error code: -32003 (Transaction rejected). Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -38,14 +38,14 @@
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution. Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.
 - [H16](../../decisions/H16.md): The declared state-diff fixture returns the requested account changes.
-- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
+- [H17](../../decisions/H17.md): Inspect account-existence markers in the requested state diff. No state-diff object was returned; account markers cannot be assessed.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution. Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.
 - [H16](../../decisions/H16.md): The declared state-diff fixture returns the requested account changes.
-- [H17](../../decisions/H17.md): The declared state-diff fixture returns the requested account changes.
+- [H17](../../decisions/H17.md): Inspect account-existence markers in the requested state diff. No state-diff object was returned; account markers cannot be assessed.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x0000000000000000000000000000000000001234', 'value': '0x1'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
 **Erigon · 3.8.0-dev · e26d9bd4** (`3.8.0-dev-e26d9bd4`)

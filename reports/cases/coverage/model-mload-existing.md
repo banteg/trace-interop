@@ -2,7 +2,7 @@
 
 `trace_call` · coverage · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. A new contract has creation markers for nonce one, deployed code and balance, including empty values.
+**What this checks:** Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -71,7 +71,7 @@
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 4 (MLOAD) mem: expected None, got {'data': '0x000000000000000000000000000000000000000000000000000000000000002a', 'off': 0}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 4 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 4 (MLOAD) mem: expected None, got {'data': '0x000000000000000000000000000000000000000000000000000000000000002a', 'off': 0}
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
+- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
 - Result shape at `vmTrace`: {'code': '0x602a6000526000515060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 246819}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246816}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x0
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
@@ -81,7 +81,7 @@
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 4 (MLOAD) mem: expected None, got {'data': '0x000000000000000000000000000000000000000000000000000000000000002a', 'off': 0}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 4 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 4 (MLOAD) mem: expected None, got {'data': '0x000000000000000000000000000000000000000000000000000000000000002a', 'off': 0}
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
+- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
 - Result shape at `vmTrace`: {'code': '0x602a6000526000515060006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 246819}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246816}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x0
 
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)

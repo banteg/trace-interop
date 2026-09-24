@@ -22,7 +22,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | Unsigned simulation fees and block environment | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️❔ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | Fee accounting and sequential state diffs | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️✅ |
-| [H17](../reports/decisions/H17.md) | ⚪ Under review | New-account stateDiff encoding | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
+| [H17](../reports/decisions/H17.md) | ⚪ Under review | New-account stateDiff encoding | 🟡🟡⚠️⚠️— | 🟡🟡⚠️⚠️✅ |
 | [H18](../reports/decisions/H18.md) | ⚪ Under review | EIP-7702 code changes in stateDiff | 🟡✅✅⚠️— | 🟡✅✅⚠️✅ |
 | [H19](../reports/decisions/H19.md) | ⚪ Under review | vmTrace executing bytecode | 🟡🟡✅⚠️— | 🟡🟡✅⚠️✅ |
 | [H20](../reports/decisions/H20.md) | ⚪ Under review | vmTrace step timing and deltas | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |

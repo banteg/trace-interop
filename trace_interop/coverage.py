@@ -271,15 +271,20 @@ def supplement(case, observation, peers, checks, expected):
                 if model and model.get('environment'):
                     add('H15', obj(result).get('output') == output,
                         'GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.')
-                if model and model.get('creation') and not reverted:
+                if model and model.get('creation') and not reverted and isinstance(obj(result).get('stateDiff'), dict):
                     creations = [f for f in frames if f.get('type') == 'create' and f.get('traceAddress') == []]
                     nonce = context.get('model_nonce')
                     address = ('0x'+keccak(rlp.encode([bytes.fromhex(call['from'][2:]),nonce]))[-20:].hex()
                                if nonce is not None else obj(obj(creations[0]).get('result')).get('address') if creations else None)
                     account = obj(obj(result).get('stateDiff')).get(address)
+                    # H08/H15 compare runtime bytes against the independent EVM
+                    # model. H17 checks their account-existence encoding: a wrong
+                    # BASEFEE/GASLIMIT must not become a second marker failure.
+                    runtime = obj(result).get('output')
                     add('H17', isinstance(account, dict) and account.get('nonce') == {'+':'0x1'}
-                        and account.get('code') == {'+':output} and account.get('balance') == {'+':call.get('value','0x0')},
-                        'A new contract has creation markers for nonce one, deployed code and balance, including empty values.')
+                        and isinstance(runtime, str) and re.fullmatch(r'0x(?:[0-9a-fA-F]{2})*', runtime) is not None
+                        and account.get('code') == {'+':runtime} and account.get('balance') == {'+':call.get('value','0x0')},
+                        'A new contract has creation markers for nonce one, returned runtime and balance, including empty values.')
 
     model = case.get('transfer_model')
     if model:
@@ -307,10 +312,11 @@ def supplement(case, observation, peers, checks, expected):
                     and recipient.get('balance') == ({'+':hex(model['value'])} if i==0 else changed(i*model['value'],(i+1)*model['value'])),
                     f'Transfer {i}: exact 21000-gas debit, value credit, miner tip, base-fee burn and per-call nonce progression.',
                     f'Price={model["price"]}, baseFee={base}, gas=21000; expected debit={paid+model["value"]}, tip={tip}.')
-                add('H17', recipient.get('nonce') == ({'+':'0x0'} if i==0 else '=')
-                    and recipient.get('code') == ({'+':'0x'} if i==0 else '=')
-                    and recipient.get('storage') == {},
-                    f'Transfer {i}: new-account markers include zero nonce and empty code; the next call treats the account as existing.')
+                if isinstance(envelope.get('stateDiff'), dict):
+                    add('H17', recipient.get('nonce') == ({'+':'0x0'} if i==0 else '=')
+                        and recipient.get('code') == ({'+':'0x'} if i==0 else '=')
+                        and recipient.get('storage') == {},
+                        f'Transfer {i}: new-account markers include zero nonce and empty code; the next call treats the account as existing.')
 
     # For old broad examples without independently pinned pre/post state, retain
     # specific model gaps. Dedicated coverage fixtures carry exact state anchors.

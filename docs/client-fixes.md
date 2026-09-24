@@ -24,7 +24,6 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [Nethermind #13665](https://github.com/NethermindEth/nethermind/pull/13665) | Retain output in state-only Parity traces |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept empty Parity trace selections |
-| [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deleted account fields with deletion markers |
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve trace_get errors and bound positions |
 | [Nethermind #13677](https://github.com/NethermindEth/nethermind/pull/13677) | Reject trace filters with unavailable history |
 | [Nethermind #13750](https://github.com/NethermindEth/nethermind/pull/13750) | Encode buffered and streamed VM stack words as minimal quantities (H21) |
@@ -41,6 +40,7 @@ Related client, specification and test-suite PRs. Status checked **2026-09-24**.
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes in vmTrace |
 | [Erigon #24056](https://github.com/erigontech/erigon/pull/24056) | Read historical account and trace-call state at the requested block end (H28) |
+| [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deletion markers and empty-code birth markers (H17/H26); merged 2026-09-24 after the captured matrix |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return null for missing transaction replays |
 | [Reth #27365](https://github.com/paradigmxyz/reth/pull/27365) | Include transaction hash in individual replays |
 | [Reth #27366](https://github.com/paradigmxyz/reth/pull/27366) | Select trace_get results by tree path |

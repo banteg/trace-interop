@@ -157,7 +157,12 @@ def assess(case, observation, peers, topics):
         state_requested=isinstance(modes,list) and 'stateDiff' in modes
         for topic in sorted(topics & {'H16','H17'}) if state_requested else []:
             if not isinstance(diff,dict):
-                add(topic,False,'The declared state-diff fixture returns the requested account changes.')
+                if topic == 'H17':
+                    checks.append(dict(topic=topic,status='blocked',
+                        requirement='Inspect account-existence markers in the requested state diff.',
+                        detail='No state-diff object was returned; account markers cannot be assessed.'))
+                else:
+                    add(topic,False,'The declared state-diff fixture returns the requested account changes.')
         exists,codes=prestate(context,block,index)
         for prior,_,_ in models[:i] if method=='trace_callMany' else []:
             if prior['to'] and prior['value']:

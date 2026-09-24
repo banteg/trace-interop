@@ -332,6 +332,17 @@
         "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work. Explicit pending call simulations return NUMBER 49.",
         "change": "Accept resolvable mined-block tags for filter bounds. Decide pending filter support separately from its simulation behavior."
       }
+    },
+    "H17": {
+      "append_checked_requirements": false,
+      "nethermind": {
+        "observed": "A first transfer to an absent account adds balance and nonce but reports empty code as unchanged. Empty-runtime CREATE and a newly funded beneficiary have the same missing code-birth marker. StateProvider suppresses absent-to-empty code callbacks; see the [H17 audit](../../docs/h17-assessment-audit.md).",
+        "change": "Retest a build containing [PR #13668](https://github.com/NethermindEth/nethermind/pull/13668), merged after this capture. It reconstructs the empty-code birth marker from account existence. Keep existing prefunded accounts unchanged."
+      },
+      "reth": {
+        "observed": "A first transfer to an absent account reports balance as a change from zero and code/nonce as unchanged. revm-inspectors reserves added fields for contract creation. Simple contract-creation markers are correct, including when H15 environment bytes differ; see the [H17 audit](../../docs/h17-assessment-audit.md).",
+        "change": "Retain the original account-existence flag and use added fields for a newly funded account, including zero nonce and empty code. Keep existing prefunded accounts unchanged."
+      }
     }
   }
 }

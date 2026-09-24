@@ -2,7 +2,7 @@
 
 `trace_call` · coverage · [All reports](../../README.md)
 
-**What this checks:** Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks. Assess the declared property. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee. A new contract has creation markers for nonce one, deployed code and balance, including empty values.
+**What this checks:** Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks. Assess the declared property. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee. A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -95,7 +95,6 @@
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (GASPRICE) used: expected 246620, got 246622; step 0 (GASPRICE) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246617, got 246620; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
@@ -106,6 +105,5 @@
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (GASPRICE) used: expected 246620, got 246622; step 0 (GASPRICE) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 246617, got 246620; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 
 </details>

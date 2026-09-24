@@ -2,7 +2,7 @@
 
 `trace_call` · coverage · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee. A new contract has creation markers for nonce one, deployed code and balance, including empty values.
+**What this checks:** Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words use minimal hex quantities at every depth. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. The replay/raw root VM uses the frozen initcode or resolved one-hop execution code. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes. GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee. A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -46,7 +46,6 @@
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 12 pushed stack values disagree with the model; step 14 (MSTORE) mem: expected {'off': 128, 'data': '0x0000000000000000000000000000000000000000000000000000000005f5e100'}, got {'data': '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'off': 128}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 
 **Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
 
@@ -54,7 +53,6 @@
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 12 pushed stack values disagree with the model; step 14 (MSTORE) mem: expected {'off': 128, 'data': '0x0000000000000000000000000000000000000000000000000000000005f5e100'}, got {'data': '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'off': 128}
 - [H08](../../decisions/H08.md): Modelled execution returns exactly the independently computed bytes.
 - [H15](../../decisions/H15.md): GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, deployed code and balance, including empty values.
 
 **Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
 

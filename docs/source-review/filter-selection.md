@@ -29,7 +29,7 @@ Clients MUST NOT clamp the range…"*. Upstream geth follows it: `eth/filters/ap
 getLogs (OR/AND composition, latest/latest defaults), but it diverges on exactly the range-error
 contract that getLogs has just pinned down.
 
-Observed for `missing-block-filter` (evidence/2026-09-24/h15-call-compat/a/observations.json):
+Observed for `missing-block-filter` (evidence/2026-09-24/h15-call-compat/a/observations.json.gz):
 - Besu returns -32602. Its `FilterParameter.validateBlockRange` (FilterParameter.java:193-209)
   is shared with eth_getLogs, and it is exactly the #875 behaviour, yet the harness flags Besu
   as ⚠️ Differs.

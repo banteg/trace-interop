@@ -16,7 +16,7 @@ path. The source investigation below remains pinned to the original capture.
 
 ## Captured evidence
 
-Counts below use the immutable [fee-policy responses](../evidence/2026-09-24/current-matrix/fee-policy/observations.json)
+Counts below use the immutable [fee-policy responses](../evidence/2026-09-24/current-matrix/fee-policy/observations.json.gz)
 and the corresponding client logs. The number of malformed responses equals
 the number of unhandled `InvalidTransactionException` entries in each build's log.
 

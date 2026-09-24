@@ -2,7 +2,7 @@
 
 Sources read: Parity `55c90d40`; Besu main `07f0a4b2f8`; Erigon main `3b4861d1038` (the captured dev build is e26d9bd4); Nethermind master `ac02224f25` (from 09-22, so it predates #13668); revm-inspectors 0.43.0 (the version Reth locks, read from the cargo registry) and a fresh-main export; Geth draft `fa8ecb92`; pinned spec `b979aefe`.
 
-Evidence used: the active snapshot `evidence/2026-09-24/h15-call-compat/*/observations.json`.
+Evidence used: the active snapshot `evidence/2026-09-24/h15-call-compat/*/observations.json.gz`.
 
 Reproduce with `scripts/compare_responses.py`: `show <run dir> <case>` prints one case's stateDiff for every build, and `groups <evidence dir>` groups builds that return identical stateDiffs.
 

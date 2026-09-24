@@ -50,7 +50,7 @@ same (`eth/tracers/api.go:948-960`). So in geth, "omitted" is not a separate cat
 `maxPriorityFeePerGas`, `maxFeePerGas` each "Default: 0".
 
 **Our own paired capture shows eth_call is unanimous.** From
-`evidence/2026-09-24/h15-call-compat/fee-compat/observations.json` (words GASPRICE/BASEFEE decoded):
+`evidence/2026-09-24/h15-call-compat/fee-compat/observations.json.gz` (words GASPRICE/BASEFEE decoded):
 
 | Family | eth_call, 9/9 builds | trace_call (none selection) |
 |---|---|---|
@@ -282,7 +282,7 @@ runs items inside one EVM/tx context goes wrong.
   the oracle default to 0 (`call.get(..., '0x0')`), which is geth's rule, but only matters for `observe` families.
 
 **B2. Paired eth_call evidence corroborates the oracle**: all 9 eth_call builds return BF 0 for legacy-zero and
-typed-zero; the documented table in H15 matches `observations.json`.
+typed-zero; the documented table in H15 matches `observations.json.gz`.
 
 **B3. H13.** Corpus probes: below-basefee, code-sender, create-nonce-high/low, create-valid, delegated-sender-valid,
 execution-oog-valid, funds-gas, funds-value, intrinsic-gas, nonce-high/low, valid, wrong-chain. The rejection rule

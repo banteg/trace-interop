@@ -160,6 +160,26 @@ verification checks against the decompressed bytes. Runs captured earlier were c
 in place by `scripts/compress_logs.py`, which deletes an original only after its archive
 decompresses to the checksummed bytes.
 
+## Evidence retention
+
+`reports.lock.json` selects one matrix: `matrix` and its `runs` feed the reports and
+`trace-interop verify`, and `previous` names the single earlier matrix that
+[changes since the previous matrix](../reports/changes.md) compares against. Retained evidence is
+never rewritten while it stays in the repository. A superseded matrix or one-off capture that
+nothing references any more may be moved out of the repository (for example into a release
+archive, with its `checksums.json`); keep everything that the lock selects, that a Markdown link
+points into (docs, READMEs, reports or another capture's README), or that a tracked file such as a
+test, script or ledger entry names. To list the candidates without moving anything:
+
+```sh
+uv run python scripts/unreferenced_evidence.py          # lock, links and literal paths
+uv run python scripts/unreferenced_evidence.py --tests  # also evidence the unit tests open
+```
+
+A capture unit is `evidence/<date>/<name>`, or the whole date directory when it holds a capture's
+files itself; a link from a capture's own README does not count. Run `scripts/check.sh` after
+moving a unit.
+
 ## Change the draft
 
 Edit the execution-apis fork, run its build/tests, commit and push `feat/trace`, then:

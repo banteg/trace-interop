@@ -52,6 +52,11 @@ fees, block/state overrides and omitted/incomplete-field normalization remain
 outside this policy assertion. Signed validation stays in H13's separate corpus.
 These are proposed policy checks, not a claim of client-team agreement.
 
+The [Fedora capture](../evidence/2026-09-24/h15-fee-policy/README.md) retains all
+6,804 responses across nine pinned builds. Generic/internal/crash errors never
+prove validation; recognized errors must match the independent constraint and
+any reported batch position. Unrecognized diagnostic wording remains blocked.
+
 ## Reproduction
 
 ```sh

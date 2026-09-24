@@ -3,6 +3,8 @@
 No trace response supplies expected gas or balances. Tiny creation programs make
 upfront payment and prior-call settlement observable even without stateDiff.
 """
+import re
+
 from .execution_models import balance_delta, created_address, quantity
 from .vm_model import intrinsic
 
@@ -84,6 +86,27 @@ def expected_steps(case):
     return steps
 
 
+def first_invalid(case):
+    """Identify the first violated constraint without consulting any response."""
+    params = case['request']['params']
+    calls = [p[0] for p in params[0]] if case['request']['method']=='trace_callMany' else [params[0]]
+    balances = {SENDER:BALANCE}
+    base = case['context']['_environment']['BASEFEE']
+    for index, (call, program) in enumerate(zip(calls, case['fee_policy']['programs'], strict=True)):
+        cap = int(call.get('gasPrice', call.get('maxFeePerGas', '0x0')),16)
+        tip = int(call.get('gasPrice', call.get('maxPriorityFeePerGas', '0x0')),16)
+        value, limit = int(call.get('value','0x0'),16), int(call['gas'],16)
+        balance = balances.get(call['from'],0)
+        if tip>cap:
+            return index, 'priority'
+        if 0<cap<base:
+            return index, 'base_fee'
+        if balance<value+limit*cap:
+            return index, 'funds'
+        balances[call['from']] = balance-gas_used(program,limit)*min(cap,base+tip)-(0 if program in ['revert','out-of-gas'] else value)
+    raise ValueError('Rejection fixture has no independent violation: '+case['name'])
+
+
 def assess(case, observation):
     policy = case.get('fee_policy')
     if not policy:
@@ -101,9 +124,21 @@ def assess(case, observation):
     response = observation.get('response', {})
     if policy['admission'] == 'reject':
         error = response.get('error', {})
-        # Do not credit internal/parse/method-not-found errors as fee validation.
-        add(status == 'rpc_error' and error.get('code') in [-32000, -32003, -32602],
-            'Reject this independently invalid fee/funding request before execution.', policy['reason'])
+        index, violation = first_invalid(case)
+        if status != 'rpc_error':
+            add(False, 'Reject this independently invalid fee/funding request before execution.', policy['reason'])
+            return checks
+        message = str(error.get('message','')).lower()
+        kind = ('funds' if 'insufficient' in message and ('fund' in message or 'balance' in message) else
+                'base_fee' if 'base fee' in message or 'basefee' in message else
+                'priority' if ('priority' in message or 'tip' in message) and ('fee' in message or 'cap' in message) else None)
+        if error.get('code') not in [-32000,-32003,-32602] or kind is None:
+            return [dict(topic='H15',status='blocked',requirement='Identify a fee/funding validation rejection.',
+                         detail='A generic/internal/crash error does not prove validation: '+message)]
+        named_index = re.search(r'(?:call |txindex )(\d+)', message)
+        add(kind == violation and (named_index is None or int(named_index[1]) == index),
+            'Reject the independently invalid call for its fee/funding violation.',
+            f'Expected call {index}: {violation}; observed {kind}. '+policy['reason'])
         return checks
     result = response.get('result')
     envelopes = result if case['request']['method'] == 'trace_callMany' else [result]

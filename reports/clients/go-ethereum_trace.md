@@ -6,7 +6,7 @@ The experimental fork matches most evaluated semantic assertions, including sign
 
 | Build | Tested version | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| 🧪 Draft fork | `Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1` | [2026-09-23](https://github.com/banteg/go-ethereum/commit/c36ee43e3827331276d045bd56d1297e4c3c9b15) | [2026-09-23](../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json) |
+| 🧪 Draft fork | `Geth/v1.17.6-unstable-c36ee43e-2026-09-23/linux-amd64/go1.26.1` | [2026-09-23](https://github.com/banteg/go-ethereum/commit/c36ee43e3827331276d045bd56d1297e4c3c9b15) | [2026-09-23](../../evidence/2026-09-24/coverage-matrix/initial-clean/manifest.json)<br>[2026-09-24](../../evidence/2026-09-24/h15-fee-policy/h15-matrix/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -25,6 +25,8 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | 🧪 Draft fork | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 | 🧪 Draft fork | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: RPC error -32602. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter 0 to 2](../cases/h30/filter-0-to-2.md) |
 
+**🟡 Partially assessed:** some declared cases lack an evaluated assertion. [Unsigned simulation fees and block environment](../decisions/H15.md).
+
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
 | Behavior | Examples |
@@ -41,7 +43,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
 | [Signed transaction execution validity](../decisions/H13.md) | [Raw below basefee](../cases/a/raw-below-basefee.md) · [Raw insufficient funds](../cases/a/raw-insufficient-funds.md) |
 | [Invalid-parameter error codes](../decisions/H14.md) | [Call null mode](../cases/a/call-null-mode.md) · [Call scalar mode](../cases/a/call-scalar-mode.md) |
-| [Unsigned simulation fees and block environment](../decisions/H15.md) | [Model environment](../cases/coverage/model-environment.md) · [Model environment free](../cases/coverage/model-environment-free.md) |
 | [Fee accounting and sequential state diffs](../decisions/H16.md) | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
 | [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |

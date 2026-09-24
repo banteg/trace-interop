@@ -36,10 +36,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 2759 |
-| 🟡 Partial | 134 |
-| ⚪ Unassessed | 0 |
-| 🚧 Blocked | 8 |
+| 🔎 Assessed | 8090 |
+| 🟡 Partial | 1112 |
+| ⚪ Unassessed | 120 |
+| 🚧 Blocked | 275 |
 | 🔎 Control | 9 |
 
 
@@ -61,6 +61,10 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 7 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
+| H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 262 |
+| H15 | blocked | A generic/internal/crash error does not prove validation: method handler crashed | 5 |
+| H15 | blocked | Cannot inspect this property: malformed_json. | 406 |
+| H15 | unassessed | Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict. | 692 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H16 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
 | H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
@@ -146,6 +150,521 @@ These cases returned results that differ from the draft schema. The case pages r
 | [coverage/model-mload-expansion](cases/coverage/model-mload-expansion.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [coverage/model-return42](cases/coverage/model-return42.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [coverage/model-revert](cases/coverage/model-revert.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/defaults-cap-only-positive/call/stateDiff](cases/fee-policy/defaults-cap-only-positive/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/call/vmTrace](cases/fee-policy/defaults-cap-only-positive/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/many/stateDiff](cases/fee-policy/defaults-cap-only-positive/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-positive/many/vmTrace](cases/fee-policy/defaults-cap-only-positive/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/call/stateDiff](cases/fee-policy/defaults-cap-only-zero/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/call/vmTrace](cases/fee-policy/defaults-cap-only-zero/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/none](cases/fee-policy/defaults-cap-only-zero/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/stateDiff](cases/fee-policy/defaults-cap-only-zero/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/trace](cases/fee-policy/defaults-cap-only-zero/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/trace-stateDiff](cases/fee-policy/defaults-cap-only-zero/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-cap-only-zero/many/vmTrace](cases/fee-policy/defaults-cap-only-zero/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/call/stateDiff](cases/fee-policy/defaults-omitted/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/call/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/call/trace-vmTrace](cases/fee-policy/defaults-omitted/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/call/vmTrace](cases/fee-policy/defaults-omitted/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/many/stateDiff](cases/fee-policy/defaults-omitted/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/many/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/many/trace-vmTrace](cases/fee-policy/defaults-omitted/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-omitted/many/vmTrace](cases/fee-policy/defaults-omitted/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/none](cases/fee-policy/defaults-tip-only-positive/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/stateDiff](cases/fee-policy/defaults-tip-only-positive/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-positive/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/trace](cases/fee-policy/defaults-tip-only-positive/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/trace-stateDiff](cases/fee-policy/defaults-tip-only-positive/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-positive/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/trace-vmTrace](cases/fee-policy/defaults-tip-only-positive/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-positive/many/vmTrace](cases/fee-policy/defaults-tip-only-positive/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-zero/call/stateDiff](cases/fee-policy/defaults-tip-only-zero/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/call/vmTrace](cases/fee-policy/defaults-tip-only-zero/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/none](cases/fee-policy/defaults-tip-only-zero/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/stateDiff](cases/fee-policy/defaults-tip-only-zero/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/trace](cases/fee-policy/defaults-tip-only-zero/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/trace-stateDiff](cases/fee-policy/defaults-tip-only-zero/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/defaults-tip-only-zero/many/vmTrace](cases/fee-policy/defaults-tip-only-zero/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/call/stateDiff](cases/fee-policy/empty-sender-free/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/call/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/call/trace-vmTrace](cases/fee-policy/empty-sender-free/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/call/vmTrace](cases/fee-policy/empty-sender-free/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/many/none](cases/fee-policy/empty-sender-free/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-free/many/stateDiff](cases/fee-policy/empty-sender-free/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/many/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/many/trace](cases/fee-policy/empty-sender-free/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-free/many/trace-stateDiff](cases/fee-policy/empty-sender-free/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/many/trace-vmTrace](cases/fee-policy/empty-sender-free/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-free/many/vmTrace](cases/fee-policy/empty-sender-free/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/empty-sender-priced/many/none](cases/fee-policy/empty-sender-priced/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/stateDiff](cases/fee-policy/empty-sender-priced/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/stateDiff-vmTrace](cases/fee-policy/empty-sender-priced/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/trace](cases/fee-policy/empty-sender-priced/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/trace-stateDiff](cases/fee-policy/empty-sender-priced/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-priced/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/trace-vmTrace](cases/fee-policy/empty-sender-priced/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/empty-sender-priced/many/vmTrace](cases/fee-policy/empty-sender-priced/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-exact/call/stateDiff](cases/fee-policy/funding-free-exact/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/call/trace-vmTrace](cases/fee-policy/funding-free-exact/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/call/vmTrace](cases/fee-policy/funding-free-exact/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/many/none](cases/fee-policy/funding-free-exact/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-exact/many/stateDiff](cases/fee-policy/funding-free-exact/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/many/trace](cases/fee-policy/funding-free-exact/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-exact/many/trace-stateDiff](cases/fee-policy/funding-free-exact/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/many/trace-vmTrace](cases/fee-policy/funding-free-exact/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-exact/many/vmTrace](cases/fee-policy/funding-free-exact/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-free-short/many/none](cases/fee-policy/funding-free-short/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/stateDiff](cases/fee-policy/funding-free-short/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/stateDiff-vmTrace](cases/fee-policy/funding-free-short/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/trace](cases/fee-policy/funding-free-short/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/trace-stateDiff](cases/fee-policy/funding-free-short/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-short/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/trace-vmTrace](cases/fee-policy/funding-free-short/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-free-short/many/vmTrace](cases/fee-policy/funding-free-short/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-exact/call/stateDiff](cases/fee-policy/funding-legacy-exact/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/call/trace-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/call/vmTrace](cases/fee-policy/funding-legacy-exact/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/many/stateDiff](cases/fee-policy/funding-legacy-exact/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/many/trace-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-exact/many/vmTrace](cases/fee-policy/funding-legacy-exact/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-legacy-short/many/none](cases/fee-policy/funding-legacy-short/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/stateDiff](cases/fee-policy/funding-legacy-short/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/stateDiff-vmTrace](cases/fee-policy/funding-legacy-short/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/trace](cases/fee-policy/funding-legacy-short/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/trace-stateDiff](cases/fee-policy/funding-legacy-short/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-short/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/trace-vmTrace](cases/fee-policy/funding-legacy-short/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-legacy-short/many/vmTrace](cases/fee-policy/funding-legacy-short/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/none](cases/fee-policy/funding-typed-effective-only/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/stateDiff](cases/fee-policy/funding-typed-effective-only/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-effective-only/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/trace](cases/fee-policy/funding-typed-effective-only/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/trace-stateDiff](cases/fee-policy/funding-typed-effective-only/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-effective-only/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/trace-vmTrace](cases/fee-policy/funding-typed-effective-only/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-effective-only/many/vmTrace](cases/fee-policy/funding-typed-effective-only/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-exact/call/stateDiff](cases/fee-policy/funding-typed-exact/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/call/vmTrace](cases/fee-policy/funding-typed-exact/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/many/stateDiff](cases/fee-policy/funding-typed-exact/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-exact/many/vmTrace](cases/fee-policy/funding-typed-exact/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/call/stateDiff](cases/fee-policy/funding-typed-free-exact/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/call/vmTrace](cases/fee-policy/funding-typed-free-exact/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/none](cases/fee-policy/funding-typed-free-exact/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/stateDiff](cases/fee-policy/funding-typed-free-exact/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/trace](cases/fee-policy/funding-typed-free-exact/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/trace-stateDiff](cases/fee-policy/funding-typed-free-exact/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-exact/many/vmTrace](cases/fee-policy/funding-typed-free-exact/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/funding-typed-free-short/many/none](cases/fee-policy/funding-typed-free-short/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/stateDiff](cases/fee-policy/funding-typed-free-short/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-short/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/trace](cases/fee-policy/funding-typed-free-short/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/trace-stateDiff](cases/fee-policy/funding-typed-free-short/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-short/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/trace-vmTrace](cases/fee-policy/funding-typed-free-short/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-free-short/many/vmTrace](cases/fee-policy/funding-typed-free-short/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/none](cases/fee-policy/funding-typed-short/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/stateDiff](cases/fee-policy/funding-typed-short/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-short/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/trace](cases/fee-policy/funding-typed-short/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/trace-stateDiff](cases/fee-policy/funding-typed-short/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-short/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/trace-vmTrace](cases/fee-policy/funding-typed-short/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/funding-typed-short/many/vmTrace](cases/fee-policy/funding-typed-short/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-above-base/call/stateDiff](cases/fee-policy/legacy-above-base/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/call/trace-vmTrace](cases/fee-policy/legacy-above-base/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/call/vmTrace](cases/fee-policy/legacy-above-base/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/many/stateDiff](cases/fee-policy/legacy-above-base/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/many/trace-vmTrace](cases/fee-policy/legacy-above-base/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-above-base/many/vmTrace](cases/fee-policy/legacy-above-base/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/call/stateDiff](cases/fee-policy/legacy-at-base/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/call/trace-vmTrace](cases/fee-policy/legacy-at-base/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/call/vmTrace](cases/fee-policy/legacy-at-base/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/many/stateDiff](cases/fee-policy/legacy-at-base/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/many/trace-vmTrace](cases/fee-policy/legacy-at-base/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-at-base/many/vmTrace](cases/fee-policy/legacy-at-base/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-below-base/many/none](cases/fee-policy/legacy-below-base/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/stateDiff](cases/fee-policy/legacy-below-base/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-below-base/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/trace](cases/fee-policy/legacy-below-base/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/trace-stateDiff](cases/fee-policy/legacy-below-base/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-below-base/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/trace-vmTrace](cases/fee-policy/legacy-below-base/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-below-base/many/vmTrace](cases/fee-policy/legacy-below-base/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/none](cases/fee-policy/legacy-one/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/stateDiff](cases/fee-policy/legacy-one/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/stateDiff-vmTrace](cases/fee-policy/legacy-one/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/trace](cases/fee-policy/legacy-one/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/trace-stateDiff](cases/fee-policy/legacy-one/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-one/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/trace-vmTrace](cases/fee-policy/legacy-one/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-one/many/vmTrace](cases/fee-policy/legacy-one/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/stateDiff](cases/fee-policy/legacy-out-of-gas-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/stateDiff](cases/fee-policy/legacy-out-of-gas/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/call/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/trace](cases/fee-policy/legacy-out-of-gas/call/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/call/vmTrace](cases/fee-policy/legacy-out-of-gas/call/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/stateDiff](cases/fee-policy/legacy-out-of-gas/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/trace](cases/fee-policy/legacy-out-of-gas/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-out-of-gas/many/vmTrace](cases/fee-policy/legacy-out-of-gas/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-refund-then-observe/many/stateDiff](cases/fee-policy/legacy-refund-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund-then-observe/many/vmTrace](cases/fee-policy/legacy-refund-then-observe/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/call/stateDiff](cases/fee-policy/legacy-refund/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/call/stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/call/trace-vmTrace](cases/fee-policy/legacy-refund/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/call/vmTrace](cases/fee-policy/legacy-refund/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/many/stateDiff](cases/fee-policy/legacy-refund/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/many/trace-vmTrace](cases/fee-policy/legacy-refund/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-refund/many/vmTrace](cases/fee-policy/legacy-refund/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/stateDiff](cases/fee-policy/legacy-revert-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/trace](cases/fee-policy/legacy-revert-then-observe/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert-then-observe/many/vmTrace](cases/fee-policy/legacy-revert-then-observe/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/call/stateDiff](cases/fee-policy/legacy-revert/call/stateDiff.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/call/stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/stateDiff-vmTrace.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/call/trace](cases/fee-policy/legacy-revert/call/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/call/trace-stateDiff](cases/fee-policy/legacy-revert/call/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/call/trace-vmTrace](cases/fee-policy/legacy-revert/call/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/call/vmTrace](cases/fee-policy/legacy-revert/call/vmTrace.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/many/stateDiff](cases/fee-policy/legacy-revert/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-revert/many/trace](cases/fee-policy/legacy-revert/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/many/trace-stateDiff](cases/fee-policy/legacy-revert/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/many/trace-vmTrace](cases/fee-policy/legacy-revert/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/legacy-revert/many/vmTrace](cases/fee-policy/legacy-revert/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/call/stateDiff](cases/fee-policy/legacy-zero/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/call/stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/call/trace-vmTrace](cases/fee-policy/legacy-zero/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/call/vmTrace](cases/fee-policy/legacy-zero/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/many/none](cases/fee-policy/legacy-zero/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-zero/many/stateDiff](cases/fee-policy/legacy-zero/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/many/stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/many/trace](cases/fee-policy/legacy-zero/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-zero/many/trace-stateDiff](cases/fee-policy/legacy-zero/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/legacy-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/many/trace-vmTrace](cases/fee-policy/legacy-zero/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/legacy-zero/many/vmTrace](cases/fee-policy/legacy-zero/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/none](cases/fee-policy/mixed-legacy-free-priced-free/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/stateDiff](cases/fee-policy/mixed-legacy-free-priced-free/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-priced-free/many/vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/none](cases/fee-policy/mixed-legacy-free-then-invalid/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/stateDiff](cases/fee-policy/mixed-legacy-free-then-invalid/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-then-invalid/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/trace](cases/fee-policy/mixed-legacy-free-then-invalid/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/trace-stateDiff](cases/fee-policy/mixed-legacy-free-then-invalid/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-then-invalid/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/trace-vmTrace](cases/fee-policy/mixed-legacy-free-then-invalid/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-free-then-invalid/many/vmTrace](cases/fee-policy/mixed-legacy-free-then-invalid/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/none](cases/fee-policy/mixed-legacy-invalid-then-free/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/stateDiff](cases/fee-policy/mixed-legacy-invalid-then-free/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-invalid-then-free/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/trace](cases/fee-policy/mixed-legacy-invalid-then-free/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/trace-stateDiff](cases/fee-policy/mixed-legacy-invalid-then-free/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-invalid-then-free/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/trace-vmTrace](cases/fee-policy/mixed-legacy-invalid-then-free/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-invalid-then-free/many/vmTrace](cases/fee-policy/mixed-legacy-invalid-then-free/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/none](cases/fee-policy/mixed-legacy-priced-free-priced/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/stateDiff](cases/fee-policy/mixed-legacy-priced-free-priced/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/none](cases/fee-policy/mixed-legacy-selections/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/stateDiff](cases/fee-policy/mixed-legacy-selections/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/trace](cases/fee-policy/mixed-legacy-selections/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/trace-stateDiff](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/trace-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-legacy-selections/many/vmTrace](cases/fee-policy/mixed-legacy-selections/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/none](cases/fee-policy/mixed-typed-free-priced-free/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/stateDiff](cases/fee-policy/mixed-typed-free-priced-free/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/trace](cases/fee-policy/mixed-typed-free-priced-free/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff](cases/fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-priced-free/many/vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/none](cases/fee-policy/mixed-typed-free-then-invalid/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/stateDiff](cases/fee-policy/mixed-typed-free-then-invalid/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-then-invalid/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/trace](cases/fee-policy/mixed-typed-free-then-invalid/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/trace-stateDiff](cases/fee-policy/mixed-typed-free-then-invalid/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-then-invalid/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/trace-vmTrace](cases/fee-policy/mixed-typed-free-then-invalid/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-free-then-invalid/many/vmTrace](cases/fee-policy/mixed-typed-free-then-invalid/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/none](cases/fee-policy/mixed-typed-invalid-then-free/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/stateDiff](cases/fee-policy/mixed-typed-invalid-then-free/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-invalid-then-free/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/trace](cases/fee-policy/mixed-typed-invalid-then-free/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/trace-stateDiff](cases/fee-policy/mixed-typed-invalid-then-free/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-invalid-then-free/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/trace-vmTrace](cases/fee-policy/mixed-typed-invalid-then-free/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-invalid-then-free/many/vmTrace](cases/fee-policy/mixed-typed-invalid-then-free/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/none](cases/fee-policy/mixed-typed-priced-free-priced/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/stateDiff](cases/fee-policy/mixed-typed-priced-free-priced/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-selections/many/none](cases/fee-policy/mixed-typed-selections/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-selections/many/stateDiff](cases/fee-policy/mixed-typed-selections/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-selections/many/trace](cases/fee-policy/mixed-typed-selections/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-selections/many/trace-stateDiff](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/mixed-typed-selections/many/trace-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/mixed-typed-selections/many/vmTrace](cases/fee-policy/mixed-typed-selections/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/sequential-funding/many/none](cases/fee-policy/sequential-funding/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/stateDiff](cases/fee-policy/sequential-funding/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/stateDiff-vmTrace](cases/fee-policy/sequential-funding/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/trace](cases/fee-policy/sequential-funding/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/trace-stateDiff](cases/fee-policy/sequential-funding/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/trace-stateDiff-vmTrace](cases/fee-policy/sequential-funding/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/trace-vmTrace](cases/fee-policy/sequential-funding/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/sequential-funding/many/vmTrace](cases/fee-policy/sequential-funding/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-at-base/call/stateDiff](cases/fee-policy/typed-at-base/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/call/stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/call/trace-vmTrace](cases/fee-policy/typed-at-base/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/call/vmTrace](cases/fee-policy/typed-at-base/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/many/stateDiff](cases/fee-policy/typed-at-base/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/many/stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/many/trace-vmTrace](cases/fee-policy/typed-at-base/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-at-base/many/vmTrace](cases/fee-policy/typed-at-base/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/none](cases/fee-policy/typed-below-base-positive-tip/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/stateDiff](cases/fee-policy/typed-below-base-positive-tip/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-below-base-positive-tip/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/trace](cases/fee-policy/typed-below-base-positive-tip/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/trace-stateDiff](cases/fee-policy/typed-below-base-positive-tip/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-below-base-positive-tip/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/trace-vmTrace](cases/fee-policy/typed-below-base-positive-tip/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base-positive-tip/many/vmTrace](cases/fee-policy/typed-below-base-positive-tip/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/none](cases/fee-policy/typed-below-base/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/stateDiff](cases/fee-policy/typed-below-base/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/stateDiff-vmTrace](cases/fee-policy/typed-below-base/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/trace](cases/fee-policy/typed-below-base/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/trace-stateDiff](cases/fee-policy/typed-below-base/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-below-base/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/trace-vmTrace](cases/fee-policy/typed-below-base/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-below-base/many/vmTrace](cases/fee-policy/typed-below-base/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-cap-limited/call/stateDiff](cases/fee-policy/typed-cap-limited/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/call/trace-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/call/vmTrace](cases/fee-policy/typed-cap-limited/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/many/stateDiff](cases/fee-policy/typed-cap-limited/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/many/trace-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-cap-limited/many/vmTrace](cases/fee-policy/typed-cap-limited/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-one/many/none](cases/fee-policy/typed-one/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/stateDiff](cases/fee-policy/typed-one/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/stateDiff-vmTrace](cases/fee-policy/typed-one/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/trace](cases/fee-policy/typed-one/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/trace-stateDiff](cases/fee-policy/typed-one/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-one/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/trace-vmTrace](cases/fee-policy/typed-one/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-one/many/vmTrace](cases/fee-policy/typed-one/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/stateDiff](cases/fee-policy/typed-out-of-gas-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/stateDiff](cases/fee-policy/typed-out-of-gas/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/call/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-out-of-gas/call/trace](cases/fee-policy/typed-out-of-gas/call/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/trace-stateDiff](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/trace-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/call/vmTrace](cases/fee-policy/typed-out-of-gas/call/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-out-of-gas/many/stateDiff](cases/fee-policy/typed-out-of-gas/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/many/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-out-of-gas/many/trace](cases/fee-policy/typed-out-of-gas/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-out-of-gas/many/vmTrace](cases/fee-policy/typed-out-of-gas/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-refund-then-observe/many/stateDiff](cases/fee-policy/typed-refund-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund-then-observe/many/trace-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund-then-observe/many/vmTrace](cases/fee-policy/typed-refund-then-observe/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/call/stateDiff](cases/fee-policy/typed-refund/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/call/stateDiff-vmTrace](cases/fee-policy/typed-refund/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/call/trace-vmTrace](cases/fee-policy/typed-refund/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/call/vmTrace](cases/fee-policy/typed-refund/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/many/stateDiff](cases/fee-policy/typed-refund/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/many/stateDiff-vmTrace](cases/fee-policy/typed-refund/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/many/trace-vmTrace](cases/fee-policy/typed-refund/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-refund/many/vmTrace](cases/fee-policy/typed-refund/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/stateDiff](cases/fee-policy/typed-revert-then-observe/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/trace](cases/fee-policy/typed-revert-then-observe/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/trace-stateDiff](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/trace-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert-then-observe/many/vmTrace](cases/fee-policy/typed-revert-then-observe/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/call/stateDiff](cases/fee-policy/typed-revert/call/stateDiff.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/call/stateDiff-vmTrace](cases/fee-policy/typed-revert/call/stateDiff-vmTrace.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/call/trace](cases/fee-policy/typed-revert/call/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/call/trace-stateDiff](cases/fee-policy/typed-revert/call/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/call/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/call/trace-vmTrace](cases/fee-policy/typed-revert/call/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/call/vmTrace](cases/fee-policy/typed-revert/call/vmTrace.md) | Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/many/stateDiff](cases/fee-policy/typed-revert/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/many/stateDiff-vmTrace](cases/fee-policy/typed-revert/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-revert/many/trace](cases/fee-policy/typed-revert/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/many/trace-stateDiff](cases/fee-policy/typed-revert/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/many/trace-vmTrace](cases/fee-policy/typed-revert/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Erigon 🛠️ Development, Erigon 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release, Reth 🛠️ Development, Reth 📦 Release |
+| [fee-policy/typed-revert/many/vmTrace](cases/fee-policy/typed-revert/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/call/stateDiff](cases/fee-policy/typed-tip-equals-cap/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/call/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/call/vmTrace](cases/fee-policy/typed-tip-equals-cap/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/many/stateDiff](cases/fee-policy/typed-tip-equals-cap/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/many/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-equals-cap/many/vmTrace](cases/fee-policy/typed-tip-equals-cap/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/call/stateDiff](cases/fee-policy/typed-tip-limited/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/call/trace-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/call/vmTrace](cases/fee-policy/typed-tip-limited/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/many/stateDiff](cases/fee-policy/typed-tip-limited/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/many/trace-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-limited/many/vmTrace](cases/fee-policy/typed-tip-limited/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/none](cases/fee-policy/typed-tip-over-cap/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/stateDiff](cases/fee-policy/typed-tip-over-cap/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-over-cap/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/trace](cases/fee-policy/typed-tip-over-cap/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/trace-stateDiff](cases/fee-policy/typed-tip-over-cap/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-over-cap/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/trace-vmTrace](cases/fee-policy/typed-tip-over-cap/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-tip-over-cap/many/vmTrace](cases/fee-policy/typed-tip-over-cap/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/none](cases/fee-policy/typed-zero-cap-positive-tip/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/stateDiff](cases/fee-policy/typed-zero-cap-positive-tip/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/trace](cases/fee-policy/typed-zero-cap-positive-tip/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/trace-stateDiff](cases/fee-policy/typed-zero-cap-positive-tip/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/trace-vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-cap-positive-tip/many/vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero-tip/call/stateDiff](cases/fee-policy/typed-zero-tip/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/call/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/call/trace-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/call/vmTrace](cases/fee-policy/typed-zero-tip/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/many/stateDiff](cases/fee-policy/typed-zero-tip/many/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/many/trace-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero-tip/many/vmTrace](cases/fee-policy/typed-zero-tip/many/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/call/stateDiff](cases/fee-policy/typed-zero/call/stateDiff.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/call/stateDiff-vmTrace](cases/fee-policy/typed-zero/call/stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/call/trace-vmTrace](cases/fee-policy/typed-zero/call/trace-vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/call/vmTrace](cases/fee-policy/typed-zero/call/vmTrace.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/many/none](cases/fee-policy/typed-zero/many/none.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero/many/stateDiff](cases/fee-policy/typed-zero/many/stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/many/stateDiff-vmTrace](cases/fee-policy/typed-zero/many/stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/many/trace](cases/fee-policy/typed-zero/many/trace.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero/many/trace-stateDiff](cases/fee-policy/typed-zero/many/trace-stateDiff.md) | Besu 🛠️ Development, Besu 📦 Release |
+| [fee-policy/typed-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/many/trace-stateDiff-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/many/trace-vmTrace](cases/fee-policy/typed-zero/many/trace-vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
+| [fee-policy/typed-zero/many/vmTrace](cases/fee-policy/typed-zero/many/vmTrace.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [fork-followup/_reference/block/0x33](cases/fork-followup/_reference/block/0x33.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [fork-followup/_reference/block/0x34](cases/fork-followup/_reference/block/0x34.md) | Nethermind 🛠️ Development, Nethermind 📦 Release |
 | [fork-followup/_reference/block/0x35](cases/fork-followup/_reference/block/0x35.md) | Besu 🛠️ Development, Besu 📦 Release, Nethermind 🛠️ Development, Nethermind 📦 Release |
@@ -332,3 +851,4 @@ Capture completeness records whether requests finished, not whether their result
 | [h30](../evidence/2026-09-24/coverage-matrix/h30/manifest.json) | h30 | ✅ Yes |
 | [reorg-safe](../evidence/2026-09-24/coverage-matrix/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-09-24/coverage-matrix/pruned/manifest.json) | pruned | ✅ Yes |
+| [h15-matrix](../evidence/2026-09-24/h15-fee-policy/h15-matrix/manifest.json) | fee-policy | ✅ Yes |

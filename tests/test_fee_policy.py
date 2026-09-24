@@ -41,6 +41,28 @@ class FeePolicyTests(unittest.TestCase):
         self.assertEqual(gas_used('refund'), (53182+22218)*4//5)
         self.assertEqual(gas_used('out-of-gas'), GAS)
 
+    def test_admission_labels_have_exact_independent_fee_and_funding_boundaries(self):
+        used = {'environment':98623, 'refund':60320, 'revert':53156, 'out-of-gas':200000, 'transfer':21000}
+        for original in self.corpus['cases']:
+            policy = original.get('fee_policy', {})
+            if policy.get('admission') not in ['accept','reject']:
+                continue
+            params = original['request']['params']
+            calls = [p[0] for p in params[0]] if original['request']['method']=='trace_callMany' else [params[0]]
+            balances = {SENDER:BALANCE}
+            invalid = False
+            for call, program in zip(calls, policy['programs'], strict=True):
+                cap = int(call.get('gasPrice',call.get('maxFeePerGas')),16)
+                tip = int(call.get('gasPrice',call.get('maxPriorityFeePerGas')),16)
+                value, gas = int(call['value'],16), int(call['gas'],16)
+                balance = balances.get(call['from'],0)
+                if tip>cap or 0<cap<765625000 or balance<value+gas*cap:
+                    invalid = True
+                    break
+                spent = used[program]*min(cap,765625000+tip)
+                balances[call['from']] = balance-spent-(0 if program in ['revert','out-of-gas'] else value)
+            self.assertEqual(invalid,policy['admission']=='reject',original['name'])
+
     def test_upfront_and_final_accounting_have_different_gas_basis(self):
         case = self.case('typed-tip-limited/call/stateDiff')
         step = expected_steps(case)[0]
@@ -87,12 +109,29 @@ class FeePolicyTests(unittest.TestCase):
         self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['matches'])
         for code in [-32603,-32601,-32700]:
             observation['response']['error']['code']=code
-            self.assertEqual(assess(case,observation)[0]['status'],'change_needed')
+            self.assertEqual(assess(case,observation)[0]['status'],'blocked')
         self.assertEqual(assess(case,self.response({'output':'0x'}))[0]['status'],'change_needed')
+
+    def test_crashes_and_rejection_for_wrong_reason_never_prove_validation(self):
+        case = self.case('funding-free-short/call/none')
+        for message, expected in [('method handler crashed','blocked'),('backend unavailable','blocked'),
+                                  ('fee cap less than block base fee','change_needed')]:
+            obs=dict(status='rpc_error',response={'error':{'code':-32000,'message':message}})
+            self.assertEqual(assess(case,obs)[0]['status'],expected)
+        case = self.case('mixed-legacy-free-then-invalid/many/trace')
+        for index, expected in [(0,'change_needed'),(1,'matches')]:
+            obs=dict(status='rpc_error',response={'error':{'code':-32000,'message':f'first run for txIndex {index} error: fee cap less than block base fee'}})
+            self.assertEqual(assess(case,obs)[0]['status'],expected)
 
     def test_unresolved_defaults_do_not_receive_policy_passes(self):
         case=self.case('defaults-omitted/call/none')
         self.assertEqual(assess(case,self.response({'output':'0x'}))[0]['status'],'unassessed')
+
+    def test_rejected_batches_are_not_misclassified_as_missing_execution_envelopes(self):
+        obs=dict(status='rpc_error',response={'error':{'code':-32003,'message':'max fee per gas less than block base fee'}})
+        for name in ['typed-below-base/many/trace','defaults-tip-only-positive/many/none']:
+            checks=evaluate(self.case(name),obs,{})
+            self.assertFalse(any(c['topic']=='H16' for c in checks))
 
     def test_refund_revert_and_oog_settlement_reaches_next_call(self):
         for program, used, sent in [('refund',60320,7),('revert',53156,0),('out-of-gas',200000,0)]:

@@ -148,16 +148,20 @@
     },
     "H15": {
       "besu": {
-        "observed": "Zero-fee unsigned simulations fail; callMany can wrap that failure inside result.",
-        "change": "Allow zero-fee `trace_call` simulations while retaining the selected block\u2019s `BASEFEE` opcode value."
+        "observed": "Explicit zero-fee calls fail. Priced environment and fee-accounting probes match; invalid fee/funding requests produce generic internal errors, sometimes wrapped inside result.",
+        "change": "Allow explicit zero fees while preserving BASEFEE in both simulation methods; return identifiable validation errors for underpriced or underfunded calls."
       },
       "erigon": {
-        "observed": "Explicit zero-fee unsigned calls are rejected.",
-        "change": "Allow zero-fee unsigned simulation without changing the block\u2019s `BASEFEE` opcode value."
+        "observed": "Legacy zero is rejected and typed zero is repriced to the base fee. Priced calls skip sender gas debits but credit tips; funding and environment probes differ.",
+        "change": "Preserve explicit zero fees and the selected block environment. Enforce funding for priced calls and simulate sender payment, refunds and beneficiary tips consistently across trace selections."
       },
       "nethermind": {
-        "observed": "The empty-selection call fails; the other checked zero-fee calls do not.",
-        "change": "Resolve the empty-selection error (H11). These results do not establish a general zero-fee admission bug."
+        "observed": "Observable execution matches the fee/accounting model. Empty selections fail, stateDiff-only loses output, and many invalid requests produce malformed JSON.",
+        "change": "Resolve empty selections and preserve output independently of trace components. Return complete validation errors; these results do not establish a general fee-accounting bug."
+      },
+      "reth": {
+        "observed": "Zero fees rewrite BASEFEE. Positive underpriced legacy calls execute; underpriced typed caps are rejected. Priced calls omit gas charging and funding probes can execute.",
+        "change": "Preserve BASEFEE for explicit zero fees. Reject positive legacy prices below base fee, enforce applicable funding, and simulate payment/refunds/tips so execution and later calls observe them."
       }
     },
     "H20": {

@@ -12,6 +12,7 @@
     "evidence/2026-09-24/coverage-matrix/callmany-isolation",
     "evidence/2026-09-24/coverage-matrix/h30",
     "evidence/2026-09-24/coverage-matrix/reorg-safe",
-    "evidence/2026-09-24/coverage-matrix/pruned"
+    "evidence/2026-09-24/coverage-matrix/pruned",
+    "evidence/2026-09-24/h15-fee-policy/h15-matrix"
   ]
 }

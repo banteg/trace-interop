@@ -19,11 +19,11 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 2759,
-    "blocked": 8,
+    "assessed": 8090,
+    "blocked": 275,
     "control": 9,
-    "partial": 134,
-    "unassessed": 0
+    "partial": 1112,
+    "unassessed": 120
   },
   "evidence": {
     "../evidence/2026-09-24/coverage-matrix/a/manifest.json": "21e98bfccc378811d149bd41e1ef5e70fefa00ac176d7fc74c5b0d9509100602",
@@ -38,27 +38,28 @@
     "../evidence/2026-09-24/coverage-matrix/pruned/manifest.json": "9935649bc11ed7c617eda4f0e067169785e7ef469c3f1a7a5bba6d198412e63a",
     "../evidence/2026-09-24/coverage-matrix/raw-validation/manifest.json": "4143f047f210334c4fda869ef9f45f1ea85895769094685883f26f8dc847f8d2",
     "../evidence/2026-09-24/coverage-matrix/reorg-safe/manifest.json": "8111e79e44b12d15ba8a002e4b0fee4629d15c9065e298a3d78ad94ae8bf8c94",
-    "../evidence/2026-09-24/coverage-matrix/repeat/manifest.json": "c48df013f678edc1391291216538883cb7ff545f982a72db4acc8e142275a6bb"
+    "../evidence/2026-09-24/coverage-matrix/repeat/manifest.json": "c48df013f678edc1391291216538883cb7ff545f982a72db4acc8e142275a6bb",
+    "../evidence/2026-09-24/h15-fee-policy/h15-matrix/manifest.json": "1e7baa0d61818779597e82958738904f2f6fd84e0b3040e209b4a7afe791ee4d"
   },
   "sources": {
-    "decisions/impact.json": "33aeb348f5cb1dfa68c6fe89919956ff7f04c70d6defbe3d832a886ea94e727f",
-    "decisions/ledger.json": "893ffbfef9a2c82a00c437d54f98a5db5b540857a45c74d48ecdfcccf5f9f2c3",
+    "decisions/impact.json": "e46cba89045e38afffac18a4f9db01fe743f130ccc5bcf79a273348979e0ca3c",
+    "decisions/ledger.json": "cb722050abf42bf96c87cbb8487467d5fdb14d07c1cd10963f42a5b6d160a0f8",
     "decisions/sources.json": "cc0a1029c6f516fa88b567c7ce58783834bb13f03a2d3e8d128b327c618149bb",
     "decisions/status.json": "60da384a4daf466d17732272d1d5017f1201f41a6c3619ab3a9f0785b1393774",
     "fixtures/checksums.json": "9a56bf4c4dd34b3c979ccb1599c2fcada264dc8efe9f28de194af6b881ce7efb",
     "locks/source-revisions.json": "809f7b2149cb49395292947bf6dd82923f3f8e9eaa57c7aacf0bba1ed1c1e7f2",
     "pyproject.toml": "d11a3d19c2a0f2679369a28cec1800603f26b645ce5e73453532c5a8ed746146",
-    "reports.lock.json": "9df33ee62e3af0811538d3a3208fa8d495195b6824df0d701344c9c1e8cf7b4e",
+    "reports.lock.json": "dc464603492c483cc58232d553179888399a730f2725f6b2111d3cde4513d300",
     "spec.lock.json": "eb55b6abd35b9ee3e572b945535536fb09e94b8e7185990c4b4f2252cc50de13",
     "trace_interop/chain_model.py": "392a57171f81d5b905248d1b36351ac13f6c903a0ea6fa1af7e12527f58612f6",
     "trace_interop/coverage.py": "6d150e4ce044592a647d93c1f4bddd1158fafe1c3614b9511c044121931a44af",
     "trace_interop/execution_models.py": "4b8a31aba948e7743082012ec7d3af06daa823f6a566e3440823f00530a56ce2",
-    "trace_interop/fee_policy.py": "754eb8fb1519a4d534cb21d788216bf07fb29a616664178eae6fb10ed227bd98",
+    "trace_interop/fee_policy.py": "4ecc740fbf2b22c56c6d9681db562497cd7d33ef919887deacffc82ee9585026",
     "trace_interop/inventory.py": "518c0f6e24131ea76bd9e548ec32138d4fda30c71ed7fc71e6032de6c3c48a69",
     "trace_interop/oracles.py": "831a2a3a9a156fcd2430cf881dc26c63ae825f432dc12f39a01c4e9011b26ef3",
     "trace_interop/presentation.py": "66735a573d44c3ea4c0d0007faf568bd26b205a18fd3563772b4ddab104bbea1",
     "trace_interop/report.py": "c34d932c06f5ffa3d3c2628fb307abe6195d586c780607398694b451789630b9",
-    "trace_interop/rules.py": "8879b7698c3bc4219d3606227e3f190b26f7bcae157ba63eddfc4e876077a95a",
+    "trace_interop/rules.py": "c8ab24b5d6bf1af483b1f9b9060f11b2e85b80577818ba07ee98eef7f5f5df93",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",
     "trace_interop/status.py": "09908af7e5710efc13011f26d83b03269027e576e27a5382c01765e76ccd7a7b",
     "trace_interop/validation.py": "9996c9dd500290da39156332e08201518afae70fbf80e8af4a0b11de5e7eac85",

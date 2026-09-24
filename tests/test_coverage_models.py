@@ -21,11 +21,15 @@ class VMModelTests(unittest.TestCase):
         self.assertEqual(vm['ops'][2]['ex']['mem'],{'off':0,'data':out})
         self.assertTrue(all(o['ex']['mem'] is None for i,o in enumerate(vm['ops']) if i!=2))
 
-    def test_memory_reads_expand_without_writing(self):
+    def test_memory_reads_report_the_loaded_range(self):
         vm,_,_=execute('0x60405100',100)
         self.assertEqual(vm['ops'][1]['cost'],12)  # 3 + three words of expansion.
         self.assertEqual(vm['ops'][1]['ex']['push'],['0x0'])
-        self.assertIsNone(vm['ops'][1]['ex']['mem'])
+        self.assertEqual(vm['ops'][1]['ex']['mem'],{'off':0x40,'data':'0x'+'00'*32})
+        self.assertFalse(local_invariants(vm))
+        for mem in [None,{'off':0,'data':'0x'+'00'*32},{'off':0x40,'data':'0x'+'01'*32}]:
+            bad=copy.deepcopy(vm);bad['ops'][1]['ex']['mem']=mem
+            self.assertTrue(local_invariants(bad),mem)
 
     def test_overlap_and_zero_length_copy(self):
         vm,out,_=execute('0x602a6000526020600060015e60406000f3',1000)
@@ -63,13 +67,44 @@ class VMModelTests(unittest.TestCase):
         self.assertTrue(local_invariants(vm))
         self.assertTrue(local_invariants({'code':'0x600100','ops':[]}))
 
-    def test_dup_reports_affected_stack_and_implicit_stop_is_legal(self):
+    def test_dup_reports_affected_stack_and_no_synthetic_stop(self):
         vm,_,_=execute('0x60018000',100)
         self.assertEqual(vm['ops'][1]['ex']['push'],['0x1','0x1'])
-        vm['code']='0x600180'  # STOP at pc 3 is now implicit.
         self.assertFalse(local_invariants(vm))
-        vm['ops'][-1]['pc']=9
+        vm['code']='0x600180'  # Running off the end is not an operation.
         self.assertTrue(local_invariants(vm))
+        vm['ops'].pop()
+        self.assertFalse(local_invariants(vm))
+
+    def call_frame(self, child_ops, used, mem=None, retlen=0x20):
+        # PUSH1 retlen PUSH1 0 PUSH1 0 PUSH1 0 PUSH1 0 PUSH1 0x44 GAS CALL STOP
+        code='0x60'+f'{retlen:02x}'+'6000'*4+'6044'+'5af100'
+        ex=lambda used,push,mem=None:{'used':used,'push':push,'mem':mem,'store':None}
+        pushes=[hex(retlen),'0x0','0x0','0x0','0x0','0x44']
+        ops=[{'pc':2*i,'cost':3,'ex':ex(10000-3*(i+1),[v]),'sub':None} for i,v in enumerate(pushes)]
+        ops.append({'pc':12,'cost':2,'ex':ex(9980,['0x26fc']),'sub':None})
+        child={'code':'0x60006000','ops':child_ops}
+        ops.append({'pc':13,'cost':2600+900,'ex':ex(used,['0x1'],mem),'sub':child})
+        return {'code':code,'ops':ops}
+
+    def test_call_gas_returns_child_leftover_and_mem_is_the_output_window(self):
+        window={'off':0,'data':'0x'+'00'*32}
+        child=[{'pc':0,'cost':3,'ex':{'used':897,'push':['0x0'],'mem':None,'store':None},'sub':None},
+               {'pc':2,'cost':3,'ex':{'used':894,'push':['0x0'],'mem':None,'store':None},'sub':None}]
+        # The child falls off its code end normally and returns 894 unused gas.
+        self.assertFalse(local_invariants(self.call_frame(child,9980-3500+894,window)))
+        self.assertTrue(local_invariants(self.call_frame(child,9980-3500,window)))
+        for mem in [None,{'off':0,'data':'0x'}]:
+            self.assertTrue(local_invariants(self.call_frame(child,9980-3500+894,mem)))
+        self.assertFalse(local_invariants(self.call_frame(child,9980-3500+894,None,retlen=0)))
+        # A halted child returns nothing.
+        halted=copy.deepcopy(child);halted[-1]['ex']=None
+        self.assertFalse(local_invariants(self.call_frame(halted,9980-3500,window)))
+
+    def test_subtraces_only_on_calls_and_creations(self):
+        vm,_,_=execute('0x600100',100)
+        vm['ops'][0]['sub']={'code':'0x','ops':[]}
+        self.assertIn('operation 0 has a subtrace but entered no child frame',local_invariants(vm))
 
     def test_difficulty_mnemonic_alias_is_not_a_semantic_mismatch(self):
         vm,_,_=execute('0x4400',100,environment={'PREVRANDAO':0})

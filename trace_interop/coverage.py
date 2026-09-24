@@ -232,7 +232,7 @@ def supplement(case, observation, peers, checks, expected):
         vms=[obj(e).get('vmTrace') for e in envelopes]
         errors=[error for vm in vms for error in local_invariants(vm)]
         add('H20',bool(vms) and not errors,
-            'At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded.',
+            'At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem.',
             '; '.join(errors[:4]))
 
     # Execute independently supplied straight-line fixtures, including their exact

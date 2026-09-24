@@ -120,7 +120,8 @@ def execute(code, gas, calldata='0x', environment=None):
                 else:
                     value = stack.pop() % (1 << (size*8))
                     memory[offset:offset+size] = value.to_bytes(size, 'big')
-                    mem = {'off': offset, 'data': '0x'+memory[offset:offset+size].hex()}
+                # Post-operation contents of the operand range, for reads too.
+                mem = {'off': offset, 'data': '0x'+memory[offset:offset+size].hex()}
             elif op in [0x37, 0x39, 0x5e]:
                 dest, source, size = stack.pop(), stack.pop(), stack.pop()
                 cost = 3 + 3*((size+31)//32) + expand(dest, size)
@@ -199,12 +200,52 @@ def differences(actual, expected):
     return errors
 
 
+CALLS = [0xf1, 0xf2, 0xf4, 0xfa]
+CREATES = [0xf0, 0xf5]
+TERMINAL = [0x00, 0xf3, 0xfd, 0xff]
+# Stack words each opcode consumes; its ex.push replaces them (DUPn: n in, n+1 out).
+INPUTS = {**dict.fromkeys([0x00, 0x30, 0x32, 0x33, 0x34, 0x36, 0x38, 0x3a, 0x3d, *range(0x41, 0x49), 0x4a,
+                           0x58, 0x59, 0x5a, 0x5b, *range(0x5f, 0x80), 0xfe], 0),
+          **dict.fromkeys([0x15, 0x19, 0x31, 0x35, 0x3b, 0x3f, 0x40, 0x49, 0x50, 0x51, 0x54, 0x56, 0x5c, 0xff], 1),
+          **dict.fromkeys([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0a, 0x0b, 0x10, 0x11, 0x12, 0x13, 0x14, 0x16,
+                           0x17, 0x18, 0x1a, 0x1b, 0x1c, 0x1d, 0x20, 0x52, 0x53, 0x55, 0x57, 0x5d, 0xf3, 0xfd], 2),
+          **dict.fromkeys([0x08, 0x09, 0x37, 0x39, 0x3e, 0x5e, 0xf0], 3),
+          0x3c: 4, 0xf5: 4, 0xf1: 7, 0xf2: 7, 0xf4: 6, 0xfa: 6,
+          **{op: op-0x7f for op in range(0x80, 0x90)}, **{op: op-0x8e for op in range(0x90, 0xa0)},
+          **{op: op-0x9e for op in range(0xa0, 0xa5)}}
+
+
+def words(push):
+    try:
+        return [int(v, 16) for v in push] if isinstance(push, list) else None
+    except (ValueError, TypeError):
+        return None
+
+
+def leftover(sub):
+    """Gas a child returns: its last operation's used if it ended normally, else 0."""
+    last = sub['ops'][-1]
+    ex = last.get('ex') if isinstance(last, dict) else None
+    try:
+        code = bytes.fromhex(sub['code'][2:])
+        pc = last['pc']
+    except (ValueError, TypeError, KeyError):
+        return 0
+    # Running off the code end stops normally; a synthetic STOP there is reported
+    # separately by the child's own pc check.
+    opcode = code[pc] if type(pc) is int and 0 <= pc < len(code) else 0
+    size = 1+(opcode-0x5f if 0x60 <= opcode <= 0x7f else 0)
+    ended = opcode in TERMINAL or pc+size >= len(code)
+    return ex['used'] if isinstance(ex, dict) and ended and type(ex.get('used')) is int else 0
+
+
 def local_invariants(vm):
     """Check mandatory local step relations even in programs containing calls.
 
-Nested CALL/CREATE gas accounting remains explicitly outside this relation;
-every other consecutive step must deduct its recorded operation cost. Dedicated
-models additionally derive costs and effects independently of recorded values.
+Every step deducts its recorded cost; a call or creation that entered a child
+frame also receives the child's unused gas. Operand ranges come from the stack
+reconstructed from reported push words. Dedicated models additionally derive
+costs and effects independently of recorded values.
 """
     errors=[]
     if not isinstance(vm,dict) or not isinstance(vm.get('ops'),list):
@@ -216,38 +257,56 @@ models additionally derive costs and effects independently of recorded values.
     if code and not vm['ops']:
         return ['nonempty executing bytecode has no operations']
     previous=None
-    fallthrough=0
+    stack=[]  # None once the reported stack effects cannot be followed.
     for i,op in enumerate(vm['ops']):
         if not isinstance(op,dict):
             errors.append(f'operation {i} malformed');continue
-        pc=op.get('pc');ex=op.get('ex')
-        if type(pc) is not int or pc<0 or pc>=len(code) and pc!=fallthrough:
+        pc=op.get('pc');ex=op.get('ex');sub=op.get('sub')
+        if type(pc) is not int or pc<0 or pc>=len(code):
             errors.append(f'operation {i} pc outside executing bytecode');continue
-        opcode=code[pc] if pc<len(code) else 0  # EVM's implicit STOP past code end.
-        fallthrough=pc+1+(opcode-0x5f if 0x60<=opcode<=0x7f else 0)
+        opcode=code[pc]
         if 'op' in op and opcode in NAMES and op['op']!=NAMES[opcode] and not (opcode==0x44 and op['op']=='DIFFICULTY'):
             errors.append(f'operation {i} mnemonic disagrees with bytecode')
+        if sub is not None and (opcode not in CALLS+CREATES or not isinstance(ex,dict)):
+            errors.append(f'operation {i} has a subtrace but entered no child frame')
+        pushed=words(ex.get('push')) if isinstance(ex,dict) else None
+        operands=None
+        if stack is not None and pushed is not None and opcode in INPUTS and len(stack)>=INPUTS[opcode]:
+            operands=stack[len(stack)-INPUTS[opcode]:][::-1]
+            stack=stack[:len(stack)-INPUTS[opcode]]+pushed
+        else:
+            stack=None
         if isinstance(ex,dict):
             used,cost=ex.get('used'),op.get('cost')
             if type(used) is not int or type(cost) is not int or used<0 or cost<0:
                 errors.append(f'operation {i} gas is not a nonnegative integer')
-            elif previous is not None and opcode not in [0xf0,0xf1,0xf2,0xf4,0xf5,0xfa] and used!=previous-cost:
+            elif previous is not None and opcode in CALLS+CREATES:
+                if isinstance(sub,dict) and isinstance(sub.get('ops'),list) and sub['ops'] and used!=previous-cost+leftover(sub):
+                    errors.append(f'operation {i} post-step gas does not deduct its cost and return the child leftover')
+            elif previous is not None and used!=previous-cost:
                 errors.append(f'operation {i} post-step gas does not deduct this operation cost')
             if 0x60<=opcode<=0x7f:
                 size=opcode-0x5f
                 want=int.from_bytes(code[pc+1:pc+1+size].ljust(size,b'\0'),'big')
-                push=ex.get('push')
-                try: valid=isinstance(push,list) and len(push)==1 and int(push[0],16)==want
-                except (ValueError,TypeError):valid=False
-                if not valid:errors.append(f'operation {i} PUSH value disagrees with bytecode')
-            # Memory reads/RETURN are not writes, irrespective of expansion.
-            if opcode in [0x51,0xf3,0xfd] and ex.get('mem') is not None:
-                errors.append(f'operation {i} reports a memory write for a read/return')
+                if pushed is None or len(pushed)!=1 or pushed[0]!=want:
+                    errors.append(f'operation {i} PUSH value disagrees with bytecode')
+            mem=ex.get('mem')
+            if opcode in [0xf3,0xfd] and mem is not None:
+                errors.append(f'operation {i} reports memory for RETURN/REVERT')
+            if opcode==0x51:
+                word=f'0x{pushed[0]:064x}' if pushed and len(pushed)==1 else None
+                if not isinstance(mem,dict) or mem.get('data')!=word or operands and mem.get('off')!=operands[0]:
+                    errors.append(f'operation {i} MLOAD mem is not the loaded word at its offset')
+            if opcode in CALLS and operands:
+                offset,size=operands[-2],operands[-1]
+                if not (mem is None if size==0 else isinstance(mem,dict) and mem.get('off')==offset
+                        and isinstance(mem.get('data'),str) and len(mem['data'])==2+2*size):
+                    errors.append(f'operation {i} call mem is not the full output window')
             previous=used if type(used) is int else None
         else:
             previous=None
-        if op.get('sub') is not None:
-            errors.extend(f'subtrace {i}: '+e for e in local_invariants(op['sub']))
+        if sub is not None:
+            errors.extend(f'subtrace {i}: '+e for e in local_invariants(sub))
     return errors
 
 

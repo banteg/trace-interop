@@ -105,7 +105,7 @@ def expand_observations(compact):
 def compact_bytes(observations):
     """Deterministic gzip of the compact form: identical observations give identical bytes."""
     text = json.dumps(compact_observations(observations), sort_keys=True, separators=(',', ':'))
-    return gzip.compress(text.encode(), compresslevel=9, mtime=0)
+    return gzip_bytes(text.encode())
 
 
 def write_observations(folder, observations):
@@ -124,13 +124,34 @@ def load_observations(folder):
     return read(path)
 
 
+def gzip_bytes(data):
+    """Deterministic gzip: identical bytes give identical archives."""
+    return gzip.compress(data, compresslevel=9, mtime=0)
+
+
+def log_bytes(path):
+    """A capture log's original bytes, whether stored plainly or as path + '.gz'."""
+    path = Path(path)
+    return path.read_bytes() if path.exists() else gzip.decompress(Path(str(path) + '.gz').read_bytes())
+
+
+def compress_logs(folder):
+    """Replace each .log file under a run with its deterministic gzip; bytes are unchanged."""
+    for path in sorted(Path(folder).rglob('*.log')):
+        Path(str(path) + '.gz').write_bytes(gzip_bytes(path.read_bytes()))
+        path.unlink()
+
+
 def evidence_bytes(folder, name):
     """The bytes a run's checksums.json entry covers. A run converted to the compact form keeps
     its original observations.json checksum; that entry is checked against the original
-    writer's serialization of the reconstructed observations."""
+    writer's serialization of the reconstructed observations. A compressed log keeps its
+    original checksum, checked against the decompressed bytes."""
     path = Path(folder) / name
     if name == OBSERVATIONS and not path.exists() and (Path(folder) / COMPACT_OBSERVATIONS).exists():
         return serialize(load_observations(folder)).encode()
+    if name.endswith('.log'):
+        return log_bytes(path)
     return path.read_bytes()
 
 
@@ -415,7 +436,7 @@ def collect(out):
         if not isinstance(suite, dict) or 'testCases' not in suite:
             continue
         versions.update(suite.get('clientVersions', {}))
-        logbytes = (out / 'hive' / suite['testDetailsLog']).read_bytes()
+        logbytes = log_bytes(out / 'hive' / suite['testDetailsLog'])
         for test in suite['testCases'].values():
             result = test['summaryResult']
             span = result.get('log')
@@ -443,6 +464,7 @@ def collect(out):
                'exchange_count': sum(len(v) for v in observations.values()),
                'note': 'Hive placeholder failure counts are not conformance scores.'}
     write_observations(out, observations)
+    compress_logs(out)
     write(out / 'summary.json', summary)
     write(out / 'checksums.json', {str(p.relative_to(out)): sha(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name != 'checksums.json'})
     return summary

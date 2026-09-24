@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from trace_interop.cli import ROOT, read, write, sha, parse_exchange, load_observations
+from trace_interop.cli import ROOT, read, write, sha, parse_exchange, load_observations, log_bytes
 from trace_interop.rules import evaluate
 from test_harness_regressions import captured
 
@@ -169,7 +169,7 @@ class IsolationScenario(unittest.TestCase):
             folder=ROOT/'evidence/2026-09-23'/('harness-audit-2-'+run)
             manifest=read(folder/'manifest.json')
             observed={client:[] for client in manifest['clients']}
-            for line in (folder/'runner.log').read_text().splitlines():
+            for line in log_bytes(folder/'runner.log').decode().splitlines():
                 if 'test started' not in line:continue
                 match=re.search(r'name="interop/(.*?) \(([^)]+)\)"',line)
                 if match:observed[match[2]].append(match[1])

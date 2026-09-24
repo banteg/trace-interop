@@ -154,6 +154,44 @@ class CompactObservationTests(unittest.TestCase):
                 verify_evidence(path)
 
 
+class CompressedLogTests(unittest.TestCase):
+    def test_new_capture_stores_compressed_logs(self):
+        from trace_interop.cli import log_bytes
+        request = {'jsonrpc': '2.0', 'id': 1, 'method': 'eth_getBlockByNumber', 'params': ['0x1', False]}
+        reply = {'jsonrpc': '2.0', 'id': 1, 'result': {'number': '0x1'}}
+        exchange = '>> '+json.dumps(request)+'\n<< '+json.dumps(reply)
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d); (path/'hive').mkdir()
+            (path/'hive/details.log').write_text(exchange)
+            (path/'runner.log').write_text('runner output\n')
+            write(path/'hive/suite.json', {'testDetailsLog': 'details.log', 'testCases': {'1': {
+                'name': 'interop/_control/head (reth_release)',
+                'summaryResult': {'pass': False, 'log': {'begin': 0, 'end': len(exchange)}}}}})
+            write(path/'manifest.json', {'selected_cases': [{'name': '_control/head', 'request': request}],
+                                         'clients': {'reth_release': {}}, 'head': {'hash': '0x1'}})
+            collect(path)
+            self.assertEqual(sorted(p.name for p in path.rglob('*.log*')), ['details.log.gz', 'runner.log.gz'])
+            self.assertIn('hive/details.log.gz', read(path/'checksums.json'))
+            self.assertEqual(log_bytes(path/'runner.log'), b'runner output\n')
+            self.assertEqual(load_observations(path)['_control/head']['reth_release']['response'], reply)
+            verify_evidence(path)
+
+    def test_converted_log_verifies_against_its_original_digest(self):
+        from trace_interop.cli import compress_logs
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d); (path/'hive').mkdir()
+            (path/'hive/client.log').write_bytes(b'line one\nline two\n')
+            write(path/'checksums.json', {'hive/client.log': hashlib.sha256(b'line one\nline two\n').hexdigest()})
+            compress_logs(path)
+            self.assertFalse((path/'hive/client.log').exists())
+            archive = (path/'hive/client.log.gz').read_bytes()
+            self.assertEqual(archive, gzip.compress(b'line one\nline two\n', compresslevel=9, mtime=0))
+            verify_evidence(path)
+            (path/'hive/client.log.gz').write_bytes(gzip.compress(b'line one\n', mtime=0))
+            with self.assertRaises(ValueError):
+                verify_evidence(path)
+
+
 class ScenarioTests(unittest.TestCase):
     def test_pruning_requires_independent_state_failure_and_live_control(self):
         def result(value):return {'c':{'status':'result','response':{'result':value}}}

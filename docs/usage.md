@@ -127,6 +127,13 @@ generation checks it against the original indented serialization of the reconstr
 observations, which reproduces the retired file byte for byte. New captures list
 `observations.json.gz` itself.
 
+Capture logs (`runner.log` and the Hive client, simulator and details logs) are stored as
+`<name>.log.gz`, the same deterministic gzip of the unchanged bytes; read them with
+`gzip -dc`. Each run's `checksums.json` keeps the original `<name>.log` digest, which
+verification checks against the decompressed bytes. Runs captured earlier were converted
+in place by `scripts/compress_logs.py`, which deletes an original only after its archive
+decompresses to the checksummed bytes.
+
 ## Change the draft
 
 Edit the execution-apis fork, run its build/tests, commit and push `feat/trace`, then:

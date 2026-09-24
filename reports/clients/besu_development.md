@@ -6,7 +6,7 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.9-develop` | [`f9572aa8`](https://github.com/besu-eth/besu/commit/f9572aa82a2dadb3dd1b218d3ca97101540faf97) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/current-matrix/initial/manifest.json) |
+| `26.9-develop` | [`f9572aa8`](https://github.com/besu-eth/besu/commit/f9572aa82a2dadb3dd1b218d3ca97101540faf97) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h17-retest/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

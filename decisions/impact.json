@@ -10,7 +10,7 @@
     },
     "nethermind": {
       "name": "Nethermind",
-      "summary": "2.1.0-unstable \u00b7 2a3b2531 fixes empty trace selections and retains state-only output; 2.0.0 \u00b7 bec830cd still differs. Complete validation errors, tree lookup, stack-word encoding and state-diff details remain review areas."
+      "summary": "2.1.0-unstable \u00b7 9d6e8b8d fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 \u00b7 bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas."
     },
     "reth": {
       "name": "Reth",
@@ -124,7 +124,7 @@
         "change": "Accept an empty selection and return the execution envelope. Recheck alongside H15 before treating every rejection as a separate selection bug."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd fails empty trace selections; 2.1.0-unstable \u00b7 2a3b2531 executes them.",
+        "observed": "2.0.0 \u00b7 bec830cd fails empty trace selections; 2.1.0-unstable \u00b7 9d6e8b8d executes them.",
         "change": "Execute the call and return its output with the unrequested components empty/null."
       }
     },
@@ -156,8 +156,8 @@
         "change": "Preserve explicit zero fees and the selected block environment. Enforce funding for priced calls and simulate sender payment, refunds and beneficiary tips consistently across trace selections."
       },
       "nethermind": {
-        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 2a3b2531 fixes both. Deferred fee/funding exceptions leave malformed JSON in both builds; see the [streaming investigation](../../docs/nethermind-streamed-errors.md) and pending [PR #13666](https://github.com/NethermindEth/nethermind/pull/13666).",
-        "change": "Ship the selection/output fixes present in 2a3b2531 and return complete validation errors. These results do not establish a general fee-accounting bug."
+        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 9d6e8b8d fixes both. Deferred fee/funding exceptions leave malformed JSON in both builds; see the [streaming investigation](../../docs/nethermind-streamed-errors.md) and pending [PR #13666](https://github.com/NethermindEth/nethermind/pull/13666).",
+        "change": "Ship the selection/output fixes present in 9d6e8b8d and return complete validation errors. These results do not establish a general fee-accounting bug."
       },
       "reth": {
         "observed": "Zero fees rewrite BASEFEE. Positive underpriced legacy calls execute; underpriced typed caps are rejected. Priced calls omit gas charging and funding probes can execute.",
@@ -224,7 +224,7 @@
         "change": "Return `trace: []` when call traces were not requested; keep the execution output independently."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 2a3b2531 retains it.",
+        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 9d6e8b8d retains it.",
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
       }
     },
@@ -254,8 +254,8 @@
     },
     "H21": {
       "nethermind": {
-        "observed": "VM stack words use padded byte strings.",
-        "change": "Serialize stack words as minimal hex quantities, e.g. `0x2a` rather than a 32-byte padded string."
+        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 9d6e8b8d includes PR #13750 and emits minimal quantities.",
+        "change": "Ship the minimal-quantity encoding verified in 9d6e8b8d, e.g. 0x2a rather than a 32-byte padded string."
       }
     },
     "H25": {
@@ -270,8 +270,8 @@
     },
     "H26": {
       "nethermind": {
-        "observed": "Pre-Cancun account deletion does not report the expected code/nonce deletion markers.",
-        "change": "Report the removed code and nonce with deletion markers before Cancun; retain existing accounts under EIP-6780."
+        "observed": "2.0.0 \u00b7 bec830cd loses pre-Cancun code/nonce deletion markers. 2.1.0-unstable \u00b7 9d6e8b8d includes PR #13668 and restores them, while retaining existing accounts after Cancun.",
+        "change": "Ship the account-deletion serializer fix verified in 9d6e8b8d; retain the pre/post-Cancun regression cases."
       },
       "reth": {
         "observed": "Pre-Cancun account deletion loses code/nonce deletion markers.",
@@ -336,12 +336,12 @@
     "H17": {
       "append_checked_requirements": false,
       "nethermind": {
-        "observed": "A first transfer to an absent account adds balance and nonce but reports empty code as unchanged. Empty-runtime CREATE and a newly funded beneficiary have the same missing code-birth marker. StateProvider suppresses absent-to-empty code callbacks; see the [H17 audit](../../docs/h17-assessment-audit.md).",
-        "change": "Retest a build containing [PR #13668](https://github.com/NethermindEth/nethermind/pull/13668), merged after this capture. It reconstructs the empty-code birth marker from account existence. Keep existing prefunded accounts unchanged."
+        "observed": "2.0.0 \u00b7 bec830cd omits the empty-code birth marker for transfers, empty-runtime CREATE and fresh fee recipients. 2.1.0-unstable \u00b7 9d6e8b8d contains PR #13668 and fixes these cases in the fresh Fedora capture; existing-account markers remain unchanged.",
+        "change": "Ship the account-existence serialization fix verified in 9d6e8b8d. The [H17 audit](../../docs/h17-assessment-audit.md) retains the source explanation and before/after evidence."
       },
       "reth": {
         "observed": "A first transfer to an absent account reports balance as a change from zero and code/nonce as unchanged. revm-inspectors reserves added fields for contract creation. Simple contract-creation markers are correct, including when H15 environment bytes differ; see the [H17 audit](../../docs/h17-assessment-audit.md).",
-        "change": "Retain the original account-existence flag and use added fields for a newly funded account, including zero nonce and empty code. Keep existing prefunded accounts unchanged."
+        "change": "Adopt [revm-inspectors PR #526](https://github.com/paradigmxyz/revm-inspectors/pull/526), which preserves prior account existence; 34 Parity integration tests pass on Fedora. Retest after Reth dependency/build uptake. Published-build results remain unchanged."
       }
     }
   }

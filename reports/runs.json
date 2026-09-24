@@ -2,8 +2,8 @@
   {
     "complete": true,
     "corpus": "initial",
-    "digest": "c477413500aae3c7918d7f28c1f682a6eab44ed9fc881f122dee4c53b35a6961",
-    "manifest": "../evidence/2026-09-24/current-matrix/initial/manifest.json",
+    "digest": "1f8fb1defc90e851f197883409965f2b7f552caf13ff13ba4fef87e0cad37a74",
+    "manifest": "../evidence/2026-09-24/h17-retest/initial/manifest.json",
     "name": "initial",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -11,7 +11,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -20,8 +20,8 @@
   {
     "complete": true,
     "corpus": "a",
-    "digest": "9a909ad38e98f615e7a0ba0a39fe047dd3dfe6d3ce571b355df4bb61af934d5e",
-    "manifest": "../evidence/2026-09-24/current-matrix/a/manifest.json",
+    "digest": "aab13a364282586b888c72d42d8dcca02c6a7c0650f28c878c04be334feda579",
+    "manifest": "../evidence/2026-09-24/h17-retest/a/manifest.json",
     "name": "a",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -29,7 +29,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -38,8 +38,8 @@
   {
     "complete": true,
     "corpus": "repeat",
-    "digest": "385c0733d6fd0f51107a12b8207fe0f48bb285a557b4fabff730d86597ec657e",
-    "manifest": "../evidence/2026-09-24/current-matrix/repeat/manifest.json",
+    "digest": "61565f04402fb855c2dc0ee960f717af3266483b3fa4b931d8abc0edcaf5e63a",
+    "manifest": "../evidence/2026-09-24/h17-retest/repeat/manifest.json",
     "name": "repeat",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -47,7 +47,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -56,8 +56,8 @@
   {
     "complete": true,
     "corpus": "forks",
-    "digest": "d087b48d526d81aa93747ec9371bcc1b30dcf58c407e0c9403e4d37b06559fab",
-    "manifest": "../evidence/2026-09-24/current-matrix/forks/manifest.json",
+    "digest": "9e0f045c2b78a399220bf6ed23c44a0b9ca36da55bb323191e38229bcc50f880",
+    "manifest": "../evidence/2026-09-24/h17-retest/forks/manifest.json",
     "name": "forks",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -65,7 +65,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -74,8 +74,8 @@
   {
     "complete": true,
     "corpus": "fork-followup",
-    "digest": "0ae1ca57dd3f1d68554b6ec136c9ac57f5d6f2549354324b2072ef10e10e73bb",
-    "manifest": "../evidence/2026-09-24/current-matrix/fork-followup/manifest.json",
+    "digest": "2773033fd6f2bf29b7d62364e7df804b3b7e96e74e3ad2036324eb98a85e0795",
+    "manifest": "../evidence/2026-09-24/h17-retest/fork-followup/manifest.json",
     "name": "fork-followup",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -83,7 +83,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -92,8 +92,8 @@
   {
     "complete": true,
     "corpus": "precompiles",
-    "digest": "af5be9a5bb2ef9129225d39131a783c03a9376be07d4a2f3716122d27ba68562",
-    "manifest": "../evidence/2026-09-24/current-matrix/precompiles/manifest.json",
+    "digest": "1fe430932b189250472a52fe37928d490bb3dfacbc9f90714b98e52e95a22e28",
+    "manifest": "../evidence/2026-09-24/h17-retest/precompiles/manifest.json",
     "name": "precompiles",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -101,7 +101,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -110,8 +110,8 @@
   {
     "complete": true,
     "corpus": "precompile-values",
-    "digest": "deae1fc9c4d0803cae4e900c142bd3d9f1dc31965fe7e2ee5115cc1d542794fe",
-    "manifest": "../evidence/2026-09-24/current-matrix/precompile-values/manifest.json",
+    "digest": "07eccd764471eca0601b6e9aae793a20e9fb7a882ed5a8cfb413ffb24effe6a1",
+    "manifest": "../evidence/2026-09-24/h17-retest/precompile-values/manifest.json",
     "name": "precompile-values",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -119,7 +119,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -128,8 +128,8 @@
   {
     "complete": true,
     "corpus": "raw-validation",
-    "digest": "36943a1aad7848edc2c74e23fed46f2dc0b31f63c1f2a8c2e35d376840b5e0ef",
-    "manifest": "../evidence/2026-09-24/current-matrix/raw-validation/manifest.json",
+    "digest": "cd7405466477f2e9dbc919789c86dc456757680806756c39fd084a3fa3e778aa",
+    "manifest": "../evidence/2026-09-24/h17-retest/raw-validation/manifest.json",
     "name": "raw-validation",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -137,7 +137,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -146,8 +146,8 @@
   {
     "complete": true,
     "corpus": "coverage",
-    "digest": "900293397b5970f3d6131aa3a7b3f5d4ca88270e5d0e5806b83b1293eaf13e3e",
-    "manifest": "../evidence/2026-09-24/current-matrix/coverage/manifest.json",
+    "digest": "596d760e6315f515f356686adce80b19a27c997f0d38509ffa371881733a5289",
+    "manifest": "../evidence/2026-09-24/h17-retest/coverage/manifest.json",
     "name": "coverage",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -155,7 +155,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -164,8 +164,8 @@
   {
     "complete": true,
     "corpus": "fee-policy",
-    "digest": "5ba2a6132bf0e339a84b8cb5d4e2e4e6ee4073a9a1cadc7118f4540840467474",
-    "manifest": "../evidence/2026-09-24/current-matrix/fee-policy/manifest.json",
+    "digest": "f2c164b0cc94d8edb750de55ca53c524c8ef2b4af56cfa78f7512cb3eeea83a5",
+    "manifest": "../evidence/2026-09-24/h17-retest/fee-policy/manifest.json",
     "name": "fee-policy",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -173,7 +173,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -182,8 +182,8 @@
   {
     "complete": true,
     "corpus": "callmany-isolation",
-    "digest": "c4d45f7f59c6c54b94d1e4ac1fab62ca2b0f7339b3b9db7d786c2388ec8dff78",
-    "manifest": "../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json",
+    "digest": "76801ee977978cc253395ef59b911e79bc8a16c3511c9f4f945fe73b2a5ae722",
+    "manifest": "../evidence/2026-09-24/h17-retest/callmany-isolation/manifest.json",
     "name": "callmany-isolation",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -191,7 +191,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -200,8 +200,8 @@
   {
     "complete": true,
     "corpus": "h30",
-    "digest": "02c1fe2ba3e0e6b17ebb120684967ae9292957a9b3e89be94f03c3328ff722e9",
-    "manifest": "../evidence/2026-09-24/current-matrix/h30/manifest.json",
+    "digest": "980f6a53b8ab0692e289d96296be408326213af968e4397b2080bd1bca25556b",
+    "manifest": "../evidence/2026-09-24/h17-retest/h30/manifest.json",
     "name": "h30",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -209,7 +209,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -218,8 +218,8 @@
   {
     "complete": false,
     "corpus": "reorg-safe",
-    "digest": "bdc56b2ea6e1ec4e2828f723fb8a2454fef99740c79f371af94c522d411a6151",
-    "manifest": "../evidence/2026-09-24/current-matrix/reorg-safe/manifest.json",
+    "digest": "5e0ba8c6c2d543366184a6c677fe7b087d7dc44de2cff0ae9c2eb2f348ed57da",
+    "manifest": "../evidence/2026-09-24/h17-retest/reorg-safe/manifest.json",
     "name": "reorg-safe",
     "versions": {
       "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
@@ -227,7 +227,7 @@
       "erigon_development": "3.8.0-dev-e26d9bd4",
       "erigon_release": "3.6.1-0c4d9c91",
       "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
-      "nethermind_development": "2.1.0-unstable+2a3b2531",
+      "nethermind_development": "2.1.0-unstable+9d6e8b8d",
       "nethermind_release": "2.0.0+bec830cd",
       "reth_development": "Reth Version: 2.5.2+58a51b3e",
       "reth_release": "Reth Version: 2.6.0+73a3a008"
@@ -236,8 +236,8 @@
   {
     "complete": true,
     "corpus": "pruned",
-    "digest": "45b7208cf75e37ddd95dd694ba073c9aa044c64e2332b091c5f10506b9386a04",
-    "manifest": "../evidence/2026-09-24/current-matrix/pruned/manifest.json",
+    "digest": "b59f7306013ae1548ba3d742bfc028b6fd033665f38b6ac0ec7892e4842bc01e",
+    "manifest": "../evidence/2026-09-24/h17-retest/pruned/manifest.json",
     "name": "pruned",
     "versions": {
       "reth_development": "Reth Version: 2.5.2+58a51b3e",

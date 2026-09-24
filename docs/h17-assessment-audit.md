@@ -1,8 +1,11 @@
 # H17 account-existence assessment audit
 
-Audited on 2026-09-24 against the [current captured matrix](../evidence/2026-09-24/current-matrix/README.md)
-and source pinned to its tested development builds. No new client run was needed:
-the retained responses distinguish marker encoding from execution failures.
+Audited on 2026-09-24 against the [11:07 UTC captured matrix](../evidence/2026-09-24/current-matrix/README.md)
+and source pinned to its tested development builds. The retained responses first
+established the assessment corrections. The subsequent
+[fresh matrix rerun](../evidence/2026-09-24/h17-retest/README.md) and
+[inspector patch tests](../evidence/2026-09-24/h17-client-fix/README.md)
+retain separate published-build and proposed-fix evidence.
 
 **The original all-native-clients-differ verdict overstated H17.** Besu's only
 failure was an unavailable state diff, and Erigon's only failure was an environment
@@ -37,7 +40,7 @@ created the recipient, and its positive post-transfer balance makes its existenc
 unambiguous. The expectation does not come from another client's output.
 
 The following is the recipient's complete account diff in both tested builds of
-each native client:
+each native client in the earlier 11:07 UTC snapshot:
 
 | Client | Balance | Nonce | Code | Storage |
 |---|---|---|---|---|
@@ -79,7 +82,13 @@ addresses this birth case as well as deletion and merged on 2026-09-24 at
 `+ 0x` when code is unreported but balance changes from absent to present, and its
 RPC expectations include the newly funded recipient. This corrects the earlier
 shortlist claim that the birth fix was separate. The patch is absent from the
-captured builds; its H17 behavior still needs a client retest after build uptake.
+11:07 UTC captured builds. The fresh 12:21 UTC matrix resolves Nethermind
+`9d6e8b8d`, a descendant of the merge, and confirms `+ 0x` for the fresh transfer
+recipient, fee recipient and empty-runtime contract. Its second transfer retains
+`=` for existing nonce/code. Release `bec830cd` still has the original difference.
+The new [converter](https://github.com/NethermindEth/nethermind/blob/9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs#L140-L152) and
+[retained responses](../evidence/2026-09-24/h17-retest/coverage/observations.json)
+show both the mechanism and its observed result.
 
 ### Reth: contract creation is used as a proxy for account birth
 
@@ -124,12 +133,36 @@ a proposal under review, not a claim of client-team agreement.
 This audit confirms the captured transfer and simple-creation differences. It
 does not establish complete behavior for reverted internal creations, CREATE into
 prefunded addresses, same-transaction creation/destruction or storage enumeration.
-Those require dedicated endpoint-existence probes; H26 owns deletion semantics.
+Those require dedicated RPC endpoint-existence probes; H26 owns deletion semantics.
 
 [Regression tests](../tests/test_h17.py) exercise both release/development frozen
 responses, retain the environment failures under H08/H15, reject mutated markers
 and inconsistent runtime bytes, and check the independent prestate and prefunded
-control. No client patch or new client execution is claimed here.
+control.
+
+## Inspector fix and regression tests
+
+[revm-inspectors PR #526](https://github.com/paradigmxyz/revm-inspectors/pull/526)
+preserves the prestate database's `Some`/`None` result before defaulting the field
+values. It uses birth markers for an absent account with a nonempty final state,
+including transfer and fee recipients, as well as newly created contracts.
+Existing accounts retain ordinary changed/unchanged fields. The omission of empty
+non-created accounts and the existing selfdestruct handling are preserved.
+
+The real-EVM tests exposed a second consequence of the old condition: CREATE
+into an already existing account with zero balance was also incorrectly treated
+as account birth. The new tests distinguish that case from both an absent address
+and a prefunded address, using empty and nonempty runtime code.
+
+On Fedora, the unchanged implementation fails two of the three new tests; with
+commit `af80e453`, all **34 Parity integration tests pass**, including the existing
+EIP-7702 and pre/post-Cancun selfdestruct cases. First and second transfers,
+newly funded beneficiaries and zero-value controls are covered. The
+[before/after evidence](../evidence/2026-09-24/h17-client-fix/README.md) records the
+exact base, patch, dependency lock, commands and logs. This tests the inspector
+directly; it is not a patched Reth RPC run or a claim that published Reth builds
+already include the change. Historical empty-account clearing and complete
+storage enumeration remain outside this fix.
 
 [nm-provider]: https://github.com/NethermindEth/nethermind/blob/2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e/src/Nethermind/Nethermind.State/StateProvider.cs#L1150-L1200
 [nm-tracer]: https://github.com/NethermindEth/nethermind/blob/2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs#L362-L382

@@ -1,0 +1,370 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 4,
+    "eip155Block": 8,
+    "eip158Block": 8,
+    "byzantiumBlock": 12,
+    "constantinopleBlock": 16,
+    "petersburgBlock": 20,
+    "istanbulBlock": 24,
+    "muirGlacierBlock": 28,
+    "berlinBlock": 32,
+    "londonBlock": 36,
+    "arrowGlacierBlock": 40,
+    "grayGlacierBlock": 44,
+    "mergeNetsplitBlock": 48,
+    "terminalTotalDifficulty": 6329152,
+    "terminalTotalDifficultyPassed": true,
+    "shanghaiTime": 520,
+    "cancunTime": 560,
+    "pragueTime": 600,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "osaka": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000001001": {
+      "code": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001002": {
+      "code": "0x602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001003": {
+      "code": "0x60006000fd",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001004": {
+      "code": "0x6020600060006000600061100261ea60f1506020600060006000600061100361ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001005": {
+      "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001006": {
+      "code": "0x601761001b600039601760006000f050607b601760006000f55000600a61000d600039600a6000f3602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001007": {
+      "code": "0x611008ff",
+      "balance": "0x64"
+    },
+    "0000000000000000000000000000000000001009": {
+      "code": "0x6174e060006101803700",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100a": {
+      "code": "0x602a6000526020600060205e00",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100b": {
+      "balance": "0x1"
+    },
+    "00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1563915e194d8cfba1943570603f7606a3115508": {
+      "balance": "0x1"
+    },
+    "16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "19e7e376e7c213b7e7e7e46cc70a5dd086daff2a": {
+      "code": "0xef01000000000000000000000000000000000000001002",
+      "balance": "0x1"
+    },
+    "1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "c7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "d803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "e7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "eda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": null,
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+Command flags till now:
+--log.console.verbosity=3 --fakepow --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 3503995874084926
+Initializing database with genesis state...
+[WARN] [09-24|12:27:19.182] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:27:19.182] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:27:19.254] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:27:19.254] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:27:19.256] Maximum peer count                       total=64
+[INFO] [09-24|12:27:19.257] starting HTTP APIs                       port=8545 APIs=eth,erigon,engine http.compression=true
+[WARN] [09-24|12:27:19.258] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:27:19.258] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:27:19.279] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:27:19.299] Re-Opening DB in exclusive mode to apply migrations 
+[INFO] [09-24|12:27:19.329] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:27:19.330] Apply migration                          name=db_schema_version5
+[INFO] [09-24|12:27:19.330] Applied migration                        name=db_schema_version5
+[INFO] [09-24|12:27:19.330] Apply migration                          name=reset_stage_txn_lookup
+[INFO] [09-24|12:27:19.330] Applied migration                        name=reset_stage_txn_lookup
+[INFO] [09-24|12:27:19.330] Apply migration                          name=db_schema_version6
+[INFO] [09-24|12:27:19.330] Applied migration                        name=db_schema_version6
+[INFO] [09-24|12:27:19.330] Apply migration                          name=db_schema_version7
+[INFO] [09-24|12:27:19.330] Applied migration                        name=db_schema_version7
+[INFO] [09-24|12:27:19.330] Apply migration                          name=drop_legacy_e2_tables
+[INFO] [09-24|12:27:19.330] Applied migration                        name=drop_legacy_e2_tables
+[INFO] [09-24|12:27:19.330] Updated DB schema to                     version=7.0.0
+[INFO] [09-24|12:27:19.367] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:27:19.402] erigondb.toml not found, using defaults (downloader will provide real settings) step_size=390625 steps_in_frozen_file=256
+[INFO] [09-24|12:27:19.424] Writing custom genesis block             hash=0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409
+[INFO] [09-24|12:27:19.434] Successfully wrote genesis state         hash=0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409 root=0x9fb10283c4768fd9da43c7ecb01b1b886d11a7ca823fd902d0c71b355507b1cb
+Loading initial blockchain...
+Loading initial blockchain...
+[WARN] [09-24|12:27:19.461] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:27:19.461] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:27:19.534] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:27:19.534] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:27:19.535] Maximum peer count                       total=64
+[WARN] [09-24|12:27:19.537] blocking async file I/O is set but io_uring is unavailable (unsupported kernel, or blocked by a seccomp sandbox such as Docker's default profile); disabling it — reads will use ordinary blocking faults 
+[INFO] [09-24|12:27:19.537] Set global gas cap                       cap=50000000
+[INFO] [09-24|12:27:19.538] Downloader torrent verbosity             erigon=eror anacrolix=ERR slog=ERROR
+[WARN] [09-24|12:27:19.539] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:27:19.539] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:27:19.558] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:27:19.585] Initializing erigondb.toml with DEFAULT settings (nodownloader) step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:27:19.597] Initialised chain configuration          config="{ChainID: 3503995874084926, Terminal Total Difficulty: 6329152, Shapella: 1970-01-01 00:08:40 +0000 UTC, Dencun: 1970-01-01 00:09:20 +0000 UTC, Pectra: 1970-01-01 00:10:00 +0000 UTC, Engine: ethash}" genesis=0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409
+[INFO] [09-24|12:27:19.606] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:27:19.606] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:27:19.606] generating new salt file 
+[INFO] [09-24|12:27:19.619] [downloader] disabled via config 
+[INFO] [09-24|12:27:19.619] Initialising Ethereum protocol           network=3503995874084926
+[WARN] [09-24|12:27:19.619] Ethash used in fake mode 
+[INFO] [09-24|12:27:19.619] rpc filters: subscribing to Erigon events 
+[INFO] [09-24|12:27:19.619] [rpc] [filters] starting timeout loop for idle filter eviction timeout=5m0s checkInterval=2m30s
+[INFO] [09-24|12:27:19.625] Importing blockchain                     file=/chain.rlp
+[INFO] [09-24|12:27:19.630] Reading JWT secret                       path=/erigon-hive-datadir/jwt.hex
+[INFO] [09-24|12:27:19.630] Generated JWT secret                     path=/erigon-hive-datadir/jwt.hex
+[INFO] [09-24|12:27:19.631] HTTP endpoint opened for Engine API      url=127.0.0.1:33603
+[INFO] [09-24|12:27:19.637] [3/6 Senders] Started                    from=0 to=72
+[INFO] [09-24|12:27:19.640] [4/6 Execution] parallel starting        from=0 to=72 limit=72 initialTxNum=0 initialBlockTxOffset=0 initialCycle=true isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:27:19.661] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:27:19.661] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[WARN] [09-24|12:27:19.707] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.708] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.708] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.709] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.710] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.711] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.711] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.712] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.713] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.713] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.714] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.715] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:27:19.715] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:27:19.716] [4/6 Execution] parallel executed        blk=72 blks=73 blk/s=967 txs=320 tx/s=4.24k gas/s=104.29M exec=331 repeat%=3.32 abort=9 invalid=1 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="2.48k,a=0,s=0,c=0" wrt=1.56k rd/s=32.92k wrt/s=20.70k buf=604.3KB/512.0MB bdur=505µs ucgas=7.86M alloc=70.5MB sys=102.9MB isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:27:19.716] [4/6 Execution] parallel committed       blk=72 blks=72 blk/s=951 txs=320 tx/s=4.22k gas/s=103.92M bdur=1ms progress=0/0 buf=302.2KB chit=0 cmiss=0 alloc=70.5MB sys=102.9MB isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:27:19.716] [4/6 Execution] parallel done            in=75.756576ms buf=302.2KB/512.0MB blk=72 blks=73 blk/s=963 txs=320 tx/s=4.22k gas/s=103.83M alloc=70.5MB sys=102.9MB isForkValidation=false isApplyingBlocks=true
+[EROR] [09-24|12:27:19.719] [snapshots] retire blocks                err="not all snapshot segments are available: segments max=0, indices max=0, download ready=true"
+[INFO] [09-24|12:27:19.719] BuildFilesInBackground                   step=0 lastInDB=0 targetStep=1 reorgSafeBlock=0 reorgSafeStep=0.00 reorgSafeOK=false
+[INFO] [09-24|12:27:19.725] head updated                             hash=0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316 number=72 txnum=320 age=57y6mo2w execution=0s alloc=73.8MB sys=106.9MB
+[INFO] [09-24|12:27:19.726] Timings: Forkchoice                      flush+commit=74µs alloc=73.9MB sys=106.9MB
+[INFO] [09-24|12:27:19.726] Timings: Post-Forkchoice                 prune=264µs initialCycle=true alloc=73.9MB sys=106.9MB
+[INFO] [09-24|12:27:19.726] BuildFilesInBackground                   step=0 lastInDB=0 targetStep=1 reorgSafeBlock=0 reorgSafeStep=0.00 reorgSafeOK=false
+[INFO] [09-24|12:27:19.726] Exiting Engine... 
+[INFO] [09-24|12:27:19.726] RPC server shutting down 
+[INFO] [09-24|12:27:19.726] RPC server shutting down 
+[INFO] [09-24|12:27:19.726] Engine HTTP endpoint close               url=127.0.0.1:33603 shutdownErr=nil
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running erigon with flags  --log.console.verbosity=3 --fakepow --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 3503995874084926 --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.api=admin,debug,trace,eth,net,txpool,web3,testing --ws --ws.port=8546 --txpool.blobslots=1000 --txpool.totalblobpoollimit=10000 --sync.parallel-state-flushing=false --authrpc.addr=0.0.0.0 --authrpc.jwtsecret=/jwt.secret --externalcl --nat=extip:172.17.0.4 --no-downloader --bootnodes=
+[WARN] [09-24|12:27:19.780] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:27:19.780] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:27:19.848] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:27:19.848] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:27:19.849] kernel detected                          version=7.2.6-200.fc44.x86_64
+[WARN] [09-24|12:27:19.849] vm.overcommit_memory=0 can cause allocation failures under load; set to 1 current=0 fix="echo 'vm.overcommit_memory = 1' | sudo tee -a /etc/sysctl.d/99-erigon.conf && sudo sysctl -p /etc/sysctl.d/99-erigon.conf"
+[WARN] [09-24|12:27:19.849] vm.max_map_count is low for large memory-mapped databases; raise it current=1048576 recommended=16777216 fix="echo 'vm.max_map_count = 16777216' | sudo tee -a /etc/sysctl.d/99-erigon.conf && sudo sysctl -p /etc/sysctl.d/99-erigon.conf"
+[INFO] [09-24|12:27:19.849] Startup command                          cmd="erigon --log.console.verbosity=3 --fakepow --datadir <redacted-dir> --db.size.limit 2GB --networkid 3503995874084926 --miner.gaslimit 60000000 --http --http.addr=<redacted-ip> --http.api=admin,debug,trace,eth,net,txpool,web3,testing --ws --ws.port=8546 --txpool.blobslots=1000 --txpool.totalblobpoollimit=10000 --sync.parallel-state-flushing=false --authrpc.addr=<redacted-ip> --authrpc.jwtsecret=/jwt.secret --externalcl --nat=extip:<redacted-ip> --no-downloader --bootnodes="
+[INFO] [09-24|12:27:19.849] Build info                               git_branch=main git_tag= git_commit=e26d9bd4056586e004488c31b561fb2663d46019
+[INFO] [09-24|12:27:19.850] Maximum peer count                       total=64
+[INFO] [09-24|12:27:19.850] starting HTTP APIs                       port=8545 APIs=admin,debug,trace,eth,net,txpool,web3,testing http.compression=true
+meta_validate:28618 meta[0] consider geo-now pageno is 4096 instead of wrong 64, will be corrected on next commit(s)
+meta_validate:28618 meta[0] consider geo-now pageno is 4096 instead of wrong 64, will be corrected on next commit(s)
+dxb_setup:21019 open-MADV_DONTNEED 304..4096
+dxb_set_readahead:20486 readahead ON 0..301
+dxb_setup:21019 open-MADV_DONTNEED 32..64
+dxb_set_readahead:20486 readahead ON 0..19
+[WARN] [09-24|12:27:19.876] blocking async file I/O is set but io_uring is unavailable (unsupported kernel, or blocked by a seccomp sandbox such as Docker's default profile); disabling it — reads will use ordinary blocking faults 
+[INFO] [09-24|12:27:19.876] Set global gas cap                       cap=50000000
+[INFO] [09-24|12:27:19.877] Downloader torrent verbosity             erigon=eror anacrolix=ERR slog=ERROR
+[INFO] [09-24|12:27:19.877] [torrent] Public IP                      ip=172.17.0.4
+[WARN] [09-24|12:27:19.878] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:27:19.878] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:27:19.896] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:27:19.922] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:27:19.922] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:27:19.924] Initialised chain configuration          config="{ChainID: 3503995874084926, Terminal Total Difficulty: 6329152, Shapella: 1970-01-01 00:08:40 +0000 UTC, Dencun: 1970-01-01 00:09:20 +0000 UTC, Pectra: 1970-01-01 00:10:00 +0000 UTC, Engine: ethash}" genesis=0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409
+[INFO] [09-24|12:27:19.924] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:27:19.924] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:27:19.924] [downloader] disabled via config 
+[INFO] [09-24|12:27:19.954] Setup P2P discovery                      v4=false v5=true
+[INFO] [09-24|12:27:19.955] Initialising Ethereum protocol           network=3503995874084926
+[WARN] [09-24|12:27:19.955] Ethash used in fake mode 
+[INFO] [09-24|12:27:19.955] Started P2P networking                   version=69 self=enode://fca136572e41422670eeeded22d6c6884ad4a39a3137bcfae795f671bd19c39774fdf02157c65d8d9d523a90fccc4f0226ffaecb28653f03f48f17041257cc4d@172.17.0.4:30303 name=erigon/v3.8.0-dev-e26d9bd4/linux-amd64/go1.27.1
+[INFO] [09-24|12:27:19.977] rpc filters: subscribing to Erigon events 
+[INFO] [09-24|12:27:19.977] [rpc] [filters] starting timeout loop for idle filter eviction timeout=5m0s checkInterval=2m30s
+[INFO] [09-24|12:27:19.977] Starting private RPC server              on=127.0.0.1:9090
+[INFO] [09-24|12:27:19.978] New txns subscriber joined 
+[WARN] [09-24|12:27:19.979] [HTTP API] testing_ RPC namespace is ENABLED — do not use on production networks 
+[INFO] [09-24|12:27:19.988] serve MCP on                             addr=127.0.0.1:8553 endpoints="/mcp (streamable HTTP), /sse + /message (SSE)"
+[INFO] [09-24|12:27:19.989] Reading JWT secret                       path=/jwt.secret
+[INFO] [09-24|12:27:19.989] HTTP endpoint opened for Engine API      url=[::]:8551
+[INFO] [09-24|12:27:19.989] RPC admission control enabled            max_concurrent_requests=1408 db.read.concurrency=1408
+[INFO] [09-24|12:27:19.989] [rpc] endpoint opened                    grpc=false http=true ws=true rpc.blockrange.limit=1000 rpc.logs.maxresults=20000 rpc.logs.querylimit=1000 websocket.url=[::]:8546 ws.compression=true http.url=[::]:8545 http.compression=true
+[INFO] [09-24|12:27:19.998] [p2p.message.listener] running p2p message listener component 
+[INFO] [09-24|12:27:19.998] [p2p.peerTracker] running peer tracker component 
+[INFO] [09-24|12:27:19.999] [OtterSync] Starting Ottersync 
+[INFO] [09-24|12:27:19.999] [p2p-publisher] running publisher component 
+[INFO] [09-24|12:27:19.999] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:27:19.999] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:27:19.999] [txpool] Started 
+[INFO] [09-24|12:27:20.006] [snapshots:download] Stat                blocks=1 indices=1 alloc=53.2MB sys=74.3MB
+[INFO] [09-24|12:27:20.007] BuildFilesInBackground                   step=0 lastInDB=0 targetStep=1 reorgSafeBlock=0 reorgSafeStep=0.00 reorgSafeOK=false

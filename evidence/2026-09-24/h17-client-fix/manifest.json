@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/paradigmxyz/revm-inspectors",
+  "base_commit": "940b411227de2ca7e11898016672b34733769c47",
+  "fix_commit": "af80e453820ffeaf1fefd59c77f3f0be51895ffb",
+  "host": "Fedora Linux x86_64",
+  "rustc": "1.96.0 (ac68faa20 2026-05-25)",
+  "cargo": "1.96.0 (30a34c682 2026-05-25)",
+  "red": {
+    "command": "cargo test --test it state_diff_birth",
+    "source": "base implementation with final regression tests",
+    "exit_code": 101,
+    "passed": 1,
+    "failed": 2
+  },
+  "green": {
+    "command": "cargo test --test it parity",
+    "source": "fix commit",
+    "exit_code": 0,
+    "passed": 34,
+    "failed": 0
+  },
+  "source_sha256": {
+    "src/tracing/builder/parity.rs": "d8c31dde639a3b39a66d36b281425ae073d5ae3864fbe8854b3f51a965fabccf",
+    "tests/it/parity.rs": "b3a9691844e6e87cc18a74ff81730d4b99ffafd471a0bd7b25fe38876e1deafc",
+    "tests/it/parity/state_diff_birth.rs": "34704e93ad57fbe6d23ef0daf94c709eb418efc2130fdd1106d187a782ed7d61"
+  },
+  "files": {
+    "red.log": "2a72397c9ce3be54576f67f4e134fea785d6ed9ca84bdf8c2c76a0c519f928ec",
+    "green.log": "1835eeace72e99319c8b1aca519d883caeecc62cb29057b02f004dd638ff3a9f",
+    "Cargo.lock": "75c2172dab79f44e77c6961c2b01f4acacbb5a10caaaf427c5b49594b5588028"
+  }
+}

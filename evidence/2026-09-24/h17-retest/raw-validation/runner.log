@@ -1,0 +1,1325 @@
+Sep 24 16:30:11.536 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 16:30:11.671 INF building 9 clients...
+Sep 24 16:30:11.672 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d
+Sep 24 16:30:11.871 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 24 16:30:12.026 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=96ed3bf9e6103fa7348e8223f07becfaf1d19b43fb66524f295bdb83e12dbee5
+Sep 24 16:30:12.165 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 24 16:30:12.310 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=2a6e1bfcf91337fd9081f28b1a77efcf20c054ea99b30a316fa8a581c819fa74
+Sep 24 16:30:12.594 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=4c3056420d80ddd41c0804d65ab61e509ce8cef8683ac0091f142a94dde89fb8
+Sep 24 16:30:12.746 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4
+Sep 24 16:30:12.901 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf
+Sep 24 16:30:13.036 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 16:30:13.179 INF building 1 simulators...
+Sep 24 16:30:13.179 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 16:30:13.259 INF creating output directory folder=/home/banteg/dev/trace-current-20260924/evidence/2026-09-24/h17-retest/raw-validation/hive
+Sep 24 16:30:13.267 INF running simulation: ethereum/rpc-compat
+Sep 24 16:30:13.580 INF hiveproxy started container=3ab39caba8b3 addr=172.17.0.2:8081
+Sep 24 16:30:13.900 INF API: suite started suite=0 name=rpc-compat
+Sep 24 16:30:13.902 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 24 16:30:23.336 INF API: client besu_development started suite=0 test=1 container=72298337
+Sep 24 16:30:23.688 INF API: test started suite=0 test=2 name="interop/_control/chain-id (besu_development)"
+Sep 24 16:30:23.701 INF API: test ended suite=0 test=2 pass=false
+Sep 24 16:30:23.703 INF API: test started suite=0 test=3 name="interop/_control/code-sender-balance (besu_development)"
+Sep 24 16:30:23.720 INF API: test ended suite=0 test=3 pass=false
+Sep 24 16:30:23.721 INF API: test started suite=0 test=4 name="interop/_control/code-sender-code (besu_development)"
+Sep 24 16:30:23.736 INF API: test ended suite=0 test=4 pass=false
+Sep 24 16:30:23.737 INF API: test started suite=0 test=5 name="interop/_control/code-sender-nonce (besu_development)"
+Sep 24 16:30:23.750 INF API: test ended suite=0 test=5 pass=false
+Sep 24 16:30:23.751 INF API: test started suite=0 test=6 name="interop/_control/delegated-sender-balance (besu_development)"
+Sep 24 16:30:23.762 INF API: test ended suite=0 test=6 pass=false
+Sep 24 16:30:23.763 INF API: test started suite=0 test=7 name="interop/_control/delegated-sender-code (besu_development)"
+Sep 24 16:30:23.775 INF API: test ended suite=0 test=7 pass=false
+Sep 24 16:30:23.776 INF API: test started suite=0 test=8 name="interop/_control/delegated-sender-nonce (besu_development)"
+Sep 24 16:30:23.788 INF API: test ended suite=0 test=8 pass=false
+Sep 24 16:30:23.789 INF API: test started suite=0 test=9 name="interop/_control/head (besu_development)"
+Sep 24 16:30:23.804 INF API: test ended suite=0 test=9 pass=false
+Sep 24 16:30:23.805 INF API: test started suite=0 test=10 name="interop/_control/latest (besu_development)"
+Sep 24 16:30:23.813 INF API: test ended suite=0 test=10 pass=false
+Sep 24 16:30:23.815 INF API: test started suite=0 test=11 name="interop/_control/marker-code (besu_development)"
+Sep 24 16:30:23.820 INF API: test ended suite=0 test=11 pass=false
+Sep 24 16:30:23.821 INF API: test started suite=0 test=12 name="interop/_control/marker-storage (besu_development)"
+Sep 24 16:30:23.835 INF API: test ended suite=0 test=12 pass=false
+Sep 24 16:30:23.836 INF API: test started suite=0 test=13 name="interop/_control/sender-balance (besu_development)"
+Sep 24 16:30:23.841 INF API: test ended suite=0 test=13 pass=false
+Sep 24 16:30:23.842 INF API: test started suite=0 test=14 name="interop/_control/sender-code (besu_development)"
+Sep 24 16:30:23.849 INF API: test ended suite=0 test=14 pass=false
+Sep 24 16:30:23.850 INF API: test started suite=0 test=15 name="interop/_control/sender-nonce (besu_development)"
+Sep 24 16:30:23.855 INF API: test ended suite=0 test=15 pass=false
+Sep 24 16:30:23.856 INF API: test started suite=0 test=16 name="interop/_control/version (besu_development)"
+Sep 24 16:30:23.861 INF API: test ended suite=0 test=16 pass=false
+Sep 24 16:30:23.861 INF API: test started suite=0 test=17 name="interop/raw-validation-below-basefee-all (besu_development)"
+Sep 24 16:30:23.923 INF API: test ended suite=0 test=17 pass=false
+Sep 24 16:30:23.924 INF API: test started suite=0 test=18 name="interop/raw-validation-below-basefee-stateDiff (besu_development)"
+Sep 24 16:30:23.937 INF API: test ended suite=0 test=18 pass=false
+Sep 24 16:30:23.939 INF API: test started suite=0 test=19 name="interop/raw-validation-below-basefee-trace (besu_development)"
+Sep 24 16:30:23.956 INF API: test ended suite=0 test=19 pass=false
+Sep 24 16:30:23.958 INF API: test started suite=0 test=20 name="interop/raw-validation-below-basefee-vmTrace (besu_development)"
+Sep 24 16:30:23.971 INF API: test ended suite=0 test=20 pass=false
+Sep 24 16:30:23.973 INF API: test started suite=0 test=21 name="interop/raw-validation-code-sender-all (besu_development)"
+Sep 24 16:30:24.036 INF API: test ended suite=0 test=21 pass=false
+Sep 24 16:30:24.038 INF API: test started suite=0 test=22 name="interop/raw-validation-code-sender-stateDiff (besu_development)"
+Sep 24 16:30:24.056 INF API: test ended suite=0 test=22 pass=false
+Sep 24 16:30:24.058 INF API: test started suite=0 test=23 name="interop/raw-validation-code-sender-trace (besu_development)"
+Sep 24 16:30:24.077 INF API: test ended suite=0 test=23 pass=false
+Sep 24 16:30:24.078 INF API: test started suite=0 test=24 name="interop/raw-validation-code-sender-vmTrace (besu_development)"
+Sep 24 16:30:24.088 INF API: test ended suite=0 test=24 pass=false
+Sep 24 16:30:24.089 INF API: test started suite=0 test=25 name="interop/raw-validation-create-nonce-high-all (besu_development)"
+Sep 24 16:30:24.099 INF API: test ended suite=0 test=25 pass=false
+Sep 24 16:30:24.101 INF API: test started suite=0 test=26 name="interop/raw-validation-create-nonce-high-stateDiff (besu_development)"
+Sep 24 16:30:24.109 INF API: test ended suite=0 test=26 pass=false
+Sep 24 16:30:24.110 INF API: test started suite=0 test=27 name="interop/raw-validation-create-nonce-high-trace (besu_development)"
+Sep 24 16:30:24.120 INF API: test ended suite=0 test=27 pass=false
+Sep 24 16:30:24.121 INF API: test started suite=0 test=28 name="interop/raw-validation-create-nonce-high-vmTrace (besu_development)"
+Sep 24 16:30:24.129 INF API: test ended suite=0 test=28 pass=false
+Sep 24 16:30:24.130 INF API: test started suite=0 test=29 name="interop/raw-validation-create-nonce-low-all (besu_development)"
+Sep 24 16:30:24.140 INF API: test ended suite=0 test=29 pass=false
+Sep 24 16:30:24.141 INF API: test started suite=0 test=30 name="interop/raw-validation-create-nonce-low-stateDiff (besu_development)"
+Sep 24 16:30:24.148 INF API: test ended suite=0 test=30 pass=false
+Sep 24 16:30:24.149 INF API: test started suite=0 test=31 name="interop/raw-validation-create-nonce-low-trace (besu_development)"
+Sep 24 16:30:24.155 INF API: test ended suite=0 test=31 pass=false
+Sep 24 16:30:24.156 INF API: test started suite=0 test=32 name="interop/raw-validation-create-nonce-low-vmTrace (besu_development)"
+Sep 24 16:30:24.163 INF API: test ended suite=0 test=32 pass=false
+Sep 24 16:30:24.164 INF API: test started suite=0 test=33 name="interop/raw-validation-create-valid-all (besu_development)"
+Sep 24 16:30:24.175 INF API: test ended suite=0 test=33 pass=false
+Sep 24 16:30:24.176 INF API: test started suite=0 test=34 name="interop/raw-validation-create-valid-stateDiff (besu_development)"
+Sep 24 16:30:24.184 INF API: test ended suite=0 test=34 pass=false
+Sep 24 16:30:24.185 INF API: test started suite=0 test=35 name="interop/raw-validation-create-valid-trace (besu_development)"
+Sep 24 16:30:24.191 INF API: test ended suite=0 test=35 pass=false
+Sep 24 16:30:24.192 INF API: test started suite=0 test=36 name="interop/raw-validation-create-valid-vmTrace (besu_development)"
+Sep 24 16:30:24.201 INF API: test ended suite=0 test=36 pass=false
+Sep 24 16:30:24.202 INF API: test started suite=0 test=37 name="interop/raw-validation-delegated-sender-valid-all (besu_development)"
+Sep 24 16:30:24.213 INF API: test ended suite=0 test=37 pass=false
+Sep 24 16:30:24.215 INF API: test started suite=0 test=38 name="interop/raw-validation-delegated-sender-valid-stateDiff (besu_development)"
+Sep 24 16:30:24.222 INF API: test ended suite=0 test=38 pass=false
+Sep 24 16:30:24.223 INF API: test started suite=0 test=39 name="interop/raw-validation-delegated-sender-valid-trace (besu_development)"
+Sep 24 16:30:24.230 INF API: test ended suite=0 test=39 pass=false
+Sep 24 16:30:24.231 INF API: test started suite=0 test=40 name="interop/raw-validation-delegated-sender-valid-vmTrace (besu_development)"
+Sep 24 16:30:24.241 INF API: test ended suite=0 test=40 pass=false
+Sep 24 16:30:24.242 INF API: test started suite=0 test=41 name="interop/raw-validation-execution-oog-valid-all (besu_development)"
+Sep 24 16:30:24.259 INF API: test ended suite=0 test=41 pass=false
+Sep 24 16:30:24.260 INF API: test started suite=0 test=42 name="interop/raw-validation-execution-oog-valid-stateDiff (besu_development)"
+Sep 24 16:30:24.269 INF API: test ended suite=0 test=42 pass=false
+Sep 24 16:30:24.270 INF API: test started suite=0 test=43 name="interop/raw-validation-execution-oog-valid-trace (besu_development)"
+Sep 24 16:30:24.276 INF API: test ended suite=0 test=43 pass=false
+Sep 24 16:30:24.277 INF API: test started suite=0 test=44 name="interop/raw-validation-execution-oog-valid-vmTrace (besu_development)"
+Sep 24 16:30:24.284 INF API: test ended suite=0 test=44 pass=false
+Sep 24 16:30:24.285 INF API: test started suite=0 test=45 name="interop/raw-validation-funds-gas-all (besu_development)"
+Sep 24 16:30:24.293 INF API: test ended suite=0 test=45 pass=false
+Sep 24 16:30:24.294 INF API: test started suite=0 test=46 name="interop/raw-validation-funds-gas-stateDiff (besu_development)"
+Sep 24 16:30:24.300 INF API: test ended suite=0 test=46 pass=false
+Sep 24 16:30:24.302 INF API: test started suite=0 test=47 name="interop/raw-validation-funds-gas-trace (besu_development)"
+Sep 24 16:30:24.308 INF API: test ended suite=0 test=47 pass=false
+Sep 24 16:30:24.309 INF API: test started suite=0 test=48 name="interop/raw-validation-funds-gas-vmTrace (besu_development)"
+Sep 24 16:30:24.314 INF API: test ended suite=0 test=48 pass=false
+Sep 24 16:30:24.315 INF API: test started suite=0 test=49 name="interop/raw-validation-funds-value-all (besu_development)"
+Sep 24 16:30:24.323 INF API: test ended suite=0 test=49 pass=false
+Sep 24 16:30:24.324 INF API: test started suite=0 test=50 name="interop/raw-validation-funds-value-stateDiff (besu_development)"
+Sep 24 16:30:24.330 INF API: test ended suite=0 test=50 pass=false
+Sep 24 16:30:24.332 INF API: test started suite=0 test=51 name="interop/raw-validation-funds-value-trace (besu_development)"
+Sep 24 16:30:24.337 INF API: test ended suite=0 test=51 pass=false
+Sep 24 16:30:24.338 INF API: test started suite=0 test=52 name="interop/raw-validation-funds-value-vmTrace (besu_development)"
+Sep 24 16:30:24.344 INF API: test ended suite=0 test=52 pass=false
+Sep 24 16:30:24.345 INF API: test started suite=0 test=53 name="interop/raw-validation-intrinsic-gas-all (besu_development)"
+Sep 24 16:30:24.352 INF API: test ended suite=0 test=53 pass=false
+Sep 24 16:30:24.353 INF API: test started suite=0 test=54 name="interop/raw-validation-intrinsic-gas-stateDiff (besu_development)"
+Sep 24 16:30:24.359 INF API: test ended suite=0 test=54 pass=false
+Sep 24 16:30:24.360 INF API: test started suite=0 test=55 name="interop/raw-validation-intrinsic-gas-trace (besu_development)"
+Sep 24 16:30:24.365 INF API: test ended suite=0 test=55 pass=false
+Sep 24 16:30:24.366 INF API: test started suite=0 test=56 name="interop/raw-validation-intrinsic-gas-vmTrace (besu_development)"
+Sep 24 16:30:24.371 INF API: test ended suite=0 test=56 pass=false
+Sep 24 16:30:24.371 INF API: test started suite=0 test=57 name="interop/raw-validation-nonce-high-all (besu_development)"
+Sep 24 16:30:24.377 INF API: test ended suite=0 test=57 pass=false
+Sep 24 16:30:24.378 INF API: test started suite=0 test=58 name="interop/raw-validation-nonce-high-stateDiff (besu_development)"
+Sep 24 16:30:24.383 INF API: test ended suite=0 test=58 pass=false
+Sep 24 16:30:24.384 INF API: test started suite=0 test=59 name="interop/raw-validation-nonce-high-trace (besu_development)"
+Sep 24 16:30:24.389 INF API: test ended suite=0 test=59 pass=false
+Sep 24 16:30:24.390 INF API: test started suite=0 test=60 name="interop/raw-validation-nonce-high-vmTrace (besu_development)"
+Sep 24 16:30:24.395 INF API: test ended suite=0 test=60 pass=false
+Sep 24 16:30:24.396 INF API: test started suite=0 test=61 name="interop/raw-validation-nonce-low-all (besu_development)"
+Sep 24 16:30:24.402 INF API: test ended suite=0 test=61 pass=false
+Sep 24 16:30:24.403 INF API: test started suite=0 test=62 name="interop/raw-validation-nonce-low-stateDiff (besu_development)"
+Sep 24 16:30:24.407 INF API: test ended suite=0 test=62 pass=false
+Sep 24 16:30:24.408 INF API: test started suite=0 test=63 name="interop/raw-validation-nonce-low-trace (besu_development)"
+Sep 24 16:30:24.413 INF API: test ended suite=0 test=63 pass=false
+Sep 24 16:30:24.414 INF API: test started suite=0 test=64 name="interop/raw-validation-nonce-low-vmTrace (besu_development)"
+Sep 24 16:30:24.420 INF API: test ended suite=0 test=64 pass=false
+Sep 24 16:30:24.421 INF API: test started suite=0 test=65 name="interop/raw-validation-valid-all (besu_development)"
+Sep 24 16:30:24.430 INF API: test ended suite=0 test=65 pass=false
+Sep 24 16:30:24.431 INF API: test started suite=0 test=66 name="interop/raw-validation-valid-stateDiff (besu_development)"
+Sep 24 16:30:24.437 INF API: test ended suite=0 test=66 pass=false
+Sep 24 16:30:24.438 INF API: test started suite=0 test=67 name="interop/raw-validation-valid-trace (besu_development)"
+Sep 24 16:30:24.444 INF API: test ended suite=0 test=67 pass=false
+Sep 24 16:30:24.445 INF API: test started suite=0 test=68 name="interop/raw-validation-valid-vmTrace (besu_development)"
+Sep 24 16:30:24.451 INF API: test ended suite=0 test=68 pass=false
+Sep 24 16:30:24.452 INF API: test started suite=0 test=69 name="interop/raw-validation-wrong-chain-all (besu_development)"
+Sep 24 16:30:24.462 INF API: test ended suite=0 test=69 pass=false
+Sep 24 16:30:24.463 INF API: test started suite=0 test=70 name="interop/raw-validation-wrong-chain-stateDiff (besu_development)"
+Sep 24 16:30:24.475 INF API: test ended suite=0 test=70 pass=false
+Sep 24 16:30:24.476 INF API: test started suite=0 test=71 name="interop/raw-validation-wrong-chain-trace (besu_development)"
+Sep 24 16:30:24.482 INF API: test ended suite=0 test=71 pass=false
+Sep 24 16:30:24.483 INF API: test started suite=0 test=72 name="interop/raw-validation-wrong-chain-vmTrace (besu_development)"
+Sep 24 16:30:24.489 INF API: test ended suite=0 test=72 pass=false
+Sep 24 16:30:24.908 INF API: test ended suite=0 test=1 pass=true
+Sep 24 16:30:24.911 INF API: test started suite=0 test=73 name="client launch (besu_release)"
+Sep 24 16:30:37.822 INF API: client besu_release started suite=0 test=73 container=282f0702
+Sep 24 16:30:38.216 INF API: test started suite=0 test=74 name="interop/_control/chain-id (besu_release)"
+Sep 24 16:30:38.230 INF API: test ended suite=0 test=74 pass=false
+Sep 24 16:30:38.231 INF API: test started suite=0 test=75 name="interop/_control/code-sender-balance (besu_release)"
+Sep 24 16:30:38.251 INF API: test ended suite=0 test=75 pass=false
+Sep 24 16:30:38.252 INF API: test started suite=0 test=76 name="interop/_control/code-sender-code (besu_release)"
+Sep 24 16:30:38.266 INF API: test ended suite=0 test=76 pass=false
+Sep 24 16:30:38.267 INF API: test started suite=0 test=77 name="interop/_control/code-sender-nonce (besu_release)"
+Sep 24 16:30:38.280 INF API: test ended suite=0 test=77 pass=false
+Sep 24 16:30:38.282 INF API: test started suite=0 test=78 name="interop/_control/delegated-sender-balance (besu_release)"
+Sep 24 16:30:38.294 INF API: test ended suite=0 test=78 pass=false
+Sep 24 16:30:38.295 INF API: test started suite=0 test=79 name="interop/_control/delegated-sender-code (besu_release)"
+Sep 24 16:30:38.310 INF API: test ended suite=0 test=79 pass=false
+Sep 24 16:30:38.311 INF API: test started suite=0 test=80 name="interop/_control/delegated-sender-nonce (besu_release)"
+Sep 24 16:30:38.322 INF API: test ended suite=0 test=80 pass=false
+Sep 24 16:30:38.323 INF API: test started suite=0 test=81 name="interop/_control/head (besu_release)"
+Sep 24 16:30:38.339 INF API: test ended suite=0 test=81 pass=false
+Sep 24 16:30:38.340 INF API: test started suite=0 test=82 name="interop/_control/latest (besu_release)"
+Sep 24 16:30:38.346 INF API: test ended suite=0 test=82 pass=false
+Sep 24 16:30:38.347 INF API: test started suite=0 test=83 name="interop/_control/marker-code (besu_release)"
+Sep 24 16:30:38.352 INF API: test ended suite=0 test=83 pass=false
+Sep 24 16:30:38.353 INF API: test started suite=0 test=84 name="interop/_control/marker-storage (besu_release)"
+Sep 24 16:30:38.366 INF API: test ended suite=0 test=84 pass=false
+Sep 24 16:30:38.367 INF API: test started suite=0 test=85 name="interop/_control/sender-balance (besu_release)"
+Sep 24 16:30:38.372 INF API: test ended suite=0 test=85 pass=false
+Sep 24 16:30:38.373 INF API: test started suite=0 test=86 name="interop/_control/sender-code (besu_release)"
+Sep 24 16:30:38.379 INF API: test ended suite=0 test=86 pass=false
+Sep 24 16:30:38.380 INF API: test started suite=0 test=87 name="interop/_control/sender-nonce (besu_release)"
+Sep 24 16:30:38.387 INF API: test ended suite=0 test=87 pass=false
+Sep 24 16:30:38.388 INF API: test started suite=0 test=88 name="interop/_control/version (besu_release)"
+Sep 24 16:30:38.393 INF API: test ended suite=0 test=88 pass=false
+Sep 24 16:30:38.394 INF API: test started suite=0 test=89 name="interop/raw-validation-below-basefee-all (besu_release)"
+Sep 24 16:30:38.463 INF API: test ended suite=0 test=89 pass=false
+Sep 24 16:30:38.464 INF API: test started suite=0 test=90 name="interop/raw-validation-below-basefee-stateDiff (besu_release)"
+Sep 24 16:30:38.471 INF API: test ended suite=0 test=90 pass=false
+Sep 24 16:30:38.472 INF API: test started suite=0 test=91 name="interop/raw-validation-below-basefee-trace (besu_release)"
+Sep 24 16:30:38.479 INF API: test ended suite=0 test=91 pass=false
+Sep 24 16:30:38.480 INF API: test started suite=0 test=92 name="interop/raw-validation-below-basefee-vmTrace (besu_release)"
+Sep 24 16:30:38.485 INF API: test ended suite=0 test=92 pass=false
+Sep 24 16:30:38.486 INF API: test started suite=0 test=93 name="interop/raw-validation-code-sender-all (besu_release)"
+Sep 24 16:30:38.550 INF API: test ended suite=0 test=93 pass=false
+Sep 24 16:30:38.552 INF API: test started suite=0 test=94 name="interop/raw-validation-code-sender-stateDiff (besu_release)"
+Sep 24 16:30:38.573 INF API: test ended suite=0 test=94 pass=false
+Sep 24 16:30:38.575 INF API: test started suite=0 test=95 name="interop/raw-validation-code-sender-trace (besu_release)"
+Sep 24 16:30:38.598 INF API: test ended suite=0 test=95 pass=false
+Sep 24 16:30:38.600 INF API: test started suite=0 test=96 name="interop/raw-validation-code-sender-vmTrace (besu_release)"
+Sep 24 16:30:38.622 INF API: test ended suite=0 test=96 pass=false
+Sep 24 16:30:38.623 INF API: test started suite=0 test=97 name="interop/raw-validation-create-nonce-high-all (besu_release)"
+Sep 24 16:30:38.638 INF API: test ended suite=0 test=97 pass=false
+Sep 24 16:30:38.639 INF API: test started suite=0 test=98 name="interop/raw-validation-create-nonce-high-stateDiff (besu_release)"
+Sep 24 16:30:38.646 INF API: test ended suite=0 test=98 pass=false
+Sep 24 16:30:38.647 INF API: test started suite=0 test=99 name="interop/raw-validation-create-nonce-high-trace (besu_release)"
+Sep 24 16:30:38.655 INF API: test ended suite=0 test=99 pass=false
+Sep 24 16:30:38.656 INF API: test started suite=0 test=100 name="interop/raw-validation-create-nonce-high-vmTrace (besu_release)"
+Sep 24 16:30:38.663 INF API: test ended suite=0 test=100 pass=false
+Sep 24 16:30:38.664 INF API: test started suite=0 test=101 name="interop/raw-validation-create-nonce-low-all (besu_release)"
+Sep 24 16:30:38.674 INF API: test ended suite=0 test=101 pass=false
+Sep 24 16:30:38.675 INF API: test started suite=0 test=102 name="interop/raw-validation-create-nonce-low-stateDiff (besu_release)"
+Sep 24 16:30:38.682 INF API: test ended suite=0 test=102 pass=false
+Sep 24 16:30:38.683 INF API: test started suite=0 test=103 name="interop/raw-validation-create-nonce-low-trace (besu_release)"
+Sep 24 16:30:38.690 INF API: test ended suite=0 test=103 pass=false
+Sep 24 16:30:38.691 INF API: test started suite=0 test=104 name="interop/raw-validation-create-nonce-low-vmTrace (besu_release)"
+Sep 24 16:30:38.698 INF API: test ended suite=0 test=104 pass=false
+Sep 24 16:30:38.699 INF API: test started suite=0 test=105 name="interop/raw-validation-create-valid-all (besu_release)"
+Sep 24 16:30:38.710 INF API: test ended suite=0 test=105 pass=false
+Sep 24 16:30:38.711 INF API: test started suite=0 test=106 name="interop/raw-validation-create-valid-stateDiff (besu_release)"
+Sep 24 16:30:38.719 INF API: test ended suite=0 test=106 pass=false
+Sep 24 16:30:38.720 INF API: test started suite=0 test=107 name="interop/raw-validation-create-valid-trace (besu_release)"
+Sep 24 16:30:38.727 INF API: test ended suite=0 test=107 pass=false
+Sep 24 16:30:38.728 INF API: test started suite=0 test=108 name="interop/raw-validation-create-valid-vmTrace (besu_release)"
+Sep 24 16:30:38.736 INF API: test ended suite=0 test=108 pass=false
+Sep 24 16:30:38.737 INF API: test started suite=0 test=109 name="interop/raw-validation-delegated-sender-valid-all (besu_release)"
+Sep 24 16:30:38.749 INF API: test ended suite=0 test=109 pass=false
+Sep 24 16:30:38.750 INF API: test started suite=0 test=110 name="interop/raw-validation-delegated-sender-valid-stateDiff (besu_release)"
+Sep 24 16:30:38.758 INF API: test ended suite=0 test=110 pass=false
+Sep 24 16:30:38.760 INF API: test started suite=0 test=111 name="interop/raw-validation-delegated-sender-valid-trace (besu_release)"
+Sep 24 16:30:38.768 INF API: test ended suite=0 test=111 pass=false
+Sep 24 16:30:38.769 INF API: test started suite=0 test=112 name="interop/raw-validation-delegated-sender-valid-vmTrace (besu_release)"
+Sep 24 16:30:38.777 INF API: test ended suite=0 test=112 pass=false
+Sep 24 16:30:38.778 INF API: test started suite=0 test=113 name="interop/raw-validation-execution-oog-valid-all (besu_release)"
+Sep 24 16:30:38.792 INF API: test ended suite=0 test=113 pass=false
+Sep 24 16:30:38.793 INF API: test started suite=0 test=114 name="interop/raw-validation-execution-oog-valid-stateDiff (besu_release)"
+Sep 24 16:30:38.802 INF API: test ended suite=0 test=114 pass=false
+Sep 24 16:30:38.804 INF API: test started suite=0 test=115 name="interop/raw-validation-execution-oog-valid-trace (besu_release)"
+Sep 24 16:30:38.812 INF API: test ended suite=0 test=115 pass=false
+Sep 24 16:30:38.813 INF API: test started suite=0 test=116 name="interop/raw-validation-execution-oog-valid-vmTrace (besu_release)"
+Sep 24 16:30:38.820 INF API: test ended suite=0 test=116 pass=false
+Sep 24 16:30:38.821 INF API: test started suite=0 test=117 name="interop/raw-validation-funds-gas-all (besu_release)"
+Sep 24 16:30:38.828 INF API: test ended suite=0 test=117 pass=false
+Sep 24 16:30:38.829 INF API: test started suite=0 test=118 name="interop/raw-validation-funds-gas-stateDiff (besu_release)"
+Sep 24 16:30:38.836 INF API: test ended suite=0 test=118 pass=false
+Sep 24 16:30:38.837 INF API: test started suite=0 test=119 name="interop/raw-validation-funds-gas-trace (besu_release)"
+Sep 24 16:30:38.842 INF API: test ended suite=0 test=119 pass=false
+Sep 24 16:30:38.843 INF API: test started suite=0 test=120 name="interop/raw-validation-funds-gas-vmTrace (besu_release)"
+Sep 24 16:30:38.848 INF API: test ended suite=0 test=120 pass=false
+Sep 24 16:30:38.849 INF API: test started suite=0 test=121 name="interop/raw-validation-funds-value-all (besu_release)"
+Sep 24 16:30:38.856 INF API: test ended suite=0 test=121 pass=false
+Sep 24 16:30:38.857 INF API: test started suite=0 test=122 name="interop/raw-validation-funds-value-stateDiff (besu_release)"
+Sep 24 16:30:38.863 INF API: test ended suite=0 test=122 pass=false
+Sep 24 16:30:38.864 INF API: test started suite=0 test=123 name="interop/raw-validation-funds-value-trace (besu_release)"
+Sep 24 16:30:38.872 INF API: test ended suite=0 test=123 pass=false
+Sep 24 16:30:38.873 INF API: test started suite=0 test=124 name="interop/raw-validation-funds-value-vmTrace (besu_release)"
+Sep 24 16:30:38.879 INF API: test ended suite=0 test=124 pass=false
+Sep 24 16:30:38.880 INF API: test started suite=0 test=125 name="interop/raw-validation-intrinsic-gas-all (besu_release)"
+Sep 24 16:30:38.887 INF API: test ended suite=0 test=125 pass=false
+Sep 24 16:30:38.888 INF API: test started suite=0 test=126 name="interop/raw-validation-intrinsic-gas-stateDiff (besu_release)"
+Sep 24 16:30:38.894 INF API: test ended suite=0 test=126 pass=false
+Sep 24 16:30:38.895 INF API: test started suite=0 test=127 name="interop/raw-validation-intrinsic-gas-trace (besu_release)"
+Sep 24 16:30:38.900 INF API: test ended suite=0 test=127 pass=false
+Sep 24 16:30:38.901 INF API: test started suite=0 test=128 name="interop/raw-validation-intrinsic-gas-vmTrace (besu_release)"
+Sep 24 16:30:38.907 INF API: test ended suite=0 test=128 pass=false
+Sep 24 16:30:38.908 INF API: test started suite=0 test=129 name="interop/raw-validation-nonce-high-all (besu_release)"
+Sep 24 16:30:38.915 INF API: test ended suite=0 test=129 pass=false
+Sep 24 16:30:38.916 INF API: test started suite=0 test=130 name="interop/raw-validation-nonce-high-stateDiff (besu_release)"
+Sep 24 16:30:38.922 INF API: test ended suite=0 test=130 pass=false
+Sep 24 16:30:38.923 INF API: test started suite=0 test=131 name="interop/raw-validation-nonce-high-trace (besu_release)"
+Sep 24 16:30:38.930 INF API: test ended suite=0 test=131 pass=false
+Sep 24 16:30:38.931 INF API: test started suite=0 test=132 name="interop/raw-validation-nonce-high-vmTrace (besu_release)"
+Sep 24 16:30:38.936 INF API: test ended suite=0 test=132 pass=false
+Sep 24 16:30:38.937 INF API: test started suite=0 test=133 name="interop/raw-validation-nonce-low-all (besu_release)"
+Sep 24 16:30:38.942 INF API: test ended suite=0 test=133 pass=false
+Sep 24 16:30:38.943 INF API: test started suite=0 test=134 name="interop/raw-validation-nonce-low-stateDiff (besu_release)"
+Sep 24 16:30:38.949 INF API: test ended suite=0 test=134 pass=false
+Sep 24 16:30:38.950 INF API: test started suite=0 test=135 name="interop/raw-validation-nonce-low-trace (besu_release)"
+Sep 24 16:30:38.956 INF API: test ended suite=0 test=135 pass=false
+Sep 24 16:30:38.958 INF API: test started suite=0 test=136 name="interop/raw-validation-nonce-low-vmTrace (besu_release)"
+Sep 24 16:30:38.964 INF API: test ended suite=0 test=136 pass=false
+Sep 24 16:30:38.966 INF API: test started suite=0 test=137 name="interop/raw-validation-valid-all (besu_release)"
+Sep 24 16:30:38.973 INF API: test ended suite=0 test=137 pass=false
+Sep 24 16:30:38.974 INF API: test started suite=0 test=138 name="interop/raw-validation-valid-stateDiff (besu_release)"
+Sep 24 16:30:38.982 INF API: test ended suite=0 test=138 pass=false
+Sep 24 16:30:38.983 INF API: test started suite=0 test=139 name="interop/raw-validation-valid-trace (besu_release)"
+Sep 24 16:30:38.990 INF API: test ended suite=0 test=139 pass=false
+Sep 24 16:30:38.991 INF API: test started suite=0 test=140 name="interop/raw-validation-valid-vmTrace (besu_release)"
+Sep 24 16:30:38.999 INF API: test ended suite=0 test=140 pass=false
+Sep 24 16:30:39.000 INF API: test started suite=0 test=141 name="interop/raw-validation-wrong-chain-all (besu_release)"
+Sep 24 16:30:39.007 INF API: test ended suite=0 test=141 pass=false
+Sep 24 16:30:39.008 INF API: test started suite=0 test=142 name="interop/raw-validation-wrong-chain-stateDiff (besu_release)"
+Sep 24 16:30:39.014 INF API: test ended suite=0 test=142 pass=false
+Sep 24 16:30:39.015 INF API: test started suite=0 test=143 name="interop/raw-validation-wrong-chain-trace (besu_release)"
+Sep 24 16:30:39.023 INF API: test ended suite=0 test=143 pass=false
+Sep 24 16:30:39.024 INF API: test started suite=0 test=144 name="interop/raw-validation-wrong-chain-vmTrace (besu_release)"
+Sep 24 16:30:39.031 INF API: test ended suite=0 test=144 pass=false
+Sep 24 16:30:39.401 INF API: test ended suite=0 test=73 pass=true
+Sep 24 16:30:39.402 INF API: test started suite=0 test=145 name="client launch (erigon_development)"
+Sep 24 16:30:42.277 INF API: client erigon_development started suite=0 test=145 container=243a4d4d
+Sep 24 16:30:42.299 INF API: test started suite=0 test=146 name="interop/_control/chain-id (erigon_development)"
+Sep 24 16:30:42.303 INF API: test ended suite=0 test=146 pass=false
+Sep 24 16:30:42.307 INF API: test started suite=0 test=147 name="interop/_control/code-sender-balance (erigon_development)"
+Sep 24 16:30:42.311 INF API: test ended suite=0 test=147 pass=false
+Sep 24 16:30:42.314 INF API: test started suite=0 test=148 name="interop/_control/code-sender-code (erigon_development)"
+Sep 24 16:30:42.317 INF API: test ended suite=0 test=148 pass=false
+Sep 24 16:30:42.320 INF API: test started suite=0 test=149 name="interop/_control/code-sender-nonce (erigon_development)"
+Sep 24 16:30:42.339 INF API: test ended suite=0 test=149 pass=false
+Sep 24 16:30:42.343 INF API: test started suite=0 test=150 name="interop/_control/delegated-sender-balance (erigon_development)"
+Sep 24 16:30:42.346 INF API: test ended suite=0 test=150 pass=false
+Sep 24 16:30:42.348 INF API: test started suite=0 test=151 name="interop/_control/delegated-sender-code (erigon_development)"
+Sep 24 16:30:42.372 INF API: test ended suite=0 test=151 pass=false
+Sep 24 16:30:42.375 INF API: test started suite=0 test=152 name="interop/_control/delegated-sender-nonce (erigon_development)"
+Sep 24 16:30:42.379 INF API: test ended suite=0 test=152 pass=false
+Sep 24 16:30:42.381 INF API: test started suite=0 test=153 name="interop/_control/head (erigon_development)"
+Sep 24 16:30:42.385 INF API: test ended suite=0 test=153 pass=false
+Sep 24 16:30:42.387 INF API: test started suite=0 test=154 name="interop/_control/latest (erigon_development)"
+Sep 24 16:30:42.390 INF API: test ended suite=0 test=154 pass=false
+Sep 24 16:30:42.395 INF API: test started suite=0 test=155 name="interop/_control/marker-code (erigon_development)"
+Sep 24 16:30:42.400 INF API: test ended suite=0 test=155 pass=false
+Sep 24 16:30:42.403 INF API: test started suite=0 test=156 name="interop/_control/marker-storage (erigon_development)"
+Sep 24 16:30:42.406 INF API: test ended suite=0 test=156 pass=false
+Sep 24 16:30:42.408 INF API: test started suite=0 test=157 name="interop/_control/sender-balance (erigon_development)"
+Sep 24 16:30:42.411 INF API: test ended suite=0 test=157 pass=false
+Sep 24 16:30:42.414 INF API: test started suite=0 test=158 name="interop/_control/sender-code (erigon_development)"
+Sep 24 16:30:42.417 INF API: test ended suite=0 test=158 pass=false
+Sep 24 16:30:42.421 INF API: test started suite=0 test=159 name="interop/_control/sender-nonce (erigon_development)"
+Sep 24 16:30:42.424 INF API: test ended suite=0 test=159 pass=false
+Sep 24 16:30:42.426 INF API: test started suite=0 test=160 name="interop/_control/version (erigon_development)"
+Sep 24 16:30:42.428 INF API: test ended suite=0 test=160 pass=false
+Sep 24 16:30:42.430 INF API: test started suite=0 test=161 name="interop/raw-validation-below-basefee-all (erigon_development)"
+Sep 24 16:30:42.434 INF API: test ended suite=0 test=161 pass=false
+Sep 24 16:30:42.437 INF API: test started suite=0 test=162 name="interop/raw-validation-below-basefee-stateDiff (erigon_development)"
+Sep 24 16:30:42.443 INF API: test ended suite=0 test=162 pass=false
+Sep 24 16:30:42.445 INF API: test started suite=0 test=163 name="interop/raw-validation-below-basefee-trace (erigon_development)"
+Sep 24 16:30:42.448 INF API: test ended suite=0 test=163 pass=false
+Sep 24 16:30:42.450 INF API: test started suite=0 test=164 name="interop/raw-validation-below-basefee-vmTrace (erigon_development)"
+Sep 24 16:30:42.453 INF API: test ended suite=0 test=164 pass=false
+Sep 24 16:30:42.456 INF API: test started suite=0 test=165 name="interop/raw-validation-code-sender-all (erigon_development)"
+Sep 24 16:30:42.461 INF API: test ended suite=0 test=165 pass=false
+Sep 24 16:30:42.463 INF API: test started suite=0 test=166 name="interop/raw-validation-code-sender-stateDiff (erigon_development)"
+Sep 24 16:30:42.467 INF API: test ended suite=0 test=166 pass=false
+Sep 24 16:30:42.469 INF API: test started suite=0 test=167 name="interop/raw-validation-code-sender-trace (erigon_development)"
+Sep 24 16:30:42.472 INF API: test ended suite=0 test=167 pass=false
+Sep 24 16:30:42.473 INF API: test started suite=0 test=168 name="interop/raw-validation-code-sender-vmTrace (erigon_development)"
+Sep 24 16:30:42.475 INF API: test ended suite=0 test=168 pass=false
+Sep 24 16:30:42.476 INF API: test started suite=0 test=169 name="interop/raw-validation-create-nonce-high-all (erigon_development)"
+Sep 24 16:30:42.480 INF API: test ended suite=0 test=169 pass=false
+Sep 24 16:30:42.484 INF API: test started suite=0 test=170 name="interop/raw-validation-create-nonce-high-stateDiff (erigon_development)"
+Sep 24 16:30:42.491 INF API: test ended suite=0 test=170 pass=false
+Sep 24 16:30:42.493 INF API: test started suite=0 test=171 name="interop/raw-validation-create-nonce-high-trace (erigon_development)"
+Sep 24 16:30:42.496 INF API: test ended suite=0 test=171 pass=false
+Sep 24 16:30:42.497 INF API: test started suite=0 test=172 name="interop/raw-validation-create-nonce-high-vmTrace (erigon_development)"
+Sep 24 16:30:42.501 INF API: test ended suite=0 test=172 pass=false
+Sep 24 16:30:42.505 INF API: test started suite=0 test=173 name="interop/raw-validation-create-nonce-low-all (erigon_development)"
+Sep 24 16:30:42.509 INF API: test ended suite=0 test=173 pass=false
+Sep 24 16:30:42.511 INF API: test started suite=0 test=174 name="interop/raw-validation-create-nonce-low-stateDiff (erigon_development)"
+Sep 24 16:30:42.515 INF API: test ended suite=0 test=174 pass=false
+Sep 24 16:30:42.518 INF API: test started suite=0 test=175 name="interop/raw-validation-create-nonce-low-trace (erigon_development)"
+Sep 24 16:30:42.522 INF API: test ended suite=0 test=175 pass=false
+Sep 24 16:30:42.527 INF API: test started suite=0 test=176 name="interop/raw-validation-create-nonce-low-vmTrace (erigon_development)"
+Sep 24 16:30:42.532 INF API: test ended suite=0 test=176 pass=false
+Sep 24 16:30:42.536 INF API: test started suite=0 test=177 name="interop/raw-validation-create-valid-all (erigon_development)"
+Sep 24 16:30:42.540 INF API: test ended suite=0 test=177 pass=false
+Sep 24 16:30:42.543 INF API: test started suite=0 test=178 name="interop/raw-validation-create-valid-stateDiff (erigon_development)"
+Sep 24 16:30:42.562 INF API: test ended suite=0 test=178 pass=false
+Sep 24 16:30:42.565 INF API: test started suite=0 test=179 name="interop/raw-validation-create-valid-trace (erigon_development)"
+Sep 24 16:30:42.569 INF API: test ended suite=0 test=179 pass=false
+Sep 24 16:30:42.572 INF API: test started suite=0 test=180 name="interop/raw-validation-create-valid-vmTrace (erigon_development)"
+Sep 24 16:30:42.576 INF API: test ended suite=0 test=180 pass=false
+Sep 24 16:30:42.581 INF API: test started suite=0 test=181 name="interop/raw-validation-delegated-sender-valid-all (erigon_development)"
+Sep 24 16:30:42.585 INF API: test ended suite=0 test=181 pass=false
+Sep 24 16:30:42.591 INF API: test started suite=0 test=182 name="interop/raw-validation-delegated-sender-valid-stateDiff (erigon_development)"
+Sep 24 16:30:42.600 INF API: test ended suite=0 test=182 pass=false
+Sep 24 16:30:42.603 INF API: test started suite=0 test=183 name="interop/raw-validation-delegated-sender-valid-trace (erigon_development)"
+Sep 24 16:30:42.606 INF API: test ended suite=0 test=183 pass=false
+Sep 24 16:30:42.608 INF API: test started suite=0 test=184 name="interop/raw-validation-delegated-sender-valid-vmTrace (erigon_development)"
+Sep 24 16:30:42.617 INF API: test ended suite=0 test=184 pass=false
+Sep 24 16:30:42.619 INF API: test started suite=0 test=185 name="interop/raw-validation-execution-oog-valid-all (erigon_development)"
+Sep 24 16:30:42.624 INF API: test ended suite=0 test=185 pass=false
+Sep 24 16:30:42.629 INF API: test started suite=0 test=186 name="interop/raw-validation-execution-oog-valid-stateDiff (erigon_development)"
+Sep 24 16:30:42.635 INF API: test ended suite=0 test=186 pass=false
+Sep 24 16:30:42.639 INF API: test started suite=0 test=187 name="interop/raw-validation-execution-oog-valid-trace (erigon_development)"
+Sep 24 16:30:42.643 INF API: test ended suite=0 test=187 pass=false
+Sep 24 16:30:42.647 INF API: test started suite=0 test=188 name="interop/raw-validation-execution-oog-valid-vmTrace (erigon_development)"
+Sep 24 16:30:42.651 INF API: test ended suite=0 test=188 pass=false
+Sep 24 16:30:42.653 INF API: test started suite=0 test=189 name="interop/raw-validation-funds-gas-all (erigon_development)"
+Sep 24 16:30:42.662 INF API: test ended suite=0 test=189 pass=false
+Sep 24 16:30:42.663 INF API: test started suite=0 test=190 name="interop/raw-validation-funds-gas-stateDiff (erigon_development)"
+Sep 24 16:30:42.665 INF API: test ended suite=0 test=190 pass=false
+Sep 24 16:30:42.666 INF API: test started suite=0 test=191 name="interop/raw-validation-funds-gas-trace (erigon_development)"
+Sep 24 16:30:42.667 INF API: test ended suite=0 test=191 pass=false
+Sep 24 16:30:42.668 INF API: test started suite=0 test=192 name="interop/raw-validation-funds-gas-vmTrace (erigon_development)"
+Sep 24 16:30:42.670 INF API: test ended suite=0 test=192 pass=false
+Sep 24 16:30:42.671 INF API: test started suite=0 test=193 name="interop/raw-validation-funds-value-all (erigon_development)"
+Sep 24 16:30:42.674 INF API: test ended suite=0 test=193 pass=false
+Sep 24 16:30:42.675 INF API: test started suite=0 test=194 name="interop/raw-validation-funds-value-stateDiff (erigon_development)"
+Sep 24 16:30:42.677 INF API: test ended suite=0 test=194 pass=false
+Sep 24 16:30:42.678 INF API: test started suite=0 test=195 name="interop/raw-validation-funds-value-trace (erigon_development)"
+Sep 24 16:30:42.679 INF API: test ended suite=0 test=195 pass=false
+Sep 24 16:30:42.680 INF API: test started suite=0 test=196 name="interop/raw-validation-funds-value-vmTrace (erigon_development)"
+Sep 24 16:30:42.682 INF API: test ended suite=0 test=196 pass=false
+Sep 24 16:30:42.683 INF API: test started suite=0 test=197 name="interop/raw-validation-intrinsic-gas-all (erigon_development)"
+Sep 24 16:30:42.686 INF API: test ended suite=0 test=197 pass=false
+Sep 24 16:30:42.689 INF API: test started suite=0 test=198 name="interop/raw-validation-intrinsic-gas-stateDiff (erigon_development)"
+Sep 24 16:30:42.697 INF API: test ended suite=0 test=198 pass=false
+Sep 24 16:30:42.699 INF API: test started suite=0 test=199 name="interop/raw-validation-intrinsic-gas-trace (erigon_development)"
+Sep 24 16:30:42.704 INF API: test ended suite=0 test=199 pass=false
+Sep 24 16:30:42.707 INF API: test started suite=0 test=200 name="interop/raw-validation-intrinsic-gas-vmTrace (erigon_development)"
+Sep 24 16:30:42.713 INF API: test ended suite=0 test=200 pass=false
+Sep 24 16:30:42.717 INF API: test started suite=0 test=201 name="interop/raw-validation-nonce-high-all (erigon_development)"
+Sep 24 16:30:42.732 INF API: test ended suite=0 test=201 pass=false
+Sep 24 16:30:42.734 INF API: test started suite=0 test=202 name="interop/raw-validation-nonce-high-stateDiff (erigon_development)"
+Sep 24 16:30:42.737 INF API: test ended suite=0 test=202 pass=false
+Sep 24 16:30:42.740 INF API: test started suite=0 test=203 name="interop/raw-validation-nonce-high-trace (erigon_development)"
+Sep 24 16:30:42.745 INF API: test ended suite=0 test=203 pass=false
+Sep 24 16:30:42.747 INF API: test started suite=0 test=204 name="interop/raw-validation-nonce-high-vmTrace (erigon_development)"
+Sep 24 16:30:42.753 INF API: test ended suite=0 test=204 pass=false
+Sep 24 16:30:42.757 INF API: test started suite=0 test=205 name="interop/raw-validation-nonce-low-all (erigon_development)"
+Sep 24 16:30:42.763 INF API: test ended suite=0 test=205 pass=false
+Sep 24 16:30:42.766 INF API: test started suite=0 test=206 name="interop/raw-validation-nonce-low-stateDiff (erigon_development)"
+Sep 24 16:30:42.771 INF API: test ended suite=0 test=206 pass=false
+Sep 24 16:30:42.775 INF API: test started suite=0 test=207 name="interop/raw-validation-nonce-low-trace (erigon_development)"
+Sep 24 16:30:42.779 INF API: test ended suite=0 test=207 pass=false
+Sep 24 16:30:42.781 INF API: test started suite=0 test=208 name="interop/raw-validation-nonce-low-vmTrace (erigon_development)"
+Sep 24 16:30:42.786 INF API: test ended suite=0 test=208 pass=false
+Sep 24 16:30:42.788 INF API: test started suite=0 test=209 name="interop/raw-validation-valid-all (erigon_development)"
+Sep 24 16:30:42.792 INF API: test ended suite=0 test=209 pass=false
+Sep 24 16:30:42.794 INF API: test started suite=0 test=210 name="interop/raw-validation-valid-stateDiff (erigon_development)"
+Sep 24 16:30:42.796 INF API: test ended suite=0 test=210 pass=false
+Sep 24 16:30:42.798 INF API: test started suite=0 test=211 name="interop/raw-validation-valid-trace (erigon_development)"
+Sep 24 16:30:42.805 INF API: test ended suite=0 test=211 pass=false
+Sep 24 16:30:42.808 INF API: test started suite=0 test=212 name="interop/raw-validation-valid-vmTrace (erigon_development)"
+Sep 24 16:30:42.811 INF API: test ended suite=0 test=212 pass=false
+Sep 24 16:30:42.815 INF API: test started suite=0 test=213 name="interop/raw-validation-wrong-chain-all (erigon_development)"
+Sep 24 16:30:42.818 INF API: test ended suite=0 test=213 pass=false
+Sep 24 16:30:42.820 INF API: test started suite=0 test=214 name="interop/raw-validation-wrong-chain-stateDiff (erigon_development)"
+Sep 24 16:30:42.823 INF API: test ended suite=0 test=214 pass=false
+Sep 24 16:30:42.828 INF API: test started suite=0 test=215 name="interop/raw-validation-wrong-chain-trace (erigon_development)"
+Sep 24 16:30:42.832 INF API: test ended suite=0 test=215 pass=false
+Sep 24 16:30:42.836 INF API: test started suite=0 test=216 name="interop/raw-validation-wrong-chain-vmTrace (erigon_development)"
+Sep 24 16:30:42.838 INF API: test ended suite=0 test=216 pass=false
+Sep 24 16:30:45.042 INF API: test ended suite=0 test=145 pass=true
+Sep 24 16:30:45.044 INF API: test started suite=0 test=217 name="client launch (erigon_release)"
+Sep 24 16:30:46.944 INF API: client erigon_release started suite=0 test=217 container=f01a8ab8
+Sep 24 16:30:46.957 INF API: test started suite=0 test=218 name="interop/_control/chain-id (erigon_release)"
+Sep 24 16:30:46.959 INF API: test ended suite=0 test=218 pass=false
+Sep 24 16:30:46.960 INF API: test started suite=0 test=219 name="interop/_control/code-sender-balance (erigon_release)"
+Sep 24 16:30:46.962 INF API: test ended suite=0 test=219 pass=false
+Sep 24 16:30:46.963 INF API: test started suite=0 test=220 name="interop/_control/code-sender-code (erigon_release)"
+Sep 24 16:30:46.964 INF API: test ended suite=0 test=220 pass=false
+Sep 24 16:30:46.965 INF API: test started suite=0 test=221 name="interop/_control/code-sender-nonce (erigon_release)"
+Sep 24 16:30:46.967 INF API: test ended suite=0 test=221 pass=false
+Sep 24 16:30:46.967 INF API: test started suite=0 test=222 name="interop/_control/delegated-sender-balance (erigon_release)"
+Sep 24 16:30:46.969 INF API: test ended suite=0 test=222 pass=false
+Sep 24 16:30:46.969 INF API: test started suite=0 test=223 name="interop/_control/delegated-sender-code (erigon_release)"
+Sep 24 16:30:46.971 INF API: test ended suite=0 test=223 pass=false
+Sep 24 16:30:46.971 INF API: test started suite=0 test=224 name="interop/_control/delegated-sender-nonce (erigon_release)"
+Sep 24 16:30:46.973 INF API: test ended suite=0 test=224 pass=false
+Sep 24 16:30:46.973 INF API: test started suite=0 test=225 name="interop/_control/head (erigon_release)"
+Sep 24 16:30:46.975 INF API: test ended suite=0 test=225 pass=false
+Sep 24 16:30:46.976 INF API: test started suite=0 test=226 name="interop/_control/latest (erigon_release)"
+Sep 24 16:30:46.978 INF API: test ended suite=0 test=226 pass=false
+Sep 24 16:30:46.979 INF API: test started suite=0 test=227 name="interop/_control/marker-code (erigon_release)"
+Sep 24 16:30:46.980 INF API: test ended suite=0 test=227 pass=false
+Sep 24 16:30:46.981 INF API: test started suite=0 test=228 name="interop/_control/marker-storage (erigon_release)"
+Sep 24 16:30:46.982 INF API: test ended suite=0 test=228 pass=false
+Sep 24 16:30:46.983 INF API: test started suite=0 test=229 name="interop/_control/sender-balance (erigon_release)"
+Sep 24 16:30:46.985 INF API: test ended suite=0 test=229 pass=false
+Sep 24 16:30:46.985 INF API: test started suite=0 test=230 name="interop/_control/sender-code (erigon_release)"
+Sep 24 16:30:46.986 INF API: test ended suite=0 test=230 pass=false
+Sep 24 16:30:46.987 INF API: test started suite=0 test=231 name="interop/_control/sender-nonce (erigon_release)"
+Sep 24 16:30:46.988 INF API: test ended suite=0 test=231 pass=false
+Sep 24 16:30:46.989 INF API: test started suite=0 test=232 name="interop/_control/version (erigon_release)"
+Sep 24 16:30:46.990 INF API: test ended suite=0 test=232 pass=false
+Sep 24 16:30:46.991 INF API: test started suite=0 test=233 name="interop/raw-validation-below-basefee-all (erigon_release)"
+Sep 24 16:30:47.001 INF API: test ended suite=0 test=233 pass=false
+Sep 24 16:30:47.002 INF API: test started suite=0 test=234 name="interop/raw-validation-below-basefee-stateDiff (erigon_release)"
+Sep 24 16:30:47.011 INF API: test ended suite=0 test=234 pass=false
+Sep 24 16:30:47.013 INF API: test started suite=0 test=235 name="interop/raw-validation-below-basefee-trace (erigon_release)"
+Sep 24 16:30:47.022 INF API: test ended suite=0 test=235 pass=false
+Sep 24 16:30:47.023 INF API: test started suite=0 test=236 name="interop/raw-validation-below-basefee-vmTrace (erigon_release)"
+Sep 24 16:30:47.032 INF API: test ended suite=0 test=236 pass=false
+Sep 24 16:30:47.034 INF API: test started suite=0 test=237 name="interop/raw-validation-code-sender-all (erigon_release)"
+Sep 24 16:30:47.037 INF API: test ended suite=0 test=237 pass=false
+Sep 24 16:30:47.038 INF API: test started suite=0 test=238 name="interop/raw-validation-code-sender-stateDiff (erigon_release)"
+Sep 24 16:30:47.039 INF API: test ended suite=0 test=238 pass=false
+Sep 24 16:30:47.040 INF API: test started suite=0 test=239 name="interop/raw-validation-code-sender-trace (erigon_release)"
+Sep 24 16:30:47.042 INF API: test ended suite=0 test=239 pass=false
+Sep 24 16:30:47.043 INF API: test started suite=0 test=240 name="interop/raw-validation-code-sender-vmTrace (erigon_release)"
+Sep 24 16:30:47.045 INF API: test ended suite=0 test=240 pass=false
+Sep 24 16:30:47.045 INF API: test started suite=0 test=241 name="interop/raw-validation-create-nonce-high-all (erigon_release)"
+Sep 24 16:30:47.047 INF API: test ended suite=0 test=241 pass=false
+Sep 24 16:30:47.048 INF API: test started suite=0 test=242 name="interop/raw-validation-create-nonce-high-stateDiff (erigon_release)"
+Sep 24 16:30:47.050 INF API: test ended suite=0 test=242 pass=false
+Sep 24 16:30:47.051 INF API: test started suite=0 test=243 name="interop/raw-validation-create-nonce-high-trace (erigon_release)"
+Sep 24 16:30:47.053 INF API: test ended suite=0 test=243 pass=false
+Sep 24 16:30:47.054 INF API: test started suite=0 test=244 name="interop/raw-validation-create-nonce-high-vmTrace (erigon_release)"
+Sep 24 16:30:47.056 INF API: test ended suite=0 test=244 pass=false
+Sep 24 16:30:47.056 INF API: test started suite=0 test=245 name="interop/raw-validation-create-nonce-low-all (erigon_release)"
+Sep 24 16:30:47.059 INF API: test ended suite=0 test=245 pass=false
+Sep 24 16:30:47.059 INF API: test started suite=0 test=246 name="interop/raw-validation-create-nonce-low-stateDiff (erigon_release)"
+Sep 24 16:30:47.061 INF API: test ended suite=0 test=246 pass=false
+Sep 24 16:30:47.062 INF API: test started suite=0 test=247 name="interop/raw-validation-create-nonce-low-trace (erigon_release)"
+Sep 24 16:30:47.064 INF API: test ended suite=0 test=247 pass=false
+Sep 24 16:30:47.064 INF API: test started suite=0 test=248 name="interop/raw-validation-create-nonce-low-vmTrace (erigon_release)"
+Sep 24 16:30:47.066 INF API: test ended suite=0 test=248 pass=false
+Sep 24 16:30:47.067 INF API: test started suite=0 test=249 name="interop/raw-validation-create-valid-all (erigon_release)"
+Sep 24 16:30:47.070 INF API: test ended suite=0 test=249 pass=false
+Sep 24 16:30:47.071 INF API: test started suite=0 test=250 name="interop/raw-validation-create-valid-stateDiff (erigon_release)"
+Sep 24 16:30:47.073 INF API: test ended suite=0 test=250 pass=false
+Sep 24 16:30:47.073 INF API: test started suite=0 test=251 name="interop/raw-validation-create-valid-trace (erigon_release)"
+Sep 24 16:30:47.075 INF API: test ended suite=0 test=251 pass=false
+Sep 24 16:30:47.076 INF API: test started suite=0 test=252 name="interop/raw-validation-create-valid-vmTrace (erigon_release)"
+Sep 24 16:30:47.078 INF API: test ended suite=0 test=252 pass=false
+Sep 24 16:30:47.079 INF API: test started suite=0 test=253 name="interop/raw-validation-delegated-sender-valid-all (erigon_release)"
+Sep 24 16:30:47.081 INF API: test ended suite=0 test=253 pass=false
+Sep 24 16:30:47.082 INF API: test started suite=0 test=254 name="interop/raw-validation-delegated-sender-valid-stateDiff (erigon_release)"
+Sep 24 16:30:47.084 INF API: test ended suite=0 test=254 pass=false
+Sep 24 16:30:47.085 INF API: test started suite=0 test=255 name="interop/raw-validation-delegated-sender-valid-trace (erigon_release)"
+Sep 24 16:30:47.087 INF API: test ended suite=0 test=255 pass=false
+Sep 24 16:30:47.088 INF API: test started suite=0 test=256 name="interop/raw-validation-delegated-sender-valid-vmTrace (erigon_release)"
+Sep 24 16:30:47.090 INF API: test ended suite=0 test=256 pass=false
+Sep 24 16:30:47.091 INF API: test started suite=0 test=257 name="interop/raw-validation-execution-oog-valid-all (erigon_release)"
+Sep 24 16:30:47.092 INF API: test ended suite=0 test=257 pass=false
+Sep 24 16:30:47.093 INF API: test started suite=0 test=258 name="interop/raw-validation-execution-oog-valid-stateDiff (erigon_release)"
+Sep 24 16:30:47.094 INF API: test ended suite=0 test=258 pass=false
+Sep 24 16:30:47.095 INF API: test started suite=0 test=259 name="interop/raw-validation-execution-oog-valid-trace (erigon_release)"
+Sep 24 16:30:47.096 INF API: test ended suite=0 test=259 pass=false
+Sep 24 16:30:47.097 INF API: test started suite=0 test=260 name="interop/raw-validation-execution-oog-valid-vmTrace (erigon_release)"
+Sep 24 16:30:47.099 INF API: test ended suite=0 test=260 pass=false
+Sep 24 16:30:47.100 INF API: test started suite=0 test=261 name="interop/raw-validation-funds-gas-all (erigon_release)"
+Sep 24 16:30:47.102 INF API: test ended suite=0 test=261 pass=false
+Sep 24 16:30:47.103 INF API: test started suite=0 test=262 name="interop/raw-validation-funds-gas-stateDiff (erigon_release)"
+Sep 24 16:30:47.105 INF API: test ended suite=0 test=262 pass=false
+Sep 24 16:30:47.106 INF API: test started suite=0 test=263 name="interop/raw-validation-funds-gas-trace (erigon_release)"
+Sep 24 16:30:47.107 INF API: test ended suite=0 test=263 pass=false
+Sep 24 16:30:47.108 INF API: test started suite=0 test=264 name="interop/raw-validation-funds-gas-vmTrace (erigon_release)"
+Sep 24 16:30:47.110 INF API: test ended suite=0 test=264 pass=false
+Sep 24 16:30:47.111 INF API: test started suite=0 test=265 name="interop/raw-validation-funds-value-all (erigon_release)"
+Sep 24 16:30:47.113 INF API: test ended suite=0 test=265 pass=false
+Sep 24 16:30:47.114 INF API: test started suite=0 test=266 name="interop/raw-validation-funds-value-stateDiff (erigon_release)"
+Sep 24 16:30:47.115 INF API: test ended suite=0 test=266 pass=false
+Sep 24 16:30:47.116 INF API: test started suite=0 test=267 name="interop/raw-validation-funds-value-trace (erigon_release)"
+Sep 24 16:30:47.118 INF API: test ended suite=0 test=267 pass=false
+Sep 24 16:30:47.119 INF API: test started suite=0 test=268 name="interop/raw-validation-funds-value-vmTrace (erigon_release)"
+Sep 24 16:30:47.121 INF API: test ended suite=0 test=268 pass=false
+Sep 24 16:30:47.121 INF API: test started suite=0 test=269 name="interop/raw-validation-intrinsic-gas-all (erigon_release)"
+Sep 24 16:30:47.130 INF API: test ended suite=0 test=269 pass=false
+Sep 24 16:30:47.131 INF API: test started suite=0 test=270 name="interop/raw-validation-intrinsic-gas-stateDiff (erigon_release)"
+Sep 24 16:30:47.139 INF API: test ended suite=0 test=270 pass=false
+Sep 24 16:30:47.139 INF API: test started suite=0 test=271 name="interop/raw-validation-intrinsic-gas-trace (erigon_release)"
+Sep 24 16:30:47.151 INF API: test ended suite=0 test=271 pass=false
+Sep 24 16:30:47.152 INF API: test started suite=0 test=272 name="interop/raw-validation-intrinsic-gas-vmTrace (erigon_release)"
+Sep 24 16:30:47.155 INF API: test ended suite=0 test=272 pass=false
+Sep 24 16:30:47.158 INF API: test started suite=0 test=273 name="interop/raw-validation-nonce-high-all (erigon_release)"
+Sep 24 16:30:47.162 INF API: test ended suite=0 test=273 pass=false
+Sep 24 16:30:47.167 INF API: test started suite=0 test=274 name="interop/raw-validation-nonce-high-stateDiff (erigon_release)"
+Sep 24 16:30:47.169 INF API: test ended suite=0 test=274 pass=false
+Sep 24 16:30:47.170 INF API: test started suite=0 test=275 name="interop/raw-validation-nonce-high-trace (erigon_release)"
+Sep 24 16:30:47.173 INF API: test ended suite=0 test=275 pass=false
+Sep 24 16:30:47.174 INF API: test started suite=0 test=276 name="interop/raw-validation-nonce-high-vmTrace (erigon_release)"
+Sep 24 16:30:47.177 INF API: test ended suite=0 test=276 pass=false
+Sep 24 16:30:47.178 INF API: test started suite=0 test=277 name="interop/raw-validation-nonce-low-all (erigon_release)"
+Sep 24 16:30:47.180 INF API: test ended suite=0 test=277 pass=false
+Sep 24 16:30:47.181 INF API: test started suite=0 test=278 name="interop/raw-validation-nonce-low-stateDiff (erigon_release)"
+Sep 24 16:30:47.183 INF API: test ended suite=0 test=278 pass=false
+Sep 24 16:30:47.184 INF API: test started suite=0 test=279 name="interop/raw-validation-nonce-low-trace (erigon_release)"
+Sep 24 16:30:47.186 INF API: test ended suite=0 test=279 pass=false
+Sep 24 16:30:47.187 INF API: test started suite=0 test=280 name="interop/raw-validation-nonce-low-vmTrace (erigon_release)"
+Sep 24 16:30:47.189 INF API: test ended suite=0 test=280 pass=false
+Sep 24 16:30:47.190 INF API: test started suite=0 test=281 name="interop/raw-validation-valid-all (erigon_release)"
+Sep 24 16:30:47.194 INF API: test ended suite=0 test=281 pass=false
+Sep 24 16:30:47.196 INF API: test started suite=0 test=282 name="interop/raw-validation-valid-stateDiff (erigon_release)"
+Sep 24 16:30:47.198 INF API: test ended suite=0 test=282 pass=false
+Sep 24 16:30:47.199 INF API: test started suite=0 test=283 name="interop/raw-validation-valid-trace (erigon_release)"
+Sep 24 16:30:47.201 INF API: test ended suite=0 test=283 pass=false
+Sep 24 16:30:47.201 INF API: test started suite=0 test=284 name="interop/raw-validation-valid-vmTrace (erigon_release)"
+Sep 24 16:30:47.204 INF API: test ended suite=0 test=284 pass=false
+Sep 24 16:30:47.205 INF API: test started suite=0 test=285 name="interop/raw-validation-wrong-chain-all (erigon_release)"
+Sep 24 16:30:47.215 INF API: test ended suite=0 test=285 pass=false
+Sep 24 16:30:47.217 INF API: test started suite=0 test=286 name="interop/raw-validation-wrong-chain-stateDiff (erigon_release)"
+Sep 24 16:30:47.226 INF API: test ended suite=0 test=286 pass=false
+Sep 24 16:30:47.230 INF API: test started suite=0 test=287 name="interop/raw-validation-wrong-chain-trace (erigon_release)"
+Sep 24 16:30:47.233 INF API: test ended suite=0 test=287 pass=false
+Sep 24 16:30:47.237 INF API: test started suite=0 test=288 name="interop/raw-validation-wrong-chain-vmTrace (erigon_release)"
+Sep 24 16:30:47.241 INF API: test ended suite=0 test=288 pass=false
+Sep 24 16:30:47.641 INF API: test ended suite=0 test=217 pass=true
+Sep 24 16:30:47.644 INF API: test started suite=0 test=289 name="client launch (go-ethereum_trace)"
+Sep 24 16:30:50.300 INF API: client go-ethereum_trace started suite=0 test=289 container=94bb9b83
+Sep 24 16:30:50.328 INF API: test started suite=0 test=290 name="interop/_control/chain-id (go-ethereum_trace)"
+Sep 24 16:30:50.335 INF API: test ended suite=0 test=290 pass=false
+Sep 24 16:30:50.338 INF API: test started suite=0 test=291 name="interop/_control/code-sender-balance (go-ethereum_trace)"
+Sep 24 16:30:50.340 INF API: test ended suite=0 test=291 pass=false
+Sep 24 16:30:50.342 INF API: test started suite=0 test=292 name="interop/_control/code-sender-code (go-ethereum_trace)"
+Sep 24 16:30:50.346 INF API: test ended suite=0 test=292 pass=false
+Sep 24 16:30:50.348 INF API: test started suite=0 test=293 name="interop/_control/code-sender-nonce (go-ethereum_trace)"
+Sep 24 16:30:50.351 INF API: test ended suite=0 test=293 pass=false
+Sep 24 16:30:50.353 INF API: test started suite=0 test=294 name="interop/_control/delegated-sender-balance (go-ethereum_trace)"
+Sep 24 16:30:50.357 INF API: test ended suite=0 test=294 pass=false
+Sep 24 16:30:50.359 INF API: test started suite=0 test=295 name="interop/_control/delegated-sender-code (go-ethereum_trace)"
+Sep 24 16:30:50.364 INF API: test ended suite=0 test=295 pass=false
+Sep 24 16:30:50.367 INF API: test started suite=0 test=296 name="interop/_control/delegated-sender-nonce (go-ethereum_trace)"
+Sep 24 16:30:50.370 INF API: test ended suite=0 test=296 pass=false
+Sep 24 16:30:50.372 INF API: test started suite=0 test=297 name="interop/_control/head (go-ethereum_trace)"
+Sep 24 16:30:50.380 INF API: test ended suite=0 test=297 pass=false
+Sep 24 16:30:50.383 INF API: test started suite=0 test=298 name="interop/_control/latest (go-ethereum_trace)"
+Sep 24 16:30:50.389 INF API: test ended suite=0 test=298 pass=false
+Sep 24 16:30:50.392 INF API: test started suite=0 test=299 name="interop/_control/marker-code (go-ethereum_trace)"
+Sep 24 16:30:50.397 INF API: test ended suite=0 test=299 pass=false
+Sep 24 16:30:50.400 INF API: test started suite=0 test=300 name="interop/_control/marker-storage (go-ethereum_trace)"
+Sep 24 16:30:50.403 INF API: test ended suite=0 test=300 pass=false
+Sep 24 16:30:50.405 INF API: test started suite=0 test=301 name="interop/_control/sender-balance (go-ethereum_trace)"
+Sep 24 16:30:50.414 INF API: test ended suite=0 test=301 pass=false
+Sep 24 16:30:50.416 INF API: test started suite=0 test=302 name="interop/_control/sender-code (go-ethereum_trace)"
+Sep 24 16:30:50.419 INF API: test ended suite=0 test=302 pass=false
+Sep 24 16:30:50.421 INF API: test started suite=0 test=303 name="interop/_control/sender-nonce (go-ethereum_trace)"
+Sep 24 16:30:50.424 INF API: test ended suite=0 test=303 pass=false
+Sep 24 16:30:50.426 INF API: test started suite=0 test=304 name="interop/_control/version (go-ethereum_trace)"
+Sep 24 16:30:50.429 INF API: test ended suite=0 test=304 pass=false
+Sep 24 16:30:50.431 INF API: test started suite=0 test=305 name="interop/raw-validation-below-basefee-all (go-ethereum_trace)"
+Sep 24 16:30:50.445 INF API: test ended suite=0 test=305 pass=false
+Sep 24 16:30:50.448 INF API: test started suite=0 test=306 name="interop/raw-validation-below-basefee-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.462 INF API: test ended suite=0 test=306 pass=false
+Sep 24 16:30:50.465 INF API: test started suite=0 test=307 name="interop/raw-validation-below-basefee-trace (go-ethereum_trace)"
+Sep 24 16:30:50.469 INF API: test ended suite=0 test=307 pass=false
+Sep 24 16:30:50.472 INF API: test started suite=0 test=308 name="interop/raw-validation-below-basefee-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.488 INF API: test ended suite=0 test=308 pass=false
+Sep 24 16:30:50.492 INF API: test started suite=0 test=309 name="interop/raw-validation-code-sender-all (go-ethereum_trace)"
+Sep 24 16:30:50.506 INF API: test ended suite=0 test=309 pass=false
+Sep 24 16:30:50.509 INF API: test started suite=0 test=310 name="interop/raw-validation-code-sender-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.526 INF API: test ended suite=0 test=310 pass=false
+Sep 24 16:30:50.527 INF API: test started suite=0 test=311 name="interop/raw-validation-code-sender-trace (go-ethereum_trace)"
+Sep 24 16:30:50.536 INF API: test ended suite=0 test=311 pass=false
+Sep 24 16:30:50.538 INF API: test started suite=0 test=312 name="interop/raw-validation-code-sender-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.547 INF API: test ended suite=0 test=312 pass=false
+Sep 24 16:30:50.548 INF API: test started suite=0 test=313 name="interop/raw-validation-create-nonce-high-all (go-ethereum_trace)"
+Sep 24 16:30:50.558 INF API: test ended suite=0 test=313 pass=false
+Sep 24 16:30:50.559 INF API: test started suite=0 test=314 name="interop/raw-validation-create-nonce-high-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.569 INF API: test ended suite=0 test=314 pass=false
+Sep 24 16:30:50.570 INF API: test started suite=0 test=315 name="interop/raw-validation-create-nonce-high-trace (go-ethereum_trace)"
+Sep 24 16:30:50.580 INF API: test ended suite=0 test=315 pass=false
+Sep 24 16:30:50.581 INF API: test started suite=0 test=316 name="interop/raw-validation-create-nonce-high-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.597 INF API: test ended suite=0 test=316 pass=false
+Sep 24 16:30:50.598 INF API: test started suite=0 test=317 name="interop/raw-validation-create-nonce-low-all (go-ethereum_trace)"
+Sep 24 16:30:50.608 INF API: test ended suite=0 test=317 pass=false
+Sep 24 16:30:50.609 INF API: test started suite=0 test=318 name="interop/raw-validation-create-nonce-low-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.618 INF API: test ended suite=0 test=318 pass=false
+Sep 24 16:30:50.619 INF API: test started suite=0 test=319 name="interop/raw-validation-create-nonce-low-trace (go-ethereum_trace)"
+Sep 24 16:30:50.632 INF API: test ended suite=0 test=319 pass=false
+Sep 24 16:30:50.637 INF API: test started suite=0 test=320 name="interop/raw-validation-create-nonce-low-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.648 INF API: test ended suite=0 test=320 pass=false
+Sep 24 16:30:50.653 INF API: test started suite=0 test=321 name="interop/raw-validation-create-valid-all (go-ethereum_trace)"
+Sep 24 16:30:50.659 INF API: test ended suite=0 test=321 pass=false
+Sep 24 16:30:50.662 INF API: test started suite=0 test=322 name="interop/raw-validation-create-valid-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.666 INF API: test ended suite=0 test=322 pass=false
+Sep 24 16:30:50.667 INF API: test started suite=0 test=323 name="interop/raw-validation-create-valid-trace (go-ethereum_trace)"
+Sep 24 16:30:50.669 INF API: test ended suite=0 test=323 pass=false
+Sep 24 16:30:50.670 INF API: test started suite=0 test=324 name="interop/raw-validation-create-valid-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.673 INF API: test ended suite=0 test=324 pass=false
+Sep 24 16:30:50.673 INF API: test started suite=0 test=325 name="interop/raw-validation-delegated-sender-valid-all (go-ethereum_trace)"
+Sep 24 16:30:50.676 INF API: test ended suite=0 test=325 pass=false
+Sep 24 16:30:50.677 INF API: test started suite=0 test=326 name="interop/raw-validation-delegated-sender-valid-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.679 INF API: test ended suite=0 test=326 pass=false
+Sep 24 16:30:50.680 INF API: test started suite=0 test=327 name="interop/raw-validation-delegated-sender-valid-trace (go-ethereum_trace)"
+Sep 24 16:30:50.681 INF API: test ended suite=0 test=327 pass=false
+Sep 24 16:30:50.682 INF API: test started suite=0 test=328 name="interop/raw-validation-delegated-sender-valid-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.684 INF API: test ended suite=0 test=328 pass=false
+Sep 24 16:30:50.685 INF API: test started suite=0 test=329 name="interop/raw-validation-execution-oog-valid-all (go-ethereum_trace)"
+Sep 24 16:30:50.689 INF API: test ended suite=0 test=329 pass=false
+Sep 24 16:30:50.689 INF API: test started suite=0 test=330 name="interop/raw-validation-execution-oog-valid-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.692 INF API: test ended suite=0 test=330 pass=false
+Sep 24 16:30:50.693 INF API: test started suite=0 test=331 name="interop/raw-validation-execution-oog-valid-trace (go-ethereum_trace)"
+Sep 24 16:30:50.695 INF API: test ended suite=0 test=331 pass=false
+Sep 24 16:30:50.695 INF API: test started suite=0 test=332 name="interop/raw-validation-execution-oog-valid-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.697 INF API: test ended suite=0 test=332 pass=false
+Sep 24 16:30:50.698 INF API: test started suite=0 test=333 name="interop/raw-validation-funds-gas-all (go-ethereum_trace)"
+Sep 24 16:30:50.710 INF API: test ended suite=0 test=333 pass=false
+Sep 24 16:30:50.711 INF API: test started suite=0 test=334 name="interop/raw-validation-funds-gas-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.714 INF API: test ended suite=0 test=334 pass=false
+Sep 24 16:30:50.715 INF API: test started suite=0 test=335 name="interop/raw-validation-funds-gas-trace (go-ethereum_trace)"
+Sep 24 16:30:50.717 INF API: test ended suite=0 test=335 pass=false
+Sep 24 16:30:50.718 INF API: test started suite=0 test=336 name="interop/raw-validation-funds-gas-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.720 INF API: test ended suite=0 test=336 pass=false
+Sep 24 16:30:50.720 INF API: test started suite=0 test=337 name="interop/raw-validation-funds-value-all (go-ethereum_trace)"
+Sep 24 16:30:50.722 INF API: test ended suite=0 test=337 pass=false
+Sep 24 16:30:50.723 INF API: test started suite=0 test=338 name="interop/raw-validation-funds-value-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.725 INF API: test ended suite=0 test=338 pass=false
+Sep 24 16:30:50.725 INF API: test started suite=0 test=339 name="interop/raw-validation-funds-value-trace (go-ethereum_trace)"
+Sep 24 16:30:50.727 INF API: test ended suite=0 test=339 pass=false
+Sep 24 16:30:50.728 INF API: test started suite=0 test=340 name="interop/raw-validation-funds-value-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.730 INF API: test ended suite=0 test=340 pass=false
+Sep 24 16:30:50.730 INF API: test started suite=0 test=341 name="interop/raw-validation-intrinsic-gas-all (go-ethereum_trace)"
+Sep 24 16:30:50.732 INF API: test ended suite=0 test=341 pass=false
+Sep 24 16:30:50.733 INF API: test started suite=0 test=342 name="interop/raw-validation-intrinsic-gas-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.735 INF API: test ended suite=0 test=342 pass=false
+Sep 24 16:30:50.735 INF API: test started suite=0 test=343 name="interop/raw-validation-intrinsic-gas-trace (go-ethereum_trace)"
+Sep 24 16:30:50.737 INF API: test ended suite=0 test=343 pass=false
+Sep 24 16:30:50.738 INF API: test started suite=0 test=344 name="interop/raw-validation-intrinsic-gas-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.740 INF API: test ended suite=0 test=344 pass=false
+Sep 24 16:30:50.741 INF API: test started suite=0 test=345 name="interop/raw-validation-nonce-high-all (go-ethereum_trace)"
+Sep 24 16:30:50.743 INF API: test ended suite=0 test=345 pass=false
+Sep 24 16:30:50.744 INF API: test started suite=0 test=346 name="interop/raw-validation-nonce-high-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.746 INF API: test ended suite=0 test=346 pass=false
+Sep 24 16:30:50.747 INF API: test started suite=0 test=347 name="interop/raw-validation-nonce-high-trace (go-ethereum_trace)"
+Sep 24 16:30:50.751 INF API: test ended suite=0 test=347 pass=false
+Sep 24 16:30:50.752 INF API: test started suite=0 test=348 name="interop/raw-validation-nonce-high-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.755 INF API: test ended suite=0 test=348 pass=false
+Sep 24 16:30:50.756 INF API: test started suite=0 test=349 name="interop/raw-validation-nonce-low-all (go-ethereum_trace)"
+Sep 24 16:30:50.758 INF API: test ended suite=0 test=349 pass=false
+Sep 24 16:30:50.759 INF API: test started suite=0 test=350 name="interop/raw-validation-nonce-low-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.761 INF API: test ended suite=0 test=350 pass=false
+Sep 24 16:30:50.761 INF API: test started suite=0 test=351 name="interop/raw-validation-nonce-low-trace (go-ethereum_trace)"
+Sep 24 16:30:50.763 INF API: test ended suite=0 test=351 pass=false
+Sep 24 16:30:50.764 INF API: test started suite=0 test=352 name="interop/raw-validation-nonce-low-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.769 INF API: test ended suite=0 test=352 pass=false
+Sep 24 16:30:50.771 INF API: test started suite=0 test=353 name="interop/raw-validation-valid-all (go-ethereum_trace)"
+Sep 24 16:30:50.774 INF API: test ended suite=0 test=353 pass=false
+Sep 24 16:30:50.774 INF API: test started suite=0 test=354 name="interop/raw-validation-valid-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.777 INF API: test ended suite=0 test=354 pass=false
+Sep 24 16:30:50.778 INF API: test started suite=0 test=355 name="interop/raw-validation-valid-trace (go-ethereum_trace)"
+Sep 24 16:30:50.780 INF API: test ended suite=0 test=355 pass=false
+Sep 24 16:30:50.781 INF API: test started suite=0 test=356 name="interop/raw-validation-valid-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.784 INF API: test ended suite=0 test=356 pass=false
+Sep 24 16:30:50.785 INF API: test started suite=0 test=357 name="interop/raw-validation-wrong-chain-all (go-ethereum_trace)"
+Sep 24 16:30:50.786 INF API: test ended suite=0 test=357 pass=false
+Sep 24 16:30:50.787 INF API: test started suite=0 test=358 name="interop/raw-validation-wrong-chain-stateDiff (go-ethereum_trace)"
+Sep 24 16:30:50.789 INF API: test ended suite=0 test=358 pass=false
+Sep 24 16:30:50.790 INF API: test started suite=0 test=359 name="interop/raw-validation-wrong-chain-trace (go-ethereum_trace)"
+Sep 24 16:30:50.791 INF API: test ended suite=0 test=359 pass=false
+Sep 24 16:30:50.792 INF API: test started suite=0 test=360 name="interop/raw-validation-wrong-chain-vmTrace (go-ethereum_trace)"
+Sep 24 16:30:50.793 INF API: test ended suite=0 test=360 pass=false
+Sep 24 16:30:51.336 INF API: test ended suite=0 test=289 pass=true
+Sep 24 16:30:51.341 INF API: test started suite=0 test=361 name="client launch (nethermind_development)"
+Sep 24 16:30:59.621 INF API: client nethermind_development started suite=0 test=361 container=0d110ef8
+Sep 24 16:30:59.769 INF API: test started suite=0 test=362 name="interop/_control/chain-id (nethermind_development)"
+Sep 24 16:30:59.780 INF API: test ended suite=0 test=362 pass=false
+Sep 24 16:30:59.782 INF API: test started suite=0 test=363 name="interop/_control/code-sender-balance (nethermind_development)"
+Sep 24 16:30:59.792 INF API: test ended suite=0 test=363 pass=false
+Sep 24 16:30:59.793 INF API: test started suite=0 test=364 name="interop/_control/code-sender-code (nethermind_development)"
+Sep 24 16:30:59.805 INF API: test ended suite=0 test=364 pass=false
+Sep 24 16:30:59.806 INF API: test started suite=0 test=365 name="interop/_control/code-sender-nonce (nethermind_development)"
+Sep 24 16:30:59.811 INF API: test ended suite=0 test=365 pass=false
+Sep 24 16:30:59.811 INF API: test started suite=0 test=366 name="interop/_control/delegated-sender-balance (nethermind_development)"
+Sep 24 16:30:59.813 INF API: test ended suite=0 test=366 pass=false
+Sep 24 16:30:59.814 INF API: test started suite=0 test=367 name="interop/_control/delegated-sender-code (nethermind_development)"
+Sep 24 16:30:59.815 INF API: test ended suite=0 test=367 pass=false
+Sep 24 16:30:59.816 INF API: test started suite=0 test=368 name="interop/_control/delegated-sender-nonce (nethermind_development)"
+Sep 24 16:30:59.817 INF API: test ended suite=0 test=368 pass=false
+Sep 24 16:30:59.818 INF API: test started suite=0 test=369 name="interop/_control/head (nethermind_development)"
+Sep 24 16:30:59.821 INF API: test ended suite=0 test=369 pass=false
+Sep 24 16:30:59.822 INF API: test started suite=0 test=370 name="interop/_control/latest (nethermind_development)"
+Sep 24 16:30:59.824 INF API: test ended suite=0 test=370 pass=false
+Sep 24 16:30:59.824 INF API: test started suite=0 test=371 name="interop/_control/marker-code (nethermind_development)"
+Sep 24 16:30:59.826 INF API: test ended suite=0 test=371 pass=false
+Sep 24 16:30:59.827 INF API: test started suite=0 test=372 name="interop/_control/marker-storage (nethermind_development)"
+Sep 24 16:30:59.831 INF API: test ended suite=0 test=372 pass=false
+Sep 24 16:30:59.832 INF API: test started suite=0 test=373 name="interop/_control/sender-balance (nethermind_development)"
+Sep 24 16:30:59.833 INF API: test ended suite=0 test=373 pass=false
+Sep 24 16:30:59.833 INF API: test started suite=0 test=374 name="interop/_control/sender-code (nethermind_development)"
+Sep 24 16:30:59.835 INF API: test ended suite=0 test=374 pass=false
+Sep 24 16:30:59.835 INF API: test started suite=0 test=375 name="interop/_control/sender-nonce (nethermind_development)"
+Sep 24 16:30:59.836 INF API: test ended suite=0 test=375 pass=false
+Sep 24 16:30:59.837 INF API: test started suite=0 test=376 name="interop/_control/version (nethermind_development)"
+Sep 24 16:30:59.839 INF API: test ended suite=0 test=376 pass=false
+Sep 24 16:30:59.840 INF API: test started suite=0 test=377 name="interop/raw-validation-below-basefee-all (nethermind_development)"
+Sep 24 16:30:59.939 INF API: test ended suite=0 test=377 pass=false
+Sep 24 16:30:59.941 INF API: test started suite=0 test=378 name="interop/raw-validation-below-basefee-stateDiff (nethermind_development)"
+Sep 24 16:30:59.958 INF API: test ended suite=0 test=378 pass=false
+Sep 24 16:30:59.969 INF API: test started suite=0 test=379 name="interop/raw-validation-below-basefee-trace (nethermind_development)"
+Sep 24 16:30:59.971 INF API: test ended suite=0 test=379 pass=false
+Sep 24 16:30:59.972 INF API: test started suite=0 test=380 name="interop/raw-validation-below-basefee-vmTrace (nethermind_development)"
+Sep 24 16:30:59.974 INF API: test ended suite=0 test=380 pass=false
+Sep 24 16:30:59.975 INF API: test started suite=0 test=381 name="interop/raw-validation-code-sender-all (nethermind_development)"
+Sep 24 16:31:00.083 INF API: test ended suite=0 test=381 pass=false
+Sep 24 16:31:00.084 INF API: test started suite=0 test=382 name="interop/raw-validation-code-sender-stateDiff (nethermind_development)"
+Sep 24 16:31:00.101 INF API: test ended suite=0 test=382 pass=false
+Sep 24 16:31:00.103 INF API: test started suite=0 test=383 name="interop/raw-validation-code-sender-trace (nethermind_development)"
+Sep 24 16:31:00.116 INF API: test ended suite=0 test=383 pass=false
+Sep 24 16:31:00.117 INF API: test started suite=0 test=384 name="interop/raw-validation-code-sender-vmTrace (nethermind_development)"
+Sep 24 16:31:00.121 INF API: test ended suite=0 test=384 pass=false
+Sep 24 16:31:00.125 INF API: test started suite=0 test=385 name="interop/raw-validation-create-nonce-high-all (nethermind_development)"
+Sep 24 16:31:00.164 INF API: test ended suite=0 test=385 pass=false
+Sep 24 16:31:00.166 INF API: test started suite=0 test=386 name="interop/raw-validation-create-nonce-high-stateDiff (nethermind_development)"
+Sep 24 16:31:00.185 INF API: test ended suite=0 test=386 pass=false
+Sep 24 16:31:00.188 INF API: test started suite=0 test=387 name="interop/raw-validation-create-nonce-high-trace (nethermind_development)"
+Sep 24 16:31:00.194 INF API: test ended suite=0 test=387 pass=false
+Sep 24 16:31:00.198 INF API: test started suite=0 test=388 name="interop/raw-validation-create-nonce-high-vmTrace (nethermind_development)"
+Sep 24 16:31:00.202 INF API: test ended suite=0 test=388 pass=false
+Sep 24 16:31:00.203 INF API: test started suite=0 test=389 name="interop/raw-validation-create-nonce-low-all (nethermind_development)"
+Sep 24 16:31:00.207 INF API: test ended suite=0 test=389 pass=false
+Sep 24 16:31:00.208 INF API: test started suite=0 test=390 name="interop/raw-validation-create-nonce-low-stateDiff (nethermind_development)"
+Sep 24 16:31:00.211 INF API: test ended suite=0 test=390 pass=false
+Sep 24 16:31:00.212 INF API: test started suite=0 test=391 name="interop/raw-validation-create-nonce-low-trace (nethermind_development)"
+Sep 24 16:31:00.215 INF API: test ended suite=0 test=391 pass=false
+Sep 24 16:31:00.216 INF API: test started suite=0 test=392 name="interop/raw-validation-create-nonce-low-vmTrace (nethermind_development)"
+Sep 24 16:31:00.219 INF API: test ended suite=0 test=392 pass=false
+Sep 24 16:31:00.220 INF API: test started suite=0 test=393 name="interop/raw-validation-create-valid-all (nethermind_development)"
+Sep 24 16:31:00.223 INF API: test ended suite=0 test=393 pass=false
+Sep 24 16:31:00.224 INF API: test started suite=0 test=394 name="interop/raw-validation-create-valid-stateDiff (nethermind_development)"
+Sep 24 16:31:00.227 INF API: test ended suite=0 test=394 pass=false
+Sep 24 16:31:00.228 INF API: test started suite=0 test=395 name="interop/raw-validation-create-valid-trace (nethermind_development)"
+Sep 24 16:31:00.230 INF API: test ended suite=0 test=395 pass=false
+Sep 24 16:31:00.231 INF API: test started suite=0 test=396 name="interop/raw-validation-create-valid-vmTrace (nethermind_development)"
+Sep 24 16:31:00.233 INF API: test ended suite=0 test=396 pass=false
+Sep 24 16:31:00.234 INF API: test started suite=0 test=397 name="interop/raw-validation-delegated-sender-valid-all (nethermind_development)"
+Sep 24 16:31:00.237 INF API: test ended suite=0 test=397 pass=false
+Sep 24 16:31:00.238 INF API: test started suite=0 test=398 name="interop/raw-validation-delegated-sender-valid-stateDiff (nethermind_development)"
+Sep 24 16:31:00.241 INF API: test ended suite=0 test=398 pass=false
+Sep 24 16:31:00.241 INF API: test started suite=0 test=399 name="interop/raw-validation-delegated-sender-valid-trace (nethermind_development)"
+Sep 24 16:31:00.244 INF API: test ended suite=0 test=399 pass=false
+Sep 24 16:31:00.244 INF API: test started suite=0 test=400 name="interop/raw-validation-delegated-sender-valid-vmTrace (nethermind_development)"
+Sep 24 16:31:00.247 INF API: test ended suite=0 test=400 pass=false
+Sep 24 16:31:00.248 INF API: test started suite=0 test=401 name="interop/raw-validation-execution-oog-valid-all (nethermind_development)"
+Sep 24 16:31:00.259 INF API: test ended suite=0 test=401 pass=false
+Sep 24 16:31:00.261 INF API: test started suite=0 test=402 name="interop/raw-validation-execution-oog-valid-stateDiff (nethermind_development)"
+Sep 24 16:31:00.264 INF API: test ended suite=0 test=402 pass=false
+Sep 24 16:31:00.265 INF API: test started suite=0 test=403 name="interop/raw-validation-execution-oog-valid-trace (nethermind_development)"
+Sep 24 16:31:00.268 INF API: test ended suite=0 test=403 pass=false
+Sep 24 16:31:00.269 INF API: test started suite=0 test=404 name="interop/raw-validation-execution-oog-valid-vmTrace (nethermind_development)"
+Sep 24 16:31:00.271 INF API: test ended suite=0 test=404 pass=false
+Sep 24 16:31:00.272 INF API: test started suite=0 test=405 name="interop/raw-validation-funds-gas-all (nethermind_development)"
+Sep 24 16:31:00.275 INF API: test ended suite=0 test=405 pass=false
+Sep 24 16:31:00.275 INF API: test started suite=0 test=406 name="interop/raw-validation-funds-gas-stateDiff (nethermind_development)"
+Sep 24 16:31:00.281 INF API: test ended suite=0 test=406 pass=false
+Sep 24 16:31:00.286 INF API: test started suite=0 test=407 name="interop/raw-validation-funds-gas-trace (nethermind_development)"
+Sep 24 16:31:00.292 INF API: test ended suite=0 test=407 pass=false
+Sep 24 16:31:00.297 INF API: test started suite=0 test=408 name="interop/raw-validation-funds-gas-vmTrace (nethermind_development)"
+Sep 24 16:31:00.306 INF API: test ended suite=0 test=408 pass=false
+Sep 24 16:31:00.308 INF API: test started suite=0 test=409 name="interop/raw-validation-funds-value-all (nethermind_development)"
+Sep 24 16:31:00.314 INF API: test ended suite=0 test=409 pass=false
+Sep 24 16:31:00.316 INF API: test started suite=0 test=410 name="interop/raw-validation-funds-value-stateDiff (nethermind_development)"
+Sep 24 16:31:00.324 INF API: test ended suite=0 test=410 pass=false
+Sep 24 16:31:00.327 INF API: test started suite=0 test=411 name="interop/raw-validation-funds-value-trace (nethermind_development)"
+Sep 24 16:31:00.333 INF API: test ended suite=0 test=411 pass=false
+Sep 24 16:31:00.336 INF API: test started suite=0 test=412 name="interop/raw-validation-funds-value-vmTrace (nethermind_development)"
+Sep 24 16:31:00.341 INF API: test ended suite=0 test=412 pass=false
+Sep 24 16:31:00.346 INF API: test started suite=0 test=413 name="interop/raw-validation-intrinsic-gas-all (nethermind_development)"
+Sep 24 16:31:00.352 INF API: test ended suite=0 test=413 pass=false
+Sep 24 16:31:00.354 INF API: test started suite=0 test=414 name="interop/raw-validation-intrinsic-gas-stateDiff (nethermind_development)"
+Sep 24 16:31:00.360 INF API: test ended suite=0 test=414 pass=false
+Sep 24 16:31:00.363 INF API: test started suite=0 test=415 name="interop/raw-validation-intrinsic-gas-trace (nethermind_development)"
+Sep 24 16:31:00.370 INF API: test ended suite=0 test=415 pass=false
+Sep 24 16:31:00.372 INF API: test started suite=0 test=416 name="interop/raw-validation-intrinsic-gas-vmTrace (nethermind_development)"
+Sep 24 16:31:00.379 INF API: test ended suite=0 test=416 pass=false
+Sep 24 16:31:00.381 INF API: test started suite=0 test=417 name="interop/raw-validation-nonce-high-all (nethermind_development)"
+Sep 24 16:31:00.391 INF API: test ended suite=0 test=417 pass=false
+Sep 24 16:31:00.393 INF API: test started suite=0 test=418 name="interop/raw-validation-nonce-high-stateDiff (nethermind_development)"
+Sep 24 16:31:00.408 INF API: test ended suite=0 test=418 pass=false
+Sep 24 16:31:00.411 INF API: test started suite=0 test=419 name="interop/raw-validation-nonce-high-trace (nethermind_development)"
+Sep 24 16:31:00.418 INF API: test ended suite=0 test=419 pass=false
+Sep 24 16:31:00.420 INF API: test started suite=0 test=420 name="interop/raw-validation-nonce-high-vmTrace (nethermind_development)"
+Sep 24 16:31:00.433 INF API: test ended suite=0 test=420 pass=false
+Sep 24 16:31:00.435 INF API: test started suite=0 test=421 name="interop/raw-validation-nonce-low-all (nethermind_development)"
+Sep 24 16:31:00.442 INF API: test ended suite=0 test=421 pass=false
+Sep 24 16:31:00.444 INF API: test started suite=0 test=422 name="interop/raw-validation-nonce-low-stateDiff (nethermind_development)"
+Sep 24 16:31:00.451 INF API: test ended suite=0 test=422 pass=false
+Sep 24 16:31:00.453 INF API: test started suite=0 test=423 name="interop/raw-validation-nonce-low-trace (nethermind_development)"
+Sep 24 16:31:00.458 INF API: test ended suite=0 test=423 pass=false
+Sep 24 16:31:00.459 INF API: test started suite=0 test=424 name="interop/raw-validation-nonce-low-vmTrace (nethermind_development)"
+Sep 24 16:31:00.464 INF API: test ended suite=0 test=424 pass=false
+Sep 24 16:31:00.466 INF API: test started suite=0 test=425 name="interop/raw-validation-valid-all (nethermind_development)"
+Sep 24 16:31:00.475 INF API: test ended suite=0 test=425 pass=false
+Sep 24 16:31:00.476 INF API: test started suite=0 test=426 name="interop/raw-validation-valid-stateDiff (nethermind_development)"
+Sep 24 16:31:00.499 INF API: test ended suite=0 test=426 pass=false
+Sep 24 16:31:00.500 INF API: test started suite=0 test=427 name="interop/raw-validation-valid-trace (nethermind_development)"
+Sep 24 16:31:00.506 INF API: test ended suite=0 test=427 pass=false
+Sep 24 16:31:00.507 INF API: test started suite=0 test=428 name="interop/raw-validation-valid-vmTrace (nethermind_development)"
+Sep 24 16:31:00.512 INF API: test ended suite=0 test=428 pass=false
+Sep 24 16:31:00.513 INF API: test started suite=0 test=429 name="interop/raw-validation-wrong-chain-all (nethermind_development)"
+Sep 24 16:31:00.517 INF API: test ended suite=0 test=429 pass=false
+Sep 24 16:31:00.518 INF API: test started suite=0 test=430 name="interop/raw-validation-wrong-chain-stateDiff (nethermind_development)"
+Sep 24 16:31:00.521 INF API: test ended suite=0 test=430 pass=false
+Sep 24 16:31:00.522 INF API: test started suite=0 test=431 name="interop/raw-validation-wrong-chain-trace (nethermind_development)"
+Sep 24 16:31:00.526 INF API: test ended suite=0 test=431 pass=false
+Sep 24 16:31:00.528 INF API: test started suite=0 test=432 name="interop/raw-validation-wrong-chain-vmTrace (nethermind_development)"
+Sep 24 16:31:00.534 INF API: test ended suite=0 test=432 pass=false
+Sep 24 16:31:00.937 INF API: test ended suite=0 test=361 pass=true
+Sep 24 16:31:00.941 INF API: test started suite=0 test=433 name="client launch (nethermind_release)"
+Sep 24 16:31:09.907 INF API: client nethermind_release started suite=0 test=433 container=f8430bb6
+Sep 24 16:31:10.046 INF API: test started suite=0 test=434 name="interop/_control/chain-id (nethermind_release)"
+Sep 24 16:31:10.060 INF API: test ended suite=0 test=434 pass=false
+Sep 24 16:31:10.061 INF API: test started suite=0 test=435 name="interop/_control/code-sender-balance (nethermind_release)"
+Sep 24 16:31:10.074 INF API: test ended suite=0 test=435 pass=false
+Sep 24 16:31:10.075 INF API: test started suite=0 test=436 name="interop/_control/code-sender-code (nethermind_release)"
+Sep 24 16:31:10.090 INF API: test ended suite=0 test=436 pass=false
+Sep 24 16:31:10.091 INF API: test started suite=0 test=437 name="interop/_control/code-sender-nonce (nethermind_release)"
+Sep 24 16:31:10.103 INF API: test ended suite=0 test=437 pass=false
+Sep 24 16:31:10.104 INF API: test started suite=0 test=438 name="interop/_control/delegated-sender-balance (nethermind_release)"
+Sep 24 16:31:10.120 INF API: test ended suite=0 test=438 pass=false
+Sep 24 16:31:10.121 INF API: test started suite=0 test=439 name="interop/_control/delegated-sender-code (nethermind_release)"
+Sep 24 16:31:10.136 INF API: test ended suite=0 test=439 pass=false
+Sep 24 16:31:10.138 INF API: test started suite=0 test=440 name="interop/_control/delegated-sender-nonce (nethermind_release)"
+Sep 24 16:31:10.140 INF API: test ended suite=0 test=440 pass=false
+Sep 24 16:31:10.140 INF API: test started suite=0 test=441 name="interop/_control/head (nethermind_release)"
+Sep 24 16:31:10.144 INF API: test ended suite=0 test=441 pass=false
+Sep 24 16:31:10.145 INF API: test started suite=0 test=442 name="interop/_control/latest (nethermind_release)"
+Sep 24 16:31:10.147 INF API: test ended suite=0 test=442 pass=false
+Sep 24 16:31:10.147 INF API: test started suite=0 test=443 name="interop/_control/marker-code (nethermind_release)"
+Sep 24 16:31:10.148 INF API: test ended suite=0 test=443 pass=false
+Sep 24 16:31:10.149 INF API: test started suite=0 test=444 name="interop/_control/marker-storage (nethermind_release)"
+Sep 24 16:31:10.155 INF API: test ended suite=0 test=444 pass=false
+Sep 24 16:31:10.156 INF API: test started suite=0 test=445 name="interop/_control/sender-balance (nethermind_release)"
+Sep 24 16:31:10.157 INF API: test ended suite=0 test=445 pass=false
+Sep 24 16:31:10.158 INF API: test started suite=0 test=446 name="interop/_control/sender-code (nethermind_release)"
+Sep 24 16:31:10.159 INF API: test ended suite=0 test=446 pass=false
+Sep 24 16:31:10.160 INF API: test started suite=0 test=447 name="interop/_control/sender-nonce (nethermind_release)"
+Sep 24 16:31:10.161 INF API: test ended suite=0 test=447 pass=false
+Sep 24 16:31:10.162 INF API: test started suite=0 test=448 name="interop/_control/version (nethermind_release)"
+Sep 24 16:31:10.165 INF API: test ended suite=0 test=448 pass=false
+Sep 24 16:31:10.166 INF API: test started suite=0 test=449 name="interop/raw-validation-below-basefee-all (nethermind_release)"
+Sep 24 16:31:10.277 INF API: test ended suite=0 test=449 pass=false
+Sep 24 16:31:10.278 INF API: test started suite=0 test=450 name="interop/raw-validation-below-basefee-stateDiff (nethermind_release)"
+Sep 24 16:31:10.294 INF API: test ended suite=0 test=450 pass=false
+Sep 24 16:31:10.296 INF API: test started suite=0 test=451 name="interop/raw-validation-below-basefee-trace (nethermind_release)"
+Sep 24 16:31:10.298 INF API: test ended suite=0 test=451 pass=false
+Sep 24 16:31:10.299 INF API: test started suite=0 test=452 name="interop/raw-validation-below-basefee-vmTrace (nethermind_release)"
+Sep 24 16:31:10.300 INF API: test ended suite=0 test=452 pass=false
+Sep 24 16:31:10.301 INF API: test started suite=0 test=453 name="interop/raw-validation-code-sender-all (nethermind_release)"
+Sep 24 16:31:10.348 INF API: test ended suite=0 test=453 pass=false
+Sep 24 16:31:10.349 INF API: test started suite=0 test=454 name="interop/raw-validation-code-sender-stateDiff (nethermind_release)"
+Sep 24 16:31:10.353 INF API: test ended suite=0 test=454 pass=false
+Sep 24 16:31:10.353 INF API: test started suite=0 test=455 name="interop/raw-validation-code-sender-trace (nethermind_release)"
+Sep 24 16:31:10.357 INF API: test ended suite=0 test=455 pass=false
+Sep 24 16:31:10.358 INF API: test started suite=0 test=456 name="interop/raw-validation-code-sender-vmTrace (nethermind_release)"
+Sep 24 16:31:10.360 INF API: test ended suite=0 test=456 pass=false
+Sep 24 16:31:10.361 INF API: test started suite=0 test=457 name="interop/raw-validation-create-nonce-high-all (nethermind_release)"
+Sep 24 16:31:10.369 INF API: test ended suite=0 test=457 pass=false
+Sep 24 16:31:10.370 INF API: test started suite=0 test=458 name="interop/raw-validation-create-nonce-high-stateDiff (nethermind_release)"
+Sep 24 16:31:10.373 INF API: test ended suite=0 test=458 pass=false
+Sep 24 16:31:10.374 INF API: test started suite=0 test=459 name="interop/raw-validation-create-nonce-high-trace (nethermind_release)"
+Sep 24 16:31:10.376 INF API: test ended suite=0 test=459 pass=false
+Sep 24 16:31:10.377 INF API: test started suite=0 test=460 name="interop/raw-validation-create-nonce-high-vmTrace (nethermind_release)"
+Sep 24 16:31:10.379 INF API: test ended suite=0 test=460 pass=false
+Sep 24 16:31:10.380 INF API: test started suite=0 test=461 name="interop/raw-validation-create-nonce-low-all (nethermind_release)"
+Sep 24 16:31:10.383 INF API: test ended suite=0 test=461 pass=false
+Sep 24 16:31:10.384 INF API: test started suite=0 test=462 name="interop/raw-validation-create-nonce-low-stateDiff (nethermind_release)"
+Sep 24 16:31:10.386 INF API: test ended suite=0 test=462 pass=false
+Sep 24 16:31:10.387 INF API: test started suite=0 test=463 name="interop/raw-validation-create-nonce-low-trace (nethermind_release)"
+Sep 24 16:31:10.389 INF API: test ended suite=0 test=463 pass=false
+Sep 24 16:31:10.390 INF API: test started suite=0 test=464 name="interop/raw-validation-create-nonce-low-vmTrace (nethermind_release)"
+Sep 24 16:31:10.392 INF API: test ended suite=0 test=464 pass=false
+Sep 24 16:31:10.393 INF API: test started suite=0 test=465 name="interop/raw-validation-create-valid-all (nethermind_release)"
+Sep 24 16:31:10.395 INF API: test ended suite=0 test=465 pass=false
+Sep 24 16:31:10.396 INF API: test started suite=0 test=466 name="interop/raw-validation-create-valid-stateDiff (nethermind_release)"
+Sep 24 16:31:10.398 INF API: test ended suite=0 test=466 pass=false
+Sep 24 16:31:10.399 INF API: test started suite=0 test=467 name="interop/raw-validation-create-valid-trace (nethermind_release)"
+Sep 24 16:31:10.401 INF API: test ended suite=0 test=467 pass=false
+Sep 24 16:31:10.402 INF API: test started suite=0 test=468 name="interop/raw-validation-create-valid-vmTrace (nethermind_release)"
+Sep 24 16:31:10.404 INF API: test ended suite=0 test=468 pass=false
+Sep 24 16:31:10.405 INF API: test started suite=0 test=469 name="interop/raw-validation-delegated-sender-valid-all (nethermind_release)"
+Sep 24 16:31:10.408 INF API: test ended suite=0 test=469 pass=false
+Sep 24 16:31:10.409 INF API: test started suite=0 test=470 name="interop/raw-validation-delegated-sender-valid-stateDiff (nethermind_release)"
+Sep 24 16:31:10.411 INF API: test ended suite=0 test=470 pass=false
+Sep 24 16:31:10.411 INF API: test started suite=0 test=471 name="interop/raw-validation-delegated-sender-valid-trace (nethermind_release)"
+Sep 24 16:31:10.413 INF API: test ended suite=0 test=471 pass=false
+Sep 24 16:31:10.414 INF API: test started suite=0 test=472 name="interop/raw-validation-delegated-sender-valid-vmTrace (nethermind_release)"
+Sep 24 16:31:10.416 INF API: test ended suite=0 test=472 pass=false
+Sep 24 16:31:10.417 INF API: test started suite=0 test=473 name="interop/raw-validation-execution-oog-valid-all (nethermind_release)"
+Sep 24 16:31:10.427 INF API: test ended suite=0 test=473 pass=false
+Sep 24 16:31:10.428 INF API: test started suite=0 test=474 name="interop/raw-validation-execution-oog-valid-stateDiff (nethermind_release)"
+Sep 24 16:31:10.430 INF API: test ended suite=0 test=474 pass=false
+Sep 24 16:31:10.431 INF API: test started suite=0 test=475 name="interop/raw-validation-execution-oog-valid-trace (nethermind_release)"
+Sep 24 16:31:10.434 INF API: test ended suite=0 test=475 pass=false
+Sep 24 16:31:10.434 INF API: test started suite=0 test=476 name="interop/raw-validation-execution-oog-valid-vmTrace (nethermind_release)"
+Sep 24 16:31:10.436 INF API: test ended suite=0 test=476 pass=false
+Sep 24 16:31:10.437 INF API: test started suite=0 test=477 name="interop/raw-validation-funds-gas-all (nethermind_release)"
+Sep 24 16:31:10.440 INF API: test ended suite=0 test=477 pass=false
+Sep 24 16:31:10.441 INF API: test started suite=0 test=478 name="interop/raw-validation-funds-gas-stateDiff (nethermind_release)"
+Sep 24 16:31:10.453 INF API: test ended suite=0 test=478 pass=false
+Sep 24 16:31:10.453 INF API: test started suite=0 test=479 name="interop/raw-validation-funds-gas-trace (nethermind_release)"
+Sep 24 16:31:10.455 INF API: test ended suite=0 test=479 pass=false
+Sep 24 16:31:10.456 INF API: test started suite=0 test=480 name="interop/raw-validation-funds-gas-vmTrace (nethermind_release)"
+Sep 24 16:31:10.459 INF API: test ended suite=0 test=480 pass=false
+Sep 24 16:31:10.460 INF API: test started suite=0 test=481 name="interop/raw-validation-funds-value-all (nethermind_release)"
+Sep 24 16:31:10.461 INF API: test ended suite=0 test=481 pass=false
+Sep 24 16:31:10.462 INF API: test started suite=0 test=482 name="interop/raw-validation-funds-value-stateDiff (nethermind_release)"
+Sep 24 16:31:10.464 INF API: test ended suite=0 test=482 pass=false
+Sep 24 16:31:10.465 INF API: test started suite=0 test=483 name="interop/raw-validation-funds-value-trace (nethermind_release)"
+Sep 24 16:31:10.466 INF API: test ended suite=0 test=483 pass=false
+Sep 24 16:31:10.467 INF API: test started suite=0 test=484 name="interop/raw-validation-funds-value-vmTrace (nethermind_release)"
+Sep 24 16:31:10.470 INF API: test ended suite=0 test=484 pass=false
+Sep 24 16:31:10.470 INF API: test started suite=0 test=485 name="interop/raw-validation-intrinsic-gas-all (nethermind_release)"
+Sep 24 16:31:10.472 INF API: test ended suite=0 test=485 pass=false
+Sep 24 16:31:10.473 INF API: test started suite=0 test=486 name="interop/raw-validation-intrinsic-gas-stateDiff (nethermind_release)"
+Sep 24 16:31:10.474 INF API: test ended suite=0 test=486 pass=false
+Sep 24 16:31:10.475 INF API: test started suite=0 test=487 name="interop/raw-validation-intrinsic-gas-trace (nethermind_release)"
+Sep 24 16:31:10.477 INF API: test ended suite=0 test=487 pass=false
+Sep 24 16:31:10.477 INF API: test started suite=0 test=488 name="interop/raw-validation-intrinsic-gas-vmTrace (nethermind_release)"
+Sep 24 16:31:10.479 INF API: test ended suite=0 test=488 pass=false
+Sep 24 16:31:10.480 INF API: test started suite=0 test=489 name="interop/raw-validation-nonce-high-all (nethermind_release)"
+Sep 24 16:31:10.483 INF API: test ended suite=0 test=489 pass=false
+Sep 24 16:31:10.484 INF API: test started suite=0 test=490 name="interop/raw-validation-nonce-high-stateDiff (nethermind_release)"
+Sep 24 16:31:10.486 INF API: test ended suite=0 test=490 pass=false
+Sep 24 16:31:10.487 INF API: test started suite=0 test=491 name="interop/raw-validation-nonce-high-trace (nethermind_release)"
+Sep 24 16:31:10.489 INF API: test ended suite=0 test=491 pass=false
+Sep 24 16:31:10.490 INF API: test started suite=0 test=492 name="interop/raw-validation-nonce-high-vmTrace (nethermind_release)"
+Sep 24 16:31:10.493 INF API: test ended suite=0 test=492 pass=false
+Sep 24 16:31:10.494 INF API: test started suite=0 test=493 name="interop/raw-validation-nonce-low-all (nethermind_release)"
+Sep 24 16:31:10.498 INF API: test ended suite=0 test=493 pass=false
+Sep 24 16:31:10.499 INF API: test started suite=0 test=494 name="interop/raw-validation-nonce-low-stateDiff (nethermind_release)"
+Sep 24 16:31:10.503 INF API: test ended suite=0 test=494 pass=false
+Sep 24 16:31:10.504 INF API: test started suite=0 test=495 name="interop/raw-validation-nonce-low-trace (nethermind_release)"
+Sep 24 16:31:10.508 INF API: test ended suite=0 test=495 pass=false
+Sep 24 16:31:10.509 INF API: test started suite=0 test=496 name="interop/raw-validation-nonce-low-vmTrace (nethermind_release)"
+Sep 24 16:31:10.511 INF API: test ended suite=0 test=496 pass=false
+Sep 24 16:31:10.512 INF API: test started suite=0 test=497 name="interop/raw-validation-valid-all (nethermind_release)"
+Sep 24 16:31:10.515 INF API: test ended suite=0 test=497 pass=false
+Sep 24 16:31:10.516 INF API: test started suite=0 test=498 name="interop/raw-validation-valid-stateDiff (nethermind_release)"
+Sep 24 16:31:10.519 INF API: test ended suite=0 test=498 pass=false
+Sep 24 16:31:10.519 INF API: test started suite=0 test=499 name="interop/raw-validation-valid-trace (nethermind_release)"
+Sep 24 16:31:10.522 INF API: test ended suite=0 test=499 pass=false
+Sep 24 16:31:10.523 INF API: test started suite=0 test=500 name="interop/raw-validation-valid-vmTrace (nethermind_release)"
+Sep 24 16:31:10.527 INF API: test ended suite=0 test=500 pass=false
+Sep 24 16:31:10.527 INF API: test started suite=0 test=501 name="interop/raw-validation-wrong-chain-all (nethermind_release)"
+Sep 24 16:31:10.530 INF API: test ended suite=0 test=501 pass=false
+Sep 24 16:31:10.531 INF API: test started suite=0 test=502 name="interop/raw-validation-wrong-chain-stateDiff (nethermind_release)"
+Sep 24 16:31:10.533 INF API: test ended suite=0 test=502 pass=false
+Sep 24 16:31:10.534 INF API: test started suite=0 test=503 name="interop/raw-validation-wrong-chain-trace (nethermind_release)"
+Sep 24 16:31:10.536 INF API: test ended suite=0 test=503 pass=false
+Sep 24 16:31:10.537 INF API: test started suite=0 test=504 name="interop/raw-validation-wrong-chain-vmTrace (nethermind_release)"
+Sep 24 16:31:10.539 INF API: test ended suite=0 test=504 pass=false
+Sep 24 16:31:10.853 INF API: test ended suite=0 test=433 pass=true
+Sep 24 16:31:10.855 INF API: test started suite=0 test=505 name="client launch (reth_development)"
+Sep 24 16:31:13.174 INF API: client reth_development started suite=0 test=505 container=63d76be7
+Sep 24 16:31:13.189 INF API: test started suite=0 test=506 name="interop/_control/chain-id (reth_development)"
+Sep 24 16:31:13.199 INF API: test ended suite=0 test=506 pass=false
+Sep 24 16:31:13.202 INF API: test started suite=0 test=507 name="interop/_control/code-sender-balance (reth_development)"
+Sep 24 16:31:13.205 INF API: test ended suite=0 test=507 pass=false
+Sep 24 16:31:13.207 INF API: test started suite=0 test=508 name="interop/_control/code-sender-code (reth_development)"
+Sep 24 16:31:13.211 INF API: test ended suite=0 test=508 pass=false
+Sep 24 16:31:13.214 INF API: test started suite=0 test=509 name="interop/_control/code-sender-nonce (reth_development)"
+Sep 24 16:31:13.217 INF API: test ended suite=0 test=509 pass=false
+Sep 24 16:31:13.219 INF API: test started suite=0 test=510 name="interop/_control/delegated-sender-balance (reth_development)"
+Sep 24 16:31:13.224 INF API: test ended suite=0 test=510 pass=false
+Sep 24 16:31:13.226 INF API: test started suite=0 test=511 name="interop/_control/delegated-sender-code (reth_development)"
+Sep 24 16:31:13.230 INF API: test ended suite=0 test=511 pass=false
+Sep 24 16:31:13.233 INF API: test started suite=0 test=512 name="interop/_control/delegated-sender-nonce (reth_development)"
+Sep 24 16:31:13.237 INF API: test ended suite=0 test=512 pass=false
+Sep 24 16:31:13.241 INF API: test started suite=0 test=513 name="interop/_control/head (reth_development)"
+Sep 24 16:31:13.245 INF API: test ended suite=0 test=513 pass=false
+Sep 24 16:31:13.247 INF API: test started suite=0 test=514 name="interop/_control/latest (reth_development)"
+Sep 24 16:31:13.251 INF API: test ended suite=0 test=514 pass=false
+Sep 24 16:31:13.255 INF API: test started suite=0 test=515 name="interop/_control/marker-code (reth_development)"
+Sep 24 16:31:13.261 INF API: test ended suite=0 test=515 pass=false
+Sep 24 16:31:13.265 INF API: test started suite=0 test=516 name="interop/_control/marker-storage (reth_development)"
+Sep 24 16:31:13.271 INF API: test ended suite=0 test=516 pass=false
+Sep 24 16:31:13.276 INF API: test started suite=0 test=517 name="interop/_control/sender-balance (reth_development)"
+Sep 24 16:31:13.282 INF API: test ended suite=0 test=517 pass=false
+Sep 24 16:31:13.286 INF API: test started suite=0 test=518 name="interop/_control/sender-code (reth_development)"
+Sep 24 16:31:13.288 INF API: test ended suite=0 test=518 pass=false
+Sep 24 16:31:13.291 INF API: test started suite=0 test=519 name="interop/_control/sender-nonce (reth_development)"
+Sep 24 16:31:13.294 INF API: test ended suite=0 test=519 pass=false
+Sep 24 16:31:13.296 INF API: test started suite=0 test=520 name="interop/_control/version (reth_development)"
+Sep 24 16:31:13.299 INF API: test ended suite=0 test=520 pass=false
+Sep 24 16:31:13.301 INF API: test started suite=0 test=521 name="interop/raw-validation-below-basefee-all (reth_development)"
+Sep 24 16:31:13.304 INF API: test ended suite=0 test=521 pass=false
+Sep 24 16:31:13.307 INF API: test started suite=0 test=522 name="interop/raw-validation-below-basefee-stateDiff (reth_development)"
+Sep 24 16:31:13.317 INF API: test ended suite=0 test=522 pass=false
+Sep 24 16:31:13.320 INF API: test started suite=0 test=523 name="interop/raw-validation-below-basefee-trace (reth_development)"
+Sep 24 16:31:13.327 INF API: test ended suite=0 test=523 pass=false
+Sep 24 16:31:13.329 INF API: test started suite=0 test=524 name="interop/raw-validation-below-basefee-vmTrace (reth_development)"
+Sep 24 16:31:13.333 INF API: test ended suite=0 test=524 pass=false
+Sep 24 16:31:13.336 INF API: test started suite=0 test=525 name="interop/raw-validation-code-sender-all (reth_development)"
+Sep 24 16:31:13.340 INF API: test ended suite=0 test=525 pass=false
+Sep 24 16:31:13.344 INF API: test started suite=0 test=526 name="interop/raw-validation-code-sender-stateDiff (reth_development)"
+Sep 24 16:31:13.351 INF API: test ended suite=0 test=526 pass=false
+Sep 24 16:31:13.354 INF API: test started suite=0 test=527 name="interop/raw-validation-code-sender-trace (reth_development)"
+Sep 24 16:31:13.359 INF API: test ended suite=0 test=527 pass=false
+Sep 24 16:31:13.362 INF API: test started suite=0 test=528 name="interop/raw-validation-code-sender-vmTrace (reth_development)"
+Sep 24 16:31:13.367 INF API: test ended suite=0 test=528 pass=false
+Sep 24 16:31:13.372 INF API: test started suite=0 test=529 name="interop/raw-validation-create-nonce-high-all (reth_development)"
+Sep 24 16:31:13.374 INF API: test ended suite=0 test=529 pass=false
+Sep 24 16:31:13.375 INF API: test started suite=0 test=530 name="interop/raw-validation-create-nonce-high-stateDiff (reth_development)"
+Sep 24 16:31:13.379 INF API: test ended suite=0 test=530 pass=false
+Sep 24 16:31:13.380 INF API: test started suite=0 test=531 name="interop/raw-validation-create-nonce-high-trace (reth_development)"
+Sep 24 16:31:13.383 INF API: test ended suite=0 test=531 pass=false
+Sep 24 16:31:13.386 INF API: test started suite=0 test=532 name="interop/raw-validation-create-nonce-high-vmTrace (reth_development)"
+Sep 24 16:31:13.389 INF API: test ended suite=0 test=532 pass=false
+Sep 24 16:31:13.391 INF API: test started suite=0 test=533 name="interop/raw-validation-create-nonce-low-all (reth_development)"
+Sep 24 16:31:13.393 INF API: test ended suite=0 test=533 pass=false
+Sep 24 16:31:13.394 INF API: test started suite=0 test=534 name="interop/raw-validation-create-nonce-low-stateDiff (reth_development)"
+Sep 24 16:31:13.396 INF API: test ended suite=0 test=534 pass=false
+Sep 24 16:31:13.397 INF API: test started suite=0 test=535 name="interop/raw-validation-create-nonce-low-trace (reth_development)"
+Sep 24 16:31:13.400 INF API: test ended suite=0 test=535 pass=false
+Sep 24 16:31:13.401 INF API: test started suite=0 test=536 name="interop/raw-validation-create-nonce-low-vmTrace (reth_development)"
+Sep 24 16:31:13.404 INF API: test ended suite=0 test=536 pass=false
+Sep 24 16:31:13.405 INF API: test started suite=0 test=537 name="interop/raw-validation-create-valid-all (reth_development)"
+Sep 24 16:31:13.409 INF API: test ended suite=0 test=537 pass=false
+Sep 24 16:31:13.410 INF API: test started suite=0 test=538 name="interop/raw-validation-create-valid-stateDiff (reth_development)"
+Sep 24 16:31:13.412 INF API: test ended suite=0 test=538 pass=false
+Sep 24 16:31:13.413 INF API: test started suite=0 test=539 name="interop/raw-validation-create-valid-trace (reth_development)"
+Sep 24 16:31:13.415 INF API: test ended suite=0 test=539 pass=false
+Sep 24 16:31:13.416 INF API: test started suite=0 test=540 name="interop/raw-validation-create-valid-vmTrace (reth_development)"
+Sep 24 16:31:13.418 INF API: test ended suite=0 test=540 pass=false
+Sep 24 16:31:13.419 INF API: test started suite=0 test=541 name="interop/raw-validation-delegated-sender-valid-all (reth_development)"
+Sep 24 16:31:13.422 INF API: test ended suite=0 test=541 pass=false
+Sep 24 16:31:13.423 INF API: test started suite=0 test=542 name="interop/raw-validation-delegated-sender-valid-stateDiff (reth_development)"
+Sep 24 16:31:13.426 INF API: test ended suite=0 test=542 pass=false
+Sep 24 16:31:13.428 INF API: test started suite=0 test=543 name="interop/raw-validation-delegated-sender-valid-trace (reth_development)"
+Sep 24 16:31:13.430 INF API: test ended suite=0 test=543 pass=false
+Sep 24 16:31:13.430 INF API: test started suite=0 test=544 name="interop/raw-validation-delegated-sender-valid-vmTrace (reth_development)"
+Sep 24 16:31:13.433 INF API: test ended suite=0 test=544 pass=false
+Sep 24 16:31:13.434 INF API: test started suite=0 test=545 name="interop/raw-validation-execution-oog-valid-all (reth_development)"
+Sep 24 16:31:13.436 INF API: test ended suite=0 test=545 pass=false
+Sep 24 16:31:13.437 INF API: test started suite=0 test=546 name="interop/raw-validation-execution-oog-valid-stateDiff (reth_development)"
+Sep 24 16:31:13.438 INF API: test ended suite=0 test=546 pass=false
+Sep 24 16:31:13.439 INF API: test started suite=0 test=547 name="interop/raw-validation-execution-oog-valid-trace (reth_development)"
+Sep 24 16:31:13.441 INF API: test ended suite=0 test=547 pass=false
+Sep 24 16:31:13.441 INF API: test started suite=0 test=548 name="interop/raw-validation-execution-oog-valid-vmTrace (reth_development)"
+Sep 24 16:31:13.443 INF API: test ended suite=0 test=548 pass=false
+Sep 24 16:31:13.444 INF API: test started suite=0 test=549 name="interop/raw-validation-funds-gas-all (reth_development)"
+Sep 24 16:31:13.446 INF API: test ended suite=0 test=549 pass=false
+Sep 24 16:31:13.447 INF API: test started suite=0 test=550 name="interop/raw-validation-funds-gas-stateDiff (reth_development)"
+Sep 24 16:31:13.449 INF API: test ended suite=0 test=550 pass=false
+Sep 24 16:31:13.450 INF API: test started suite=0 test=551 name="interop/raw-validation-funds-gas-trace (reth_development)"
+Sep 24 16:31:13.451 INF API: test ended suite=0 test=551 pass=false
+Sep 24 16:31:13.452 INF API: test started suite=0 test=552 name="interop/raw-validation-funds-gas-vmTrace (reth_development)"
+Sep 24 16:31:13.454 INF API: test ended suite=0 test=552 pass=false
+Sep 24 16:31:13.455 INF API: test started suite=0 test=553 name="interop/raw-validation-funds-value-all (reth_development)"
+Sep 24 16:31:13.456 INF API: test ended suite=0 test=553 pass=false
+Sep 24 16:31:13.457 INF API: test started suite=0 test=554 name="interop/raw-validation-funds-value-stateDiff (reth_development)"
+Sep 24 16:31:13.458 INF API: test ended suite=0 test=554 pass=false
+Sep 24 16:31:13.459 INF API: test started suite=0 test=555 name="interop/raw-validation-funds-value-trace (reth_development)"
+Sep 24 16:31:13.460 INF API: test ended suite=0 test=555 pass=false
+Sep 24 16:31:13.461 INF API: test started suite=0 test=556 name="interop/raw-validation-funds-value-vmTrace (reth_development)"
+Sep 24 16:31:13.462 INF API: test ended suite=0 test=556 pass=false
+Sep 24 16:31:13.463 INF API: test started suite=0 test=557 name="interop/raw-validation-intrinsic-gas-all (reth_development)"
+Sep 24 16:31:13.464 INF API: test ended suite=0 test=557 pass=false
+Sep 24 16:31:13.465 INF API: test started suite=0 test=558 name="interop/raw-validation-intrinsic-gas-stateDiff (reth_development)"
+Sep 24 16:31:13.467 INF API: test ended suite=0 test=558 pass=false
+Sep 24 16:31:13.467 INF API: test started suite=0 test=559 name="interop/raw-validation-intrinsic-gas-trace (reth_development)"
+Sep 24 16:31:13.469 INF API: test ended suite=0 test=559 pass=false
+Sep 24 16:31:13.470 INF API: test started suite=0 test=560 name="interop/raw-validation-intrinsic-gas-vmTrace (reth_development)"
+Sep 24 16:31:13.471 INF API: test ended suite=0 test=560 pass=false
+Sep 24 16:31:13.472 INF API: test started suite=0 test=561 name="interop/raw-validation-nonce-high-all (reth_development)"
+Sep 24 16:31:13.473 INF API: test ended suite=0 test=561 pass=false
+Sep 24 16:31:13.474 INF API: test started suite=0 test=562 name="interop/raw-validation-nonce-high-stateDiff (reth_development)"
+Sep 24 16:31:13.476 INF API: test ended suite=0 test=562 pass=false
+Sep 24 16:31:13.477 INF API: test started suite=0 test=563 name="interop/raw-validation-nonce-high-trace (reth_development)"
+Sep 24 16:31:13.478 INF API: test ended suite=0 test=563 pass=false
+Sep 24 16:31:13.478 INF API: test started suite=0 test=564 name="interop/raw-validation-nonce-high-vmTrace (reth_development)"
+Sep 24 16:31:13.480 INF API: test ended suite=0 test=564 pass=false
+Sep 24 16:31:13.480 INF API: test started suite=0 test=565 name="interop/raw-validation-nonce-low-all (reth_development)"
+Sep 24 16:31:13.482 INF API: test ended suite=0 test=565 pass=false
+Sep 24 16:31:13.482 INF API: test started suite=0 test=566 name="interop/raw-validation-nonce-low-stateDiff (reth_development)"
+Sep 24 16:31:13.484 INF API: test ended suite=0 test=566 pass=false
+Sep 24 16:31:13.484 INF API: test started suite=0 test=567 name="interop/raw-validation-nonce-low-trace (reth_development)"
+Sep 24 16:31:13.486 INF API: test ended suite=0 test=567 pass=false
+Sep 24 16:31:13.487 INF API: test started suite=0 test=568 name="interop/raw-validation-nonce-low-vmTrace (reth_development)"
+Sep 24 16:31:13.488 INF API: test ended suite=0 test=568 pass=false
+Sep 24 16:31:13.489 INF API: test started suite=0 test=569 name="interop/raw-validation-valid-all (reth_development)"
+Sep 24 16:31:13.492 INF API: test ended suite=0 test=569 pass=false
+Sep 24 16:31:13.492 INF API: test started suite=0 test=570 name="interop/raw-validation-valid-stateDiff (reth_development)"
+Sep 24 16:31:13.494 INF API: test ended suite=0 test=570 pass=false
+Sep 24 16:31:13.495 INF API: test started suite=0 test=571 name="interop/raw-validation-valid-trace (reth_development)"
+Sep 24 16:31:13.496 INF API: test ended suite=0 test=571 pass=false
+Sep 24 16:31:13.497 INF API: test started suite=0 test=572 name="interop/raw-validation-valid-vmTrace (reth_development)"
+Sep 24 16:31:13.499 INF API: test ended suite=0 test=572 pass=false
+Sep 24 16:31:13.500 INF API: test started suite=0 test=573 name="interop/raw-validation-wrong-chain-all (reth_development)"
+Sep 24 16:31:13.501 INF API: test ended suite=0 test=573 pass=false
+Sep 24 16:31:13.502 INF API: test started suite=0 test=574 name="interop/raw-validation-wrong-chain-stateDiff (reth_development)"
+Sep 24 16:31:13.504 INF API: test ended suite=0 test=574 pass=false
+Sep 24 16:31:13.504 INF API: test started suite=0 test=575 name="interop/raw-validation-wrong-chain-trace (reth_development)"
+Sep 24 16:31:13.506 INF API: test ended suite=0 test=575 pass=false
+Sep 24 16:31:13.507 INF API: test started suite=0 test=576 name="interop/raw-validation-wrong-chain-vmTrace (reth_development)"
+Sep 24 16:31:13.508 INF API: test ended suite=0 test=576 pass=false
+Sep 24 16:31:13.817 INF API: test ended suite=0 test=505 pass=true
+Sep 24 16:31:13.819 INF API: test started suite=0 test=577 name="client launch (reth_release)"
+Sep 24 16:31:18.063 INF API: client reth_release started suite=0 test=577 container=b4c24a2c
+Sep 24 16:31:18.080 INF API: test started suite=0 test=578 name="interop/_control/chain-id (reth_release)"
+Sep 24 16:31:18.082 INF API: test ended suite=0 test=578 pass=false
+Sep 24 16:31:18.083 INF API: test started suite=0 test=579 name="interop/_control/code-sender-balance (reth_release)"
+Sep 24 16:31:18.084 INF API: test ended suite=0 test=579 pass=false
+Sep 24 16:31:18.085 INF API: test started suite=0 test=580 name="interop/_control/code-sender-code (reth_release)"
+Sep 24 16:31:18.086 INF API: test ended suite=0 test=580 pass=false
+Sep 24 16:31:18.087 INF API: test started suite=0 test=581 name="interop/_control/code-sender-nonce (reth_release)"
+Sep 24 16:31:18.088 INF API: test ended suite=0 test=581 pass=false
+Sep 24 16:31:18.089 INF API: test started suite=0 test=582 name="interop/_control/delegated-sender-balance (reth_release)"
+Sep 24 16:31:18.090 INF API: test ended suite=0 test=582 pass=false
+Sep 24 16:31:18.091 INF API: test started suite=0 test=583 name="interop/_control/delegated-sender-code (reth_release)"
+Sep 24 16:31:18.092 INF API: test ended suite=0 test=583 pass=false
+Sep 24 16:31:18.093 INF API: test started suite=0 test=584 name="interop/_control/delegated-sender-nonce (reth_release)"
+Sep 24 16:31:18.094 INF API: test ended suite=0 test=584 pass=false
+Sep 24 16:31:18.095 INF API: test started suite=0 test=585 name="interop/_control/head (reth_release)"
+Sep 24 16:31:18.096 INF API: test ended suite=0 test=585 pass=false
+Sep 24 16:31:18.097 INF API: test started suite=0 test=586 name="interop/_control/latest (reth_release)"
+Sep 24 16:31:18.099 INF API: test ended suite=0 test=586 pass=false
+Sep 24 16:31:18.100 INF API: test started suite=0 test=587 name="interop/_control/marker-code (reth_release)"
+Sep 24 16:31:18.101 INF API: test ended suite=0 test=587 pass=false
+Sep 24 16:31:18.103 INF API: test started suite=0 test=588 name="interop/_control/marker-storage (reth_release)"
+Sep 24 16:31:18.104 INF API: test ended suite=0 test=588 pass=false
+Sep 24 16:31:18.105 INF API: test started suite=0 test=589 name="interop/_control/sender-balance (reth_release)"
+Sep 24 16:31:18.106 INF API: test ended suite=0 test=589 pass=false
+Sep 24 16:31:18.107 INF API: test started suite=0 test=590 name="interop/_control/sender-code (reth_release)"
+Sep 24 16:31:18.108 INF API: test ended suite=0 test=590 pass=false
+Sep 24 16:31:18.109 INF API: test started suite=0 test=591 name="interop/_control/sender-nonce (reth_release)"
+Sep 24 16:31:18.110 INF API: test ended suite=0 test=591 pass=false
+Sep 24 16:31:18.111 INF API: test started suite=0 test=592 name="interop/_control/version (reth_release)"
+Sep 24 16:31:18.112 INF API: test ended suite=0 test=592 pass=false
+Sep 24 16:31:18.113 INF API: test started suite=0 test=593 name="interop/raw-validation-below-basefee-all (reth_release)"
+Sep 24 16:31:18.115 INF API: test ended suite=0 test=593 pass=false
+Sep 24 16:31:18.115 INF API: test started suite=0 test=594 name="interop/raw-validation-below-basefee-stateDiff (reth_release)"
+Sep 24 16:31:18.117 INF API: test ended suite=0 test=594 pass=false
+Sep 24 16:31:18.118 INF API: test started suite=0 test=595 name="interop/raw-validation-below-basefee-trace (reth_release)"
+Sep 24 16:31:18.119 INF API: test ended suite=0 test=595 pass=false
+Sep 24 16:31:18.120 INF API: test started suite=0 test=596 name="interop/raw-validation-below-basefee-vmTrace (reth_release)"
+Sep 24 16:31:18.122 INF API: test ended suite=0 test=596 pass=false
+Sep 24 16:31:18.122 INF API: test started suite=0 test=597 name="interop/raw-validation-code-sender-all (reth_release)"
+Sep 24 16:31:18.124 INF API: test ended suite=0 test=597 pass=false
+Sep 24 16:31:18.125 INF API: test started suite=0 test=598 name="interop/raw-validation-code-sender-stateDiff (reth_release)"
+Sep 24 16:31:18.126 INF API: test ended suite=0 test=598 pass=false
+Sep 24 16:31:18.127 INF API: test started suite=0 test=599 name="interop/raw-validation-code-sender-trace (reth_release)"
+Sep 24 16:31:18.128 INF API: test ended suite=0 test=599 pass=false
+Sep 24 16:31:18.129 INF API: test started suite=0 test=600 name="interop/raw-validation-code-sender-vmTrace (reth_release)"
+Sep 24 16:31:18.131 INF API: test ended suite=0 test=600 pass=false
+Sep 24 16:31:18.131 INF API: test started suite=0 test=601 name="interop/raw-validation-create-nonce-high-all (reth_release)"
+Sep 24 16:31:18.133 INF API: test ended suite=0 test=601 pass=false
+Sep 24 16:31:18.134 INF API: test started suite=0 test=602 name="interop/raw-validation-create-nonce-high-stateDiff (reth_release)"
+Sep 24 16:31:18.135 INF API: test ended suite=0 test=602 pass=false
+Sep 24 16:31:18.136 INF API: test started suite=0 test=603 name="interop/raw-validation-create-nonce-high-trace (reth_release)"
+Sep 24 16:31:18.138 INF API: test ended suite=0 test=603 pass=false
+Sep 24 16:31:18.139 INF API: test started suite=0 test=604 name="interop/raw-validation-create-nonce-high-vmTrace (reth_release)"
+Sep 24 16:31:18.140 INF API: test ended suite=0 test=604 pass=false
+Sep 24 16:31:18.141 INF API: test started suite=0 test=605 name="interop/raw-validation-create-nonce-low-all (reth_release)"
+Sep 24 16:31:18.142 INF API: test ended suite=0 test=605 pass=false
+Sep 24 16:31:18.143 INF API: test started suite=0 test=606 name="interop/raw-validation-create-nonce-low-stateDiff (reth_release)"
+Sep 24 16:31:18.145 INF API: test ended suite=0 test=606 pass=false
+Sep 24 16:31:18.145 INF API: test started suite=0 test=607 name="interop/raw-validation-create-nonce-low-trace (reth_release)"
+Sep 24 16:31:18.147 INF API: test ended suite=0 test=607 pass=false
+Sep 24 16:31:18.148 INF API: test started suite=0 test=608 name="interop/raw-validation-create-nonce-low-vmTrace (reth_release)"
+Sep 24 16:31:18.149 INF API: test ended suite=0 test=608 pass=false
+Sep 24 16:31:18.150 INF API: test started suite=0 test=609 name="interop/raw-validation-create-valid-all (reth_release)"
+Sep 24 16:31:18.152 INF API: test ended suite=0 test=609 pass=false
+Sep 24 16:31:18.153 INF API: test started suite=0 test=610 name="interop/raw-validation-create-valid-stateDiff (reth_release)"
+Sep 24 16:31:18.154 INF API: test ended suite=0 test=610 pass=false
+Sep 24 16:31:18.155 INF API: test started suite=0 test=611 name="interop/raw-validation-create-valid-trace (reth_release)"
+Sep 24 16:31:18.157 INF API: test ended suite=0 test=611 pass=false
+Sep 24 16:31:18.158 INF API: test started suite=0 test=612 name="interop/raw-validation-create-valid-vmTrace (reth_release)"
+Sep 24 16:31:18.159 INF API: test ended suite=0 test=612 pass=false
+Sep 24 16:31:18.160 INF API: test started suite=0 test=613 name="interop/raw-validation-delegated-sender-valid-all (reth_release)"
+Sep 24 16:31:18.162 INF API: test ended suite=0 test=613 pass=false
+Sep 24 16:31:18.163 INF API: test started suite=0 test=614 name="interop/raw-validation-delegated-sender-valid-stateDiff (reth_release)"
+Sep 24 16:31:18.165 INF API: test ended suite=0 test=614 pass=false
+Sep 24 16:31:18.166 INF API: test started suite=0 test=615 name="interop/raw-validation-delegated-sender-valid-trace (reth_release)"
+Sep 24 16:31:18.168 INF API: test ended suite=0 test=615 pass=false
+Sep 24 16:31:18.168 INF API: test started suite=0 test=616 name="interop/raw-validation-delegated-sender-valid-vmTrace (reth_release)"
+Sep 24 16:31:18.170 INF API: test ended suite=0 test=616 pass=false
+Sep 24 16:31:18.171 INF API: test started suite=0 test=617 name="interop/raw-validation-execution-oog-valid-all (reth_release)"
+Sep 24 16:31:18.173 INF API: test ended suite=0 test=617 pass=false
+Sep 24 16:31:18.174 INF API: test started suite=0 test=618 name="interop/raw-validation-execution-oog-valid-stateDiff (reth_release)"
+Sep 24 16:31:18.176 INF API: test ended suite=0 test=618 pass=false
+Sep 24 16:31:18.177 INF API: test started suite=0 test=619 name="interop/raw-validation-execution-oog-valid-trace (reth_release)"
+Sep 24 16:31:18.178 INF API: test ended suite=0 test=619 pass=false
+Sep 24 16:31:18.179 INF API: test started suite=0 test=620 name="interop/raw-validation-execution-oog-valid-vmTrace (reth_release)"
+Sep 24 16:31:18.181 INF API: test ended suite=0 test=620 pass=false
+Sep 24 16:31:18.181 INF API: test started suite=0 test=621 name="interop/raw-validation-funds-gas-all (reth_release)"
+Sep 24 16:31:18.183 INF API: test ended suite=0 test=621 pass=false
+Sep 24 16:31:18.184 INF API: test started suite=0 test=622 name="interop/raw-validation-funds-gas-stateDiff (reth_release)"
+Sep 24 16:31:18.185 INF API: test ended suite=0 test=622 pass=false
+Sep 24 16:31:18.186 INF API: test started suite=0 test=623 name="interop/raw-validation-funds-gas-trace (reth_release)"
+Sep 24 16:31:18.188 INF API: test ended suite=0 test=623 pass=false
+Sep 24 16:31:18.188 INF API: test started suite=0 test=624 name="interop/raw-validation-funds-gas-vmTrace (reth_release)"
+Sep 24 16:31:18.190 INF API: test ended suite=0 test=624 pass=false
+Sep 24 16:31:18.191 INF API: test started suite=0 test=625 name="interop/raw-validation-funds-value-all (reth_release)"
+Sep 24 16:31:18.192 INF API: test ended suite=0 test=625 pass=false
+Sep 24 16:31:18.193 INF API: test started suite=0 test=626 name="interop/raw-validation-funds-value-stateDiff (reth_release)"
+Sep 24 16:31:18.195 INF API: test ended suite=0 test=626 pass=false
+Sep 24 16:31:18.196 INF API: test started suite=0 test=627 name="interop/raw-validation-funds-value-trace (reth_release)"
+Sep 24 16:31:18.197 INF API: test ended suite=0 test=627 pass=false
+Sep 24 16:31:18.198 INF API: test started suite=0 test=628 name="interop/raw-validation-funds-value-vmTrace (reth_release)"
+Sep 24 16:31:18.200 INF API: test ended suite=0 test=628 pass=false
+Sep 24 16:31:18.201 INF API: test started suite=0 test=629 name="interop/raw-validation-intrinsic-gas-all (reth_release)"
+Sep 24 16:31:18.203 INF API: test ended suite=0 test=629 pass=false
+Sep 24 16:31:18.204 INF API: test started suite=0 test=630 name="interop/raw-validation-intrinsic-gas-stateDiff (reth_release)"
+Sep 24 16:31:18.206 INF API: test ended suite=0 test=630 pass=false
+Sep 24 16:31:18.207 INF API: test started suite=0 test=631 name="interop/raw-validation-intrinsic-gas-trace (reth_release)"
+Sep 24 16:31:18.208 INF API: test ended suite=0 test=631 pass=false
+Sep 24 16:31:18.209 INF API: test started suite=0 test=632 name="interop/raw-validation-intrinsic-gas-vmTrace (reth_release)"
+Sep 24 16:31:18.210 INF API: test ended suite=0 test=632 pass=false
+Sep 24 16:31:18.211 INF API: test started suite=0 test=633 name="interop/raw-validation-nonce-high-all (reth_release)"
+Sep 24 16:31:18.212 INF API: test ended suite=0 test=633 pass=false
+Sep 24 16:31:18.213 INF API: test started suite=0 test=634 name="interop/raw-validation-nonce-high-stateDiff (reth_release)"
+Sep 24 16:31:18.215 INF API: test ended suite=0 test=634 pass=false
+Sep 24 16:31:18.215 INF API: test started suite=0 test=635 name="interop/raw-validation-nonce-high-trace (reth_release)"
+Sep 24 16:31:18.217 INF API: test ended suite=0 test=635 pass=false
+Sep 24 16:31:18.217 INF API: test started suite=0 test=636 name="interop/raw-validation-nonce-high-vmTrace (reth_release)"
+Sep 24 16:31:18.219 INF API: test ended suite=0 test=636 pass=false
+Sep 24 16:31:18.219 INF API: test started suite=0 test=637 name="interop/raw-validation-nonce-low-all (reth_release)"
+Sep 24 16:31:18.221 INF API: test ended suite=0 test=637 pass=false
+Sep 24 16:31:18.221 INF API: test started suite=0 test=638 name="interop/raw-validation-nonce-low-stateDiff (reth_release)"
+Sep 24 16:31:18.223 INF API: test ended suite=0 test=638 pass=false
+Sep 24 16:31:18.223 INF API: test started suite=0 test=639 name="interop/raw-validation-nonce-low-trace (reth_release)"
+Sep 24 16:31:18.225 INF API: test ended suite=0 test=639 pass=false
+Sep 24 16:31:18.225 INF API: test started suite=0 test=640 name="interop/raw-validation-nonce-low-vmTrace (reth_release)"
+Sep 24 16:31:18.227 INF API: test ended suite=0 test=640 pass=false
+Sep 24 16:31:18.227 INF API: test started suite=0 test=641 name="interop/raw-validation-valid-all (reth_release)"
+Sep 24 16:31:18.230 INF API: test ended suite=0 test=641 pass=false
+Sep 24 16:31:18.231 INF API: test started suite=0 test=642 name="interop/raw-validation-valid-stateDiff (reth_release)"
+Sep 24 16:31:18.233 INF API: test ended suite=0 test=642 pass=false
+Sep 24 16:31:18.233 INF API: test started suite=0 test=643 name="interop/raw-validation-valid-trace (reth_release)"
+Sep 24 16:31:18.235 INF API: test ended suite=0 test=643 pass=false
+Sep 24 16:31:18.236 INF API: test started suite=0 test=644 name="interop/raw-validation-valid-vmTrace (reth_release)"
+Sep 24 16:31:18.237 INF API: test ended suite=0 test=644 pass=false
+Sep 24 16:31:18.238 INF API: test started suite=0 test=645 name="interop/raw-validation-wrong-chain-all (reth_release)"
+Sep 24 16:31:18.239 INF API: test ended suite=0 test=645 pass=false
+Sep 24 16:31:18.240 INF API: test started suite=0 test=646 name="interop/raw-validation-wrong-chain-stateDiff (reth_release)"
+Sep 24 16:31:18.241 INF API: test ended suite=0 test=646 pass=false
+Sep 24 16:31:18.242 INF API: test started suite=0 test=647 name="interop/raw-validation-wrong-chain-trace (reth_release)"
+Sep 24 16:31:18.243 INF API: test ended suite=0 test=647 pass=false
+Sep 24 16:31:18.244 INF API: test started suite=0 test=648 name="interop/raw-validation-wrong-chain-vmTrace (reth_release)"
+Sep 24 16:31:18.245 INF API: test ended suite=0 test=648 pass=false
+Sep 24 16:31:18.524 INF API: test ended suite=0 test=577 pass=true
+Sep 24 16:31:18.534 INF API: suite ended suite=0
+Sep 24 16:31:19.588 INF simulation ethereum/rpc-compat finished suites=1 tests=648 failed=639
+639 tests failed

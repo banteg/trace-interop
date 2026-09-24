@@ -1,0 +1,20 @@
+{
+  "host": "Fedora Linux x86_64",
+  "tests": {
+    "command": "uv run python -m unittest discover -s tests",
+    "exit_code": 0,
+    "passed": 148
+  },
+  "verify": {
+    "command": "uv run trace-interop verify",
+    "exit_code": 0,
+    "frozen_inputs": 58,
+    "decisions": 32
+  },
+  "report_assessment_sha256": "03683ceaebc7ae6dd5727191af7d62ad2a3890a612e2d6cd944cb26777d43923",
+  "h17_regression_sha256": "07a2c95d54a28c92db6126fa1e1ae4c525abd7f44840eb4be2646a40f5748a54",
+  "files": {
+    "harness-tests.log": "b8931eb240f522aca5377aa54aeafe9a28dbe0b581d9ccd439f099ac8a641297",
+    "harness-verify.log": "23f2671488f93bd00e0c222337e120735b661815811f87a965ce8546c1d181eb"
+  }
+}

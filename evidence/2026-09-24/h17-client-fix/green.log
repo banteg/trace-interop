@@ -1,0 +1,42 @@
+   Compiling revm-inspectors v0.43.0 (/home/banteg/dev/trace-client-fixes/revm-inspectors-h17)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.68s
+     Running tests/it/main.rs (target/debug/deps/it-648c989561419ce3)
+
+running 34 tests
+test parity::test_parity_call_selfdestruct ... ok
+test parity::test_parity_call_selfdestruct_create ... ok
+test parity::test_parity_selfdestruct_cancun ... ok
+test parity::test_parity_selfdestruct_london ... ok
+test parity::non_vm_traces_do_not_record_step_deltas ... ok
+test parity::state_diff_birth::zero_value_call_does_not_create_account ... ok
+test parity::state_diff_birth::transfer_creates_account_then_changes_existing_account ... ok
+test parity::state_diff_selfdestruct::created_account_selfdestruct_across_cancun ... ok
+test parity::test_parity_constructor_selfdestruct ... ok
+test parity::vmtrace_failed_child_pushes_zero_and_parent_resumes ... ok
+test parity::vm_bytecode::constructor_bytecode ... ok
+test parity::state_diff_birth::creation_uses_account_existence_not_initial_balance ... ok
+test parity::vmtrace_call_pushes_result_and_copies_return_memory ... ok
+test parity::state_diff_selfdestruct::existing_account_selfdestruct_across_cancun ... ok
+test parity::test_parity_statediff_blob_commit ... ok
+test parity::state_diff_7702::authorization_code_changes ... ok
+test parity::vmtrace_reports_remaining_gas_after_storage_credit ... ok
+test parity::vmtrace_faults_have_no_execution_delta ... ok
+test parity::vmtrace_records_storage_for_vm_only_requests ... ok
+test parity::vmtrace_stop_only_child_preserves_parent_and_creation_result ... ok
+test parity::vmtrace_memory_is_attached_to_the_writing_instruction ... ok
+test parity::vm_bytecode::nested_creation_bytecode ... ok
+test parity::vmtrace_revert_keeps_its_execution_record ... ok
+test parity::vmtrace_empty_return_has_no_memory_delta ... ok
+test parity::vmtrace_memory_copy_and_terminal_writes ... ok
+test parity::vm_bytecode::bytecode_recording_is_opt_in ... ok
+test parity::vmtrace_precompile_does_not_steal_the_next_calls_subtrace ... ok
+test parity::vmtrace_nested_sibling_calls_keep_their_own_subtraces ... ok
+test parity::vmtrace_reports_remaining_gas_after_execution ... ok
+test parity::vm_bytecode::callcode_and_delegatecall_bytecode ... ok
+test parity::vm_bytecode::authorization_resolves_executed_bytecode ... ok
+test parity::vmtrace_calls_only_record_returned_memory ... ok
+test parity::test_parity_delegatecall_selfdestruct ... ok
+test parity::vm_bytecode::bytecode_recording_reuses_original_buffer ... ok
+
+test result: ok. 34 passed; 0 failed; 0 ignored; 0 measured; 43 filtered out; finished in 0.02s
+

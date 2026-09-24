@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md)
 
-Published builds checked at **2026-09-24T11:07:58.191756+00:00**. [Freshness preflight](../evidence/2026-09-24/current-matrix/preflight.json) · [Nine-build lock](../evidence/2026-09-24/current-matrix/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-24T12:21:08.909575+00:00**. [Freshness preflight](../evidence/2026-09-24/h17-retest/preflight.json) · [Nine-build lock](../evidence/2026-09-24/h17-retest/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Version and commit labels identify captured builds; channel identifiers in raw artifacts describe how updates are discovered.
 
@@ -38,10 +38,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 8766 |
+| 🔎 Assessed | 8772 |
 | 🟡 Partial | 571 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 260 |
+| 🚧 Blocked | 254 |
 | 🔎 Control | 9 |
 
 
@@ -95,9 +95,8 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 
 | Build | Scenario | Run evidence |
 | --- | --- | --- |
-| Erigon · 3.8.0-dev · e26d9bd4 | reorg-safe | [reorg-safe](../evidence/2026-09-24/current-matrix/reorg-safe/summary.json) |
-| Reth · 2.5.2 · 58a51b3e | reorg-safe | [reorg-safe](../evidence/2026-09-24/current-matrix/reorg-safe/summary.json) |
-| Reth · 2.6.0 · 73a3a008 | reorg-safe | [reorg-safe](../evidence/2026-09-24/current-matrix/reorg-safe/summary.json) |
+| Erigon · 3.8.0-dev · e26d9bd4 | reorg-safe | [reorg-safe](../evidence/2026-09-24/h17-retest/reorg-safe/summary.json) |
+| Reth · 2.6.0 · 73a3a008 | reorg-safe | [reorg-safe](../evidence/2026-09-24/h17-retest/reorg-safe/summary.json) |
 
 ## Result-shape checks
 
@@ -105,87 +104,87 @@ These cases returned results that differ from the draft schema. The case pages r
 
 | Case | Affected builds |
 | --- | --- |
-| [a/auth-replace](cases/a/auth-replace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/auth-set](cases/a/auth-set.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/auth-set-revert](cases/a/auth-set-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/block-2](cases/a/block-2.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/block-3](cases/a/block-3.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-gas7400](cases/a/call-gas7400.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-mcopy](cases/a/call-mcopy.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-mixed-create](cases/a/call-mixed-create.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-return42](cases/a/call-return42.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-siblings-ok-revert](cases/a/call-siblings-ok-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/call-siblings-revert-ok](cases/a/call-siblings-revert-ok.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-all](cases/a/filter-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-both-null](cases/a/filter-both-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-creator-from](cases/a/filter-creator-from.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-from-null](cases/a/filter-from-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-from-only-intersection](cases/a/filter-from-only-intersection.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-from-only-union](cases/a/filter-from-only-union.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-page-0](cases/a/filter-page-0.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-page-1](cases/a/filter-page-1.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [a/auth-replace](cases/a/auth-replace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/auth-set](cases/a/auth-set.md) | Nethermind 2.0.0 · bec830cd |
+| [a/auth-set-revert](cases/a/auth-set-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/block-2](cases/a/block-2.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/block-3](cases/a/block-3.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/call-gas7400](cases/a/call-gas7400.md) | Nethermind 2.0.0 · bec830cd |
+| [a/call-mcopy](cases/a/call-mcopy.md) | Nethermind 2.0.0 · bec830cd |
+| [a/call-mixed-create](cases/a/call-mixed-create.md) | Nethermind 2.0.0 · bec830cd |
+| [a/call-return42](cases/a/call-return42.md) | Nethermind 2.0.0 · bec830cd |
+| [a/call-siblings-ok-revert](cases/a/call-siblings-ok-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/call-siblings-revert-ok](cases/a/call-siblings-revert-ok.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-all](cases/a/filter-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-both-null](cases/a/filter-both-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-creator-from](cases/a/filter-creator-from.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-from-null](cases/a/filter-from-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-from-only-intersection](cases/a/filter-from-only-intersection.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-from-only-union](cases/a/filter-from-only-union.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-page-0](cases/a/filter-page-0.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-page-1](cases/a/filter-page-1.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [a/filter-page-2](cases/a/filter-page-2.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [a/filter-snapshot](cases/a/filter-snapshot.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [a/filter-snapshot](cases/a/filter-snapshot.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [a/filter-to-empty-from-set](cases/a/filter-to-empty-from-set.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [a/filter-to-null](cases/a/filter-to-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-two-blocks](cases/a/filter-two-blocks.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/filter-unknown-field](cases/a/filter-unknown-field.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [a/filter-to-null](cases/a/filter-to-null.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-two-blocks](cases/a/filter-two-blocks.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/filter-unknown-field](cases/a/filter-unknown-field.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [a/filter-wrong-address-type](cases/a/filter-wrong-address-type.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [a/get-nested-parent](cases/a/get-nested-parent.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/get-nested-positive](cases/a/get-nested-positive.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/many-storage-write-revert-read](cases/a/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [a/get-nested-parent](cases/a/get-nested-parent.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/get-nested-positive](cases/a/get-nested-positive.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/many-storage-write-revert-read](cases/a/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [a/missing-block-block](cases/a/missing-block-block.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [a/raw-below-basefee](cases/a/raw-below-basefee.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [a/raw-insufficient-funds](cases/a/raw-insufficient-funds.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [a/raw-low-gas](cases/a/raw-low-gas.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [a/raw-nonce-high](cases/a/raw-nonce-high.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [a/state-only-nonempty-output](cases/a/state-only-nonempty-output.md) | Nethermind 2.0.0 · bec830cd |
-| [a/transaction-tree](cases/a/transaction-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [a/vm-only-nonempty-output](cases/a/vm-only-nonempty-output.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [callmany-isolation/write-revert-read/many-storage-write-revert-read](cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-empty-runtime](cases/coverage/model-empty-runtime.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-environment](cases/coverage/model-environment.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-environment-free](cases/coverage/model-environment-free.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-mcopy](cases/coverage/model-mcopy.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-mcopy-overlap](cases/coverage/model-mcopy-overlap.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-mcopy-zero](cases/coverage/model-mcopy-zero.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-mload-existing](cases/coverage/model-mload-existing.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-mload-expansion](cases/coverage/model-mload-expansion.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-return42](cases/coverage/model-return42.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [coverage/model-revert](cases/coverage/model-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [a/transaction-tree](cases/a/transaction-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [a/vm-only-nonempty-output](cases/a/vm-only-nonempty-output.md) | Nethermind 2.0.0 · bec830cd |
+| [callmany-isolation/write-revert-read/many-storage-write-revert-read](cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [coverage/model-empty-runtime](cases/coverage/model-empty-runtime.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-environment](cases/coverage/model-environment.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-environment-free](cases/coverage/model-environment-free.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-mcopy](cases/coverage/model-mcopy.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-mcopy-overlap](cases/coverage/model-mcopy-overlap.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-mcopy-zero](cases/coverage/model-mcopy-zero.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-mload-existing](cases/coverage/model-mload-existing.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-mload-expansion](cases/coverage/model-mload-expansion.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-return42](cases/coverage/model-return42.md) | Nethermind 2.0.0 · bec830cd |
+| [coverage/model-revert](cases/coverage/model-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
 | [fee-policy/defaults-cap-only-positive/call/stateDiff](cases/fee-policy/defaults-cap-only-positive/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/call/vmTrace](cases/fee-policy/defaults-cap-only-positive/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/call/vmTrace](cases/fee-policy/defaults-cap-only-positive/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-cap-only-positive/many/stateDiff](cases/fee-policy/defaults-cap-only-positive/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-positive/many/vmTrace](cases/fee-policy/defaults-cap-only-positive/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-positive/many/vmTrace](cases/fee-policy/defaults-cap-only-positive/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-cap-only-zero/call/stateDiff](cases/fee-policy/defaults-cap-only-zero/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/call/vmTrace](cases/fee-policy/defaults-cap-only-zero/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/call/vmTrace](cases/fee-policy/defaults-cap-only-zero/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-cap-only-zero/many/none](cases/fee-policy/defaults-cap-only-zero/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-cap-only-zero/many/stateDiff](cases/fee-policy/defaults-cap-only-zero/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-cap-only-zero/many/trace](cases/fee-policy/defaults-cap-only-zero/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-cap-only-zero/many/trace-stateDiff](cases/fee-policy/defaults-cap-only-zero/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-cap-only-zero/many/vmTrace](cases/fee-policy/defaults-cap-only-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-cap-only-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-cap-only-zero/many/vmTrace](cases/fee-policy/defaults-cap-only-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-omitted/call/stateDiff](cases/fee-policy/defaults-omitted/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/call/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/call/trace-vmTrace](cases/fee-policy/defaults-omitted/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/call/vmTrace](cases/fee-policy/defaults-omitted/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/call/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/call/trace-vmTrace](cases/fee-policy/defaults-omitted/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/call/vmTrace](cases/fee-policy/defaults-omitted/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-omitted/many/stateDiff](cases/fee-policy/defaults-omitted/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/many/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/many/trace-vmTrace](cases/fee-policy/defaults-omitted/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-omitted/many/vmTrace](cases/fee-policy/defaults-omitted/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/many/stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-omitted/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/many/trace-vmTrace](cases/fee-policy/defaults-omitted/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-omitted/many/vmTrace](cases/fee-policy/defaults-omitted/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-tip-only-positive/many/none](cases/fee-policy/defaults-tip-only-positive/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-positive/many/stateDiff](cases/fee-policy/defaults-tip-only-positive/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-positive/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -195,31 +194,31 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/defaults-tip-only-positive/many/trace-vmTrace](cases/fee-policy/defaults-tip-only-positive/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-positive/many/vmTrace](cases/fee-policy/defaults-tip-only-positive/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-zero/call/stateDiff](cases/fee-policy/defaults-tip-only-zero/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/call/vmTrace](cases/fee-policy/defaults-tip-only-zero/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/call/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/call/vmTrace](cases/fee-policy/defaults-tip-only-zero/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-tip-only-zero/many/none](cases/fee-policy/defaults-tip-only-zero/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-zero/many/stateDiff](cases/fee-policy/defaults-tip-only-zero/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/defaults-tip-only-zero/many/trace](cases/fee-policy/defaults-tip-only-zero/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/defaults-tip-only-zero/many/trace-stateDiff](cases/fee-policy/defaults-tip-only-zero/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/defaults-tip-only-zero/many/vmTrace](cases/fee-policy/defaults-tip-only-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/many/trace-vmTrace](cases/fee-policy/defaults-tip-only-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/defaults-tip-only-zero/many/vmTrace](cases/fee-policy/defaults-tip-only-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/empty-sender-free/call/stateDiff](cases/fee-policy/empty-sender-free/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/call/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/call/trace-vmTrace](cases/fee-policy/empty-sender-free/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/call/vmTrace](cases/fee-policy/empty-sender-free/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/call/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/call/trace-vmTrace](cases/fee-policy/empty-sender-free/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/call/vmTrace](cases/fee-policy/empty-sender-free/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/empty-sender-free/many/none](cases/fee-policy/empty-sender-free/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/empty-sender-free/many/stateDiff](cases/fee-policy/empty-sender-free/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/many/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/many/stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/empty-sender-free/many/trace](cases/fee-policy/empty-sender-free/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/empty-sender-free/many/trace-stateDiff](cases/fee-policy/empty-sender-free/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/many/trace-vmTrace](cases/fee-policy/empty-sender-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/empty-sender-free/many/vmTrace](cases/fee-policy/empty-sender-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace](cases/fee-policy/empty-sender-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/many/trace-vmTrace](cases/fee-policy/empty-sender-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/empty-sender-free/many/vmTrace](cases/fee-policy/empty-sender-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/empty-sender-priced/many/none](cases/fee-policy/empty-sender-priced/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/empty-sender-priced/many/stateDiff](cases/fee-policy/empty-sender-priced/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/empty-sender-priced/many/stateDiff-vmTrace](cases/fee-policy/empty-sender-priced/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -229,18 +228,18 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/empty-sender-priced/many/trace-vmTrace](cases/fee-policy/empty-sender-priced/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/empty-sender-priced/many/vmTrace](cases/fee-policy/empty-sender-priced/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-exact/call/stateDiff](cases/fee-policy/funding-free-exact/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/call/trace-vmTrace](cases/fee-policy/funding-free-exact/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/call/vmTrace](cases/fee-policy/funding-free-exact/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/call/trace-vmTrace](cases/fee-policy/funding-free-exact/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/call/vmTrace](cases/fee-policy/funding-free-exact/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-free-exact/many/none](cases/fee-policy/funding-free-exact/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-exact/many/stateDiff](cases/fee-policy/funding-free-exact/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-free-exact/many/trace](cases/fee-policy/funding-free-exact/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-exact/many/trace-stateDiff](cases/fee-policy/funding-free-exact/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/many/trace-vmTrace](cases/fee-policy/funding-free-exact/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-free-exact/many/vmTrace](cases/fee-policy/funding-free-exact/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/many/trace-vmTrace](cases/fee-policy/funding-free-exact/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-free-exact/many/vmTrace](cases/fee-policy/funding-free-exact/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-free-short/many/none](cases/fee-policy/funding-free-short/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-short/many/stateDiff](cases/fee-policy/funding-free-short/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-short/many/stateDiff-vmTrace](cases/fee-policy/funding-free-short/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -250,15 +249,15 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/funding-free-short/many/trace-vmTrace](cases/fee-policy/funding-free-short/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-free-short/many/vmTrace](cases/fee-policy/funding-free-short/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-legacy-exact/call/stateDiff](cases/fee-policy/funding-legacy-exact/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/call/trace-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/call/vmTrace](cases/fee-policy/funding-legacy-exact/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/call/trace-vmTrace](cases/fee-policy/funding-legacy-exact/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/call/vmTrace](cases/fee-policy/funding-legacy-exact/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-legacy-exact/many/stateDiff](cases/fee-policy/funding-legacy-exact/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/many/trace-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-legacy-exact/many/vmTrace](cases/fee-policy/funding-legacy-exact/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/many/trace-vmTrace](cases/fee-policy/funding-legacy-exact/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-legacy-exact/many/vmTrace](cases/fee-policy/funding-legacy-exact/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-legacy-short/many/none](cases/fee-policy/funding-legacy-short/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-legacy-short/many/stateDiff](cases/fee-policy/funding-legacy-short/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-legacy-short/many/stateDiff-vmTrace](cases/fee-policy/funding-legacy-short/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -276,28 +275,28 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/funding-typed-effective-only/many/trace-vmTrace](cases/fee-policy/funding-typed-effective-only/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-effective-only/many/vmTrace](cases/fee-policy/funding-typed-effective-only/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-exact/call/stateDiff](cases/fee-policy/funding-typed-exact/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/call/vmTrace](cases/fee-policy/funding-typed-exact/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-exact/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/call/vmTrace](cases/fee-policy/funding-typed-exact/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-typed-exact/many/stateDiff](cases/fee-policy/funding-typed-exact/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-exact/many/vmTrace](cases/fee-policy/funding-typed-exact/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-exact/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-exact/many/vmTrace](cases/fee-policy/funding-typed-exact/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-typed-free-exact/call/stateDiff](cases/fee-policy/funding-typed-free-exact/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/call/vmTrace](cases/fee-policy/funding-typed-free-exact/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/call/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/call/vmTrace](cases/fee-policy/funding-typed-free-exact/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-typed-free-exact/many/none](cases/fee-policy/funding-typed-free-exact/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-free-exact/many/stateDiff](cases/fee-policy/funding-typed-free-exact/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-typed-free-exact/many/trace](cases/fee-policy/funding-typed-free-exact/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-free-exact/many/trace-stateDiff](cases/fee-policy/funding-typed-free-exact/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/funding-typed-free-exact/many/vmTrace](cases/fee-policy/funding-typed-free-exact/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/many/trace-vmTrace](cases/fee-policy/funding-typed-free-exact/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/funding-typed-free-exact/many/vmTrace](cases/fee-policy/funding-typed-free-exact/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/funding-typed-free-short/many/none](cases/fee-policy/funding-typed-free-short/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-free-short/many/stateDiff](cases/fee-policy/funding-typed-free-short/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-free-short/many/stateDiff-vmTrace](cases/fee-policy/funding-typed-free-short/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -315,25 +314,25 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/funding-typed-short/many/trace-vmTrace](cases/fee-policy/funding-typed-short/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/funding-typed-short/many/vmTrace](cases/fee-policy/funding-typed-short/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-above-base/call/stateDiff](cases/fee-policy/legacy-above-base/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/call/trace-vmTrace](cases/fee-policy/legacy-above-base/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/call/vmTrace](cases/fee-policy/legacy-above-base/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/call/trace-vmTrace](cases/fee-policy/legacy-above-base/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/call/vmTrace](cases/fee-policy/legacy-above-base/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-above-base/many/stateDiff](cases/fee-policy/legacy-above-base/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/many/trace-vmTrace](cases/fee-policy/legacy-above-base/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-above-base/many/vmTrace](cases/fee-policy/legacy-above-base/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-above-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/many/trace-vmTrace](cases/fee-policy/legacy-above-base/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-above-base/many/vmTrace](cases/fee-policy/legacy-above-base/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-at-base/call/stateDiff](cases/fee-policy/legacy-at-base/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/call/trace-vmTrace](cases/fee-policy/legacy-at-base/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/call/vmTrace](cases/fee-policy/legacy-at-base/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/call/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/call/trace-vmTrace](cases/fee-policy/legacy-at-base/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/call/vmTrace](cases/fee-policy/legacy-at-base/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-at-base/many/stateDiff](cases/fee-policy/legacy-at-base/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/many/trace-vmTrace](cases/fee-policy/legacy-at-base/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-at-base/many/vmTrace](cases/fee-policy/legacy-at-base/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/many/trace-vmTrace](cases/fee-policy/legacy-at-base/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-at-base/many/vmTrace](cases/fee-policy/legacy-at-base/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-below-base/many/none](cases/fee-policy/legacy-below-base/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-below-base/many/stateDiff](cases/fee-policy/legacy-below-base/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-below-base/many/stateDiff-vmTrace](cases/fee-policy/legacy-below-base/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -351,83 +350,83 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/legacy-one/many/trace-vmTrace](cases/fee-policy/legacy-one/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-one/many/vmTrace](cases/fee-policy/legacy-one/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-out-of-gas-then-observe/many/stateDiff](cases/fee-policy/legacy-out-of-gas-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/trace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/legacy-out-of-gas-then-observe/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-out-of-gas/call/stateDiff](cases/fee-policy/legacy-out-of-gas/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-out-of-gas/call/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/call/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/legacy-out-of-gas/call/trace](cases/fee-policy/legacy-out-of-gas/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/call/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/call/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/call/trace](cases/fee-policy/legacy-out-of-gas/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/call/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/call/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-out-of-gas/call/vmTrace](cases/fee-policy/legacy-out-of-gas/call/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-out-of-gas/many/stateDiff](cases/fee-policy/legacy-out-of-gas/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-out-of-gas/many/stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/legacy-out-of-gas/many/trace](cases/fee-policy/legacy-out-of-gas/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-out-of-gas/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/many/trace](cases/fee-policy/legacy-out-of-gas/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/many/trace-stateDiff](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-out-of-gas/many/trace-vmTrace](cases/fee-policy/legacy-out-of-gas/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-out-of-gas/many/vmTrace](cases/fee-policy/legacy-out-of-gas/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-refund-then-observe/many/stateDiff](cases/fee-policy/legacy-refund-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund-then-observe/many/vmTrace](cases/fee-policy/legacy-refund-then-observe/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-refund-then-observe/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund-then-observe/many/vmTrace](cases/fee-policy/legacy-refund-then-observe/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-refund/call/stateDiff](cases/fee-policy/legacy-refund/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/call/stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/call/trace-vmTrace](cases/fee-policy/legacy-refund/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/call/vmTrace](cases/fee-policy/legacy-refund/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/call/stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/call/trace-vmTrace](cases/fee-policy/legacy-refund/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/call/vmTrace](cases/fee-policy/legacy-refund/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-refund/many/stateDiff](cases/fee-policy/legacy-refund/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/many/trace-vmTrace](cases/fee-policy/legacy-refund/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-refund/many/vmTrace](cases/fee-policy/legacy-refund/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/many/stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/many/trace-vmTrace](cases/fee-policy/legacy-refund/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-refund/many/vmTrace](cases/fee-policy/legacy-refund/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-revert-then-observe/many/stateDiff](cases/fee-policy/legacy-revert-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert-then-observe/many/trace](cases/fee-policy/legacy-revert-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert-then-observe/many/vmTrace](cases/fee-policy/legacy-revert-then-observe/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert-then-observe/many/trace](cases/fee-policy/legacy-revert-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert-then-observe/many/trace-vmTrace](cases/fee-policy/legacy-revert-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert-then-observe/many/vmTrace](cases/fee-policy/legacy-revert-then-observe/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-revert/call/stateDiff](cases/fee-policy/legacy-revert/call/stateDiff.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert/call/stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/stateDiff-vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert/call/trace](cases/fee-policy/legacy-revert/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/call/trace-stateDiff](cases/fee-policy/legacy-revert/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/call/trace-vmTrace](cases/fee-policy/legacy-revert/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/call/vmTrace](cases/fee-policy/legacy-revert/call/vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert/call/stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/stateDiff-vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert/call/trace](cases/fee-policy/legacy-revert/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/call/trace-stateDiff](cases/fee-policy/legacy-revert/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/call/trace-vmTrace](cases/fee-policy/legacy-revert/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/call/vmTrace](cases/fee-policy/legacy-revert/call/vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-revert/many/stateDiff](cases/fee-policy/legacy-revert/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-revert/many/trace](cases/fee-policy/legacy-revert/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/many/trace-stateDiff](cases/fee-policy/legacy-revert/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/many/trace-vmTrace](cases/fee-policy/legacy-revert/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/legacy-revert/many/vmTrace](cases/fee-policy/legacy-revert/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert/many/stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-revert/many/trace](cases/fee-policy/legacy-revert/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/many/trace-stateDiff](cases/fee-policy/legacy-revert/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-revert/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/many/trace-vmTrace](cases/fee-policy/legacy-revert/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/legacy-revert/many/vmTrace](cases/fee-policy/legacy-revert/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-zero/call/stateDiff](cases/fee-policy/legacy-zero/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/call/stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/call/trace-vmTrace](cases/fee-policy/legacy-zero/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/call/vmTrace](cases/fee-policy/legacy-zero/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/call/stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/call/trace-vmTrace](cases/fee-policy/legacy-zero/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/call/vmTrace](cases/fee-policy/legacy-zero/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-zero/many/none](cases/fee-policy/legacy-zero/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-zero/many/stateDiff](cases/fee-policy/legacy-zero/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/many/stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/many/stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/legacy-zero/many/trace](cases/fee-policy/legacy-zero/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/legacy-zero/many/trace-stateDiff](cases/fee-policy/legacy-zero/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/legacy-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/many/trace-vmTrace](cases/fee-policy/legacy-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/legacy-zero/many/vmTrace](cases/fee-policy/legacy-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/legacy-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/many/trace-vmTrace](cases/fee-policy/legacy-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/legacy-zero/many/vmTrace](cases/fee-policy/legacy-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-legacy-free-priced-free/many/none](cases/fee-policy/mixed-legacy-free-priced-free/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-free-priced-free/many/stateDiff](cases/fee-policy/mixed-legacy-free-priced-free/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-legacy-free-priced-free/many/trace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-free-priced-free/many/vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-free-priced-free/many/vmTrace](cases/fee-policy/mixed-legacy-free-priced-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-legacy-free-then-invalid/many/none](cases/fee-policy/mixed-legacy-free-then-invalid/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-free-then-invalid/many/stateDiff](cases/fee-policy/mixed-legacy-free-then-invalid/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-free-then-invalid/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-free-then-invalid/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -446,28 +445,28 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/mixed-legacy-invalid-then-free/many/vmTrace](cases/fee-policy/mixed-legacy-invalid-then-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-priced-free-priced/many/none](cases/fee-policy/mixed-legacy-priced-free-priced/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-priced-free-priced/many/stateDiff](cases/fee-policy/mixed-legacy-priced-free-priced/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-legacy-priced-free-priced/many/trace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-legacy-priced-free-priced/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-legacy-selections/many/none](cases/fee-policy/mixed-legacy-selections/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-legacy-selections/many/stateDiff](cases/fee-policy/mixed-legacy-selections/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531 |
-| [fee-policy/mixed-legacy-selections/many/trace](cases/fee-policy/mixed-legacy-selections/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-selections/many/trace-stateDiff](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531 |
-| [fee-policy/mixed-legacy-selections/many/trace-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-legacy-selections/many/vmTrace](cases/fee-policy/mixed-legacy-selections/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-selections/many/stateDiff](cases/fee-policy/mixed-legacy-selections/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
+| [fee-policy/mixed-legacy-selections/many/trace](cases/fee-policy/mixed-legacy-selections/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-selections/many/trace-stateDiff](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
+| [fee-policy/mixed-legacy-selections/many/trace-vmTrace](cases/fee-policy/mixed-legacy-selections/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-legacy-selections/many/vmTrace](cases/fee-policy/mixed-legacy-selections/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-typed-free-priced-free/many/none](cases/fee-policy/mixed-typed-free-priced-free/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-free-priced-free/many/stateDiff](cases/fee-policy/mixed-typed-free-priced-free/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-typed-free-priced-free/many/trace](cases/fee-policy/mixed-typed-free-priced-free/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff](cases/fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-free-priced-free/many/vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-free-priced-free/many/vmTrace](cases/fee-policy/mixed-typed-free-priced-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-typed-free-then-invalid/many/none](cases/fee-policy/mixed-typed-free-then-invalid/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-free-then-invalid/many/stateDiff](cases/fee-policy/mixed-typed-free-then-invalid/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-free-then-invalid/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-free-then-invalid/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -486,20 +485,20 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/mixed-typed-invalid-then-free/many/vmTrace](cases/fee-policy/mixed-typed-invalid-then-free/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-priced-free-priced/many/none](cases/fee-policy/mixed-typed-priced-free-priced/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-priced-free-priced/many/stateDiff](cases/fee-policy/mixed-typed-priced-free-priced/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-typed-priced-free-priced/many/trace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-priced-free-priced/many/vmTrace](cases/fee-policy/mixed-typed-priced-free-priced/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/mixed-typed-selections/many/none](cases/fee-policy/mixed-typed-selections/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/mixed-typed-selections/many/stateDiff](cases/fee-policy/mixed-typed-selections/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531 |
-| [fee-policy/mixed-typed-selections/many/trace](cases/fee-policy/mixed-typed-selections/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-selections/many/trace-stateDiff](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531 |
-| [fee-policy/mixed-typed-selections/many/trace-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/mixed-typed-selections/many/vmTrace](cases/fee-policy/mixed-typed-selections/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-selections/many/stateDiff](cases/fee-policy/mixed-typed-selections/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-selections/many/stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
+| [fee-policy/mixed-typed-selections/many/trace](cases/fee-policy/mixed-typed-selections/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-selections/many/trace-stateDiff](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
+| [fee-policy/mixed-typed-selections/many/trace-vmTrace](cases/fee-policy/mixed-typed-selections/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/mixed-typed-selections/many/vmTrace](cases/fee-policy/mixed-typed-selections/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/sequential-funding/many/none](cases/fee-policy/sequential-funding/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/sequential-funding/many/stateDiff](cases/fee-policy/sequential-funding/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/sequential-funding/many/stateDiff-vmTrace](cases/fee-policy/sequential-funding/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -509,15 +508,15 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/sequential-funding/many/trace-vmTrace](cases/fee-policy/sequential-funding/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/sequential-funding/many/vmTrace](cases/fee-policy/sequential-funding/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-at-base/call/stateDiff](cases/fee-policy/typed-at-base/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/call/stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/call/trace-vmTrace](cases/fee-policy/typed-at-base/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/call/vmTrace](cases/fee-policy/typed-at-base/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/call/stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/call/trace-vmTrace](cases/fee-policy/typed-at-base/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/call/vmTrace](cases/fee-policy/typed-at-base/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-at-base/many/stateDiff](cases/fee-policy/typed-at-base/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/many/stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/many/trace-vmTrace](cases/fee-policy/typed-at-base/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-at-base/many/vmTrace](cases/fee-policy/typed-at-base/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/many/stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-at-base/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/many/trace-vmTrace](cases/fee-policy/typed-at-base/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-at-base/many/vmTrace](cases/fee-policy/typed-at-base/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-below-base-positive-tip/many/none](cases/fee-policy/typed-below-base-positive-tip/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-below-base-positive-tip/many/stateDiff](cases/fee-policy/typed-below-base-positive-tip/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-below-base-positive-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-below-base-positive-tip/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -535,15 +534,15 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/typed-below-base/many/trace-vmTrace](cases/fee-policy/typed-below-base/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-below-base/many/vmTrace](cases/fee-policy/typed-below-base/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-cap-limited/call/stateDiff](cases/fee-policy/typed-cap-limited/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/call/trace-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/call/vmTrace](cases/fee-policy/typed-cap-limited/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/call/trace-vmTrace](cases/fee-policy/typed-cap-limited/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/call/vmTrace](cases/fee-policy/typed-cap-limited/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-cap-limited/many/stateDiff](cases/fee-policy/typed-cap-limited/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/many/trace-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-cap-limited/many/vmTrace](cases/fee-policy/typed-cap-limited/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/many/trace-vmTrace](cases/fee-policy/typed-cap-limited/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-cap-limited/many/vmTrace](cases/fee-policy/typed-cap-limited/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-one/many/none](cases/fee-policy/typed-one/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-one/many/stateDiff](cases/fee-policy/typed-one/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-one/many/stateDiff-vmTrace](cases/fee-policy/typed-one/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -553,82 +552,82 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/typed-one/many/trace-vmTrace](cases/fee-policy/typed-one/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-one/many/vmTrace](cases/fee-policy/typed-one/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-out-of-gas-then-observe/many/stateDiff](cases/fee-policy/typed-out-of-gas-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/trace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas-then-observe/many/vmTrace](cases/fee-policy/typed-out-of-gas-then-observe/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-out-of-gas/call/stateDiff](cases/fee-policy/typed-out-of-gas/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-out-of-gas/call/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/call/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/typed-out-of-gas/call/trace](cases/fee-policy/typed-out-of-gas/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/call/trace-stateDiff](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/call/trace-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/call/trace](cases/fee-policy/typed-out-of-gas/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/call/trace-stateDiff](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/call/trace-vmTrace](cases/fee-policy/typed-out-of-gas/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-out-of-gas/call/vmTrace](cases/fee-policy/typed-out-of-gas/call/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-out-of-gas/many/stateDiff](cases/fee-policy/typed-out-of-gas/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-out-of-gas/many/stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/typed-out-of-gas/many/trace](cases/fee-policy/typed-out-of-gas/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-out-of-gas/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/many/trace](cases/fee-policy/typed-out-of-gas/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/many/trace-stateDiff](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-out-of-gas/many/trace-vmTrace](cases/fee-policy/typed-out-of-gas/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-out-of-gas/many/vmTrace](cases/fee-policy/typed-out-of-gas/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-refund-then-observe/many/stateDiff](cases/fee-policy/typed-refund-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund-then-observe/many/trace-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund-then-observe/many/vmTrace](cases/fee-policy/typed-refund-then-observe/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund-then-observe/many/trace-vmTrace](cases/fee-policy/typed-refund-then-observe/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund-then-observe/many/vmTrace](cases/fee-policy/typed-refund-then-observe/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-refund/call/stateDiff](cases/fee-policy/typed-refund/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/call/stateDiff-vmTrace](cases/fee-policy/typed-refund/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/call/trace-vmTrace](cases/fee-policy/typed-refund/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/call/vmTrace](cases/fee-policy/typed-refund/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/call/stateDiff-vmTrace](cases/fee-policy/typed-refund/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/call/trace-vmTrace](cases/fee-policy/typed-refund/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/call/vmTrace](cases/fee-policy/typed-refund/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-refund/many/stateDiff](cases/fee-policy/typed-refund/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/many/stateDiff-vmTrace](cases/fee-policy/typed-refund/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/many/trace-vmTrace](cases/fee-policy/typed-refund/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-refund/many/vmTrace](cases/fee-policy/typed-refund/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/many/stateDiff-vmTrace](cases/fee-policy/typed-refund/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-refund/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/many/trace-vmTrace](cases/fee-policy/typed-refund/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-refund/many/vmTrace](cases/fee-policy/typed-refund/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-revert-then-observe/many/stateDiff](cases/fee-policy/typed-revert-then-observe/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert-then-observe/many/trace](cases/fee-policy/typed-revert-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert-then-observe/many/trace-stateDiff](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert-then-observe/many/trace-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert-then-observe/many/vmTrace](cases/fee-policy/typed-revert-then-observe/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert-then-observe/many/trace](cases/fee-policy/typed-revert-then-observe/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert-then-observe/many/trace-stateDiff](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert-then-observe/many/trace-vmTrace](cases/fee-policy/typed-revert-then-observe/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert-then-observe/many/vmTrace](cases/fee-policy/typed-revert-then-observe/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-revert/call/stateDiff](cases/fee-policy/typed-revert/call/stateDiff.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert/call/stateDiff-vmTrace](cases/fee-policy/typed-revert/call/stateDiff-vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert/call/trace](cases/fee-policy/typed-revert/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/call/trace-stateDiff](cases/fee-policy/typed-revert/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/call/trace-vmTrace](cases/fee-policy/typed-revert/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/call/vmTrace](cases/fee-policy/typed-revert/call/vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert/call/stateDiff-vmTrace](cases/fee-policy/typed-revert/call/stateDiff-vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert/call/trace](cases/fee-policy/typed-revert/call/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/call/trace-stateDiff](cases/fee-policy/typed-revert/call/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/call/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/call/trace-vmTrace](cases/fee-policy/typed-revert/call/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/call/vmTrace](cases/fee-policy/typed-revert/call/vmTrace.md) | Erigon 3.6.1 · 0c4d9c91, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-revert/many/stateDiff](cases/fee-policy/typed-revert/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert/many/stateDiff-vmTrace](cases/fee-policy/typed-revert/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-revert/many/trace](cases/fee-policy/typed-revert/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/many/trace-stateDiff](cases/fee-policy/typed-revert/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/many/trace-vmTrace](cases/fee-policy/typed-revert/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
-| [fee-policy/typed-revert/many/vmTrace](cases/fee-policy/typed-revert/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert/many/stateDiff-vmTrace](cases/fee-policy/typed-revert/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-revert/many/trace](cases/fee-policy/typed-revert/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/many/trace-stateDiff](cases/fee-policy/typed-revert/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-revert/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/many/trace-vmTrace](cases/fee-policy/typed-revert/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
+| [fee-policy/typed-revert/many/vmTrace](cases/fee-policy/typed-revert/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-tip-equals-cap/call/stateDiff](cases/fee-policy/typed-tip-equals-cap/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/call/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/call/vmTrace](cases/fee-policy/typed-tip-equals-cap/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/call/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/call/vmTrace](cases/fee-policy/typed-tip-equals-cap/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-tip-equals-cap/many/stateDiff](cases/fee-policy/typed-tip-equals-cap/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/many/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-equals-cap/many/vmTrace](cases/fee-policy/typed-tip-equals-cap/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/many/trace-vmTrace](cases/fee-policy/typed-tip-equals-cap/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-equals-cap/many/vmTrace](cases/fee-policy/typed-tip-equals-cap/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-tip-limited/call/stateDiff](cases/fee-policy/typed-tip-limited/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/call/trace-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/call/vmTrace](cases/fee-policy/typed-tip-limited/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/call/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/call/trace-vmTrace](cases/fee-policy/typed-tip-limited/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/call/vmTrace](cases/fee-policy/typed-tip-limited/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-tip-limited/many/stateDiff](cases/fee-policy/typed-tip-limited/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/many/trace-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-tip-limited/many/vmTrace](cases/fee-policy/typed-tip-limited/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/many/trace-vmTrace](cases/fee-policy/typed-tip-limited/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-tip-limited/many/vmTrace](cases/fee-policy/typed-tip-limited/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-tip-over-cap/many/none](cases/fee-policy/typed-tip-over-cap/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-tip-over-cap/many/stateDiff](cases/fee-policy/typed-tip-over-cap/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-tip-over-cap/many/stateDiff-vmTrace](cases/fee-policy/typed-tip-over-cap/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -646,151 +645,151 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fee-policy/typed-zero-cap-positive-tip/many/trace-vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-zero-cap-positive-tip/many/vmTrace](cases/fee-policy/typed-zero-cap-positive-tip/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-zero-tip/call/stateDiff](cases/fee-policy/typed-zero-tip/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/call/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/call/trace-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/call/vmTrace](cases/fee-policy/typed-zero-tip/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/call/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/call/trace-vmTrace](cases/fee-policy/typed-zero-tip/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/call/vmTrace](cases/fee-policy/typed-zero-tip/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-zero-tip/many/stateDiff](cases/fee-policy/typed-zero-tip/many/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/many/trace-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero-tip/many/vmTrace](cases/fee-policy/typed-zero-tip/many/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/many/stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/many/trace-vmTrace](cases/fee-policy/typed-zero-tip/many/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero-tip/many/vmTrace](cases/fee-policy/typed-zero-tip/many/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-zero/call/stateDiff](cases/fee-policy/typed-zero/call/stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/call/stateDiff-vmTrace](cases/fee-policy/typed-zero/call/stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/call/trace-vmTrace](cases/fee-policy/typed-zero/call/trace-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/call/vmTrace](cases/fee-policy/typed-zero/call/vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/call/stateDiff-vmTrace](cases/fee-policy/typed-zero/call/stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/call/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/call/trace-stateDiff-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/call/trace-vmTrace](cases/fee-policy/typed-zero/call/trace-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/call/vmTrace](cases/fee-policy/typed-zero/call/vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-zero/many/none](cases/fee-policy/typed-zero/many/none.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-zero/many/stateDiff](cases/fee-policy/typed-zero/many/stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/many/stateDiff-vmTrace](cases/fee-policy/typed-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/many/stateDiff-vmTrace](cases/fee-policy/typed-zero/many/stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [fee-policy/typed-zero/many/trace](cases/fee-policy/typed-zero/many/trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [fee-policy/typed-zero/many/trace-stateDiff](cases/fee-policy/typed-zero/many/trace-stateDiff.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [fee-policy/typed-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/many/trace-vmTrace](cases/fee-policy/typed-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fee-policy/typed-zero/many/vmTrace](cases/fee-policy/typed-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fork-followup/_reference/block/0x33](cases/fork-followup/_reference/block/0x33.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fork-followup/_reference/block/0x34](cases/fork-followup/_reference/block/0x34.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fork-followup/_reference/block/0x35](cases/fork-followup/_reference/block/0x35.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fork-followup/beacon-call-55](cases/fork-followup/beacon-call-55.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [fork-followup/destroy-trace-55](cases/fork-followup/destroy-trace-55.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-35](cases/forks/block-35.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/block-36](cases/forks/block-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/block-47](cases/forks/block-47.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/block-48](cases/forks/block-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-51](cases/forks/block-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-52](cases/forks/block-52.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-55](cases/forks/block-55.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-56](cases/forks/block-56.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-59](cases/forks/block-59.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/block-60](cases/forks/block-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/destroy-trace-55](cases/forks/destroy-trace-55.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-35](cases/forks/filter-35.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/filter-36](cases/forks/filter-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/filter-47](cases/forks/filter-47.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/filter-48](cases/forks/filter-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-51](cases/forks/filter-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-52](cases/forks/filter-52.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-55](cases/forks/filter-55.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-56](cases/forks/filter-56.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-59](cases/forks/filter-59.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-60](cases/forks/filter-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-across-36](cases/forks/filter-across-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/filter-across-48](cases/forks/filter-across-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [forks/filter-across-52](cases/forks/filter-across-52.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-across-56](cases/forks/filter-across-56.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/filter-across-60](cases/forks/filter-across-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/mcopy-trace-55](cases/forks/mcopy-trace-55.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/mcopy-trace-56](cases/forks/mcopy-trace-56.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/replay-36](cases/forks/replay-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/replay-48](cases/forks/replay-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/replay-51](cases/forks/replay-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [forks/replay-60](cases/forks/replay-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [h30/_reference/block/0x1](cases/h30/_reference/block/0x1.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [h30/_reference/block/0x2](cases/h30/_reference/block/0x2.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [h30/_reference/block/0x30](cases/h30/_reference/block/0x30.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/block-transfer](cases/initial/block-transfer.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/block-tree](cases/initial/block-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-constructor](cases/initial/call-constructor.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-constructor-priced](cases/initial/call-constructor-priced.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-many](cases/initial/call-many.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-many-priced](cases/initial/call-many-priced.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/many/trace-stateDiff-vmTrace](cases/fee-policy/typed-zero/many/trace-stateDiff-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/many/trace-vmTrace](cases/fee-policy/typed-zero/many/trace-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fee-policy/typed-zero/many/vmTrace](cases/fee-policy/typed-zero/many/vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [fork-followup/_reference/block/0x33](cases/fork-followup/_reference/block/0x33.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fork-followup/_reference/block/0x34](cases/fork-followup/_reference/block/0x34.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fork-followup/_reference/block/0x35](cases/fork-followup/_reference/block/0x35.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fork-followup/beacon-call-55](cases/fork-followup/beacon-call-55.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [fork-followup/destroy-trace-55](cases/fork-followup/destroy-trace-55.md) | Nethermind 2.0.0 · bec830cd |
+| [forks/block-35](cases/forks/block-35.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/block-36](cases/forks/block-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/block-47](cases/forks/block-47.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/block-48](cases/forks/block-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-51](cases/forks/block-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-52](cases/forks/block-52.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-55](cases/forks/block-55.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-56](cases/forks/block-56.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-59](cases/forks/block-59.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/block-60](cases/forks/block-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/destroy-trace-55](cases/forks/destroy-trace-55.md) | Nethermind 2.0.0 · bec830cd |
+| [forks/filter-35](cases/forks/filter-35.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/filter-36](cases/forks/filter-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/filter-47](cases/forks/filter-47.md) | Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/filter-48](cases/forks/filter-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-51](cases/forks/filter-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-52](cases/forks/filter-52.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-55](cases/forks/filter-55.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-56](cases/forks/filter-56.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-59](cases/forks/filter-59.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-60](cases/forks/filter-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-across-36](cases/forks/filter-across-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/filter-across-48](cases/forks/filter-across-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · e26d9bd4, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [forks/filter-across-52](cases/forks/filter-across-52.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-across-56](cases/forks/filter-across-56.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/filter-across-60](cases/forks/filter-across-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/mcopy-trace-55](cases/forks/mcopy-trace-55.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/mcopy-trace-56](cases/forks/mcopy-trace-56.md) | Nethermind 2.0.0 · bec830cd |
+| [forks/replay-36](cases/forks/replay-36.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/replay-48](cases/forks/replay-48.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/replay-51](cases/forks/replay-51.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [forks/replay-60](cases/forks/replay-60.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [h30/_reference/block/0x1](cases/h30/_reference/block/0x1.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [h30/_reference/block/0x2](cases/h30/_reference/block/0x2.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [h30/_reference/block/0x30](cases/h30/_reference/block/0x30.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/block-transfer](cases/initial/block-transfer.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/block-tree](cases/initial/block-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/call-constructor](cases/initial/call-constructor.md) | Nethermind 2.0.0 · bec830cd |
+| [initial/call-constructor-priced](cases/initial/call-constructor-priced.md) | Nethermind 2.0.0 · bec830cd |
+| [initial/call-many](cases/initial/call-many.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/call-many-priced](cases/initial/call-many-priced.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [initial/call-transfer-stateDiff](cases/initial/call-transfer-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [initial/call-tree-stateDiff](cases/initial/call-tree-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [initial/call-tree-stateDiff-priced](cases/initial/call-tree-stateDiff-priced.md) | Nethermind 2.0.0 · bec830cd |
-| [initial/call-tree-trace](cases/initial/call-tree-trace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-tree-trace-priced](cases/initial/call-tree-trace-priced.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-tree-vmTrace](cases/initial/call-tree-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/call-tree-vmTrace-priced](cases/initial/call-tree-vmTrace-priced.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/filter-all](cases/initial/filter-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [initial/call-tree-trace](cases/initial/call-tree-trace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/call-tree-trace-priced](cases/initial/call-tree-trace-priced.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/call-tree-vmTrace](cases/initial/call-tree-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [initial/call-tree-vmTrace-priced](cases/initial/call-tree-vmTrace-priced.md) | Nethermind 2.0.0 · bec830cd |
+| [initial/filter-all](cases/initial/filter-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [initial/filter-empty](cases/initial/filter-empty.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [initial/filter-from](cases/initial/filter-from.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-missing](cases/initial/get-missing.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-nested](cases/initial/get-nested.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-one](cases/initial/get-one.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-root](cases/initial/get-root.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-transfer-root](cases/initial/get-transfer-root.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/get-zero](cases/initial/get-zero.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [initial/filter-from](cases/initial/filter-from.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-missing](cases/initial/get-missing.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-nested](cases/initial/get-nested.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-one](cases/initial/get-one.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-root](cases/initial/get-root.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-transfer-root](cases/initial/get-transfer-root.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/get-zero](cases/initial/get-zero.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [initial/raw-valid-default-block](cases/initial/raw-valid-default-block.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [initial/replay-7702-stateDiff](cases/initial/replay-7702-stateDiff.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
 | [initial/replay-7702-trace](cases/initial/replay-7702-trace.md) | Reth 2.6.0 · 73a3a008 |
 | [initial/replay-7702-vmTrace](cases/initial/replay-7702-vmTrace.md) | Reth 2.6.0 · 73a3a008 |
-| [initial/replay-block-tree](cases/initial/replay-block-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [initial/replay-block-tree](cases/initial/replay-block-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [initial/replay-revert-stateDiff](cases/initial/replay-revert-stateDiff.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [initial/replay-revert-trace](cases/initial/replay-revert-trace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [initial/replay-revert-vmTrace](cases/initial/replay-revert-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [initial/replay-revert-trace](cases/initial/replay-revert-trace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [initial/replay-revert-vmTrace](cases/initial/replay-revert-vmTrace.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
 | [initial/replay-transfer-stateDiff](cases/initial/replay-transfer-stateDiff.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
 | [initial/replay-transfer-trace](cases/initial/replay-transfer-trace.md) | Reth 2.6.0 · 73a3a008 |
 | [initial/replay-transfer-vmTrace](cases/initial/replay-transfer-vmTrace.md) | Reth 2.6.0 · 73a3a008 |
 | [initial/replay-tree-stateDiff](cases/initial/replay-tree-stateDiff.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [initial/replay-tree-trace](cases/initial/replay-tree-trace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [initial/replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [initial/transaction-revert](cases/initial/transaction-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [initial/transaction-tree](cases/initial/transaction-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-call-outer0-value1-failed](cases/precompile-values/nested-call-outer0-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-call-outer0-value1-success](cases/precompile-values/nested-call-outer0-value1-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-call-outer1-value0-failed](cases/precompile-values/nested-call-outer1-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-call-outer1-value0-success](cases/precompile-values/nested-call-outer1-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-callcode-outer0-value1-failed](cases/precompile-values/nested-callcode-outer0-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-callcode-outer0-value1-success](cases/precompile-values/nested-callcode-outer0-value1-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-callcode-outer1-value0-failed](cases/precompile-values/nested-callcode-outer1-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompile-values/nested-callcode-outer1-value0-success](cases/precompile-values/nested-callcode-outer1-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-call-value0-failed](cases/precompiles/nested-call-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-call-value0-success](cases/precompiles/nested-call-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-call-value1-failed](cases/precompiles/nested-call-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-call-value1-success](cases/precompiles/nested-call-value1-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-callcode-value0-failed](cases/precompiles/nested-callcode-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-callcode-value0-success](cases/precompiles/nested-callcode-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-callcode-value1-failed](cases/precompiles/nested-callcode-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-callcode-value1-success](cases/precompiles/nested-callcode-value1-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-delegatecall-value0-failed](cases/precompiles/nested-delegatecall-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-delegatecall-value0-success](cases/precompiles/nested-delegatecall-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-delegatecall-value1-failed](cases/precompiles/nested-delegatecall-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-delegatecall-value1-success](cases/precompiles/nested-delegatecall-value1-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-staticcall-value0-failed](cases/precompiles/nested-staticcall-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/nested-staticcall-value0-success](cases/precompiles/nested-staticcall-value0-success.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [precompiles/root-failed](cases/precompiles/root-failed.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [initial/replay-tree-trace](cases/initial/replay-tree-trace.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [initial/replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) | Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [initial/transaction-revert](cases/initial/transaction-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [initial/transaction-tree](cases/initial/transaction-tree.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-call-outer0-value1-failed](cases/precompile-values/nested-call-outer0-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-call-outer0-value1-success](cases/precompile-values/nested-call-outer0-value1-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-call-outer1-value0-failed](cases/precompile-values/nested-call-outer1-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-call-outer1-value0-success](cases/precompile-values/nested-call-outer1-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-callcode-outer0-value1-failed](cases/precompile-values/nested-callcode-outer0-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-callcode-outer0-value1-success](cases/precompile-values/nested-callcode-outer0-value1-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-callcode-outer1-value0-failed](cases/precompile-values/nested-callcode-outer1-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompile-values/nested-callcode-outer1-value0-success](cases/precompile-values/nested-callcode-outer1-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-call-value0-failed](cases/precompiles/nested-call-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-call-value0-success](cases/precompiles/nested-call-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-call-value1-failed](cases/precompiles/nested-call-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-call-value1-success](cases/precompiles/nested-call-value1-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-callcode-value0-failed](cases/precompiles/nested-callcode-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-callcode-value0-success](cases/precompiles/nested-callcode-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-callcode-value1-failed](cases/precompiles/nested-callcode-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-callcode-value1-success](cases/precompiles/nested-callcode-value1-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-delegatecall-value0-failed](cases/precompiles/nested-delegatecall-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-delegatecall-value0-success](cases/precompiles/nested-delegatecall-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-delegatecall-value1-failed](cases/precompiles/nested-delegatecall-value1-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-delegatecall-value1-success](cases/precompiles/nested-delegatecall-value1-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-staticcall-value0-failed](cases/precompiles/nested-staticcall-value0-failed.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
+| [precompiles/nested-staticcall-value0-success](cases/precompiles/nested-staticcall-value0-success.md) | Nethermind 2.0.0 · bec830cd |
+| [precompiles/root-failed](cases/precompiles/root-failed.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-below-basefee-all](cases/raw-validation/raw-validation-below-basefee-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [raw-validation/raw-validation-below-basefee-trace](cases/raw-validation/raw-validation-below-basefee-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-code-sender-all](cases/raw-validation/raw-validation-code-sender-all.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-code-sender-all](cases/raw-validation/raw-validation-code-sender-all.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-code-sender-stateDiff](cases/raw-validation/raw-validation-code-sender-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-code-sender-vmTrace](cases/raw-validation/raw-validation-code-sender-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-create-nonce-high-all](cases/raw-validation/raw-validation-create-nonce-high-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-code-sender-vmTrace](cases/raw-validation/raw-validation-code-sender-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-nonce-high-all](cases/raw-validation/raw-validation-create-nonce-high-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-create-nonce-high-stateDiff](cases/raw-validation/raw-validation-create-nonce-high-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-create-nonce-high-trace](cases/raw-validation/raw-validation-create-nonce-high-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-create-nonce-high-vmTrace](cases/raw-validation/raw-validation-create-nonce-high-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-create-nonce-low-all](cases/raw-validation/raw-validation-create-nonce-low-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-nonce-high-vmTrace](cases/raw-validation/raw-validation-create-nonce-high-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-nonce-low-all](cases/raw-validation/raw-validation-create-nonce-low-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-create-nonce-low-stateDiff](cases/raw-validation/raw-validation-create-nonce-low-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-create-nonce-low-trace](cases/raw-validation/raw-validation-create-nonce-low-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-create-nonce-low-vmTrace](cases/raw-validation/raw-validation-create-nonce-low-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-create-valid-all](cases/raw-validation/raw-validation-create-valid-all.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-nonce-low-vmTrace](cases/raw-validation/raw-validation-create-nonce-low-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-valid-all](cases/raw-validation/raw-validation-create-valid-all.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-create-valid-stateDiff](cases/raw-validation/raw-validation-create-valid-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-create-valid-vmTrace](cases/raw-validation/raw-validation-create-valid-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-delegated-sender-valid-all](cases/raw-validation/raw-validation-delegated-sender-valid-all.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-create-valid-vmTrace](cases/raw-validation/raw-validation-create-valid-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-delegated-sender-valid-all](cases/raw-validation/raw-validation-delegated-sender-valid-all.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-delegated-sender-valid-stateDiff](cases/raw-validation/raw-validation-delegated-sender-valid-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-delegated-sender-valid-vmTrace](cases/raw-validation/raw-validation-delegated-sender-valid-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-execution-oog-valid-all](cases/raw-validation/raw-validation-execution-oog-valid-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-delegated-sender-valid-vmTrace](cases/raw-validation/raw-validation-delegated-sender-valid-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-execution-oog-valid-all](cases/raw-validation/raw-validation-execution-oog-valid-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-execution-oog-valid-stateDiff](cases/raw-validation/raw-validation-execution-oog-valid-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-execution-oog-valid-trace](cases/raw-validation/raw-validation-execution-oog-valid-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-execution-oog-valid-trace](cases/raw-validation/raw-validation-execution-oog-valid-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-execution-oog-valid-vmTrace](cases/raw-validation/raw-validation-execution-oog-valid-vmTrace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [raw-validation/raw-validation-funds-gas-all](cases/raw-validation/raw-validation-funds-gas-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [raw-validation/raw-validation-funds-gas-trace](cases/raw-validation/raw-validation-funds-gas-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -798,31 +797,31 @@ These cases returned results that differ from the draft schema. The case pages r
 | [raw-validation/raw-validation-funds-value-trace](cases/raw-validation/raw-validation-funds-value-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [raw-validation/raw-validation-intrinsic-gas-all](cases/raw-validation/raw-validation-intrinsic-gas-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [raw-validation/raw-validation-intrinsic-gas-trace](cases/raw-validation/raw-validation-intrinsic-gas-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-nonce-high-all](cases/raw-validation/raw-validation-nonce-high-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-nonce-high-all](cases/raw-validation/raw-validation-nonce-high-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-nonce-high-stateDiff](cases/raw-validation/raw-validation-nonce-high-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-nonce-high-trace](cases/raw-validation/raw-validation-nonce-high-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-nonce-high-vmTrace](cases/raw-validation/raw-validation-nonce-high-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-nonce-low-all](cases/raw-validation/raw-validation-nonce-low-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-nonce-high-vmTrace](cases/raw-validation/raw-validation-nonce-high-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-nonce-low-all](cases/raw-validation/raw-validation-nonce-low-all.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-nonce-low-stateDiff](cases/raw-validation/raw-validation-nonce-low-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-nonce-low-trace](cases/raw-validation/raw-validation-nonce-low-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
-| [raw-validation/raw-validation-nonce-low-vmTrace](cases/raw-validation/raw-validation-nonce-low-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-valid-all](cases/raw-validation/raw-validation-valid-all.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-nonce-low-vmTrace](cases/raw-validation/raw-validation-nonce-low-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-valid-all](cases/raw-validation/raw-validation-valid-all.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-valid-stateDiff](cases/raw-validation/raw-validation-valid-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
-| [raw-validation/raw-validation-valid-vmTrace](cases/raw-validation/raw-validation-valid-vmTrace.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/after/block-tail](cases/reorg-safe/after/block-tail.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/after/filter-tail](cases/reorg-safe/after/filter-tail.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/before/block-tail](cases/reorg-safe/before/block-tail.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/before/filter-tail](cases/reorg-safe/before/filter-tail.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/restored/block-tail](cases/reorg-safe/restored/block-tail.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [reorg-safe/restored/filter-tail](cases/reorg-safe/restored/filter-tail.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/auth-set-revert](cases/repeat/auth-set-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/call-gas7400](cases/repeat/call-gas7400.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/call-mcopy](cases/repeat/call-mcopy.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/call-mixed-create](cases/repeat/call-mixed-create.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/call-return42](cases/repeat/call-return42.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/call-siblings-revert-ok](cases/repeat/call-siblings-revert-ok.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/constructor](cases/repeat/constructor.md) | Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
-| [repeat/many-storage-write-revert-read](cases/repeat/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 2a3b2531, Nethermind 2.0.0 · bec830cd |
+| [raw-validation/raw-validation-valid-vmTrace](cases/raw-validation/raw-validation-valid-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/after/block-tail](cases/reorg-safe/after/block-tail.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/after/filter-tail](cases/reorg-safe/after/filter-tail.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/before/block-tail](cases/reorg-safe/before/block-tail.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/before/filter-tail](cases/reorg-safe/before/filter-tail.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/restored/block-tail](cases/reorg-safe/restored/block-tail.md) | Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/restored/filter-tail](cases/reorg-safe/restored/filter-tail.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [repeat/auth-set-revert](cases/repeat/auth-set-revert.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [repeat/call-gas7400](cases/repeat/call-gas7400.md) | Nethermind 2.0.0 · bec830cd |
+| [repeat/call-mcopy](cases/repeat/call-mcopy.md) | Nethermind 2.0.0 · bec830cd |
+| [repeat/call-mixed-create](cases/repeat/call-mixed-create.md) | Nethermind 2.0.0 · bec830cd |
+| [repeat/call-return42](cases/repeat/call-return42.md) | Nethermind 2.0.0 · bec830cd |
+| [repeat/call-siblings-revert-ok](cases/repeat/call-siblings-revert-ok.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
+| [repeat/constructor](cases/repeat/constructor.md) | Nethermind 2.0.0 · bec830cd |
+| [repeat/many-storage-write-revert-read](cases/repeat/many-storage-write-revert-read.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-unstable · 9d6e8b8d, Nethermind 2.0.0 · bec830cd |
 | [repeat/raw-below-basefee](cases/repeat/raw-below-basefee.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [repeat/raw-below-basefee-trace](cases/repeat/raw-below-basefee-trace.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
 | [repeat/raw-insufficient-funds](cases/repeat/raw-insufficient-funds.md) | Besu 26.9-develop · f9572aa8, Besu 26.8.1 · d97cbd61 |
@@ -841,17 +840,17 @@ Capture completeness records whether requests finished, not whether their result
 
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [initial](../evidence/2026-09-24/current-matrix/initial/manifest.json) | initial | ✅ Yes |
-| [a](../evidence/2026-09-24/current-matrix/a/manifest.json) | a | ✅ Yes |
-| [repeat](../evidence/2026-09-24/current-matrix/repeat/manifest.json) | repeat | ✅ Yes |
-| [forks](../evidence/2026-09-24/current-matrix/forks/manifest.json) | forks | ✅ Yes |
-| [fork-followup](../evidence/2026-09-24/current-matrix/fork-followup/manifest.json) | fork-followup | ✅ Yes |
-| [precompiles](../evidence/2026-09-24/current-matrix/precompiles/manifest.json) | precompiles | ✅ Yes |
-| [precompile-values](../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) | precompile-values | ✅ Yes |
-| [raw-validation](../evidence/2026-09-24/current-matrix/raw-validation/manifest.json) | raw-validation | ✅ Yes |
-| [coverage](../evidence/2026-09-24/current-matrix/coverage/manifest.json) | coverage | ✅ Yes |
-| [fee-policy](../evidence/2026-09-24/current-matrix/fee-policy/manifest.json) | fee-policy | ✅ Yes |
-| [callmany-isolation](../evidence/2026-09-24/current-matrix/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
-| [h30](../evidence/2026-09-24/current-matrix/h30/manifest.json) | h30 | ✅ Yes |
-| [reorg-safe](../evidence/2026-09-24/current-matrix/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
-| [pruned](../evidence/2026-09-24/current-matrix/pruned/manifest.json) | pruned | ✅ Yes |
+| [initial](../evidence/2026-09-24/h17-retest/initial/manifest.json) | initial | ✅ Yes |
+| [a](../evidence/2026-09-24/h17-retest/a/manifest.json) | a | ✅ Yes |
+| [repeat](../evidence/2026-09-24/h17-retest/repeat/manifest.json) | repeat | ✅ Yes |
+| [forks](../evidence/2026-09-24/h17-retest/forks/manifest.json) | forks | ✅ Yes |
+| [fork-followup](../evidence/2026-09-24/h17-retest/fork-followup/manifest.json) | fork-followup | ✅ Yes |
+| [precompiles](../evidence/2026-09-24/h17-retest/precompiles/manifest.json) | precompiles | ✅ Yes |
+| [precompile-values](../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) | precompile-values | ✅ Yes |
+| [raw-validation](../evidence/2026-09-24/h17-retest/raw-validation/manifest.json) | raw-validation | ✅ Yes |
+| [coverage](../evidence/2026-09-24/h17-retest/coverage/manifest.json) | coverage | ✅ Yes |
+| [fee-policy](../evidence/2026-09-24/h17-retest/fee-policy/manifest.json) | fee-policy | ✅ Yes |
+| [callmany-isolation](../evidence/2026-09-24/h17-retest/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
+| [h30](../evidence/2026-09-24/h17-retest/h30/manifest.json) | h30 | ✅ Yes |
+| [reorg-safe](../evidence/2026-09-24/h17-retest/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
+| [pruned](../evidence/2026-09-24/h17-retest/pruned/manifest.json) | pruned | ✅ Yes |

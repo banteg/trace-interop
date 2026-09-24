@@ -91,6 +91,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
       "committed_at": "2026-09-24T10:55:45Z"
+    },
+    {
+      "version": "2.1.0-unstable+9d6e8b8d",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
+      "committed_at": "2026-09-24T12:08:14Z"
     }
   ],
   "go-ethereum_trace": [

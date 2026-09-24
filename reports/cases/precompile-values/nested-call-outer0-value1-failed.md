@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 2a3b2531](../../clients/nethermind_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/precompile-values/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 9d6e8b8d](../../clients/nethermind_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/precompile-values/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -76,11 +76,10 @@
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `1/trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f52', 'init': '0x602a600052604060006080600060016006620186a0f160005260206000f3', 'value': '0x0'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
 
-**Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
+**Nethermind · 2.1.0-unstable · 9d6e8b8d** (`2.1.0-unstable+9d6e8b8d`)
 
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `1/trace/1`: {'action': {'callType': 'call', 'from': '0x93216e4a663e3a680a0fe006285935f47caa5738', 'gas': '0x18f9c', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f160005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995148}, 'pc': 2, 'sub': None}, {'cost'
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

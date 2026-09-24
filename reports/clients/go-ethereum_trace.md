@@ -6,7 +6,7 @@ The experimental fork matches most evaluated semantic assertions, including sign
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`fa8ecb92`](https://github.com/banteg/go-ethereum/commit/fa8ecb9242dda61858c44cf43c70d00548fbd7cd) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/current-matrix/initial/manifest.json) |
+| `1.17.7-unstable` | [`fa8ecb92`](https://github.com/banteg/go-ethereum/commit/fa8ecb9242dda61858c44cf43c70d00548fbd7cd) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h17-retest/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

@@ -6,8 +6,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/pruned/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/pruned/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/pruned/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

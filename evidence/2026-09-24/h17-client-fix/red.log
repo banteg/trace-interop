@@ -1,0 +1,34 @@
+   Compiling revm-inspectors v0.43.0 (/home/banteg/dev/trace-client-fixes/revm-inspectors-h17)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.95s
+     Running tests/it/main.rs (target/debug/deps/it-648c989561419ce3)
+
+running 3 tests
+test parity::state_diff_birth::zero_value_call_does_not_create_account ... ok
+test parity::state_diff_birth::transfer_creates_account_then_changes_existing_account ... FAILED
+test parity::state_diff_birth::creation_uses_account_existence_not_initial_balance ... FAILED
+
+failures:
+
+---- parity::state_diff_birth::transfer_creates_account_then_changes_existing_account stdout ----
+
+thread 'parity::state_diff_birth::transfer_creates_account_then_changes_existing_account' (3712467) panicked at tests/it/parity/state_diff_birth.rs:59:17:
+assertion `left == right` failed
+  left: Changed(ChangedType { from: 0, to: 7 })
+ right: Added(7)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- parity::state_diff_birth::creation_uses_account_existence_not_initial_balance stdout ----
+
+thread 'parity::state_diff_birth::creation_uses_account_existence_not_initial_balance' (3712466) panicked at tests/it/parity/state_diff_birth.rs:117:17:
+assertion `left == right` failed
+  left: Added(0)
+ right: Unchanged
+
+
+failures:
+    parity::state_diff_birth::creation_uses_account_existence_not_initial_balance
+    parity::state_diff_birth::transfer_creates_account_then_changes_existing_account
+
+test result: FAILED. 1 passed; 2 failed; 0 ignored; 0 measured; 74 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test it`

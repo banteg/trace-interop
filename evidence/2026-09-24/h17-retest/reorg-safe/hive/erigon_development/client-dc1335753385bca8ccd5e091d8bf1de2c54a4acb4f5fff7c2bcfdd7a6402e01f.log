@@ -1,0 +1,630 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "terminalTotalDifficultyPassed": true,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "osaka": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000001001": {
+      "code": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001002": {
+      "code": "0x602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001003": {
+      "code": "0x60006000fd",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001004": {
+      "code": "0x6020600060006000600061100261ea60f1506020600060006000600061100361ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001005": {
+      "code": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001006": {
+      "code": "0x601761001b600039601760006000f050607b601760006000f55000600a61000d600039600a6000f3602a60005260206000f3",
+      "balance": "0x3b9aca00"
+    },
+    "0000000000000000000000000000000000001007": {
+      "code": "0x611008ff",
+      "balance": "0x64"
+    },
+    "0000000000000000000000000000000000001009": {
+      "code": "0x6174e060006101803700",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100a": {
+      "code": "0x602a6000526020600060205e00",
+      "balance": "0x3b9aca00"
+    },
+    "000000000000000000000000000000000000100b": {
+      "balance": "0x1"
+    },
+    "00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1563915e194d8cfba1943570603f7606a3115508": {
+      "balance": "0x1"
+    },
+    "16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "19e7e376e7c213b7e7e7e46cc70a5dd086daff2a": {
+      "code": "0xef01000000000000000000000000000000000000001002",
+      "balance": "0x1"
+    },
+    "1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "c7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "d803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "e7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "eda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+Command flags till now:
+--log.console.verbosity=3 --fakepow --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 3503995874084926
+Initializing database with genesis state...
+[WARN] [09-24|12:36:33.660] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:36:33.660] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:36:33.732] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:36:33.732] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:36:33.734] Maximum peer count                       total=64
+[INFO] [09-24|12:36:33.735] starting HTTP APIs                       port=8545 APIs=eth,erigon,engine http.compression=true
+[WARN] [09-24|12:36:33.736] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:36:33.736] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:36:33.761] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:36:33.787] Re-Opening DB in exclusive mode to apply migrations 
+[INFO] [09-24|12:36:33.819] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:36:33.819] Apply migration                          name=db_schema_version5
+[INFO] [09-24|12:36:33.820] Applied migration                        name=db_schema_version5
+[INFO] [09-24|12:36:33.820] Apply migration                          name=reset_stage_txn_lookup
+[INFO] [09-24|12:36:33.820] Applied migration                        name=reset_stage_txn_lookup
+[INFO] [09-24|12:36:33.820] Apply migration                          name=db_schema_version6
+[INFO] [09-24|12:36:33.820] Applied migration                        name=db_schema_version6
+[INFO] [09-24|12:36:33.820] Apply migration                          name=db_schema_version7
+[INFO] [09-24|12:36:33.820] Applied migration                        name=db_schema_version7
+[INFO] [09-24|12:36:33.820] Apply migration                          name=drop_legacy_e2_tables
+[INFO] [09-24|12:36:33.820] Applied migration                        name=drop_legacy_e2_tables
+[INFO] [09-24|12:36:33.820] Updated DB schema to                     version=7.0.0
+[INFO] [09-24|12:36:33.857] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:36:33.899] erigondb.toml not found, using defaults (downloader will provide real settings) step_size=390625 steps_in_frozen_file=256
+[INFO] [09-24|12:36:33.920] Writing custom genesis block             hash=0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582
+[INFO] [09-24|12:36:33.936] Successfully wrote genesis state         hash=0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582 root=0x9fb10283c4768fd9da43c7ecb01b1b886d11a7ca823fd902d0c71b355507b1cb
+Loading initial blockchain...
+Loading initial blockchain...
+[WARN] [09-24|12:36:33.964] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:36:33.964] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:36:34.036] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:36:34.036] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:36:34.037] Maximum peer count                       total=64
+[WARN] [09-24|12:36:34.039] blocking async file I/O is set but io_uring is unavailable (unsupported kernel, or blocked by a seccomp sandbox such as Docker's default profile); disabling it — reads will use ordinary blocking faults 
+[INFO] [09-24|12:36:34.039] Set global gas cap                       cap=50000000
+[INFO] [09-24|12:36:34.040] Downloader torrent verbosity             erigon=eror anacrolix=ERR slog=ERROR
+[WARN] [09-24|12:36:34.041] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:36:34.041] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:36:34.060] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:36:34.095] Initializing erigondb.toml with DEFAULT settings (nodownloader) step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:36:34.108] Initialised chain configuration          config="{ChainID: 3503995874084926, Terminal Total Difficulty: 131072, Shapella: 1970-01-01 00:00:00 +0000 UTC, Dencun: 1970-01-01 00:00:00 +0000 UTC, Pectra: 1970-01-01 00:00:00 +0000 UTC, Engine: ethash}" genesis=0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582
+[INFO] [09-24|12:36:34.118] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:36:34.118] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:36:34.118] generating new salt file 
+[INFO] [09-24|12:36:34.130] [downloader] disabled via config 
+[INFO] [09-24|12:36:34.130] Initialising Ethereum protocol           network=3503995874084926
+[WARN] [09-24|12:36:34.130] Ethash used in fake mode 
+[INFO] [09-24|12:36:34.130] rpc filters: subscribing to Erigon events 
+[INFO] [09-24|12:36:34.130] [rpc] [filters] starting timeout loop for idle filter eviction timeout=5m0s checkInterval=2m30s
+[INFO] [09-24|12:36:34.135] Importing blockchain                     file=/chain.rlp
+[INFO] [09-24|12:36:34.139] Reading JWT secret                       path=/erigon-hive-datadir/jwt.hex
+[INFO] [09-24|12:36:34.139] Generated JWT secret                     path=/erigon-hive-datadir/jwt.hex
+[INFO] [09-24|12:36:34.140] HTTP endpoint opened for Engine API      url=127.0.0.1:35399
+[INFO] [09-24|12:36:34.142] [3/6 Senders] Started                    from=0 to=48
+[INFO] [09-24|12:36:34.145] [4/6 Execution] parallel starting        from=0 to=48 limit=48 initialTxNum=0 initialBlockTxOffset=0 initialCycle=true isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:36:34.169] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:36:34.169] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[WARN] [09-24|12:36:34.189] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.191] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.192] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.193] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.194] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.195] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.195] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.196] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.197] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.198] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.199] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.199] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.200] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.201] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.202] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.203] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.203] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.204] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.205] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.205] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.206] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.207] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.208] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.208] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.209] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.209] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.210] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.211] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.211] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.212] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.212] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.213] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.214] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.215] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.215] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.216] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.217] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.218] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.219] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.219] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.220] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.220] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.223] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.224] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.225] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.226] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.227] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[WARN] [09-24|12:36:34.227] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.228] [4/6 Execution] parallel executed        blk=48 blks=49 blk/s=592 txs=230 tx/s=2.78k gas/s=81.26M exec=262 repeat%=12.21 abort=31 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="3.06k,a=0,s=0,c=0" wrt=1.39k rd/s=37.04k wrt/s=16.86k buf=590.3KB/512.0MB bdur=831µs ucgas=6.71M alloc=68.0MB sys=102.2MB isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:36:34.228] [4/6 Execution] parallel committed       blk=48 blks=48 blk/s=578 txs=230 tx/s=2.77k gas/s=81.01M bdur=2ms progress=0/0 buf=295.2KB chit=0 cmiss=0 alloc=68.1MB sys=102.2MB isForkValidation=false isApplyingBlocks=true
+[INFO] [09-24|12:36:34.228] [4/6 Execution] parallel done            in=83.016002ms buf=295.2KB/512.0MB blk=48 blks=49 blk/s=590 txs=230 tx/s=2.77k gas/s=80.93M alloc=68.1MB sys=102.2MB isForkValidation=false isApplyingBlocks=true
+[EROR] [09-24|12:36:34.230] [snapshots] retire blocks                err="not all snapshot segments are available: segments max=0, indices max=0, download ready=true"
+[INFO] [09-24|12:36:34.230] BuildFilesInBackground                   step=0 lastInDB=0 targetStep=1 reorgSafeBlock=0 reorgSafeStep=0.00 reorgSafeOK=false
+[INFO] [09-24|12:36:34.234] head updated                             hash=0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 number=48 txnum=230 age=57y6mo2w execution=0s alloc=71.2MB sys=102.2MB
+[INFO] [09-24|12:36:34.235] Timings: Forkchoice                      flush+commit=60µs alloc=71.5MB sys=102.2MB
+[INFO] [09-24|12:36:34.235] Exiting Engine... 
+[INFO] [09-24|12:36:34.235] RPC server shutting down 
+[INFO] [09-24|12:36:34.235] RPC server shutting down 
+[INFO] [09-24|12:36:34.235] Engine HTTP endpoint close               url=127.0.0.1:35399 shutdownErr=nil
+[INFO] [09-24|12:36:34.235] Timings: Post-Forkchoice                 prune=231µs initialCycle=true alloc=71.5MB sys=102.2MB
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running erigon with flags  --log.console.verbosity=3 --fakepow --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 3503995874084926 --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.api=admin,debug,trace,eth,net,txpool,web3,testing --ws --ws.port=8546 --txpool.blobslots=1000 --txpool.totalblobpoollimit=10000 --sync.parallel-state-flushing=false --authrpc.addr=0.0.0.0 --authrpc.jwtsecret=/jwt.secret --externalcl --nat=extip:172.17.0.4 --no-downloader --bootnodes=
+[WARN] [09-24|12:36:34.287] [env] use ERIGON_ prefix for env         var=MAX_REORG_DEPTH
+[WARN] [09-24|12:36:34.287] [env]                                    MAX_REORG_DEPTH=512
+[INFO] [09-24|12:36:34.360] logging to file system                   logDir=/erigon-hive-datadir/logs filePrefix=erigon logLevel=dbug json=false
+[INFO] [09-24|12:36:34.360] [mem] GOMEMLIMIT derived from available memory available="93.6 GB" GOMEMLIMIT="74.9 GB" share=0.800
+[INFO] [09-24|12:36:34.360] kernel detected                          version=7.2.6-200.fc44.x86_64
+[WARN] [09-24|12:36:34.360] vm.overcommit_memory=0 can cause allocation failures under load; set to 1 current=0 fix="echo 'vm.overcommit_memory = 1' | sudo tee -a /etc/sysctl.d/99-erigon.conf && sudo sysctl -p /etc/sysctl.d/99-erigon.conf"
+[WARN] [09-24|12:36:34.360] vm.max_map_count is low for large memory-mapped databases; raise it current=1048576 recommended=16777216 fix="echo 'vm.max_map_count = 16777216' | sudo tee -a /etc/sysctl.d/99-erigon.conf && sudo sysctl -p /etc/sysctl.d/99-erigon.conf"
+[INFO] [09-24|12:36:34.361] Startup command                          cmd="erigon --log.console.verbosity=3 --fakepow --datadir <redacted-dir> --db.size.limit 2GB --networkid 3503995874084926 --miner.gaslimit 60000000 --http --http.addr=<redacted-ip> --http.api=admin,debug,trace,eth,net,txpool,web3,testing --ws --ws.port=8546 --txpool.blobslots=1000 --txpool.totalblobpoollimit=10000 --sync.parallel-state-flushing=false --authrpc.addr=<redacted-ip> --authrpc.jwtsecret=/jwt.secret --externalcl --nat=extip:<redacted-ip> --no-downloader --bootnodes="
+[INFO] [09-24|12:36:34.361] Build info                               git_branch=main git_tag= git_commit=e26d9bd4056586e004488c31b561fb2663d46019
+[INFO] [09-24|12:36:34.362] Maximum peer count                       total=64
+[INFO] [09-24|12:36:34.363] starting HTTP APIs                       port=8545 APIs=admin,debug,trace,eth,net,txpool,web3,testing http.compression=true
+meta_validate:28618 meta[0] consider geo-now pageno is 4096 instead of wrong 64, will be corrected on next commit(s)
+meta_validate:28618 meta[0] consider geo-now pageno is 4096 instead of wrong 64, will be corrected on next commit(s)
+dxb_setup:21019 open-MADV_DONTNEED 288..4096
+dxb_set_readahead:20486 readahead ON 0..279
+dxb_setup:21019 open-MADV_DONTNEED 32..64
+dxb_set_readahead:20486 readahead ON 0..19
+[WARN] [09-24|12:36:34.395] blocking async file I/O is set but io_uring is unavailable (unsupported kernel, or blocked by a seccomp sandbox such as Docker's default profile); disabling it — reads will use ordinary blocking faults 
+[INFO] [09-24|12:36:34.395] Set global gas cap                       cap=50000000
+[INFO] [09-24|12:36:34.396] Downloader torrent verbosity             erigon=eror anacrolix=ERR slog=ERROR
+[INFO] [09-24|12:36:34.396] [torrent] Public IP                      ip=172.17.0.4
+[WARN] [09-24|12:36:34.397] [diskutils] Filesystem is neither ext4 nor XFS, performance is unverified fstype=overlay paths=/erigon-hive-datadir see=https://docs.erigon.tech/get-started/hardware-requirements
+[INFO] [09-24|12:36:34.397] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [09-24|12:36:34.421] [db] open                                label=chaindata sizeLimit=2GB pageSize=4KB
+[INFO] [09-24|12:36:34.453] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:36:34.453] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:36:34.455] Initialised chain configuration          config="{ChainID: 3503995874084926, Terminal Total Difficulty: 131072, Shapella: 1970-01-01 00:00:00 +0000 UTC, Dencun: 1970-01-01 00:00:00 +0000 UTC, Pectra: 1970-01-01 00:00:00 +0000 UTC, Engine: ethash}" genesis=0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582
+[INFO] [09-24|12:36:34.455] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:36:34.455] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:36:34.455] [downloader] disabled via config 
+[INFO] [09-24|12:36:34.488] Setup P2P discovery                      v4=false v5=true
+[INFO] [09-24|12:36:34.488] Initialising Ethereum protocol           network=3503995874084926
+[WARN] [09-24|12:36:34.488] Ethash used in fake mode 
+[INFO] [09-24|12:36:34.488] Started P2P networking                   version=69 self=enode://a834397c26ce889793bdcd645dd078a60176c3ef2c919f02b8a85d33f892084cb21d6c16eaec9ec772c3c3ededd8994300b32a58b1e826f24c9ef1c8232f3a2e@172.17.0.4:30303 name=erigon/v3.8.0-dev-e26d9bd4/linux-amd64/go1.27.1
+[INFO] [09-24|12:36:34.511] rpc filters: subscribing to Erigon events 
+[INFO] [09-24|12:36:34.511] [rpc] [filters] starting timeout loop for idle filter eviction timeout=5m0s checkInterval=2m30s
+[INFO] [09-24|12:36:34.511] Starting private RPC server              on=127.0.0.1:9090
+[INFO] [09-24|12:36:34.511] New txns subscriber joined 
+[WARN] [09-24|12:36:34.513] [HTTP API] testing_ RPC namespace is ENABLED — do not use on production networks 
+[INFO] [09-24|12:36:34.521] serve MCP on                             addr=127.0.0.1:8553 endpoints="/mcp (streamable HTTP), /sse + /message (SSE)"
+[INFO] [09-24|12:36:34.522] RPC admission control enabled            max_concurrent_requests=1408 db.read.concurrency=1408
+[INFO] [09-24|12:36:34.523] [rpc] endpoint opened                    grpc=false http=true ws=true rpc.blockrange.limit=1000 rpc.logs.maxresults=20000 rpc.logs.querylimit=1000 websocket.url=[::]:8546 ws.compression=true http.url=[::]:8545 http.compression=true
+[INFO] [09-24|12:36:34.523] Reading JWT secret                       path=/jwt.secret
+[INFO] [09-24|12:36:34.523] HTTP endpoint opened for Engine API      url=[::]:8551
+[INFO] [09-24|12:36:34.532] [p2p.message.listener] running p2p message listener component 
+[INFO] [09-24|12:36:34.532] [p2p.peerTracker] running peer tracker component 
+[INFO] [09-24|12:36:34.532] [p2p-publisher] running publisher component 
+[INFO] [09-24|12:36:34.532] [OtterSync] Starting Ottersync 
+[INFO] [09-24|12:36:34.532] Reading DB settings from existing erigondb.toml 
+[INFO] [09-24|12:36:34.532] erigondb settings                        step_size=390625 steps_in_frozen_file=256 references_in_commitment_branches=false
+[INFO] [09-24|12:36:34.532] [txpool] Started 
+[INFO] [09-24|12:36:34.543] [snapshots:download] Stat                blocks=1 indices=1 alloc=52.9MB sys=78.6MB
+[INFO] [09-24|12:36:34.545] BuildFilesInBackground                   step=0 lastInDB=0 targetStep=1 reorgSafeBlock=0 reorgSafeStep=0.00 reorgSafeOK=false
+[INFO] [09-24|12:36:34.589] [NewPayload] Handling new payload        height=40 hash=0x23a229f69acd6ffb1d98dbae859e4fde6bcb6db51786ec54d07085d74bf473d4
+[INFO] [09-24|12:36:34.590] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.591] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.591] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.591] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.593] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.593] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=640 txs=1 tx/s=640 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=17.28k wrt/s=1.92k buf=1.8KB/512.0MB bdur=385µs alloc=75.8MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.593] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=563 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=75.8MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.593] [5/5 Execution] parallel done            in=1.84339ms buf=943B/512.0MB blk=40 blks=1 blk/s=542 txs=1 tx/s=542 gas/s=0 stepsInDB=0.00 step=0.0 alloc=75.8MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.594] [NewPayload] Handling new payload        height=41 hash=0xb643aaad7876814b2319a5ac15e3efd4c5a928f711683d4d3abee5b525fc349d
+[INFO] [09-24|12:36:34.594] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.595] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.595] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.595] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.597] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.599] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=352 txs=1 tx/s=352 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=9.52k wrt/s=1.05k buf=1.8KB/512.0MB bdur=551µs alloc=76.0MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.599] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=326 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=75.9MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.599] [5/5 Execution] parallel done            in=3.131081ms buf=943B/512.0MB blk=40 blks=1 blk/s=319 txs=1 tx/s=319 gas/s=0 stepsInDB=0.00 step=0.0 alloc=75.8MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.600] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.600] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=1.03k txs=1 tx/s=1.03k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=28.01k wrt/s=3.11k buf=9.6KB/512.0MB bdur=227µs alloc=70.5MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.600] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=923 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=70.6MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.600] [5/5 Execution] parallel done            in=1.137516ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=879 txs=1 tx/s=879 gas/s=0 stepsInDB=0.00 step=0.0 alloc=70.6MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.601] [NewPayload] Handling new payload        height=42 hash=0x59c52ea8dd1dfdb037aec4a2f28907fb1cf4ca5401b48590182eaa5415e8e6f3
+[INFO] [09-24|12:36:34.601] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.602] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.602] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.602] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.603] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.603] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=1.06k txs=1 tx/s=1.06k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=28.88k wrt/s=3.20k buf=1.8KB/512.0MB bdur=211µs alloc=72.5MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.603] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=940 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=72.5MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.603] [5/5 Execution] parallel done            in=1.123135ms buf=943B/512.0MB blk=40 blks=1 blk/s=890 txs=1 tx/s=890 gas/s=0 stepsInDB=0.00 step=0.0 alloc=72.5MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.604] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.605] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=1.05k txs=1 tx/s=1.05k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=28.40k wrt/s=3.15k buf=9.6KB/512.0MB bdur=248µs alloc=74.1MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.605] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=914 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=74.1MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.605] [5/5 Execution] parallel done            in=1.144803ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=873 txs=1 tx/s=873 gas/s=0 stepsInDB=0.00 step=0.0 alloc=74.1MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.606] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.606] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=1.22k txs=1 tx/s=1.22k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=33.13k wrt/s=3.68k buf=17.6KB/512.0MB bdur=194µs alloc=74.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.606] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=1.09k gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=74.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.606] [5/5 Execution] parallel done            in=964.735µs buf=8.8KB/512.0MB blk=42 blks=1 blk/s=1.03k txs=1 tx/s=1.03k gas/s=0 stepsInDB=0.00 step=0.0 alloc=74.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.607] [NewPayload] Handling new payload        height=43 hash=0x3ae39139cb5ef4492f48c7ed41f861621a0f7af2c15ee458b09914e7fc97dfe9
+[INFO] [09-24|12:36:34.607] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.607] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.607] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.607] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.609] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.610] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=827 txs=1 tx/s=827 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.35k wrt/s=2.48k buf=1.8KB/512.0MB bdur=310µs alloc=76.6MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.610] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=732 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=76.6MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.610] [5/5 Execution] parallel done            in=1.422202ms buf=943B/512.0MB blk=40 blks=1 blk/s=703 txs=1 tx/s=703 gas/s=0 stepsInDB=0.00 step=0.0 alloc=76.6MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.611] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.611] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=1.04k txs=1 tx/s=1.04k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=28.11k wrt/s=3.12k buf=9.6KB/512.0MB bdur=219µs alloc=77.1MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.611] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=935 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=77.1MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.611] [5/5 Execution] parallel done            in=1.138258ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=878 txs=1 tx/s=878 gas/s=0 stepsInDB=0.00 step=0.0 alloc=77.2MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.612] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.613] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=1.22k txs=1 tx/s=1.22k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=33.01k wrt/s=3.66k buf=17.6KB/512.0MB bdur=179µs alloc=77.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.613] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=1.05k gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=77.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.613] [5/5 Execution] parallel done            in=1.000706ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=999 txs=1 tx/s=999 gas/s=0 stepsInDB=0.00 step=0.0 alloc=77.7MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.614] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.614] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=1.17k txs=1 tx/s=1.17k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=31.69k wrt/s=3.52k buf=27.1KB/512.0MB bdur=188µs alloc=78.3MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.614] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=1.03k gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=78.3MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.614] [5/5 Execution] parallel done            in=1.026225ms buf=13.5KB/512.0MB blk=43 blks=1 blk/s=974 txs=1 tx/s=974 gas/s=0 stepsInDB=0.00 step=0.0 alloc=78.3MB sys=103.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.615] [NewPayload] Handling new payload        height=44 hash=0x008d1333b89a6507babffba8a8605f2426aa21a829ad0c20131d40dc72300628
+[INFO] [09-24|12:36:34.616] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.616] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.616] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.616] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.617] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.618] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=906 txs=1 tx/s=906 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=24.46k wrt/s=2.71k buf=1.8KB/512.0MB bdur=274µs alloc=80.2MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.618] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=774 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=80.2MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.618] [5/5 Execution] parallel done            in=1.375663ms buf=943B/512.0MB blk=40 blks=1 blk/s=726 txs=1 tx/s=726 gas/s=0 stepsInDB=0.00 step=0.0 alloc=80.2MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.619] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.620] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=819 txs=1 tx/s=819 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.12k wrt/s=2.45k buf=9.6KB/512.0MB bdur=337µs alloc=81.8MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.620] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=712 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=81.8MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.620] [5/5 Execution] parallel done            in=1.474ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=678 txs=1 tx/s=678 gas/s=0 stepsInDB=0.00 step=0.0 alloc=81.8MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.621] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.621] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=1.02k txs=1 tx/s=1.02k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=27.76k wrt/s=3.08k buf=17.6KB/512.0MB bdur=236µs alloc=82.3MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.621] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=907 gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=82.3MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.621] [5/5 Execution] parallel done            in=1.161862ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=860 txs=1 tx/s=860 gas/s=0 stepsInDB=0.00 step=0.0 alloc=82.3MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.622] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.623] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=799 txs=1 tx/s=799 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=21.59k wrt/s=2.39k buf=27.1KB/512.0MB bdur=294µs alloc=82.8MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.623] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=702 gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=82.9MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.624] [5/5 Execution] parallel done            in=1.509108ms buf=13.5KB/512.0MB blk=43 blks=1 blk/s=662 txs=1 tx/s=662 gas/s=0 stepsInDB=0.00 step=0.0 alloc=82.9MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.625] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.625] [5/5 Execution] parallel executed        blk=44 blks=1 blk/s=773 txs=1 tx/s=773 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=20.89k wrt/s=2.32k buf=35.8KB/512.0MB bdur=314µs alloc=84.4MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.626] [5/5 Execution] parallel committed       blk=44 blks=0 blk/s=0 txs=1 tx/s=676 gas/s=0 bdur=0s progress=0/0 buf=17.9KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=84.4MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.626] [5/5 Execution] parallel done            in=1.550846ms buf=17.9KB/512.0MB blk=44 blks=1 blk/s=644 txs=1 tx/s=644 gas/s=0 stepsInDB=0.00 step=0.0 alloc=84.4MB sys=107.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.626] [NewPayload] Handling new payload        height=45 hash=0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110
+[INFO] [09-24|12:36:34.627] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.628] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.628] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.628] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.629] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.630] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=787 txs=1 tx/s=787 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=21.26k wrt/s=2.36k buf=1.8KB/512.0MB bdur=317µs alloc=86.4MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.630] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=668 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=86.4MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.630] [5/5 Execution] parallel done            in=1.608458ms buf=943B/512.0MB blk=40 blks=1 blk/s=621 txs=1 tx/s=621 gas/s=0 stepsInDB=0.00 step=0.0 alloc=86.4MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.631] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.631] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=971 txs=1 tx/s=971 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=26.22k wrt/s=2.91k buf=9.6KB/512.0MB bdur=243µs alloc=86.9MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.631] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=881 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=87.0MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.631] [5/5 Execution] parallel done            in=1.185163ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=843 txs=1 tx/s=843 gas/s=0 stepsInDB=0.00 step=0.0 alloc=87.0MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.632] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.633] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=932 txs=1 tx/s=932 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=25.18k wrt/s=2.79k buf=17.6KB/512.0MB bdur=241µs alloc=87.5MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.633] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=832 gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=87.5MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.633] [5/5 Execution] parallel done            in=1.256529ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=795 txs=1 tx/s=795 gas/s=0 stepsInDB=0.00 step=0.0 alloc=87.5MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.634] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.634] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=1.00k txs=1 tx/s=1.00k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=27.02k wrt/s=3.00k buf=27.1KB/512.0MB bdur=236µs alloc=88.1MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.634] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=903 gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=88.1MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.634] [5/5 Execution] parallel done            in=1.171225ms buf=13.5KB/512.0MB blk=43 blks=1 blk/s=853 txs=1 tx/s=853 gas/s=0 stepsInDB=0.00 step=0.0 alloc=88.1MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.635] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.636] [5/5 Execution] parallel executed        blk=44 blks=1 blk/s=991 txs=1 tx/s=991 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=26.76k wrt/s=2.97k buf=35.8KB/512.0MB bdur=231µs alloc=88.6MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.636] [5/5 Execution] parallel committed       blk=44 blks=0 blk/s=0 txs=1 tx/s=901 gas/s=0 bdur=0s progress=0/0 buf=17.9KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=88.7MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.636] [5/5 Execution] parallel done            in=1.165566ms buf=17.9KB/512.0MB blk=44 blks=1 blk/s=857 txs=1 tx/s=857 gas/s=0 stepsInDB=0.00 step=0.0 alloc=88.7MB sys=111.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.637] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.637] [5/5 Execution] parallel executed        blk=45 blks=1 blk/s=986 txs=1 tx/s=986 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=26.63k wrt/s=2.95k buf=44.1KB/512.0MB bdur=277µs alloc=89.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.637] [5/5 Execution] parallel committed       blk=45 blks=0 blk/s=0 txs=1 tx/s=893 gas/s=0 bdur=0s progress=0/0 buf=22.0KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=89.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.637] [5/5 Execution] parallel done            in=1.173703ms buf=22.0KB/512.0MB blk=45 blks=1 blk/s=852 txs=1 tx/s=852 gas/s=0 stepsInDB=0.00 step=0.0 alloc=89.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.638] [NewPayload] Handling new payload        height=46 hash=0xced04ae80b11fac8e3619bba83e9f8a3490159e045f1ac504955e69a783dbbcd
+[INFO] [09-24|12:36:34.638] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.639] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.639] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.639] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.640] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.640] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=1.17k txs=1 tx/s=1.17k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=31.65k wrt/s=3.51k buf=1.8KB/512.0MB bdur=203µs alloc=91.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.640] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=1.04k gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=91.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.640] [5/5 Execution] parallel done            in=1.018052ms buf=943B/512.0MB blk=40 blks=1 blk/s=982 txs=1 tx/s=982 gas/s=0 stepsInDB=0.00 step=0.0 alloc=91.2MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.641] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.642] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=798 txs=1 tx/s=798 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=21.56k wrt/s=2.39k buf=9.6KB/512.0MB bdur=258µs alloc=91.7MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.642] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=729 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=91.7MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.642] [5/5 Execution] parallel done            in=1.43363ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=697 txs=1 tx/s=697 gas/s=0 stepsInDB=0.00 step=0.0 alloc=91.7MB sys=115.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.643] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.643] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=1.02k txs=1 tx/s=1.02k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=27.60k wrt/s=3.06k buf=17.6KB/512.0MB bdur=273µs alloc=93.2MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.643] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=919 gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=93.2MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.643] [5/5 Execution] parallel done            in=1.14508ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=873 txs=1 tx/s=873 gas/s=0 stepsInDB=0.00 step=0.0 alloc=93.3MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.644] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.645] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=1.10k txs=1 tx/s=1.10k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=29.93k wrt/s=3.32k buf=27.1KB/512.0MB bdur=190µs alloc=94.8MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.645] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=955 gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=94.8MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.645] [5/5 Execution] parallel done            in=1.144442ms buf=13.5KB/512.0MB blk=43 blks=1 blk/s=873 txs=1 tx/s=873 gas/s=0 stepsInDB=0.00 step=0.0 alloc=94.8MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.646] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.646] [5/5 Execution] parallel executed        blk=44 blks=1 blk/s=918 txs=1 tx/s=918 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=24.80k wrt/s=2.75k buf=35.8KB/512.0MB bdur=286µs alloc=96.3MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.646] [5/5 Execution] parallel committed       blk=44 blks=0 blk/s=0 txs=1 tx/s=837 gas/s=0 bdur=0s progress=0/0 buf=17.9KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=96.3MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.647] [5/5 Execution] parallel done            in=1.284773ms buf=17.9KB/512.0MB blk=44 blks=1 blk/s=778 txs=1 tx/s=778 gas/s=0 stepsInDB=0.00 step=0.0 alloc=96.3MB sys=119.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.648] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.648] [5/5 Execution] parallel executed        blk=45 blks=1 blk/s=998 txs=1 tx/s=998 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=26.95k wrt/s=2.99k buf=44.1KB/512.0MB bdur=196µs alloc=96.8MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.648] [5/5 Execution] parallel committed       blk=45 blks=0 blk/s=0 txs=1 tx/s=891 gas/s=0 bdur=0s progress=0/0 buf=22.0KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=96.9MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.648] [5/5 Execution] parallel done            in=1.192324ms buf=22.0KB/512.0MB blk=45 blks=1 blk/s=838 txs=1 tx/s=838 gas/s=0 stepsInDB=0.00 step=0.0 alloc=96.9MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.649] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.650] [5/5 Execution] parallel executed        blk=46 blks=1 blk/s=837 txs=1 tx/s=837 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.60k wrt/s=2.51k buf=53.3KB/512.0MB bdur=333µs alloc=97.4MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.650] [5/5 Execution] parallel committed       blk=46 blks=0 blk/s=0 txs=1 tx/s=752 gas/s=0 bdur=0s progress=0/0 buf=26.7KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=97.4MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.650] [5/5 Execution] parallel done            in=1.394626ms buf=26.7KB/512.0MB blk=46 blks=1 blk/s=717 txs=1 tx/s=717 gas/s=0 stepsInDB=0.00 step=0.0 alloc=97.4MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.650] [NewPayload] Handling new payload        height=47 hash=0xa3b4b86837197906688c55979962fcf57fc43f7d1796cdacce350f2a4590ef8e
+[INFO] [09-24|12:36:34.651] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.651] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.651] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.651] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.652] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.653] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=1.17k txs=1 tx/s=1.17k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=31.83k wrt/s=3.53k buf=1.8KB/512.0MB bdur=213µs alloc=99.3MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.653] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=1.05k gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=99.3MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.653] [5/5 Execution] parallel done            in=1.021711ms buf=943B/512.0MB blk=40 blks=1 blk/s=978 txs=1 tx/s=978 gas/s=0 stepsInDB=0.00 step=0.0 alloc=99.3MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.654] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.654] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=845 txs=1 tx/s=845 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.83k wrt/s=2.53k buf=9.6KB/512.0MB bdur=344µs alloc=99.8MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.654] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=772 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=99.8MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.654] [5/5 Execution] parallel done            in=1.346018ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=742 txs=1 tx/s=742 gas/s=0 stepsInDB=0.00 step=0.0 alloc=99.9MB sys=123.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.655] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.656] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=928 txs=1 tx/s=928 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=25.05k wrt/s=2.78k buf=17.6KB/512.0MB bdur=288µs alloc=101.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.656] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=844 gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=101.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.656] [5/5 Execution] parallel done            in=1.232406ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=811 txs=1 tx/s=811 gas/s=0 stepsInDB=0.00 step=0.0 alloc=101.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.657] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.657] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=997 txs=1 tx/s=997 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=26.93k wrt/s=2.99k buf=27.1KB/512.0MB bdur=275µs alloc=101.9MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.657] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=902 gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=101.9MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.657] [5/5 Execution] parallel done            in=1.159696ms buf=13.5KB/512.0MB blk=43 blks=1 blk/s=862 txs=1 tx/s=862 gas/s=0 stepsInDB=0.00 step=0.0 alloc=101.9MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.658] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.659] [5/5 Execution] parallel executed        blk=44 blks=1 blk/s=851 txs=1 tx/s=851 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.98k wrt/s=2.55k buf=35.8KB/512.0MB bdur=287µs alloc=102.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.659] [5/5 Execution] parallel committed       blk=44 blks=0 blk/s=0 txs=1 tx/s=769 gas/s=0 bdur=0s progress=0/0 buf=17.9KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=102.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.659] [5/5 Execution] parallel done            in=1.358844ms buf=17.9KB/512.0MB blk=44 blks=1 blk/s=735 txs=1 tx/s=735 gas/s=0 stepsInDB=0.00 step=0.0 alloc=102.4MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.660] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.661] [5/5 Execution] parallel executed        blk=45 blks=1 blk/s=762 txs=1 tx/s=762 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=20.57k wrt/s=2.28k buf=44.1KB/512.0MB bdur=326µs alloc=103.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.661] [5/5 Execution] parallel committed       blk=45 blks=0 blk/s=0 txs=1 tx/s=674 gas/s=0 bdur=0s progress=0/0 buf=22.0KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=103.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.661] [5/5 Execution] parallel done            in=1.574232ms buf=22.0KB/512.0MB blk=45 blks=1 blk/s=635 txs=1 tx/s=635 gas/s=0 stepsInDB=0.00 step=0.0 alloc=103.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.662] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.662] [5/5 Execution] parallel executed        blk=46 blks=1 blk/s=1.09k txs=1 tx/s=1.09k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=29.52k wrt/s=3.28k buf=53.3KB/512.0MB bdur=228µs alloc=103.5MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.662] [5/5 Execution] parallel committed       blk=46 blks=0 blk/s=0 txs=1 tx/s=952 gas/s=0 bdur=0s progress=0/0 buf=26.7KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=103.5MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.662] [5/5 Execution] parallel done            in=1.102372ms buf=26.7KB/512.0MB blk=46 blks=1 blk/s=907 txs=1 tx/s=907 gas/s=0 stepsInDB=0.00 step=0.0 alloc=103.5MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.663] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.664] [5/5 Execution] parallel executed        blk=47 blks=1 blk/s=1.18k txs=1 tx/s=1.18k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=31.98k wrt/s=3.55k buf=61.6KB/512.0MB bdur=203µs alloc=104.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.664] [5/5 Execution] parallel committed       blk=47 blks=0 blk/s=0 txs=1 tx/s=1.00k gas/s=0 bdur=0s progress=0/0 buf=30.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=104.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.664] [5/5 Execution] parallel done            in=1.072613ms buf=30.8KB/512.0MB blk=47 blks=1 blk/s=932 txs=1 tx/s=932 gas/s=0 stepsInDB=0.00 step=0.0 alloc=104.0MB sys=127.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.665] [NewPayload] Handling new payload        height=48 hash=0x89760635a073492746414d5e8ea50ceaaaf035f603e37543a36328af11d6de32
+[INFO] [09-24|12:36:34.665] [4/6 Execution] Unwind Execution         from=48 to=39
+[INFO] [09-24|12:36:34.666] unwind skipped, stage exactly at unwind point stage=Execution unwindPoint=39
+[INFO] [09-24|12:36:34.666] unwind skipped, stage exactly at unwind point stage=Senders unwindPoint=39
+[INFO] [09-24|12:36:34.666] unwind skipped, stage exactly at unwind point stage=BlockHashes unwindPoint=39
+[WARN] [09-24|12:36:34.668] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.668] [5/5 Execution] parallel executed        blk=40 blks=1 blk/s=664 txs=1 tx/s=664 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=17.94k wrt/s=1.99k buf=1.8KB/512.0MB bdur=410µs alloc=106.0MB sys=131.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.668] [5/5 Execution] parallel committed       blk=40 blks=0 blk/s=0 txs=1 tx/s=583 gas/s=0 bdur=0s progress=0/0 buf=943B chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=106.0MB sys=131.0MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.669] [5/5 Execution] parallel done            in=1.798754ms buf=943B/512.0MB blk=40 blks=1 blk/s=555 txs=1 tx/s=555 gas/s=0 stepsInDB=0.00 step=0.0 alloc=106.0MB sys=131.0MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.669] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.670] [5/5 Execution] parallel executed        blk=41 blks=1 blk/s=1.11k txs=1 tx/s=1.11k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=30.19k wrt/s=3.35k buf=9.6KB/512.0MB bdur=190µs alloc=106.5MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.670] [5/5 Execution] parallel committed       blk=41 blks=0 blk/s=0 txs=1 tx/s=988 gas/s=0 bdur=0s progress=0/0 buf=4.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=106.5MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.670] [5/5 Execution] parallel done            in=1.066388ms buf=4.8KB/512.0MB blk=41 blks=1 blk/s=937 txs=1 tx/s=937 gas/s=0 stepsInDB=0.00 step=0.0 alloc=106.5MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.671] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.671] [5/5 Execution] parallel executed        blk=42 blks=1 blk/s=1.03k txs=1 tx/s=1.03k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=27.86k wrt/s=3.09k buf=17.6KB/512.0MB bdur=234µs alloc=107.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.671] [5/5 Execution] parallel committed       blk=42 blks=0 blk/s=0 txs=1 tx/s=930 gas/s=0 bdur=0s progress=0/0 buf=8.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=107.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.672] [5/5 Execution] parallel done            in=1.138058ms buf=8.8KB/512.0MB blk=42 blks=1 blk/s=878 txs=1 tx/s=878 gas/s=0 stepsInDB=0.00 step=0.0 alloc=107.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.672] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.673] [5/5 Execution] parallel executed        blk=43 blks=1 blk/s=1.24k txs=1 tx/s=1.24k gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=33.56k wrt/s=3.72k buf=27.1KB/512.0MB bdur=179µs alloc=107.6MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.673] [5/5 Execution] parallel committed       blk=43 blks=0 blk/s=0 txs=1 tx/s=1.08k gas/s=0 bdur=0s progress=0/0 buf=13.5KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=107.6MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.673] [5/5 Execution] parallel done            in=985.528µs buf=13.5KB/512.0MB blk=43 blks=1 blk/s=1.01k txs=1 tx/s=1.01k gas/s=0 stepsInDB=0.00 step=0.0 alloc=107.6MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.674] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.674] [5/5 Execution] parallel executed        blk=44 blks=1 blk/s=889 txs=1 tx/s=889 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=24.01k wrt/s=2.66k buf=35.8KB/512.0MB bdur=315µs alloc=108.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.674] [5/5 Execution] parallel committed       blk=44 blks=0 blk/s=0 txs=1 tx/s=793 gas/s=0 bdur=0s progress=0/0 buf=17.9KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=108.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.674] [5/5 Execution] parallel done            in=1.318196ms buf=17.9KB/512.0MB blk=44 blks=1 blk/s=758 txs=1 tx/s=758 gas/s=0 stepsInDB=0.00 step=0.0 alloc=108.1MB sys=131.2MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.675] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.676] [5/5 Execution] parallel executed        blk=45 blks=1 blk/s=844 txs=1 tx/s=844 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=22.81k wrt/s=2.53k buf=44.1KB/512.0MB bdur=210µs alloc=108.6MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.676] [5/5 Execution] parallel committed       blk=45 blks=0 blk/s=0 txs=1 tx/s=727 gas/s=0 bdur=0s progress=0/0 buf=22.0KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=108.7MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.676] [5/5 Execution] parallel done            in=1.476216ms buf=22.0KB/512.0MB blk=45 blks=1 blk/s=677 txs=1 tx/s=677 gas/s=0 stepsInDB=0.00 step=0.0 alloc=108.7MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.677] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.678] [5/5 Execution] parallel executed        blk=46 blks=1 blk/s=745 txs=1 tx/s=745 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=20.13k wrt/s=2.23k buf=53.3KB/512.0MB bdur=346µs alloc=109.2MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.678] [5/5 Execution] parallel committed       blk=46 blks=0 blk/s=0 txs=1 tx/s=686 gas/s=0 bdur=0s progress=0/0 buf=26.7KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=109.2MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.678] [5/5 Execution] parallel done            in=1.50996ms buf=26.7KB/512.0MB blk=46 blks=1 blk/s=662 txs=1 tx/s=662 gas/s=0 stepsInDB=0.00 step=0.0 alloc=109.2MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.679] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.680] [5/5 Execution] parallel executed        blk=47 blks=1 blk/s=792 txs=1 tx/s=792 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=21.39k wrt/s=2.37k buf=61.6KB/512.0MB bdur=309µs alloc=109.7MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.680] [5/5 Execution] parallel committed       blk=47 blks=0 blk/s=0 txs=1 tx/s=708 gas/s=0 bdur=0s progress=0/0 buf=30.8KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=109.7MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.680] [5/5 Execution] parallel done            in=1.499728ms buf=30.8KB/512.0MB blk=47 blks=1 blk/s=666 txs=1 tx/s=666 gas/s=0 stepsInDB=0.00 step=0.0 alloc=109.7MB sys=131.5MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.681] Error in ParseDepositLogs - depositContractAddress is 0x0 
+[INFO] [09-24|12:36:34.682] [5/5 Execution] parallel executed        blk=48 blks=1 blk/s=794 txs=1 tx/s=794 gas/s=0 exec=2 repeat%=50.00 abort=0 invalid=0 tgas/s=0 tcpus=0.0 tdur=0s exec=0s(0.00%) read="0s(0.00%),a=0s,s=0s,c=0s" rd="27,a=0,s=0,c=0" wrt=3 rd/s=21.45k wrt/s=2.38k buf=70.3KB/512.0MB bdur=301µs alloc=110.3MB sys=135.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.682] [5/5 Execution] parallel committed       blk=48 blks=0 blk/s=0 txs=1 tx/s=679 gas/s=0 bdur=0s progress=0/0 buf=35.1KB chit=0 cmiss=0 stepsInDB=0.00 step=0.0 alloc=110.3MB sys=135.5MB isForkValidation=true isApplyingBlocks=false
+[INFO] [09-24|12:36:34.682] [5/5 Execution] parallel done            in=1.558434ms buf=35.1KB/512.0MB blk=48 blks=1 blk/s=641 txs=1 tx/s=641 gas/s=0 stepsInDB=0.00 step=0.0 alloc=110.3MB sys=135.5MB isForkValidation=true isApplyingBlocks=false
+[WARN] [09-24|12:36:34.683] [rpc] served                             conn=172.17.0.3:38972 method=engine_forkchoiceUpdatedV3 reqid=11 err="Invalid forkchoice state"

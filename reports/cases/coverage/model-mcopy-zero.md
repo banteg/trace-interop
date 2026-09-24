@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 2a3b2531](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/current-matrix/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/current-matrix/coverage/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 9d6e8b8d](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -39,13 +39,6 @@
   ]
 }
 ```
-
-**Nethermind · 2.1.0-unstable · 2a3b2531** (`2.1.0-unstable+2a3b2531`)
-
-- [H21](../../decisions/H21.md): Stack words use minimal hex quantities at every depth.
-- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x0000000000000000000000000000000000000000: new account lacks creation markers for all fields; 0x00de48310d77a4d56aa400248b0b1613508f5b73: new account lacks creation markers for all fields
-- [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, returned runtime and balance, including empty values.
-- Result shape at `vmTrace`: {'code': '0x600060ff60ff5e60006000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246839}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0xff'], 'store': None, 'used': 246836}, 'pc': 2, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

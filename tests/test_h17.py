@@ -92,3 +92,17 @@ class H17CapturedRegressionTests(unittest.TestCase):
         for client, observation in self.observations['a']['prefunded-empty'].items():
             checks = evaluate(case, observation, {})
             self.assertEqual([c['status'] for c in checks if c['topic']=='H17'],['matches'],client)
+
+    def test_nethermind_fix_preserves_birth_and_subsequent_update_markers(self):
+        fresh = read(ROOT/'evidence/2026-09-24/h17-retest/coverage/observations.json')
+        client = 'nethermind_development'
+        for name in ['model-transfer', 'model-many-transfers', 'model-empty-runtime']:
+            with self.subTest(case=name):
+                old = self.checks('coverage', name, client)
+                new = self.checks('coverage', name, client, fresh[name][client])
+                self.assertIn('change_needed', [c['status'] for c in old if c['topic']=='H17'])
+                self.assertEqual({c['status'] for c in new if c['topic']=='H17'}, {'matches'})
+        envelopes = fresh['model-many-transfers'][client]['response']['result']
+        target = self.case('coverage', 'model-many-transfers')['transfer_model']['target']
+        self.assertEqual(envelopes[0]['stateDiff'][target]['code'], {'+':'0x'})
+        self.assertEqual(envelopes[1]['stateDiff'][target]['code'], '=')

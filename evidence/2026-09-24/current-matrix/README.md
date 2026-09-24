@@ -1,5 +1,9 @@
 # Current client matrix — 2026-09-24
 
+Historical snapshot: the [12:21 UTC H17 retest](../h17-retest/README.md) reran all
+fourteen corpora and now supplies the active reports. This earlier capture remains
+unchanged evidence for the initial assessment and before/after regressions.
+
 The suite resolved the latest published stable releases and development images,
 built the current Geth draft branch, and passed its live [freshness preflight](preflight.json)
 at **2026-09-24 11:07:58 UTC**. [clients.lock.json](clients.lock.json) freezes that
@@ -39,8 +43,8 @@ missing exchanges; capture completeness is separate from policy agreement.
 | Reth | `2.6.0` | [`73a3a008`](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) |
 
 The full [matrix summary](matrix.json) retains all completed and incomplete runs.
-The active [report inventory](../../../reports.lock.json) selects this entire
-snapshot. Older captures remain immutable historical evidence. Report generation
+The [report inventory](../../../reports.lock.json) selected this entire
+snapshot before the H17 retest superseded it. Captures remain immutable historical evidence. Report generation
 rejects a mixed-build selection or omission of an incomplete current run.
 
 ## Changes visible after refreshing

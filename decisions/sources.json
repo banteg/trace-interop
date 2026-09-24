@@ -104,16 +104,16 @@
     "lookup": {
       "label": "Trace lookup",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 433,
       "anchor": "public ResultWrapper<IEnumerable<ParityTxTraceFromStore>> trace_get(Hash256 txHash, long[] positions)",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     },
     "filter": {
       "label": "Address matching",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs",
       "line": 56,
       "anchor": "private bool MatchAddresses(Address? fromAddress, Address? toAddress) =>",
@@ -122,25 +122,25 @@
     "call": {
       "label": "Call simulation",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 78,
       "anchor": "public ResultWrapper<ParityTxTraceFromReplay> trace_call(TransactionForRpc call, string[] traceTypes, BlockParameter? blockParameter = null, Dictionary<Address, AccountOverride>? stateOverride = null)",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     },
     "raw": {
       "label": "Signed transaction replay",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 150,
       "anchor": "public ResultWrapper<ParityTxTraceFromReplay> trace_rawTransaction(byte[] data, string[] traceTypes)",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     },
     "replay": {
       "label": "Replay serialization",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs",
       "line": 24,
       "anchor": "public static void WriteTail(Utf8JsonWriter writer, ParityLikeTxTrace trace, bool includeTxHash, JsonSerializerOptions options)",
@@ -149,7 +149,7 @@
     "frames": {
       "label": "Call frames and precompiles",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
       "line": 419,
       "anchor": "public override void ReportAction(ulong gas, UInt256 value, Address from, Address to, ReadOnlyMemory<byte> input,",
@@ -158,16 +158,16 @@
     "vm": {
       "label": "VM step serialization",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs",
-      "line": 17,
+      "line": 18,
       "anchor": "public override void Write(",
-      "sha256": "7445fef265708949489ca1a54de39a133263223580dccaba836b6a26a22546c2"
+      "sha256": "f9da261260e118a1828c07a3556c2f62ffdab23580d42e2bc24c88ea4a4a88c4"
     },
     "state": {
       "label": "Code and nonce state changes",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
       "line": 362,
       "anchor": "public override void ReportCodeChange(Address address, byte[]? before, byte[]? after)",
@@ -176,29 +176,29 @@
     "bounds": {
       "label": "Filter range defaults",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 294,
       "anchor": "BlockParameter fromBlock = traceFilterForRpc.FromBlock ?? BlockParameter.Latest;",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     },
     "many": {
       "label": "Batched call block default",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 95,
       "anchor": "public ResultWrapper<IEnumerable<ParityTxTraceFromReplay>> trace_callMany(TraceCallManyRequest request, BlockParameter? blockParameter = null)",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     },
     "tags": {
       "label": "Filter tag lookup",
       "repository": "https://github.com/NethermindEth/nethermind",
-      "commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
+      "commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
       "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
       "line": 287,
       "anchor": "public ResultWrapper<IEnumerable<ParityTxTraceFromStore>> trace_filter(TraceFilterForRpc traceFilterForRpc)",
-      "sha256": "293e30b0c5de3f561535afd248853188ba96d42cc14bce2c02637baf7733095f"
+      "sha256": "3b56328ae1f6863f4aa1464f7c0cc576e0bdd114d23ad6f60b9345b02be12b9f"
     }
   },
   "besu": {

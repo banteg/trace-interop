@@ -22,17 +22,30 @@ def reference_context(frames):
 
 class RuleSafetyTests(unittest.TestCase):
     def test_signed_invalid_cases_require_rejection_under_each_selection(self):
-        for name in ['raw-nonce-high', 'raw-valid-default-block', 'raw-wrong-chain',
-                     'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']:
+        for name, message, group in [('raw-nonce-high', 'nonce too high', 2), ('raw-valid-default-block', 'nonce too low', 1),
+                                     ('raw-wrong-chain', 'invalid chain id for signer', None),
+                                     ('raw-insufficient-funds', 'insufficient funds for gas * price + value', 809),
+                                     ('raw-low-gas', 'intrinsic gas too low', 800),
+                                     ('raw-below-basefee', 'max fee per gas less than block base fee', 806)]:
             for selection in [['trace'], ['stateDiff'], ['vmTrace'], ['trace', 'stateDiff', 'vmTrace']]:
                 case = {'name': name, 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', selection]}}
-                for code in [-32003, -32000]:
-                    observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'invalid transaction'}}}
+                for code in [-32003, -32000] + ([group] if group else []):
+                    observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': message}}}
                     checks = [c for c in evaluate(case, observation, {}) if c['topic'] == 'H13']
                     self.assertEqual(checks[0]['status'], 'matches')
-                    self.assertEqual(checks[1]['status'], 'matches' if code == -32003 else 'change_needed')
+                    self.assertEqual(checks[1]['status'], 'change_needed' if code == -32000 else 'matches')
                 checks = assess(name, {'output': '0x', 'trace': []}, 'trace_rawTransaction', case['request']['params'])
                 self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['change_needed'])
+
+    def test_signed_rejection_must_name_its_own_violation(self):
+        case = {'name': 'raw-nonce-high', 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', ['trace']]}}
+        for message, statuses in [('intrinsic gas too low', ['change_needed', 'change_needed']),
+                                  ('internal error', ['blocked'])]:
+            observation = {'status': 'rpc_error', 'response': {'error': {'code': -32003, 'message': message}}}
+            self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], statuses)
+        # Another violation's error group is not accepted either.
+        observation = {'status': 'rpc_error', 'response': {'error': {'code': 1, 'message': 'nonce too high'}}}
+        self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], ['matches', 'change_needed'])
 
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},

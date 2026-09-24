@@ -19,6 +19,33 @@ def sequence(value):
     return value if isinstance(value, list) else []
 
 
+# Signed-transaction fixtures and the independent violation each one carries.
+RAW_VIOLATIONS = [
+    ('raw-nonce-high', 'nonce_high'), ('raw-wrong-chain', 'chain'), ('raw-insufficient-funds', 'funds'),
+    ('raw-low-gas', 'intrinsic'), ('raw-below-basefee', 'base_fee'), ('raw-valid-default-block', 'nonce_low'),
+    ('nonce below selected state', 'nonce_low'), ('creation nonce below selected state', 'nonce_low'),
+    ('nonce above selected state', 'nonce_high'), ('creation nonce above selected state', 'nonce_high'),
+    ('wrong chain identity', 'chain'), ('insufficient balance for value alone', 'funds'),
+    ('value is affordable but upfront gas plus value is not', 'funds'),
+    ('gas limit below 21000 intrinsic gas', 'intrinsic'), ('gas price below selected block base fee', 'base_fee'),
+    ('EIP-3607 ordinary-code sender (not delegation)', 'sender')]
+# eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
+RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
+
+
+def violation(message):
+    """Classify a validation error message; None when it names no known violation."""
+    message = str(message).lower()
+    for kind, pattern in [('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
+                          ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
+                          ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
+                          ('priority', r'\b(?:priority|tip)\b.*(?:fee|cap)'),
+                          ('base_fee', r'base ?fee'), ('sender', r'\beoa\b')]:
+        if re.search(pattern, message):
+            return kind
+    return None
+
+
 def embedded_error(response):
     value = mapping(response).get('result')
     return isinstance(value, dict) and value.get('jsonrpc') == '2.0' and 'error' in value
@@ -344,17 +371,25 @@ def evaluate(case, observation, peers, invalid_params=None):
                            'detail':'Ordered capture, initial zero slot or successful simulated write/read not established.'})
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
         check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
-    invalid_raw = ['raw-nonce-high', 'raw-wrong-chain', 'raw-insufficient-funds', 'raw-low-gas', 'raw-below-basefee']
-    reject_raw = (any(name == n or name.startswith(n+'-') for n in invalid_raw)
-                  or name == 'raw-valid-default-block' or case.get('validation') == 'reject')
-    if method == 'trace_rawTransaction' and reject_raw:
-        check('H13', status == 'rpc_error',
-              'Reject a signed transaction that fails execution validity at the selected state before EVM execution.',
-              case.get('reason', 'Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.'))
-        if status == 'rpc_error':
-            check('H13', mapping(response.get('error')).get('code') == -32003,
-                  'Proposed transaction-validation error code: -32003 (Transaction rejected).',
-                  'Error-code alignment is separate from whether validation occurred; current clients also use -32000.')
+    expected_violation = next((kind for label, kind in RAW_VIOLATIONS
+                               if name == label or name.startswith(label+'-') or case.get('reason') == label), None)
+    if method == 'trace_rawTransaction' and expected_violation:
+        requirement = 'Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation.'
+        reason = case.get('reason') or 'Known invalid signed-transaction fixture; validation is separate from local transaction-pool policy.'
+        error = mapping(response.get('error'))
+        observed = violation(error.get('message'))
+        if status != 'rpc_error':
+            check('H13', False, requirement, reason)
+        elif observed is None:
+            checks.append({'topic': 'H13', 'status': 'blocked', 'requirement': requirement,
+                           'detail': 'The error message does not identify a validation failure: '+str(error.get('message'))[:120]})
+        else:
+            check('H13', observed == expected_violation, requirement,
+                  f'Expected {expected_violation}; the error identifies {observed}. {reason}')
+            codes = [-32003] + ([RAW_CODES[observed]] if observed in RAW_CODES else [])
+            check('H13', observed == expected_violation and error.get('code') in codes,
+                  'Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected).',
+                  f'Identified {observed}; code {error.get("code")}; accepted {codes}.')
     if method == 'trace_rawTransaction' and case.get('validation') == 'execute':
         check('H13', status == 'result' and mapping(result).get('output') == case['expected_output'] and not embedded_error(response),
               'The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.')

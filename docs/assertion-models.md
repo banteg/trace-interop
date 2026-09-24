@@ -44,12 +44,14 @@ missing or invalid witnesses cannot establish agreement.
 | Broader accounting | Balance deltas conserve value, credit the miner and burn base fee using receipt gas, or an explicitly identified root-gas witness. This does not independently prove every internal transfer or refund. |
 | Replay and authorization | Decoded transaction ordering, recovered authorization authorities, before/after delegation code and genesis/initcode root execution sources. |
 | Filtering | Independently anchored block inventories, address selection, count zero, pagination, past-end pages and canonical roots across reorg phases. |
+| Storage refunds | SSTORE follows EIP-2200, EIP-2929 and EIP-3529 for slots a corpus anchors at transaction start. The replay VM check and the root-gas accounting fallback use the exact capped refund. |
+| Mined probes | [Mined-probes](mined-probes.md) transactions carry hand-derived frames, account diffs, balance deltas, receipt gas and SSTORE effects for each replay and block trace. Filters over them pin exact frame identities. Accounting subtracts the wei that a same-transaction SELFDESTRUCT to self destroys. |
 
 `local_invariants` additionally checks nested VM bytecode/PUSH consistency,
 post-step gas arithmetic outside CALL/CREATE, and the absence of write deltas on
 memory reads and returns. This catches timing defects in complex programs but is
 not independent execution of those programs. Detailed trapped-call gas boundaries,
-warm-access reset, general refund/blob accounting and arbitrary nested state
+warm-access reset, refunds outside anchored straight-line programs and arbitrary nested state
 execution remain outside the bounded model. A topic receiving an assertion is
 not proof of every recommendation in that topic.
 

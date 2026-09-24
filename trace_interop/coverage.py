@@ -40,6 +40,8 @@ def supplement(case, observation, peers, checks, expected):
     result = obj(observation.get('response')).get('result')
     declared = set(expected)
     if not method.startswith('trace_'):
+        if status in ['result', 'rpc_error']:
+            checks.extend(assess_probe(case, observation, peers))  # e.g. a historical storage read
         return checks + [dict(topic=t,status='control',requirement='Retain independent reference evidence.',
                               detail='Non-trace state/header/receipt or diagnostic control; not a trace conformance assertion.')
                          for t in sorted(declared - {c['topic'] for c in checks})]

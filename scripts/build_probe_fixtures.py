@@ -302,9 +302,18 @@ def forks():
     beacon = '0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02'
     timestamp = int(headers['0x38']['timestamp'], 16)
     history = 8191  # EIP-4788 ring buffer length.
+    # Block 56 wrote the ring-buffer slots: the chain state every build must show. Block 55
+    # state predates that write, which is the H28 property itself, so those reads are
+    # probes, not setup controls (the names are kept for the captured requests).
     for number, stored, root in [('0x37', 0, 0), ('0x38', timestamp, int(headers['0x38']['parentBeaconBlockRoot'], 16))]:
-        case(cases, f'_control/beacon-timestamp-{int(number, 16)}', 'eth_getStorageAt', [beacon, hex(timestamp % history), number], expected_control='0x'+word(stored))
-        case(cases, f'_control/beacon-root-{int(number, 16)}', 'eth_getStorageAt', [beacon, hex(timestamp % history + history), number], expected_control='0x'+word(root))
+        n = int(number, 16)
+        slots = [('timestamp', hex(timestamp % history), stored), ('root', hex(timestamp % history + history), root)]
+        for label, slot, value in slots:
+            if value:
+                case(cases, f'_control/beacon-{label}-{n}', 'eth_getStorageAt', [beacon, slot, number], expected_control='0x'+word(value))
+            else:
+                case(cases, f'_control/beacon-{label}-{n}', 'eth_getStorageAt', [beacon, slot, number], probes=[
+                    probe('H28', 'outputs', f'State at block {n} predates block {n+1}\'s beacon-root write: the {label} slot reads zero.', expected=['0x'+word(0)])])
     rewards = [r for r in records(2, 5) if to_coinbase(r)]
     requirement = 'A reward matches toAddress by author, after its block\'s transactions: block reward, then uncle rewards in ommer order.'
     case(cases, 'rewards-to', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x5', 'toAddress': [coinbase]}],

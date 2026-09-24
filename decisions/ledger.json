@@ -1988,7 +1988,9 @@
         "mined-probes/replay-history-read",
         "mined-probes/transaction-history-read",
         "mined-probes/replay-block-2",
-        "mined-probes/block-2"
+        "mined-probes/block-2",
+        "probes-forks/_control/beacon-timestamp-55",
+        "probes-forks/_control/beacon-root-55"
       ],
       "id": "H28",
       "kind": "Historical-state discrepancy fixed on Erigon main",

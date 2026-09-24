@@ -103,7 +103,10 @@ def assess(case, observation, peers):
             add(topic, not detail, requirement, detail)
         elif kind == 'outputs':
             expected = probe['expected']
-            outputs = ([mapping(e).get('output') for e in result] if isinstance(result, list) else None) if method == 'trace_callMany' else [mapping(result).get('output')]
+            if method == 'trace_callMany':
+                outputs = [mapping(e).get('output') for e in result] if isinstance(result, list) else None
+            else:  # A plain read such as eth_getStorageAt returns its word as the result.
+                outputs = [mapping(result).get('output') if method.startswith('trace_') else result]
             ok = outputs is not None and len(outputs) == len(expected) and all(
                 want is None or isinstance(got, str) and got.lower() == want for got, want in zip(outputs, expected))
             add(topic, ok, requirement, f'Expected {expected}; got {outputs}')

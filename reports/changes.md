@@ -35,7 +35,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
-| [H05 · Post-merge reward records](decisions/H05.md) | Erigon stable | ✅ Checked cases agree | 🟡 Partially assessed |
+| [H05 · Post-merge reward records](decisions/H05.md) | Erigon stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H23 · Special-action address matching](decisions/H23.md) | Erigon stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H26 · Account deletion across Cancun](decisions/H26.md) | Erigon stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H29 · Precompile call-frame inclusion](decisions/H29.md) | Erigon stable | ✅ Checked cases agree | ⚠️ Differs |

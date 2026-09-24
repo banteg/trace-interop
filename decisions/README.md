@@ -10,7 +10,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H02](../reports/decisions/H02.md) | 🤝 Converged | ···👍 | trace_get selector and return shape | ✅⚠️⚠️🛠️— | ✅✅⚠️✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍·👍 | Filter composition and mode | ⚠️🛠️⚠️🛠️— | ⚠️🛠️⚠️✅✅ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | ···· | Empty address lists | ⚠️✅⚠️⚠️— | ⚠️✅⚠️⚠️✅ |
-| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️🟡⚠️🛠️— | ⚠️⚠️⚠️🛠️✅ |
+| [H05](../reports/decisions/H05.md) | ⚪ Under review | ···👍 | Post-merge reward records | ⚠️⚠️⚠️🛠️— | ⚠️⚠️⚠️🛠️✅ |
 | [H06](../reports/decisions/H06.md) | ⚪ Under review | ···· | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | Replay transactionHash field | 🟡✅✅🛠️— | 🟡✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | ⚪ Under review | ···· | Empty output and unrequested components | 🟡⚠️⚠️✅— | 🟡⚠️⚠️✅✅ |

@@ -3,9 +3,10 @@ each plausible wrong response (named after the client behaviour it models) needs
 import copy
 import unittest
 
-from trace_interop.cli import ROOT, read
+from trace_interop.cli import ROOT, load_observations, read
 from trace_interop.coverage import supplement
 from trace_interop.probes import assess
+from trace_interop.scenarios import verify_setup
 from trace_interop.vm_model import execute, intrinsic, local_invariants
 
 PRAGUE = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-prague.json')['cases']}
@@ -294,6 +295,42 @@ class ForksProbeTests(Probe):
         self.assertMatches(FORKS['range-reversed'], error(-32602))
         self.assertDiffers(FORKS['range-reversed'], error(-32000))  # Erigon, Nethermind
         self.assertDiffers(FORKS['range-reversed'], result([]))     # Parity
+
+    def test_block_55_reads_are_h28_probes_not_setup(self):
+        folder = ROOT/'evidence/2026-09-25/fixture-wave/probes-forks'
+        manifest, observations = read(folder/'manifest.json'), load_observations(folder)
+        corpus = read(ROOT/'fixtures/corpora/probes-forks.json')
+        zero = '0x'+'00'*32
+        for name in ['_control/beacon-timestamp-55', '_control/beacon-root-55']:
+            case = FORKS[name]
+            self.assertNotIn('expected_control', case)
+            checks = supplement(dict(case, context={}), result(zero), {}, [], ['H28'])
+            self.assertEqual([(c['topic'], c['status']) for c in checks], [('H28', 'matches')])
+            # Erigon 3.6.1 reads block 56's write at block 55: an H28 difference, not a setup failure.
+            erigon = observations[name]['erigon_release']
+            self.assertNotEqual(erigon['response']['result'], zero)
+            self.assertEqual(statuses(case, erigon), ['change_needed'])
+        self.assertTrue(verify_setup(manifest, corpus, observations, 'erigon_release')[0])
+        # The captured definitions still made the block-55 reads setup controls.
+        self.assertFalse(verify_setup(manifest, dict(corpus, cases=manifest['selected_cases']), observations, 'erigon_release')[0])
+
+    def test_setup_controls_follow_the_assessed_definitions(self):
+        folder = ROOT/'evidence/2026-09-25/fixture-wave/probes-forks'
+        manifest, observations = read(folder/'manifest.json'), load_observations(folder)
+        corpus = read(ROOT/'fixtures/corpora/probes-forks.json')
+        self.assertTrue(verify_setup(manifest, corpus, observations, 'reth_release')[0])
+        # A current control on an unchanged request applies to the old evidence.
+        wrong = copy.deepcopy(corpus)
+        next(c for c in wrong['cases'] if c['name'] == '_control/beacon-root-56')['expected_control'] = '0x'+'00'*32
+        self.assertFalse(verify_setup(manifest, wrong, observations, 'reth_release')[0])
+        # A control whose request has changed since, or that was never captured, keeps or needs nothing new.
+        changed = copy.deepcopy(corpus)
+        control = next(c for c in changed['cases'] if c['name'] == '_control/beacon-root-56')
+        control['request'] = dict(control['request'], params=control['request']['params'][:2]+['latest'])
+        control['expected_control'] = '0x'+'00'*32
+        changed['cases'].append({'name': '_control/uncaptured', 'request': {'jsonrpc': '2.0', 'id': 1, 'method': 'eth_chainId', 'params': []},
+                                 'expected_control': '0x1'})
+        self.assertTrue(verify_setup(manifest, changed, observations, 'reth_release')[0])
 
     def test_beacon_call_many_twin(self):
         for number in [55, 56]:

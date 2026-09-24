@@ -8,7 +8,7 @@ from .cli import read, write, sha, load_observations, observations_file, verify_
 from .rules import evaluate, is_extension_request
 from .validation import request_errors
 from .inventory import verify_inventory, cover_topics, previous_runs
-from .scenarios import verify_setup
+from .scenarios import assessed_cases, verify_setup
 from .coverage import supplement
 
 ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/probes.py','trace_interop/mined_probes.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']
@@ -16,18 +16,6 @@ ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trac
 
 def link(path, output):
     return os.path.relpath(path, output).replace(os.sep, '/')
-
-
-def assessed_cases(captured, corpus):
-    """Captured requests with the current corpus expectations for the identical request.
-
-    Observations stay immutable; expectation fields (fee policy, models, references)
-    follow the checksummed corpus, so a corrected expectation reassesses old evidence.
-    A request that has since changed keeps the expectations it was captured with.
-    """
-    current = {c['name']: c for c in corpus}
-    return [current[c['name']] if c['name'] in current and current[c['name']]['request'] == c['request'] else c
-            for c in captured]
 
 
 def run_context(root, manifest):

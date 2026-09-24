@@ -39,10 +39,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 11121 |
+| 🔎 Assessed | 11140 |
 | 🟡 Partial | 990 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 528 |
+| 🚧 Blocked | 509 |
 | 🔎 Control | 9 |
 
 
@@ -52,10 +52,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 
 | Topic | Disposition | Reason | Observations |
 | --- | --- | --- | --- |
-| H03 | blocked | Independent setup control failed or unavailable: _control/beacon-timestamp-55 | 2 |
-| H05 | blocked | Independent setup control failed or unavailable: _control/beacon-timestamp-55 | 4 |
 | H06 | blocked | Cannot inspect this property: unsupported. | 2 |
-| H06 | blocked | Independent setup control failed or unavailable: _control/beacon-timestamp-55 | 1 |
 | H06 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 2 |
 | H07 | blocked | Cannot inspect this property: unsupported. | 24 |
 | H07 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 9 |
@@ -101,15 +98,13 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H20 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
 | H21 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
-| H23 | blocked | Independent setup control failed or unavailable: _control/beacon-timestamp-55 | 3 |
 | H23 | blocked | The RPC returned an error, so there is no execution result to inspect. | 2 |
 | H23 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 9 |
 | H26 | blocked | Cannot inspect this property: unsupported. | 6 |
 | H27 | blocked | Per-block reference unavailable: rpc_error | 2 |
 | H27 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
-| H27 | control | Per-block reference response for the filter comparison. | 94 |
+| H27 | control | Per-block reference response for the filter comparison. | 99 |
 | H28 | blocked | Cannot inspect this property: unsupported. | 4 |
-| H28 | blocked | Independent setup control failed or unavailable: _control/beacon-timestamp-55 | 4 |
 | H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 9 |
 
@@ -120,7 +115,6 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 | Build | Scenario | Run evidence |
 | --- | --- | --- |
 | Erigon · 3.8.0-dev · 01c118ee | reorg-safe | [reorg-safe](../evidence/2026-09-25/fixture-wave/reorg-safe/summary.json) |
-| Erigon · 3.6.1 · 0c4d9c91 | probes-forks | [probes-forks](../evidence/2026-09-25/fixture-wave/probes-forks/summary.json) |
 
 ## Result-shape checks
 
@@ -1003,19 +997,19 @@ These cases returned results that differ from the draft schema. The case pages r
 | [precompiles/nested-delegatecall-value1-success](cases/precompiles/nested-delegatecall-value1-success.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [precompiles/nested-staticcall-value0-failed](cases/precompiles/nested-staticcall-value0-failed.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
 | [precompiles/nested-staticcall-value0-success](cases/precompiles/nested-staticcall-value0-success.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Nethermind 2.0.0 · bec830cd |
-| [probes-forks/_reference/block/0x1](cases/probes-forks/_reference/block/0x1.md) | Erigon 3.8.0-dev · 01c118ee, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/_reference/block/0x2](cases/probes-forks/_reference/block/0x2.md) | Erigon 3.8.0-dev · 01c118ee, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/_reference/block/0x3](cases/probes-forks/_reference/block/0x3.md) | Erigon 3.8.0-dev · 01c118ee, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/_reference/block/0x4](cases/probes-forks/_reference/block/0x4.md) | Erigon 3.8.0-dev · 01c118ee, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/_reference/block/0x5](cases/probes-forks/_reference/block/0x5.md) | Erigon 3.8.0-dev · 01c118ee, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/_reference/block/0x1](cases/probes-forks/_reference/block/0x1.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/_reference/block/0x2](cases/probes-forks/_reference/block/0x2.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/_reference/block/0x3](cases/probes-forks/_reference/block/0x3.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/_reference/block/0x4](cases/probes-forks/_reference/block/0x4.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/_reference/block/0x5](cases/probes-forks/_reference/block/0x5.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.6.0 · 73a3a008 |
 | [probes-forks/beacon-many-55](cases/probes-forks/beacon-many-55.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd |
 | [probes-forks/beacon-trace-55](cases/probes-forks/beacon-trace-55.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd |
 | [probes-forks/genesis-block](cases/probes-forks/genesis-block.md) | Reth 2.6.0 · 73a3a008 |
-| [probes-forks/genesis-filter](cases/probes-forks/genesis-filter.md) | Erigon 3.8.0-dev · 01c118ee, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/genesis-range-rewards](cases/probes-forks/genesis-range-rewards.md) | Erigon 3.8.0-dev · 01c118ee, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/rewards-to](cases/probes-forks/rewards-to.md) | Erigon 3.8.0-dev · 01c118ee, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/rewards-union](cases/probes-forks/rewards-union.md) | Erigon 3.8.0-dev · 01c118ee, Reth 2.6.0 · 73a3a008 |
-| [probes-forks/rewards-window](cases/probes-forks/rewards-window.md) | Erigon 3.8.0-dev · 01c118ee, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/genesis-filter](cases/probes-forks/genesis-filter.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/genesis-range-rewards](cases/probes-forks/genesis-range-rewards.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/rewards-to](cases/probes-forks/rewards-to.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/rewards-union](cases/probes-forks/rewards-union.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Reth 2.6.0 · 73a3a008 |
+| [probes-forks/rewards-window](cases/probes-forks/rewards-window.md) | Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Reth 2.6.0 · 73a3a008 |
 | [probes-prague/create-reverted](cases/probes-prague/create-reverted.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61, Erigon 3.8.0-dev · 01c118ee, Erigon 3.6.1 · 0c4d9c91, Nethermind 2.1.0-preview · 54b760cd, Nethermind 2.0.0 · bec830cd, Reth 2.5.2 · 58a51b3e, Reth 2.6.0 · 73a3a008 |
 | [probes-prague/create2-collision](cases/probes-prague/create2-collision.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61 |
 | [probes-prague/field-access-list](cases/probes-prague/field-access-list.md) | Besu 26.9-develop · cf89071f, Besu 26.8.1 · d97cbd61 |

@@ -1,8 +1,17 @@
 {
   "cases": [
     {
-      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
       "name": "_control/beacon-timestamp-55",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "State at block 55 predates block 56's beacon-root write: the timestamp slot reads zero.",
+          "topic": "H28"
+        }
+      ],
       "request": {
         "id": 1,
         "jsonrpc": "2.0",
@@ -15,8 +24,17 @@
       }
     },
     {
-      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
       "name": "_control/beacon-root-55",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "State at block 55 predates block 56's beacon-root write: the root slot reads zero.",
+          "topic": "H28"
+        }
+      ],
       "request": {
         "id": 1,
         "jsonrpc": "2.0",

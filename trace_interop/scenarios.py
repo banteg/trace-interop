@@ -172,6 +172,18 @@ def prepare(hive, corpus, name, clients, head_hash):
         p.write_text(text.replace(needle,PRUNE+needle))
 
 
+def assessed_cases(captured, corpus):
+    """Captured requests with the current corpus expectations for the identical request.
+
+    Observations stay immutable; expectation fields (fee policy, models, references)
+    follow the checksummed corpus, so a corrected expectation reassesses old evidence.
+    A request that has since changed keeps the expectations it was captured with.
+    """
+    current = {c['name']: c for c in corpus}
+    return [current[c['name']] if c['name'] in current and current[c['name']]['request'] == c['request'] else c
+            for c in captured]
+
+
 def verify_state(corpus_name, corpus, observations, client):
     def result(name):
         observation = observations.get(name, {}).get(client, {})
@@ -247,4 +259,6 @@ def verify_setup(manifest, corpus, observations, client, launches=()):
             obs = observations.get(case['name'], {}).get(client, {})
             if obs.get('status') != 'result' or obs.get('response', {}).get('result') != head['number']:
                 return False, 'Canonical height control failed: '+case['name']
-    return verify_state(manifest.get('corpus', ''), corpus, observations, client)
+    # Controls are the captured cases, judged by their current definition when the request is unchanged.
+    cases = assessed_cases(manifest['selected_cases'], corpus.get('cases', []))
+    return verify_state(manifest.get('corpus', ''), dict(corpus, cases=cases), observations, client)

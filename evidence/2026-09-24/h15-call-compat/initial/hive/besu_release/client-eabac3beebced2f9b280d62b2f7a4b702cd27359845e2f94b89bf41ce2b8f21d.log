@@ -1,0 +1,306 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainID": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "constantinopleFixBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "osaka": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000",
+    "withdrawalRequestContractAddress": "0x00000961ef480eb55e80d19ad83579a64c007002",
+    "consolidationRequestContractAddress": "0x0000bbddc7ce488642fb579f8b00f3a590007251",
+    "builderDepositRequestContractAddress": "0x0000bff46984e3725691fa540a8c7589300d8282",
+    "builderExitRequestContractAddress": "0x000064d678505ad48f8ccb093bc65613800e8282"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "c7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "d803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "e7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "eda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+starting main client: /opt/besu/bin/besu --data-storage-format=BONSAI --logging=INFO --color-enabled=false --genesis-file=/genesis.json  --target-gas-limit=60000000 --min-gas-price=1 --tx-pool-price-bump=0 --rpc-gas-cap=50000000 --network-id=3503995874084926 --sync-mode=FULL --snapsync-server-enabled --host-allowlist=* --rpc-http-enabled --rpc-http-api=DEBUG,TRACE,ETH,NET,TXPOOL,WEB3,ADMIN,TESTING --rpc-http-host=0.0.0.0 --rpc-ws-enabled --rpc-ws-api=DEBUG,TRACE,ETH,NET,TXPOOL,WEB3,ADMIN,TESTING --rpc-ws-host=0.0.0.0 --engine-host-allowlist=* --engine-jwt-secret /jwtsecret blocks import --run --skip-pow-validation-enabled --from=/chain.rlp
+2026-09-24 12:56:44.179+0000 | main | INFO  | BlocksSubCommand | Import RLP block data from 1 files
+2026-09-24 12:56:44.244+0000 | main | INFO  | KZGPointEvalPrecompiledContract | Loading network trusted setup from classpath resource /kzg-trusted-setups/mainnet.txt
+2026-09-24 12:56:47.598+0000 | main | WARN  | Besu | Forcing --bonsai-limit-trie-logs-enabled=false, since it cannot be enabled with --sync-mode=FULL and --data-storage-format=BONSAI.
+2026-09-24 12:56:48.254+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 12:56:48.294+0000 | main | INFO  | KeyPairUtil | Generated new secp256k1 public key 0xbd61f4badf44195259b428162f96dc41c780330cbfe9c42fc805118b8a19b674eb6c41e172b4943628d0f316271b6f183e2186b38b9949d3575338a08bbdc6db and stored it to /opt/besu/key
+2026-09-24 12:56:48.463+0000 | main | INFO  | ProtocolScheduleBuilder | Protocol schedule created with milestones: [Prague:0]
+2026-09-24 12:56:48.466+0000 | main | INFO  | RocksDBKeyValueStorageFactory | No existing database at /opt/besu. Using default metadata for new db versionedStorageFormat=BaseVersionedStorageFormat{format=BONSAI, version=3}
+2026-09-24 12:56:48.735+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 12:56:48.737+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 12:56:48.751+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 12:56:48.752+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 12:56:48.939+0000 | main | INFO  | BesuControllerBuilder | Adding ChainDataPruner to observe block added events
+2026-09-24 12:56:48.942+0000 | main | INFO  | BesuControllerBuilder | BAL pruning enabled | BALs retained: 113056 | Frequency: 256
+2026-09-24 12:56:48.974+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction pool
+2026-09-24 12:56:48.992+0000 | main | INFO  | EthPeers | Updating the default best peer comparator
+2026-09-24 12:56:49.008+0000 | main | INFO  | BesuControllerBuilder | TTD difficulty is present, creating initial sync for PoS
+2026-09-24 12:56:49.042+0000 | main | INFO  | BlocksSubCommand | Importing from /chain.rlp
+2026-09-24 12:56:49.818+0000 | main | INFO  | RlpBlockImporter | Import at block 48 / 6719035 gas 745882 micros / Mgps 9.008174215224392 segment 9.008838510807466 cumulative
+Setting logging level to INFO
+2026-09-24 12:56:49.823+0000 | main | INFO  | Besu | Starting Besu
+2026-09-24 12:56:50.014+0000 | main | WARN  | Besu | --graphql-http-host has been ignored because --graphql-http-enabled was not defined on the command line.
+2026-09-24 12:56:50.087+0000 | main | INFO  | Besu | RPC HTTP JSON-RPC config: JsonRpcConfiguration{enabled=true, port=8545, host=0.0.0.0, corsAllowedDomains=[], hostsAllowlist=[*], rpcApis=[DEBUG, TRACE, ETH, NET, TXPOOL, WEB3, ADMIN, TESTING], authenticationEnabled=false, authenticationCredentialsFile=null, authenticationPublicKeyFile=null, tlsConfiguration=Optional.empty, httpTimeoutSec=30, maxActiveConnections=80, maxBatchSize=1024}
+2026-09-24 12:56:50.089+0000 | main | INFO  | Besu | Engine JSON-RPC config: JsonRpcConfiguration{enabled=true, port=8551, host=0.0.0.0, corsAllowedDomains=[], hostsAllowlist=[*], rpcApis=[ENGINE, ETH], authenticationEnabled=true, authenticationCredentialsFile=null, authenticationPublicKeyFile=/jwtsecret, tlsConfiguration=Optional.empty, httpTimeoutSec=30, maxActiveConnections=80, maxBatchSize=1024}
+2026-09-24 12:56:50.100+0000 | main | INFO  | Besu | Connecting to 0 static nodes.
+2026-09-24 12:56:50.104+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 12:56:50.219+0000 | main | INFO  | Besu | 
+####################################################################################################
+#                                                                                                  #
+# Besu version 26.8.1                                                                              #
+#                                                                                                  #
+# Configuration:                                                                                   #
+# Network: Custom genesis file                                                                     #
+# /genesis.json                                                                                    #
+# Network Id: 3503995874084926                                                                     #
+# Data storage: Bonsai                                                                             #
+# RocksDB max open files: 2119 (derived from available resources)                                  #
+# Sync mode: Full                                                                                  #
+# Sync min peers: 5                                                                                #
+# RPC HTTP APIs: DEBUG,TRACE,ETH,NET,TXPOOL,WEB3,ADMIN,TESTING                                     #
+# RPC HTTP port: 8545                                                                              #
+# Engine APIs: ENGINE,ETH                                                                          #
+# Engine port: 8551                                                                                #
+# Engine JWT: /jwtsecret                                                                           #
+# Using LAYERED transaction pool implementation                                                    #
+# Using STACKED worldstate update mode                                                             #
+# Opcode optimizations enabled                                                                     #
+# Parallel transaction processing enabled                                                          #
+# BAL pruning enabled (retained BALs: 113056)                                                      #
+# Target Gas Limit: 60M                                                                            #
+#                                                                                                  #
+# Host:                                                                                            #
+# Java: openjdk-java-25                                                                            #
+# Maximum heap size: 23.41 GB                                                                      #
+# OS: linux-x86_64                                                                                 #
+# glibc: 2.39                                                                                      #
+# jemalloc: 5.3.0-0-g54eaed1d8b56b1aa528be3bdd1877e59c56fa90c                                      #
+# Total memory: 93.60 GB                                                                           #
+# CPU cores: 22                                                                                    #
+#                                                                                                  #
+# Plugin Registration Summary:                                                                     #
+# No plugins have been registered.                                                                 #
+# TOTAL = 0 of 0 plugins successfully registered.                                                  #
+#                                                                                                  #
+####################################################################################################
+2026-09-24 12:56:50.220+0000 | main | INFO  | Besu | Security Module: localfile
+2026-09-24 12:56:50.221+0000 | main | INFO  | VersionMetadata | Lookup version metadata file in data directory: /opt/besu
+2026-09-24 12:56:50.221+0000 | main | INFO  | VersionMetadata | No version data detected. Writing Besu version 26.8.1 to metadata file
+2026-09-24 12:56:50.226+0000 | main | INFO  | Besu | Using the native implementation of alt bn128
+2026-09-24 12:56:50.226+0000 | main | INFO  | Besu | Using the Java implementation of modexp
+2026-09-24 12:56:50.226+0000 | main | INFO  | Besu | Using the native implementation of the signature algorithm
+2026-09-24 12:56:50.230+0000 | main | INFO  | Besu | Using the native implementation of the blake2bf algorithm
+2026-09-24 12:56:50.361+0000 | main | INFO  | Besu | Using the native BoringSSL implementation of p256verify
+2026-09-24 12:56:50.403+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 12:56:50.405+0000 | main | INFO  | ProtocolScheduleBuilder | Protocol schedule created with milestones: [Prague:0]
+2026-09-24 12:56:50.405+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 12:56:50.405+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 12:56:50.406+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 12:56:50.406+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 12:56:50.412+0000 | main | INFO  | BesuControllerBuilder | Adding ChainDataPruner to observe block added events
+2026-09-24 12:56:50.412+0000 | main | INFO  | BesuControllerBuilder | BAL pruning enabled | BALs retained: 113056 | Frequency: 256
+2026-09-24 12:56:50.413+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction pool
+2026-09-24 12:56:50.414+0000 | main | INFO  | EthPeers | Updating the default best peer comparator
+2026-09-24 12:56:50.414+0000 | main | INFO  | BesuControllerBuilder | TTD difficulty is present, creating initial sync for PoS
+2026-09-24 12:56:50.416+0000 | main | INFO  | RunnerBuilder | Resolved 0 bootnodes.
+2026-09-24 12:56:50.425+0000 | main | INFO  | RunnerBuilder | Detecting NAT service.
+2026-09-24 12:56:50.453+0000 | main | INFO  | CompositePeerDiscoveryAgentFactory | Peer discovery mode: V4 (requested=V4, V4=true, V5=false)
+2026-09-24 12:56:50.741+0000 | main | INFO  | Runner | Starting external services ... 
+2026-09-24 12:56:50.741+0000 | main | INFO  | JsonRpcHttpService | Starting JSON-RPC service on 0.0.0.0:8545
+2026-09-24 12:56:50.824+0000 | vert.x-eventloop-thread-1 | INFO  | JsonRpcHttpService | JSON-RPC service started and listening on 0.0.0.0:8545
+2026-09-24 12:56:50.824+0000 | main | INFO  | EngineJsonRpcService | Starting JSON-RPC service on 0.0.0.0:8551
+2026-09-24 12:56:50.828+0000 | vert.x-eventloop-thread-1 | INFO  | EngineJsonRpcService | JSON-RPC service started and listening on 0.0.0.0:8551
+2026-09-24 12:56:50.829+0000 | main | INFO  | WebSocketService | Starting Websocket service on 0.0.0.0:8546
+2026-09-24 12:56:50.831+0000 | vert.x-eventloop-thread-1 | INFO  | WebSocketService | Websocket service started and listening on 0.0.0.0:8546
+2026-09-24 12:56:50.833+0000 | main | INFO  | AutoTransactionLogBloomCachingService | Starting auto transaction log bloom caching service.
+2026-09-24 12:56:50.834+0000 | main | INFO  | LogBloomCacheMetadata | Lookup cache metadata file in data directory: /opt/besu/caches
+2026-09-24 12:56:50.848+0000 | main | INFO  | Runner | Starting Ethereum main loop ... 
+2026-09-24 12:56:50.848+0000 | main | INFO  | DockerNatManager | Starting docker NAT manager.
+2026-09-24 12:56:50.857+0000 | main | INFO  | NetworkRunner | Starting Network.
+2026-09-24 12:56:50.868+0000 | nioEventLoopGroup-2-1 | INFO  | RlpxAgent | P2P RLPx agent started and listening on /[0:0:0:0:0:0:0:0]:30303.
+2026-09-24 12:56:50.868+0000 | main | INFO  | CompositePeerDiscoveryAgent | Starting discovery on shared UDP socket (V4 only)
+2026-09-24 12:56:50.877+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV4 | Starting peer discovery agent on host=0.0.0.0, port=30303. IPv6 available.
+2026-09-24 12:56:50.908+0000 | disc-shared-eventloop | INFO  | NodeRecordManager | Writing node record to disk. NodeRecord{seq=1, publicKey=0x03bd61f4badf44195259b428162f96dc41c780330cbfe9c42fc805118b8a19b674, udpAddress=Optional[/127.0.0.1:30303], tcpAddress=Optional[/127.0.0.1:30303], quicAddress=Optional.empty, udp6Address=Optional.empty, tcp6Address=Optional.empty, quic6Address=Optional.empty, asBase64=-Je4QHzLtqaNEy9A1-r35ccJBaX74ejEbNZ3DB9LOFbncinyO1RdIoWx8DnXPREazrlbXRyWT4Un4xIOvUbP8YpHuv4Bg2V0aMfGhCwQMNmAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQO9YfS630QZUlm0KBYvltxBx4AzDL_pxC_IBRGLihm2dIN0Y3CCdl-DdWRwgnZf, nodeId=0xd0c6bc3f9090e518dfb1f5767329cc010a3aee64ab4dd366646ec9094826a0fa, customFields={tcp=30303, udp=30303, eth=[[0x2c1030d9, 0x]], id=V4, ip=0x7f000001, secp256k1=0x03bd61f4badf44195259b428162f96dc41c780330cbfe9c42fc805118b8a19b674}}
+2026-09-24 12:56:50.923+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV4 | P2P peer discovery agent started and listening on /0.0.0.0:30303
+2026-09-24 12:56:50.926+0000 | main | INFO  | DefaultP2PNetwork | Enode URL enode://bd61f4badf44195259b428162f96dc41c780330cbfe9c42fc805118b8a19b674eb6c41e172b4943628d0f316271b6f183e2186b38b9949d3575338a08bbdc6db@127.0.0.1:30303
+2026-09-24 12:56:50.927+0000 | main | INFO  | DefaultP2PNetwork | ENR URL enr:-Je4QHzLtqaNEy9A1-r35ccJBaX74ejEbNZ3DB9LOFbncinyO1RdIoWx8DnXPREazrlbXRyWT4Un4xIOvUbP8YpHuv4Bg2V0aMfGhCwQMNmAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQO9YfS630QZUlm0KBYvltxBx4AzDL_pxC_IBRGLihm2dIN0Y3CCdl-DdWRwgnZf
+2026-09-24 12:56:50.927+0000 | main | INFO  | DefaultP2PNetwork | Node address 0x7329cc010a3aee64ab4dd366646ec9094826a0fa
+2026-09-24 12:56:50.934+0000 | main | INFO  | NetworkRunner | Supported capabilities: [eth/68, eth/69, eth/70, eth/71], [snap/1]
+2026-09-24 12:56:50.934+0000 | main | INFO  | DefaultSynchronizer | Starting synchronizer.
+2026-09-24 12:56:50.937+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction handling following initial sync
+2026-09-24 12:56:50.937+0000 | main | INFO  | SnapServer | Starting SnapServer with Bonsai full flat db
+2026-09-24 12:56:50.941+0000 | main | INFO  | DefaultSynchronizer | Stopping block propagation.
+2026-09-24 12:56:50.942+0000 | main | INFO  | DefaultSynchronizer | Stopping the pruner.
+2026-09-24 12:56:50.943+0000 | main | INFO  | Runner | Ethereum main loop is up.
+2026-09-24 12:56:51.101+0000 | engine-ordered-execution-0 | INFO  | EngineForkchoiceUpdatedV3 | FCU(VALID) | head: df99e.....d2fe5 | safe: df99e.....d2fe5 | finalized: df99e.....d2fe5
+2026-09-24 12:56:51.457+0000 | vert.x-worker-thread-15 | ERROR | TraceCall | Invalid simulator result TransactionSimulatorResult[transaction=ContractCreation{type=FRONTIER, nonce=133, gasPrice=0 wei, gasLimit=100000, value=0x0000000000000000000000000000000000000000000000000000000000000000, sig=Signature{r=57896044618658097711785492504343953926418782139537452191302581570759080747168, s=57896044618658097711785492504343953926418782139537452191302581570759080747168, recId=0}, payload=0x60016000526001601ff3}, result=TransactionProcessingResult{status=INVALID, estimateGasUsedByTransaction=-1, gasRemaining=-1, gasSpent=-1, stateGasUsed=0, logs=[], output=0x, validationResult=ValidationResult{invalidReason=Optional[GAS_PRICE_BELOW_CURRENT_BASE_FEE], errorMessage=Optional[gasPrice is less than the current BaseFee]}, revertReason=Optional.empty}]
+2026-09-24 12:56:51.484+0000 | vert.x-worker-thread-17 | ERROR | TraceCall | Invalid simulator result TransactionSimulatorResult[transaction=MessageCall{type=FRONTIER, nonce=133, gasPrice=0 wei, gasLimit=600000, to=0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0, value=0x0000000000000000000000000000000000000000000000000000000000000000, sig=Signature{r=57896044618658097711785492504343953926418782139537452191302581570759080747168, s=57896044618658097711785492504343953926418782139537452191302581570759080747168, recId=0}, payload=0x}, result=TransactionProcessingResult{status=INVALID, estimateGasUsedByTransaction=-1, gasRemaining=-1, gasSpent=-1, stateGasUsed=0, logs=[], output=0x, validationResult=ValidationResult{invalidReason=Optional[GAS_PRICE_BELOW_CURRENT_BASE_FEE], errorMessage=Optional[gasPrice is less than the current BaseFee]}, revertReason=Optional.empty}]
+2026-09-24 12:56:51.533+0000 | vert.x-worker-thread-1 | ERROR | TraceCallMany | Invalid transaction simulator result
+2026-09-24 12:56:51.572+0000 | vert.x-worker-thread-6 | ERROR | TraceCall | Invalid simulator result TransactionSimulatorResult[transaction=MessageCall{type=FRONTIER, nonce=133, gasPrice=0 wei, gasLimit=600000, to=0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0, value=0x0000000000000000000000000000000000000000000000000000000000000000, sig=Signature{r=57896044618658097711785492504343953926418782139537452191302581570759080747168, s=57896044618658097711785492504343953926418782139537452191302581570759080747168, recId=0}, payload=0x}, result=TransactionProcessingResult{status=INVALID, estimateGasUsedByTransaction=-1, gasRemaining=-1, gasSpent=-1, stateGasUsed=0, logs=[], output=0x, validationResult=ValidationResult{invalidReason=Optional[GAS_PRICE_BELOW_CURRENT_BASE_FEE], errorMessage=Optional[gasPrice is less than the current BaseFee]}, revertReason=Optional.empty}]
+2026-09-24 12:56:51.587+0000 | vert.x-worker-thread-8 | ERROR | TraceCall | Invalid simulator result TransactionSimulatorResult[transaction=MessageCall{type=FRONTIER, nonce=133, gasPrice=0 wei, gasLimit=600000, to=0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0, value=0x0000000000000000000000000000000000000000000000000000000000000000, sig=Signature{r=57896044618658097711785492504343953926418782139537452191302581570759080747168, s=57896044618658097711785492504343953926418782139537452191302581570759080747168, recId=0}, payload=0x}, result=TransactionProcessingResult{status=INVALID, estimateGasUsedByTransaction=-1, gasRemaining=-1, gasSpent=-1, stateGasUsed=0, logs=[], output=0x, validationResult=ValidationResult{invalidReason=Optional[GAS_PRICE_BELOW_CURRENT_BASE_FEE], errorMessage=Optional[gasPrice is less than the current BaseFee]}, revertReason=Optional.empty}]
+2026-09-24 12:56:51.627+0000 | vert.x-worker-thread-10 | ERROR | TraceCall | Invalid simulator result TransactionSimulatorResult[transaction=MessageCall{type=FRONTIER, nonce=133, gasPrice=0 wei, gasLimit=600000, to=0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0, value=0x0000000000000000000000000000000000000000000000000000000000000000, sig=Signature{r=57896044618658097711785492504343953926418782139537452191302581570759080747168, s=57896044618658097711785492504343953926418782139537452191302581570759080747168, recId=0}, payload=0x}, result=TransactionProcessingResult{status=INVALID, estimateGasUsedByTransaction=-1, gasRemaining=-1, gasSpent=-1, stateGasUsed=0, logs=[], output=0x, validationResult=ValidationResult{invalidReason=Optional[GAS_PRICE_BELOW_CURRENT_BASE_FEE], errorMessage=Optional[gasPrice is less than the current BaseFee]}, revertReason=Optional.empty}]

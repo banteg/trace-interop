@@ -201,16 +201,37 @@ def assess_compatibility(case, observation, peers):
         if status == 'rpc_error':
             error = response.get('error', {})
             message = str(error.get('message', '')).lower()
-            kind = ('funds' if 'insufficient' in message and ('fund' in message or 'balance' in message) else
+            kind = ('funds' if ('insufficient' in message and ('fund' in message or 'balance' in message)) or
+                    'upfront gas cost exceeds account balance' in message or
+                    'upfront cost exceeds account balance' in message else
                     'base_fee' if 'base fee' in message or 'basefee' in message else
                     'priority' if ('priority' in message or 'tip' in message) and ('fee' in message or 'cap' in message) else None)
-            if error.get('code') in [-32000, -32003, -32602] and kind:
+            # Besu eth_call uses dedicated base-fee/funding codes. Compare the
+            # identified condition without imposing trace error-code policy on it.
+            codes = [-32000, -32003, -32602] + ([-32009, -32004] if eth else [])
+            if error.get('code') in codes and kind:
                 return ('rejection', kind), ''
             return None, 'unclassified RPC error: '+message
         return None, status
     left, left_error = outcome(peers.get(reference, {}), eth=True)
     right, right_error = outcome(observation)
-    detail = f'eth_call {left or left_error}; trace_call {right or right_error}.'
+    def describe(value, error):
+        if value is None:
+            return error
+        if value[0] == 'output':
+            return f'execution output ({(len(value[1])-2)//2} bytes)'
+        return f'{value[1]} rejection'
+    detail = f'eth_call: {describe(left,left_error)}; trace_call: {describe(right,right_error)}.'
+    if left and right and left[0] == right[0] == 'output':
+        if left == right:
+            detail += ' Output bytes agree.'
+        elif len(left[1]) == len(right[1]) == 450:
+            names = ['GASPRICE','BASEFEE','NUMBER','TIMESTAMP','GASLIMIT','sender BALANCE','beneficiary BALANCE']
+            differences = [f'{name}: eth_call {int(left[1][2+i*64:2+(i+1)*64],16)}, trace_call {int(right[1][2+i*64:2+(i+1)*64],16)}'
+                           for i,name in enumerate(names) if left[1][2+i*64:2+(i+1)*64] != right[1][2+i*64:2+(i+1)*64]]
+            detail += ' Differing words: '+'; '.join(differences)+'.'
+        else:
+            detail += ' Output bytes differ.'
     if left is None or right is None:
         status = 'blocked'
     elif case['fee_policy']['admission'] == 'observe':

@@ -1,5 +1,9 @@
 # H17 retest: fresh client matrix — 2026-09-24
 
+Historical snapshot: the [12:56 UTC H15 comparison](../h15-call-compat/README.md)
+now supplies the active reports. These original observations and validation
+counts remain evidence for the H17 fix.
+
 The full fourteen-corpus suite resolved all nine published builds together and
 passed its live [freshness preflight](preflight.json) at **2026-09-24 12:21:08 UTC**.
 [clients.lock.json](clients.lock.json) freezes that snapshot across the suite.
@@ -8,8 +12,8 @@ image identities are unchanged from the [11:07 UTC matrix](../current-matrix/REA
 
 Every corpus uses clean harness commit `038a11f` on Fedora and disposable Hive
 chains. Manifests, original requests/responses and checksums are retained per
-corpus. The [active report inventory](../../../reports.lock.json) selects this
-entire snapshot, including incomplete runs. The production node was not used.
+corpus. At publication, the [report inventory](../../../reports.lock.json) selected
+this entire snapshot, including incomplete runs. The production node was not used.
 The Reth inspector patch is tested [separately](../h17-client-fix/README.md) and
 is not substituted for either published Reth build.
 

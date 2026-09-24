@@ -1,0 +1,680 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "terminalTotalDifficultyPassed": true,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000001002": {
+      "code": "0x602a600055602a60005260206000f3",
+      "balance": "0x0"
+    },
+    "00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "2b5ad5c4795c026514f8317c7a215e218dccd6cf": {
+      "code": "0x00",
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "6813eb9362372eef6200f3b1dbc3f819671cba69": {
+      "code": "0xef01000000000000000000000000000000000000001002",
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "7e5f4552091a69125d5dfcb7b8c2659029395bdf": {
+      "balance": "0xde0b6b3a7640000",
+      "nonce": "0xa"
+    },
+    "83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "c7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "d803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "e7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "eda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+Initializing database with genesis state...
+INFO [09-24|13:05:18.729] Maximum peer count                       ETH=50 total=50
+INFO [09-24|13:05:18.732] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|13:05:18.736] Set global gas cap                       cap=50,000,000
+INFO [09-24|13:05:18.736] Engine API maximum reorg depth           depth=32
+WARN [09-24|13:05:18.736] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|13:05:18.736] Initializing the KZG library             backend=gokzg
+INFO [09-24|13:05:18.739] Defaulting to pebble as the backing database
+INFO [09-24|13:05:18.739] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|13:05:18.918] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|13:05:18.918] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|13:05:18.919] State scheme set by user                 scheme=path
+INFO [09-24|13:05:18.919] Load database journal from disk
+WARN [09-24|13:05:18.919] Head block is not reachable
+INFO [09-24|13:05:19.017] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|13:05:19.017] State snapshot generator is not found
+INFO [09-24|13:05:19.018] Starting snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="3.521µs"
+INFO [09-24|13:05:19.018] Initialized path database                triecache=16.00MiB statecache=16.00MiB buffer=64.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|13:05:19.018] Writing custom genesis block
+INFO [09-24|13:05:19.018] Resuming snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="251.446µs"
+INFO [09-24|13:05:19.018] Generated snapshot                       accounts=0 slots=0 storage=0.00B dangling=0 elapsed="478.347µs"
+INFO [09-24|13:05:19.020] Successfully wrote genesis state         database=chaindata hash=0b764c..47b65e
+Loading initial blockchain...
+INFO [09-24|13:05:19.254] Maximum peer count                       ETH=50 total=50
+INFO [09-24|13:05:19.257] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|13:05:19.263] Set global gas cap                       cap=50,000,000
+INFO [09-24|13:05:19.263] Engine API maximum reorg depth           depth=32
+WARN [09-24|13:05:19.264] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|13:05:19.264] Initializing the KZG library             backend=gokzg
+INFO [09-24|13:05:19.264] Using pebble as the backing database
+INFO [09-24|13:05:19.264] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|13:05:19.373] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|13:05:19.373] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|13:05:19.374] State scheme set by user                 scheme=path
+WARN [09-24|13:05:19.374] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|13:05:19.374] Load database journal from disk
+INFO [09-24|13:05:19.374] Failed to load journal, discard it       err="journal not found"
+INFO [09-24|13:05:19.428] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|13:05:19.429] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|13:05:19.429] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|13:05:19.429] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] Pre-Merge hard forks (block based):
+INFO [09-24|13:05:19.429]  - Homestead:                   #0       
+INFO [09-24|13:05:19.429]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|13:05:19.429]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|13:05:19.429]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|13:05:19.429]  - Byzantium:                   #0       
+INFO [09-24|13:05:19.429]  - Constantinople:              #0       
+INFO [09-24|13:05:19.429]  - Petersburg:                  #0       
+INFO [09-24|13:05:19.429]  - Istanbul:                    #0       
+INFO [09-24|13:05:19.429]  - Muir Glacier:                #0       
+INFO [09-24|13:05:19.429]  - Berlin:                      #0       
+INFO [09-24|13:05:19.429]  - London:                      #0       
+INFO [09-24|13:05:19.429]  - Arrow Glacier:               #0       
+INFO [09-24|13:05:19.429]  - Gray Glacier:                #0       
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] Merge configured:
+INFO [09-24|13:05:19.429]  - Total terminal difficulty:  131072
+INFO [09-24|13:05:19.429]  - Merge netsplit block:       #0       
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] Post-Merge hard forks (timestamp based):
+INFO [09-24|13:05:19.429]  - Shanghai:                    @0         
+INFO [09-24|13:05:19.429]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|13:05:19.429]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|13:05:19.429] 
+INFO [09-24|13:05:19.429] Loaded most recent local block           number=0 hash=0b764c..47b65e age=57y6mo2w
+INFO [09-24|13:05:19.430] Importing blockchain                     file=/chain.rlp
+INFO [09-24|13:05:19.431] Imported new chain segment               number=2 hash=ece1ea..cf7956 blocks=2 txs=0 mgas=0.000 elapsed=1.432ms mgasps=0.000 age=57y6mo2w triediffs=4.42KiB triedirty=0.00B
+INFO [09-24|13:05:19.431] Persisting dirty state                   head=2 root=842ee3..19b1a1 layers=2
+INFO [09-24|13:05:19.527] Persisted dirty state to file            path=/root/.ethereum/geth/triedb/merkle.journal size=4.40KiB elapsed=96.016ms
+INFO [09-24|13:05:19.586] Blockchain stopped
+Import done in 156.335698ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  25KB |     0     0B |     0     0B |     1   15KB |    0B |   0 0.61 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   15KB     0B       0 |    - 0.00 0.00 |    0B |     0     0B |     1   15KB |     0     0B |    0B |   1    0 |    0B      0B
+total |     1   15KB     0B       0 |    -    -    - |  27KB |     0     0B |     1   15KB |     1   42KB |    0B |   1 1.56 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (2.0KB)  in: 1.9KB  written: 27KB (1298% overhead)
+Flushes: 1
+Compactions: 1  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 0  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (512KB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 15KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 6 entries (27KB)  hit rate: 94.2%
+File cache: 1 tables, 0 blobfiles (496B)  hit rate: 98.5%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 1.7MB  block cache: 208KB (data: 27KB, maps: 182KB, entries: 0B)  memtables: 1.5MB
+
+Object memory: 12.185 MB current, 12.118 MB peak
+System memory: 49.760 MB current, 49.760 MB peak
+Allocations:   0.303 million
+GC pause:      2.482785ms
+
+Compacting entire database...
+Compaction done in 52.880144ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  27KB |     0     0B |     0     0B |     2   16KB |    0B |   0 0.61 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   15KB     0B       0 |    - 0.00 0.00 | 1.3KB |     0     0B |     1   15KB |     1   15KB |  16KB |   1 11.6 |    0B      0B
+total |     1   15KB     0B       0 |    -    -    - |  27KB |     0     0B |     1   15KB |     3   59KB |  16KB |   1 2.18 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (0B)  in: 1.9KB  written: 27KB (1298% overhead)
+Flushes: 2
+Compactions: 2  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 1  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (1.0MB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 15KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 0 entries (0B)  hit rate: 91.9%
+File cache: 0 tables, 0 blobfiles (0B)  hit rate: 97.2%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 2.2MB  block cache: 182KB (data: 0B, maps: 182KB, entries: 0B)  memtables: 2.0MB
+
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running go-ethereum with flags --state.scheme=path --verbosity=3 --bootnodes= --networkid 3503995874084926 --syncmode full --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.port=8545 --http.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --ws --ws.addr=0.0.0.0 --ws.origins "*" --ws.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.jwtsecret /jwtsecret --nat=extip:172.17.0.4 --datadir.minfreedisk=0
+INFO [09-24|13:05:19.732] Maximum peer count                       ETH=50 total=50
+INFO [09-24|13:05:19.733] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|13:05:19.738] Set global gas cap                       cap=50,000,000
+INFO [09-24|13:05:19.738] Engine API maximum reorg depth           depth=32
+WARN [09-24|13:05:19.739] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|13:05:19.739] Initializing the KZG library             backend=gokzg
+INFO [09-24|13:05:19.741] Allocated trie memory caches             clean=614.00MiB dirty=1.00GiB
+INFO [09-24|13:05:19.741] Using pebble as the backing database
+INFO [09-24|13:05:19.741] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|13:05:19.864] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|13:05:19.864] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|13:05:19.864] State scheme set by user                 scheme=path
+INFO [09-24|13:05:19.864] Initialising Ethereum protocol           network=3,503,995,874,084,926 dbversion=<nil>
+WARN [09-24|13:05:19.864] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|13:05:19.864] Load database journal from file          path=/root/.ethereum/geth/triedb/merkle.journal
+INFO [09-24|13:05:19.915] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|13:05:19.915] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|13:05:19.915] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|13:05:19.915] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] Pre-Merge hard forks (block based):
+INFO [09-24|13:05:19.915]  - Homestead:                   #0       
+INFO [09-24|13:05:19.915]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|13:05:19.915]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|13:05:19.915]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|13:05:19.915]  - Byzantium:                   #0       
+INFO [09-24|13:05:19.915]  - Constantinople:              #0       
+INFO [09-24|13:05:19.915]  - Petersburg:                  #0       
+INFO [09-24|13:05:19.915]  - Istanbul:                    #0       
+INFO [09-24|13:05:19.915]  - Muir Glacier:                #0       
+INFO [09-24|13:05:19.915]  - Berlin:                      #0       
+INFO [09-24|13:05:19.915]  - London:                      #0       
+INFO [09-24|13:05:19.915]  - Arrow Glacier:               #0       
+INFO [09-24|13:05:19.915]  - Gray Glacier:                #0       
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] Merge configured:
+INFO [09-24|13:05:19.915]  - Total terminal difficulty:  131072
+INFO [09-24|13:05:19.915]  - Merge netsplit block:       #0       
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] Post-Merge hard forks (timestamp based):
+INFO [09-24|13:05:19.915]  - Shanghai:                    @0         
+INFO [09-24|13:05:19.915]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|13:05:19.915]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|13:05:19.915] 
+INFO [09-24|13:05:19.915] Loaded most recent local block           number=2 hash=ece1ea..cf7956 age=57y6mo2w
+INFO [09-24|13:05:19.916] Initialized transaction indexer          range="last 2350000 blocks"
+INFO [09-24|13:05:19.916] Indexed transactions                     blocks=3 txs=0 tail=0 elapsed="131.34µs"
+INFO [09-24|13:05:20.147] Enabled full-sync                        head=2 hash=ece1ea..cf7956
+INFO [09-24|13:05:20.147] Gasprice oracle is ignoring threshold set threshold=2
+INFO [09-24|13:05:20.148] Registered sync override service
+INFO [09-24|13:05:20.148] Starting peer-to-peer node               instance=Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1
+INFO [09-24|13:05:20.196] IPC endpoint opened                      url=/root/.ethereum/geth.ipc
+INFO [09-24|13:05:20.197] Loaded JWT secret file                   path=/jwtsecret crc32=0xb0a0f6e6
+INFO [09-24|13:05:20.197] HTTP server started                      endpoint=[::]:8545 auth=false prefix= cors= vhosts=localhost
+INFO [09-24|13:05:20.197] WebSocket enabled                        url=ws://[::]:8546
+INFO [09-24|13:05:20.197] WebSocket enabled                        url=ws://[::]:8551
+INFO [09-24|13:05:20.197] HTTP server started                      endpoint=[::]:8551 auth=true  prefix= cors=localhost vhosts=localhost
+INFO [09-24|13:05:20.197] New local node record                    seq=1,790,255,120,195 id=749fe15c394d367c      ip=172.17.0.4 udp=30303 tcp=30303
+INFO [09-24|13:05:20.197] Started P2P networking                   self=enode://e6cfb00ee67d2818936f607ad8abef22070182e9fefeaa56846c2cc2430f2f8607842a14cd5aed31ce8c5f158c9125b1297d8c4175e4c533b173308502a4b109@172.17.0.4:30303
+INFO [09-24|13:05:20.197] Started log indexer
+WARN [09-24|13:05:20.475] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="214.875µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.488] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="363.113µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.499] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="214.832µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.513] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="315.754µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.524] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="290.35µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.534] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="285.232µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.545] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="329.374µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.556] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="289.962µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.567] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="403.118µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.579] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="322.906µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.592] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="371.505µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.603] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="364.584µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.614] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="338.664µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.625] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="314.847µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.636] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="242.356µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.647] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="227.279µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:20.737] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="303.035µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.745] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="383.444µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.757] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="290.312µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.770] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="251.062µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.781] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="329.841µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.792] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.466µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.803] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="220.256µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.815] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="312.704µs" err="insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.826] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="321.992µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.837] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="407.05µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.848] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="313.838µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.862] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="355.291µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.873] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="328.328µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.878] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="319.38µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.880] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="295.6µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.882] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="274.685µs" err="call 0: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000004444 have 0 want 153125000200000"
+WARN [09-24|13:05:20.926] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="349.818µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.938] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="362.844µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.940] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="284.437µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.942] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="290.973µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.944] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="252.168µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.947] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="677.931µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.950] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="297.819µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.952] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="192.728µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.954] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="307.757µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.956] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="227.106µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.958] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="581.202µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.961] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="339.485µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.963] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="373.141µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.966] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="294.085µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.968] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="311.663µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:20.970] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="295.008µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.010] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="308.342µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.012] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="372.077µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.014] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="195.981µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.016] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="198.422µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.017] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="179.865µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.019] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="222.451µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.021] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="276.356µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.023] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="169.274µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.025] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="212.102µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.027] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="216.955µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.029] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="226.842µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.031] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="316.384µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.033] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="298.503µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.036] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="214.62µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.038] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="192.977µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.040] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="179.6µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.041] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="307.072µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.044] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="277.079µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.046] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="203.362µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.048] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="313.233µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.050] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="283.321µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.052] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="188.728µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.054] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="176.644µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.055] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="173.919µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.057] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="237.05µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.059] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="195.294µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.061] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="220.281µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.063] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="298.029µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.065] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="285.327µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.066] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="304.478µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.069] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="216.555µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.071] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="223.654µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000153124999800000"
+WARN [09-24|13:05:21.149] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="244.095µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.151] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="201.047µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.153] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="199.722µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.154] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="192.511µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.156] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="213.618µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.158] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="175.203µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.160] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="196.009µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.161] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="273.972µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.163] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="217.331µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.165] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="220.616µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.166] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="205.91µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.168] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="215.609µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.169] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="249.273µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.171] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="310.774µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.174] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="317.747µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.176] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="317.525µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.178] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="300.029µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.180] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="287.524µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.182] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="196.791µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.184] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="294.118µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.186] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="246.899µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.188] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="278.813µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.190] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="270.203µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.193] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.315µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.195] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="338.911µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.197] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="328.866µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.199] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="306.917µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.201] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="318.088µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.203] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="294.936µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.205] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="282.542µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.208] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="300.683µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.210] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="212.417µs" err="call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000000000000000001"
+WARN [09-24|13:05:21.290] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="281.186µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.292] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="354.838µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.295] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.911µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.297] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="292.052µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.299] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="271.759µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.301] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="231.704µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.303] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="198.745µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.305] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="179.599µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.306] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="245.95µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.308] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="230.067µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.309] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="206.565µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.311] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="309.335µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.314] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="306.314µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.316] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="287.611µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.318] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="214.514µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.320] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="186.552µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.321] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="179.828µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.323] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="186.37µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.325] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="271.037µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.327] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="286.502µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.330] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="267.42µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.332] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="219.308µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.334] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="189.954µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.336] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="283.265µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.338] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="221.447µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.340] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="318.04µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.342] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="209.863µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.344] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="311.821µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.346] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="350.477µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.348] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="220.8µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.350] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="210.628µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.352] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="318.515µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.583] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="331.15µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.586] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="505.384µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.589] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="433.225µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.591] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="420.557µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.593] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="459.685µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.595] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="295.012µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.597] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="307.963µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.599] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="299.946µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.601] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="330.184µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.604] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="410.436µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.607] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="416.762µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.609] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="360.84µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.611] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="237.536µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.613] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="333.214µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.615] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="222.454µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.617] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="242.681µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.692] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="327.758µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.694] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="317.819µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.696] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="796.28µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.698] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="375.257µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.700] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="471.489µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.702] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="304.959µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.705] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="431.888µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.707] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="495.572µs" err="call 1: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.710] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="366.203µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.712] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="314.301µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.714] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="241.139µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.716] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="352.224µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.718] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="393.171µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.720] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="222.43µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.722] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="205.811µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.724] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="202.057µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.773] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="320.919µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.775] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="336.511µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.777] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="305.424µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.779] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="309.962µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.781] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="294.305µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.783] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="257.244µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.784] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="271.23µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.786] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="246.935µs" err="call 1: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 999983921874979000 want 1000000000000000000"
+WARN [09-24|13:05:21.829] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="220.076µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.831] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="199.033µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.834] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="284.394µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.836] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="313.923µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.838] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="201.265µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.840] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="257.728µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.842] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="175.171µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.843] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="285.856µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.845] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="302.147µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.848] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="334.146µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.850] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="206.752µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.852] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="315.034µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.854] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="316.999µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.857] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="290.986µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.859] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="209.299µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.861] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="284.334µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.863] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="287.008µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.865] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="182.249µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.867] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="310.104µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.868] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="175.648µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.870] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="184.861µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.872] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="285.523µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.874] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.604µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.876] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="272.75µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.878] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="202.159µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.880] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="305.125µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.882] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="295.668µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.884] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="352.616µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.887] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="214.318µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.889] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="312.349µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.891] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="196.854µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.892] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="268.562µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|13:05:21.933] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.843µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.935] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="203.621µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.936] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="237.759µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.938] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="179.434µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.940] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="208.718µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.941] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="181.425µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.943] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="274.858µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.945] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="183.623µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.946] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="216.265µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.948] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="207.801µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.950] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="204.594µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.951] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="188.847µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.953] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="224.812µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.955] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="188.685µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.957] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="205.78µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:21.959] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="259.261µs" err="call 0: max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 1, baseFee: 765625000"
+WARN [09-24|13:05:22.196] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="203.866µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.198] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="205.738µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.200] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="282.534µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.202] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="317.06µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.204] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="204.099µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.206] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="298.983µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.208] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="288.636µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.211] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="325.139µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.213] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="224.246µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.215] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="344.602µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.217] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="197.345µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.219] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="317.965µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.221] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="193.214µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.223] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="201.932µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.225] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="217.745µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.227] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="183.977µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 765625001, maxFeePerGas: 765625000"
+WARN [09-24|13:05:22.264] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="183.936µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.266] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="187.87µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.268] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="196.224µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.269] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="181.358µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.271] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="175.854µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.273] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="275.369µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.275] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="282.034µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.277] Served trace_call                        conn=172.17.0.3:48804 reqid=1 duration="270.653µs" err="max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.280] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="300.084µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.282] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="303.22µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.284] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="286.387µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.286] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="217.64µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.288] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="322.288µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.290] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="205.157µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.292] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="307.794µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"
+WARN [09-24|13:05:22.295] Served trace_callMany                    conn=172.17.0.3:48804 reqid=1 duration="318.884µs" err="call 0: max priority fee per gas higher than max fee per gas: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxPriorityFeePerGas: 1, maxFeePerGas: 0"

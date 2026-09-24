@@ -65,7 +65,9 @@ and pruning. A zero-match case selector is an error. A run directory cannot be o
 One runner owns a checkout's Hive build context at a time.
 
 `fee-policy` covers H15's legacy/typed fee boundaries, funding, environment and
-accounting across every trace selection. See [the H15 probe guide](h15-fee-policy.md)
+accounting across every trace selection. `fee-compat` pairs identical `eth_call`
+and `trace_call` requests, with opcode and balance witnesses. Both are included
+in the default matrix. See [the H15 probe guide](h15-fee-policy.md)
 for independent gas models, sequential checks and unresolved-default captures.
 
 ## Check or resolve versions

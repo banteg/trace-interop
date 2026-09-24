@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 9d6e8b8d](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/forks/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/forks/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -51,7 +51,7 @@
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d5b8', 'input': '0x', 'to': '0x000000000000000000000000000000000000100a', 'value': '0x0'}, 'error': 'Bad instruction', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi
 
-**Nethermind · 2.1.0-unstable · 9d6e8b8d** (`2.1.0-unstable+9d6e8b8d`)
+**Nethermind · 2.1.0-unstable · 641592d2** (`2.1.0-unstable+641592d2`)
 
 - [H09](../../decisions/H09.md): Failed frames have an error string and an explicit object or null result.
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x8d5b8', 'input': '0x', 'to': '0x000000000000000000000000000000000000100a', 'value': '0x0'}, 'error': 'Bad instruction', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the gi

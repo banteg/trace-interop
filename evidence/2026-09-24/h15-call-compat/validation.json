@@ -1,0 +1,25 @@
+{
+  "host": "Fedora Linux x86_64",
+  "tests": {
+    "command": "uv run python -m unittest discover -s tests",
+    "exit_code": 0,
+    "passed": 157
+  },
+  "verify": {
+    "command": "uv run trace-interop verify",
+    "exit_code": 0,
+    "frozen_inputs": 59,
+    "decisions": 32
+  },
+  "report_assessment_sha256": "0d15027d3715193c8df104517e3142c8359707ab844b659bfd6c80b220faa1b9",
+  "source_hashes": {
+    "tests/test_fee_compat.py": "96c0c846bcf86038425d05d96766106d4c8b4a658f354278717225ff3bb7d7f7",
+    "trace_interop/fee_policy.py": "7e331d44e4ca05a9a606f10587b68d791c4fa65f6581de5877f2661afeef2c7d",
+    "trace_interop/coverage.py": "ee3a90af5794a84b27f3b51f055c0d1ba3a7615a02a4ac0921e36df764f73323"
+  },
+  "files": {
+    "harness-tests.log": "29c8911ead0629a050a7c62fe5434d603d9ea43e58d53e6d0cd886b31549650b",
+    "harness-verify.log": "fb96b52796a56802c5ddd742352ead0dcf86aa1ee070c2bf419febd30c7bace5",
+    "source-audit.json": "eee537d3b20f23d465b9f0690988ae5850b947dffa660f4af75db4297b419c75"
+  }
+}

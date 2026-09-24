@@ -1,0 +1,117 @@
+2026-09-24 13:01:13.227+0000 | main | INFO  | BlocksSubCommand | Import RLP block data from 1 files
+2026-09-24 13:01:13.307+0000 | main | INFO  | KZGPointEvalPrecompiledContract | Loading network trusted setup from classpath resource /kzg-trusted-setups/mainnet.txt
+2026-09-24 13:01:16.418+0000 | main | WARN  | Besu | Forcing --bonsai-limit-trie-logs-enabled=false, since it cannot be enabled with --sync-mode=FULL and --data-storage-format=BONSAI.
+2026-09-24 13:01:17.092+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 13:01:17.127+0000 | main | INFO  | KeyPairUtil | Generated new secp256k1 public key 0x1bf2811251213ba339629156863171433866445087af260a0bfb6d52178ea466daf00d008a408a398758cb19ddd5d686a6be41f51115c3725cb8389d33d54061 and stored it to /opt/besu/key
+2026-09-24 13:01:17.290+0000 | main | INFO  | ProtocolScheduleBuilder | Protocol schedule created with milestones: [Prague:0]
+2026-09-24 13:01:17.294+0000 | main | INFO  | RocksDBKeyValueStorageFactory | No existing database at /opt/besu. Using default metadata for new db versionedStorageFormat=BaseVersionedStorageFormat{format=BONSAI, version=3}
+2026-09-24 13:01:17.708+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 13:01:17.710+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 13:01:17.723+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 13:01:17.724+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 13:01:17.889+0000 | main | INFO  | BesuControllerBuilder | Adding ChainDataPruner to observe block added events
+2026-09-24 13:01:17.892+0000 | main | INFO  | BesuControllerBuilder | BAL pruning enabled | BALs retained: 113056 | Frequency: 256
+2026-09-24 13:01:17.921+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction pool
+2026-09-24 13:01:17.947+0000 | main | INFO  | EthPeers | Updating the default best peer comparator
+2026-09-24 13:01:17.962+0000 | main | INFO  | BesuControllerBuilder | TTD difficulty is present, creating initial sync for PoS
+2026-09-24 13:01:17.991+0000 | main | INFO  | BlocksSubCommand | Importing from /chain.rlp
+2026-09-24 13:01:18.557+0000 | main | INFO  | RlpBlockImporter | Import at block 48 / 6719035 gas 540640 micros / Mgps 12.42792801124593 segment 12.428709633263411 cumulative
+Setting logging level to INFO
+2026-09-24 13:01:18.561+0000 | main | INFO  | Besu | Starting Besu
+2026-09-24 13:01:18.732+0000 | main | WARN  | Besu | --graphql-http-host has been ignored because --graphql-http-enabled was not defined on the command line.
+2026-09-24 13:01:18.807+0000 | main | INFO  | Besu | RPC HTTP JSON-RPC config: JsonRpcConfiguration{enabled=true, port=8545, host=0.0.0.0, corsAllowedDomains=[], hostsAllowlist=[*], rpcApis=[DEBUG, TRACE, ETH, NET, TXPOOL, WEB3, ADMIN, TESTING], authenticationEnabled=false, authenticationCredentialsFile=null, authenticationPublicKeyFile=null, tlsConfiguration=Optional.empty, httpTimeoutSec=30, maxActiveConnections=80, maxBatchSize=1024}
+2026-09-24 13:01:18.809+0000 | main | INFO  | Besu | Engine JSON-RPC config: JsonRpcConfiguration{enabled=true, port=8551, host=0.0.0.0, corsAllowedDomains=[], hostsAllowlist=[*], rpcApis=[ENGINE, ETH], authenticationEnabled=true, authenticationCredentialsFile=null, authenticationPublicKeyFile=/jwtsecret, tlsConfiguration=Optional.empty, httpTimeoutSec=30, maxActiveConnections=80, maxBatchSize=1024}
+2026-09-24 13:01:18.820+0000 | main | INFO  | Besu | Connecting to 0 static nodes.
+2026-09-24 13:01:18.824+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 13:01:18.922+0000 | main | INFO  | Besu | 
+####################################################################################################
+#                                                                                                  #
+# Besu version 26.9-develop-f9572aa                                                                #
+#                                                                                                  #
+# Configuration:                                                                                   #
+# Network: Custom genesis file                                                                     #
+# /genesis.json                                                                                    #
+# Network Id: 3503995874084926                                                                     #
+# Data storage: Bonsai                                                                             #
+# RocksDB max open files: 1842 (derived from available resources)                                  #
+# Sync mode: Full                                                                                  #
+# Sync min peers: 5                                                                                #
+# RPC HTTP APIs: DEBUG,TRACE,ETH,NET,TXPOOL,WEB3,ADMIN,TESTING                                     #
+# RPC HTTP port: 8545                                                                              #
+# Engine APIs: ENGINE,ETH                                                                          #
+# Engine port: 8551                                                                                #
+# Engine JWT: /jwtsecret                                                                           #
+# Using LAYERED transaction pool implementation                                                    #
+# Using STACKED worldstate update mode                                                             #
+# Opcode optimizations enabled                                                                     #
+# Parallel transaction processing enabled                                                          #
+# BAL pruning enabled (retained BALs: 113056)                                                      #
+# Target Gas Limit: 60M                                                                            #
+#                                                                                                  #
+# Host:                                                                                            #
+# Java: openjdk-java-25                                                                            #
+# Maximum heap size: 23.41 GB                                                                      #
+# OS: linux-x86_64                                                                                 #
+# glibc: 2.39                                                                                      #
+# jemalloc: 5.3.0-0-g54eaed1d8b56b1aa528be3bdd1877e59c56fa90c                                      #
+# Total memory: 93.60 GB                                                                           #
+# CPU cores: 22                                                                                    #
+#                                                                                                  #
+# Plugin Registration Summary:                                                                     #
+# No plugins have been registered.                                                                 #
+# TOTAL = 0 of 0 plugins successfully registered.                                                  #
+#                                                                                                  #
+####################################################################################################
+2026-09-24 13:01:18.923+0000 | main | INFO  | Besu | Security Module: localfile
+2026-09-24 13:01:18.924+0000 | main | INFO  | VersionMetadata | Lookup version metadata file in data directory: /opt/besu
+2026-09-24 13:01:18.924+0000 | main | INFO  | VersionMetadata | No version data detected. Writing Besu version 26.9-develop-f9572aa to metadata file
+2026-09-24 13:01:18.929+0000 | main | INFO  | Besu | Using the native implementation of alt bn128
+2026-09-24 13:01:18.929+0000 | main | INFO  | Besu | Using the Java implementation of modexp
+2026-09-24 13:01:18.929+0000 | main | INFO  | Besu | Using the native implementation of the signature algorithm
+2026-09-24 13:01:18.933+0000 | main | INFO  | Besu | Using the native implementation of the blake2bf algorithm
+2026-09-24 13:01:19.062+0000 | main | INFO  | Besu | Using the native BoringSSL implementation of p256verify
+2026-09-24 13:01:19.115+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=1, since it cannot be greater than the value of min-gas-price
+2026-09-24 13:01:19.117+0000 | main | INFO  | ProtocolScheduleBuilder | Protocol schedule created with milestones: [Prague:0]
+2026-09-24 13:01:19.118+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 13:01:19.118+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 13:01:19.120+0000 | main | INFO  | FlatDbStrategyProvider | Flat db mode found FULL
+2026-09-24 13:01:19.121+0000 | main | INFO  | FlatDbStrategyProvider | DB mode with code stored using code hash enabled = true
+2026-09-24 13:01:19.133+0000 | main | INFO  | BesuControllerBuilder | Adding ChainDataPruner to observe block added events
+2026-09-24 13:01:19.133+0000 | main | INFO  | BesuControllerBuilder | BAL pruning enabled | BALs retained: 113056 | Frequency: 256
+2026-09-24 13:01:19.135+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction pool
+2026-09-24 13:01:19.136+0000 | main | INFO  | EthPeers | Updating the default best peer comparator
+2026-09-24 13:01:19.137+0000 | main | INFO  | BesuControllerBuilder | TTD difficulty is present, creating initial sync for PoS
+2026-09-24 13:01:19.138+0000 | main | INFO  | RunnerBuilder | Resolved 0 bootnodes.
+2026-09-24 13:01:19.150+0000 | main | INFO  | RunnerBuilder | Detecting NAT service.
+2026-09-24 13:01:19.180+0000 | main | INFO  | CompositePeerDiscoveryAgentFactory | Peer discovery mode: BOTH (requested=BOTH, V4=true, V5=true)
+2026-09-24 13:01:19.476+0000 | main | INFO  | Runner | Starting external services ... 
+2026-09-24 13:01:19.477+0000 | main | INFO  | JsonRpcHttpService | Starting JSON-RPC service on 0.0.0.0:8545
+2026-09-24 13:01:19.556+0000 | vert.x-eventloop-thread-1 | INFO  | JsonRpcHttpService | JSON-RPC service started and listening on 0.0.0.0:8545
+2026-09-24 13:01:19.556+0000 | main | INFO  | EngineJsonRpcService | Starting JSON-RPC service on 0.0.0.0:8551
+2026-09-24 13:01:19.559+0000 | vert.x-eventloop-thread-1 | INFO  | EngineJsonRpcService | JSON-RPC service started and listening on 0.0.0.0:8551
+2026-09-24 13:01:19.561+0000 | main | INFO  | WebSocketService | Starting Websocket service on 0.0.0.0:8546
+2026-09-24 13:01:19.562+0000 | vert.x-eventloop-thread-1 | INFO  | WebSocketService | Websocket service started and listening on 0.0.0.0:8546
+2026-09-24 13:01:19.564+0000 | main | INFO  | AutoTransactionLogBloomCachingService | Starting auto transaction log bloom caching service.
+2026-09-24 13:01:19.564+0000 | main | INFO  | LogBloomCacheMetadata | Lookup cache metadata file in data directory: /opt/besu/caches
+2026-09-24 13:01:19.575+0000 | main | INFO  | Runner | Starting Ethereum main loop ... 
+2026-09-24 13:01:19.575+0000 | main | INFO  | DockerNatManager | Starting docker NAT manager.
+2026-09-24 13:01:19.581+0000 | main | INFO  | NetworkRunner | Starting Network.
+2026-09-24 13:01:19.591+0000 | nioEventLoopGroup-2-1 | INFO  | RlpxAgent | P2P RLPx agent started and listening on /[0:0:0:0:0:0:0:0]:30303.
+2026-09-24 13:01:19.591+0000 | main | INFO  | CompositePeerDiscoveryAgent | Starting discovery on shared UDP socket (V4 + V5)
+2026-09-24 13:01:19.609+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV4 | Starting peer discovery agent on host=0.0.0.0, port=30303. IPv6 available.
+2026-09-24 13:01:19.644+0000 | disc-shared-eventloop | INFO  | NodeRecordManager | Writing node record to disk. NodeRecord{seq=1, publicKey=0x031bf2811251213ba339629156863171433866445087af260a0bfb6d52178ea466, udpAddress=Optional[/127.0.0.1:30303], tcpAddress=Optional[/127.0.0.1:30303], quicAddress=Optional.empty, udp6Address=Optional.empty, tcp6Address=Optional.empty, quic6Address=Optional.empty, asBase64=-Je4QO-D2QqE9OT3sDh-BxJLWSfWg_TzFgYzLZ6Fmmb1S789SRBO0mBVZlIkFG5uctZXtfWsmOOljSzvVLYC8uDuOC4Bg2V0aMfGhEZU-baAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQMb8oESUSE7ozlikVaGMXFDOGZEUIevJgoL-21SF46kZoN0Y3CCdl-DdWRwgnZf, nodeId=0xb8ab38ba2c01cc91ff5f7f5913b3e9fb7321bc6ae9db299f3491cdec0a3323f1, customFields={tcp=30303, udp=30303, eth=[[0x4654f9b6, 0x]], id=V4, ip=0x7f000001, secp256k1=0x031bf2811251213ba339629156863171433866445087af260a0bfb6d52178ea466}}
+2026-09-24 13:01:19.664+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV4 | P2P peer discovery agent started and listening on /0.0.0.0:30303
+2026-09-24 13:01:19.664+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV5 | Starting DiscV5 peer discovery agent ...
+2026-09-24 13:01:19.748+0000 | disc-shared-eventloop | INFO  | NettyDiscoveryClientImpl | UDP discovery client started
+2026-09-24 13:01:19.753+0000 | disc-shared-eventloop | INFO  | PeerDiscoveryAgentV5 | P2P DiscV5 peer discovery agent started and listening on 30303
+2026-09-24 13:01:19.756+0000 | main | INFO  | DefaultP2PNetwork | Enode URL enode://1bf2811251213ba339629156863171433866445087af260a0bfb6d52178ea466daf00d008a408a398758cb19ddd5d686a6be41f51115c3725cb8389d33d54061@127.0.0.1:30303
+2026-09-24 13:01:19.757+0000 | main | INFO  | DefaultP2PNetwork | ENR URL enr:-Je4QO-D2QqE9OT3sDh-BxJLWSfWg_TzFgYzLZ6Fmmb1S789SRBO0mBVZlIkFG5uctZXtfWsmOOljSzvVLYC8uDuOC4Bg2V0aMfGhEZU-baAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQMb8oESUSE7ozlikVaGMXFDOGZEUIevJgoL-21SF46kZoN0Y3CCdl-DdWRwgnZf
+2026-09-24 13:01:19.757+0000 | main | INFO  | DefaultP2PNetwork | Node address 0x13b3e9fb7321bc6ae9db299f3491cdec0a3323f1
+2026-09-24 13:01:19.764+0000 | main | INFO  | NetworkRunner | Supported capabilities: [eth/68, eth/69, eth/70, eth/71], [snap/1]
+2026-09-24 13:01:19.764+0000 | main | INFO  | DefaultSynchronizer | Starting synchronizer.
+2026-09-24 13:01:19.767+0000 | main | INFO  | TransactionPoolFactory | Enabling transaction handling following initial sync
+2026-09-24 13:01:19.768+0000 | main | INFO  | SnapServer | Starting SnapServer with Bonsai full flat db
+2026-09-24 13:01:19.771+0000 | main | INFO  | DefaultSynchronizer | Stopping block propagation.
+2026-09-24 13:01:19.772+0000 | main | INFO  | DefaultSynchronizer | Stopping the pruner.
+2026-09-24 13:01:19.773+0000 | main | INFO  | Runner | Ethereum main loop is up.
+2026-09-24 13:01:19.773+0000 | engine-ordered-execution-0 | INFO  | EngineForkchoiceUpdatedV3 | FCU(VALID) | head: f0b15.....15e84 | safe: f0b15.....15e84 | finalized: 9901d.....7d54c

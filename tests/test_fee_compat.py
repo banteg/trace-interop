@@ -78,6 +78,24 @@ class FeeCompatibilityTests(unittest.TestCase):
         peers = {case['fee_reference']:self.observation('0x01',eth=True)}
         self.assertEqual(assess_compatibility(case,self.observation('0x02'),peers)[0]['status'],'observation')
 
+    def test_eth_reference_codes_do_not_impose_trace_error_codes(self):
+        case = self.case('legacy-below-base/trace/none')
+        def error(code, message):
+            return dict(status='rpc_error', response={'error':dict(code=code,message=message)})
+        for code, message, trace_message in [(-32009, 'Gas price below current base fee', 'fee cap less than base fee'),
+                                             (-32004, 'Upfront cost exceeds account balance', 'insufficient funds'),
+                                             (-32004, 'Upfront gas cost exceeds account balance', 'insufficient funds')]:
+            peers = {case['fee_reference']:error(code,message)}
+            self.assertEqual(assess_compatibility(case,error(-32000,trace_message),peers)[0]['status'],'matches')
+
+    def test_report_retains_blocked_pair_check_for_malformed_response(self):
+        from trace_interop.coverage import supplement
+        case = self.case('legacy-below-base/trace/none')
+        checks = supplement(case, {'status':'malformed_json'}, {}, [], ['H15'])
+        paired = [c for c in checks if 'identical eth_call' in c['requirement']]
+        self.assertEqual(len(paired), 1)
+        self.assertEqual(paired[0]['status'], 'blocked')
+
     def test_mixed_calls_reset_fee_environment_per_item(self):
         from scripts.build_fee_policy_fixtures import build as fee_cases
         case = next(c for c in fee_cases()['cases'] if c['name']=='mixed-legacy-free-priced-free/many/none')

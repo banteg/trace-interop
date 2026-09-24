@@ -8,25 +8,32 @@ not upstream Geth support or an independent vote for the draft.
 The evaluated source is [fa8ecb92](https://github.com/banteg/go-ethereum/commit/fa8ecb9242dda61858c44cf43c70d00548fbd7cd),
 reporting version `1.17.7-unstable`. The current matrix resolves this draft branch
 head alongside the latest native client images. Its
-[build lock](../evidence/2026-09-24/current-matrix/geth.lock.json) pins the source,
+[build lock](../evidence/2026-09-24/h15-call-compat/geth.lock.json) pins the source,
 toolchain, base image, binary hash and local image identity. This was a fresh build;
 the identical-binary reproduction check documented for the earlier `c36ee43e`
 capture applies only to that historical build.
 
 ## Measured coverage
 
-The [client report](../reports/clients/go-ethereum_trace.md) includes **1,259 eligible
-RPC observations across thirteen corpora**: `initial`, `a`, `repeat`, `forks`,
+The [client report](../reports/clients/go-ethereum_trace.md) includes **1,559 eligible
+RPC observations across fourteen corpora**: `initial`, `a`, `repeat`, `forks`,
 `fork-followup`, `reorg-safe`, `precompiles`, `precompile-values`,
-`callmany-isolation`, `raw-validation`, `h30`, `coverage` and `fee-policy`.
-These include 1,066 `trace_*` requests and 193 setup, isolation and comparison queries.
+`callmany-isolation`, `raw-validation`, `h30`, `coverage`, `fee-policy` and `fee-compat`.
+These include 1,322 `trace_*` requests and 237 setup, isolation and comparison queries.
 
-The current checks record 3,985 semantic matches and two H30 differences; all 718
-schema-checked results are valid. The 80 unresolved fee-default requests are
-policy-open observations, so matching checks do not settle those choices. The raw-transaction
-third argument and three pending-tag requests are policy observations. The 348
-trace RPC errors include deliberate malformed or invalid requests, rather than
-indicating 348 conformance failures.
+The current checks record 4,918 semantic matches and 229 differences. Of those
+differences, 225 are H15 checks, two are the zero-fee environment witness as seen
+through output/VM assertions (H08/H20), and two concern H30 filter bounds.
+All 862 schema-checked results are valid. The 120 unresolved fee-default requests
+are policy-open observations. The raw-transaction third argument and three
+pending-tag requests also remain policy observations. Error totals include deliberate
+invalid requests and do not directly count conformance failures.
+
+The paired calls confirm `eth_call` returns BASEFEE 0 for explicit zero fees,
+while this experimental `trace_call` preserves the original base fee. Its priced
+validation and upfront accounting agree across both methods. The changed H15
+verdict reflects the revised recommendation; the fork revision is unchanged.
+See [H15](../reports/decisions/H15.md) for the paired evidence and remaining work.
 
 Canonical reorg switching and restoration were verified. The tests include
 nested calls, failure isolation, return-memory effects, MCOPY, signed nonce

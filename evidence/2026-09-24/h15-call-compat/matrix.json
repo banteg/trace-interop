@@ -1,0 +1,250 @@
+[
+  {
+    "complete": true,
+    "corpus": "initial",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 684,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "a",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 819,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "repeat",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 396,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "forks",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 828,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "fork-followup",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 216,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "precompiles",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 171,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "precompile-values",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 135,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "raw-validation",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 639,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "coverage",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 216,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "fee-policy",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 6804,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "fee-compat",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 2700,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "callmany-isolation",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 90,
+    "exit_code": 0
+  },
+  {
+    "complete": true,
+    "corpus": "h30",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 171,
+    "exit_code": 0
+  },
+  {
+    "complete": false,
+    "corpus": "reorg-safe",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": false,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": false,
+      "reth_release": true
+    },
+    "exchanges": 147,
+    "exit_code": 1
+  },
+  {
+    "complete": true,
+    "corpus": "pruned",
+    "eligible": {
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 30,
+    "exit_code": 0
+  }
+]

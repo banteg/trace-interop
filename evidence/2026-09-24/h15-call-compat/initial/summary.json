@@ -1,0 +1,114 @@
+{
+  "complete": true,
+  "eligible": {
+    "besu_development": true,
+    "besu_release": true,
+    "erigon_development": true,
+    "erigon_release": true,
+    "go-ethereum_trace": true,
+    "nethermind_development": true,
+    "nethermind_release": true,
+    "reth_development": true,
+    "reth_release": true
+  },
+  "exchange_count": 684,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (besu_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (erigon_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (erigon_release)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (go-ethereum_trace)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (nethermind_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (nethermind_release)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (reth_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (reth_release)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 headBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 safeBlockHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (besu_release)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "besu_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "besu_release": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "erigon_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "erigon_release": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "go-ethereum_trace": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "nethermind_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "nethermind_release": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "reth_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    },
+    "reth_release": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "besu_development": "besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25",
+    "besu_release": "besu/v26.8.1/linux-x86_64/openjdk-java-25",
+    "erigon_development": "3.8.0-dev-e26d9bd4",
+    "erigon_release": "3.6.1-0c4d9c91",
+    "go-ethereum_trace": "Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1",
+    "nethermind_development": "2.1.0-unstable+641592d2",
+    "nethermind_release": "2.0.0+bec830cd",
+    "reth_development": "Reth Version: 2.5.2+58a51b3e",
+    "reth_release": "Reth Version: 2.6.0+73a3a008"
+  }
+}

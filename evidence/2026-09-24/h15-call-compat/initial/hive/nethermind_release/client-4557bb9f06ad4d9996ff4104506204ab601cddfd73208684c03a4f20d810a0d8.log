@@ -1,0 +1,1801 @@
+Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):
+{
+  "config": {
+    "ethash": {},
+    "chainId": 3503995874084926,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "arrowGlacierBlock": 0,
+    "grayGlacierBlock": 0,
+    "mergeNetsplitBlock": 0,
+    "terminalTotalDifficulty": 131072,
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    "pragueTime": 0,
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
+      },
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "osaka": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      },
+      "amsterdam": {
+        "target": 14,
+        "max": 21,
+        "baseFeeUpdateFraction": 11684671
+      },
+      "bpo1": {
+        "target": 10,
+        "max": 15,
+        "baseFeeUpdateFraction": 8346193
+      },
+      "bpo2": {
+        "target": 14,
+        "max": 21,
+        "baseFeeUpdateFraction": 11684671
+      },
+      "bpo3": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      },
+      "bpo4": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      },
+      "bpo5": {
+        "target": 9,
+        "max": 14,
+        "baseFeeUpdateFraction": 8832827
+      }
+    },
+    "depositContractAddress": "0x0000000000000000000000000000000000000000"
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x68697665636861696e",
+  "gasLimit": "0x5f5e100",
+  "difficulty": "0x20000",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0x00000961ef480eb55e80d19ad83579a64c007002": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460cb5760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101f457600182026001905f5b5f82111560685781019083028483029004916001019190604d565b909390049250505036603814608857366101f457346101f4575f5260205ff35b34106101f457600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260385f601437604c5fa0600101600355005b6003546002548082038060101160df575060105b5f5b8181146101835782810160030260040181604c02815460601b8152601401816001015481526020019060020154807fffffffffffffffffffffffffffffffff00000000000000000000000000000000168252906010019060401c908160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c81600101535360010160e1565b910180921461019557906002556101a0565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14156101cd57505f5b6001546002828201116101e25750505f6101e8565b01600290035b5f555f600155604c025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x000064d678505ad48f8ccb093bc65613800e8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460e1575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101c65760015460028111605157506057565b60029003015b601190600182026001905f5b5f821115607e57810190830284830290049160010191906063565b909390049250505036603014609e57366101c657346101c6575f5260205ff35b34106101c657600154600101600155600354806003026004013381556001015f35815560010160203590553360601b5f5260305f60143760445fa0600101600355005b6003546002548082038060101160f5575060105b5f5b81811461012d5782810160030260040181604402815460601b8152601401816001015481526020019060020154905260010160f7565b910180921461013f579060025561014a565b90505f6002555f6003555b36610198575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146101865760028282011161018e575b50505f6101ba565b01600290036101ba565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f6001556044025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000bbddc7ce488642fb579f8b00f3a590007251": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1460d35760115f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461019a57600182026001905f5b5f82111560685781019083028483029004916001019190604d565b9093900492505050366060146088573661019a573461019a575f5260205ff35b341061019a57600154600101600155600354806004026004013381556001015f358155600101602035815560010160403590553360601b5f5260605f60143760745fa0600101600355005b6003546002548082038060021160e7575060025b5f5b8181146101295782810160040260040181607402815460601b815260140181600101548152602001816002015481526020019060030154905260010160e9565b910180921461013b5790600255610146565b90505f6002555f6003555b5f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff141561017357505f5b6001546001828201116101885750505f61018e565b01600190035b5f555f6001556074025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000bff46984e3725691fa540a8c7589300d8282": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe1461011c575f54807fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff146102705760015460088111605257506058565b60089003015b601190600182026001905f5b5f821115607f57810190830284830290049160010191906064565b90939004925050503660b814609f57366102705734610270575f5260205ff35b8034106102705760383567ffffffffffffffff1680633b9aca001161027057633b9aca00029034031061027057600154600101600155600354806006026004015f358155600101602035815560010160403581556001016060358155600101608035815560010160a035905560b85f5f3760b85fa0600101600355005b60035460025480820380604011610131575060405b5f5b8181146101d7578281016006026004018160b8028154815260200181600101548152602001816002015480825260401c67ffffffffffffffff16816010018160381c81600701538160301c81600601538160281c81600501538160201c81600401538160181c81600301538160101c81600201538160081c816001015353602001816003015481526020018160040154815260200190600501549052600101610133565b91018092146101e957906002556101f4565b90505f6002555f6003555b36610242575f54600154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1461023057600882820111610238575b50505f610264565b0160089003610264565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff5b5f555f60015560b8025ff35b5f5ffd",
+      "balance": "0x1"
+    },
+    "0x0000f90827f1c53a10cb7a02335b175320002935": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500",
+      "balance": "0x1"
+    },
+    "0x000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+      "code": "0x3373fffffffffffffffffffffffffffffffffffffffe14604d57602036146024575f5ffd5b5f35801560495762001fff810690815414603c575f5ffd5b62001fff01545f5260205ff35b5f5ffd5b62001fff42064281555f359062001fff015500",
+      "balance": "0x2a"
+    },
+    "0x0c2c51a0990aee1d73c1228de158688341557508": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x14e46043e63d0e3cdcf2530519f4cfaf35058cb2": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x16c57edf7fa9d9525378b0b81bf8a3ced0620c1c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x1f5bde34b4afc686f136c7a3cb6ec376f7357759": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x2d389075be5be9f2246ad654ce152cf05990b209": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x3ae75c08b4c907eb63a8960c45b86e1e9ab6123c": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4340ee1b812acb40a1eb561c019c327b243b92df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4dde844b71bcdf95512fb4dc94e84fb67b512ed8": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x4e59b44847b379578588920ca78fbf26c0b4956c": {
+      "code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
+      "balance": "0x0",
+      "nonce": "0x1"
+    },
+    "0x5f552da00dfb4d3749d9e62dcee3c918855a86a0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x654aa64f5fbefb84c270ec74211b81ca8c44a72e": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x717f8aa2b982bee0e29f573d31df288663e1ce16": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df": {
+      "code": "0x3680600080376000206000548082558060010160005560005263656d697460206000a2",
+      "balance": "0x0"
+    },
+    "0x83c7e323d189f18725ac510004fdc2941f8c4a78": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x84e75c28348fb86acea1a93a39426d7d60f4cc46": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0x8bebc8ba651aee624937e7d897853ac30c95a067": {
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      "balance": "0x1",
+      "nonce": "0x1"
+    },
+    "0x8dcd17433742f4c0ca53122ab541d0ba67fc27ff": {
+      "code": "0x6202e6306000a0",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0": {
+      "code": "0x7fff010000000000000000000000000000000000000000000000000000000000006000526020610100600260006001739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f150600160005260006000602060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d361ea60f1506000600060006000739dcd17433742f4c0ca53122ab541d0ba67fc27d261ea60fa506000600060006000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60fa5060006000526000600060046000737dcd17433742f4c0ca53122ab541d0ba67fc27df61ea60f4507fff0100000000000000000000000000000000000000000000000000000000000060005260006000600260006000739dcd17433742f4c0ca53122ab541d0ba67fc27d161ea60f25060006000600460006000600461ea60f15061015a38038061015a610200396102006000f050637472656560006000a16002610100f35b646368696c6460006000a133ff",
+      "balance": "0x3b9aca00"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d1": {
+      "code": "0x366002146022577177726f6e672d63616c6c6461746173697a656000526012600efd5b60003560f01c61ff01146047576d77726f6e672d63616c6c64617461600052600e6012fd5b61ffee6000526002601ef3",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d2": {
+      "code": "0x60004381526020014681526020014181526020014881526020014481526020013281526020013481526020016000f3",
+      "balance": "0x0"
+    },
+    "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3": {
+      "code": "0x6000356142ff54501515603b577f4e487b7100000000000000000000000000000000000000000000000000000000600052600160045260246000fd5b7f08c379a0000000000000000000000000000000000000000000000000000000006000526020600452600a6024527f75736572206572726f7200000000000000000000000000000000000000000000604452604e6000fd",
+      "balance": "0x0"
+    },
+    "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xe7d13f7aa2a838d24c59b40186a0aca1e21cffcc": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    },
+    "0xeda8645ba6948855e3b3cd596bbb07596d59c603": {
+      "balance": "0xc097ce7bc90715b34b9f1000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": "0x3b9aca00",
+  "excessBlobGas": null,
+  "blobGasUsed": null,
+  "slotNumber": null
+}
+test.json
+{
+  "Init": {
+    "WebSocketsEnabled": true,
+    "UseMemDb": true,
+    "ChainSpecPath": "/genesis.json",
+    "BaseDbPath": "nethermind_db/hive",
+    "LogFileName": "/hive.logs.txt"
+  },
+  "JsonRpc": {
+    "Enabled": true,
+    "Host": "0.0.0.0",
+    "Port": 8545,
+    "GasCap": 50000000,
+    "WebSocketsPort": 8546,
+    "JwtSecretFile": "/jwt.secret",
+    "EnabledModules": [
+      "Debug",
+      "Eth",
+      "Subscribe",
+      "Trace",
+      "TxPool",
+      "Web3",
+      "Personal",
+      "Proof",
+      "Net",
+      "Parity",
+      "Health",
+      "Admin",
+      "Testing"
+    ],
+    "AdditionalRpcUrls": [
+      "http://0.0.0.0:8550|http;ws|debug;net;eth;subscribe;engine;web3;client;admin|no-auth",
+      "http://0.0.0.0:8551|http;ws|debug;net;eth;subscribe;engine;web3;client;admin"
+    ]
+  },
+  "Network": {
+    "DiscoveryPort": 30303,
+    "P2PPort": 30303,
+    "ExternalIp": "127.0.0.1"
+  },
+  "Hive": {
+    "ChainFile": "/chain.rlp",
+    "GenesisFilePath": "/genesis.json",
+    "BlocksDir": "/blocks",
+    "KeysDir": "/keys"
+  },
+  "Sync": {
+    "SnapServingEnabled": true,
+    "SnapSync": false
+  },
+  "Discovery": {
+    "DiscoveryVersion": "All"
+  },
+  "Merge": {
+    "Enabled": true,
+    "TerminalTotalDifficulty": "131072"
+  },
+  "TxPool": {
+    "BlobsSupport": "StorageWithReorgs"
+  },
+  "Blocks": {
+    "TargetBlockGasLimit": 60000000
+  }
+}
+Running Nethermind...
+24 Sep 12:57:08 | Nethermind is starting up 
+24 Sep 12:57:08 | Version: 2.0.0+bec830cd 
+24 Sep 12:57:08 | Loading embedded plugins 
+24 Sep 12:57:08 |   Found plugin type Nethermind.PortfolioViewer.Plugin.PortfolioViewerPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.BalRecorder.BalRecorderPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.BlockProfiler.BlockProfilerPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.CensorshipDetector.Plugin.CensorshipDetectorPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Consensus.AuRa.AuRaPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Consensus.Clique.CliquePlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Consensus.Ethash.EthashPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Consensus.Ethash.NethDevPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.EthStats.EthStatsPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Flashbots.Flashbots 
+24 Sep 12:57:08 |   Found plugin type Nethermind.HealthChecks.HealthChecksPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Hive.HivePlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Init.Snapshot.SnapshotPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Merge.AuRa.AuRaMergePlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Merge.Plugin.MergePlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Optimism.OptimismPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Shutter.ShutterPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Taiko.TaikoPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.UPnP.Plugin.UPnPPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Xdc.XdcPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.Xdc.XdcSubnetPlugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.StateDiffsWriter.StateDiffsWriterPlugin 
+24 Sep 12:57:08 | Loading 18 assemblies from /nethermind/plugins 
+24 Sep 12:57:08 | Loading assembly Nethermind.Consensus.AuRa 
+24 Sep 12:57:08 | Loading assembly Nethermind.Init 
+24 Sep 12:57:08 | Loading assembly Nethermind.StateDiff.Core 
+24 Sep 12:57:08 | Loading assembly Nethermind.StateDiffsWriter 
+24 Sep 12:57:08 | Loading assembly Nethermind.Merge.AuRa 
+24 Sep 12:57:08 | Loading assembly Nethermind.Taiko 
+24 Sep 12:57:08 | Loading assembly Nethermind.ExternalSigner.Plugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.ExternalSigner.Plugin 
+24 Sep 12:57:08 | Loading assembly Nethermind.CensorshipDetector.Plugin 
+24 Sep 12:57:08 | Loading assembly Nethermind.Api 
+24 Sep 12:57:08 | Loading assembly Nethermind.JsonRpc.TraceStore 
+24 Sep 12:57:08 |   Found plugin type Nethermind.JsonRpc.TraceStore 
+24 Sep 12:57:08 | Loading assembly Nethermind.EthStats 
+24 Sep 12:57:08 | Loading assembly Nethermind.Flashbots 
+24 Sep 12:57:08 | Loading assembly Nethermind.Merge.Plugin 
+24 Sep 12:57:08 | Loading assembly Nethermind.Optimism 
+24 Sep 12:57:08 | Loading assembly Nethermind.HealthChecks 
+24 Sep 12:57:08 | Loading assembly Nethermind.Shutter 
+24 Sep 12:57:08 | Loading assembly Nethermind.OpcodeTracing.Plugin 
+24 Sep 12:57:08 |   Found plugin type Nethermind.OpcodeTracing.Plugin 
+24 Sep 12:57:08 | Loading assembly Nethermind.Init.Snapshot 
+24 Sep 12:57:08 | Loading configuration from /configs/test.json 
+24 Sep 12:57:08 | Configuration complete 
+24 Sep 12:57:08 | Configuration: 19 non-default value(s):
+  Blocks.TargetBlockGasLimit = "0x3938700"
+  Config = "/configs/test.json"
+  Init.ChainSpecPath = "/genesis.json"
+  Init.BaseDbPath = "nethermind_db/hive"
+  Init.LogFileName = "/hive.logs.txt"
+  Init.DiagnosticMode = 1
+  JsonRpc.Enabled = true
+  JsonRpc.Host = "0.0.0.0"
+  JsonRpc.WebSocketsPort = 8546
+  JsonRpc.EnabledModules = ["Debug","Eth","Subscribe","Trace","TxPool","Web3","Personal","Proof","Net","Parity","Health","Admin","Testing"]
+  JsonRpc.AdditionalRpcUrls = ["http://0.0.0.0:8550|http;ws|debug;net;eth;subscribe;engine;web3;client;admin|no-auth","http://0.0.0.0:8551|http;ws|debug;net;eth;subscribe;engine;web3;client;admin"]
+  JsonRpc.GasCap = "0x2faf080"
+  JsonRpc.JwtSecretFile = "/jwt.secret"
+  Sync.SnapServingEnabled = true
+  Hive.Enabled = true
+  Merge.TerminalTotalDifficulty = "131072"
+  Merge.TerminalTotalDifficultyParsed = "0x20000"
+  Network.ExternalIp = "127.0.0.1"
+  Discovery.DiscoveryVersion = 3 
+24 Sep 12:57:08 | RocksDB: v10.10.1 
+24 Sep 12:57:08 | Did not find ChainSpec in embedded resources: /genesis.json 
+24 Sep 12:57:08 | Loading ChainSpec from file: /genesis.json 
+24 Sep 12:57:08 | Detected 25 plugins 
+24 Sep 12:57:08 |   HealthChecks by Nethermind     Enabled 
+24 Sep 12:57:08 |   Clique by Nethermind           Disabled 
+24 Sep 12:57:08 |   AuRa by Nethermind             Disabled 
+24 Sep 12:57:08 |   Ethash by Nethermind           Enabled 
+24 Sep 12:57:08 |   Optimism by Nethermind         Disabled 
+24 Sep 12:57:08 |   Shutter by Nethermind          Disabled 
+24 Sep 12:57:08 |   Taiko by Nethermind            Disabled 
+24 Sep 12:57:08 |   AuRaMerge by Nethermind        Disabled 
+24 Sep 12:57:08 |   Merge by Nethermind            Enabled 
+24 Sep 12:57:08 |   Hive by Nethermind             Enabled 
+24 Sep 12:57:08 |   BalRecorder by Nethermind      Disabled 
+24 Sep 12:57:08 |   BlockProfiler by Nethermind    Disabled 
+24 Sep 12:57:08 |   CensorshipDetector by Nethermind Disabled 
+24 Sep 12:57:08 |   Clef signer by Nethermind      Disabled 
+24 Sep 12:57:08 |   EthStats by Nethermind         Disabled 
+24 Sep 12:57:08 |   Flashbots by Nethermind        Disabled 
+24 Sep 12:57:08 |   NethDev by Nethermind          Disabled 
+24 Sep 12:57:08 |   Opcode tracing by Nethermind   Disabled 
+24 Sep 12:57:08 |   PortfolioViewer by Nethermind  Disabled 
+24 Sep 12:57:08 |   Snapshot by Nethermind         Disabled 
+24 Sep 12:57:08 |   StateDiffsWriter by Nethermind Disabled 
+24 Sep 12:57:08 |   TraceStore by Nethermind       Disabled 
+24 Sep 12:57:08 |   UPnP by Nethermind             Disabled 
+24 Sep 12:57:08 |   Xdc by Nethermind              Disabled 
+24 Sep 12:57:08 |   XdcSubnet by Nethermind        Disabled 
+24 Sep 12:57:09 | Loading Ckzg trusted setup from file /nethermind/kzg_trusted_setup.txt 
+24 Sep 12:57:09 | CPU: Intel(R) Core(TM) Ultra 9 185H (16C22T) 
+24 Sep 12:57:09 | Generating private key for the node (no node key in configuration) - stored in plain + key store for JSON RPC unlocking 
+24 Sep 12:57:11 | Store this password for unlocking the node key for JSON RPC - this is not secure - this log message will be in your log files. Use only in DEV contexts. 
+24 Sep 12:57:11 | Grafana / Prometheus metrics are disabled in configuration 
+24 Sep 12:57:11 | System.Diagnostics.Metrics disabled 
+24 Sep 12:57:11 | State backend: flat (fresh node, flat DB enabled). 
+24 Sep 12:57:11 | Block tree initialized, last processed is 0, best queued is 0, best known is 0, lowest inserted header , lowest sync inserted block number  
+24 Sep 12:57:13 | Generated new FlatDb compaction offset 110580643 
+24 Sep 12:57:13 | Client started with TTD: 131072, TTD reached: True, Terminal Block Number , FinalTotalDifficulty: 131072 
+24 Sep 12:57:13 | BlockchainProcessor started. 
+24 Sep 12:57:13 | Reached terminal block Hash: 0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2
+Number: 0
+Parent: 0x0000000000000000000000000000000000000000000000000000000000000000
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 0
+Timestamp: 0
+Extra Data: 68697665636861696e
+Difficulty: 131072
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+Receipts Root: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+State Root: 0x633b0d275a5fbc4a1fd106d1f90a0bfec5c97481689be3dcb742c23ce45ca1da
+BaseFeePerGas: 1000000000
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x0000000000000000000000000000000000000000000000000000000000000000
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: False
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ 
+24 Sep 12:57:13 | FlatDbManager FlushCache started. 
+24 Sep 12:57:14 | FlatDbManager FlushCache completed. Persisted to StateId { BlockNumber = 0, StateRoot = 0x633b0d275a5fbc4a1fd106d1f90a0bfec5c97481689be3dcb742c23ce45ca1da }. 
+24 Sep 12:57:14 | No block tree levels to review for fixes. All fine. 
+24 Sep 12:57:14 | Startup fixer         0 /          0 (  0.00 %) [                                     ] current       0 Blk/s 
+24 Sep 12:57:14 | Now syncing nodes starting from root of block 0 
+24 Sep 12:57:14 | Using the external IP override: NetworkConfig.ExternalIp = 127.0.0.1 
+24 Sep 12:57:14 | No bootnodes specified in configuration 
+24 Sep 12:57:14 | Discv5 bootnodes accepted: 0 (0/0 configured, 0/0 default, duplicates: 0, skipped: 0, use default discv5 bootnodes: False). 
+24 Sep 12:57:14 | No discv5 bootnodes specified in configuration 
+24 Sep 12:57:14 | No current state db key scheme. 
+24 Sep 12:57:14 | Loaded 0 nodes from /nethermind/static-nodes.json 
+24 Sep 12:57:14 | Loaded 0 nodes from /nethermind/trusted-nodes.json 
+24 Sep 12:57:14 | Skipping pivot update 
+24 Sep 12:57:14 | Hive is starting 
+24 Sep 12:57:14 | HIVE initialization started 
+24 Sep 12:57:14 | HIVE_CHAIN_ID: 3503995874084926 
+24 Sep 12:57:14 | HIVE_BOOTNODE: null 
+24 Sep 12:57:14 | HIVE_TESTNET: null 
+24 Sep 12:57:14 | HIVE_NODETYPE: null 
+24 Sep 12:57:14 | HIVE_FORK_HOMESTEAD: 0 
+24 Sep 12:57:14 | HIVE_FORK_DAO_BLOCK: null 
+24 Sep 12:57:14 | HIVE_FORK_DAO_VOTE: null 
+24 Sep 12:57:14 | HIVE_FORK_TANGERINE: 0 
+24 Sep 12:57:14 | HIVE_FORK_SPURIOUS: 0 
+24 Sep 12:57:14 | HIVE_FORK_METROPOLIS: null 
+24 Sep 12:57:14 | HIVE_FORK_BYZANTIUM: 0 
+24 Sep 12:57:14 | HIVE_FORK_CONSTANTINOPLE: 0 
+24 Sep 12:57:14 | HIVE_FORK_PETERSBURG: 0 
+24 Sep 12:57:14 | HIVE_MINER: null 
+24 Sep 12:57:14 | HIVE_MINER_EXTRA: null 
+24 Sep 12:57:14 | HIVE_FORK_BERLIN: 0 
+24 Sep 12:57:14 | HIVE_FORK_LONDON: 0 
+24 Sep 12:57:14 | HIVE_MERGE_BLOCK_ID: 0 
+24 Sep 12:57:14 | HIVE_SHANGHAI_TIMESTAMP: 0 
+24 Sep 12:57:14 | HIVE_CANCUN_TIMESTAMP: 0 
+24 Sep 12:57:14 | HIVE_CANCUN_BLOB_TARGET: 3 
+24 Sep 12:57:14 | HIVE_CANCUN_BLOB_MAX: 6 
+24 Sep 12:57:14 | HIVE_CANCUN_BLOB_BASE_FEE_UPDATE_FRACTION: 3338477 
+24 Sep 12:57:14 | HIVE_PRAGUE_TIMESTAMP: 0 
+24 Sep 12:57:14 | HIVE_PRAGUE_BLOB_TARGET: 6 
+24 Sep 12:57:14 | HIVE_PRAGUE_BLOB_MAX: 9 
+24 Sep 12:57:14 | HIVE_PRAGUE_BLOB_BASE_FEE_UPDATE_FRACTION: 5007716 
+24 Sep 12:57:14 | HIVE_OSAKA_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_OSAKA_BLOB_TARGET: 6 
+24 Sep 12:57:14 | HIVE_OSAKA_BLOB_MAX: 9 
+24 Sep 12:57:14 | HIVE_OSAKA_BLOB_BASE_FEE_UPDATE_FRACTION: 5007716 
+24 Sep 12:57:14 | HIVE_AMSTERDAM_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_AMSTERDAM_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_AMSTERDAM_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_AMSTERDAM_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE_BPO1_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_BPO1_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_BPO1_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_BPO1_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE_BPO2_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_BPO2_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_BPO2_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_BPO2_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE_BPO3_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_BPO3_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_BPO3_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_BPO3_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE_BPO4_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_BPO4_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_BPO4_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_BPO4_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE_BPO5_TIMESTAMP: null 
+24 Sep 12:57:14 | HIVE_BPO5_BLOB_TARGET: null 
+24 Sep 12:57:14 | HIVE_BPO5_BLOB_MAX: null 
+24 Sep 12:57:14 | HIVE_BPO5_BLOB_BASE_FEE_UPDATE_FRACTION: null 
+24 Sep 12:57:14 | HIVE Blocks dir does not exist: /blocks, skipping 
+24 Sep 12:57:14 | HIVE Loading blocks from /chain.rlp 
+24 Sep 12:57:14 | Starting Ethash block producer & sealer 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 1 (0xea61c4...e8ee23) 
+24 Sep 12:57:14 | HIVE block added to main: 0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23 
+24 Sep 12:57:14 | HIVE suggested 1 (0xea61c4...e8ee23), now best suggested header Hash: 0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23
+Number: 1
+Parent: 0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 218465
+Timestamp: 10
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x7038f53bf8b55810067d417adef6a491a2d486c525a728d4d9d5a6dfa5f26000
+Receipts Root: 0xad8eda967b81214eb6c5ca5faa905bf466e8710e40f042da23fbb941ada3747d
+State Root: 0xbf07993395912641df509e666bd1096a0c792c29ec0198c1ad1d3727bc6bc128
+BaseFeePerGas: 875000000
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 1 (0xea61c4...e8ee23) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 2 (0xad340c...dab4e2) 
+24 Sep 12:57:14 | HIVE block added to main: 0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2 
+24 Sep 12:57:14 | HIVE suggested 2 (0xad340c...dab4e2), now best suggested header Hash: 0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2
+Number: 2
+Parent: 0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 326781
+Timestamp: 20
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x13ad9c32765870b6b0194c443a4778b3ce0e563215ea26798141d002f05f6dfc
+Receipts Root: 0xd356a104e9887b7cb5064d5834db5ae1824fcdf9928cfcd89c6ca0da21e9bf1c
+State Root: 0xf3c18767cb73f181706e752f613af23ff1fd4207435e02c5e014f9e8d60d1cf3
+BaseFeePerGas: 766102893
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 2 (0xad340c...dab4e2) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 3 (0x4f6471...7a958f) 
+24 Sep 12:57:14 | HIVE block added to main: 0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f 
+24 Sep 12:57:14 | HIVE suggested 3 (0x4f6471...7a958f), now best suggested header Hash: 0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f
+Number: 3
+Parent: 0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 152804
+Timestamp: 30
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xf22b4d85d375e419dc9312c4e59eea59154cd5d9bd8bb5fa6885c543c8b181c1
+Receipts Root: 0x289abfe04079acf67f78290af253027033c0459547a8b3ce6a9f58415a354bed
+State Root: 0x53c4a687449ef90c3dbcc06ee18f9d34efb9bd223c2fbb4b08f829cf0ea806e1
+BaseFeePerGas: 670965902
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x756e335a8778f6aadb2cc18c5bc68892da05a4d8b458eee5ce3335a024000c67
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 3 (0x4f6471...7a958f) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 4 (0xdbb358...3d481e) 
+24 Sep 12:57:14 | HIVE block added to main: 0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e 
+24 Sep 12:57:14 | HIVE suggested 4 (0xdbb358...3d481e), now best suggested header Hash: 0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e
+Number: 4
+Parent: 0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 206537
+Timestamp: 40
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x1e2bc4f7ae19700cfe7f9e04c91467ac991019d5ba04957498dc674d0c2b226b
+Receipts Root: 0x4773d445b210344867d426770877ebc79c74b7a9cfddf598002f346ffaf5b4c2
+State Root: 0x5810a5f9e580813d8b5f429f2533f4310e771ea0d4812d7a960ee91ba81422a1
+BaseFeePerGas: 587351480
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x4b118bd31ed2c4eeb81dc9e3919e9989994333fe36f147c2930f12c53f0d3c78
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0x57cac3e52cdcd73e52bd9e54956e0eae370f00ed41f68edc78266bdb46c3a543
+, head 4 (0xdbb358...3d481e) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 5 (0xc0324d...86e698) 
+24 Sep 12:57:14 | HIVE block added to main: 0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698 
+24 Sep 12:57:14 | HIVE suggested 5 (0xc0324d...86e698), now best suggested header Hash: 0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698
+Number: 5
+Parent: 0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 42000
+Timestamp: 50
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x56367f82271619024833ff814795195d758846f2344b8e10d61fd42ae6136242
+Receipts Root: 0x07e83fbed755ea7ec3520be7f5fadf334fce69696d386882642c65d28304bc93
+State Root: 0xd6afb3192836b7e2a1267f5b4f83f8bd2b040720f6299f095621d86e5bb1a01b
+BaseFeePerGas: 514235820
+WithdrawalsRoot: 0xdbaedfd56ac788f31455949aba16d4e8e07ac80efd2ba209e6bcd9341be32f05
+ParentBeaconBlockRoot: 0xd0122166752d729620d41114ff5a94d36e5d3e01b449c23844900c023d1650a5
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 5 (0xc0324d...86e698) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 6 (0x12bbe6...ebfdd3) 
+24 Sep 12:57:14 | HIVE block added to main: 0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3 
+24 Sep 12:57:14 | HIVE suggested 6 (0x12bbe6...ebfdd3), now best suggested header Hash: 0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3
+Number: 6
+Parent: 0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 243316
+Timestamp: 60
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xc80ffe45598a58c39bbe9144941894ab1a8fd2edb499c24ad100c6a1bfd2f07f
+Receipts Root: 0xcdb87c912dc98faa8d51eb0d79e0a60042bab99167759e5388768de28e6771d5
+State Root: 0x141afb16e20b52a4a72441c575ec8742a87d523c462e95513ce22f905dbf007a
+BaseFeePerGas: 450010338
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x60c606c4c44709ac87b367f42d2453744639fc5bee099a11f170de98408c8089
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 6 (0x12bbe6...ebfdd3) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 7 (0xe9e86d...8ceeb7) 
+24 Sep 12:57:14 | HIVE block added to main: 0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7 
+24 Sep 12:57:14 | HIVE suggested 7 (0xe9e86d...8ceeb7), now best suggested header Hash: 0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7
+Number: 7
+Parent: 0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 153504
+Timestamp: 70
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x60fb8ec5ac23ad8f2aba0229523e0acf61b745f19ed50357c928ef0f559ae8b1
+Receipts Root: 0xeab76feea1ec3fb494e045a6e69e37dfb3d7e868e843e2bcefd5ccb80c1f3427
+State Root: 0x118679f69ed5ea1cc34c73af4c711781a7b36f6e824c70cd38a930a31dddf06c
+BaseFeePerGas: 394032783
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x6ee04e1c27edad89a8e5a2253e4d9cca06e4f57d063ed4fe7cc1c478bb57eeca
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 7 (0xe9e86d...8ceeb7) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 8 (0xfdb8a4...ae6e20) 
+24 Sep 12:57:14 | HIVE block added to main: 0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20 
+24 Sep 12:57:14 | HIVE suggested 8 (0xfdb8a4...ae6e20), now best suggested header Hash: 0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20
+Number: 8
+Parent: 0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 63000
+Timestamp: 80
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x040712a01cf806dadc663b0a3bc11e381d01eba21fcccc6f8f4a3a59caa866f5
+Receipts Root: 0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7
+State Root: 0x36ddf42f2f3f5e086b8860a637dc41673bce8bb30fc17f2cba3a2feac68ab55a
+BaseFeePerGas: 344929900
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x36616354a17658eb3c3e8e5adda6253660e3744cb8b213006f04302b723749a8
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 8 (0xfdb8a4...ae6e20) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 9 (0xf0a0d5...196635) 
+24 Sep 12:57:14 | HIVE block added to main: 0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635 
+24 Sep 12:57:14 | HIVE suggested 9 (0xf0a0d5...196635), now best suggested header Hash: 0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635
+Number: 9
+Parent: 0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 174348
+Timestamp: 90
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xa5ff8f5bb2af4d70332f1c76dc0aea97f2c64e19cabd357aa2834d0f814a8f3a
+Receipts Root: 0xfb3d950eeaa1f78aa044b59ab8c258027591b7656f8638089e46c62058230f28
+State Root: 0x2f3efa3ba9300427caf07be9691593caae2218aa3499aec2632a9d2af67ad9a4
+BaseFeePerGas: 301867989
+WithdrawalsRoot: 0x79177f9f508ab30e31ba761cf68912026e13b1a83e1a4e14579081749c03eac9
+ParentBeaconBlockRoot: 0xc13802d4378dcb9c616f0c60ea0edd90e6c2dacf61f39ca06add0eaa67473b94
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 9 (0xf0a0d5...196635) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 10 (0x5d5d83...efa6da) 
+24 Sep 12:57:14 | HIVE block added to main: 0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da 
+24 Sep 12:57:14 | HIVE suggested 10 (0x5d5d83...efa6da), now best suggested header Hash: 0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da
+Number: 10
+Parent: 0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 155604
+Timestamp: 100
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x702bd3dda76510581208d2ef7a651b5afa8bd88af977bc5aa04549fadaedee6f
+Receipts Root: 0xdaed03b6095c7e716cb12b760cdbf4a6d395cd5e996a225ddbea99936c2d2ba1
+State Root: 0xb6c565dfa971bcccb06bdf349a27199c395e26ec65ea6f96137e009b4df9fc9a
+BaseFeePerGas: 264266066
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x8b345497936c51d077f414534be3f70472e4df101dee8820eaaff91a6624557b
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 10 (0x5d5d83...efa6da) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 11 (0x4f100f...54aab4) 
+24 Sep 12:57:14 | HIVE block added to main: 0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4 
+24 Sep 12:57:14 | HIVE suggested 11 (0x4f100f...54aab4), now best suggested header Hash: 0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4
+Number: 11
+Parent: 0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 91768
+Timestamp: 110
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x391fe31b12755178b4a6ecc8d6df094f49a1ef297d64449b6238dcf234398911
+Receipts Root: 0xdf7522a1c073167cc877fdea36aa88217772286e16fc6fd17bfbbb06b63dbf5e
+State Root: 0x3f6f47b7434558efdbaf443cb239d111ec4b3b58766694f2492c7bc5e1aa7d73
+BaseFeePerGas: 231335610
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe958485d4b3e47b38014cc4eaeb75f13228072e7b362a56fc3ffe10155882629
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 11 (0x4f100f...54aab4) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 12 (0xce4d47...2bd53e) 
+24 Sep 12:57:14 | HIVE block added to main: 0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e 
+24 Sep 12:57:14 | HIVE suggested 12 (0xce4d47...2bd53e), now best suggested header Hash: 0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e
+Number: 12
+Parent: 0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 44201
+Timestamp: 120
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xd5e0b2b1b4239e27e186e8dbf010608b80cc38480b93b69314574ff97cb3f4c8
+Receipts Root: 0x140e3d4edd9dfef97d94d7e09fc5fa476e632ccf2937a685c1ae66b1a0ee1c23
+State Root: 0x2da5b9ca37940120e0aef94946cec741b110625c39e42ad6198832e3356fed9e
+BaseFeePerGas: 202471732
+WithdrawalsRoot: 0x3fde7b04c39415fd5fc6d622b6c6438211bb64e672cedbe35b5c86a950243cca
+ParentBeaconBlockRoot: 0x3346706b38a2331556153113383581bc6f66f209fdef502f9fc9b6daf6ea555e
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 12 (0xce4d47...2bd53e) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 13 (0x8e706b...5f3147) 
+24 Sep 12:57:14 | HIVE block added to main: 0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147 
+24 Sep 12:57:14 | HIVE suggested 13 (0x8e706b...5f3147), now best suggested header Hash: 0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147
+Number: 13
+Parent: 0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 254883
+Timestamp: 130
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x7ccc119d6efb825a27db835441f88f0a76bad3ef4fd5aefdca4fe26add2a6e39
+Receipts Root: 0x92f4f44fdcfcf53af41588838609944258b8d67e82bd97b4e9ae8d1a9bdbc1c4
+State Root: 0x71bed172449c0abf681d9bc80ee3db786a05383cf9ef140f879c0edc4ef52f25
+BaseFeePerGas: 177185140
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x346910f7e777c596be32f0dcf46ccfda2efe8d6c5d3abbfe0f76dba7437f5dad
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 13 (0x8e706b...5f3147) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 14 (0x741cdb...4db5a1) 
+24 Sep 12:57:14 | HIVE block added to main: 0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1 
+24 Sep 12:57:14 | HIVE suggested 14 (0x741cdb...4db5a1), now best suggested header Hash: 0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1
+Number: 14
+Parent: 0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 122636
+Timestamp: 140
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x5dea91c4116dd812d156709fbba8552baed353822f162fc28e0de3e95714fc5c
+Receipts Root: 0x3eb68ebe937b4a839dad1cbd8ea779fe5a77431d8b52d502d087c41a630f7819
+State Root: 0x3e5cf6e4fe852cbd85af41f0063fe738f8d6535b483d5cd532bbe59decd1dd1e
+BaseFeePerGas: 155149902
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe62a7bd9263534b752176d1ff1d428fcc370a3b176c4a6312b6016c2d5f8d546
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 14 (0x741cdb...4db5a1) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 15 (0xd45c99...dbde20) 
+24 Sep 12:57:14 | HIVE block added to main: 0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20 
+24 Sep 12:57:14 | HIVE suggested 15 (0xd45c99...dbde20), now best suggested header Hash: 0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20
+Number: 15
+Parent: 0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 42000
+Timestamp: 150
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xe47051933ba3c20c900e136cf361904c236c6971f97435f27b3c3185dcf11ee3
+Receipts Root: 0x07e83fbed755ea7ec3520be7f5fadf334fce69696d386882642c65d28304bc93
+State Root: 0x3aa1c064b2c139bde59cf92c53703b3e6d5b8dec47fe4592057e95889a8017b1
+BaseFeePerGas: 135803732
+WithdrawalsRoot: 0xc72fab39d31c9e9280a9530e932d218c3f6b8e2ec0b3539cb8e16ec788bb8873
+ParentBeaconBlockRoot: 0xffe267d11268388fd0426a627dedddeb075d68327df9172c0445cd2979ec7e4d
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 15 (0xd45c99...dbde20) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 16 (0x49206a...9f5aef) 
+24 Sep 12:57:14 | HIVE block added to main: 0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef 
+24 Sep 12:57:14 | HIVE suggested 16 (0x49206a...9f5aef), now best suggested header Hash: 0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef
+Number: 16
+Parent: 0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 226216
+Timestamp: 160
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xc2f399ef8b0d6347d99f3f82c22a8dc28c769c53fb5525c4ff517e99883e1345
+Receipts Root: 0x1195af4d09e8afac68ece61c66f4bf5d72243938015645872cab325207f2299d
+State Root: 0x35690c32b47ba7b43fc0fc7d3b18ca07cf5a67148b0427e15a198699375013aa
+BaseFeePerGas: 118842525
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x23cc648c9cd82c08214882b7e28e026d6eb56920f90f64731bb09b6acf515427
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 16 (0x49206a...9f5aef) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 17 (0xc33697...903c12) 
+24 Sep 12:57:14 | HIVE block added to main: 0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12 
+24 Sep 12:57:14 | HIVE suggested 17 (0xc33697...903c12), now best suggested header Hash: 0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12
+Number: 17
+Parent: 0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 153504
+Timestamp: 170
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x39a90cbae17dbf9a2035b162cacac2e7477442678b419699a378ceb1c4809214
+Receipts Root: 0x32417c0932d12ea3142f99ef26f278e4e76446b6047498f16ff94906d185f859
+State Root: 0x14f12c90de75830e293d90b0bc176a51220402b571e93f77e424f443e7b26db0
+BaseFeePerGas: 104054420
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 17 (0xc33697...903c12) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 18 (0x51a821...120a84) 
+24 Sep 12:57:14 | HIVE block added to main: 0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84 
+24 Sep 12:57:14 | HIVE suggested 18 (0x51a821...120a84), now best suggested header Hash: 0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84
+Number: 18
+Parent: 0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 63000
+Timestamp: 180
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x689e8c466be400c5f7ed549c7e8c99de75399c41338a19ade30a73c1fc92b516
+Receipts Root: 0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7
+State Root: 0xeec27a3a6dd4b802c30f74f318d8e68fa396ef28ccbe77ac906f6db03b1b5cc6
+BaseFeePerGas: 91087550
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x6d19894928a3ab44077bb85dcb47e0865ce1c4c187bba26bad059aa774c03cfe
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 18 (0x51a821...120a84) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 19 (0xf9026d...c5c076) 
+24 Sep 12:57:14 | HIVE block added to main: 0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076 
+24 Sep 12:57:14 | HIVE suggested 19 (0xf9026d...c5c076), now best suggested header Hash: 0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076
+Number: 19
+Parent: 0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 174348
+Timestamp: 190
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x0a1b5d2a818a2b518b6d202d2e830eb37e894bfc09b4388a684dc3413d6f3352
+Receipts Root: 0xb1bba674b24ae300f757f6e90df1e59837d0e6236747cab7ddc5640d0eae9f33
+State Root: 0x794b902d14ab513bc27ebdc7b8db04e864898481c9860cb88391defc25482521
+BaseFeePerGas: 79715953
+WithdrawalsRoot: 0x0b9689f1ff3408ce8c8c8365b575da0105b52ca8f0abce01da816dd6e147fcd1
+ParentBeaconBlockRoot: 0xefc50f4fc1430b6d5d043065201692a4a02252fef0699394631f5213a5667547
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 19 (0xf9026d...c5c076) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 20 (0x1430f5...60374e) 
+24 Sep 12:57:14 | HIVE block added to main: 0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e 
+24 Sep 12:57:14 | HIVE suggested 20 (0x1430f5...60374e), now best suggested header Hash: 0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e
+Number: 20
+Parent: 0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 155604
+Timestamp: 200
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xfa665e2eb7eed7edb80af8a80f91e54f3b341a0c454d00fbd1404c840dc73a52
+Receipts Root: 0xd8150d4199ee489d65abab75eefb9a1b91269b5c60ecd7ab6fe96f9e4d88ee79
+State Root: 0xd092865724e3573937fde57f01e7fb33e499139d8262bc27f2529fec520ffe15
+BaseFeePerGas: 69786205
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x3cc9f65fc1f46927eb46fbf6d14bc94af078fe8ff982a984bdd117152cd1549f
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 20 (0x1430f5...60374e) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 21 (0xec81bd...e7a4e6) 
+24 Sep 12:57:14 | HIVE block added to main: 0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6 
+24 Sep 12:57:14 | HIVE suggested 21 (0xec81bd...e7a4e6), now best suggested header Hash: 0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6
+Number: 21
+Parent: 0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 91768
+Timestamp: 210
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xb07201afedf4bb9a9c10b30d98e7a1d1d8e745a8e8544f4bc68d91635bfcf625
+Receipts Root: 0x42f106311d82369c232dcc59b934eafaa8fc5698e4c91d43832c18390f773484
+State Root: 0x91fd625b5325c2c32012c9a4b0c7c38ecbb30c73921744a970dd6da4bef300e9
+BaseFeePerGas: 61090077
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x63eb547e9325bc34fbbbdfda327a71dc929fd8ab6509795e56479e95dbd40a80
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 21 (0xec81bd...e7a4e6) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 22 (0xcbf0f2...dec999) 
+24 Sep 12:57:14 | HIVE block added to main: 0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999 
+24 Sep 12:57:14 | HIVE suggested 22 (0xcbf0f2...dec999), now best suggested header Hash: 0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999
+Number: 22
+Parent: 0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 44201
+Timestamp: 220
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xfe1a69d64059004eb971e8ac56d1fbea5a1fd515aa79379504138a5f5e59ef1b
+Receipts Root: 0x140e3d4edd9dfef97d94d7e09fc5fa476e632ccf2937a685c1ae66b1a0ee1c23
+State Root: 0x9e5dd1f45f111ac6a3e85394403da8445d059e03fcac840b2cf35c96619ca0f1
+BaseFeePerGas: 53467833
+WithdrawalsRoot: 0x6c41ec9d96e5fc713af8a9273082c95ab8539d0bdc1900f9ab41152aacbb0327
+ParentBeaconBlockRoot: 0x67317288cf707b0325748c7947e2dda5e8b41e45e62330d00d80e9be403e5c4c
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 22 (0xcbf0f2...dec999) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 23 (0x993bc6...516a09) 
+24 Sep 12:57:14 | HIVE block added to main: 0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09 
+24 Sep 12:57:14 | HIVE suggested 23 (0x993bc6...516a09), now best suggested header Hash: 0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09
+Number: 23
+Parent: 0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 254883
+Timestamp: 230
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xd3af8c33dbda7f19b6a47063088cacbc806b8c3fce7a6bb10ff4297da0fe95e0
+Receipts Root: 0xe7dfbf319db9495535170df949fa39d2ae9ed66cd218952c3ae02a853ca56fa8
+State Root: 0x09d1e696c27dfae4ab79ea3e5365d0c2b299647b8320a3b229b3b8821fed4ed8
+BaseFeePerGas: 46790263
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x7fc37e0d22626f96f345b05516c8a3676b9e1de01d354e5eb9524f6776966885
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 23 (0x993bc6...516a09) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 24 (0xeef27c...42c25b) 
+24 Sep 12:57:14 | HIVE block added to main: 0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b 
+24 Sep 12:57:14 | HIVE suggested 24 (0xeef27c...42c25b), now best suggested header Hash: 0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b
+Number: 24
+Parent: 0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 122636
+Timestamp: 240
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x245aadeee36ca533ae954a3511331ac52c744ba6bd67b8efdc12fd14a5d3d5b0
+Receipts Root: 0xa97e5fad54f84745b0369c5384cc60ef593e07f1b60e95ea26b904f37f435d09
+State Root: 0xeb80799a1e8af139536ed1d7e3e8a2dcff82a6a04bd1240fb09f68efb6a421a8
+BaseFeePerGas: 40971296
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xc8c5ffb6f192e9bda046ecd4ebb995af53c9dd6040f4ba8d8db9292c1310e43f
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 24 (0xeef27c...42c25b) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 25 (0x499ebe...ef343f) 
+24 Sep 12:57:14 | HIVE block added to main: 0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f 
+24 Sep 12:57:14 | HIVE suggested 25 (0x499ebe...ef343f), now best suggested header Hash: 0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f
+Number: 25
+Parent: 0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 42000
+Timestamp: 250
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xdfaa3c124cb20229adec3a7f5fca4df0fc5a0ee70014e61feb9afa111582fc8a
+Receipts Root: 0x07e83fbed755ea7ec3520be7f5fadf334fce69696d386882642c65d28304bc93
+State Root: 0x05eb5a45eb54eea76a40ad99cab69e33f46c080583208677a0cbe99e34e1a62e
+BaseFeePerGas: 35862446
+WithdrawalsRoot: 0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b
+ParentBeaconBlockRoot: 0xe40a9cfd9babe862d482ca0c07c0a4086641d16c066620cb048c6e673c5a4f91
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 25 (0x499ebe...ef343f) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 26 (0xc10be7...274558) 
+24 Sep 12:57:14 | HIVE block added to main: 0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558 
+24 Sep 12:57:14 | HIVE suggested 26 (0xc10be7...274558), now best suggested header Hash: 0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558
+Number: 26
+Parent: 0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 226216
+Timestamp: 260
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x660829581192d977655d4a1645a638bb186e12df4253e1143ab02e2f79c4d320
+Receipts Root: 0x900ddf670d10761cd167a380775b55275308c10fae730dac9dcf7e071ddc5444
+State Root: 0xb189cb20be459c2e15e36bab2ed584d99307f0d1a88af523a7007474a56ec995
+BaseFeePerGas: 31383406
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe82e7cff48aea45fb3f7b199b0b173497bf4c5ea66ff840e2ec618d7eb3d7470
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 26 (0xc10be7...274558) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 27 (0x9ab562...ce6b46) 
+24 Sep 12:57:14 | HIVE block added to main: 0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46 
+24 Sep 12:57:14 | HIVE suggested 27 (0x9ab562...ce6b46), now best suggested header Hash: 0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46
+Number: 27
+Parent: 0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 153492
+Timestamp: 270
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xbd0a40cf2e461c45866942b34691136442a9799fd8ccf1465488c77ec65c4afe
+Receipts Root: 0xbcd4531798104f1ae9650e8e7a9ab392ee931b7362603c62047af6dea6eaff01
+State Root: 0xba8b60e37f8ed7f101440f1962c5ef33c6efb7be0661f5cc1cc0d61ec1f11bb7
+BaseFeePerGas: 27478229
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x84ceda57767ea709da7ab17897a70da1868c9670931da38f2438519a5249534d
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 27 (0x9ab562...ce6b46) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 28 (0xdf38ea...8b6a1c) 
+24 Sep 12:57:14 | HIVE block added to main: 0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c 
+24 Sep 12:57:14 | HIVE suggested 28 (0xdf38ea...8b6a1c), now best suggested header Hash: 0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c
+Number: 28
+Parent: 0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 63000
+Timestamp: 280
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x26a36d8a3e4762b7b306654c26e2cf8e52184b85675225ed7d7190ca05d491ba
+Receipts Root: 0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7
+State Root: 0x4c7ec480cde7fac9b64372ab7b6e802ad9ef0c3edb0bfce8446808a41b2662e9
+BaseFeePerGas: 24053995
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe9dcf640383969359c944cff24b75f71740627f596110ee8568fa09f9a06db1c
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 28 (0xdf38ea...8b6a1c) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 29 (0xffca62...00c6a1) 
+24 Sep 12:57:14 | HIVE block added to main: 0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1 
+24 Sep 12:57:14 | HIVE suggested 29 (0xffca62...00c6a1), now best suggested header Hash: 0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1
+Number: 29
+Parent: 0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 174348
+Timestamp: 290
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xe906415b8d405e0268a74c2d0552a35505486f19e98d19bf4ae68723199bfc3e
+Receipts Root: 0x9a31b83ca97728b80f4def79170429ec8ff9a7aee0449d01b81ee47b36188eb0
+State Root: 0x42fb60b3f136f48897fabbb70748899a27e36fce71cce3bd3664f83ac4cfb6f6
+BaseFeePerGas: 21051035
+WithdrawalsRoot: 0x6381f561cec7b10d629746ba7271fe2073de60abea21f875aad1f37cf31c6b94
+ParentBeaconBlockRoot: 0x430ef678bb92f1af44dcd77af9c5b59fb87d0fc4a09901a54398ad5b7e19a8f4
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 29 (0xffca62...00c6a1) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 30 (0x6ec6ba...61f37c) 
+24 Sep 12:57:14 | HIVE block added to main: 0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c 
+24 Sep 12:57:14 | HIVE suggested 30 (0x6ec6ba...61f37c), now best suggested header Hash: 0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c
+Number: 30
+Parent: 0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 155604
+Timestamp: 300
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xe3d7dcbbf1f55b16cb173cdb2544a52ee00011811108276b6fc474a5fdffc43e
+Receipts Root: 0xdc971ae7db5c4fe90c56ca5bf2ae2ff47a1bf3bbb22e646b3f8087d951e92a92
+State Root: 0x9285546b74eaead24893831352e72b12b72021c0d7b58a45e6cf459b6095321f
+BaseFeePerGas: 18428832
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xf7af0b8b729cd17b7826259bc183b196dbd318bd7229d5e8085bf4849c0b12bf
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 30 (0x6ec6ba...61f37c) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 31 (0xbb9743...19d944) 
+24 Sep 12:57:14 | HIVE block added to main: 0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944 
+24 Sep 12:57:14 | HIVE suggested 31 (0xbb9743...19d944), now best suggested header Hash: 0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944
+Number: 31
+Parent: 0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 91768
+Timestamp: 310
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xf0e95ffe166d8b46b5f6625babb9801fe7fb403d76b8e50e9fd8887d77bff07e
+Receipts Root: 0x235c0abf67a51b23768845a5698181842b0c79cece3a20ceaeefd38c8613ceb8
+State Root: 0x999126d625d8c4d08fd9fd7f3e2a035bc6f25962933a55723ae2485cc415c4d1
+BaseFeePerGas: 16132397
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe134e19217f1b4c7e11f193561056303a1f67b69dac96ff79a6d0aafa994f7cb
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 31 (0xbb9743...19d944) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 32 (0xd3dd4c...799143) 
+24 Sep 12:57:14 | HIVE block added to main: 0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143 
+24 Sep 12:57:14 | HIVE suggested 32 (0xd3dd4c...799143), now best suggested header Hash: 0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143
+Number: 32
+Parent: 0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 44201
+Timestamp: 320
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x1270e2940eeaa71e48cdd5f16677b72a9d2ce49f05cfa7648cd16392ebcf23a2
+Receipts Root: 0x5b9b342354c4cfe78130d5e34196fd88af9a8abcc6713cfba9f39df39e7926f9
+State Root: 0x6ded55050b38988a6bd6a13c5c89fcf4e27b2329ce048adf17f3c552c860b156
+BaseFeePerGas: 14119549
+WithdrawalsRoot: 0x883dff66da2ba71433f4451ec5e1612a61a1fcb114fefba02788ce4a1fe4c905
+ParentBeaconBlockRoot: 0x9cc58ab1a8cb0e983550e61f754aea1dd4f58ac6482a816dc50658de750de613
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 32 (0xd3dd4c...799143) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 33 (0x057489...f33a85) 
+24 Sep 12:57:14 | HIVE block added to main: 0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85 
+24 Sep 12:57:14 | HIVE suggested 33 (0x057489...f33a85), now best suggested header Hash: 0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85
+Number: 33
+Parent: 0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 254883
+Timestamp: 330
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xeff06eea907ea5f6e7d81862b78cffa5d15f75f9558edfa2a599dc5b5121c144
+Receipts Root: 0x682d591b7d29fd41275abf15332adaf6e5b7acc1679ab7753e6a8280bdc663bb
+State Root: 0x802fded553fb86c30eae54e6ff1cb4bdd14b65bd5f4b506ac85563978b2bc263
+BaseFeePerGas: 12356166
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x79c2b067779a94fd3756070885fc8eab5e45033bde69ab17c0173d553df02978
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 33 (0x057489...f33a85) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 34 (0x90a065...ab0467) 
+24 Sep 12:57:14 | HIVE block added to main: 0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467 
+24 Sep 12:57:14 | HIVE suggested 34 (0x90a065...ab0467), now best suggested header Hash: 0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467
+Number: 34
+Parent: 0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 122636
+Timestamp: 340
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x40a9bb9fcb043019d587e3b4cb25b74d33216d79584d4f59f929dd0b2463ca60
+Receipts Root: 0xd0b5c53d5ffe3f88d0b4980794f6028fe5e753594733231b6399985a1b466b9c
+State Root: 0x3ac1de91ecf80f6d08e811ff6291cf88e8dbfb9a8cf58cea1f2646cf7290cf45
+BaseFeePerGas: 10819519
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xd908ef75d05b895600d3f9938cb5259612c71223b68d30469ff657d61c6b1611
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 34 (0x90a065...ab0467) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 35 (0x2cb91e...8c1918) 
+24 Sep 12:57:14 | HIVE block added to main: 0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918 
+24 Sep 12:57:14 | HIVE suggested 35 (0x2cb91e...8c1918), now best suggested header Hash: 0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918
+Number: 35
+Parent: 0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 42000
+Timestamp: 350
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x46f42be088e471d694b33cd54905d1c9cd065d8b0fde3f2374a684f52f830e3c
+Receipts Root: 0x07e83fbed755ea7ec3520be7f5fadf334fce69696d386882642c65d28304bc93
+State Root: 0x5c91ca976fa703aa11543ed07a72ceed09a49cf711cf0af72a89d8f2140f4ccb
+BaseFeePerGas: 9470397
+WithdrawalsRoot: 0xc40436033d4eb81c0625256e91d2bb299a51cb15635b5dabf70ebd386ce0fbc2
+ParentBeaconBlockRoot: 0xe0d31906b7c46ac7f38478c0872d3c634f7113d54ef0b57ebfaf7f993959f5a3
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 35 (0x2cb91e...8c1918) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 36 (0x9635eb...bcaf2e) 
+24 Sep 12:57:14 | HIVE block added to main: 0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e 
+24 Sep 12:57:14 | HIVE suggested 36 (0x9635eb...bcaf2e), now best suggested header Hash: 0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e
+Number: 36
+Parent: 0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 226216
+Timestamp: 360
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x3f7f185aae49c2230ad33d0fb1037ebf7ac08909eca349944ae8473af9f3ac3d
+Receipts Root: 0xa7d69c903ad9defe2426112e06a0261220c2641166aebf95d84fa5f95e7e7864
+State Root: 0xf0e2c4b2e75aa6d194a2981eb5e943b7f1b5bf0ebcd11fa4f393f07aa2c93f3b
+BaseFeePerGas: 8287592
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x2318f5c5e6865200ad890e0a8db21c780a226bec0b2e29af1cb3a0d9b40196ae
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 36 (0x9635eb...bcaf2e) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 37 (0xfa7bb7...e72d4f) 
+24 Sep 12:57:14 | HIVE block added to main: 0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f 
+24 Sep 12:57:14 | HIVE suggested 37 (0xfa7bb7...e72d4f), now best suggested header Hash: 0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f
+Number: 37
+Parent: 0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 153504
+Timestamp: 370
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xf4720acb72db813465445573935a01437bebff64b4ede50b82661bc7c449a888
+Receipts Root: 0x5c8144b97f7aa7f196db747963ddb6e307213ac60b61dec60f6e55a0a2973fef
+State Root: 0x02f2e695f6a54223d4318f46157e4f85ad9ff9da0ff1ac140b3cce215235f4cf
+BaseFeePerGas: 7256330
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x523997f8d8fed954658f547954fdeceab818b411862647f2b61a3619f6a4d4bc
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 37 (0xfa7bb7...e72d4f) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 38 (0xcdfa89...f713b3) 
+24 Sep 12:57:14 | HIVE block added to main: 0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3 
+24 Sep 12:57:14 | HIVE suggested 38 (0xcdfa89...f713b3), now best suggested header Hash: 0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3
+Number: 38
+Parent: 0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 63000
+Timestamp: 380
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x664b9f24a09708a1292d53e31f52593f0e6ed0025f8a7800ce3c7e305ddf1a44
+Receipts Root: 0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7
+State Root: 0x8835773dedbcac4a3c30fe52dbf14589f1689d87c90ce198df1589c1392d2c22
+BaseFeePerGas: 6352074
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xbe3396540ea36c6928cccdcfe6c669666edbbbcd4be5e703f59de0e3c2720da7
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 38 (0xcdfa89...f713b3) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 39 (0x17ffe7...ed85a3) 
+24 Sep 12:57:14 | HIVE block added to main: 0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3 
+24 Sep 12:57:14 | HIVE suggested 39 (0x17ffe7...ed85a3), now best suggested header Hash: 0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3
+Number: 39
+Parent: 0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 174348
+Timestamp: 390
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xd9a06e2af6c4b4daf58cb33a7cf2d654b74216f659d63335b24a0f26a61b7635
+Receipts Root: 0x074675acbcfe998a1ff817abf439716e1e9f0ced01b743287d98e27953f9e3c7
+State Root: 0xcc2e75c439e874b1a70fe9915b1724428769da17f917ce3520f70dc5f20b5358
+BaseFeePerGas: 5559066
+WithdrawalsRoot: 0x26154c67288b759813ade3ca3f057f0f7901d433ee965157f0c89a456920720c
+ParentBeaconBlockRoot: 0x2d3fcfd65d0a6881a2e8684d03c2aa27aee6176514d9f6d8ebb3b766f85e1039
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 39 (0x17ffe7...ed85a3) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 40 (0x956fe2...becfcb) 
+24 Sep 12:57:14 | HIVE block added to main: 0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb 
+24 Sep 12:57:14 | HIVE suggested 40 (0x956fe2...becfcb), now best suggested header Hash: 0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb
+Number: 40
+Parent: 0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 155604
+Timestamp: 400
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xaeb09c955b811fb97f5cc5f4808a8081b0f37ff1cc41165247f128db44387171
+Receipts Root: 0xff8ee8e2de5310ca02dd71ed845507e7bfe56570ae937766aea12e1dce537552
+State Root: 0xa6f25fd901aa7402b8b674c46fdc345f242e02aa000824d121e848ad0d6e4bb5
+BaseFeePerGas: 4866606
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x7ce0d5c253a7f910cca7416e949ac04fdaec20a518ab6fcbe4a63d8b439a5cfc
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 40 (0x956fe2...becfcb) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 41 (0x196e01...dd58d9) 
+24 Sep 12:57:14 | HIVE block added to main: 0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9 
+24 Sep 12:57:14 | HIVE suggested 41 (0x196e01...dd58d9), now best suggested header Hash: 0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9
+Number: 41
+Parent: 0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 91768
+Timestamp: 410
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x5fc57a91912141507c2f9ddc4d9e5ad5b105f345d028532ff8f42a11f0aefa89
+Receipts Root: 0x8dca62e29d5ba5bbe850c35134703017c82cc6c612d6325ac57b10b0f915041f
+State Root: 0x60d779c8a3cc1b3ed404d06f414ffbe76f25c87b3a2416cccf6cba39fda1bc59
+BaseFeePerGas: 4260174
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x4da13d835ea44926ee13f34ce8fcd4b9d3dc65be0a351115cf404234c7fbd256
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 41 (0x196e01...dd58d9) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 42 (0x3ae886...df66ca) 
+24 Sep 12:57:14 | HIVE block added to main: 0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca 
+24 Sep 12:57:14 | HIVE suggested 42 (0x3ae886...df66ca), now best suggested header Hash: 0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca
+Number: 42
+Parent: 0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 44201
+Timestamp: 420
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xae2bf1de1ade47167500adbb4cf2cd45dc44c82f63e41cffb5df94248a7759e1
+Receipts Root: 0x140e3d4edd9dfef97d94d7e09fc5fa476e632ccf2937a685c1ae66b1a0ee1c23
+State Root: 0x81fe48f89833f3352a522bef67d34d18205638246c1128068c2ebcd60696437a
+BaseFeePerGas: 3728630
+WithdrawalsRoot: 0x741c26ca372c028f799e8de26a3efe5884f68fc25a20ae689970eacf973ba498
+ParentBeaconBlockRoot: 0xc5ee7483802009b45feabf4c5f701ec485f27bf7d2c4477b200ac53e210e9844
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 42 (0x3ae886...df66ca) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 43 (0xa90052...55a2d2) 
+24 Sep 12:57:14 | HIVE block added to main: 0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2 
+24 Sep 12:57:14 | HIVE suggested 43 (0xa90052...55a2d2), now best suggested header Hash: 0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2
+Number: 43
+Parent: 0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 254883
+Timestamp: 430
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xa9b7318a66f803ebd6508fa846392b28385688eae5f3e45e19c5cec465b51c67
+Receipts Root: 0x02fbec5830058d8e0fbb5230d85a2d202d8da2dbb7e2ebc6c5c568e5dace1ce7
+State Root: 0xe72e50777340e417548b13dff206ea253ab3b444f6d644095904d23ab936c49e
+BaseFeePerGas: 3262964
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x0fc71295326a7ae8e0776c61be67f3ed8770311df88e186405b8d75bd0be552b
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 43 (0xa90052...55a2d2) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 44 (0xe620ab...ac4b05) 
+24 Sep 12:57:14 | HIVE block added to main: 0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05 
+24 Sep 12:57:14 | HIVE suggested 44 (0xe620ab...ac4b05), now best suggested header Hash: 0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05
+Number: 44
+Parent: 0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 122636
+Timestamp: 440
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x9985c49d379aa514b0a399e84d4b477632e1be1e5166119805d6327ca462afed
+Receipts Root: 0x5a9dc5f489eefda53ddec8007316a0b6501c6b8bb9ef1016985a57f172f85428
+State Root: 0x12ef570f2d204c211adee234538675e1f144e64f98c4ae383d138c0e2ea53a64
+BaseFeePerGas: 2857173
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x7313b4315dd27586f940f8f2bf8af76825d8f24d2ae2c24d885dcb0cdd8d50f5
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 44 (0xe620ab...ac4b05) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 45 (0x0a6b4e...ad60c7) 
+24 Sep 12:57:14 | HIVE block added to main: 0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7 
+24 Sep 12:57:14 | HIVE suggested 45 (0x0a6b4e...ad60c7), now best suggested header Hash: 0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7
+Number: 45
+Parent: 0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 42000
+Timestamp: 450
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0xe7c29c7c7a11d196f167e8d32e765ca7bf0a3b7722db9be2aad43baff7beed53
+Receipts Root: 0x07e83fbed755ea7ec3520be7f5fadf334fce69696d386882642c65d28304bc93
+State Root: 0xf2442e8016de301b88437ee08cd3b7a5ae74facf1ed9a44d46a03d98279dfb76
+BaseFeePerGas: 2500903
+WithdrawalsRoot: 0x1fba47bf8c02d98c8130e894538ad21223dffc0f3074f3f77b2bf813097c651f
+ParentBeaconBlockRoot: 0x2739473baa23a9bca4e8d0f4f221cfa48440b4b73e2bae7386c14caccc6c2059
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 45 (0x0a6b4e...ad60c7) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 46 (0xf3c6ee...7d5e5a) 
+24 Sep 12:57:14 | HIVE block added to main: 0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a 
+24 Sep 12:57:14 | HIVE suggested 46 (0xf3c6ee...7d5e5a), now best suggested header Hash: 0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a
+Number: 46
+Parent: 0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 226216
+Timestamp: 460
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x48a7ec0940afc4caf75bde3079a46362bf58721c70dc46bed90adafc9fc8e1ae
+Receipts Root: 0x7d12c73b3ccd89dc2b2a8f4fc4f926bf272b5caed56e6b942114770d8e5dfe54
+State Root: 0xc442ecd9a8d994f9442e9ed4425948f7a6b68ad36dda4ccc12560671e6bf5975
+BaseFeePerGas: 2188553
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xd4da00e33a11ee18f67b25ad5ff574cddcdccaa30e6743e01a531336b16cbf8f
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 46 (0xf3c6ee...7d5e5a) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 47 (0x04d1e4...1f35da) 
+24 Sep 12:57:14 | HIVE block added to main: 0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da 
+24 Sep 12:57:14 | HIVE suggested 47 (0x04d1e4...1f35da), now best suggested header Hash: 0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da
+Number: 47
+Parent: 0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 153504
+Timestamp: 470
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x0bfc7e06587d7d2c7591cd588f9243f23a4cf460d2ad169610620b07da9e6d8c
+Receipts Root: 0x47305c44b4885c620ddfd8f1d3991c0ef3af4d7e5f390a3133ca140e42b8985e
+State Root: 0x871b3efa55d31341660810054b833aaa459d5bd1dae36c9630f827236960892e
+BaseFeePerGas: 1916222
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0xe651765d4860f0c46f191212c8193e7c82708e5d8bef1ed6f19bdde577f980cf
+BlobGasUsed: 131072
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 47 (0x04d1e4...1f35da) 
+24 Sep 12:57:14 | HIVE Processing a chain.rlp block 48 (0xdf99e6...bd2fe5) 
+24 Sep 12:57:14 | HIVE block added to main: 0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5 
+24 Sep 12:57:14 | HIVE suggested 48 (0xdf99e6...bd2fe5), now best suggested header Hash: 0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5
+Number: 48
+Parent: 0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da
+Beneficiary: 0x0000000000000000000000000000000000000000
+Gas Limit: 100000000
+Gas Used: 63000
+Timestamp: 480
+Extra Data: 
+Difficulty: 0
+Mix Hash: 0x0000000000000000000000000000000000000000000000000000000000000000
+Nonce: 0
+Uncles Hash: 0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347
+Tx Root: 0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0
+Receipts Root: 0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7
+State Root: 0x49efb89bc8d0142ac4ad09280950583c3050ee48988e66772dded8aba7087bc9
+BaseFeePerGas: 1677430
+WithdrawalsRoot: 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421
+ParentBeaconBlockRoot: 0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6
+BlobGasUsed: 0
+ExcessBlobGas: 0
+IsPostMerge: True
+TotalDifficulty: 131072
+RequestsHash: 0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+, head 48 (0xdf99e6...bd2fe5) 
+24 Sep 12:57:14 | HIVE initialization completed 
+24 Sep 12:57:14 | Reading authentication secret from '/jwt.secret' 
+24 Sep 12:57:14 | JSON-RPC is listening on http://0.0.0.0:8545 ; http://0.0.0.0:8546 ; http://0.0.0.0:8550 ; http://0.0.0.0:8551 
+24 Sep 12:57:14 | 
+
+                  [36m        ------                [38;5;208m~~~~~~~~        [0m
+                  [36m     --------- ----        [38;5;208m~~~~~~~~~~~~~~     [0m
+                  [36m   -  -------  ------        [38;5;208m~~~~~~~~~~~~~~   [0m
+                  [36m -----  -      ----           [38;5;208m~~~    ~~~~~~~~ [0m
+                  [36m ------         -                      [38;5;208m~~~        [0m
+                  [36m-------                                   ----[0m
+                  [36m----                                   -------[0m
+                  [38;5;208m    ~~~                  [36m    -         ------ [0m
+                  [38;5;208m ~~~~~~~~      ~         [36m  ----      -  ----- [0m
+                  [38;5;208m   ~~~~~~~~~~~~~~        [36m------  -------  -   [0m
+                  [38;5;208m     ~~~~~~~~~~~~~~      [36m  ---- ---------     [0m
+                  [38;5;208m        ~~~~~~~~         [36m       ------        [0m
+
+
+
+        [2m _   _ ______ _______ _    _ ______ _____  __  __ _____ _   _ _____  [0m
+        [2m| \ | |  ____|__   __| |  | |  ____|  __ \|  \/  |_   _| \ | |  __ \ [0m
+        [2m|  \| | |__     | |  | |__| | |__  | |__) | \  / | | | |  \| | |  | |[0m
+        [2m| . ` |  __|    | |  |  __  |  __| |  _  /| |\/| | | | | . ` | |  | |[0m
+        [2m| |\  | |____   | |  | |  | | |____| | \ \| |  | |_| |_| |\  | |__| |[0m
+        [2m|_| \_|______|  |_|  |_|  |_|______|_|  \_\_|  |_|_____|_| \_|_____/ [0m
+
+
+                              https://www.nethermind.io
+
+-----------------------------  Initialization Completed  -----------------------------
+
+This node    : enode://c73b6672a27531fee240f089f4906737d572155bd80c81df6ca7f635d9aadaee2350594fe8afc75d4c325d9fcdf7a0239a96bbb44140e0806d1b9f59de29cb36@127.0.0.1:30303 
+RPC modules  : Admin, Debug, Eth, Health, Net, Parity, Personal, Proof, Subscribe, Testing, Trace, TxPool, Web3
+Public id    : Nethermind/v2.0.0+bec830cd-f/linux-x64/dotnet10.0.11
+Node address : 0x177870a6ad95407a69690e976a4a0be52901dc1f (do not use as an account)
+JSON RPC     : http://0.0.0.0:8545 ; http://0.0.0.0:8546 ; http://0.0.0.0:8550 ; http://0.0.0.0:8551
+Genesis hash : 0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2
+Gaslimit     : 60,000,000
+ExtraData    : Nethermind v2.0.0
+External IP  : 127.0.0.1
+Ethereum     : tcp://127.0.0.1:30303 
+Discovery    : udp://127.0.0.1:30303
+Client id    : Nethermind/v2.0.0+bec830cd/linux-x64/dotnet10.0.11
+Chainspec    : /genesis.json
+Chain head   : 0
+Chain ID     : 3503995874084926
+-------------------------------------------------------------------------------------- 
+24 Sep 12:57:14 | Received ForkChoice: 48 (0xdf99e6...bd2fe5), Safe: 48 (0xdf99e6...bd2fe5), Finalized: 48 (0xdf99e6...bd2fe5) 
+24 Sep 12:57:15 | Error during method execution, request: Id:1, trace_call([{"from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f", "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0", "gas": "0x927c0", "gasPrice": "0x77359400", "data": "0x"}, [], "0x30"]) System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.ThrowHelper.ThrowNoElementsException()
+   at System.Linq.Enumerable.Aggregate[TSource](IEnumerable`1 source, Func`3 func)
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.GetParityTypes(String[] types) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 60
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.TraceTx(Transaction tx, String[] traceTypes, BlockParameter blockParameter, Dictionary`2 stateOverride) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 163
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.trace_call(TransactionForRpc call, String[] traceTypes, BlockParameter blockParameter, Dictionary`2 stateOverride) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 74
+   at Nethermind.JsonRpc.Modules.RpcModuleProvider.ResolvedMethodInfo.<>c__DisplayClass82_0`6.<CreateTypedDirectFourParameterInvoker>b__0(IRpcModule module, Object[] parameters) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/RpcModuleProvider.cs:line 609
+   at Nethermind.JsonRpc.JsonRpcService.ExecuteAsync(JsonRpcRequest request, String methodName, ResolvedMethodInfo method, JsonRpcContext context) in /nethermind/src/Nethermind/Nethermind.JsonRpc/JsonRpcService.cs:line 138
+24 Sep 12:57:15 | Error response handling JsonRpc Id:1 Method:trace_call | Code: -32603 Message: Internal error 
+24 Sep 12:57:15 | Error during method execution, request: Id:1, trace_call([{"from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f", "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0", "gas": "0x927c0", "gasPrice": "0x0", "data": "0x"}, [], "0x30"]) System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.ThrowHelper.ThrowNoElementsException()
+   at System.Linq.Enumerable.Aggregate[TSource](IEnumerable`1 source, Func`3 func)
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.GetParityTypes(String[] types) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 60
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.TraceTx(Transaction tx, String[] traceTypes, BlockParameter blockParameter, Dictionary`2 stateOverride) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 163
+   at Nethermind.JsonRpc.Modules.Trace.TraceRpcModule.trace_call(TransactionForRpc call, String[] traceTypes, BlockParameter blockParameter, Dictionary`2 stateOverride) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs:line 74
+   at Nethermind.JsonRpc.Modules.RpcModuleProvider.ResolvedMethodInfo.<>c__DisplayClass82_0`6.<CreateTypedDirectFourParameterInvoker>b__0(IRpcModule module, Object[] parameters) in /nethermind/src/Nethermind/Nethermind.JsonRpc/Modules/RpcModuleProvider.cs:line 609
+   at Nethermind.JsonRpc.JsonRpcService.ExecuteAsync(JsonRpcRequest request, String methodName, ResolvedMethodInfo method, JsonRpcContext context) in /nethermind/src/Nethermind/Nethermind.JsonRpc/JsonRpcService.cs:line 138
+24 Sep 12:57:15 | Error response handling JsonRpc Id:1 Method:trace_call | Code: -32603 Message: Internal error 
+24 Sep 12:57:15 | Error response handling JsonRpc Id:1 Method:trace_rawTransaction | Code: -32000 Message: Invalid RLP. 
+24 Sep 12:57:15 | Error response handling JsonRpc Id:1 Method:trace_replayTransaction | Code: -32000 Message: 0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found 
+24 Sep 12:57:15 | Error response handling JsonRpc Id:1 Method:trace_transaction | Code: -32000 Message: 0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe receipt could not be found 

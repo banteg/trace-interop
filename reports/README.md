@@ -2,7 +2,7 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/b979aefe57e4f63af0397b5a068237c04a9d6e3b) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-09-24T12:21:08.909575+00:00**. [Freshness preflight](../evidence/2026-09-24/h17-retest/preflight.json) · [Nine-build lock](../evidence/2026-09-24/h17-retest/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-24T12:56:09.478062+00:00**. [Freshness preflight](../evidence/2026-09-24/h15-call-compat/preflight.json) · [Nine-build lock](../evidence/2026-09-24/h15-call-compat/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 ## Start with your client
 
@@ -10,8 +10,8 @@ Published builds checked at **2026-09-24T12:21:08.909575+00:00**. [Freshness pre
 | --- | --- |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
 | [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
-| [Geth draft fork](clients/geth.md) | The experimental fork matches most evaluated semantic assertions, including signed-transaction rejection codes, unknown-block errors and call-field handling. Its omitted trace_filter bounds still follow the earlier historical-search draft and differ from the proposed latest/latest default. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage. |
-| [Nethermind](clients/nethermind.md) | 2.1.0-unstable · 9d6e8b8d fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 · bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas. |
+| [Geth draft fork](clients/geth.md) | The experimental fork matches the priced-call witnesses but retains the earlier zero-fee BASEFEE-preserving proposal, so its trace_call differs from eth_call and revised H15. Omitted trace_filter bounds also retain the earlier historical-search draft. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage. |
+| [Nethermind](clients/nethermind.md) | 2.1.0-unstable · 641592d2 fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 · bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas. |
 | [Reth](clients/reth.md) | Reth 2.5.2 · 58a51b3e fixes tree-path lookup, default filter intersection, missing-replay nulls and replay transaction hashes that still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, state/VM trace details, error-code alignment and omitted filter bounds. |
 
 ## Decisions to review

@@ -13,19 +13,19 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H05](../reports/decisions/H05.md) | ⚪ Under review | Post-merge reward records | ⚠️✅⚠️✅— | ⚠️✅⚠️✅✅ |
 | [H06](../reports/decisions/H06.md) | ⚪ Under review | Missing transactions and paths | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H07](../reports/decisions/H07.md) | ⚪ Under review | Replay transactionHash field | 🟡✅✅⚠️— | 🟡✅✅✅✅ |
-| [H08](../reports/decisions/H08.md) | ⚪ Under review | Empty output and unrequested components | 🟡⚠️⚠️⚠️— | 🟡⚠️✅⚠️✅ |
+| [H08](../reports/decisions/H08.md) | ⚪ Under review | Empty output and unrequested components | 🟡⚠️⚠️✅— | 🟡⚠️⚠️✅⚠️ |
 | [H09](../reports/decisions/H09.md) | ⚪ Under review | Failed frame results and error labels | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H10](../reports/decisions/H10.md) | ⚪ Under review | Creation result field names | ⚠️✅✅✅— | ⚠️✅✅✅✅ |
 | [H11](../reports/decisions/H11.md) | ⚪ Under review | Empty trace-type selection | ⚠️⚠️⚠️✅— | ⚠️⚠️✅✅✅ |
 | [H12](../reports/decisions/H12.md) | ⚪ Under review | Raw-transaction block argument | ❔❔❔❔— | ❔❔❔❔❔ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | Signed transaction execution validity | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | Invalid-parameter error codes | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
-| [H15](../reports/decisions/H15.md) | ⚪ Under review | Unsigned simulation fees and block environment | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️❔ |
+| [H15](../reports/decisions/H15.md) | ⚪ Under review | Unsigned simulation fees and block environment | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️⚠️ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | Fee accounting and sequential state diffs | ⚠️⚠️⚠️⚠️— | ⚠️⚠️🟡⚠️✅ |
 | [H17](../reports/decisions/H17.md) | ⚪ Under review | New-account stateDiff encoding | 🟡🟡⚠️⚠️— | 🟡🟡✅⚠️✅ |
 | [H18](../reports/decisions/H18.md) | ⚪ Under review | EIP-7702 code changes in stateDiff | 🟡✅✅⚠️— | 🟡✅✅⚠️✅ |
 | [H19](../reports/decisions/H19.md) | ⚪ Under review | vmTrace executing bytecode | 🟡🟡✅⚠️— | 🟡🟡✅⚠️✅ |
-| [H20](../reports/decisions/H20.md) | ⚪ Under review | vmTrace step timing and deltas | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️✅ |
+| [H20](../reports/decisions/H20.md) | ⚪ Under review | vmTrace step timing and deltas | ⚠️⚠️⚠️⚠️— | ⚠️⚠️⚠️⚠️⚠️ |
 | [H21](../reports/decisions/H21.md) | ⚪ Under review | vmTrace numeric and optional metadata encoding | 🟡🟡⚠️✅— | 🟡🟡✅✅✅ |
 | [H22](../reports/decisions/H22.md) | ⚪ Under review | Precompile return bytes | ⚠️✅✅✅— | ⚠️✅✅✅✅ |
 | [H23](../reports/decisions/H23.md) | ⚪ Under review | Special-action address matching | ⚠️✅✅✅— | ⚠️✅✅✅✅ |

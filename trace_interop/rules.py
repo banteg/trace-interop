@@ -434,7 +434,7 @@ def evaluate(case, observation, peers, invalid_params=None):
     calls = params[:1] if method == 'trace_call' else [p[0] for p in params[0] if isinstance(p,list) and p] if method == 'trace_callMany' and params and isinstance(params[0],list) else []
     if not case.get('fee_policy') and any(mapping(call).get('gasPrice') == '0x0' for call in calls):
         ok = status == 'result' and not embedded_error(response) and (isinstance(result,dict) if method == 'trace_call' else isinstance(result,list) and len(result) == len(calls))
-        check('H15', ok, 'Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.')
+        check('H15', ok, 'Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.')
     contracts=context.get('contracts',{})
     if name=='prefunded-empty' and isinstance(result,dict):
         change=mapping(result.get('stateDiff')).get(params[0]['to'],{})

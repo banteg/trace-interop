@@ -1,5 +1,11 @@
 # H17 account-existence assessment audit
 
+The environment-error discussion below records the original H15 policy. H15
+subsequently adopted a zero-fee BASEFEE override for eth_call compatibility:
+Reth's zero-fee BASEFEE result now agrees with that recommendation. H17's marker
+checks remain independent; the regression uses Nethermind's preserved-base-fee
+zero call to check that an environment difference does not become a marker failure.
+
 Audited on 2026-09-24 against the [11:07 UTC captured matrix](../evidence/2026-09-24/current-matrix/README.md)
 and source pinned to its tested development builds. The retained responses first
 established the assessment corrections. The subsequent

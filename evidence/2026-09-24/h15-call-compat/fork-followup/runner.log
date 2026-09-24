@@ -1,0 +1,479 @@
+Sep 24 17:00:20.450 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 17:00:20.511 INF building 9 clients...
+Sep 24 17:00:20.511 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d
+Sep 24 17:00:20.657 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 24 17:00:20.788 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=96ed3bf9e6103fa7348e8223f07becfaf1d19b43fb66524f295bdb83e12dbee5
+Sep 24 17:00:20.944 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 24 17:00:21.099 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=2a6e1bfcf91337fd9081f28b1a77efcf20c054ea99b30a316fa8a581c819fa74
+Sep 24 17:00:21.285 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=891ce9bfe055df031239b4817239cde925175c0e172d74ddac9877cc37503eaf
+Sep 24 17:00:21.459 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4
+Sep 24 17:00:21.631 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf
+Sep 24 17:00:21.769 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 17:00:21.909 INF building 1 simulators...
+Sep 24 17:00:21.909 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 17:00:21.980 INF creating output directory folder=/home/banteg/dev/trace-h15-compat-20260924/evidence/2026-09-24/h15-call-compat/fork-followup/hive
+Sep 24 17:00:21.989 INF running simulation: ethereum/rpc-compat
+Sep 24 17:00:22.339 INF hiveproxy started container=41c9ad265182 addr=172.17.0.2:8081
+Sep 24 17:00:22.683 INF API: suite started suite=0 name=rpc-compat
+Sep 24 17:00:22.685 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 24 17:00:31.361 INF API: client besu_development started suite=0 test=1 container=e1cb0a48
+Sep 24 17:00:31.634 INF API: test started suite=0 test=2 name="interop/_control/head (besu_development)"
+Sep 24 17:00:31.643 INF API: test ended suite=0 test=2 pass=false
+Sep 24 17:00:31.645 INF API: test started suite=0 test=3 name="interop/_control/latest (besu_development)"
+Sep 24 17:00:31.654 INF API: test ended suite=0 test=3 pass=false
+Sep 24 17:00:31.655 INF API: test started suite=0 test=4 name="interop/_control/version (besu_development)"
+Sep 24 17:00:31.663 INF API: test ended suite=0 test=4 pass=false
+Sep 24 17:00:31.664 INF API: test started suite=0 test=5 name="interop/_reference/block/0x33 (besu_development)"
+Sep 24 17:00:31.762 INF API: test ended suite=0 test=5 pass=false
+Sep 24 17:00:31.763 INF API: test started suite=0 test=6 name="interop/_reference/block/0x34 (besu_development)"
+Sep 24 17:00:31.773 INF API: test ended suite=0 test=6 pass=false
+Sep 24 17:00:31.775 INF API: test started suite=0 test=7 name="interop/_reference/block/0x35 (besu_development)"
+Sep 24 17:00:31.789 INF API: test ended suite=0 test=7 pass=false
+Sep 24 17:00:31.790 INF API: test started suite=0 test=8 name="interop/beacon-call-55 (besu_development)"
+Sep 24 17:00:31.880 INF API: test ended suite=0 test=8 pass=false
+Sep 24 17:00:31.886 INF API: test started suite=0 test=9 name="interop/beacon-call-56 (besu_development)"
+Sep 24 17:00:31.923 INF API: test ended suite=0 test=9 pass=false
+Sep 24 17:00:31.925 INF API: test started suite=0 test=10 name="interop/control-head (besu_development)"
+Sep 24 17:00:31.944 INF API: test ended suite=0 test=10 pass=false
+Sep 24 17:00:31.946 INF API: test started suite=0 test=11 name="interop/destroy-trace-55 (besu_development)"
+Sep 24 17:00:32.001 INF API: test ended suite=0 test=11 pass=false
+Sep 24 17:00:32.004 INF API: test started suite=0 test=12 name="interop/destroy-trace-56 (besu_development)"
+Sep 24 17:00:32.035 INF API: test ended suite=0 test=12 pass=false
+Sep 24 17:00:32.037 INF API: test started suite=0 test=13 name="interop/system-beacon-55-560 (besu_development)"
+Sep 24 17:00:32.065 INF API: test ended suite=0 test=13 pass=false
+Sep 24 17:00:32.067 INF API: test started suite=0 test=14 name="interop/system-beacon-55-8751 (besu_development)"
+Sep 24 17:00:32.076 INF API: test ended suite=0 test=14 pass=false
+Sep 24 17:00:32.078 INF API: test started suite=0 test=15 name="interop/system-beacon-56-560 (besu_development)"
+Sep 24 17:00:32.093 INF API: test ended suite=0 test=15 pass=false
+Sep 24 17:00:32.095 INF API: test started suite=0 test=16 name="interop/system-beacon-56-8751 (besu_development)"
+Sep 24 17:00:32.109 INF API: test ended suite=0 test=16 pass=false
+Sep 24 17:00:32.112 INF API: test started suite=0 test=17 name="interop/withdrawal-balance-51 (besu_development)"
+Sep 24 17:00:32.132 INF API: test ended suite=0 test=17 pass=false
+Sep 24 17:00:32.133 INF API: test started suite=0 test=18 name="interop/withdrawal-balance-52 (besu_development)"
+Sep 24 17:00:32.152 INF API: test ended suite=0 test=18 pass=false
+Sep 24 17:00:32.154 INF API: test started suite=0 test=19 name="interop/withdrawal-balance-53 (besu_development)"
+Sep 24 17:00:32.171 INF API: test ended suite=0 test=19 pass=false
+Sep 24 17:00:32.173 INF API: test started suite=0 test=20 name="interop/withdrawal-block-51 (besu_development)"
+Sep 24 17:00:32.212 INF API: test ended suite=0 test=20 pass=false
+Sep 24 17:00:32.214 INF API: test started suite=0 test=21 name="interop/withdrawal-block-52 (besu_development)"
+Sep 24 17:00:32.231 INF API: test ended suite=0 test=21 pass=false
+Sep 24 17:00:32.233 INF API: test started suite=0 test=22 name="interop/withdrawal-block-53 (besu_development)"
+Sep 24 17:00:32.251 INF API: test ended suite=0 test=22 pass=false
+Sep 24 17:00:32.253 INF API: test started suite=0 test=23 name="interop/withdrawal-filter-51 (besu_development)"
+Sep 24 17:00:32.310 INF API: test ended suite=0 test=23 pass=false
+Sep 24 17:00:32.312 INF API: test started suite=0 test=24 name="interop/withdrawal-filter-52 (besu_development)"
+Sep 24 17:00:32.326 INF API: test ended suite=0 test=24 pass=false
+Sep 24 17:00:32.328 INF API: test started suite=0 test=25 name="interop/withdrawal-filter-53 (besu_development)"
+Sep 24 17:00:32.344 INF API: test ended suite=0 test=25 pass=false
+Sep 24 17:00:32.694 INF API: test ended suite=0 test=1 pass=true
+Sep 24 17:00:32.697 INF API: test started suite=0 test=26 name="client launch (besu_release)"
+Sep 24 17:00:41.209 INF API: client besu_release started suite=0 test=26 container=395f58e7
+Sep 24 17:00:41.451 INF API: test started suite=0 test=27 name="interop/_control/head (besu_release)"
+Sep 24 17:00:41.459 INF API: test ended suite=0 test=27 pass=false
+Sep 24 17:00:41.460 INF API: test started suite=0 test=28 name="interop/_control/latest (besu_release)"
+Sep 24 17:00:41.466 INF API: test ended suite=0 test=28 pass=false
+Sep 24 17:00:41.467 INF API: test started suite=0 test=29 name="interop/_control/version (besu_release)"
+Sep 24 17:00:41.472 INF API: test ended suite=0 test=29 pass=false
+Sep 24 17:00:41.473 INF API: test started suite=0 test=30 name="interop/_reference/block/0x33 (besu_release)"
+Sep 24 17:00:41.539 INF API: test ended suite=0 test=30 pass=false
+Sep 24 17:00:41.540 INF API: test started suite=0 test=31 name="interop/_reference/block/0x34 (besu_release)"
+Sep 24 17:00:41.552 INF API: test ended suite=0 test=31 pass=false
+Sep 24 17:00:41.553 INF API: test started suite=0 test=32 name="interop/_reference/block/0x35 (besu_release)"
+Sep 24 17:00:41.565 INF API: test ended suite=0 test=32 pass=false
+Sep 24 17:00:41.566 INF API: test started suite=0 test=33 name="interop/beacon-call-55 (besu_release)"
+Sep 24 17:00:41.650 INF API: test ended suite=0 test=33 pass=false
+Sep 24 17:00:41.651 INF API: test started suite=0 test=34 name="interop/beacon-call-56 (besu_release)"
+Sep 24 17:00:41.664 INF API: test ended suite=0 test=34 pass=false
+Sep 24 17:00:41.666 INF API: test started suite=0 test=35 name="interop/control-head (besu_release)"
+Sep 24 17:00:41.674 INF API: test ended suite=0 test=35 pass=false
+Sep 24 17:00:41.675 INF API: test started suite=0 test=36 name="interop/destroy-trace-55 (besu_release)"
+Sep 24 17:00:41.702 INF API: test ended suite=0 test=36 pass=false
+Sep 24 17:00:41.703 INF API: test started suite=0 test=37 name="interop/destroy-trace-56 (besu_release)"
+Sep 24 17:00:41.714 INF API: test ended suite=0 test=37 pass=false
+Sep 24 17:00:41.715 INF API: test started suite=0 test=38 name="interop/system-beacon-55-560 (besu_release)"
+Sep 24 17:00:41.728 INF API: test ended suite=0 test=38 pass=false
+Sep 24 17:00:41.729 INF API: test started suite=0 test=39 name="interop/system-beacon-55-8751 (besu_release)"
+Sep 24 17:00:41.735 INF API: test ended suite=0 test=39 pass=false
+Sep 24 17:00:41.736 INF API: test started suite=0 test=40 name="interop/system-beacon-56-560 (besu_release)"
+Sep 24 17:00:41.741 INF API: test ended suite=0 test=40 pass=false
+Sep 24 17:00:41.742 INF API: test started suite=0 test=41 name="interop/system-beacon-56-8751 (besu_release)"
+Sep 24 17:00:41.747 INF API: test ended suite=0 test=41 pass=false
+Sep 24 17:00:41.748 INF API: test started suite=0 test=42 name="interop/withdrawal-balance-51 (besu_release)"
+Sep 24 17:00:41.754 INF API: test ended suite=0 test=42 pass=false
+Sep 24 17:00:41.755 INF API: test started suite=0 test=43 name="interop/withdrawal-balance-52 (besu_release)"
+Sep 24 17:00:41.759 INF API: test ended suite=0 test=43 pass=false
+Sep 24 17:00:41.760 INF API: test started suite=0 test=44 name="interop/withdrawal-balance-53 (besu_release)"
+Sep 24 17:00:41.766 INF API: test ended suite=0 test=44 pass=false
+Sep 24 17:00:41.767 INF API: test started suite=0 test=45 name="interop/withdrawal-block-51 (besu_release)"
+Sep 24 17:00:41.785 INF API: test ended suite=0 test=45 pass=false
+Sep 24 17:00:41.786 INF API: test started suite=0 test=46 name="interop/withdrawal-block-52 (besu_release)"
+Sep 24 17:00:41.792 INF API: test ended suite=0 test=46 pass=false
+Sep 24 17:00:41.793 INF API: test started suite=0 test=47 name="interop/withdrawal-block-53 (besu_release)"
+Sep 24 17:00:41.807 INF API: test ended suite=0 test=47 pass=false
+Sep 24 17:00:41.808 INF API: test started suite=0 test=48 name="interop/withdrawal-filter-51 (besu_release)"
+Sep 24 17:00:41.828 INF API: test ended suite=0 test=48 pass=false
+Sep 24 17:00:41.829 INF API: test started suite=0 test=49 name="interop/withdrawal-filter-52 (besu_release)"
+Sep 24 17:00:41.835 INF API: test ended suite=0 test=49 pass=false
+Sep 24 17:00:41.836 INF API: test started suite=0 test=50 name="interop/withdrawal-filter-53 (besu_release)"
+Sep 24 17:00:41.844 INF API: test ended suite=0 test=50 pass=false
+Sep 24 17:00:42.030 INF API: test ended suite=0 test=26 pass=true
+Sep 24 17:00:42.031 INF API: test started suite=0 test=51 name="client launch (erigon_development)"
+Sep 24 17:00:42.687 INF API: client erigon_development started suite=0 test=51 container=edf492fe
+Sep 24 17:00:42.713 INF API: test started suite=0 test=52 name="interop/_control/head (erigon_development)"
+Sep 24 17:00:42.716 INF API: test ended suite=0 test=52 pass=false
+Sep 24 17:00:42.716 INF API: test started suite=0 test=53 name="interop/_control/latest (erigon_development)"
+Sep 24 17:00:42.719 INF API: test ended suite=0 test=53 pass=false
+Sep 24 17:00:42.719 INF API: test started suite=0 test=54 name="interop/_control/version (erigon_development)"
+Sep 24 17:00:42.722 INF API: test ended suite=0 test=54 pass=false
+Sep 24 17:00:42.723 INF API: test started suite=0 test=55 name="interop/_reference/block/0x33 (erigon_development)"
+Sep 24 17:00:42.726 INF API: test ended suite=0 test=55 pass=false
+Sep 24 17:00:42.727 INF API: test started suite=0 test=56 name="interop/_reference/block/0x34 (erigon_development)"
+Sep 24 17:00:42.729 INF API: test ended suite=0 test=56 pass=false
+Sep 24 17:00:42.729 INF API: test started suite=0 test=57 name="interop/_reference/block/0x35 (erigon_development)"
+Sep 24 17:00:42.732 INF API: test ended suite=0 test=57 pass=false
+Sep 24 17:00:42.733 INF API: test started suite=0 test=58 name="interop/beacon-call-55 (erigon_development)"
+Sep 24 17:00:42.736 INF API: test ended suite=0 test=58 pass=false
+Sep 24 17:00:42.737 INF API: test started suite=0 test=59 name="interop/beacon-call-56 (erigon_development)"
+Sep 24 17:00:42.739 INF API: test ended suite=0 test=59 pass=false
+Sep 24 17:00:42.740 INF API: test started suite=0 test=60 name="interop/control-head (erigon_development)"
+Sep 24 17:00:42.742 INF API: test ended suite=0 test=60 pass=false
+Sep 24 17:00:42.743 INF API: test started suite=0 test=61 name="interop/destroy-trace-55 (erigon_development)"
+Sep 24 17:00:42.745 INF API: test ended suite=0 test=61 pass=false
+Sep 24 17:00:42.746 INF API: test started suite=0 test=62 name="interop/destroy-trace-56 (erigon_development)"
+Sep 24 17:00:42.748 INF API: test ended suite=0 test=62 pass=false
+Sep 24 17:00:42.749 INF API: test started suite=0 test=63 name="interop/system-beacon-55-560 (erigon_development)"
+Sep 24 17:00:42.751 INF API: test ended suite=0 test=63 pass=false
+Sep 24 17:00:42.752 INF API: test started suite=0 test=64 name="interop/system-beacon-55-8751 (erigon_development)"
+Sep 24 17:00:42.754 INF API: test ended suite=0 test=64 pass=false
+Sep 24 17:00:42.755 INF API: test started suite=0 test=65 name="interop/system-beacon-56-560 (erigon_development)"
+Sep 24 17:00:42.757 INF API: test ended suite=0 test=65 pass=false
+Sep 24 17:00:42.758 INF API: test started suite=0 test=66 name="interop/system-beacon-56-8751 (erigon_development)"
+Sep 24 17:00:42.760 INF API: test ended suite=0 test=66 pass=false
+Sep 24 17:00:42.761 INF API: test started suite=0 test=67 name="interop/withdrawal-balance-51 (erigon_development)"
+Sep 24 17:00:42.763 INF API: test ended suite=0 test=67 pass=false
+Sep 24 17:00:42.764 INF API: test started suite=0 test=68 name="interop/withdrawal-balance-52 (erigon_development)"
+Sep 24 17:00:42.765 INF API: test ended suite=0 test=68 pass=false
+Sep 24 17:00:42.766 INF API: test started suite=0 test=69 name="interop/withdrawal-balance-53 (erigon_development)"
+Sep 24 17:00:42.768 INF API: test ended suite=0 test=69 pass=false
+Sep 24 17:00:42.769 INF API: test started suite=0 test=70 name="interop/withdrawal-block-51 (erigon_development)"
+Sep 24 17:00:42.771 INF API: test ended suite=0 test=70 pass=false
+Sep 24 17:00:42.772 INF API: test started suite=0 test=71 name="interop/withdrawal-block-52 (erigon_development)"
+Sep 24 17:00:42.774 INF API: test ended suite=0 test=71 pass=false
+Sep 24 17:00:42.775 INF API: test started suite=0 test=72 name="interop/withdrawal-block-53 (erigon_development)"
+Sep 24 17:00:42.777 INF API: test ended suite=0 test=72 pass=false
+Sep 24 17:00:42.778 INF API: test started suite=0 test=73 name="interop/withdrawal-filter-51 (erigon_development)"
+Sep 24 17:00:42.780 INF API: test ended suite=0 test=73 pass=false
+Sep 24 17:00:42.781 INF API: test started suite=0 test=74 name="interop/withdrawal-filter-52 (erigon_development)"
+Sep 24 17:00:42.783 INF API: test ended suite=0 test=74 pass=false
+Sep 24 17:00:42.784 INF API: test started suite=0 test=75 name="interop/withdrawal-filter-53 (erigon_development)"
+Sep 24 17:00:42.786 INF API: test ended suite=0 test=75 pass=false
+Sep 24 17:00:42.919 INF API: test ended suite=0 test=51 pass=true
+Sep 24 17:00:42.921 INF API: test started suite=0 test=76 name="client launch (erigon_release)"
+Sep 24 17:00:43.773 INF API: client erigon_release started suite=0 test=76 container=65b4faa8
+Sep 24 17:00:43.778 INF API: test started suite=0 test=77 name="interop/_control/head (erigon_release)"
+Sep 24 17:00:43.780 INF API: test ended suite=0 test=77 pass=false
+Sep 24 17:00:43.781 INF API: test started suite=0 test=78 name="interop/_control/latest (erigon_release)"
+Sep 24 17:00:43.784 INF API: test ended suite=0 test=78 pass=false
+Sep 24 17:00:43.785 INF API: test started suite=0 test=79 name="interop/_control/version (erigon_release)"
+Sep 24 17:00:43.787 INF API: test ended suite=0 test=79 pass=false
+Sep 24 17:00:43.788 INF API: test started suite=0 test=80 name="interop/_reference/block/0x33 (erigon_release)"
+Sep 24 17:00:43.791 INF API: test ended suite=0 test=80 pass=false
+Sep 24 17:00:43.792 INF API: test started suite=0 test=81 name="interop/_reference/block/0x34 (erigon_release)"
+Sep 24 17:00:43.794 INF API: test ended suite=0 test=81 pass=false
+Sep 24 17:00:43.795 INF API: test started suite=0 test=82 name="interop/_reference/block/0x35 (erigon_release)"
+Sep 24 17:00:43.798 INF API: test ended suite=0 test=82 pass=false
+Sep 24 17:00:43.798 INF API: test started suite=0 test=83 name="interop/beacon-call-55 (erigon_release)"
+Sep 24 17:00:43.801 INF API: test ended suite=0 test=83 pass=false
+Sep 24 17:00:43.802 INF API: test started suite=0 test=84 name="interop/beacon-call-56 (erigon_release)"
+Sep 24 17:00:43.804 INF API: test ended suite=0 test=84 pass=false
+Sep 24 17:00:43.805 INF API: test started suite=0 test=85 name="interop/control-head (erigon_release)"
+Sep 24 17:00:43.807 INF API: test ended suite=0 test=85 pass=false
+Sep 24 17:00:43.808 INF API: test started suite=0 test=86 name="interop/destroy-trace-55 (erigon_release)"
+Sep 24 17:00:43.810 INF API: test ended suite=0 test=86 pass=false
+Sep 24 17:00:43.811 INF API: test started suite=0 test=87 name="interop/destroy-trace-56 (erigon_release)"
+Sep 24 17:00:43.814 INF API: test ended suite=0 test=87 pass=false
+Sep 24 17:00:43.814 INF API: test started suite=0 test=88 name="interop/system-beacon-55-560 (erigon_release)"
+Sep 24 17:00:43.816 INF API: test ended suite=0 test=88 pass=false
+Sep 24 17:00:43.817 INF API: test started suite=0 test=89 name="interop/system-beacon-55-8751 (erigon_release)"
+Sep 24 17:00:43.819 INF API: test ended suite=0 test=89 pass=false
+Sep 24 17:00:43.819 INF API: test started suite=0 test=90 name="interop/system-beacon-56-560 (erigon_release)"
+Sep 24 17:00:43.822 INF API: test ended suite=0 test=90 pass=false
+Sep 24 17:00:43.822 INF API: test started suite=0 test=91 name="interop/system-beacon-56-8751 (erigon_release)"
+Sep 24 17:00:43.825 INF API: test ended suite=0 test=91 pass=false
+Sep 24 17:00:43.825 INF API: test started suite=0 test=92 name="interop/withdrawal-balance-51 (erigon_release)"
+Sep 24 17:00:43.827 INF API: test ended suite=0 test=92 pass=false
+Sep 24 17:00:43.828 INF API: test started suite=0 test=93 name="interop/withdrawal-balance-52 (erigon_release)"
+Sep 24 17:00:43.830 INF API: test ended suite=0 test=93 pass=false
+Sep 24 17:00:43.831 INF API: test started suite=0 test=94 name="interop/withdrawal-balance-53 (erigon_release)"
+Sep 24 17:00:43.832 INF API: test ended suite=0 test=94 pass=false
+Sep 24 17:00:43.833 INF API: test started suite=0 test=95 name="interop/withdrawal-block-51 (erigon_release)"
+Sep 24 17:00:43.836 INF API: test ended suite=0 test=95 pass=false
+Sep 24 17:00:43.837 INF API: test started suite=0 test=96 name="interop/withdrawal-block-52 (erigon_release)"
+Sep 24 17:00:43.839 INF API: test ended suite=0 test=96 pass=false
+Sep 24 17:00:43.840 INF API: test started suite=0 test=97 name="interop/withdrawal-block-53 (erigon_release)"
+Sep 24 17:00:43.843 INF API: test ended suite=0 test=97 pass=false
+Sep 24 17:00:43.844 INF API: test started suite=0 test=98 name="interop/withdrawal-filter-51 (erigon_release)"
+Sep 24 17:00:43.846 INF API: test ended suite=0 test=98 pass=false
+Sep 24 17:00:43.847 INF API: test started suite=0 test=99 name="interop/withdrawal-filter-52 (erigon_release)"
+Sep 24 17:00:43.849 INF API: test ended suite=0 test=99 pass=false
+Sep 24 17:00:43.850 INF API: test started suite=0 test=100 name="interop/withdrawal-filter-53 (erigon_release)"
+Sep 24 17:00:43.852 INF API: test ended suite=0 test=100 pass=false
+Sep 24 17:00:43.971 INF API: test ended suite=0 test=76 pass=true
+Sep 24 17:00:43.972 INF API: test started suite=0 test=101 name="client launch (go-ethereum_trace)"
+Sep 24 17:00:44.632 INF API: client go-ethereum_trace started suite=0 test=101 container=f56fa0aa
+Sep 24 17:00:44.638 INF API: test started suite=0 test=102 name="interop/_control/head (go-ethereum_trace)"
+Sep 24 17:00:44.643 INF API: test ended suite=0 test=102 pass=false
+Sep 24 17:00:44.645 INF API: test started suite=0 test=103 name="interop/_control/latest (go-ethereum_trace)"
+Sep 24 17:00:44.649 INF API: test ended suite=0 test=103 pass=false
+Sep 24 17:00:44.649 INF API: test started suite=0 test=104 name="interop/_control/version (go-ethereum_trace)"
+Sep 24 17:00:44.652 INF API: test ended suite=0 test=104 pass=false
+Sep 24 17:00:44.653 INF API: test started suite=0 test=105 name="interop/_reference/block/0x33 (go-ethereum_trace)"
+Sep 24 17:00:44.659 INF API: test ended suite=0 test=105 pass=false
+Sep 24 17:00:44.660 INF API: test started suite=0 test=106 name="interop/_reference/block/0x34 (go-ethereum_trace)"
+Sep 24 17:00:44.664 INF API: test ended suite=0 test=106 pass=false
+Sep 24 17:00:44.665 INF API: test started suite=0 test=107 name="interop/_reference/block/0x35 (go-ethereum_trace)"
+Sep 24 17:00:44.669 INF API: test ended suite=0 test=107 pass=false
+Sep 24 17:00:44.670 INF API: test started suite=0 test=108 name="interop/beacon-call-55 (go-ethereum_trace)"
+Sep 24 17:00:44.674 INF API: test ended suite=0 test=108 pass=false
+Sep 24 17:00:44.675 INF API: test started suite=0 test=109 name="interop/beacon-call-56 (go-ethereum_trace)"
+Sep 24 17:00:44.677 INF API: test ended suite=0 test=109 pass=false
+Sep 24 17:00:44.678 INF API: test started suite=0 test=110 name="interop/control-head (go-ethereum_trace)"
+Sep 24 17:00:44.681 INF API: test ended suite=0 test=110 pass=false
+Sep 24 17:00:44.682 INF API: test started suite=0 test=111 name="interop/destroy-trace-55 (go-ethereum_trace)"
+Sep 24 17:00:44.685 INF API: test ended suite=0 test=111 pass=false
+Sep 24 17:00:44.686 INF API: test started suite=0 test=112 name="interop/destroy-trace-56 (go-ethereum_trace)"
+Sep 24 17:00:44.689 INF API: test ended suite=0 test=112 pass=false
+Sep 24 17:00:44.690 INF API: test started suite=0 test=113 name="interop/system-beacon-55-560 (go-ethereum_trace)"
+Sep 24 17:00:44.693 INF API: test ended suite=0 test=113 pass=false
+Sep 24 17:00:44.694 INF API: test started suite=0 test=114 name="interop/system-beacon-55-8751 (go-ethereum_trace)"
+Sep 24 17:00:44.696 INF API: test ended suite=0 test=114 pass=false
+Sep 24 17:00:44.697 INF API: test started suite=0 test=115 name="interop/system-beacon-56-560 (go-ethereum_trace)"
+Sep 24 17:00:44.700 INF API: test ended suite=0 test=115 pass=false
+Sep 24 17:00:44.701 INF API: test started suite=0 test=116 name="interop/system-beacon-56-8751 (go-ethereum_trace)"
+Sep 24 17:00:44.703 INF API: test ended suite=0 test=116 pass=false
+Sep 24 17:00:44.704 INF API: test started suite=0 test=117 name="interop/withdrawal-balance-51 (go-ethereum_trace)"
+Sep 24 17:00:44.706 INF API: test ended suite=0 test=117 pass=false
+Sep 24 17:00:44.706 INF API: test started suite=0 test=118 name="interop/withdrawal-balance-52 (go-ethereum_trace)"
+Sep 24 17:00:44.709 INF API: test ended suite=0 test=118 pass=false
+Sep 24 17:00:44.709 INF API: test started suite=0 test=119 name="interop/withdrawal-balance-53 (go-ethereum_trace)"
+Sep 24 17:00:44.711 INF API: test ended suite=0 test=119 pass=false
+Sep 24 17:00:44.712 INF API: test started suite=0 test=120 name="interop/withdrawal-block-51 (go-ethereum_trace)"
+Sep 24 17:00:44.715 INF API: test ended suite=0 test=120 pass=false
+Sep 24 17:00:44.716 INF API: test started suite=0 test=121 name="interop/withdrawal-block-52 (go-ethereum_trace)"
+Sep 24 17:00:44.719 INF API: test ended suite=0 test=121 pass=false
+Sep 24 17:00:44.719 INF API: test started suite=0 test=122 name="interop/withdrawal-block-53 (go-ethereum_trace)"
+Sep 24 17:00:44.722 INF API: test ended suite=0 test=122 pass=false
+Sep 24 17:00:44.723 INF API: test started suite=0 test=123 name="interop/withdrawal-filter-51 (go-ethereum_trace)"
+Sep 24 17:00:44.725 INF API: test ended suite=0 test=123 pass=false
+Sep 24 17:00:44.726 INF API: test started suite=0 test=124 name="interop/withdrawal-filter-52 (go-ethereum_trace)"
+Sep 24 17:00:44.729 INF API: test ended suite=0 test=124 pass=false
+Sep 24 17:00:44.730 INF API: test started suite=0 test=125 name="interop/withdrawal-filter-53 (go-ethereum_trace)"
+Sep 24 17:00:44.732 INF API: test ended suite=0 test=125 pass=false
+Sep 24 17:00:44.876 INF API: test ended suite=0 test=101 pass=true
+Sep 24 17:00:44.877 INF API: test started suite=0 test=126 name="client launch (nethermind_development)"
+Sep 24 17:00:53.244 INF API: client nethermind_development started suite=0 test=126 container=b234dee0
+Sep 24 17:00:53.394 INF API: test started suite=0 test=127 name="interop/_control/head (nethermind_development)"
+Sep 24 17:00:53.398 INF API: test ended suite=0 test=127 pass=false
+Sep 24 17:00:53.400 INF API: test started suite=0 test=128 name="interop/_control/latest (nethermind_development)"
+Sep 24 17:00:53.402 INF API: test ended suite=0 test=128 pass=false
+Sep 24 17:00:53.403 INF API: test started suite=0 test=129 name="interop/_control/version (nethermind_development)"
+Sep 24 17:00:53.406 INF API: test ended suite=0 test=129 pass=false
+Sep 24 17:00:53.407 INF API: test started suite=0 test=130 name="interop/_reference/block/0x33 (nethermind_development)"
+Sep 24 17:00:53.505 INF API: test ended suite=0 test=130 pass=false
+Sep 24 17:00:53.506 INF API: test started suite=0 test=131 name="interop/_reference/block/0x34 (nethermind_development)"
+Sep 24 17:00:53.510 INF API: test ended suite=0 test=131 pass=false
+Sep 24 17:00:53.511 INF API: test started suite=0 test=132 name="interop/_reference/block/0x35 (nethermind_development)"
+Sep 24 17:00:53.514 INF API: test ended suite=0 test=132 pass=false
+Sep 24 17:00:53.515 INF API: test started suite=0 test=133 name="interop/beacon-call-55 (nethermind_development)"
+Sep 24 17:00:53.558 INF API: test ended suite=0 test=133 pass=false
+Sep 24 17:00:53.559 INF API: test started suite=0 test=134 name="interop/beacon-call-56 (nethermind_development)"
+Sep 24 17:00:53.564 INF API: test ended suite=0 test=134 pass=false
+Sep 24 17:00:53.565 INF API: test started suite=0 test=135 name="interop/control-head (nethermind_development)"
+Sep 24 17:00:53.567 INF API: test ended suite=0 test=135 pass=false
+Sep 24 17:00:53.568 INF API: test started suite=0 test=136 name="interop/destroy-trace-55 (nethermind_development)"
+Sep 24 17:00:53.616 INF API: test ended suite=0 test=136 pass=false
+Sep 24 17:00:53.617 INF API: test started suite=0 test=137 name="interop/destroy-trace-56 (nethermind_development)"
+Sep 24 17:00:53.623 INF API: test ended suite=0 test=137 pass=false
+Sep 24 17:00:53.623 INF API: test started suite=0 test=138 name="interop/system-beacon-55-560 (nethermind_development)"
+Sep 24 17:00:53.629 INF API: test ended suite=0 test=138 pass=false
+Sep 24 17:00:53.629 INF API: test started suite=0 test=139 name="interop/system-beacon-55-8751 (nethermind_development)"
+Sep 24 17:00:53.631 INF API: test ended suite=0 test=139 pass=false
+Sep 24 17:00:53.632 INF API: test started suite=0 test=140 name="interop/system-beacon-56-560 (nethermind_development)"
+Sep 24 17:00:53.635 INF API: test ended suite=0 test=140 pass=false
+Sep 24 17:00:53.636 INF API: test started suite=0 test=141 name="interop/system-beacon-56-8751 (nethermind_development)"
+Sep 24 17:00:53.638 INF API: test ended suite=0 test=141 pass=false
+Sep 24 17:00:53.639 INF API: test started suite=0 test=142 name="interop/withdrawal-balance-51 (nethermind_development)"
+Sep 24 17:00:53.643 INF API: test ended suite=0 test=142 pass=false
+Sep 24 17:00:53.644 INF API: test started suite=0 test=143 name="interop/withdrawal-balance-52 (nethermind_development)"
+Sep 24 17:00:53.646 INF API: test ended suite=0 test=143 pass=false
+Sep 24 17:00:53.647 INF API: test started suite=0 test=144 name="interop/withdrawal-balance-53 (nethermind_development)"
+Sep 24 17:00:53.649 INF API: test ended suite=0 test=144 pass=false
+Sep 24 17:00:53.650 INF API: test started suite=0 test=145 name="interop/withdrawal-block-51 (nethermind_development)"
+Sep 24 17:00:53.672 INF API: test ended suite=0 test=145 pass=false
+Sep 24 17:00:53.673 INF API: test started suite=0 test=146 name="interop/withdrawal-block-52 (nethermind_development)"
+Sep 24 17:00:53.676 INF API: test ended suite=0 test=146 pass=false
+Sep 24 17:00:53.677 INF API: test started suite=0 test=147 name="interop/withdrawal-block-53 (nethermind_development)"
+Sep 24 17:00:53.684 INF API: test ended suite=0 test=147 pass=false
+Sep 24 17:00:53.685 INF API: test started suite=0 test=148 name="interop/withdrawal-filter-51 (nethermind_development)"
+Sep 24 17:00:53.693 INF API: test ended suite=0 test=148 pass=false
+Sep 24 17:00:53.694 INF API: test started suite=0 test=149 name="interop/withdrawal-filter-52 (nethermind_development)"
+Sep 24 17:00:53.696 INF API: test ended suite=0 test=149 pass=false
+Sep 24 17:00:53.697 INF API: test started suite=0 test=150 name="interop/withdrawal-filter-53 (nethermind_development)"
+Sep 24 17:00:53.700 INF API: test ended suite=0 test=150 pass=false
+Sep 24 17:00:53.857 INF API: test ended suite=0 test=126 pass=true
+Sep 24 17:00:53.858 INF API: test started suite=0 test=151 name="client launch (nethermind_release)"
+Sep 24 17:01:01.220 INF API: client nethermind_release started suite=0 test=151 container=31029b39
+Sep 24 17:01:01.352 INF API: test started suite=0 test=152 name="interop/_control/head (nethermind_release)"
+Sep 24 17:01:01.357 INF API: test ended suite=0 test=152 pass=false
+Sep 24 17:01:01.358 INF API: test started suite=0 test=153 name="interop/_control/latest (nethermind_release)"
+Sep 24 17:01:01.361 INF API: test ended suite=0 test=153 pass=false
+Sep 24 17:01:01.362 INF API: test started suite=0 test=154 name="interop/_control/version (nethermind_release)"
+Sep 24 17:01:01.365 INF API: test ended suite=0 test=154 pass=false
+Sep 24 17:01:01.366 INF API: test started suite=0 test=155 name="interop/_reference/block/0x33 (nethermind_release)"
+Sep 24 17:01:01.439 INF API: test ended suite=0 test=155 pass=false
+Sep 24 17:01:01.441 INF API: test started suite=0 test=156 name="interop/_reference/block/0x34 (nethermind_release)"
+Sep 24 17:01:01.445 INF API: test ended suite=0 test=156 pass=false
+Sep 24 17:01:01.447 INF API: test started suite=0 test=157 name="interop/_reference/block/0x35 (nethermind_release)"
+Sep 24 17:01:01.450 INF API: test ended suite=0 test=157 pass=false
+Sep 24 17:01:01.451 INF API: test started suite=0 test=158 name="interop/beacon-call-55 (nethermind_release)"
+Sep 24 17:01:01.496 INF API: test ended suite=0 test=158 pass=false
+Sep 24 17:01:01.497 INF API: test started suite=0 test=159 name="interop/beacon-call-56 (nethermind_release)"
+Sep 24 17:01:01.501 INF API: test ended suite=0 test=159 pass=false
+Sep 24 17:01:01.502 INF API: test started suite=0 test=160 name="interop/control-head (nethermind_release)"
+Sep 24 17:01:01.505 INF API: test ended suite=0 test=160 pass=false
+Sep 24 17:01:01.505 INF API: test started suite=0 test=161 name="interop/destroy-trace-55 (nethermind_release)"
+Sep 24 17:01:01.534 INF API: test ended suite=0 test=161 pass=false
+Sep 24 17:01:01.535 INF API: test started suite=0 test=162 name="interop/destroy-trace-56 (nethermind_release)"
+Sep 24 17:01:01.540 INF API: test ended suite=0 test=162 pass=false
+Sep 24 17:01:01.541 INF API: test started suite=0 test=163 name="interop/system-beacon-55-560 (nethermind_release)"
+Sep 24 17:01:01.548 INF API: test ended suite=0 test=163 pass=false
+Sep 24 17:01:01.549 INF API: test started suite=0 test=164 name="interop/system-beacon-55-8751 (nethermind_release)"
+Sep 24 17:01:01.552 INF API: test ended suite=0 test=164 pass=false
+Sep 24 17:01:01.553 INF API: test started suite=0 test=165 name="interop/system-beacon-56-560 (nethermind_release)"
+Sep 24 17:01:01.555 INF API: test ended suite=0 test=165 pass=false
+Sep 24 17:01:01.555 INF API: test started suite=0 test=166 name="interop/system-beacon-56-8751 (nethermind_release)"
+Sep 24 17:01:01.558 INF API: test ended suite=0 test=166 pass=false
+Sep 24 17:01:01.559 INF API: test started suite=0 test=167 name="interop/withdrawal-balance-51 (nethermind_release)"
+Sep 24 17:01:01.565 INF API: test ended suite=0 test=167 pass=false
+Sep 24 17:01:01.566 INF API: test started suite=0 test=168 name="interop/withdrawal-balance-52 (nethermind_release)"
+Sep 24 17:01:01.569 INF API: test ended suite=0 test=168 pass=false
+Sep 24 17:01:01.569 INF API: test started suite=0 test=169 name="interop/withdrawal-balance-53 (nethermind_release)"
+Sep 24 17:01:01.572 INF API: test ended suite=0 test=169 pass=false
+Sep 24 17:01:01.573 INF API: test started suite=0 test=170 name="interop/withdrawal-block-51 (nethermind_release)"
+Sep 24 17:01:01.596 INF API: test ended suite=0 test=170 pass=false
+Sep 24 17:01:01.597 INF API: test started suite=0 test=171 name="interop/withdrawal-block-52 (nethermind_release)"
+Sep 24 17:01:01.601 INF API: test ended suite=0 test=171 pass=false
+Sep 24 17:01:01.602 INF API: test started suite=0 test=172 name="interop/withdrawal-block-53 (nethermind_release)"
+Sep 24 17:01:01.611 INF API: test ended suite=0 test=172 pass=false
+Sep 24 17:01:01.612 INF API: test started suite=0 test=173 name="interop/withdrawal-filter-51 (nethermind_release)"
+Sep 24 17:01:01.622 INF API: test ended suite=0 test=173 pass=false
+Sep 24 17:01:01.623 INF API: test started suite=0 test=174 name="interop/withdrawal-filter-52 (nethermind_release)"
+Sep 24 17:01:01.627 INF API: test ended suite=0 test=174 pass=false
+Sep 24 17:01:01.628 INF API: test started suite=0 test=175 name="interop/withdrawal-filter-53 (nethermind_release)"
+Sep 24 17:01:01.632 INF API: test ended suite=0 test=175 pass=false
+Sep 24 17:01:01.827 INF API: test ended suite=0 test=151 pass=true
+Sep 24 17:01:01.828 INF API: test started suite=0 test=176 name="client launch (reth_development)"
+Sep 24 17:01:02.484 INF API: client reth_development started suite=0 test=176 container=d8293367
+Sep 24 17:01:02.488 INF API: test started suite=0 test=177 name="interop/_control/head (reth_development)"
+Sep 24 17:01:02.491 INF API: test ended suite=0 test=177 pass=false
+Sep 24 17:01:02.492 INF API: test started suite=0 test=178 name="interop/_control/latest (reth_development)"
+Sep 24 17:01:02.495 INF API: test ended suite=0 test=178 pass=false
+Sep 24 17:01:02.495 INF API: test started suite=0 test=179 name="interop/_control/version (reth_development)"
+Sep 24 17:01:02.498 INF API: test ended suite=0 test=179 pass=false
+Sep 24 17:01:02.498 INF API: test started suite=0 test=180 name="interop/_reference/block/0x33 (reth_development)"
+Sep 24 17:01:02.502 INF API: test ended suite=0 test=180 pass=false
+Sep 24 17:01:02.503 INF API: test started suite=0 test=181 name="interop/_reference/block/0x34 (reth_development)"
+Sep 24 17:01:02.508 INF API: test ended suite=0 test=181 pass=false
+Sep 24 17:01:02.509 INF API: test started suite=0 test=182 name="interop/_reference/block/0x35 (reth_development)"
+Sep 24 17:01:02.513 INF API: test ended suite=0 test=182 pass=false
+Sep 24 17:01:02.514 INF API: test started suite=0 test=183 name="interop/beacon-call-55 (reth_development)"
+Sep 24 17:01:02.516 INF API: test ended suite=0 test=183 pass=false
+Sep 24 17:01:02.517 INF API: test started suite=0 test=184 name="interop/beacon-call-56 (reth_development)"
+Sep 24 17:01:02.520 INF API: test ended suite=0 test=184 pass=false
+Sep 24 17:01:02.521 INF API: test started suite=0 test=185 name="interop/control-head (reth_development)"
+Sep 24 17:01:02.523 INF API: test ended suite=0 test=185 pass=false
+Sep 24 17:01:02.524 INF API: test started suite=0 test=186 name="interop/destroy-trace-55 (reth_development)"
+Sep 24 17:01:02.526 INF API: test ended suite=0 test=186 pass=false
+Sep 24 17:01:02.527 INF API: test started suite=0 test=187 name="interop/destroy-trace-56 (reth_development)"
+Sep 24 17:01:02.530 INF API: test ended suite=0 test=187 pass=false
+Sep 24 17:01:02.530 INF API: test started suite=0 test=188 name="interop/system-beacon-55-560 (reth_development)"
+Sep 24 17:01:02.532 INF API: test ended suite=0 test=188 pass=false
+Sep 24 17:01:02.533 INF API: test started suite=0 test=189 name="interop/system-beacon-55-8751 (reth_development)"
+Sep 24 17:01:02.535 INF API: test ended suite=0 test=189 pass=false
+Sep 24 17:01:02.536 INF API: test started suite=0 test=190 name="interop/system-beacon-56-560 (reth_development)"
+Sep 24 17:01:02.538 INF API: test ended suite=0 test=190 pass=false
+Sep 24 17:01:02.539 INF API: test started suite=0 test=191 name="interop/system-beacon-56-8751 (reth_development)"
+Sep 24 17:01:02.541 INF API: test ended suite=0 test=191 pass=false
+Sep 24 17:01:02.542 INF API: test started suite=0 test=192 name="interop/withdrawal-balance-51 (reth_development)"
+Sep 24 17:01:02.544 INF API: test ended suite=0 test=192 pass=false
+Sep 24 17:01:02.545 INF API: test started suite=0 test=193 name="interop/withdrawal-balance-52 (reth_development)"
+Sep 24 17:01:02.547 INF API: test ended suite=0 test=193 pass=false
+Sep 24 17:01:02.548 INF API: test started suite=0 test=194 name="interop/withdrawal-balance-53 (reth_development)"
+Sep 24 17:01:02.550 INF API: test ended suite=0 test=194 pass=false
+Sep 24 17:01:02.551 INF API: test started suite=0 test=195 name="interop/withdrawal-block-51 (reth_development)"
+Sep 24 17:01:02.554 INF API: test ended suite=0 test=195 pass=false
+Sep 24 17:01:02.554 INF API: test started suite=0 test=196 name="interop/withdrawal-block-52 (reth_development)"
+Sep 24 17:01:02.557 INF API: test ended suite=0 test=196 pass=false
+Sep 24 17:01:02.558 INF API: test started suite=0 test=197 name="interop/withdrawal-block-53 (reth_development)"
+Sep 24 17:01:02.561 INF API: test ended suite=0 test=197 pass=false
+Sep 24 17:01:02.562 INF API: test started suite=0 test=198 name="interop/withdrawal-filter-51 (reth_development)"
+Sep 24 17:01:02.564 INF API: test ended suite=0 test=198 pass=false
+Sep 24 17:01:02.565 INF API: test started suite=0 test=199 name="interop/withdrawal-filter-52 (reth_development)"
+Sep 24 17:01:02.567 INF API: test ended suite=0 test=199 pass=false
+Sep 24 17:01:02.568 INF API: test started suite=0 test=200 name="interop/withdrawal-filter-53 (reth_development)"
+Sep 24 17:01:02.571 INF API: test ended suite=0 test=200 pass=false
+Sep 24 17:01:02.693 INF API: test ended suite=0 test=176 pass=true
+Sep 24 17:01:02.694 INF API: test started suite=0 test=201 name="client launch (reth_release)"
+Sep 24 17:01:03.357 INF API: client reth_release started suite=0 test=201 container=d268dc3d
+Sep 24 17:01:03.362 INF API: test started suite=0 test=202 name="interop/_control/head (reth_release)"
+Sep 24 17:01:03.364 INF API: test ended suite=0 test=202 pass=false
+Sep 24 17:01:03.365 INF API: test started suite=0 test=203 name="interop/_control/latest (reth_release)"
+Sep 24 17:01:03.368 INF API: test ended suite=0 test=203 pass=false
+Sep 24 17:01:03.369 INF API: test started suite=0 test=204 name="interop/_control/version (reth_release)"
+Sep 24 17:01:03.371 INF API: test ended suite=0 test=204 pass=false
+Sep 24 17:01:03.372 INF API: test started suite=0 test=205 name="interop/_reference/block/0x33 (reth_release)"
+Sep 24 17:01:03.378 INF API: test ended suite=0 test=205 pass=false
+Sep 24 17:01:03.378 INF API: test started suite=0 test=206 name="interop/_reference/block/0x34 (reth_release)"
+Sep 24 17:01:03.382 INF API: test ended suite=0 test=206 pass=false
+Sep 24 17:01:03.383 INF API: test started suite=0 test=207 name="interop/_reference/block/0x35 (reth_release)"
+Sep 24 17:01:03.386 INF API: test ended suite=0 test=207 pass=false
+Sep 24 17:01:03.387 INF API: test started suite=0 test=208 name="interop/beacon-call-55 (reth_release)"
+Sep 24 17:01:03.389 INF API: test ended suite=0 test=208 pass=false
+Sep 24 17:01:03.390 INF API: test started suite=0 test=209 name="interop/beacon-call-56 (reth_release)"
+Sep 24 17:01:03.392 INF API: test ended suite=0 test=209 pass=false
+Sep 24 17:01:03.393 INF API: test started suite=0 test=210 name="interop/control-head (reth_release)"
+Sep 24 17:01:03.396 INF API: test ended suite=0 test=210 pass=false
+Sep 24 17:01:03.397 INF API: test started suite=0 test=211 name="interop/destroy-trace-55 (reth_release)"
+Sep 24 17:01:03.399 INF API: test ended suite=0 test=211 pass=false
+Sep 24 17:01:03.400 INF API: test started suite=0 test=212 name="interop/destroy-trace-56 (reth_release)"
+Sep 24 17:01:03.403 INF API: test ended suite=0 test=212 pass=false
+Sep 24 17:01:03.404 INF API: test started suite=0 test=213 name="interop/system-beacon-55-560 (reth_release)"
+Sep 24 17:01:03.406 INF API: test ended suite=0 test=213 pass=false
+Sep 24 17:01:03.407 INF API: test started suite=0 test=214 name="interop/system-beacon-55-8751 (reth_release)"
+Sep 24 17:01:03.409 INF API: test ended suite=0 test=214 pass=false
+Sep 24 17:01:03.410 INF API: test started suite=0 test=215 name="interop/system-beacon-56-560 (reth_release)"
+Sep 24 17:01:03.412 INF API: test ended suite=0 test=215 pass=false
+Sep 24 17:01:03.413 INF API: test started suite=0 test=216 name="interop/system-beacon-56-8751 (reth_release)"
+Sep 24 17:01:03.415 INF API: test ended suite=0 test=216 pass=false
+Sep 24 17:01:03.416 INF API: test started suite=0 test=217 name="interop/withdrawal-balance-51 (reth_release)"
+Sep 24 17:01:03.417 INF API: test ended suite=0 test=217 pass=false
+Sep 24 17:01:03.418 INF API: test started suite=0 test=218 name="interop/withdrawal-balance-52 (reth_release)"
+Sep 24 17:01:03.420 INF API: test ended suite=0 test=218 pass=false
+Sep 24 17:01:03.421 INF API: test started suite=0 test=219 name="interop/withdrawal-balance-53 (reth_release)"
+Sep 24 17:01:03.423 INF API: test ended suite=0 test=219 pass=false
+Sep 24 17:01:03.424 INF API: test started suite=0 test=220 name="interop/withdrawal-block-51 (reth_release)"
+Sep 24 17:01:03.426 INF API: test ended suite=0 test=220 pass=false
+Sep 24 17:01:03.427 INF API: test started suite=0 test=221 name="interop/withdrawal-block-52 (reth_release)"
+Sep 24 17:01:03.430 INF API: test ended suite=0 test=221 pass=false
+Sep 24 17:01:03.432 INF API: test started suite=0 test=222 name="interop/withdrawal-block-53 (reth_release)"
+Sep 24 17:01:03.434 INF API: test ended suite=0 test=222 pass=false
+Sep 24 17:01:03.435 INF API: test started suite=0 test=223 name="interop/withdrawal-filter-51 (reth_release)"
+Sep 24 17:01:03.437 INF API: test ended suite=0 test=223 pass=false
+Sep 24 17:01:03.438 INF API: test started suite=0 test=224 name="interop/withdrawal-filter-52 (reth_release)"
+Sep 24 17:01:03.441 INF API: test ended suite=0 test=224 pass=false
+Sep 24 17:01:03.441 INF API: test started suite=0 test=225 name="interop/withdrawal-filter-53 (reth_release)"
+Sep 24 17:01:03.444 INF API: test ended suite=0 test=225 pass=false
+Sep 24 17:01:03.575 INF API: test ended suite=0 test=201 pass=true
+Sep 24 17:01:03.584 INF API: suite ended suite=0
+Sep 24 17:01:03.807 INF simulation ethereum/rpc-compat finished suites=1 tests=225 failed=216
+216 tests failed

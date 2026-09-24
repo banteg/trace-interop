@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 9d6e8b8d](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h17-retest/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h17-retest/coverage/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -64,7 +64,7 @@
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 
-**Nethermind · 2.1.0-unstable · 9d6e8b8d** (`2.1.0-unstable+9d6e8b8d`)
+**Nethermind · 2.1.0-unstable · 641592d2** (`2.1.0-unstable+641592d2`)
 
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected None, got {'data': '0x0000000000000000000000000000000000000000000000000000000000000000', 'off': 64}
 - [H20](../../decisions/H20.md): At every VM depth, PUSH matches bytecode, non-call gas advances after the same operation, and reads/returns do not claim memory writes; CALL/CREATE gas boundaries are excluded. operation 1 reports a memory write for a read/return

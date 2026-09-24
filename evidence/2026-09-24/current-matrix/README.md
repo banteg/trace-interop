@@ -1,7 +1,7 @@
 # Current client matrix — 2026-09-24
 
-Historical snapshot: the [12:21 UTC H17 retest](../h17-retest/README.md) reran all
-fourteen corpora and now supplies the active reports. This earlier capture remains
+Historical snapshot: the [12:56 UTC H15 comparison](../h15-call-compat/README.md)
+reran all fifteen corpora and now supplies the active reports. This earlier capture remains
 unchanged evidence for the initial assessment and before/after regressions.
 
 The suite resolved the latest published stable releases and development images,

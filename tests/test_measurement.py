@@ -317,7 +317,7 @@ class PublishedAssessmentTests(unittest.TestCase):
 
     def test_current_reports_retain_full_controlled_coverage(self):
         records = json.loads((ROOT/'reports/checks.json').read_text())
-        for corpus, expected in [('precompile-values',72),('h30',117),('fee-policy',744*9)]:
+        for corpus, expected in [('precompile-values',72),('h30',117),('fee-policy',744*9),('fee-compat',256*9)]:
             rows = [r for r in records if r['corpus']==corpus and r['method'].startswith('trace_')
                     and not r['case'].startswith(('_control','_reference/'))]
             self.assertEqual(len(rows), expected, corpus)

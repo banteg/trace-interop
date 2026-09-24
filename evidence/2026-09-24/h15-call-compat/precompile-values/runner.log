@@ -1,0 +1,317 @@
+Sep 24 17:02:06.241 INF building image image=hive/hiveproxy nocache=false pull=false
+Sep 24 17:02:06.306 INF building 9 clients...
+Sep 24 17:02:06.306 INF building image image=hive/clients/besu_development:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=0bdabe53b1597932edebfa970aae1223b1e814a7897bfa776337f3f5f2d8f30d
+Sep 24 17:02:06.428 INF building image image=hive/clients/besu_release:latest dir=clients/besu nocache=false pull=false baseimage=trace-interop/besu tag=f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b
+Sep 24 17:02:06.559 INF building image image=hive/clients/erigon_development:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=96ed3bf9e6103fa7348e8223f07becfaf1d19b43fb66524f295bdb83e12dbee5
+Sep 24 17:02:06.694 INF building image image=hive/clients/erigon_release:latest dir=clients/erigon nocache=false pull=false baseimage=trace-interop/erigon tag=8668d9c5adc01ad1d12aa25380e384079080bdde7e0ce93f11bed422d82ca0ac
+Sep 24 17:02:06.830 INF building image image=hive/clients/go-ethereum_trace:latest dir=clients/go-ethereum nocache=false pull=false baseimage=trace-interop/go-ethereum tag=2a6e1bfcf91337fd9081f28b1a77efcf20c054ea99b30a316fa8a581c819fa74
+Sep 24 17:02:06.992 INF building image image=hive/clients/nethermind_development:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=891ce9bfe055df031239b4817239cde925175c0e172d74ddac9877cc37503eaf
+Sep 24 17:02:07.143 INF building image image=hive/clients/nethermind_release:latest dir=clients/nethermind nocache=false pull=false baseimage=trace-interop/nethermind tag=d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4
+Sep 24 17:02:07.297 INF building image image=hive/clients/reth_development:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=935f179789c1d4fc921c181a4fa21f3262e5d0509061ddbad4398b37db3f33bf
+Sep 24 17:02:07.438 INF building image image=hive/clients/reth_release:latest dir=clients/reth nocache=false pull=false baseimage=trace-interop/reth tag=e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7
+Sep 24 17:02:07.563 INF building 1 simulators...
+Sep 24 17:02:07.563 INF building image image=hive/simulators/ethereum/rpc-compat:latest dir=simulators/ethereum/rpc-compat nocache=false pull=false
+Sep 24 17:02:07.626 INF creating output directory folder=/home/banteg/dev/trace-h15-compat-20260924/evidence/2026-09-24/h15-call-compat/precompile-values/hive
+Sep 24 17:02:07.634 INF running simulation: ethereum/rpc-compat
+Sep 24 17:02:07.931 INF hiveproxy started container=81d1b900ae78 addr=172.17.0.2:8081
+Sep 24 17:02:08.232 INF API: suite started suite=0 name=rpc-compat
+Sep 24 17:02:08.233 INF API: test started suite=0 test=1 name="client launch (besu_development)"
+Sep 24 17:02:17.161 INF API: client besu_development started suite=0 test=1 container=62499a47
+Sep 24 17:02:17.478 INF API: test started suite=0 test=2 name="interop/_control/create-nonce (besu_development)"
+Sep 24 17:02:17.496 INF API: test ended suite=0 test=2 pass=false
+Sep 24 17:02:17.497 INF API: test started suite=0 test=3 name="interop/_control/head (besu_development)"
+Sep 24 17:02:17.506 INF API: test ended suite=0 test=3 pass=false
+Sep 24 17:02:17.508 INF API: test started suite=0 test=4 name="interop/_control/latest (besu_development)"
+Sep 24 17:02:17.515 INF API: test ended suite=0 test=4 pass=false
+Sep 24 17:02:17.516 INF API: test started suite=0 test=5 name="interop/_control/target-balance (besu_development)"
+Sep 24 17:02:17.524 INF API: test ended suite=0 test=5 pass=false
+Sep 24 17:02:17.525 INF API: test started suite=0 test=6 name="interop/_control/target-code (besu_development)"
+Sep 24 17:02:17.532 INF API: test ended suite=0 test=6 pass=false
+Sep 24 17:02:17.533 INF API: test started suite=0 test=7 name="interop/_control/target-nonce (besu_development)"
+Sep 24 17:02:17.538 INF API: test ended suite=0 test=7 pass=false
+Sep 24 17:02:17.539 INF API: test started suite=0 test=8 name="interop/_control/version (besu_development)"
+Sep 24 17:02:17.548 INF API: test ended suite=0 test=8 pass=false
+Sep 24 17:02:17.549 INF API: test started suite=0 test=9 name="interop/nested-call-outer0-value1-failed (besu_development)"
+Sep 24 17:02:17.630 INF API: test ended suite=0 test=9 pass=false
+Sep 24 17:02:17.632 INF API: test started suite=0 test=10 name="interop/nested-call-outer0-value1-success (besu_development)"
+Sep 24 17:02:17.655 INF API: test ended suite=0 test=10 pass=false
+Sep 24 17:02:17.656 INF API: test started suite=0 test=11 name="interop/nested-call-outer1-value0-failed (besu_development)"
+Sep 24 17:02:17.676 INF API: test ended suite=0 test=11 pass=false
+Sep 24 17:02:17.677 INF API: test started suite=0 test=12 name="interop/nested-call-outer1-value0-success (besu_development)"
+Sep 24 17:02:17.687 INF API: test ended suite=0 test=12 pass=false
+Sep 24 17:02:17.688 INF API: test started suite=0 test=13 name="interop/nested-callcode-outer0-value1-failed (besu_development)"
+Sep 24 17:02:17.700 INF API: test ended suite=0 test=13 pass=false
+Sep 24 17:02:17.701 INF API: test started suite=0 test=14 name="interop/nested-callcode-outer0-value1-success (besu_development)"
+Sep 24 17:02:17.711 INF API: test ended suite=0 test=14 pass=false
+Sep 24 17:02:17.712 INF API: test started suite=0 test=15 name="interop/nested-callcode-outer1-value0-failed (besu_development)"
+Sep 24 17:02:17.721 INF API: test ended suite=0 test=15 pass=false
+Sep 24 17:02:17.722 INF API: test started suite=0 test=16 name="interop/nested-callcode-outer1-value0-success (besu_development)"
+Sep 24 17:02:17.730 INF API: test ended suite=0 test=16 pass=false
+Sep 24 17:02:17.908 INF API: test ended suite=0 test=1 pass=true
+Sep 24 17:02:17.910 INF API: test started suite=0 test=17 name="client launch (besu_release)"
+Sep 24 17:02:26.864 INF API: client besu_release started suite=0 test=17 container=676a7fd2
+Sep 24 17:02:27.141 INF API: test started suite=0 test=18 name="interop/_control/create-nonce (besu_release)"
+Sep 24 17:02:27.160 INF API: test ended suite=0 test=18 pass=false
+Sep 24 17:02:27.161 INF API: test started suite=0 test=19 name="interop/_control/head (besu_release)"
+Sep 24 17:02:27.176 INF API: test ended suite=0 test=19 pass=false
+Sep 24 17:02:27.178 INF API: test started suite=0 test=20 name="interop/_control/latest (besu_release)"
+Sep 24 17:02:27.185 INF API: test ended suite=0 test=20 pass=false
+Sep 24 17:02:27.186 INF API: test started suite=0 test=21 name="interop/_control/target-balance (besu_release)"
+Sep 24 17:02:27.193 INF API: test ended suite=0 test=21 pass=false
+Sep 24 17:02:27.194 INF API: test started suite=0 test=22 name="interop/_control/target-code (besu_release)"
+Sep 24 17:02:27.203 INF API: test ended suite=0 test=22 pass=false
+Sep 24 17:02:27.204 INF API: test started suite=0 test=23 name="interop/_control/target-nonce (besu_release)"
+Sep 24 17:02:27.209 INF API: test ended suite=0 test=23 pass=false
+Sep 24 17:02:27.210 INF API: test started suite=0 test=24 name="interop/_control/version (besu_release)"
+Sep 24 17:02:27.218 INF API: test ended suite=0 test=24 pass=false
+Sep 24 17:02:27.219 INF API: test started suite=0 test=25 name="interop/nested-call-outer0-value1-failed (besu_release)"
+Sep 24 17:02:27.309 INF API: test ended suite=0 test=25 pass=false
+Sep 24 17:02:27.310 INF API: test started suite=0 test=26 name="interop/nested-call-outer0-value1-success (besu_release)"
+Sep 24 17:02:27.328 INF API: test ended suite=0 test=26 pass=false
+Sep 24 17:02:27.329 INF API: test started suite=0 test=27 name="interop/nested-call-outer1-value0-failed (besu_release)"
+Sep 24 17:02:27.343 INF API: test ended suite=0 test=27 pass=false
+Sep 24 17:02:27.344 INF API: test started suite=0 test=28 name="interop/nested-call-outer1-value0-success (besu_release)"
+Sep 24 17:02:27.358 INF API: test ended suite=0 test=28 pass=false
+Sep 24 17:02:27.360 INF API: test started suite=0 test=29 name="interop/nested-callcode-outer0-value1-failed (besu_release)"
+Sep 24 17:02:27.375 INF API: test ended suite=0 test=29 pass=false
+Sep 24 17:02:27.376 INF API: test started suite=0 test=30 name="interop/nested-callcode-outer0-value1-success (besu_release)"
+Sep 24 17:02:27.390 INF API: test ended suite=0 test=30 pass=false
+Sep 24 17:02:27.392 INF API: test started suite=0 test=31 name="interop/nested-callcode-outer1-value0-failed (besu_release)"
+Sep 24 17:02:27.403 INF API: test ended suite=0 test=31 pass=false
+Sep 24 17:02:27.404 INF API: test started suite=0 test=32 name="interop/nested-callcode-outer1-value0-success (besu_release)"
+Sep 24 17:02:27.414 INF API: test ended suite=0 test=32 pass=false
+Sep 24 17:02:27.716 INF API: test ended suite=0 test=17 pass=true
+Sep 24 17:02:27.718 INF API: test started suite=0 test=33 name="client launch (erigon_development)"
+Sep 24 17:02:29.014 INF API: client erigon_development started suite=0 test=33 container=6909b761
+Sep 24 17:02:29.029 INF API: test started suite=0 test=34 name="interop/_control/create-nonce (erigon_development)"
+Sep 24 17:02:29.030 INF API: test ended suite=0 test=34 pass=false
+Sep 24 17:02:29.031 INF API: test started suite=0 test=35 name="interop/_control/head (erigon_development)"
+Sep 24 17:02:29.033 INF API: test ended suite=0 test=35 pass=false
+Sep 24 17:02:29.034 INF API: test started suite=0 test=36 name="interop/_control/latest (erigon_development)"
+Sep 24 17:02:29.037 INF API: test ended suite=0 test=36 pass=false
+Sep 24 17:02:29.037 INF API: test started suite=0 test=37 name="interop/_control/target-balance (erigon_development)"
+Sep 24 17:02:29.039 INF API: test ended suite=0 test=37 pass=false
+Sep 24 17:02:29.039 INF API: test started suite=0 test=38 name="interop/_control/target-code (erigon_development)"
+Sep 24 17:02:29.040 INF API: test ended suite=0 test=38 pass=false
+Sep 24 17:02:29.041 INF API: test started suite=0 test=39 name="interop/_control/target-nonce (erigon_development)"
+Sep 24 17:02:29.044 INF API: test ended suite=0 test=39 pass=false
+Sep 24 17:02:29.044 INF API: test started suite=0 test=40 name="interop/_control/version (erigon_development)"
+Sep 24 17:02:29.045 INF API: test ended suite=0 test=40 pass=false
+Sep 24 17:02:29.046 INF API: test started suite=0 test=41 name="interop/nested-call-outer0-value1-failed (erigon_development)"
+Sep 24 17:02:29.049 INF API: test ended suite=0 test=41 pass=false
+Sep 24 17:02:29.050 INF API: test started suite=0 test=42 name="interop/nested-call-outer0-value1-success (erigon_development)"
+Sep 24 17:02:29.052 INF API: test ended suite=0 test=42 pass=false
+Sep 24 17:02:29.053 INF API: test started suite=0 test=43 name="interop/nested-call-outer1-value0-failed (erigon_development)"
+Sep 24 17:02:29.057 INF API: test ended suite=0 test=43 pass=false
+Sep 24 17:02:29.057 INF API: test started suite=0 test=44 name="interop/nested-call-outer1-value0-success (erigon_development)"
+Sep 24 17:02:29.060 INF API: test ended suite=0 test=44 pass=false
+Sep 24 17:02:29.060 INF API: test started suite=0 test=45 name="interop/nested-callcode-outer0-value1-failed (erigon_development)"
+Sep 24 17:02:29.064 INF API: test ended suite=0 test=45 pass=false
+Sep 24 17:02:29.065 INF API: test started suite=0 test=46 name="interop/nested-callcode-outer0-value1-success (erigon_development)"
+Sep 24 17:02:29.066 INF API: test ended suite=0 test=46 pass=false
+Sep 24 17:02:29.067 INF API: test started suite=0 test=47 name="interop/nested-callcode-outer1-value0-failed (erigon_development)"
+Sep 24 17:02:29.071 INF API: test ended suite=0 test=47 pass=false
+Sep 24 17:02:29.072 INF API: test started suite=0 test=48 name="interop/nested-callcode-outer1-value0-success (erigon_development)"
+Sep 24 17:02:29.074 INF API: test ended suite=0 test=48 pass=false
+Sep 24 17:02:29.803 INF API: test ended suite=0 test=33 pass=true
+Sep 24 17:02:29.805 INF API: test started suite=0 test=49 name="client launch (erigon_release)"
+Sep 24 17:02:31.491 INF API: client erigon_release started suite=0 test=49 container=735c0492
+Sep 24 17:02:31.515 INF API: test started suite=0 test=50 name="interop/_control/create-nonce (erigon_release)"
+Sep 24 17:02:31.516 INF API: test ended suite=0 test=50 pass=false
+Sep 24 17:02:31.517 INF API: test started suite=0 test=51 name="interop/_control/head (erigon_release)"
+Sep 24 17:02:31.522 INF API: test ended suite=0 test=51 pass=false
+Sep 24 17:02:31.523 INF API: test started suite=0 test=52 name="interop/_control/latest (erigon_release)"
+Sep 24 17:02:31.524 INF API: test ended suite=0 test=52 pass=false
+Sep 24 17:02:31.525 INF API: test started suite=0 test=53 name="interop/_control/target-balance (erigon_release)"
+Sep 24 17:02:31.528 INF API: test ended suite=0 test=53 pass=false
+Sep 24 17:02:31.529 INF API: test started suite=0 test=54 name="interop/_control/target-code (erigon_release)"
+Sep 24 17:02:31.530 INF API: test ended suite=0 test=54 pass=false
+Sep 24 17:02:31.531 INF API: test started suite=0 test=55 name="interop/_control/target-nonce (erigon_release)"
+Sep 24 17:02:31.534 INF API: test ended suite=0 test=55 pass=false
+Sep 24 17:02:31.535 INF API: test started suite=0 test=56 name="interop/_control/version (erigon_release)"
+Sep 24 17:02:31.536 INF API: test ended suite=0 test=56 pass=false
+Sep 24 17:02:31.537 INF API: test started suite=0 test=57 name="interop/nested-call-outer0-value1-failed (erigon_release)"
+Sep 24 17:02:31.541 INF API: test ended suite=0 test=57 pass=false
+Sep 24 17:02:31.542 INF API: test started suite=0 test=58 name="interop/nested-call-outer0-value1-success (erigon_release)"
+Sep 24 17:02:31.544 INF API: test ended suite=0 test=58 pass=false
+Sep 24 17:02:31.545 INF API: test started suite=0 test=59 name="interop/nested-call-outer1-value0-failed (erigon_release)"
+Sep 24 17:02:31.548 INF API: test ended suite=0 test=59 pass=false
+Sep 24 17:02:31.549 INF API: test started suite=0 test=60 name="interop/nested-call-outer1-value0-success (erigon_release)"
+Sep 24 17:02:31.552 INF API: test ended suite=0 test=60 pass=false
+Sep 24 17:02:31.553 INF API: test started suite=0 test=61 name="interop/nested-callcode-outer0-value1-failed (erigon_release)"
+Sep 24 17:02:31.556 INF API: test ended suite=0 test=61 pass=false
+Sep 24 17:02:31.557 INF API: test started suite=0 test=62 name="interop/nested-callcode-outer0-value1-success (erigon_release)"
+Sep 24 17:02:31.558 INF API: test ended suite=0 test=62 pass=false
+Sep 24 17:02:31.559 INF API: test started suite=0 test=63 name="interop/nested-callcode-outer1-value0-failed (erigon_release)"
+Sep 24 17:02:31.563 INF API: test ended suite=0 test=63 pass=false
+Sep 24 17:02:31.564 INF API: test started suite=0 test=64 name="interop/nested-callcode-outer1-value0-success (erigon_release)"
+Sep 24 17:02:31.566 INF API: test ended suite=0 test=64 pass=false
+Sep 24 17:02:31.746 INF API: test ended suite=0 test=49 pass=true
+Sep 24 17:02:31.747 INF API: test started suite=0 test=65 name="client launch (go-ethereum_trace)"
+Sep 24 17:02:32.400 INF API: client go-ethereum_trace started suite=0 test=65 container=e3dcb364
+Sep 24 17:02:32.404 INF API: test started suite=0 test=66 name="interop/_control/create-nonce (go-ethereum_trace)"
+Sep 24 17:02:32.407 INF API: test ended suite=0 test=66 pass=false
+Sep 24 17:02:32.408 INF API: test started suite=0 test=67 name="interop/_control/head (go-ethereum_trace)"
+Sep 24 17:02:32.411 INF API: test ended suite=0 test=67 pass=false
+Sep 24 17:02:32.412 INF API: test started suite=0 test=68 name="interop/_control/latest (go-ethereum_trace)"
+Sep 24 17:02:32.414 INF API: test ended suite=0 test=68 pass=false
+Sep 24 17:02:32.415 INF API: test started suite=0 test=69 name="interop/_control/target-balance (go-ethereum_trace)"
+Sep 24 17:02:32.417 INF API: test ended suite=0 test=69 pass=false
+Sep 24 17:02:32.418 INF API: test started suite=0 test=70 name="interop/_control/target-code (go-ethereum_trace)"
+Sep 24 17:02:32.420 INF API: test ended suite=0 test=70 pass=false
+Sep 24 17:02:32.420 INF API: test started suite=0 test=71 name="interop/_control/target-nonce (go-ethereum_trace)"
+Sep 24 17:02:32.422 INF API: test ended suite=0 test=71 pass=false
+Sep 24 17:02:32.423 INF API: test started suite=0 test=72 name="interop/_control/version (go-ethereum_trace)"
+Sep 24 17:02:32.425 INF API: test ended suite=0 test=72 pass=false
+Sep 24 17:02:32.426 INF API: test started suite=0 test=73 name="interop/nested-call-outer0-value1-failed (go-ethereum_trace)"
+Sep 24 17:02:32.429 INF API: test ended suite=0 test=73 pass=false
+Sep 24 17:02:32.430 INF API: test started suite=0 test=74 name="interop/nested-call-outer0-value1-success (go-ethereum_trace)"
+Sep 24 17:02:32.433 INF API: test ended suite=0 test=74 pass=false
+Sep 24 17:02:32.433 INF API: test started suite=0 test=75 name="interop/nested-call-outer1-value0-failed (go-ethereum_trace)"
+Sep 24 17:02:32.437 INF API: test ended suite=0 test=75 pass=false
+Sep 24 17:02:32.438 INF API: test started suite=0 test=76 name="interop/nested-call-outer1-value0-success (go-ethereum_trace)"
+Sep 24 17:02:32.441 INF API: test ended suite=0 test=76 pass=false
+Sep 24 17:02:32.442 INF API: test started suite=0 test=77 name="interop/nested-callcode-outer0-value1-failed (go-ethereum_trace)"
+Sep 24 17:02:32.446 INF API: test ended suite=0 test=77 pass=false
+Sep 24 17:02:32.446 INF API: test started suite=0 test=78 name="interop/nested-callcode-outer0-value1-success (go-ethereum_trace)"
+Sep 24 17:02:32.450 INF API: test ended suite=0 test=78 pass=false
+Sep 24 17:02:32.450 INF API: test started suite=0 test=79 name="interop/nested-callcode-outer1-value0-failed (go-ethereum_trace)"
+Sep 24 17:02:32.454 INF API: test ended suite=0 test=79 pass=false
+Sep 24 17:02:32.455 INF API: test started suite=0 test=80 name="interop/nested-callcode-outer1-value0-success (go-ethereum_trace)"
+Sep 24 17:02:32.458 INF API: test ended suite=0 test=80 pass=false
+Sep 24 17:02:32.579 INF API: test ended suite=0 test=65 pass=true
+Sep 24 17:02:32.580 INF API: test started suite=0 test=81 name="client launch (nethermind_development)"
+Sep 24 17:02:40.249 INF API: client nethermind_development started suite=0 test=81 container=f5c4e3d0
+Sep 24 17:02:40.387 INF API: test started suite=0 test=82 name="interop/_control/create-nonce (nethermind_development)"
+Sep 24 17:02:40.402 INF API: test ended suite=0 test=82 pass=false
+Sep 24 17:02:40.403 INF API: test started suite=0 test=83 name="interop/_control/head (nethermind_development)"
+Sep 24 17:02:40.406 INF API: test ended suite=0 test=83 pass=false
+Sep 24 17:02:40.407 INF API: test started suite=0 test=84 name="interop/_control/latest (nethermind_development)"
+Sep 24 17:02:40.410 INF API: test ended suite=0 test=84 pass=false
+Sep 24 17:02:40.411 INF API: test started suite=0 test=85 name="interop/_control/target-balance (nethermind_development)"
+Sep 24 17:02:40.416 INF API: test ended suite=0 test=85 pass=false
+Sep 24 17:02:40.416 INF API: test started suite=0 test=86 name="interop/_control/target-code (nethermind_development)"
+Sep 24 17:02:40.418 INF API: test ended suite=0 test=86 pass=false
+Sep 24 17:02:40.419 INF API: test started suite=0 test=87 name="interop/_control/target-nonce (nethermind_development)"
+Sep 24 17:02:40.422 INF API: test ended suite=0 test=87 pass=false
+Sep 24 17:02:40.422 INF API: test started suite=0 test=88 name="interop/_control/version (nethermind_development)"
+Sep 24 17:02:40.425 INF API: test ended suite=0 test=88 pass=false
+Sep 24 17:02:40.426 INF API: test started suite=0 test=89 name="interop/nested-call-outer0-value1-failed (nethermind_development)"
+Sep 24 17:02:40.606 INF API: test ended suite=0 test=89 pass=false
+Sep 24 17:02:40.608 INF API: test started suite=0 test=90 name="interop/nested-call-outer0-value1-success (nethermind_development)"
+Sep 24 17:02:40.614 INF API: test ended suite=0 test=90 pass=false
+Sep 24 17:02:40.615 INF API: test started suite=0 test=91 name="interop/nested-call-outer1-value0-failed (nethermind_development)"
+Sep 24 17:02:40.624 INF API: test ended suite=0 test=91 pass=false
+Sep 24 17:02:40.625 INF API: test started suite=0 test=92 name="interop/nested-call-outer1-value0-success (nethermind_development)"
+Sep 24 17:02:40.628 INF API: test ended suite=0 test=92 pass=false
+Sep 24 17:02:40.628 INF API: test started suite=0 test=93 name="interop/nested-callcode-outer0-value1-failed (nethermind_development)"
+Sep 24 17:02:40.644 INF API: test ended suite=0 test=93 pass=false
+Sep 24 17:02:40.644 INF API: test started suite=0 test=94 name="interop/nested-callcode-outer0-value1-success (nethermind_development)"
+Sep 24 17:02:40.647 INF API: test ended suite=0 test=94 pass=false
+Sep 24 17:02:40.648 INF API: test started suite=0 test=95 name="interop/nested-callcode-outer1-value0-failed (nethermind_development)"
+Sep 24 17:02:40.650 INF API: test ended suite=0 test=95 pass=false
+Sep 24 17:02:40.651 INF API: test started suite=0 test=96 name="interop/nested-callcode-outer1-value0-success (nethermind_development)"
+Sep 24 17:02:40.654 INF API: test ended suite=0 test=96 pass=false
+Sep 24 17:02:40.959 INF API: test ended suite=0 test=81 pass=true
+Sep 24 17:02:40.961 INF API: test started suite=0 test=97 name="client launch (nethermind_release)"
+Sep 24 17:02:48.442 INF API: client nethermind_release started suite=0 test=97 container=5976d90f
+Sep 24 17:02:48.563 INF API: test started suite=0 test=98 name="interop/_control/create-nonce (nethermind_release)"
+Sep 24 17:02:48.578 INF API: test ended suite=0 test=98 pass=false
+Sep 24 17:02:48.579 INF API: test started suite=0 test=99 name="interop/_control/head (nethermind_release)"
+Sep 24 17:02:48.582 INF API: test ended suite=0 test=99 pass=false
+Sep 24 17:02:48.583 INF API: test started suite=0 test=100 name="interop/_control/latest (nethermind_release)"
+Sep 24 17:02:48.586 INF API: test ended suite=0 test=100 pass=false
+Sep 24 17:02:48.586 INF API: test started suite=0 test=101 name="interop/_control/target-balance (nethermind_release)"
+Sep 24 17:02:48.591 INF API: test ended suite=0 test=101 pass=false
+Sep 24 17:02:48.591 INF API: test started suite=0 test=102 name="interop/_control/target-code (nethermind_release)"
+Sep 24 17:02:48.595 INF API: test ended suite=0 test=102 pass=false
+Sep 24 17:02:48.596 INF API: test started suite=0 test=103 name="interop/_control/target-nonce (nethermind_release)"
+Sep 24 17:02:48.597 INF API: test ended suite=0 test=103 pass=false
+Sep 24 17:02:48.598 INF API: test started suite=0 test=104 name="interop/_control/version (nethermind_release)"
+Sep 24 17:02:48.600 INF API: test ended suite=0 test=104 pass=false
+Sep 24 17:02:48.601 INF API: test started suite=0 test=105 name="interop/nested-call-outer0-value1-failed (nethermind_release)"
+Sep 24 17:02:48.720 INF API: test ended suite=0 test=105 pass=false
+Sep 24 17:02:48.721 INF API: test started suite=0 test=106 name="interop/nested-call-outer0-value1-success (nethermind_release)"
+Sep 24 17:02:48.727 INF API: test ended suite=0 test=106 pass=false
+Sep 24 17:02:48.728 INF API: test started suite=0 test=107 name="interop/nested-call-outer1-value0-failed (nethermind_release)"
+Sep 24 17:02:48.736 INF API: test ended suite=0 test=107 pass=false
+Sep 24 17:02:48.738 INF API: test started suite=0 test=108 name="interop/nested-call-outer1-value0-success (nethermind_release)"
+Sep 24 17:02:48.742 INF API: test ended suite=0 test=108 pass=false
+Sep 24 17:02:48.743 INF API: test started suite=0 test=109 name="interop/nested-callcode-outer0-value1-failed (nethermind_release)"
+Sep 24 17:02:48.746 INF API: test ended suite=0 test=109 pass=false
+Sep 24 17:02:48.747 INF API: test started suite=0 test=110 name="interop/nested-callcode-outer0-value1-success (nethermind_release)"
+Sep 24 17:02:48.750 INF API: test ended suite=0 test=110 pass=false
+Sep 24 17:02:48.750 INF API: test started suite=0 test=111 name="interop/nested-callcode-outer1-value0-failed (nethermind_release)"
+Sep 24 17:02:48.754 INF API: test ended suite=0 test=111 pass=false
+Sep 24 17:02:48.754 INF API: test started suite=0 test=112 name="interop/nested-callcode-outer1-value0-success (nethermind_release)"
+Sep 24 17:02:48.758 INF API: test ended suite=0 test=112 pass=false
+Sep 24 17:02:49.256 INF API: test ended suite=0 test=97 pass=true
+Sep 24 17:02:49.258 INF API: test started suite=0 test=113 name="client launch (reth_development)"
+Sep 24 17:02:51.429 INF API: client reth_development started suite=0 test=113 container=e214c67c
+Sep 24 17:02:51.444 INF API: test started suite=0 test=114 name="interop/_control/create-nonce (reth_development)"
+Sep 24 17:02:51.446 INF API: test ended suite=0 test=114 pass=false
+Sep 24 17:02:51.447 INF API: test started suite=0 test=115 name="interop/_control/head (reth_development)"
+Sep 24 17:02:51.449 INF API: test ended suite=0 test=115 pass=false
+Sep 24 17:02:51.450 INF API: test started suite=0 test=116 name="interop/_control/latest (reth_development)"
+Sep 24 17:02:51.452 INF API: test ended suite=0 test=116 pass=false
+Sep 24 17:02:51.453 INF API: test started suite=0 test=117 name="interop/_control/target-balance (reth_development)"
+Sep 24 17:02:51.454 INF API: test ended suite=0 test=117 pass=false
+Sep 24 17:02:51.455 INF API: test started suite=0 test=118 name="interop/_control/target-code (reth_development)"
+Sep 24 17:02:51.456 INF API: test ended suite=0 test=118 pass=false
+Sep 24 17:02:51.457 INF API: test started suite=0 test=119 name="interop/_control/target-nonce (reth_development)"
+Sep 24 17:02:51.458 INF API: test ended suite=0 test=119 pass=false
+Sep 24 17:02:51.459 INF API: test started suite=0 test=120 name="interop/_control/version (reth_development)"
+Sep 24 17:02:51.461 INF API: test ended suite=0 test=120 pass=false
+Sep 24 17:02:51.462 INF API: test started suite=0 test=121 name="interop/nested-call-outer0-value1-failed (reth_development)"
+Sep 24 17:02:51.465 INF API: test ended suite=0 test=121 pass=false
+Sep 24 17:02:51.466 INF API: test started suite=0 test=122 name="interop/nested-call-outer0-value1-success (reth_development)"
+Sep 24 17:02:51.468 INF API: test ended suite=0 test=122 pass=false
+Sep 24 17:02:51.469 INF API: test started suite=0 test=123 name="interop/nested-call-outer1-value0-failed (reth_development)"
+Sep 24 17:02:51.473 INF API: test ended suite=0 test=123 pass=false
+Sep 24 17:02:51.474 INF API: test started suite=0 test=124 name="interop/nested-call-outer1-value0-success (reth_development)"
+Sep 24 17:02:51.476 INF API: test ended suite=0 test=124 pass=false
+Sep 24 17:02:51.476 INF API: test started suite=0 test=125 name="interop/nested-callcode-outer0-value1-failed (reth_development)"
+Sep 24 17:02:51.480 INF API: test ended suite=0 test=125 pass=false
+Sep 24 17:02:51.481 INF API: test started suite=0 test=126 name="interop/nested-callcode-outer0-value1-success (reth_development)"
+Sep 24 17:02:51.484 INF API: test ended suite=0 test=126 pass=false
+Sep 24 17:02:51.484 INF API: test started suite=0 test=127 name="interop/nested-callcode-outer1-value0-failed (reth_development)"
+Sep 24 17:02:51.487 INF API: test ended suite=0 test=127 pass=false
+Sep 24 17:02:51.488 INF API: test started suite=0 test=128 name="interop/nested-callcode-outer1-value0-success (reth_development)"
+Sep 24 17:02:51.492 INF API: test ended suite=0 test=128 pass=false
+Sep 24 17:02:51.761 INF API: test ended suite=0 test=113 pass=true
+Sep 24 17:02:51.763 INF API: test started suite=0 test=129 name="client launch (reth_release)"
+Sep 24 17:02:54.564 INF API: client reth_release started suite=0 test=129 container=19ac99d5
+Sep 24 17:02:54.569 INF API: test started suite=0 test=130 name="interop/_control/create-nonce (reth_release)"
+Sep 24 17:02:54.571 INF API: test ended suite=0 test=130 pass=false
+Sep 24 17:02:54.572 INF API: test started suite=0 test=131 name="interop/_control/head (reth_release)"
+Sep 24 17:02:54.575 INF API: test ended suite=0 test=131 pass=false
+Sep 24 17:02:54.575 INF API: test started suite=0 test=132 name="interop/_control/latest (reth_release)"
+Sep 24 17:02:54.578 INF API: test ended suite=0 test=132 pass=false
+Sep 24 17:02:54.579 INF API: test started suite=0 test=133 name="interop/_control/target-balance (reth_release)"
+Sep 24 17:02:54.581 INF API: test ended suite=0 test=133 pass=false
+Sep 24 17:02:54.582 INF API: test started suite=0 test=134 name="interop/_control/target-code (reth_release)"
+Sep 24 17:02:54.584 INF API: test ended suite=0 test=134 pass=false
+Sep 24 17:02:54.585 INF API: test started suite=0 test=135 name="interop/_control/target-nonce (reth_release)"
+Sep 24 17:02:54.587 INF API: test ended suite=0 test=135 pass=false
+Sep 24 17:02:54.588 INF API: test started suite=0 test=136 name="interop/_control/version (reth_release)"
+Sep 24 17:02:54.590 INF API: test ended suite=0 test=136 pass=false
+Sep 24 17:02:54.591 INF API: test started suite=0 test=137 name="interop/nested-call-outer0-value1-failed (reth_release)"
+Sep 24 17:02:54.594 INF API: test ended suite=0 test=137 pass=false
+Sep 24 17:02:54.595 INF API: test started suite=0 test=138 name="interop/nested-call-outer0-value1-success (reth_release)"
+Sep 24 17:02:54.598 INF API: test ended suite=0 test=138 pass=false
+Sep 24 17:02:54.599 INF API: test started suite=0 test=139 name="interop/nested-call-outer1-value0-failed (reth_release)"
+Sep 24 17:02:54.601 INF API: test ended suite=0 test=139 pass=false
+Sep 24 17:02:54.602 INF API: test started suite=0 test=140 name="interop/nested-call-outer1-value0-success (reth_release)"
+Sep 24 17:02:54.606 INF API: test ended suite=0 test=140 pass=false
+Sep 24 17:02:54.606 INF API: test started suite=0 test=141 name="interop/nested-callcode-outer0-value1-failed (reth_release)"
+Sep 24 17:02:54.609 INF API: test ended suite=0 test=141 pass=false
+Sep 24 17:02:54.609 INF API: test started suite=0 test=142 name="interop/nested-callcode-outer0-value1-success (reth_release)"
+Sep 24 17:02:54.612 INF API: test ended suite=0 test=142 pass=false
+Sep 24 17:02:54.613 INF API: test started suite=0 test=143 name="interop/nested-callcode-outer1-value0-failed (reth_release)"
+Sep 24 17:02:54.615 INF API: test ended suite=0 test=143 pass=false
+Sep 24 17:02:54.616 INF API: test started suite=0 test=144 name="interop/nested-callcode-outer1-value0-success (reth_release)"
+Sep 24 17:02:54.619 INF API: test ended suite=0 test=144 pass=false
+Sep 24 17:02:54.759 INF API: test ended suite=0 test=129 pass=true
+Sep 24 17:02:54.767 INF API: suite ended suite=0
+Sep 24 17:02:54.988 INF simulation ethereum/rpc-compat finished suites=1 tests=144 failed=135
+135 tests failed

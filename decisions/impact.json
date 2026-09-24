@@ -10,7 +10,7 @@
     },
     "nethermind": {
       "name": "Nethermind",
-      "summary": "2.1.0-unstable \u00b7 9d6e8b8d fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 \u00b7 bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas."
+      "summary": "2.1.0-unstable \u00b7 641592d2 fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 \u00b7 bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas."
     },
     "reth": {
       "name": "Reth",
@@ -27,7 +27,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork matches most evaluated semantic assertions, including signed-transaction rejection codes, unknown-block errors and call-field handling. Its omitted trace_filter bounds still follow the earlier historical-search draft and differ from the proposed latest/latest default. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage."
+      "summary": "The experimental fork matches the priced-call witnesses but retains the earlier zero-fee BASEFEE-preserving proposal, so its trace_call differs from eth_call and revised H15. Omitted trace_filter bounds also retain the earlier historical-search draft. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
     }
   },
   "topics": {
@@ -124,7 +124,7 @@
         "change": "Accept an empty selection and return the execution envelope. Recheck alongside H15 before treating every rejection as a separate selection bug."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd fails empty trace selections; 2.1.0-unstable \u00b7 9d6e8b8d executes them.",
+        "observed": "2.0.0 \u00b7 bec830cd fails empty trace selections; 2.1.0-unstable \u00b7 641592d2 executes them.",
         "change": "Execute the call and return its output with the unrequested components empty/null."
       }
     },
@@ -148,20 +148,25 @@
     },
     "H15": {
       "besu": {
-        "observed": "Explicit zero-fee calls fail. Priced environment and fee-accounting probes match; invalid fee/funding requests produce generic internal errors, sometimes wrapped inside result.",
-        "change": "Allow explicit zero fees while preserving BASEFEE in both simulation methods; return identifiable validation errors for underpriced or underfunded calls."
+        "observed": "Paired eth_call executes explicit zero fees with BASEFEE 0, while trace_call returns an internal error. Valid priced calls show the expected upfront debit in both methods; invalid trace fee/funding requests still produce generic internal errors.",
+        "change": "Match eth_call\u2019s zero-fee execution and BASEFEE override in trace simulations; retain priced accounting and return identifiable fee/funding validation errors."
       },
       "erigon": {
-        "observed": "Legacy zero is rejected and typed zero is repriced to the base fee. Priced calls skip sender gas debits but credit tips; funding and environment probes differ.",
-        "change": "Preserve explicit zero fees and the selected block environment. Enforce funding for priced calls and simulate sender payment, refunds and beneficiary tips consistently across trace selections."
+        "observed": "eth_call uses BASEFEE 0 for explicit zero fees and debits priced gas upfront. trace_call rejects legacy zero, reprices typed zero to B, changes GASLIMIT and skips the sender gas debit; its stateDiff still credits tips. Both methods reject positive legacy/typed caps below B.",
+        "change": "Match eth_call for explicit zero fees with BASEFEE zero. Preserve other block fields; enforce positive-price funding and simulate sender debit, refunds and beneficiary tips consistently."
       },
       "nethermind": {
-        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 9d6e8b8d fixes both. Deferred fee/funding exceptions leave malformed JSON in both builds; see the [streaming investigation](../../docs/nethermind-streamed-errors.md) and pending [PR #13666](https://github.com/NethermindEth/nethermind/pull/13666).",
-        "change": "Ship the selection/output fixes present in 9d6e8b8d and return complete validation errors. These results do not establish a general fee-accounting bug."
+        "observed": "Both tested builds use BASEFEE 0 in zero-fee eth_call but preserve B in trace_call. Priced upfront debit matches in both methods when execution output is returned. 641592d2 fixes the release\u2019s selection/output bugs. Fee/funding rejections are complete in eth_call but remain truncated in trace_call; see the [streaming investigation](../../docs/nethermind-streamed-errors.md).",
+        "change": "Align zero-fee trace environments with eth_call and return complete validation errors; retain normal priced accounting."
       },
       "reth": {
-        "observed": "Zero fees rewrite BASEFEE. Positive underpriced legacy calls execute; underpriced typed caps are rejected. Priced calls omit gas charging and funding probes can execute.",
-        "change": "Preserve BASEFEE for explicit zero fees. Reject positive legacy prices below base fee, enforce applicable funding, and simulate payment/refunds/tips so execution and later calls observe them."
+        "observed": "Both methods use BASEFEE 0 for explicit zero fees and both omit priced upfront gas payment. Both accept underpriced legacy calls and reject underpriced typed caps. Method consistency agrees in 200 defined-policy pairs per build; two underfunded-value families have unclassified EVM failures. Independent priced accounting/funding checks still differ.",
+        "change": "Keep zero-fee compatibility. Reject positive legacy prices below base fee, enforce funding and simulate payment/refunds/tips during execution and later calls. Agreement with eth_call is assessed separately from this accounting requirement."
+      },
+      "append_checked_requirements": false,
+      "geth": {
+        "observed": "The captured draft eth_call uses BASEFEE 0 while trace_call preserves B for explicit zero fees: 40 defined-policy pairs differ. Priced upfront debit and positive-price rejection match across methods. The fork implements the earlier H15 proposal and is not an upstream consensus vote.",
+        "change": "Align the draft trace simulation with eth_call\u2019s zero-fee BASEFEE convention while retaining priced validation and accounting."
       }
     },
     "H20": {
@@ -224,7 +229,7 @@
         "change": "Return `trace: []` when call traces were not requested; keep the execution output independently."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 9d6e8b8d retains it.",
+        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 641592d2 retains it.",
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
       }
     },
@@ -254,8 +259,8 @@
     },
     "H21": {
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 9d6e8b8d includes PR #13750 and emits minimal quantities.",
-        "change": "Ship the minimal-quantity encoding verified in 9d6e8b8d, e.g. 0x2a rather than a 32-byte padded string."
+        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 641592d2 includes PR #13750 and emits minimal quantities.",
+        "change": "Ship the minimal-quantity encoding verified in 641592d2, e.g. 0x2a rather than a 32-byte padded string."
       }
     },
     "H25": {
@@ -270,8 +275,8 @@
     },
     "H26": {
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd loses pre-Cancun code/nonce deletion markers. 2.1.0-unstable \u00b7 9d6e8b8d includes PR #13668 and restores them, while retaining existing accounts after Cancun.",
-        "change": "Ship the account-deletion serializer fix verified in 9d6e8b8d; retain the pre/post-Cancun regression cases."
+        "observed": "2.0.0 \u00b7 bec830cd loses pre-Cancun code/nonce deletion markers. 2.1.0-unstable \u00b7 641592d2 includes PR #13668 and restores them, while retaining existing accounts after Cancun.",
+        "change": "Ship the account-deletion serializer fix verified in 641592d2; retain the pre/post-Cancun regression cases."
       },
       "reth": {
         "observed": "Pre-Cancun account deletion loses code/nonce deletion markers.",
@@ -336,8 +341,8 @@
     "H17": {
       "append_checked_requirements": false,
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd omits the empty-code birth marker for transfers, empty-runtime CREATE and fresh fee recipients. 2.1.0-unstable \u00b7 9d6e8b8d contains PR #13668 and fixes these cases in the fresh Fedora capture; existing-account markers remain unchanged.",
-        "change": "Ship the account-existence serialization fix verified in 9d6e8b8d. The [H17 audit](../../docs/h17-assessment-audit.md) retains the source explanation and before/after evidence."
+        "observed": "2.0.0 \u00b7 bec830cd omits the empty-code birth marker for transfers, empty-runtime CREATE and fresh fee recipients. 2.1.0-unstable \u00b7 641592d2 contains PR #13668 and fixes these cases in the fresh Fedora capture; existing-account markers remain unchanged.",
+        "change": "Ship the account-existence serialization fix verified in 641592d2. The [H17 audit](../../docs/h17-assessment-audit.md) retains the source explanation and before/after evidence."
       },
       "reth": {
         "observed": "A first transfer to an absent account reports balance as a change from zero and code/nonce as unchanged. revm-inspectors reserves added fields for contract creation. Simple contract-creation markers are correct, including when H15 environment bytes differ; see the [H17 audit](../../docs/h17-assessment-audit.md).",

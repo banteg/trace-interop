@@ -65,12 +65,12 @@ def supplement(case, observation, peers, checks, expected):
     # Availability is distinct from request success and from execution semantics.
     if 'H01' in declared and not covered('H01') and status in ['result', 'rpc_error']:
         add('H01', True, 'The method responds without Method not found (-32601).')
+    checks.extend(assess_compatibility(case, observation, peers))
     if status in ['unsupported', 'malformed_json', 'invalid_envelope', 'harness_error', 'transport_error', 'not_observed']:
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'blocked', f'Cannot inspect this property: {status}.')
         return checks
     checks.extend(assess_fee_policy(case, observation))
-    checks.extend(assess_compatibility(case, observation, peers))
     if method == 'trace_rawTransaction' and len(params)>2:
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.')

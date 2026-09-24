@@ -1,12 +1,12 @@
 # Geth draft fork: changes to review
 
-The experimental fork matches most evaluated semantic assertions, including signed-transaction rejection codes, unknown-block errors and call-field handling. Its omitted trace_filter bounds still follow the earlier historical-search draft and differ from the proposed latest/latest default. It is not upstream Geth support. Filtering remains a bounded scan; pruning and other unassessed cases still need coverage.
+The experimental fork matches the priced-call witnesses but retains the earlier zero-fee BASEFEE-preserving proposal, so its trace_call differs from eth_call and revised H15. Omitted trace_filter bounds also retain the earlier historical-search draft. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`fa8ecb92`](https://github.com/banteg/go-ethereum/commit/fa8ecb9242dda61858c44cf43c70d00548fbd7cd) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h17-retest/initial/manifest.json) |
+| `1.17.7-unstable` | [`fa8ecb92`](https://github.com/banteg/go-ethereum/commit/fa8ecb9242dda61858c44cf43c70d00548fbd7cd) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -14,6 +14,9 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 | Behavior | 1.17.7-unstable · fa8ecb92 | Proposed change |
 | --- | --- | --- |
+| [Empty output and unrequested components](../decisions/H08.md)<br>The linked case differs from the proposed behavior. | ⚠️ Differs<br>[Model environment free](../cases/coverage/model-environment-free.md) | Modelled execution returns exactly the independently computed bytes.<br>[Replay results](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L123) · [Call simulation](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L53) |
+| [Unsigned simulation fees and block environment](../decisions/H15.md)<br>The captured draft eth_call uses BASEFEE 0 while trace_call preserves B for explicit zero fees: 40 defined-policy pairs differ. Priced upfront debit and positive-price rejection match across methods. The fork implements the earlier H15 proposal and is not an upstream consensus vote. | ⚠️ Differs<br>120 policy-open cases.<br>[Model environment free](../cases/coverage/model-environment-free.md) | Align the draft trace simulation with eth_call’s zero-fee BASEFEE convention while retaining priced validation and accounting.<br>[Call simulation](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L53) |
+| [vmTrace step timing and deltas](../decisions/H20.md)<br>The linked case differs from the proposed behavior. | ⚠️ Differs<br>[Model environment free](../cases/coverage/model-environment-free.md) | Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects.<br>[VM execution deltas](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_capture.go#L264) |
 | [Omitted trace_filter range bounds](../decisions/H30.md)<br>The experimental draft fork follows the earlier earliest-to-latest proposal: its unbounded query starts at block 1 and its toBlock-only query searches early history. | ⚠️ Differs<br>[Filter no bounds](../cases/h30/filter-no-bounds.md) | Align its omitted-bound behavior with latest/latest and reject the reversed range. This is draft-fork work, not a finding about upstream Geth trace support. |
 
 ## Open policy observations
@@ -23,7 +26,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 1.17.7-unstable · fa8ecb92 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 1.17.7-unstable · fa8ecb92 | [Unsigned simulation fees and block environment](../decisions/H15.md) | 80 policy-open cases. Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict. | [Defaults cap only positive/call/none](../cases/fee-policy/defaults-cap-only-positive/call/none.md) · [Defaults cap only positive/call/statediff](../cases/fee-policy/defaults-cap-only-positive/call/stateDiff.md) |
 | 1.17.7-unstable · fa8ecb92 | [Trace block tags and pending state](../decisions/H32.md) | 3 policy-open cases. filter-pending: RPC error -32602. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter pending](../cases/h30/filter-pending.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
@@ -36,7 +38,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Post-merge reward records](../decisions/H05.md) | [Block 2](../cases/a/block-2.md) · [Block 3](../cases/a/block-3.md) |
 | [Missing transactions and paths](../decisions/H06.md) | [Missing block block](../cases/a/missing-block-block.md) · [Missing block call](../cases/a/missing-block-call.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
-| [Empty output and unrequested components](../decisions/H08.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Failed frame results and error labels](../decisions/H09.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
@@ -46,7 +47,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [vmTrace executing bytecode](../decisions/H19.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [vmTrace step timing and deltas](../decisions/H20.md) | [Call mcopy](../cases/a/call-mcopy.md) · [Call return42](../cases/a/call-return42.md) |
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set](../cases/a/auth-set.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Special-action address matching](../decisions/H23.md) | [Filter created to](../cases/a/filter-created-to.md) · [Filter creator from](../cases/a/filter-creator-from.md) |

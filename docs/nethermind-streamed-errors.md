@@ -5,6 +5,15 @@ streamed trace responses. Fee/funding validation rejects the request internally,
 but its exception escapes after the writer has started a success envelope. The
 captured response therefore lacks its request ID and outer closing brace.
 
+## Fresh confirmation
+
+The [12:56 UTC matrix](../evidence/2026-09-24/h15-call-compat/README.md)
+reproduces the same 203 release / 232 development malformed responses in
+`fee-policy`, now with development `641592d2`. The paired `fee-compat` corpus
+adds 84 / 96 malformed trace responses. Its identical `eth_call` requests return
+complete fee/funding errors, locating the observable discrepancy in the trace
+path. The source investigation below remains pinned to the original capture.
+
 ## Captured evidence
 
 Counts below use the immutable [fee-policy responses](../evidence/2026-09-24/current-matrix/fee-policy/observations.json)

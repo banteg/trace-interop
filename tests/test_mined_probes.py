@@ -280,6 +280,12 @@ class MinedProbeTests(unittest.TestCase):
         wrong['_control/beacon-reader-root']['c']['response']['result'] = '0x'+'00'*32
         self.assertFalse(verify_state('mined-probes', CORPUS, wrong, 'c')[0])
 
+    def test_ledger_registers_exactly_the_declared_topics(self):
+        ledger = read(ROOT/'decisions/ledger.json')['items']
+        for case in CORPUS['cases']:
+            listed = sorted(d['id'] for d in ledger if 'mined-probes/'+case['name'] in d['cases'])
+            self.assertEqual(listed, sorted(case.get('topics', [])), case['name'])
+
     def test_malformed_responses_do_not_crash(self):
         for case in CORPUS['cases']:
             for result in [None, [], [None], 7, 'bad', {'trace': None}, {'trace': [{'error': 1, 'result': None}]},

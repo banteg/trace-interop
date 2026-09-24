@@ -48,6 +48,8 @@ uv run python scripts/check_schema.py
 uv run python scripts/build_reports.py
 ```
 
+`scripts/check.sh` runs the whole CI check; see [usage](docs/usage.md#check-before-pushing) for optional prek hooks.
+
 On Linux with Docker, capture a current comparison of the latest stable releases, development images and Geth draft head:
 
 ```sh

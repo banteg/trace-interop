@@ -1,0 +1,28 @@
+# Fast local hooks for prek (https://github.com/j178/prek); CI runs scripts/check.sh.
+default_install_hook_types: [pre-commit, pre-push]
+default_stages: [pre-commit]
+repos:
+  - repo: builtin
+    hooks:
+      - id: check-json
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff (syntax errors and undefined names)
+        entry: ruff check --select E9,F63,F7,F82 --force-exclude
+        language: python
+        additional_dependencies: [ruff==0.16.0]
+        types: [python]
+      - id: verify
+        name: trace-interop verify
+        entry: uv run --locked trace-interop verify
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: unittest
+        name: unit tests
+        entry: uv run --locked python -m unittest discover -s tests
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

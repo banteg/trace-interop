@@ -11,6 +11,26 @@ uv run python -m unittest discover -s tests -v
 uv run python scripts/check_schema.py
 ```
 
+## Check before pushing
+
+`scripts/check.sh` runs the CI check step for step and stops at the first failure: `uv sync
+--locked`, `trace-interop verify`, the unit tests, `check_schema.py`, then `build_reports.py`,
+failing if the rebuild changes `reports/`, `decisions/README.md` or `docs/client-fixes.md`.
+CI calls the same script, so a local pass means the same thing.
+
+Optional [prek](https://github.com/j178/prek) hooks (from `.pre-commit-config.yaml`) run fast
+checks on each commit: ruff for syntax errors and undefined names in changed Python, JSON
+validity of changed `.json` files, and `trace-interop verify`. The unit tests run before a push.
+
+```sh
+uvx prek install
+uvx prek install --hook-type pre-push
+uvx prek run --all-files   # run the commit hooks once without committing
+```
+
+The first command installs both hook types listed in the config; the second makes the pre-push
+hook explicit. Report regeneration is left to `scripts/check.sh`, which takes about a minute.
+
 ## Reproduce one disagreement
 
 The committed lock selects immutable client image digests, not moving tags:

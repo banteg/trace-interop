@@ -69,7 +69,7 @@ def expected_steps(case):
         tip = used * max(price-base, 0)
         output = '0x'
         if program == 'environment':
-            words = [price, base, env['NUMBER'], env['TIMESTAMP'], env['GASLIMIT'],
+            words = [price, 0 if price == 0 else base, env['NUMBER'], env['TIMESTAMP'], env['GASLIMIT'],
                      before-gas_limit*price-value, miner_balance]
             output += ''.join(f'{word:064x}' for word in words)
         elif program == 'revert':
@@ -158,7 +158,7 @@ def assess(case, observation):
         return isinstance(pair, dict) and quantity(pair.get('from')) == before and quantity(pair.get('to')) == after
     for i, (envelope, step) in enumerate(zip(envelopes, steps, strict=True)):
         add(envelope.get('output') == step['output'],
-            f'Call {i}: preserve the block environment and effective price; expose upfront payment and prior settlement through BALANCE.',
+            f'Call {i}: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE.',
             f'Expected output {step["output"]}; independently charged gas {step["used"]}.')
         if 'trace' in step['modes']:
             trace = envelope.get('trace')
@@ -182,3 +182,42 @@ def assess(case, observation):
             f'Call {i}: settle exact gas, unused-gas/refund credits, transferred value, nonce, beneficiary tip and base-fee burn.',
             f'Sender {step["before"]}->{step["after"]}; miner {step["miner_before"]}->{step["miner_after"]}; burn {step["burn"]}.')
     return checks
+
+
+def assess_compatibility(case, observation, peers):
+    """Compare observable call semantics, without treating agreement as correctness."""
+    reference = case.get('fee_reference')
+    if not reference:
+        return []
+    def outcome(obs, eth=False):
+        response = obs.get('response', {})
+        status = obs.get('status', 'not_observed')
+        if status == 'result':
+            result = response.get('result')
+            output = result if eth else result.get('output') if isinstance(result, dict) and 'error' not in result else None
+            if isinstance(output, str) and re.fullmatch(r'0x(?:[0-9a-fA-F]{2})*', output):
+                return ('output', output.lower()), ''
+            return None, 'invalid execution output'
+        if status == 'rpc_error':
+            error = response.get('error', {})
+            message = str(error.get('message', '')).lower()
+            kind = ('funds' if 'insufficient' in message and ('fund' in message or 'balance' in message) else
+                    'base_fee' if 'base fee' in message or 'basefee' in message else
+                    'priority' if ('priority' in message or 'tip' in message) and ('fee' in message or 'cap' in message) else None)
+            if error.get('code') in [-32000, -32003, -32602] and kind:
+                return ('rejection', kind), ''
+            return None, 'unclassified RPC error: '+message
+        return None, status
+    left, left_error = outcome(peers.get(reference, {}), eth=True)
+    right, right_error = outcome(observation)
+    detail = f'eth_call {left or left_error}; trace_call {right or right_error}.'
+    if left is None or right is None:
+        status = 'blocked'
+    elif case['fee_policy']['admission'] == 'observe':
+        status = 'observation'
+        detail += ' Omitted/incomplete fee normalization remains open.'
+    else:
+        status = 'matches' if left == right else 'change_needed'
+    return [dict(topic='H15', status=status,
+                 requirement='The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class.',
+                 detail=detail)]

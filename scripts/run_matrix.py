@@ -10,7 +10,7 @@ from trace_interop.versions import matrix_lock, check_current
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--reproduce-lock',help='explicitly reproduce a historical combined nine-build lock instead of refreshing')
 p.add_argument('--output',required=True)
-p.add_argument('--corpora',default='initial,a,repeat,forks,fork-followup,precompiles,precompile-values,raw-validation,coverage,fee-policy,callmany-isolation,h30,reorg-safe,pruned')
+p.add_argument('--corpora',default='initial,a,repeat,forks,fork-followup,precompiles,precompile-values,raw-validation,coverage,fee-policy,fee-compat,callmany-isolation,h30,reorg-safe,pruned')
 args=p.parse_args()
 out=Path(args.output).resolve()
 out.mkdir(parents=True,exist_ok=False)

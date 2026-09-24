@@ -11,7 +11,7 @@ from .chain_model import decode_transaction
 import rlp
 from eth_hash.auto import keccak
 from .execution_models import assess as assess_execution, empty_execution_indexes
-from .fee_policy import assess as assess_fee_policy
+from .fee_policy import assess as assess_fee_policy, assess_compatibility
 
 
 def obj(value):
@@ -70,6 +70,7 @@ def supplement(case, observation, peers, checks, expected):
             explain(topic, 'blocked', f'Cannot inspect this property: {status}.')
         return checks
     checks.extend(assess_fee_policy(case, observation))
+    checks.extend(assess_compatibility(case, observation, peers))
     if method == 'trace_rawTransaction' and len(params)>2:
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.')
@@ -248,6 +249,8 @@ def supplement(case, observation, peers, checks, expected):
         if code is not None and 'vmTrace' in modes and status == 'result':
             env = dict(context.get('_environment', {}), GASPRICE=integer(call.get('gasPrice','0x0')) or 0,
                        CALLVALUE=integer(call.get('value','0x0')) or 0)
+            if env['GASPRICE'] == 0:
+                env['BASEFEE'] = 0
             vm = obj(result).get('vmTrace')
             add('H19', status == 'result' and obj(vm).get('code') == code,
                 'Root VM bytecode equals the independently frozen execution source.')
@@ -270,7 +273,7 @@ def supplement(case, observation, peers, checks, expected):
                         'The modelled REVERT root retains its exact return bytes and independently calculated execution gas.')
                 if model and model.get('environment'):
                     add('H15', obj(result).get('output') == output,
-                        'GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT preserve the selected block and supplied fee.')
+                        'GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.')
                 if model and model.get('creation') and not reverted and isinstance(obj(result).get('stateDiff'), dict):
                     creations = [f for f in frames if f.get('type') == 'create' and f.get('traceAddress') == []]
                     nonce = context.get('model_nonce')

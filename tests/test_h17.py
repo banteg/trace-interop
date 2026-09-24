@@ -36,7 +36,7 @@ class H17CapturedRegressionTests(unittest.TestCase):
         return supplement(self.case(corpus,name), observation or peers[name], peers, [], ['H17'])
 
     def test_environment_errors_do_not_become_creation_marker_errors(self):
-        for family, name in [('erigon','model-environment'), ('reth','model-environment-free')]:
+        for family, name in [('erigon','model-environment'), ('nethermind','model-environment-free')]:
             for channel in ['release','development']:
                 client = f'{family}_{channel}'
                 with self.subTest(client=client,case=name):

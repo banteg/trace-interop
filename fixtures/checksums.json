@@ -43,6 +43,7 @@
   "corpora/boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
   "corpora/callmany-isolation.json": "c9353e868ef1d43ecd59e73540aff2ca80e73bfc543d2ae77fbb5fe0f359b8e9",
   "corpora/coverage.json": "c9e18ef72a931b1d1aca35ba36d5d03e56fb3e4fea856450f890a2e9a318483d",
+  "corpora/fee-compat.json": "323f4d09ca3aa8998ed13cdb38872e5b990347c60f24a0a5acf44e55a5dae5ff",
   "corpora/fee-policy.json": "74a7bf0b5fd6d0a63242aa0e36153a46497bedb670f3f8c92e73ec9acebdb617",
   "corpora/fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
   "corpora/fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",

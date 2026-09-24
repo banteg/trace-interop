@@ -4,6 +4,7 @@
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
     "besu-eth/besu": "Besu",
+    "bluealloy/revm": "revm",
     "erigontech/erigon": "Erigon",
     "erigontech/rpc-tests": "rpc-tests",
     "erigontech/silkworm": "Silkworm",
@@ -140,16 +141,21 @@
       "decisions": [
         "H29"
       ],
+      "partial": [
+        "H29"
+      ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix"
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11362",
       "title": "fix(rpc): report empty code for self-destructing creations",
       "client": "besu",
       "decisions": [
-        "H10"
+        "H10",
+        "H26"
       ],
       "partial": [
         "H10"
@@ -187,10 +193,16 @@
       "url": "https://github.com/erigontech/erigon/pull/24290",
       "title": "fix(rpc/jsonrpc): read trace_call calldata from `input`",
       "client": "erigon",
-      "decisions": [],
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "adds `input` only; authorizationList, nonce, chainId and blob fields remain undecoded"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24291",
@@ -279,9 +291,9 @@
       "decisions": [
         "H21"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-24T21:24:34Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13781",
@@ -293,9 +305,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-24T21:23:07Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13782",
@@ -307,9 +319,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-24T21:23:28Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13783",
@@ -321,9 +333,10 @@
       "partial": [
         "H05"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-24T21:24:00Z",
+      "note": "covers trace_block only; trace_replayBlockTransactions of genesis still fails its parent lookup"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27213",
@@ -384,6 +397,24 @@
       "draft": false,
       "merged_at": null,
       "awaiting_uptake": true
+    },
+    {
+      "url": "https://github.com/bluealloy/revm/pull/3833",
+      "title": "fix(inspector): preserve selfdestruct trace payload",
+      "client": "reth",
+      "decisions": [
+        "H23",
+        "H26"
+      ],
+      "partial": [
+        "H23",
+        "H26"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "awaiting_uptake": true,
+      "note": "fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors"
     },
     {
       "url": "https://github.com/erigontech/silkworm/pull/2885",
@@ -594,13 +625,13 @@
       "decisions": [
         "H26"
       ],
+      "partial": [
+        "H26"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-15T23:44:41Z",
-      "awaiting_uptake": true,
-      "partial": [
-        "H26"
-      ]
+      "awaiting_uptake": true
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",

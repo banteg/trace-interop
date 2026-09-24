@@ -597,7 +597,10 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-15T23:44:41Z",
-      "awaiting_uptake": true
+      "awaiting_uptake": true,
+      "partial": [
+        "H26"
+      ]
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",

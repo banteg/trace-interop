@@ -31,7 +31,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H23](../reports/decisions/H23.md) | ⚪ Under review | Special-action address matching | ⚠️✅✅✅— | ⚠️✅✅✅✅ |
 | [H24](../reports/decisions/H24.md) | ⚪ Under review | Sibling failure isolation | 🛠️✅✅✅— | 🛠️✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | ⚪ Under review | Well-formed errors for rejected raw transactions | ⚠️✅🛠️✅— | ⚠️✅🛠️✅✅ |
-| [H26](../reports/decisions/H26.md) | 🤝 Converged | Account deletion across Cancun | ✅✅🛠️🛠️— | ✅✅✅🛠️✅ |
+| [H26](../reports/decisions/H26.md) | 🤝 Converged | Account deletion across Cancun | ✅✅🛠️⚠️— | ✅✅✅⚠️✅ |
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | Filter execution across fork boundaries | 🛠️✅✅🟡— | 🛠️✅✅🟡✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | Historical state at system-operation boundaries | ✅🛠️✅✅— | ✅✅✅✅✅ |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | Precompile call-frame inclusion | 🛠️✅✅✅— | 🛠️✅✅✅✅ |

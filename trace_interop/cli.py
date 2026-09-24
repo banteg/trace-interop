@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import gzip
 import hashlib
 import json
 import os
@@ -24,14 +25,119 @@ def read(path):
     return json.loads(Path(path).read_text())
 
 
+def serialize(value):
+    return json.dumps(value, indent=2, sort_keys=True) + '\n'
+
+
 def write(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
+    path.write_text(serialize(value))
 
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+# A run keeps its observations as observations.json (the original, indented form) or as
+# observations.json.gz: compact JSON that omits each parsed response decode_response
+# re-derives from the retained wire string. Both load to the same mapping.
+OBSERVATIONS = 'observations.json'
+COMPACT_OBSERVATIONS = 'observations.json.gz'
+
+
+def reject_constant(value):
+    raise ValueError(f'Not a JSON number: {value}')
+
+
+def sorted_object(pairs):
+    return dict(sorted(dict(pairs).items()))
+
+
+def decode_response(raw):
+    """Parse one wire response strictly (ValueError for anything but JSON).
+
+    Objects come back with sorted keys, as a written observations file reads back, so a
+    response derived at load time is indistinguishable from one read from the original file.
+    """
+    return json.loads(raw, parse_constant=reject_constant, object_pairs_hook=sorted_object)
+
+
+NOT_DERIVED = object()
+
+
+def derived_response(entry):
+    """The response decode_response derives from an entry's wire string, or NOT_DERIVED."""
+    if 'raw_response' not in entry:
+        return NOT_DERIVED
+    try:
+        return decode_response(entry['raw_response'])
+    except ValueError:
+        return NOT_DERIVED
+
+
+def compact_observations(observations):
+    """Omit every parsed response that decode_response derives exactly from raw_response."""
+    def canonical(value):
+        return json.dumps(value, sort_keys=True)
+    compact = {}
+    for case, clients in observations.items():
+        compact[case] = {}
+        for client, entry in clients.items():
+            derived = derived_response(entry)
+            if 'response' not in entry and derived is not NOT_DERIVED:
+                raise ValueError(f'{case}/{client}: a decodable response without a parsed form is not representable')
+            if 'response' in entry and derived is not NOT_DERIVED and canonical(derived) == canonical(entry['response']):
+                entry = {k: v for k, v in entry.items() if k != 'response'}
+            compact[case][client] = entry
+    return compact
+
+
+def expand_observations(compact):
+    """Restore each omitted response; entries whose wire string does not decode stay as stored."""
+    for clients in compact.values():
+        for client, entry in clients.items():
+            if 'response' not in entry and (derived := derived_response(entry)) is not NOT_DERIVED:
+                clients[client] = dict(sorted({**entry, 'response': derived}.items()))
+    return compact
+
+
+def compact_bytes(observations):
+    """Deterministic gzip of the compact form: identical observations give identical bytes."""
+    text = json.dumps(compact_observations(observations), sort_keys=True, separators=(',', ':'))
+    return gzip.compress(text.encode(), compresslevel=9, mtime=0)
+
+
+def write_observations(folder, observations):
+    (Path(folder) / COMPACT_OBSERVATIONS).write_bytes(compact_bytes(observations))
+
+
+def observations_file(folder):
+    compact = Path(folder) / COMPACT_OBSERVATIONS
+    return compact if compact.exists() else Path(folder) / OBSERVATIONS
+
+
+def load_observations(folder):
+    path = observations_file(folder)
+    if path.name == COMPACT_OBSERVATIONS:
+        return expand_observations(json.loads(gzip.decompress(path.read_bytes())))
+    return read(path)
+
+
+def evidence_bytes(folder, name):
+    """The bytes a run's checksums.json entry covers. A run converted to the compact form keeps
+    its original observations.json checksum; that entry is checked against the original
+    writer's serialization of the reconstructed observations."""
+    path = Path(folder) / name
+    if name == OBSERVATIONS and not path.exists() and (Path(folder) / COMPACT_OBSERVATIONS).exists():
+        return serialize(load_observations(folder)).encode()
+    return path.read_bytes()
+
+
+def verify_evidence(folder):
+    for name, digest in read(Path(folder) / 'checksums.json').items():
+        if hashlib.sha256(evidence_bytes(folder, name)).hexdigest() != digest:
+            raise ValueError(f'evidence modified: {Path(folder).name}/{name}')
 
 
 def run(*args, cwd=None, capture=False):
@@ -272,9 +378,7 @@ def parse_exchange(log, expected):
             continue
         raw = match[2]
         try:
-            def reject_constant(value):
-                raise ValueError(f'Not a JSON number: {value}')
-            value = json.loads(raw, parse_constant=reject_constant)
+            value = decode_response(raw)
         except ValueError:
             value = invalid_json
         (requests if match[1] == '>>' else replies).append((raw, value))
@@ -338,7 +442,7 @@ def collect(out):
                'complete': not missing and not transport and all(eligibility.values()) and all(x['pass'] for x in launches),
                'exchange_count': sum(len(v) for v in observations.values()),
                'note': 'Hive placeholder failure counts are not conformance scores.'}
-    write(out / 'observations.json', observations)
+    write_observations(out, observations)
     write(out / 'summary.json', summary)
     write(out / 'checksums.json', {str(p.relative_to(out)): sha(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name != 'checksums.json'})
     return summary

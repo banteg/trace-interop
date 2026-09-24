@@ -3,6 +3,7 @@ import json
 import unittest
 from pathlib import Path
 
+from trace_interop.cli import load_observations
 from trace_interop.scenarios import verify_state
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,7 +54,7 @@ class RawValidationEvidence(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         base = ROOT/'evidence/2026-09-23/raw-validation-native'
-        cls.observations = json.loads((base/'observations.json').read_text())
+        cls.observations = load_observations(base)
         cls.summary = json.loads((base/'summary.json').read_text())
         corpus = json.loads((ROOT/'fixtures/corpora/raw-validation.json').read_text())
         cls.cases = {c['name']: c for c in corpus['cases']}

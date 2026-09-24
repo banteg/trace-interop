@@ -21,8 +21,8 @@ These results supplement the pinned client reports; they do not replace the full
 
 ## Evidence
 
-- [Replay responses](initial/observations.json) and [run controls](initial/summary.json).
-- [Pruned-state responses](pruned/observations.json) and [run controls](pruned/summary.json).
+- [Replay responses](initial/observations.json.gz) and [run controls](initial/summary.json).
+- [Pruned-state responses](pruned/observations.json.gz) and [run controls](pruned/summary.json).
 - [Scoped assertions](checks.json) and [client build lock](clients.lock.json).
 - Each run retains its original manifest, raw Hive logs and checksums. The runner source was clean at `f34628780cee911b0dbc285321a0c332249bc803`.
 

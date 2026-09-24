@@ -109,6 +109,24 @@ Keep original run directories unchanged. Reassess them against another draft by 
 a new report; do not rewrite observations. A run with `source_dirty` is explicitly a
 development capture and must not be represented as a clean commit reproduction.
 
+Observations are stored as `observations.json.gz`: deterministic gzip (no timestamp) of
+compact JSON. Every entry keeps `raw_response`, the exact wire string, so malformed and
+truncated replies survive; the parsed `response` is stored only when it differs from what
+the capture decoder derives from that string, and loading re-derives it otherwise. Read them
+with `trace_interop.cli.load_observations(run_dir)`, or from the shell:
+
+```sh
+uv run python scripts/compare_responses.py show evidence/2026-09-24/current-matrix/a transaction-tree --family trace
+gzip -dc evidence/2026-09-24/current-matrix/a/observations.json.gz | jq '."transaction-tree"'
+```
+
+`gzip -dc` shows the stored compact form, without the derived `response` fields. Runs
+captured before this format were converted in place by `scripts/compact_observations.py`.
+Their `checksums.json` still lists the original `observations.json` digest, and report
+generation checks it against the original indented serialization of the reconstructed
+observations, which reproduces the retired file byte for byte. New captures list
+`observations.json.gz` itself.
+
 ## Change the draft
 
 Edit the execution-apis fork, run its build/tests, commit and push `feat/trace`, then:

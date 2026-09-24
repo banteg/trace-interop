@@ -4,8 +4,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32603` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/adopted-stances/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/pruned/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | RPC error `4444` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/adopted-stances/pruned/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/pruned/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32603` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/adopted-stances/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/pruned/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | RPC error `4444` | ⚪ Not assessed | [Response](../../../evidence/2026-09-24/adopted-stances/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-24/adopted-stances/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

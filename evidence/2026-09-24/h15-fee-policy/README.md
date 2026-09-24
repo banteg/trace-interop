@@ -4,7 +4,7 @@ Captured on Fedora from clean harness commit `5b152d12780eb780483e63a756c6b9a87a
 The [manifest](h15-matrix/manifest.json) records all requests, immutable image IDs,
 source/runner hashes and timestamps. The [summary](h15-matrix/summary.json) records
 **6,804 complete responses**, no missing exchanges, and successful chain/state
-controls for all nine builds. Raw [observations](h15-matrix/observations.json) and
+controls for all nine builds. Raw [observations](h15-matrix/observations.json.gz) and
 Hive logs are authenticated by [checksums](h15-matrix/checksums.json).
 
 Each build received 744 trace requests (664 proposed-policy requests and 80

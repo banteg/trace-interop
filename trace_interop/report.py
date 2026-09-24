@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 
-from .cli import read, write, sha
+from .cli import read, write, sha, load_observations, observations_file, verify_evidence
 from .rules import evaluate, is_extension_request
 from .validation import request_errors
 from .inventory import verify_inventory, cover_topics
@@ -71,10 +71,9 @@ def generate(root, runs, output):
         methods={m['name']:m for m in spec['methods']}
     for folder in runs:
         folder=folder.resolve()
-        manifest=read(folder/'manifest.json'); summary=read(folder/'summary.json'); obs=read(folder/'observations.json')
+        manifest=read(folder/'manifest.json'); summary=read(folder/'summary.json'); obs=load_observations(folder)
         digest=sha(folder/'manifest.json')
-        for name, value in read(folder/'checksums.json').items():
-            if sha(folder/name) != value:raise ValueError(f'evidence modified: {folder.name}/{name}')
+        verify_evidence(folder)
         run_rows.append({'name':folder.name,'manifest':link(folder/'manifest.json',output),'corpus':manifest['corpus'],'complete':summary['complete'],'versions':summary['versions'],'digest':digest})
         context=run_context(root, manifest)
         cases = assessed_cases(manifest['selected_cases'], context['cases'])
@@ -114,9 +113,9 @@ def generate(root, runs, output):
                     'blocked' if any(c['status']=='blocked' for c in record['checks']) else
                     'control' if record['checks'] and all(c['status'] in ['control','not_applicable'] for c in record['checks']) else 'unassessed')
                 for check in record['checks']:
-                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(folder/'observations.json',output/'clients')))
+                    by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=link(folder/'manifest.json',root),evidence=link(observations_file(folder),output/'clients')))
                 records.append(record)
-                case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':folder/'observations.json'})
+                case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':observations_file(folder)})
     selection = read(root/'reports.lock.json')
     selected = {(root/name).resolve() for name in selection['runs']}
     matrix = root/selection['matrix'] if selection.get('matrix') and {p.resolve() for p in runs} == selected else None

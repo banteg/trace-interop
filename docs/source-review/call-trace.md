@@ -3,7 +3,7 @@
 Scope: flat frames (`action` / `result` / `error` / `subtraces` / `traceAddress` / `type`) across all methods.
 Sources: the pinned draft b979aefe (`src/schemas/trace.yaml`, `docs-api/docs/trace-profile.md`), Parity 55c90d40, Besu 07f0a4b2f8, Erigon 3b4861d1038, Nethermind ac02224f25, revm-inspectors 0.43.0,
 revm-handler/inspector 43.0.3, alloy-rpc-types-trace 2.5.0 (cargo registry), go-ethereum `feat/trace` fork fa8ecb92, TrueBlocks
-31897a4fa9. Evidence: I read every frame in `evidence/2026-09-24/current-matrix/*/observations.json` and compared
+31897a4fa9. Evidence: I read every frame in `evidence/2026-09-24/current-matrix/*/observations.json.gz` and compared
 fields for each frame, grouped by (case, envelope, txHash, traceAddress, type), across release builds plus the
 geth draft.
 

@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from trace_interop.cli import ROOT, read, write, sha, parse_exchange
+from trace_interop.cli import ROOT, read, write, sha, parse_exchange, load_observations
 from trace_interop.rules import evaluate
 from test_harness_regressions import captured
 
@@ -93,7 +93,7 @@ class ReferenceErrors(unittest.TestCase):
         for bad in [None,[],3,'bad']:
             with self.subTest(bad=bad), tempfile.TemporaryDirectory() as tmp:
                 folder=Path(tmp)
-                manifest,summary,observations=[read(source/f) for f in ['manifest.json','summary.json','observations.json']]
+                manifest,summary=[read(source/f) for f in ['manifest.json','summary.json']];observations=load_observations(source)
                 request=next(c['request'] for c in manifest['selected_cases'] if c['name']=='block-tree')
                 observations['block-tree']['go-ethereum_trace']=parse_exchange('>> '+json.dumps(request)+'\n<< '+json.dumps(bad),request)
                 for name,value in [('manifest',manifest),('summary',summary),('observations',observations)]:write(folder/(name+'.json'),value)

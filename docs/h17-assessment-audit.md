@@ -93,7 +93,7 @@ shortlist claim that the birth fix was separate. The patch is absent from the
 recipient, fee recipient and empty-runtime contract. Its second transfer retains
 `=` for existing nonce/code. Release `bec830cd` still has the original difference.
 The new [converter](https://github.com/NethermindEth/nethermind/blob/9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs#L140-L152) and
-[retained responses](../evidence/2026-09-24/h17-retest/coverage/observations.json)
+[retained responses](../evidence/2026-09-24/h17-retest/coverage/observations.json.gz)
 show both the mechanism and its observed result.
 
 ### Reth: contract creation is used as a proxy for account birth

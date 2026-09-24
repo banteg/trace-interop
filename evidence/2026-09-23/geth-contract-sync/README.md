@@ -55,17 +55,17 @@ image identity, setup controls, requests, responses and file checksums.
 
 | Corpus | RPC observations | Evidence |
 | --- | ---: | --- |
-| `a` | 91 | [Manifest](geth-contract-a/manifest.json) · [Responses](geth-contract-a/observations.json) |
-| `callmany-isolation` | 10 | [Manifest](geth-contract-callmany-isolation/manifest.json) · [Responses](geth-contract-callmany-isolation/observations.json) |
-| `fork-followup` | 21 | [Manifest](geth-contract-fork-followup/manifest.json) · [Responses](geth-contract-fork-followup/observations.json) |
-| `forks` | 65 | [Manifest](geth-contract-forks/manifest.json) · [Responses](geth-contract-forks/observations.json) |
-| `h30` | 16 | [Manifest](geth-contract-h30/manifest.json) · [Responses](geth-contract-h30/observations.json) |
-| `initial` | 69 | [Manifest](geth-contract-initial/manifest.json) · [Responses](geth-contract-initial/observations.json) |
-| `precompile-values` | 15 | [Manifest](geth-contract-precompile-values/manifest.json) · [Responses](geth-contract-precompile-values/observations.json) |
-| `precompiles` | 19 | [Manifest](geth-contract-precompiles/manifest.json) · [Responses](geth-contract-precompiles/observations.json) |
-| `raw-validation` | 71 | [Manifest](geth-contract-raw-validation/manifest.json) · [Responses](geth-contract-raw-validation/observations.json) |
-| `reorg-safe` | 18 | [Manifest](geth-contract-reorg-safe/manifest.json) · [Responses](geth-contract-reorg-safe/observations.json) |
-| `repeat` | 44 | [Manifest](geth-contract-repeat/manifest.json) · [Responses](geth-contract-repeat/observations.json) |
+| `a` | 91 | [Manifest](geth-contract-a/manifest.json) · [Responses](geth-contract-a/observations.json.gz) |
+| `callmany-isolation` | 10 | [Manifest](geth-contract-callmany-isolation/manifest.json) · [Responses](geth-contract-callmany-isolation/observations.json.gz) |
+| `fork-followup` | 21 | [Manifest](geth-contract-fork-followup/manifest.json) · [Responses](geth-contract-fork-followup/observations.json.gz) |
+| `forks` | 65 | [Manifest](geth-contract-forks/manifest.json) · [Responses](geth-contract-forks/observations.json.gz) |
+| `h30` | 16 | [Manifest](geth-contract-h30/manifest.json) · [Responses](geth-contract-h30/observations.json.gz) |
+| `initial` | 69 | [Manifest](geth-contract-initial/manifest.json) · [Responses](geth-contract-initial/observations.json.gz) |
+| `precompile-values` | 15 | [Manifest](geth-contract-precompile-values/manifest.json) · [Responses](geth-contract-precompile-values/observations.json.gz) |
+| `precompiles` | 19 | [Manifest](geth-contract-precompiles/manifest.json) · [Responses](geth-contract-precompiles/observations.json.gz) |
+| `raw-validation` | 71 | [Manifest](geth-contract-raw-validation/manifest.json) · [Responses](geth-contract-raw-validation/observations.json.gz) |
+| `reorg-safe` | 18 | [Manifest](geth-contract-reorg-safe/manifest.json) · [Responses](geth-contract-reorg-safe/observations.json.gz) |
+| `repeat` | 44 | [Manifest](geth-contract-repeat/manifest.json) · [Responses](geth-contract-repeat/observations.json.gz) |
 
 Reproduce with the pinned source and `scripts/build_geth.py --reference geth-lock.json`,
 then `trace-interop run --lock <rebuilt-lock> --corpus <corpus> --output <new-directory>`.

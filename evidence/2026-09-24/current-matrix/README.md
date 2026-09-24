@@ -82,7 +82,7 @@ These counts describe this bounded corpus, not overall client conformance or ran
 | Reth | `2.6.0 · 73a3a008` | 128 | 536 | 0 |
 
 [H15 report](../../../reports/decisions/H15.md) ·
-[Fee-policy requests and raw responses](fee-policy/observations.json) ·
+[Fee-policy requests and raw responses](fee-policy/observations.json.gz) ·
 [Probe design](../../../docs/h15-fee-policy.md).
 
 ## Repeat the workflow

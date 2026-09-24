@@ -61,12 +61,13 @@ def load_chain(path):
     blocks, offset = {}, 0
     while offset < len(raw):
         block, _, offset = rlp.codec.consume_item(raw, offset)
-        header, transactions = block[:2]
+        header, transactions, uncles = block[:3]
         n = number(header[8])
         blocks[hex(n)] = {'number':n,'hash':'0x'+keccak(rlp.encode(header)).hex(),
                          'difficulty':number(header[7]),
                          'miner':'0x'+header[2].hex(),'timestamp':number(header[11]),
                          'gas_limit':number(header[9]),'base_fee':number(header[15]) if len(header)>15 else 0,
                          'prev_randao':number(header[13]),
+                         'uncles':[{'number':number(u[8]),'miner':'0x'+u[2].hex()} for u in uncles],
                          'transactions':[decode_transaction(t) for t in transactions]}
     return blocks

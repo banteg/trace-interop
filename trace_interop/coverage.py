@@ -12,6 +12,7 @@ import rlp
 from eth_hash.auto import keccak
 from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
+from .probes import assess as assess_probe
 
 
 def obj(value):
@@ -71,6 +72,7 @@ def supplement(case, observation, peers, checks, expected):
             explain(topic, 'blocked', f'Cannot inspect this property: {status}.')
         return checks
     checks.extend(assess_fee_policy(case, observation))
+    checks.extend(assess_probe(case, observation, peers))
     if method == 'trace_rawTransaction' and len(params)>2:
         for topic in sorted(declared - {c['topic'] for c in checks}):
             explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.')
@@ -249,7 +251,7 @@ def supplement(case, observation, peers, checks, expected):
         modes = params[1] if len(params) > 1 else []
         if code is not None and 'vmTrace' in modes and status == 'result':
             env = dict(context.get('_environment', {}), GASPRICE=integer(call.get('gasPrice','0x0')) or 0,
-                       CALLVALUE=integer(call.get('value','0x0')) or 0)
+                       CALLVALUE=integer(call.get('value','0x0')) or 0, FRESH_ACCOUNT='to' not in call)
             if env['GASPRICE'] == 0:
                 env['BASEFEE'] = 0
             vm = obj(result).get('vmTrace')

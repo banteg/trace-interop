@@ -59,7 +59,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H09 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 7 |
-| H10 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 2 |

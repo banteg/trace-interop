@@ -38,7 +38,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
-**🟡 Partially assessed:** some declared cases lack an evaluated assertion. [Creation result field names](../decisions/H10.md), [vmTrace executing bytecode](../decisions/H19.md), [vmTrace numeric and optional metadata encoding](../decisions/H21.md).
+**🟡 Partially assessed:** some declared cases lack an evaluated assertion. [vmTrace executing bytecode](../decisions/H19.md), [vmTrace numeric and optional metadata encoding](../decisions/H21.md).
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
@@ -48,6 +48,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Empty address lists](../decisions/H04.md) | [Filter both null](../cases/a/filter-both-null.md) · [Filter from empty to set](../cases/a/filter-from-empty-to-set.md) |
 | [Post-merge reward records](../decisions/H05.md) | [Block 2](../cases/a/block-2.md) · [Block 3](../cases/a/block-3.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
+| [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Special-action address matching](../decisions/H23.md) | [Filter created to](../cases/a/filter-created-to.md) · [Filter creator from](../cases/a/filter-creator-from.md) |

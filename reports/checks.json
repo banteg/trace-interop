@@ -1530,12 +1530,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -4494,12 +4488,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -7582,12 +7570,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -10673,12 +10655,6 @@
         "requirement": "Explicit zero-fee unsigned execution is accepted; block-environment preservation needs additional checks.",
         "status": "change_needed",
         "topic": "H15"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
-        "topic": "H10"
       },
       {
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
@@ -145989,12 +145965,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -147238,12 +147208,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -148487,12 +148451,6 @@
         "detail": "The RPC returned an error, so there is no execution result to inspect.",
         "requirement": "Assess the declared property.",
         "status": "blocked",
-        "topic": "H10"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
         "topic": "H17"
       },
       {
@@ -149731,12 +149689,6 @@
         "requirement": "Assess the declared property.",
         "status": "blocked",
         "topic": "H08"
-      },
-      {
-        "detail": "The RPC returned an error, so there is no execution result to inspect.",
-        "requirement": "Assess the declared property.",
-        "status": "blocked",
-        "topic": "H10"
       },
       {
         "detail": "The RPC returned an error, so there is no execution result to inspect.",

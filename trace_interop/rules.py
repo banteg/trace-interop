@@ -457,9 +457,14 @@ def evaluate(case, observation, peers, invalid_params=None):
     frames = [f for values in frame_values for f in sequence(values) if isinstance(f, dict)]
     failed = [f for f in frames if 'error' in f]
     if failed:
-        check('H09', all(isinstance(f['error'], str) and bool(f['error']) and 'result' in f
-              and (f['result'] is None or isinstance(f['result'], dict)) for f in failed),
-              'Failed frames have an error string and an explicit object or null result.')
+        check('H09', all(isinstance(f['error'], str) and bool(f['error'])
+              and (f.get('result') is None or isinstance(f['result'], dict)) for f in failed),
+              'Failed frames have an error string; an exceptional halt omits result or sets it to null.')
+        reverted = [f for f in failed if f['error'] == 'Reverted']
+        if reverted:
+            check('H09', all(isinstance(f.get('result'), dict) and {'gasUsed', 'output'} <= set(f['result'])
+                             and not {'address', 'code'} & set(f['result']) for f in reverted),
+                  'A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.')
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
     trace_selected = method in ['trace_transaction','trace_block','trace_filter','trace_get'] or (len(params)>1 and isinstance(params[1],list) and 'trace' in params[1])

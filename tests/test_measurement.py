@@ -85,8 +85,18 @@ class RuleSafetyTests(unittest.TestCase):
         for error in [1, None, {}, []]:
             checks = assess('call', {'trace': [{'error': error, 'result': None}]})
             self.assertIn('change_needed', [c['status'] for c in checks if c['topic'] == 'H09'])
-        checks = assess('call', {'trace': [{'error': 'Out of gas', 'result': None}]})
-        self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches'])
+        for frame in [{'error': 'Out of gas', 'result': None}, {'error': 'Out of gas'}]:
+            checks = assess('call', {'trace': [frame]})
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches'])
+
+    def test_revert_frames_keep_gas_and_output_without_creation_fields(self):
+        for frame, expected in [({'type': 'call', 'result': {'gasUsed': '0x6', 'output': '0x'}}, 'matches'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'output': '0x'}}, 'matches'),
+                                ({'type': 'call'}, 'change_needed'), ({'type': 'call', 'result': None}, 'change_needed'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'address': '0x'+'11'*20, 'code': '0x'}}, 'change_needed'),
+                                ({'type': 'create', 'result': {'gasUsed': '0x6', 'output': '0x', 'address': '0x'+'11'*20}}, 'change_needed')]:
+            checks = assess('call', {'trace': [dict(frame, error='Reverted')]})
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches', expected], frame)
 
     def test_revert_bytes_do_not_depend_on_error_wording(self):
         frame = {'traceAddress': [0], 'error': 'client specific label', 'result': None}

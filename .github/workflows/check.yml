@@ -10,6 +10,9 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       # The same script runs locally; the spec job below builds the pinned draft separately.
       - run: scripts/check.sh
+      # Advisory: a stale draft pin, an old fix catalog or an unreachable remote warns without failing CI.
+      - run: uv run --locked python scripts/freshness.py
+        continue-on-error: true
   specification:
     runs-on: ubuntu-latest
     steps:

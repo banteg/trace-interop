@@ -142,3 +142,17 @@ class RefreshFixesTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class FreshnessTests(unittest.TestCase):
+    def test_stale_pin_and_old_catalog_warn(self):
+        spec = importlib.util.spec_from_file_location('freshness', ROOT/'scripts/freshness.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        lock = {'repository': 'https://github.com/banteg/execution-apis', 'branch': 'feat/trace', 'commit': 'a' * 40}
+        today = date(2026, 9, 25)
+        self.assertEqual(module.warnings(lock, 'a' * 40, '2026-09-18', today, 7), [])
+        found = module.warnings(lock, 'b' * 40, '2026-09-17', today, 7)
+        self.assertEqual(len(found), 2)
+        self.assertIn('bbbbbbbbbbbb', found[0])
+        self.assertIn('8 days ago', found[1])
+        self.assertIn('no branch', module.warnings(lock, None, '2026-09-25', today, 7)[0])

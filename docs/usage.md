@@ -18,6 +18,12 @@ uv run python scripts/check_schema.py
 failing if the rebuild changes `reports/`, `decisions/README.md` or `docs/client-fixes.md`.
 CI calls the same script, so a local pass means the same thing.
 
+`scripts/check.sh --freshness` then runs `scripts/freshness.py`, which warns when `spec.lock.json`
+no longer matches the head of `banteg/execution-apis` `feat/trace` (via `git ls-remote`) or when
+`decisions/fixes.json` was last checked more than seven days ago (`--max-age` changes this). It is
+advisory: CI runs it as a separate step that may fail, so a stale pin or a network error shows as a
+warning without failing the check.
+
 Optional [prek](https://github.com/j178/prek) hooks (from `.pre-commit-config.yaml`) run fast
 checks on each commit: ruff for syntax errors and undefined names in changed Python, JSON
 validity of changed `.json` files, and `trace-interop verify`. The unit tests run before a push.

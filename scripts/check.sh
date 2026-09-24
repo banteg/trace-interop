@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # The CI check, step for step; stops at the first failure. A rebuild must leave the
 # generated pages unchanged (on a clean checkout this equals `git diff --exit-code`).
+# --freshness also runs the advisory scripts/freshness.py, which never fails the check.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 generated=(reports decisions/README.md docs/client-fixes.md)
@@ -16,4 +17,7 @@ if [ "$(snapshot)" != "$before" ]; then
   echo 'Generated reports are stale: commit the output of scripts/build_reports.py.' >&2
   diff <(echo "$before") <(snapshot) >&2 || true
   exit 1
+fi
+if [ "${1:-}" = --freshness ]; then
+  uv run --locked python scripts/freshness.py || echo 'Freshness warnings are advisory.' >&2
 fi

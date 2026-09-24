@@ -115,12 +115,12 @@ def assess(case, observation):
     def add(ok, requirement, detail=''):
         checks.append(dict(topic='H15', status='matches' if ok else 'change_needed',
                            requirement=requirement, detail=detail))
-    if policy['admission'] == 'observe':
-        return [dict(topic='H15', status='unassessed', requirement='Observe unresolved fee defaults.',
-                     detail='Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict.')]
     status = observation.get('status')
     if status not in ['result', 'rpc_error']:
         return [dict(topic='H15', status='blocked', requirement='Inspect the fee-policy response.', detail=str(status))]
+    if policy['admission'] == 'observe':
+        return [dict(topic='H15', status='observation', requirement='Observe unresolved fee defaults.',
+                     detail='Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict.')]
     response = observation.get('response', {})
     if policy['admission'] == 'reject':
         error = response.get('error', {})

@@ -156,7 +156,7 @@
         "change": "Preserve explicit zero fees and the selected block environment. Enforce funding for priced calls and simulate sender payment, refunds and beneficiary tips consistently across trace selections."
       },
       "nethermind": {
-        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 2a3b2531 fixes both. Many invalid requests still produce malformed JSON in both builds.",
+        "observed": "Observable execution matches the fee/accounting model. 2.0.0 \u00b7 bec830cd fails empty selections and loses state-only output; 2.1.0-unstable \u00b7 2a3b2531 fixes both. Deferred fee/funding exceptions leave malformed JSON in both builds; see the [streaming investigation](../../docs/nethermind-streamed-errors.md) and pending [PR #13666](https://github.com/NethermindEth/nethermind/pull/13666).",
         "change": "Ship the selection/output fixes present in 2a3b2531 and return complete validation errors. These results do not establish a general fee-accounting bug."
       },
       "reth": {

@@ -99,6 +99,24 @@ def display_verdict(checks):
     return f'{icon} {label}'
 
 
+def coverage_summary(checks):
+    """Explain gaps and open policy by case, without counting every assertion twice."""
+    groups = defaultdict(set)
+    for c in checks:
+        status = c['status']
+        if status not in ['blocked', 'unassessed', 'observation']:
+            continue
+        detail = c.get('detail', '') if status != 'observation' else ''
+        detail = detail.removeprefix('Cannot inspect this property: ').rstrip('.')
+        if detail == 'malformed_json':
+            detail = 'malformed JSON response'
+        groups[status, detail].add((c.get('corpus'), c.get('case')))
+    return ' '.join(
+        f'{len(cases)} {"policy-open" if status == "observation" else status} '
+        f'{"case" if len(cases) == 1 else "cases"}' + (f': {detail}.' if detail else '.')
+        for (status, detail), cases in sorted(groups.items()))
+
+
 def utc_date(timestamp):
     if not timestamp:
         return 'Not recorded'
@@ -146,7 +164,8 @@ def case_link(output, parent, check, label='Example'):
 
 def examples(output, parent, checks, limit=2):
     selected = {}
-    for c in sorted(checks, key=lambda x: (x['status'] not in BAD, x['corpus'], x['case'])):
+    priority = {'change_needed':0, 'unsupported':0, 'blocked':1, 'unassessed':1, 'observation':2, 'matches':3}
+    for c in sorted(checks, key=lambda x: (priority.get(x['status'],4), x['corpus'], x['case'])):
         selected.setdefault((c['corpus'], c['case']), c)
     return ' · '.join(case_link(output, parent, c, c['case'].replace('-', ' ').capitalize()) for c in list(selected.values())[:limit])
 
@@ -287,7 +306,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         rows = []; matched = []; untested = []; observations = []; partial = []
         for topic, d in decisions.items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
-            if checks and any(q['status'] == 'observation' for q in checks) and not any(q['status'] in BAD for q in checks):
+            if verdict(checks) == 'Policy open':
                 observations.append(topic)
                 continue
             if not any(q['status'] in BAD for q in checks):
@@ -301,6 +320,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             for c in selected:
                 cchecks = by_client[c].get(topic, [])
                 value = display_verdict(cchecks)
+                if coverage_summary(cchecks):
+                    value += '<br>' + coverage_summary(cchecks)
                 if cchecks:
                     value += '<br>' + examples(output, path.parent, cchecks, 1)
                 statuses.append(value)
@@ -316,13 +337,23 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                     checks = by_client[c].get(topic, [])
                     if checks:
                         detail = ' '.join(dict.fromkeys(q['detail'] for q in checks if q['status'] == 'observation'))
-                        observation_rows.append([label(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', detail, examples(output, path.parent, checks)])
+                        observed = [q for q in checks if q['status'] == 'observation']
+                        observation_rows.append([label(c), f'[{decisions[topic]["title"]}](../decisions/{topic}.md)', coverage_summary(checks) + ' ' + detail, examples(output, path.parent, observed)])
             text += table(['Build', 'Decision', 'Observed', 'Example'], observation_rows)
         other_schema = [r for r in records if r['client'] in selected and r.get('schema', {}).get('status') == 'invalid']
         if other_schema:
             text += 'Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.\n\n'
         if partial:
-            text += '**🟡 Partially assessed:** some declared cases lack an evaluated assertion. ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in partial) + '.\n\n'
+            text += '## Assessment gaps\n\n'
+            gap_rows = []
+            for t in partial:
+                for c in selected:
+                    checks = by_client[c].get(t, [])
+                    gaps = [q for q in checks if q['status'] in ['blocked','unassessed']]
+                    if gaps:
+                        gap_rows.append([f'[{decisions[t]["title"]}](../decisions/{t}.md)', label(c),
+                                         coverage_summary(checks), examples(output, path.parent, gaps)])
+            text += table(['Decision', 'Build', 'Reason', 'Example'], gap_rows)
         if matched:
             text += '<details><summary>✅ Behaviors with no difference in the checked cases</summary>\n\n'
             text += table(['Behavior', 'Examples'], [[f'[{decisions[t]["title"]}](../decisions/{t}.md)', examples(output, path.parent, [q for c in selected for q in by_client[c].get(t, [])])] for t in matched])
@@ -365,7 +396,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 observed, change = note(editorial, affected, topic, checks)
                 behavior = observed + '<br>**Proposed:** ' + change
             elif any(q['status'] in ['unassessed','blocked'] for q in checks):
-                behavior = 'Some declared cases were not assessed. Matching checks do not establish agreement for this topic.'
+                behavior = 'Some cases remain blocked or unassessed; see the per-build reasons. Matching checks do not establish agreement for this topic.'
             elif any(q['status'] == 'observation' for q in checks):
                 details = []
                 for c in selected:
@@ -373,10 +404,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                                                   if q['status'] == 'observation' and q['detail']))
                     if observed:
                         details.append(f'{label(c)}: ' + ' '.join(observed))
-                behavior = '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
+                behavior = ('Evaluated requirements agree in the checked cases. ' if any(q['status']=='matches' for q in checks) else '') + '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
-            build_cells = '<br>'.join(f'{label(c)}: {display_verdict(by_client[c].get(topic, []))}' for c in selected)
+            build_cells = '<br>'.join(f'{label(c)}: {display_verdict(by_client[c].get(topic, []))}' +
+                (f'<br>{coverage_summary(by_client[c].get(topic, []))}' if coverage_summary(by_client[c].get(topic, [])) else '') for c in selected)
             links = examples(output, path.parent, checks)
             code = source_links(sources, selected[0], topic)
             evidence_links = '<br>'.join(x for x in (

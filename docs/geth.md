@@ -22,8 +22,8 @@ RPC observations across thirteen corpora**: `initial`, `a`, `repeat`, `forks`,
 These include 1,066 `trace_*` requests and 193 setup, isolation and comparison queries.
 
 The current checks record 3,985 semantic matches and two H30 differences; all 718
-schema-checked results are valid. The 80 unresolved fee-default requests remain
-unassessed, so matching checks do not settle those choices. The raw-transaction
+schema-checked results are valid. The 80 unresolved fee-default requests are
+policy-open observations, so matching checks do not settle those choices. The raw-transaction
 third argument and three pending-tag requests are policy observations. The 348
 trace RPC errors include deliberate malformed or invalid requests, rather than
 indicating 348 conformance failures.

@@ -38,9 +38,9 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 8078 |
-| 🟡 Partial | 1149 |
-| ⚪ Unassessed | 110 |
+| 🔎 Assessed | 8768 |
+| 🟡 Partial | 569 |
+| ⚪ Unassessed | 0 |
 | 🚧 Blocked | 260 |
 | 🔎 Control | 9 |
 
@@ -66,7 +66,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 235 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: method handler crashed | 5 |
 | H15 | blocked | Cannot inspect this property: malformed_json. | 435 |
-| H15 | unassessed | Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict. | 690 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H16 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
 | H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |

@@ -70,3 +70,19 @@ The matrix runner resolves latest published stable/development images and the cu
 Geth draft branch, then requires a live freshness preflight. Omit `--corpora` for the
 full comparison. Use `--reproduce-lock` only to intentionally rerun a recorded snapshot;
 see [usage](usage.md). Captures retain the actual image IDs and runtime versions.
+
+## Reading the assessment status
+
+Unresolved omitted/incomplete fee defaults are **Policy open** observations, not
+missing tests. Geth's tested build passes all 664 defined-policy requests; its
+80 default probes keep H15 policy-open. Nethermind's tested development build
+has a separate coverage gap: 232 truncated JSON responses (216 defined-policy
+requests and 16 unresolved-default probes), which prevent semantic assessment.
+Its other 448 defined-policy requests match. A malformed response cannot establish
+that the intended fee/funding validation occurred. Per-build report summaries
+name blocked cases and distinguish them from unresolved policy.
+
+The [Nethermind investigation](nethermind-streamed-errors.md) traces those malformed
+responses to validation exceptions during deferred streaming and links the
+existing, still-unmerged fix. Its server logs establish internal rejection, while
+the malformed RPC responses remain blocked for H15 assessment.

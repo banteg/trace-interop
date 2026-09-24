@@ -19,11 +19,11 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 8078,
+    "assessed": 8768,
     "blocked": 260,
     "control": 9,
-    "partial": 1149,
-    "unassessed": 110
+    "partial": 569,
+    "unassessed": 0
   },
   "evidence": {
     "../evidence/2026-09-24/current-matrix/a/manifest.json": "9a909ad38e98f615e7a0ba0a39fe047dd3dfe6d3ce571b355df4bb61af934d5e",
@@ -47,8 +47,8 @@
     "../evidence/2026-09-24/current-matrix/preflight.json": "3b69834560493164f54a4272a0bbbac47cbca3bc47018dae4934bb10464d18c6"
   },
   "sources": {
-    "decisions/impact.json": "d2362d8a1488851d66204b07b53ff5b7f008c1d5796f11bfa16e6e5eaf2afe47",
-    "decisions/ledger.json": "d4245515739cb8645f685ca8571d2c7cd6e53bd9b98b719dec19403e4ff7780c",
+    "decisions/impact.json": "1149bb9fca5cd003db36f500f2e71b7b068c69228c1dfc56c059d3536a42c56c",
+    "decisions/ledger.json": "422ae26b1e88ddbd4d6ffd25c7cc29d89599fe740580cf33a6d2632a33e16992",
     "decisions/sources.json": "5a1b061dcd02addc765284499c21ad5385c808fed32c3583445fbaeaebfcc03d",
     "decisions/status.json": "60da384a4daf466d17732272d1d5017f1201f41a6c3619ab3a9f0785b1393774",
     "fixtures/checksums.json": "9a56bf4c4dd34b3c979ccb1599c2fcada264dc8efe9f28de194af6b881ce7efb",
@@ -60,10 +60,10 @@
     "trace_interop/chain_model.py": "392a57171f81d5b905248d1b36351ac13f6c903a0ea6fa1af7e12527f58612f6",
     "trace_interop/coverage.py": "6d150e4ce044592a647d93c1f4bddd1158fafe1c3614b9511c044121931a44af",
     "trace_interop/execution_models.py": "4b8a31aba948e7743082012ec7d3af06daa823f6a566e3440823f00530a56ce2",
-    "trace_interop/fee_policy.py": "4ecc740fbf2b22c56c6d9681db562497cd7d33ef919887deacffc82ee9585026",
+    "trace_interop/fee_policy.py": "1214a42a8b81d0db8e6ac96e091b3ba51d03e6f4b8ef142f2c98fa8df8d48b58",
     "trace_interop/inventory.py": "ac33d44a4ddb552ed0764aad950f56c8fecb6224ccecaa76f5c9c35cfd7d2729",
     "trace_interop/oracles.py": "831a2a3a9a156fcd2430cf881dc26c63ae825f432dc12f39a01c4e9011b26ef3",
-    "trace_interop/presentation.py": "93e942d731d50cb6f433d86bbed0b5c295726a3a5c3df7a003a3e8cba3b00498",
+    "trace_interop/presentation.py": "5fe009d3ae84f77ba5b2c1b91f0a36357b3a5e82e3e868c5135fd0d131e22e26",
     "trace_interop/report.py": "74bb35aea7d407e2a79ddd3f133e9a055ff7bcb7c2aae01b949584e34fb9edef",
     "trace_interop/rules.py": "c8ab24b5d6bf1af483b1f9b9060f11b2e85b80577818ba07ee98eef7f5f5df93",
     "trace_interop/scenarios.py": "2903d3419c6f5d5cb8ca5f164459c372be9acfb4ec612f68cd9dbce70ce09392",

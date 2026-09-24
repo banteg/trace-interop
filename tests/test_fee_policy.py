@@ -125,7 +125,19 @@ class FeePolicyTests(unittest.TestCase):
 
     def test_unresolved_defaults_do_not_receive_policy_passes(self):
         case=self.case('defaults-omitted/call/none')
-        self.assertEqual(assess(case,self.response({'output':'0x'}))[0]['status'],'unassessed')
+        self.assertEqual(assess(case,self.response({'output':'0x'}))[0]['status'],'observation')
+        self.assertEqual(assess(case,{'status':'malformed_json'})[0]['status'],'blocked')
+
+    def test_captured_defaults_are_open_but_truncated_responses_remain_blocked(self):
+        observations = read(ROOT/'evidence/2026-09-24/current-matrix/fee-policy/observations.json')
+        defaults = [name for name,c in self.cases.items() if c.get('fee_policy',{}).get('admission')=='observe']
+        self.assertEqual(len(defaults), 80)
+        for name in defaults:
+            checks = supplement(self.case(name), observations[name]['go-ethereum_trace'], {}, [], ['H15'])
+            self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['observation'])
+        name = 'defaults-tip-only-positive/call/none'
+        checks = supplement(self.case(name), observations[name]['nethermind_development'], {}, [], ['H15'])
+        self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['blocked'])
 
     def test_rejected_batches_are_not_misclassified_as_missing_execution_envelopes(self):
         obs=dict(status='rpc_error',response={'error':{'code':-32003,'message':'max fee per gas less than block base fee'}})

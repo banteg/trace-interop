@@ -22,10 +22,9 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.17.7-unstable · fa8ecb92 | [Raw-transaction block argument](../decisions/H12.md) | The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 1.17.7-unstable · fa8ecb92 | [Trace block tags and pending state](../decisions/H32.md) | filter-pending: RPC error -32602. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter 0 to 2](../cases/h30/filter-0-to-2.md) |
-
-**🟡 Partially assessed:** some declared cases lack an evaluated assertion. [Unsigned simulation fees and block environment](../decisions/H15.md).
+| 1.17.7-unstable · fa8ecb92 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 1.17.7-unstable · fa8ecb92 | [Unsigned simulation fees and block environment](../decisions/H15.md) | 80 policy-open cases. Omitted/incomplete fee fields have no agreed normalization rule; no conformance verdict. | [Defaults cap only positive/call/none](../cases/fee-policy/defaults-cap-only-positive/call/none.md) · [Defaults cap only positive/call/statediff](../cases/fee-policy/defaults-cap-only-positive/call/stateDiff.md) |
+| 1.17.7-unstable · fa8ecb92 | [Trace block tags and pending state](../decisions/H32.md) | 3 policy-open cases. filter-pending: RPC error -32602. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Filter pending](../cases/h30/filter-pending.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
@@ -54,7 +53,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
-| [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [_reference/block/0x33](../cases/fork-followup/_reference/block/0x33.md) |
+| [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |

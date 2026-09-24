@@ -4,7 +4,7 @@ import re
 import unittest
 from pathlib import Path
 
-from trace_interop.presentation import outcome, verdict, examples, source_url, build_rows, build_label, version_label
+from trace_interop.presentation import outcome, verdict, examples, source_url, build_rows, build_label, version_label, coverage_summary
 
 
 class ReportVerdictTests(unittest.TestCase):
@@ -41,6 +41,12 @@ class ReportVerdictTests(unittest.TestCase):
                   {'status': 'change_needed', 'corpus': 'z', 'case': 'counterexample'}]
         self.assertIn('counterexample.md', examples(Path('/reports'), Path('/reports/clients'), checks, 1))
 
+    def test_examples_link_to_the_reason_for_an_open_or_partial_verdict(self):
+        for status in ['observation', 'blocked', 'unassessed']:
+            checks = [{'status':'matches', 'corpus':'a', 'case':'first'},
+                      {'status':status, 'corpus':'z', 'case':'reason'}]
+            self.assertIn('reason.md', examples(Path('/reports'), Path('/reports/clients'), checks, 1))
+
     def test_commit_dates_match_exact_version_not_image_or_channel(self):
         runs = [
             {'path': Path('/reports/run1.json'), 'versions': {'reth_development': 'old'},
@@ -72,6 +78,16 @@ class ReportVerdictTests(unittest.TestCase):
             ('Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1','1.17.7-unstable'),
         ]:
             self.assertEqual(version_label(version), expected)
+
+    def test_open_policy_is_distinct_from_blocked_or_uncovered_cases(self):
+        matched = dict(status='matches',corpus='fee-policy',case='priced')
+        opened = dict(status='observation',corpus='fee-policy',case='defaults')
+        blocked = dict(status='blocked',corpus='fee-policy',case='invalid',detail='Cannot inspect this property: malformed_json.')
+        self.assertEqual(verdict([matched, opened]), 'Policy open')
+        self.assertEqual(verdict([matched, opened, blocked]), 'Partially assessed')
+        self.assertEqual(coverage_summary([matched, opened, blocked, blocked]),
+                         '1 blocked case: malformed JSON response. 1 policy-open case.')
+        self.assertEqual(verdict([matched, dict(status='unassessed')]), 'Partially assessed')
 
     def test_source_catalog_uses_immutable_revisions_and_line_anchors(self):
         root = Path(__file__).resolve().parents[1]

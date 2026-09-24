@@ -76,8 +76,8 @@
         "change": "Remove the placeholder reward. This also changes which records pagination counts."
       },
       "nethermind": {
-        "observed": "PoS blocks include a synthetic PoW reward record. From source, `trace_block(0)` also fails because the genesis parent lookup fails.",
-        "change": "Remove the placeholder reward and exclude it from pagination. Return `[]` for the genesis block."
+        "observed": "PoS blocks include a synthetic PoW reward record. From source, genesis replay fails because the genesis parent lookup fails; #13783 fixes `trace_block(0)` but not `trace_replayBlockTransactions(0)`.",
+        "change": "Remove the placeholder reward and exclude it from pagination. Return `[]` for the genesis block from block replay too."
       },
       "reth": {
         "observed": "From source: on a PoW-genesis chain, `trace_block(0)` and a filter from block 0 include a block reward for the genesis coinbase.",
@@ -223,12 +223,16 @@
         "change": "Match creation by creator/created address, SELFDESTRUCT by executing account/beneficiary, and rewards by `author` on the recipient side."
       },
       "nethermind": {
-        "observed": "From source: rewards never match `toAddress`, and a failed CREATE matches its would-be address.",
-        "change": "Match rewards by `author` on the recipient side, and give a failed CREATE no recipient match."
+        "observed": "From source: rewards never match `toAddress`, because the matcher reads `from`/`to` while a reward carries `author`. A failed CREATE matches its attempted address through the internal `action.To`, the same policy difference Erigon and Alloy (Reth) show through the failed result address.",
+        "change": "Match rewards by `author` on the recipient side. Give a failed CREATE no recipient match, the H23 adoption shared with Erigon and Alloy, while keeping sender-only matching and empty recipient filters unchanged."
       },
       "erigon": {
-        "observed": "From source: rewards are returned whenever the coinbase is in `toAddress`, ignoring `mode` and `fromAddress`.",
-        "change": "Exclude rewards when `fromAddress` is populated in intersection mode."
+        "observed": "A failed CREATE matches its attempted address through the failed result address, the same policy difference Nethermind (`action.To`) and Alloy (Reth) show. From source, rewards are emitted for a coinbase in `toAddress` only in blocks the address indexes select: to-only and union filters return them, while intersection mode intersects the from and to txNum bitmaps, so `rewards-intersection` returns `[]` on both builds.",
+        "change": "Give a failed CREATE no recipient match, the H23 adoption shared with Nethermind and Alloy, while keeping sender-only matching and empty recipient filters unchanged."
+      },
+      "reth": {
+        "observed": "A failed CREATE matches its attempted address through Alloy\u2019s failed result address, the same policy difference Erigon and Nethermind show. A post-Cancun SELFDESTRUCT to self has no executing account or beneficiary, so address filters miss it: revm skips the inspector callback (revm #3834).",
+        "change": "Give a failed CREATE no recipient match, the H23 adoption shared with Erigon and Nethermind. The SELFDESTRUCT payload follows from revm #3833 once it reaches revm-inspectors and Reth."
       }
     },
     "H24": {
@@ -245,8 +249,8 @@
     },
     "H29": {
       "besu": {
-        "observed": "Nested precompile frames are omitted even when their value is nonzero.",
-        "change": "Retain nested precompile frames with transferred or inherited nonzero value. Continue omitting zero-value nested frames and retaining root frames."
+        "observed": "Nested precompile frames are omitted even when their value is nonzero. A CREATE that fails its balance precheck leaves a successful-looking frame at `[0]`, moves the real creation below it and reports the root as using no gas.",
+        "change": "Retain nested precompile frames with transferred or inherited nonzero value (#11360). Continue omitting zero-value nested frames and retaining root frames. Separately, skip child bookkeeping when a balance or depth precheck prevents entry; no submitted fix covers this."
       }
     },
     "H02": {
@@ -275,7 +279,7 @@
     },
     "H14": {
       "erigon": {
-        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata.",
+        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds only `input`.",
         "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection. Decode `input`, `nonce`, `chainId`, `type`, `blobVersionedHashes` and `authorizationList`, or reject them."
       },
       "nethermind": {
@@ -323,8 +327,8 @@
         "change": "Ship the account-deletion serializer fix verified in 641592d2, retain the pre/post-Cancun regression cases, and report a deleted account\u2019s storage as `{}`."
       },
       "reth": {
-        "observed": "Pre-Cancun account deletion loses code/nonce deletion markers.",
-        "change": "Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780. Fixed upstream by revm-inspectors #510, merged but unreleased after 0.43.0; its main branch lists accessed nonzero slots as `-`, which should become `storage: {}`."
+        "observed": "Pre-Cancun account deletion loses code/nonce deletion markers. After Cancun, a SELFDESTRUCT to self reports a zero executing account and balance because revm skips the inspector callback when the opcode changes no state (revm #3834).",
+        "change": "Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780. Fixed upstream by revm-inspectors #510, merged but unreleased after 0.43.0; its main branch lists accessed nonzero slots as `-`, which should become `storage: {}`. The SELFDESTRUCT payload is fixed by open revm #3833, which then needs revm-inspectors and Reth uptake."
       },
       "geth": {
         "observed": "A deleted account lists its written slots with `-`.",

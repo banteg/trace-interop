@@ -21,7 +21,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 1.17.7-unstable · 0a663f3c | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 1.17.7-unstable · 0a663f3c | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it. Observed: Expected a result; observed rpc_error -32602 gasPrice conflicts with blob or authorization fields | [Field authorization](../cases/probes-prague/field-authorization.md) |
+| 1.17.7-unstable · 0a663f3c | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected a result; observed rpc_error -32602 gasPrice conflicts with blob or authorization fields | [Field authorization](../cases/probes-prague/field-authorization.md) |
 | 1.17.7-unstable · 0a663f3c | [Trace block tags and pending state](../decisions/H32.md) | 2 policy-open cases. call-number-pending: RPC error -32602. many-number-pending: RPC error -32602. | [Call number pending](../cases/h30/call-number-pending.md) · [Many number pending](../cases/h30/many-number-pending.md) |
 
 ## Assessment gaps

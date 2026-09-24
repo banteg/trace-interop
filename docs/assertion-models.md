@@ -86,7 +86,7 @@ downgraded assertion shown.
 
 | Case | Replaces the assertion of | Correction |
 | --- | --- | --- |
-| `probes-prague/field-authorization-1559` | `field-authorization` (H14, now an observation) | EIP-1559 fees instead of legacy `gasPrice`, which cannot carry an `authorizationList`. |
+| `probes-prague/field-authorization-1559` | `field-authorization` (H14, now an input-policy observation) | The canonical authorization probe, with EIP-1559 fees. No signed transaction type carries legacy `gasPrice` with an `authorizationList`; whether a simulation accepts that mix is a separate input policy, which `field-authorization` keeps recording. |
 | `probes-prague/field-authorization-absent-1559` | `field-authorization-absent` (H14, still asserted: a legacy call without a list is valid) | The same fee fields as its authorization twin. |
 | `probes-prague/field-from-omitted-zero-fee` | `field-from-omitted` (H14, blocked on an error through its H15 dependency) | Explicit zero fees, the H15 exemption for an unfunded zero-address sender, and `data` instead of `input`. |
 | `probes-forks/rewards-intersection-default` | `rewards-intersection` (H23, blocked on an error through its H03 dependency) | `mode` omitted: intersection is the default, so a server that rejects `mode` still answers. |

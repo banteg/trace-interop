@@ -244,11 +244,12 @@ def prague():
     authorization = {'chainId': hex(chain_id), 'address': marker, 'nonce': hex(nonce), 'yParity': hex(signature.v),
                      'r': hex(signature.r), 's': hex(signature.s)}
     delegated = {'from': funder, 'to': sender, 'gas': gas, 'gasPrice': price, 'data': '0x'}
-    # Legacy gasPrice with an authorizationList is no transaction type, so this capture
-    # records what each server does; the -1559 twins below carry the H14 assertion.
+    # Legacy gasPrice with an authorizationList matches no signed transaction type; whether a
+    # simulation accepts the mix is an open input policy. This case records each server's
+    # answer; the -1559 twins below carry the canonical H14 authorization assertion.
     case(cases, 'field-authorization', 'trace_call', [dict(delegated, authorizationList=[authorization]), ['trace'], 'latest'],
          probes=[dict(effect('A valid authorization delegates key 1 to the marker contract, which returns word 42.', words(42)),
-                      observe='Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it.')])
+                      observe='Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees.')])
     case(cases, 'field-authorization-absent', 'trace_call', [delegated, ['trace'], 'latest'],
          probes=[effect('Without the authorization the same call reaches an EOA and returns no bytes.', '0x')])
     typed = {'from': funder, 'to': sender, 'gas': gas, 'maxFeePerGas': price, 'maxPriorityFeePerGas': price, 'data': '0x'}

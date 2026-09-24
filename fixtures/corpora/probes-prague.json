@@ -1116,7 +1116,7 @@
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "Legacy gasPrice with an authorizationList is not a representable transaction type, so a rejection, a crash or a dropped list does not isolate the authorization field; field-authorization-1559 asserts it.",
+          "observe": "Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees.",
           "requirement": "A valid authorization delegates key 1 to the marker contract, which returns word 42.",
           "topic": "H14"
         }

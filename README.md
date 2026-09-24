@@ -29,6 +29,7 @@ Erigon, Reth, Nethermind and Besu are the initial clients. An experimental [Geth
 - [Stateful scenarios](docs/scenarios.md): reorg restoration and verified pruning.
 - [Harness assertion audit](docs/harness-audit.md): false-positive regressions and independent fixture checks.
 - [Review workflow](docs/review.md): distinguish API decisions from execution defects.
+- [Source review](docs/source-review/README.md): unreviewed findings from comparing the draft with Parity, client source and sibling eth_* methods.
 
 ```sh
 uv sync --locked

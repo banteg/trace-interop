@@ -1,4 +1,14 @@
 {
+  "H02": {
+    "policy": "converged",
+    "note": "Converged on a single traceAddress path returning one object or null. Besu and Erigon development builds already select by tree path, and Reth merged the path lookup in #27366 (2026-09-22). Nethermind still returns a collection and has not stated a position. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Reth #27366: select trace_get results by tree path",
+        "url": "https://github.com/paradigmxyz/reth/pull/27366"
+      }
+    ]
+  },
   "H03": {
     "policy": "converged",
     "note": "Converged on direction: AND by default, retaining explicit union and intersection and rejecting unknown modes. This records direction, not unanimous formal approval or implementation uptake. Document the migration for both-lists/no-mode queries.",
@@ -13,6 +23,16 @@
       }
     ]
   },
+  "H07": {
+    "policy": "converged",
+    "note": "Converged on carrying transactionHash in individual and block replay envelopes. Erigon and Nethermind development builds already include it, and Reth merged #27365 (2026-09-22). Besu is partial. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Reth #27365: include transaction hash in individual replays",
+        "url": "https://github.com/paradigmxyz/reth/pull/27365"
+      }
+    ]
+  },
   "H13": {
     "policy": "converged",
     "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error-code mapping and compatibility migration remain open; client implementations are not harmonized.",
@@ -23,9 +43,33 @@
       }
     ]
   },
+  "H18": {
+    "policy": "converged",
+    "note": "Converged on reporting net EIP-7702 code changes in stateDiff. Erigon and Nethermind development builds already do, and revm-inspectors merged #509 (2026-09-15); Reth needs a release past revm-inspectors 0.43.0 to ship it. Besu is partial, and multi-authorization cases remain untested. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "revm-inspectors #509: report EIP-7702 code changes in state diffs",
+        "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509"
+      }
+    ]
+  },
+  "H26": {
+    "policy": "converged",
+    "note": "Converged on fork-correct deletion markers: pre-Cancun SELFDESTRUCT deletes the account, post-Cancun it deletes only accounts created in the same transaction. Besu and Erigon development builds agree; Nethermind merged #13668 (2026-09-24, in the captured development build) and revm-inspectors merged #510 (2026-09-15), which Reth ships after a release past 0.43.0. The storage of a deleted account is {} under the revised recommendation. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Nethermind #13668: serialize deleted account fields with deletion markers",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13668"
+      },
+      {
+        "label": "revm-inspectors #510: report selfdestructed account deletions",
+        "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510"
+      }
+    ]
+  },
   "H28": {
     "policy": "converged",
-    "note": "Historical-state semantics agree on all captured native development builds for trace_call. Erigon fixed the one-transaction-late history boundary in #24056, merged 2026-09-18; the captured v3.6.1 release predates it. The H28 probes use only trace_call and eth_getStorageAt, so they do not cover replay: Besu block replay skips the block\u2019s pre-block system calls (Besu #10953, open), and Erigon\u2019s historical trace_callMany still reads the next block\u2019s system writes; both come from source review and are not yet captured. The stricter Harmonized milestone is still blocked by unrelated H09 failed-frame result-schema errors in the Besu and Nethermind beacon-call responses. This records agreement on the checked block boundary, not complete system-operation coverage or unanimous formal approval.",
+    "note": "Historical-state semantics agree on all captured native development builds for trace_call. Erigon fixed the one-transaction-late history boundary in #24056, merged 2026-09-18; the captured v3.6.1 release predates it. The H28 probes use only trace_call and eth_getStorageAt, so they do not cover replay: Besu block replay skips the block\u2019s pre-block system calls (Besu #10953, open), and Erigon\u2019s historical trace_callMany still reads the next block\u2019s system writes; both come from source review and are not yet captured. The stricter Harmonized milestone is blocked only by schema-invalid beacon-call-55 responses from Besu and Nethermind: the beacon-roots contract REVERTs and both omit the REVERT frame result that H09 requires. All H28 checks pass on the four development builds. This records agreement on the checked block boundary, not complete system-operation coverage or unanimous formal approval.",
     "sources": [
       {
         "label": "Erigon #24056: read account state at the end of the requested block",

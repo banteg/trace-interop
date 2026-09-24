@@ -20,7 +20,7 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 
 | Question | Status | Proposed behavior |
 | --- | --- | --- |
-| [How does trace_get select a frame?](decisions/H02.md) | ⚪ Under review | Follow one tree path; return one object or null. An empty path selects the root. |
+| [How does trace_get select a frame?](decisions/H02.md) | 🤝 Converged | Follow one tree path; return one object or null. An empty path selects the root. |
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
 | [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Default both omitted bounds to latest; historical searches specify fromBlock. |
 | [What block does trace_callMany use by default?](decisions/H31.md) | ⚪ Under review | Accept an omitted block and use latest, matching trace_call. |

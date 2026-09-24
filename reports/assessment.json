@@ -52,7 +52,7 @@
     "decisions/impact.json": "4a93d005b02c003d4395492c1c4f8cb5490ce1d5c05aa1b4ed57788fac733cb4",
     "decisions/ledger.json": "2e953ea52db510c68b63849a3575ee2d419c2c8d00536f0492ad754182e0aa1d",
     "decisions/sources.json": "edceaf1d194d4fe31c642d84cdb10fc870f21154703d36392257e90974473155",
-    "decisions/status.json": "496c2950d88b6e1a13b4a11d957a089818c34a9d35e17e2ff954209c2ee0099b",
+    "decisions/status.json": "2c50185a55b428063777b43e362760cd63098715e13c55d89f475616f8333dbb",
     "fixtures/checksums.json": "3219e24e71d06167147a30a45ef8269f2b28fb076707d2ecf18edb57ee601491",
     "locks/source-revisions.json": "5e2dd250084b1a01cfe5b2560e2253dccc992daf0aa07d05472a4a7f44d8e73b",
     "pyproject.toml": "d11a3d19c2a0f2679369a28cec1800603f26b645ce5e73453532c5a8ed746146",

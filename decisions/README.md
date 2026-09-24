@@ -33,7 +33,7 @@ The target is a useful, precise contract. Historical implementations explain com
 | [H25](../reports/decisions/H25.md) | ⚪ Under review | ···· | Well-formed errors for rejected raw transactions | ⚠️✅🛠️✅— | ⚠️✅🛠️✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | Account deletion across Cancun | ⚠️⚠️🛠️⚠️— | ⚠️✅✅⚠️✅ |
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | ···· | Filter execution across fork boundaries | 🛠️✅✅🟡— | 🛠️✅✅🟡✅ |
-| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | 🛠️🛠️⚠️⚠️— | 🛠️⚠️⚠️⚠️✅ |
+| [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | Historical state at system-operation boundaries | 🛠️🛠️✅✅— | 🛠️⚠️✅✅✅ |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | Precompile call-frame inclusion | 🛠️⚠️⚠️⚠️— | 🛠️⚠️⚠️⚠️✅ |
 | [H30](../reports/decisions/H30.md) | ⚪ Under review | ···· | Omitted trace_filter range bounds | ✅⚠️⚠️⚠️— | ✅⚠️⚠️⚠️✅ |
 | [H31](../reports/decisions/H31.md) | ⚪ Under review | ···· | Omitted trace_callMany block | ⚠️✅✅⚠️— | ⚠️✅✅⚠️✅ |

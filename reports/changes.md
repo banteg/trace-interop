@@ -20,7 +20,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 ## Verdict changes
 
-27 verdicts changed for 5 clients.
+23 verdicts changed for 5 clients.
 
 ### [Besu](clients/besu.md)
 
@@ -55,10 +55,8 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
 | [H23 · Special-action address matching](decisions/H23.md) | Nethermind stable | ✅ Checked cases agree | ⚠️ Differs |
-| [H28 · Historical state at system-operation boundaries](decisions/H28.md) | Nethermind stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H29 · Precompile call-frame inclusion](decisions/H29.md) | Nethermind stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H23 · Special-action address matching](decisions/H23.md) | Nethermind dev | ✅ Checked cases agree | ⚠️ Differs |
-| [H28 · Historical state at system-operation boundaries](decisions/H28.md) | Nethermind dev | ✅ Checked cases agree | ⚠️ Differs |
 | [H29 · Precompile call-frame inclusion](decisions/H29.md) | Nethermind dev | ✅ Checked cases agree | ⚠️ Differs |
 
 ### [Reth](clients/reth.md)
@@ -67,9 +65,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | --- | --- | --- | --- |
 | [H05 · Post-merge reward records](decisions/H05.md) | Reth stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H23 · Special-action address matching](decisions/H23.md) | Reth stable | ✅ Checked cases agree | ⚠️ Differs |
-| [H28 · Historical state at system-operation boundaries](decisions/H28.md) | Reth stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H29 · Precompile call-frame inclusion](decisions/H29.md) | Reth stable | ✅ Checked cases agree | ⚠️ Differs |
 | [H05 · Post-merge reward records](decisions/H05.md) | Reth dev | ✅ Checked cases agree | ⚠️ Differs |
 | [H23 · Special-action address matching](decisions/H23.md) | Reth dev | ✅ Checked cases agree | ⚠️ Differs |
-| [H28 · Historical state at system-operation boundaries](decisions/H28.md) | Reth dev | ✅ Checked cases agree | ⚠️ Differs |
 | [H29 · Precompile call-frame inclusion](decisions/H29.md) | Reth dev | ✅ Checked cases agree | ⚠️ Differs |

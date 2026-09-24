@@ -166,6 +166,23 @@ class MinedProbeTests(unittest.TestCase):
         self.assert_detects('beacon-root-read', 'H28', lambda r: r['vmTrace']['ops'][1]['ex'].update(store={'key': '0x0', 'val': '0x14'}))
         self.assert_detects('history-read', 'H28', lambda r: r['trace'][1]['result'].update(output='0x'+'00'*32))
 
+    def test_store_values_are_numeric_and_presence_is_h20(self):
+        # Nethermind pads store words (H21); the values themselves are right.
+        def padded(result):
+            for op in result['vmTrace']['ops']:
+                store = op['ex']['store']
+                op['ex']['store'] = {'key': '0x'+int(store['key'], 16).to_bytes(32, 'big').hex(), 'val': '0x'+f'{int(store["val"], 16):02x}'}
+        checks = self.replay('beacon-root-read', padded)
+        self.assert_ideal(checks)
+        self.assertEqual(self.statuses(checks, 'H28'), self.statuses(self.replay('beacon-root-read'), 'H28'))
+        # Reth omits store (H20): no H28 verdict rests on the missing field.
+        def absent(result):
+            for op in result['vmTrace']['ops']:
+                op['ex']['store'] = None
+        checks = self.replay('history-read', absent)
+        self.assertNotIn('change_needed', self.statuses(checks, 'H28'))
+        self.assertEqual(self.statuses(checks, 'H20'), ['change_needed'])
+
     def test_failed_create_shape_is_exact(self):
         # Erigon and Reth report the would-be address and code on a failed CREATE.
         for role, path in [('create-revert', 0), ('factory-create-revert', 1)]:

@@ -6,6 +6,7 @@ Per-transaction assertions apply wherever that transaction appears: individual a
 replay, trace_transaction and trace_block. Filter cases pin their exact frame identities.
 """
 from .execution_models import balance_delta
+from .vm_model import store_words
 
 
 def obj(value):
@@ -82,12 +83,26 @@ def assess_transaction(probe, topics, envelope, frames, selection):
             code = obj(envelope.get('vmTrace')).get('code') if envelope is not None else None
             try:
                 raw = bytes.fromhex(code[2:])
-                writes = [obj(obj(op).get('ex')).get('store') for op in ops
+                writes = [(op['pc'], obj(obj(op).get('ex')).get('store')) for op in ops
                           if isinstance(obj(op).get('pc'), int) and 0 <= op['pc'] < len(raw) and raw[op['pc']] == 0x55]
             except (TypeError, ValueError):
                 writes = None
-            want = [{'key': k, 'val': v} for k, v in assertion['writes']]
-            add(assertion, writes == want, f'Expected root SSTORE effects {want}, got {writes}.')
+            want = [(int(k, 16), int(v, 16)) for k, v in assertion['writes']]
+            # H28 judges the written values only: a missing store is H20, an unparsable one H21.
+            absent = [pc for pc, store in writes or [] if store is None]
+            malformed = [store for _, store in writes or [] if store is not None and store_words(store) is None]
+            if absent:
+                checks.append({'topic': 'H20', 'status': 'change_needed',
+                               'requirement': 'Each completed SSTORE reports its store {key, val}.',
+                               'detail': f'SSTORE at pc {absent} reported no store, so the root writes cannot show the H28 values.'})
+            elif malformed:
+                checks.append({'topic': 'H21', 'status': 'change_needed',
+                               'requirement': 'store key and val are hex quantities.',
+                               'detail': f'Unparsable store {malformed[0]}, so the root writes cannot show the H28 values.'})
+            else:
+                got = [store_words(store) for _, store in writes] if writes is not None else None
+                add(assertion, got == want, f'Expected root SSTORE effects {[(hex(k), hex(v)) for k, v in want]}, '
+                    f'got {[(hex(k), hex(v)) for k, v in got] if got is not None else None}.')
     return checks
 
 

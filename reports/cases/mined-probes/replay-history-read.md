@@ -2,7 +2,7 @@
 
 `trace_replayTransaction` · mined-probes · [All reports](../../README.md)
 
-**What this checks:** trace_replayTransaction Assess the declared property. Individual replay includes its transactionHash. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. The reader records STATICCALL success and the word in slots 1 and 0. Block-level system writes belong to no transaction’s stateDiff. The reader makes one STATICCALL to the system contract. The vmTrace SSTOREs write the observed success flag and word. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys.
+**What this checks:** trace_replayTransaction Assess the declared property. Individual replay includes its transactionHash. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. The reader records STATICCALL success and the word in slots 1 and 0. Block-level system writes belong to no transaction’s stateDiff. The reader makes one STATICCALL to the system contract. The vmTrace SSTOREs write the observed success flag and word. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. Each completed SSTORE reports its store {key, val}.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -49,23 +49,21 @@
 **Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
 
 - [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
-- [H28](../../decisions/H28.md): The vmTrace SSTOREs write the observed success flag and word. Expected root SSTORE effects [{'key': '0x1', 'val': '0x1'}, {'key': '0x0', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}], got [{'key': '0x0000000000000000000000000000000000000000000000000000000000000001', 'val': '0x01'}, {'key': '0x0000000000000000000000000000000000000000000000000000000000000000', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}].
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth.
-- [H28](../../decisions/H28.md): The vmTrace SSTOREs write the observed success flag and word. Expected root SSTORE effects [{'key': '0x1', 'val': '0x1'}, {'key': '0x0', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}], got [{'key': '0x0000000000000000000000000000000000000000000000000000000000000001', 'val': '0x01'}, {'key': '0x0000000000000000000000000000000000000000000000000000000000000000', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}].
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 
 **Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
 
-- [H28](../../decisions/H28.md): The vmTrace SSTOREs write the observed success flag and word. Expected root SSTORE effects [{'key': '0x1', 'val': '0x1'}, {'key': '0x0', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}], got [None, None].
+- [H20](../../decisions/H20.md): Each completed SSTORE reports its store {key, val}. SSTORE at pc [37, 41] reported no store, so the root writes cannot show the H28 values.
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
 - [H07](../../decisions/H07.md): Individual replay includes its transactionHash.
-- [H28](../../decisions/H28.md): The vmTrace SSTOREs write the observed success flag and word. Expected root SSTORE effects [{'key': '0x1', 'val': '0x1'}, {'key': '0x0', 'val': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d'}], got [None, None].
+- [H20](../../decisions/H20.md): Each completed SSTORE reports its store {key, val}. SSTORE at pc [37, 41] reported no store, so the root writes cannot show the H28 values.
 - Result shape at `/`: {'output': '0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xa975016a2000', 'to': '0x128ea5b8aec00'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000002935'
 
 </details>

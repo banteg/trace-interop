@@ -302,8 +302,12 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     run_manifests = {row['name']: output/row['manifest'] for row in run_rows}
     build_runs = [{'manifest': json.loads(run_manifests[row['name']].read_text()),
                    'versions': row['versions'], 'path': run_manifests[row['name']]} for row in run_rows]
+    captured = defaultdict(set)
+    for r in records:
+        captured[r['client']].add(r['version'])
+
     def label(client, version=None):
-        versions = [version] if version is not None else sorted({r['version'] for r in records if r['client'] == client})
+        versions = [version] if version is not None else sorted(captured[client])
         return '<br>'.join(build_label(client, v, revisions) for v in versions)
 
     freshness = ''

@@ -52,6 +52,15 @@ def run_context(root, manifest):
     return context
 
 
+def result_validator(schema):
+    """One validator per method, over a pre-crawled registry: the recursive vmTrace `$ref` resolves
+    against an embedded `$id`, which an uncrawled registry would re-crawl on every lookup."""
+    from jsonschema import Draft201909Validator
+    from referencing import Registry
+    from referencing.jsonschema import DRAFT201909
+    return Draft201909Validator(schema, registry=Registry().with_resource('', DRAFT201909.create_resource(schema)).crawl())
+
+
 def generate(root, runs, output):
     output=output.resolve();output.mkdir(parents=True,exist_ok=True)
     verify_inventory(root)
@@ -64,11 +73,11 @@ def generate(root, runs, output):
     # Schemas are a generated artifact of the pinned fork, not another editable spec.
     spec=read(root/'spec/trace-openrpc.json') if (root/'spec/trace-openrpc.json').exists() else None
     if spec:
-        from jsonschema import Draft201909Validator
         lock=read(root/'spec.lock.json')
         if sha(root/'spec/trace-openrpc.json') != lock['generated_sha256']:
             raise ValueError('generated schema does not match spec lock')
         methods={m['name']:m for m in spec['methods']}
+        validators={name:result_validator(m['result']['schema']) for name,m in methods.items()}; shapes={}
     for folder in runs:
         folder=folder.resolve()
         manifest=read(folder/'manifest.json'); summary=read(folder/'summary.json'); obs=load_observations(folder)
@@ -96,9 +105,11 @@ def generate(root, runs, output):
                     checks=supplement(dict(case,context=rule_context),observation,peers,checks,expected)
                     record['checks']=cover_topics(checks,expected)
                     if spec and observation.get('status')=='result' and case['request']['method'] in methods and not is_extension_request(case['request']):
-                        schema=methods[case['request']['method']]['result']['schema']
-                        errors=list(Draft201909Validator(schema).iter_errors(observation['response']['result']))
-                        record['schema']={'status':'invalid' if errors else 'valid','errors':[{'path':'/'.join(map(str,e.absolute_path)), 'message':e.message[:300]} for e in errors[:8]]}
+                        result=observation['response']['result']; key=(case['request']['method'],json.dumps(result))
+                        if key not in shapes:  # clients and runs often return identical results
+                            errors=list(validators[key[0]].iter_errors(result))
+                            shapes[key]={'status':'invalid' if errors else 'valid','errors':[{'path':'/'.join(map(str,e.absolute_path)), 'message':e.message[:300]} for e in errors[:8]]}
+                        record['schema']=shapes[key]
                 record['checks']=cover_topics(record['checks'],expected)
                 record['checks'] += [dict(topic=t,status='control',requirement='Retain supporting reference evidence.',
                     detail='Ledger reference; executable requirements are assessed by the linked topic cases.') for t in references]

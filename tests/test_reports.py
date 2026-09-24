@@ -111,3 +111,18 @@ class ReportVerdictTests(unittest.TestCase):
                 target = target.split('#')[0]
                 with self.subTest(page=str(path.relative_to(root)), target=target):
                     self.assertTrue((path.parent/target).exists(), target)
+
+
+class ResultValidatorTests(unittest.TestCase):
+    def test_precrawled_validator_matches_plain_validation_of_recursive_vm_traces(self):
+        from jsonschema import Draft201909Validator
+        from trace_interop.report import result_validator
+        root = Path(__file__).resolve().parents[1]
+        schema = next(m for m in json.loads((root/'spec/trace-openrpc.json').read_text())['methods'] if m['name'] == 'trace_call')['result']['schema']
+        vm = {'code': '0x0', 'ops': []}
+        for _ in range(4):
+            vm = {'code': '0x00', 'ops': [{'pc': 0, 'cost': 0, 'ex': {'used': 1, 'push': ['0x00'], 'mem': None, 'store': None}, 'sub': vm}]}
+        value = {'output': None, 'trace': [], 'stateDiff': None, 'vmTrace': vm}
+        errors = lambda validator: sorted((list(e.absolute_path), e.message) for e in validator.iter_errors(value))
+        self.assertTrue(errors(result_validator(schema)))
+        self.assertEqual(errors(result_validator(schema)), errors(Draft201909Validator(schema)))

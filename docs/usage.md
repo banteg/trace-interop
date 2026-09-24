@@ -29,7 +29,7 @@ uvx prek run --all-files   # run the commit hooks once without committing
 ```
 
 The first command installs both hook types listed in the config; the second makes the pre-push
-hook explicit. Report regeneration is left to `scripts/check.sh`, which takes about a minute.
+hook explicit. Report regeneration is left to `scripts/check.sh`.
 
 ## Reproduce one disagreement
 

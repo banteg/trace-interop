@@ -1,0 +1,260 @@
+INFO [09-24|19:00:54.148] Maximum peer count                       ETH=50 total=50
+INFO [09-24|19:00:54.151] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|19:00:54.156] Set global gas cap                       cap=50,000,000
+INFO [09-24|19:00:54.157] Engine API maximum reorg depth           depth=32
+WARN [09-24|19:00:54.157] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|19:00:54.157] Initializing the KZG library             backend=gokzg
+INFO [09-24|19:00:54.159] Defaulting to pebble as the backing database
+INFO [09-24|19:00:54.159] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|19:00:54.433] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|19:00:54.433] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|19:00:54.433] State scheme set by user                 scheme=path
+INFO [09-24|19:00:54.433] Load database journal from disk
+WARN [09-24|19:00:54.433] Head block is not reachable
+INFO [09-24|19:00:54.617] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|19:00:54.617] State snapshot generator is not found
+INFO [09-24|19:00:54.617] Starting snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="7.152µs"
+INFO [09-24|19:00:54.617] Initialized path database                triecache=16.00MiB statecache=16.00MiB buffer=64.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|19:00:54.617] Writing custom genesis block
+INFO [09-24|19:00:54.617] Resuming snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="260.983µs"
+INFO [09-24|19:00:54.617] Generated snapshot                       accounts=0 slots=0 storage=0.00B dangling=0 elapsed="457.407µs"
+INFO [09-24|19:00:54.619] Successfully wrote genesis state         database=chaindata hash=0b764c..47b65e
+Loading initial blockchain...
+INFO [09-24|19:00:54.841] Maximum peer count                       ETH=50 total=50
+INFO [09-24|19:00:54.845] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|19:00:54.851] Set global gas cap                       cap=50,000,000
+INFO [09-24|19:00:54.851] Engine API maximum reorg depth           depth=32
+WARN [09-24|19:00:54.852] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|19:00:54.852] Initializing the KZG library             backend=gokzg
+INFO [09-24|19:00:54.852] Using pebble as the backing database
+INFO [09-24|19:00:54.853] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|19:00:54.973] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|19:00:54.973] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|19:00:54.974] State scheme set by user                 scheme=path
+WARN [09-24|19:00:54.974] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|19:00:54.974] Load database journal from disk
+INFO [09-24|19:00:54.974] Failed to load journal, discard it       err="journal not found"
+INFO [09-24|19:00:55.027] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|19:00:55.027] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|19:00:55.027] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|19:00:55.027] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] Pre-Merge hard forks (block based):
+INFO [09-24|19:00:55.027]  - Homestead:                   #0       
+INFO [09-24|19:00:55.027]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|19:00:55.027]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|19:00:55.027]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|19:00:55.027]  - Byzantium:                   #0       
+INFO [09-24|19:00:55.027]  - Constantinople:              #0       
+INFO [09-24|19:00:55.027]  - Petersburg:                  #0       
+INFO [09-24|19:00:55.027]  - Istanbul:                    #0       
+INFO [09-24|19:00:55.027]  - Muir Glacier:                #0       
+INFO [09-24|19:00:55.027]  - Berlin:                      #0       
+INFO [09-24|19:00:55.027]  - London:                      #0       
+INFO [09-24|19:00:55.027]  - Arrow Glacier:               #0       
+INFO [09-24|19:00:55.027]  - Gray Glacier:                #0       
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] Merge configured:
+INFO [09-24|19:00:55.027]  - Total terminal difficulty:  131072
+INFO [09-24|19:00:55.027]  - Merge netsplit block:       #0       
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] Post-Merge hard forks (timestamp based):
+INFO [09-24|19:00:55.027]  - Shanghai:                    @0         
+INFO [09-24|19:00:55.027]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|19:00:55.027]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|19:00:55.027] 
+INFO [09-24|19:00:55.027] Loaded most recent local block           number=0 hash=0b764c..47b65e age=57y6mo2w
+INFO [09-24|19:00:55.028] Importing blockchain                     file=/chain.rlp
+INFO [09-24|19:00:55.030] Imported new chain segment               number=2 hash=ece1ea..cf7956 blocks=2 txs=0 mgas=0.000 elapsed=1.804ms mgasps=0.000 age=57y6mo2w triediffs=4.42KiB triedirty=0.00B
+INFO [09-24|19:00:55.030] Persisting dirty state                   head=2 root=842ee3..19b1a1 layers=2
+INFO [09-24|19:00:55.115] Persisted dirty state to file            path=/root/.ethereum/geth/triedb/merkle.journal size=4.40KiB elapsed=85.440ms
+INFO [09-24|19:00:55.155] Blockchain stopped
+Import done in 127.760788ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  25KB |     0     0B |     0     0B |     1   15KB |    0B |   0 0.61 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   15KB     0B       0 |    - 0.00 0.00 |    0B |     0     0B |     1   15KB |     0     0B |    0B |   1    0 |    0B      0B
+total |     1   15KB     0B       0 |    -    -    - |  27KB |     0     0B |     1   15KB |     1   42KB |    0B |   1 1.56 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (2.0KB)  in: 1.9KB  written: 27KB (1298% overhead)
+Flushes: 1
+Compactions: 1  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 0  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (512KB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 15KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 6 entries (27KB)  hit rate: 94.2%
+File cache: 1 tables, 0 blobfiles (496B)  hit rate: 98.5%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 1.7MB  block cache: 208KB (data: 27KB, maps: 182KB, entries: 0B)  memtables: 1.5MB
+
+Object memory: 11.726 MB current, 12.222 MB peak
+System memory: 42.670 MB current, 42.670 MB peak
+Allocations:   0.301 million
+GC pause:      2.319011ms
+
+Compacting entire database...
+Compaction done in 86.193313ms.
+
+      |                             |                |       |   ingested   |     moved    |    written   |       |    amp   |    val sep
+level | tables  size val-bl vtables | score  ff  cff |   in  | tables  size | tables  size | tables  size |  read |   r   w  | refsz  valblk
+------+-----------------------------+----------------+-------+--------------+--------------+--------------+-------+----------+--------------
+    0 |     0     0B     0B       0 |    -    0    0 |  27KB |     0     0B |     0     0B |     2   16KB |    0B |   0 0.61 |    0B      0B
+    1 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    2 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    3 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    4 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    5 |     0     0B     0B       0 |    -    0    0 |    0B |     0     0B |     0     0B |     0     0B |    0B |   0    0 |    0B      0B
+    6 |     1   15KB     0B       0 |    - 0.00 0.00 | 1.3KB |     0     0B |     1   15KB |     1   15KB |  16KB |   1 11.6 |    0B      0B
+total |     1   15KB     0B       0 |    -    -    - |  27KB |     0     0B |     1   15KB |     3   59KB |  16KB |   1 2.18 |    0B      0B
+--------------------------------------------------------------------------------------------------------------------------------------------
+WAL: 1 files (0B)  in: 1.9KB  written: 27KB (1298% overhead)
+Flushes: 2
+Compactions: 2  estimated debt: 0B  in progress: 0 (0B)  canceled: 0 (0B)  failed: 0  problem spans: 0
+             default: 1  delete: 0  elision: 0  move: 1  read: 0  tombstone-density: 0  rewrite: 0  copy: 0  multi-level: 0  blob-file-rewrite:  0
+MemTables: 1 (1.0MB)  zombie: 1 (1.0MB)
+Zombie tables: 0 (0B, local: 0B)
+Backing tables: 0 (0B)
+Virtual tables: 0 (0B)
+Local tables size: 15KB
+Compression types: snappy: 1
+Table stats: all loaded
+Block cache: 0 entries (0B)  hit rate: 91.9%
+File cache: 0 tables, 0 blobfiles (0B)  hit rate: 97.2%
+Range key sets: 0  Tombstones: 0  Total missized tombstones encountered: 0
+Snapshots: 0  earliest seq num: 0
+Table iters: 0
+Filter utility: 0.0%
+Ingestions: 0  as flushable: 0 (0B in 0 tables)
+Cgo memory usage: 2.2MB  block cache: 182KB (data: 0B, maps: 182KB, entries: 0B)  memtables: 2.0MB
+
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running go-ethereum with flags --state.scheme=path --verbosity=3 --bootnodes= --networkid 3503995874084926 --syncmode full --miner.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.port=8545 --http.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --ws --ws.addr=0.0.0.0 --ws.origins "*" --ws.api=admin,debug,trace,eth,miner,net,txpool,web3,testing --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.jwtsecret /jwtsecret --nat=extip:172.17.0.4 --datadir.minfreedisk=0
+INFO [09-24|19:00:55.338] Maximum peer count                       ETH=50 total=50
+INFO [09-24|19:00:55.340] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+INFO [09-24|19:00:55.344] Set global gas cap                       cap=50,000,000
+INFO [09-24|19:00:55.344] Engine API maximum reorg depth           depth=32
+WARN [09-24|19:00:55.345] Setting network ID with command-line flag id=3,503,995,874,084,926
+INFO [09-24|19:00:55.345] Initializing the KZG library             backend=gokzg
+INFO [09-24|19:00:55.346] Allocated trie memory caches             clean=614.00MiB dirty=1.00GiB
+INFO [09-24|19:00:55.346] Using pebble as the backing database
+INFO [09-24|19:00:55.347] Allocated cache and file handles         database=/root/.ethereum/geth/chaindata cache=2.00GiB handles=524,288 version=v2
+INFO [09-24|19:00:55.454] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/chain readonly=false
+INFO [09-24|19:00:55.454] Opened Era store                         datadir=/root/.ethereum/geth/chaindata/ancient/chain/era
+INFO [09-24|19:00:55.455] State scheme set by user                 scheme=path
+INFO [09-24|19:00:55.455] Initialising Ethereum protocol           network=3,503,995,874,084,926 dbversion=<nil>
+WARN [09-24|19:00:55.455] Sanitizing invalid node buffer size      provided=1.00GiB updated=256.00MiB
+INFO [09-24|19:00:55.455] Load database journal from file          path=/root/.ethereum/geth/triedb/merkle.journal
+INFO [09-24|19:00:55.504] Opened ancient database                  database=/root/.ethereum/geth/chaindata/ancient/state readonly=false
+INFO [09-24|19:00:55.505] Initialized path database                triecache=614.00MiB statecache=409.00MiB buffer=256.00MiB state-history="last 90000 blocks" journal-dir=/root/.ethereum/geth/triedb
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|19:00:55.505] Chain ID:  3503995874084926 (unknown)
+INFO [09-24|19:00:55.505] Consensus: Beacon (proof-of-stake), merged from Ethash (proof-of-work)
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] Pre-Merge hard forks (block based):
+INFO [09-24|19:00:55.505]  - Homestead:                   #0       
+INFO [09-24|19:00:55.505]  - Tangerine Whistle (EIP 150): #0       
+INFO [09-24|19:00:55.505]  - Spurious Dragon/1 (EIP 155): #0       
+INFO [09-24|19:00:55.505]  - Spurious Dragon/2 (EIP 158): #0       
+INFO [09-24|19:00:55.505]  - Byzantium:                   #0       
+INFO [09-24|19:00:55.505]  - Constantinople:              #0       
+INFO [09-24|19:00:55.505]  - Petersburg:                  #0       
+INFO [09-24|19:00:55.505]  - Istanbul:                    #0       
+INFO [09-24|19:00:55.505]  - Muir Glacier:                #0       
+INFO [09-24|19:00:55.505]  - Berlin:                      #0       
+INFO [09-24|19:00:55.505]  - London:                      #0       
+INFO [09-24|19:00:55.505]  - Arrow Glacier:               #0       
+INFO [09-24|19:00:55.505]  - Gray Glacier:                #0       
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] Merge configured:
+INFO [09-24|19:00:55.505]  - Total terminal difficulty:  131072
+INFO [09-24|19:00:55.505]  - Merge netsplit block:       #0       
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] Post-Merge hard forks (timestamp based):
+INFO [09-24|19:00:55.505]  - Shanghai:                    @0         
+INFO [09-24|19:00:55.505]  - Cancun:                      @0          blob: (target: 3, max: 6, fraction: 3338477)
+INFO [09-24|19:00:55.505]  - Prague:                      @0          blob: (target: 6, max: 9, fraction: 5007716)
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] All fork specifications can be found at https://ethereum.github.io/execution-specs/src/ethereum/forks/
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+INFO [09-24|19:00:55.505] 
+INFO [09-24|19:00:55.505] Loaded most recent local block           number=2 hash=ece1ea..cf7956 age=57y6mo2w
+INFO [09-24|19:00:55.505] Initialized transaction indexer          range="last 2350000 blocks"
+INFO [09-24|19:00:55.506] Indexed transactions                     blocks=3 txs=0 tail=0 elapsed="106.946µs"
+INFO [09-24|19:00:55.743] Enabled full-sync                        head=2 hash=ece1ea..cf7956
+INFO [09-24|19:00:55.744] Gasprice oracle is ignoring threshold set threshold=2
+INFO [09-24|19:00:55.744] Registered sync override service
+INFO [09-24|19:00:55.745] Starting peer-to-peer node               instance=Geth/v1.17.7-unstable-bb5c4682-2026-09-24/linux-amd64/go1.26.1
+INFO [09-24|19:00:55.796] IPC endpoint opened                      url=/root/.ethereum/geth.ipc
+INFO [09-24|19:00:55.797] Loaded JWT secret file                   path=/jwtsecret crc32=0xb0a0f6e6
+INFO [09-24|19:00:55.797] HTTP server started                      endpoint=[::]:8545 auth=false prefix= cors= vhosts=localhost
+INFO [09-24|19:00:55.797] WebSocket enabled                        url=ws://[::]:8546
+INFO [09-24|19:00:55.797] WebSocket enabled                        url=ws://[::]:8551
+INFO [09-24|19:00:55.797] HTTP server started                      endpoint=[::]:8551 auth=true  prefix= cors=localhost vhosts=localhost
+INFO [09-24|19:00:55.797] New local node record                    seq=1,790,276,455,796 id=825bdcaf22139de8      ip=172.17.0.4 udp=30303 tcp=30303
+INFO [09-24|19:00:55.798] Started P2P networking                   self=enode://96ea156b5a02d0d1eb752f6ed4231635d75d9fd0dd3e81d505e89b115af32daae2ada3dea50eee2b7a655280ed9beddd72457dda5d7fb13f15eaf40578b21d0d@172.17.0.4:30303
+INFO [09-24|19:00:55.798] Started log indexer
+WARN [09-24|19:00:55.882] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="651.478µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|19:00:55.885] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="773.846µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|19:00:55.887] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="607.811µs" err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|19:00:55.891] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration=1.033464ms err="max fee per gas less than block base fee: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, maxFeePerGas: 765624999, baseFee: 765625000"
+WARN [09-24|19:00:55.895] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="540.625µs" err="sender not an eoa: address 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, len(code): 1"
+WARN [09-24|19:00:55.897] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="549.985µs" err="sender not an eoa: address 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, len(code): 1"
+WARN [09-24|19:00:55.899] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="596.341µs" err="sender not an eoa: address 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, len(code): 1"
+WARN [09-24|19:00:55.902] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="613.038µs" err="sender not an eoa: address 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF, len(code): 1"
+WARN [09-24|19:00:55.904] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="549.227µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.907] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="644.763µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.910] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="751.121µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.914] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="680.434µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.916] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="446.172µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:55.919] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="588.115µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:55.921] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="440.817µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:55.924] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="602.319µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:55.957] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="642.17µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100000"
+WARN [09-24|19:00:55.959] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="458.924µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100000"
+WARN [09-24|19:00:55.962] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="610.05µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100000"
+WARN [09-24|19:00:55.964] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="647.091µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100000"
+WARN [09-24|19:00:55.966] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="656.738µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100001"
+WARN [09-24|19:00:55.968] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="482.823µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100001"
+WARN [09-24|19:00:55.970] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="451.354µs" err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100001"
+WARN [09-24|19:00:55.974] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration=1.285155ms err="insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 want 1000076562500100001"
+WARN [09-24|19:00:55.976] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="509.471µs" err="intrinsic gas too low: have 20999, want 21000"
+WARN [09-24|19:00:55.978] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="448.687µs" err="intrinsic gas too low: have 20999, want 21000"
+WARN [09-24|19:00:55.980] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="453.696µs" err="intrinsic gas too low: have 20999, want 21000"
+WARN [09-24|19:00:55.982] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="446.809µs" err="intrinsic gas too low: have 20999, want 21000"
+WARN [09-24|19:00:55.984] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="599.724µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.987] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="610.607µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.989] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="610.267µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.992] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="654.668µs" err="nonce too high: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 11 state: 10"
+WARN [09-24|19:00:55.995] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="636.483µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:55.997] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="669.322µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:56.001] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration=1.008977ms err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:56.004] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="500.204µs" err="nonce too low: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf, tx: 9 state: 10"
+WARN [09-24|19:00:56.018] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="150.409µs" err="invalid signed transaction: invalid chain id for signer: have 3503995874084927 want 3503995874084926"
+WARN [09-24|19:00:56.020] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="87.77µs" err="invalid signed transaction: invalid chain id for signer: have 3503995874084927 want 3503995874084926"
+WARN [09-24|19:00:56.022] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="144.227µs" err="invalid signed transaction: invalid chain id for signer: have 3503995874084927 want 3503995874084926"
+WARN [09-24|19:00:56.024] Served trace_rawTransaction              conn=172.17.0.3:33192 reqid=1 duration="115.207µs" err="invalid signed transaction: invalid chain id for signer: have 3503995874084927 want 3503995874084926"

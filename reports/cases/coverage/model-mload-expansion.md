@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/h15-call-compat/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/coverage/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Besu · 26.9-develop · 85b32978](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · bb5c4682](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Nethermind · 2.1.0-preview · ce501a97](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-24/adopted-stances/coverage/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -40,19 +40,13 @@
 }
 ```
 
-**Besu · 26.9-develop · f9572aa8** (`besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 85b32978** (`besu/v26.9-develop-85b3297/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c45e', 'init': '0x6040515060006000f3', 'value': '0x0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x', 'gasUsed': '0x17'}, 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not vali
 
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c45e', 'init': '0x6040515060006000f3', 'value': '0x0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x', 'gasUsed': '0x17'}, 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not vali
-
-**Geth draft fork · 1.17.7-unstable · fa8ecb92** (`Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1`)
-
-- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 1 (MLOAD) mem: expected {'off': 64, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got None
-- [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem. operation 1 MLOAD mem is not the loaded word at its offset
-- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 1 (MLOAD) mem: expected {'off': 64, 'data': '0x0000000000000000000000000000000000000000000000000000000000000000'}, got None
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

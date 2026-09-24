@@ -6,8 +6,8 @@ The tested development build agrees on several cases that differ in the release,
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.6.1` | [`0c4d9c91`](https://github.com/erigontech/erigon/commit/0c4d9c91dbaffd52890235f7ea395b0231738501) | 2026-09-09 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
-| `3.8.0-dev` | [`e26d9bd4`](https://github.com/erigontech/erigon/commit/e26d9bd4056586e004488c31b561fb2663d46019) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
+| `3.6.1` | [`0c4d9c91`](https://github.com/erigontech/erigon/commit/0c4d9c91dbaffd52890235f7ea395b0231738501) | 2026-09-09 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
+| `3.8.0-dev` | [`e26d9bd4`](https://github.com/erigontech/erigon/commit/e26d9bd4056586e004488c31b561fb2663d46019) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

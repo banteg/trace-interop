@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Besu · 26.9-develop · f9572aa8](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · fa8ecb92](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Nethermind · 2.1.0-unstable · 641592d2](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/h15-call-compat/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/h15-call-compat/precompile-values/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Besu · 26.9-develop · 85b32978](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Erigon · 3.6.1 · 0c4d9c91](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Erigon · 3.8.0-dev · e26d9bd4](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · bb5c4682](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Nethermind · 2.1.0-preview · ce501a97](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
+| [Reth · 2.5.2 · 58a51b3e](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-24/adopted-stances/precompile-values/observations.json) · [Build/run](../../../evidence/2026-09-24/adopted-stances/precompile-values/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,7 +41,7 @@
 }
 ```
 
-**Besu · 26.9-develop · f9572aa8** (`besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 85b32978** (`besu/v26.9-develop-85b3297/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f6a', 'init': '0x6000600052604060006080600060006006620186a0f260005260206000f3', 'value': '0x1'}, 'result': {'address': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'code': '0x0000000000000000000000000000000000000000000000
 

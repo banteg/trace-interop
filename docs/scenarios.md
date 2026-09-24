@@ -44,10 +44,26 @@ ordinary replay or historical-query probes on fully retained fixture chains.
 ## Tested matrix
 
 Both release and development builds of Besu and Nethermind, plus the release build of
-Erigon, complete the canonical switch and restoration. The pinned Erigon
-development build rejects the alternate forkchoice; both pinned Reth builds accept restoration but do not publish the restored RPC head within 30 seconds.
-Those three client scenarios are excluded from trace assessments. The Engine and head-control
-logs are retained with their runs.
+Erigon, complete the canonical switch and restoration. Scenario runs whose setup fails
+are excluded from trace assessments; the Engine and head-control logs are retained with
+their runs.
+
+The Erigon development build fails deterministically at the first branch switch: every
+`engine_newPayloadV4` is VALID, then `engine_forkchoiceUpdatedV3` to the sibling head
+returns -38002 `Invalid forkchoice state`. All nine captured runs of `c25b8e47` and
+`e26d9bd4` fail there, and 3.6.1 passes. In source, Erigon
+[#23612](https://github.com/erigontech/erigon/pull/23612) (`de2a956a`) marks the imported
+tip as safe and finalized; Hive's startup forkchoice update with an earlier finalized
+block takes a short-circuit path that does not commit it, and the new finality guard
+then rejects a sibling branch forking below the imported tip. The update's own
+finalized block is an ancestor of its head, so -38002 is the wrong response. This
+reading comes from logs and source and awaits an upstream report.
+
+Reth accepts the restoring forkchoice update as VALID but intermittently never moves its
+head back, on identical builds: development failed five of eight captures and release
+three of eight. The source suggests a race between restoration and the background removal
+of the abandoned branch's blocks, during which a stale on-disk header is treated as
+already canonical. The failure is intermittent, not a property of a particular build.
 
 Both pinned Reth builds retain old headers and receipts after pruning, allow latest-state
 execution, and reject old state access. Their trace errors use -32603 with an insufficient

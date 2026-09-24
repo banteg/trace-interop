@@ -6,7 +6,7 @@ Reth 2.5.2 · 58a51b3e fixes tree-path lookup, default filter intersection, miss
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.6.0` | [`73a3a008`](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | 2026-09-17 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
+| `2.6.0` | [`73a3a008`](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | 2026-09-17 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
 
 **The 2.5.2 build has newer source than 2.6.0.** The version number on the development branch has not received the release-only bump. Use the commit dates above and [revision comparison](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...58a51b3ee3f6714ded9207b244a273c8afb592fd).
 

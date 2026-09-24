@@ -6,14 +6,14 @@
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.0.0` | [`bec830cd`](https://github.com/NethermindEth/nethermind/commit/bec830cdfbd28c3a4d6040bc967c68c49d19dc9f) | 2026-09-22 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
-| `2.1.0-unstable` | [`641592d2`](https://github.com/NethermindEth/nethermind/commit/641592d2b96fa1e2fa8e8a0b1761582a1728bd51) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
+| `2.0.0` | [`bec830cd`](https://github.com/NethermindEth/nethermind/commit/bec830cdfbd28c3a4d6040bc967c68c49d19dc9f) | 2026-09-22 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
+| `2.1.0-preview` | [`ce501a97`](https://github.com/NethermindEth/nethermind/commit/ce501a9734ac0b39b5a5195fd93a5bf67ba9c161) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.0.0 · bec830cd | 2.1.0-unstable · 641592d2 | Proposed change |
+| Behavior | 2.0.0 · bec830cd | 2.1.0-preview · ce501a97 | Proposed change |
 | --- | --- | --- | --- |
 | [trace_get selector and return shape](../decisions/H02.md)<br>`trace_get` returns a list and treats positions differently from a nested path; `[]` returns `[]`. | ⚠️ Differs<br>[Get nested parent](../cases/a/get-nested-parent.md) | ⚠️ Differs<br>[Get nested parent](../cases/a/get-nested-parent.md) | Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type. Checked requirements: Return the transaction-tree record at [], or null if absent. Return the transaction-tree record at [0], or null if absent. Return the transaction-tree record at [1], or null if absent. Return the transaction-tree record at [0, 0], or null if absent. A missing selected frame is null, not an empty collection. Return the transaction-tree record at [6, 0], or null if absent. Return the transaction-tree record at [6], or null if absent.<br>[Trace lookup](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L433) |
 | [Filter composition and mode](../decisions/H03.md)<br>`mode: "union"` returns the intersection (1 record instead of 6) and `mode: "garbage"` is accepted: the filter type has no `mode` field, so every request is intersected. | ⚠️ Differs<br>[Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) | ⚠️ Differs<br>[Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) | Add a validated `mode` field: accept `intersection` (the default) and `union`, and reject other values with `-32602`.<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) |
@@ -42,7 +42,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 2.0.0 · bec830cd | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 2.1.0-unstable · 641592d2 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 2.1.0-preview · ce501a97 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 

@@ -6,13 +6,13 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.9-develop` | [`f9572aa8`](https://github.com/besu-eth/besu/commit/f9572aa82a2dadb3dd1b218d3ca97101540faf97) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/h15-call-compat/initial/manifest.json) |
+| `26.9-develop` | [`85b32978`](https://github.com/besu-eth/besu/commit/85b32978312c5ec290c24e2dc4c346c368bf9258) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-24/adopted-stances/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 26.9-develop · f9572aa8 | Proposed change |
+| Behavior | 26.9-develop · 85b32978 | Proposed change |
 | --- | --- | --- |
 | [Method coverage](../decisions/H01.md)<br>Individual transaction replay is unavailable. | ⛔ Method unavailable<br>[Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) | Add `trace_replayTransaction`, or agree that it is outside the supported profile. Checked requirements: trace_replayTransaction<br>[Block replay](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java#L58) |
 | [Filter composition and mode](../decisions/H03.md)<br>A recipient-only filter returns 1 of the 2 expected calls. Every recognized `mode` value is rejected with `-32602`, including `intersection` and `union`. | ⚠️ Differs<br>[Filter from only intersection](../cases/a/filter-from-only-intersection.md) | Make a one-sided query select every call matching the populated list. Accept `intersection` as the default and `union` as an explicit option; reject only unknown values.<br>[Filter execution pipeline](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java#L135) |
@@ -42,7 +42,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 26.9-develop · f9572aa8 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 26.9-develop · 85b32978 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -50,12 +50,12 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Replay transactionHash field](../decisions/H07.md) | 26.9-develop · f9572aa8 | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
-| [Empty output and unrequested components](../decisions/H08.md) | 26.9-develop · f9572aa8 | 1 blocked case: The RPC returned an error, so there is no execution result to inspect. 4 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
-| [New-account stateDiff encoding](../decisions/H17.md) | 26.9-develop · f9572aa8 | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. 1 blocked case: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
-| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.9-develop · f9572aa8 | 1 blocked case: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
-| [vmTrace executing bytecode](../decisions/H19.md) | 26.9-develop · f9572aa8 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 1 blocked case: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
-| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 26.9-develop · f9572aa8 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 2 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [Replay transactionHash field](../decisions/H07.md) | 26.9-develop · 85b32978 | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
+| [Empty output and unrequested components](../decisions/H08.md) | 26.9-develop · 85b32978 | 1 blocked case: The RPC returned an error, so there is no execution result to inspect. 4 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
+| [New-account stateDiff encoding](../decisions/H17.md) | 26.9-develop · 85b32978 | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. 1 blocked case: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.9-develop · 85b32978 | 1 blocked case: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
+| [vmTrace executing bytecode](../decisions/H19.md) | 26.9-develop · 85b32978 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 1 blocked case: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 26.9-develop · 85b32978 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 2 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

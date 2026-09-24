@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-24T19:24:48.924842+00:00",
+  "commit": "26f9c9d80073be660c04c419b372b3cda8aad863",
+  "tracked_diff_empty": true,
+  "status_porcelain": "?? evidence/2026-09-24/adopted-stances/",
+  "explanation": "The matrix created its untracked output directory before each corpus inspected git status. That directory is the only dirty path; manifests retain source_dirty=true without rewriting.",
+  "cli_sha256": "8dbb594787b37722352c057d499d29b81398889981825b4ce53565bebe6d4658"
+}

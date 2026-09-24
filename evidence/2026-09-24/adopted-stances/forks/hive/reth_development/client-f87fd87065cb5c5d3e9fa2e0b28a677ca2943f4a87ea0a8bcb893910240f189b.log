@@ -1,0 +1,189 @@
+2026-09-24T18:57:39.478880Z  INFO Initialized tracing, debug log directory: /root/.cache/reth/logs/3503995874084926
+2026-09-24T18:57:39.481488Z  INFO reth init starting
+2026-09-24T18:57:39.482092Z  INFO Opening storage db_path="/reth-hive-datadir/db" sf_path="/reth-hive-datadir/static_files"
+2026-09-24T18:57:39.743573Z  INFO check_consistency{read_only=false}: Verifying storage consistency.
+2026-09-24T18:57:40.312881Z  INFO Genesis block written hash=0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409
++ FLAGS=' -vvv --datadir /reth-hive-datadir --chain /genesis.json'
++ set +ex
+Loading initial blockchain...
+2026-09-24T18:57:40.410351Z  INFO Initialized tracing, debug log directory: /root/.cache/reth/logs/3503995874084926
+2026-09-24T18:57:40.412596Z  INFO reth 2.5.2 (58a51b3) starting
+2026-09-24T18:57:40.413015Z  INFO Opening storage db_path="/reth-hive-datadir/db" sf_path="/reth-hive-datadir/static_files"
+2026-09-24T18:57:40.500068Z  INFO check_consistency{read_only=false}: Verifying storage consistency.
+2026-09-24T18:57:40.736985Z  INFO Starting import of 1 file(s)
+2026-09-24T18:57:40.736999Z  INFO Importing file 1 of 1: /chain.rlp
+2026-09-24T18:57:40.737026Z  INFO Consensus engine initialized
+2026-09-24T18:57:40.739245Z  INFO Importing chain file chunk
+2026-09-24T18:57:40.739355Z  INFO Chain file chunk read
+2026-09-24T18:57:40.739480Z  INFO Downloading bodies count=72 range=1..=72
+2026-09-24T18:57:40.739666Z  INFO Starting sync pipeline
+2026-09-24T18:57:40.739710Z  INFO Preparing stage pipeline_stages=1/13 stage=Headers checkpoint=0 target=72
+2026-09-24T18:57:40.741620Z  INFO Received headers total=72 from_block=72 to_block=1
+2026-09-24T18:57:40.741719Z  INFO Writing headers total=72
+2026-09-24T18:57:40.741727Z  INFO Executing stage pipeline_stages=1/13 stage=Headers checkpoint=0 target=72
+2026-09-24T18:57:40.742357Z  INFO Writing headers hash index total=72
+2026-09-24T18:57:40.811960Z  INFO Finished stage pipeline_stages=1/13 stage=Headers checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:40.812011Z  INFO Preparing stage pipeline_stages=2/13 stage=Bodies checkpoint=0 target=72
+2026-09-24T18:57:40.812814Z  INFO Executing stage pipeline_stages=2/13 stage=Bodies checkpoint=0 target=72
+2026-09-24T18:57:40.863206Z  INFO Finished stage pipeline_stages=2/13 stage=Bodies checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:40.863226Z  INFO Preparing stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=0 target=72
+2026-09-24T18:57:40.863229Z  INFO Executing stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=0 target=72
+2026-09-24T18:57:40.863216Z  INFO Recovering senders tx_range=0..175
+2026-09-24T18:57:40.920260Z  INFO Finished stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=72 target=72 stage_progress=0.00%
+2026-09-24T18:57:40.920278Z  INFO Preparing stage pipeline_stages=4/13 stage=Execution checkpoint=0 target=72
+2026-09-24T18:57:40.920284Z  INFO Executing stage pipeline_stages=4/13 stage=Execution checkpoint=0 target=72
+2026-09-24T18:57:41.140338Z  INFO Finished stage pipeline_stages=4/13 stage=Execution checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:41.140357Z  INFO Preparing stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=0 target=72
+2026-09-24T18:57:41.140353Z  INFO Stage is always skipped
+2026-09-24T18:57:41.140360Z  INFO Executing stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=0 target=72
+2026-09-24T18:57:41.150280Z  INFO Finished stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=72 target=72
+2026-09-24T18:57:41.150292Z  INFO Preparing stage pipeline_stages=6/13 stage=AccountHashing checkpoint=0 target=72
+2026-09-24T18:57:41.150305Z  INFO Executing stage pipeline_stages=6/13 stage=AccountHashing checkpoint=0 target=72
+2026-09-24T18:57:41.160235Z  INFO Finished stage pipeline_stages=6/13 stage=AccountHashing checkpoint=72 target=72
+2026-09-24T18:57:41.160246Z  INFO Preparing stage pipeline_stages=7/13 stage=StorageHashing checkpoint=0 target=72
+2026-09-24T18:57:41.160262Z  INFO Executing stage pipeline_stages=7/13 stage=StorageHashing checkpoint=0 target=72
+2026-09-24T18:57:41.174815Z  INFO Finished stage pipeline_stages=7/13 stage=StorageHashing checkpoint=72 target=72
+2026-09-24T18:57:41.174835Z  INFO Preparing stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=0 target=72
+2026-09-24T18:57:41.174840Z  INFO Executing stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=0 target=72
+2026-09-24T18:57:41.191544Z  INFO Updating transaction lookup tx_range=0..=72
+2026-09-24T18:57:41.191543Z  INFO Finished stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:41.191560Z  INFO Calculating transaction hashes tx_range=0..175
+2026-09-24T18:57:41.191561Z  INFO Preparing stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=0 target=72
+2026-09-24T18:57:41.191565Z  INFO Executing stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=0 target=72
+2026-09-24T18:57:41.192153Z  INFO Inserting hashes append_only=true progress=9.71%
+2026-09-24T18:57:41.192198Z  INFO Inserting hashes append_only=true progress=19.43%
+2026-09-24T18:57:41.192207Z  INFO Inserting hashes append_only=true progress=29.14%
+2026-09-24T18:57:41.192215Z  INFO Inserting hashes append_only=true progress=38.86%
+2026-09-24T18:57:41.192233Z  INFO Inserting hashes append_only=true progress=48.57%
+2026-09-24T18:57:41.192241Z  INFO Inserting hashes append_only=true progress=58.29%
+2026-09-24T18:57:41.192248Z  INFO Inserting hashes append_only=true progress=68.00%
+2026-09-24T18:57:41.192257Z  INFO Inserting hashes append_only=true progress=77.71%
+2026-09-24T18:57:41.192271Z  INFO Inserting hashes append_only=true progress=87.43%
+2026-09-24T18:57:41.192279Z  INFO Inserting hashes append_only=true progress=97.14%
+2026-09-24T18:57:41.258219Z  INFO Finished stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=72 target=72 stage_progress=0.00%
+2026-09-24T18:57:41.258240Z  INFO Preparing stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=0 target=72
+2026-09-24T18:57:41.258243Z  INFO Executing stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=0 target=72
+2026-09-24T18:57:41.258334Z  INFO Collecting indices first_sync=true use_rocksdb=true
+2026-09-24T18:57:41.258589Z  INFO Loading indices into database
+2026-09-24T18:57:41.258848Z  INFO Writing indices progress=9.85%
+2026-09-24T18:57:41.258867Z  INFO Writing indices progress=19.70%
+2026-09-24T18:57:41.258880Z  INFO Writing indices progress=29.55%
+2026-09-24T18:57:41.258898Z  INFO Writing indices progress=39.39%
+2026-09-24T18:57:41.258910Z  INFO Writing indices progress=49.24%
+2026-09-24T18:57:41.258923Z  INFO Writing indices progress=59.09%
+2026-09-24T18:57:41.258935Z  INFO Writing indices progress=68.94%
+2026-09-24T18:57:41.258949Z  INFO Writing indices progress=78.79%
+2026-09-24T18:57:41.258960Z  INFO Writing indices progress=88.64%
+2026-09-24T18:57:41.258974Z  INFO Writing indices progress=98.48%
+2026-09-24T18:57:41.355475Z  INFO Finished stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=72 target=72
+2026-09-24T18:57:41.355494Z  INFO Preparing stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=0 target=72
+2026-09-24T18:57:41.355656Z  INFO Executing stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=0 target=72
+2026-09-24T18:57:41.355742Z  INFO Collecting indices first_sync=true use_rocksdb=true
+2026-09-24T18:57:41.355944Z  INFO Loading indices into database
+2026-09-24T18:57:41.356136Z  INFO Writing indices progress=9.80%
+2026-09-24T18:57:41.356149Z  INFO Writing indices progress=19.61%
+2026-09-24T18:57:41.356156Z  INFO Writing indices progress=29.41%
+2026-09-24T18:57:41.356178Z  INFO Writing indices progress=39.22%
+2026-09-24T18:57:41.356186Z  INFO Writing indices progress=49.02%
+2026-09-24T18:57:41.356194Z  INFO Writing indices progress=58.82%
+2026-09-24T18:57:41.356199Z  INFO Writing indices progress=68.63%
+2026-09-24T18:57:41.356210Z  INFO Writing indices progress=78.43%
+2026-09-24T18:57:41.356217Z  INFO Writing indices progress=88.24%
+2026-09-24T18:57:41.356224Z  INFO Writing indices progress=98.04%
+2026-09-24T18:57:41.434935Z  INFO Finished stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=72 target=72
+2026-09-24T18:57:41.434957Z  INFO Preparing stage pipeline_stages=12/13 stage=Prune checkpoint=0 target=72
+2026-09-24T18:57:41.434961Z  INFO Executing stage pipeline_stages=12/13 stage=Prune checkpoint=0 target=72
+2026-09-24T18:57:41.449898Z  INFO Finished stage pipeline_stages=12/13 stage=Prune checkpoint=72 target=72
+2026-09-24T18:57:41.449921Z  INFO Preparing stage pipeline_stages=13/13 stage=Finish checkpoint=0 target=72
+2026-09-24T18:57:41.449925Z  INFO Executing stage pipeline_stages=13/13 stage=Finish checkpoint=0 target=72
+2026-09-24T18:57:41.466634Z  INFO Finished stage pipeline_stages=13/13 stage=Finish checkpoint=72 target=72
+2026-09-24T18:57:41.466792Z  INFO Chain was fully imported total_imported_blocks=72 total_imported_txns=175
+2026-09-24T18:57:41.466826Z  INFO Successfully imported file /chain.rlp: 72 blocks, 175 transactions
+2026-09-24T18:57:41.466832Z  INFO Import complete. Total: 72/72 blocks, 175/175 transactions
+Loading remaining individual blocks...
+Warning: No blocks found.
+Running reth with flags:  -vvv --datadir /reth-hive-datadir --chain /genesis.json --network-id=3503995874084926 --builder.gaslimit 60000000 --http --http.addr=0.0.0.0 --http.api=admin,debug,trace,eth,net,txpool,web3,testing --ws --ws.addr=0.0.0.0 --ws.api=admin,debug,trace,eth,net,txpool,web3,testing --rpc.compute-state-root-for-eth-simulate --authrpc.addr=0.0.0.0 --authrpc.jwtsecret=/jwt.secret --nat none --block-interval 500000 --debug.startup-sync-state-idle
+2026-09-24T18:57:41.513116Z  INFO reth::cli: Initialized tracing, debug log directory: /root/.cache/reth/logs/3503995874084926
+2026-09-24T18:57:41.515064Z  INFO reth::cli: Starting Reth version="2.5.2 (58a51b3)"
+2026-09-24T18:57:41.515096Z  INFO reth::cli: Opening database path="/reth-hive-datadir/db"
+2026-09-24T18:57:41.530307Z  INFO reth::cli: Launching node
+2026-09-24T18:57:41.531826Z  INFO reth::cli: Saving prune config to toml file
+2026-09-24T18:57:41.531940Z  INFO reth::cli: Configuration loaded path="/reth-hive-datadir/reth.toml"
+2026-09-24T18:57:41.606640Z  INFO check_consistency: reth::cli: Healing static file inconsistencies.
+2026-09-24T18:57:41.850535Z  INFO check_consistency:check_consistency{read_only=false}: reth::cli: Verifying storage consistency.
+2026-09-24T18:57:41.850838Z  INFO reth::cli: Database opened
+2026-09-24T18:57:41.850935Z  INFO reth::cli: 
+Pre-merge hard forks (block based):
+- Frontier                         @0
+- Homestead                        @0
+- Tangerine                        @4
+- SpuriousDragon                   @8
+- Byzantium                        @12
+- Constantinople                   @16
+- Petersburg                       @20
+- Istanbul                         @24
+- MuirGlacier                      @28
+- Berlin                           @32
+- London                           @36
+- ArrowGlacier                     @40
+- GrayGlacier                      @44
+Merge hard forks:
+- Paris                            @6329152 (network is known to be merged)
+Post-merge hard forks (timestamp based):
+- Shanghai                         @520
+- Cancun                           @560          blob: (target: 3, max: 6, fraction: 3338477)
+- Prague                           @600          blob: (target: 6, max: 9, fraction: 5007716)
+2026-09-24T18:57:41.850968Z  INFO reth::cli: Loaded storage settings settings=StorageSettings { storage_v2: true } pruning_mode="custom"
+2026-09-24T18:57:41.852178Z  INFO reth::cli: Transaction pool initialized
+2026-09-24T18:57:41.889555Z  INFO reth::cli: P2P networking initialized enode=enode://1d1930edf83a9b4bd5af2535b32c59d5a2fe3dd81a501501cede999f1c1d4ed5372600976b79ce9989b14279e7e7f233cda9ea3edcd3368a26fd9f731f536d94@0.0.0.0:30303
+2026-09-24T18:57:41.889840Z  INFO reth::cli: StaticFileProducer initialized
+2026-09-24T18:57:41.890174Z  INFO reth::cli: Pruner initialized prune_config=PruneConfig { block_interval: 500000, segments: PruneModes { sender_recovery: None, transaction_lookup: None, receipts: None, account_history: None, storage_history: None, bodies_history: None, receipts_log_filter: ReceiptsLogPruneConfig({}) }, minimum_pruning_distance: 10064 }
+2026-09-24T18:57:41.890867Z  INFO reth::cli: Consensus engine initialized
+2026-09-24T18:57:41.890966Z  INFO reth::cli: Engine API handler initialized
+2026-09-24T18:57:41.893528Z  INFO reth::cli: RPC auth server started url=0.0.0.0:8551
+2026-09-24T18:57:41.894395Z  INFO reth::cli: RPC IPC server started path=/tmp/reth.ipc
+2026-09-24T18:57:41.894401Z  INFO reth::cli: RPC HTTP server started url=0.0.0.0:8545
+2026-09-24T18:57:41.894405Z  INFO reth::cli: RPC WS server started url=0.0.0.0:8546
+2026-09-24T18:57:41.894471Z  INFO reth::cli: Starting consensus engine
+2026-09-24T18:57:41.894797Z  INFO reth_node_events::node: Preparing stage pipeline_stages=1/13 stage=Headers checkpoint=72 target=None
+2026-09-24T18:57:41.894811Z  INFO sync::stages::headers: Target block already reached checkpoint=72 target=Hash(0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316)
+2026-09-24T18:57:41.894922Z  INFO reth_node_events::node: Executing stage pipeline_stages=1/13 stage=Headers checkpoint=72 target=None
+2026-09-24T18:57:41.895190Z  INFO reth_node_events::node: Finished stage pipeline_stages=1/13 stage=Headers checkpoint=72 target=None stage_progress=100.00%
+2026-09-24T18:57:41.895217Z  INFO reth_node_events::node: Preparing stage pipeline_stages=2/13 stage=Bodies checkpoint=72 target=72
+2026-09-24T18:57:41.895386Z  INFO reth_node_events::node: Executing stage pipeline_stages=2/13 stage=Bodies checkpoint=72 target=72
+2026-09-24T18:57:41.895625Z  INFO reth_node_events::node: Finished stage pipeline_stages=2/13 stage=Bodies checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:41.895634Z  INFO reth_node_events::node: Preparing stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=72 target=72
+2026-09-24T18:57:41.895640Z  INFO reth_node_events::node: Executing stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=72 target=72
+2026-09-24T18:57:41.895688Z  INFO reth_node_events::node: Finished stage pipeline_stages=3/13 stage=SenderRecovery checkpoint=72 target=72 stage_progress=0.00%
+2026-09-24T18:57:41.895696Z  INFO reth_node_events::node: Preparing stage pipeline_stages=4/13 stage=Execution checkpoint=72 target=72
+2026-09-24T18:57:41.895702Z  INFO reth_node_events::node: Executing stage pipeline_stages=4/13 stage=Execution checkpoint=72 target=72
+2026-09-24T18:57:41.895749Z  INFO reth_node_events::node: Finished stage pipeline_stages=4/13 stage=Execution checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:41.895757Z  INFO reth_node_events::node: Preparing stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=72 target=72
+2026-09-24T18:57:41.895762Z  INFO sync::stages::merkle::unwind: Stage is always skipped
+2026-09-24T18:57:41.895763Z  INFO reth_node_events::node: Executing stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=72 target=72
+2026-09-24T18:57:41.895824Z  INFO reth_node_events::node: Finished stage pipeline_stages=5/13 stage=MerkleUnwind checkpoint=72 target=72
+2026-09-24T18:57:41.895831Z  INFO reth_node_events::node: Preparing stage pipeline_stages=6/13 stage=AccountHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895836Z  INFO reth_node_events::node: Executing stage pipeline_stages=6/13 stage=AccountHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895874Z  INFO reth_node_events::node: Finished stage pipeline_stages=6/13 stage=AccountHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895881Z  INFO reth_node_events::node: Preparing stage pipeline_stages=7/13 stage=StorageHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895892Z  INFO reth_node_events::node: Executing stage pipeline_stages=7/13 stage=StorageHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895927Z  INFO reth_node_events::node: Finished stage pipeline_stages=7/13 stage=StorageHashing checkpoint=72 target=72
+2026-09-24T18:57:41.895940Z  INFO reth_node_events::node: Preparing stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=72 target=72
+2026-09-24T18:57:41.895962Z  INFO reth_node_events::node: Executing stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=72 target=72
+2026-09-24T18:57:41.896030Z  INFO reth_node_events::node: Finished stage pipeline_stages=8/13 stage=MerkleExecute checkpoint=72 target=72 stage_progress=100.00%
+2026-09-24T18:57:41.896058Z  INFO reth_node_events::node: Preparing stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=72 target=72
+2026-09-24T18:57:41.896068Z  INFO reth_node_events::node: Executing stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=72 target=72
+2026-09-24T18:57:41.896080Z  INFO reth_node_events::node: Finished stage pipeline_stages=9/13 stage=TransactionLookup checkpoint=72 target=72 stage_progress=0.00%
+2026-09-24T18:57:41.896088Z  INFO reth_node_events::node: Preparing stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896098Z  INFO reth_node_events::node: Executing stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896184Z  INFO reth_node_events::node: Finished stage pipeline_stages=10/13 stage=IndexStorageHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896195Z  INFO reth_node_events::node: Preparing stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896201Z  INFO reth_node_events::node: Executing stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896314Z  INFO reth_node_events::node: Finished stage pipeline_stages=11/13 stage=IndexAccountHistory checkpoint=72 target=72
+2026-09-24T18:57:41.896327Z  INFO reth_node_events::node: Preparing stage pipeline_stages=12/13 stage=Prune checkpoint=72 target=72
+2026-09-24T18:57:41.896333Z  INFO reth_node_events::node: Executing stage pipeline_stages=12/13 stage=Prune checkpoint=72 target=72
+2026-09-24T18:57:41.896419Z  INFO reth_node_events::node: Finished stage pipeline_stages=12/13 stage=Prune checkpoint=72 target=72
+2026-09-24T18:57:41.896427Z  INFO reth_node_events::node: Preparing stage pipeline_stages=13/13 stage=Finish checkpoint=72 target=72
+2026-09-24T18:57:41.896471Z  INFO reth_node_events::node: Executing stage pipeline_stages=13/13 stage=Finish checkpoint=72 target=72
+2026-09-24T18:57:41.896513Z  INFO reth_node_events::node: Finished stage pipeline_stages=13/13 stage=Finish checkpoint=72 target=72
+2026-09-24T18:57:41.993264Z  INFO reth_node_events::node: Forkchoice updated head_block_hash=0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316 safe_block_hash=0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316 finalized_block_hash=0xc838e291267cb5ce27dd44cd30e91eade7d3d97ee9d19805453f8f0c18b297c8

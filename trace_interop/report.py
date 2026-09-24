@@ -16,6 +16,18 @@ def link(path, output):
     return os.path.relpath(path, output).replace(os.sep, '/')
 
 
+def assessed_cases(captured, corpus):
+    """Captured requests with the current corpus expectations for the identical request.
+
+    Observations stay immutable; expectation fields (fee policy, models, references)
+    follow the checksummed corpus, so a corrected expectation reassesses old evidence.
+    A request that has since changed keeps the expectations it was captured with.
+    """
+    current = {c['name']: c for c in corpus}
+    return [current[c['name']] if c['name'] in current and current[c['name']]['request'] == c['request'] else c
+            for c in captured]
+
+
 def generate(root, runs, output):
     output=output.resolve();output.mkdir(parents=True,exist_ok=True)
     verify_inventory(root)
@@ -59,11 +71,12 @@ def generate(root, runs, output):
         if manifest['corpus'] in ['reorg','reorg-safe']:
             context['_alternate_blocks'] = load_chain(root/'fixtures/chains/b/chain.rlp')
         context['_environment'] = {k:int(header[v],16) for k,v in [('BASEFEE','baseFeePerGas'),('NUMBER','number'),('TIMESTAMP','timestamp'),('GASLIMIT','gasLimit')] if v in header}
-        rule_context = dict(context, cases=manifest['selected_cases'])
+        cases = assessed_cases(manifest['selected_cases'], context['cases'])
+        rule_context = dict(context, cases=cases)
         for client in manifest['clients']:
             eligible, scenario_detail=verify_setup(manifest,context,obs,client)
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
-            for case in manifest['selected_cases']:
+            for case in cases:
                 name=case['name']; observation=peers.get(name,{})
                 record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'method':case['request']['method'],'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':eligible,'capture_eligible':summary['eligible'].get(client,False),'eligibility_detail':scenario_detail,'checks':[],'spec_commit':lock['commit'] if spec else None}
                 info=manifest['clients'][client]

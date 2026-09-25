@@ -20,7 +20,6 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) |
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) |
-| [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) |
 | [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; #24294 adds the remaining call fields | [H14](../reports/decisions/H14.md) (partial) |
 | [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck | [H20](../reports/decisions/H20.md) (partial) |
 | [Erigon #24292](https://github.com/erigontech/erigon/pull/24292) | Apply safe and finalized from a same-head fork choice; unblocks the reorg scenario: import-time finality made the sibling-branch forkchoice return -38002 (fixes #24028) | — |
@@ -51,6 +50,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes in vmTrace | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 |
 | [Erigon #24056](https://github.com/erigontech/erigon/pull/24056) | Read account state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-18 |
+| [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) | 2026-09-25 |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept empty Parity trace selections | [H08](../reports/decisions/H08.md) (partial), [H11](../reports/decisions/H11.md) | 2026-09-24 |
 | [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deleted account fields with deletion markers; verified in development build 9d6e8b8d | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | 2026-09-24 |
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve trace_get errors and bound positions | [H06](../reports/decisions/H06.md) (partial) | 2026-09-24 |

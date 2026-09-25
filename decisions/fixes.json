@@ -185,9 +185,9 @@
       "decisions": [
         "H03"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T07:33:44Z"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24290",

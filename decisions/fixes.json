@@ -466,6 +466,21 @@
       "awaiting_uptake": true
     },
     {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/530",
+      "title": "fix(parity): report no storage slots for a deleted account",
+      "client": "reth",
+      "decisions": [
+        "H26"
+      ],
+      "partial": [
+        "H26"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage"
+    },
+    {
       "url": "https://github.com/bluealloy/revm/pull/3833",
       "title": "fix(inspector): preserve selfdestruct trace payload",
       "client": "reth",

@@ -251,9 +251,9 @@
       "decisions": [
         "H05"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T10:11:20Z"
     },
     {
       "url": "https://github.com/ethereum/execution-apis/pull/895",
@@ -317,9 +317,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T09:48:18Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13780",
@@ -762,7 +762,7 @@
       "client": "erigon",
       "decisions": [],
       "state": "open",
-      "draft": false,
+      "draft": true,
       "merged_at": null,
       "note": "supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario"
     },
@@ -771,10 +771,40 @@
       "title": "fix(engine): don't treat stale persisted fcu head as canonical",
       "client": "reth",
       "decisions": [],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-25T09:41:40Z",
+      "note": "fixes the intermittent reorg scenario restoration: a stale on-disk head was taken as already canonical"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13834",
+      "title": "test(evm): cover reverted child output in action callbacks",
+      "client": "nethermind",
+      "decisions": [],
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "fixes the intermittent reorg scenario restoration: a stale on-disk head was taken as already canonical"
+      "note": "Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13622's branch; parent PR remains required."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13835",
+      "title": "fix(evm): keep cancellation policy outside instruction pairing",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13551's branch; parent PR remains required."
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24322",
+      "title": "refactor(engine): handle repeated forkchoice outside unwind",
+      "client": "erigon",
+      "decisions": [],
+      "state": "open",
+      "draft": true,
+      "merged_at": null,
+      "note": "Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required."
     }
   ]
 }

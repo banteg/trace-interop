@@ -1,0 +1,93 @@
+--- a/src/Nethermind/Nethermind.Runner.Test/JsonRpc/StartupTests.cs
++++ b/src/Nethermind/Nethermind.Runner.Test/JsonRpc/StartupTests.cs
+@@ -594,6 +594,81 @@
+         stats.Received(1).ReportCall(Arg.Is<RpcReport>(report => report.Method == GetBlobsV2Method && report.Success), Arg.Any<long>(), Arg.Any<long?>());
+     }
+ 
++    [Test]
++    [Explicit("Manual Engine API allocation and latency comparison; run alone on each revision.")]
++    [NonParallelizable]
++    public async Task Engine_direct_response_performance()
++    {
++        using CancellationTokenSource deadline = new(TimeSpan.FromMinutes(5));
++        foreach (string method in new[] { "engine_getPayloadV5", "engine_getPayloadV6", "engine_getBlobsV2", "engine_getPayloadBodiesByHashV1" })
++        foreach (int payloadBytes in new[] { 0, 7200, 8200, 131072 })
++        {
++            if (method == "engine_getBlobsV2" && payloadBytes is 7200 or 8200) continue;
++            byte[] data = new byte[payloadBytes];
++            Transaction tx = Nethermind.Core.Test.Builders.Build.A.Transaction.WithData(data).TestObject;
++            Block block = Nethermind.Core.Test.Builders.Build.A.Block.WithTransactions([tx]).WithWithdrawals([]).TestObject;
++            BlobsBundleV2 bundle = new(block);
++            IEngineRpcModule engine = CreateEngineModule();
++            engine.engine_getPayloadV5(Arg.Any<byte[]>()).Returns(_ => Task.FromResult(ResultWrapper<GetPayloadV5Result?>.Success(
++                new GetPayloadV5DirectResponse(block, Nethermind.Int256.UInt256.Zero, bundle, [], false))));
++            engine.engine_getPayloadV6(Arg.Any<byte[]>()).Returns(_ => Task.FromResult(ResultWrapper<GetPayloadV6Result?>.Success(
++                new GetPayloadV6DirectResponse(block, Nethermind.Int256.UInt256.Zero, bundle, [], false))));
++            engine.engine_getBlobsV2(Arg.Any<byte[][]>()).Returns(_ => Task.FromResult(ResultWrapper<IReadOnlyList<BlobAndProofV2?>?>.Success(
++                new BlobsV2DirectResponse(payloadBytes == 0 ? [] : [data], payloadBytes == 0 ? [] : [ReadOnlyMemory<byte[]>.Empty], payloadBytes == 0 ? 0 : 1))));
++            engine.engine_getPayloadBodiesByHashV1(Arg.Any<IReadOnlyList<Nethermind.Core.Crypto.Hash256>>()).Returns(_ =>
++                ResultWrapper<IReadOnlyList<ExecutionPayloadBodyV1Result?>>.Success(new PayloadBodiesV1DirectResponse([new ExecutionPayloadBodyV1Result([tx], [])])));
++            IRpcAuthentication authentication = Substitute.For<IRpcAuthentication>();
++            authentication.Authenticate(Arg.Any<string>()).Returns(Task.FromResult(true));
++            Startup startup = CreateStartup(rpcAuthentication: authentication, engineModule: engine, rpcConfig: new JsonRpcConfig { BufferResponses = false, EnabledModules = [ModuleType.Engine] });
++            JsonRpcUrl url = new("http", "127.0.0.1", 0, RpcEndpoint.Http, true, [ModuleType.Engine]);
++            await using KestrelJsonRpcHost host = await KestrelJsonRpcHost.StartAsync(startup, url);
++            using HttpClient client = new() { Timeout = TimeSpan.FromSeconds(30) };
++            string request = CreateJsonRpcRequest(method, paramsJson: method.StartsWith("engine_getPayloadV", StringComparison.Ordinal) ? "[\"0x0000000000000001\"]" : "[[]]");
++            async Task<int> Invoke()
++            {
++                using StringContent content = new(request, Encoding.UTF8, "application/json");
++                using HttpResponseMessage response = await client.PostAsync(host.Address, content, deadline.Token);
++                string body = await response.Content.ReadAsStringAsync(deadline.Token);
++                if (!response.IsSuccessStatusCode) throw new InvalidOperationException($"{method}: {response.StatusCode}: {body}");
++                if (body.Contains("\"error\":", StringComparison.Ordinal)) throw new InvalidOperationException(body);
++                return body.Length;
++            }
++            int responseBytes = await Invoke();
++            for (int i = 0; i < 1000; i++) await Invoke();
++            foreach (int concurrency in new[] { 1, 8 })
++            {
++                const int iterations = 1000;
++                double[] samples = new double[iterations * concurrency];
++                GC.Collect();
++                GC.WaitForPendingFinalizers();
++                long allocated = GC.GetTotalAllocatedBytes(precise: true);
++                long started = Stopwatch.GetTimestamp();
++                Task[] workers = new Task[concurrency];
++                for (int worker = 0; worker < concurrency; worker++)
++                {
++                    int offset = worker * iterations;
++                    workers[worker] = RunWorker(offset);
++                }
++                await Task.WhenAll(workers);
++                double seconds = Stopwatch.GetElapsedTime(started).TotalSeconds;
++                long bytes = GC.GetTotalAllocatedBytes(precise: true) - allocated;
++                Array.Sort(samples);
++                string line = FormattableString.Invariant($"ENGINE_BENCH {method} data={payloadBytes} response={responseBytes} concurrency={concurrency} alloc={bytes / samples.Length} rps={samples.Length / seconds:F1} p50us={samples[samples.Length / 2]:F1} p95us={samples[(int)(samples.Length * .95)]:F1}");
++                TestContext.Progress.WriteLine(line);
++                File.AppendAllText(Environment.GetEnvironmentVariable("ENGINE_BENCH_OUTPUT")!, line + Environment.NewLine);
++                async Task RunWorker(int offset)
++                {
++                    for (int i = 0; i < iterations; i++)
++                    {
++                        long start = Stopwatch.GetTimestamp();
++                        await Invoke();
++                        samples[offset + i] = Stopwatch.GetElapsedTime(start).TotalMicroseconds;
++                    }
++                }
++            }
++        }
++    }
++
+     private static Startup CreateStreamingStartup(ProbeBlobStreamableResult result, bool bufferResponse, IJsonRpcLocalStats? stats = null)
+     {
+         IEngineRpcModule engineModule = CreateEngineModule();
+@@ -1068,6 +1143,8 @@
+     /// </summary>
+     private sealed class KestrelJsonRpcHost(IHost host, int port) : IAsyncDisposable
+     {
++        public string Address => $"http://127.0.0.1:{port}/";
++
+         private static readonly TimeSpan ResponseTimeout = TimeSpan.FromSeconds(30);
+ 
+         public static async Task<KestrelJsonRpcHost> StartAsync(Startup startup, JsonRpcUrl url)

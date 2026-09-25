@@ -1,0 +1,1104 @@
+{
+  "checked_at": "2026-09-25T11:09:55.958613+00:00",
+  "scope": "All tracked PRs including merged/closed and three follow-ups created in this pass",
+  "pagination_complete": true,
+  "prs": [
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13551",
+      "title": "Pair instruction trace completions with starts",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T19:07:02Z",
+      "mergedAt": null,
+      "headRefOid": "430c33df1fd9deb299557d85c3a83acdd4322989",
+      "reviewDecision": "CHANGES_REQUESTED",
+      "last_comment_at": "2026-09-24T18:01:18Z",
+      "last_review_at": "2026-09-24T19:07:02Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4096814449"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/Instructions/EvmInstructions.Create.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4096820678"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4096833420"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4096835977"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403656"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm.Test/Tracing/InstructionTracingFilterTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403669"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm.Test/Tracing/ParityLikeTxTracerTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403688"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403707"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403717"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403723"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13551#discussion_r4097403727"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13622",
+      "title": "Report terminal output for top-level action traces",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T19:07:05Z",
+      "mergedAt": null,
+      "headRefOid": "8112c97db250bfdd3ff08665d13115589e76b22c",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T15:01:29Z",
+      "last_review_at": "2026-09-24T19:07:05Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.Evm/VirtualMachine.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13622#discussion_r4096927964"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm.Test/VirtualMachineTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13622#discussion_r4096930007"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm.Test/VirtualMachineTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13622#discussion_r4097404233"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Evm.Test/TestAllTracerWithOutput.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13622#discussion_r4097404249"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13665",
+      "title": "fix(tracing): retain output in state-only Parity traces",
+      "state": "CLOSED",
+      "updatedAt": "2026-09-24T11:24:20Z",
+      "mergedAt": null,
+      "headRefOid": "8870dd37edac478e80e4b5ee61a110dfa5a63c4f",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T11:24:19Z",
+      "last_review_at": "2026-09-24T10:43:25Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13665#discussion_r4082069693",
+            "https://github.com/NethermindEth/nethermind/pull/13665#discussion_r4086535986"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13666",
+      "title": "fix(rpc): preserve error responses for streamed traces",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T11:01:44Z",
+      "mergedAt": null,
+      "headRefOid": "e774a5039b9e6f2079d233753489e7b1fa4a236d",
+      "reviewDecision": "CHANGES_REQUESTED",
+      "last_comment_at": "2026-09-25T09:44:34Z",
+      "last_review_at": "2026-09-25T09:31:12Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/WebSockets/JsonRpcSocketsClient.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4102952444"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/WebSockets/SocketSendLock.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4102980727",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103124351"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/WebSockets/SocketJsonRpcResponseSink.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4102999066",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103124523"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/JsonRpcProcessor.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103010394",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103124737"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/JsonRpcResponse.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103019054",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103124989"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/JsonRpcService.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103055976",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103125144"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Serialization.Json/RewindableStreamPipeWriter.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103067574",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103070105",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103125307",
+            "https://github.com/NethermindEth/nethermind/pull/13666#discussion_r4103125487"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13667",
+      "title": "fix(rpc): accept empty Parity trace selections",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T10:51:12Z",
+      "mergedAt": "2026-09-24T10:51:12Z",
+      "headRefOid": "149f9c9969fa8fd5c536b4f3c4093429c9c44e4c",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T07:19:54Z",
+      "last_review_at": "2026-09-24T10:42:59Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13667#discussion_r4081975488"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13667#discussion_r4081975499"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceStoreRpcModuleTests.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13667#discussion_r4081975503"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13667#discussion_r4088238797",
+            "https://github.com/NethermindEth/nethermind/pull/13667#discussion_r4090649284"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13668",
+      "title": "fix(tracing): serialize deleted account fields with deletion markers",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T12:08:00Z",
+      "mergedAt": "2026-09-24T12:08:00Z",
+      "headRefOid": "c7cd5ab9ad17cea8f665b50e0be8743930010687",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T07:19:21Z",
+      "last_review_at": "2026-09-24T11:59:59Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4081697172",
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4090679569"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4081697182",
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4090679645"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4090693490",
+            "https://github.com/NethermindEth/nethermind/pull/13668#discussion_r4090866656"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13676",
+      "title": "fix(rpc): preserve trace_get errors and bound positions",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T12:08:15Z",
+      "mergedAt": "2026-09-24T12:08:15Z",
+      "headRefOid": "f32ab62e288ca27ed92e88ebe89bff0fd3c092ba",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T07:19:51Z",
+      "last_review_at": "2026-09-24T11:56:36Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.TraceStore/TraceStoreRpcModule.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4072284196",
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4073667240"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4081741196",
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4086536806"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/TimeoutTest.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4090748711",
+            "https://github.com/NethermindEth/nethermind/pull/13676#discussion_r4090870270"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13677",
+      "title": "fix(rpc): reject trace filters with unavailable history",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T10:55:46Z",
+      "mergedAt": "2026-09-24T10:55:46Z",
+      "headRefOid": "ae370dde01ed9aab7f3ea8ee47399788e03943e7",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T07:21:09Z",
+      "last_review_at": "2026-09-24T10:40:24Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4072291546",
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4073690225"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4072292332",
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4073690470"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs",
+          "outdated": true,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4090693607",
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4090881052"
+          ]
+        },
+        {
+          "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4090693880",
+            "https://github.com/NethermindEth/nethermind/pull/13677#discussion_r4090880831"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13750",
+      "title": "fix: serialize Parity VM stack values as quantities",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T11:46:46Z",
+      "mergedAt": "2026-09-24T11:46:46Z",
+      "headRefOid": "cee41d9d1d8519941924847cb93e9a7f77db584f",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T07:19:29Z",
+      "last_review_at": "2026-09-24T10:39:47Z",
+      "unresolved_threads": [
+        {
+          "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs",
+          "outdated": false,
+          "comments": [
+            "https://github.com/NethermindEth/nethermind/pull/13750#discussion_r4088138618",
+            "https://github.com/NethermindEth/nethermind/pull/13750#discussion_r4090679119"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13779",
+      "title": "fix(tracing): report vmTrace store without stateDiff",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T09:48:18Z",
+      "mergedAt": "2026-09-25T09:48:18Z",
+      "headRefOid": "1453f8207331143dd2a2d04a7baf17d1690b3b4a",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T21:50:43Z",
+      "last_review_at": "2026-09-25T09:31:13Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13780",
+      "title": "fix(tracing): serialize vmTrace store key and value as quantities",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T21:24:34Z",
+      "mergedAt": "2026-09-24T21:24:34Z",
+      "headRefOid": "994b21c2735779e9ca171ee062c5665718d6621d",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T20:08:04Z",
+      "last_review_at": "2026-09-24T20:59:43Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13781",
+      "title": "fix(evm): report DUPn vmTrace push as n + 1 words",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T21:23:07Z",
+      "mergedAt": "2026-09-24T21:23:07Z",
+      "headRefOid": "4fad4785c3b467a038a24842d590d0aeff113e35",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T20:35:55Z",
+      "last_review_at": "2026-09-24T20:59:40Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13782",
+      "title": "fix(tracing): include forwarded gas in streamed vmTrace create cost",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T21:23:29Z",
+      "mergedAt": "2026-09-24T21:23:28Z",
+      "headRefOid": "5dd90a02378bf6de839da3fe7ba070e6f0cf8b55",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T20:08:08Z",
+      "last_review_at": "2026-09-24T20:59:37Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13783",
+      "title": "fix(rpc): return no traces for the genesis block in trace_block",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T21:24:00Z",
+      "mergedAt": "2026-09-24T21:24:00Z",
+      "headRefOid": "0d6f308d05cf36dbd5c7aeecd519ff186d27835d",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T20:37:33Z",
+      "last_review_at": "2026-09-24T20:59:33Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13800",
+      "title": "fix(rpc): match rewards by author in trace_filter address filters",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T09:02:50Z",
+      "mergedAt": null,
+      "headRefOid": "d1c73aab9a028f30b436ebc070478217c76d3853",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-25T09:01:41Z",
+      "last_review_at": "2026-09-25T09:02:50Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13801",
+      "title": "fix(rpc): return no traces for the genesis block in trace_replayBlockTransactions",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T09:48:45Z",
+      "mergedAt": null,
+      "headRefOid": "1ee514663175899b3562ac9ce337a343df8b6155",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-25T09:32:39Z",
+      "last_review_at": "2026-09-25T09:48:45Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13834",
+      "title": "test(evm): cover reverted child output in action callbacks",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T10:49:05Z",
+      "mergedAt": null,
+      "headRefOid": "288d4656cd658727e3138b5fcbf190ca8c6eb20a",
+      "reviewDecision": null,
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13835",
+      "title": "fix(evm): keep cancellation policy outside instruction pairing",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T10:51:29Z",
+      "mergedAt": null,
+      "headRefOid": "0bdca3b4fc34182d36765a52d24a8a200b828ff1",
+      "reviewDecision": null,
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4216",
+      "title": "fix(rpc-types-trace): default address filters to intersection",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T13:33:40Z",
+      "mergedAt": "2026-09-22T13:33:37Z",
+      "headRefOid": "34154c69d914fe58b4e216931a2e94cfaa76cf5e",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T13:31:41Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4218",
+      "title": "fix(rpc-types-trace): serialize absent transaction fields as null",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T13:33:50Z",
+      "mergedAt": "2026-09-22T13:33:48Z",
+      "headRefOid": "ef386c008d174c26a59ff25ae6197ac24f12c6c6",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T13:31:59Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/alloy-rs/evm/pull/411",
+      "title": "fix(evm): preserve fatal system call error sources",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T11:26:19Z",
+      "mergedAt": null,
+      "headRefOid": "b6d26e805c4fc25b9a4324cb48df087bad2d5bbc",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-23T08:58:36Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/10953",
+      "title": "Replay block pre-execution before tracing transactions",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T14:20:00Z",
+      "mergedAt": null,
+      "headRefOid": "2822124fbf8e21caf4614a2b9acc660279689a1c",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-24T13:19:02Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11286",
+      "title": "fix(rpc): include MCOPY memory updates in vmTrace",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "f9a26052e9b8c607522af67da9bf846653af1f5e",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-23T09:11:40Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11345",
+      "title": "fix(rpc): keep Parity trace failures local to their call frame",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "bb4ad7397b8a2d10d72e9f0cd3dbce7dee02d0f9",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11346",
+      "title": "fix(rpc): retain precompile output in Parity call frames",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "4b11054610c5a032a6d0413ed7023ab1e82f5ceb",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11347",
+      "title": "fix(tracing): retain root precompile halt reasons",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "f3edcaf00ff9668cb6716e44d8c88feae447924f",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11350",
+      "title": "fix(tracing): avoid attributing parent return memory to calls",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "6426f704a8d31c41c59692bab249d600c1ef1e01",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11352",
+      "title": "fix(tracing): retain VM frame positions across omitted opcodes",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:52Z",
+      "mergedAt": null,
+      "headRefOid": "c30d008ac64697f279ca8af4a719a9706667f369",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11353",
+      "title": "fix(tracing): omit root out-of-gas execution effects",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:23:53Z",
+      "mergedAt": null,
+      "headRefOid": "320ee27cf465b52703e31e3dfeae26ee8f7e23f4",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11360",
+      "title": "fix(rpc): retain nonzero-value precompile trace frames",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T20:55:20Z",
+      "mergedAt": null,
+      "headRefOid": "b2ebac2cd3c74ba503f2543e00856c1c03ca2e10",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11362",
+      "title": "fix(rpc): report empty code for self-destructing creations",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T10:26:38Z",
+      "mergedAt": null,
+      "headRefOid": "f300ac52ce00103a0cb4a516627b0eb2266f322e",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11365",
+      "title": "fix(tracing): start each trace_callMany call at a transaction boundary",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T17:06:49Z",
+      "mergedAt": null,
+      "headRefOid": "4fb8fe2c5f07238ec93c7b6a893f0457d7b98386",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/bluealloy/revm/pull/3833",
+      "title": "fix(inspector): preserve selfdestruct trace payload",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T10:46:19Z",
+      "mergedAt": null,
+      "headRefOid": "86afe4d3cacc95e8ed30e2ec09a0bf5f41623296",
+      "reviewDecision": null,
+      "last_comment_at": "2026-09-25T10:46:19Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/23952",
+      "title": "fix(rpc): include MCOPY memory writes in vmTrace",
+      "state": "MERGED",
+      "updatedAt": "2026-09-14T02:40:05Z",
+      "mergedAt": "2026-09-14T02:40:05Z",
+      "headRefOid": "e8a17b4a048496cbe75857b8d7c5d534ced1afcf",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-14T01:43:11Z",
+      "last_review_at": "2026-09-14T00:53:41Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24032",
+      "title": "execution: test crash recovery during catch-up reorgs",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T09:00:28Z",
+      "mergedAt": null,
+      "headRefOid": "34279cadaf99f5e9c79562b17fbbcb2ef66bb39c",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-25T02:54:06Z",
+      "last_review_at": "2026-09-21T09:59:01Z",
+      "unresolved_threads": [
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4060944254"
+          ]
+        },
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4060947177"
+          ]
+        },
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4060948536"
+          ]
+        },
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4060977519",
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4060983934"
+          ]
+        },
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24032#discussion_r4061030403"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24056",
+      "title": "rpc/jsonrpc: read account state at the end of the requested block",
+      "state": "MERGED",
+      "updatedAt": "2026-09-18T07:01:03Z",
+      "mergedAt": "2026-09-18T07:01:01Z",
+      "headRefOid": "22147f2c6a315c9ad466826245ef92af5287c2f6",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-18T04:28:54Z",
+      "last_review_at": "2026-09-17T18:42:27Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24255",
+      "title": "fix(rpc/jsonrpc): default trace_filter address lists to intersection",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T07:33:44Z",
+      "mergedAt": "2026-09-25T07:33:44Z",
+      "headRefOid": "f099c49c3fab9717adeaea8f4e8ef19c05c3cab7",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T09:03:14Z",
+      "last_review_at": "2026-09-25T06:17:48Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24290",
+      "title": "fix(rpc/jsonrpc): read trace_call calldata from `input`",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T08:51:33Z",
+      "mergedAt": "2026-09-25T08:51:32Z",
+      "headRefOid": "1832300bb2346a3b2d2e95d976e9dcc2090f55ad",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-25T07:29:43Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24291",
+      "title": "fix(rpc/jsonrpc): no vmTrace sub for SELFDESTRUCT or for calls that fail their precheck",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T09:02:12Z",
+      "mergedAt": null,
+      "headRefOid": "62046b97d04464dadbd1a78d16e5fb0a9b8a25cb",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-25T08:35:50Z",
+      "last_review_at": "2026-09-25T09:02:12Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24292",
+      "title": "fix(execution/execmodule): apply safe and finalized from a same-head fork choice",
+      "state": "CLOSED",
+      "updatedAt": "2026-09-25T08:35:54Z",
+      "mergedAt": null,
+      "headRefOid": "e4b562ef6e6afbe84dd186cbebc49fd6dcb5b092",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-25T08:35:52Z",
+      "last_review_at": "2026-09-25T02:04:26Z",
+      "unresolved_threads": [
+        {
+          "path": "execution/execmodule/forkchoice.go",
+          "outdated": false,
+          "comments": [
+            "https://github.com/erigontech/erigon/pull/24292#discussion_r4100324435"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24293",
+      "title": "fix(rpc/jsonrpc): trace_callMany reads state at the end of the requested block",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T07:39:33Z",
+      "mergedAt": null,
+      "headRefOid": "1958914635a38eec06c981745f26c18ba6efeb3f",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-25T07:39:33Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24294",
+      "title": "fix(rpc/jsonrpc): trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T08:41:39Z",
+      "mergedAt": "2026-09-25T08:41:39Z",
+      "headRefOid": "ed271ddd093a996eb8d21b626d5bbbbb689a5a41",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-25T07:06:33Z",
+      "last_review_at": "2026-09-25T07:06:53Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24295",
+      "title": "fix(rpc/jsonrpc): trace_filter reports no genesis block reward",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T10:11:21Z",
+      "mergedAt": "2026-09-25T10:11:20Z",
+      "headRefOid": "99ca11621c4702cbc049e6d5bb2478af57979c39",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-25T06:31:50Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24322",
+      "title": "refactor(engine): handle repeated forkchoice outside unwind",
+      "state": "OPEN",
+      "updatedAt": "2026-09-25T10:58:41Z",
+      "mergedAt": null,
+      "headRefOid": "ec859cb36adb210db7c73ea1a7e9bcbb9eea804b",
+      "reviewDecision": null,
+      "last_comment_at": "2026-09-25T10:58:24Z",
+      "last_review_at": "2026-09-25T10:58:41Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/rpc-tests/pull/604",
+      "title": "test: make trace filter union fixtures explicit",
+      "state": "MERGED",
+      "updatedAt": "2026-09-23T21:02:57Z",
+      "mergedAt": "2026-09-23T21:02:57Z",
+      "headRefOid": "8a4ef8afce75db4d1eb44854a6e5a0b1d08bd336",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-23T21:02:47Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/erigontech/silkworm/pull/2885",
+      "title": "fix(rpc): capture missing vmTrace opcode effects",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T11:26:23Z",
+      "mergedAt": null,
+      "headRefOid": "2eafe028dc72880aba8ef67590144c13f8a092c9",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/ethereum/execution-apis/pull/895",
+      "title": "feat(trace): Parity trace methods and output schemas",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T18:54:50Z",
+      "mergedAt": null,
+      "headRefOid": "53ffb8571817ca095ff62ecc5ef7279f4bd6dec9",
+      "reviewDecision": null,
+      "last_comment_at": "2026-09-23T08:58:40Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/pull/35791",
+      "title": "eth/tracers: add Parity trace RPC namespace",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T18:56:13Z",
+      "mergedAt": null,
+      "headRefOid": "0a663f3cd1245f3510ccbbe5146fdfc7007cd290",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27213",
+      "title": "fix(rpc): populate VM bytecode in block replay traces",
+      "state": "OPEN",
+      "updatedAt": "2026-09-22T18:25:04Z",
+      "mergedAt": null,
+      "headRefOid": "6a2b0ac3cd80b8d0b592efeb52ee2f6b7fe0b139",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-14T11:41:48Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27217",
+      "title": "fix(rpc): correct Otterscan block and transaction responses",
+      "state": "OPEN",
+      "updatedAt": "2026-09-24T17:47:28Z",
+      "mergedAt": null,
+      "headRefOid": "f967e6156e4375316d1e071772b6c004af2253eb",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-24T17:47:28Z",
+      "last_review_at": "2026-09-14T11:32:24Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27364",
+      "title": "fix(rpc): return null for missing transaction replays",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T14:37:12Z",
+      "mergedAt": "2026-09-22T14:37:11Z",
+      "headRefOid": "8af649035d1c8d18ea78b0c738ff5ea3315e42e1",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T14:12:18Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27365",
+      "title": "fix(rpc): include transaction hash in individual replays",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T13:51:49Z",
+      "mergedAt": "2026-09-22T13:51:47Z",
+      "headRefOid": "ca59d83be21f3e678b72e6562b99aa6c2f23d553",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T13:48:24Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27366",
+      "title": "fix(rpc): select trace_get results by tree path",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T16:17:32Z",
+      "mergedAt": "2026-09-22T16:17:30Z",
+      "headRefOid": "575b2a3efacb92c0d79e51c71f37f067792f6aba",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T14:13:09Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27367",
+      "title": "fix(rpc): classify pruned changeset errors as unavailable history",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T14:07:18Z",
+      "mergedAt": "2026-09-22T14:07:17Z",
+      "headRefOid": "dd9a91d65348b4bb1ec2e21b59471d051f8e2ce0",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-22T13:47:37Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27378",
+      "title": "fix(rpc): preserve pruned history errors through execution wrappers",
+      "state": "OPEN",
+      "updatedAt": "2026-09-23T08:58:37Z",
+      "mergedAt": null,
+      "headRefOid": "0281d911686a454d906705d2e4c12c0275eb1092",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "last_comment_at": "2026-09-23T08:58:37Z",
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27423",
+      "title": "fix(rpc): omit genesis block reward traces",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T18:17:41Z",
+      "mergedAt": "2026-09-24T18:17:41Z",
+      "headRefOid": "f404944dcbd884a2bac135dcb9ab70bb89043403",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-24T17:46:35Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27429",
+      "title": "fix(engine): don't treat stale persisted fcu head as canonical",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T09:41:41Z",
+      "mergedAt": "2026-09-25T09:41:40Z",
+      "headRefOid": "f1adff00cee0fdc3928cb8608b2b40b224aa760f",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": "2026-09-24T21:20:16Z",
+      "last_review_at": "2026-09-25T09:26:56Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/504",
+      "title": "fix(tracing): record complete Parity VM execution deltas",
+      "state": "MERGED",
+      "updatedAt": "2026-09-14T13:58:57Z",
+      "mergedAt": "2026-09-14T13:58:57Z",
+      "headRefOid": "498daca98c6f0df65a3e3aa952688090ad2962e8",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-14T13:58:43Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509",
+      "title": "fix(parity): report EIP-7702 code changes in state diffs",
+      "state": "MERGED",
+      "updatedAt": "2026-09-15T23:34:30Z",
+      "mergedAt": "2026-09-15T23:34:29Z",
+      "headRefOid": "d1d1bb7119815475313e16768bea636e058da921",
+      "reviewDecision": null,
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510",
+      "title": "fix(parity): report selfdestructed account deletions",
+      "state": "MERGED",
+      "updatedAt": "2026-09-15T23:44:43Z",
+      "mergedAt": "2026-09-15T23:44:41Z",
+      "headRefOid": "fe7682bce8c79626ae46e4888a40f4cae2cc0476",
+      "reviewDecision": null,
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",
+      "title": "fix(parity): record executed bytecode in VM traces",
+      "state": "MERGED",
+      "updatedAt": "2026-09-22T14:12:33Z",
+      "mergedAt": "2026-09-22T14:12:33Z",
+      "headRefOid": "a06abf5a696bd19be091d99a76f3763ddbc7e2b0",
+      "reviewDecision": null,
+      "last_comment_at": null,
+      "last_review_at": null,
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/526",
+      "title": "fix(parity): preserve account existence in state diffs",
+      "state": "MERGED",
+      "updatedAt": "2026-09-24T14:31:09Z",
+      "mergedAt": "2026-09-24T14:31:09Z",
+      "headRefOid": "3cea726e5fbce4e651c53c73c3da63acaad37b7a",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-24T14:29:42Z",
+      "unresolved_threads": []
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/528",
+      "title": "fix(parity): report vmTrace store from SSTORE operands",
+      "state": "MERGED",
+      "updatedAt": "2026-09-25T08:15:02Z",
+      "mergedAt": "2026-09-25T08:15:02Z",
+      "headRefOid": "462c99e86991cfda8fdc29c8f06729ecc537a283",
+      "reviewDecision": "APPROVED",
+      "last_comment_at": null,
+      "last_review_at": "2026-09-25T08:14:43Z",
+      "unresolved_threads": []
+    }
+  ]
+}

@@ -843,7 +843,53 @@
           "0x38"
         ]
       }
+    },
+    {
+      "name": "depth-limit",
+      "probes": [
+        {
+          "attempts": [
+            "call",
+            "create"
+          ],
+          "depth": 1024,
+          "kind": "depth",
+          "requirement": "Under the deepest executed frame, at depth 1024, the CALL and CREATE that fail the depth precheck each emit a failed frame with no result and no subtraces.",
+          "topic": "H29"
+        },
+        {
+          "attempts": [
+            "call",
+            "create"
+          ],
+          "depth": 1024,
+          "kind": "depth",
+          "labels": [
+            "Max call depth exceeded",
+            "Max call depth exceeded"
+          ],
+          "requirement": "A CALL or CREATE that fails the depth precheck has error \"Max call depth exceeded\".",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60296022600039602960006000f060006000600060006000856102005a03f1505000601e80600b6000396000f360006000600060006000306102005a03f1601c57600060006000f0505b00",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x200000",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "0x3"
+        ]
+      }
     }
   ],
-  "description": "Reward matching and pagination, reversed range, genesis and the callMany beacon-root twin on the frozen PoW-to-PoS forks chain."
+  "description": "Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin and the call depth limit at a Homestead block on the frozen PoW-to-PoS forks chain."
 }

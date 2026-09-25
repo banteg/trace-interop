@@ -381,3 +381,34 @@ class ForksProbeTests(Probe):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class DepthProbeTests(Probe):
+    """The depth-limit probe: a chain of 1025 executed frames, then the failed attempts beyond it."""
+
+    def trace(self, attempts=(('call', 'Max call depth exceeded'), ('create', 'Max call depth exceeded')), phantom=False):
+        frames = [{'type': 'create', 'traceAddress': [], 'subtraces': 2, 'action': {}, 'result': {}},
+                  {'type': 'create', 'traceAddress': [0], 'subtraces': 0, 'action': {}, 'result': {}}]
+        frames += [{'type': 'call', 'traceAddress': [1]+[0]*(d-1), 'subtraces': 1, 'action': {}, 'result': {}} for d in range(1, 1025)]
+        deepest = frames[-1]
+        deepest['subtraces'] = len(attempts) + phantom
+        for i, (kind, label) in enumerate(attempts):
+            frames.append({'type': kind, 'traceAddress': deepest['traceAddress']+[i], 'subtraces': 0, 'action': {}, 'error': label})
+        if phantom:  # Besu: the failed CREATE as a successful frame
+            frames.append({'type': 'create', 'traceAddress': deepest['traceAddress']+[0], 'subtraces': 0, 'action': {}, 'result': {'address': '0x1'}})
+        return {'output': '0x', 'trace': frames, 'stateDiff': None, 'vmTrace': None}
+
+    def statuses(self, envelope):
+        case = FORKS['depth-limit']
+        return {t: {c['status'] for c in assess(case, result(envelope), {}) if c['topic'] == t} for t in ['H09', 'H29']}
+
+    def test_attempts_beyond_the_limit(self):
+        self.assertEqual(self.statuses(self.trace()), {'H09': {'matches'}, 'H29': {'matches'}})
+        # Erigon and Reth: the right frames, other labels.
+        for label in ['max call depth exceeded', 'CallTooDeep']:
+            wrong = self.trace(attempts=(('call', label), ('create', label)))
+            self.assertEqual(self.statuses(wrong), {'H09': {'change_needed'}, 'H29': {'matches'}}, label)
+        # Nethermind and the previous rule: no attempts, so H09 has nothing to judge.
+        self.assertEqual(self.statuses(self.trace(attempts=())), {'H09': {'blocked'}, 'H29': {'change_needed'}})
+        # Besu: the failed CREATE reported as a successful frame one level deeper.
+        self.assertEqual(self.statuses(self.trace(attempts=(), phantom=True))['H29'], {'change_needed'})

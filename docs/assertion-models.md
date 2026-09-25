@@ -86,6 +86,10 @@ each client's debug tracers treat a failed precheck, the evidence behind H29's r
 generated but not yet registered in `decisions/ledger.json`; after the next matrix capture, register them as
 H29 references, not assertions.
 
+`probes-forks/depth-limit` reaches the call depth limit at block 3, where the forks chain still runs Homestead
+rules and a CALL forwards exactly the gas it requests. Register it under H29 (frame shape) and H09 (the
+"Max call depth exceeded" label) after the same capture.
+
 ### Corrected siblings
 
 These siblings were first captured in the

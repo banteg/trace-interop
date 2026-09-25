@@ -147,6 +147,29 @@ def assess(case, observation, peers):
                                'detail': f'No frame matches {probe["select"]}.'})
                 continue
             add(topic, same(frame, probe['expected']), requirement, f'Expected {probe["expected"]}; got {frame}')
+        elif kind == 'depth':
+            # Attempts beyond the call depth limit: under the deepest executed frame, one failed frame per
+            # attempt, with an error, no result and no children. With `labels`, only their error labels are
+            # judged, and a missing attempt is blocked because the frame probe owns its presence.
+            frames = [f for f in sequence(envelope(probe.get('index')).get('trace')) if isinstance(f, dict)]
+            path = lambda f: sequence(f.get('traceAddress'))
+            executed = [f for f in frames if not f.get('error')]
+            deepest = max(executed, key=lambda f: len(path(f)), default=None)
+            depth = len(path(deepest)) if deepest else -1
+            attempts = [f for f in frames if len(path(f)) == depth + 1]
+            shapes = [(f.get('type'), f.get('error'), f.get('result'), f.get('subtraces')) for f in attempts]
+            ok = (depth == probe['depth'] and [f.get('type') for f in attempts] == probe['attempts']
+                  and all(f.get('error') and f.get('result') is None and f.get('subtraces') == 0 for f in attempts)
+                  and deepest.get('subtraces') == len(attempts))
+            if 'labels' in probe:
+                if [f.get('type') for f in attempts] != probe['attempts']:
+                    checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                                   'detail': f'No failed attempts {probe["attempts"]} under the deepest executed frame at depth {depth}.'})
+                    continue
+                add(topic, [f.get('error') for f in attempts] == probe['labels'], requirement,
+                    f'Expected labels {probe["labels"]}; got {[f.get("error") for f in attempts]}.')
+            else:
+                add(topic, ok, requirement, f'Deepest executed frame at depth {depth} with subtraces {deepest.get("subtraces") if deepest else None}; attempts beyond it (type, error, result, subtraces): {shapes}.')
         elif kind == 'account':
             diff = envelope(probe.get('index')).get('stateDiff')
             account = mapping(mapping(diff).get(probe['address']))

@@ -23,7 +23,7 @@ from trace_interop.execution_models import created_address, opcodes
 from trace_interop.vm_model import execute
 
 ROOT = Path(__file__).resolve().parents[1]
-OPS = {'STOP': 0x00, 'SUB': 0x03, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
+OPS = {'STOP': 0x00, 'SUB': 0x03, 'ADDRESS': 0x30, 'DUP6': 0x85, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
        'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
        'MSTORE': 0x52, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
        'TLOAD': 0x5c, 'TSTORE': 0x5d, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
@@ -389,7 +389,25 @@ def forks():
         case(cases, f'beacon-many-{n}', 'trace_callMany', [[[call, ['trace']]], number],
              probes=[probe('H28', 'outputs', f'The first trace_callMany item at block {n} runs on the same post-block state as trace_call.', expected=[output]),
                      probe('H28', 'same-output', 'The one-item trace_callMany output equals trace_call at the same block.', reference=f'beacon-trace-{n}', index=0)])
-    return {'description': 'Reward matching and pagination, reversed range, genesis and the callMany beacon-root twin on the frozen PoW-to-PoS forks chain.', 'cases': cases}
+    # Call depth limit (H29, H09). Before EIP-150 a CALL forwards exactly the gas it requests, so at a Homestead
+    # block a contract that calls itself reaches the 1024 limit for well under a million gas; after EIP-150 the
+    # 63/64 rule puts that depth out of reach of any practical gas cap. Each frame keeps 512 gas for its own exit.
+    # Only the deepest frame's CALL returns 0; it then also attempts a CREATE, which fails the same check.
+    head = asm(0, 0, 0, 0, 0, 'ADDRESS', 0x200, 'GAS', 'SUB', 'CALL')
+    fail = asm(0, 0, 0, 'CREATE', 'POP')
+    runtime = head + asm(len(head)//2 + 3 + len(fail)//2, 'JUMPI') + fail + asm('JUMPDEST', 'STOP')
+    child = deploy(runtime)
+    loader = lambda offset: asm(len(child)//2, offset, 0, 'CODECOPY', len(child)//2, 0, 0, 'CREATE',
+                                0, 0, 0, 0, 0, 'DUP6', 0x200, 'GAS', 'SUB', 'CALL', 'POP', 'POP', 'STOP')
+    root = loader(len(loader(0))//2) + child
+    assert len(loader(len(loader(0))//2)) == len(loader(0))
+    homestead = hex(int(forkenv['HIVE_FORK_TANGERINE']) - 1)
+    case(cases, 'depth-limit', 'trace_call', [{'from': sender, 'data': '0x'+root, 'gas': '0x200000', 'gasPrice': '0x0'}, ['trace'], homestead],
+         probes=[probe('H29', 'depth', 'Under the deepest executed frame, at depth 1024, the CALL and CREATE that fail the depth precheck each emit a failed frame with no result and no subtraces.',
+                       depth=1024, attempts=['call', 'create']),
+                 probe('H09', 'depth', 'A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded".',
+                       depth=1024, attempts=['call', 'create'], labels=['Max call depth exceeded']*2)])
+    return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin and the call depth limit at a Homestead block on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 
 if __name__ == '__main__':

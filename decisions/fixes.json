@@ -225,9 +225,9 @@
       "decisions": [
         "H28"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T18:29:39Z"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24294",
@@ -434,6 +434,29 @@
       "draft": false,
       "merged_at": "2026-09-25T17:27:36Z",
       "note": "covers genesis replay only; the PoS placeholder reward remains"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13857",
+      "title": "fix(rpc): support union and intersection modes in trace_filter",
+      "client": "nethermind",
+      "decisions": [
+        "H03"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13858",
+      "title": "fix(rpc): select trace_get results by traceAddress path",
+      "client": "nethermind",
+      "decisions": [
+        "H02"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "changes the response to one object or null; a missing transaction still errors (H06)"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27213",

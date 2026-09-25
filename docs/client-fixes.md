@@ -24,15 +24,15 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck | [H20](../reports/decisions/H20.md) (partial) |
 | [Erigon #24293](https://github.com/erigontech/erigon/pull/24293) | Trace_callMany reads state at the end of the requested block | [H28](../reports/decisions/H28.md) |
 | [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. | — |
+| [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) |
+| [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas | — |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) |
-| [Nethermind #13801](https://github.com/NethermindEth/nethermind/pull/13801) | Return no traces for the genesis block in trace_replayBlockTransactions; covers genesis replay only; the PoS placeholder reward remains | [H05](../reports/decisions/H05.md) (partial) |
 | [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. | [H20](../reports/decisions/H20.md) (partial) |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers | [H06](../reports/decisions/H06.md) (partial) |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) |
 | [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) |
-| [rpc-tests #605](https://github.com/erigontech/rpc-tests/pull/605) (draft) | Align SELFDESTRUCT vmTrace fixtures with frame semantics; Companion mainnet fixtures for erigon#24291; draft until the client fix lands. | [H20](../reports/decisions/H20.md) |
 | [Silkworm #2885](https://github.com/erigontech/silkworm/pull/2885) (draft) | Capture missing vmTrace opcode effects | [H20](../reports/decisions/H20.md) |
 
 ## Merged
@@ -60,6 +60,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Nethermind #13782](https://github.com/NethermindEth/nethermind/pull/13782) | Include forwarded gas in streamed vmTrace create cost | [H20](../reports/decisions/H20.md) (partial) | 2026-09-24 |
 | [Nethermind #13783](https://github.com/NethermindEth/nethermind/pull/13783) | Return no traces for the genesis block in trace_block; covers trace_block only; trace_replayBlockTransactions of genesis still fails its parent lookup | [H05](../reports/decisions/H05.md) (partial) | 2026-09-24 |
 | [Nethermind #13800](https://github.com/NethermindEth/nethermind/pull/13800) | Match rewards by author in trace_filter address filters; covers rewards only; failed-CREATE recipient matching remains an H23 policy change | [H23](../reports/decisions/H23.md) (partial) | 2026-09-25 |
+| [Nethermind #13801](https://github.com/NethermindEth/nethermind/pull/13801) | Return no traces for the genesis block in trace_replayBlockTransactions; covers genesis replay only; the PoS placeholder reward remains | [H05](../reports/decisions/H05.md) (partial) | 2026-09-25 |
 | [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. | — | 2026-09-25 |
 | [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551. | — | 2026-09-25 |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) | 2026-09-25 |
@@ -77,6 +78,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence in state diffs | [H17](../reports/decisions/H17.md) | 2026-09-24 |
 | [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 |
 | [rpc-tests #604](https://github.com/erigontech/rpc-tests/pull/604) | Make trace filter union fixtures explicit | [H03](../reports/decisions/H03.md) | 2026-09-23 |
+| [rpc-tests #605](https://github.com/erigontech/rpc-tests/pull/605) | Align SELFDESTRUCT vmTrace fixtures with frame semantics; Companion mainnet fixtures for erigon#24291; draft until the client fix lands. | [H20](../reports/decisions/H20.md) | 2026-09-25 |
 
 ## Closed
 

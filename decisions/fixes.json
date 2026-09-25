@@ -256,6 +256,36 @@
       "merged_at": "2026-09-25T10:11:20Z"
     },
     {
+      "url": "https://github.com/erigontech/erigon/pull/24328",
+      "title": "fix(rpc/jsonrpc): trace_rawTransaction charges the sender for gas",
+      "client": "erigon",
+      "decisions": [
+        "H16"
+      ],
+      "partial": [
+        "H16"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "signed raw transactions only; unsigned trace_call fee accounting follows H15"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24329",
+      "title": "fix(rpc/jsonrpc): trace_rawTransaction rejects transactions invalid at latest state",
+      "client": "erigon",
+      "decisions": [
+        "H13"
+      ],
+      "partial": [
+        "H13"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed"
+    },
+    {
       "url": "https://github.com/ethereum/execution-apis/pull/895",
       "title": "feat(trace): Parity trace methods and output schemas",
       "client": null,
@@ -400,9 +430,9 @@
       "partial": [
         "H05"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T17:27:36Z",
       "note": "covers genesis replay only; the PoS placeholder reward remains"
     },
     {
@@ -828,9 +858,9 @@
       "decisions": [
         "H20"
       ],
-      "state": "open",
-      "draft": true,
-      "merged_at": null,
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-25T17:46:00Z",
       "note": "Companion mainnet fixtures for erigon#24291; draft until the client fix lands."
     },
     {

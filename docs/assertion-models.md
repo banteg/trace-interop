@@ -77,14 +77,14 @@ Controls and expectations come from the current corpus definition whenever the
 captured request is byte-identical, so a corrected fixture reassesses retained
 evidence. A changed request keeps the definition it was captured with.
 
-### Pending next capture
+### Corrected siblings
 
-These corrected siblings are generated but not yet registered in
-`decisions/ledger.json`, because no retained run has captured them. Register them
-after the next matrix capture. Until then, their flawed predecessors carry the
-downgraded assertion shown.
+These siblings were first captured in the
+[2026-09-25 refresh](../evidence/2026-09-25/refresh/README.md) and carry the assertions
+their flawed predecessors lost. The predecessors stay registered with the downgraded
+assertion shown.
 
-| Case | Replaces the assertion of | Correction |
+| Case | Carries the assertion of | Correction |
 | --- | --- | --- |
 | `probes-prague/field-authorization-1559` | `field-authorization` (H14, now an input-policy observation) | The canonical authorization probe, with EIP-1559 fees. No signed transaction type carries legacy `gasPrice` with an `authorizationList`; whether a simulation accepts that mix is a separate input policy, which `field-authorization` keeps recording. |
 | `probes-prague/field-authorization-absent-1559` | `field-authorization-absent` (H14, still asserted: a legacy call without a list is valid) | The same fee fields as its authorization twin. |

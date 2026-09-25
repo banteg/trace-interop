@@ -485,7 +485,10 @@
         "probes-prague/field-access-list-absent",
         "probes-prague/field-authorization",
         "probes-prague/field-authorization-absent",
+        "probes-prague/field-authorization-1559",
+        "probes-prague/field-authorization-absent-1559",
         "probes-prague/field-from-omitted",
+        "probes-prague/field-from-omitted-zero-fee",
         "probes-prague/field-gas-omitted",
         "probes-prague/field-chain-id",
         "probes-prague/field-chain-id-mismatch"
@@ -1883,6 +1886,7 @@
         "a/filter-suicide-from",
         "probes-forks/rewards-to",
         "probes-forks/rewards-intersection",
+        "probes-forks/rewards-intersection-default",
         "probes-forks/rewards-union",
         "mined-probes/filter-failed-create-recipient",
         "mined-probes/filter-failed-nested-create-recipient",

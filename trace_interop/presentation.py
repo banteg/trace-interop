@@ -482,7 +482,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
 
     for topic, d in decisions.items():
         path = output/'decisions'/(topic + '.md')
-        text = f'# {d["title"]}\n\n{topic} · {d["kind"]} · [All decisions](../../decisions/README.md)\n\n'
+        text = f'# {d["title"]}\n\n**Question:** {d["question"]}\n\n{topic} · {d["kind"]} · [All decisions](../../decisions/README.md)\n\n'
         position = positions.get(topic, {})
         text += f'**Status: {statuses[topic]}** · [Status definitions](../../decisions/README.md#status-key)\n\n'
         text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
@@ -644,7 +644,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += table(['Decision', 'Status', 'Positions', 'Question', 'Stable', 'Dev'], [
             [f'[{t}](../reports/decisions/{t}.md)', statuses[t],
              ''.join(POSITIONS[stances[t][c]['position']].split(' ')[0] if c in stances[t] else NO_POSITION.split(' ')[0] for c in NATIVE_CLIENTS),
-             d['title'], channel_symbols(t, 'release'), channel_symbols(t, 'development')]
+             f'**{d["title"]}**<br>{d["question"]}', channel_symbols(t, 'release'), channel_symbols(t, 'development')]
             for t,d in decisions.items()])
         text += '## Status key\n\n### Client checks\n\n'
         text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'

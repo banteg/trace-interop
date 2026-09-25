@@ -112,6 +112,14 @@ class ReportVerdictTests(unittest.TestCase):
                 with self.subTest(page=str(path.relative_to(root)), target=target):
                     self.assertTrue((path.parent/target).exists(), target)
 
+    def test_each_decision_page_opens_with_its_question(self):
+        root = Path(__file__).resolve().parents[1]
+        for d in json.loads((root/'decisions/ledger.json').read_text())['items']:
+            with self.subTest(decision=d['id']):
+                self.assertTrue(d['question'].endswith('?'))
+                page = (root/'reports/decisions'/f'{d["id"]}.md').read_text()
+                self.assertTrue(page.startswith(f'# {d["title"]}\n\n**Question:** {d["question"]}\n\n'))
+
 
 class ResultValidatorTests(unittest.TestCase):
     def test_precrawled_validator_matches_plain_validation_of_recursive_vm_traces(self):

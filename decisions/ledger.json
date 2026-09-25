@@ -26,6 +26,7 @@
       "id": "H01",
       "kind": "Scope decision",
       "next_step": "Agree the optional-method/conformance model with client teams; no assumption of adopted optional status or Geth support.",
+      "question": "Which trace_* methods must a client implement, and how does it signal the ones it does not?",
       "rationale": "A caller should be able to distinguish an unsupported operation from a valid query with no trace.",
       "recommendation": "Specify each method independently; make the implemented subset discoverable or explicitly declared. An unsupported method should return -32601, never a fabricated empty result. Add individual replay to Besu when practical rather than removing it from the common API.",
       "title": "Method coverage"
@@ -51,6 +52,7 @@
       "id": "H02",
       "kind": "Spec decision",
       "next_step": "Choose the tree-path contract and align Reth/Nethermind; the positive nested discriminator is now available.",
+      "question": "What does trace_get's path argument select, and does it return one trace or a list?",
       "rationale": "The lookup argument should identify the same path that traceAddress describes, with a singular result matching the method name.",
       "recommendation": "Treat the argument as one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] a nested child. Return one trace object or null for a missing transaction/path. Keep output traceAddress entries as JSON integers; callers convert them to minimal hex quantities for trace_get input. Integer request entries return -32602.",
       "title": "trace_get selector and return shape"
@@ -81,6 +83,7 @@
       "id": "H03",
       "kind": "Spec decision",
       "next_step": "Confirm the default and the two recognized modes with client teams. Retest Reth after it picks up Alloy #4216.",
+      "question": "How do fromAddress and toAddress combine in trace_filter, and what does `mode` change?",
       "rationale": "Adding a second filter should narrow a search. This matches `eth_getLogs`, where each topic position accepts a list of alternatives (OR) and all positions must match (AND); a null position is a wildcard, just as an omitted or empty address list is here. Explicit union is still useful when callers need one globally paginated result across both address sets.",
       "recommendation": "Use OR within each address list and AND between `fromAddress` and `toAddress` by default. An omitted, null, or empty side imposes no restriction. Accept optional `mode: \"intersection\"` (the default) and `mode: \"union\"` (match either populated side); reject unknown mode values with `-32602`.",
       "title": "Filter composition and mode"
@@ -102,6 +105,7 @@
       "id": "H04",
       "kind": "Spec decision",
       "next_step": "Review the compatibility choice to accept null alongside omitted and empty lists; retain separate checks for special-action membership.",
+      "question": "Does an empty address list in trace_filter match every record or none?",
       "rationale": "Programmatically adding an empty optional filter should not erase all results.",
       "recommendation": "Treat an omitted, null or empty address list as no restriction. A nonempty list restricts that side. Compare address bytes independently of hex letter case.",
       "title": "Empty address lists"
@@ -129,6 +133,7 @@
       "id": "H05",
       "kind": "Spec decision",
       "next_step": "The `probes-forks` genesis cases (trace_block and replay of block 0, filters over genesis) and reward-crossing pages derive their records from the frozen PoW headers and uncles. Keep Erigon\u2019s opt-in withdrawal records outside the baseline unless a separate withdrawal contract is agreed.",
+      "question": "Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any?",
       "rationale": "A reward trace should correspond to a real protocol operation, not a zero-value placeholder that changes pagination. A fixed position for rewards and an explicit list of operations that are never records keep pagination offsets and replay arrays identical across clients.",
       "recommendation": "Do not emit a synthetic PoW reward on a PoS block. Historical PoW rewards follow all transaction records of their block: the block reward, then uncle rewards in ommer order, each with null transaction localization. The genesis block has no transaction or reward records, so trace_block(0) and trace_replayBlockTransactions(0) return [] and filters over genesis contribute nothing. System operations (EIP-4788 and EIP-2935 pre-block calls, EIP-7002 and EIP-7251 post-block calls) and withdrawals are applied to replay state in protocol order, but they are not trace records and belong to no transaction\u2019s stateDiff; replay arrays hold exactly one envelope per transaction. Keep transaction tips in transaction accounting.",
       "references": [
@@ -165,6 +170,7 @@
       "id": "H06",
       "kind": "Spec decision / client exception",
       "next_step": "Choose an unavailable-history error contract. Extend the retention fixture to Erigon, Nethermind and Besu; the current pruning result is Reth-only. `probes-forks/range-reversed` checks an explicit reversed range (fromBlock 3, toBlock 2).",
+      "question": "When a transaction, block or trace path does not exist, does a method return null, [] or an error?",
       "rationale": "Not found, empty, unsupported and unavailable are different states that callers need to distinguish.",
       "recommendation": "Return null for a well-formed lookup of a transaction that is not in a canonical block, or of a missing trace path, consistently across these methods. Reserve [] for a successfully evaluated collection with no elements. Preserve -32601 for unsupported methods and use errors for unavailable/pruned state instead of pretending data is absent. An unknown single selected block (trace_block, trace_replayBlockTransactions, the trace_call/trace_callMany block) returns -32001 (Resource not found). trace_filter bounds follow eth_getLogs: if either bound resolves beyond the current head, or fromBlock resolves above toBlock, return -32602 (Invalid params); never clamp the range or return a partial result. earliest means the lowest available block; an explicit number below retained history returns 4444. If pruned indexing prevents establishing whether a hash is absent, return 4444 rather than a definitive not-found result.",
       "references": [
@@ -197,6 +203,7 @@
       "id": "H07",
       "kind": "Spec decision",
       "next_step": "Confirm the envelope schema and add one serialization test; treat missing support in Besu separately under H01.",
+      "question": "Which replay results carry `transactionHash`?",
       "rationale": "A replay object should keep its identity when stored or moved out of its original request context.",
       "recommendation": "Include transactionHash in both individual and per-transaction block-replay envelopes. Do not require it for unsigned trace_call or trace_callMany simulations.",
       "references": [
@@ -232,6 +239,7 @@
       "id": "H08",
       "kind": "Spec decision / likely reporting fix",
       "next_step": "Preserve the execution return bytes independently of which optional trace components are requested.",
+      "question": "What do `output`, `trace`, `stateDiff` and `vmTrace` hold when they are empty or not requested?",
       "rationale": "Empty bytes and an unavailable value are different, and selecting an auxiliary view should not change the primary call result.",
       "recommendation": "Keep a stable envelope: output is the execution return bytes (\"0x\" when empty); trace is [] when not requested; stateDiff and vmTrace are null when not requested. Requesting a different tracer must not change or erase the returned execution output.",
       "title": "Empty output and unrequested components"
@@ -278,6 +286,7 @@
       "id": "H09",
       "kind": "Spec decision",
       "next_step": "Add discriminating fixtures: a static-context write, a precompile failure and an opcode not yet active, and compare labels exactly for those failure kinds. The mined-probes chain already pins the exact Reverted label and {gasUsed, output} result of mined top-level and nested reverted CREATEs, root gasUsed before an SSTORE refund, and root action.gas against the modelled intrinsic gas.",
+      "question": "How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed?",
       "rationale": "Consumers need the raw revert data and failure identity without parsing implementation-specific English or mistaking a failure for success. Only a REVERT carries data that error cannot; a null result on a halt adds nothing.",
       "recommendation": "The error field alone determines failure. A REVERT frame has error \"Reverted\" and requires result {gasUsed, output} with that frame\u2019s gas and revert bytes, for CREATE too and never with address or code. An exceptional halt may omit result or set it to null; it consumes the frame\u2019s action.gas. Use Parity\u2019s failure labels: \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\", plus \"Contract address collision\", \"Code size limit exceeded\", \"Invalid code prefix 0xEF\" and \"Nonce overflow\" for post-Parity failures. Any other string is an extension that consumers treat as a generic failure. revertReason, if present, is the decoded Error(string) text; raw revert bytes live in result.output. Frame gas follows Parity: root action.gas is the transaction gas minus intrinsic gas (including access-list and authorization costs); root result.gasUsed is execution gas before refunds, excluding intrinsic gas and the EIP-7623 floor; nested CALL-family action.gas is the gas forwarded after the 63/64 cap plus the 2300 stipend for a value transfer; CREATE gasUsed includes the code deposit.",
       "title": "Failed frame results and error labels"
@@ -309,6 +318,7 @@
       "id": "H10",
       "kind": "Spec decision / likely schema fix",
       "next_step": "Retain the successful mixed-creation probe and assert creationMethod on each frame, including a transaction that uses both CREATE and CREATE2. Add nested CALL and DELEGATECALL to an EIP-7702-delegated EOA, whose to is the EOA.",
+      "question": "Which fields and values describe a creation result and a call action?",
       "rationale": "Creation has two different bytecodes\u2014initcode and deployed code\u2014and their field meanings should remain distinct.",
       "recommendation": "Use result.address, result.code and result.gasUsed for successful creation. result.code is deployed runtime bytecode, including \"0x\" for an empty deployment. Use result.output for CALL results; vmTrace.code for executing initcode. Every create action carries creationMethod, \"create\" or \"create2\", from the opcode that created that frame. CALL and STATICCALL report the caller as from and the target as to; DELEGATECALL and CALLCODE report the executing address as from and the code address as to. DELEGATECALL value is the inherited value and STATICCALL value is 0.",
       "references": [
@@ -328,6 +338,7 @@
       "id": "H11",
       "kind": "Likely client bug",
       "next_step": "A focused Nethermind fix and regression fixture can proceed independently of the broader API design.",
+      "question": "What happens when the trace-type list is empty?",
       "rationale": "An empty list of auxiliary views is a useful request for execution output alone. Its validity should not depend on whether detail tracers are enabled; fee-validation differences in the captured calls do not establish identical cross-client behavior.",
       "recommendation": "Accept an empty selection, execute the call and return its output with empty/unrequested components. Never leak a collection-reduction exception.",
       "title": "Empty trace-type selection"
@@ -344,6 +355,7 @@
       "id": "H12",
       "kind": "Spec / extension decision",
       "next_step": "Decide the extension contract with client teams. Keep extension requests and their results outside baseline assessment; preserve complete-response checks independently.",
+      "question": "Does trace_rawTransaction take a block argument, and which state does it run against?",
       "rationale": "The baseline should be usable on all four today without silently changing which state is traced.",
       "recommendation": "Standardize the two-argument baseline with latest state. Observe an explicitly supplied third block selector as an extension, without marking its acceptance or rejection as baseline conformance. An accepted request alone does not prove that the selected state was used. Agree extension semantics and unsupported-argument errors separately.",
       "title": "Raw-transaction block argument"
@@ -441,6 +453,7 @@
       "id": "H13",
       "kind": "Compatibility change / validation policy proposal",
       "next_step": "Agree the execution-validity requirements, the error-group mapping and a migration path for permissive diagnostic workflows. The raw-validation checks require each rejection to use its error-group code or the -32003 fallback and to name its violation. Keep H12 block-selection semantics separate.",
+      "question": "Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it?",
       "rationale": "A signed trace should describe those bytes executing against the selected state. Skipping nonce validation can change CREATE addresses and nonce-dependent behavior; overriding nonce or balance instead invents a different pre-state. Strict validation intentionally tightens historical permissive simulation and can reject queued or already-mined transactions at latest state. Client acceptance alone does not establish a deliberate nonce policy, and malformed error JSON does not prove validation was skipped.",
       "recommendation": "Validate trace_rawTransaction for execution against the selected state and fork: signature, chain identity, nonce equality (both low and high), balance for value and upfront gas, intrinsic gas, fees and sender-code restrictions with the EIP-7702 delegation exception. Do not change signed fields, override the sender nonce or supplement its balance. This is not pool admission: exclude local replacement, already-known and minimum-tip policies. Report a decodable transaction that fails validation with the eth_sendRawTransaction error groups: 1 nonce too low, 2 nonce too high, 800 intrinsic gas, 804 priority fee above fee cap, 806 fee cap below base fee and 809 insufficient funds, with -32003 (Transaction rejected) as the generic fallback; a signed gas limit above the server\u2019s execution cap is rejected with -38026 rather than reduced; malformed encoding or parameters use -32602. Valid execution that REVERTs or halts still returns a trace.",
       "title": "Signed transaction execution validity"
@@ -480,6 +493,7 @@
       "id": "H14",
       "kind": "Spec decision",
       "next_step": "`probes-prague` covers input only, equal and disagreeing data/input, access list (warm-SLOAD gas), authorization list (delegated code), omitted from (CALLER) and gas (eth_call GAS), and a chainId mismatch. The fee and raw-validation checks accept the eth_simulateV1 codes and the error-group codes respectively.",
+      "question": "Which error codes do malformed parameters and rejected unsigned calls return?",
       "rationale": "Callers should distinguish a malformed request from a valid request that cannot execute, without text matching.",
       "recommendation": "Use -32602 for malformed encodings, wrong types, unsupported argument shapes, disagreeing data and input, a priority fee above the fee cap and a non-null override parameter a client does not implement. Report unsigned-call validation rejections with the eth_simulateV1 codes: -38012 base fee too low, -38013 intrinsic gas, -38014 insufficient funds, -38025 init-code size and -38026 client limit; a validation failure without a listed code is -32602. Report signed-transaction rejections with the eth_sendRawTransaction error groups (H13). List each method\u2019s codes in its errors. Every call-object field the schema defines must take effect or cause a rejection; only fields outside the schema are ignored, and filters reject unknown fields. Keep messages implementation-specific; omit internal stack traces.",
       "references": [
@@ -1535,9 +1549,9 @@
       "id": "H15",
       "kind": "Spec decision / call-method consistency",
       "next_step": "The defaults families are scored as policy: omitted, cap-only zero and tip-only zero run free; cap-only positive runs at the base fee; tip-only positive is rejected as tip above cap (-32602). Add blob-fee, supplied-nonce and override-position probes. Retain independent witnesses and per-call environment reset checks.",
+      "question": "Which fee defaults and block environment do unsigned trace_call and trace_callMany use?",
       "rationale": "Requesting a trace should not change the execution or fee semantics of an equivalent call. The zero-fee BASEFEE convention and zero defaults preserve established eth_call compatibility; they do not exempt positive prices from validation or payment. Enforcing funding removes Parity\u2019s virtual balance top-up.",
       "recommendation": "Align unsigned trace simulations with eth_call and eth_simulateV1. Omitted fee fields default to 0. The zero-fee rule applies to the effective gas price after defaulting (gasPrice, or min(maxPriorityFeePerGas + base fee, maxFeePerGas)): a zero price runs with GASPRICE = 0, opcode-visible BASEFEE = 0 and no gas-fee balance effects. BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is supplied as 0 or defaulted to 0 (it defaults to 0 when blobVersionedHashes are present); non-blob calls keep the real BLOBBASEFEE. Preserve the selected block\u2019s other fields. Skip fee validation only when both fee caps are 0. Otherwise require the price to cover the base fee (-38012) and the priority-fee cap not to exceed the total cap (-32602), enforce funding (-38014), and simulate upfront gas payment, refunds, base-fee burn and beneficiary tips so execution and later calls observe them. A supplied nonce is accepted but neither validated nor used; CREATE addresses derive from the state nonce. gas is a uint64; omitted gas, and supplied gas above the server\u2019s execution cap, run with that cap, as eth_call does. trace_call parameters 4 and 5 and trace_callMany parameters 3 and 4 are reserved for the eth_simulateV1 StateOverrides and BlockOverrides; a client that does not implement them rejects a non-null value with -32602, and with a block override the zero-fee rule uses the overridden base fee. Trace selections must not change execution. Apply the same rules independently to each trace_callMany item while carrying prior simulated state forward. Keep strict signed validation separate.",
-      "title": "Unsigned simulation fees and block environment",
       "references": [
         "fee-compat/legacy-zero/eth",
         "fee-compat/legacy-one/eth",
@@ -1571,7 +1585,8 @@
         "fee-compat/defaults-cap-only-positive/eth",
         "fee-compat/defaults-tip-only-zero/eth",
         "fee-compat/defaults-tip-only-positive/eth"
-      ]
+      ],
+      "title": "Unsigned simulation fees and block environment"
     },
     {
       "background": [
@@ -1622,6 +1637,7 @@
       "id": "H16",
       "kind": "Spec decision / likely accounting bug",
       "next_step": "`probes-prague` measures cross-item transient storage, warm sets, original storage values and EIP-6780 scope with gas-deriving programs, and H28 has the callMany twin of the historical beacon-root call. The mined-probes replays pin exact SSTORE refunds (including the one-fifth cap), a blob fee and same-transaction SELFDESTRUCT burns. Add a refund-counter reset probe (restore a slot written by the previous item), and model fee collectors before assigning chains that use them.",
+      "question": "Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go?",
       "rationale": "A state diff should be internally coherent and reconstructible; an ordered multi-call simulation should have one predictable state timeline.",
       "recommendation": "For signed/raw and mined replay, report the complete actual transition: the sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector; the tip goes to the fee recipient. For unsigned calls use H15\u2019s policy. Block-level operations (system calls, withdrawals, rewards) belong to no transaction\u2019s stateDiff, so concatenated diffs do not reconstruct the block post-state. In trace_callMany every item is a separate transaction: EIP-2200/3529 original storage values, EIP-2929 access sets, EIP-1153 transient storage, the refund counter and the EIP-6780 same-transaction scope start afresh, while all items share one block environment (NUMBER and TIMESTAMP do not advance). The first item runs against the same state and environment as trace_call at the selected block. Each result describes its own transition from the preceding item\u2019s post-state; reverted EVM writes roll back, while fork-defined transaction-level nonce and fee effects survive. If any decoded item fails validation, return one error with the zero-based item index in error.data.index and no partial results; a malformed item is invalid params (-32602) without an index. A server may cap items or total gas only with an explicit -38026 error, never by truncating.",
       "references": [
@@ -1678,6 +1694,7 @@
       "id": "H17",
       "kind": "Spec decision / likely serializer fix",
       "next_step": "Retain the account-existence assessment and the rejection of + and - slots on surviving accounts and of = slots. Retest Reth after a revm-inspectors release containing #526 and a Reth dependency bump. Touch-clearing of an existing EIP-161-empty account is legacy-only; add a genesis account of that kind if it must be exercised.",
+      "question": "How does stateDiff mark an account that is created or deleted?",
       "rationale": "Absent accounts and existing accounts with empty code are different states; consumers should be able to reconstruct the change without guessing. Reserving + and - for account birth and death keeps a slot marker from implying an existence change.",
       "recommendation": "Make account existence explicit. An account appears only if its balance, nonce, code, storage or existence changed; existence means presence in the state trie, so an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies: a born account marks balance, nonce (including zero) and code (including empty) with +, and lists its nonzero post-state slots as +. For an account that exists at both endpoints, unchanged fields use =, changed fields use *, and changed slots always use * with 32-byte from/to words, including zero words; slots never use =. If an address already existed with empty code, do not mark it as newly created. Compare existence at the execution endpoints; transient creation and destruction with an account absent at both endpoints does not produce an account diff.",
       "title": "New-account stateDiff encoding"
@@ -1704,6 +1721,7 @@
       "id": "H18",
       "kind": "Likely client bug",
       "next_step": "Fix net account code-change reporting. The mined-probes authorization replay covers two tuples from one authority, a stale-nonce tuple that must be skipped, an absent authority born with + markers and tuples that restore the original delegation. Distinguish invalid outer transactions from authorization tuples skipped under EIP-7702.",
+      "question": "How does stateDiff report EIP-7702 delegation code changes?",
       "rationale": "stateDiff must include code that changed, even if the account already existed.",
       "recommendation": "Report net pre/post delegation-code changes, including set, replace and clear, independently of account-creation flags. Preserve authorization effects when later execution reverts. Multiple accepted authorizations that restore the original code produce no net code change, although nonce changes may remain.",
       "title": "EIP-7702 code changes in stateDiff"
@@ -1743,6 +1761,7 @@
       "id": "H19",
       "kind": "Likely client bug",
       "next_step": "Fix bytecode population separately from the already-retested instruction deltas. Add EIP-7702 one-hop controls: a delegation target that itself delegates must not be followed recursively, and delegation to a precompile executes empty code rather than the native precompile.",
+      "question": "Which bytecode does a vmTrace frame's `code` hold?",
       "rationale": "The operations must be decodable against the bytes in their own frame.",
       "recommendation": "Record the bytecode actually executed in each frame: initcode for creation, resolved implementation code for delegation, and the relevant code source for delegatecall/callcode. Do not populate it from an address-only pre-state lookup after tracing.",
       "title": "vmTrace executing bytecode"
@@ -1792,6 +1811,7 @@
       "id": "H20",
       "kind": "Implementation alignment / release retest",
       "next_step": "The local invariants check pc bounds, the nested-gas relation for calls and creations, subtrace placement and the MLOAD and CALL memory ranges. `probes-prague` exercises DUP/SWAP push with distinct values, SSTORE/SLOAD/TSTORE/TLOAD store (with and without stateDiff), code that runs off its end and precheck-failure subs. Still add a short CALL return over a nonzero tail, and EOA, precompile and empty-code targets.",
+      "question": "What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured?",
       "rationale": "Same-step effects let consumers follow execution without shifting writes between opcodes. An operand-derived range needs no return-data dependency and is exactly what Parity and three established clients report; a consumer that applies mem as a write reconstructs memory under either rule. The gas and halt rules make the nested-gas relation used = previous used \u2212 cost + child leftover checkable without opcode knowledge.",
       "recommendation": "mem is the post-operation contents of the memory range the opcode\u2019s operands designate: MSTORE and MLOAD [off, off+32), MSTORE8 [off, off+1), the destination of CALLDATACOPY, CODECOPY, EXTCODECOPY, RETURNDATACOPY and MCOPY, and the full CALL-family output window. It is null when that range is empty or the opcode designates none (RETURN, REVERT, LOG*, KECCAK256, CREATE*). cost is the total gas deducted from the caller when the operation starts, including gas made available to a child frame (CALL family: the 63/64-capped forwarded gas, excluding the value stipend; CREATE family: all but 1/64). ex.used is the caller\u2019s remaining gas after the operation, including unused child gas returned. An operation that began executing and halted exceptionally is present with its pre-execution cost, ex: null and sub: null; operations rejected before execution (undefined opcodes including the designated invalid 0xFE, stack underflow or overflow) are omitted, and there is no synthetic STOP, so every pc lies inside code. push is the top k stack words after execution, deepest first, where k is the number of words the opcode leaves in place of its inputs (DUPn and SWAPn n+1, CALL and CREATE 1 after the child returns). store is set only by SSTORE, from its key and value operands as quantities, whenever the SSTORE completes, even if the value is unchanged; TSTORE and SLOAD never set it. A selected vmTrace is always an object. An operation that entered a child frame, including precompile and empty-code targets, has that frame\u2019s trace as sub ({code: \"0x\", ops: []} if no instruction ran); operations that entered no frame (failed precheck, SELFDESTRUCT) have sub: null.",
       "references": [
@@ -1829,6 +1849,7 @@
       "id": "H21",
       "kind": "Spec decision",
       "next_step": "Agree schema types and extension policy. A diagnostic comparison may show a separate typed-semantic projection, but must retain the exact wire differences.",
+      "question": "How are vmTrace numbers encoded, and which step fields are optional?",
       "rationale": "Numeric values and byte arrays have different formatting needs; optional convenience labels should not determine whether a trace can be consumed.",
       "recommendation": "Encode stack words as minimal hex quantities (zero is 0x0), memory/code as even-length byte strings. Make op/idx optional metadata; require consumers to accept their absence and validate consistency when present. Keep required execution fields independent of these annotations. Keep pc, cost, used and traceAddress as JSON integers. Validate idx only against an explicitly defined numbering convention.",
       "title": "vmTrace numeric and optional metadata encoding"
@@ -1844,6 +1865,7 @@
       "id": "H22",
       "kind": "Likely client bug",
       "next_step": "A focused Besu reporting fix and regression fixture can proceed without waiting on broad API policy.",
+      "question": "What output does a successful precompile call frame report?",
       "rationale": "Two views of the same successful call should not disagree about its return value.",
       "recommendation": "Report actual return bytes in each successful call-frame result, including precompiles with no EVM bytecode. The execution envelope output must equal the successful root call\u2019s output; nested calls can return different bytes.",
       "title": "Precompile return bytes"
@@ -1875,6 +1897,7 @@
       "id": "H23",
       "kind": "Spec decision / client discrepancy",
       "next_step": "`probes-forks` checks reward matching by author, intersection and union with a sender list on the PoW blocks. The mined-probes filters query mined top-level and nested reverted CREATEs by their would-be addresses and creators, and SELFDESTRUCT to self by both sides; the filter oracles ignore a failed CREATE\u2019s result address.",
+      "question": "Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match?",
       "rationale": "Address-based history should not silently omit a transfer or creation because its action uses different field names.",
       "recommendation": "Define from/to equivalents per action: creator and successfully created address for CREATE; the executing (self-destructing) account and beneficiary for SELFDESTRUCT, which after EIP-6780 usually survives; and recipient only for rewards. A failed CREATE has no created-address match: it can match its creator, but not a populated recipient list. A reward matches toAddress by author and has no from side: in intersection mode it is excluded whenever fromAddress is populated, while in union mode a toAddress match suffices. Apply H03 composition, so union can retain a creator match. Matching a reverted action does not imply a committed transfer.",
       "references": [
@@ -1893,6 +1916,7 @@
       "id": "H24",
       "kind": "Reproduced reporting defect",
       "next_step": "Prepare a focused Besu regression and fix without waiting for broad schema policy.",
+      "question": "Can a failure in one call frame change another frame's reported status?",
       "rationale": "A successful caller can handle a failed subcall and continue; frame results must preserve that distinction.",
       "recommendation": "Attach error and result data to the actual call frame. A sibling failure must not change another frame's status. A child\u2019s local success remains success even if a later ancestor revert rolls back its state changes; frame outcome and committed stateDiff answer different questions.",
       "references": [
@@ -1914,6 +1938,7 @@
       "id": "H25",
       "kind": "Reproduced response serialization defect",
       "next_step": "Retain raw malformed-response evidence. Test both pre-commit JSON-RPC errors and post-commit failures through the actual transport, including later callMany validation and cancellation; distinguish explicit transport aborts from malformed completed responses.",
+      "question": "How does a trace method report a validation or execution failure found while producing its response?",
       "rationale": "Clients must be able to parse failures and associate them with a request, regardless of the chosen signed-transaction admission policy.",
       "recommendation": "Before committing result bytes, report validation or execution setup failures as one complete JSON-RPC error. Buffer when necessary to guarantee a replaceable response. After output has been committed, a later failure must explicitly abort the transport rather than append a second envelope or finish a partial result as success. Request parsing alone is not full validation; later callMany admission can depend on earlier calls.",
       "title": "Well-formed errors for rejected raw transactions"
@@ -1942,6 +1967,7 @@
       "id": "H26",
       "kind": "Reproduced stateDiff discrepancy",
       "next_step": "Retain deletion-marker regressions. Give the pre-Cancun deleted fixture account nonzero storage. The mined-probes chain covers a surviving post-Cancun SELFDESTRUCT to self with storage, and same-transaction creation and destruction at an absent and at a prefunded address.",
+      "question": "How does stateDiff report a deleted account, before and after EIP-6780?",
       "rationale": "Deletion and a zero balance with retained code are observably different states. Apply the rules of the selected block.",
       "recommendation": "Compare account existence before and after the execution. For present-to-absent accounts, use deletion markers for balance, nonce and code, and report storage: {}; the account\u2019s - implies that all storage is wiped, so no slot is listed. After EIP-6780 a pre-existing contract normally survives SELFDESTRUCT, so do not report code deletion. An account absent at both endpoints has no net account diff, even if created and destroyed during execution.",
       "title": "Account deletion across Cancun"
@@ -1961,6 +1987,7 @@
       "id": "H27",
       "kind": "Reproduced cross-method discrepancy",
       "next_step": "The repeated fixtures are ready for a focused processor-context investigation and regression. Add a range whose later block spends a withdrawal credited in the earlier block, which exposes the state skew independently of fork rules.",
+      "question": "When trace_filter spans a fork boundary, does each block run under its own fork rules and state?",
       "rationale": "The same block must not trace differently depending on the other blocks included in a query.",
       "recommendation": "Return records produced with each block\u2019s own fork rules and state, whether retrieved from an index or replayed: each block is traced from its parent\u2019s post-block state with its own pre-transaction system operations applied, under its own fork rules. Filtering and pagination over the ordered range must agree with the corresponding per-block records. Do not reuse one block\u2019s execution rules, or its post-transaction state, across a block boundary.",
       "references": [
@@ -1996,6 +2023,7 @@
       "id": "H28",
       "kind": "Historical-state discrepancy fixed on Erigon main",
       "next_step": "Verify release uptake of Erigon #24056. The mined-probes replays of own-block EIP-4788 and EIP-2935 reads (Besu #10953) pin the reader output, storage, STATICCALL frames and the absence of system-contract diffs, and `probes-forks/beacon-many-55` and `-56` are the trace_callMany twins of the historical beacon-root call (Erigon). Unrelated H09 schema failures still block the stricter harmonization milestone.",
+      "question": "Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1?",
       "rationale": "A future system write must not appear in an earlier block's state. This is an execution-context issue, not a cosmetic trace encoding choice.",
       "recommendation": "Historical state at block N should include that block\u2019s changes, including system operations, but none from N+1. Replay starts from the parent\u2019s post-block state, applies the block\u2019s pre-transaction system operations once, then its preceding transactions. trace_call and the first trace_callMany item at block N run against the same state and environment.",
       "references": [
@@ -2043,6 +2071,7 @@
       "id": "H29",
       "kind": "Spec decision / client alignment",
       "next_step": "Review the inherited DELEGATECALL exception as a compatibility choice. Add a zero-value call to 0x0a before Cancun and to 0x100 before Osaka, and a depth bomb (not reachable within a practical gas cap under the 63/64 rule from one simulated call). `probes-prague` covers a nested value CALL and CREATE beyond balance and a CREATE2 collision. The precompile-values corpus separates outer and child values, pre-funds zero-value creations with a preceding simulated transfer, and returns the call success bit. Parent error propagation remains a separate H24 issue.",
+      "question": "Which precompile calls appear as call frames?",
       "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Crossed-value CALL/CALLCODE fixtures confirm that Erigon, Reth and Nethermind use the explicit child value rather than the outer value. Besu still omits the nonzero-value child. The independent Geth draft implementation also matches these checks; it is not an independent vote for the policy.",
       "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block\u2019s fork, so a zero-value call to an address before its precompile activates is an ordinary call and keeps its frame. A CALL or CREATE that fails its precheck (depth limit, insufficient balance) starts no execution and emits no frame; a CREATE address collision emits a create frame with error \"Contract address collision\" that consumes its gas. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
       "title": "Precompile call-frame inclusion"
@@ -2064,6 +2093,7 @@
       "id": "H30",
       "kind": "Spec decision / compatibility",
       "next_step": "Confirm latest/latest and -32602 for reversed ranges with client teams; align Erigon, released Reth and the experimental Geth draft fork. Agree explicit range limits and add a pruned-node explicit-history case. count limits returned records, not execution work.",
+      "question": "Which range does trace_filter use when fromBlock or toBlock is omitted?",
       "rationale": "This preserves Parity/OpenEthereum\u2019s original trace_filter default and matches the documented eth_getLogs convention. A plain filter targets only the current head, so a small count does not leave a chain-wide range implicit or request history that may be pruned or exceed a range cap. Historical callers must name fromBlock; explicit bounds retain their meaning. On the frozen fixture, head is 48, so the omitted-bounds query matches an explicit 48-to-48 query, while toBlock 2 alone is reversed.",
       "recommendation": "Default omitted fromBlock and toBlock to latest, resolving both against the same canonical head at request start. An explicit toBlock older than an omitted fromBlock is a reversed range and returns -32602 (Invalid params), as does any bound that resolves beyond the current head (H06). Respect explicit endpoints, then filter and paginate the ordered range. Return 4444 when explicitly requested history is unavailable; report resource limits explicitly rather than silently narrowing the range or returning incomplete success.",
       "title": "Omitted trace_filter range bounds"
@@ -2084,6 +2114,7 @@
       "id": "H31",
       "kind": "Spec decision / compatibility",
       "next_step": "Confirm optionality and the latest default with client teams; document the migration for Besu callers that currently must pass a block and for callers of released Reth builds that rely on an omitted block selecting pending.",
+      "question": "Is trace_callMany's block argument optional, and what is its default?",
       "rationale": "The same unsigned simulation should not silently change its block environment when batched. The frozen NUMBER constructor returns 48 at latest and 49 in Reth's pending environment, making the difference observable without mempool transactions.",
       "recommendation": "Make the trace_callMany block argument optional and default it to latest, matching trace_call. An explicit block selector must override that default; explicit pending is handled under H32.",
       "title": "Omitted trace_callMany block"
@@ -2106,6 +2137,7 @@
       "id": "H32",
       "kind": "Spec decision / client discrepancy",
       "next_step": "Add trace_block(\"pending\"), trace_replayBlockTransactions(\"pending\"), block-hash simulation selectors, finalized and unavailable-finality fixtures, and a pruned filter from earliest that expects success from the retention boundary. Agree simulation pending semantics separately.",
+      "question": "Which block tags do the trace methods accept, and how is `pending` handled?",
       "rationale": "A caller must be able to tell whether a tag was rejected, resolved to a mined block, or evaluated in a pending environment. In the frozen fixture, safe resolves to head 48, while Reth's pending call environment exposes NUMBER 49. These observations do not establish mempool transaction inclusion.",
       "recommendation": "trace_filter bounds use BlockNumberOrTagForRange: earliest, latest, safe and finalized are accepted, pending returns -32602, and earliest means the lowest block the client has available. trace_block and trace_replayBlockTransactions also reject pending with -32602 until a pending contract exists; localized records never carry a block hash that is not canonical. trace_call and trace_callMany accept a block number, tag or block hash (BlockNumberOrTagOrHash). Pending for simulations remains unspecified: a client that does not implement it must reject it explicitly, and a valid tag must not produce an internal error. Resolve selectors against one consistent chain view for the request.",
       "title": "Trace block tags and pending state"

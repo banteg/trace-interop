@@ -279,9 +279,9 @@
       "title": "Pair instruction trace completions with starts",
       "client": "nethermind",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T15:27:33Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13622",
@@ -412,18 +412,18 @@
       "decisions": [
         "H19"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T16:05:49Z"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27217",
       "title": "fix(rpc): correct Otterscan block and transaction responses",
       "client": "reth",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T16:11:11Z"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27378",
@@ -794,7 +794,7 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-25T11:20:36Z",
-      "note": "Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13551's branch; parent PR remains required."
+      "note": "Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551."
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24322",

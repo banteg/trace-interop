@@ -1,5 +1,7 @@
 # Tracked PR continuation, 2026-09-25
 
+Later pass: [new reviews, lint repair and upstream merges](pr-review-refresh-2026-09-25.md).
+
 Final complete snapshot: **2026-09-25T14:48:15.481125+00:00**, **65 PRs** (28 open, 35 merged, 2 closed). All comment, review, thread and nested-comment pagination checks were complete. See the [machine-readable snapshot](pr-review-continuation-2026-09-25.json).
 
 This pass continued the [earlier review](pr-review-followups-2026-09-25.md), refreshed every tracked PR (including merged and closed entries), investigated failed checks, and reproduced the remaining precompile lead. Claude Code / Claude Opus 5.5 at high effort supplied a socket-lifecycle review and two precompile design/review iterations. Those were read-only source reviews; the test results below came from Codex-run validation on Fedora with .NET SDK 10.0.300.

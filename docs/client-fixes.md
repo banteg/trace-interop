@@ -27,16 +27,14 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas | — |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) | Pair instruction trace completions with starts | — |
-| [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) | Report terminal output for top-level action traces | — |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) |
-| [Nethermind #13800](https://github.com/NethermindEth/nethermind/pull/13800) | Match rewards by author in trace_filter address filters; covers rewards only; failed-CREATE recipient matching remains an H23 policy change | [H23](../reports/decisions/H23.md) (partial) |
 | [Nethermind #13801](https://github.com/NethermindEth/nethermind/pull/13801) | Return no traces for the genesis block in trace_replayBlockTransactions; covers genesis replay only; the PoS placeholder reward remains | [H05](../reports/decisions/H05.md) (partial) |
-| [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13622's branch; parent PR remains required. | — |
-| [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13551's branch; parent PR remains required. | — |
+| [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. | [H20](../reports/decisions/H20.md) (partial) |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers | [H06](../reports/decisions/H06.md) (partial) |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) |
+| [rpc-tests #605](https://github.com/erigontech/rpc-tests/pull/605) (draft) | Align SELFDESTRUCT vmTrace fixtures with frame semantics; Companion mainnet fixtures for erigon#24291; draft until the client fix lands. | [H20](../reports/decisions/H20.md) |
 | [Silkworm #2885](https://github.com/erigontech/silkworm/pull/2885) (draft) | Capture missing vmTrace opcode effects | [H20](../reports/decisions/H20.md) |
 
 ## Merged
@@ -51,6 +49,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; #24294 adds the remaining call fields | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 |
 | [Erigon #24294](https://github.com/erigontech/erigon/pull/24294) | Trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations; adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 |
 | [Erigon #24295](https://github.com/erigontech/erigon/pull/24295) | Trace_filter reports no genesis block reward | [H05](../reports/decisions/H05.md) | 2026-09-25 |
+| [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) | Report terminal output for top-level action traces | — | 2026-09-25 |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept empty Parity trace selections | [H08](../reports/decisions/H08.md) (partial), [H11](../reports/decisions/H11.md) | 2026-09-24 |
 | [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deleted account fields with deletion markers; verified in development build 9d6e8b8d | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | 2026-09-24 |
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve trace_get errors and bound positions | [H06](../reports/decisions/H06.md) (partial) | 2026-09-24 |
@@ -61,6 +60,9 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Nethermind #13781](https://github.com/NethermindEth/nethermind/pull/13781) | Report DUPn vmTrace push as n + 1 words | [H20](../reports/decisions/H20.md) (partial) | 2026-09-24 |
 | [Nethermind #13782](https://github.com/NethermindEth/nethermind/pull/13782) | Include forwarded gas in streamed vmTrace create cost | [H20](../reports/decisions/H20.md) (partial) | 2026-09-24 |
 | [Nethermind #13783](https://github.com/NethermindEth/nethermind/pull/13783) | Return no traces for the genesis block in trace_block; covers trace_block only; trace_replayBlockTransactions of genesis still fails its parent lookup | [H05](../reports/decisions/H05.md) (partial) | 2026-09-24 |
+| [Nethermind #13800](https://github.com/NethermindEth/nethermind/pull/13800) | Match rewards by author in trace_filter address filters; covers rewards only; failed-CREATE recipient matching remains an H23 policy change | [H23](../reports/decisions/H23.md) (partial) | 2026-09-25 |
+| [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. | — | 2026-09-25 |
+| [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13551's branch; parent PR remains required. | — | 2026-09-25 |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return null for missing transaction replays | [H06](../reports/decisions/H06.md) (partial) | 2026-09-22 |
 | [Reth #27365](https://github.com/paradigmxyz/reth/pull/27365) | Include transaction hash in individual replays | [H07](../reports/decisions/H07.md) | 2026-09-22 |
 | [Reth #27366](https://github.com/paradigmxyz/reth/pull/27366) | Select trace_get results by tree path | [H02](../reports/decisions/H02.md) | 2026-09-22 |

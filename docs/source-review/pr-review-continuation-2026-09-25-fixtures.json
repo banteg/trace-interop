@@ -1,0 +1,88 @@
+[
+  {
+    "fixture": "integration/mainnet/trace_replayBlockTransactions/test_22.tar",
+    "request": {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "method": "trace_replayBlockTransactions",
+      "params": [
+        "0x989680",
+        [
+          "vmTrace",
+          "trace",
+          "stateDiff"
+        ]
+      ]
+    },
+    "changes": [
+      {
+        "path": "result[78].vmTrace.ops[698].sub.ops[2839].sub.ops[683].sub.ops[232].sub.ops[96].sub.ops[558].sub.ops[7].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 30,
+        "transactionHash": "0xc256c250b8ecb04af50f6bf172b89ed49711b47b94d75e3e674c3d806e772f8f"
+      }
+    ],
+    "matches_full_CI_actual": true,
+    "original_member_bytes": 262237567,
+    "new_member_bytes": 262237224,
+    "sha256": "065f4d6bc331feba6523a50e8a330943c2443cd1db31163b9a5e79075f0295d6"
+  },
+  {
+    "fixture": "integration/mainnet/trace_replayBlockTransactions/test_29.tar",
+    "request": {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "method": "trace_replayBlockTransactions",
+      "params": [
+        "0x70136F",
+        [
+          "vmTrace",
+          "trace",
+          "stateDiff"
+        ]
+      ]
+    },
+    "changes": [
+      {
+        "path": "result[11].vmTrace.ops[346].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      },
+      {
+        "path": "result[11].vmTrace.ops[504].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      },
+      {
+        "path": "result[11].vmTrace.ops[662].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      },
+      {
+        "path": "result[11].vmTrace.ops[820].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      },
+      {
+        "path": "result[11].vmTrace.ops[978].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      },
+      {
+        "path": "result[11].vmTrace.ops[1136].sub.ops[6].sub",
+        "op": "SELFDESTRUCT",
+        "pc": 23,
+        "transactionHash": "0xab0f98d2b1c53578dbe7014059bff12ccb1420135c35504a0af8967bb05f4bc8"
+      }
+    ],
+    "matches_full_CI_actual": true,
+    "original_member_bytes": 67061906,
+    "new_member_bytes": 67060928,
+    "sha256": "2468c81e1147f0216212eaf921452614be6ebfd5f872fd279697eead5aa9805e"
+  }
+]

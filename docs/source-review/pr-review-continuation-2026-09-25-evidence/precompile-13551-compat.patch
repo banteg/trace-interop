@@ -1,0 +1,72 @@
+diff --git a/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs b/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs
+index 450db1dcb4..ba849c113d 100644
+--- a/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs
++++ b/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs
+@@ -306,11 +306,11 @@ public class ParityLikeTxTracer : TxTracer
+ 
+     public override void ReportOperationRemainingGas(ulong gas)
+     {
+-        if (!_gasAlreadySetForCurrentOp)
++        if (!_gasAlreadySetForCurrentOp && _currentOperation is not null)
+         {
+             _gasAlreadySetForCurrentOp = true;
+ 
+-            _currentOperation!.Cost -= (_treatGasParityStyle ? 0UL : gas);
++            _currentOperation.Cost -= (_treatGasParityStyle ? 0UL : gas);
+ 
+             // based on Parity behaviour - adding stipend to the gas cost
+             if (_currentOperation.Cost == 7400UL)
+@@ -503,7 +503,8 @@ public class ParityLikeTxTracer : TxTracer
+ 
+     public override void ReportGasUpdateForVmTrace(ulong refund, ulong gasAvailable)
+     {
+-        _currentOperation!.Used = gasAvailable;
++        if (_currentOperation is null) return;
++        _currentOperation.Used = gasAvailable;
+ 
+         if (!_gasAlreadySetForCurrentOp)
+         {
+diff --git a/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs b/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs
+index 55b702629d..2ca22a73ee 100644
+--- a/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs
++++ b/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs
+@@ -31,6 +31,7 @@ using Nethermind.Blockchain.Find;
+ using Nethermind.Core.Crypto;
+ using Nethermind.Crypto;
+ using Nethermind.Evm;
++using Nethermind.Evm.Precompiles;
+ using Nethermind.Evm.Tracing;
+ using Nethermind.Blockchain.Tracing.ParityStyle;
+ using Nethermind.Facade.Eth.RpcTransaction;
+@@ -1741,6 +1742,31 @@ public class TraceRpcModuleTests
+         return JToken.Parse(response)["result"]![0]!["vmTrace"]!;
+     }
+ 
++    [Test]
++    public async Task VmTrace_top_level_precompile_failure_returns_empty_operations(
++        [Values] bool streaming, [Values] bool includeTrace)
++    {
++        Context context = new();
++        await context.Build();
++        using TestRpcBlockchain blockchain = context.Blockchain;
++        blockchain.Container.Resolve<IJsonRpcConfig>().EnableTracingStreamMode = streaming;
++
++        string[] traceTypes = includeTrace ? ["vmTrace", "trace"] : ["vmTrace"];
++        // Blake2F requires exactly 213 input bytes.
++        object call = new { from = TestItem.AddressA, to = Blake2FPrecompile.Address, data = "0x", gas = "0x186a0" };
++        string response = await RpcTest.TestSerializedRequest(context.TraceRpcModule, "trace_call", call, traceTypes, "latest");
++        JToken parsed = JToken.Parse(response);
++
++        using (Assert.EnterMultipleScope())
++        {
++            Assert.That(parsed["error"], Is.Null, response);
++            Assert.That(parsed["result"]?["output"]?.Value<string>(), Is.EqualTo("0x"), response);
++            Assert.That(parsed["result"]?["vmTrace"]?["ops"], Is.Empty, response);
++            if (includeTrace)
++                Assert.That(parsed["result"]?["trace"]?[0]?["error"]?.Value<string>(), Is.EqualTo("Out of gas"), response);
++        }
++    }
++
+     [Test]
+     public async Task Streaming_vmTrace_matches_buffered_across_nested_call_frame()
+     {

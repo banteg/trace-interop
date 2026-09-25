@@ -1,5 +1,7 @@
 # Tracked PR review follow-ups, 2026-09-25
 
+Later pass: [CI repairs, new precompile regression, and current review status](pr-review-continuation-2026-09-25.md). The historical results below describe the earlier submitted heads.
+
 Reviewed all 60 PRs tracked at the start of this pass, including merged and closed entries. The live GitHub snapshot at 09:59 UTC contained 28 open, 30 merged, and 2 closed PRs. Three follow-up PRs were subsequently added to the ledger. Attached bug documents supplied evidence and context, not authorization to perform unrelated work.
 
 ## Actionable reviews

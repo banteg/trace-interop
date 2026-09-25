@@ -288,9 +288,9 @@
       "title": "Report terminal output for top-level action traces",
       "client": "nethermind",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T13:10:45Z"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13666",
@@ -385,9 +385,9 @@
       "partial": [
         "H23"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T14:31:18Z",
       "note": "covers rewards only; failed-CREATE recipient matching remains an H23 policy change"
     },
     {
@@ -781,19 +781,19 @@
       "title": "test(evm): cover reverted child output in action callbacks",
       "client": "nethermind",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13622's branch; parent PR remains required."
+      "merged_at": "2026-09-25T11:15:37Z",
+      "note": "Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622."
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13835",
       "title": "fix(evm): keep cancellation policy outside instruction pairing",
       "client": "nethermind",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T11:20:36Z",
       "note": "Review follow-up targeting https://github.com/NethermindEth/nethermind/pull/13551's branch; parent PR remains required."
     },
     {
@@ -805,6 +805,33 @@
       "draft": true,
       "merged_at": null,
       "note": "Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required."
+    },
+    {
+      "url": "https://github.com/erigontech/rpc-tests/pull/605",
+      "title": "test: align SELFDESTRUCT vmTrace fixtures with frame semantics",
+      "client": null,
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": true,
+      "merged_at": null,
+      "note": "Companion mainnet fixtures for erigon#24291; draft until the client fix lands."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13847",
+      "title": "fix(tracing): handle failed precompiles without a vmTrace operation",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "partial": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551."
     }
   ]
 }

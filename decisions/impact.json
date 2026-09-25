@@ -257,8 +257,8 @@
         "change": "Emit a failed frame with error \"Insufficient balance for transfer\", no result and no subtraces for a precheck failure, and a failed create frame with error \"Contract address collision\" for a collision, in trace_* and in the callTracer."
       },
       "geth": {
-        "observed": "The draft implementation still follows the previous rule and emits no frame for a CALL or CREATE that fails its balance precheck.",
-        "change": "Emit the failed precheck frame the revised rule requires; Geth's own call tracers already record it."
+        "observed": "The captured draft implementation (0a663f3c) still follows the previous rule and emits no frame for a CALL or CREATE that fails its precheck.",
+        "change": "Fixed on feat/trace in 07a99c67, which keeps the failed frame with the new labels; the next capture measures it."
       }
     },
     "H02": {

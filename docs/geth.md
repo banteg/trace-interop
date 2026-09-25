@@ -61,8 +61,8 @@ pinned draft:
 - Call objects accept block hashes and the reserved state and block override
   parameters; schema-defined fields are honoured or rejected.
 - Failed frames use the normative labels; REVERT frames carry `{gasUsed, output}`,
-  and calls failing their precheck emit no frame. That follows the previous H29 rule; the
-  revised rule keeps a failed frame, which the fork does not implement yet. Deleted accounts report
+  and calls failing their precheck keep a failed frame with no result (since `07a99c67`; earlier
+  captures predate it and show the previous rule). Deleted accounts report
   `storage: {}` and surviving accounts' slots use `*`.
 - `vmTrace` reports operand-designated memory, including MLOAD and the full CALL
   output window, has no synthetic STOP, returns an object even when no code runs,

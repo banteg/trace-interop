@@ -60,7 +60,7 @@
     "../evidence/2026-09-25/fixture-wave/preflight.json": "c4cfb4e2bbaca21e613dd7c6179159bf9d07c139ff6f3c87f1e8fdee51e5c60f"
   },
   "sources": {
-    "decisions/impact.json": "614cd1bf7e381bcdc2af7bd53fecc70aa8aaf3ffc47fb4ca02745bba968d7ef0",
+    "decisions/impact.json": "4b8245f4f835cdb24972156736401ace13765edf0823fd50cf84607cb9fb19e9",
     "decisions/ledger.json": "232ddf67ab030390b742e052b22cd7043103e335688c50b91606446f9fc4fd52",
     "decisions/sources.json": "edceaf1d194d4fe31c642d84cdb10fc870f21154703d36392257e90974473155",
     "decisions/status.json": "1b1c532894c8c21d6648978d522c97d3157b22c5dcf65430adfa6e962dbe1c8c",

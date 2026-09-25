@@ -16,7 +16,7 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 | Behavior | 1.17.7-unstable · 0a663f3c | Proposed change |
 | --- | --- | --- |
-| [Precompile call-frame inclusion](../decisions/H29.md)<br>The draft implementation still follows the previous rule and emits no frame for a CALL or CREATE that fails its balance precheck. | ⚠️ Differs<br>[Precheck call value](../cases/probes-prague/precheck-call-value.md) | Emit the failed precheck frame the revised rule requires; Geth's own call tracers already record it. Checked requirements: A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.<br>[Call frames and precompiles](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_capture.go#L123) |
+| [Precompile call-frame inclusion](../decisions/H29.md)<br>The captured draft implementation (0a663f3c) still follows the previous rule and emits no frame for a CALL or CREATE that fails its precheck. | ⚠️ Differs<br>[Precheck call value](../cases/probes-prague/precheck-call-value.md) | Fixed on feat/trace in 07a99c67, which keeps the failed frame with the new labels; the next capture measures it. Checked requirements: A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.<br>[Call frames and precompiles](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_capture.go#L123) |
 
 ## Open policy observations
 

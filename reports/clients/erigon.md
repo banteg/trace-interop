@@ -4,6 +4,8 @@ The tested development build agrees on several cases that differ in the release,
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
+**Progress on 3.8.0-dev · f8cfe5a7** (of 32 decisions): ✅ 13 agree (+1 since the previous capture) · 🛠️ 2 fix submitted · ⚠️ 13 with no fix yet (1 on converged decisions) · ❔ 1 policy open · ⚪ 3 not fully measured. 1 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 6 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `3.7.0` | [`bdc78cc4`](https://github.com/erigontech/erigon/commit/bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74) | 2026-09-24 | [2026-09-25](../../evidence/2026-09-25/refresh/initial/manifest.json) |

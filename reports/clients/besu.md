@@ -4,6 +4,8 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
+**Progress on 26.9-develop · accdae00** (of 32 decisions): ✅ 2 agree · 🛠️ 5 fix submitted · ⚠️ 18 with no fix yet (2 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 11 open ([client fixes](../../docs/client-fixes.md)).
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `26.8.1` | [`d97cbd61`](https://github.com/besu-eth/besu/commit/d97cbd61976a52bb109e637196fef9a8ebf2b617) | 2026-08-28 | [2026-09-25](../../evidence/2026-09-25/refresh/initial/manifest.json) |

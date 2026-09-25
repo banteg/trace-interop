@@ -2,6 +2,10 @@
 
 Reproducible evidence for a proposed Ethereum `trace_*` specification, with per-client change reports.
 
+[![Decision outcomes per client development build](reports/progress.svg)](reports/README.md#progress)
+
+Each bar is one client's development build across every decision in the ledger, regenerated with each capture. See [progress by client](reports/README.md#progress) for the counts, trend and definitions.
+
 ## Why this exists
 
 Several Ethereum clients expose the Parity `trace_*` methods, but the same request can mean different things or return different shapes. Tracing tools carry client-specific workarounds, and maintainers have no shared contract to test against.

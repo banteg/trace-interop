@@ -77,7 +77,7 @@
     "trace_interop/inventory.py": "457c2a45564daf0f736c4252d4755d3189a9510709c379b461ca47e69af9c193",
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "6bf48e260ebd5cebb7bb19748cca00b28864b103fb3403efdfaf91aa7b91c7ef",
-    "trace_interop/presentation.py": "7885a493fac1dda868dfc1864c5279083d9251aabfe544c30ffdf0b1045b650c",
+    "trace_interop/presentation.py": "c742a4fdf9d6cf9255cc9560779a5dbf0ee965ed0548cd520472122b38a142fe",
     "trace_interop/probes.py": "bcca4fc6d9cf951d66821561895acd622fb05ad369fd0691093aac5e2986c9b7",
     "trace_interop/report.py": "e059e06db82ba5c9416b54d833f82262d2e7604be9c40b2d789f148f03f9f2bb",
     "trace_interop/rules.py": "f25bf17c4acf93332918b5a61de772ee78dda9b135e2d26be28a8f921db94e04",

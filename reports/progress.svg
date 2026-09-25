@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="624" height="184" viewBox="0 0 624 184" role="img" aria-labelledby="title">
+<title id="title">Decision outcomes per client: Besu 2 agree, 5 fix submitted, 2 no fix · converged, 16 no fix · under review, 1 policy open, 6 not fully measured; Erigon 13 agree, 2 fix submitted, 1 no fix · converged, 12 no fix · under review, 1 policy open, 3 not fully measured; Nethermind 14 agree, 1 fix submitted, 3 no fix · converged, 12 no fix · under review, 1 policy open, 1 not fully measured; Reth 15 agree, 3 fix submitted, 2 no fix · converged, 10 no fix · under review, 1 policy open, 1 not fully measured</title>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
+<text class="label" x="88" y="26" text-anchor="end">Besu</text>
+<rect x="96" y="12" width="32" height="20" fill="#1a7f37"/>
+<text x="112" y="26" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="128" y="12" width="80" height="20" fill="#0969da"/>
+<text x="168" y="26" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="208" y="12" width="32" height="20" fill="#bc4c00"/>
+<text x="224" y="26" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="240" y="12" width="256" height="20" fill="#d4a72c"/>
+<text x="368" y="26" text-anchor="middle" fill="#1f2328">16</text>
+<rect x="496" y="12" width="16" height="20" fill="#8250df"/>
+<text x="504" y="26" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="512" y="12" width="96" height="20" fill="#8c959f"/>
+<text x="560" y="26" text-anchor="middle" fill="#1f2328">6</text>
+<text class="label" x="88" y="56" text-anchor="end">Erigon</text>
+<rect x="96" y="42" width="208" height="20" fill="#1a7f37"/>
+<text x="200" y="56" text-anchor="middle" fill="#ffffff">13</text>
+<rect x="304" y="42" width="32" height="20" fill="#0969da"/>
+<text x="320" y="56" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="336" y="42" width="16" height="20" fill="#bc4c00"/>
+<text x="344" y="56" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="352" y="42" width="192" height="20" fill="#d4a72c"/>
+<text x="448" y="56" text-anchor="middle" fill="#1f2328">12</text>
+<rect x="544" y="42" width="16" height="20" fill="#8250df"/>
+<text x="552" y="56" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="560" y="42" width="48" height="20" fill="#8c959f"/>
+<text x="584" y="56" text-anchor="middle" fill="#1f2328">3</text>
+<text class="label" x="88" y="86" text-anchor="end">Nethermind</text>
+<rect x="96" y="72" width="224" height="20" fill="#1a7f37"/>
+<text x="208" y="86" text-anchor="middle" fill="#ffffff">14</text>
+<rect x="320" y="72" width="16" height="20" fill="#0969da"/>
+<text x="328" y="86" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="336" y="72" width="48" height="20" fill="#bc4c00"/>
+<text x="360" y="86" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="384" y="72" width="192" height="20" fill="#d4a72c"/>
+<text x="480" y="86" text-anchor="middle" fill="#1f2328">12</text>
+<rect x="576" y="72" width="16" height="20" fill="#8250df"/>
+<text x="584" y="86" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="592" y="72" width="16" height="20" fill="#8c959f"/>
+<text x="600" y="86" text-anchor="middle" fill="#1f2328">1</text>
+<text class="label" x="88" y="116" text-anchor="end">Reth</text>
+<rect x="96" y="102" width="240" height="20" fill="#1a7f37"/>
+<text x="216" y="116" text-anchor="middle" fill="#ffffff">15</text>
+<rect x="336" y="102" width="48" height="20" fill="#0969da"/>
+<text x="360" y="116" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="384" y="102" width="32" height="20" fill="#bc4c00"/>
+<text x="400" y="116" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="416" y="102" width="160" height="20" fill="#d4a72c"/>
+<text x="496" y="116" text-anchor="middle" fill="#1f2328">10</text>
+<rect x="576" y="102" width="16" height="20" fill="#8250df"/>
+<text x="584" y="116" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="592" y="102" width="16" height="20" fill="#8c959f"/>
+<text x="600" y="116" text-anchor="middle" fill="#1f2328">1</text>
+<rect x="96" y="140" width="12" height="12" fill="#1a7f37"/>
+<text class="label" x="114" y="150">Agree</text>
+<rect x="266" y="140" width="12" height="12" fill="#0969da"/>
+<text class="label" x="284" y="150">Fix submitted</text>
+<rect x="436" y="140" width="12" height="12" fill="#bc4c00"/>
+<text class="label" x="454" y="150">No fix · converged</text>
+<rect x="96" y="160" width="12" height="12" fill="#d4a72c"/>
+<text class="label" x="114" y="170">No fix · under review</text>
+<rect x="266" y="160" width="12" height="12" fill="#8250df"/>
+<text class="label" x="284" y="170">Policy open</text>
+<rect x="436" y="160" width="12" height="12" fill="#8c959f"/>
+<text class="label" x="454" y="170">Not fully measured</text>
+</svg>

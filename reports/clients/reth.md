@@ -4,6 +4,8 @@ Reth 2.5.2 · 4630cc58 fixes tree-path lookup, default filter intersection, miss
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
+**Progress on 2.5.2 · 4630cc58** (of 32 decisions): ✅ 15 agree (+3 since the previous capture) · 🛠️ 3 fix submitted · ⚠️ 12 with no fix yet (2 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 6 of these agreements are not yet in 2.6.0 · 73a3a008. Upstream fix PRs: 14 merged, 5 open ([client fixes](../../docs/client-fixes.md)).
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `2.6.0` | [`73a3a008`](https://github.com/paradigmxyz/reth/commit/73a3a00862a8f14f89e30da8de001456f18cfae0) | 2026-09-17 | [2026-09-25](../../evidence/2026-09-25/refresh/initial/manifest.json) |

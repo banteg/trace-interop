@@ -1,10 +1,11 @@
 """Maintainer-facing views of the independently evaluated observations."""
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 import json
 import os
 import re
 
+from .progress import BUCKETS, pr_counts, svg, tally
 from .status import decision_status, LEGEND, NATIVE_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
 
 
@@ -369,6 +370,48 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
 
     families = sorted({family(c) for c in clients})
     names = {c: editorial['clients'][family(c)]['name'] for c in clients}
+
+    # Progress is measured on each client's development build (the draft fork for Geth).
+    converged = {t for t in decisions if positions.get(t, {}).get('policy') == 'converged'}
+    progress_build = lambda f: 'go-ethereum_trace' if f == 'geth' else f + '_development'
+    agreed = lambda checks: {t for t in decisions if verdict(checks.get(t, [])) == 'Checked cases agree'}
+    progress = {}
+    for f in families:
+        c = progress_build(f)
+        if c not in by_client:
+            continue
+        stable = f + '_release'
+        progress[f] = dict(
+            build=c, counts=tally({t: build_verdict(c, t).split(' ', 1)[0] for t in decisions}, converged),
+            gained=len(agreed(by_client[c])) - len(agreed(previous['by_client'][c])) if previous and c in previous['by_client'] else None,
+            dev_only=len(agreed(by_client[c]) - agreed(by_client[stable])) if stable in by_client else None,
+            prs=pr_counts(fixes, f))
+    native = [f for f in NATIVE_CLIENTS if f in progress]
+    sums = sum((progress[f]['counts'] for f in native), Counter())
+    signed = lambda n: f' ({n:+d} since the previous capture)' if n else ''
+    gained = sum(progress[f]['gained'] or 0 for f in native)
+    headline = (f'Across the {", ".join(editorial["clients"][f]["name"] for f in native[:-1])} and {editorial["clients"][native[-1]]["name"]} '
+                f'development builds, **{sums["agree"]} of {len(native) * len(decisions)}** client decisions agree with the draft'
+                f'{signed(gained) if previous else ""}. {sums["fix"]} more have a submitted fix, and '
+                f'**{sums["converged"] + sums["review"]} differ with no fix yet**: {sums["converged"]} on converged decisions '
+                f'and {sums["review"]} on decisions still under review. '
+                f'{sum(progress[f]["dev_only"] or 0 for f in native)} agreements are in development builds but not yet in a stable release.') if native else ''
+
+    def progress_line(f):
+        p = progress[f]; counts = p['counts']
+        pending = counts['converged'] + counts['review']
+        parts = [f'✅ {counts["agree"]} agree{signed(p["gained"]) if p["gained"] is not None else ""}']
+        parts += [f'🛠️ {counts["fix"]} fix submitted'] * bool(counts['fix'])
+        parts += [f'⚠️ {pending} with no fix yet' + (f' ({counts["converged"]} on converged decisions)' if counts['converged'] else '')] * bool(pending)
+        parts += [f'❔ {counts["policy"]} policy open'] * bool(counts['policy'])
+        parts += [f'⚪ {counts["unmeasured"]} not fully measured'] * bool(counts['unmeasured'])
+        text = f'**Progress on {label(p["build"])}** (of {len(decisions)} decisions): ' + ' · '.join(parts) + '.'
+        if p['dev_only']:
+            text += f' {p["dev_only"]} of these agreements are not yet in {label(f + "_release")}.'
+        merged, opened = p['prs']
+        if merged or opened:
+            text += f' Upstream fix PRs: {merged} merged, {opened} open ([client fixes](../../docs/client-fixes.md)).'
+        return text + '\n\n'
     by_family = {f: sorted((c for c in clients if family(c) == f), key=lambda c: c.endswith('_development')) for f in families}
 
     # Case pages are the drill-down, keeping the overview free of wire dumps.
@@ -406,6 +449,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     def client_page(f, selected, path):
         profile = editorial['clients'][f]
         text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)\n\n'
+        if f in progress and path.name == f + '.md':
+            text += progress_line(f)
         text += table(['Tested version', 'Commit', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
         versions = {r['version'] for r in records if r['client'] in selected}
         for build_note in profile.get('build_notes', []):
@@ -551,6 +596,21 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += freshness
     if previous:
         text += 'For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).\n\n'
+    if native:
+        save(output/'progress.svg', svg([(editorial['clients'][f]['name'], progress[f]['counts']) for f in native], len(decisions)))
+        text += '## Progress\n\n' + headline + '\n\n![Decision outcomes per client development build](progress.svg)\n\n'
+        text += table(['Client', 'Build', *[f'{symbol} {label}' for _, symbol, label, _, _ in BUCKETS], 'In dev, not stable', 'Fix PRs merged / open'], [
+            [f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', label(progress[f]['build']),
+             *[str(progress[f]['counts'][key]) + (signed(progress[f]['gained']).replace(' since the previous capture', '') if key == 'agree' and progress[f]['gained'] else '')
+               for key, *_ in BUCKETS],
+             '—' if progress[f]['dev_only'] is None else str(progress[f]['dev_only']), '{} / {}'.format(*progress[f]['prs'])]
+            for f in native])
+        text += ('Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; '
+                 'one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. '
+                 'Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. '
+                 '[Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)\n\n')
+    else:
+        (output/'progress.svg').unlink(missing_ok=True)
     text += '## Start with your client\n\n'
     text += table(['Client', 'Main review areas'], [[f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', editorial['clients'][f]['summary']] for f in families])
     text += '## Decisions to review\n\n'
@@ -635,6 +695,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += ('The target is a useful, precise contract. Historical implementations explain compatibility costs, '
                  'but do not decide the recommendation. Intentional departures need a concrete benefit and an '
                  'explicit migration cost; observed agreement alone does not establish correctness.\n\n')
+        if native:
+            text += headline + ' [Progress by client](../reports/README.md#progress).\n\n'
         def channel_symbols(topic, channel):
             symbols = []
             for f in index_families:

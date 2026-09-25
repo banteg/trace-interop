@@ -4,6 +4,8 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
+**Progress on 1.17.7-unstable · 0a663f3c** (of 32 decisions): ✅ 28 agree · ❔ 3 policy open · ⚪ 1 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `1.17.7-unstable` | [`0a663f3c`](https://github.com/banteg/go-ethereum/commit/0a663f3cd1245f3510ccbbe5146fdfc7007cd290) | 2026-09-24 | [2026-09-25](../../evidence/2026-09-25/refresh/initial/manifest.json) |

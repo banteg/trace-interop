@@ -175,3 +175,39 @@ class ChangesPageTests(unittest.TestCase):
         self.assertIn(selection['previous'], (root/'reports/changes.md').read_text())
         self.assertIn('(changes.md)', (root/'reports/README.md').read_text())
         self.assertIn('(reports/changes.md)', (root/'README.md').read_text())
+
+
+class ProgressTests(unittest.TestCase):
+    def test_buckets_separate_unfixed_differences_by_policy(self):
+        from trace_interop.progress import bucket, tally
+        self.assertEqual(bucket('⚠️', True), 'converged')
+        self.assertEqual(bucket('⛔', False), 'review')  # an unavailable method still needs a change
+        self.assertEqual(bucket('🟡', True), 'unmeasured')  # a partial assessment is not a measured difference
+        self.assertEqual(bucket('🛠️', False), 'fix')
+        counts = tally({'H01': '✅', 'H02': '⚠️', 'H03': '⚠️', 'H04': '❔'}, {'H02'})
+        self.assertEqual(dict(counts), {'agree': 1, 'converged': 1, 'review': 1, 'policy': 1})
+
+    def test_chart_is_deterministic_and_names_every_count(self):
+        from collections import Counter
+
+        from trace_interop.progress import svg
+        rows = [('Besu', Counter(agree=2, review=30)), ('Reth', Counter(agree=15, fix=3, converged=14))]
+        chart = svg(rows, 32)
+        self.assertEqual(chart, svg(rows, 32))
+        self.assertIn('Besu 2 agree, 30 no fix · under review', chart)
+        self.assertIn('Reth 15 agree, 3 fix submitted, 14 no fix · converged', chart)
+
+    def test_published_progress_matches_the_checks(self):
+        root = Path(__file__).resolve().parents[1]
+        page = (root/'reports/README.md').read_text()
+        decisions = len(json.loads((root/'decisions/ledger.json').read_text())['items'])
+        rows = [line for line in page.split('## Progress', 1)[1].split('\n## ', 1)[0].splitlines() if line.startswith('| [')]
+        self.assertTrue(rows)
+        for row in rows:
+            cells = [c.strip() for c in row.strip('|').split('|')]
+            counts = [int(c.split()[0]) for c in cells[2:8]]
+            with self.subTest(client=cells[0]):
+                self.assertEqual(sum(counts), decisions)
+        agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in rows)
+        self.assertIn(f'**{agree} of {len(rows) * decisions}**', page)
+        self.assertTrue((root/'reports/progress.svg').is_file())

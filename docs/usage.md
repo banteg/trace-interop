@@ -205,8 +205,11 @@ library it pins at an older release; remove it once a captured build contains th
 Report generation renders [client fixes](client-fixes.md) from it and shows 🛠️ Fix submitted
 for a differing or partially assessed build when a non-partial tagged PR is open, merged after
 the build’s commit, or awaiting uptake; partial PRs are linked without replacing ⚠️ or 🟡.
-Captured checks and harmonization milestones are unchanged. Refresh PR titles and states from
-GitHub, then regenerate:
+Captured checks and harmonization milestones are unchanged. The same markers feed
+[progress by client](../reports/README.md#progress) and its chart, `reports/progress.svg`:
+one outcome per decision on each native development build, with differences that have no
+submitted fix split by the decision's policy status, and the change in agreements since the
+previous matrix. Refresh PR titles and states from GitHub, then regenerate:
 
 ```sh
 uv run python scripts/refresh_fixes.py

@@ -77,6 +77,15 @@ Controls and expectations come from the current corpus definition whenever the
 captured request is byte-identical, so a corrected fixture reassesses retained
 evidence. A changed request keeps the definition it was captured with.
 
+### Pending next capture
+
+`probes-prague` repeats the two precheck probes through `debug_traceCall` with `callTracer` and
+`flatCallTracer` (`precheck-call-value-debug-callTracer`, `precheck-call-value-debug-flatCallTracer`,
+`precheck-create-value-debug-callTracer`, `precheck-create-value-debug-flatCallTracer`). They record how
+each client's debug tracers treat a failed precheck, the evidence behind H29's revised rule. They are
+generated but not yet registered in `decisions/ledger.json`; after the next matrix capture, register them as
+H29 references, not assertions.
+
 ### Corrected siblings
 
 These siblings were first captured in the

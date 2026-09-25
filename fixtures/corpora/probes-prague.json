@@ -341,9 +341,24 @@
               "result": {
                 "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
               },
-              "subtraces": 1,
+              "subtraces": 2,
               "traceAddress": [],
               "type": "create"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x1"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "call"
             },
             {
               "action": {
@@ -358,14 +373,31 @@
               },
               "subtraces": 0,
               "traceAddress": [
-                0
+                1
               ],
               "type": "call"
             }
           ],
           "kind": "frames",
-          "requirement": "A CALL or CREATE that fails its balance precheck emits no frame; the next sibling keeps traceAddress [0] and the parent counts only emitted frames.",
+          "requirement": "A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.",
           "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Insufficient balance for transfer"
+          },
+          "kind": "frame",
+          "requirement": "A CALL that fails its balance precheck has error \"Insufficient balance for transfer\".",
+          "select": {
+            "action": {
+              "value": "0x1"
+            },
+            "traceAddress": [
+              0
+            ],
+            "type": "call"
+          },
+          "topic": "H09"
         },
         {
           "expected": [
@@ -420,8 +452,22 @@
               "result": {
                 "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
               },
-              "subtraces": 1,
+              "subtraces": 2,
               "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60006000f3",
+                "value": "0x1"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
               "type": "create"
             },
             {
@@ -437,14 +483,31 @@
               },
               "subtraces": 0,
               "traceAddress": [
-                0
+                1
               ],
               "type": "create"
             }
           ],
           "kind": "frames",
-          "requirement": "A CALL or CREATE that fails its balance precheck emits no frame; the next sibling keeps traceAddress [0] and the parent counts only emitted frames.",
+          "requirement": "A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.",
           "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Insufficient balance for transfer"
+          },
+          "kind": "frame",
+          "requirement": "A CREATE that fails its balance precheck has error \"Insufficient balance for transfer\".",
+          "select": {
+            "action": {
+              "value": "0x1"
+            },
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
         },
         {
           "expected": [
@@ -482,6 +545,86 @@
             "vmTrace"
           ],
           "latest"
+        ]
+      }
+    },
+    {
+      "name": "precheck-call-value-debug-callTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-call-value-debug-flatCallTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "flatCallTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-create-value-debug-callTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x6460006000f36000526005601b6001f06020526005601b6000f060405260406020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-create-value-debug-flatCallTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x6460006000f36000526005601b6001f06020526005601b6000f060405260406020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "flatCallTracer"
+          }
         ]
       }
     },

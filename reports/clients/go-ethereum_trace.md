@@ -12,7 +12,9 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 ## Changes to discuss
 
-No differences were found by the selected semantic assertions.
+| Behavior | 1.17.7-unstable · 0a663f3c | Proposed change |
+| --- | --- | --- |
+| [Precompile call-frame inclusion](../decisions/H29.md)<br>The draft implementation still follows the previous rule and emits no frame for a CALL or CREATE that fails its balance precheck. | ⚠️ Differs<br>[Precheck call value](../cases/probes-prague/precheck-call-value.md) | Emit the failed precheck frame the revised rule requires; Geth's own call tracers already record it. Checked requirements: A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.<br>[Call frames and precompiles](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_capture.go#L123) |
 
 ## Open policy observations
 
@@ -28,6 +30,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
+| [Failed frame results and error labels](../decisions/H09.md) | 1.17.7-unstable · 0a663f3c | 1 blocked case: No frame matches {'action': {'value': '0x1'}, 'traceAddress': [0], 'type': 'call'}. 1 blocked case: No frame matches {'action': {'value': '0x1'}, 'traceAddress': [0], 'type': 'create'}. | [Precheck call value](../cases/probes-prague/precheck-call-value.md) · [Precheck create value](../cases/probes-prague/precheck-create-value.md) |
 | [Fee accounting and sequential state diffs](../decisions/H16.md) | 1.17.7-unstable · 0a663f3c | 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 2 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
@@ -41,7 +44,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Missing transactions and paths](../decisions/H06.md) | [Missing block block](../cases/a/missing-block-block.md) · [Missing block call](../cases/a/missing-block-call.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
 | [Empty output and unrequested components](../decisions/H08.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [Failed frame results and error labels](../decisions/H09.md) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
 | [Signed transaction execution validity](../decisions/H13.md) | [Raw below basefee](../cases/a/raw-below-basefee.md) · [Raw insufficient funds](../cases/a/raw-insufficient-funds.md) |
@@ -58,7 +60,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
 | [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
-| [Precompile call-frame inclusion](../decisions/H29.md) | [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) · [Nested call outer0 value1 success](../cases/precompile-values/nested-call-outer0-value1-success.md) |
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 

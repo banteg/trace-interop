@@ -137,12 +137,23 @@ def prague():
                                'result': {'output': words(42)}}
     root_frame = lambda children, **result: {'traceAddress': [], 'type': 'create', 'subtraces': children, 'error': None,
                                              'action': {'from': sender, 'value': '0x0'}, 'result': dict({'address': root}, **result)}
-    precheck = 'A CALL or CREATE that fails its balance precheck emits no frame; the next sibling keeps traceAddress [0] and the parent counts only emitted frames.'
+    # A precheck failure keeps its frame, as geth, Erigon, Reth and Besu debug tracers do: an error, no result and no
+    # children. H29 owns the frame; H09 owns the label.
+    precheck = ('A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; '
+                'the next sibling follows at [1] and the parent counts both.')
+    label = 'A {} that fails its balance precheck has error "Insufficient balance for transfer".'
+    debug_calls = {}
     code = asm(0, 0, 0, 0, 1, int(marker, 16), 'GAS', 'CALL', 0, 'MSTORE',
                0, 0, 0, 0, 0, int(marker, 16), 'GAS', 'CALL', 32, 'MSTORE', 64, 0, 'RETURN')
     failed, succeeded = pcs(code, 'CALL')
+    debug_calls['precheck-call-value'] = creation(code)
     case(cases, 'precheck-call-value', 'trace_call', [creation(code), ['trace', 'vmTrace'], 'latest'], probes=[
-        probe('H29', 'frames', precheck, expected=[root_frame(1), call_frame([0])]),
+        probe('H29', 'frames', precheck, expected=[
+            root_frame(2), {'traceAddress': [0], 'type': 'call', 'subtraces': 0, 'error': '*', 'result': None,
+                            'action': {'from': root, 'to': marker, 'value': '0x1', 'callType': 'call'}},
+            call_frame([1])]),
+        probe('H09', 'frame', label.format('CALL'), select={'traceAddress': [0], 'type': 'call', 'action': {'value': '0x1'}},
+              expected={'error': 'Insufficient balance for transfer'}),
         probe('H29', 'outputs', 'The caller continues: the failed CALL pushes 0 and the next CALL succeeds.', expected=[words(0, 1)]),
         probe('H20', 'subs', 'The CALL whose precheck failed has sub null; the sibling that entered a frame has a sub.',
               null=[failed], object=[succeeded])])
@@ -150,14 +161,22 @@ def prague():
                5, 27, 0, 'CREATE', 64, 'MSTORE', 64, 32, 'RETURN')
     child = created_address(root, 1)  # The failed precheck does not consume the creator nonce.
     failed, succeeded = pcs(code, 'CREATE')
+    debug_calls['precheck-create-value'] = creation(code)
     case(cases, 'precheck-create-value', 'trace_call', [creation(code), ['trace', 'vmTrace'], 'latest'], probes=[
         probe('H29', 'frames', precheck, expected=[
-            root_frame(1), create_frame([0], error=None, action={'from': root, 'value': '0x0', 'init': '0x'+child_init},
-                                        result={'address': child, 'code': '0x'})]),
+            root_frame(2), create_frame([0], error='*', action={'from': root, 'value': '0x1', 'init': '0x'+child_init}, result=None),
+            create_frame([1], error=None, action={'from': root, 'value': '0x0', 'init': '0x'+child_init},
+                         result={'address': child, 'code': '0x'})]),
+        probe('H09', 'frame', label.format('CREATE'), select={'traceAddress': [0], 'type': 'create', 'action': {'value': '0x1'}},
+              expected={'error': 'Insufficient balance for transfer'}),
         probe('H29', 'outputs', 'The caller continues: the failed CREATE pushes 0 and the next CREATE uses the unchanged creator nonce.',
               expected=[words(0, int(child, 16))]),
         probe('H20', 'subs', 'The CREATE whose precheck failed has sub null; the sibling that entered a frame has a sub.',
               null=[failed], object=[succeeded])])
+    # The same calls through geth-style debug tracers: supporting references for H29, not assertions.
+    for name, call in debug_calls.items():
+        for tracer in ('callTracer', 'flatCallTracer'):
+            case(cases, f'{name}-debug-{tracer}', 'debug_traceCall', [call, 'latest', {'tracer': tracer}])
     salt = 0x2a
     code = asm(int(child_init, 16), 0, 'MSTORE', salt, 5, 27, 0, 'CREATE2', 32, 'MSTORE',
                salt, 5, 27, 0, 'CREATE2', 64, 'MSTORE',

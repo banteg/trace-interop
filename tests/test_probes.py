@@ -5,7 +5,7 @@ import unittest
 
 from trace_interop.cli import ROOT, load_observations, read
 from trace_interop.coverage import supplement
-from trace_interop.probes import assess
+from trace_interop.probes import assess, same
 from trace_interop.scenarios import verify_setup
 from trace_interop.vm_model import execute, intrinsic, local_invariants
 
@@ -115,7 +115,7 @@ class FrameProbeTests(Probe):
         case = PRAGUE[name]
         frames = [realize(f) for f in next(p for p in case['probes'] if p['kind'] == 'frames')['expected']]
         for label in [p for p in case['probes'] if p['kind'] == 'frame']:
-            next(f for f in frames if all(f.get(k) == v for k, v in label['select'].items())).update(label['expected'])
+            next(f for f in frames if same(f, label['select'])).update(label['expected'])
         output = next(p for p in case['probes'] if p['kind'] == 'outputs')['expected'][0]
         return case, dict({'output': output, 'trace': frames, 'stateDiff': None, 'vmTrace': None}, **extra)
 
@@ -125,22 +125,28 @@ class FrameProbeTests(Probe):
                for pc in sorted(subs['null']+subs['object'])]
         return {'code': case['request']['params'][0]['data'], 'ops': ops}
 
-    def test_precheck_failures_emit_no_frame_or_sub(self):
+    def test_precheck_failures_keep_a_failed_frame_without_sub(self):
+        by_topic = lambda case, wrong: {t: {c['status'] for c in assess(case, result(wrong), {}) if c['topic'] == t} for t in ['H09', 'H29']}
         for name in ['precheck-call-value', 'precheck-create-value']:
             case = PRAGUE[name]
             subs = next(p for p in case['probes'] if p['kind'] == 'subs')
             _, envelope = self.envelope(name, vmTrace=self.vm_with_subs(case, subs['object']))
             self.assertMatches(case, result(envelope))
-            # Erigon, Reth: a frame for the failed precheck shifts the sibling to [1].
+            # Reth: the same frame and the listed label.
+            self.assertEqual(envelope['trace'][1]['error'], 'Insufficient balance for transfer')
+            # Erigon: the frame is right; only H09 names the lowercase label.
             wrong = copy.deepcopy(envelope)
-            failed = copy.deepcopy(wrong['trace'][1])
-            failed.update(error='Insufficient balance for transfer', traceAddress=[0])
-            failed.pop('result', None)
-            wrong['trace'][1]['traceAddress'] = [1]
-            wrong['trace'][0]['subtraces'] = 2
-            wrong['trace'].insert(1, failed)
-            self.assertDiffers(case, result(wrong))
-            # Erigon: a sub on the failed CALL.
+            wrong['trace'][1]['error'] = 'insufficient balance for transfer'
+            self.assertEqual(by_topic(case, wrong), {'H09': {'change_needed'}, 'H29': {'matches'}})
+            # Parity, Nethermind, Besu CALL: no frame, so the sibling moves to [0]; H09 has no frame to judge.
+            wrong = copy.deepcopy(envelope)
+            del wrong['trace'][1]
+            wrong['trace'][1]['traceAddress'] = [0]
+            wrong['trace'][0]['subtraces'] = 1
+            topics = by_topic(case, wrong)
+            self.assertEqual(topics['H09'], {'blocked'})
+            self.assertIn('change_needed', topics['H29'])
+            # A sub on the failed call or create.
             wrong = dict(envelope, vmTrace=self.vm_with_subs(case, subs['null']+subs['object']))
             self.assertDiffers(case, result(wrong))
             # Besu (C3): the dangling create context swallows the later sibling.

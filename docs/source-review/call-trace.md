@@ -156,6 +156,12 @@ choice. Note that geth's callTracer (debug_*) emits these frames. If the group p
 instead. Either way, add three fixtures: a depth bomb, a nested value CALL beyond balance, and a CREATE2
 collision.
 
+**Update (2026-09-26):** H29 now takes the debug_ option. Geth chose to capture a call before its prechecks in
+v1.14 after an explicit review debate, Erigon followed in v3.1.0, and the Geth, Erigon, Reth and Besu call tracers
+all record the failed attempt; only Nethermind omits it in both APIs. A failed CALL keeps a frame with its error,
+no result and no subtraces; a failed CREATE does the same before Amsterdam, where the precheck moves into the
+creating opcode. See [H29](../../reports/decisions/H29.md).
+
 ### A5. `creationMethod` (conf high, sev spec)
 
 - Parity emitted it (rpc/src/v1/types/trace.rs:217-229), skipping it only when None.

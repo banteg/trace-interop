@@ -116,7 +116,7 @@
         "change": "Add `result: {gasUsed, output}` to REVERT frames; exceptional halts may keep omitting `result`. Use the listed labels rather than \"Static call violation\" or \"Error\"."
       },
       "erigon": {
-        "observed": "A reverted CREATE reports `{address, code, gasUsed}` with the would-be address; exceptional halts use Go error text such as \"out of gas: write protection\".",
+        "observed": "A reverted CREATE reports `{address, code, gasUsed}` with the would-be address; exceptional halts use Go error text such as \"out of gas: write protection\", and a failed precheck is labelled \"insufficient balance for transfer\".",
         "change": "Report a reverted CREATE as `{gasUsed, output}` without address or code, and use the listed failure labels."
       },
       "reth": {
@@ -249,8 +249,16 @@
     },
     "H29": {
       "besu": {
-        "observed": "Nested precompile frames are omitted even when their value is nonzero. A CREATE that fails its balance precheck leaves a successful-looking frame at `[0]`, moves the real creation below it and reports the root as using no gas.",
-        "change": "Retain nested precompile frames with transferred or inherited nonzero value (#11360). Continue omitting zero-value nested frames and retaining root frames. Separately, skip child bookkeeping when a balance or depth precheck prevents entry; no submitted fix covers this."
+        "observed": "Nested precompile frames are omitted even when their value is nonzero. A CALL that fails its balance precheck has no frame, and a CREATE that fails it leaves a successful-looking frame at `[0]`, moves the real creation below it and reports the root as using no gas.",
+        "change": "Retain nested precompile frames with transferred or inherited nonzero value (#11360). Continue omitting zero-value nested frames and retaining root frames. Give a CALL or CREATE that fails its balance or depth precheck a failed frame with error \"Insufficient balance for transfer\", no result and no children, as Besu's callTracer already records it; no submitted fix covers this."
+      },
+      "nethermind": {
+        "observed": "A CALL or CREATE that fails its balance precheck has no frame, and a CREATE2 address collision has no frame either. Its callTracer also omits the precheck failure.",
+        "change": "Emit a failed frame with error \"Insufficient balance for transfer\", no result and no subtraces for a precheck failure, and a failed create frame with error \"Contract address collision\" for a collision, in trace_* and in the callTracer."
+      },
+      "geth": {
+        "observed": "The draft implementation still follows the previous rule and emits no frame for a CALL or CREATE that fails its balance precheck.",
+        "change": "Emit the failed precheck frame the revised rule requires; Geth's own call tracers already record it."
       }
     },
     "H02": {

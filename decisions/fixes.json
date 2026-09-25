@@ -199,9 +199,9 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T08:51:32Z",
       "note": "adds `input` only; #24294 adds the remaining call fields"
     },
     {
@@ -239,9 +239,9 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T08:41:39Z",
       "note": "adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain"
     },
     {
@@ -460,9 +460,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T08:15:02Z",
       "awaiting_uptake": true
     },
     {
@@ -751,10 +751,20 @@
       "title": "fix(execution/execmodule): apply safe and finalized from a same-head fork choice",
       "client": "erigon",
       "decisions": [],
+      "state": "closed",
+      "draft": false,
+      "merged_at": null,
+      "note": "closed in favor of #24032, which applies the same-head safe/finalized update; our regression tests pass on it (fixes #24028)"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24032",
+      "title": "execution: test crash recovery during catch-up reorgs",
+      "client": "erigon",
+      "decisions": [],
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "unblocks the reorg scenario: import-time finality made the sibling-branch forkchoice return -38002 (fixes #24028)"
+      "note": "supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27429",

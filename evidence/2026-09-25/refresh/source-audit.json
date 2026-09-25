@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-25T08:55:27.736569+00:00",
+  "commit": "bda5d9f32663be9e1b659d4d9cc308157aa53816",
+  "tracked_diff_empty": true,
+  "status_porcelain": "?? evidence/2026-09-25/refresh/",
+  "explanation": "The matrix created its untracked output directory before each corpus inspected git status. That directory is the only dirty path; manifests retain source_dirty=true without rewriting.",
+  "cli_sha256": "af0fa80fa2ec6ea1cb159fa163d4a05f356d56954f953224cea9404b7e9bcd30"
+}

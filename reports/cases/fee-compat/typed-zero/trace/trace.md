@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Besu · 26.9-develop · cf89071f](../../../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Erigon · 3.8.0-dev · 01c118ee](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Nethermind · 2.1.0-preview · 54b760cd](../../../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Erigon · 3.8.0-dev · f8cfe5a7](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Nethermind · 2.1.0-preview · ee1f57da](../../../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Reth · 2.5.2 · 4630cc58](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -40,7 +40,7 @@
 }
 ```
 
-**Besu · 26.9-develop · cf89071f** (`besu/v26.9-develop-cf89071/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Execute each valid simulation and return one envelope per call.
@@ -50,17 +50,17 @@
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Execute each valid simulation and return one envelope per call.
 
-**Erigon · 3.8.0-dev · 01c118ee** (`3.8.0-dev-01c118ee`)
+**Erigon · 3.8.0-dev · f8cfe5a7** (`3.8.0-dev-f8cfe5a7`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: execution output (224 bytes). Differing words: GASPRICE: eth_call 0, trace_call 765625000; BASEFEE: eth_call 0, trace_call 765625000; GASLIMIT: eth_call 100000000, trace_call 115792089237316195423570985008687907853269984665640564039457584007913129639935.
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0b6b3a763fff90000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
 
-**Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
+**Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: execution output (224 bytes). Differing words: GASPRICE: eth_call 0, trace_call 765625000; BASEFEE: eth_call 0, trace_call 765625000; GASLIMIT: eth_call 100000000, trace_call 115792089237316195423570985008687907853269984665640564039457584007913129639935.
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0b6b3a763fff90000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
 
-**Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
+**Nethermind · 2.1.0-preview · ee1f57da** (`2.1.0-preview+ee1f57da`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: execution output (224 bytes). Differing words: BASEFEE: eth_call 0, trace_call 765625000.
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0b6b3a763fff90000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.

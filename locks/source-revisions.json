@@ -19,6 +19,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "58a51b3ee3f6714ded9207b244a273c8afb592fd",
       "committed_at": "2026-09-23T17:43:52Z"
+    },
+    {
+      "version": "Reth Version: 2.5.2+4630cc58",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "4630cc588430fcf3b2846e27100a5d10cff9f949",
+      "committed_at": "2026-09-24T21:18:40Z"
     }
   ],
   "erigon_release": [
@@ -27,6 +33,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "0c4d9c91dbaffd52890235f7ea395b0231738501",
       "committed_at": "2026-09-09T13:45:41Z"
+    },
+    {
+      "version": "3.7.0-bdc78cc4",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74",
+      "committed_at": "2026-09-24T09:04:36Z"
     }
   ],
   "erigon_development": [
@@ -47,6 +59,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "01c118ee1fb0f0df4bcf2b9085602f75f5607b19",
       "committed_at": "2026-09-24T18:14:17Z"
+    },
+    {
+      "version": "3.8.0-dev-f8cfe5a7",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "f8cfe5a7e1d85ca997180b402f30f4df0d63beea",
+      "committed_at": "2026-09-25T07:17:48Z"
     }
   ],
   "besu_release": [
@@ -81,6 +99,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "cf89071f9d6dddf7997f35e09929fe059f82ecd1",
       "committed_at": "2026-09-24T19:45:55Z"
+    },
+    {
+      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "accdae0061952615b23f3bc521ebcd82efd097d4",
+      "committed_at": "2026-09-25T06:29:18Z"
     }
   ],
   "nethermind_release": [
@@ -133,6 +157,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "54b760cd22ca56f960ddeb298dd639c169946ba0",
       "committed_at": "2026-09-24T21:23:59Z"
+    },
+    {
+      "version": "2.1.0-preview+ee1f57da",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "ee1f57da4b3ab0dbf3fb871840e310348e98d6a4",
+      "committed_at": "2026-09-25T08:14:24Z"
     }
   ],
   "go-ethereum_trace": [

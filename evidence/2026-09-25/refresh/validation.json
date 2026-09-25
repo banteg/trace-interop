@@ -1,0 +1,20 @@
+{
+  "host": "Darwin arm64",
+  "tests": {
+    "command": "uv run python -m unittest discover -s tests",
+    "exit_code": 0,
+    "passed": 239
+  },
+  "verify": {
+    "command": "uv run trace-interop verify",
+    "exit_code": 0,
+    "frozen_inputs": 70,
+    "decisions": 32
+  },
+  "report_assessment_sha256": "d5e95c2e69125c69eb29c51308129b253edf15aa4c305370b90aa638bdc00a5e",
+  "files": {
+    "harness-tests.log": "2a8d060465524e68056b5e86b9b8be41358d4e12e5f079697e97ea06120537d3",
+    "harness-verify.log": "705430743d8ce6e841d32db5c19cdef1c54c31162b3ad02e1f9a3512235b7b59",
+    "source-audit.json": "5b8568311593858508e9e1b5ed9d18416f3ccfa32042a62586ee960d3aea301a"
+  }
+}

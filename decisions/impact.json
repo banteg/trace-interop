@@ -14,14 +14,14 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "Reth 2.5.2 \u00b7 58a51b3e fixes tree-path lookup, default filter intersection, missing-replay nulls and replay transaction hashes that still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, state/VM trace details, error-code alignment and omitted filter bounds.",
+      "summary": "Reth 2.5.2 \u00b7 4630cc58 fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds and the omitted trace_callMany block, all of which still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, state/VM trace details and error-code alignment.",
       "build_notes": [
         {
           "versions": [
             "Reth Version: 2.6.0+73a3a008",
-            "Reth Version: 2.5.2+58a51b3e"
+            "Reth Version: 2.5.2+4630cc58"
           ],
-          "text": "**The 2.5.2 build has newer source than 2.6.0.** The version number on the development branch has not received the release-only bump. Use the commit dates above and [revision comparison](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...58a51b3ee3f6714ded9207b244a273c8afb592fd)."
+          "text": "**The 2.5.2 build has newer source than 2.6.0.** The version number on the development branch has not received the release-only bump. Use the commit dates above and [revision comparison](https://github.com/paradigmxyz/reth/compare/73a3a00862a8f14f89e30da8de001456f18cfae0...4630cc588430fcf3b2846e27100a5d10cff9f949)."
         }
       ]
     },
@@ -48,8 +48,8 @@
         "change": "Make intersection the default. Under either mode, ignore an omitted, null or empty side. Reject unknown mode values with `-32602`."
       },
       "reth": {
-        "observed": "2.6.0 \u00b7 73a3a008 combines both lists with OR by default (6 records instead of 1). 2.5.2 \u00b7 58a51b3e uses intersection; one-sided and explicit-mode queries agree.",
-        "change": "Ship the default-intersection behavior already present in 58a51b3e, retaining explicit union."
+        "observed": "2.6.0 \u00b7 73a3a008 combines both lists with OR by default (6 records instead of 1). 2.5.2 \u00b7 4630cc58 uses intersection; one-sided and explicit-mode queries agree.",
+        "change": "Ship the default-intersection behavior already present in 4630cc58, retaining explicit union."
       },
       "nethermind": {
         "observed": "`mode: \"union\"` returns the intersection (1 record instead of 6) and `mode: \"garbage\"` is accepted: the filter type has no `mode` field, so every request is intersected.",
@@ -98,8 +98,8 @@
         "change": "Return `null` for an absent transaction or path, while preserving distinct unavailable-history errors. Return `-32602` for a filter bound beyond the head or a reversed range."
       },
       "reth": {
-        "observed": "Missing individual replays error in 2.6.0 \u00b7 73a3a008 and return null in 2.5.2 \u00b7 58a51b3e and on main. A filter bound beyond the head returns -32001. See the linked pruning cases for unavailable-history classification.",
-        "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error. Return `-32602` for a filter bound beyond the head (main still returns `HeaderNotFound`)."
+        "observed": "Missing individual replays error in 2.6.0 \u00b7 73a3a008 and return null in 2.5.2 \u00b7 4630cc58. Both return -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification.",
+        "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error. Return `-32602` for a filter bound beyond the head (4630cc58 still returns -32001)."
       },
       "geth": {
         "observed": "A filter bound beyond the head returns -32001.",
@@ -195,8 +195,8 @@
         "change": "Include the bytes written at offset 32 in that step\u2019s memory delta. Derive CALL-family `mem` from the output window rather than the caller\u2019s final RETURN, exclude the stipend from value-CALL `cost`, include forwarded gas in precompile-call `cost`, and report a failed operation with its pre-execution cost and `ex: null`."
       },
       "erigon": {
-        "observed": "3.6.1 \u00b7 0c4d9c91 omits the `MCOPY` memory write; 3.8.0-dev \u00b7 e26d9bd4 reports it, and both report MLOAD memory as proposed.",
-        "change": "Ship the MCOPY handling in e26d9bd4. Report a failed operation with `ex: null` and no `store`, drop the synthetic STOP at the end of code, and give SELFDESTRUCT and failed-precheck calls `sub: null`."
+        "observed": "3.7.0 \u00b7 bdc78cc4 and 3.8.0-dev \u00b7 f8cfe5a7 report the `MCOPY` memory write and MLOAD memory as proposed.",
+        "change": "Report a failed operation with `ex: null` and no `store`, drop the synthetic STOP at the end of code, and give SELFDESTRUCT and failed-precheck calls `sub: null`."
       },
       "nethermind": {
         "observed": "CALL steps have no `mem` for their output window, CREATE `cost` omits the forwarded gas, DUPn pushes n words, and `store` appears only when stateDiff is also selected.",
@@ -263,8 +263,8 @@
         "change": "Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type."
       },
       "reth": {
-        "observed": "2.6.0 \u00b7 73a3a008 uses a flat selector; 2.5.2 \u00b7 58a51b3e selects the requested tree path and matches these cases.",
-        "change": "Ship the tree-path lookup already present in 58a51b3e and on main (#27366). Existing flat-index callers need a migration path."
+        "observed": "2.6.0 \u00b7 73a3a008 uses a flat selector; 2.5.2 \u00b7 4630cc58 selects the requested tree path and matches these cases.",
+        "change": "Ship the tree-path lookup already present in 4630cc58 (#27366). Existing flat-index callers need a migration path."
       }
     },
     "H08": {
@@ -279,7 +279,7 @@
     },
     "H14": {
       "erigon": {
-        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds `input` and open #24294 adds `nonce`, `chainId`, `blobVersionedHashes` and `authorizationList`.",
+        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds `input`; #24294, merged after this capture, adds `nonce`, `chainId`, `blobVersionedHashes` and `authorizationList`.",
         "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection. Decode `input`, `nonce`, `chainId`, `type`, `blobVersionedHashes` and `authorizationList`, or reject them."
       },
       "nethermind": {
@@ -337,8 +337,8 @@
     },
     "H07": {
       "reth": {
-        "observed": "2.6.0 \u00b7 73a3a008 omits transactionHash in individual replays; 2.5.2 \u00b7 58a51b3e includes it.",
-        "change": "Ship the replay metadata fix already present in 58a51b3e."
+        "observed": "2.6.0 \u00b7 73a3a008 omits transactionHash in individual replays; 2.5.2 \u00b7 4630cc58 includes it.",
+        "change": "Ship the replay metadata fix already present in 4630cc58."
       }
     },
     "H18": {
@@ -360,8 +360,8 @@
         "change": "Default an omitted fromBlock to latest. Limit an entirely unbounded request to the current head; return `-32602` when an explicit end precedes that implicit start."
       },
       "reth": {
-        "observed": "2.6.0 \u00b7 73a3a008 and 2.5.2 \u00b7 58a51b3e start at block 1 when both bounds are omitted, and toBlock 2 alone searches the early range. Main already defaults both bounds to latest.",
-        "change": "Ship the latest/latest default from main, preserving explicit historical bounds and resource-limit errors. Return `-32602` when an explicit end precedes the implicit start."
+        "observed": "2.6.0 \u00b7 73a3a008 starts at block 1 when both bounds are omitted, and toBlock 2 alone searches the early range. 2.5.2 \u00b7 4630cc58 defaults both bounds to latest.",
+        "change": "Ship the latest/latest default from 4630cc58, preserving explicit historical bounds and resource-limit errors. Return `-32602` when an explicit end precedes the implicit start."
       },
       "geth": {
         "observed": "The experimental draft fork follows the earlier earliest-to-latest proposal: its unbounded query starts at block 1 and its toBlock-only query searches early history.",
@@ -394,7 +394,7 @@
         "change": "Accept earliest, safe and finalized filter bounds, with earliest as the lowest available block. Reject pending with `-32602` for filter bounds and for `trace_block`, which currently traces a local pending block under a non-canonical hash."
       },
       "erigon": {
-        "observed": "3.6.1 resolves a pending filter bound to latest block 48; 3.8.0-dev rejects it with -32000.",
+        "observed": "3.7.0 \u00b7 bdc78cc4 and 3.8.0-dev \u00b7 f8cfe5a7 reject a pending filter bound with -32000 (\"tracing on top of pending is not supported\").",
         "change": "Reject pending filter bounds with `-32602`."
       },
       "geth": {

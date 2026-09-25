@@ -6,7 +6,7 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`0a663f3c`](https://github.com/banteg/go-ethereum/commit/0a663f3cd1245f3510ccbbe5146fdfc7007cd290) | 2026-09-24 | [2026-09-24](../../evidence/2026-09-25/fixture-wave/initial/manifest.json) |
+| `1.17.7-unstable` | [`0a663f3c`](https://github.com/banteg/go-ethereum/commit/0a663f3cd1245f3510ccbbe5146fdfc7007cd290) | 2026-09-24 | [2026-09-25](../../evidence/2026-09-25/refresh/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

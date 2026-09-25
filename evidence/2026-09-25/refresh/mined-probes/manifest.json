@@ -1,0 +1,1711 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-09-25T06:41:01.501941774Z",
+      "digest": "hyperledger/besu@sha256:b6a022e7dd00632f19f73f0f26022b1cf8e85d8916e6b2afdf39c38861b76c8a",
+      "image_id": "sha256:5f05c826c32edc7c310d2c3463365f2fa6963b439181cf3268a6ffca09ff6986",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "accdae0061952615b23f3bc521ebcd82efd097d4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-01T02:28:46.601819989Z",
+      "digest": "hyperledger/besu@sha256:6f3f21ce533383fcc8db3bce02252b59d5a9e776b72b5a1c8ecd2db011600042",
+      "image_id": "sha256:f3713c713ca4f9e89c09e1478d2a85116ba9ce8343129d709420ba2af009598b",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "d97cbd61976a52bb109e637196fef9a8ebf2b617",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.8.1"
+      },
+      "release": {
+        "published_at": "2026-09-01T03:03:16Z",
+        "tag": "26.8.1",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.8.1"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.8.1"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-09-25T07:57:08.242395154Z",
+      "digest": "erigontech/erigon@sha256:de130a9bf0a4f6bb9d28ba0c362e5ffbfdeabf1281aa69f7b95c3e3d663efec1",
+      "image_id": "sha256:4416bb3f37421017e3c6b736471c48ec25daf00cfaf2769abf66de0a030936dd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-09-25T07:55:38Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "f8cfe5a7e1d85ca997180b402f30f4df0d63beea",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "f8cfe5a",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "f8cfe5a7e1d85ca997180b402f30f4df0d63beea"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-09-24T12:26:33.605859192Z",
+      "digest": "erigontech/erigon@sha256:fa136bbbcdd740d33535b4a8e8690c345ae37485985a84a361dcd57430c1638d",
+      "image_id": "sha256:dbc56f3b136563723ed5d077ab3139d0ade17d936a650bf62135ec5cc9143697",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-09-24T12:24:22Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.7",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.7.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T07:04:20Z",
+        "tag": "v3.7.0",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.7.0"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.7.0"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "c02c0f145de25280d14f261bcd14dc3941079a5283cf6c0ccd44b708a3ffa114",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:4a2c0ae8e15e62677ea7a84e6d7f4846644e1bedd388c0645da199bdafa92e5d",
+      "local_image": "trace-interop/geth-source:c02c0f145de25280d14f261bcd14dc3941079a5283cf6c0ccd44b708a3ffa114",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "0a663f3cd1245f3510ccbbe5146fdfc7007cd290",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "1e37142fa222883de3b5794ff4dbcb37b8593209110c108aa616e6153c71834e"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-09-25T08:14:24Z",
+      "digest": "nethermindeth/nethermind@sha256:973eb308c070bfcab0e2c3296893f88e47433d9f04c32b852ab635696a9a5f25",
+      "image_id": "sha256:c9fa073ca9c923ff437c4187b6a2e2b7ce942fffbefe75a1adf3e7440aa4d4c7",
+      "labels": {
+        "org.opencontainers.image.created": "2026-09-25T08:14:24Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "ee1f57da4b3ab0dbf3fb871840e310348e98d6a4",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.1.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-09-22T13:30:59Z",
+      "digest": "nethermind/nethermind@sha256:8156768beb584a1e62c3dcf0e0da7be61418dc08c89a80a4f9a3a48e5d247c12",
+      "image_id": "sha256:d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4",
+      "labels": {
+        "org.opencontainers.image.created": "2026-08-27T22:49:31.862025+00:00",
+        "org.opencontainers.image.description": "The Ubuntu container image maintained by Canonical\n\nUbuntu is a Debian-based Linux operating system that runs from the desktop to the cloud, to all your internet connected things.\nIt is the world's most popular operating system across public clouds and OpenStack clouds.\nIt is the number one platform for containers; from Docker to Kubernetes to LXD, Ubuntu can run your containers at scale.\nFast, secure and simple, Ubuntu powers millions of PCs worldwide.\n",
+        "org.opencontainers.image.title": "ubuntu",
+        "org.opencontainers.image.version": "26.04"
+      },
+      "release": {
+        "published_at": "2026-09-22T14:58:58Z",
+        "tag": "2.0.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.0.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.0.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-09-25T01:34:50.76738651Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:796172038228599b7ffc2f723eb921ffa913985c1c404edb30d342647ccf73ea",
+      "image_id": "sha256:a9974d720caf864eb8b569ee7cf6ffff6f41004d496846a32da53c547329d0c1",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-17T13:08:25.158030166Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:8ce703acf113b2a20705b6e76adebed20f74ba8591bc7c9407203b2968aca70d",
+      "image_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-17T14:00:49Z",
+        "tag": "v2.6.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.6.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.6.0"
+    }
+  },
+  "corpus": "mined-probes",
+  "finished_at": "2026-09-25T08:52:16.484099+00:00",
+  "fixture_manifest_sha256": "613f6757ceb2df58465d198348129fe0bc37caaaba3a820a70f6f3468b94fb6b",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x1ac9090f",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0x21660",
+    "hash": "0x8a65fd4fecd564114cfe55ba80f9b5a8af7d233339970ea17cc0180cd501d4ca",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x6",
+    "parentBeaconBlockRoot": "0x60c606c4c44709ac87b367f42d2453744639fc5bee099a11f170de98408c8089",
+    "parentHash": "0xda78f13c0d843c94e59269523b68de3a32b6b9970c97e4bcf6f90c4b3265097f",
+    "receiptsRoot": "0x2720fb9212029cb10c0be5ebcf09dff431a228658b4ab719c2b5a0708974d48d",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x93fcf8459e77b9d8136f01672c06a5875dc8447e4b13d9ad6b9239b74cf3bd0b",
+    "timestamp": "0x3c",
+    "transactionsRoot": "0x6ea7e8292f3693180cde07a172d593bae285bb7dd8c16e6a496aea851491ca26",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "7487d734850d74a99ed18ac4f990aec91be4e155ce3aacc9c0f5a13bb4f158b8",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "af0fa80fa2ec6ea1cb159fa163d4a05f356d56954f953224cea9404b7e9bcd30",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x6",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blobGasPrice": "0x1",
+        "blobGasUsed": "0x20000",
+        "blockHash": "0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d",
+        "gasUsed": "0x5208",
+        "status": "0x1",
+        "transactionHash": "0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089"
+      },
+      "name": "_control/receipt-blob-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xd049e8e91a6e93a831bb365b753bc82b734e712ec6bf1a3d9be44f8289f790d5",
+        "status": "0x1",
+        "transactionHash": "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36"
+      },
+      "name": "_control/receipt-beacon-root-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xd049e8e91a6e93a831bb365b753bc82b734e712ec6bf1a3d9be44f8289f790d5",
+        "status": "0x1",
+        "transactionHash": "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2"
+      },
+      "name": "_control/receipt-history-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e",
+      "name": "_control/beacon-reader-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000004788",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "name": "_control/beacon-reader-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000004788",
+          "0x1",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e",
+      "name": "_control/beacon-buffer-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000f3df6d732807ef1319fb7b8bb8522d0beac02",
+          "0x2013",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d",
+      "name": "_control/history-reader-hash",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000002935",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "name": "_control/history-reader-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000002935",
+          "0x1",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d",
+      "name": "_control/history-buffer-parent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000f90827f1c53a10cb7a02335b175320002935",
+          "0x1",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0x68ba9a0733d967eb67f974257a48c57ba432bd29daa4294f52985decf78a51c3",
+        "gasUsed": "0xcfdb",
+        "status": "0x0",
+        "transactionHash": "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb"
+      },
+      "name": "_control/receipt-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0x68ba9a0733d967eb67f974257a48c57ba432bd29daa4294f52985decf78a51c3",
+        "gasUsed": "0xcffa",
+        "status": "0x1",
+        "transactionHash": "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74"
+      },
+      "name": "_control/receipt-factory-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74"
+        ]
+      }
+    },
+    {
+      "expected_frames": [],
+      "name": "filter-failed-create-recipient",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3",
+            "toAddress": [
+              "0x51a240271ab8ab9f9a21c82d9a85396b704e164d"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "A failed top-level CREATE has no created-address match.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [],
+      "name": "filter-failed-nested-create-recipient",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3",
+            "toAddress": [
+              "0xd8353791c13be48589d7247c3284625edca5aa72"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "A failed nested CREATE has no created-address match.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [
+        [
+          "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb",
+          [],
+          "create"
+        ],
+        [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74",
+          [],
+          "call"
+        ]
+      ],
+      "name": "filter-failed-create-creator",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+            ],
+            "fromBlock": "0x3",
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "A failed CREATE still matches its creator.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [
+        [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74",
+          [
+            0
+          ],
+          "create"
+        ]
+      ],
+      "name": "filter-failed-nested-create-creator",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x000000000000000000000000000000000000fac0"
+            ],
+            "fromBlock": "0x3",
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "A failed nested CREATE matches its creating contract.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [
+        [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74",
+          [
+            0
+          ],
+          "create"
+        ]
+      ],
+      "name": "filter-failed-create-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x000000000000000000000000000000000000fac0"
+            ],
+            "fromBlock": "0x3",
+            "mode": "union",
+            "toAddress": [
+              "0xd8353791c13be48589d7247c3284625edca5aa72"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "Union mode retains the creator match of a failed CREATE.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [],
+      "name": "filter-failed-create-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x000000000000000000000000000000000000fac0"
+            ],
+            "fromBlock": "0x3",
+            "toAddress": [
+              "0xd8353791c13be48589d7247c3284625edca5aa72"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      },
+      "requirement": "A failed CREATE has no recipient side, so an intersection with its would-be address is empty.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xc8c95be3c7677411d196b7ef4b16b998aa6e584f82bd0d360eb5aaf21b40ded4",
+        "gasUsed": "0x6592",
+        "status": "0x1",
+        "transactionHash": "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2"
+      },
+      "name": "_control/receipt-selfdestruct-self",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x30ff",
+      "name": "_control/destruct-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000de57",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x3e8",
+      "name": "_control/destruct-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x000000000000000000000000000000000000de57",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "name": "_control/destruct-storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000000000000000000000000000000000000de57",
+          "0x1",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xc8c95be3c7677411d196b7ef4b16b998aa6e584f82bd0d360eb5aaf21b40ded4",
+        "gasUsed": "0xe2d3",
+        "status": "0x1",
+        "transactionHash": "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284"
+      },
+      "name": "_control/receipt-create-destroy-absent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/create-destroy-absent-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0xeac0306941fda13b06e9e7a41c79b5f618cc67ce",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/create-destroy-absent-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0xeac0306941fda13b06e9e7a41c79b5f618cc67ce",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xc8c95be3c7677411d196b7ef4b16b998aa6e584f82bd0d360eb5aaf21b40ded4",
+        "gasUsed": "0xe2d3",
+        "status": "0x1",
+        "transactionHash": "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b"
+      },
+      "name": "_control/receipt-create-destroy-prefunded",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/create-destroy-prefunded-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0xedd09273eb6f5c2fcfb36f667405c3869a71bebb",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/create-destroy-prefunded-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0xedd09273eb6f5c2fcfb36f667405c3869a71bebb",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x4",
+      "name": "_control/factory-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x000000000000000000000000000000000000fac0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_frames": [
+        [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284",
+          [
+            0
+          ],
+          "create"
+        ],
+        [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284",
+          [
+            0,
+            0
+          ],
+          "suicide"
+        ]
+      ],
+      "name": "filter-destroyed-recipient",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x4",
+            "toAddress": [
+              "0xeac0306941fda13b06e9e7a41c79b5f618cc67ce"
+            ],
+            "toBlock": "0x4"
+          }
+        ]
+      },
+      "requirement": "A created-then-destroyed address matches its creation and its SELFDESTRUCT beneficiary.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [
+        [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2",
+          [
+            0
+          ],
+          "suicide"
+        ]
+      ],
+      "name": "filter-self-destruct-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x000000000000000000000000000000000000de57"
+            ],
+            "fromBlock": "0x4",
+            "toBlock": "0x4"
+          }
+        ]
+      },
+      "requirement": "A SELFDESTRUCT matches fromAddress by its executing account.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_frames": [
+        [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2",
+          [],
+          "call"
+        ],
+        [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2",
+          [
+            0
+          ],
+          "suicide"
+        ]
+      ],
+      "name": "filter-self-destruct-to",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x4",
+            "toAddress": [
+              "0x000000000000000000000000000000000000de57"
+            ],
+            "toBlock": "0x4"
+          }
+        ]
+      },
+      "requirement": "A SELFDESTRUCT to self also matches toAddress as its own beneficiary.",
+      "topics": [
+        "H23"
+      ]
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xda78f13c0d843c94e59269523b68de3a32b6b9970c97e4bcf6f90c4b3265097f",
+        "gasUsed": "0x52d4",
+        "status": "0x1",
+        "transactionHash": "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a"
+      },
+      "name": "_control/receipt-refund-clear",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/refund-clear-slot-0",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000005501",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0xda78f13c0d843c94e59269523b68de3a32b6b9970c97e4bcf6f90c4b3265097f",
+        "gasUsed": "0x60e8",
+        "status": "0x1",
+        "transactionHash": "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e"
+      },
+      "name": "_control/receipt-refund-capped",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/refund-capped-slot-0",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000005502",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/refund-capped-slot-1",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000005502",
+          "0x1",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": "0x8a65fd4fecd564114cfe55ba80f9b5a8af7d233339970ea17cc0180cd501d4ca",
+        "status": "0x1",
+        "transactionHash": "0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9"
+      },
+      "name": "_control/receipt-authorizations",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xef0100000000000000000000000000000000000007702b",
+      "name": "_control/authority-existing-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x7",
+      "name": "_control/authority-existing-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xef0100000000000000000000000000000000000007702a",
+      "name": "_control/authority-absent-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x1",
+      "name": "_control/authority-absent-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xef0100000000000000000000000000000000000007702a",
+      "name": "_control/authority-restoring-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x5",
+      "name": "_control/authority-restoring-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xb",
+      "name": "_control/sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x7",
+      "name": "_control/blob-recipient-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x000000000000000000000000000000000000b10b",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "replay-authorizations",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H17",
+        "H18"
+      ]
+    },
+    {
+      "name": "replay-beacon-root-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H28"
+      ]
+    },
+    {
+      "name": "transaction-beacon-root-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36"
+        ]
+      },
+      "topics": [
+        "H28"
+      ]
+    },
+    {
+      "name": "replay-blob-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H17"
+      ]
+    },
+    {
+      "name": "replay-create-destroy-absent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H26"
+      ]
+    },
+    {
+      "name": "transaction-create-destroy-absent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284"
+        ]
+      },
+      "topics": [
+        "H26"
+      ]
+    },
+    {
+      "name": "replay-create-destroy-prefunded",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H26"
+      ]
+    },
+    {
+      "name": "transaction-create-destroy-prefunded",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b"
+        ]
+      },
+      "topics": [
+        "H26"
+      ]
+    },
+    {
+      "name": "replay-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16",
+        "H17"
+      ]
+    },
+    {
+      "name": "transaction-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-factory-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16",
+        "H17"
+      ]
+    },
+    {
+      "name": "transaction-factory-create-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-history-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H28"
+      ]
+    },
+    {
+      "name": "transaction-history-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2"
+        ]
+      },
+      "topics": [
+        "H28"
+      ]
+    },
+    {
+      "name": "replay-refund-capped",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16",
+        "H19",
+        "H20"
+      ]
+    },
+    {
+      "name": "transaction-refund-capped",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-refund-clear",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16",
+        "H19",
+        "H20"
+      ]
+    },
+    {
+      "name": "transaction-refund-clear",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-selfdestruct-self",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H26"
+      ]
+    },
+    {
+      "name": "transaction-selfdestruct-self",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2"
+        ]
+      },
+      "topics": [
+        "H26"
+      ]
+    },
+    {
+      "name": "replay-block-1",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x1",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H17"
+      ]
+    },
+    {
+      "name": "replay-block-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x2",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H28"
+      ]
+    },
+    {
+      "name": "block-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      },
+      "topics": [
+        "H28"
+      ]
+    },
+    {
+      "name": "replay-block-3",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x3",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16",
+        "H17"
+      ]
+    },
+    {
+      "name": "block-3",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-block-4",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x4",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H26"
+      ]
+    },
+    {
+      "name": "block-4",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x4"
+        ]
+      },
+      "topics": [
+        "H26"
+      ]
+    },
+    {
+      "name": "replay-block-5",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x5",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H09",
+        "H16"
+      ]
+    },
+    {
+      "name": "block-5",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x5"
+        ]
+      },
+      "topics": [
+        "H09"
+      ]
+    },
+    {
+      "name": "replay-block-6",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x6",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      },
+      "topics": [
+        "H16",
+        "H17",
+        "H18"
+      ]
+    },
+    {
+      "name": "_control/receipt/0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x39a96f08f95087d62771192efeea4c13841e76d88ff6c7dea89f12fa1358114b"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x3f1603f033127b94711dc5a0ab4250a34c8dcb8f041f2304fe16c4be34e4e1bb"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x5bff67694ccfbfa88f7d81a185ee437e5b484809505cc49446810603b5f823f2"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x5fda3be60b37afa7b2c35c3710704c359acec12ed4d0744565663d1e96d02089"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x6c9c863f8bedabd9d2b96c9f1582c133b0eeaa83343a29c6ad72d77ba46b297a"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x87cfeb711c34353c96b0d55c58aaf1b02f602aff3baa854ee9ba1feb1ca2c3a2"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xaab516a3fb838f33cf12da5aaa74a59d6a192d6f74524e0717bcc5a3b2e3b13e"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf078ce84b1ec1497957373e8cbc58cf875e8bf30097658176634414b95adb3b9"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf27dc2036128a7b56ff5be5e85c989e96865263ac2336aba178a94e8cc8ab284"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xf6fb42057650e021027fc81457375b2bcc6f4b01e40b3f02e3df48ed2d65ab36"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xffba49c281a4842a09a763f7723d4d6d210f1c6c33463e4c7828e50e27dc2b74"
+        ]
+      }
+    }
+  ],
+  "source_commit": "bda5d9f32663be9e1b659d4d9cc308157aa53816",
+  "source_dirty": true,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "53ffb8571817ca095ff62ecc5ef7279f4bd6dec9",
+    "generated_sha256": "348443b52076424264cfc0342cec1cec06762318f645dbb914bc00936e1b6cc7",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-25T08:51:19.766971+00:00"
+}

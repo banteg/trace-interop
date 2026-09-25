@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.8.1 · d97cbd61](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Besu · 26.9-develop · cf89071f](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Erigon · 3.6.1 · 0c4d9c91](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Erigon · 3.8.0-dev · 01c118ee](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Nethermind · 2.1.0-preview · 54b760cd](../../../../clients/nethermind_development.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
-| [Reth · 2.5.2 · 58a51b3e](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/fixture-wave/fee-compat/manifest.json) |
+| [Besu · 26.8.1 · d97cbd61](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Erigon · 3.8.0-dev · f8cfe5a7](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 0a663f3c](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Nethermind · 2.1.0-preview · ee1f57da](../../../../clients/nethermind_development.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
+| [Reth · 2.5.2 · 4630cc58](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-25/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-25/refresh/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -39,7 +39,7 @@
 }
 ```
 
-**Besu · 26.9-develop · cf89071f** (`besu/v26.9-develop-cf89071/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
@@ -49,17 +49,17 @@
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
 
-**Erigon · 3.8.0-dev · 01c118ee** (`3.8.0-dev-01c118ee`)
+**Erigon · 3.8.0-dev · f8cfe5a7** (`3.8.0-dev-f8cfe5a7`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: execution output (224 bytes).
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. An unfunded sender cannot afford positive gas fees.
 
-**Erigon · 3.6.1 · 0c4d9c91** (`3.6.1-0c4d9c91`)
+**Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: execution output (224 bytes).
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. An unfunded sender cannot afford positive gas fees.
 
-**Nethermind · 2.1.0-preview · 54b760cd** (`2.1.0-preview+54b760cd`)
+**Nethermind · 2.1.0-preview · ee1f57da** (`2.1.0-preview+ee1f57da`)
 
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: malformed_json.
@@ -69,7 +69,7 @@
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: malformed_json.
 
-**Reth · 2.5.2 · 58a51b3e** (`Reth Version: 2.5.2+58a51b3e`)
+**Reth · 2.5.2 · 4630cc58** (`Reth Version: 2.5.2+4630cc58`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. An unfunded sender cannot afford positive gas fees.
 

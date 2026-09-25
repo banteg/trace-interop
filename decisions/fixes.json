@@ -214,9 +214,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-25T19:46:08Z"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24293",
@@ -896,9 +896,9 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-25T18:32:20Z",
       "note": "Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551."
     }
   ]

@@ -299,8 +299,8 @@
         "change": "Validate filter types and bounds and return -32602 for invalid request shapes."
       },
       "reth": {
-        "observed": "An integer trace_get path returns null instead of invalid params.",
-        "change": "Reject integer path entries with -32602; callers must convert output path integers to hex quantities."
+        "observed": "An integer trace_get path returns null instead of invalid params. trace_filter rejects a null `mode`, `fromAddress` or `toAddress`: Alloy's `TraceFilter` defaults them only when absent. The 2026-09-26 `filter-null-fromBlock` failure came from its `\"latest\"` toBlock (H32), not the null; the case now names the head by number.",
+        "change": "Reject integer path entries with -32602; callers must convert output path integers to hex quantities. Treat a null filter member as omitted."
       }
     },
     "H28": {

@@ -1131,7 +1131,7 @@
         "method": "trace_filter",
         "params": [
           {
-            "toBlock": "latest"
+            "toBlock": "0x48"
           }
         ]
       }
@@ -1153,7 +1153,7 @@
         "params": [
           {
             "fromBlock": null,
-            "toBlock": "latest"
+            "toBlock": "0x48"
           }
         ]
       }

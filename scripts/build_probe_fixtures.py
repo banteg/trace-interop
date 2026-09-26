@@ -403,7 +403,9 @@ def forks():
          [{'fromBlock': '0x2', 'toBlock': '0x5', **dict.fromkeys(['fromAddress', 'toAddress', 'mode', 'after', 'count'])}],
          probes=[probe('H14', 'records', 'Null mode, after, count and address lists are omitted, so blocks 2-5 return every record.',
                        expected=records(2, 5))])
-    for bound, twin in [('toBlock', {'fromBlock': '0x2'}), ('fromBlock', {'toBlock': 'latest'})]:
+    # The fromBlock twin names the head by number: a null or omitted fromBlock is latest, so the range is valid
+    # without depending on block tag support (H32).
+    for bound, twin in [('toBlock', {'fromBlock': '0x2'}), ('fromBlock', {'toBlock': read(chain/'headblock.json')['number']})]:
         case(cases, f'filter-omitted-{bound}', 'trace_filter', [twin])
         case(cases, f'filter-null-{bound}', 'trace_filter', [dict(twin, **{bound: None})],
              probes=[probe('H14', 'same-result', f'A null {bound} is omitted, so it resolves to the same latest head.',

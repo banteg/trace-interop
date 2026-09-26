@@ -14,7 +14,7 @@
     "mined-probes.json": "0f2664db21aaac9b343d57437f4acef7d2505ee8924a1bb1326eef9fd33fecbb",
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
-    "probes-forks.json": "5e4de2afd36fe940f699a3e52bed71813024f0336dd0866e67ccfce232cb0449",
+    "probes-forks.json": "24645e4e3d90a89d8561d69ae29cdc95278cb32eb54c54c11d41f90b44b9a58d",
     "probes-prague.json": "a82f0921052f4134434e09a46587113b037af210200974690890c47d7b64822f",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
@@ -60,11 +60,11 @@
     "../evidence/2026-09-25/refresh/preflight.json": "7956507cc16f902ae57902246694bb7fb12171a9d8b6b114b3fb06273d8ba184"
   },
   "sources": {
-    "decisions/impact.json": "b0c27077550e2a6c066bba104b713180fae59855093b9db866618015657cf4a4",
+    "decisions/impact.json": "bcaffacda9a4c455e59cc8f377e3a210341989c6f2506cd49b74a24ed14a96e4",
     "decisions/ledger.json": "9e7b0812a00f065698d0c75356dad48cc2180f9044af9432d2aeb5beb16316ff",
     "decisions/sources.json": "edceaf1d194d4fe31c642d84cdb10fc870f21154703d36392257e90974473155",
     "decisions/status.json": "6733bbdc5c73f438399260fbfde3c8559962f4472ee3c791863ea10a0be3e515",
-    "fixtures/checksums.json": "cf05e29537cb8d3e2f2ae6e20b367581098f24ed4f45571c4c9ce6d8de161e3a",
+    "fixtures/checksums.json": "dc6affe5dc2532f9f3e64ccfeec403e19c7eb7c07896fba696f9537bfbd71fc7",
     "locks/source-revisions.json": "9948bb4cb8d0888bd7394972382945b65da45e3843bedb76392bed978e698697",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "ca589dca1a952d728ce9192896b36497385f54dc94658dc6d05c93faaf89efa1",

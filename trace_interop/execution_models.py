@@ -3,6 +3,7 @@ import rlp
 from eth_hash.auto import keccak
 
 from .chain_model import decode_transaction
+from .rules import accounting_topic
 from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram
 from functools import lru_cache
 
@@ -317,6 +318,8 @@ def assess(case, observation, peers, topics):
                         add('H20',not errors,'The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects.', '; '.join(errors[:4]))
         if 'H16' not in topics or not state_requested or not isinstance(diff,dict):
             continue
+        # The case declares an accounting fixture under H16; an unsigned call's accounting is H15's rule.
+        accounting=accounting_topic(method)
         trace=e.get('trace')
         if not isinstance(trace,list) or not trace:
             # Same execution under another trace selection is a relational input,
@@ -368,7 +371,7 @@ def assess(case, observation, peers, topics):
                 and execution_code(tx,codes,exists,nonces,context.get('_chain_id'))=='0x'):
             gas,low,source=21000,21000,'independent simple-transfer model'
         if gas is None:
-            checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='No receipt gas or execution-gas witness was captured.'))
+            checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',detail='No receipt gas or execution-gas witness was captured.'))
             continue
         # Wei destroyed by SELFDESTRUCT to self in the creating transaction (EIP-6780),
         # as independently derived by the corpus; it leaves no balance behind.
@@ -376,7 +379,7 @@ def assess(case, observation, peers, topics):
         if tx.get('type')==3:
             blob_gas,blob_price=quantity(mapping(receipt).get('blobGasUsed')),quantity(mapping(receipt).get('blobGasPrice'))
             if blob_gas is None or blob_price is None:
-                checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',detail='The receipt lacks blob gas used or blob gas price.'))
+                checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',detail='The receipt lacks blob gas used or blob gas price.'))
                 continue
             removed+=blob_gas*blob_price
         base=block.get('base_fee',0)
@@ -389,9 +392,9 @@ def assess(case, observation, peers, topics):
         detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee and destroyed wei={removed}.'
         if low!=gas and settled is not None:
             # Settling within the refund bound is consistent but does not prove the refund.
-            checks.append(dict(topic='H16',status='blocked',requirement='Check accounting against independent gas.',
+            checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',
                                detail='The refund is not independently derived; balances settle within the refund bound. '+detail))
             continue
-        add('H16',settled is not None,
+        add(accounting,settled is not None,
             'Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys.',detail)
     return checks

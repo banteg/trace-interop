@@ -10,9 +10,10 @@ from .validation import request_errors
 from .inventory import verify_inventory, cover_topics, previous_runs
 from .scenarios import assessed_cases, verify_setup
 from .coverage import supplement
+from .isolation import resolve_dependencies
 from . import laws as consistency, tables as decision_tables
 
-ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/probes.py','trace_interop/mined_probes.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/laws.py','trace_interop/tables.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json','decisions/laws.json']
+ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/isolation.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/probes.py','trace_interop/mined_probes.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/laws.py','trace_interop/tables.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json','decisions/laws.json']
 
 
 def link(path, output):
@@ -132,6 +133,7 @@ def assess_runs(root, runs, output, decisions, pinned):
             if eligible:
                 laws += [dict(law, run=folder.name, corpus=manifest['corpus'], client=client, version=summary['versions'].get(client, 'unknown'))
                          for law in consistency.evaluate(rule_context, cases, peers)]
+            assessed=[]
             for case in cases:
                 name=case['name']; observation=peers.get(name,{})
                 record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'method':case['request']['method'],'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':eligible,'capture_eligible':summary['eligible'].get(client,False),'eligibility_detail':scenario_detail,'checks':[],'spec_commit':lock['commit'] if spec else None}
@@ -162,6 +164,10 @@ def assess_runs(root, runs, output, decisions, pinned):
                     for check in record['checks']:
                         check['status']='blocked'
                         check['detail']=scenario_detail if not record['eligible'] else 'No response captured for this declared case.'
+                assessed.append((record, case, observation))
+            resolve_dependencies([record for record,_,_ in assessed])
+            for record, case, observation in assessed:
+                name=case['name']
                 scored=any(c['status'] in ['matches','change_needed','unsupported','observation'] for c in record['checks'])
                 gaps=any(c['status'] in ['unassessed','blocked'] for c in record['checks'])
                 record['assessment']=('blocked' if not record['eligible'] else

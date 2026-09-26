@@ -59,12 +59,12 @@
 
 **Erigon · 3.8.0-dev · 7853b922** (`3.8.0-dev-7853b922`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. H15 owns this error, a base_fee validation rejection: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. Expected 0xffee
+- [H11](../../decisions/H11.md): An empty trace-type selection executes and preserves the fixture return bytes. H15 owns this error, a base_fee validation rejection: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)

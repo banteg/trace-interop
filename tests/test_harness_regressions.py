@@ -101,10 +101,12 @@ class SemanticRegressions(unittest.TestCase):
             self.assert_rejected(c, o, p, 'H09')
 
     def test_requested_raw_products_cannot_disappear(self):
-        for key in ['stateDiff', 'vmTrace']:
+        # What a requested vmTrace holds is H19's (bytecode) and H20's (operations), not validation.
+        for key, topics in [('stateDiff', ['H13']), ('vmTrace', ['H19', 'H20'])]:
             c, o, p = captured('2026-09-23/raw-validation-native', 'raw-validation-valid-all', 'reth_release')
             o['response']['result'][key] = None
-            self.assert_rejected(c, o, p, 'H13')
+            for topic in topics:
+                self.assert_rejected(c, o, p, topic)
 
     def test_precompile_child_identity_is_checked(self):
         for key, value in [('to', '0x'+'12'*20), ('value', '0x0'), ('from', '0x'+'34'*20), ('callType', 'delegatecall')]:
@@ -130,13 +132,13 @@ class SemanticRegressions(unittest.TestCase):
         self.assert_rejected(c, o, p, 'H27')
 
     def test_marker_storage_and_vm_ops_cannot_be_empty(self):
-        for key in ['stateDiff', 'vmTrace']:
+        for key, topic in [('stateDiff', 'H13'), ('vmTrace', 'H20')]:
             c, o, p = captured('2026-09-23/raw-validation-native', 'raw-validation-valid-all', 'reth_release')
             if key == 'stateDiff':
                 o['response']['result'][key][c['marker']]['storage'] = {}
             else:
                 o['response']['result'][key]['ops'] = []
-            self.assert_rejected(c, o, p, 'H13')
+            self.assert_rejected(c, o, p, topic)
 
     def test_out_of_gas_cannot_fabricate_marker_storage(self):
         c,o,p = captured('2026-09-23/raw-validation-native','raw-validation-execution-oog-valid-all','reth_release')

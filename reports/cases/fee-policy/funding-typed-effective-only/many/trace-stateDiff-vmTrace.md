@@ -59,14 +59,14 @@
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H16](../../../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../../../decisions/H16.md): Return one execution envelope per input call, in order. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Affordable at effective price, but not at the EIP-1559 fee cap.
 - Result shape at `/`: {'error': {'code': -32603, 'message': 'Internal error'}, 'id': 1, 'jsonrpc': '2.0'} is not of type 'array'
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H16](../../../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../../../decisions/H16.md): Return one execution envelope per input call, in order. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Affordable at effective price, but not at the EIP-1559 fee cap.
 - Result shape at `/`: {'error': {'code': -32603, 'message': 'Internal error'}, 'id': 1, 'jsonrpc': '2.0'} is not of type 'array'
 

@@ -32,6 +32,8 @@ RAW_VIOLATIONS = [
     ('EIP-3607 ordinary-code sender (not delegation)', 'sender')]
 # Records whose filter membership follows per-action from/to equivalents (H23), not action.from/to.
 SPECIAL_ACTIONS = ('create', 'suicide', 'reward')
+# Unsigned simulations; H16 defers their fee accounting to H15's policy.
+SIMULATIONS = ('trace_call', 'trace_callMany')
 # eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
 RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
 
@@ -51,6 +53,22 @@ def violation(message):
 
 # The block parameter's position for each method that selects one block.
 BLOCK_PARAMETER = {'trace_block': 0, 'trace_replayBlockTransactions': 0, 'trace_call': 2, 'trace_callMany': 1}
+
+
+def accounting_topic(method):
+    """The decision that judges a response's fee accounting: H16 for signed and mined transactions,
+    H15 for unsigned simulations, whose policy H16 defers to."""
+    return 'H15' if method in SIMULATIONS else 'H16'
+
+
+def page_dependencies(method, params, records):
+    """Decisions a trace_filter page depends on besides its own. An address-filtered page shifts when a
+    CREATE, SELFDESTRUCT or reward record in its range matches differently, so a page over such records
+    depends on H23's per-action matching."""
+    filt = mapping(params[0]) if method == 'trace_filter' and params else {}
+    paged = {'after', 'count'} & set(filt)
+    filtered = sequence(filt.get('fromAddress')) or sequence(filt.get('toAddress'))
+    return ['H23'] if paged and filtered and any(mapping(r).get('type') in SPECIAL_ACTIONS for r in records) else []
 
 
 def selects_pending(method, params):
@@ -85,7 +103,7 @@ def pending_check(method, params, status, response, result, context):
     head = mapping(context.get('_environment')).get('NUMBER')
 
     def verdict(value, detail):
-        return {'topic': 'H32', 'status': value, 'requirement': requirement, 'detail': detail}
+        return {'topic': 'H32', 'status': value, 'requirement': requirement, 'detail': detail, 'role': 'rejection'}
     if status == 'rpc_error':
         code = mapping(response.get('error')).get('code')
         return verdict('matches' if code == -32602 else 'change_needed', f'RPC error {code}.')
@@ -149,9 +167,10 @@ def evaluate(case, observation, peers, invalid_params=None):
     status = observation['status']
     checks = []
 
-    def check(topic, ok, requirement, detail=''):
+    def check(topic, ok, requirement, detail='', **tags):
+        # tags: `role` and `depends`, which coverage.isolate and report.assess_runs resolve.
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
-                       'requirement': requirement, 'detail': detail})
+                       'requirement': requirement, 'detail': detail, **{k: v for k, v in tags.items() if v}})
 
     if method.startswith('trace_'):
         if status == 'unsupported':
@@ -191,16 +210,16 @@ def evaluate(case, observation, peers, invalid_params=None):
     if selects_pending(method, params):
         checks.append(pending_check(method, params, status, response, result, context))
     if invalid_params:
-        # The block methods' schema omits pending, which pending_check decides instead.
-        if not (method in ['trace_block', 'trace_replayBlockTransactions'] and selects_pending(method, params)):
-            check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
+        # The schema-derived check yields to a decision that owns this rejection, such as pending_check
+        # for the block methods, whose schema omits pending (coverage.isolate).
+        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+              'Malformed input returns invalid params (-32602).', '; '.join(invalid_params), role='schema')
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
             check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'Unknown mode values return invalid params (-32602).')
+                  'Unknown mode values return invalid params (-32602).', role='rejection')
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'pending' in [params[0].get('fromBlock'), params[0].get('toBlock')]:
             check('H32', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'trace_filter range bounds exclude pending, as eth_getLogs does (-32602).')
+                  'trace_filter range bounds exclude pending, as eth_getLogs does (-32602).', role='rejection')
         return checks
 
     if context.get('_chain') == 'h30':
@@ -210,26 +229,26 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H30', status == 'result' and isinstance(result, list) and len(result) == 3
                   and all(isinstance(frame, dict) and frame.get('blockNumber') == 48 for frame in result)
                   and result == head,
-                  'Omitting both range bounds selects latest only, as an explicit head-only query does.')
+                  'Omitting both range bounds selects latest only, as an explicit head-only query does.', role='result')
         if name == 'filter-to-2-implicit-from':
             check('H30', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
                   'An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.')
         if name in ['call-number-default', 'call-number-latest']:
             check('H31', status == 'result' and mapping(result).get('output') == number_48,
-                  'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).')
+                  'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).', role='result')
         if name in ['many-number-default', 'many-number-latest']:
             check('H31', status == 'result' and isinstance(result, list) and len(result) == 1
                   and mapping(result[0]).get('output') == number_48,
-                  'trace_callMany accepts an omitted block and uses latest (NUMBER 48).')
+                  'trace_callMany accepts an omitted block and uses latest (NUMBER 48).', role='result')
         if name == 'filter-earliest':
             explicit = other('filter-0-to-2')
             check('H32', status == 'result' and isinstance(result, list) and isinstance(explicit, list)
                   and result == explicit,
-                  'The earliest tag resolves like explicit block 0 on this fixture.')
+                  'The earliest tag resolves like explicit block 0 on this fixture.', role='result')
         if name == 'filter-safe':
             check('H32', status == 'result' and isinstance(result, list) and len(result) == 3
                   and all(isinstance(frame, dict) and frame.get('blockNumber') == 48 for frame in result),
-                  'The safe tag resolves to the fixture safe head, block 48.')
+                  'The safe tag resolves to the fixture safe head, block 48.', role='result')
         if name == 'filter-pending':
             if status == 'rpc_error':
                 detail = f'{name}: RPC error {mapping(response.get("error")).get("code")}.'
@@ -248,7 +267,8 @@ def evaluate(case, observation, peers, invalid_params=None):
         path = [int(x, 16) for x in params[1]]
         missing = 'missing' in name or '0xffff' in params[1]
         if missing and name != 'get-missing-tx':
-            check('H06', status == 'result' and result is None, 'A missing transaction or tree path returns null.')
+            # A missing path within an existing transaction is path selection; a missing transaction is H06's.
+            check('H02', status == 'result' and result is None, 'A missing selected frame is null, not an empty collection.')
         elif not missing:
             tree_name = next((c['name'] for c in context.get('cases', [])
                               if c['request']['method'] == 'trace_transaction' and c['request']['params'] == params[:1]), 'transaction-tree')
@@ -258,7 +278,7 @@ def evaluate(case, observation, peers, invalid_params=None):
                 expected = next((f for f in tx_frames if f.get('traceAddress') == path),None)
                 check('H02', status == 'result' and result == expected,
                       f'Return the transaction-tree record at {path}, or null if absent.',
-                      'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.')
+                      'Compared with the same client and transaction; precompile inclusion can shift sibling indexes.', role='result')
             else:
                 checks.append({'topic': 'H02', 'status': 'unassessed',
                                'requirement': 'Compare the requested path with the transaction tree.',
@@ -278,12 +298,12 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H08', isinstance(result.get('output'),str) and re.fullmatch(r'0x(?:[0-9a-f]{2})*',result['output']) is not None,
                   'Output remains a byte string under every trace selection.')
     if name in ['state-only-nonempty-output','vm-only-nonempty-output']:
-        check('H08', isinstance(result,dict) and result.get('output') == '0x'+f'{42:064x}', 'The return42 contract still returns word 42.')
+        check('H08', isinstance(result,dict) and result.get('output') == '0x'+f'{42:064x}', 'The return42 contract still returns word 42.', role='result')
     if name in ['empty-types','call-empty-types','call-empty-types-priced']:
         expected = '0x'+f'{42:064x}' if name == 'empty-types' else '0xffee'
         check('H11', status == 'result' and mapping(result).get('output') == expected,
               'An empty trace-type selection executes and preserves the fixture return bytes.',
-              'Expected '+expected)
+              'Expected '+expected, role='result')
     if context.get('_chain') in ['precompiles','precompile-values'] and method in ['trace_call','trace_callMany']:
         execution = result
         if 'execution_index' in case:
@@ -339,12 +359,12 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name == 'call-identity':
         frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
         check('H22', bool(frames) and mapping(frames[0].get('result')).get('output') == params[0].get('data', params[0].get('input','0x')),
-              'The identity precompile call frame preserves its input as return bytes.')
+              'The identity precompile call frame preserves its input as return bytes.', role='result')
     if name == 'call-siblings-revert-ok':
         frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
         good = next((f for f in frames if f.get('traceAddress') == [1]),None)
         check('H24', good is not None and 'error' not in good and mapping(good.get('result')).get('output') == '0x'+f'{42:064x}',
-              'The successful second sibling retains its output and has no error.')
+              'The successful second sibling retains its output and has no error.', role='result')
     if name in ['constructor','call-constructor','call-constructor-priced'] and isinstance(result,dict) and result.get('vmTrace') is not None:
         check('H19', mapping(result['vmTrace']).get('code') == params[0].get('data',params[0].get('input','0x')), 'Creation vmTrace.code is executing initcode.')
     if method == 'trace_call' and isinstance(result,dict):
@@ -433,7 +453,7 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name == 'filter-two-blocks':
         a,b=reference('block-2'),reference('block-3')
         if isinstance(a,list) and isinstance(b,list):
-            check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.')
+            check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.', role='result')
     if name == 'filter-two-blocks' and not any(c['topic']=='H27' for c in checks):
         checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
     # H15 deliberately submits invalid and unresolved-default requests. An RPC
@@ -442,13 +462,13 @@ def evaluate(case, observation, peers, invalid_params=None):
             and (not case.get('fee_policy') or status == 'result')):
         check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
               and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
-              'Return one execution envelope per input call, in order.')
+              'Return one execution envelope per input call, in order.', role='result')
     probe = name.rsplit('/',1)[-1]
     if probe == 'many-storage-write-read':
         check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}']*2,
-              'The second call reads the first call’s simulated write.')
+              'The second call reads the first call’s simulated write.', role='result')
     if probe == 'many-storage-write-revert-read':
-        check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.')
+        check('H16', isinstance(result,list) and [mapping(r).get('output') for r in result] == ['0x'+f'{42:064x}','0x','0x'+f'{42:064x}'], 'Sequential calls retain prior writes and roll back reverted writes.', role='result')
     if probe in ['many-storage-write-read','many-storage-write-revert-read']:
         # Both storage probes use nonce 133 at the frozen chain-a head. No gas
         # accounting policy is inferred: only nonce progression and storage are checked.
@@ -459,14 +479,14 @@ def evaluate(case, observation, peers, invalid_params=None):
         nonce = context.get('nonce')
         check('H16', valid and isinstance(nonce,int) and all(
             mapping(mapping(d).get(sender)).get('nonce') == {'*':{'from':hex(nonce+i),'to':hex(nonce+i+1)}}
-            for i,d in enumerate(diffs)), 'Each call reports its own sender nonce transition, including a reverted call.')
+            for i,d in enumerate(diffs)), 'Each call reports its own sender nonce transition, including a reverted call.', role='result')
         storage = [mapping(mapping(d).get(target)).get('storage',{}) for d in diffs]
         # The target account exists at both endpoints, so its slots change with '*'
         # even from zero, as in Parity and every native client; slots never use '='.
         first = storage[0] if storage else None
         check('H16', valid and first == {slot:{'*':{'from':slot,'to':value}}}
               and all(s == {} for s in storage[1:]),
-              'Only the first call writes slot zero; reverted writes and later reads add no storage transition.')
+              'Only the first call writes slot zero; reverted writes and later reads add no storage transition.', role='result')
     if context.get('_chain') == 'callmany-isolation' and case.get('isolation_after'):
         before, simulation = case['isolation_before'], case['isolation_after']
         phases = context.get('_scenario_phases')
@@ -482,7 +502,7 @@ def evaluate(case, observation, peers, invalid_params=None):
         ran = ran and all(isinstance(r,dict) for r in executions) and executions[0].get('output') == word42 and executions[-1].get('output') == word42
         if ordered and other(before) == '0x'+'00'*32 and ran:
             check('H16', status == 'result' and result == '0x'+'00'*32,
-                  'Canonical storage remains unchanged after the ordered multi-call simulation.')
+                  'Canonical storage remains unchanged after the ordered multi-call simulation.', role='result')
         else:
             checks.append({'topic':'H16','status':'unassessed',
                            'requirement':'Check canonical storage after the ordered simulation.',
@@ -534,9 +554,12 @@ def evaluate(case, observation, peers, invalid_params=None):
             vm = mapping(mapping(result).get('vmTrace'))
             code = '0x3060005260206000f3' if 'signed_create_address' in case else '0x602a600055602a60005260206000f3'
             expected_pcs = [0] if case.get('expected_execution_error') else [0,1,3,4,6,8] if 'signed_create_address' in case else [0,2,4,5,7,9,10,12,14]
-            ops = sequence(vm.get('ops'))
-            check('H13', vm.get('code') == code and [mapping(op).get('pc') for op in ops] == expected_pcs,
-                  'Requested vmTrace contains the executing fixture bytecode and its opcode sequence.')
+            pcs = [mapping(op).get('pc') for op in sequence(vm.get('ops'))]
+            # What vmTrace holds is not a validation property: its bytecode is H19's, its operations H20's.
+            check('H19', vm.get('code') == code, 'Requested vmTrace holds the executing fixture bytecode.',
+                  f'Expected {code}; got {vm.get("code")}.')
+            check('H20', pcs == expected_pcs, 'Requested vmTrace lists every operation that began executing, in order.',
+                  f'Expected pcs {expected_pcs}; got {pcs}.')
         if isinstance(params[1], list) and 'trace' in params[1]:
             trace = sequence(mapping(result).get('trace'))
             root = next((f for f in trace if isinstance(f, dict) and f.get('traceAddress') == []), {})
@@ -633,10 +656,10 @@ def evaluate(case, observation, peers, invalid_params=None):
               '; '.join(address for address, account in deleted if mapping(account).get('storage') != {})[:200])
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
-        if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.')
+        if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.', role='result')
     if name.startswith('filter-') and name.removeprefix('filter-').isdigit():
         block=reference('block-'+name.removeprefix('filter-'))
-        if isinstance(block,list):check('H27', result==block, 'A single-block filter agrees with trace_block at the same fork.')
+        if isinstance(block,list):check('H27', result==block, 'A single-block filter agrees with trace_block at the same fork.', role='result')
     if (name.startswith('filter-across-') or name.removeprefix('filter-').isdigit()) and not any(c['topic']=='H27' for c in checks):
         checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
     if name.startswith('system-beacon-'):
@@ -644,10 +667,10 @@ def evaluate(case, observation, peers, invalid_params=None):
         h=next((h for h in headers if h.get('number')=='0x38'),None)
         if h:
             expected='0x'+('0'*64 if int(block)<56 else f'{560:064x}' if slot=='560' else h['parentBeaconBlockRoot'][2:])
-            check('H28', status=='result' and result==expected, 'Historical beacon-root storage excludes the following block system update.')
+            check('H28', status=='result' and result==expected, 'Historical beacon-root storage excludes the following block system update.', role='result')
     if name in ['beacon-call-55','beacon-call-56']:
         h=next((h for h in context.get('headers',[]) if h.get('number')=='0x38'),None)
-        if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.')
+        if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.', role='result')
     if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
         check('H06', status=='rpc_error' and mapping(response.get('error')).get('code')==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
     # A reference that contradicts its anchored fixture actions is a client

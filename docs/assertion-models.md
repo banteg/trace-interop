@@ -96,6 +96,33 @@ trace_call or trace_callMany is accepted only with a real pending environment, t
 block after the head, shown by record block numbers, non-canonical replayed
 transactions or a modelled NUMBER read; otherwise it must be -32602 (H32).
 
+A check is judged under the decision whose rule it tests, not the decision its case is
+declared for, so one defect fails one decision (`trace_interop/isolation.py`):
+
+- Assertion sites tag checks by rule. Fee accounting of trace_call and trace_callMany is
+  H15's, since H16 defers unsigned calls to H15's policy; signed and mined accounting stays
+  H16. A trace_get of a transaction the chain does not contain is H06's rule, and a path
+  within an existing transaction, including a missing one, is H02's. The bytecode of a signed
+  control's vmTrace is H19's and its operation list H20's, not H13's. A declared decision
+  whose rule defers to another for the request is not applicable and names that owner.
+- A check that reads an executed result is blocked on an error response whose rejection
+  another decision's rule identifies: an error envelope wrapped as a result (H25), or a
+  validation rejection its message names (H15 for unsigned simulations, H13 for signed
+  transactions). The detail names the owner. An error no rule identifies, such as a bare
+  -32603, stays a difference for the check's own decision, which may require the request to
+  execute (an empty trace-type selection, H11).
+- The schema-derived invalid-params check (H14) yields to a decision that owns the request's
+  rejection: unknown modes (H03), pending filter bounds and pending blocks (H32), or an error
+  probe. It is then not applicable and names the owner.
+- A check can depend on another decision by rule. A trace_filter page (after/count) over
+  address-filtered records that include CREATE, SELFDESTRUCT or reward records depends on
+  H23's per-action matching, because one record matched differently shifts the page. It is
+  blocked while an H23 check differs on the same response or, when the response has none, in
+  the same build's run of that corpus.
+
+`tests/test_isolation.py` guards the published assessment: no response fails two decisions
+for one defect class, except on an error no rule identifies.
+
 Controls and expectations come from the current corpus definition whenever the
 captured request is byte-identical, so a corrected fixture reassesses retained
 evidence. A changed request keeps the definition it was captured with.

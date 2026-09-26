@@ -4,6 +4,7 @@ import json
 import unittest
 from pathlib import Path
 
+from trace_interop.isolation import isolate
 from trace_interop.rules import evaluate
 from trace_interop.presentation import outcome
 
@@ -215,16 +216,16 @@ class CoverageTests(unittest.TestCase):
         context = {'_environment': {'NUMBER': head},
                    '_blocks': {hex(head): {'transactions': [{'hash': '0xhead'}]}}}
         def status(method, params, observation, errors=None):
-            checks = evaluate({'name': 'pending', 'context': context, 'request': {'method': method, 'params': params}},
-                              observation, {}, invalid_params=errors)
+            case = {'name': 'pending', 'context': context, 'request': {'method': method, 'params': params}}
+            checks = isolate(case, observation, evaluate(case, observation, {}, invalid_params=errors))
             return {t: [c['status'] for c in checks if c['topic'] == t] for t in ['H14', 'H32']}
         result = lambda value: {'status': 'result', 'response': {'result': value}}
         error = lambda code: {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'pending'}}}
         record = lambda number: {'type': 'call', 'blockNumber': number, 'traceAddress': [], 'action': {}}
         schema = ['pending is not one of the block forms']
         # trace_block: the schema omits pending, so H32 alone decides it.
-        self.assertEqual(status('trace_block', ['pending'], error(-32602), schema), {'H14': [], 'H32': ['matches']})
-        self.assertEqual(status('trace_block', ['pending'], error(-32000), schema), {'H14': [], 'H32': ['change_needed']})
+        self.assertEqual(status('trace_block', ['pending'], error(-32602), schema), {'H14': ['not_applicable'], 'H32': ['matches']})
+        self.assertEqual(status('trace_block', ['pending'], error(-32000), schema), {'H14': ['not_applicable'], 'H32': ['change_needed']})
         self.assertEqual(status('trace_block', ['pending'], result([record(pending)]), schema)['H32'], ['matches'])
         self.assertEqual(status('trace_block', ['pending'], result([record(head)]), schema)['H32'], ['change_needed'])
         self.assertEqual(status('trace_block', ['pending'], result([]), schema)['H32'], ['blocked'])

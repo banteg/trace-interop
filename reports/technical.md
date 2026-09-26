@@ -41,10 +41,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 13797 |
-| 🟡 Partial | 1037 |
+| 🔎 Assessed | 13283 |
+| 🟡 Partial | 1549 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 593 |
+| 🚧 Blocked | 595 |
 | 🔎 Control | 19 |
 
 
@@ -54,14 +54,19 @@ Each row names the reason; controls and inapplicable properties do not count as 
 
 | Topic | Disposition | Reason | Observations |
 | --- | --- | --- | --- |
+| H02 | not_applicable | The transaction is not in the chain: a missing transaction lookup is H06’s rule, not path selection. | 11 |
+| H03 | blocked | Depends on H23, which differs for this build in rewards-to, rewards-union. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436', 'blockNumber': 2, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'} | 1 |
+| H03 | blocked | Depends on H23, which differs for this build in rewards-union. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436', 'blockNumber': 2, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'} | 1 |
 | H06 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H06 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 2 |
+| H06 | not_applicable | The transaction exists: which frame a path selects, including null for a missing path, is H02’s rule. | 22 |
 | H07 | blocked | Cannot inspect this property: unsupported. | 24 |
 | H07 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 11 |
 | H08 | blocked | Cannot inspect this property: unsupported. | 8 |
 | H08 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
 | H09 | blocked | Address selection differs from its reference; failure-bearing frame selection is not established. | 4 |
 | H09 | blocked | Cannot inspect this property: unsupported. | 12 |
+| H09 | blocked | H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect. | 2 |
 | H09 | blocked | No failed attempts ['call', 'create'] under the deepest executed frame at depth 1024. | 2 |
 | H09 | blocked | No failed attempts ['call', 'create'] under the deepest executed frame at depth 1025. | 2 |
 | H09 | blocked | No frame matches {'action': {'value': '0x1'}, 'traceAddress': [0], 'type': 'call'}. | 4 |
@@ -70,12 +75,21 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H09 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 24 |
 | H09 | blocked | The RPC returned an error, so there is no execution result to inspect. | 8 |
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 9 |
+| H11 | blocked | H15 owns this error, a base_fee validation rejection: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430. There is no executed result to inspect. | 2 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 72 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 2 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 4 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
+| H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas | 11 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 489 |
 | H15 | blocked | Cannot inspect this property: malformed_json. | 435 |
+| H15 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. | 7 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 7 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 28 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 6 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 28 |
 | H15 | blocked | eth_call: base_fee rejection; trace_call: malformed_json. | 90 |
 | H15 | blocked | eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error. | 118 |
 | H15 | blocked | eth_call: execution output (224 bytes); trace_call: invalid execution output. | 18 |
@@ -85,14 +99,10 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | eth_call: priority rejection; trace_call: unclassified RPC error: internal error. | 16 |
 | H15 | blocked | eth_call: unclassified RPC error: evm error: outoffunds; trace_call: execution output (0 bytes). | 32 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 24 |
-| H16 | blocked | No receipt gas or execution-gas witness was captured. | 8 |
+| H16 | blocked | H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect. | 2 |
+| H16 | blocked | H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect. | 514 |
 | H16 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 34 |
-| H16 | blocked | The RPC returned an error, so there is no execution result to inspect. | 4 |
-| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. | 7 |
-| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 7 |
-| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 28 |
-| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 6 |
-| H16 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 28 |
+| H16 | not_applicable | For unsigned calls H16 defers to H15’s policy; this call’s fee accounting is judged under H15. | 33 |
 | H16 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 5 |
 | H17 | blocked | Cannot inspect this property: unsupported. | 10 |
 | H17 | blocked | No state-diff object was returned; account markers cannot be assessed. | 2 |

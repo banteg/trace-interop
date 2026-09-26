@@ -60,28 +60,28 @@
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
 - [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
-- [H09](../../decisions/H09.md): The declared failing execution contains its failed frame. No failed frame was returned for this failure-bearing fixture.
+- [H09](../../decisions/H09.md): The declared failing execution contains its failed frame. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - Result shape at `/`: {'error': {'code': -32603, 'message': 'Internal error'}, 'id': 1, 'jsonrpc': '2.0'} is not of type 'array'
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
-- [H09](../../decisions/H09.md): The declared failing execution contains its failed frame. No failed frame was returned for this failure-bearing fixture.
+- [H09](../../decisions/H09.md): The declared failing execution contains its failed frame. H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect.
 - Result shape at `/`: {'error': {'code': -32603, 'message': 'Internal error'}, 'id': 1, 'jsonrpc': '2.0'} is not of type 'array'
 
 **Erigon · 3.8.0-dev · 7853b922** (`3.8.0-dev-7853b922`)
 
-- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order. H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order.
+- [H16](../../decisions/H16.md): Return one execution envelope per input call, in order. H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect.
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
 - [H09](../../decisions/H09.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 

@@ -7,6 +7,7 @@ A probe may declare `depends` ({topic, reason}): an error response then blocks i
 the error cannot separate its property from that dependency. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict.
 """
+from .rules import embedded_error, page_dependencies
 from .vm_model import UnsupportedProgram, execute, store_words, words
 
 
@@ -76,13 +77,13 @@ def assess(case, observation, peers):
     result = response.get('result')
     checks = []
 
-    def add(topic, ok, requirement, detail=''):
+    def add(topic, ok, requirement, detail='', **tags):
         if 'observe' in probe:
             checks.append({'topic': topic, 'status': 'observation', 'requirement': requirement,
                            'detail': probe['observe']+(' Observed: '+detail if detail else '')})
             return
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
-                       'requirement': requirement, 'detail': detail})
+                       'requirement': requirement, 'detail': detail, **{k: v for k, v in tags.items() if v}})
 
     def envelope(index):
         if method == 'trace_callMany':
@@ -102,20 +103,23 @@ def assess(case, observation, peers):
             ok = status == 'rpc_error' and (code is None or error.get('code') == code)
             add(topic, ok, requirement,
                 f'Observed {status}' + (f' {error.get("code")}: {str(error.get("message"))[:120]}' if status == 'rpc_error'
-                                        else f' with output {str(mapping(result).get("output", result))[:140]}'))
+                                        else f' with output {str(mapping(result).get("output", result))[:140]}'),
+                role='rejection')
             continue
-        if status != 'result':
-            error = mapping(response.get('error'))
+        if status != 'result' or embedded_error(response):
+            # An error envelope wrapped as a result (H25) carries no result either.
+            error = mapping(response.get('error') or mapping(result).get('error'))
             observed = f'{status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip()
             if 'depends' in probe:
                 checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
                                'detail': f'Depends on {probe["depends"]["topic"]}: {probe["depends"]["reason"]} Observed {observed}.'})
                 continue
-            add(topic, False, requirement, f'Expected a result; observed {observed}')
+            add(topic, False, requirement, f'Expected a result; observed {observed}', role='result')
             continue
         if kind == 'records':
             detail = first_difference(result, probe['expected'])
-            add(topic, not detail, requirement, detail)
+            depends = [] if topic == 'H23' else page_dependencies(method, case['request'].get('params', []), probe['expected'])
+            add(topic, not detail, requirement, detail, depends=depends)
         elif kind == 'outputs':
             expected = probe['expected']
             if method == 'trace_callMany':

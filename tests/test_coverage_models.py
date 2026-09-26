@@ -366,7 +366,8 @@ class TransferModelTests(unittest.TestCase):
         case,result,peers=self.fixture()
         peers['_control/miner-balance']['status']='invalid_envelope'
         checks=supplement(case,{'status':'result','response':{'result':result}},peers,[],[])
-        self.assertEqual([c['status'] for c in checks if c['topic']=='H16'],['blocked'])
+        # A simulated transfer's accounting is H15's policy (H16 defers unsigned calls to it).
+        self.assertEqual([c['status'] for c in checks if c['topic']=='H15'],['blocked'])
 
 
 class AccountingTests(unittest.TestCase):
@@ -458,7 +459,7 @@ class ReviewRegressionTests(unittest.TestCase):
         charged = 40000  # the real charge is 43,106: a zero-to-one SSTORE has no refund
         result = {'trace': [{'type': 'call', 'traceAddress': [], 'result': {'gasUsed': hex(22106), 'output': '0x'}}],
                   'stateDiff': {self.sender: {'balance': {'*': {'from': hex(1000000), 'to': hex(1000000-2*charged)}}}, self.miner: {'balance': {'+': hex(charged)}}}}
-        checks = [c for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'}) if c['topic'] == 'H16']
+        checks = [c for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'}) if c['topic'] == 'H15']
         self.assertTrue(checks)
         self.assertNotIn('matches', {c['status'] for c in checks}, checks)
 

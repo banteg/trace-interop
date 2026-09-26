@@ -14,6 +14,8 @@ from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
 from .probes import assess as assess_probe
 from .mined_probes import assess as assess_mined_probes
+from .rules import accounting_topic, page_dependencies
+from .isolation import deferred, isolate
 
 
 def obj(value):
@@ -32,6 +34,11 @@ def integer(value):
 
 
 def supplement(case, observation, peers, checks, expected):
+    """The rule checks plus every property check of one response, each judged under its own decision."""
+    return isolate(case, observation, properties(case, observation, peers, checks, expected))
+
+
+def properties(case, observation, peers, checks, expected):
     checks = list(checks)
     context = case.get('context', {})
     name, request = case['name'], case['request']
@@ -47,9 +54,9 @@ def supplement(case, observation, peers, checks, expected):
                          for t in sorted(declared - {c['topic'] for c in checks})]
     blocks = context.get('_blocks', {})
 
-    def add(topic, ok, requirement, detail=''):
+    def add(topic, ok, requirement, detail='', **tags):
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
-                       'requirement': requirement, 'detail': detail})
+                       'requirement': requirement, 'detail': detail, **{k: v for k, v in tags.items() if v}})
 
     def explain(topic, kind, detail):
         checks.append({'topic': topic, 'status': kind,
@@ -88,15 +95,8 @@ def supplement(case, observation, peers, checks, expected):
         add('H27', result == case['expected_control'], 'The explicit trace control matches its fixture expectation.')
     checks.extend(assess_mined_probes(case, observation, peers))
 
-    if method == 'trace_get' and name in ['get-missing', 'get-missing-tx']:
-        add('H02', status == 'result' and result is None, 'A missing selected frame is null, not an empty collection.')
-    if 'H06' in declared and not covered('H06'):
-        if name == 'latest-call':
-            explain('H06', 'control', 'Latest execution is the successful control for the unavailable-history probe.')
-        elif name == 'get-nested':
-            reference = next((c for c in checks if c['topic'] == 'H02'), None)
-            if reference:
-                checks.append(dict(reference, topic='H06', requirement='The nested path returns its independently anchored frame or null when absent.'))
+    if 'H06' in declared and not covered('H06') and name == 'latest-call':
+        explain('H06', 'control', 'Latest execution is the successful control for the unavailable-history probe.')
 
     if method in ['trace_replayTransaction', 'trace_replayBlockTransactions']:
         if method == 'trace_replayBlockTransactions':
@@ -130,7 +130,7 @@ def supplement(case, observation, peers, checks, expected):
                     explain('H09', 'not_applicable', 'No failed frame is selected; the address-filter assertion independently checks the selected inventory.')
             else:
                 add('H09', False, 'The declared failing execution contains its failed frame.',
-                    'No failed frame was returned for this failure-bearing fixture.')
+                    'No failed frame was returned for this failure-bearing fixture.', role='result')
 
     if 'H10' in declared and status == 'result' and not covered('H10'):
         creations = [f for f in frames if f.get('type') == 'create']
@@ -173,7 +173,8 @@ def supplement(case, observation, peers, checks, expected):
                 baseline=[f for f in baseline if selected(f)]
                 after, count = filt.get('after', 0), filt.get('count', len(baseline))
                 if type(after) is int and type(count) is int and after >= 0 and count >= 0:
-                    add('H03', result == baseline[after:after+count], 'Filter the anchored canonical inventory before applying after/count, including count zero and past-end pages.')
+                    add('H03', result == baseline[after:after+count], 'Filter the anchored canonical inventory before applying after/count, including count zero and past-end pages.',
+                        depends=page_dependencies(method, params, baseline))
             elif name in ['filter-transfer','withdrawal-filter-51','withdrawal-filter-52','withdrawal-filter-53'] or any(t in name for t in ['page','filter-zero']):
                 explain('H03', 'blocked', 'The per-block reference lacks an independent transaction inventory.')
     if 'H05' in declared and not covered('H05') and status == 'result':
@@ -311,8 +312,9 @@ def supplement(case, observation, peers, checks, expected):
             'Every transfer to the independently empty-code recipient returns empty bytes.')
         base = context['_environment']['BASEFEE']
         before_miner = integer(other('_control/miner-balance'))
+        accounting = accounting_topic(method)
         if before_miner is None:
-            explain('H16', 'blocked', 'Independent fee-recipient balance unavailable.')
+            explain(accounting, 'blocked', 'Independent fee-recipient balance unavailable.')
         else:
             add('H16', len(envelopes) == count, 'Return one execution envelope per modelled transfer.')
             for i in range(count):
@@ -324,7 +326,7 @@ def supplement(case, observation, peers, checks, expected):
                 paid, tip = 21000*model['price'], 21000*(model['price']-base)
                 before = model['balance']-i*(paid+model['value'])
                 changed = lambda a,b: {'*':{'from':hex(a),'to':hex(b)}}
-                add('H16', sender.get('balance') == changed(before,before-paid-model['value'])
+                add(accounting, sender.get('balance') == changed(before,before-paid-model['value'])
                     and sender.get('nonce') == changed(model['nonce']+i,model['nonce']+i+1)
                     and fee_recipient.get('balance') == ({'+':hex(tip)} if i==0 and model.get('miner_absent') else changed(before_miner+i*tip,before_miner+(i+1)*tip))
                     and recipient.get('balance') == ({'+':hex(model['value'])} if i==0 else changed(i*model['value'],(i+1)*model['value'])),
@@ -339,7 +341,10 @@ def supplement(case, observation, peers, checks, expected):
     # For old broad examples without independently pinned pre/post state, retain
     # specific model gaps. Dedicated coverage fixtures carry exact state anchors.
     for topic in sorted(declared - {c['topic'] for c in checks}):
-        if status == 'rpc_error':
+        owner = deferred(topic, case)
+        if owner:
+            explain(topic, 'not_applicable', owner[1])
+        elif status == 'rpc_error':
             explain(topic, 'blocked', 'The RPC returned an error, so there is no execution result to inspect.')
         else:
             details = {

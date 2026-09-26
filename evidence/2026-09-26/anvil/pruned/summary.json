@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "eligible": {
+    "reth_development": true,
+    "reth_release": true
+  },
+  "exchange_count": 30,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (reth_development)",
+      "pass": true
+    },
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c headBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 safeBlockHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (reth_release)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "reth_development": {
+      "detail": "requires retained old header/receipt, successful latest call, and independently unavailable old state",
+      "verified": true
+    },
+    "reth_release": {
+      "detail": "requires retained old header/receipt, successful latest call, and independently unavailable old state",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "reth_development": "Reth Version: 2.5.2+df7b7fdf",
+    "reth_release": "Reth Version: 2.6.0+73a3a008"
+  }
+}

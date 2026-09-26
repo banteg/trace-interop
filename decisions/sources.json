@@ -476,5 +476,97 @@
       "anchor": "func (c *traceCapture) stateDiff() map[common.Address]*traceAccountDiff {",
       "sha256": "41c472b5637539ca1072e579d148ff6b131b0a1f00283137dd8eb5934a2a6edc"
     }
+  },
+  "anvil": {
+    "lookup": {
+      "label": "Trace lookup",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "line": 3858,
+      "anchor": "pub async fn trace_get(",
+      "sha256": "86c95ed417a3ebcd90154697c57ea2aec1e22a125c9bfe1473dd84f35284dbd9"
+    },
+    "filter": {
+      "label": "Address filtering",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "line": 4223,
+      "anchor": "pub async fn trace_filter(",
+      "sha256": "86c95ed417a3ebcd90154697c57ea2aec1e22a125c9bfe1473dd84f35284dbd9"
+    },
+    "call": {
+      "label": "Call simulation and trace types",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/api.rs",
+      "line": 1500,
+      "anchor": "pub async fn trace_call(",
+      "sha256": "c55ca04c91cc2ed9cab7a927f896b438b406b3c5bba05463d712ee170945a7f5"
+    },
+    "raw": {
+      "label": "Signed transaction replay",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "line": 4007,
+      "anchor": "pub async fn trace_raw_transaction(",
+      "sha256": "86c95ed417a3ebcd90154697c57ea2aec1e22a125c9bfe1473dd84f35284dbd9"
+    },
+    "replay": {
+      "label": "Replay results",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "line": 3973,
+      "anchor": "pub async fn trace_replay_transaction(",
+      "sha256": "86c95ed417a3ebcd90154697c57ea2aec1e22a125c9bfe1473dd84f35284dbd9"
+    },
+    "frames": {
+      "label": "Mined-trace frame builder",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/storage.rs",
+      "line": 640,
+      "anchor": "pub fn parity_traces(&self)",
+      "sha256": "0bda4f3f41a896e4c706f121087b62b5d0374c91c5466a32cf2196200a86e36d"
+    },
+    "vm": {
+      "label": "VM trace builder (revm-inspectors 0.43.0)",
+      "repository": "https://github.com/paradigmxyz/revm-inspectors",
+      "commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/builder/parity.rs",
+      "line": 317,
+      "anchor": "fn make_vm_trace(&self, start: &CallTraceNode) -> VmTrace {",
+      "sha256": "4d3ae5678361a678bf6c101e0f8e6585d53c6cad793071bbe7f0469bd85acf76"
+    },
+    "state": {
+      "label": "State-diff builder (revm-inspectors 0.43.0)",
+      "repository": "https://github.com/paradigmxyz/revm-inspectors",
+      "commit": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/builder/parity.rs",
+      "line": 509,
+      "anchor": "pub fn populate_state_diff<'a, DB, I>(",
+      "sha256": "4d3ae5678361a678bf6c101e0f8e6585d53c6cad793071bbe7f0469bd85acf76"
+    },
+    "bounds": {
+      "label": "Filter range defaults",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "line": 4228,
+      "anchor": "let start = filter.from_block.unwrap_or(0);",
+      "sha256": "86c95ed417a3ebcd90154697c57ea2aec1e22a125c9bfe1473dd84f35284dbd9"
+    },
+    "many": {
+      "label": "Batched call block default",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
+      "path": "crates/anvil/src/eth/api.rs",
+      "line": 4148,
+      "anchor": "let block_number = block_number.unwrap_or(BlockId::Number(BlockNumber::Pending));",
+      "sha256": "c55ca04c91cc2ed9cab7a927f896b438b406b3c5bba05463d712ee170945a7f5"
+    }
   }
 }

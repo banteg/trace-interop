@@ -4,12 +4,12 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.8.0-dev · 7853b922** (of 32 decisions): ✅ 16 agree (+2 since the previous capture) · ⚠️ 12 with no fix yet (1 on converged decisions) · ❔ 1 policy open · ⚪ 3 not fully measured. 3 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 9 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.8.0-dev · 7853b922** (of 32 decisions): ✅ 16 agree · ⚠️ 12 with no fix yet (1 on converged decisions) · ❔ 1 policy open · ⚪ 3 not fully measured. 3 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 9 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.7.0` | [`bdc78cc4`](https://github.com/erigontech/erigon/commit/bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74) | 2026-09-24 | [2026-09-26](../../evidence/2026-09-26/eval/initial/manifest.json) |
-| `3.8.0-dev` | [`7853b922`](https://github.com/erigontech/erigon/commit/7853b9226e37dd50a3f62c84da97d856cbbbbe12) | 2026-09-26 | [2026-09-26](../../evidence/2026-09-26/eval/initial/manifest.json) |
+| `3.7.0` | [`bdc78cc4`](https://github.com/erigontech/erigon/commit/bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74) | 2026-09-24 | [2026-09-26](../../evidence/2026-09-26/anvil/initial/manifest.json) |
+| `3.8.0-dev` | [`7853b922`](https://github.com/erigontech/erigon/commit/7853b9226e37dd50a3f62c84da97d856cbbbbe12) | 2026-09-26 | [2026-09-26](../../evidence/2026-09-26/anvil/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

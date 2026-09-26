@@ -28,6 +28,10 @@
     "geth": {
       "name": "Geth draft fork",
       "summary": "The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision except the H12 raw-transaction block argument and simulation pending, which remain policy observations. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
+    },
+    "anvil": {
+      "name": "Anvil",
+      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive; 1.8.3 and the nightly return identical trace responses. Its trace output comes from revm-inspectors 0.43.0, so the stateDiff, EIP-7702, vmTrace and SELFDESTRUCT fixes already in Reth\u2019s nightly arrive with a dependency bump. Its own RPC layer differs in tree-path lookup, missing-item results, replay transaction hashes, unrequested call frames, conflicting data/input, zero-fee BASEFEE, omitted filter bounds and the trace_callMany default block. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
     }
   },
   "topics": {
@@ -104,6 +108,10 @@
       "geth": {
         "observed": "A filter bound beyond the head returns -32001.",
         "change": "Return `-32602`, as the draft already does for a reversed range and as eth_getLogs does."
+      },
+      "anvil": {
+        "observed": "trace_transaction and trace_block return `[]` for a missing transaction or block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602.",
+        "change": "Return `null` for a missing transaction or path and -32001 for an unknown selected block, including the trace_call block."
       }
     },
     "H09": {
@@ -187,6 +195,10 @@
       "geth": {
         "observed": "The captured draft eth_call uses BASEFEE 0 while trace_call preserves B for explicit zero and omitted fees: 40 defined-policy pairs differ. Priced upfront debit and positive-price rejection match across methods. The fork implements the earlier H15 proposal and is not an upstream consensus vote.",
         "change": "Align the draft trace simulation with eth_call\u2019s zero-fee BASEFEE convention for any zero effective price while retaining priced validation and accounting."
+      },
+      "anvil": {
+        "observed": "An explicit zero fee keeps the block base fee visible as BASEFEE instead of 0. Priced calls settle the sender debit and coinbase tip in stateDiff, matching the proposal where the native clients do not.",
+        "change": "Run a zero effective price with GASPRICE and BASEFEE 0 and no gas-fee balance effects; keep the priced settlement."
       }
     },
     "H20": {
@@ -273,6 +285,10 @@
       "reth": {
         "observed": "2.6.0 \u00b7 73a3a008 uses a flat selector; 2.5.2 \u00b7 4630cc58 selects the requested tree path and matches these cases.",
         "change": "Ship the tree-path lookup already present in 4630cc58 (#27366). Existing flat-index callers need a migration path."
+      },
+      "anvil": {
+        "observed": "`trace_get` indexes the flattened frame list and needs exactly one index: `[]` and nested paths return null, and `[1]` returns the second frame in list order.",
+        "change": "Interpret the selector as one `traceAddress` path: `[]` selects the root, `[0]` its first child."
       }
     },
     "H08": {
@@ -283,6 +299,10 @@
       "nethermind": {
         "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-unstable \u00b7 641592d2 retains it.",
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
+      },
+      "anvil": {
+        "observed": "trace_call treats an empty trace-type list as `[\"trace\"]`, so it returns call frames that were not requested.",
+        "change": "Return `trace: []` when call traces were not requested; keep the execution output."
       }
     },
     "H14": {
@@ -301,6 +321,10 @@
       "reth": {
         "observed": "An integer trace_get path returns null instead of invalid params. trace_filter rejects a null `mode`, `fromAddress` or `toAddress`: Alloy's `TraceFilter` defaults them only when absent. The 2026-09-26 `filter-null-fromBlock` failure came from its `\"latest\"` toBlock (H32), not the null; the case now names the head by number.",
         "change": "Reject integer path entries with -32602; callers must convert output path integers to hex quantities. Treat a null filter member as omitted."
+      },
+      "anvil": {
+        "observed": "When `data` and `input` are both set and differ, trace_call runs `input` instead of rejecting the request.",
+        "change": "Reject conflicting `data` and `input` with -32602."
       }
     },
     "H28": {
@@ -347,6 +371,10 @@
       "reth": {
         "observed": "2.6.0 \u00b7 73a3a008 omits transactionHash in individual replays; 2.5.2 \u00b7 4630cc58 includes it.",
         "change": "Ship the replay metadata fix already present in 4630cc58."
+      },
+      "anvil": {
+        "observed": "Individual replays omit `transactionHash`.",
+        "change": "Include `transactionHash` in trace_replayTransaction results, as block replays do."
       }
     },
     "H18": {
@@ -378,6 +406,10 @@
       "nethermind": {
         "observed": "An explicit toBlock before the implicit latest start returns -32000.",
         "change": "Return `-32602` for the reversed range."
+      },
+      "anvil": {
+        "observed": "An omitted fromBlock starts at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. Ranges are capped at 300 blocks.",
+        "change": "Default omitted bounds to latest; return -32602 when an explicit end precedes the implicit start."
       }
     },
     "H31": {
@@ -389,6 +421,10 @@
       "reth": {
         "observed": "An omitted trace_callMany block returns NUMBER 49 on both tested builds, while explicit latest and trace_call defaults return 48. Main already defaults to latest (#27410).",
         "change": "Ship the latest default from main; retain pending only when explicitly requested and supported."
+      },
+      "anvil": {
+        "observed": "An omitted trace_callMany block uses pending (NUMBER 49), while trace_call defaults to latest.",
+        "change": "Default to latest, matching trace_call; use pending only when requested."
       }
     },
     "H32": {

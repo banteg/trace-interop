@@ -2,19 +2,21 @@
 
 `trace_rawTransaction` · repeat · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Assess the declared property.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Erigon · 3.8.0-dev · 7853b922](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · c8449896](../../clients/go-ethereum_trace.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Nethermind · 2.1.0-preview · b4211ad9](../../clients/nethermind_development.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
-| [Reth · 2.5.2 · df7b7fdf](../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/repeat/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Anvil · 1.8.4-nightly · 5a99f1a8](../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Erigon · 3.8.0-dev · 7853b922](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · c8449896](../../clients/go-ethereum_trace.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Nethermind · 2.1.0-preview · fca93966](../../clients/nethermind_development.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
+| [Reth · 2.5.2 · df7b7fdf](../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-26/anvil/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/repeat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -50,7 +52,7 @@
 
 - [H13](../../decisions/H13.md): Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Identified chain; code -32000; accepted [-32003].
 
-**Nethermind · 2.1.0-preview · b4211ad9** (`2.1.0-preview+b4211ad9`)
+**Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 
 - [H25](../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 - [H13](../../decisions/H13.md): Assess the declared property. Cannot inspect this property: malformed_json.

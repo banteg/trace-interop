@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="624" height="184" viewBox="0 0 624 184" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 2 agree, 5 fix submitted, 2 no fix · converged, 16 no fix · under review, 1 policy open, 6 not fully measured; Erigon 16 agree, 1 no fix · converged, 11 no fix · under review, 1 policy open, 3 not fully measured; Nethermind 14 agree, 2 fix submitted, 2 no fix · converged, 12 no fix · under review, 1 policy open, 1 not fully measured; Reth 19 agree, 2 no fix · converged, 9 no fix · under review, 1 policy open, 1 not fully measured</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
+<title id="title">Decision outcomes per client: Besu 2 agree, 5 fix submitted, 2 no fix · converged, 16 no fix · under review, 1 policy open, 6 not fully measured; Erigon 16 agree, 1 no fix · converged, 11 no fix · under review, 1 policy open, 3 not fully measured; Nethermind 14 agree, 2 fix submitted, 2 no fix · converged, 12 no fix · under review, 1 policy open, 1 not fully measured; Reth 19 agree, 2 no fix · converged, 9 no fix · under review, 1 policy open, 1 not fully measured; Anvil 10 agree, 5 no fix · converged, 13 no fix · under review, 1 policy open, 3 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect x="96" y="12" width="32" height="20" fill="#1a7f37"/>
@@ -49,16 +49,27 @@
 <text x="584" y="116" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="592" y="102" width="16" height="20" fill="#8c959f"/>
 <text x="600" y="116" text-anchor="middle" fill="#1f2328">1</text>
-<rect x="96" y="140" width="12" height="12" fill="#1a7f37"/>
-<text class="label" x="114" y="150">Agree</text>
-<rect x="266" y="140" width="12" height="12" fill="#0969da"/>
-<text class="label" x="284" y="150">Fix submitted</text>
-<rect x="436" y="140" width="12" height="12" fill="#bc4c00"/>
-<text class="label" x="454" y="150">No fix · converged</text>
-<rect x="96" y="160" width="12" height="12" fill="#d4a72c"/>
-<text class="label" x="114" y="170">No fix · under review</text>
-<rect x="266" y="160" width="12" height="12" fill="#8250df"/>
-<text class="label" x="284" y="170">Policy open</text>
-<rect x="436" y="160" width="12" height="12" fill="#8c959f"/>
-<text class="label" x="454" y="170">Not fully measured</text>
+<text class="label" x="88" y="146" text-anchor="end">Anvil</text>
+<rect x="96" y="132" width="160" height="20" fill="#1a7f37"/>
+<text x="176" y="146" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="256" y="132" width="80" height="20" fill="#bc4c00"/>
+<text x="296" y="146" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="336" y="132" width="208" height="20" fill="#d4a72c"/>
+<text x="440" y="146" text-anchor="middle" fill="#1f2328">13</text>
+<rect x="544" y="132" width="16" height="20" fill="#8250df"/>
+<text x="552" y="146" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="560" y="132" width="48" height="20" fill="#8c959f"/>
+<text x="584" y="146" text-anchor="middle" fill="#1f2328">3</text>
+<rect x="96" y="170" width="12" height="12" fill="#1a7f37"/>
+<text class="label" x="114" y="180">Agree</text>
+<rect x="266" y="170" width="12" height="12" fill="#0969da"/>
+<text class="label" x="284" y="180">Fix submitted</text>
+<rect x="436" y="170" width="12" height="12" fill="#bc4c00"/>
+<text class="label" x="454" y="180">No fix · converged</text>
+<rect x="96" y="190" width="12" height="12" fill="#d4a72c"/>
+<text class="label" x="114" y="200">No fix · under review</text>
+<rect x="266" y="190" width="12" height="12" fill="#8250df"/>
+<text class="label" x="284" y="200">Policy open</text>
+<rect x="436" y="190" width="12" height="12" fill="#8c959f"/>
+<text class="label" x="454" y="200">Not fully measured</text>
 </svg>

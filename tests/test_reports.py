@@ -210,6 +210,11 @@ class ProgressTests(unittest.TestCase):
             counts = [int(c.split()[0]) for c in cells[2:8]]
             with self.subTest(client=cells[0]):
                 self.assertEqual(sum(counts), decisions)
-        agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in rows)
-        self.assertIn(f'**{agree} of {len(rows) * decisions}**', page)
+        # Reported implementations such as Anvil are charted but stay out of the native headline.
+        from trace_interop.status import NATIVE_CLIENTS, REPORTED_CLIENTS
+        family = lambda row: row.split('](clients/', 1)[1].split('.md', 1)[0]
+        self.assertEqual({family(r) for r in rows}, {*NATIVE_CLIENTS, *REPORTED_CLIENTS})
+        native = [r for r in rows if family(r) in NATIVE_CLIENTS]
+        agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in native)
+        self.assertIn(f'**{agree} of {len(native) * decisions}**', page)
         self.assertTrue((root/'reports/progress.svg').is_file())

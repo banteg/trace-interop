@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-09-26T09:04:24.860271+00:00",
+  "cli_sha256": "13393e5caa449cd3b71d682528c68bac66d02bd17953ac6a663e6cd628604655",
+  "commit": "7b34ebe97b75f07cd04734ad8d71610e44e6ba60",
+  "explanation": "The matrix created its untracked output directory before each corpus inspected git status. That directory is the only dirty path; manifests retain source_dirty=true without rewriting.",
+  "replica_sha256": "ebfc89e4ca2e303b31e4a169c850f1dbd2e266304e5351992f5abeb0ffde7f99",
+  "status_porcelain": "?? evidence/2026-09-26/anvil/",
+  "tracked_diff_empty": true
+}

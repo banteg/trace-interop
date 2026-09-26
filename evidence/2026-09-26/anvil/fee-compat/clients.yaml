@@ -1,0 +1,74 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/besu",
+      "tag": "5f05c826c32edc7c310d2c3463365f2fa6963b439181cf3268a6ffca09ff6986"
+    },
+    "client": "besu",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/besu",
+      "tag": "ca05efeb8050497e45bc2b4ed22111a8189a8b85ffa7aca09da18f45a417810d"
+    },
+    "client": "besu",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/erigon",
+      "tag": "218487e77d110a9031344f7deced8d1e369aaa275f76d409c9ce3c52883b7ce1"
+    },
+    "client": "erigon",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/erigon",
+      "tag": "dbc56f3b136563723ed5d077ab3139d0ade17d936a650bf62135ec5cc9143697"
+    },
+    "client": "erigon",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/go-ethereum",
+      "tag": "2c8c7fef98975517bb0e9eea11ee8cf86b1fa73f0da982ac3da37c4044be219b"
+    },
+    "client": "go-ethereum",
+    "nametag": "trace"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/nethermind",
+      "tag": "89d85b347b9012846f4c9b51ad7880c1d2574a7f59882c91bc193bbb4dcb67de"
+    },
+    "client": "nethermind",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/nethermind",
+      "tag": "d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4"
+    },
+    "client": "nethermind",
+    "nametag": "release"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "21e2c5b6a9fd47ed9fd47d76b91f0fc2aafa8a3aa5f6f8e70a787aa92b4f6dd7"
+    },
+    "client": "reth",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7"
+    },
+    "client": "reth",
+    "nametag": "release"
+  }
+]

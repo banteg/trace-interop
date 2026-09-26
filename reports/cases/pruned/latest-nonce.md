@@ -4,8 +4,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-26/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/pruned/manifest.json) |
-| [Reth · 2.5.2 · df7b7fdf](../../clients/reth_development.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-26/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/eval/pruned/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-26/anvil/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/pruned/manifest.json) |
+| [Reth · 2.5.2 · df7b7fdf](../../clients/reth_development.md) | `0x85` | ⚪ Not assessed | [Response](../../../evidence/2026-09-26/anvil/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-26/anvil/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

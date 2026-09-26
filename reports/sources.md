@@ -2,6 +2,21 @@
 
 Entry points for reviewing the proposed changes. Links are pinned to the tested development revisions (or the experimental Geth fork), so line numbers remain stable. They identify relevant code, not necessarily the full fix.
 
+## Anvil
+
+| Area | Source | Revision |
+| --- | --- | --- |
+| Lookup | [Trace lookup](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L3858) | `5a99f1a85148` |
+| Filter | [Address filtering](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L4223) | `5a99f1a85148` |
+| Call | [Call simulation and trace types](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/api.rs#L1500) | `5a99f1a85148` |
+| Raw | [Signed transaction replay](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L4007) | `5a99f1a85148` |
+| Replay | [Replay results](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L3973) | `5a99f1a85148` |
+| Frames | [Mined-trace frame builder](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/storage.rs#L640) | `5a99f1a85148` |
+| Vm | [VM trace builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L317) | `453c67d7ccdf` |
+| State | [State-diff builder (revm-inspectors 0.43.0)](https://github.com/paradigmxyz/revm-inspectors/blob/453c67d7ccdf51327c9e7687ac6ba0b8651e7f87/src/tracing/builder/parity.rs#L509) | `453c67d7ccdf` |
+| Bounds | [Filter range defaults](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L4228) | `5a99f1a85148` |
+| Many | [Batched call block default](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/api.rs#L4148) | `5a99f1a85148` |
+
 ## Besu
 
 | Area | Source | Revision |
@@ -79,4 +94,4 @@ Entry points for reviewing the proposed changes. Links are pinned to the tested 
 | Many | [Batched call block default](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L155) | `58a51b3ee3f6` |
 | Tags | [Filter block-selector type](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L372) | `58a51b3ee3f6` |
 
-Reth’s inspector links point into its locked `revm-inspectors` 0.43.0 dependency. File hashes and anchor text are retained in [the source catalog](../decisions/sources.json).
+Reth’s and Anvil’s inspector links point into the `revm-inspectors` 0.43.0 dependency. File hashes and anchor text are retained in [the source catalog](../decisions/sources.json).

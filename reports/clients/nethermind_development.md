@@ -6,13 +6,13 @@
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.1.0-preview` | [`b4211ad9`](https://github.com/NethermindEth/nethermind/commit/b4211ad95cb084b29cf25f34597742805276d4df) | 2026-09-26 | [2026-09-26](../../evidence/2026-09-26/eval/initial/manifest.json) |
+| `2.1.0-preview` | [`fca93966`](https://github.com/NethermindEth/nethermind/commit/fca93966f6954856b818b913bfe5afd30f33aa08) | 2026-09-26 | [2026-09-26](../../evidence/2026-09-26/anvil/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.1.0-preview · b4211ad9 | Proposed change |
+| Behavior | 2.1.0-preview · fca93966 | Proposed change |
 | --- | --- | --- |
 | [trace_get selector and return shape](../decisions/H02.md)<br>`trace_get` returns a list and treats positions differently from a nested path; `[]` returns `[]`. | ⚠️ Differs<br>[Get missing tx](../cases/initial/get-missing-tx.md) | Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type. Checked requirements: A missing selected frame is null, not an empty collection.<br>[Trace lookup](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L433) |
 | [Filter composition and mode](../decisions/H03.md)<br>`mode: "union"` returns the intersection (1 record instead of 6) and `mode: "garbage"` is accepted: the filter type has no `mode` field, so every request is intersected. | 🛠️ Fix submitted: [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857)<br>[Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) | Add a validated `mode` field: accept `intersection` (the default) and `union`, and reject other values with `-32602`.<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) |
@@ -37,7 +37,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 2.1.0-preview · b4211ad9 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 2.1.0-preview · fca93966 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -45,7 +45,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Fee accounting and sequential state diffs](../decisions/H16.md) | 2.1.0-preview · b4211ad9 | 2 blocked cases: No receipt gas or execution-gas witness was captured. 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
+| [Fee accounting and sequential state diffs](../decisions/H16.md) | 2.1.0-preview · fca93966 | 2 blocked cases: No receipt gas or execution-gas witness was captured. 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. 1 blocked case: The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. 4 blocked cases: The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

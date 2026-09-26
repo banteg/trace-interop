@@ -642,7 +642,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     for f in families:
         text += f'## {editorial["clients"][f]["name"]}\n\n'
         text += table(['Area', 'Source', 'Revision'], [[group.capitalize(), f'[{ref["label"]}]({source_url(ref)})', f'`{ref["commit"][:12]}`'] for group, ref in sources[f].items()])
-    text += 'Reth’s inspector links point into its locked `revm-inspectors` 0.43.0 dependency. File hashes and anchor text are retained in [the source catalog](../decisions/sources.json).\n'
+    text += 'Reth’s and Anvil’s inspector links point into the `revm-inspectors` 0.43.0 dependency. File hashes and anchor text are retained in [the source catalog](../decisions/sources.json).\n'
     save(output/'sources.md', text)
 
     text = '# Technical appendix\n\n[Back to the maintainer overview](README.md)\n\n'

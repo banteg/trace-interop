@@ -355,10 +355,12 @@ class PublishedAssessmentTests(unittest.TestCase):
 
     def test_current_reports_retain_full_controlled_coverage(self):
         records = json.loads((ROOT/'reports/checks.json').read_text())
-        for corpus, expected in [('precompile-values',72),('h30',117),('fee-policy',744*9),('fee-compat',256*9)]:
+        from trace_interop.versions import NAMES
+        builds = len(NAMES) + 1  # every native build, Anvil included, and the Geth fork capture these chains
+        for corpus, cases in [('precompile-values',8),('h30',13),('fee-policy',744),('fee-compat',256)]:
             rows = [r for r in records if r['corpus']==corpus and r['method'].startswith('trace_')
                     and not r['case'].startswith(('_control','_reference/'))]
-            self.assertEqual(len(rows), expected, corpus)
-            self.assertEqual(len({r['client'] for r in rows}), 9)
+            self.assertEqual(len(rows), cases*builds, corpus)
+            self.assertEqual(len({r['client'] for r in rows}), builds)
             self.assertTrue(all(r['checks'] for r in rows))
             self.assertTrue(all(r['assessment']=='blocked' for r in rows if not r['eligible']))

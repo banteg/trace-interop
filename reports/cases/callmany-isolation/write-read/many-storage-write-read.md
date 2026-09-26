@@ -6,15 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../../clients/besu_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Erigon · 3.8.0-dev · 7853b922](../../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · c8449896](../../../clients/go-ethereum_trace.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Nethermind · 2.1.0-preview · b4211ad9](../../../clients/nethermind_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
-| [Reth · 2.5.2 · df7b7fdf](../../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/eval/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/eval/callmany-isolation/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../clients/anvil_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Anvil · 1.8.4-nightly · 5a99f1a8](../../../clients/anvil_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Besu · 26.9-develop · accdae00](../../../clients/besu_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Erigon · 3.8.0-dev · 7853b922](../../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · c8449896](../../../clients/go-ethereum_trace.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Nethermind · 2.1.0-preview · fca93966](../../../clients/nethermind_development.md) | 2 records | 🟡 Partially assessed | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
+| [Reth · 2.5.2 · df7b7fdf](../../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-26/anvil/callmany-isolation/observations.json.gz) · [Build/run](../../../../evidence/2026-09-26/anvil/callmany-isolation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -57,6 +59,16 @@
 }
 ```
 
+**Anvil · 1.8.4-nightly · 5a99f1a8** (`anvil Version: 1.8.4-nightly+5a99f1a8`)
+
+- [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
+- [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
+
+**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
+
+- [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
+- [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
+
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
 - [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
@@ -82,7 +94,7 @@
 - [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
 - [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
 
-**Nethermind · 2.1.0-preview · b4211ad9** (`2.1.0-preview+b4211ad9`)
+**Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 
 - [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.
 - [H16](../../../decisions/H16.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0.

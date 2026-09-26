@@ -6,15 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Erigon · 3.8.0-dev · 7853b922](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · c8449896](../../../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.1.0-preview · b4211ad9](../../../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
-| [Reth · 2.5.2 · df7b7fdf](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/eval/fee-compat/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Anvil · 1.8.4-nightly · 5a99f1a8](../../../../clients/anvil_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Erigon · 3.8.0-dev · 7853b922](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · c8449896](../../../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Nethermind · 2.1.0-preview · fca93966](../../../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
+| [Reth · 2.5.2 · df7b7fdf](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-26/anvil/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-26/anvil/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -39,6 +41,16 @@
   ]
 }
 ```
+
+**Anvil · 1.8.4-nightly · 5a99f1a8** (`anvil Version: 1.8.4-nightly+5a99f1a8`)
+
+- [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de02b6f7628cdf90000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
+- [H15](../../../../decisions/H15.md): Call 0: settle exact gas, unused-gas/refund credits, transferred value, nonce, beneficiary tip and base-fee burn. Sender 1000000000000000000->999924491765624993; miner 0->0; burn 75508234375000.
+
+**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
+
+- [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de02b6f7628cdf90000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
+- [H15](../../../../decisions/H15.md): Call 0: settle exact gas, unused-gas/refund credits, transferred value, nonce, beneficiary tip and base-fee burn. Sender 1000000000000000000->999924491765624993; miner 0->0; burn 75508234375000.
 
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 

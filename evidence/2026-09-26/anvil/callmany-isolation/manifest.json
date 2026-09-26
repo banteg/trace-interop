@@ -1,0 +1,1142 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-09-25T07:30:16.493977346Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:5a26e2fa37a31864c6a05d3f8d26616fb5bed9cf5ede7f9b0dd5835646bb2f1c",
+      "image_id": "sha256:f4ec7ec41003e488e800d2145e797a678a355ac03e86d8e1045e14c1dab65e09",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-09-25T07:11:08.210Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "5a99f1a851488fe26863505088e80183ad73cf07",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-09-15T10:45:14.055203088Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:2e4287278639262de76db72477301d5d3212fa1b1cce710d7d148750a46ce9e7",
+      "image_id": "sha256:f96e878c5c61e902776af34515982470fd4f8da48ee46a5e8916d328b204885f",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-09-15T10:27:35.197Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "cae51ad458f6abb64852b7709eb784352429825d",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.8.3"
+      },
+      "release": {
+        "published_at": "2026-09-15T12:49:47Z",
+        "tag": "v1.8.3",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.8.3"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.8.3"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-09-25T06:41:01.501941774Z",
+      "digest": "hyperledger/besu@sha256:b6a022e7dd00632f19f73f0f26022b1cf8e85d8916e6b2afdf39c38861b76c8a",
+      "image_id": "sha256:5f05c826c32edc7c310d2c3463365f2fa6963b439181cf3268a6ffca09ff6986",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "accdae0061952615b23f3bc521ebcd82efd097d4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-25T21:56:58.835401325Z",
+      "digest": "hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0",
+      "image_id": "sha256:ca05efeb8050497e45bc2b4ed22111a8189a8b85ffa7aca09da18f45a417810d",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.9.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T22:22:13Z",
+        "tag": "26.9.0",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.9.0"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.9.0"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-09-26T04:23:01.492362298Z",
+      "digest": "erigontech/erigon@sha256:208df93f9fb691157834155abd96008cb10f8a910f4c4f5e3251218a5159eb16",
+      "image_id": "sha256:218487e77d110a9031344f7deced8d1e369aaa275f76d409c9ce3c52883b7ce1",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-09-26T04:21:16Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "7853b9226e37dd50a3f62c84da97d856cbbbbe12",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "7853b92",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "7853b9226e37dd50a3f62c84da97d856cbbbbe12"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-09-24T12:26:33.605859192Z",
+      "digest": "erigontech/erigon@sha256:fa136bbbcdd740d33535b4a8e8690c345ae37485985a84a361dcd57430c1638d",
+      "image_id": "sha256:dbc56f3b136563723ed5d077ab3139d0ade17d936a650bf62135ec5cc9143697",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-09-24T12:24:22Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.7",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.7.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T07:04:20Z",
+        "tag": "v3.7.0",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.7.0"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.7.0"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "94518031048a02929630264c0abbec1a6d7c8235ae07dda0adbed22f40dde0e2",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:2c8c7fef98975517bb0e9eea11ee8cf86b1fa73f0da982ac3da37c4044be219b",
+      "local_image": "trace-interop/geth-source:94518031048a02929630264c0abbec1a6d7c8235ae07dda0adbed22f40dde0e2",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "c8449896d406ee56f136beafddd7e51aa7f122c4",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "ff934c6c0558a59ca10edd3afa1d6553c9af9ecd3bc97ec1d6cc5f27372c4e28"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-09-26T06:41:34Z",
+      "digest": "nethermindeth/nethermind@sha256:c778ced124e624544f4d9b6660b7887d8d4015ebe7eccc754337b1ea97db72b5",
+      "image_id": "sha256:89d85b347b9012846f4c9b51ad7880c1d2574a7f59882c91bc193bbb4dcb67de",
+      "labels": {
+        "org.opencontainers.image.created": "2026-09-26T06:41:34Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "fca93966f6954856b818b913bfe5afd30f33aa08",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.1.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-09-22T13:30:59Z",
+      "digest": "nethermind/nethermind@sha256:8156768beb584a1e62c3dcf0e0da7be61418dc08c89a80a4f9a3a48e5d247c12",
+      "image_id": "sha256:d6b98371fce49848629f4841a9ef2cfc416c90ee187bc82291e97ca77cb108e4",
+      "labels": {
+        "org.opencontainers.image.created": "2026-08-27T22:49:31.862025+00:00",
+        "org.opencontainers.image.description": "The Ubuntu container image maintained by Canonical\n\nUbuntu is a Debian-based Linux operating system that runs from the desktop to the cloud, to all your internet connected things.\nIt is the world's most popular operating system across public clouds and OpenStack clouds.\nIt is the number one platform for containers; from Docker to Kubernetes to LXD, Ubuntu can run your containers at scale.\nFast, secure and simple, Ubuntu powers millions of PCs worldwide.\n",
+        "org.opencontainers.image.title": "ubuntu",
+        "org.opencontainers.image.version": "26.04"
+      },
+      "release": {
+        "published_at": "2026-09-22T14:58:58Z",
+        "tag": "2.0.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.0.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.0.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-09-26T01:33:09.065288274Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:e32c143d85efc12226dc8fab493bf3e1d18aaba6ad5b6c10ad0236a533059be4",
+      "image_id": "sha256:21e2c5b6a9fd47ed9fd47d76b91f0fc2aafa8a3aa5f6f8e70a787aa92b4f6dd7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-17T13:08:25.158030166Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:8ce703acf113b2a20705b6e76adebed20f74ba8591bc7c9407203b2968aca70d",
+      "image_id": "sha256:e939dc4a471d9d27224e430f607a954d692ca5037a1350ee2036397d14532ca7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-17T14:00:49Z",
+        "tag": "v2.6.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.6.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.6.0"
+    }
+  },
+  "corpus": "callmany-isolation",
+  "finished_at": "2026-09-26T08:52:39.157821+00:00",
+  "fixture_manifest_sha256": "7e53f745c7d20b918236a50ea41bc9c0ddef7b4f168f4ecd468436c3d1c92f1b",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "68a212a1e845a7ccb6b6249ddb7e8f2ea4e2dfb8be09d5578819cfaef655026f",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x08c4818751abddd6072614c5a0b122b0dfff475bfd2ebd0121630b5c54e392f4",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0xe99e22a5f3b91b63ced5ebd4ffae1f93dd7b327679746cf49e25ca35578df052",
+          "number": "0x2"
+        },
+        {
+          "differs": [],
+          "hash": "0xbefdc208fc8ad1a48d6e254c9b317374c52bb345d8a42702d12421f20b45b5b7",
+          "number": "0x3"
+        },
+        {
+          "differs": [],
+          "hash": "0xffd859dc27dd8d6078872724696293c7f4a55b3880be6a69e3bf16bfbc42c02f",
+          "number": "0x4"
+        },
+        {
+          "differs": [],
+          "hash": "0x05485e385af050b77d7f6087705aaf40c3da0999dcbc566826acadfbb590491c",
+          "number": "0x5"
+        },
+        {
+          "differs": [],
+          "hash": "0xa4c57a032d0a127d03b3c7abb64297d3b1ff6b2f1ad47a8584b24c0742d10668",
+          "number": "0x6"
+        },
+        {
+          "differs": [],
+          "hash": "0x1ae3af13ebfc9c10ec2f4532a1718ae87d1ab0c7906051dc433af6540f26e351",
+          "number": "0x7"
+        },
+        {
+          "differs": [],
+          "hash": "0x85bea589d1f564aa647f144e8c5ba5f03b52acdb0a9d53e9c8ef77ea154e84dc",
+          "number": "0x8"
+        },
+        {
+          "differs": [],
+          "hash": "0x53344f6ebaaed5b4e97d491447bffc5d94f3a08e3befc6473cde932186134cf0",
+          "number": "0x9"
+        },
+        {
+          "differs": [],
+          "hash": "0x29235c6b6c1573b68f3b0a366573ee1c2375a1fe79a8869ae629dcd5edafa0fb",
+          "number": "0xa"
+        },
+        {
+          "differs": [],
+          "hash": "0xd34cc3c36b6c2c0d1683fd7fb883b29a2741f7f4dded90d5a036ca46ec1f1f2d",
+          "number": "0xb"
+        },
+        {
+          "differs": [],
+          "hash": "0xde3aa4bdfbf3bb68b27f9f50f9fde72930e981387d53b113eb21e6f049c21f5b",
+          "number": "0xc"
+        },
+        {
+          "differs": [],
+          "hash": "0x7dee5faf1284e6dc66ce86db9e85a1d6c223891b01f94e5605362cb72eae9a9a",
+          "number": "0xd"
+        },
+        {
+          "differs": [],
+          "hash": "0xd1cfe512b8e41779d5b1b09a69eb75fbf135071376854644c100db31b114513f",
+          "number": "0xe"
+        },
+        {
+          "differs": [],
+          "hash": "0x19cf5843108ed7a4bccdff87be94b35c66101ca8dcc514a629f7467694df19a8",
+          "number": "0xf"
+        },
+        {
+          "differs": [],
+          "hash": "0xca589fdd35fbbcbf4f0ef631129ceda5a3b3cabad05b6695e6a62c44f3f8e8e8",
+          "number": "0x10"
+        },
+        {
+          "differs": [],
+          "hash": "0x3ab9f8dfd0d5d6a4f52b40023d1c84f352492851df09cac0d8bdfcf1bf3d1620",
+          "number": "0x11"
+        },
+        {
+          "differs": [],
+          "hash": "0xaca00a01b83007ac6477c785b8e155840072d426a9cf779ca438696322e8a9bd",
+          "number": "0x12"
+        },
+        {
+          "differs": [],
+          "hash": "0x68f2b28ee203ae140a285fdb6fa3cedace00f96a2552d11aca5720904853b954",
+          "number": "0x13"
+        },
+        {
+          "differs": [],
+          "hash": "0xc773daae5e15c79cafba1a4fab517395c78b9a90b27fcad19ffca29e68dd7032",
+          "number": "0x14"
+        },
+        {
+          "differs": [],
+          "hash": "0xf90bac577db3afdc17334b5954b7332a6ae7f4ebf8d805a19699878708a329d1",
+          "number": "0x15"
+        },
+        {
+          "differs": [],
+          "hash": "0x7691930671e689a09951f77fe9897f3692d1fde1f37908102d802341edb70439",
+          "number": "0x16"
+        },
+        {
+          "differs": [],
+          "hash": "0x3ab00b390488ac5673ae1c67605415a4fa8d8580d71fc4de181222739788abed",
+          "number": "0x17"
+        },
+        {
+          "differs": [],
+          "hash": "0xa576a0d99c9d2a3f9ffa9fd168a2ea15aaf1e952d7441609832c8a7cbc728230",
+          "number": "0x18"
+        },
+        {
+          "differs": [],
+          "hash": "0x39cb282437c9fe8bd11f5ac0b52833e20d8a867f35ec2a239ce167dc60656011",
+          "number": "0x19"
+        },
+        {
+          "differs": [],
+          "hash": "0x38ff2ff7601edd0276df3a173566775e168367444c39364517f863ec8665ad30",
+          "number": "0x1a"
+        },
+        {
+          "differs": [],
+          "hash": "0xbe49d78a482561da9a3a7f005605d4f9b49eb60b139dc1c5da2977bd8e29d703",
+          "number": "0x1b"
+        },
+        {
+          "differs": [],
+          "hash": "0xd914567ce75022bcbc762fa99e914b7586a596256ae640b8989c8e2fd122495f",
+          "number": "0x1c"
+        },
+        {
+          "differs": [],
+          "hash": "0x8102aa83a80389717f07893b1dcb90e9e332081a6fa324e7da17ae486da10cd6",
+          "number": "0x1d"
+        },
+        {
+          "differs": [],
+          "hash": "0xe68c4a03ee9c2b86502a632cee8d31fd0bb11843b095a20748e337093ee8d4a0",
+          "number": "0x1e"
+        },
+        {
+          "differs": [],
+          "hash": "0x9e32c2cee0f6e75d5aaaf12bfb642c6d4f07253798b8ab35b9d141248b396325",
+          "number": "0x1f"
+        },
+        {
+          "differs": [],
+          "hash": "0xa86147b56370bb6189b411a98203caa644df5d3d5671f05e0a5c7ab7b214f3a6",
+          "number": "0x20"
+        },
+        {
+          "differs": [],
+          "hash": "0x330922ad5f065dd7f9f454b77588f99a5f7738c15bf4042f2225864ec90886d3",
+          "number": "0x21"
+        },
+        {
+          "differs": [],
+          "hash": "0xf0a69031c735819920ff73621c18356a12ff0242aa9085e9a38dd0a7988a54b7",
+          "number": "0x22"
+        },
+        {
+          "differs": [],
+          "hash": "0xf35de65ce5f472436dec90e5f88db9bcd54aa3dee1de25b9fe6dedacd0ae684a",
+          "number": "0x23"
+        },
+        {
+          "differs": [],
+          "hash": "0xfb8f03558d6a0fdcd190d9deeac5c9cf1089bf847dc619e9b8ae3cefcf722294",
+          "number": "0x24"
+        },
+        {
+          "differs": [],
+          "hash": "0xf42c59e73ff7928ca603753743fe770a7172b2cb91eced27f6b85e45deaf01c1",
+          "number": "0x25"
+        },
+        {
+          "differs": [],
+          "hash": "0x59d371645c67ddb7c992be8d8c8b3a20526c85765f5f734491e9d8fbf8c6e764",
+          "number": "0x26"
+        },
+        {
+          "differs": [],
+          "hash": "0xb73de453a5a39b97d4150ff5c2a4b7d41966aa93ee1938837296b76a1e2c8e86",
+          "number": "0x27"
+        },
+        {
+          "differs": [],
+          "hash": "0xe9a4d448340da3fe897b8820119c37d14eafef8d60ad7d87eaf3d47df8da615e",
+          "number": "0x28"
+        },
+        {
+          "differs": [],
+          "hash": "0xb826e02f9a4d96d9318cc4b9834c9fd48f87fb1d7c36fa491f3bad2768cd085d",
+          "number": "0x29"
+        },
+        {
+          "differs": [],
+          "hash": "0x2ef1239fd5285c2dc16f5e94023f4771653c0ffcd3572f5d64d948c6f4ca50bd",
+          "number": "0x2a"
+        },
+        {
+          "differs": [],
+          "hash": "0xd03d45599ef273dca0c3a279defb6c039bcb5fedfca86745434d4d2108a990fa",
+          "number": "0x2b"
+        },
+        {
+          "differs": [],
+          "hash": "0x94da260d378afdc033e4c31f74402ff95bcfb12aada64e898ccde4f36c665224",
+          "number": "0x2c"
+        },
+        {
+          "differs": [],
+          "hash": "0x6aafd7ffbc5d8fe2d7fa6f533bd71b54ae9b3fe16ff847e8a10c84c443ac5693",
+          "number": "0x2d"
+        },
+        {
+          "differs": [],
+          "hash": "0x9e64cdcc3011edcf66fee1499cd88b99e46b548c64ef484be50712fa4686fe1c",
+          "number": "0x2e"
+        },
+        {
+          "differs": [],
+          "hash": "0x5d756bd64655ab175ae34ecdcc557abacea1260da6e3245c07e95f3b6c56956a",
+          "number": "0x2f"
+        },
+        {
+          "differs": [],
+          "hash": "0x483998f76152ba96b840716c8db7e1ed8436682e71521395d5fc4845189ff0c1",
+          "number": "0x30"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0xbefdc208fc8ad1a48d6e254c9b317374c52bb345d8a42702d12421f20b45b5b7",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0xbe49d78a482561da9a3a7f005605d4f9b49eb60b139dc1c5da2977bd8e29d703",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xa576a0d99c9d2a3f9ffa9fd168a2ea15aaf1e952d7441609832c8a7cbc728230",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x8102aa83a80389717f07893b1dcb90e9e332081a6fa324e7da17ae486da10cd6",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0xde3aa4bdfbf3bb68b27f9f50f9fde72930e981387d53b113eb21e6f049c21f5b",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0x9e32c2cee0f6e75d5aaaf12bfb642c6d4f07253798b8ab35b9d141248b396325",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0xc773daae5e15c79cafba1a4fab517395c78b9a90b27fcad19ffca29e68dd7032",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0xd03d45599ef273dca0c3a279defb6c039bcb5fedfca86745434d4d2108a990fa",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0xffd859dc27dd8d6078872724696293c7f4a55b3880be6a69e3bf16bfbc42c02f",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xe68c4a03ee9c2b86502a632cee8d31fd0bb11843b095a20748e337093ee8d4a0",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0xfb8f03558d6a0fdcd190d9deeac5c9cf1089bf847dc619e9b8ae3cefcf722294",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x3ab00b390488ac5673ae1c67605415a4fa8d8580d71fc4de181222739788abed",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x85bea589d1f564aa647f144e8c5ba5f03b52acdb0a9d53e9c8ef77ea154e84dc",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0x05485e385af050b77d7f6087705aaf40c3da0999dcbc566826acadfbb590491c",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0xa86147b56370bb6189b411a98203caa644df5d3d5671f05e0a5c7ab7b214f3a6",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0x39cb282437c9fe8bd11f5ac0b52833e20d8a867f35ec2a239ce167dc60656011",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0x19cf5843108ed7a4bccdff87be94b35c66101ca8dcc514a629f7467694df19a8",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0x1ae3af13ebfc9c10ec2f4532a1718ae87d1ab0c7906051dc433af6540f26e351",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0xd1cfe512b8e41779d5b1b09a69eb75fbf135071376854644c100db31b114513f",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x9e64cdcc3011edcf66fee1499cd88b99e46b548c64ef484be50712fa4686fe1c",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0x68f2b28ee203ae140a285fdb6fa3cedace00f96a2552d11aca5720904853b954",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0xd34cc3c36b6c2c0d1683fd7fb883b29a2741f7f4dded90d5a036ca46ec1f1f2d",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0xaca00a01b83007ac6477c785b8e155840072d426a9cf779ca438696322e8a9bd",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x2ef1239fd5285c2dc16f5e94023f4771653c0ffcd3572f5d64d948c6f4ca50bd",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x29235c6b6c1573b68f3b0a366573ee1c2375a1fe79a8869ae629dcd5edafa0fb",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x08c4818751abddd6072614c5a0b122b0dfff475bfd2ebd0121630b5c54e392f4",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0xf42c59e73ff7928ca603753743fe770a7172b2cb91eced27f6b85e45deaf01c1",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0x330922ad5f065dd7f9f454b77588f99a5f7738c15bf4042f2225864ec90886d3",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0x94da260d378afdc033e4c31f74402ff95bcfb12aada64e898ccde4f36c665224",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0x53344f6ebaaed5b4e97d491447bffc5d94f3a08e3befc6473cde932186134cf0",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xf0a69031c735819920ff73621c18356a12ff0242aa9085e9a38dd0a7988a54b7",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x3ab9f8dfd0d5d6a4f52b40023d1c84f352492851df09cac0d8bdfcf1bf3d1620",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xd914567ce75022bcbc762fa99e914b7586a596256ae640b8989c8e2fd122495f",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0xb826e02f9a4d96d9318cc4b9834c9fd48f87fb1d7c36fa491f3bad2768cd085d",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xf90bac577db3afdc17334b5954b7332a6ae7f4ebf8d805a19699878708a329d1",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x5d756bd64655ab175ae34ecdcc557abacea1260da6e3245c07e95f3b6c56956a",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x38ff2ff7601edd0276df3a173566775e168367444c39364517f863ec8665ad30",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x7691930671e689a09951f77fe9897f3692d1fde1f37908102d802341edb70439",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0xca589fdd35fbbcbf4f0ef631129ceda5a3b3cabad05b6695e6a62c44f3f8e8e8",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xa4c57a032d0a127d03b3c7abb64297d3b1ff6b2f1ad47a8584b24c0742d10668",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0xb73de453a5a39b97d4150ff5c2a4b7d41966aa93ee1938837296b76a1e2c8e86",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0xf35de65ce5f472436dec90e5f88db9bcd54aa3dee1de25b9fe6dedacd0ae684a",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x59d371645c67ddb7c992be8d8c8b3a20526c85765f5f734491e9d8fbf8c6e764",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0x6aafd7ffbc5d8fe2d7fa6f533bd71b54ae9b3fe16ff847e8a10c84c443ac5693",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x483998f76152ba96b840716c8db7e1ed8436682e71521395d5fc4845189ff0c1",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x7dee5faf1284e6dc66ce86db9e85a1d6c223891b01f94e5605362cb72eae9a9a",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0xe99e22a5f3b91b63ced5ebd4ffae1f93dd7b327679746cf49e25ca35578df052",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0xe9a4d448340da3fe897b8820119c37d14eafef8d60ad7d87eaf3d47df8da615e"
+      },
+      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x08c4818751abddd6072614c5a0b122b0dfff475bfd2ebd0121630b5c54e392f4",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0xe99e22a5f3b91b63ced5ebd4ffae1f93dd7b327679746cf49e25ca35578df052",
+          "number": "0x2"
+        },
+        {
+          "differs": [],
+          "hash": "0xbefdc208fc8ad1a48d6e254c9b317374c52bb345d8a42702d12421f20b45b5b7",
+          "number": "0x3"
+        },
+        {
+          "differs": [],
+          "hash": "0xffd859dc27dd8d6078872724696293c7f4a55b3880be6a69e3bf16bfbc42c02f",
+          "number": "0x4"
+        },
+        {
+          "differs": [],
+          "hash": "0x05485e385af050b77d7f6087705aaf40c3da0999dcbc566826acadfbb590491c",
+          "number": "0x5"
+        },
+        {
+          "differs": [],
+          "hash": "0xa4c57a032d0a127d03b3c7abb64297d3b1ff6b2f1ad47a8584b24c0742d10668",
+          "number": "0x6"
+        },
+        {
+          "differs": [],
+          "hash": "0x1ae3af13ebfc9c10ec2f4532a1718ae87d1ab0c7906051dc433af6540f26e351",
+          "number": "0x7"
+        },
+        {
+          "differs": [],
+          "hash": "0x85bea589d1f564aa647f144e8c5ba5f03b52acdb0a9d53e9c8ef77ea154e84dc",
+          "number": "0x8"
+        },
+        {
+          "differs": [],
+          "hash": "0x53344f6ebaaed5b4e97d491447bffc5d94f3a08e3befc6473cde932186134cf0",
+          "number": "0x9"
+        },
+        {
+          "differs": [],
+          "hash": "0x29235c6b6c1573b68f3b0a366573ee1c2375a1fe79a8869ae629dcd5edafa0fb",
+          "number": "0xa"
+        },
+        {
+          "differs": [],
+          "hash": "0xd34cc3c36b6c2c0d1683fd7fb883b29a2741f7f4dded90d5a036ca46ec1f1f2d",
+          "number": "0xb"
+        },
+        {
+          "differs": [],
+          "hash": "0xde3aa4bdfbf3bb68b27f9f50f9fde72930e981387d53b113eb21e6f049c21f5b",
+          "number": "0xc"
+        },
+        {
+          "differs": [],
+          "hash": "0x7dee5faf1284e6dc66ce86db9e85a1d6c223891b01f94e5605362cb72eae9a9a",
+          "number": "0xd"
+        },
+        {
+          "differs": [],
+          "hash": "0xd1cfe512b8e41779d5b1b09a69eb75fbf135071376854644c100db31b114513f",
+          "number": "0xe"
+        },
+        {
+          "differs": [],
+          "hash": "0x19cf5843108ed7a4bccdff87be94b35c66101ca8dcc514a629f7467694df19a8",
+          "number": "0xf"
+        },
+        {
+          "differs": [],
+          "hash": "0xca589fdd35fbbcbf4f0ef631129ceda5a3b3cabad05b6695e6a62c44f3f8e8e8",
+          "number": "0x10"
+        },
+        {
+          "differs": [],
+          "hash": "0x3ab9f8dfd0d5d6a4f52b40023d1c84f352492851df09cac0d8bdfcf1bf3d1620",
+          "number": "0x11"
+        },
+        {
+          "differs": [],
+          "hash": "0xaca00a01b83007ac6477c785b8e155840072d426a9cf779ca438696322e8a9bd",
+          "number": "0x12"
+        },
+        {
+          "differs": [],
+          "hash": "0x68f2b28ee203ae140a285fdb6fa3cedace00f96a2552d11aca5720904853b954",
+          "number": "0x13"
+        },
+        {
+          "differs": [],
+          "hash": "0xc773daae5e15c79cafba1a4fab517395c78b9a90b27fcad19ffca29e68dd7032",
+          "number": "0x14"
+        },
+        {
+          "differs": [],
+          "hash": "0xf90bac577db3afdc17334b5954b7332a6ae7f4ebf8d805a19699878708a329d1",
+          "number": "0x15"
+        },
+        {
+          "differs": [],
+          "hash": "0x7691930671e689a09951f77fe9897f3692d1fde1f37908102d802341edb70439",
+          "number": "0x16"
+        },
+        {
+          "differs": [],
+          "hash": "0x3ab00b390488ac5673ae1c67605415a4fa8d8580d71fc4de181222739788abed",
+          "number": "0x17"
+        },
+        {
+          "differs": [],
+          "hash": "0xa576a0d99c9d2a3f9ffa9fd168a2ea15aaf1e952d7441609832c8a7cbc728230",
+          "number": "0x18"
+        },
+        {
+          "differs": [],
+          "hash": "0x39cb282437c9fe8bd11f5ac0b52833e20d8a867f35ec2a239ce167dc60656011",
+          "number": "0x19"
+        },
+        {
+          "differs": [],
+          "hash": "0x38ff2ff7601edd0276df3a173566775e168367444c39364517f863ec8665ad30",
+          "number": "0x1a"
+        },
+        {
+          "differs": [],
+          "hash": "0xbe49d78a482561da9a3a7f005605d4f9b49eb60b139dc1c5da2977bd8e29d703",
+          "number": "0x1b"
+        },
+        {
+          "differs": [],
+          "hash": "0xd914567ce75022bcbc762fa99e914b7586a596256ae640b8989c8e2fd122495f",
+          "number": "0x1c"
+        },
+        {
+          "differs": [],
+          "hash": "0x8102aa83a80389717f07893b1dcb90e9e332081a6fa324e7da17ae486da10cd6",
+          "number": "0x1d"
+        },
+        {
+          "differs": [],
+          "hash": "0xe68c4a03ee9c2b86502a632cee8d31fd0bb11843b095a20748e337093ee8d4a0",
+          "number": "0x1e"
+        },
+        {
+          "differs": [],
+          "hash": "0x9e32c2cee0f6e75d5aaaf12bfb642c6d4f07253798b8ab35b9d141248b396325",
+          "number": "0x1f"
+        },
+        {
+          "differs": [],
+          "hash": "0xa86147b56370bb6189b411a98203caa644df5d3d5671f05e0a5c7ab7b214f3a6",
+          "number": "0x20"
+        },
+        {
+          "differs": [],
+          "hash": "0x330922ad5f065dd7f9f454b77588f99a5f7738c15bf4042f2225864ec90886d3",
+          "number": "0x21"
+        },
+        {
+          "differs": [],
+          "hash": "0xf0a69031c735819920ff73621c18356a12ff0242aa9085e9a38dd0a7988a54b7",
+          "number": "0x22"
+        },
+        {
+          "differs": [],
+          "hash": "0xf35de65ce5f472436dec90e5f88db9bcd54aa3dee1de25b9fe6dedacd0ae684a",
+          "number": "0x23"
+        },
+        {
+          "differs": [],
+          "hash": "0xfb8f03558d6a0fdcd190d9deeac5c9cf1089bf847dc619e9b8ae3cefcf722294",
+          "number": "0x24"
+        },
+        {
+          "differs": [],
+          "hash": "0xf42c59e73ff7928ca603753743fe770a7172b2cb91eced27f6b85e45deaf01c1",
+          "number": "0x25"
+        },
+        {
+          "differs": [],
+          "hash": "0x59d371645c67ddb7c992be8d8c8b3a20526c85765f5f734491e9d8fbf8c6e764",
+          "number": "0x26"
+        },
+        {
+          "differs": [],
+          "hash": "0xb73de453a5a39b97d4150ff5c2a4b7d41966aa93ee1938837296b76a1e2c8e86",
+          "number": "0x27"
+        },
+        {
+          "differs": [],
+          "hash": "0xe9a4d448340da3fe897b8820119c37d14eafef8d60ad7d87eaf3d47df8da615e",
+          "number": "0x28"
+        },
+        {
+          "differs": [],
+          "hash": "0xb826e02f9a4d96d9318cc4b9834c9fd48f87fb1d7c36fa491f3bad2768cd085d",
+          "number": "0x29"
+        },
+        {
+          "differs": [],
+          "hash": "0x2ef1239fd5285c2dc16f5e94023f4771653c0ffcd3572f5d64d948c6f4ca50bd",
+          "number": "0x2a"
+        },
+        {
+          "differs": [],
+          "hash": "0xd03d45599ef273dca0c3a279defb6c039bcb5fedfca86745434d4d2108a990fa",
+          "number": "0x2b"
+        },
+        {
+          "differs": [],
+          "hash": "0x94da260d378afdc033e4c31f74402ff95bcfb12aada64e898ccde4f36c665224",
+          "number": "0x2c"
+        },
+        {
+          "differs": [],
+          "hash": "0x6aafd7ffbc5d8fe2d7fa6f533bd71b54ae9b3fe16ff847e8a10c84c443ac5693",
+          "number": "0x2d"
+        },
+        {
+          "differs": [],
+          "hash": "0x9e64cdcc3011edcf66fee1499cd88b99e46b548c64ef484be50712fa4686fe1c",
+          "number": "0x2e"
+        },
+        {
+          "differs": [],
+          "hash": "0x5d756bd64655ab175ae34ecdcc557abacea1260da6e3245c07e95f3b6c56956a",
+          "number": "0x2f"
+        },
+        {
+          "differs": [],
+          "hash": "0x483998f76152ba96b840716c8db7e1ed8436682e71521395d5fc4845189ff0c1",
+          "number": "0x30"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0xbefdc208fc8ad1a48d6e254c9b317374c52bb345d8a42702d12421f20b45b5b7",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0xbe49d78a482561da9a3a7f005605d4f9b49eb60b139dc1c5da2977bd8e29d703",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xa576a0d99c9d2a3f9ffa9fd168a2ea15aaf1e952d7441609832c8a7cbc728230",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x8102aa83a80389717f07893b1dcb90e9e332081a6fa324e7da17ae486da10cd6",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0xde3aa4bdfbf3bb68b27f9f50f9fde72930e981387d53b113eb21e6f049c21f5b",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0x9e32c2cee0f6e75d5aaaf12bfb642c6d4f07253798b8ab35b9d141248b396325",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0xc773daae5e15c79cafba1a4fab517395c78b9a90b27fcad19ffca29e68dd7032",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0xd03d45599ef273dca0c3a279defb6c039bcb5fedfca86745434d4d2108a990fa",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0xffd859dc27dd8d6078872724696293c7f4a55b3880be6a69e3bf16bfbc42c02f",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xe68c4a03ee9c2b86502a632cee8d31fd0bb11843b095a20748e337093ee8d4a0",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0xfb8f03558d6a0fdcd190d9deeac5c9cf1089bf847dc619e9b8ae3cefcf722294",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x3ab00b390488ac5673ae1c67605415a4fa8d8580d71fc4de181222739788abed",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x85bea589d1f564aa647f144e8c5ba5f03b52acdb0a9d53e9c8ef77ea154e84dc",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0x05485e385af050b77d7f6087705aaf40c3da0999dcbc566826acadfbb590491c",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0xa86147b56370bb6189b411a98203caa644df5d3d5671f05e0a5c7ab7b214f3a6",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0x39cb282437c9fe8bd11f5ac0b52833e20d8a867f35ec2a239ce167dc60656011",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0x19cf5843108ed7a4bccdff87be94b35c66101ca8dcc514a629f7467694df19a8",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0x1ae3af13ebfc9c10ec2f4532a1718ae87d1ab0c7906051dc433af6540f26e351",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0xd1cfe512b8e41779d5b1b09a69eb75fbf135071376854644c100db31b114513f",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x9e64cdcc3011edcf66fee1499cd88b99e46b548c64ef484be50712fa4686fe1c",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0x68f2b28ee203ae140a285fdb6fa3cedace00f96a2552d11aca5720904853b954",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0xd34cc3c36b6c2c0d1683fd7fb883b29a2741f7f4dded90d5a036ca46ec1f1f2d",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0xaca00a01b83007ac6477c785b8e155840072d426a9cf779ca438696322e8a9bd",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x2ef1239fd5285c2dc16f5e94023f4771653c0ffcd3572f5d64d948c6f4ca50bd",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x29235c6b6c1573b68f3b0a366573ee1c2375a1fe79a8869ae629dcd5edafa0fb",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x08c4818751abddd6072614c5a0b122b0dfff475bfd2ebd0121630b5c54e392f4",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0xf42c59e73ff7928ca603753743fe770a7172b2cb91eced27f6b85e45deaf01c1",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0x330922ad5f065dd7f9f454b77588f99a5f7738c15bf4042f2225864ec90886d3",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0x94da260d378afdc033e4c31f74402ff95bcfb12aada64e898ccde4f36c665224",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0x53344f6ebaaed5b4e97d491447bffc5d94f3a08e3befc6473cde932186134cf0",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xf0a69031c735819920ff73621c18356a12ff0242aa9085e9a38dd0a7988a54b7",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x3ab9f8dfd0d5d6a4f52b40023d1c84f352492851df09cac0d8bdfcf1bf3d1620",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xd914567ce75022bcbc762fa99e914b7586a596256ae640b8989c8e2fd122495f",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0xb826e02f9a4d96d9318cc4b9834c9fd48f87fb1d7c36fa491f3bad2768cd085d",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xf90bac577db3afdc17334b5954b7332a6ae7f4ebf8d805a19699878708a329d1",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x5d756bd64655ab175ae34ecdcc557abacea1260da6e3245c07e95f3b6c56956a",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x38ff2ff7601edd0276df3a173566775e168367444c39364517f863ec8665ad30",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x7691930671e689a09951f77fe9897f3692d1fde1f37908102d802341edb70439",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0xca589fdd35fbbcbf4f0ef631129ceda5a3b3cabad05b6695e6a62c44f3f8e8e8",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xa4c57a032d0a127d03b3c7abb64297d3b1ff6b2f1ad47a8584b24c0742d10668",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0xb73de453a5a39b97d4150ff5c2a4b7d41966aa93ee1938837296b76a1e2c8e86",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0xf35de65ce5f472436dec90e5f88db9bcd54aa3dee1de25b9fe6dedacd0ae684a",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x59d371645c67ddb7c992be8d8c8b3a20526c85765f5f734491e9d8fbf8c6e764",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0x6aafd7ffbc5d8fe2d7fa6f533bd71b54ae9b3fe16ff847e8a10c84c443ac5693",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x483998f76152ba96b840716c8db7e1ed8436682e71521395d5fc4845189ff0c1",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x7dee5faf1284e6dc66ce86db9e85a1d6c223891b01f94e5605362cb72eae9a9a",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0xe99e22a5f3b91b63ced5ebd4ffae1f93dd7b327679746cf49e25ca35578df052",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0xe9a4d448340da3fe897b8820119c37d14eafef8d60ad7d87eaf3d47df8da615e"
+      },
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    }
+  },
+  "replica_sha256": "ebfc89e4ca2e303b31e4a169c850f1dbd2e266304e5351992f5abeb0ffde7f99",
+  "runner_exit_code": 1,
+  "runner_sha256": "13393e5caa449cd3b71d682528c68bac66d02bd17953ac6a663e6cd628604655",
+  "scenario_phases": [
+    "before",
+    "write-read",
+    "after-write-read",
+    "write-revert-read",
+    "after-write-revert-read"
+  ],
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x85",
+      "name": "before/control-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "name": "before/code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "before/storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x0",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "isolation_after": "write-read/many-storage-write-read",
+      "isolation_before": "before/storage",
+      "name": "after-write-read/storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x0",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "isolation_after": "write-revert-read/many-storage-write-revert-read",
+      "isolation_before": "after-write-read/storage",
+      "name": "after-write-revert-read/storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x0",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "write-read/many-storage-write-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "write-revert-read/many-storage-write-revert-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    }
+  ],
+  "source_commit": "7b34ebe97b75f07cd04734ad8d71610e44e6ba60",
+  "source_dirty": true,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "e437815dba041158b7079bf149052fb7301f8419",
+    "generated_sha256": "9cf74780458ad9737a6dda0a59ad8a9c7f0c05c6bdd607c0e90baf8001a4a6a8",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-09-26T08:51:18.318420+00:00"
+}

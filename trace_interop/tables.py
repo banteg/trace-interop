@@ -206,7 +206,7 @@ FILTERS = Table(
     valid=filter_valid, attributes=lambda cell, decided: ('selected',),
     notes=(('Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary',
             'from and to describe the list against the record’s side: unrestricted, containing that side’s address (match) or not (miss).'),
-           ('Failed CREATE has no created-address match.', 'A failed create’s to side never matches.'),
+           ('A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match.', 'A failed create’s to side never matches.'),
            ('A reward matches toAddress by author and has no from side', 'A reward’s from side never matches.'),
            ('omitted/null/empty lists are unrestricted', 'unrestricted covers an omitted, null or empty list.')),
     clauses=(
@@ -274,7 +274,7 @@ def blocks(spec):
         notes=(('Resolve tags once per request.', 'trace_filter is read with both bounds naming the same block.'),
                ('If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.',
                 'unresolvable safe stands for either tag before the chain has one.'),
-               ('Bounds exclude pending.', 'This names no response; the schema, which omits pending from trace_filter bounds, decides it.')),
+               ('Bounds exclude pending and block hashes.', 'This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.')),
         clauses=(
             Clause('schema', 'Invalid params',
                    lambda c: c['selector'] not in forms[c['method']], lambda c: {'response': '-32602'}, general=True),
@@ -288,16 +288,16 @@ def blocks(spec):
                    lambda c: c['method'] == 'trace_call' and names(c, ('number', 'hash', 'number beyond head', 'unknown hash', 'unresolvable safe'))
                    and (c['selector'] not in ('number', 'hash') or c['history'] == 'pruned'),
                    lambda c: {'response': '4444' if c['history'] == 'pruned' else '-32001'}),
-            Clause('call-pending', 'pending has no agreed semantics yet; a client that does not implement it must reject it explicitly rather than substitute another block',
-                   lambda c: c['method'] == 'trace_call' and c['selector'] == 'pending', lambda c: {'response': 'open: reject or pending state'}),
+            Clause('call-pending', 'is accepted only when the client has such a pending environment; a client without one returns -32602 rather than substitute another block',
+                   lambda c: c['method'] == 'trace_call' and c['selector'] == 'pending', lambda c: {'response': 'pending state, or -32602 without one'}),
             Clause('block-state', 'Trace the block from its parent\'s post-block state with its own pre-transaction system operations applied, under its own fork rules.',
                    lambda c: c['method'] in replayed and names(c, KNOWN) and c['history'] == 'available', lambda c: {'response': 'selected block'}),
             Clause('block-unknown', 'An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444',
                    lambda c: c['method'] in replayed and names(c, ('number', 'hash', 'number beyond head', 'unknown hash', 'unresolvable safe'))
                    and (c['selector'] not in ('number', 'hash') or c['history'] == 'pruned'),
                    lambda c: {'response': '4444' if c['history'] == 'pruned' else '-32001'}),
-            Clause('block-pending', 'Block does not accept pending (-32602)',
-                   lambda c: c['method'] in replayed and c['selector'] == 'pending', lambda c: {'response': '-32602'}),
+            Clause('block-pending', 'Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending returns -32602.',
+                   lambda c: c['method'] in replayed and c['selector'] == 'pending', lambda c: {'response': 'pending block, or -32602 without one'}),
             Clause('filter-default', 'defaults omitted fromBlock and toBlock to the same latest head',
                    lambda c: c['method'] == 'trace_filter' and c['selector'] == 'omitted', lambda c: {'response': 'latest block'}),
             Clause('filter-range', 'If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602',

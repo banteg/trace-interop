@@ -401,7 +401,7 @@
         "reading": "from and to describe the list against the record\u2019s side: unrestricted, containing that side\u2019s address (match) or not (miss)."
       },
       {
-        "quote": "Failed CREATE has no created-address match.",
+        "quote": "A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match.",
         "reading": "A failed create\u2019s to side never matches."
       },
       {
@@ -446,7 +446,7 @@
       },
       {
         "id": "call-pending",
-        "quote": "pending has no agreed semantics yet; a client that does not implement it must reject it explicitly rather than substitute another block"
+        "quote": "is accepted only when the client has such a pending environment; a client without one returns -32602 rather than substitute another block"
       },
       {
         "id": "block-state",
@@ -458,7 +458,7 @@
       },
       {
         "id": "block-pending",
-        "quote": "Block does not accept pending (-32602)"
+        "quote": "Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending returns -32602."
       },
       {
         "id": "filter-default",
@@ -575,8 +575,8 @@
         "reading": "unresolvable safe stands for either tag before the chain has one."
       },
       {
-        "quote": "Bounds exclude pending.",
-        "reading": "This names no response; the schema, which omits pending from trace_filter bounds, decides it."
+        "quote": "Bounds exclude pending and block hashes.",
+        "reading": "This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it."
       }
     ],
     "question": "What does a request return for each way of naming its block, when the block\u2019s state is available or pruned?",

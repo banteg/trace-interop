@@ -2,7 +2,7 @@
 
 `trace_call` · fee-compat · [All reports](../../../../README.md)
 
-**What this checks:** The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Failed frames have an error string; an exceptional halt omits result or sets it to null. Reject this independently invalid fee/funding request before execution.
+**What this checks:** The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Failed frames have an error string; an exceptional halt omits result or sets it to null. Reject this independently invalid fee/funding request before execution.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -45,11 +45,11 @@
 
 **Anvil · 1.8.4-nightly · 5a99f1a8** (`anvil Version: 1.8.4-nightly+5a99f1a8`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: funds; observed funds with code -32003, which requires -38014. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed funds with code -32003, which requires -38014. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: funds; observed funds with code -32003, which requires -38014. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed funds with code -32003, which requires -38014. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
 
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
@@ -64,12 +64,12 @@
 **Erigon · 3.8.0-dev · 7853b922** (`3.8.0-dev-7853b922`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: base_fee rejection.
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: funds; observed base_fee with code -32000, which requires -38012. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed base_fee with code -32000, which requires -38012. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: funds rejection; trace_call: base_fee rejection.
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: funds; observed base_fee with code -32000, which requires -38012. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed base_fee with code -32000, which requires -38012. Value plus the applicable maximum upfront gas commitment exceeds sender balance.
 
 **Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 

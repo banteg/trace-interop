@@ -1,6 +1,6 @@
 {
   "contexts": {
-    "a.json": "c5c92a569c39a30a79b90736a237b11e4a416a0a79385bd4e8b93d4d11ad816f",
+    "a.json": "a655d91a19289d9f4473e5e415ceab1c5c6f5b754588ceab5fb64ea5e0bcffd2",
     "boundary-repeat.json": "ed447439017fcbef6d3753a8addadd86ea1cae96b0f10c4eec5cc49c24b7ac95",
     "callmany-isolation.json": "c9353e868ef1d43ecd59e73540aff2ca80e73bfc543d2ae77fbb5fe0f359b8e9",
     "coverage.json": "c9e18ef72a931b1d1aca35ba36d5d03e56fb3e4fea856450f890a2e9a318483d",
@@ -9,13 +9,13 @@
     "fixed.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab",
     "fork-followup.json": "53d6b6d045e5277e82c32009f954a3a2a0ea44ffa45f0199f470cd0c3f3b0ae0",
     "forks.json": "30ea968cf34c5670c4c35e1ec674a81a95c775467a19c5483cee9b47ef4a784f",
-    "h30.json": "6a3c3e97816df62e58dee94491dffbb1c55edcfbf546c7208e817086e979b6b0",
+    "h30.json": "a806c1a405be1aa5d865f74d56dbdc527f71cc6b00858c0b43654079cd2ecf68",
     "initial.json": "ad81a8c15cc8e75f870118f10137cc1ab8bb964de3ddfadea4417f5bc977bce0",
     "mined-probes.json": "0f2664db21aaac9b343d57437f4acef7d2505ee8924a1bb1326eef9fd33fecbb",
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
     "probes-forks.json": "24645e4e3d90a89d8561d69ae29cdc95278cb32eb54c54c11d41f90b44b9a58d",
-    "probes-prague.json": "3be8978331d14bff566507112e5188d185da95ee6bb8ff04d1b90f3332d79376",
+    "probes-prague.json": "716fa55de78ed2a6f2e1b1aa8987805624c4eb1ec32fca0309401a238c0675b4",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
     "reorg-safe.json": "94fcf58315bde761030752dbca1a675d8b34e8f0f6f581e2283938f59d785d30",
@@ -23,10 +23,10 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 13829,
+    "assessed": 13797,
     "blocked": 593,
     "control": 19,
-    "partial": 1005,
+    "partial": 1037,
     "unassessed": 0
   },
   "evidence": {
@@ -60,21 +60,21 @@
     "../evidence/2026-09-26/eval/preflight.json": "27c4cfbfb6d39b367a391231e46d46460bbe323bf47f0dc33b758d1e1b88b722"
   },
   "sources": {
-    "decisions/impact.json": "009a6475985a3a88d25482a06c94f4670bd899add370ac69c69e491720665692",
+    "decisions/impact.json": "cf825b36a8e3334e963864df780fdd245184d0a6299787fecb2c905a9c58c5ec",
     "decisions/laws.json": "7bd7130c191574dbf041172d8a44a39fa896d7992148205625e168e2f81aa002",
-    "decisions/ledger.json": "552fffeae57c924fb8dc4b7fcc942baa9394ec0f3c3f46c8cac5bdb81b9af4c0",
+    "decisions/ledger.json": "2ed12140fceafb14e145898bd7797398faee57223be9b4002a0a4e48a636733e",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "49f71673d9487858cf8ec12a93f26f395a614969b134f0896ae39a1d696dd1a1",
-    "fixtures/checksums.json": "24f264cef09c758b20c3b7c370398e35d79aaf066da1fd10dbfbd50970f94725",
+    "fixtures/checksums.json": "8906c089bca1e42aa5ff32297f8ff2c5382e7608671bd70d89e64eaa71e259e8",
     "locks/source-revisions.json": "8d398bd08752b7e195f25c83cbfa1820355896dd3c882857949cd7ecfd983968",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "0beb37225557ab44ed6199a50e9b8d8d8c5109dc1a7aecfd6a5adee16c84cd0b",
     "scripts/run_matrix.py": "96bfc2b66302e8cffaf6a6d1c5862d1bfef388034940f2c3632025f84d29fa7c",
-    "spec.lock.json": "4aa6ea5ac4f8115c320b38d095b9b4ce8bc60b948d9376c3a801a7b61b946d63",
-    "trace_interop/chain_model.py": "1bd3c884f151c50be6f585cb7c379741a968ef9c20c239fec5667b610b2fe619",
-    "trace_interop/coverage.py": "c78794b371a84b05e6e6fa14c8d4455efb1b441524542c6de938f7775c7e9977",
-    "trace_interop/execution_models.py": "3e1f22afdc41271b8048691734d2be3d32e5afd1a9c70068011fc5dfddb66116",
-    "trace_interop/fee_policy.py": "12918b1686e883481527faf59481bd140263063f38bd553f3770cd377ee2bc72",
+    "spec.lock.json": "5041f0f7a6414ccd4206cf429ab1886c17369f44057c84a4fb9c95844fea4730",
+    "trace_interop/chain_model.py": "62eb9fb7062474488f55e7b3d5d77e48edc16dbec4c6c4c600ce860ad793f546",
+    "trace_interop/coverage.py": "38e8734fc522bcdcf29810ad45d65d398547bcd9c0b150fdfb753e01f557ba8c",
+    "trace_interop/execution_models.py": "ce00d0c7c5462cb64ff99e215bcfd55b24c0332042137e7e2ff341f9ad9d47b9",
+    "trace_interop/fee_policy.py": "f1fb6cf5a662bcdf186ed9a347030b2a2fb86edcfb909a32a0b8dcb4f757069a",
     "trace_interop/inventory.py": "47dfd1c95f59b292695427714dc3fd70f86a610ec7096117329dd91994aef183",
     "trace_interop/laws.py": "f384fb6a8cedf6a05b0fb34c6899ce8341ce30f8073c1df7064d2732a55f2d89",
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
@@ -82,14 +82,14 @@
     "trace_interop/presentation.py": "dff35646718f13ef300b430fe134c7925898d4e50d4393469f85953bb3fc14ed",
     "trace_interop/probes.py": "fc5cd3c37a068352981f804b9de3a255f27020b43e355cfa1e1b63c5f6f5da6f",
     "trace_interop/report.py": "6d73b1662ba07823ec8eefc9903ec3032527634b7e48a2ff2f6c7d81fe74d4d5",
-    "trace_interop/rules.py": "a4e89ad6fc71d3bace73a7c9ad1a1fc9bc36f4664645649f13bd446653ad3324",
+    "trace_interop/rules.py": "9b6098bbc6aa4d1733e80dfab62af2b1f30387dbb2199d5f68f59c693d8607cf",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",
     "trace_interop/status.py": "2dda6844ed612dcb223da1f2d933b7818240882ec2a0b15b0dec41af26429355",
-    "trace_interop/tables.py": "3822e5d66ed4b6283c2994a08ce1b5e3a3f9eaae4f307856a44ba1842ebca0ee",
+    "trace_interop/tables.py": "0a7170ce1adf081b3098b9ff0a23feb1aac692b92ba31b461c2eeaf6df6a3239",
     "trace_interop/validation.py": "a3a5c554ef9b79cf9c48e0082ff1f34de15b2dcf22f254db3c51364ace79aaf6",
     "trace_interop/versions.py": "1d132856e8a2ac964092051b0c11e3c53fe2e8774b702c5be34be50003a647a7",
-    "trace_interop/vm_model.py": "d55208cfc56c499ea78eee4803ac03b5f7319921c8230fde25e04939a8abbc31",
+    "trace_interop/vm_model.py": "f54cfde161f9de1691ea0fbc82bbd081787295c14f9bbfb9609c9c9d0710f5ae",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "e437815dba041158b7079bf149052fb7301f8419"
+  "spec_commit": "4bddcfb65dbad37b6b1ec43499e3707f86e9ea4c"
 }

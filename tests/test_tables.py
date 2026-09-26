@@ -47,7 +47,9 @@ class Tables(unittest.TestCase):
         self.assertEqual(findings(blocks(SPEC), 'conflicts'), [])
 
     def test_schema_forms(self):
-        self.assertFalse({'hash', 'pending', 'omitted'} & schema_forms(SPEC, 'trace_block'))
+        # trace_block takes pending (H32) but neither a hash nor an omitted block.
+        self.assertIn('pending', schema_forms(SPEC, 'trace_block'))
+        self.assertFalse({'hash', 'omitted'} & schema_forms(SPEC, 'trace_block'))
         self.assertTrue({'hash', 'pending', 'omitted'} <= schema_forms(SPEC, 'trace_call'))
         self.assertIn('omitted', schema_forms(SPEC, 'trace_filter'))
         self.assertNotIn('pending', schema_forms(SPEC, 'trace_filter'))

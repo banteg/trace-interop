@@ -2,7 +2,7 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Identify a fee/funding validation rejection.
+**What this checks:** Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Identify a fee/funding validation rejection.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -52,26 +52,26 @@
 
 **Erigon · 3.8.0-dev · 7853b922** (`3.8.0-dev-7853b922`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 **Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 **Reth · 2.5.2 · df7b7fdf** (`Reth Version: 2.5.2+df7b7fdf`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32003, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32003, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 **Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: priority; observed priority with code -32003, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32003, which requires -32602. Positive cap/price below BASEFEE or priority cap above total cap.
 
 </details>

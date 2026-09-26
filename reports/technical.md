@@ -41,8 +41,8 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 13829 |
-| 🟡 Partial | 1005 |
+| 🔎 Assessed | 13797 |
+| 🟡 Partial | 1037 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 593 |
 | 🔎 Control | 19 |
@@ -112,6 +112,8 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H21 | blocked | The RPC returned an error, so there is no execution result to inspect. | 12 |
 | H23 | blocked | Depends on H03: The request names the default mode explicitly, so a server that rejects the mode field fails before matching rewards. Observed rpc_error -32602 Invalid filter params. | 2 |
 | H23 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 18 |
+| H23 | blocked | The H03 list semantics differ, so the special-action records cannot be judged separately. | 18 |
+| H23 | blocked | The H04 list semantics differ, so the special-action records cannot be judged separately. | 18 |
 | H23 | blocked | The RPC returned an error, so there is no execution result to inspect. | 2 |
 | H23 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 11 |
 | H26 | blocked | Cannot inspect this property: unsupported. | 6 |

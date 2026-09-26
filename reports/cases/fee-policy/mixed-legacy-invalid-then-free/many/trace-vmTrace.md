@@ -2,7 +2,7 @@
 
 `trace_callMany` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Assess the declared property.
+**What this checks:** Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -83,11 +83,11 @@
 
 **Erigon · 3.8.0-dev · 7853b922** (`3.8.0-dev-7853b922`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. A free call does not exempt another call from fee validation.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. A free call does not exempt another call from fee validation.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. A free call does not exempt another call from fee validation.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. A free call does not exempt another call from fee validation.
 
 **Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 

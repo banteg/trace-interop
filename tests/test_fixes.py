@@ -204,23 +204,18 @@ RETH_SECTION = '''## Reth
 
 ```mermaid
 flowchart LR
-  Alloy_1["Alloy #1"]:::verified
-  Alloy_v2_5_0(["Alloy v2.5.0"]):::done
-  Reth_takes_Alloy_v2_5_0[["Reth takes Alloy v2.5.0"]]:::done
   Reth_3["Reth #3"]:::open
+  Alloy_1["Alloy #1"]:::verified
   revm_2["revm #2"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
-  Alloy_1 --> Alloy_v2_5_0
-  Alloy_v2_5_0 --> Reth_takes_Alloy_v2_5_0
   Alloy_1 --> Reth_3
   revm_2 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef verified fill:#1a7f37,stroke:#116329,color:#ffffff
-  classDef done fill:#ffffff,stroke:#1a7f37,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
 ```
 
@@ -251,6 +246,12 @@ class FixesPageTests(unittest.TestCase):
         self.assertIn('## Specifications, tests and other repositories\n\nNo measured build consumes these repositories.\n\n| PR |', text)
         self.assertTrue(text.endswith('## Closed\n\n- [Besu #6](https://github.com/besu-eth/besu/pull/6): Superseded\n'))
         self.assertLess(text.index('## Besu'), text.index('## Reth'))
+
+    def test_landed_chains_leave_no_diagram(self):
+        landed = merged('besu_development')
+        text = fixes_page(catalog(landed, landed | {'depends_on': [f'{BESU}1']}), ROOT, ROOT/'docs', FAMILIES)
+        self.assertIn('## Besu\n\n| PR |', text)
+        self.assertNotIn('```mermaid', text)
 
     def test_published_page_is_generated_from_the_catalog(self):
         revisions = json.loads((ROOT/'locks/source-revisions.json').read_text())

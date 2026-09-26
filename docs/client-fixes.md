@@ -2,7 +2,7 @@
 
 Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-09-26**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
-A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams run from prerequisites to dependents; dashed steps are pending.
+A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
 ## Besu
 
@@ -24,22 +24,13 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 ```mermaid
 flowchart LR
-  Erigon_24255["Erigon #24255"]:::verified
-  rpc_tests_604["rpc-tests #604"]:::merged
-  Erigon_24291["Erigon #24291"]:::in_measured_build
-  rpc_tests_605["rpc-tests #605"]:::merged
   Erigon_24322["Erigon #24322"]:::open
   Erigon_24032["Erigon #24032"]:::open
   Erigon_24336["Erigon #24336"]:::open
   Erigon_24334["Erigon #24334"]:::open
-  rpc_tests_604 --> Erigon_24255
-  rpc_tests_605 --> Erigon_24291
   Erigon_24032 --> Erigon_24322
   Erigon_24334 --> Erigon_24336
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
-  classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
-  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
-  classDef verified fill:#1a7f37,stroke:#116329,color:#ffffff
 ```
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
@@ -69,19 +60,10 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  Nethermind_13834["Nethermind #13834"]:::in_measured_build
-  Nethermind_13622["Nethermind #13622"]:::in_measured_build
-  Nethermind_13835["Nethermind #13835"]:::in_measured_build
-  Nethermind_13551["Nethermind #13551"]:::in_measured_build
-  Nethermind_13847["Nethermind #13847"]:::in_measured_build
   Nethermind_13857["Nethermind #13857"]:::open
   Nethermind_13897["Nethermind #13897"]:::open
-  Nethermind_13622 --> Nethermind_13834
-  Nethermind_13551 --> Nethermind_13835
-  Nethermind_13551 --> Nethermind_13847
   Nethermind_13857 -. conflicts .- Nethermind_13897
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
-  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
 ```
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
@@ -112,54 +94,27 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  Alloy_4216["Alloy #4216"]:::verified
-  Alloy_v2_5_0(["Alloy v2.5.0"]):::done
-  Reth_takes_Alloy_v2_5_0[["Reth takes Alloy v2.5.0"]]:::done
-  Alloy_4218["Alloy #4218"]:::verified
   Alloy_4257["Alloy #4257"]:::merged
   next_Alloy_release(["next Alloy release"]):::pending
   Reth_takes_next_Alloy_release[["Reth takes next Alloy release"]]:::pending
   Alloy_EVM_411["Alloy EVM #411"]:::open
   next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
   Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
-  Reth_27213["Reth #27213"]:::verified
-  revm_inspectors_511["revm-inspectors #511"]:::verified
   revm_3833["revm #3833"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
-  revm_inspectors_504["revm-inspectors #504"]:::in_measured_build
-  revm_inspectors_v0_44_0(["revm-inspectors v0.44.0"]):::done
-  Reth_takes_revm_inspectors_v0_44_0[["Reth takes revm-inspectors v0.44.0"]]:::done
-  revm_inspectors_509["revm-inspectors #509"]:::verified
-  revm_inspectors_510["revm-inspectors #510"]:::in_measured_build
-  revm_inspectors_526["revm-inspectors #526"]:::verified
-  revm_inspectors_528["revm-inspectors #528"]:::in_measured_build
   revm_inspectors_530["revm-inspectors #530"]:::open
-  Alloy_4216 --> Alloy_v2_5_0
-  Alloy_v2_5_0 --> Reth_takes_Alloy_v2_5_0
-  Alloy_4218 --> Alloy_v2_5_0
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
   next_Alloy_EVM_release -.-> Reth_takes_next_Alloy_EVM_release
-  revm_inspectors_511 --> Reth_27213
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
-  revm_inspectors_504 --> revm_inspectors_v0_44_0
-  revm_inspectors_v0_44_0 --> Reth_takes_revm_inspectors_v0_44_0
-  revm_inspectors_509 --> revm_inspectors_v0_44_0
-  revm_inspectors_510 --> revm_inspectors_v0_44_0
-  revm_inspectors_511 --> revm_inspectors_v0_44_0
-  revm_inspectors_526 --> revm_inspectors_v0_44_0
-  revm_inspectors_528 --> revm_inspectors_v0_44_0
   revm_inspectors_530 -.-> next_revm_inspectors_release
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
-  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
-  classDef verified fill:#1a7f37,stroke:#116329,color:#ffffff
-  classDef done fill:#ffffff,stroke:#1a7f37,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
 ```
 

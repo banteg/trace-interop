@@ -252,9 +252,11 @@ def stage_cells(pr, names):
 
 
 def fixes_graph(section, prs, names):
-    """A Mermaid flowchart of the order among a client's PRs: prerequisites, conflicts, and each library PR's
-    release and client bump steps. PR nodes are styled by stage, steps as done or pending."""
+    """A Mermaid flowchart of the road ahead for a client: each PR not yet in any measured build, with the
+    prerequisites, conflicts, and library release and client bump steps it still waits on. PR nodes are
+    styled by stage (a landed prerequisite appears as a single node), steps as done or pending."""
     nodes, edges = {}, {}
+    unfinished = lambda pr: pr['state'] == 'open' or pr['state'] == 'merged' and not pr['builds']
 
     def node(label, shape, style):
         key = re.sub(r'\W+', '_', label)
@@ -262,12 +264,14 @@ def fixes_graph(section, prs, names):
         return key
 
     for pr in section:
-        if not (pr['chain'] or pr.get('depends_on') or pr.get('conflicts_with')):
+        if not unfinished(pr) or not (pr['chain'] or pr.get('depends_on') or pr.get('conflicts_with')):
             continue
         this = node(pr['label'], '[]', pr['stage'])
         for url in pr.get('depends_on', []):
             edges[f'{node(prs[url]["label"], "[]", prs[url]["stage"])} --> {this}'] = None
         for url in pr.get('conflicts_with', []):
+            if not unfinished(prs[url]):
+                continue
             other = node(prs[url]['label'], '[]', prs[url]['stage'])
             if f'{other} -. conflicts .- {this}' not in edges:
                 edges[f'{this} -. conflicts .- {other}'] = None
@@ -300,7 +304,8 @@ def fixes_page(fixes, root, parent, clients):
             'A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. '
             'Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. '
             'Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. '
-            'Diagrams run from prerequisites to dependents; dashed steps are pending.\n\n')
+            'Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; '
+            'dashed steps are pending, and a client with nothing left has none.\n\n')
     for f in sorted({pr['client'] for pr in fixes['prs'] if pr['client']}, key=lambda f: clients[f]['name']) + [None]:
         section = sorted((pr for pr in fixes['prs'] if pr['client'] == f and pr['state'] != 'closed'), key=lambda pr: pr['order'])
         if not section:

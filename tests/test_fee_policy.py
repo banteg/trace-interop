@@ -159,9 +159,10 @@ class FeePolicyTests(unittest.TestCase):
             checks=evaluate(self.case(name),obs,{})
             self.assertFalse(any(c['topic']=='H16' for c in checks))
 
-    def test_any_violated_constraint_is_an_acceptable_rejection_reason(self):
-        # A zero cap with a positive tip exceeds the cap and is below the base fee.
-        for message, code, expected in [('max fee per gas less than block base fee',-38012,'matches'),
+    def test_stateless_defect_takes_precedence_over_the_base_fee(self):
+        # A zero cap with a positive tip exceeds the cap and is below the base fee; the priority
+        # fee above the cap is invalid regardless of state, so it is the violation to report (H14).
+        for message, code, expected in [('max fee per gas less than block base fee',-38012,'change_needed'),
                                         ('max priority fee per gas higher than max fee per gas',-32602,'matches'),
                                         ('maxFeePerGas (0) < maxPriorityFeePerGas (1)',-32602,'matches'),
                                         ('insufficient funds for gas * price + value',-38014,'change_needed'),
@@ -170,6 +171,11 @@ class FeePolicyTests(unittest.TestCase):
                 obs=dict(status='rpc_error',response={'error':{'code':code,'message':message}})
                 checks=assess(self.case('typed-zero-cap-positive-tip/call/none'),obs)
                 self.assertEqual([c['status'] for c in checks],[expected])
+        obs={'status':'rpc_error','response':{'error':{'code':-38012,'message':'max fee per gas less than block base fee'}}}
+        for name in ['typed-zero-cap-positive-tip/call/none','defaults-tip-only-positive/many/none']:
+            self.assertIn('priority takes precedence', assess(self.case(name),obs)[0]['detail'])
+        # Without a stateless defect, the base fee is the violation to report.
+        self.assertEqual([c['status'] for c in assess(self.case('typed-below-base/call/none'),obs)],['matches'])
 
     def test_refund_revert_and_oog_settlement_reaches_next_call(self):
         for program, used, sent in [('refund',60320,7),('revert',53156,0),('out-of-gas',200000,0)]:

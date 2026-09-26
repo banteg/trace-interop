@@ -5,7 +5,7 @@ import json
 import re
 
 from .oracles import anchor, IDENTITY, REVERT_OUTPUT, REVERT_GAS
-from .vm_model import encoding_valid
+from .vm_model import UnsupportedProgram, encoding_valid, execute
 
 
 def is_extension_request(request):
@@ -30,6 +30,8 @@ RAW_VIOLATIONS = [
     ('value is affordable but upfront gas plus value is not', 'funds'),
     ('gas limit below 21000 intrinsic gas', 'intrinsic'), ('gas price below selected block base fee', 'base_fee'),
     ('EIP-3607 ordinary-code sender (not delegation)', 'sender')]
+# Records whose filter membership follows per-action from/to equivalents (H23), not action.from/to.
+SPECIAL_ACTIONS = ('create', 'suicide', 'reward')
 # eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
 RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
 
@@ -45,6 +47,71 @@ def violation(message):
         if re.search(pattern, message):
             return kind
     return None
+
+
+# The block parameter's position for each method that selects one block.
+BLOCK_PARAMETER = {'trace_block': 0, 'trace_replayBlockTransactions': 0, 'trace_call': 2, 'trace_callMany': 1}
+
+
+def selects_pending(method, params):
+    position = BLOCK_PARAMETER.get(method)
+    return position is not None and len(params) > position and params[position] == 'pending'
+
+
+def observed_number(call, output, context):
+    """Which block NUMBER a simulated program observed, from the bounded VM model of its code:
+    'head', 'next' or 'neither'; None when the model cannot tell them apart."""
+    head = mapping(context.get('_environment')).get('NUMBER')
+    data = call.get('data', call.get('input', '0x'))
+    code = data if 'to' not in call else mapping(context.get('_codes')).get(str(call['to']).lower())
+    if head is None or not isinstance(code, str):
+        return None
+    try:
+        outputs = {label: execute(code, 10_000_000, '0x' if 'to' not in call else data,
+                                  {'NUMBER': number, 'FRESH_ACCOUNT': 'to' not in call})[1]
+                   for label, number in [('head', head), ('next', head+1)]}
+    except (UnsupportedProgram, ValueError):
+        return None
+    if outputs['head'] == outputs['next']:
+        return None
+    return next((label for label, value in outputs.items() if value == output), 'neither')
+
+
+def pending_check(method, params, status, response, result, context):
+    """H32: a block method or simulation accepts `pending` only with a real pending environment, the
+    block after the head; a client without one rejects it with -32602 rather than substituting latest."""
+    requirement = ('Accept pending only with a real pending environment, the block after the head; '
+                   'otherwise reject it with invalid params (-32602), never evaluating latest instead.')
+    head = mapping(context.get('_environment')).get('NUMBER')
+
+    def verdict(value, detail):
+        return {'topic': 'H32', 'status': value, 'requirement': requirement, 'detail': detail}
+    if status == 'rpc_error':
+        code = mapping(response.get('error')).get('code')
+        return verdict('matches' if code == -32602 else 'change_needed', f'RPC error {code}.')
+    if status != 'result' or head is None:
+        return verdict('blocked', f'No block witness: {status}.')
+    if method in ['trace_call', 'trace_callMany']:
+        first = sequence(params[0])[:1] if method == 'trace_callMany' else [[params[0]]]
+        call = mapping(sequence(first[0])[0]) if first and sequence(first[0]) else {}
+        execution = mapping(result) if method == 'trace_call' else mapping(sequence(result)[0]) if sequence(result) else {}
+        observed = observed_number(call, execution.get('output'), context)
+        if observed is None:
+            return verdict('unassessed', 'The bounded VM model cannot show which block number this program observes.')
+        return verdict('matches' if observed == 'next' else 'change_needed',
+                       {'next': 'Executed in the pending block.', 'head': 'Executed at the head block, as latest.',
+                        'neither': 'The output matches neither the head nor the pending block.'}[observed])
+    if not isinstance(result, list):
+        return verdict('change_needed', f'Expected a list; got {str(result)[:80]}.')
+    if not result:
+        return verdict('blocked', 'An empty result names no block, so it cannot show a pending environment.')
+    if method == 'trace_block':
+        numbers = sorted({mapping(f).get('blockNumber') for f in result}, key=str)
+        return verdict('matches' if numbers == [head+1] else 'change_needed', f'Records from blocks {numbers}; the head is {head}.')
+    canonical = {t['hash'] for b in mapping(context.get('_blocks')).values() for t in b['transactions']}
+    replayed = {mapping(e).get('transactionHash') for e in result}
+    return verdict('change_needed' if canonical & replayed else 'matches',
+                   f'{len(result)} envelopes, {len(canonical & replayed)} of them canonical transactions.')
 
 
 def embedded_error(response):
@@ -121,9 +188,13 @@ def evaluate(case, observation, peers, invalid_params=None):
         if mismatch: mismatched.append(f'{n}: {mismatch}')
         return frames
 
+    if selects_pending(method, params):
+        checks.append(pending_check(method, params, status, response, result, context))
     if invalid_params:
-        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-              'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
+        # The block methods' schema omits pending, which pending_check decides instead.
+        if not (method in ['trace_block', 'trace_replayBlockTransactions'] and selects_pending(method, params)):
+            check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
+                  'Malformed input returns invalid params (-32602).', '; '.join(invalid_params))
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
             check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
                   'Unknown mode values return invalid params (-32602).')
@@ -159,23 +230,19 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H32', status == 'result' and isinstance(result, list) and len(result) == 3
                   and all(isinstance(frame, dict) and frame.get('blockNumber') == 48 for frame in result),
                   'The safe tag resolves to the fixture safe head, block 48.')
-        if name in ['filter-pending', 'call-number-pending', 'many-number-pending']:
+        if name == 'filter-pending':
             if status == 'rpc_error':
-                code = mapping(response.get('error')).get('code')
-                detail = f'{name}: RPC error {code}.'
-            elif name == 'filter-pending' and isinstance(result, list):
+                detail = f'{name}: RPC error {mapping(response.get("error")).get("code")}.'
+            elif isinstance(result, list):
                 blocks = sorted({frame.get('blockNumber') for frame in result if isinstance(frame, dict)})
                 detail = f'{name}: {len(result)} records from blocks {blocks}.'
             else:
-                execution = result[0] if isinstance(result, list) and result else result
-                output = mapping(execution).get('output')
-                detail = f'{name}: NUMBER {int(output, 16)}.' if isinstance(output, str) and output.startswith('0x') else f'{name}: {status}.'
+                detail = f'{name}: {status}.'
             checks.append({'topic': 'H32', 'status': 'observation',
                            'requirement': 'Record pending behavior without assuming a settled state or localization policy.',
                            'detail': detail})
-            if name == 'filter-pending':
-                check('H32', status != 'rpc_error' or mapping(response.get('error')).get('code') != -32603,
-                      'A valid pending tag must not trigger an internal error; support remains a policy choice.')
+            check('H32', status != 'rpc_error' or mapping(response.get('error')).get('code') != -32603,
+                  'A valid pending tag must not trigger an internal error; support remains a policy choice.')
 
     if method == 'trace_get' and len(params) > 1 and isinstance(params[1], list) and all(isinstance(x,str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', x) for x in params[1]):
         path = [int(x, 16) for x in params[1]]
@@ -338,9 +405,28 @@ def evaluate(case, observation, peers, invalid_params=None):
             if isinstance(baseline,list) and all(isinstance(f,dict) for f in baseline):
                 expected=[f for f in baseline if matches(f)]
                 identity=lambda f:(mapping(f).get('transactionHash'),mapping(f).get('traceAddress'),mapping(f).get('type'),mapping(f).get('action'))
-                check(topic, isinstance(result,list) and all(isinstance(f,dict) for f in result) and [identity(f) for f in result] == [identity(f) for f in expected],
-                      'Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted.',
-                      f'Expected {len(expected)} records from this client\'s block trace.')
+                listed=isinstance(result,list) and all(isinstance(f,dict) for f in result)
+                requirement='Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted.'
+                if topic == 'H23':
+                    check(topic, listed and [identity(f) for f in result] == [identity(f) for f in expected],
+                          requirement, f'Expected {len(expected)} records from this client\'s block trace.')
+                else:
+                    # A CREATE, SELFDESTRUCT or reward record matches by its own from/to equivalents (H23), so
+                    # this case's list semantics are judged on the ordinary records and H23 on the rest.
+                    special=lambda f:mapping(f).get('type') in SPECIAL_ACTIONS
+                    ordinary=lambda frames:[identity(f) for f in frames if not special(f)]
+                    ok=listed and ordinary(result) == ordinary(expected)
+                    check(topic, ok, requirement,
+                          f'Expected {sum(not special(f) for f in expected)} ordinary records from this client\'s block trace.')
+                    actions=[identity(f) for f in expected if special(f)]
+                    got=[identity(f) for f in result if special(f)] if listed else []
+                    if actions or got:
+                        requirement='A CREATE, SELFDESTRUCT or reward record matches the lists by its own from/to equivalents.'
+                        if ok:
+                            check('H23', got == actions, requirement, f'Expected {len(actions)} such records from this client\'s block trace; got {len(got)}.')
+                        else:
+                            checks.append({'topic': 'H23', 'status': 'blocked', 'requirement': requirement,
+                                           'detail': f'The {topic} list semantics differ, so the special-action records cannot be judged separately.'})
             else:
                 checks.append({'topic': topic, 'status': 'unassessed', 'requirement': 'Compare filtering with the block trace.',
                                'detail': 'The reference block trace did not establish the independent fixture inventory.'})

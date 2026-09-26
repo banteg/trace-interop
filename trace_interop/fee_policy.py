@@ -24,6 +24,9 @@ PROGRAMS = {
 }
 # eth_simulateV1 codes for trace_call/trace_callMany validation; tip above cap is invalid params.
 SIMULATE_CODES = {'funds': -38014, 'base_fee': -38012, 'priority': -32602}
+# Defects that make the call object invalid regardless of state; they take precedence over
+# state-dependent rejections when a call violates several rules (H14).
+STATELESS = {'priority'}
 # Codes that can carry a validation rejection; internal, parse and method errors cannot.
 REJECTION_CODES = [-32000, -32003, -32602, *range(-38026, -38009)]
 
@@ -94,7 +97,7 @@ def expected_steps(case):
 def first_invalid(case):
     """Identify the first invalid call and every constraint it violates, without consulting any response.
 
-    Validation order is not specified, so a client may report any violated constraint.
+    Among several violations, a stateless defect takes precedence (`reportable`).
     """
     params = case['request']['params']
     calls = [p[0] for p in params[0]] if case['request']['method']=='trace_callMany' else [params[0]]
@@ -112,6 +115,11 @@ def first_invalid(case):
             return index, violations
         balances[call['from']] = balance-gas_used(program,limit)*min(cap,base+tip)-(0 if program in ['revert','out-of-gas'] else value)
     raise ValueError('Rejection fixture has no independent violation: '+case['name'])
+
+
+def reportable(violations):
+    """The violations a rejection may name: the stateless defects if any, otherwise every violation."""
+    return violations & STATELESS or violations
 
 
 def assess(case, observation):
@@ -138,11 +146,13 @@ def assess(case, observation):
             return [dict(topic='H15',status='blocked',requirement='Identify a fee/funding validation rejection.',
                          detail='A generic/internal/crash error does not prove validation: '+message)]
         named_index = re.search(r'(?:call |txindex )(\d+)', message)
-        add(kind in violations and (named_index is None or int(named_index[1]) == index)
+        expected = reportable(violations)
+        precedence = f' {kind} is violated too, but {" and ".join(sorted(expected))} takes precedence.' if kind in violations - expected else ''
+        add(kind in expected and (named_index is None or int(named_index[1]) == index)
             and error.get('code') == SIMULATE_CODES[kind],
-            'Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code.',
-            f'Expected call {index}: {" or ".join(sorted(violations))}; observed {kind} with code {error.get("code")}, '
-            f'which requires {SIMULATE_CODES[kind]}. '+policy['reason'])
+            'Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence.',
+            f'Expected call {index}: {" or ".join(sorted(expected))}; observed {kind} with code {error.get("code")}, '
+            f'which requires {SIMULATE_CODES[kind]}.'+precedence+' '+policy['reason'])
         return checks
     result = response.get('result')
     envelopes = result if case['request']['method'] == 'trace_callMany' else [result]

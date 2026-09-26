@@ -194,6 +194,55 @@ class CoverageTests(unittest.TestCase):
             self.assertEqual(status('filter-from-only-'+mode, {'fromAddress': [a], 'mode': mode}, frames[:2]), ['matches'])
             self.assertEqual(status('filter-from-only-'+mode, {'fromAddress': [a], 'mode': mode}, []), ['change_needed'])
 
+    def test_special_action_misses_are_attributed_to_h23(self):
+        a, b, c = '0x'+'aa'*20, '0x'+'bb'*20, '0x'+'cc'*20
+        frames = [{'action': {'from': a, 'to': c}, 'type': 'call', 'traceAddress': [], 'transactionHash': '1', 'subtraces': 0},
+                  {'action': {'from': a, 'to': b}, 'type': 'call', 'traceAddress': [], 'transactionHash': '2', 'subtraces': 1},
+                  {'action': {'address': b, 'refundAddress': c}, 'type': 'suicide', 'traceAddress': [0], 'transactionHash': '2', 'subtraces': 0}]
+        peers = {'block-tree': {'status': 'result', 'response': {'result': frames}}}
+        context = reference_context(frames[:2])
+        def statuses(result):
+            checks = assess('filter-from-empty-to-set', result, 'trace_filter', [{'fromAddress': [], 'toAddress': [c]}], peers, context)
+            return {topic: [q['status'] for q in checks if q['topic'] == topic] for topic in ['H04', 'H23']}
+        self.assertEqual(statuses([frames[0], frames[2]]), {'H04': ['matches'], 'H23': ['matches']})
+        # Besu: the empty list is unrestricted, but the SELFDESTRUCT beneficiary is not matched.
+        self.assertEqual(statuses([frames[0]]), {'H04': ['matches'], 'H23': ['change_needed']})
+        # Nethermind: the empty list matches nothing, so the beneficiary record cannot be judged.
+        self.assertEqual(statuses([]), {'H04': ['change_needed'], 'H23': ['blocked']})
+
+    def test_pending_needs_a_real_pending_environment(self):
+        head, pending = 0x30, 0x31
+        context = {'_environment': {'NUMBER': head},
+                   '_blocks': {hex(head): {'transactions': [{'hash': '0xhead'}]}}}
+        def status(method, params, observation, errors=None):
+            checks = evaluate({'name': 'pending', 'context': context, 'request': {'method': method, 'params': params}},
+                              observation, {}, invalid_params=errors)
+            return {t: [c['status'] for c in checks if c['topic'] == t] for t in ['H14', 'H32']}
+        result = lambda value: {'status': 'result', 'response': {'result': value}}
+        error = lambda code: {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'pending'}}}
+        record = lambda number: {'type': 'call', 'blockNumber': number, 'traceAddress': [], 'action': {}}
+        schema = ['pending is not one of the block forms']
+        # trace_block: the schema omits pending, so H32 alone decides it.
+        self.assertEqual(status('trace_block', ['pending'], error(-32602), schema), {'H14': [], 'H32': ['matches']})
+        self.assertEqual(status('trace_block', ['pending'], error(-32000), schema), {'H14': [], 'H32': ['change_needed']})
+        self.assertEqual(status('trace_block', ['pending'], result([record(pending)]), schema)['H32'], ['matches'])
+        self.assertEqual(status('trace_block', ['pending'], result([record(head)]), schema)['H32'], ['change_needed'])
+        self.assertEqual(status('trace_block', ['pending'], result([]), schema)['H32'], ['blocked'])
+        replay = lambda tx: result([{'transactionHash': tx, 'trace': [], 'output': '0x'}])
+        self.assertEqual(status('trace_replayBlockTransactions', ['pending', ['trace']], replay('0xhead'), schema)['H32'], ['change_needed'])
+        self.assertEqual(status('trace_replayBlockTransactions', ['pending', ['trace']], replay('0xnew'), schema)['H32'], ['matches'])
+        # Simulations: the NUMBER program shows which block the call ran in.
+        call = {'from': '0x'+'aa'*20, 'gas': '0x927c0', 'data': '0x4360005260206000f3'}
+        number = lambda n: '0x'+f'{n:064x}'
+        self.assertEqual(status('trace_call', [call, ['trace'], 'pending'], result({'output': number(pending), 'trace': []}))['H32'], ['matches'])
+        self.assertEqual(status('trace_call', [call, ['trace'], 'pending'], result({'output': number(head), 'trace': []}))['H32'], ['change_needed'])
+        many = [[[call, ['trace']]], 'pending']
+        self.assertEqual(status('trace_callMany', many, result([{'output': number(head), 'trace': []}]))['H32'], ['change_needed'])
+        self.assertEqual(status('trace_callMany', many, error(-32602))['H32'], ['matches'])
+        # A program that ignores NUMBER cannot tell the two blocks apart.
+        self.assertEqual(status('trace_call', [dict(call, data='0x602a60005260206000f3'), ['trace'], 'pending'],
+                                result({'output': number(42), 'trace': []}))['H32'], ['unassessed'])
+
     def test_zero_fee_many_errors_and_cardinality(self):
         params = [[ [{'gasPrice': '0x0'}, ['trace']] ], 'latest']
         for result in [None, {}, [], {'jsonrpc': '2.0', 'error': {'code': -32603}}]:
@@ -332,8 +381,10 @@ class HistoricalAssessmentTests(unittest.TestCase):
                 # Filter bounds exclude pending as eth_getLogs does; only Reth returns -32602.
                 self.assertEqual(verdict(build,'filter-pending','H32'),
                                  ['matches' if client == 'reth' else 'change_needed'])
-                self.assertIn('observation',verdict(build,'call-number-pending','H32'))
-                self.assertIn('observation',verdict(build,'many-number-pending','H32'))
+                # pending needs a real pending environment (NUMBER 49, Reth) or -32602: Besu and
+                # Nethermind evaluate latest (NUMBER 48) and Erigon rejects with -32000.
+                for case in ['call-number-pending','many-number-pending']:
+                    self.assertEqual(verdict(build,case,'H32'),['matches' if client == 'reth' else 'change_needed'])
 
         for case,topic in [('many-number-default','H31'), ('many-number-latest','H31'),
                            ('filter-earliest','H32'), ('filter-safe','H32')]:
@@ -342,7 +393,7 @@ class HistoricalAssessmentTests(unittest.TestCase):
             self.assertEqual(verdict('go-ethereum_trace',case,'H30'),['change_needed'])
         self.assertEqual(verdict('go-ethereum_trace','filter-pending','H32'),['matches'])
         for case in ['call-number-pending','many-number-pending']:
-            self.assertIn('observation',verdict('go-ethereum_trace',case,'H32'))
+            self.assertEqual(verdict('go-ethereum_trace',case,'H32'),['matches'])
 
 
 class PublishedAssessmentTests(unittest.TestCase):

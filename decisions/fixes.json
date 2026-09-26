@@ -1100,6 +1100,21 @@
       "merged_at": null
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13940",
+      "title": "fix(tracing): report vmTrace call output windows and keep halted operations",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "partial": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "a CREATE that fails its precheck still reports its cost without the forwarded gas"
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

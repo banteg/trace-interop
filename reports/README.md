@@ -16,7 +16,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** c
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.9-develop · accdae00 | 3 | 5 | 6 | 11 | 1 | 6 | 0 | 0 / 11 |
 | [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 | 4 | 1 | 4 | 1 | 6 | 3 | 9 / 9 |
-| [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 17 | 6 | 1 | 7 | 1 | 0 | 7 | 18 / 7 |
+| [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 17 | 6 | 1 | 7 | 1 | 0 | 7 | 18 / 8 |
 | [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 20 | 2 | 2 | 6 | 1 | 1 | 10 | 18 / 5 |
 | [Anvil](clients/anvil.md) | 1.8.4-nightly · 5a99f1a8 | 9 | 0 | 8 | 10 | 1 | 4 | 0 | 0 / 0 |
 

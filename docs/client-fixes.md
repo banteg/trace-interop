@@ -97,6 +97,7 @@ flowchart LR
 | [Nethermind #13936](https://github.com/NethermindEth/nethermind/pull/13936) | Reject the pending block tag in trace methods | [H32](../reports/decisions/H32.md) | — | — | — | — | — |
 | [Nethermind #13937](https://github.com/NethermindEth/nethermind/pull/13937) | Return null from trace_transaction and trace_get for a missing transaction; unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Nethermind #13938](https://github.com/NethermindEth/nethermind/pull/13938) | Return no block reward records for post-merge blocks | [H05](../reports/decisions/H05.md) | — | — | — | — | — |
+| [Nethermind #13940](https://github.com/NethermindEth/nethermind/pull/13940) | Report vmTrace call output windows and keep halted operations; a CREATE that fails its precheck still reports its cost without the forwarded gas | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 
 ## Reth
 

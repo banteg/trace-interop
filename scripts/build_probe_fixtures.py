@@ -262,6 +262,11 @@ def prague():
          probes=[effect('A null block parameter is latest.', words(42))])
     case(cases, 'callmany-null-block', 'trace_callMany', [[[dict(base, data='0x'+ret42), ['trace']]], None],
          probes=[effect('A null trace_callMany block parameter is latest.', words(42))])
+    # Without fee fields nothing else selects a transaction type, so a null list must not select one either.
+    unpriced = {'from': sender, 'gas': gas, 'data': '0x'+ret42}
+    for member in ['accessList', 'blobVersionedHashes', 'authorizationList']:
+        case(cases, f'field-null-{member}-unpriced', 'trace_call', [dict(unpriced, **{member: None}), ['trace'], 'latest'],
+             probes=[effect(f'A null {member} is omitted and selects no transaction type, so the unpriced initcode returns word 42.', words(42))])
     sload_gas = asm('GAS', 0, 'SLOAD', 'POP', 'GAS', 'SWAP1', 'SUB', 0, 'MSTORE', 32, 0, 'RETURN')
     case(cases, 'field-access-list', 'trace_call', [dict(base, data='0x'+sload_gas, accessList=[{'address': root, 'storageKeys': ['0x'+word(0)]}]), ['trace'], 'latest'],
          probes=[effect('An access-listed slot of the creation address is warm: PUSH, SLOAD 100, POP and GAS cost 107.', words(107))])

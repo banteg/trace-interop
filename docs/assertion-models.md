@@ -92,6 +92,11 @@ First captured in the [2026-09-26 eval](../evidence/2026-09-26/eval/README.md) a
   `filter-null-toBlock` and `filter-null-fromBlock`, which must return the same result as their omitted
   twins (`filter-omitted-toBlock`, `filter-omitted-fromBlock`, H14 references).
 
+Added after that eval, to be registered under H14 once captured:
+`probes-prague/field-null-{accessList,blobVersionedHashes,authorizationList}-unpriced` send one null list on a
+call with no fee fields, where no other member selects a transaction type, so a server that picks the type by
+member name rather than value takes the null list's type.
+
 ### Corrected siblings
 
 These siblings were first captured in the

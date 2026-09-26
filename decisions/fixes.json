@@ -638,6 +638,34 @@
       "merged_at": "2026-09-22T13:33:48Z"
     },
     {
+      "url": "https://github.com/alloy-rs/alloy/pull/4257",
+      "title": "fix(rpc-types-trace): treat null trace filter members as omitted",
+      "client": "reth",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24334",
+      "title": "fix(rpc/jsonrpc): treat explicit null as omitted in trace_call data/input and trace_filter mode",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

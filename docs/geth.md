@@ -59,7 +59,8 @@ pinned draft:
 - Signed raw transactions are validated for execution and rejected with the
   `eth_sendRawTransaction` error groups; a gas limit above the cap is -38026.
 - Call objects accept block hashes and the reserved state and block override
-  parameters; schema-defined fields are honoured or rejected.
+  parameters; schema-defined fields are honoured or rejected. An explicit null for an
+  optional member is omitted (since `c8449896`), except that a null `to` creates a contract.
 - Failed frames use the normative labels; REVERT frames carry `{gasUsed, output}`,
   and calls failing their precheck keep a failed frame with no result (since `07a99c67`; earlier
   captures predate it and show the previous rule). Deleted accounts report

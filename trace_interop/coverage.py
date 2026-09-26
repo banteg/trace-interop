@@ -6,7 +6,7 @@ properties and blocked checks are retained, without turning them into passes.
 import re
 
 from .oracles import anchor
-from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, UnsupportedProgram, NAMES
+from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, reported_environment, UnsupportedProgram, NAMES
 from .chain_model import decode_transaction
 import rlp
 from eth_hash.auto import keccak
@@ -238,7 +238,7 @@ def supplement(case, observation, peers, checks, expected):
         vms=[obj(e).get('vmTrace') for e in envelopes]
         errors=[error for vm in vms for error in local_invariants(vm)]
         add('H20',bool(vms) and not errors,
-            'At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover, subtraces appear only on calls and creations, MLOAD and call mem cover their operand range, and RETURN/REVERT report no mem.',
+            'At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem.',
             '; '.join(errors[:4]))
 
     # Execute independently supplied straight-line fixtures, including their exact
@@ -269,9 +269,17 @@ def supplement(case, observation, peers, checks, expected):
                 if 'H20' in declared and not covered('H20'):
                     explain('H20', 'unassessed', 'The bounded VM model cannot establish this program: '+str(exc))
             else:
-                errors = differences(vm, want)
+                steps, returned = want, output
+                if model and model.get('environment'):
+                    # H15 below judges the environment words against the selected block, so step semantics
+                    # and the returned bytes are judged under the environment the response reports.
+                    try:
+                        steps, returned, _ = execute(code, gas, '0x' if 'to' not in call else data, reported_environment(vm, env))
+                    except UnsupportedProgram:
+                        pass
+                errors = differences(vm, steps)
                 add('H20', status == 'result' and not errors, 'Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects.', '; '.join(errors[:4]))
-                add('H08', obj(result).get('output') == output, 'Modelled execution returns exactly the independently computed bytes.')
+                add('H08', obj(result).get('output') == returned, 'Modelled execution returns exactly the independently computed bytes.')
                 if reverted:
                     root=next((f for f in frames if f.get('traceAddress')==[]),{})
                     used=gas-want['ops'][-1]['ex']['used']

@@ -43,7 +43,27 @@ class H17CapturedRegressionTests(unittest.TestCase):
                     checks = self.checks('coverage',name,client)
                     self.assertTrue(all(c['status']=='matches' for c in checks if c['topic']=='H17'))
                     self.assertIn('change_needed',[c['status'] for c in checks if c['topic']=='H15'])
-                    self.assertIn('change_needed',[c['status'] for c in checks if c['topic']=='H08'])
+                    # The differing environment words are H15's alone: the envelope and the step
+                    # semantics are judged under the environment the response reports.
+                    self.assertEqual({c['status'] for c in checks if c['topic']=='H08'},{'matches'})
+                    self.assertEqual({c['status'] for c in checks if c['requirement'].startswith('Every modelled step')},{'matches'})
+
+    def test_reported_environment_does_not_mask_envelope_or_step_defects(self):
+        name, client = 'model-environment', 'erigon_development'
+        model = lambda checks: {c['status'] for c in checks if c['requirement'].startswith('Every modelled step')}
+        envelope = lambda checks: {c['status'] for c in checks if c['requirement'].startswith('Modelled execution returns')}
+        # Output that disagrees with the environment words the steps report is an envelope difference.
+        obs = copy.deepcopy(self.observations['coverage'][name][client])
+        output = obs['response']['result']['output']
+        obs['response']['result']['output'] = output[:2]+'00'*32+output[66:]
+        checks = self.checks('coverage',name,client,obs)
+        self.assertEqual(envelope(checks),{'change_needed'})
+        self.assertEqual(model(checks),{'matches'})
+        # A wrong cost is a step difference under any environment.
+        obs = copy.deepcopy(self.observations['coverage'][name][client])
+        obs['response']['result']['vmTrace']['ops'][0]['cost'] += 1
+        checks = self.checks('coverage',name,client,obs)
+        self.assertEqual(model(checks),{'change_needed'})
 
     def test_marker_and_runtime_inconsistency_mutations_still_fail(self):
         name, client = 'model-environment', 'erigon_development'

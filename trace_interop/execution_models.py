@@ -3,7 +3,7 @@ import rlp
 from eth_hash.auto import keccak
 
 from .chain_model import decode_transaction
-from .vm_model import intrinsic, execute, differences, UnsupportedProgram
+from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram
 from functools import lru_cache
 
 
@@ -306,6 +306,9 @@ def assess(case, observation, peers, topics):
                     env=root_environment(tx,block,context,method)
                     try:
                         gas=tx['gas']-intrinsic(tx['data'],tx['to'] is None)-tx.get('intrinsic_extra',0)
+                        if mapping(case.get('model')).get('environment'):
+                            # H15 judges this program's environment words; see coverage.supplement.
+                            env=reported_environment(vm,env)
                         want,output,reverted=execute(code,gas,'0x' if tx['to'] is None else tx['data'],env)
                     except (UnsupportedProgram,ValueError,KeyError):
                         pass  # The separately reported local relation still applies.

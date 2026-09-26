@@ -76,30 +76,95 @@ class VMModelTests(unittest.TestCase):
         vm['ops'].pop()
         self.assertFalse(local_invariants(vm))
 
-    def call_frame(self, child_ops, used, mem=None, retlen=0x20):
-        # PUSH1 retlen PUSH1 0 PUSH1 0 PUSH1 0 PUSH1 0 PUSH1 0x44 GAS CALL STOP
-        code='0x60'+f'{retlen:02x}'+'6000'*4+'6044'+'5af100'
+    def call_frame(self, child_ops, used, mem=None, retlen=0x20, child_code='0x60006000', value=0, target=0x44, push='0x1', budget=10000):
+        # PUSH1 retlen PUSH1 0 PUSH1 0 PUSH1 0 PUSH1 value PUSH1 target GAS CALL STOP
+        code='0x60'+f'{retlen:02x}'+'6000'*3+f'60{value:02x}60{target:02x}'+'5af100'
         ex=lambda used,push,mem=None:{'used':used,'push':push,'mem':mem,'store':None}
-        pushes=[hex(retlen),'0x0','0x0','0x0','0x0','0x44']
-        ops=[{'pc':2*i,'cost':3,'ex':ex(10000-3*(i+1),[v]),'sub':None} for i,v in enumerate(pushes)]
-        ops.append({'pc':12,'cost':2,'ex':ex(9980,['0x26fc']),'sub':None})
-        child={'code':'0x60006000','ops':child_ops}
-        ops.append({'pc':13,'cost':2600+900,'ex':ex(used,['0x1'],mem),'sub':child})
+        pushes=[hex(retlen),'0x0','0x0','0x0',hex(value),hex(target)]
+        ops=[{'pc':2*i,'cost':3,'ex':ex(budget-3*(i+1),[v]),'sub':None} for i,v in enumerate(pushes)]
+        ops.append({'pc':12,'cost':2,'ex':ex(budget-20,[hex(budget-20)]),'sub':None})
+        child={'code':child_code,'ops':child_ops} if child_ops is not None else None
+        ops.append({'pc':13,'cost':2600+900,'ex':ex(used,[push],mem),'sub':child})
         return {'code':code,'ops':ops}
 
-    def test_call_gas_returns_child_leftover_and_mem_is_the_output_window(self):
+    def test_call_gas_returns_child_leftover_and_mem_is_the_output_window_or_copied_bytes(self):
         window={'off':0,'data':'0x'+'00'*32}
         child=[{'pc':0,'cost':3,'ex':{'used':897,'push':['0x0'],'mem':None,'store':None},'sub':None},
                {'pc':2,'cost':3,'ex':{'used':894,'push':['0x0'],'mem':None,'store':None},'sub':None}]
         # The child falls off its code end normally and returns 894 unused gas.
         self.assertFalse(local_invariants(self.call_frame(child,9980-3500+894,window)))
         self.assertTrue(local_invariants(self.call_frame(child,9980-3500,window)))
-        for mem in [None,{'off':0,'data':'0x'}]:
-            self.assertTrue(local_invariants(self.call_frame(child,9980-3500+894,mem)))
+        # It returned no data, so the copied bytes are empty: null is the other valid choice.
+        self.assertFalse(local_invariants(self.call_frame(child,9980-3500+894,None)))
+        for mem in [{'off':0,'data':'0x'},{'off':0,'data':'0x'+'00'*2},{'off':1,'data':'0x'+'00'*32}]:
+            self.assertTrue(local_invariants(self.call_frame(child,9980-3500+894,mem)),mem)
         self.assertFalse(local_invariants(self.call_frame(child,9980-3500+894,None,retlen=0)))
+        self.assertTrue(local_invariants(self.call_frame(child,9980-3500+894,window,retlen=0)))
         # A halted child returns nothing.
         halted=copy.deepcopy(child);halted[-1]['ex']=None
         self.assertFalse(local_invariants(self.call_frame(halted,9980-3500,window)))
+        self.assertFalse(local_invariants(self.call_frame(halted,9980-3500,None)))
+
+    def test_call_mem_follows_the_bytes_the_child_returned(self):
+        # The child RETURNs two bytes: PUSH1 2 PUSH1 0 RETURN, window 32 (Parity, Erigon) or copied 2 (Besu, revm).
+        child=[{'pc':0,'cost':3,'ex':{'used':897,'push':['0x2'],'mem':None,'store':None},'sub':None},
+               {'pc':2,'cost':3,'ex':{'used':894,'push':['0x0'],'mem':None,'store':None},'sub':None},
+               {'pc':4,'cost':3,'ex':{'used':891,'push':[],'mem':None,'store':None},'sub':None}]
+        frame=lambda mem,retlen=0x20:self.call_frame(child,9980-3500+891,mem,retlen,child_code='0x60026000f3')
+        for mem in [{'off':0,'data':'0x'+'00'*32},{'off':0,'data':'0xffee'}]:
+            self.assertFalse(local_invariants(frame(mem)),mem)
+        for mem in [None,{'off':0,'data':'0xff'},{'off':0,'data':'0x'+'00'*3}]:
+            self.assertTrue(local_invariants(frame(mem)),mem)
+        # A one-byte window copies one byte either way.
+        self.assertFalse(local_invariants(frame({'off':0,'data':'0xff'},retlen=1)))
+        self.assertTrue(local_invariants(frame(None,retlen=1)))
+
+    def test_precompile_return_length_is_not_reconstructable(self):
+        # A precompile frame runs no instruction, so any prefix of the window is a possible copy.
+        for mem in [None,{'off':0,'data':'0x'+'00'*32},{'off':0,'data':'0x'+'00'*4}]:
+            self.assertFalse(local_invariants(self.call_frame([],9980-3500,mem,child_code='0x',target=4)),mem)
+        # Code-free non-precompile targets return nothing.
+        self.assertTrue(local_invariants(self.call_frame([],9980-3500,{'off':0,'data':'0x'+'00'*4},child_code='0x')))
+
+    def test_frameless_call_cost_includes_forwarded_gas(self):
+        # A value CALL that fails its balance precheck with 246452 gas left, as in probes-prague/precheck-call-value:
+        # 2600 cold + 9000 value, then 63/64 of the remaining gas forwarded.
+        def frame(cost,used,push='0x0',sub=None,target=0x44):
+            vm=self.call_frame(None,used,None,value=1,target=target,push=push,budget=246472)
+            vm['ops'][-1].update(cost=cost,sub=sub)
+            return vm
+        # Parity, Erigon, Reth, Nethermind and the Geth draft: cost 11600 + 231183 forwarded; the
+        # forwarded gas and the 2300 stipend come back at once.
+        self.assertFalse(local_invariants(frame(242783,237152)))
+        # Besu: the net cost only.
+        self.assertIn('operation 7 entered no child frame, but its cost does not include the gas it forwarded',
+                      local_invariants(frame(9300,237152)))
+        # A fabricated sub that ran nothing is judged the same way.
+        self.assertTrue(local_invariants(frame(9300,237152,sub={'code':'0x','ops':[]})))
+        # A call that entered a frame, or targets a precompile, is not a precheck failure.
+        self.assertFalse(local_invariants(frame(9300,237152,push='0x1')))
+        self.assertFalse(local_invariants(frame(9300,237152,target=4)))
+
+    def test_frameless_create_cost_includes_forwarded_gas(self):
+        # PUSH1 0 PUSH1 0 PUSH1 1 CREATE STOP, as in probes-prague/precheck-create-value: previous 246479.
+        def vm(cost,used):
+            ex=lambda used,push:{'used':used,'push':push,'mem':None,'store':None}
+            ops=[{'pc':2*i,'cost':3,'ex':ex(246488-3*(i+1),[v]),'sub':None} for i,v in enumerate(['0x0','0x0','0x1'])]
+            ops.append({'pc':6,'cost':cost,'ex':ex(used,['0x0']),'sub':None})
+            return {'code':'0x600060006001f000','ops':ops}
+        self.assertFalse(local_invariants(vm(32000+214479-214479//64,246479-32000)))
+        self.assertTrue(local_invariants(vm(32000,246479-32000)))
+        # An address collision consumes the forwarded gas instead of returning it.
+        self.assertFalse(local_invariants(vm(32000+214479-214479//64,246479-32000-214479+214479//64)))
+
+    def test_halted_operation_cost_is_not_asserted(self):
+        # An operation that halted exceptionally has ex null; its cost is implementation-defined.
+        vm,_,_=execute('0x6001600201',100)
+        vm['ops'].append({'pc':5,'cost':35184775266310,'ex':None,'sub':None})
+        vm['code']='0x600160020151'
+        self.assertFalse(local_invariants(vm))
+        vm['ops'][-1]['cost']=3
+        self.assertFalse(local_invariants(vm))
 
     def test_subtraces_only_on_calls_and_creations(self):
         vm,_,_=execute('0x600100',100)
@@ -110,6 +175,28 @@ class VMModelTests(unittest.TestCase):
         vm,_,_=execute('0x4400',100,environment={'PREVRANDAO':0})
         vm['ops'][0]['op']='DIFFICULTY'
         self.assertFalse(local_invariants(vm))
+
+
+class CallGasTwinTests(unittest.TestCase):
+    def test_declared_h20_assesses_both_gas7400_twins_alike(self):
+        # a/call-gas7400 sends the request repeat/call-gas7400 does; declared under H20, it catches
+        # Nethermind's 7400 to 9700 CALLDATACOPY cost rewrite the same way.
+        from trace_interop.report import run_context
+        from trace_interop.rules import evaluate
+        clients = ['nethermind_development', 'nethermind_release', 'reth_development', 'erigon_development']
+        verdicts = {}
+        for corpus in ['a', 'repeat']:
+            folder = ROOT/'evidence/2026-09-26/anvil'/corpus
+            observations = load_observations(folder)
+            context = run_context(ROOT, read(folder/'manifest.json'))
+            case = dict(next(c for c in context['cases'] if c['name'] == 'call-gas7400'), context=context)
+            for client in clients:
+                peers = {name: builds.get(client, {}) for name, builds in observations.items()}
+                checks = supplement(case, peers['call-gas7400'], peers, evaluate(case, peers['call-gas7400'], peers), ['H20'])
+                verdicts[corpus, client] = sorted(c['status'] for c in checks if c['topic'] == 'H20')
+        for client in clients:
+            self.assertEqual(verdicts['a', client], verdicts['repeat', client], client)
+            self.assertEqual(set(verdicts['a', client]), {'change_needed' if client.startswith('nethermind') else 'matches'}, client)
 
 
 class ChainModelTests(unittest.TestCase):

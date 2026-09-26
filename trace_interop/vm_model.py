@@ -214,6 +214,29 @@ def execute(code, gas, calldata='0x', environment=None):
     return {'code': code, 'ops': steps, 'refund': 0 if reverted else refund}, output, reverted
 
 
+ENVIRONMENT = [0x30, 0x32, 0x33, 0x34, 0x3a, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x48]
+
+
+def reported_environment(vm, environment):
+    """The environment with each value a response's root steps push for an environment opcode.
+
+Re-executing under it separates step semantics from the environment values themselves, which a
+dedicated check (H15 for simulations) judges against the selected block."""
+    env = dict(environment)
+    try:
+        code = bytes.fromhex(vm['code'][2:])
+        ops = list(vm['ops'])
+    except (KeyError, TypeError, ValueError):
+        return env
+    for op in ops:
+        if not isinstance(op, dict) or not isinstance(op.get('ex'), dict) or type(op.get('pc')) is not int or not 0 <= op['pc'] < len(code):
+            continue
+        pushed = words(op['ex'].get('push'))
+        if code[op['pc']] in ENVIRONMENT and pushed and len(pushed) == 1:
+            env[NAMES[code[op['pc']]]] = pushed[0]
+    return env
+
+
 def store_words(store):
     """Numeric (key, val) of a store delta; None when absent or malformed. H21 owns its encoding."""
     try:
@@ -316,80 +339,160 @@ def leftover(sub):
     return ex['used'] if isinstance(ex, dict) and ended and type(ex.get('used')) is int else 0
 
 
+PRECOMPILES = range(0x01, 0x12)  # Prague precompile addresses, whose frames run no instruction.
+
+
+def replay(vm, code):
+    """Per operation, the operands it consumed from the stack reconstructed from earlier reported pushes
+(None once that stack cannot be followed), and whether its DUPn/SWAPn push breaks the n+1-word window."""
+    steps, stack = [], []  # stack is None once the reported stack effects cannot be followed.
+    for op in vm['ops']:
+        pc = op.get('pc') if isinstance(op, dict) else None
+        if type(pc) is not int or not 0 <= pc < len(code):
+            steps.append((None, False))
+            continue
+        opcode, ex = code[pc], op.get('ex')
+        pushed = words(ex.get('push')) if isinstance(ex, dict) else None
+        broken = False
+        if 0x80 <= opcode <= 0x9f and pushed is not None:
+            want = stack_window(opcode, stack) if stack is not None else None
+            arity = opcode-0x7e if opcode < 0x90 else opcode-0x8e
+            if len(pushed) != (len(want) if want is not None else arity) or want is not None and pushed != want:
+                broken, pushed = True, None
+        operands = None
+        if stack is not None and pushed is not None and opcode in INPUTS and len(stack) >= INPUTS[opcode]:
+            operands = stack[len(stack)-INPUTS[opcode]:][::-1]
+            stack = stack[:len(stack)-INPUTS[opcode]]+pushed
+        else:
+            stack = None
+        steps.append((operands, broken))
+    return steps
+
+
+def returned_size(sub):
+    """Bytes a child frame returned: the size operand of its final RETURN or REVERT, 0 when it ended
+otherwise (STOP, running off its code or an exceptional halt, which has ex null); None when the frame
+ran no instruction or the operand cannot be reconstructed."""
+    try:
+        code = bytes.fromhex(sub['code'][2:])
+        last = sub['ops'][-1]
+    except (KeyError, TypeError, ValueError, IndexError):
+        return None
+    if not isinstance(last, dict):
+        return None
+    pc = last.get('pc')
+    if not isinstance(last.get('ex'), dict) or type(pc) is not int or not 0 <= pc < len(code) or code[pc] not in [0xf3, 0xfd]:
+        return 0
+    operands = replay(sub, code)[-1][0]
+    return operands[1] if operands else None
+
+
+def call_mem_length(length, size, copied):
+    """Whether a CALL-family mem length is the full output window or exactly the copied return data;
+    with an unknown return length (None), any prefix of the window is a possible copy."""
+    return length == size or (length == min(size, copied) if copied is not None else 0 <= length <= size)
+
+
+def forwarded(available, cap=None):
+    """Gas a CALL or CREATE makes available to its child: all but one 64th, capped by a CALL's gas operand."""
+    gas = available - available//64
+    return gas if cap is None else min(cap, gas)
+
+
+def frameless_cost(previous, cost, used, cap, stipend):
+    """Whether a CALL or CREATE that entered no frame reports as cost its static part plus the gas it
+forwarded. A failed balance or depth precheck returns that gas at once, with a value call's stipend;
+a creation address collision consumes it, so its static part is known only to lie within the gas."""
+    static = previous-used+stipend
+    if 0 <= static <= previous and cost == static+forwarded(previous-static, cap):
+        return True
+    if used != previous-cost:
+        return False
+    # Consumed: some remaining gas r after the static part gives cost == previous - r + forwarded(r).
+    candidates = ([previous-cost+cap] if cap is not None else []) + list(range(64*(previous-cost), 64*(previous-cost)+64))
+    return any(0 <= r <= previous and cost == previous-r+forwarded(r, cap) for r in candidates)
+
+
 def local_invariants(vm):
     """Check mandatory local step relations even in programs containing calls.
 
-Every step deducts its recorded cost; a call or creation that entered a child
-frame also receives the child's unused gas. DUPn and SWAPn push the top n+1 words,
-deepest first, of the stack reconstructed from earlier pushes (arity only once it is lost). Operand ranges come from the stack
-reconstructed from reported push words. Dedicated models additionally derive
-costs and effects independently of recorded values.
+Every step deducts its recorded cost; a call or creation that entered a child frame also receives
+the child's unused gas, and one that entered none (result 0 and no executed sub) includes the gas it
+forwarded in its cost. An operation that halted exceptionally (ex null) has an implementation-defined cost, so
+none of these relations applies to it. DUPn and SWAPn push the top n+1 words, deepest first, of the
+stack reconstructed from earlier pushes (arity only once it is lost). Operand ranges come from the
+stack reconstructed from reported push words: MLOAD mem is the loaded word, and CALL-family mem
+starts at the output offset and covers either the full output window or exactly the bytes copied
+from the child's return data, null only when that choice is empty. Dedicated models additionally
+derive costs and effects independently of recorded values.
 """
-    errors=[]
-    if not isinstance(vm,dict) or not isinstance(vm.get('ops'),list):
+    errors = []
+    if not isinstance(vm, dict) or not isinstance(vm.get('ops'), list):
         return ['VM operations missing']
     try:
-        code=bytes.fromhex(vm.get('code','0x')[2:])
-    except (ValueError,TypeError):
+        code = bytes.fromhex(vm.get('code', '0x')[2:])
+    except (ValueError, TypeError):
         return ['VM bytecode malformed']
     if code and not vm['ops']:
         return ['nonempty executing bytecode has no operations']
-    previous=None
-    stack=[]  # None once the reported stack effects cannot be followed.
-    for i,op in enumerate(vm['ops']):
-        if not isinstance(op,dict):
+    previous = None
+    for i, (op, (operands, broken)) in enumerate(zip(vm['ops'], replay(vm, code))):
+        if not isinstance(op, dict):
             errors.append(f'operation {i} malformed');continue
-        pc=op.get('pc');ex=op.get('ex');sub=op.get('sub')
-        if type(pc) is not int or pc<0 or pc>=len(code):
+        pc, ex, sub = op.get('pc'), op.get('ex'), op.get('sub')
+        if type(pc) is not int or pc < 0 or pc >= len(code):
             errors.append(f'operation {i} pc outside executing bytecode');continue
-        opcode=code[pc]
-        if 'op' in op and opcode in NAMES and op['op']!=NAMES[opcode] and not (opcode==0x44 and op['op']=='DIFFICULTY'):
+        opcode = code[pc]
+        if 'op' in op and opcode in NAMES and op['op'] != NAMES[opcode] and not (opcode == 0x44 and op['op'] == 'DIFFICULTY'):
             errors.append(f'operation {i} mnemonic disagrees with bytecode')
-        if sub is not None and (opcode not in CALLS+CREATES or not isinstance(ex,dict)):
+        if sub is not None and (opcode not in CALLS+CREATES or not isinstance(ex, dict)):
             errors.append(f'operation {i} has a subtrace but entered no child frame')
-        pushed=words(ex.get('push')) if isinstance(ex,dict) else None
-        if 0x80<=opcode<=0x9f and pushed is not None:
-            want=stack_window(opcode,stack) if stack is not None else None
-            arity=opcode-0x7e if opcode<0x90 else opcode-0x8e
-            if len(pushed)!=(len(want) if want is not None else arity) or want is not None and pushed!=want:
-                errors.append(f'operation {i} {NAMES[opcode]} push is not the top {arity} words after execution, deepest first')
-                pushed=None
-        if stack is not None and pushed is not None and opcode in INPUTS and len(stack)>=INPUTS[opcode]:
-            operands=stack[len(stack)-INPUTS[opcode]:][::-1]
-            stack=stack[:len(stack)-INPUTS[opcode]]+pushed
-        else:
-            stack=None
-        if isinstance(ex,dict):
-            used,cost=ex.get('used'),op.get('cost')
-            if type(used) is not int or type(cost) is not int or used<0 or cost<0:
+        if broken:
+            arity = opcode-0x7e if opcode < 0x90 else opcode-0x8e
+            errors.append(f'operation {i} {NAMES[opcode]} push is not the top {arity} words after execution, deepest first')
+        if isinstance(ex, dict):
+            pushed = None if broken else words(ex.get('push'))
+            used, cost = ex.get('used'), op.get('cost')
+            target = operands[1] if opcode in CALLS and operands else None
+            if type(used) is not int or type(cost) is not int or used < 0 or cost < 0:
                 errors.append(f'operation {i} gas is not a nonnegative integer')
             elif previous is not None and opcode in CALLS+CREATES:
                 # A creation that RETURNs still pays the code deposit and exit checks,
                 # which the child's steps do not show, so its returned gas is unknown here.
-                if isinstance(sub,dict) and isinstance(sub.get('ops'),list) and sub['ops'] and not (opcode in CREATES and returned(sub)) and used!=previous-cost+leftover(sub):
+                if isinstance(sub, dict) and isinstance(sub.get('ops'), list) and sub['ops'] and not (opcode in CREATES and returned(sub)) and used != previous-cost+leftover(sub):
                     errors.append(f'operation {i} post-step gas does not deduct its cost and return the child leftover')
-            elif previous is not None and used!=previous-cost:
+                if not (isinstance(sub, dict) and sub.get('ops')) and pushed == [0] and (opcode in CREATES or operands and target not in PRECOMPILES):
+                    cap = operands[0] if opcode in CALLS else None
+                    stipend = 2300 if opcode in [0xf1, 0xf2] and operands[2] else 0
+                    if not frameless_cost(previous, cost, used, cap, stipend):
+                        errors.append(f'operation {i} entered no child frame, but its cost does not include the gas it forwarded')
+            elif previous is not None and used != previous-cost:
                 errors.append(f'operation {i} post-step gas does not deduct this operation cost')
-            if 0x60<=opcode<=0x7f:
-                size=opcode-0x5f
-                want=int.from_bytes(code[pc+1:pc+1+size].ljust(size,b'\0'),'big')
-                if pushed is None or len(pushed)!=1 or pushed[0]!=want:
+            if 0x60 <= opcode <= 0x7f:
+                size = opcode-0x5f
+                want = int.from_bytes(code[pc+1:pc+1+size].ljust(size, b'\0'), 'big')
+                if pushed is None or len(pushed) != 1 or pushed[0] != want:
                     errors.append(f'operation {i} PUSH value disagrees with bytecode')
-            mem=ex.get('mem')
-            if opcode in [0xf3,0xfd] and mem is not None:
+            mem = ex.get('mem')
+            if opcode in [0xf3, 0xfd] and mem is not None:
                 errors.append(f'operation {i} reports memory for RETURN/REVERT')
-            if opcode==0x51:
-                word=f'0x{pushed[0]:064x}' if pushed and len(pushed)==1 else None
-                if not isinstance(mem,dict) or mem.get('data')!=word or operands and mem.get('off')!=operands[0]:
+            if opcode == 0x51:
+                word = f'0x{pushed[0]:064x}' if pushed and len(pushed) == 1 else None
+                if not isinstance(mem, dict) or mem.get('data') != word or operands and mem.get('off') != operands[0]:
                     errors.append(f'operation {i} MLOAD mem is not the loaded word at its offset')
             if opcode in CALLS and operands:
-                offset,size=operands[-2],operands[-1]
-                if not (mem is None if size==0 else isinstance(mem,dict) and mem.get('off')==offset
-                        and isinstance(mem.get('data'),str) and len(mem['data'])==2+2*size):
-                    errors.append(f'operation {i} call mem is not the full output window')
-            previous=used if type(used) is int else None
+                offset, size = operands[-2], operands[-1]
+                if isinstance(sub, dict) and sub.get('ops'):
+                    copied = returned_size(sub)
+                else:  # No frame, or one that ran no instruction: only a precompile returns data then.
+                    copied = None if target in PRECOMPILES else 0
+                data = mem.get('data') if isinstance(mem, dict) else None
+                if not (call_mem_length(0, size, copied) if mem is None else isinstance(data, str) and len(data) > 2
+                        and len(data) % 2 == 0 and mem.get('off') == offset and call_mem_length(len(data)//2-1, size, copied)):
+                    errors.append(f'operation {i} call mem is neither the output window nor the copied return data')
+            previous = used if type(used) is int else None
         else:
-            previous=None
+            previous = None
         if sub is not None:
             errors.extend(f'subtrace {i}: '+e for e in local_invariants(sub))
     return errors

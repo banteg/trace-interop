@@ -67,7 +67,7 @@
       },
       "nethermind": {
         "observed": "Empty address lists match nothing (no records in any of the three `[]` cases, both builds), while omitted and null lists are unrestricted. Nethermind is the only client that reads `[]` this way, and its own eth_getLogs treats an empty address set as any address.",
-        "change": "Treat `[]` as unrestricted, like an omitted or null list and like its eth_getLogs. Open #13857 keeps the restrictive reading and does not implement this."
+        "change": "Treat `[]` as unrestricted, like an omitted or null list and like its eth_getLogs. Open #13857 implements this in a second commit."
       },
       "reth": {
         "observed": "Treats `[]` as unrestricted in both builds and rejects only a null address list, because Alloy\u2019s `TraceFilter` defaults the lists only when they are absent. Alloy #4257 fixes this and is merged but not yet released.",

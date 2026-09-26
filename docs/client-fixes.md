@@ -49,6 +49,7 @@ flowchart LR
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) | — | — | — | — | — |
 | [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ · after Erigon #24334 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Erigon #24341](https://github.com/erigontech/erigon/pull/24341) | Default an omitted trace_filter fromBlock to latest | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -86,7 +87,7 @@ flowchart LR
 | [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. · after Nethermind #13622 | — | 2026-09-25 | — | — | dev | — |
 | [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551. · after Nethermind #13551 | — | 2026-09-25 | — | — | dev | — |
 | [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. · after Nethermind #13551 | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857) | Support union and intersection modes in trace_filter; its tests and docs keep "an empty list matches no address", which contradicts H04; it does not count toward H04, which needs an amendment or a follow-up · conflicts with Nethermind #13897 | [H03](../reports/decisions/H03.md) | — | — | — | — | — |
+| [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857) | Support union and intersection modes in trace_filter; a second commit reads an empty address list as unrestricted (H04), replacing the earlier "matches no address" reading · conflicts with Nethermind #13897 | [H03](../reports/decisions/H03.md), [H04](../reports/decisions/H04.md) | — | — | — | — | — |
 | [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) | 2026-09-26 | — | — | dev | — |
 | [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted · conflicts with Nethermind #13857 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 

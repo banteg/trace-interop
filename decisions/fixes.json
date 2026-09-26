@@ -594,7 +594,8 @@
       "title": "fix(rpc): support union and intersection modes in trace_filter",
       "client": "nethermind",
       "decisions": [
-        "H03"
+        "H03",
+        "H04"
       ],
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13897"
@@ -602,7 +603,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "its tests and docs keep \"an empty list matches no address\", which contradicts H04; it does not count toward H04, which needs an amendment or a follow-up"
+      "note": "a second commit reads an empty address list as unrestricted (H04), replacing the earlier \"matches no address\" reading"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13858",
@@ -984,6 +985,17 @@
       ],
       "depends_on": [
         "https://github.com/erigontech/erigon/pull/24334"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24341",
+      "title": "fix(rpc/jsonrpc): default an omitted trace_filter fromBlock to latest",
+      "client": "erigon",
+      "decisions": [
+        "H30"
       ],
       "state": "open",
       "draft": false,

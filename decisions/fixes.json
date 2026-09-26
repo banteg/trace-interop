@@ -1074,6 +1074,21 @@
       "merged_at": null
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13937",
+      "title": "fix(rpc): return null from trace_transaction and trace_get for a missing transaction",
+      "client": "nethermind",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups"
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

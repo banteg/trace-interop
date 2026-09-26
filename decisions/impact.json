@@ -6,7 +6,7 @@
     },
     "erigon": {
       "name": "Erigon",
-      "summary": "The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default."
+      "summary": "The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, and the genesis reward, several of which still differ in 3.7.0. Signed-transaction validity checks and error codes need alignment with the proposal (#24329 is open), and omitted trace_filter bounds still search history instead of the proposed latest/latest default."
     },
     "nethermind": {
       "name": "Nethermind",
@@ -14,7 +14,7 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "Reth 2.5.2 \u00b7 4630cc58 fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds and the omitted trace_callMany block, all of which still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, state/VM trace details and error-code alignment.",
+      "summary": "Reth 2.5.2 \u00b7 df7b7fdf, the first nightly with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment.",
       "build_notes": [
         {
           "versions": [
@@ -207,8 +207,8 @@
         "change": "Report MLOAD and the full CALL output window, include forwarded gas in CREATE `cost`, drop the synthetic STOP, and return `{code: \"0x\", ops: []}` for EOA, precompile and empty-code frames."
       },
       "reth": {
-        "observed": "Reth locks revm-inspectors 0.43.0, which reports whole-memory `mem`, pre-operation `used`, never sets `store`, and adds a synthetic STOP.",
-        "change": "Adopt a revm-inspectors release with the fixed `used` and `mem` handling, then report MLOAD and the full CALL output window, set `store` from every completed SSTORE (not SLOAD), and drop the synthetic STOP."
+        "observed": "Reth 2.6.0 locks revm-inspectors 0.43.0, which reports whole-memory `mem`, pre-operation `used`, never sets `store`, and adds a synthetic STOP. The nightly takes up 0.44.0, which fixes `used` and `store`, but still reports no MLOAD memory or full CALL output window, adds the synthetic STOP and gives a failed-precheck call a `sub`.",
+        "change": "Report MLOAD and the full CALL output window, drop the synthetic STOP and give a call that fails its precheck `sub: null`; 2.6.0 also needs the 0.44.0 fixes for `used` and `store` (#504, #528)."
       }
     },
     "H22": {
@@ -306,7 +306,7 @@
     "H28": {
       "erigon": {
         "observed": "A historical beacon-root lookup includes a following block\u2019s system update.",
-        "change": "Read the selected block\u2019s post-state, before applying the next block\u2019s system operations. Read the first trace_callMany item at the same state as trace_call (txIndex \u22121)."
+        "change": "Read the selected block\u2019s post-state, before applying the next block\u2019s system operations. Read the first trace_callMany item at the same state as trace_call (txIndex \u22121). Both are fixed on main (#24056, #24293); 3.7.0 carries only the trace_call fix."
       },
       "besu": {
         "observed": "From source: block replay does not run the block\u2019s pre-block system calls, so a transaction that reads the EIP-4788 or EIP-2935 contracts sees stale storage. The captured H28 probes use trace_call only.",
@@ -336,7 +336,7 @@
       },
       "reth": {
         "observed": "Pre-Cancun account deletion loses code/nonce deletion markers. After Cancun, a SELFDESTRUCT to self reports a zero executing account and balance because revm skips the inspector callback when the opcode changes no state (revm #3834).",
-        "change": "Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780. Fixed upstream by revm-inspectors #510, merged but unreleased after 0.43.0; its main branch lists accessed nonzero slots as `-`, which should become `storage: {}`. The SELFDESTRUCT payload is fixed by open revm #3833, which then needs revm-inspectors and Reth uptake."
+        "change": "Report the removed code and nonce before Cancun; preserve existing accounts after EIP-6780. Fixed by revm-inspectors #510, released in 0.44.0 and taken up by the nightly; 0.44.0 lists accessed nonzero slots as `-`, which open revm-inspectors #530 changes to `storage: {}`. The SELFDESTRUCT payload is fixed by open revm #3833, which then needs revm-inspectors and Reth uptake."
       },
       "geth": {
         "observed": "A deleted account lists its written slots with `-`.",
@@ -352,13 +352,13 @@
     "H18": {
       "reth": {
         "observed": "EIP-7702 delegation code changes are missing from `stateDiff`.",
-        "change": "Include net authorization code set, replacement and clearing, even for existing accounts and when the subsequent execution reverts. Fixed upstream by revm-inspectors #509, merged but unreleased after 0.43.0; needs a release and a Reth dependency bump."
+        "change": "Include net authorization code set, replacement and clearing, even for existing accounts and when the subsequent execution reverts. Fixed by revm-inspectors #509, released in revm-inspectors 0.44.0 and taken up by the Reth nightly (df7b7fdf); 2.6.0 still differs until a Reth release carries it."
       }
     },
     "H19": {
       "reth": {
         "observed": "Creation `vmTrace.code` does not contain the expected executing initcode.",
-        "change": "Attach the creation frame\u2019s initcode to its VM trace, including in block replay."
+        "change": "Attach the creation frame\u2019s initcode to its VM trace, including in block replay. Fixed by revm-inspectors #511, released in revm-inspectors 0.44.0 and taken up by the Reth nightly (df7b7fdf); 2.6.0 still differs until a Reth release carries it."
       }
     },
     "H30": {
@@ -418,7 +418,7 @@
       },
       "reth": {
         "observed": "A first transfer to an absent account reports balance as a change from zero and code/nonce as unchanged. revm-inspectors reserves added fields for contract creation. Simple contract-creation markers are correct, including when H15 environment bytes differ; see the [H17 audit](../../docs/h17-assessment-audit.md).",
-        "change": "Adopt [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526), merged into main but unreleased after 0.43.0; retest after a release and a Reth dependency bump. The [H17 audit](../../docs/h17-assessment-audit.md) retains the Fedora regression results."
+        "change": "Adopt [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526), released in revm-inspectors 0.44.0 and taken up by the Reth nightly (df7b7fdf); 2.6.0 still differs until a Reth release carries it. The [H17 audit](../../docs/h17-assessment-audit.md) retains the Fedora regression results."
       },
       "geth": {
         "observed": "Zero-to-value and value-to-zero slots on an account that exists at both endpoints are reported with `+` and `-`.",

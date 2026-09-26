@@ -2,22 +2,22 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/e437815dba041158b7079bf149052fb7301f8419) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-09-25T08:32:17.467627+00:00**. [Freshness preflight](../evidence/2026-09-25/refresh/preflight.json) · [Nine-build lock](../evidence/2026-09-25/refresh/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-26T06:31:54.559335+00:00**. [Freshness preflight](../evidence/2026-09-26/eval/preflight.json) · [Nine-build lock](../evidence/2026-09-26/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **46 of 128** client decisions agree with the draft (+5 since the previous capture). 13 more have a submitted fix, and **54 differ with no fix yet**: 6 on converged decisions and 48 on decisions still under review. 11 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **51 of 128** client decisions agree with the draft (+5 since the previous capture). 7 more have a submitted fix, and **55 differ with no fix yet**: 7 on converged decisions and 48 on decisions still under review. 16 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.9-develop · accdae00 | 2 | 5 | 2 | 16 | 1 | 6 | 0 | 0 / 11 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · f8cfe5a7 | 14 (+1) | 2 | 1 | 11 | 1 | 3 | 1 | 9 / 3 |
-| [Nethermind](clients/nethermind.md) | 2.1.0-preview · ee1f57da | 14 (+1) | 3 | 1 | 12 | 1 | 1 | 4 | 18 / 2 |
-| [Reth](clients/reth.md) | 2.5.2 · 4630cc58 | 16 (+3) | 3 | 2 | 9 | 1 | 1 | 6 | 16 / 4 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 (+2) | 0 | 1 | 11 | 1 | 3 | 3 | 9 / 3 |
+| [Nethermind](clients/nethermind.md) | 2.1.0-preview · b4211ad9 | 14 | 2 | 2 | 12 | 1 | 1 | 4 | 18 / 2 |
+| [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 19 (+3) | 0 | 2 | 9 | 1 | 1 | 9 | 16 / 4 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
@@ -26,10 +26,10 @@ Each client has one outcome per decision on its development build. A difference 
 | Client | Main review areas |
 | --- | --- |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
-| [Erigon](clients/erigon.md) | The tested development build agrees on several cases that differ in the release, including tree lookup, MCOPY and historical system state. Default filter composition still needs attention; signed-transaction validity checks and error codes need alignment with the proposal. Omitted trace_filter bounds currently search history and differ from the proposed latest/latest default. |
+| [Erigon](clients/erigon.md) | The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, and the genesis reward, several of which still differ in 3.7.0. Signed-transaction validity checks and error codes need alignment with the proposal (#24329 is open), and omitted trace_filter bounds still search history instead of the proposed latest/latest default. |
 | [Geth draft fork](clients/geth.md) | The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision except the H12 raw-transaction block argument and simulation pending, which remain policy observations. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage. |
 | [Nethermind](clients/nethermind.md) | 2.1.0-unstable · 641592d2 fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 · bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas. |
-| [Reth](clients/reth.md) | Reth 2.5.2 · 4630cc58 fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds and the omitted trace_callMany block, all of which still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, state/VM trace details and error-code alignment. |
+| [Reth](clients/reth.md) | Reth 2.5.2 · df7b7fdf, the first nightly with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment. |
 
 ## Decisions to review
 

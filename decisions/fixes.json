@@ -515,8 +515,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-25T08:15:02Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-25T08:15:02Z"
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/530",
@@ -738,8 +737,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-14T13:58:57Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-14T13:58:57Z"
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509",
@@ -750,8 +748,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-15T23:34:29Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-15T23:34:29Z"
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510",
@@ -765,8 +762,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-15T23:44:41Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-15T23:44:41Z"
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511",
@@ -777,8 +773,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-22T14:12:33Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-22T14:12:33Z"
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/526",
@@ -789,8 +784,7 @@
       ],
       "state": "merged",
       "draft": false,
-      "merged_at": "2026-09-24T14:31:09Z",
-      "awaiting_uptake": true
+      "merged_at": "2026-09-24T14:31:09Z"
     },
     {
       "url": "https://github.com/erigontech/rpc-tests/pull/604",

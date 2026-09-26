@@ -77,23 +77,20 @@ Controls and expectations come from the current corpus definition whenever the
 captured request is byte-identical, so a corrected fixture reassesses retained
 evidence. A changed request keeps the definition it was captured with.
 
-### Pending next capture
+### Precheck, depth and null cases
 
-`probes-prague` repeats the two precheck probes through `debug_traceCall` with `callTracer` and
-`flatCallTracer` (`precheck-call-value-debug-callTracer`, `precheck-call-value-debug-flatCallTracer`,
-`precheck-create-value-debug-callTracer`, `precheck-create-value-debug-flatCallTracer`). They record how
-each client's debug tracers treat a failed precheck, the evidence behind H29's revised rule. They are
-generated but not yet registered in `decisions/ledger.json`; after the next matrix capture, register them as
-H29 references, not assertions.
+First captured in the [2026-09-26 eval](../evidence/2026-09-26/eval/README.md) and registered in the ledger:
 
-`probes-forks/depth-limit` reaches the call depth limit at block 3, where the forks chain still runs Homestead
-rules and a CALL forwards exactly the gas it requests. Register it under H29 (frame shape) and H09 (the
-"Max call depth exceeded" label) after the same capture.
-
-The null-member cases test that an explicit null is omitted (H14): `probes-prague/field-null-members`,
-`field-null-block` and `callmany-null-block`, and `probes-forks/filter-null-members` together with
-`filter-null-toBlock` and `filter-null-fromBlock`, which must return the same result as their omitted twins
-(`filter-omitted-toBlock`, `filter-omitted-fromBlock`). Register them under H14, and the twins as references.
+- `probes-prague` repeats the two precheck probes through `debug_traceCall` with `callTracer` and
+  `flatCallTracer`. These four cases are H29 references: they record how each client's debug tracers
+  treat a failed precheck, the evidence behind H29's revised rule, without a verdict.
+- `probes-forks/depth-limit` reaches the call depth limit at block 3, where the forks chain still runs
+  Homestead rules and a CALL forwards exactly the gas it requests. It is assessed under H29 (frame
+  shape) and H09 (the "Max call depth exceeded" label).
+- The null-member cases test that an explicit null is omitted (H14): `probes-prague/field-null-members`,
+  `field-null-block` and `callmany-null-block`, and `probes-forks/filter-null-members` together with
+  `filter-null-toBlock` and `filter-null-fromBlock`, which must return the same result as their omitted
+  twins (`filter-omitted-toBlock`, `filter-omitted-fromBlock`, H14 references).
 
 ### Corrected siblings
 

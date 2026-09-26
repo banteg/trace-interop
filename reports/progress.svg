@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="184" viewBox="0 0 624 184" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 2 agree, 5 fix submitted, 2 no fix · converged, 16 no fix · under review, 1 policy open, 6 not fully measured; Erigon 14 agree, 2 fix submitted, 1 no fix · converged, 11 no fix · under review, 1 policy open, 3 not fully measured; Nethermind 14 agree, 3 fix submitted, 1 no fix · converged, 12 no fix · under review, 1 policy open, 1 not fully measured; Reth 16 agree, 3 fix submitted, 2 no fix · converged, 9 no fix · under review, 1 policy open, 1 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 2 agree, 5 fix submitted, 2 no fix · converged, 16 no fix · under review, 1 policy open, 6 not fully measured; Erigon 16 agree, 1 no fix · converged, 11 no fix · under review, 1 policy open, 3 not fully measured; Nethermind 14 agree, 2 fix submitted, 2 no fix · converged, 12 no fix · under review, 1 policy open, 1 not fully measured; Reth 19 agree, 2 no fix · converged, 9 no fix · under review, 1 policy open, 1 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect x="96" y="12" width="32" height="20" fill="#1a7f37"/>
@@ -15,10 +15,8 @@
 <rect x="512" y="12" width="96" height="20" fill="#8c959f"/>
 <text x="560" y="26" text-anchor="middle" fill="#1f2328">6</text>
 <text class="label" x="88" y="56" text-anchor="end">Erigon</text>
-<rect x="96" y="42" width="224" height="20" fill="#1a7f37"/>
-<text x="208" y="56" text-anchor="middle" fill="#ffffff">14</text>
-<rect x="320" y="42" width="32" height="20" fill="#0969da"/>
-<text x="336" y="56" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="96" y="42" width="256" height="20" fill="#1a7f37"/>
+<text x="224" y="56" text-anchor="middle" fill="#ffffff">16</text>
 <rect x="352" y="42" width="16" height="20" fill="#bc4c00"/>
 <text x="360" y="56" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="368" y="42" width="176" height="20" fill="#d4a72c"/>
@@ -30,10 +28,10 @@
 <text class="label" x="88" y="86" text-anchor="end">Nethermind</text>
 <rect x="96" y="72" width="224" height="20" fill="#1a7f37"/>
 <text x="208" y="86" text-anchor="middle" fill="#ffffff">14</text>
-<rect x="320" y="72" width="48" height="20" fill="#0969da"/>
-<text x="344" y="86" text-anchor="middle" fill="#ffffff">3</text>
-<rect x="368" y="72" width="16" height="20" fill="#bc4c00"/>
-<text x="376" y="86" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="320" y="72" width="32" height="20" fill="#0969da"/>
+<text x="336" y="86" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="352" y="72" width="32" height="20" fill="#bc4c00"/>
+<text x="368" y="86" text-anchor="middle" fill="#ffffff">2</text>
 <rect x="384" y="72" width="192" height="20" fill="#d4a72c"/>
 <text x="480" y="86" text-anchor="middle" fill="#1f2328">12</text>
 <rect x="576" y="72" width="16" height="20" fill="#8250df"/>
@@ -41,10 +39,8 @@
 <rect x="592" y="72" width="16" height="20" fill="#8c959f"/>
 <text x="600" y="86" text-anchor="middle" fill="#1f2328">1</text>
 <text class="label" x="88" y="116" text-anchor="end">Reth</text>
-<rect x="96" y="102" width="256" height="20" fill="#1a7f37"/>
-<text x="224" y="116" text-anchor="middle" fill="#ffffff">16</text>
-<rect x="352" y="102" width="48" height="20" fill="#0969da"/>
-<text x="376" y="116" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="96" y="102" width="304" height="20" fill="#1a7f37"/>
+<text x="248" y="116" text-anchor="middle" fill="#ffffff">19</text>
 <rect x="400" y="102" width="32" height="20" fill="#bc4c00"/>
 <text x="416" y="116" text-anchor="middle" fill="#ffffff">2</text>
 <rect x="432" y="102" width="144" height="20" fill="#d4a72c"/>

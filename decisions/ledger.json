@@ -281,7 +281,10 @@
         "mined-probes/block-3",
         "mined-probes/replay-block-5",
         "mined-probes/block-5",
-        "probes-prague/create2-collision"
+        "probes-prague/create2-collision",
+        "probes-prague/precheck-call-value",
+        "probes-prague/precheck-create-value",
+        "probes-forks/depth-limit"
       ],
       "id": "H09",
       "kind": "Spec decision",
@@ -492,18 +495,26 @@
         "probes-prague/field-from-omitted-zero-fee",
         "probes-prague/field-gas-omitted",
         "probes-prague/field-chain-id",
-        "probes-prague/field-chain-id-mismatch"
+        "probes-prague/field-chain-id-mismatch",
+        "probes-prague/field-null-members",
+        "probes-prague/field-null-block",
+        "probes-prague/callmany-null-block",
+        "probes-forks/filter-null-members",
+        "probes-forks/filter-null-toBlock",
+        "probes-forks/filter-null-fromBlock"
       ],
       "id": "H14",
       "kind": "Spec decision",
-      "next_step": "`probes-prague` covers input only, equal and disagreeing data/input, access list (warm-SLOAD gas), authorization list (delegated code), omitted from (CALLER) and gas (eth_call GAS), and a chainId mismatch. The fee and raw-validation checks accept the eth_simulateV1 codes and the error-group codes respectively. Register the null-member cases in `probes-prague` and `probes-forks` under H14, with the omitted-bound twins as references, after their first matrix capture.",
+      "next_step": "`probes-prague` covers input only, equal and disagreeing data/input, access list (warm-SLOAD gas), authorization list (delegated code), omitted from (CALLER) and gas (eth_call GAS), and a chainId mismatch. The fee and raw-validation checks accept the eth_simulateV1 codes and the error-group codes respectively.",
       "question": "Which error codes do malformed parameters and rejected unsigned calls return?",
       "rationale": "Callers should distinguish a malformed request from a valid request that cannot execute, without text matching.",
       "recommendation": "An explicit null for an optional parameter or an optional member of a parameter object is the same as omitting it: the default applies, and null keeps its own meaning only where the schema gives it one (a null to creates a contract). Use -32602 for malformed encodings, wrong types, unsupported argument shapes, disagreeing data and input, a priority fee above the fee cap and a non-null override parameter a client does not implement. Report unsigned-call validation rejections with the eth_simulateV1 codes: -38012 base fee too low, -38013 intrinsic gas, -38014 insufficient funds, -38025 init-code size and -38026 client limit; a validation failure without a listed code is -32602. Report signed-transaction rejections with the eth_sendRawTransaction error groups (H13). List each method\u2019s codes in its errors. Every call-object field the schema defines must take effect or cause a rejection; only fields outside the schema are ignored, and filters reject unknown fields. Keep messages implementation-specific; omit internal stack traces.",
       "references": [
         "a/filter-from-only-intersection",
         "a/filter-to-only-intersection",
-        "probes-prague/field-gas-omitted-eth-call"
+        "probes-prague/field-gas-omitted-eth-call",
+        "probes-forks/filter-omitted-toBlock",
+        "probes-forks/filter-omitted-fromBlock"
       ],
       "title": "Invalid-parameter error codes"
     },
@@ -2073,15 +2084,22 @@
         "precompiles/root-success",
         "probes-prague/precheck-call-value",
         "probes-prague/precheck-create-value",
-        "probes-prague/create2-collision"
+        "probes-prague/create2-collision",
+        "probes-forks/depth-limit"
       ],
       "id": "H29",
       "kind": "Spec decision / client alignment",
-      "next_step": "Collect client positions on the revised precheck rule: Besu and Nethermind would add precheck frames to trace_*, and Nethermind also to its callTracer; Erigon and Reth already emit them, Erigon with a lowercase label. Register the `probes-forks` depth-limit case after its first matrix capture. Add an Amsterdam CREATE precheck fixture once clients support the fork. Review the inherited DELEGATECALL exception as a compatibility choice, and add a zero-value call to 0x0a before Cancun and to 0x100 before Osaka. `probes-prague` covers a nested value CALL and CREATE beyond balance, the same calls through `debug_traceCall`, and a CREATE2 collision. The precompile-values corpus separates outer and child values, pre-funds zero-value creations with a preceding simulated transfer, and returns the call success bit. Parent error propagation remains a separate H24 issue.",
+      "next_step": "Collect client positions on the revised precheck rule: Besu and Nethermind would add precheck frames to trace_*, and Nethermind also to its callTracer; Erigon and Reth already emit them, Erigon with a lowercase label. Add an Amsterdam CREATE precheck fixture once clients support the fork. Review the inherited DELEGATECALL exception as a compatibility choice, and add a zero-value call to 0x0a before Cancun and to 0x100 before Osaka. `probes-prague` covers a nested value CALL and CREATE beyond balance, the same calls through `debug_traceCall`, and a CREATE2 collision. The precompile-values corpus separates outer and child values, pre-funds zero-value creations with a preceding simulated transfer, and returns the call success bit. Parent error propagation remains a separate H24 issue.",
       "question": "Which precompile calls appear as call frames?",
       "rationale": "The retained inherited-value exception is a compatibility choice, not a statement that DELEGATECALL transfers funds. Crossed-value CALL/CALLCODE fixtures confirm that Erigon, Reth and Nethermind use the explicit child value rather than the outer value. Besu still omits the nonzero-value child. The independent Geth draft implementation also matches these checks; it is not an independent vote for the policy. Precheck failures follow the call tracers of Geth, Erigon, Reth and Besu, which record the attempted call and its rejection; without the frame, the only record of a rejected value transfer is the zero the caller pushes.",
       "recommendation": "Retain root precompile calls. Omit nested precompile frames with zero value; retain those with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block\u2019s fork, so a zero-value call to an address before its precompile activates is an ordinary call and keeps its frame. A CALL-family call that fails its precheck (depth limit, insufficient balance) emits a frame with its action and error label, no result and no subtraces; the forwarded gas returns to the caller, which continues after pushing 0. A CREATE or CREATE2 that fails its precheck (depth limit, insufficient balance, nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE address collision emits a create frame with error \"Contract address collision\" that consumes its gas. Number traceAddress and subtraces over the emitted tree. Keep caller VM return-memory effects even when a child frame is omitted.",
-      "title": "Precompile call-frame inclusion"
+      "title": "Precompile call-frame inclusion",
+      "references": [
+        "probes-prague/precheck-call-value-debug-callTracer",
+        "probes-prague/precheck-call-value-debug-flatCallTracer",
+        "probes-prague/precheck-create-value-debug-callTracer",
+        "probes-prague/precheck-create-value-debug-flatCallTracer"
+      ]
     },
     {
       "background": [

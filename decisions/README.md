@@ -9,7 +9,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **46 of 128** c
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
 | [H01](../reports/decisions/H01.md) | ⚪ Under review | ···· | **Method coverage**<br>Which trace_* methods must a client implement, and how does it signal the ones it does not? | ⛔✅✅✅— | ⛔✅✅✅✅ |
-| [H02](../reports/decisions/H02.md) | 🤝 Converged | ···👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅🛠️🛠️— | ✅✅🛠️✅✅ |
+| [H02](../reports/decisions/H02.md) | 🤝 Converged | ··👍👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅🛠️🛠️— | ✅✅🛠️✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍·👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | ⚠️🛠️🛠️🛠️— | ⚠️✅🛠️✅✅ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | ···· | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ⚠️✅⚠️⚠️— | ⚠️✅⚠️⚠️✅ |
 | [H05](../reports/decisions/H05.md) | ⚪ Under review | ·👍·👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️⚠️🛠️— | ⚠️🛠️⚠️✅✅ |

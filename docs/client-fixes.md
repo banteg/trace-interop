@@ -1,6 +1,6 @@
 # Related pull requests
 
-Related client, specification and test-suite PRs. Status checked **2026-09-25**.
+Related client, specification and test-suite PRs. Status checked **2026-09-26**.
 
 Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a PR tagged with its client and decision is open, was merged after the build’s commit, or awaits uptake of the merged library change. A PR marked partial is linked but leaves ⚠️ or 🟡 in place, since part of the measured difference has no submitted fix. Generated from [fixes.json](../decisions/fixes.json); refresh PR states with `uv run python scripts/refresh_fixes.py`.
 
@@ -22,13 +22,11 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) |
 | [Erigon #24032](https://github.com/erigontech/erigon/pull/24032) (draft) | Test crash recovery during catch-up reorgs; supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario | — |
 | [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. | — |
-| [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) |
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) |
 | [execution-apis #895](https://github.com/ethereum/execution-apis/pull/895) (draft) | Parity trace methods and output schemas | — |
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — |
 | [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) |
 | [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857) | Support union and intersection modes in trace_filter | [H03](../reports/decisions/H03.md) |
-| [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) |
 | [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) | Preserve pruned history errors through execution wrappers | [H06](../reports/decisions/H06.md) (partial) |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) |
 | [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) |
@@ -48,6 +46,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Erigon #24293](https://github.com/erigontech/erigon/pull/24293) | Trace_callMany reads state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-25 |
 | [Erigon #24294](https://github.com/erigontech/erigon/pull/24294) | Trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations; adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 |
 | [Erigon #24295](https://github.com/erigontech/erigon/pull/24295) | Trace_filter reports no genesis block reward | [H05](../reports/decisions/H05.md) | 2026-09-25 |
+| [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) | 2026-09-26 |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) | Pair instruction trace completions with starts | — | 2026-09-25 |
 | [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) | Report terminal output for top-level action traces | — | 2026-09-25 |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept empty Parity trace selections | [H08](../reports/decisions/H08.md) (partial), [H11](../reports/decisions/H11.md) | 2026-09-24 |
@@ -65,6 +64,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. | — | 2026-09-25 |
 | [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551. | — | 2026-09-25 |
 | [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 |
+| [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) | 2026-09-26 |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) | 2026-09-25 |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return null for missing transaction replays | [H06](../reports/decisions/H06.md) (partial) | 2026-09-22 |

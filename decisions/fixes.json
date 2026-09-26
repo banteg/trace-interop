@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-25",
+  "checked_at": "2026-09-26",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -265,9 +265,9 @@
       "partial": [
         "H16"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-26T02:37:30Z",
       "note": "signed raw transactions only; unsigned trace_call fee accounting follows H15"
     },
     {
@@ -453,9 +453,9 @@
       "decisions": [
         "H02"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-26T00:29:35Z",
       "note": "changes the response to one object or null; a missing transaction still errors (H06)"
     },
     {

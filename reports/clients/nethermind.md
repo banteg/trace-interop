@@ -4,7 +4,7 @@
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.1.0-preview · ee1f57da** (of 32 decisions): ✅ 14 agree (+1 since the previous capture) · 🛠️ 3 fix submitted · ⚠️ 13 with no fix yet (1 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 4 of these agreements are not yet in 2.0.0 · bec830cd. Upstream fix PRs: 17 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.1.0-preview · ee1f57da** (of 32 decisions): ✅ 14 agree (+1 since the previous capture) · 🛠️ 3 fix submitted · ⚠️ 13 with no fix yet (1 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 4 of these agreements are not yet in 2.0.0 · bec830cd. Upstream fix PRs: 18 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

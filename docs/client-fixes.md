@@ -8,7 +8,6 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 
 | PR | Change | Decisions |
 | --- | --- | --- |
-| [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H14](../reports/decisions/H14.md) (partial) |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources | [H06](../reports/decisions/H06.md) (partial) |
 | [Besu #10953](https://github.com/besu-eth/besu/pull/10953) | Replay block pre-execution before tracing transactions | [H27](../reports/decisions/H27.md), [H28](../reports/decisions/H28.md) |
 | [Besu #11286](https://github.com/besu-eth/besu/pull/11286) | Include MCOPY memory updates in vmTrace | [H20](../reports/decisions/H20.md) (partial) |
@@ -42,6 +41,7 @@ Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a 
 | --- | --- | --- | --- |
 | [Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216) | Default address filters to intersection | [H03](../reports/decisions/H03.md) | 2026-09-22 |
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 |
+| [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes in vmTrace | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 |
 | [Erigon #24056](https://github.com/erigontech/erigon/pull/24056) | Read account state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-18 |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) | 2026-09-25 |

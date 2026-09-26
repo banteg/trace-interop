@@ -4,7 +4,7 @@ Reth 2.5.2 · df7b7fdf, the first nightly with revm-inspectors 0.44.0, fixes tre
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.5.2 · df7b7fdf** (of 32 decisions): ✅ 19 agree · ⚠️ 11 with no fix yet (2 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 9 of these agreements are not yet in 2.6.0 · 73a3a008. Upstream fix PRs: 16 merged, 5 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.5.2 · df7b7fdf** (of 32 decisions): ✅ 19 agree · ⚠️ 11 with no fix yet (2 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 9 of these agreements are not yet in 2.6.0 · 73a3a008. Upstream fix PRs: 17 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

@@ -50,18 +50,23 @@ The fork follows the [adopted source-review stances](source-review/README.md) an
 pinned draft:
 
 - `trace_filter` bounds default to latest/latest; bounds beyond the head, reversed
-  ranges and `pending` return -32602, and `earliest` is the lowest available block.
-  Unknown single-block selectors return -32001 and pruned history 4444.
+  ranges, `pending` and block-hash bounds return -32602, and `earliest` is the lowest
+  available block. Unknown single-block selectors return -32001 and pruned history 4444.
+  `pending` traces the miner's pending block for block methods and simulations, and
+  returns -32602 when none is available (since `e26833e3`).
 - Unsigned calls default omitted fees to 0 and run a zero effective price with
   BASEFEE 0, as `eth_call` does; a supplied nonce is ignored, and gas above the RPC
-  cap runs at the cap. Rejections use the `eth_simulateV1` codes, and a failing
-  `trace_callMany` item is named in `error.data.index`.
+  cap runs at the cap. Rejections use the `eth_simulateV1` codes; a call object invalid
+  regardless of state is -32602 and takes precedence, and any other rejection without a
+  listed code is -32003 (since `e26833e3`). A failing `trace_callMany` item is named in
+  `error.data.index`.
 - Signed raw transactions are validated for execution and rejected with the
   `eth_sendRawTransaction` error groups; a gas limit above the cap is -38026.
 - Call objects accept block hashes and the reserved state and block override
   parameters; schema-defined fields are honoured or rejected. An explicit null for an
   optional member is omitted (since `c8449896`), except that a null `to` creates a contract.
-- Failed frames use the normative labels; REVERT frames carry `{gasUsed, output}`,
+- Failed frames use the normative labels, including Parity's "Out of gas" for a code-size
+  or code-deposit failure and "Invalid code" for a 0xEF prefix (since `e26833e3`); REVERT frames carry `{gasUsed, output}`,
   and calls failing their precheck keep a failed frame with no result (since `07a99c67`; earlier
   captures predate it and show the previous rule). Deleted accounts report
   `storage: {}` and surviving accounts' slots use `*`.

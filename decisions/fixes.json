@@ -217,7 +217,8 @@
       "title": "fix(rpc/jsonrpc): default trace_filter address lists to intersection",
       "client": "erigon",
       "decisions": [
-        "H03"
+        "H03",
+        "H04"
       ],
       "depends_on": [
         "https://github.com/erigontech/rpc-tests/pull/604"
@@ -513,6 +514,7 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-24T21:23:28Z",
+      "note": "covers a CREATE that enters a frame; a CREATE that fails its balance or depth precheck still reports cost 32002 without the forwarded gas",
       "uptake": {
         "merge_commit": "83bd7e7d9dcb78ca26a9dd0a81e11c1d60bf66a2",
         "builds": {
@@ -599,7 +601,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "its tests and docs keep \"an empty list matches no address\", which contradicts H04; it does not count toward H04, which needs an amendment or a follow-up"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13858",
@@ -670,6 +673,24 @@
       "state": "open",
       "draft": false,
       "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27411",
+      "title": "fix(rpc): default trace_filter to latest",
+      "client": "reth",
+      "decisions": [
+        "H30"
+      ],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-09-24T14:16:26Z",
+      "uptake": {
+        "merge_commit": "074bf32ef193987b41ee79a93f07e2251ff6fe81",
+        "builds": {
+          "df7b7fdf55f9774610bb0209d981fd6550ac1b0d": true,
+          "73a3a00862a8f14f89e30da8de001456f18cfae0": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27423",
@@ -918,6 +939,7 @@
       "title": "fix(rpc-types-trace): treat null trace filter members as omitted",
       "client": "reth",
       "decisions": [
+        "H04",
         "H14"
       ],
       "partial": [
@@ -1134,6 +1156,7 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-14T13:58:57Z",
+      "note": "its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up",
       "uptake": {
         "merge_commit": "19746b981132035fdfb7ca89c3faab6258104a18",
         "releases": [

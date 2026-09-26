@@ -150,6 +150,14 @@ harness cannot see this. Add a mined CREATE whose initcode reverts, then query
 `toAddress: [derived address]`, expecting `[]`, and `fromAddress: [creator]`, expecting the
 failed frame.
 
+**Update (2026-09-26):** the `mined-probes` filter cases now cover this, and the claim above that Alloy/Reth and Erigon
+implement no-match is wrong. Both return the reverted CREATE for `toAddress: [would-be address]`: their failed CREATE
+carries a `result` with the would-be `address` (the H09 shape difference), so Alloy's create-output branch and Erigon's
+`result.Address` check both fire. Only Besu, which never matches CREATE by recipient, and the Geth draft return `[]`.
+H23 keeps the no-match rule and now states it as "a record matches only on addresses it reports", tied to H09's
+address-free reverted-CREATE result. See the
+[divergent-decisions review](../reviews/2026-09-26-divergent-decisions/H04-H23-H30-H32.md).
+
 ## 6. `pending` for block-selector methods has four behaviours, and Reth localizes records to a block that is not on the chain (C + A, spec, medium-high)
 
 The draft types `trace_block` and `trace_replayBlockTransactions` Block as `BlockNumberOrTag`,

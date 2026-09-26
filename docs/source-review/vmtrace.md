@@ -239,6 +239,9 @@ Latent issues, none affecting current fixtures:
 - **C6. Besu multi-word `push` order is top-first (reversed).** Medium-high confidence, from source only; no captured case has a non-palindromic DUP/SWAP.
   `captureStack` builds the array bottom→top (AbstractDebugOperationTracer.java:127-130). `generateTracingPush` then emits `stack[len-1-i]` for i=0.. (VmTraceGenerator.java:252-262).
   This affects DUPn (n≥3) and every SWAPn.
+  **Update (2026-09-26):** refuted. `probes-prague/vm-push-order` shows Besu `DUP3 → [0x1,0x2,0x3,0x1]` and
+  `SWAP2 → [0x1,0x3,0x2]`, both deepest-first. See the
+  [divergent-decisions review](../reviews/2026-09-26-divergent-decisions/H08-H20.md).
 - **C7. Erigon extra `sub`s.** High confidence for SELFDESTRUCT (observed), medium for the balance/depth case (source only).
   - SELFDESTRUCT receives `{code:"0x",ops:[]}` because `captureStartOrEnter` attaches a sub for every OnEnter, including the SELFDESTRUCT pseudo-call (trace_adhoc.go:381-386). Observed at CREATE child pc=13.
   - CALLs that fail the depth or balance precondition also get a sub, because `captureBegin` runs before those checks (evm.go:383 vs 392-407).

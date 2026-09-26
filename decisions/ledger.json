@@ -1807,6 +1807,7 @@
         "initial/replay-block-tree",
         "initial/replay-revert-vmTrace",
         "initial/replay-tree-vmTrace",
+        "a/call-gas7400",
         "repeat/call-gas7400",
         "repeat/call-mcopy",
         "repeat/call-return42",

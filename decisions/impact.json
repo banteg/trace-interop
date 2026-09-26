@@ -211,8 +211,8 @@
         "change": "Report a failed operation with `ex: null` and no `store`, drop the synthetic STOP at the end of code, and give SELFDESTRUCT and failed-precheck calls `sub: null`."
       },
       "nethermind": {
-        "observed": "CALL steps have no `mem` for their output window, CREATE `cost` omits the forwarded gas, DUPn pushes n words, and `store` appears only when stateDiff is also selected.",
-        "change": "Report the CALL output window, include forwarded gas in CREATE `cost`, push n+1 words for DUPn, keep failed operations with `ex: null`, and report `store` regardless of the other selections."
+        "observed": "CALL steps have no `mem` for their output window in both builds. 2.0.0 \u00b7 bec830cd also omits the forwarded gas from CREATE `cost`, pushes n words for DUPn and reports `store` only when stateDiff is also selected; 2.1.0-preview \u00b7 fca93966 includes #13779, #13781 and #13782 and reports `store` under every selection and n+1 words for DUPn.",
+        "change": "Report the CALL output window and keep failed operations with `ex: null`; ship the CREATE `cost`, DUPn and `store` fixes already in 2.1.0-preview \u00b7 fca93966."
       },
       "geth": {
         "observed": "MLOAD has no `mem` and a short CALL return reports only the returned bytes; CREATE `cost` omits forwarded gas; code that runs off its end gets a synthetic STOP; an EOA target returns a null vmTrace.",

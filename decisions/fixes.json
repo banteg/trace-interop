@@ -666,6 +666,34 @@
       "merged_at": null
     },
     {
+      "url": "https://github.com/erigontech/erigon/pull/24336",
+      "title": "fix(rpc): reject call objects whose data and input differ",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13897",
+      "title": "fix(rpc): read an explicit null input or trace_filter after as omitted",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

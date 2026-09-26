@@ -276,11 +276,10 @@ class FieldProbeTests(Probe):
                 self.assertEqual(statuses(case, error(-32603)), ['blocked' if 'depends' in case['probes'][0] else 'change_needed'], name)
 
     def test_fallback_codes_split_stateless_defects_from_rejections(self):
-        # A priority fee above the cap is invalid regardless of state (-32602); a chainId mismatch is a
-        # well-formed call this chain rejects, with no listed code (-32003, as trace_rawTransaction).
-        self.assertEqual([p.get('code') for p in PRAGUE['field-chain-id-mismatch']['probes']], [None, -32003])
-        self.assertMatches(PRAGUE['field-chain-id-mismatch'], error(-32003))
-        self.assertDiffers(PRAGUE['field-chain-id-mismatch'], error(-32602))
+        # A priority fee above the cap and a chainId for another chain are invalid regardless of state (-32602).
+        self.assertEqual([p.get('code') for p in PRAGUE['field-chain-id-mismatch']['probes']], [None, -32602])
+        self.assertMatches(PRAGUE['field-chain-id-mismatch'], error(-32602))
+        self.assertDiffers(PRAGUE['field-chain-id-mismatch'], error(-32003))
         self.assertEqual(PRAGUE['field-data-input-differ']['probes'][0]['code'], -32602)
 
     def test_supplied_nonce_is_ignored(self):

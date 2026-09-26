@@ -1973,9 +1973,9 @@
           "topic": "H14"
         },
         {
-          "code": -32003,
+          "code": -32602,
           "kind": "error",
-          "requirement": "A well-formed call that cannot execute on this chain, with no listed code, is Transaction rejected (-32003), as trace_rawTransaction reports a chain mismatch.",
+          "requirement": "A chainId for another chain is invalid regardless of state, so it is invalid params (-32602).",
           "topic": "H14"
         }
       ],

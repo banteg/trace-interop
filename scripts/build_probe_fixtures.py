@@ -329,7 +329,7 @@ def prague():
          probes=[effect('A matching chainId is accepted and the initcode returns word 42.', words(42))])
     case(cases, 'field-chain-id-mismatch', 'trace_call', [dict(base, input='0x'+ret42, chainId='0x1'), ['trace'], 'latest'],
          probes=[probe('H14', 'error', 'A chainId that does not match the chain rejects the request.'),
-                 probe('H14', 'error', 'A well-formed call that cannot execute on this chain, with no listed code, is Transaction rejected (-32003), as trace_rawTransaction reports a chain mismatch.', code=-32003)])
+                 probe('H14', 'error', 'A chainId for another chain is invalid regardless of state, so it is invalid params (-32602).', code=-32602)])
     # BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is 0 or defaulted (H15). A blob call needs a recipient, so it
     # calls the genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read as its code.
     factory = '0x4e59b44847b379578588920ca78fbf26c0b4956c'

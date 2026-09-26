@@ -94,6 +94,7 @@ flowchart LR
 | [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) | 2026-09-26 | — | — | dev | dev |
 | [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted · conflicts with Nethermind #13857 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Nethermind #13935](https://github.com/NethermindEth/nethermind/pull/13935) | Return invalid params for a reversed trace_filter range | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
+| [Nethermind #13936](https://github.com/NethermindEth/nethermind/pull/13936) | Reject the pending block tag in trace methods | [H32](../reports/decisions/H32.md) | — | — | — | — | — |
 
 ## Reth
 

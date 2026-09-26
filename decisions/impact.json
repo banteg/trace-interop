@@ -454,8 +454,8 @@
         "change": "Resolve `earliest` to the lowest available block, as eth_getLogs does, and keep 4444 for explicit numbers below retained history."
       },
       "nethermind": {
-        "observed": "A pending filter bound resolves to the latest block, as Parity\u2019s fallback did, and pending call simulations run on the head block (NUMBER 48). `trace_block` traces its pending block.",
-        "change": "Reject pending filter bounds with `-32602`. Evaluate pending simulations in a real pending environment or reject them with `-32602`."
+        "observed": "A pending filter bound resolves to the latest block, as Parity\u2019s fallback did, and pending call simulations run on the head block (NUMBER 48). `trace_block` at pending traces the head block: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head).",
+        "change": "Reject pending in trace_call, trace_callMany, trace_block, trace_replayBlockTransactions and trace_filter bounds with `-32602` (open #13936)."
       }
     },
     "H17": {

@@ -1063,6 +1063,17 @@
       "merged_at": null
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13936",
+      "title": "fix(rpc): reject the pending block tag in trace methods",
+      "client": "nethermind",
+      "decisions": [
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

@@ -39,7 +39,7 @@ Two premises in the request that started this review were wrong and are correcte
 4. **H30, Erigon's breaking change.** Erigon starts omitted bounds at genesis, a 2020 leftover that contradicts its own `eth_getLogs`. Its default `--rpc.blockrange.limit` of 1000 already makes such queries fail on real chains, so the change silently narrows results only for archive operators who set the limit to 0. It needs an Erigon breaking-change note and ideally an Erigon position.
 5. **H15, Reth.** Reth's trace and `eth_call` paths charge no fees and check no funding, through a flag added for OP operator fees (#18634, reverted, re-added in #19073). Ask Reth whether that L1 behavior is intended; complying changes its `eth_call` too.
 6. **H32 open items.**
-   - `pending` for trace_block and trace_replayBlockTransactions: Reth and Nethermind trace a real pending block today. There is no case yet.
+   - `pending` for trace_block and trace_replayBlockTransactions: Reth traces a real pending block today; Nethermind traces the head (corrected 2026-09-27). There is no case yet.
    - `pending` for trace_call and trace_callMany: Besu and Nethermind accept it but evaluate at the head block, indistinguishable from latest. Proposed: accept `pending` only with a real pending environment (the next block number), otherwise -32602.
    - Block-hash filter bounds: Parity, Erigon and Nethermind accept them and the draft rejects them silently. Proposed: keep the rejection, state it, and add a case.
 

@@ -90,6 +90,11 @@ H29 references, not assertions.
 rules and a CALL forwards exactly the gas it requests. Register it under H29 (frame shape) and H09 (the
 "Max call depth exceeded" label) after the same capture.
 
+The null-member cases test that an explicit null is omitted (H14): `probes-prague/field-null-members`,
+`field-null-block` and `callmany-null-block`, and `probes-forks/filter-null-members` together with
+`filter-null-toBlock` and `filter-null-fromBlock`, which must return the same result as their omitted twins
+(`filter-omitted-toBlock`, `filter-omitted-fromBlock`). Register them under H14, and the twins as references.
+
 ### Corrected siblings
 
 These siblings were first captured in the

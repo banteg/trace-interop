@@ -253,6 +253,15 @@ def prague():
          probes=[effect('Equal data and input execute once as the initcode.', words(42))])
     case(cases, 'field-data-input-differ', 'trace_call', [dict(base, data='0x'+ret42, input='0x'+ret1), ['trace'], 'latest'],
          probes=[probe('H14', 'error', 'Disagreeing data and input are invalid params (-32602).', code=-32602)])
+    # An explicit null for an optional member or parameter is the same as omitting it (H14).
+    nulls = dict(base, data='0x'+ret42, **dict.fromkeys(['input', 'value', 'nonce', 'maxFeePerBlobGas', 'chainId', 'type', 'accessList',
+                                                        'blobVersionedHashes', 'authorizationList', 'maxFeePerGas', 'maxPriorityFeePerGas']))
+    case(cases, 'field-null-members', 'trace_call', [nulls, ['trace'], 'latest'],
+         probes=[effect('Explicit null members are omitted, so the initcode in data runs and returns word 42.', words(42))])
+    case(cases, 'field-null-block', 'trace_call', [dict(base, data='0x'+ret42), ['trace'], None],
+         probes=[effect('A null block parameter is latest.', words(42))])
+    case(cases, 'callmany-null-block', 'trace_callMany', [[[dict(base, data='0x'+ret42), ['trace']]], None],
+         probes=[effect('A null trace_callMany block parameter is latest.', words(42))])
     sload_gas = asm('GAS', 0, 'SLOAD', 'POP', 'GAS', 'SWAP1', 'SUB', 0, 'MSTORE', 32, 0, 'RETURN')
     case(cases, 'field-access-list', 'trace_call', [dict(base, data='0x'+sload_gas, accessList=[{'address': root, 'storageKeys': ['0x'+word(0)]}]), ['trace'], 'latest'],
          probes=[effect('An access-listed slot of the creation address is warm: PUSH, SLOAD 100, POP and GAS cost 107.', words(107))])
@@ -389,6 +398,16 @@ def forks():
         case(cases, f'beacon-many-{n}', 'trace_callMany', [[[call, ['trace']]], number],
              probes=[probe('H28', 'outputs', f'The first trace_callMany item at block {n} runs on the same post-block state as trace_call.', expected=[output]),
                      probe('H28', 'same-output', 'The one-item trace_callMany output equals trace_call at the same block.', reference=f'beacon-trace-{n}', index=0)])
+    # An explicit null trace_filter member is the same as omitting it (H14).
+    case(cases, 'filter-null-members', 'trace_filter',
+         [{'fromBlock': '0x2', 'toBlock': '0x5', **dict.fromkeys(['fromAddress', 'toAddress', 'mode', 'after', 'count'])}],
+         probes=[probe('H14', 'records', 'Null mode, after, count and address lists are omitted, so blocks 2-5 return every record.',
+                       expected=records(2, 5))])
+    for bound, twin in [('toBlock', {'fromBlock': '0x2'}), ('fromBlock', {'toBlock': 'latest'})]:
+        case(cases, f'filter-omitted-{bound}', 'trace_filter', [twin])
+        case(cases, f'filter-null-{bound}', 'trace_filter', [dict(twin, **{bound: None})],
+             probes=[probe('H14', 'same-result', f'A null {bound} is omitted, so it resolves to the same latest head.',
+                           reference=f'filter-omitted-{bound}')])
     # Call depth limit (H29, H09). Before EIP-150 a CALL forwards exactly the gas it requests, so at a Homestead
     # block a contract that calls itself reaches the 1024 limit for well under a million gas; after EIP-150 the
     # 63/64 rule puts that depth out of reach of any practical gas cap. Each frame keeps 512 gas for its own exit.

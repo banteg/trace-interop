@@ -783,160 +783,272 @@
           "required": true,
           "schema": {
             "additionalProperties": true,
-            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise return -32602. Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (-32602, or the selected fork's validity error, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas, and gas above the client execution cap, use that cap as in eth_call. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise return -32602. Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (-32602, or the selected fork's validity error, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas, and gas above the client execution cap, use that cap as in eth_call. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
             "not": {
               "anyOf": [
                 {
+                  "properties": {
+                    "maxFeePerGas": {
+                      "not": {
+                        "type": "null"
+                      }
+                    }
+                  },
                   "required": [
                     "maxFeePerGas"
                   ]
                 },
                 {
+                  "properties": {
+                    "maxPriorityFeePerGas": {
+                      "not": {
+                        "type": "null"
+                      }
+                    }
+                  },
                   "required": [
                     "maxPriorityFeePerGas"
                   ]
                 }
               ],
+              "properties": {
+                "gasPrice": {
+                  "not": {
+                    "type": "null"
+                  }
+                }
+              },
               "required": [
                 "gasPrice"
               ]
             },
             "properties": {
               "accessList": {
-                "items": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "address": {
-                      "pattern": "^0x[0-9a-fA-F]{40}$",
-                      "title": "hex encoded address",
-                      "type": "string"
-                    },
-                    "storageKeys": {
-                      "items": {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
+                "anyOf": [
+                  {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "address": {
+                          "pattern": "^0x[0-9a-fA-F]{40}$",
+                          "title": "hex encoded address",
+                          "type": "string"
+                        },
+                        "storageKeys": {
+                          "items": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
                       },
-                      "type": "array"
-                    }
+                      "required": [
+                        "address",
+                        "storageKeys"
+                      ],
+                      "title": "Access list entry",
+                      "type": "object"
+                    },
+                    "title": "Access list",
+                    "type": "array"
                   },
-                  "required": [
-                    "address",
-                    "storageKeys"
-                  ],
-                  "title": "Access list entry",
-                  "type": "object"
-                },
-                "title": "Access list",
-                "type": "array"
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "authorizationList": {
-                "description": "List of authorizations for the transaction",
-                "items": {
-                  "properties": {
-                    "address": {
-                      "pattern": "^0x[0-9a-fA-F]{40}$",
-                      "title": "hex encoded address",
-                      "type": "string"
+                "anyOf": [
+                  {
+                    "description": "List of authorizations for the transaction",
+                    "items": {
+                      "properties": {
+                        "address": {
+                          "pattern": "^0x[0-9a-fA-F]{40}$",
+                          "title": "hex encoded address",
+                          "type": "string"
+                        },
+                        "chainId": {
+                          "description": "Chain ID on which this transaction is valid",
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                          "title": "chainId",
+                          "type": "string"
+                        },
+                        "nonce": {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                          "title": "nonce",
+                          "type": "string"
+                        },
+                        "r": {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "r",
+                          "type": "string"
+                        },
+                        "s": {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "s",
+                          "type": "string"
+                        },
+                        "yParity": {
+                          "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
+                          "pattern": "^0x[0-9a-f]{1,2}$",
+                          "title": "yParity",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "nonce",
+                        "address",
+                        "yParity",
+                        "r",
+                        "s"
+                      ],
+                      "type": "object"
                     },
-                    "chainId": {
-                      "description": "Chain ID on which this transaction is valid",
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                      "title": "chainId",
-                      "type": "string"
-                    },
-                    "nonce": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                      "title": "nonce",
-                      "type": "string"
-                    },
-                    "r": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "r",
-                      "type": "string"
-                    },
-                    "s": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "s",
-                      "type": "string"
-                    },
-                    "yParity": {
-                      "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
-                      "pattern": "^0x[0-9a-f]{1,2}$",
-                      "title": "yParity",
-                      "type": "string"
-                    }
+                    "title": "Authorization List",
+                    "type": "array"
                   },
-                  "required": [
-                    "chainId",
-                    "nonce",
-                    "address",
-                    "yParity",
-                    "r",
-                    "s"
-                  ],
-                  "type": "object"
-                },
-                "title": "Authorization List",
-                "type": "array"
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "blobVersionedHashes": {
-                "items": {
-                  "pattern": "^0x[0-9a-f]{64}$",
-                  "title": "32 byte hex value",
-                  "type": "string"
-                },
-                "type": "array"
+                "anyOf": [
+                  {
+                    "items": {
+                      "pattern": "^0x[0-9a-f]{64}$",
+                      "title": "32 byte hex value",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "chainId": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "data": {
-                "pattern": "^0x([0-9a-f]{2})*$",
-                "title": "Trace byte string",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x([0-9a-f]{2})*$",
+                    "title": "Trace byte string",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "from": {
-                "pattern": "^0x[0-9a-fA-F]{40}$",
-                "title": "hex encoded address",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x[0-9a-fA-F]{40}$",
+                    "title": "hex encoded address",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "gas": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                "title": "hex encoded 64 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                    "title": "hex encoded 64 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "gasPrice": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "input": {
-                "pattern": "^0x([0-9a-f]{2})*$",
-                "title": "Trace byte string",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x([0-9a-f]{2})*$",
+                    "title": "Trace byte string",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "maxFeePerBlobGas": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "maxFeePerGas": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "maxPriorityFeePerGas": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "nonce": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                "title": "hex encoded 64 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                    "title": "hex encoded 64 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "to": {
                 "anyOf": [
@@ -951,14 +1063,28 @@
                 ]
               },
               "type": {
-                "pattern": "^0x[0-9a-f]{1,2}$",
-                "title": "hex encoded byte",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x[0-9a-f]{1,2}$",
+                    "title": "hex encoded byte",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "value": {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                "title": "hex encoded 256 bit unsigned integer",
-                "type": "string"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                    "title": "hex encoded 256 bit unsigned integer",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             },
             "required": [],
@@ -990,29 +1116,37 @@
           "schema": {
             "anyOf": [
               {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                "title": "Block number",
-                "type": "string"
-              },
-              {
-                "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions; `pending`: A sample next block built by the client on top of `latest` and containing the set of transactions usually taken from local mempool. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
-                "enum": [
-                  "earliest",
-                  "finalized",
-                  "safe",
-                  "latest",
-                  "pending"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                    "title": "Block number",
+                    "type": "string"
+                  },
+                  {
+                    "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions; `pending`: A sample next block built by the client on top of `latest` and containing the set of transactions usually taken from local mempool. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
+                    "enum": [
+                      "earliest",
+                      "finalized",
+                      "safe",
+                      "latest",
+                      "pending"
+                    ],
+                    "title": "Block tag",
+                    "type": "string"
+                  },
+                  {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "Block hash",
+                    "type": "string"
+                  }
                 ],
-                "title": "Block tag",
-                "type": "string"
+                "title": "Block number, tag, or block hash"
               },
               {
-                "pattern": "^0x[0-9a-f]{64}$",
-                "title": "Block hash",
-                "type": "string"
+                "type": "null"
               }
             ],
-            "title": "Block number, tag, or block hash"
+            "title": "Optional block, latest when omitted or null"
           }
         },
         {
@@ -2541,160 +2675,272 @@
               "items": [
                 {
                   "additionalProperties": true,
-                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise return -32602. Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (-32602, or the selected fork's validity error, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas, and gas above the client execution cap, use that cap as in eth_call. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise return -32602. Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (-32602, or the selected fork's validity error, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas, and gas above the client execution cap, use that cap as in eth_call. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
                   "not": {
                     "anyOf": [
                       {
+                        "properties": {
+                          "maxFeePerGas": {
+                            "not": {
+                              "type": "null"
+                            }
+                          }
+                        },
                         "required": [
                           "maxFeePerGas"
                         ]
                       },
                       {
+                        "properties": {
+                          "maxPriorityFeePerGas": {
+                            "not": {
+                              "type": "null"
+                            }
+                          }
+                        },
                         "required": [
                           "maxPriorityFeePerGas"
                         ]
                       }
                     ],
+                    "properties": {
+                      "gasPrice": {
+                        "not": {
+                          "type": "null"
+                        }
+                      }
+                    },
                     "required": [
                       "gasPrice"
                     ]
                   },
                   "properties": {
                     "accessList": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "address": {
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "hex encoded address",
-                            "type": "string"
-                          },
-                          "storageKeys": {
-                            "items": {
-                              "pattern": "^0x[0-9a-f]{64}$",
-                              "title": "32 byte hex value",
-                              "type": "string"
+                      "anyOf": [
+                        {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "pattern": "^0x[0-9a-fA-F]{40}$",
+                                "title": "hex encoded address",
+                                "type": "string"
+                              },
+                              "storageKeys": {
+                                "items": {
+                                  "pattern": "^0x[0-9a-f]{64}$",
+                                  "title": "32 byte hex value",
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              }
                             },
-                            "type": "array"
-                          }
+                            "required": [
+                              "address",
+                              "storageKeys"
+                            ],
+                            "title": "Access list entry",
+                            "type": "object"
+                          },
+                          "title": "Access list",
+                          "type": "array"
                         },
-                        "required": [
-                          "address",
-                          "storageKeys"
-                        ],
-                        "title": "Access list entry",
-                        "type": "object"
-                      },
-                      "title": "Access list",
-                      "type": "array"
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "authorizationList": {
-                      "description": "List of authorizations for the transaction",
-                      "items": {
-                        "properties": {
-                          "address": {
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "hex encoded address",
-                            "type": "string"
+                      "anyOf": [
+                        {
+                          "description": "List of authorizations for the transaction",
+                          "items": {
+                            "properties": {
+                              "address": {
+                                "pattern": "^0x[0-9a-fA-F]{40}$",
+                                "title": "hex encoded address",
+                                "type": "string"
+                              },
+                              "chainId": {
+                                "description": "Chain ID on which this transaction is valid",
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                                "title": "chainId",
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                                "title": "nonce",
+                                "type": "string"
+                              },
+                              "r": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "r",
+                                "type": "string"
+                              },
+                              "s": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "s",
+                                "type": "string"
+                              },
+                              "yParity": {
+                                "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
+                                "pattern": "^0x[0-9a-f]{1,2}$",
+                                "title": "yParity",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "chainId",
+                              "nonce",
+                              "address",
+                              "yParity",
+                              "r",
+                              "s"
+                            ],
+                            "type": "object"
                           },
-                          "chainId": {
-                            "description": "Chain ID on which this transaction is valid",
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                            "title": "chainId",
-                            "type": "string"
-                          },
-                          "nonce": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                            "title": "nonce",
-                            "type": "string"
-                          },
-                          "r": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "r",
-                            "type": "string"
-                          },
-                          "s": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "s",
-                            "type": "string"
-                          },
-                          "yParity": {
-                            "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
-                            "pattern": "^0x[0-9a-f]{1,2}$",
-                            "title": "yParity",
-                            "type": "string"
-                          }
+                          "title": "Authorization List",
+                          "type": "array"
                         },
-                        "required": [
-                          "chainId",
-                          "nonce",
-                          "address",
-                          "yParity",
-                          "r",
-                          "s"
-                        ],
-                        "type": "object"
-                      },
-                      "title": "Authorization List",
-                      "type": "array"
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "blobVersionedHashes": {
-                      "items": {
-                        "pattern": "^0x[0-9a-f]{64}$",
-                        "title": "32 byte hex value",
-                        "type": "string"
-                      },
-                      "type": "array"
+                      "anyOf": [
+                        {
+                          "items": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "chainId": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "data": {
-                      "pattern": "^0x([0-9a-f]{2})*$",
-                      "title": "Trace byte string",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x([0-9a-f]{2})*$",
+                          "title": "Trace byte string",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "from": {
-                      "pattern": "^0x[0-9a-fA-F]{40}$",
-                      "title": "hex encoded address",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x[0-9a-fA-F]{40}$",
+                          "title": "hex encoded address",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "gas": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                      "title": "hex encoded 64 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                          "title": "hex encoded 64 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "gasPrice": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "input": {
-                      "pattern": "^0x([0-9a-f]{2})*$",
-                      "title": "Trace byte string",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x([0-9a-f]{2})*$",
+                          "title": "Trace byte string",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "maxFeePerBlobGas": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "maxFeePerGas": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "maxPriorityFeePerGas": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "nonce": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                      "title": "hex encoded 64 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                          "title": "hex encoded 64 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "to": {
                       "anyOf": [
@@ -2709,14 +2955,28 @@
                       ]
                     },
                     "type": {
-                      "pattern": "^0x[0-9a-f]{1,2}$",
-                      "title": "hex encoded byte",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x[0-9a-f]{1,2}$",
+                          "title": "hex encoded byte",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     },
                     "value": {
-                      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                      "title": "hex encoded 256 bit unsigned integer",
-                      "type": "string"
+                      "anyOf": [
+                        {
+                          "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                          "title": "hex encoded 256 bit unsigned integer",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
                     }
                   },
                   "required": [],
@@ -2752,29 +3012,37 @@
           "schema": {
             "anyOf": [
               {
-                "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                "title": "Block number",
-                "type": "string"
-              },
-              {
-                "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions; `pending`: A sample next block built by the client on top of `latest` and containing the set of transactions usually taken from local mempool. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
-                "enum": [
-                  "earliest",
-                  "finalized",
-                  "safe",
-                  "latest",
-                  "pending"
+                "anyOf": [
+                  {
+                    "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                    "title": "Block number",
+                    "type": "string"
+                  },
+                  {
+                    "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions; `pending`: A sample next block built by the client on top of `latest` and containing the set of transactions usually taken from local mempool. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
+                    "enum": [
+                      "earliest",
+                      "finalized",
+                      "safe",
+                      "latest",
+                      "pending"
+                    ],
+                    "title": "Block tag",
+                    "type": "string"
+                  },
+                  {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "Block hash",
+                    "type": "string"
+                  }
                 ],
-                "title": "Block tag",
-                "type": "string"
+                "title": "Block number, tag, or block hash"
               },
               {
-                "pattern": "^0x[0-9a-f]{64}$",
-                "title": "Block hash",
-                "type": "string"
+                "type": "null"
               }
             ],
-            "title": "Block number, tag, or block hash"
+            "title": "Optional block, latest when omitted or null"
           }
         },
         {
@@ -4226,17 +4494,31 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds exclude pending. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602; an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return 4444 if required history is unavailable. count limits results, not scan or replay work (H03,H04,H06,H23,H27,H30,H32).",
+            "description": "An explicit null member is the same as an omitted one. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds exclude pending. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602; an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return 4444 if required history is unavailable. count limits results, not scan or replay work (H03,H04,H06,H23,H27,H30,H32).",
             "properties": {
               "after": {
-                "maximum": 18446744073709551615,
-                "minimum": 0,
-                "type": "integer"
+                "anyOf": [
+                  {
+                    "maximum": 18446744073709551615,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "count": {
-                "maximum": 18446744073709551615,
-                "minimum": 0,
-                "type": "integer"
+                "anyOf": [
+                  {
+                    "maximum": 18446744073709551615,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "fromAddress": {
                 "anyOf": [
@@ -4254,33 +4536,47 @@
                 ]
               },
               "fromBlock": {
-                "oneOf": [
+                "anyOf": [
                   {
-                    "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                    "title": "Block number",
+                    "oneOf": [
+                      {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                        "title": "Block number",
+                        "type": "string"
+                      },
+                      {
+                        "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
+                        "enum": [
+                          "earliest",
+                          "finalized",
+                          "safe",
+                          "latest"
+                        ],
+                        "title": "Block tag",
+                        "type": "string"
+                      }
+                    ],
+                    "title": "Block number or tag"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "mode": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "intersection",
+                      "union"
+                    ],
                     "type": "string"
                   },
                   {
-                    "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
-                    "enum": [
-                      "earliest",
-                      "finalized",
-                      "safe",
-                      "latest"
-                    ],
-                    "title": "Block tag",
-                    "type": "string"
+                    "type": "null"
                   }
                 ],
-                "title": "Block number or tag"
-              },
-              "mode": {
-                "description": "intersection (default) requires every populated address list to match; union requires any populated list to match. Unknown values are invalid parameters (-32602).",
-                "enum": [
-                  "intersection",
-                  "union"
-                ],
-                "type": "string"
+                "description": "intersection (default) requires every populated address list to match; union requires any populated list to match. null is the default. Unknown values are invalid parameters (-32602)."
               },
               "toAddress": {
                 "anyOf": [
@@ -4298,25 +4594,32 @@
                 ]
               },
               "toBlock": {
-                "oneOf": [
+                "anyOf": [
                   {
-                    "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
-                    "title": "Block number",
-                    "type": "string"
+                    "oneOf": [
+                      {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
+                        "title": "Block number",
+                        "type": "string"
+                      },
+                      {
+                        "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
+                        "enum": [
+                          "earliest",
+                          "finalized",
+                          "safe",
+                          "latest"
+                        ],
+                        "title": "Block tag",
+                        "type": "string"
+                      }
+                    ],
+                    "title": "Block number or tag"
                   },
                   {
-                    "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
-                    "enum": [
-                      "earliest",
-                      "finalized",
-                      "safe",
-                      "latest"
-                    ],
-                    "title": "Block tag",
-                    "type": "string"
+                    "type": "null"
                   }
-                ],
-                "title": "Block number or tag"
+                ]
               }
             },
             "required": [],

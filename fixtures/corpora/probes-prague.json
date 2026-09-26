@@ -1184,6 +1184,111 @@
       }
     },
     {
+      "name": "field-null-members",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "Explicit null members are omitted, so the initcode in data runs and returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": null,
+            "authorizationList": null,
+            "blobVersionedHashes": null,
+            "chainId": null,
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": null,
+            "maxFeePerBlobGas": null,
+            "maxFeePerGas": null,
+            "maxPriorityFeePerGas": null,
+            "nonce": null,
+            "type": null,
+            "value": null
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-null-block",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null block parameter is latest.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          null
+        ]
+      }
+    },
+    {
+      "name": "callmany-null-block",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null trace_callMany block parameter is latest.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x602a60005260206000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          null
+        ]
+      }
+    },
+    {
       "name": "field-access-list",
       "probes": [
         {

@@ -412,3 +412,24 @@ class DepthProbeTests(Probe):
         self.assertEqual(self.statuses(self.trace(attempts=())), {'H09': {'blocked'}, 'H29': {'change_needed'}})
         # Besu: the failed CREATE reported as a successful frame one level deeper.
         self.assertEqual(self.statuses(self.trace(attempts=(), phantom=True))['H29'], {'change_needed'})
+
+
+class NullMemberTests(Probe):
+    """An explicit null for an optional member is the same as omitting it (H14)."""
+
+    def test_null_bound_matches_its_omitted_twin(self):
+        case = FORKS['filter-null-toBlock']
+        records = [{'type': 'reward', 'blockNumber': 2}]
+        same = assess(case, result(records), {'filter-omitted-toBlock': result(records)})
+        self.assertEqual({c['status'] for c in same}, {'matches'})
+        # A client that rejects the null differs; one whose reference failed is blocked.
+        rejected = assess(case, error(-32602), {'filter-omitted-toBlock': result(records)})
+        self.assertEqual({c['status'] for c in rejected}, {'change_needed'})
+        blocked = assess(case, result(records), {'filter-omitted-toBlock': error(-32602)})
+        self.assertEqual({c['status'] for c in blocked}, {'blocked'})
+
+    def test_null_input_does_not_conflict_with_data(self):
+        from trace_interop.validation import request_errors
+        methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
+        self.assertEqual(request_errors(PRAGUE['field-null-members']['request'], methods), [])
+        self.assertEqual(request_errors(PRAGUE['field-data-input-differ']['request'], methods), ['data and input must agree'])

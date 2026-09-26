@@ -35,18 +35,18 @@
 
 **Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is less than the minimum of 0
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
 
 **Besu · 26.8.1 · d97cbd61** (`besu/v26.8.1/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is less than the minimum of 0
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
 
 **Nethermind · 2.1.0-preview · ee1f57da** (`2.1.0-preview+ee1f57da`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is less than the minimum of 0
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is less than the minimum of 0
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
 
 </details>

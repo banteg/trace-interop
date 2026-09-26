@@ -41,17 +41,17 @@
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not one of ['intersection', 'union']
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not valid under any of the given schemas
 - [H03](../../decisions/H03.md): Unknown mode values return invalid params (-32602).
 
 **Nethermind · 2.1.0-preview · ee1f57da** (`2.1.0-preview+ee1f57da`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not one of ['intersection', 'union']
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not valid under any of the given schemas
 - [H03](../../decisions/H03.md): Unknown mode values return invalid params (-32602).
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not one of ['intersection', 'union']
+- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 'garbage' is not valid under any of the given schemas
 - [H03](../../decisions/H03.md): Unknown mode values return invalid params (-32602).
 
 </details>

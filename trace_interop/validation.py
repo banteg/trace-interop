@@ -14,6 +14,7 @@ def request_errors(request, methods):
     errors = [e.message for e in Draft201909Validator(schema).iter_errors(params)]
     calls = params[:1] if request['method'] == 'trace_call' else [p[0] for p in params[0] if isinstance(p, list) and p] if request['method'] == 'trace_callMany' and params and isinstance(params[0], list) else []
     for call in calls:
-        if isinstance(call, dict) and 'data' in call and 'input' in call and call['data'] != call['input']:
+        # An explicit null is an omitted member, so only two present values can disagree.
+        if isinstance(call, dict) and call.get('data') is not None and call.get('input') is not None and call['data'] != call['input']:
             errors.append('data and input must agree')
     return errors

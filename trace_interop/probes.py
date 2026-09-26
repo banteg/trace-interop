@@ -134,6 +134,15 @@ def assess(case, observation, peers):
                 continue
             output = envelope(probe.get('index')).get('output')
             add(topic, output == reference, requirement, f'Reference {reference[:140]}; got {str(output)[:140]}')
+        elif kind == 'same-result':
+            # The whole result equals the reference request's, e.g. explicit nulls against omitted members.
+            reference = peer_result(probe['reference'])
+            if reference is None:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                               'detail': 'The reference '+probe['reference']+' returned no result.'})
+                continue
+            add(topic, status == 'result' and result == reference, requirement,
+                f'Reference {str(reference)[:140]}; got ' + (str(result)[:140] if status == 'result' else f'{status} {mapping(response.get("error")).get("code")}'))
         elif kind == 'frames':
             frames = envelope(probe.get('index')).get('trace')
             detail = first_difference(frames, probe['expected'])

@@ -812,6 +812,240 @@
       }
     },
     {
+      "name": "create-code-size-limit",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x6160016000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Out of gas"
+          },
+          "kind": "frame",
+          "requirement": "Code above the EIP-170 size limit fails the creation with \"Out of gas\", as Parity and EIP-170 report it.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x656160016000f36000526006601a6000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x4c4b40",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-code-deposit-oog",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x615dc06000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Out of gas"
+          },
+          "kind": "frame",
+          "requirement": "Code whose deposit costs more than the child's remaining gas fails the creation with \"Out of gas\".",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x65615dc06000f36000526006601a6000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x14a67e",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-ef-prefix",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60ef60005360016000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Invalid code"
+          },
+          "kind": "frame",
+          "requirement": "Code beginning with 0xEF (EIP-3541) fails the creation with \"Invalid code\", as OpenEthereum reports it.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6960ef60005360016000f3600052600a60166000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x4c4b40",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
       "name": "many-transient",
       "probes": [
         {
@@ -1739,9 +1973,9 @@
           "topic": "H14"
         },
         {
-          "code": -32602,
+          "code": -32003,
           "kind": "error",
-          "requirement": "A validation failure without a listed code is invalid params (-32602).",
+          "requirement": "A well-formed call that cannot execute on this chain, with no listed code, is Transaction rejected (-32003), as trace_rawTransaction reports a chain mismatch.",
           "topic": "H14"
         }
       ],
@@ -1763,8 +1997,245 @@
           "latest"
         ]
       }
+    },
+    {
+      "name": "blob-fee-defaulted",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "kind": "frame",
+          "requirement": "With blobVersionedHashes and no maxFeePerBlobGas, the blob fee cap defaults to 0, so BLOBBASEFEE is 0. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-zero",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "kind": "frame",
+          "requirement": "An explicit zero maxFeePerBlobGas runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-priced",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            }
+          },
+          "kind": "frame",
+          "requirement": "A maxFeePerBlobGas that covers the blob base fee keeps the selected block's BLOBBASEFEE. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-none",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            }
+          },
+          "kind": "frame",
+          "requirement": "A call without blob fields keeps the selected block's BLOBBASEFEE. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-nonce-above",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73"
+          ],
+          "kind": "outputs",
+          "requirement": "A supplied nonce 13 is ignored: the creation runs at the address of state nonce 10.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "nonce": "0xd"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-nonce-below",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73"
+          ],
+          "kind": "outputs",
+          "requirement": "A supplied nonce 7 is ignored: the creation runs at the address of state nonce 10.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "nonce": "0x7"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
     }
   ],
-  "description": "Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision and reverted CREATE; callMany item isolation; call-object fields.",
+  "description": "Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision, reverted and undeployable CREATEs; callMany item isolation; call-object fields; blob fee and nonce handling.",
   "model_nonce": 10
 }

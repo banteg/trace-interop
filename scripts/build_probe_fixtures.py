@@ -17,15 +17,15 @@ import rlp
 from eth_hash.auto import keccak
 from eth_keys import keys
 
-from trace_interop.chain_model import load_chain
+from trace_interop.chain_model import fake_exponential, load_chain
 from trace_interop.cli import read, sha, write
 from trace_interop.execution_models import created_address, opcodes
-from trace_interop.vm_model import execute
+from trace_interop.vm_model import execute, intrinsic
 
 ROOT = Path(__file__).resolve().parents[1]
 OPS = {'STOP': 0x00, 'SUB': 0x03, 'ADDRESS': 0x30, 'DUP6': 0x85, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
        'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
-       'MSTORE': 0x52, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
+       'BLOBBASEFEE': 0x4a, 'MSTORE': 0x52, 'MSTORE8': 0x53, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
        'TLOAD': 0x5c, 'TSTORE': 0x5d, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
        'RETURN': 0xf3, 'CREATE2': 0xf5, 'REVERT': 0xfd, 'SELFDESTRUCT': 0xff}
 NAMES = {v: k for k, v in OPS.items()}
@@ -205,6 +205,29 @@ def prague():
                                                     absent=['address', 'code'])]),
         probe('H09', 'outputs', 'The caller sees CREATE push 0 and four bytes of return data.', expected=[words(0, 4)])])
 
+    # Code the creation cannot deposit (H09 labels): above the EIP-170 size limit, beginning with 0xEF (EIP-3541),
+    # or costing more deposit gas than the child has. Each halts the child, which consumes its gas; the caller keeps
+    # the 1/64 it withheld and returns CREATE's 0.
+    max_code_size = 0x6000
+    deposit_size = 24000  # Within the size limit, at 200 gas a byte beyond the child's forwarded gas below.
+    for name, init, label, requirement in [
+            ('create-code-size-limit', asm(max_code_size+1, 0, 'RETURN'), 'Out of gas',
+             'Code above the EIP-170 size limit fails the creation with "Out of gas", as Parity and EIP-170 report it.'),
+            ('create-code-deposit-oog', asm(deposit_size, 0, 'RETURN'), 'Out of gas',
+             'Code whose deposit costs more than the child\'s remaining gas fails the creation with "Out of gas".'),
+            ('create-ef-prefix', asm(0xef, 0, 'MSTORE8', 1, 0, 'RETURN'), 'Invalid code',
+             'Code beginning with 0xEF (EIP-3541) fails the creation with "Invalid code", as OpenEthereum reports it.')]:
+        code = asm(int(init, 16), 0, 'MSTORE', len(init)//2, 32-len(init)//2, 0, 'CREATE', 0, 'MSTORE', 32, 0, 'RETURN')
+        # The deposit case forwards 63/64 of about 1.3M gas, far below the 4.8M its deposit costs, while the caller
+        # keeps enough for its own 32-byte deposit; the others have ample gas, so only their code fails them.
+        limit = hex(intrinsic(code, True)+1_300_000) if name == 'create-code-deposit-oog' else '0x4c4b40'
+        assert name != 'create-code-deposit-oog' or 200*deposit_size > 1_300_000 > 64*(200*32+100)
+        case(cases, name, 'trace_call', [creation(code, gas=limit), ['trace'], 'latest'], probes=[
+            probe('H09', 'frames', 'The failed creation frame has an error and no result; the caller continues.',
+                  expected=[root_frame(1), create_frame([0], error='*', action={'from': root, 'value': '0x0', 'init': '0x'+init}, result=None)]),
+            probe('H09', 'frame', requirement, select={'traceAddress': [0], 'type': 'create'}, expected={'error': label}),
+            probe('H09', 'outputs', 'The caller sees CREATE push 0.', expected=[words(0)])])
+
     # trace_callMany item isolation (H16, H26): each item is a separate transaction.
     def item(fields, modes=('trace',)):
         return [dict({'from': sender, 'gas': gas, 'gasPrice': price}, **fields), list(modes)]
@@ -306,8 +329,35 @@ def prague():
          probes=[effect('A matching chainId is accepted and the initcode returns word 42.', words(42))])
     case(cases, 'field-chain-id-mismatch', 'trace_call', [dict(base, input='0x'+ret42, chainId='0x1'), ['trace'], 'latest'],
          probes=[probe('H14', 'error', 'A chainId that does not match the chain rejects the request.'),
-                 probe('H14', 'error', 'A validation failure without a listed code is invalid params (-32602).', code=-32602)])
-    return {'description': 'Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision and reverted CREATE; callMany item isolation; call-object fields.',
+                 probe('H14', 'error', 'A well-formed call that cannot execute on this chain, with no listed code, is Transaction rejected (-32003), as trace_rawTransaction reports a chain mismatch.', code=-32003)])
+    # BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is 0 or defaulted (H15). A blob call needs a recipient, so it
+    # calls the genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read as its code.
+    factory = '0x4e59b44847b379578588920ca78fbf26c0b4956c'
+    assert alloc[factory]['code'].startswith('0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081')
+    head = read(ROOT/'fixtures/chains/raw-validation/headblock.json')
+    blob_base_fee = fake_exponential(1, int(head['excessBlobGas'], 16), genesis['config']['blobSchedule']['prague']['baseFeeUpdateFraction'])
+    blob_init = asm('BLOBBASEFEE', 0, 'MSTORE', 32, 0, 'RETURN')
+    versioned = next(iter(read(ROOT/'fixtures/blobs.json')))
+    blob_call = {'from': sender, 'to': factory, 'gas': gas, 'maxFeePerGas': price, 'maxPriorityFeePerGas': price,
+                 'data': '0x'+word(0)+blob_init}
+    for name, fields, value, requirement in [
+            ('blob-fee-defaulted', {'blobVersionedHashes': [versioned]}, 0,
+             'With blobVersionedHashes and no maxFeePerBlobGas, the blob fee cap defaults to 0, so BLOBBASEFEE is 0.'),
+            ('blob-fee-zero', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': '0x0'}, 0,
+             'An explicit zero maxFeePerBlobGas runs with BLOBBASEFEE 0.'),
+            ('blob-fee-priced', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': hex(blob_base_fee)}, blob_base_fee,
+             'A maxFeePerBlobGas that covers the blob base fee keeps the selected block\'s BLOBBASEFEE.'),
+            ('blob-fee-none', {}, blob_base_fee, 'A call without blob fields keeps the selected block\'s BLOBBASEFEE.')]:
+        case(cases, name, 'trace_call', [dict(blob_call, **fields), ['trace'], 'latest'], probes=[
+            probe('H15', 'frame', requirement+' The factory\'s CREATE2 child deploys the word it read.',
+                  select={'traceAddress': [0], 'type': 'create'}, expected={'error': None, 'result': {'code': words(value)}})])
+    # A supplied nonce is accepted but neither validated nor used: the creation address follows the state nonce (H15).
+    address = asm('ADDRESS', 0, 'MSTORE', 32, 0, 'RETURN')
+    for name, supplied in [('field-nonce-above', nonce+3), ('field-nonce-below', nonce-3)]:
+        case(cases, name, 'trace_call', [creation(address, nonce=hex(supplied)), ['trace'], 'latest'], probes=[
+            probe('H15', 'outputs', f'A supplied nonce {supplied} is ignored: the creation runs at the address of state nonce {nonce}.',
+                  expected=[words(int(root, 16))])])
+    return {'description': 'Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision, reverted and undeployable CREATEs; callMany item isolation; call-object fields; blob fee and nonce handling.',
                 'model_nonce': nonce, 'cases': cases}
 
 

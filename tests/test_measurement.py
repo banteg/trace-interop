@@ -243,6 +243,38 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(status('trace_call', [dict(call, data='0x602a60005260206000f3'), ['trace'], 'pending'],
                                 result({'output': number(42), 'trace': []}))['H32'], ['unassessed'])
 
+    def test_review_cases_carry_their_expectations(self):
+        from trace_interop.probes import assess as assess_probes
+        from trace_interop.report import run_context
+        from trace_interop.validation import request_errors
+        methods = {m['name']: m for m in json.loads((ROOT/'spec/trace-openrpc.json').read_text())['methods']}
+        error = lambda code: {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'rejected'}}}
+        result = lambda value: {'status': 'result', 'response': {'result': value}}
+        def statuses(corpus, name, observation, topic):
+            context = run_context(ROOT, {'corpus': corpus})
+            case = dict(next(c for c in context['cases'] if c['name'] == name), context=context)
+            errors = request_errors(case['request'], methods)
+            checks = evaluate(case, observation, {}, invalid_params=errors) + assess_probes(case, observation, {})
+            return [c['status'] for c in checks if c['topic'] == topic]
+        # H06: an unknown block for block replay, and a bound one block past the head, below any range cap.
+        self.assertEqual(statuses('a', 'missing-block-replay', error(-32001), 'H06'), ['matches'])
+        for observation in [result(None), result([]), error(-32000)]:  # Besu and Reth, Anvil, Erigon and Nethermind
+            self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['change_needed'])
+        self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
+        self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])
+        # H32: pending block methods need a pending block; hash bounds are rejected.
+        self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H32'), ['matches'])
+        self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H14'), [])
+        record = lambda n: {'type': 'call', 'blockNumber': n, 'traceAddress': [], 'action': {}}
+        self.assertEqual(statuses('h30', 'block-pending', result([record(48)]), 'H32'), ['change_needed'])
+        self.assertEqual(statuses('h30', 'block-pending', result([record(49)]), 'H32'), ['matches'])
+        latest = run_context(ROOT, {'corpus': 'h30'})['_blocks']['0x30']['transactions'][0]['hash']
+        self.assertEqual(statuses('h30', 'replay-pending', result([{'transactionHash': latest, 'trace': [], 'output': '0x'}]), 'H32'),
+                         ['change_needed'])
+        for name in ['filter-hash-bounds', 'filter-hash-object-bounds']:
+            self.assertEqual(statuses('h30', name, error(-32602), 'H32'), ['matches'])
+            self.assertEqual(statuses('h30', name, result([]), 'H32'), ['change_needed'])
+
     def test_zero_fee_many_errors_and_cardinality(self):
         params = [[ [{'gasPrice': '0x0'}, ['trace']] ], 'latest']
         for result in [None, {}, [], {'jsonrpc': '2.0', 'error': {'code': -32603}}]:

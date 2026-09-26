@@ -1400,6 +1400,39 @@
       "expected_control": null
     },
     {
+      "name": "missing-block-replay",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0xffff",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "category": "semantic",
+      "expected_control": null
+    },
+    {
+      "name": "missing-block-filter-next",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x30",
+            "toBlock": "0x31",
+            "count": 1
+          }
+        ]
+      },
+      "category": "semantic",
+      "expected_control": null
+    },
+    {
       "name": "raw-valid",
       "request": {
         "jsonrpc": "2.0",

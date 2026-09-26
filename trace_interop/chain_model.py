@@ -73,3 +73,13 @@ def load_chain(path):
                          'uncles':[{'number':number(u[8]),'miner':'0x'+u[2].hex()} for u in uncles],
                          'transactions':[decode_transaction(t) for t in transactions]}
     return blocks
+
+
+def fake_exponential(factor, numerator, denominator):
+    """EIP-4844 blob base fee approximation: factor * e**(numerator / denominator)."""
+    i, output, accumulator = 1, 0, factor*denominator
+    while accumulator > 0:
+        output += accumulator
+        accumulator = accumulator*numerator//(denominator*i)
+        i += 1
+    return output//denominator

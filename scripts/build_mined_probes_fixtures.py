@@ -7,7 +7,7 @@ opcode gas, EIP-3529 refunds and EIP-4844 blob fees. No client response is an in
 """
 from pathlib import Path
 
-from trace_interop.chain_model import load_chain
+from trace_interop.chain_model import fake_exponential, load_chain
 from trace_interop.cli import read, sha, write
 from trace_interop.execution_models import created_address
 from trace_interop.vm_model import execute, intrinsic
@@ -28,16 +28,6 @@ BLOB_GAS_PER_BLOB, BEACON_RING = 131072, 8191
 
 def word(value):
     return '0x'+f'{value:064x}'
-
-
-def fake_exponential(factor, numerator, denominator):
-    """EIP-4844 blob base fee approximation."""
-    i, output, accumulator = 1, 0, factor*denominator
-    while accumulator > 0:
-        output += accumulator
-        accumulator = accumulator*numerator//(denominator*i)
-        i += 1
-    return output//denominator
 
 
 def memory_expansion(words):

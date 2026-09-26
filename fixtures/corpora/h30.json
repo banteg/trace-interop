@@ -231,6 +231,81 @@
           "pending"
         ]
       }
+    },
+    {
+      "name": "block-pending",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_block",
+        "params": [
+          "pending"
+        ]
+      }
+    },
+    {
+      "name": "replay-pending",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "pending",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "filter-hash-bounds",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "toBlock": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H32",
+          "kind": "error",
+          "requirement": "Filter bounds are block numbers or tags, never block hashes: a hash bound is invalid params (-32602), as eth_getLogs range bounds.",
+          "code": -32602
+        }
+      ]
+    },
+    {
+      "name": "filter-hash-object-bounds",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": {
+              "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+            },
+            "toBlock": {
+              "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+            },
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H32",
+          "kind": "error",
+          "requirement": "Filter bounds do not accept EIP-1898 block-hash objects, which Parity, Erigon and Nethermind accepted: invalid params (-32602).",
+          "code": -32602
+        }
+      ]
     }
   ]
 }

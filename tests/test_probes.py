@@ -5,6 +5,7 @@ import unittest
 
 from trace_interop.cli import ROOT, load_observations, read
 from trace_interop.coverage import supplement
+from trace_interop.execution_models import created_address
 from trace_interop.probes import assess, same
 from trace_interop.scenarios import verify_setup
 from trace_interop.vm_model import execute, intrinsic, local_invariants
@@ -178,6 +179,31 @@ class FrameProbeTests(Probe):
         wrong = dict(envelope, output=envelope['output'][:-64]+'0'*64)
         self.assertDiffers(case, result(wrong))
 
+    def test_undeployable_code_labels(self):
+        by_topic = lambda case, wrong: {c['requirement'][:40]: c['status'] for c in assess(case, result(wrong), {})}
+        for name, label, drafts in [('create-code-size-limit', 'Out of gas', ['Code size limit exceeded', 'max code size exceeded', 'CreateContractSizeLimit']),
+                                    ('create-code-deposit-oog', 'Out of gas', ['contract creation code storage out of gas', 'Error']),
+                                    ('create-ef-prefix', 'Invalid code', ['Invalid code prefix 0xEF', 'invalid code: must not begin with 0xef',
+                                                                          'CreateContractStartingWithEF'])]:
+            case, envelope = self.envelope(name)
+            self.assertMatches(case, result(envelope))
+            self.assertEqual(envelope['trace'][1]['error'], label)
+            # The draft's former strings and the clients' own: the frame shape holds, only the label differs.
+            for other in drafts:
+                wrong = copy.deepcopy(envelope)
+                wrong['trace'][1]['error'] = other
+                self.assertEqual(sorted(by_topic(case, wrong).values()), ['change_needed', 'matches', 'matches'], other)
+            # Erigon and Reth give a halted frame a null result; a result with deployed code is wrong.
+            halted = copy.deepcopy(envelope)
+            halted['trace'][1]['result'] = None
+            self.assertMatches(case, result(halted))
+            wrong = copy.deepcopy(envelope)
+            wrong['trace'][1]['result'] = {'address': '0x'+'11'*20, 'code': '0x', 'gasUsed': '0x0'}
+            self.assertDiffers(case, result(wrong))
+        call = PRAGUE['create-code-deposit-oog']['request']['params'][0]
+        # The child's forwarded gas is below its 4.8M deposit; the caller keeps its own 32-byte deposit.
+        self.assertLess(int(call['gas'], 16)-intrinsic(call['data'], True), 200*24000)
+
     def test_reverted_create_has_gas_and_output_only(self):
         case, envelope = self.envelope('create-reverted')
         self.assertMatches(case, result(envelope))
@@ -236,7 +262,8 @@ class FieldProbeTests(Probe):
                 for observation in [result({'output': '0x', 'trace': []}), error(-32602), error(-32603)]:
                     self.assertEqual(set(statuses(case, observation)), {'observation'}, name)
             elif kinds == {'error'}:
-                self.assertMatches(case, error(-32602))
+                code = next((p['code'] for p in case['probes'] if 'code' in p), -32602)
+                self.assertMatches(case, error(code))
                 self.assertDiffers(case, result({'output': '0x'+f'{42:064x}', 'trace': []}))
                 if any('code' in p for p in case['probes']):
                     self.assertDiffers(case, error(-32000))
@@ -247,6 +274,43 @@ class FieldProbeTests(Probe):
                 self.assertDiffers(case, result({'output': '0x' if want != '0x' else '0x'+f'{42:064x}', 'trace': []}))
                 # Besu: an unfunded zero-address sender under a base-fee default fails on H15, not the field.
                 self.assertEqual(statuses(case, error(-32603)), ['blocked' if 'depends' in case['probes'][0] else 'change_needed'], name)
+
+    def test_fallback_codes_split_stateless_defects_from_rejections(self):
+        # A priority fee above the cap is invalid regardless of state (-32602); a chainId mismatch is a
+        # well-formed call this chain rejects, with no listed code (-32003, as trace_rawTransaction).
+        self.assertEqual([p.get('code') for p in PRAGUE['field-chain-id-mismatch']['probes']], [None, -32003])
+        self.assertMatches(PRAGUE['field-chain-id-mismatch'], error(-32003))
+        self.assertDiffers(PRAGUE['field-chain-id-mismatch'], error(-32602))
+        self.assertEqual(PRAGUE['field-data-input-differ']['probes'][0]['code'], -32602)
+
+    def test_supplied_nonce_is_ignored(self):
+        for name in ['field-nonce-above', 'field-nonce-below']:
+            case = PRAGUE[name]
+            call = case['request']['params'][0]
+            want = case['probes'][0]['expected'][0]
+            self.assertEqual(int(want, 16), int(created_address(call['from'], read(ROOT/'fixtures/corpora/probes-prague.json')['model_nonce']), 16))
+            self.assertNotEqual(int(want, 16), int(created_address(call['from'], int(call['nonce'], 16)), 16))
+            self.assertMatches(case, result({'output': want, 'trace': []}))
+            # Besu validates the supplied nonce; a client that uses it creates at another address.
+            self.assertDiffers(case, error(-32000))
+            self.assertDiffers(case, result({'output': '0x'+f'{int(created_address(call["from"], int(call["nonce"], 16)), 16):064x}', 'trace': []}))
+
+    @staticmethod
+    def blob_frames(factory, deployed):
+        """The factory call and the CREATE2 child that deployed the BLOBBASEFEE word it read."""
+        return [{'traceAddress': [], 'type': 'call', 'subtraces': 1, 'action': {'from': '0x'+'11'*20, 'to': factory}},
+                {'traceAddress': [0], 'type': 'create', 'subtraces': 0, 'action': {'from': factory},
+                 'result': {'address': '0x'+'22'*20, 'code': '0x'+f'{deployed:064x}', 'gasUsed': '0x1'}}]
+
+    def test_blob_base_fee_is_zero_only_for_a_zero_or_defaulted_cap(self):
+        real = 1  # The raw-validation head has no excess blob gas: the minimum blob base fee.
+        for name, value in [('blob-fee-defaulted', 0), ('blob-fee-zero', 0), ('blob-fee-priced', real), ('blob-fee-none', real)]:
+            case = PRAGUE[name]
+            factory = case['request']['params'][0]['to']
+            self.assertMatches(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, value)}))
+            # Erigon drops blobVersionedHashes, so the real blob base fee is read; a client that never zeroes it likewise.
+            self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, real if value == 0 else 0)}))
+            self.assertDiffers(case, error(-32000))
 
     def test_omitted_gas_is_the_eth_call_cap(self):
         case = PRAGUE['field-gas-omitted']

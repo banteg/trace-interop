@@ -50,7 +50,16 @@ missing or invalid witnesses cannot establish agreement.
 
 `local_invariants` additionally checks nested VM bytecode/PUSH consistency, DUP/SWAP push windows reconstructed from earlier pushes,
 post-step gas arithmetic outside CALL/CREATE, and the absence of write deltas on
-memory reads and returns. This catches timing defects in complex programs but is
+memory reads and returns. A CALL or CREATE that entered a child frame receives the
+child's leftover; one that entered none (result 0, no executed `sub`) must include
+the gas it forwarded in `cost`, whether a failed precheck returns that gas, with a
+value call's stipend, or a collision consumes it. An operation with `ex: null`
+halted exceptionally, and its `cost` is implementation-defined, so no gas relation
+is asserted for it. CALL-family `mem` starts at the output offset and covers either
+the full output window or exactly the bytes copied from the child's return data,
+which is the size operand of the child's final RETURN or REVERT (0 for any other
+end, unknown for a precompile, which runs no instruction); `mem` is null only when
+the chosen length is 0. This catches timing defects in complex programs but is
 not independent execution of those programs. Detailed trapped-call gas boundaries,
 warm-access reset, refunds outside anchored straight-line programs and arbitrary nested state
 execution remain outside the bounded model. A topic receiving an assertion is
@@ -72,6 +81,20 @@ separate the two. A probe with `observe` records what a server did without a ver
 for requests that cannot isolate their property. Setup controls establish only chain
 state that every build must show; a read whose value is itself a decision property,
 such as the block-55 beacon-root slots (H28), is a probe.
+
+The same holds for the rule checks. An H03 or H04 address-filter case judges its list
+semantics on ordinary call records; its CREATE, SELFDESTRUCT and reward records match
+by per-action equivalents and are judged under H23, blocked when the list semantics
+already differ. A modelled program that returns block-environment words is judged
+under H15 against the selected block, while its step semantics (H20) and returned
+bytes (H08) are judged under the environment its vmTrace reports, so a simulation
+environment the model does not share fails only H15. Among several fee violations, a
+defect that makes the call object invalid regardless of state (a priority fee above
+the fee cap, -32602) takes precedence; naming another violation is a difference
+(H14, H15). A `pending` block on trace_block, trace_replayBlockTransactions,
+trace_call or trace_callMany is accepted only with a real pending environment, the
+block after the head, shown by record block numbers, non-canonical replayed
+transactions or a modelled NUMBER read; otherwise it must be -32602 (H32).
 
 Controls and expectations come from the current corpus definition whenever the
 captured request is byte-identical, so a corrected fixture reassesses retained
@@ -96,6 +119,34 @@ Added after that eval, to be registered under H14 once captured:
 `probes-prague/field-null-{accessList,blobVersionedHashes,authorizationList}-unpriced` send one null list on a
 call with no fee fields, where no other member selects a transaction type, so a server that picks the type by
 member name rather than value takes the null list's type.
+
+### Cases from the divergent-decisions review
+
+Added after the [2026-09-26 review](reviews/2026-09-26-divergent-decisions/README.md), registered once captured.
+Their expectations come from fixture bytecode, the frozen chains and the rule checks above:
+
+- H09 labels, in `probes-prague`: `create-code-size-limit` returns 24577 bytes from a nested CREATE (EIP-170),
+  `create-code-deposit-oog` returns 24000 bytes with about 1.25M forwarded gas against a 4.8M deposit, and
+  `create-ef-prefix` returns code beginning with 0xEF (EIP-3541). Each failed frame has an error and no result,
+  the caller sees CREATE push 0, and a separate probe checks the label: "Out of gas" for both deposit failures,
+  as Parity and EIP-170 report them, and "Invalid code", as OpenEthereum does.
+- H15, in `probes-prague`: `blob-fee-defaulted`, `blob-fee-zero`, `blob-fee-priced` and `blob-fee-none` call the
+  genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read; it must be 0 exactly when
+  `maxFeePerBlobGas` is 0 or defaulted with blob hashes present, otherwise the head's blob base fee (1 wei, from
+  its zero excess blob gas). `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
+  the sender's, and the creation must still return the address of the state nonce.
+- H14: `probes-prague/field-chain-id-mismatch` now expects -32003. A chainId mismatch is a well-formed call this
+  chain rejects, with no listed code, as trace_rawTransaction reports it; -32602 is reserved for call objects
+  invalid regardless of state.
+- H06, in `a`: `missing-block-replay` replays unknown block 0xffff (-32001, never null or `[]`), and
+  `missing-block-filter-next` ends one block past the head, a two-block range that no range cap rejects first
+  (-32602).
+- H32, in `h30`: `block-pending` and `replay-pending` select the pending block, and `filter-hash-bounds` and
+  `filter-hash-object-bounds` bound a filter by block 2's hash, as a string and as an EIP-1898 object (-32602).
+
+No frozen chain has the Erigon reward-leak block (H23): the forks chain's only transaction to the coinbase is in
+post-merge block 60, which has no reward, so a PoW block in which a listed sender also pays the coinbase needs a
+new chain.
 
 ### Corrected siblings
 

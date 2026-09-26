@@ -1089,6 +1089,17 @@
       "note": "unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups"
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13938",
+      "title": "fix(rpc): return no block reward records for post-merge blocks",
+      "client": "nethermind",
+      "decisions": [
+        "H05"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/23952",
       "title": "fix(rpc): include MCOPY memory writes in vmTrace",
       "client": "erigon",

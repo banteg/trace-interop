@@ -20,7 +20,7 @@ Join the [trace working group on Telegram](https://t.me/+2jfwc-YvwkliMzIy) to di
 
 1. [Your client's report](reports/README.md): each difference from the draft, with a minimal example, the proposed change and links into your source. 🛠️ marks differences already covered by a submitted fix.
 2. [Decision pages](decisions/README.md): the recommendation, rationale and cross-client observations behind each proposed change.
-3. [Related pull requests](docs/client-fixes.md): open and merged fixes, with the decisions each one addresses.
+3. [Client fixes](docs/client-fixes.md): each related PR, the decisions it addresses and how far it has reached toward a verified measured build.
 4. [Changes since the previous matrix](reports/changes.md): verdicts that changed for each client build since the last capture.
 
 **Specification reviewers**
@@ -77,4 +77,4 @@ This is not a public testnet, performance benchmark, general EVM fuzzer or clien
 
 **Reviews and audits:** [source review](docs/source-review/README.md) · historical records: [harness assertion audit](docs/harness-audit.md) · [H17 assessment audit](docs/h17-assessment-audit.md) · [measurement and draft review corrections](docs/review-corrections.md)
 
-**Upstream work:** [related pull requests](docs/client-fixes.md) · [upstream acceptance](docs/upstream-acceptance.md) · [Geth draft implementation](docs/geth.md)
+**Upstream work:** [client fixes](docs/client-fixes.md) · [upstream acceptance](docs/upstream-acceptance.md) · [Geth draft implementation](docs/geth.md)

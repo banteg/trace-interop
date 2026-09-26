@@ -1,6 +1,7 @@
 """Maintainer-facing views of the independently evaluated observations."""
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from graphlib import CycleError, TopologicalSorter
 import json
 import os
 import re
@@ -22,6 +23,20 @@ SOURCE_GROUPS = {
     'H30': ['bounds'], 'H31': ['many'], 'H32': ['tags', 'many'],
 }
 BAD = {'change_needed', 'unsupported'}
+PR_FIELDS = {'url', 'title', 'client', 'decisions', 'partial', 'state', 'draft', 'merged_at', 'note',
+             'depends_on', 'conflicts_with', 'verified_cases', 'uptake'}
+STAGES = ['open', 'merged', 'released', 'in client', 'in measured build', 'verified']
+CHANNELS = {'release': 'stable', 'development': 'dev', 'trace': 'fork'}
+STAGE_STYLES = {
+    'open': 'fill:#f6f8fa,stroke:#8c959f,color:#1f2328',
+    'merged': 'fill:#ddf4ff,stroke:#0969da,color:#1f2328',
+    'released': 'fill:#fbefff,stroke:#8250df,color:#1f2328',
+    'in client': 'fill:#fff8c5,stroke:#9a6700,color:#1f2328',
+    'in measured build': 'fill:#dafbe1,stroke:#1a7f37,color:#1f2328',
+    'verified': 'fill:#1a7f37,stroke:#116329,color:#ffffff',
+    'done': 'fill:#ffffff,stroke:#1a7f37,color:#1f2328',
+    'pending': 'fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a',
+}
 
 
 def relative(path, parent):
@@ -109,28 +124,106 @@ def timestamp(value):
 
 
 def check_fixes(fixes, decisions, families):
-    """Validate related PRs against the decision ledger and client families, and label them."""
+    """Validate related PRs, their edges and the library graph against the ledger and client families, and label them."""
     urls = [pr['url'] for pr in fixes['prs']]
     if len(urls) != len(set(urls)):
         raise ValueError('duplicate fix PR')
+    for repo, library in fixes.get('libraries', {}).items():
+        if not library['crates'] or repo in library['consumers'] or not {repo, *library['consumers']} <= set(fixes['repositories']):
+            raise ValueError(f'invalid library: {repo}')
     for pr in fixes['prs']:
         match = re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)', pr['url'])
+        lists = {key: pr.get(key, []) for key in ('depends_on', 'conflicts_with', 'verified_cases')}
+        edges = lists['depends_on'] + lists['conflicts_with']
         if (not match or match[1] not in fixes['repositories'] or pr['client'] not in {*families, None}
                 or not set(pr['decisions']) <= set(decisions) or not set(pr.get('partial', [])) <= set(pr['decisions'])
                 or pr['state'] not in ('open', 'merged', 'closed') or (pr['state'] == 'merged') != bool(pr['merged_at'])
-                or not isinstance(pr.get('awaiting_uptake', False), bool)):
+                or not set(pr) <= PR_FIELDS or ('uptake' in pr and pr['state'] != 'merged')
+                or any(len(values) != len(set(values)) for values in lists.values())
+                or not set(edges) <= set(urls) or pr['url'] in edges
+                or not all(re.fullmatch(r'[\w.-]+/[\w.-]+', case) for case in lists['verified_cases'])):
             raise ValueError(f'invalid fix PR: {pr["url"]}')
+        pr['repository'] = match[1]
         pr['label'] = f'{fixes["repositories"][match[1]]} #{match[2]}'
         pr['order'] = (fixes['repositories'][match[1]].lower(), int(match[2]))
+    prs = {pr['url']: pr for pr in fixes['prs']}
+    for pr in fixes['prs']:
+        for other in pr.get('conflicts_with', []):
+            if pr['url'] not in prs[other].get('conflicts_with', []):
+                raise ValueError(f'conflict not recorded on both PRs: {pr["url"]} and {other}')
+    try:
+        tuple(TopologicalSorter({pr['url']: pr.get('depends_on', []) for pr in fixes['prs']}).static_order())
+    except CycleError as error:
+        raise ValueError('dependency cycle: ' + ' -> '.join(error.args[1])) from None
     return fixes
 
 
-def pending_fixes(fixes, client, topic, built):
-    """(pr, partial) for this build and decision: open, merged after the build's commit, or merged but awaiting uptake."""
+def measured_builds(pairs, revisions):
+    """{client: source ref} of the latest committed build captured for each client, from (client, version) pairs."""
+    refs = defaultdict(list)
+    for client, version in pairs:
+        if (ref := source_revision(client, version, revisions)):
+            refs[client].append(ref)
+    return {client: max(found, key=lambda ref: timestamp(ref['committed_at'])) for client, found in refs.items()}
+
+
+def library_chain(libraries, repo, target):
+    """The repositories a change in library `repo` passes through to reach client repository `target`: the shortest
+    path along the libraries' consumers, both ends included."""
+    paths = [[repo]]
+    for path in paths:
+        for consumer in libraries[path[-1]]['consumers']:
+            if consumer == target:
+                return path + [target]
+            if consumer in libraries and consumer not in path:
+                paths.append(path + [consumer])
+    raise ValueError(f'no library chain from {repo} to {target}')
+
+
+def fix_verified(pr, checks):
+    """Whether one build's checks confirm a fix: each of its `verified_cases` has checks on the PR's decisions
+    (on any topic when it lists none) and all of them match; without that list, every decision it fully covers agrees."""
+    if 'verified_cases' in pr:
+        topics = pr['decisions'] or list(checks)
+        found = [[c for t in topics for c in checks.get(t, []) if f'{c["corpus"]}/{c["case"]}' == case] for case in pr['verified_cases']]
+        return all(cases and all(c['status'] == 'matches' for c in cases) for cases in found)
+    complete = [t for t in pr['decisions'] if t not in pr.get('partial', [])]
+    return bool(complete) and all(verdict(checks.get(t, [])) == 'Checked cases agree' for t in complete)
+
+
+def fix_progress(fixes, builds, by_client):
+    """Derive each PR's stage offline from its recorded uptake facts and the current assessment.
+
+    `builds` is {client: source ref} of the measured builds and `by_client` their checks by topic. Sets
+    `chain` (for a library PR, the repositories from the PR to its client), `builds` and `verified` (the
+    measured clients that contain or confirm the fix) and `stage`: `closed`, or the furthest of STAGES reached.
+    """
+    libraries = fixes.get('libraries', {})
+    for pr in fixes['prs']:
+        own = {c: ref for c, ref in builds.items() if family(c) == pr['client']}
+        targets = {ref['repository'].removeprefix('https://github.com/') for ref in own.values()}
+        if len(targets) > 1:
+            raise ValueError(f'measured {pr["client"]} builds come from several repositories: {sorted(targets)}')
+        pr['chain'] = library_chain(libraries, pr['repository'], *targets) if pr['repository'] in libraries and targets else []
+        facts = pr.get('uptake', {})
+        known = facts.get('builds', {})
+        if pr['state'] == 'merged' and (missing := sorted(c for c, ref in own.items() if ref['commit'] not in known)):
+            raise ValueError(f'{pr["url"]} has no uptake facts for {", ".join(missing)}; run scripts/refresh_fixes.py')
+        seen = {f'{c["corpus"]}/{c["case"]}' for client in own for checks in by_client.get(client, {}).values() for c in checks}
+        if seen and (unknown := set(pr.get('verified_cases', [])) - seen):
+            raise ValueError(f'{pr["url"]} lists unmeasured verified cases: {", ".join(sorted(unknown))}')
+        pr['builds'] = sorted(c for c, ref in own.items() if pr['state'] == 'merged' and known[ref['commit']])
+        pr['verified'] = [c for c in pr['builds'] if fix_verified(pr, by_client.get(c, {}))]
+        reached = [pr['state'] == 'merged', bool(facts.get('releases')), bool(facts.get('client')), bool(pr['builds']), bool(pr['verified'])]
+        pr['stage'] = 'closed' if pr['state'] == 'closed' else STAGES[max((i + 1 for i, r in enumerate(reached) if r), default=0)]
+    return fixes
+
+
+def pending_fixes(fixes, client, topic):
+    """(pr, partial) for this build and decision: open, or merged but not yet in the build (see fix_progress)."""
     return [(pr, topic in pr.get('partial', [])) for pr in sorted(fixes['prs'], key=lambda pr: pr['order'])
             if pr['client'] == family(client) and topic in pr['decisions']
-            and (pr['state'] == 'open' or pr['state'] == 'merged' and (pr.get('awaiting_uptake')
-                 or built is not None and timestamp(pr['merged_at']) > built))]
+            and (pr['state'] == 'open' or pr['state'] == 'merged' and client not in pr['builds'])]
 
 
 def merged_fixes(fixes, topic):
@@ -139,28 +232,88 @@ def merged_fixes(fixes, topic):
             if pr['state'] == 'merged' and pr['client'] in NATIVE_CLIENTS and topic in pr['decisions'] and topic not in pr.get('partial', [])]
 
 
-def fix_change(pr):
-    """The PR title without its conventional-commit scope, plus any tracking note."""
+def fix_change(pr, prs):
+    """The PR title without its conventional-commit scope, plus any tracking note and its order relative to other PRs."""
     change = re.sub(r'^[\w./-]+(\([^)]*\))?!?: ', '', pr['title'])
-    return change[:1].upper() + change[1:] + (f'; {pr["note"]}' if pr.get('note') else '')
+    relations = ([f'after {prs[url]["label"]}' for url in pr.get('depends_on', [])]
+                 + [f'conflicts with {prs[url]["label"]}' for url in pr.get('conflicts_with', [])])
+    return change[:1].upper() + change[1:] + (f'; {pr["note"]}' if pr.get('note') else '') + ''.join(f' · {r}' for r in relations)
 
 
-def fixes_page(fixes, root, parent):
-    text = ('# Related pull requests\n\n'
-            f'Related client, specification and test-suite PRs. Status checked **{fixes["checked_at"]}**.\n\n'
-            'Reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for a build when a PR tagged with its client and decision '
-            'is open, was merged after the build’s commit, or awaits uptake of the merged library change. A PR marked partial is linked '
-            'but leaves ⚠️ or 🟡 in place, since part of the measured difference has no submitted fix. Generated from [fixes.json](../decisions/fixes.json); '
-            'refresh PR states with `uv run python scripts/refresh_fixes.py`.\n\n')
-    for state in ['open', 'merged', 'closed']:
-        prs = sorted((pr for pr in fixes['prs'] if pr['state'] == state), key=lambda pr: pr['order'])
-        merged = ['Merged (UTC)'] if state == 'merged' else []
-        rows = [[f'[{pr["label"]}]({pr["url"]})' + (' (draft)' if pr['draft'] else ''), fix_change(pr),
-                 ', '.join(f'[{t}]({relative(root/"reports/decisions"/(t + ".md"), parent)})' + (' (partial)' if t in pr.get('partial', []) else '')
-                           for t in pr['decisions']) or '—',
-                 *([utc_date(pr['merged_at'])] if merged else [])] for pr in prs]
-        if rows:
-            text += f'## {state.capitalize()}\n\n' + table(['PR', 'Change', 'Decisions', *merged], rows)
+def stage_cells(pr, names):
+    """Merged, Released, In client, In measured build and Verified cells; — where a stage is not reached or does not apply."""
+    facts = pr.get('uptake', {})
+    released = ' → '.join(f'[{names[r["repo"]]} {r["tag"]}](https://github.com/{r["repo"]}/tree/{r["tag"]})' for r in facts.get('releases', []))
+    client = facts.get('client')
+    channels = lambda clients: ', '.join(CHANNELS[c.rsplit('_', 1)[1]] for c in clients) or '—'
+    return [utc_date(pr['merged_at']) if pr['merged_at'] else '—', released or '—',
+            f'[{utc_date(client["date"])}](https://github.com/{pr["chain"][-1]}/commit/{client["commit"]})' if client else '—',
+            channels(pr['builds']), channels(pr['verified'])]
+
+
+def fixes_graph(section, prs, names):
+    """A Mermaid flowchart of the order among a client's PRs: prerequisites, conflicts, and each library PR's
+    release and client bump steps. PR nodes are styled by stage, steps as done or pending."""
+    nodes, edges = {}, {}
+
+    def node(label, shape, style):
+        key = re.sub(r'\W+', '_', label)
+        nodes[key] = f'{key}{shape[0]}"{label}"{shape[1]}:::{style.replace(" ", "_")}'
+        return key
+
+    for pr in section:
+        if not (pr['chain'] or pr.get('depends_on') or pr.get('conflicts_with')):
+            continue
+        this = node(pr['label'], '[]', pr['stage'])
+        for url in pr.get('depends_on', []):
+            edges[f'{node(prs[url]["label"], "[]", prs[url]["stage"])} --> {this}'] = None
+        for url in pr.get('conflicts_with', []):
+            other = node(prs[url]['label'], '[]', prs[url]['stage'])
+            if f'{other} -. conflicts .- {this}' not in edges:
+                edges[f'{this} -. conflicts .- {other}'] = None
+        releases = pr.get('uptake', {}).get('releases', [])
+        previous, reached = this, pr['state'] == 'merged'
+        for i, repo in enumerate(pr['chain'][:-1]):
+            reached = reached and i < len(releases)
+            label = f'{names[repo]} {releases[i]["tag"]}' if reached else f'next {names[repo]} release'
+            step = node(label, ('([', '])'), 'done' if reached else 'pending')
+            edges[f'{previous} {"-->" if reached else "-.->"} {step}'] = None
+            previous = step
+        if pr['chain']:
+            reached = reached and bool(pr['uptake'].get('client'))
+            bump = node(f'{names[pr["chain"][-1]]} takes {label}', ('[[', ']]'), 'done' if reached else 'pending')
+            edges[f'{previous} {"-->" if reached else "-.->"} {bump}'] = None
+    if not edges:
+        return ''
+    styles = sorted({line.rsplit(':::', 1)[1] for line in nodes.values()}, key=lambda s: list(STAGE_STYLES).index(s.replace('_', ' ')))
+    return ('```mermaid\nflowchart LR\n' + ''.join(f'  {line}\n' for line in [*nodes.values(), *edges])
+            + ''.join(f'  classDef {style} {STAGE_STYLES[style.replace("_", " ")]}\n' for style in styles) + '```\n\n')
+
+
+def fixes_page(fixes, root, parent, clients):
+    """Related PRs by client family, with the stage each has reached; `clients` is the editorial client catalog."""
+    names = fixes['repositories']
+    prs = {pr['url']: pr for pr in fixes['prs']}
+    text = ('# Client fixes\n\n'
+            f'Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **{fixes["checked_at"]}**. '
+            'Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.\n\n'
+            'A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. '
+            'Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. '
+            'Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. '
+            'Diagrams run from prerequisites to dependents; dashed steps are pending.\n\n')
+    for f in sorted({pr['client'] for pr in fixes['prs'] if pr['client']}, key=lambda f: clients[f]['name']) + [None]:
+        section = sorted((pr for pr in fixes['prs'] if pr['client'] == f and pr['state'] != 'closed'), key=lambda pr: pr['order'])
+        if not section:
+            continue
+        text += f'## {clients[f]["name"]}\n\n' if f else '## Specifications, tests and other repositories\n\nNo measured build consumes these repositories.\n\n'
+        text += fixes_graph(section, prs, names)
+        text += table(['PR', 'Change', 'Decisions', 'Merged', 'Released', 'In client', 'In measured build', 'Verified'], [
+            [f'[{pr["label"]}]({pr["url"]})' + (' (draft)' if pr['draft'] else ''), fix_change(pr, prs),
+             ', '.join(f'[{t}]({relative(root/"reports/decisions"/(t + ".md"), parent)})' + (' (partial)' if t in pr.get('partial', []) else '')
+                       for t in pr['decisions']) or '—', *stage_cells(pr, names)] for pr in section])
+    closed = sorted((pr for pr in fixes['prs'] if pr['state'] == 'closed'), key=lambda pr: pr['order'])
+    if closed:
+        text += '## Closed\n\n' + ''.join(f'- [{pr["label"]}]({pr["url"]}): {fix_change(pr, prs)}\n' for pr in closed)
     return text
 
 
@@ -411,11 +564,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     clients = sorted({r['client'] for r in records})
     fixes = check_fixes(json.loads((root/'decisions/fixes.json').read_text()), decisions, editorial['clients'])
     stances = {topic: client_positions(positions.get(topic, {}).get('positions', {}), merged_fixes(fixes, topic)) for topic in decisions}
-    built = {c: max((timestamp(ref['committed_at']) for v in {r['version'] for r in records if r['client'] == c}
-                     if (ref := source_revision(c, v, revisions))), default=None) for c in clients}
+    fix_progress(fixes, measured_builds({(r['client'], r['version']) for r in records}, revisions), by_client)
 
     def build_verdict(client, topic):
-        return display_verdict(by_client.get(client, {}).get(topic, []), pending_fixes(fixes, client, topic, built.get(client)))
+        return display_verdict(by_client.get(client, {}).get(topic, []), pending_fixes(fixes, client, topic))
     run_manifests = {row['name']: output/row['manifest'] for row in run_rows}
     build_runs = [{'manifest': json.loads(run_manifests[row['name']].read_text()),
                    'versions': row['versions'], 'path': run_manifests[row['name']]} for row in run_rows]
@@ -741,8 +893,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
              '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
              '- 🛠️ **Fix submitted:** the build differs or is partially assessed, and linked PRs for its client and decision cover the measured difference. '
-             'Each is open, merged after the build’s commit, or merged in a library the build has not yet taken up. The captured checks are unchanged; '
-             'retesting a build that contains the fix replaces this marker. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. '
+             'Each is open, or merged but not yet in the build: its commit, or for a library its release, is not in the build’s source or lockfile. '
+             'The captured checks are unchanged; the marker leaves a build once the recorded uptake facts show the fix in it. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. '
              '[Related PRs](../docs/client-fixes.md).\n'
              '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
              '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
@@ -807,4 +959,4 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += '### Policy status\n\n' + LEGEND + '\n\n### Client positions\n\n' + POSITION_LEGEND + '\n'
         text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.\n'
         save(root/'decisions/README.md', text)
-        save(root/'docs/client-fixes.md', fixes_page(fixes, root, root/'docs'))
+        save(root/'docs/client-fixes.md', fixes_page(fixes, root, root/'docs', editorial['clients']))

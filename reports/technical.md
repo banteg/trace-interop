@@ -14,7 +14,7 @@ Anvil has no Engine API, so it is captured by [replaying each chain](../docs/usa
 
 - ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.
 - ⚠️ **Differs:** at least one checked assertion differs from the proposal.
-- 🛠️ **Fix submitted:** the build differs or is partially assessed, and linked PRs for its client and decision cover the measured difference. Each is open, merged after the build’s commit, or merged in a library the build has not yet taken up. The captured checks are unchanged; retesting a build that contains the fix replaces this marker. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. [Related PRs](../docs/client-fixes.md).
+- 🛠️ **Fix submitted:** the build differs or is partially assessed, and linked PRs for its client and decision cover the measured difference. Each is open, or merged but not yet in the build: its commit, or for a library its release, is not in the build’s source or lockfile. The captured checks are unchanged; the marker leaves a build once the recorded uptake facts show the fix in it. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. [Related PRs](../docs/client-fixes.md).
 - ⛔ **Method unavailable:** the tested method is unsupported.
 - 🟡 **Partially assessed:** some declared cases or topics were not evaluated.
 - ⚪ **Not assessed:** no evaluated assertion establishes an outcome.

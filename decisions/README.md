@@ -25,7 +25,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **51 of 128** c
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ···· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️🟡⚠️🟡⚠️ |
 | [H17](../reports/decisions/H17.md) | ⚪ Under review | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️🛠️—⚠️ | 🟡🟡✅✅✅⚠️ |
-| [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅⚠️—⚠️ | 🟡✅✅✅✅⚠️ |
+| [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅🛠️—⚠️ | 🟡✅✅✅✅⚠️ |
 | [H19](../reports/decisions/H19.md) | ⚪ Under review | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅🛠️—⚠️ | 🟡🟡✅✅✅⚠️ |
 | [H20](../reports/decisions/H20.md) | ⚪ Under review | ···· | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H21](../reports/decisions/H21.md) | ⚪ Under review | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡🛠️✅—✅ | 🟡🟡✅✅✅✅ |

@@ -228,18 +228,33 @@ assertion updates and regenerated reports together.
 ## Track client fixes
 
 [`decisions/fixes.json`](../decisions/fixes.json) lists related PRs with their client family
-(`null` for specification and test-suite repositories) and the decisions they address.
-List a decision under `partial` as well when the PR leaves part of that client’s measured
-difference unaddressed, and set `awaiting_uptake` when the fix reaches the client through a
-library it pins at an older release; remove it once a captured build contains the fix.
-Report generation renders [client fixes](client-fixes.md) from it and shows 🛠️ Fix submitted
-for a differing or partially assessed build when a non-partial tagged PR is open, merged after
-the build’s commit, or awaiting uptake; partial PRs are linked without replacing ⚠️ or 🟡.
-Captured checks and harmonization milestones are unchanged. The same markers feed
+(`null` for specification, test-suite and other repositories no measured build consumes) and the
+decisions they address. List a decision under `partial` as well when the PR leaves part of that
+client’s measured difference unaddressed. `depends_on` lists prerequisite or stacked PRs and
+`conflicts_with` PRs that cannot both merge as written (recorded on both sides); both must name
+PRs in the file, and dependencies may not form a cycle. `libraries` maps each library repository
+to the crates it publishes and the repositories that consume them, so a library PR’s path to its
+client (revm → revm-inspectors → Reth, Alloy → Reth) follows from its repository.
+
+Each PR has a stage: open, merged, released (library PRs), in client, in measured build and
+verified. [`scripts/refresh_fixes.py`](../scripts/refresh_fixes.py) records the network facts in
+each merged PR’s `uptake`: the first release tag carrying it at each library hop, the client
+default-branch commit whose `Cargo.lock` first pins those releases, and, for each measured build of
+the current reports, whether the build contains it (merge-commit ancestry, or its lockfile for a
+library PR). A PR merged into another PR’s branch counts through that PR’s merge. Report generation
+stays offline and fails when a measured build has no recorded facts. A PR is verified on a build
+that contains it when every decision it covers completely agrees there; a partial PR, or one with no
+decisions, needs `verified_cases` (`corpus/case` ids whose checks on its decisions must all match).
+
+Report generation renders [client fixes](client-fixes.md) from it, one section per client with
+its stages and a Mermaid diagram of release steps and PR order, and shows 🛠️ Fix submitted for a
+differing or partially assessed build while a non-partial tagged PR is open or merged but not yet
+in that build; partial PRs are linked without replacing ⚠️ or 🟡. Captured checks and
+harmonization milestones are unchanged. The same markers feed
 [progress by client](../reports/README.md#progress) and its chart, `reports/progress.svg`:
 one outcome per decision on each native development build, with differences that have no
 submitted fix split by the decision's policy status, and the change in agreements since the
-previous matrix. Refresh PR titles and states from GitHub, then regenerate:
+previous matrix. Refresh PR states and uptake facts from GitHub after each new capture, then regenerate:
 
 ```sh
 uv run python scripts/refresh_fixes.py

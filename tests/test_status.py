@@ -89,7 +89,7 @@ class ClientPositionTests(unittest.TestCase):
         prs = [dict(url=f'https://github.com/paradigmxyz/reth/pull/{n}', title='fix: trace', client=client, decisions=['H03'],
                     state=state, draft=False, merged_at='2026-09-22T00:00:00Z' if state == 'merged' else None, **extra)
                for n, (client, state, extra) in enumerate([('reth', 'merged', {}), ('reth', 'open', {}), ('reth', 'merged', {'partial': ['H03']}),
-                                                           ('geth', 'merged', {}), (None, 'merged', {}), ('erigon', 'merged', {'awaiting_uptake': True})], 1)]
+                                                           ('geth', 'merged', {}), (None, 'merged', {}), ('erigon', 'merged', {'uptake': {'merge_commit': 'a' * 40}})], 1)]
         fixes = check_fixes({'repositories': {'paradigmxyz/reth': 'Reth'}, 'prs': prs}, {'H03', 'H04'}, [*NATIVE_CLIENTS, 'geth'])
         self.assertEqual(merged_fixes(fixes, 'H03'), [('reth', {'label': 'Reth #1', 'url': prs[0]['url']}),
                                                       ('erigon', {'label': 'Reth #6', 'url': prs[5]['url']})])

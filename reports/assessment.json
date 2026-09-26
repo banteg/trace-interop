@@ -79,7 +79,7 @@
     "trace_interop/laws.py": "f384fb6a8cedf6a05b0fb34c6899ce8341ce30f8073c1df7064d2732a55f2d89",
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "0994d2cd52e4bf8c69dded9afc63b22422820caaf90b7b73c0e89e37cdaad93a",
-    "trace_interop/presentation.py": "9b14bda1b165c2009dfcf8feb2378e83d480484fcdd6abf0ceca370f7d184b15",
+    "trace_interop/presentation.py": "7a655ce8dced1b51c22e445d49b54fc9eb895bca43f5447ee9301a239cee06db",
     "trace_interop/probes.py": "fc5cd3c37a068352981f804b9de3a255f27020b43e355cfa1e1b63c5f6f5da6f",
     "trace_interop/report.py": "6d73b1662ba07823ec8eefc9903ec3032527634b7e48a2ff2f6c7d81fe74d4d5",
     "trace_interop/rules.py": "a4e89ad6fc71d3bace73a7c9ad1a1fc9bc36f4664645649f13bd446653ad3324",

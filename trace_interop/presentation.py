@@ -285,6 +285,86 @@ def prune_case_pages(output, cases):
             path.unlink()
 
 
+def laws_page(laws, notes, name):
+    """Violations of each consistency law by build, with the editorial cause where one is known."""
+    groups = defaultdict(list)
+    for v in laws['violations']:
+        groups[(v['law'], v['client'])].append(v)
+    stale = sorted(f'{law}/{client}' for law, by_client in notes.items() for client in by_client if (law, client) not in groups)
+    if stale:
+        raise ValueError('law notes without a violation in the current matrix: ' + ', '.join(stale))
+    text = '# Consistency laws\n\n[Back to the maintainer overview](README.md) · [Spec decision tables](spec-tables.md)\n\n'
+    text += ('Every trace method projects one execution, so some pairs of responses must agree whatever the draft decides. '
+             'A law pairs two captured requests that denote the same execution or the same records and compares what one build returned for both: '
+             'a request selected with different trace types, a transaction through trace_transaction and trace_block, a stored trace and its replay, '
+             'a bundle item and the same call, a filter and the blocks it covers. '
+             'A law needs no expected value and no other client, and never asks which frames exist, how a record is encoded or which errors a request earns. '
+             'An error on either side leaves the pair unevaluated.\n\n'
+             'Violations are reported here and are not decision verdicts: most repeat a difference a decision already measures, '
+             'so they do not change the progress counts. A cause names the decision that already measures the difference; '
+             '“Found by this law” marks one no decision assertion checks. Laws run on the eligible responses of every run in the current matrix; '
+             '[laws.json](laws.json) keeps every violation.\n\n')
+    clients = sorted({c for by_client in laws['counts'].values() for c in by_client})
+    text += '## Laws\n\n'
+    text += table(['Law', 'Statement', 'Pairs checked', 'Builds with violations'], [
+        [f'**{law["id"]}** {law["title"]}', law['statement'],
+         sum(t['held'] + t['violated'] for t in laws['counts'].get(law['id'], {}).values()),
+         ', '.join(name(c) for c in clients if laws['counts'].get(law['id'], {}).get(c, {}).get('violated')) or '—']
+        for law in laws['laws']])
+    text += '## Violations\n\n'
+    if not groups:
+        text += 'Every evaluated pair agrees.\n'
+    titles = {law['id']: law['title'] for law in laws['laws']}
+    for law in sorted({law for law, _ in groups}):
+        text += f'### {law} {titles[law]}\n\n'
+        rows = []
+        for (code, client), found in sorted(groups.items()):
+            if code == law:
+                shown = {}
+                for v in found:
+                    shown.setdefault(v['detail'].split(':')[0], v)
+                sample = ' · '.join(
+                    ' vs '.join(f'[{c}](cases/{v["corpus"]}/{c}.md)' for c in v['cases'][:2]) + (f' ({len(v["cases"]) - 2} more)' if len(v['cases']) > 2 else '')
+                    + f': `{v["detail"][:160]}`' for v in list(shown.values())[:2])
+                rows.append([name(client), len(found), notes.get(law, {}).get(client, 'Not yet triaged.'), sample])
+        text += table(['Build', 'Violations', 'Cause', 'Examples'], rows)
+    return text
+
+
+def tables_page(tables, lock):
+    """Gaps, conflicts and overlaps of the draft's clauses, enumerated over each table's cells."""
+    text = '# Spec decision tables\n\n[Back to the maintainer overview](README.md) · [Consistency laws](laws.md)\n\n'
+    text += (f'Each table encodes the clauses of the [pinned draft]({lock["repository"]}/tree/{lock["commit"]}) that decide one question, '
+             'quoted verbatim, and enumerates every combination of the inputs they govern. '
+             'A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. '
+             'An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. '
+             'The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. '
+             'Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.\n\n')
+    text += table(['Table', 'Topics', 'Cells', 'Conflicts', 'Gaps', 'Overlaps'], [
+        [f'[{t["title"]}](#{t["title"].lower().replace(" ", "-")})', ', '.join(f'[{x}](decisions/{x}.md)' for x in t['topics']), t['cells'],
+         *[sum(f['cells'] for f in t['findings'] if f['kind'] == kind) for kind in ('conflict', 'gap', 'overlap')]] for t in tables])
+    for t in tables:
+        text += f'## {t["title"]}\n\n{t["question"]}\n\n'
+        text += '**Dimensions:** ' + '; '.join(f'{k}: {", ".join(v)}' for k, v in t['dimensions'].items()) + '.\n\n'
+        if t['notes']:
+            text += '**Readings:**\n\n' + ''.join(f'- “{n["quote"]}” {n["reading"]}\n' for n in t['notes']) + '\n'
+        quotes = {c['id']: c['quote'] for c in t['clauses']}
+        rows = []
+        for f in t['findings']:
+            where = ('<br>'.join(' · '.join(map(str, m.values())) for m in f['members']) if f['members']
+                     else '; '.join(f'{k}: {v}' for k, v in f['span'].items() if v != '*')) or 'every cell'
+            if f['kind'] == 'conflict':
+                detail = ' vs '.join(f'{value} by {", ".join(ids)}' for value, ids in f['detail'])
+            elif f['kind'] == 'overlap':
+                detail = 'agreeing: ' + ', '.join(f['detail'])
+            else:
+                detail = 'no clause decides it'
+            rows.append([f['kind'].capitalize(), f['attribute'], where, f['cells'], detail])
+        text += table(['Finding', 'Outcome', 'Cells where', 'Cells', 'Clauses'], rows) if rows else 'Every cell is decided by exactly one clause.\n\n'
+        text += '<details><summary>Clauses</summary>\n\n' + table(['Clause', 'Quote'], [[k, f'“{q}”'] for k, q in quotes.items()]) + '</details>\n\n'
+    return text
+
+
 def changes_page(previous, records, by_client, decisions, editorial, revisions, matrix, output):
     """Captured verdict flips per decision and build between the previous and current matrices."""
     builds = {'previous': defaultdict(set), 'current': defaultdict(set)}
@@ -321,7 +401,7 @@ def changes_page(previous, records, by_client, decisions, editorial, revisions, 
     return text
 
 
-def render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous=None):
+def render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous=None, laws=None, tables=None):
     prune_case_pages(output, case_pages)
     editorial = json.loads((root/'decisions/impact.json').read_text())
     positions = check_positions(json.loads((root/'decisions/status.json').read_text()), decisions)
@@ -630,8 +710,14 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         ]])
     text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
     text += '[All decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'
-    text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
+    text += '[Client fixes](../docs/client-fixes.md) · [Client source guide](sources.md) · [Run a case](../docs/usage.md) · [Builds, coverage and raw results](technical.md) · [Consistency laws](laws.md) · [Spec decision tables](spec-tables.md) · [Standardization discussion](https://github.com/ethereum/execution-apis/issues/890)\n'
     save(output/'README.md', text)
+
+    if laws is not None:
+        notes = json.loads((root/'decisions/laws.json').read_text()) if output == (root/'reports').resolve() else {}
+        save(output/'laws.md', laws_page(laws, notes, lambda c: names[c] + ' ' + label(c)))
+    if tables is not None:
+        save(output/'spec-tables.md', tables_page(tables, lock))
 
     if previous:
         save(output/'changes.md', changes_page(previous, records, by_client, decisions, editorial, revisions, root/selection['matrix'], output))

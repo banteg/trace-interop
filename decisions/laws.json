@@ -1,0 +1,34 @@
+{
+  "L01": {
+    "besu_development": "Found by this law. At the call depth limit (`probes-forks/depth-limit`) the successful CREATE at depth 1 reports gasUsed 2^64 − 25357 and the phantom CREATE at depth 1025 reports 2^64 − 22239: negative gas wrapped to unsigned. The H29 depth probe records the phantom frame but no assertion checks its gas.",
+    "besu_release": "The same wrapped gasUsed as the development build."
+  },
+  "L03": {
+    "besu_development": "H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes.",
+    "besu_release": "H22, as in the development build."
+  },
+  "L04": {
+    "nethermind_release": "H08: output is missing when stateDiff alone is selected. H20: vmTrace `store` appears only when stateDiff is also selected. The development build has neither."
+  },
+  "L07": {
+    "anvil_development": "H29: stored trace_transaction and trace_block records keep the zero-value identity precompile frame at `[6]`, which the replay and trace_call omit.",
+    "anvil_release": "H29, as in the nightly.",
+    "nethermind_development": "Found by this law. A suicide record has no `result` member in trace_transaction and trace_block, but `\"result\": null` in the replayed trace of the same transaction. Serialization only.",
+    "nethermind_release": "The same suicide serialization as the development build."
+  },
+  "L08": {
+    "nethermind_release": "H08 output and H20 `store`, as under L04.",
+    "reth_release": "H19: the single replay reports the executing bytecode as vmTrace `code` while the block replay reports `0x`; the development build agrees."
+  },
+  "L09": {
+    "anvil_development": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",
+    "anvil_release": "H11, as in the nightly.",
+    "erigon_development": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit.",
+    "erigon_release": "H15 GASLIMIT, as in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."
+  },
+  "L10": {
+    "besu_development": "H27: range filters across a fork boundary (blocks 35–36, 55–56 and 59–60, and 2–5 across the Homestead transition at block 4) differ from the same blocks’ traces.",
+    "besu_release": "H27, as in the development build.",
+    "erigon_release": "H05: trace_filter over the genesis block returns a reward that trace_block(0) does not, fixed by erigon#24295 in the development build."
+  }
+}

@@ -1,0 +1,591 @@
+[
+  {
+    "cells": 107,
+    "clauses": [
+      {
+        "id": "root-precompile",
+        "quote": "Retain root precompile calls regardless of value."
+      },
+      {
+        "id": "nested-zero-precompile",
+        "quote": "Omit nested precompile frames with zero value"
+      },
+      {
+        "id": "nested-value-precompile",
+        "quote": "retain nested frames with nonzero transferred or inherited value, whether successful or failed"
+      },
+      {
+        "id": "call-precheck",
+        "quote": "A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, no result and no subtraces"
+      },
+      {
+        "id": "create-precheck",
+        "quote": "A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam"
+      },
+      {
+        "id": "create-precheck-amsterdam",
+        "quote": "from Amsterdam the check runs in the creating opcode and no frame is emitted"
+      },
+      {
+        "id": "collision",
+        "quote": "A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas."
+      },
+      {
+        "id": "halt-result",
+        "quote": "Exceptional halt, including an address collision; result is omitted or null."
+      },
+      {
+        "id": "halt",
+        "quote": "An exceptional halt consumes the frame's action gas; its result may be omitted or null."
+      },
+      {
+        "id": "revert",
+        "quote": "A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes"
+      },
+      {
+        "id": "success",
+        "quote": "Successful frame; result is required and error must be absent."
+      },
+      {
+        "id": "error-alone",
+        "quote": "error alone determines failure."
+      }
+    ],
+    "dimensions": {
+      "fork": [
+        "any fork",
+        "before Amsterdam",
+        "from Amsterdam"
+      ],
+      "opcode": [
+        "CALL",
+        "CALLCODE",
+        "DELEGATECALL",
+        "STATICCALL",
+        "CREATE",
+        "CREATE2"
+      ],
+      "outcome": [
+        "success",
+        "revert",
+        "halt",
+        "collision",
+        "precheck depth",
+        "precheck balance",
+        "precheck nonce"
+      ],
+      "position": [
+        "root",
+        "nested"
+      ],
+      "target": [
+        "account",
+        "precompile"
+      ],
+      "value": [
+        "zero",
+        "transferred",
+        "inherited"
+      ]
+    },
+    "findings": [
+      {
+        "attribute": "emitted",
+        "cells": 4,
+        "detail": [
+          [
+            "False",
+            [
+              "nested-zero-precompile"
+            ]
+          ],
+          [
+            "True",
+            [
+              "call-precheck"
+            ]
+          ]
+        ],
+        "kind": "conflict",
+        "members": [
+          {
+            "fork": "any fork",
+            "opcode": "CALL",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "zero"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "CALLCODE",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "zero"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "DELEGATECALL",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "zero"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "STATICCALL",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "zero"
+          }
+        ],
+        "span": {
+          "fork": "*",
+          "opcode": "*",
+          "outcome": "precheck depth",
+          "position": "*",
+          "target": "precompile",
+          "value": "zero"
+        }
+      },
+      {
+        "attribute": "emitted",
+        "cells": 45,
+        "detail": [],
+        "kind": "gap",
+        "members": null,
+        "span": {
+          "fork": "*",
+          "opcode": "*",
+          "outcome": "success, revert, halt",
+          "position": "*",
+          "target": "account",
+          "value": "*"
+        }
+      },
+      {
+        "attribute": "emitted",
+        "cells": 5,
+        "detail": [
+          "nested-value-precompile",
+          "call-precheck"
+        ],
+        "kind": "overlap",
+        "members": [
+          {
+            "fork": "any fork",
+            "opcode": "CALL",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "transferred"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "CALL",
+            "outcome": "precheck balance",
+            "position": "nested",
+            "target": "precompile",
+            "value": "transferred"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "CALLCODE",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "transferred"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "CALLCODE",
+            "outcome": "precheck balance",
+            "position": "nested",
+            "target": "precompile",
+            "value": "transferred"
+          },
+          {
+            "fork": "any fork",
+            "opcode": "DELEGATECALL",
+            "outcome": "precheck depth",
+            "position": "nested",
+            "target": "precompile",
+            "value": "inherited"
+          }
+        ],
+        "span": {
+          "fork": "*",
+          "opcode": "*",
+          "outcome": "precheck depth, precheck balance",
+          "position": "*",
+          "target": "precompile",
+          "value": "transferred, inherited"
+        }
+      },
+      {
+        "attribute": "result",
+        "cells": 20,
+        "detail": [
+          "halt-result",
+          "halt"
+        ],
+        "kind": "overlap",
+        "members": null,
+        "span": {
+          "fork": "*",
+          "opcode": "*",
+          "outcome": "halt",
+          "position": "*",
+          "target": "*",
+          "value": "*"
+        }
+      }
+    ],
+    "id": "frames",
+    "notes": [
+      {
+        "quote": "A precompile is an address in the precompile set active at the executing block's fork.",
+        "reading": "target is precompile exactly when the callee is in that set; a precompile cannot REVERT, so its failures are halts."
+      },
+      {
+        "quote": "Retain root precompile calls regardless of value.",
+        "reading": "A root is the transaction itself: CALL or CREATE, whose prechecks are transaction validation, not frames."
+      }
+    ],
+    "question": "Does a call or create attempt produce a record, and does that record carry an error and a result?",
+    "title": "Frame emission",
+    "topics": [
+      "H09",
+      "H29"
+    ]
+  },
+  {
+    "cells": 144,
+    "clauses": [
+      {
+        "id": "intersection",
+        "quote": "Apply OR within each address list and AND between the lists by default"
+      },
+      {
+        "id": "union",
+        "quote": "mode union matches either populated list"
+      },
+      {
+        "id": "unrestricted",
+        "quote": "omitted/null/empty lists are unrestricted"
+      },
+      {
+        "id": "reward-intersection",
+        "quote": "in intersection mode it is excluded whenever fromAddress is populated"
+      },
+      {
+        "id": "reward-union",
+        "quote": "while in union mode a toAddress match suffices"
+      }
+    ],
+    "dimensions": {
+      "from": [
+        "unrestricted",
+        "match",
+        "miss"
+      ],
+      "mode": [
+        "omitted",
+        "intersection",
+        "union"
+      ],
+      "record": [
+        "call",
+        "failed call",
+        "create",
+        "failed create",
+        "suicide",
+        "reward"
+      ],
+      "to": [
+        "unrestricted",
+        "match",
+        "miss"
+      ]
+    },
+    "findings": [
+      {
+        "attribute": "selected",
+        "cells": 6,
+        "detail": [
+          "intersection",
+          "reward-intersection"
+        ],
+        "kind": "overlap",
+        "members": [
+          {
+            "from": "miss",
+            "mode": "omitted",
+            "record": "reward",
+            "to": "unrestricted"
+          },
+          {
+            "from": "miss",
+            "mode": "intersection",
+            "record": "reward",
+            "to": "unrestricted"
+          },
+          {
+            "from": "miss",
+            "mode": "omitted",
+            "record": "reward",
+            "to": "match"
+          },
+          {
+            "from": "miss",
+            "mode": "intersection",
+            "record": "reward",
+            "to": "match"
+          },
+          {
+            "from": "miss",
+            "mode": "omitted",
+            "record": "reward",
+            "to": "miss"
+          },
+          {
+            "from": "miss",
+            "mode": "intersection",
+            "record": "reward",
+            "to": "miss"
+          }
+        ],
+        "span": {
+          "from": "miss",
+          "mode": "omitted, intersection",
+          "record": "reward",
+          "to": "*"
+        }
+      },
+      {
+        "attribute": "selected",
+        "cells": 2,
+        "detail": [
+          "union",
+          "reward-union"
+        ],
+        "kind": "overlap",
+        "members": [
+          {
+            "from": "unrestricted",
+            "mode": "union",
+            "record": "reward",
+            "to": "match"
+          },
+          {
+            "from": "miss",
+            "mode": "union",
+            "record": "reward",
+            "to": "match"
+          }
+        ],
+        "span": {
+          "from": "*",
+          "mode": "union",
+          "record": "reward",
+          "to": "match"
+        }
+      }
+    ],
+    "id": "filters",
+    "notes": [
+      {
+        "quote": "Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary",
+        "reading": "from and to describe the list against the record\u2019s side: unrestricted, containing that side\u2019s address (match) or not (miss)."
+      },
+      {
+        "quote": "Failed CREATE has no created-address match.",
+        "reading": "A failed create\u2019s to side never matches."
+      },
+      {
+        "quote": "A reward matches toAddress by author and has no from side",
+        "reading": "A reward\u2019s from side never matches."
+      },
+      {
+        "quote": "omitted/null/empty lists are unrestricted",
+        "reading": "unrestricted covers an omitted, null or empty list."
+      }
+    ],
+    "question": "Does trace_filter select a record, given how each address list relates to the record\u2019s sides and the mode?",
+    "title": "Address filtering",
+    "topics": [
+      "H03",
+      "H04",
+      "H23"
+    ]
+  },
+  {
+    "cells": 70,
+    "clauses": [
+      {
+        "id": "schema",
+        "quote": "Invalid params"
+      },
+      {
+        "id": "call-default",
+        "quote": "Optional block, latest when omitted or null"
+      },
+      {
+        "id": "call-state",
+        "quote": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment."
+      },
+      {
+        "id": "many-state",
+        "quote": "The first item runs against the same state and environment as trace_call at the selected block."
+      },
+      {
+        "id": "call-unknown",
+        "quote": "an unknown selected block returns -32001 (Resource not found), and a known block whose required state is pruned returns 4444"
+      },
+      {
+        "id": "call-pending",
+        "quote": "pending has no agreed semantics yet; a client that does not implement it must reject it explicitly rather than substitute another block"
+      },
+      {
+        "id": "block-state",
+        "quote": "Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules."
+      },
+      {
+        "id": "block-unknown",
+        "quote": "An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444"
+      },
+      {
+        "id": "block-pending",
+        "quote": "Block does not accept pending (-32602)"
+      },
+      {
+        "id": "filter-default",
+        "quote": "defaults omitted fromBlock and toBlock to the same latest head"
+      },
+      {
+        "id": "filter-range",
+        "quote": "If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602"
+      },
+      {
+        "id": "filter-records",
+        "quote": "Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state."
+      },
+      {
+        "id": "filter-pruned",
+        "quote": "return 4444 if required history is unavailable"
+      }
+    ],
+    "dimensions": {
+      "history": [
+        "available",
+        "pruned"
+      ],
+      "method": [
+        "trace_call",
+        "trace_callMany",
+        "trace_block",
+        "trace_replayBlockTransactions",
+        "trace_filter"
+      ],
+      "selector": [
+        "omitted",
+        "number",
+        "number beyond head",
+        "hash",
+        "unknown hash",
+        "non-canonical hash",
+        "latest",
+        "earliest",
+        "safe",
+        "finalized",
+        "unresolvable safe",
+        "pending"
+      ]
+    },
+    "findings": [
+      {
+        "attribute": "response",
+        "cells": 9,
+        "detail": [],
+        "kind": "gap",
+        "members": [
+          {
+            "history": "available",
+            "method": "trace_call",
+            "selector": "non-canonical hash"
+          },
+          {
+            "history": "pruned",
+            "method": "trace_callMany",
+            "selector": "number"
+          },
+          {
+            "history": "available",
+            "method": "trace_callMany",
+            "selector": "number beyond head"
+          },
+          {
+            "history": "pruned",
+            "method": "trace_callMany",
+            "selector": "hash"
+          },
+          {
+            "history": "available",
+            "method": "trace_callMany",
+            "selector": "unknown hash"
+          },
+          {
+            "history": "available",
+            "method": "trace_callMany",
+            "selector": "non-canonical hash"
+          },
+          {
+            "history": "available",
+            "method": "trace_callMany",
+            "selector": "unresolvable safe"
+          },
+          {
+            "history": "available",
+            "method": "trace_callMany",
+            "selector": "pending"
+          },
+          {
+            "history": "available",
+            "method": "trace_filter",
+            "selector": "unresolvable safe"
+          }
+        ],
+        "span": {
+          "history": "*",
+          "method": "trace_call, trace_callMany, trace_filter",
+          "selector": "number, number beyond head, hash, unknown hash, non-canonical hash, unresolvable safe, pending"
+        }
+      }
+    ],
+    "id": "blocks",
+    "notes": [
+      {
+        "quote": "Resolve tags once per request.",
+        "reading": "trace_filter is read with both bounds naming the same block."
+      },
+      {
+        "quote": "If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.",
+        "reading": "unresolvable safe stands for either tag before the chain has one."
+      },
+      {
+        "quote": "Bounds exclude pending.",
+        "reading": "This names no response; the schema, which omits pending from trace_filter bounds, decides it."
+      }
+    ],
+    "question": "What does a request return for each way of naming its block, when the block\u2019s state is available or pruned?",
+    "title": "Block selection",
+    "topics": [
+      "H06",
+      "H30",
+      "H31",
+      "H32"
+    ]
+  }
+]

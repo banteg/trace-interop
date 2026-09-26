@@ -10,8 +10,9 @@ from .validation import request_errors
 from .inventory import verify_inventory, cover_topics, previous_runs
 from .scenarios import assessed_cases, verify_setup
 from .coverage import supplement
+from . import laws as consistency, tables as decision_tables
 
-ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/probes.py','trace_interop/mined_probes.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json']
+ASSESSMENT_SOURCES = ['pyproject.toml','uv.lock','fixtures/checksums.json','trace_interop/coverage.py','trace_interop/chain_model.py','trace_interop/execution_models.py','trace_interop/fee_policy.py','trace_interop/probes.py','trace_interop/mined_probes.py','trace_interop/vm_model.py','trace_interop/rules.py','trace_interop/oracles.py','trace_interop/laws.py','trace_interop/tables.py','trace_interop/report.py','trace_interop/presentation.py','trace_interop/status.py','trace_interop/scenarios.py','trace_interop/validation.py','trace_interop/inventory.py','trace_interop/versions.py','scripts/run_matrix.py','reports.lock.json','decisions/sources.json','locks/source-revisions.json','spec.lock.json','decisions/ledger.json','decisions/impact.json','decisions/status.json','decisions/laws.json']
 
 
 def link(path, output):
@@ -68,7 +69,7 @@ def generate(root, runs, output):
             raise ValueError('generated schema does not match spec lock')
         methods={m['name']:m for m in spec['methods']}
         pinned=(lock, methods, {name:result_validator(m['result']['schema']) for name,m in methods.items()}, {})
-    records, by_client, case_pages, run_rows = assess_runs(root, runs, output, decisions, pinned)
+    records, by_client, case_pages, run_rows, laws = assess_runs(root, runs, output, decisions, pinned)
     selection = read(root/'reports.lock.json')
     selected = {(root/name).resolve() for name in selection['runs']}
     matrix = root/selection['matrix'] if selection.get('matrix') and {p.resolve() for p in runs} == selected else None
@@ -99,17 +100,22 @@ def generate(root, runs, output):
         comparisons.append({'corpus':corpus,'case':name,'groups':[{'sha256':h,'observations':clients} for h,clients in groups.items()]})
     write(output/'comparisons.json',comparisons)
     write(output/'runs.json',run_rows)
+    laws = consistency.summarize(laws)
+    write(output/'laws.json', laws)
+    tables = decision_tables.report(spec) if spec else None
+    if tables:
+        write(output/'spec-tables.json', tables)
     from .presentation import render
-    render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous)
+    render(root, output, records, by_client, case_pages, run_rows, decisions, lock, previous, laws, tables)
     print(f'Generated {len(records)} observation assessments and {len(decisions)} decision pages in {output}')
 
 
 def assess_runs(root, runs, output, decisions, pinned):
-    """Records, per-client checks, case pages and run rows for captured runs; `pinned` is
-    (spec lock, methods, result validators, memoized result shapes), or None without a pinned draft."""
+    """Records, per-client checks, case pages, run rows and consistency-law instances for captured runs;
+    `pinned` is (spec lock, methods, result validators, memoized result shapes), or None without a pinned draft."""
     spec = pinned is not None
     lock, methods, validators, shapes = pinned or (None, {}, {}, {})
-    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list); requests={}
+    by_client=defaultdict(lambda:defaultdict(list)); records=[]; run_rows=[]; case_pages=defaultdict(list); requests={}; laws=[]
     for folder in runs:
         folder=folder.resolve()
         manifest=read(folder/'manifest.json'); summary=read(folder/'summary.json'); obs=load_observations(folder)
@@ -123,6 +129,9 @@ def assess_runs(root, runs, output, decisions, pinned):
         for client in manifest['clients']:
             eligible, scenario_detail=verify_setup(manifest,context,obs,client,summary.get('launches',[]))
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
+            if eligible:
+                laws += [dict(law, run=folder.name, corpus=manifest['corpus'], client=client, version=summary['versions'].get(client, 'unknown'))
+                         for law in consistency.evaluate(rule_context, cases, peers)]
             for case in cases:
                 name=case['name']; observation=peers.get(name,{})
                 record={'run':folder.name,'corpus':manifest['corpus'],'case':name,'method':case['request']['method'],'client':client,'version':summary['versions'].get(client,'unknown'),'status':observation.get('status','not_observed'),'eligible':eligible,'capture_eligible':summary['eligible'].get(client,False),'eligibility_detail':scenario_detail,'checks':[],'spec_commit':lock['commit'] if spec else None}
@@ -163,4 +172,4 @@ def assess_runs(root, runs, output, decisions, pinned):
                     by_client[client][check['topic']].append(dict(check,case=name,run=folder.name,corpus=manifest['corpus'],lock=lock_link,evidence=evidence_link))
                 records.append(record)
                 case_pages[(manifest['corpus'],name)].append({'record':record,'request':case['request'],'observation':observation,'raw':observations_file(folder)})
-    return records, by_client, case_pages, run_rows
+    return records, by_client, case_pages, run_rows, laws

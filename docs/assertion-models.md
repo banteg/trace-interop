@@ -112,6 +112,35 @@ The Prague intrinsic/floor distinction follows
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559). The trace serialization rules
 are the repository's proposed contract, not an assertion of client consensus.
 
+## Consistency laws and decision tables
+
+The models above compare a response with an independent expectation. Two further checks need none.
+
+[Consistency laws](../reports/laws.md) (`trace_interop/laws.py`) pair captured requests that denote the same
+execution or the same records and compare what one build returned for both: a request selected with different
+trace types, trace_get against trace_transaction, trace_transaction against trace_block, a stored trace against
+its replay, a single replay against the block replay, a bundle item against a shorter bundle and trace_call, a
+filter against the block traces it covers and against its unpaged form, and requests that name the same block
+by number, hash or head tag. Each response must also be a well-formed preorder tree whose frames use no more gas
+than they were given. A law holds under every policy the ledger is weighing, so it never decides which frames
+exist, how a record is encoded, what an omitted argument defaults to or which errors a request earns; an error on
+either side, including an error envelope wrapped as a result, leaves the pair unevaluated. Pairs come only from
+frozen chains, never from reorganizing or pruning scenarios. vmTrace `idx` is not compared, since its numbering
+is an unmodeled optional convention.
+
+Violations appear on their own page and do not change decision verdicts: most repeat a difference a decision
+already measures, seen through another method. `decisions/laws.json` names the cause for each violating build;
+report generation fails when a note no longer matches a violation, and an unexplained violation is shown as not
+yet triaged.
+
+[Decision tables](../reports/spec-tables.md) (`trace_interop/tables.py`) read the pinned draft instead of
+responses. Each table enumerates the inputs of one question (frame emission, address filtering, block
+selection) and encodes the clauses that decide it, each quoting the draft verbatim. A cell no clause decides is
+a gap, a cell whose clauses require different outcomes is a conflict, and a cell decided by several agreeing
+clauses is an overlap. The block-selection table derives each method's accepted selector forms from its schema.
+Report generation fails when a quote no longer occurs in the pinned draft, so a repinned draft must be re-read
+into its tables.
+
 ## Reproduce
 
 ```sh

@@ -41,7 +41,7 @@ Join the [trace working group on Telegram](https://t.me/+2jfwc-YvwkliMzIy) to di
 1. **Fixtures.** Frozen generated chains ([`fixtures/chains`](fixtures/chains)) and request corpora ([`fixtures/corpora`](fixtures/corpora)) define each case, its setup controls and its independent expectations.
 2. **Capture.** Hive runs the corpora against the latest release and development builds of Besu, Erigon, Nethermind and Reth, plus the Geth draft fork, after a freshness preflight. Foundry's Anvil, which has no Engine API, is captured on the same chains by [replaying them block by block](docs/usage.md#replica-captures). [Stateful scenarios](docs/scenarios.md) cover reorg restoration and pruned history.
 3. **Evidence.** Each run keeps its requests, raw responses, client logs and build lock under [`evidence/`](evidence), checksummed and never rewritten.
-4. **Assessment.** Responses are checked against the pinned draft schemas and against independent models of execution, gas, fees and state. [Assertion models](docs/assertion-models.md) explain what each status means and what remains unassessed.
+4. **Assessment.** Responses are checked against the pinned draft schemas and against independent models of execution, gas, fees and state. [Assertion models](docs/assertion-models.md) explain what each status means and what remains unassessed. [Consistency laws](reports/laws.md) compare each client with itself across methods that project one execution, and [decision tables](reports/spec-tables.md) enumerate the draft's clauses to find cases it leaves undecided or decides twice.
 5. **Reports.** [`scripts/build_reports.py`](scripts/build_reports.py) regenerates the client reports, decision pages and verdict matrix from the evidence selected by [`reports.lock.json`](reports.lock.json).
 
 ## Run it
@@ -71,7 +71,7 @@ This is not a public testnet, performance benchmark, general EVM fuzzer or clien
 
 ## Documentation index
 
-**Methodology:** [reproduce and review](docs/usage.md) · [stateful scenarios](docs/scenarios.md) · [assertion models](docs/assertion-models.md) · [reviewing a proposed rule](docs/review.md)
+**Methodology:** [reproduce and review](docs/usage.md) · [stateful scenarios](docs/scenarios.md) · [assertion models](docs/assertion-models.md) · [consistency laws and decision tables](docs/assertion-models.md#consistency-laws-and-decision-tables) · [reviewing a proposed rule](docs/review.md)
 
 **Decision studies:** [H13 signed transaction validation](docs/h13-validation.md) · [mined transaction probes](docs/mined-probes.md) · [H15 unsigned simulation fees](docs/h15-fee-policy.md) · [Nethermind truncated validation responses](docs/nethermind-streamed-errors.md)
 

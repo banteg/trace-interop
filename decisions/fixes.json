@@ -219,6 +219,9 @@
       "decisions": [
         "H03"
       ],
+      "depends_on": [
+        "https://github.com/erigontech/rpc-tests/pull/604"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-25T07:33:44Z",
@@ -261,6 +264,9 @@
       ],
       "partial": [
         "H20"
+      ],
+      "depends_on": [
+        "https://github.com/erigontech/rpc-tests/pull/605"
       ],
       "state": "merged",
       "draft": false,
@@ -588,6 +594,9 @@
       "decisions": [
         "H03"
       ],
+      "conflicts_with": [
+        "https://github.com/NethermindEth/nethermind/pull/13897"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -617,6 +626,9 @@
       "client": "reth",
       "decisions": [
         "H19"
+      ],
+      "depends_on": [
+        "https://github.com/paradigmxyz/revm-inspectors/pull/511"
       ],
       "state": "merged",
       "draft": false,
@@ -948,6 +960,9 @@
       "partial": [
         "H14"
       ],
+      "depends_on": [
+        "https://github.com/erigontech/erigon/pull/24334"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -961,6 +976,9 @@
       ],
       "partial": [
         "H14"
+      ],
+      "conflicts_with": [
+        "https://github.com/NethermindEth/nethermind/pull/13857"
       ],
       "state": "open",
       "draft": false,
@@ -1333,6 +1351,9 @@
       "title": "test(evm): cover reverted child output in action callbacks",
       "client": "nethermind",
       "decisions": [],
+      "depends_on": [
+        "https://github.com/NethermindEth/nethermind/pull/13622"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-25T11:15:37Z",
@@ -1351,6 +1372,9 @@
       "title": "fix(evm): keep cancellation policy outside instruction pairing",
       "client": "nethermind",
       "decisions": [],
+      "depends_on": [
+        "https://github.com/NethermindEth/nethermind/pull/13551"
+      ],
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-25T11:20:36Z",
@@ -1369,6 +1393,9 @@
       "title": "refactor(engine): handle repeated forkchoice outside unwind",
       "client": "erigon",
       "decisions": [],
+      "depends_on": [
+        "https://github.com/erigontech/erigon/pull/24032"
+      ],
       "state": "open",
       "draft": true,
       "merged_at": null,
@@ -1395,6 +1422,9 @@
       ],
       "partial": [
         "H20"
+      ],
+      "depends_on": [
+        "https://github.com/NethermindEth/nethermind/pull/13551"
       ],
       "state": "merged",
       "draft": false,

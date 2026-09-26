@@ -22,22 +22,42 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 ## Erigon
 
+```mermaid
+flowchart LR
+  Erigon_24255["Erigon #24255"]:::verified
+  rpc_tests_604["rpc-tests #604"]:::merged
+  Erigon_24291["Erigon #24291"]:::in_measured_build
+  rpc_tests_605["rpc-tests #605"]:::merged
+  Erigon_24322["Erigon #24322"]:::open
+  Erigon_24032["Erigon #24032"]:::open
+  Erigon_24336["Erigon #24336"]:::open
+  Erigon_24334["Erigon #24334"]:::open
+  rpc_tests_604 --> Erigon_24255
+  rpc_tests_605 --> Erigon_24291
+  Erigon_24032 --> Erigon_24322
+  Erigon_24334 --> Erigon_24336
+  classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
+  classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
+  classDef verified fill:#1a7f37,stroke:#116329,color:#ffffff
+```
+
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes in vmTrace | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | — | — | dev, stable | — |
 | [Erigon #24032](https://github.com/erigontech/erigon/pull/24032) (draft) | Test crash recovery during catch-up reorgs; supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario | — | — | — | — | — | — |
 | [Erigon #24056](https://github.com/erigontech/erigon/pull/24056) | Read account state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-18 | — | — | dev, stable | dev |
-| [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection | [H03](../reports/decisions/H03.md) | 2026-09-25 | — | — | dev | dev |
+| [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection · after rpc-tests #604 | [H03](../reports/decisions/H03.md) | 2026-09-25 | — | — | dev | dev |
 | [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; #24294 adds the remaining call fields | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 | — | — | dev | — |
-| [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | — | — | dev | — |
+| [Erigon #24291](https://github.com/erigontech/erigon/pull/24291) | No vmTrace sub for SELFDESTRUCT or for calls that fail their precheck · after rpc-tests #605 | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | — | — | dev | — |
 | [Erigon #24293](https://github.com/erigontech/erigon/pull/24293) | Trace_callMany reads state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-25 | — | — | dev | dev |
 | [Erigon #24294](https://github.com/erigontech/erigon/pull/24294) | Trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations; adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 | — | — | dev | — |
 | [Erigon #24295](https://github.com/erigontech/erigon/pull/24295) | Trace_filter reports no genesis block reward | [H05](../reports/decisions/H05.md) | 2026-09-25 | — | — | dev | dev |
-| [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. | — | — | — | — | — | — |
+| [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032 | — | — | — | — | — | — |
 | [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) | 2026-09-26 | — | — | dev | — |
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) | — | — | — | — | — |
 | [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
-| [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ · after Erigon #24334 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -46,6 +66,23 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) (draft) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue | — | — | — | — | — | — |
 
 ## Nethermind
+
+```mermaid
+flowchart LR
+  Nethermind_13834["Nethermind #13834"]:::in_measured_build
+  Nethermind_13622["Nethermind #13622"]:::in_measured_build
+  Nethermind_13835["Nethermind #13835"]:::in_measured_build
+  Nethermind_13551["Nethermind #13551"]:::in_measured_build
+  Nethermind_13847["Nethermind #13847"]:::in_measured_build
+  Nethermind_13857["Nethermind #13857"]:::open
+  Nethermind_13897["Nethermind #13897"]:::open
+  Nethermind_13622 --> Nethermind_13834
+  Nethermind_13551 --> Nethermind_13835
+  Nethermind_13551 --> Nethermind_13847
+  Nethermind_13857 -. conflicts .- Nethermind_13897
+  classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
+  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
+```
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -64,12 +101,12 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Nethermind #13783](https://github.com/NethermindEth/nethermind/pull/13783) | Return no traces for the genesis block in trace_block; covers trace_block only; trace_replayBlockTransactions of genesis still fails its parent lookup | [H05](../reports/decisions/H05.md) (partial) | 2026-09-24 | — | — | dev | — |
 | [Nethermind #13800](https://github.com/NethermindEth/nethermind/pull/13800) | Match rewards by author in trace_filter address filters; covers rewards only; failed-CREATE recipient matching remains an H23 policy change | [H23](../reports/decisions/H23.md) (partial) | 2026-09-25 | — | — | dev | — |
 | [Nethermind #13801](https://github.com/NethermindEth/nethermind/pull/13801) | Return no traces for the genesis block in trace_replayBlockTransactions; covers genesis replay only; the PoS placeholder reward remains | [H05](../reports/decisions/H05.md) (partial) | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. | — | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551. | — | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857) | Support union and intersection modes in trace_filter | [H03](../reports/decisions/H03.md) | — | — | — | — | — |
+| [Nethermind #13834](https://github.com/NethermindEth/nethermind/pull/13834) | Cover reverted child output in action callbacks; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13622. · after Nethermind #13622 | — | 2026-09-25 | — | — | dev | — |
+| [Nethermind #13835](https://github.com/NethermindEth/nethermind/pull/13835) | Keep cancellation policy outside instruction pairing; Review follow-up merged into master through https://github.com/NethermindEth/nethermind/pull/13551. · after Nethermind #13551 | — | 2026-09-25 | — | — | dev | — |
+| [Nethermind #13847](https://github.com/NethermindEth/nethermind/pull/13847) | Handle failed precompiles without a vmTrace operation; Fixes buffered vmTrace null dereference on failed top-level precompiles; guards both gas callbacks, including the no-instruction path in #13551. · after Nethermind #13551 | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | — | — | dev | — |
+| [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857) | Support union and intersection modes in trace_filter · conflicts with Nethermind #13897 | [H03](../reports/decisions/H03.md) | — | — | — | — | — |
 | [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) | 2026-09-26 | — | — | dev | — |
-| [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted · conflicts with Nethermind #13857 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 
 ## Reth
 
@@ -85,6 +122,8 @@ flowchart LR
   Alloy_EVM_411["Alloy EVM #411"]:::open
   next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
   Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
+  Reth_27213["Reth #27213"]:::verified
+  revm_inspectors_511["revm-inspectors #511"]:::verified
   revm_3833["revm #3833"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
@@ -94,7 +133,6 @@ flowchart LR
   Reth_takes_revm_inspectors_v0_44_0[["Reth takes revm-inspectors v0.44.0"]]:::done
   revm_inspectors_509["revm-inspectors #509"]:::verified
   revm_inspectors_510["revm-inspectors #510"]:::in_measured_build
-  revm_inspectors_511["revm-inspectors #511"]:::verified
   revm_inspectors_526["revm-inspectors #526"]:::verified
   revm_inspectors_528["revm-inspectors #528"]:::in_measured_build
   revm_inspectors_530["revm-inspectors #530"]:::open
@@ -105,6 +143,7 @@ flowchart LR
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
   next_Alloy_EVM_release -.-> Reth_takes_next_Alloy_EVM_release
+  revm_inspectors_511 --> Reth_27213
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
@@ -130,7 +169,7 @@ flowchart LR
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev | dev |
 | [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | — | — | — | — |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
-| [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev | dev |
+| [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev | dev |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 | — | — | dev | — |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return null for missing transaction replays | [H06](../reports/decisions/H06.md) (partial) | 2026-09-22 | — | — | dev | — |
 | [Reth #27365](https://github.com/paradigmxyz/reth/pull/27365) | Include transaction hash in individual replays | [H07](../reports/decisions/H07.md) | 2026-09-22 | — | — | dev | dev |

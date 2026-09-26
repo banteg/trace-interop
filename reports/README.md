@@ -8,17 +8,17 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **51 of 128** client decisions agree with the draft. 7 more have a submitted fix, and **55 differ with no fix yet**: 7 on converged decisions and 48 on decisions still under review. 16 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **51 of 128** client decisions agree with the draft. 7 more have a submitted fix, and **55 differ with no fix yet**: 11 on converged decisions and 44 on decisions still under review. 16 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Besu](clients/besu.md) | 26.9-develop · accdae00 | 2 | 5 | 2 | 16 | 1 | 6 | 0 | 0 / 11 |
+| [Besu](clients/besu.md) | 26.9-develop · accdae00 | 2 | 5 | 6 | 12 | 1 | 6 | 0 | 0 / 11 |
 | [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 | 0 | 1 | 11 | 1 | 3 | 3 | 9 / 5 |
 | [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 14 | 2 | 2 | 12 | 1 | 1 | 4 | 18 / 3 |
 | [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 19 | 0 | 2 | 9 | 1 | 1 | 9 | 17 / 4 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 5a99f1a8 | 9 | 0 | 5 | 14 | 1 | 3 | 0 | 0 / 0 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · 5a99f1a8 | 9 | 0 | 8 | 11 | 1 | 3 | 0 | 0 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
@@ -42,7 +42,7 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | [How does trace_get select a frame?](decisions/H02.md) | 🤝 Converged | Follow one tree path; return one object or null. An empty path selects the root. |
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
 | [Where does an unbounded filter start?](decisions/H30.md) | ⚪ Under review | Default both omitted bounds to latest; historical searches specify fromBlock. |
-| [What block does trace_callMany use by default?](decisions/H31.md) | ⚪ Under review | Accept an omitted block and use latest, matching trace_call. |
+| [What block does trace_callMany use by default?](decisions/H31.md) | 🤝 Converged | Accept an omitted block and use latest, matching trace_call. |
 | [Which tags and pending state can trace methods use?](decisions/H32.md) | ⚪ Under review | Resolve mined-block tags; agree pending state and localization per method. |
 | [What survives a failed call?](decisions/H09.md) | ⚪ Under review | Keep the error on that frame and preserve revert bytes and measured gas when available. |
 | [Which precompile frames are visible?](decisions/H29.md) | ⚪ Under review | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |

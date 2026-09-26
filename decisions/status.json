@@ -1,4 +1,14 @@
 {
+  "H01": {
+    "policy": "converged",
+    "note": "Converged on the full namespace: a client that serves `trace_*` implements all nine methods, with no optional subset or discovery mechanism. Erigon, Nethermind and Reth expose all nine, and so does the Geth draft fork; Besu lacks only individual replay, `trace_replayTransaction`, which Besu #11357 asks the team to reconsider. A method a client does not serve still returns -32601, never an empty result. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Besu #11357: reconsider trace_replayTransaction",
+        "url": "https://github.com/besu-eth/besu/issues/11357"
+      }
+    ]
+  },
   "H02": {
     "policy": "converged",
     "note": "Converged on a single traceAddress path returning one object or null. Besu and Erigon development builds already select by tree path, and Reth merged the path lookup in #27366 (2026-09-22). Nethermind still returns a collection and has not stated a position. This records direction from implementations, not unanimous formal approval.",
@@ -45,6 +55,16 @@
       }
     ]
   },
+  "H10": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind and Reth agree on creation results and call actions in both builds. Besu reports deployed bytecode under `output` and omits `creationMethod` from most create frames; its open #11362 covers the self-destructing creation case only. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Besu #11362: report empty code for self-destructing creations",
+        "url": "https://github.com/besu-eth/besu/pull/11362"
+      }
+    ]
+  },
   "H13": {
     "policy": "converged",
     "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error-code mapping and compatibility migration remain open; client implementations are not harmonized.",
@@ -67,6 +87,20 @@
       }
     }
   },
+  "H17": {
+    "policy": "converged",
+    "note": "Nethermind and Reth development builds agree on created and deleted account markers (Nethermind #13668, revm-inspectors #526). Besu and Erigon are only partially assessed: some state-diff requests return errors, and no checked case differs. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Nethermind #13668: serialize deleted account fields with deletion markers",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13668"
+      },
+      {
+        "label": "revm-inspectors #526: preserve account existence in state diffs",
+        "url": "https://github.com/paradigmxyz/revm-inspectors/pull/526"
+      }
+    ]
+  },
   "H18": {
     "policy": "converged",
     "note": "Converged on reporting net EIP-7702 code changes in stateDiff. Erigon and Nethermind development builds already do, and revm-inspectors merged #509 (2026-09-15); Reth needs a release past revm-inspectors 0.43.0 to ship it. Besu is partial, and multi-authorization cases remain untested. This records direction from implementations, not unanimous formal approval.",
@@ -74,6 +108,64 @@
       {
         "label": "revm-inspectors #509: report EIP-7702 code changes in state diffs",
         "url": "https://github.com/paradigmxyz/revm-inspectors/pull/509"
+      }
+    ]
+  },
+  "H19": {
+    "policy": "converged",
+    "note": "Nethermind and Reth development builds agree that a vmTrace frame holds the executed bytecode (Reth #27213 with revm-inspectors #511). Besu and Erigon are only partially assessed: some vmTrace requests return errors, and no checked case differs. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "revm-inspectors #511: record executed bytecode in VM traces",
+        "url": "https://github.com/paradigmxyz/revm-inspectors/pull/511"
+      },
+      {
+        "label": "Reth #27213: populate VM bytecode in block replay traces",
+        "url": "https://github.com/paradigmxyz/reth/pull/27213"
+      }
+    ]
+  },
+  "H21": {
+    "policy": "converged",
+    "note": "Nethermind and Reth development builds agree on vmTrace number encoding (Nethermind #13750 and #13780). Besu and Erigon are only partially assessed: some vmTrace requests return errors, and no checked case differs. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Nethermind #13750: serialize Parity VM stack values as quantities",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13750"
+      },
+      {
+        "label": "Nethermind #13780: serialize vmTrace store key and value as quantities",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13780"
+      }
+    ]
+  },
+  "H22": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind and Reth report a successful precompile frame's output in both builds. Besu drops it; #11346 is open. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Besu #11346: retain precompile output in Parity call frames",
+        "url": "https://github.com/besu-eth/besu/pull/11346"
+      }
+    ]
+  },
+  "H24": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind and Reth keep a failure local to its own frame in both builds. Besu can mark other frames failed; #11345 is open. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Besu #11345: keep Parity trace failures local to their call frame",
+        "url": "https://github.com/besu-eth/besu/pull/11345"
+      }
+    ]
+  },
+  "H25": {
+    "policy": "converged",
+    "note": "Erigon and Reth report a failure found before output as one complete JSON-RPC error. Nethermind can leave truncated JSON on the wire for a rejected signed transaction; #13666 fixes it and has both reviewers' approval. Besu nests a complete error envelope inside a trace_callMany result, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Nethermind #13666: preserve error responses for streamed traces",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13666"
       }
     ]
   },
@@ -88,6 +180,16 @@
       {
         "label": "revm-inspectors #510: report selfdestructed account deletions",
         "url": "https://github.com/paradigmxyz/revm-inspectors/pull/510"
+      }
+    ]
+  },
+  "H27": {
+    "policy": "converged",
+    "note": "Erigon and Nethermind return the same records for a range filter across a fork boundary as for the concatenated per-block traces. Besu's range filter differs, and its block replay skips pre-block system calls; #10953 is open. Reth is only partially assessed because one per-block reference request returns an error. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Besu #10953: replay block pre-execution before tracing transactions",
+        "url": "https://github.com/besu-eth/besu/pull/10953"
       }
     ]
   },
@@ -106,6 +208,16 @@
       {
         "label": "Besu #10953: replay block pre-execution before tracing transactions",
         "url": "https://github.com/besu-eth/besu/pull/10953"
+      }
+    ]
+  },
+  "H31": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind and the Reth development build accept an omitted trace_callMany block and use latest, matching trace_call; Reth 2.6.0 stable does not yet, and main defaults to latest since #27410. Besu requires the block argument, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Reth #27410: default trace_callMany to latest",
+        "url": "https://github.com/paradigmxyz/reth/pull/27410"
       }
     ]
   }

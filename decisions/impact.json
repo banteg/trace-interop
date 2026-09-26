@@ -38,7 +38,7 @@
     "H01": {
       "besu": {
         "observed": "Individual transaction replay is unavailable.",
-        "change": "Add `trace_replayTransaction`, or agree that it is outside the supported profile."
+        "change": "Add `trace_replayTransaction`; the draft requires all nine methods."
       }
     },
     "H03": {

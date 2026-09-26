@@ -188,3 +188,24 @@ class SemanticRegressions(unittest.TestCase):
         self.assertIn(f'expected {txhash}', detail('H07')[0])
         self.assertIn('root pc 2 sub pc 5', detail('H21')[0])
         self.assertIn('traceAddress [0]', detail('H09')[0])
+
+
+class MinedPrecompileFrames(unittest.TestCase):
+    def h29(self, name, client):
+        case, observation, peers = captured('2026-09-26/anvil/initial', name, client)
+        return [c['status'] for c in evaluate(case, observation, peers) if c['topic'] == 'H29']
+
+    def test_mined_traces_follow_the_simulation_frame_policy(self):
+        # Anvil's mined-trace builder keeps the calltree's zero-value identity call; its replays omit it.
+        for name in ['transaction-tree', 'block-tree', 'filter-all']:
+            with self.subTest(name=name):
+                self.assertEqual(self.h29(name, 'anvil_development'), ['change_needed'])
+                self.assertEqual(self.h29(name, 'reth_development'), ['matches'])
+        for name in ['replay-tree-trace', 'replay-block-tree']:
+            with self.subTest(name=name):
+                self.assertEqual(self.h29(name, 'anvil_development'), ['matches'])
+
+    def test_address_filtered_or_unrelated_results_are_not_evidence(self):
+        for name in ['filter-from', 'replay-tree-stateDiff', 'transaction-transfer']:
+            with self.subTest(name=name):
+                self.assertEqual(self.h29(name, 'anvil_development'), [])

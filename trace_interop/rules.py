@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import re
 
-from .oracles import anchor, REVERT_OUTPUT, REVERT_GAS
+from .oracles import anchor, IDENTITY, REVERT_OUTPUT, REVERT_GAS
 from .vm_model import encoding_valid
 
 
@@ -50,6 +50,26 @@ def violation(message):
 def embedded_error(response):
     value = mapping(response).get('result')
     return isinstance(value, dict) and value.get('jsonrpc') == '2.0' and 'error' in value
+
+
+def calltree_frames(method, params, result, context):
+    """Each complete frame list of the fixture calltree transaction in a mined-trace result.
+
+    An address-filtered trace_filter can drop the calltree's children, so only an unfiltered
+    range is complete; a list without the calltree root does not contain the transaction.
+    """
+    hashes = {t.get('txhash') for t in sequence(mapping(context.get('txinfo')).get('tx-calltree')) if isinstance(t, dict)}
+    if method in ['trace_transaction', 'trace_block'] or (
+            method == 'trace_filter' and params and not {'fromAddress', 'toAddress'} & set(mapping(params[0]))):
+        lists = [[f for f in sequence(result) if isinstance(f, dict) and f.get('transactionHash') == h] for h in hashes]
+    elif method == 'trace_replayTransaction' and params and params[0] in hashes:
+        lists = [sequence(mapping(result).get('trace'))]
+    elif method == 'trace_replayBlockTransactions':
+        lists = [sequence(r.get('trace')) for r in sequence(result) if isinstance(r, dict) and r.get('transactionHash') in hashes]
+    else:
+        return []
+    return [[f for f in frames if isinstance(f, dict)] for frames in lists
+            if any(isinstance(f, dict) and f.get('traceAddress') == [] for f in frames)]
 
 
 def evaluate(case, observation, peers, invalid_params=None):
@@ -245,6 +265,10 @@ def evaluate(case, observation, peers, invalid_params=None):
             if name == 'root-failed':
                 check('H09', root is not None and bool(root.get('error')),
                       'A failed root precompile reports its own execution error.')
+    for frames in calltree_frames(method, params, result, context):
+        check('H29', not any(mapping(f.get('action')).get('to') == IDENTITY for f in frames),
+              'Mined traces follow the same frame policy as simulations: omit the calltree’s nested zero-value identity call.',
+              ', '.join(f'frame {f.get("traceAddress")} calls the identity precompile' for f in frames if mapping(f.get('action')).get('to') == IDENTITY))
     if name == 'call-identity':
         frames = [f for f in sequence(mapping(result).get('trace')) if isinstance(f, dict)]
         check('H22', bool(frames) and mapping(frames[0].get('result')).get('output') == params[0].get('data', params[0].get('input','0x')),

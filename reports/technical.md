@@ -121,6 +121,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H27 | control | Per-block reference response for the filter comparison. | 114 |
 | H28 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H28 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 12 |
+| H29 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 

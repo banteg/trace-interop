@@ -4,6 +4,10 @@ TREE = '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0'
 REVERT = TREE[:-1]+'3'
 CHILD_INIT = '0x5b646368696c6460006000a133ff'
 REVERT_OUTPUT = ('0x08c379a0' + f'{32:064x}' + f'{10:064x}' + b'user error'.hex())
+# Between CALLCODE and CREATE the calltree program runs PUSH1 0 PUSH1 0 PUSH1 4 PUSH1 0
+# PUSH1 0 PUSH1 4 PUSH2 0xea60 CALL: a nested zero-value call to the identity precompile,
+# which H29 omits from every emitted tree.
+IDENTITY = '0x' + '0'*39 + '4'
 # The selected branch of the genesis REVERT program performs one cold SLOAD
 # (2100) and 85 gas of stack/control/memory operations, including 4 memory words.
 REVERT_GAS = hex(2100 + 85)
@@ -66,10 +70,10 @@ def anchor(context, peers, name):
         if kind != 'tx-calltree':
             continue
         expect('calltree root action.to', roots[0]['action'].get('to'), TREE)
-        # Six ordinary calls followed by CREATE. The identity precompile between
-        # CALLCODE and CREATE may be omitted by the client's emission policy.
+        # Six ordinary calls followed by CREATE. The inventory tolerates the identity
+        # precompile between CALLCODE and CREATE; H29 asserts its omission separately.
         ordinary = [f for f in tree if len(f['traceAddress']) == 1
-                    and f.get('action', {}).get('to') != '0x'+'0'*39+'4']
+                    and f.get('action', {}).get('to') != IDENTITY]
         calls = [('call', TREE[:-1]+'1', '0x1'), ('call', REVERT, '0x0'),
                  ('staticcall', TREE[:-1]+'2', '0x0'),
                  ('staticcall', '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', '0x0'),

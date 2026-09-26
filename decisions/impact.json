@@ -271,6 +271,10 @@
       "geth": {
         "observed": "The captured draft implementation (0a663f3c) still follows the previous rule and emits no frame for a CALL or CREATE that fails its precheck.",
         "change": "Fixed on feat/trace in 07a99c67, which keeps the failed frame with the new labels; the next capture measures it."
+      },
+      "anvil": {
+        "observed": "trace_transaction, trace_block and trace_filter return the calltree\u2019s nested zero-value identity call as a frame, shifting its siblings; trace_call and the replays omit it. Mined traces are built from the frames recorded at mining time without the active precompile set.",
+        "change": "Build mined traces with the same precompile filter as simulations: omit nested zero-value precompile frames and number the emitted tree."
       }
     },
     "H02": {

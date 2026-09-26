@@ -2,7 +2,7 @@
 
 `trace_replayTransaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Individual replay includes its transactionHash. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The method responds without Method not found (-32601). trace_replayTransaction Assess the declared property.
+**What this checks:** Individual replay includes its transactionHash. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Mined traces follow the same frame policy as simulations: omit the calltree’s nested zero-value identity call. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The method responds without Method not found (-32601). trace_replayTransaction Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -49,12 +49,14 @@
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 - [H07](../../decisions/H07.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H09](../../decisions/H09.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H29](../../decisions/H29.md): Assess the declared property. Cannot inspect this property: unsupported.
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 - [H07](../../decisions/H07.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H09](../../decisions/H09.md): Assess the declared property. Cannot inspect this property: unsupported.
+- [H29](../../decisions/H29.md): Assess the declared property. Cannot inspect this property: unsupported.
 
 **Nethermind · 2.1.0-preview · fca93966** (`2.1.0-preview+fca93966`)
 

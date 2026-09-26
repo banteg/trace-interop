@@ -36,7 +36,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **51 of 128** c
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🟡 | 🛠️✅✅⚠️✅🟡 |
 | [H27](../reports/decisions/H27.md) | ⚪ Under review | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅🟡—✅ | 🛠️✅✅🟡✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
-| [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅⚠️✅—✅ | ⚠️✅⚠️✅✅✅ |
+| [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅⚠️✅—⚠️ | ⚠️✅⚠️✅✅⚠️ |
 | [H30](../reports/decisions/H30.md) | ⚪ Under review | ···· | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅⚠️⚠️⚠️—⚠️ | ✅⚠️⚠️✅✅⚠️ |
 | [H31](../reports/decisions/H31.md) | ⚪ Under review | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅⚠️—⚠️ | ⚠️✅✅✅✅⚠️ |
 | [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |

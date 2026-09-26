@@ -2,7 +2,7 @@
 
 `trace_filter` · initial · [All reports](../../README.md)
 
-**What this checks:** Filter the anchored canonical inventory before applying after/count, including count zero and past-end pages.
+**What this checks:** Mined traces follow the same frame policy as simulations: omit the calltree’s nested zero-value identity call. Filter the anchored canonical inventory before applying after/count, including count zero and past-end pages.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

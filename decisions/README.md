@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 10 more have a submitted fix, and **45 differ with no fix yet**: 10 on converged decisions and 35 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 15 more have a submitted fix, and **40 differ with no fix yet**: 10 on converged decisions and 30 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -22,12 +22,12 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** c
 | [H12](../reports/decisions/H12.md) | ⚪ Under review | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ❔❔❔❔—❔ | ❔❔❔❔❔❔ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | ···· | **Invalid-parameter error codes**<br>Which error codes do malformed parameters and rejected unsigned calls return? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |
-| [H15](../reports/decisions/H15.md) | ⚪ Under review | ···· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️🟡⚠️ |
+| [H15](../reports/decisions/H15.md) | ⚪ Under review | ···· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🛠️⚠️⚠️🟡⚠️ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️⚠️—🟡 | ⚠️🟡✅✅✅🟡 |
 | [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️🛠️—⚠️ | 🟡🟡✅✅✅⚠️ |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅🛠️—⚠️ | 🟡✅✅✅✅⚠️ |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅🛠️—⚠️ | 🟡🟡✅✅✅⚠️ |
-| [H20](../reports/decisions/H20.md) | ⚪ Under review | ···· | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
+| [H20](../reports/decisions/H20.md) | ⚪ Under review | ···· | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️🛠️⚠️🛠️✅⚠️ |
 | [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡🛠️✅—✅ | 🟡🟡✅✅✅✅ |
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H23](../reports/decisions/H23.md) | ⚪ Under review | ···· | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️⚠️⚠️⚠️—🟡 | ⚠️⚠️⚠️⚠️✅🟡 |
@@ -37,9 +37,9 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** c
 | [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅🟡—✅ | 🛠️✅✅🟡✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅⚠️✅—⚠️ | ⚠️✅⚠️✅✅⚠️ |
-| [H30](../reports/decisions/H30.md) | ⚪ Under review | ···👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️⚠️🛠️—⚠️ | ✅🛠️⚠️✅✅⚠️ |
+| [H30](../reports/decisions/H30.md) | ⚪ Under review | ···👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️🛠️🛠️—⚠️ | ✅🛠️🛠️✅✅⚠️ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅⚠️—⚠️ | ⚠️✅✅✅✅⚠️ |
-| [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
+| [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🛠️⚠️⚠️✅⚠️ |
 
 ## Status key
 

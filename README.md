@@ -39,7 +39,7 @@ Join the [trace working group on Telegram](https://t.me/+2jfwc-YvwkliMzIy) to di
 ## How it works
 
 1. **Fixtures.** Frozen generated chains ([`fixtures/chains`](fixtures/chains)) and request corpora ([`fixtures/corpora`](fixtures/corpora)) define each case, its setup controls and its independent expectations.
-2. **Capture.** Hive runs the corpora against the latest release and development builds of Besu, Erigon, Nethermind and Reth, plus the Geth draft fork, after a freshness preflight. [Stateful scenarios](docs/scenarios.md) cover reorg restoration and pruned history.
+2. **Capture.** Hive runs the corpora against the latest release and development builds of Besu, Erigon, Nethermind and Reth, plus the Geth draft fork, after a freshness preflight. Foundry's Anvil, which has no Engine API, is captured on the same chains by [replaying them block by block](docs/usage.md#replica-captures). [Stateful scenarios](docs/scenarios.md) cover reorg restoration and pruned history.
 3. **Evidence.** Each run keeps its requests, raw responses, client logs and build lock under [`evidence/`](evidence), checksummed and never rewritten.
 4. **Assessment.** Responses are checked against the pinned draft schemas and against independent models of execution, gas, fees and state. [Assertion models](docs/assertion-models.md) explain what each status means and what remains unassessed.
 5. **Reports.** [`scripts/build_reports.py`](scripts/build_reports.py) regenerates the client reports, decision pages and verdict matrix from the evidence selected by [`reports.lock.json`](reports.lock.json).

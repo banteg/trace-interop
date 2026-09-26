@@ -15,6 +15,9 @@ CLIENTS = {
                        development='nethermindeth/nethermind:master', prefix=''),
     'besu': dict(repository='besu-eth/besu', release_image='hyperledger/besu',
                  development='hyperledger/besu:develop', prefix=''),
+    # Foundry's `stable` tag lags its releases, so the release channel uses the version tag.
+    'anvil': dict(repository='foundry-rs/foundry', release_image='ghcr.io/foundry-rs/foundry',
+                  development='ghcr.io/foundry-rs/foundry:nightly', prefix='v'),
 }
 NAMES = [f'{client}_{channel}' for client in CLIENTS for channel in ['release','development']]
 
@@ -102,7 +105,7 @@ def matrix_lock(output, reproduce=None):
     if reproduce:
         lock = read(reproduce)
         if set(lock['clients']) != set(NAMES)|{'go-ethereum_trace'}:
-            raise ValueError('reproduction requires a combined nine-build lock')
+            raise ValueError('reproduction requires a lock with every native build and the Geth fork')
     else:
         lock = resolve_native(output.parent/'native.lock.json')
         geth = resolve_geth(output.parent/'geth.lock.json')

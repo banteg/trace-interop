@@ -1,5 +1,6 @@
 {
-  "README.md": "6631944368bb9a961b2e41a56adc55a0b59cc064ac2af68bbdbead0bfbe6be91",
+  "README.md": "559ccb84d3a00f6e28704d37c8e846878dedf133589ffbe3af8f0c62975b3681",
+  "blobs.json": "d053b3413aa2fff7db0666f76545efd013015cf983a78e04cf9d7d1940f20837",
   "chains/a/chain.rlp": "41ff8aed5b94dd1d0a07911bde00f8896f3e4914cacb7afbf05d2e9b60f4d8ff",
   "chains/a/forkenv.json": "9a4c10db310ca09fe9cb22ecd60156ba91cf2d6873ecc29141643dc5aa5463e4",
   "chains/a/genesis.json": "757926d1674e2ac85d2993c31f74e2c9bd77e3c3b44606561cca1dd7a8bc7797",

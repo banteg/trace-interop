@@ -76,6 +76,8 @@ class ReportVerdictTests(unittest.TestCase):
             ('2.1.0-unstable+2a3b2531','2.1.0-unstable'),
             ('besu/v26.9-develop-f9572aa/linux-x86_64/openjdk-java-25','26.9-develop'),
             ('Geth/v1.17.7-unstable-fa8ecb92-2026-09-24/linux-amd64/go1.26.1','1.17.7-unstable'),
+            ('anvil Version: 1.8.3+cae51ad4','1.8.3'),
+            ('anvil Version: 1.8.4-nightly+5a99f1a8','1.8.4-nightly'),
         ]:
             self.assertEqual(version_label(version), expected)
 

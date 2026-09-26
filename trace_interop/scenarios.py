@@ -236,6 +236,15 @@ def verify_setup(manifest, corpus, observations, client, launches=()):
         if launch.get('name') == f'client launch ({client})' and not launch.get('pass'):
             lines = [line for line in str(launch.get('log', '')).splitlines() if line.strip()]
             return False, 'Scenario setup stopped: '+(lines[-1] if lines else 'client launch failed')
+    # A replica is compared block by block while it is replayed. Its state root cannot match:
+    # the EIP-4788 and EIP-2935 system contracts hold its own beacon roots and block hashes.
+    identity = ['number', 'hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot']
+    replica = manifest.get('replica', {}).get(client)
+    if replica:
+        from .replica import divergence
+        if reason := divergence(replica):
+            return False, reason
+        identity.remove('stateRoot')
     requests = {c['name']: c['request'] for c in manifest['selected_cases']}
     if corpus.get('scenario_phases'):
         ordered_cases(corpus)
@@ -250,8 +259,7 @@ def verify_setup(manifest, corpus, observations, client, launches=()):
         actual = response.get('result') if isinstance(response, dict) else None
         if (request.get('method') != 'eth_getBlockByNumber' or request.get('params') != [block, False]
                 or observation.get('status') != 'result' or not isinstance(actual, dict)
-                or not all(key in head and actual.get(key) == head[key]
-                           for key in ['number', 'hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot'])):
+                or not all(key in head and actual.get(key) == head[key] for key in identity)):
             return False, 'Valid '+name+' does not establish the frozen canonical head'
     # Legacy controls without an expected_control field still have a known height.
     for case in manifest['selected_cases']:

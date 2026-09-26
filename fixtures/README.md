@@ -24,3 +24,10 @@ Go generator, isolated validation probes and reproduction commands are documente
 reads, failed and self-destructing creations, SSTORE refunds, folded EIP-7702 tuples and
 a blob fee. Its public keys 1–4, Go generator, corpus builder and reproduction commands
 are documented in [the mined-probes study](../docs/mined-probes.md#reproduction).
+
+`blobs.json` holds the blob sidecars needed to resubmit the chains' type-3 transactions to a
+client replayed without an Engine API ([replica captures](../docs/usage.md#replica-captures)).
+Canonical block bodies omit sidecars. Every fixture blob is `Blob{0x01}`: the listed leading bytes,
+zero-padded to 131072 bytes. Its commitment and proof were computed with c-kzg and the mainnet
+trusted setup. The replay checks each commitment against its versioned hash, and the client
+verifies the proof.

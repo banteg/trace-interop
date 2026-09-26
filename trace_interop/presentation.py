@@ -6,7 +6,7 @@ import os
 import re
 
 from .progress import BUCKETS, pr_counts, svg, tally
-from .status import decision_status, LEGEND, NATIVE_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
+from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
 
 
 SOURCE_GROUPS = {
@@ -55,7 +55,7 @@ def source_revision(client, version, revisions):
 
 
 def version_label(version):
-    compact = version.removeprefix('Reth Version: ').removeprefix('besu/v').removeprefix('Geth/v').split('/')[0]
+    compact = version.removeprefix('Reth Version: ').removeprefix('anvil Version: ').removeprefix('besu/v').removeprefix('Geth/v').split('/')[0]
     return re.sub(r'[+-][0-9a-f]{7,40}(?:-\d{4}-\d{2}-\d{2})?$', '', compact)
 
 
@@ -352,7 +352,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     if selection.get('matrix') and {p.parent.resolve() for p in run_manifests.values()} == {(root/name).resolve() for name in selection['runs']}:
         matrix = root/selection['matrix']
         preflight = json.loads((matrix/'preflight.json').read_text())
-        freshness = f'Published builds checked at **{preflight["checked_at"]}**. [Freshness preflight]({relative(matrix/"preflight.json", output)}) · [Nine-build lock]({relative(matrix/"clients.lock.json", output)}). All corpora use this snapshot; later upstream changes require a new capture.\n\n'
+        freshness = f'Published builds checked at **{preflight["checked_at"]}**. [Freshness preflight]({relative(matrix/"preflight.json", output)}) · [Build lock]({relative(matrix/"clients.lock.json", output)}). All corpora use this snapshot; later upstream changes require a new capture.\n\n'
     availability = defaultdict(lambda: defaultdict(set))
     for entries in case_pages.values():
         for e in entries:
@@ -387,6 +387,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             dev_only=len(agreed(by_client[c]) - agreed(by_client[stable])) if stable in by_client else None,
             prs=pr_counts(fixes, f))
     native = [f for f in NATIVE_CLIENTS if f in progress]
+    shown = native + [f for f in REPORTED_CLIENTS if f in progress]
     sums = sum((progress[f]['counts'] for f in native), Counter())
     signed = lambda n: f' ({n:+d} since the previous capture)' if n else ''
     gained = sum(progress[f]['gained'] or 0 for f in native)
@@ -597,17 +598,17 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     if previous:
         text += 'For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).\n\n'
     if native:
-        save(output/'progress.svg', svg([(editorial['clients'][f]['name'], progress[f]['counts']) for f in native], len(decisions)))
+        save(output/'progress.svg', svg([(editorial['clients'][f]['name'], progress[f]['counts']) for f in shown], len(decisions)))
         text += '## Progress\n\n' + headline + '\n\n![Decision outcomes per client development build](progress.svg)\n\n'
         text += table(['Client', 'Build', *[f'{symbol} {label}' for _, symbol, label, _, _ in BUCKETS], 'In dev, not stable', 'Fix PRs merged / open'], [
             [f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', label(progress[f]['build']),
              *[str(progress[f]['counts'][key]) + (signed(progress[f]['gained']).replace(' since the previous capture', '') if key == 'agree' and progress[f]['gained'] else '')
                for key, *_ in BUCKETS],
              '—' if progress[f]['dev_only'] is None else str(progress[f]['dev_only']), '{} / {}'.format(*progress[f]['prs'])]
-            for f in native])
+            for f in shown])
         text += ('Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; '
                  'one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. '
-                 'Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. '
+                 'Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. '
                  '[Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)\n\n')
     else:
         (output/'progress.svg').unlink(missing_ok=True)
@@ -648,6 +649,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += freshness
     text += 'The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Version and commit labels identify captured builds; channel identifiers in raw artifacts describe how updates are discovered.\n\n'
     text += 'The experimental Geth fork implements the draft and is not an independent vote for its decisions. No verified pruning scenario is included for that fork.\n\n'
+    text += ('Anvil has no Engine API, so it is captured by [replaying each chain](../docs/usage.md#replica-captures) rather than through Hive. '
+             'Every replayed block is compared with the fixture header; chains whose forks activate after genesis, reorgs and pruning are not captured for it.\n\n')
     text += ('## Test status key\n\n'
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
              '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
@@ -691,7 +694,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     save(output/'technical.md', text)
     if output == (root/'reports').resolve():
         text = '# Trace API decisions\n\n[Client reports](../reports/README.md) · [Tested builds and coverage](../reports/technical.md) · [Source guide](../reports/sources.md)\n\n'
-        index_families = ['besu', 'erigon', 'nethermind', 'reth', 'geth']
+        index_families = ['besu', 'erigon', 'nethermind', 'reth', 'geth', 'anvil']
         text += ('The target is a useful, precise contract. Historical implementations explain compatibility costs, '
                  'but do not decide the recommendation. Intentional departures need a concrete benefit and an '
                  'explicit migration cost; observed agreement alone does not establish correctness.\n\n')
@@ -709,7 +712,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
              f'**{d["title"]}**<br>{d["question"]}', channel_symbols(t, 'release'), channel_symbols(t, 'development')]
             for t,d in decisions.items()])
         text += '## Status key\n\n### Client checks\n\n'
-        text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build.\n\n'
+        text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build. Anvil is Foundry’s development node, reported alongside but outside harmonization and positions.\n\n'
         text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · '
                  '🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. '
                  '🛠️ replaces ⚠️ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference '

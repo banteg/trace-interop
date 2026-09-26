@@ -20,8 +20,9 @@ def report_runs(root):
         preflight = json.loads((matrix/'preflight.json').read_text())
         builds = {n:v['image_id'] for n,v in pinned['clients'].items()}
         from .versions import NAMES
+        from .cli import compatible
         if set(builds) != set(NAMES)|{'go-ethereum_trace'}:
-            raise ValueError('current report matrix requires all nine builds')
+            raise ValueError('current report matrix requires every native build and the Geth fork')
         if preflight.get('status') != 'current' or preflight.get('clients') != builds or not preflight.get('checked_at'):
             raise ValueError('current report matrix lacks a matching freshness preflight')
         captured = json.loads((matrix/'matrix.json').read_text())
@@ -29,7 +30,7 @@ def report_runs(root):
             raise ValueError('report selection must retain the entire current matrix, including incomplete runs')
         for path in paths:
             manifest = json.loads((path/'manifest.json').read_text())
-            expected = {'reth_release','reth_development'} if manifest['corpus'] == 'pruned' else set(builds)
+            expected = {n for n in builds if compatible(manifest['corpus'], pinned['clients'][n])}
             if set(manifest['clients']) != expected or any(
                 info != pinned['clients'].get(name) for name,info in manifest['clients'].items()
             ):

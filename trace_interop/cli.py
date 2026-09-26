@@ -20,7 +20,10 @@ CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'coverage': 'raw-validation', 'fee-policy': 'raw-validation', 'fee-compat': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a',
           'probes-prague': 'raw-validation', 'probes-forks': 'forks',
           'mined-probes': 'mined-probes'}
+# Corpora whose setup exists only as a Hive scenario adapter (Engine API reorgs, Reth pruning).
+HIVE_SCENARIOS = {'reorg', 'reorg-safe', 'pruned'}
 from .versions import NAMES
+from .replica import REPLICA_CLIENTS
 
 
 def read(path):
@@ -193,7 +196,8 @@ def remove_capture_leftovers(before, created_tags=()):
             subprocess.run(['docker', kind, 'rm', *names], stdout=subprocess.DEVNULL, check=False)
 
 
-def verify():
+def verify_inputs():
+    """The frozen fixtures and corpora a capture sends."""
     manifest = read(ROOT / 'fixtures/checksums.json')
     for name, expected in manifest.items():
         if sha(ROOT / 'fixtures' / name) != expected:
@@ -203,6 +207,12 @@ def verify():
         names = [c['name'] for c in cases]
         if not names or len(set(names)) != len(names):
             raise ValueError(f'empty or duplicate cases: {corpus.name}')
+    return manifest
+
+
+def verify():
+    """Capture inputs plus the published report inventory."""
+    manifest = verify_inputs()
     from .inventory import verify_inventory
     decisions = verify_inventory(ROOT)
     print(f'Verified {len(manifest)} frozen inputs and {decisions} decisions against the report inventory.')
@@ -246,6 +256,28 @@ def checkout():
     return path
 
 
+def compatible(corpus, info):
+    """Whether a locked build can capture a corpus: pruning has a Reth adapter only, and a
+    replica needs an ordinary single-fork chain."""
+    if corpus == 'pruned':
+        return info['client'] == 'reth'
+    if info['client'] in REPLICA_CLIENTS:
+        from .replica import hardfork
+        return corpus not in HIVE_SCENARIOS and hardfork(read(ROOT/'fixtures/chains'/CHAINS[corpus]/'genesis.json')) is not None
+    return True
+
+
+def verified_image(name, info):
+    """The locked image, pulled by digest unless built locally, after checking its identity."""
+    image = info.get('local_image') or info['digest']
+    if 'local_image' not in info:
+        run('docker', 'pull', image)
+    meta = json.loads(run('docker', 'image', 'inspect', image, capture=True))[0]
+    if meta['Id'] != info['image_id']:
+        raise ValueError(f'image identity mismatch for {name}')
+    return image
+
+
 def selected_cases(corpus, pattern):
     cases = [c for c in corpus['cases'] if re.search(pattern, c['name'])]
     if not cases:
@@ -265,7 +297,8 @@ def execute(args):
     # Capture source state before creating the run's own untracked artifacts.
     source_commit = run('git', 'rev-parse', 'HEAD', cwd=ROOT, capture=True).strip()
     source_dirty = bool(run('git', 'status', '--porcelain', cwd=ROOT, capture=True))
-    verify()
+    # A new matrix may add builds the published report inventory does not have yet.
+    verify_inputs()
     out = Path(args.output).resolve()
     if out.exists():
         raise ValueError('use a new run directory; observations are immutable')
@@ -274,9 +307,13 @@ def execute(args):
     lock = read(args.lock)
     if lock['hive_commit'] != HIVE:
         raise ValueError('lock and runner Hive revisions differ')
-    names = args.clients.split(',') if args.clients else list(lock['clients'])
+    names = args.clients.split(',') if args.clients else [n for n, info in lock['clients'].items() if compatible(args.corpus, info)]
     if not names or len(names) != len(set(names)) or any(n not in lock['clients'] for n in names):
         raise ValueError('client selection must contain distinct locked clients')
+    if any(not compatible(args.corpus, lock['clients'][n]) for n in names):
+        raise ValueError(f'selected clients cannot capture {args.corpus}; see docs/usage.md#replica-captures')
+    replicas = [n for n in names if lock['clients'][n]['client'] in REPLICA_CLIENTS]
+    hosted = [n for n in names if n not in replicas]
     corpus = read(ROOT / 'fixtures/corpora' / (args.corpus + '.json'))
     cases = selected_cases(corpus, args.case)
     if args.corpus in ['reorg', 'reorg-safe']:
@@ -322,6 +359,35 @@ def execute(args):
                 needed.update(hex(n) for n in range(start,end+1) if hex(n) in blocks)
         present={c['request']['params'][0] for c in cases if c['request']['method']=='trace_block'}
         cases += [{'name':'_reference/block/'+n, 'request':{'jsonrpc':'2.0','id':1,'method':'trace_block','params':[n]},'role':'reference'} for n in sorted(needed-present,key=lambda n:int(n,16))]
+    out.mkdir(parents=True)
+    manifest = {'format': 1, 'started_at': dt.datetime.now(dt.timezone.utc).isoformat(),
+                'corpus': args.corpus, 'selected_cases': cases, 'head': head,
+                'clients': {n: lock['clients'][n] for n in names}, 'hive_commit': HIVE,
+                'fixture_manifest_sha256': sha(ROOT / 'fixtures/checksums.json'),
+                'source_commit': source_commit,
+                'source_dirty': source_dirty,
+                'runner_sha256': sha(Path(__file__)), 'hive_binary_sha256': None, 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
+    if corpus.get('scenario_phases'):
+        manifest['scenario_phases'] = corpus['scenario_phases']
+    write(out / 'manifest.json', manifest)
+    if hosted:
+        manifest.update(capture_hive(out, args, corpus, chain, cases, {n: lock['clients'][n] for n in hosted}, head, manifest))
+    if replicas:
+        from . import replica
+        manifest['replica_sha256'] = sha(Path(replica.__file__))
+        manifest['replica'] = replica.capture(out, chain, cases, replicas, lambda n: verified_image(n, lock['clients'][n]))
+    manifest['finished_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
+    write(out / 'manifest.json', manifest)
+    result = collect(out)
+    # rpc-compat exits nonzero for the deliberate capture placeholders.
+    if not result['complete']:
+        raise ValueError(f'run incomplete; evidence saved to {out}')
+    print(f'Captured {result["exchange_count"]} responses in {out}')
+
+
+def capture_hive(out, args, corpus, chain, cases, clients, head, manifest):
+    """Import the chain into each hosted client through Hive and capture every case; returns
+    the manifest fields the Hive run adds."""
     hive = checkout()
     sim = hive / 'simulators/ethereum/rpc-compat'
     tests = sim / 'tests'
@@ -339,18 +405,11 @@ def execute(args):
     write(sim / 'openrpc.json', {'openrpc': '1.2.6', 'info': {'title': 'Observations', 'version': '0'}, 'methods': []})
     (sim / 'Dockerfile').write_text(DOCKERFILE)
     from .scenarios import prepare
-    prepare(hive, corpus, args.corpus, {n: lock['clients'][n] for n in names}, head['hash'])
-    out.mkdir(parents=True)
+    prepare(hive, corpus, args.corpus, clients, head['hash'])
     entries = []
     created_tags = []
-    for name in names:
-        info = lock['clients'][name]
-        image = info.get('local_image') or info['digest']
-        if 'local_image' not in info:
-            run('docker', 'pull', image)
-        meta = json.loads(run('docker', 'image', 'inspect', image, capture=True))[0]
-        if meta['Id'] != info['image_id']:
-            raise ValueError(f'image identity mismatch for {name}')
+    for name, info in clients.items():
+        image = verified_image(name, info)
         local = 'trace-interop/' + info['client']
         tag = info['image_id'].split(':')[1]
         # A tag this capture adds to a digest-pulled image is removed afterwards: the image
@@ -364,16 +423,7 @@ def execute(args):
                         'build_args': {'baseimage': local, 'tag': tag}})
     # JSON is valid YAML; Hive's client-file loader accepts this representation.
     write(out / 'clients.yaml', entries)
-    manifest = {'format': 1, 'started_at': dt.datetime.now(dt.timezone.utc).isoformat(),
-                'corpus': args.corpus, 'selected_cases': cases, 'head': head,
-                'clients': {n: lock['clients'][n] for n in names}, 'hive_commit': HIVE,
-                'fixture_manifest_sha256': sha(ROOT / 'fixtures/checksums.json'),
-                'source_commit': source_commit,
-                'source_dirty': source_dirty,
-                'runner_sha256': sha(Path(__file__)), 'hive_binary_sha256': sha(hive / 'hive'), 'spec': read(ROOT / 'spec.lock.json') if (ROOT / 'spec.lock.json').exists() else None}
-    if corpus.get('scenario_phases'):
-        manifest['scenario_phases'] = corpus['scenario_phases']
-    write(out / 'manifest.json', manifest)
+    write(out / 'manifest.json', dict(manifest, hive_binary_sha256=sha(hive / 'hive')))
     command = [str(hive / 'hive'), '--client-file', str(out / 'clients.yaml'),
                '--sim', 'ethereum/rpc-compat', '--sim.limit', '/interop',
                '--sim.parallelism', '1', '--sim.timelimit', args.timeout,
@@ -382,14 +432,7 @@ def execute(args):
     with (out / 'runner.log').open('w') as log:
         process = subprocess.run(command, cwd=hive, stdout=log, stderr=subprocess.STDOUT)
     remove_capture_leftovers(before, created_tags)
-    manifest['runner_exit_code'] = process.returncode
-    manifest['finished_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
-    write(out / 'manifest.json', manifest)
-    result = collect(out)
-    # rpc-compat exits nonzero for the deliberate capture placeholders.
-    if not result['complete']:
-        raise ValueError(f'run incomplete; evidence saved to {out}')
-    print(f'Captured {result["exchange_count"]} responses in {out}')
+    return {'hive_binary_sha256': sha(hive / 'hive'), 'runner_exit_code': process.returncode}
 
 
 def parse_exchange(log, expected):
@@ -409,8 +452,14 @@ def parse_exchange(log, expected):
         return {'status': 'harness_error', 'detail': 'request mismatch', 'raw_log': log}
     if len(replies) != 1:
         return {'status': 'transport_error', 'detail': f'{len(replies)} responses', 'raw_log': log}
-    raw, response = replies[0]
-    if response is invalid_json:
+    return classify(replies[0][0], expected)
+
+
+def classify(raw, expected):
+    """One wire response to `expected`, by JSON-RPC envelope."""
+    try:
+        response = decode_response(raw)
+    except ValueError:
         return {'status': 'malformed_json', 'raw_response': raw}
     if not isinstance(response, dict) or response.get('jsonrpc') != '2.0' or type(response.get('id')) is not type(expected['id']) or response.get('id') != expected['id'] or ('result' in response) == ('error' in response):
         return {'status': 'invalid_envelope', 'raw_response': raw, 'response': response}
@@ -419,6 +468,30 @@ def parse_exchange(log, expected):
         return {'status': 'invalid_envelope', 'raw_response': raw, 'response': response}
     status = 'unsupported' if isinstance(error, dict) and error.get('code') == -32601 else 'rpc_error' if error is not None else 'result'
     return {'status': status, 'raw_response': raw, 'response': response}
+
+
+def replica_observations(out, manifest, name):
+    """Observations of one replica build, by case. Wire bytes stay verbatim; the parsed response
+    carries the fixture's block hashes instead of the replica's."""
+    from .replica import exchanges, translate
+    hashes = manifest['replica'][name]['hashes']
+    back = {v: k for k, v in hashes.items()}
+    requests = {c['name']: c['request'] for c in manifest['selected_cases']}
+    observations = {}
+    for exchange in exchanges(out, name):
+        case = exchange['case']
+        if case not in requests or case in observations:
+            raise ValueError(f'unexpected or duplicate result: {case}/{name}')
+        if exchange['request'] != json.loads(translate(json.dumps(requests[case]), hashes)):
+            observations[case] = {'status': 'harness_error', 'detail': 'request mismatch', 'raw_log': json.dumps(exchange)}
+        elif 'error' in exchange:
+            observations[case] = {'status': 'transport_error', 'detail': exchange['error'], 'raw_log': json.dumps(exchange)}
+        else:
+            observation = classify(exchange['raw_response'], exchange['request'])
+            if 'response' in observation:
+                observation['response'] = decode_response(translate(exchange['raw_response'], back))
+            observations[case] = observation
+    return observations
 
 
 def collect(out):
@@ -451,6 +524,10 @@ def collect(out):
             if name not in cases or client not in manifest['clients'] or client in observations[name]:
                 raise ValueError(f'unexpected or duplicate result: {name}/{client}')
             observations[name][client] = parse_exchange(log, cases[name])
+    for client, record in manifest.get('replica', {}).items():
+        versions[client] = record['version']
+        for name, observation in replica_observations(out, manifest, client).items():
+            observations[name][client] = observation
     eligibility, scenario_status = {}, {}
     from .scenarios import verify_setup
     corpus = read(ROOT / 'fixtures/corpora' / (manifest['corpus'] + '.json')) if manifest.get('corpus') else {}

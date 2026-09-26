@@ -60,18 +60,18 @@ uv run python scripts/run_matrix.py --output runs/current-matrix
 ```
 
 This is the default command for a new comparison. It discovers the latest published
-stable release of each native client through GitHub, pulls the moving development
+stable release of each native client and of Foundry (for Anvil) through GitHub, pulls the moving development
 images, and builds the current `banteg/go-ethereum` `feat/trace` head in an isolated
 cache. Before any corpus starts, a live preflight checks release references, image
 digests and the Geth branch head again. Missing network/registry data and stale
 builds stop the suite. No old lock is used as a fallback.
 
-`clients.lock.json` freezes those nine builds for the entire matrix; `preflight.json`
+`clients.lock.json` freezes those eleven builds for the entire matrix; `preflight.json`
 records when they were checked. Tags are not refreshed between corpora. Thus results
 show the current published builds **as of the preflight**, not a promise that upstream
 has stayed unchanged since then. The Geth cache refuses dirty source.
 
-For an intentional historical reproduction, supply the combined nine-build lock:
+For an intentional historical reproduction, supply the combined lock:
 
 ```sh
 uv run python scripts/run_matrix.py --reproduce-lock runs/current-matrix/clients.lock.json \
@@ -88,7 +88,37 @@ also a frozen-build reproduction tool; use the matrix command for current compar
 `fork-followup` exercise fork boundaries. `precompiles` checks frame inclusion
 across root/nested execution, call modes, value and failure. See [scenario setup](scenarios.md) for reorgs
 and pruning. A zero-match case selector is an error. A run directory cannot be overwritten.
-One runner owns a checkout's Hive build context at a time.
+One runner owns a checkout's Hive build context at a time. Without `--clients`, a run
+selects every locked build that can capture the corpus: `pruned` has a Reth adapter only,
+and Anvil captures only [replayable chains](#replica-captures).
+
+## Replica captures
+
+Anvil has no Engine API, so Hive cannot import a chain into it. Its builds are instead
+*replicas*: the run starts the locked Foundry image with the chain's genesis
+(`anvil --init`, the one hardfork the chain runs, its chain ID and gas limit, FIFO ordering,
+no automatic mining) and mines every fixture block again. Before each block it sets the
+fixture's timestamp, base fee, prevrandao and coinbase, then submits the block's transactions
+in order. Type-3 transactions get their sidecars from [`fixtures/blobs.json`](../fixtures/blobs.json),
+and withdrawals are credited with `anvil_setBalance` after their block.
+
+Each mined block is compared with the fixture header: transaction hashes and order, gas used
+and limit, timestamp, base fee, blob gas, prevrandao, coinbase, transactions and receipts roots,
+logs bloom and requests hash. A build is eligible only if every block reproduces; otherwise
+setup verification names the differing blocks and fields, and its cases are blocked. The replica
+cannot set a parent beacon root. That makes the `mined-probes` block that reads its own beacon
+root differ, and means the hash and state root never match: the EIP-4788 and EIP-2935 system
+contracts store the replica's beacon roots and block hashes. Its head is therefore verified
+without the state root.
+
+Requests are sent with the replica's block hashes, and each parsed `response` maps them back to
+the fixture's, with or without a `0x` prefix. `raw_response` keeps the wire bytes. The manifest
+records the command, version, per-block comparison and hash map under `replica`. Exchanges and
+the container log are retained in `replica/`.
+
+Only chains that activate every fork at genesis can be replayed, and the Engine API reorg and
+Reth pruning scenarios need Hive. Anvil is therefore not captured for `forks`, `fork-followup`,
+`probes-forks`, `reorg-safe` or `pruned`.
 
 `fee-policy` covers H15's legacy/typed fee boundaries, funding, environment and
 accounting across every trace selection. `fee-compat` pairs identical `eth_call`

@@ -131,7 +131,7 @@ then validates every block.
 Before the matrix capture, the corpus was checked against a local
 [Geth draft fork](geth.md) build (`banteg/go-ethereum` `feat/trace` at `0a663f3c`). That
 build imported the chain and passed every setup control, and every assertion matched.
-This validates the oracles against the draft; it does not replace the nine-build matrix.
+This validates the oracles against the draft; it does not replace the full client matrix.
 
 These probes do not cover pre-Cancun SELFDESTRUCT, trapped nested-call gas, blob fee
 collectors or authorization tuples with a foreign chain ID.

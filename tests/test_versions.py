@@ -102,17 +102,24 @@ class MatrixInventoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             matrix = root/'evidence/current'
-            clients = {n:dict(image_id=n, requested=n) for n in NAMES+['go-ethereum_trace']}
+            clients = {n:dict(image_id=n, requested=n, client=n.rsplit('_',1)[0]) for n in NAMES+['go-ethereum_trace']}
+            # A replica build captures only chains it can replay; forks activate after genesis.
+            hosted = {n:v for n,v in clients.items() if v['client'] != 'anvil'}
             manifests = {c:dict(corpus=c, clients=copy.deepcopy(clients)) for c in ['initial','a']}
+            manifests['forks'] = dict(corpus='forks', clients=copy.deepcopy(hosted))
             for c,manifest in manifests.items(): write(matrix/c/'manifest.json', manifest)
             write(matrix/'clients.lock.json',dict(clients=clients))
             preflight = dict(status='current', checked_at='2026-09-24T00:00:00Z',
                              clients={n:v['image_id'] for n,v in clients.items()})
             write(matrix/'preflight.json',preflight)
-            write(matrix/'matrix.json',[dict(corpus='initial',complete=True),dict(corpus='a',complete=False)])
-            selection = dict(matrix='evidence/current',runs=['evidence/current/initial','evidence/current/a'])
+            write(matrix/'matrix.json',[dict(corpus='initial',complete=True),dict(corpus='a',complete=False),dict(corpus='forks',complete=True)])
+            selection = dict(matrix='evidence/current',runs=['evidence/current/initial','evidence/current/a','evidence/current/forks'])
             write(root/'reports.lock.json',selection)
-            self.assertEqual(len(report_runs(root)),2)
+            self.assertEqual(len(report_runs(root)),3)
+            for corpus, selected in [('forks', clients), ('initial', hosted)]:
+                write(matrix/corpus/'manifest.json',dict(corpus=corpus,clients=selected))
+                with self.assertRaisesRegex(ValueError, 'mixed or missing'): report_runs(root)
+                write(matrix/corpus/'manifest.json',manifests[corpus])
             write(root/'reports.lock.json',dict(selection,runs=selection['runs'][:1]))
             with self.assertRaisesRegex(ValueError, 'entire current matrix'): report_runs(root)
             write(root/'reports.lock.json',selection)

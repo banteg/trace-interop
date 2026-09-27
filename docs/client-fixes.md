@@ -34,14 +34,14 @@ flowchart LR
   Erigon_24322["Erigon #24322"]:::open
   Erigon_24032["Erigon #24032"]:::open
   Erigon_24336["Erigon #24336"]:::open
-  Erigon_24334["Erigon #24334"]:::merged
+  Erigon_24334["Erigon #24334"]:::in_measured_build
   Erigon_24356["Erigon #24356"]:::open
   Erigon_24355["Erigon #24355"]:::open
   Erigon_24032 --> Erigon_24322
   Erigon_24334 --> Erigon_24336
   Erigon_24355 --> Erigon_24356
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
-  classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  classDef in_measured_build fill:#dafbe1,stroke:#1a7f37,color:#1f2328
 ```
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
@@ -58,14 +58,14 @@ flowchart LR
 | [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032 | — | — | — | — | — | — |
 | [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) | 2026-09-26 | — | — | dev | — |
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) | — | — | — | — | — |
-| [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | — | — |
+| [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ · after Erigon #24334 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Erigon #24341](https://github.com/erigontech/erigon/pull/24341) | Default an omitted trace_filter fromBlock to latest | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
 | [Erigon #24343](https://github.com/erigontech/erigon/pull/24343) | Trace_call and trace_callMany use eth_call's fees and block environment | [H15](../reports/decisions/H15.md) | — | — | — | — | — |
 | [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
-| [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602 | [H32](../reports/decisions/H32.md) | 2026-09-27 | — | — | — | — |
-| [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | — | — |
-| [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | 2026-09-27 | — | — | — | — |
+| [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602 | [H32](../reports/decisions/H32.md) | 2026-09-27 | — | — | dev | — |
+| [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | dev | — |
+| [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24355](https://github.com/erigontech/erigon/pull/24355) | Report a reverted create as {gasUsed, output} | [H09](../reports/decisions/H09.md) (partial), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
 | [Erigon #24356](https://github.com/erigontech/erigon/pull/24356) | Use parity failure labels in trace frames; needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests · after Erigon #24355 | [H09](../reports/decisions/H09.md) | — | — | — | — | — |
 
@@ -94,7 +94,7 @@ flowchart LR
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Nethermind #13551](https://github.com/NethermindEth/nethermind/pull/13551) | Pair instruction trace completions with starts | — | 2026-09-25 | — | — | dev | — |
 | [Nethermind #13622](https://github.com/NethermindEth/nethermind/pull/13622) | Report terminal output for top-level action traces | — | 2026-09-25 | — | — | dev | — |
-| [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) | 2026-09-27 | — | — | — | — |
+| [Nethermind #13666](https://github.com/NethermindEth/nethermind/pull/13666) | Preserve error responses for streamed traces | [H15](../reports/decisions/H15.md) (partial), [H25](../reports/decisions/H25.md) | 2026-09-27 | — | — | dev | dev |
 | [Nethermind #13667](https://github.com/NethermindEth/nethermind/pull/13667) | Accept empty Parity trace selections | [H08](../reports/decisions/H08.md) (partial), [H11](../reports/decisions/H11.md) | 2026-09-24 | — | — | dev | dev |
 | [Nethermind #13668](https://github.com/NethermindEth/nethermind/pull/13668) | Serialize deleted account fields with deletion markers; verified in development build 9d6e8b8d | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | 2026-09-24 | — | — | dev | dev |
 | [Nethermind #13676](https://github.com/NethermindEth/nethermind/pull/13676) | Preserve trace_get errors and bound positions | [H06](../reports/decisions/H06.md) (partial) | 2026-09-24 | — | — | dev | — |
@@ -114,7 +114,7 @@ flowchart LR
 | [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858) | Select trace_get results by traceAddress path; changes the response to one object or null; a missing transaction still errors (H06) | [H02](../reports/decisions/H02.md) | 2026-09-26 | — | — | dev | dev |
 | [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted · conflicts with Nethermind #13857 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Nethermind #13935](https://github.com/NethermindEth/nethermind/pull/13935) | Return invalid params for a reversed trace_filter range | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
-| [Nethermind #13936](https://github.com/NethermindEth/nethermind/pull/13936) | Reject the pending block tag in trace methods | [H32](../reports/decisions/H32.md) | 2026-09-27 | — | — | — | — |
+| [Nethermind #13936](https://github.com/NethermindEth/nethermind/pull/13936) | Reject the pending block tag in trace methods | [H32](../reports/decisions/H32.md) | 2026-09-27 | — | — | dev | — |
 | [Nethermind #13937](https://github.com/NethermindEth/nethermind/pull/13937) | Return null from trace_transaction and trace_get for a missing transaction; unknown transaction hashes only; H06 converged on null with Reth and Erigon, Nethermind objecting | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Nethermind #13938](https://github.com/NethermindEth/nethermind/pull/13938) | Return no block reward records for post-merge blocks | [H05](../reports/decisions/H05.md) | — | — | — | — | — |
 | [Nethermind #13940](https://github.com/NethermindEth/nethermind/pull/13940) | Report vmTrace call output windows and keep halted operations; a CREATE that fails its precheck still reports its cost without the forwarded gas | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |

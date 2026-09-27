@@ -14,7 +14,7 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "Reth 2.5.2 \u00b7 df7b7fdf, the first nightly with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment.",
+      "summary": "The Reth 2.5.2 nightly \u00b7 863f7055, with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 \u00b7 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment.",
       "build_notes": [
         {
           "versions": [
@@ -31,7 +31,7 @@
     },
     "anvil": {
       "name": "Anvil",
-      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive; 1.8.3 and the nightly return identical trace responses. Its trace output comes from revm-inspectors 0.43.0, so the stateDiff, EIP-7702, vmTrace and SELFDESTRUCT fixes already in Reth\u2019s nightly arrive with a dependency bump. Its own RPC layer differs in tree-path lookup, missing-item results, replay transaction hashes, unrequested call frames, conflicting data/input, zero-fee BASEFEE, omitted filter bounds and the trace_callMany default block. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
+      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. The nightly 1.8.4 \u00b7 07915e32 takes up revm-inspectors 0.44.0 (#17073), which brings the EIP-7702 stateDiff, executing-bytecode and vmTrace step fixes already in Reth\u2019s nightly, and corrects the empty trace-type selection, omitted filter bounds and the trace_callMany default block (#17078); 1.8.3 still differs on all of these. With 0.44.0 the nightly also loses the creation markers of a contract created in trace_call. Its own RPC layer still differs in tree-path lookup, missing-item results (#17089 is merged but not yet in a nightly), replay transaction hashes, conflicting data/input and zero-fee BASEFEE. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
     }
   },
   "topics": {
@@ -94,24 +94,24 @@
         "change": "Return `null` for an unknown transaction, so callers can distinguish absence from a transaction with no call records. Filter bounds beyond the head already return `-32602` as proposed."
       },
       "erigon": {
-        "observed": "A missing transaction, path or replay returns null as proposed. An unknown selected block returns -32000 rather than -32001, and a filter bound beyond the head returns [] (an explicit \"waiting for spec\" choice).",
-        "change": "Return `-32001` for an unknown selected block, and `-32602` for a filter bound beyond the head or a reversed range."
+        "observed": "A missing transaction, path or replay returns null as proposed. An unknown selected block, including a block replay, returns -32000, which the rule accepts (-32001 is recommended), and a filter bound beyond the head returns [] (an explicit \"waiting for spec\" choice).",
+        "change": "Prefer `-32001` for an unknown selected block. Return `-32602` for a filter bound beyond the head or a reversed range."
       },
       "nethermind": {
         "observed": "Missing transactions or paths can produce exceptions/RPC errors, and a filter bound beyond the head returns -32000.",
         "change": "Return `null` for an absent transaction or path, while preserving distinct unavailable-history errors. Return `-32602` for a filter bound beyond the head or a reversed range."
       },
       "reth": {
-        "observed": "Missing individual replays error in 2.6.0 \u00b7 73a3a008 and return null in 2.5.2 nightly \u00b7 df7b7fdf. Both return -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification.",
-        "change": "Return `null` for absent transactions. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error. Return `-32602` for a filter bound beyond the head (df7b7fdf still returns -32001)."
+        "observed": "Missing individual replays error in 2.6.0 \u00b7 73a3a008 and return null in the 2.5.2 nightly \u00b7 863f7055. Both return null from trace_replayBlockTransactions for an unknown block, and -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification.",
+        "change": "Return `null` for absent transactions and an error for an unknown selected block, including a block replay (-32001 recommended), as trace_block already does. For known transactions whose state is unavailable, use the proposed history-unavailable error (`4444`) rather than an internal error. Return `-32602` for a filter bound beyond the head."
       },
       "geth": {
         "observed": "The fork follows the draft on every checked H06 case, including -32602 for a filter bound beyond the head.",
         "change": "No change."
       },
       "anvil": {
-        "observed": "trace_transaction and trace_block return `[]` for a missing transaction or block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602.",
-        "change": "Return `null` for a missing transaction or path and -32001 for an unknown selected block, including the trace_call block."
+        "observed": "trace_transaction and trace_block return `[]` for a missing transaction or block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602. trace_replayBlockTransactions of an unknown block returns `[]`, and a filter ending one block past the head returns the head\u2019s records instead of an error.",
+        "change": "Return `null` for a missing transaction or path and -32001 for an unknown selected block, including the trace_call and block-replay blocks, and -32602 for a filter bound beyond the head. #17089, merged after the nightly was built, returns `null` from trace_transaction."
       }
     },
     "H09": {
@@ -132,8 +132,8 @@
         "change": "Report a reverted CREATE as `{gasUsed, output}` without address or code, and use the listed failure labels."
       },
       "geth": {
-        "observed": "The fork uses the draft labels, including \"Code size limit exceeded\" for code above the EIP-170 limit and \"Invalid code prefix 0xEF\" for EIP-3541, and emits no `revertReason`.",
-        "change": "Report those two failures as \"Out of gas\" and \"Invalid code\"."
+        "observed": "The fork uses the draft labels, including \u201cOut of gas\u201d for code above the EIP-170 limit or a failed code deposit and \u201cInvalid code\u201d for an EIP-3541 0xEF prefix (since e26833e3), and emits no `revertReason`.",
+        "change": "No change."
       }
     },
     "H10": {
@@ -184,8 +184,8 @@
         "change": "Match eth_call: default omitted fees to zero and run a zero effective price with BASEFEE zero. Preserve other block fields; enforce positive-price funding and simulate sender debit, refunds and beneficiary tips consistently."
       },
       "nethermind": {
-        "observed": "Both tested builds use BASEFEE 0 in zero-fee eth_call but preserve B in trace_call, for explicit and omitted fees alike. Priced upfront debit matches in both methods when execution output is returned. 641592d2 fixes the release\u2019s selection/output bugs. Fee/funding rejections are complete in eth_call but remain truncated in trace_call; see the [streaming investigation](../../docs/nethermind-streamed-errors.md).",
-        "change": "Zero BASEFEE whenever the effective price is zero, including omitted fees, and return complete validation errors with the eth_simulateV1 codes; retain normal priced accounting."
+        "observed": "Both tested builds use BASEFEE 0 in zero-fee eth_call but preserve B in trace_call, for explicit and omitted fees alike. Priced upfront debit matches in both methods when execution output is returned. 641592d2 fixes the release\u2019s selection/output bugs. 2.0.0 truncates fee/funding rejections in trace_call; 2.1.0-preview \u00b7 5ece5fba includes #13666 and returns them complete but with -32000 instead of the eth_simulateV1 codes (see the [streaming investigation](../../docs/nethermind-streamed-errors.md)). An explicit zero `maxFeePerBlobGas` is rejected, and a blob fee defaulted with blob hashes present returns -32603.",
+        "change": "Zero BASEFEE whenever the effective price is zero, including omitted fees, and return validation errors with the eth_simulateV1 codes; run a zero or defaulted blob fee with BLOBBASEFEE 0; retain normal priced accounting."
       },
       "reth": {
         "observed": "Both methods use BASEFEE 0 for explicit zero fees and both omit priced upfront gas payment: the shared call environment sets `disable_fee_charge`, added for OP operator fees (#18634, reverted in #18645, re-added in #19073), which also skips the funding check. Both accept underpriced legacy calls and reject underpriced typed caps; a tip-only request is priced at the base fee. Method consistency agrees in 200 defined-policy pairs per build; two underfunded-value families have unclassified EVM failures. Independent priced accounting/funding checks still differ.",
@@ -207,12 +207,12 @@
         "change": "Include the bytes written at offset 32 in the MCOPY step\u2019s memory delta, and stop copying the caller\u2019s final RETURN into CALL-family `mem` (the copied bytes then conform). Exclude the stipend from value-CALL `cost`, include forwarded gas in precompile-call and failed-precheck `cost`, give a failed-precheck operation `sub: null`, and report a halted operation with `ex: null`."
       },
       "erigon": {
-        "observed": "3.8.0-dev \u00b7 7853b922 reports MCOPY and MLOAD memory and the full CALL output window, and gives SELFDESTRUCT and failed-precheck calls `sub: null` (#24291). It keeps `ex` and `store` on an operation halted by an execution error, adds a synthetic STOP at the end of code and keeps undefined opcodes with cost 0.",
+        "observed": "3.8.0-dev \u00b7 3904de43 reports MCOPY and MLOAD memory and the full CALL output window, and gives SELFDESTRUCT and failed-precheck calls `sub: null` (#24291). It keeps `ex` and `store` on an operation halted by an execution error, adds a synthetic STOP at the end of code and keeps undefined opcodes with cost 0.",
         "change": "Report an operation halted by an execution error with `ex: null` and no `store`, drop the synthetic STOP and omit undefined opcodes."
       },
       "nethermind": {
-        "observed": "CALL steps have no `mem` in both builds, a 7400 `cost` is rewritten to 9700 (the \"Parity stipend\" adjustment), halted operations are deleted, and a CREATE that fails its precheck reports cost 32002 without the forwarded gas. 2.0.0 \u00b7 bec830cd also omits the forwarded gas from every CREATE `cost`, pushes n words for DUPn and reports `store` only when stateDiff is also selected; 2.1.0-preview \u00b7 fca93966 includes #13779, #13781 and #13782.",
-        "change": "Report CALL-family `mem` (the output window or the copied bytes), remove the 7400\u21929700 rewrite, keep halted operations with `ex: null`, and include forwarded gas in the cost of a CREATE that fails its precheck; ship the fixes already in 2.1.0-preview \u00b7 fca93966."
+        "observed": "CALL steps have no `mem` in both builds, a 7400 `cost` is rewritten to 9700 (the \"Parity stipend\" adjustment), halted operations are deleted, and a CREATE that fails its precheck reports cost 32002 without the forwarded gas. 2.0.0 \u00b7 bec830cd also omits the forwarded gas from every CREATE `cost`, pushes n words for DUPn and reports `store` only when stateDiff is also selected; 2.1.0-preview \u00b7 5ece5fba includes #13779, #13781 and #13782.",
+        "change": "Report CALL-family `mem` (the output window or the copied bytes), remove the 7400\u21929700 rewrite, keep halted operations with `ex: null`, and include forwarded gas in the cost of a CREATE that fails its precheck; ship the fixes already in 2.1.0-preview \u00b7 5ece5fba."
       },
       "geth": {
         "observed": "The fork follows the step rules on every checked case; a static-context SSTORE that halts reports cost 0, which the implementation-defined halted-operation cost allows.",
@@ -221,6 +221,10 @@
       "reth": {
         "observed": "Reth 2.6.0 locks revm-inspectors 0.43.0, which reports whole-memory `mem`, pre-operation `used`, never sets `store`, and adds a synthetic STOP. The nightly takes up 0.44.0, which fixes `used` and `store` and reports the bytes a CALL copied, which the rule accepts, but reports no MLOAD memory, adds the synthetic STOP, gives precompile and empty-code callees a null `sub` and a failed-precheck call a `sub`, and keeps undefined opcodes.",
         "change": "Report MLOAD memory (#504 left it out), drop the synthetic STOP, give precompile and empty-code callees `{code: \"0x\", ops: []}` and a failed-precheck call `sub: null`, and omit undefined opcodes; 2.6.0 also needs the 0.44.0 fixes for `used` and `store` (#504, #528)."
+      },
+      "anvil": {
+        "observed": "1.8.3 locks revm-inspectors 0.43.0 (whole-memory `mem`, pre-operation `used`, no `store`). The nightly 07915e32 takes up 0.44.0 and agrees with Reth\u2019s nightly: no MLOAD memory, a synthetic STOP after the last instruction, and a `sub` on a call that fails its precheck.",
+        "change": "The revm-inspectors changes listed for Reth; 1.8.3 also needs the 0.44.0 bump (#17073) in a release."
       }
     },
     "H22": {
@@ -235,7 +239,7 @@
         "change": "Match creation by creator/created address, SELFDESTRUCT by executing account/beneficiary, and rewards by `author` on the recipient side."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd never matches rewards by `toAddress`; 2.1.0-preview \u00b7 fca93966 includes #13800 and matches all eight rewards by author. A failed CREATE matches its attempted address through the internal `action.To`, although its record shows no address, the same policy difference Erigon and Alloy (Reth) show through the failed result address.",
+        "observed": "2.0.0 \u00b7 bec830cd never matches rewards by `toAddress`; 2.1.0-preview \u00b7 5ece5fba includes #13800 and matches all eight rewards by author. A failed CREATE matches its attempted address through the internal `action.To`, although its record shows no address, the same policy difference Erigon and Alloy (Reth) show through the failed result address.",
         "change": "Ship reward matching by `author` (#13800). Give a failed CREATE no recipient match, the H23 adoption shared with Erigon and Alloy, while keeping sender-only matching and empty recipient filters unchanged."
       },
       "erigon": {
@@ -269,8 +273,8 @@
         "change": "Emit a failed frame with error \"Insufficient balance for transfer\", no result and no subtraces for a precheck failure, and a failed create frame with error \"Contract address collision\" for a collision, in trace_* and in the callTracer."
       },
       "geth": {
-        "observed": "The captured draft implementation (0a663f3c) still follows the previous rule and emits no frame for a CALL or CREATE that fails its precheck.",
-        "change": "Fixed on feat/trace in 07a99c67, which keeps the failed frame with the new labels; the next capture measures it."
+        "observed": "The fork emits a failed frame with its action and error label, no result and no subtraces for a CALL or CREATE that fails its precheck, as the revised rule requires.",
+        "change": "No change."
       },
       "anvil": {
         "observed": "trace_transaction, trace_block and trace_filter return the calltree\u2019s nested zero-value identity call as a frame, shifting its siblings; trace_call and the replays omit it. Mined traces are built from the frames recorded at mining time without the active precompile set.",
@@ -301,22 +305,22 @@
         "change": "None for the envelope; its trace_call reports GASLIMIT 2^256\u22121, an H15 environment difference."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-preview \u00b7 fca93966 retains it.",
+        "observed": "2.0.0 \u00b7 bec830cd loses nonempty execution output with stateDiff-only selections; 2.1.0-preview \u00b7 5ece5fba retains it.",
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
       },
       "anvil": {
-        "observed": "trace_call treats an empty trace-type list as `[\"trace\"]`, so it returns call frames that were not requested.",
-        "change": "Return `trace: []` when call traces were not requested; keep the execution output."
+        "observed": "1.8.3 treats an empty trace-type list in trace_call as `[\"trace\"]`, so it returns call frames that were not requested. The nightly 07915e32 includes #17078 and returns `trace: []` with the execution output.",
+        "change": "Ship #17078 in a release."
       }
     },
     "H14": {
       "erigon": {
-        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`. From source, trace_call drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. Open #24290 adds `input`; #24294, merged after this capture, adds `nonce`, `chainId`, `blobVersionedHashes` and `authorizationList`.",
-        "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, separately from execution rejection. Decode `input`, `nonce`, `chainId`, `type`, `blobVersionedHashes` and `authorizationList`, or reject them."
+        "observed": "Malformed raw transactions and an unknown option use error codes other than `-32602`, and an unknown filter field is accepted. 3.7.0 drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. 3.8.0-dev \u00b7 3904de43 includes #24290, #24294, #24334 and #24351: it decodes `input` and the post-Berlin fields, treats an explicit null as omitted and rejects a chainId for another chain, but still runs `input` when `data` and `input` disagree.",
+        "change": "Use JSON-RPC invalid params (`-32602`) for malformed input, unknown filter fields and disagreeing `data` and `input`, separately from execution rejection. Ship the call-field fixes in a release."
       },
       "nethermind": {
-        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds.",
-        "change": "Return invalid params (`-32602`) for malformed encoding."
+        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds. An unpriced call with a null `blobVersionedHashes` or `authorizationList` takes that member\u2019s transaction type: 2.1.0-preview \u00b7 5ece5fba rejects it with -32000 (\u201cneed at least 1 blob\u201d, \u201cEIP-7702 transaction cannot be used to create contract\u201d) and 2.0.0 truncates the authorizationList response.",
+        "change": "Return invalid params (`-32602`) for malformed encoding. Treat a null member as omitted, so it selects no transaction type."
       },
       "besu": {
         "observed": "Wrong address-list types and negative count can return results rather than invalid params.",
@@ -331,8 +335,8 @@
         "change": "Reject conflicting `data` and `input` with -32602."
       },
       "geth": {
-        "observed": "The fork reports a state-dependent rejection without a listed code, such as a blob fee cap below the blob base fee or a transaction type not active at the fork, as -32602.",
-        "change": "Report those rejections as -32003 (Transaction rejected); keep -32602 for call objects that are invalid regardless of state."
+        "observed": "The fork reports a state-dependent rejection without a listed code, such as a blob fee cap below the blob base fee or a transaction type not active at the fork, as -32003 (since e26833e3), and keeps -32602 for call objects that are invalid regardless of state.",
+        "change": "No change."
       }
     },
     "H28": {
@@ -353,8 +357,8 @@
     },
     "H25": {
       "nethermind": {
-        "observed": "Rejected signed transactions can leave truncated JSON on the wire.",
-        "change": "Finish validation before committing a streamed result, or ensure the error path returns one complete JSON-RPC response."
+        "observed": "2.0.0 \u00b7 bec830cd can leave truncated JSON on the wire when a streamed trace is rejected, including a null authorizationList on an unpriced call and a defaulted blob fee. 2.1.0-preview \u00b7 5ece5fba includes #13666 and returns one complete error response.",
+        "change": "Ship #13666 in a release."
       },
       "besu": {
         "observed": "The initial zero-fee callMany result contains a complete JSON-RPC error envelope nested inside result.",
@@ -404,7 +408,7 @@
         "change": "Default an omitted fromBlock to latest and return `-32602` when an explicit end precedes that implicit start. Record it as a breaking change: only archive operators who set the range limit to 0 lose results, silently, and they migrate by sending `fromBlock: \"earliest\"`."
       },
       "reth": {
-        "observed": "2.6.0 \u00b7 73a3a008 starts at block 1 when both bounds are omitted, and toBlock 2 alone searches the early range. 2.5.2 nightly \u00b7 df7b7fdf includes #27411: both bounds default to latest and toBlock 2 alone returns -32602.",
+        "observed": "2.6.0 \u00b7 73a3a008 starts at block 1 when both bounds are omitted, and toBlock 2 alone searches the early range. the 2.5.2 nightly includes #27411 (since df7b7fdf): both bounds default to latest and toBlock 2 alone returns -32602.",
         "change": "Ship #27411 in a release, preserving explicit historical bounds and resource-limit errors."
       },
       "geth": {
@@ -416,8 +420,8 @@
         "change": "Return `-32602` for the reversed range."
       },
       "anvil": {
-        "observed": "An omitted fromBlock starts at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. Ranges are capped at 300 blocks.",
-        "change": "Default omitted bounds to latest; return -32602 when an explicit end precedes the implicit start."
+        "observed": "1.8.3 starts an omitted fromBlock at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. The nightly 07915e32 includes #17078: omitted bounds default to latest and toBlock 2 alone is rejected as a reversed range. Ranges are capped at 300 blocks.",
+        "change": "Ship #17078 in a release."
       }
     },
     "H31": {
@@ -431,31 +435,31 @@
         "change": "Ship the latest default from main; retain pending only when explicitly requested and supported."
       },
       "anvil": {
-        "observed": "An omitted trace_callMany block uses pending (NUMBER 49), while trace_call defaults to latest.",
-        "change": "Default to latest, matching trace_call; use pending only when requested."
+        "observed": "1.8.3 runs an omitted trace_callMany block at pending (NUMBER 49), while trace_call defaults to latest. The nightly 07915e32 includes #17078 and defaults to latest.",
+        "change": "Ship #17078 in a release."
       }
     },
     "H32": {
       "append_checked_requirements": false,
       "besu": {
-        "observed": "trace_filter with safe or pending bounds returns -32603 Internal error; earliest succeeds. Pending call simulations run on the head block (NUMBER 48), indistinguishable from latest.",
+        "observed": "trace_filter with safe or pending bounds returns -32603 Internal error; earliest succeeds. Pending call simulations run on the head block (NUMBER 48), and `trace_block` and `trace_replayBlockTransactions` at pending trace head block 48, indistinguishable from latest.",
         "change": "Resolve safe/finalized tags when available. Reject pending filter bounds with `-32602`. For `trace_block`, `trace_replayBlockTransactions`, `trace_call` and `trace_callMany`, evaluate pending in a real pending environment or reject it with `-32602`, rather than an internal error or latest; accept a block hash for `trace_call` and `trace_callMany`."
       },
       "reth": {
-        "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work: Alloy\u2019s `TraceFilter` types the bounds as quantities, so even \"latest\" is rejected. Explicit pending call simulations return NUMBER 49, and `trace_block` traces a locally built pending block under its non-canonical hash.",
+        "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work: Alloy\u2019s `TraceFilter` types the bounds as quantities, so even \"latest\" is rejected. Explicit pending call simulations return NUMBER 49, and `trace_block` traces a locally built pending block under its non-canonical hash; on the frozen chain, with no pending transactions, `trace_block` and `trace_replayBlockTransactions` at pending return `[]`.",
         "change": "Accept latest, earliest, safe and finalized filter bounds (an Alloy `TraceFilter` change), with earliest as the lowest available block, and keep rejecting pending bounds with `-32602`. Pending block traces are allowed; how their records are localized is still open."
       },
       "erigon": {
-        "observed": "3.7.0 \u00b7 bdc78cc4 and 3.8.0-dev \u00b7 f8cfe5a7 reject a pending filter bound with -32000 (\"tracing on top of pending is not supported\").",
-        "change": "Reject pending filter bounds, and pending simulations it cannot evaluate in a pending environment, with `-32602`."
+        "observed": "3.7.0 \u00b7 bdc78cc4 rejects pending with -32000 (\u201ctracing on top of pending is not supported\u201d). 3.8.0-dev \u00b7 3904de43 includes #24345 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
+        "change": "Ship #24345 in a release. Reject block-hash filter bounds with `-32602`, as eth_getLogs range bounds do."
       },
       "geth": {
-        "observed": "`earliest` resolves to block 0 rather than the lowest available block.",
+        "observed": "`earliest` resolves to block 0 rather than the lowest available block. `trace_block` and `trace_replayBlockTransactions` at pending trace the miner\u2019s pending block, which is empty on the frozen chain, so the capture cannot show its environment.",
         "change": "Resolve `earliest` to the lowest available block, as eth_getLogs does, and keep 4444 for explicit numbers below retained history."
       },
       "nethermind": {
-        "observed": "A pending filter bound resolves to the latest block, as Parity\u2019s fallback did, and pending call simulations run on the head block (NUMBER 48). `trace_block` at pending traces the head block: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head).",
-        "change": "Reject pending in trace_call, trace_callMany, trace_block, trace_replayBlockTransactions and trace_filter bounds with `-32602` (open #13936)."
+        "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 5ece5fba includes #13936 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
+        "change": "Ship #13936 in a release. Reject block-hash filter bounds with `-32602`, as eth_getLogs range bounds do."
       }
     },
     "H17": {
@@ -471,6 +475,10 @@
       "geth": {
         "observed": "Zero-to-value and value-to-zero slots on an account that exists at both endpoints are reported with `+` and `-`.",
         "change": "Use `*` with 32-byte from/to words for every slot change on a surviving account; reserve `+` and `-` for account birth and deletion."
+      },
+      "anvil": {
+        "observed": "A first transfer to an absent account, including the zero-address fee recipient, reports balance as a change from zero and code/nonce as unchanged. 1.8.3 marks a contract created in trace_call with `+`; the nightly 07915e32, on revm-inspectors 0.44.0, reports it as `*` changes with balance `=`, although Reth\u2019s nightly on the same release marks it correctly.",
+        "change": "Mark every field of an account absent before the call with `+`, for transfers and creations alike; check how Anvil\u2019s state database reports a missing account to the 0.44.0 state-diff builder."
       }
     },
     "H16": {

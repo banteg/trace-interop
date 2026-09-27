@@ -142,14 +142,15 @@ First captured in the [2026-09-26 eval](../evidence/2026-09-26/eval/README.md) a
   `filter-null-toBlock` and `filter-null-fromBlock`, which must return the same result as their omitted
   twins (`filter-omitted-toBlock`, `filter-omitted-fromBlock`, H14 references).
 
-Added after that eval, to be registered under H14 once captured:
-`probes-prague/field-null-{accessList,blobVersionedHashes,authorizationList}-unpriced` send one null list on a
-call with no fee fields, where no other member selects a transaction type, so a server that picks the type by
-member name rather than value takes the null list's type.
+Added after that eval and first captured in the [2026-09-27 eval](../evidence/2026-09-27/eval/README.md), where
+they are registered under H14: `probes-prague/field-null-{accessList,blobVersionedHashes,authorizationList}-unpriced`
+send one null list on a call with no fee fields, where no other member selects a transaction type, so a server
+that picks the type by member name rather than value takes the null list's type.
 
 ### Cases from the divergent-decisions review
 
-Added after the [2026-09-26 review](reviews/2026-09-26-divergent-decisions/README.md), registered once captured.
+Added after the [2026-09-26 review](reviews/2026-09-26-divergent-decisions/README.md), first captured in the
+[2026-09-27 eval](../evidence/2026-09-27/eval/README.md) and registered in the ledger under the decisions named below.
 Their expectations come from fixture bytecode, the frozen chains and the rule checks above:
 
 - H09 labels, in `probes-prague`: `create-code-size-limit` returns 24577 bytes from a nested CREATE (EIP-170),

@@ -21,8 +21,7 @@
     "reth_release": "H19: the single replay reports the executing bytecode as vmTrace `code` while the block replay reports `0x`; the development build agrees."
   },
   "L09": {
-    "anvil_development": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",
-    "anvil_release": "H11, as in the nightly.",
+    "anvil_release": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",
     "erigon_development": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit.",
     "erigon_release": "H15 GASLIMIT, as in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."
   },

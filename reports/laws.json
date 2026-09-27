@@ -2,53 +2,53 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 718,
+        "held": 683,
         "violated": 0
       },
       "anvil_release": {
-        "held": 718,
+        "held": 738,
         "violated": 0
       },
       "besu_development": {
-        "held": 555,
+        "held": 573,
         "violated": 1
       },
       "besu_release": {
-        "held": 555,
+        "held": 573,
         "violated": 1
       },
       "erigon_development": {
-        "held": 698,
+        "held": 711,
         "violated": 0
       },
       "erigon_release": {
-        "held": 706,
+        "held": 721,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 696,
+        "held": 713,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 714,
+        "held": 723,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 706,
+        "held": 723,
         "violated": 0
       },
       "reth_development": {
-        "held": 833,
+        "held": 847,
         "violated": 0
       },
       "reth_release": {
-        "held": 829,
+        "held": 847,
         "violated": 0
       }
     },
     "L02": {
       "anvil_development": {
-        "held": 1553,
+        "held": 2880,
         "violated": 0
       },
       "anvil_release": {
@@ -94,47 +94,47 @@
     },
     "L03": {
       "anvil_development": {
-        "held": 78,
+        "held": 81,
         "violated": 0
       },
       "anvil_release": {
-        "held": 78,
+        "held": 84,
         "violated": 0
       },
       "besu_development": {
-        "held": 135,
+        "held": 141,
         "violated": 3
       },
       "besu_release": {
-        "held": 135,
+        "held": 141,
         "violated": 3
       },
       "erigon_development": {
-        "held": 137,
+        "held": 139,
         "violated": 0
       },
       "erigon_release": {
-        "held": 145,
+        "held": 149,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 121,
+        "held": 125,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 132,
+        "held": 134,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 132,
+        "held": 137,
         "violated": 0
       },
       "reth_development": {
-        "held": 132,
+        "held": 135,
         "violated": 0
       },
       "reth_release": {
-        "held": 132,
+        "held": 135,
         "violated": 0
       }
     },
@@ -358,8 +358,8 @@
     },
     "L09": {
       "anvil_development": {
-        "held": 446,
-        "violated": 45
+        "held": 491,
+        "violated": 0
       },
       "anvil_release": {
         "held": 446,
@@ -420,11 +420,11 @@
         "violated": 4
       },
       "erigon_development": {
-        "held": 67,
+        "held": 69,
         "violated": 0
       },
       "erigon_release": {
-        "held": 68,
+        "held": 69,
         "violated": 1
       },
       "go-ethereum_trace": {
@@ -432,11 +432,11 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 69,
+        "held": 70,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 67,
+        "held": 68,
         "violated": 0
       },
       "reth_development": {
@@ -7710,7 +7710,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
+      "version": "anvil Version: 1.8.4-nightly+07915e32"
     },
     {
       "cases": [
@@ -7722,7 +7722,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
+      "version": "anvil Version: 1.8.4-nightly+07915e32"
     },
     {
       "cases": [
@@ -7758,7 +7758,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7770,7 +7770,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7782,7 +7782,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7794,7 +7794,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7806,7 +7806,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7818,7 +7818,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7830,7 +7830,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7842,7 +7842,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7854,7 +7854,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -7866,7 +7866,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+fca93966"
+      "version": "2.1.0-preview+5ece5fba"
     },
     {
       "cases": [
@@ -8065,546 +8065,6 @@
         "defaults-cap-only-positive/call/none",
         "defaults-cap-only-positive/many/none"
       ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "defaults-cap-only-zero/call/none",
-        "defaults-cap-only-zero/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "defaults-omitted/call/none",
-        "defaults-omitted/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "defaults-tip-only-zero/call/none",
-        "defaults-tip-only-zero/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "empty-sender-free/call/none",
-        "empty-sender-free/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "funding-free-exact/call/none",
-        "funding-free-exact/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "funding-legacy-exact/call/none",
-        "funding-legacy-exact/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "funding-typed-exact/call/none",
-        "funding-typed-exact/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "funding-typed-free-exact/call/none",
-        "funding-typed-free-exact/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-above-base/call/none",
-        "legacy-above-base/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-above-base/call/none",
-        "mixed-legacy-priced-free-priced/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-above-base/call/none",
-        "mixed-legacy-selections/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-at-base/call/none",
-        "legacy-at-base/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-below-base/call/none",
-        "legacy-below-base/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-below-base/call/none",
-        "mixed-legacy-invalid-then-free/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-one/call/none",
-        "legacy-one/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-out-of-gas/call/none",
-        "legacy-out-of-gas-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-out-of-gas/call/none",
-        "legacy-out-of-gas/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/none",
-        "legacy-refund-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/none",
-        "legacy-refund/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-revert/call/none",
-        "legacy-revert-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-revert/call/none",
-        "legacy-revert/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-zero/call/none",
-        "legacy-zero/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-zero/call/none",
-        "mixed-legacy-free-priced-free/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "legacy-zero/call/none",
-        "mixed-legacy-free-then-invalid/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-at-base/call/none",
-        "typed-at-base/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-below-base-positive-tip/call/none",
-        "typed-below-base-positive-tip/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-below-base/call/none",
-        "mixed-typed-invalid-then-free/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-below-base/call/none",
-        "typed-below-base/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-cap-limited/call/none",
-        "typed-cap-limited/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-one/call/none",
-        "typed-one/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-out-of-gas/call/none",
-        "typed-out-of-gas-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-out-of-gas/call/none",
-        "typed-out-of-gas/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-refund/call/none",
-        "typed-refund-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-refund/call/none",
-        "typed-refund/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-revert/call/none",
-        "typed-revert-then-observe/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-revert/call/none",
-        "typed-revert/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-tip-equals-cap/call/none",
-        "typed-tip-equals-cap/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-tip-limited/call/none",
-        "mixed-typed-priced-free-priced/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-tip-limited/call/none",
-        "mixed-typed-selections/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-tip-limited/call/none",
-        "typed-tip-limited/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-zero-tip/call/none",
-        "typed-zero-tip/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-zero/call/none",
-        "mixed-typed-free-priced-free/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-zero/call/none",
-        "mixed-typed-free-then-invalid/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "typed-zero/call/none",
-        "typed-zero/many/none"
-      ],
-      "client": "anvil_development",
-      "corpus": "fee-policy",
-      "detail": ".trace has 1 vs 0 entries",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "anvil Version: 1.8.4-nightly+5a99f1a8"
-    },
-    {
-      "cases": [
-        "defaults-cap-only-positive/call/none",
-        "defaults-cap-only-positive/many/none"
-      ],
       "client": "anvil_release",
       "corpus": "fee-policy",
       "detail": ".trace has 1 vs 0 entries",
@@ -9150,7 +8610,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9162,7 +8622,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9174,7 +8634,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9186,7 +8646,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9198,7 +8658,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9210,7 +8670,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9222,7 +8682,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9234,7 +8694,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9246,7 +8706,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9258,7 +8718,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9270,7 +8730,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9282,7 +8742,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9294,7 +8754,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9306,7 +8766,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9318,7 +8778,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9330,7 +8790,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9342,7 +8802,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9354,7 +8814,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9366,7 +8826,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9378,7 +8838,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9390,7 +8850,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9402,7 +8862,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9414,7 +8874,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9426,7 +8886,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9438,7 +8898,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9450,7 +8910,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9462,7 +8922,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9474,7 +8934,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9486,7 +8946,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9498,7 +8958,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9510,7 +8970,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9522,7 +8982,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9534,7 +8994,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9546,7 +9006,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9558,7 +9018,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9570,7 +9030,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9582,7 +9042,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9594,7 +9054,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9606,7 +9066,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9618,7 +9078,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9630,7 +9090,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9642,7 +9102,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9654,7 +9114,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9666,7 +9126,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9678,7 +9138,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9690,7 +9150,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9702,7 +9162,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9714,7 +9174,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9726,7 +9186,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9738,7 +9198,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9750,7 +9210,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9762,7 +9222,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9774,7 +9234,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9786,7 +9246,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9798,7 +9258,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9810,7 +9270,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9822,7 +9282,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9834,7 +9294,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9846,7 +9306,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9858,7 +9318,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9870,7 +9330,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9882,7 +9342,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9894,7 +9354,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9906,7 +9366,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9918,7 +9378,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9930,7 +9390,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9942,7 +9402,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9954,7 +9414,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9966,7 +9426,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9978,7 +9438,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -9990,7 +9450,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10002,7 +9462,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10014,7 +9474,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10026,7 +9486,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10038,7 +9498,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10050,7 +9510,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10062,7 +9522,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10074,7 +9534,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10086,7 +9546,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10098,7 +9558,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10110,7 +9570,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10122,7 +9582,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10134,7 +9594,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10146,7 +9606,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10158,7 +9618,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10170,7 +9630,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10182,7 +9642,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10194,7 +9654,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10206,7 +9666,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10218,7 +9678,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10230,7 +9690,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10242,7 +9702,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10254,7 +9714,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10266,7 +9726,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10278,7 +9738,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10290,7 +9750,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10302,7 +9762,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10314,7 +9774,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10326,7 +9786,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10338,7 +9798,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10350,7 +9810,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10362,7 +9822,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10374,7 +9834,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10386,7 +9846,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10398,7 +9858,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10410,7 +9870,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10422,7 +9882,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10434,7 +9894,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10446,7 +9906,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10458,7 +9918,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10470,7 +9930,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10482,7 +9942,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10494,7 +9954,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10506,7 +9966,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10518,7 +9978,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10530,7 +9990,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10542,7 +10002,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10554,7 +10014,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10566,7 +10026,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10578,7 +10038,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10590,7 +10050,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10602,7 +10062,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10614,7 +10074,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10626,7 +10086,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10638,7 +10098,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10650,7 +10110,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10662,7 +10122,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10674,7 +10134,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10686,7 +10146,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10698,7 +10158,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10710,7 +10170,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10722,7 +10182,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10734,7 +10194,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10746,7 +10206,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10758,7 +10218,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10770,7 +10230,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10782,7 +10242,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10794,7 +10254,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10806,7 +10266,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10818,7 +10278,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10830,7 +10290,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10842,7 +10302,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10854,7 +10314,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10866,7 +10326,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10878,7 +10338,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10890,7 +10350,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10902,7 +10362,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10914,7 +10374,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10926,7 +10386,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10938,7 +10398,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10950,7 +10410,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10962,7 +10422,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10974,7 +10434,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10986,7 +10446,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -10998,7 +10458,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11010,7 +10470,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11022,7 +10482,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11034,7 +10494,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11046,7 +10506,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11058,7 +10518,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11070,7 +10530,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11082,7 +10542,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11094,7 +10554,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11106,7 +10566,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11118,7 +10578,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11130,7 +10590,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11142,7 +10602,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11154,7 +10614,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11166,7 +10626,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11178,7 +10638,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11190,7 +10650,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11202,7 +10662,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11214,7 +10674,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11226,7 +10686,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11238,7 +10698,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11250,7 +10710,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11262,7 +10722,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11274,7 +10734,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11286,7 +10746,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11298,7 +10758,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11310,7 +10770,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11322,7 +10782,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11334,7 +10794,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [
@@ -11346,7 +10806,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-7853b922"
+      "version": "3.8.0-dev-3904de43"
     },
     {
       "cases": [

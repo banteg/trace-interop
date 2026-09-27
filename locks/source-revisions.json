@@ -31,6 +31,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "df7b7fdf55f9774610bb0209d981fd6550ac1b0d",
       "committed_at": "2026-09-25T18:08:22Z"
+    },
+    {
+      "version": "Reth Version: 2.5.2+863f7055",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "863f7055d848afd7d7b1ca49e71744130e19b8d0",
+      "committed_at": "2026-09-26T12:34:00Z"
     }
   ],
   "erigon_release": [
@@ -77,6 +83,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "7853b9226e37dd50a3f62c84da97d856cbbbbe12",
       "committed_at": "2026-09-26T03:44:14Z"
+    },
+    {
+      "version": "3.8.0-dev-3904de43",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "3904de4338492a6d1b3593138fac44b0bd427e6d",
+      "committed_at": "2026-09-27T16:31:08Z"
     }
   ],
   "besu_release": [
@@ -193,6 +205,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "fca93966f6954856b818b913bfe5afd30f33aa08",
       "committed_at": "2026-09-26T06:41:34Z"
+    },
+    {
+      "version": "2.1.0-preview+5ece5fba",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "5ece5fbab520229a871481d5b87c0d0926b351da",
+      "committed_at": "2026-09-27T15:48:37Z"
     }
   ],
   "go-ethereum_trace": [
@@ -225,6 +243,12 @@
       "repository": "https://github.com/banteg/go-ethereum",
       "commit": "c8449896d406ee56f136beafddd7e51aa7f122c4",
       "committed_at": "2026-09-26T05:59:05Z"
+    },
+    {
+      "version": "Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e26833e3322f918c365f74be6971061c41736fc5",
+      "committed_at": "2026-09-26T19:37:45Z"
     }
   ],
   "anvil_release": [
@@ -241,6 +265,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "5a99f1a851488fe26863505088e80183ad73cf07",
       "committed_at": "2026-09-24T16:22:23Z"
+    },
+    {
+      "version": "anvil Version: 1.8.4-nightly+07915e32",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "07915e328e3295103c3c0d5c0883696f4ec53d6f",
+      "committed_at": "2026-09-27T05:48:10Z"
     }
   ]
 }

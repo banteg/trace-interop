@@ -2,23 +2,23 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/ee9f957c4a911ecd3b36552e2c66344c210d84a1) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-09-26T08:35:29.730208+00:00**. [Freshness preflight](../evidence/2026-09-26/anvil/preflight.json) · [Build lock](../evidence/2026-09-26/anvil/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-27T18:12:29.400867+00:00**. [Freshness preflight](../evidence/2026-09-27/eval/preflight.json) · [Build lock](../evidence/2026-09-27/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 24 more have a submitted fix, and **31 differ with no fix yet**: 18 on converged decisions and 13 on decisions still under review. 20 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **57 of 128** client decisions agree with the draft (+1 since the previous capture). 21 more have a submitted fix, and **33 differ with no fix yet**: 18 on converged decisions and 15 on decisions still under review. 21 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.9-develop · accdae00 | 3 | 5 | 10 | 7 | 1 | 6 | 0 | 0 / 12 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 | 6 | 2 | 1 | 1 | 6 | 3 | 13 / 9 |
-| [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 17 | 9 | 3 | 2 | 1 | 0 | 7 | 20 / 10 |
-| [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 20 | 4 | 3 | 3 | 1 | 1 | 10 | 18 / 6 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 5a99f1a8 | 9 | 0 | 11 | 7 | 1 | 4 | 0 | 1 / 0 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 3904de43 | 16 | 5 | 2 | 2 | 1 | 6 | 3 | 13 / 9 |
+| [Nethermind](clients/nethermind.md) | 2.1.0-preview · 5ece5fba | 18 (+1) | 7 | 3 | 3 | 1 | 0 | 8 | 20 / 10 |
+| [Reth](clients/reth.md) | 2.5.2 · 863f7055 | 20 | 4 | 3 | 3 | 1 | 1 | 10 | 18 / 6 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · 07915e32 | 13 (+4) | 0 | 7 | 5 | 1 | 6 | 4 | 1 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
@@ -26,12 +26,12 @@ Each client has one outcome per decision on its development build. A difference 
 
 | Client | Main review areas |
 | --- | --- |
-| [Anvil](clients/anvil.md) | Foundry’s development node, captured by replaying each chain instead of through Hive; 1.8.3 and the nightly return identical trace responses. Its trace output comes from revm-inspectors 0.43.0, so the stateDiff, EIP-7702, vmTrace and SELFDESTRUCT fixes already in Reth’s nightly arrive with a dependency bump. Its own RPC layer differs in tree-path lookup, missing-item results, replay transaction hashes, unrequested call frames, conflicting data/input, zero-fee BASEFEE, omitted filter bounds and the trace_callMany default block. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root. |
+| [Anvil](clients/anvil.md) | Foundry’s development node, captured by replaying each chain instead of through Hive. The nightly 1.8.4 · 07915e32 takes up revm-inspectors 0.44.0 (#17073), which brings the EIP-7702 stateDiff, executing-bytecode and vmTrace step fixes already in Reth’s nightly, and corrects the empty trace-type selection, omitted filter bounds and the trace_callMany default block (#17078); 1.8.3 still differs on all of these. With 0.44.0 the nightly also loses the creation markers of a contract created in trace_call. Its own RPC layer still differs in tree-path lookup, missing-item results (#17089 is merged but not yet in a nightly), replay transaction hashes, conflicting data/input and zero-fee BASEFEE. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root. |
 | [Besu](clients/besu.md) | Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. |
 | [Erigon](clients/erigon.md) | The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, and the genesis reward, several of which still differ in 3.7.0. Signed-transaction validity checks and error codes need alignment with the proposal (#24329 is open), and omitted trace_filter bounds still search history instead of the proposed latest/latest default. |
 | [Geth draft fork](clients/geth.md) | The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision except the H12 raw-transaction block argument and simulation pending, which remain policy observations. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage. |
 | [Nethermind](clients/nethermind.md) | 2.1.0-unstable · 641592d2 fixes empty trace selections, state-only output, empty-code birth/deletion markers and stack-word quantities. 2.0.0 · bec830cd still differs. Complete validation errors, tree lookup and other serialization details remain review areas. |
-| [Reth](clients/reth.md) | Reth 2.5.2 · df7b7fdf, the first nightly with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment. |
+| [Reth](clients/reth.md) | The Reth 2.5.2 nightly · 863f7055, with revm-inspectors 0.44.0, fixes tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace; all of these still differ in 2.6.0 · 73a3a008. Remaining work includes simulation fees, the rest of vmTrace, the SELFDESTRUCT payload (revm #3833) and error-code alignment. |
 
 ## Decisions to review
 

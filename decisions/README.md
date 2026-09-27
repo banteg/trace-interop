@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 18 more have a submitted fix, and **37 differ with no fix yet**: 10 on converged decisions and 27 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 18 more have a submitted fix, and **37 differ with no fix yet**: 14 on converged decisions and 23 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -13,7 +13,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** c
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍·👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | ⚠️🛠️🛠️🛠️—⚠️ | ⚠️✅🛠️✅✅⚠️ |
 | [H04](../reports/decisions/H04.md) | ⚪ Under review | ·👍·👍 | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ✅✅🛠️🛠️—⚠️ | ✅✅🛠️🛠️✅⚠️ |
 | [H05](../reports/decisions/H05.md) | ⚪ Under review | ·👍·👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️🛠️🛠️—✅ | ⚠️✅🛠️✅✅✅ |
-| [H06](../reports/decisions/H06.md) | 🔀 Diverging | ··👎👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
+| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👎👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | **Replay transactionHash field**<br>Which replay results carry `transactionHash`? | 🟡✅✅🛠️—⚠️ | 🟡✅✅✅✅⚠️ |
 | [H08](../reports/decisions/H08.md) | ⚪ Under review | ···· | **Empty output and unrequested components**<br>What do `output`, `trace`, `stateDiff` and `vmTrace` hold when they are empty or not requested? | 🟡🟡⚠️✅—⚠️ | 🟡🟡✅✅✅⚠️ |
 | [H09](../reports/decisions/H09.md) | ⚪ Under review | ···· | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |

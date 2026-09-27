@@ -4,7 +4,7 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 26.9-develop · accdae00** (of 32 decisions): ✅ 3 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (6 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 12 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 26.9-develop · accdae00** (of 32 decisions): ✅ 3 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (7 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 12 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

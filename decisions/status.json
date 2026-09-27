@@ -46,8 +46,8 @@
     }
   },
   "H06": {
-    "policy": "diverging",
-    "note": "Contested for missing transactions. The draft returns null for a well-formed lookup of a transaction that is not found, as Parity, Erigon and Reth do (Besu for trace_get). Nethermind prefers meaningful errors over null, and the ambiguity is real: with pruned history a caller cannot tell a transaction that never existed from one that is no longer indexed, although the draft already returns 4444 when pruned indexing prevents establishing absence. Unknown blocks, filter bounds and unavailable state are not in dispute.",
+    "policy": "converged",
+    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind objects and prefers meaningful not-found errors. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. Open: Erigon asks whether an unknown selected block should also be null, by the same eth_* analogy (eth_getBlockByNumber), rather than the draft\u2019s -32001. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind review of #13937",
@@ -60,6 +60,10 @@
       {
         "label": "Reth on execution-apis#890",
         "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5854639007"
+      },
+      {
+        "label": "Erigon on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5856824874"
       }
     ],
     "positions": {
@@ -80,6 +84,16 @@
           {
             "label": "Reth on execution-apis#890",
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5854639007"
+          }
+        ]
+      },
+      "erigon": {
+        "position": "agree",
+        "note": "Trace methods should answer as eth_* does: null for a missing entity (transaction, trace path, and it argues an unknown selected block too), [] for a query that matched nothing, -32602 for a bad range, and an error for pruned history, never a fake absence. Its pruned-history refusals exist but surface as generic -32000.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5856824874"
           }
         ]
       }

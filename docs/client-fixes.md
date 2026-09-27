@@ -8,7 +8,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Foundry #17089](https://github.com/foundry-rs/foundry/pull/17089) | Return null from trace_transaction for an unknown hash | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
+| [Foundry #17089](https://github.com/foundry-rs/foundry/pull/17089) | Return null from trace_transaction for an unknown hash; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Besu
 
@@ -25,7 +25,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) | — | — | — | — | — |
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | — | — | — | — | — |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) | — | — | — | — | — |
-| [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
+| [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Erigon
 
@@ -108,7 +108,7 @@ flowchart LR
 | [Nethermind #13897](https://github.com/NethermindEth/nethermind/pull/13897) | Read an explicit null input or trace_filter after as omitted · conflicts with Nethermind #13857 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Nethermind #13935](https://github.com/NethermindEth/nethermind/pull/13935) | Return invalid params for a reversed trace_filter range | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
 | [Nethermind #13936](https://github.com/NethermindEth/nethermind/pull/13936) | Reject the pending block tag in trace methods | [H32](../reports/decisions/H32.md) | — | — | — | — | — |
-| [Nethermind #13937](https://github.com/NethermindEth/nethermind/pull/13937) | Return null from trace_transaction and trace_get for a missing transaction; unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
+| [Nethermind #13937](https://github.com/NethermindEth/nethermind/pull/13937) | Return null from trace_transaction and trace_get for a missing transaction; unknown transaction hashes only; on hold: Nethermind prefers a not-found error over null, so the H06 missing-transaction rule is diverging | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Nethermind #13938](https://github.com/NethermindEth/nethermind/pull/13938) | Return no block reward records for post-merge blocks | [H05](../reports/decisions/H05.md) | — | — | — | — | — |
 | [Nethermind #13940](https://github.com/NethermindEth/nethermind/pull/13940) | Report vmTrace call output windows and keep halted operations; a CREATE that fails its precheck still reports its cost without the forwarded gas | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Nethermind #13956](https://github.com/NethermindEth/nethermind/pull/13956) | Reject a trace_call chainId for another chain as invalid params | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |

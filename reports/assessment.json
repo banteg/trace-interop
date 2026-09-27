@@ -62,9 +62,9 @@
   "sources": {
     "decisions/impact.json": "ca2292768e17ae5a02f2dbeb2c05ae107674aa1816590cdd33f0a420c0f4789f",
     "decisions/laws.json": "7bd7130c191574dbf041172d8a44a39fa896d7992148205625e168e2f81aa002",
-    "decisions/ledger.json": "0a0d3a1295ad9ef5099cbfbfb1657140b28743e61924d3a3f2064bfc57cd2739",
+    "decisions/ledger.json": "ba390be2dc2bbc26bf4a13cc678c3e374fea9ab44d4b36448173158ecb0396a1",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
-    "decisions/status.json": "49f71673d9487858cf8ec12a93f26f395a614969b134f0896ae39a1d696dd1a1",
+    "decisions/status.json": "cbef9c923509d57a3ffe89b279715fb138708e6dd79482b6d0917072292ecf9c",
     "fixtures/checksums.json": "8906c089bca1e42aa5ff32297f8ff2c5382e7608671bd70d89e64eaa71e259e8",
     "locks/source-revisions.json": "8d398bd08752b7e195f25c83cbfa1820355896dd3c882857949cd7ecfd983968",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",

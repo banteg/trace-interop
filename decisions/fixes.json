@@ -225,7 +225,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06)"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24255",
@@ -1136,7 +1137,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups"
+      "note": "unknown transaction hashes only; on hold: Nethermind prefers a not-found error over null, so the H06 missing-transaction rule is diverging"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13938",
@@ -1684,7 +1685,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06)"
     }
   ]
 }

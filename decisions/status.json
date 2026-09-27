@@ -45,6 +45,28 @@
       }
     }
   },
+  "H06": {
+    "policy": "diverging",
+    "note": "Contested for missing transactions. The draft returns null for a well-formed lookup of a transaction that is not found, as Parity, Erigon and Reth do (Besu for trace_get). Nethermind prefers meaningful errors over null, and the ambiguity is real: with pruned history a caller cannot tell a transaction that never existed from one that is no longer indexed, although the draft already returns 4444 when pruned indexing prevents establishing absence. Unknown blocks, filter bounds and unavailable state are not in dispute.",
+    "sources": [
+      {
+        "label": "Nethermind review of #13937",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13937#issuecomment-5853618602"
+      }
+    ],
+    "positions": {
+      "nethermind": {
+        "position": "object",
+        "note": "Prefers meaningful not-found errors over null for missing transactions, and would argue for moving other clients to errors.",
+        "sources": [
+          {
+            "label": "Nethermind review of #13937",
+            "url": "https://github.com/NethermindEth/nethermind/pull/13937#issuecomment-5853618602"
+          }
+        ]
+      }
+    }
+  },
   "H07": {
     "policy": "converged",
     "note": "Converged on carrying transactionHash in individual and block replay envelopes. Erigon and Nethermind development builds already include it, and Reth merged #27365 (2026-09-22). Besu is partial. This records direction from implementations, not unanimous formal approval.",

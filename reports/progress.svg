@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 3 agree, 5 fix submitted, 7 no fix · converged, 10 no fix · under review, 1 policy open, 6 not fully measured; Erigon 16 agree, 4 fix submitted, 2 no fix · converged, 3 no fix · under review, 1 policy open, 6 not fully measured; Nethermind 17 agree, 7 fix submitted, 2 no fix · converged, 5 no fix · under review, 1 policy open; Reth 20 agree, 2 fix submitted, 3 no fix · converged, 5 no fix · under review, 1 policy open, 1 not fully measured; Anvil 9 agree, 9 no fix · converged, 9 no fix · under review, 1 policy open, 4 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 3 agree, 5 fix submitted, 10 no fix · converged, 7 no fix · under review, 1 policy open, 6 not fully measured; Erigon 16 agree, 4 fix submitted, 4 no fix · converged, 1 no fix · under review, 1 policy open, 6 not fully measured; Nethermind 17 agree, 7 fix submitted, 5 no fix · converged, 2 no fix · under review, 1 policy open; Reth 20 agree, 2 fix submitted, 5 no fix · converged, 3 no fix · under review, 1 policy open, 1 not fully measured; Anvil 9 agree, 11 no fix · converged, 7 no fix · under review, 1 policy open, 4 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect x="96" y="12" width="48" height="20" fill="#1a7f37"/>
 <text x="120" y="26" text-anchor="middle" fill="#ffffff">3</text>
 <rect x="144" y="12" width="80" height="20" fill="#0969da"/>
 <text x="184" y="26" text-anchor="middle" fill="#ffffff">5</text>
-<rect x="224" y="12" width="112" height="20" fill="#bc4c00"/>
-<text x="280" y="26" text-anchor="middle" fill="#ffffff">7</text>
-<rect x="336" y="12" width="160" height="20" fill="#d4a72c"/>
-<text x="416" y="26" text-anchor="middle" fill="#1f2328">10</text>
+<rect x="224" y="12" width="160" height="20" fill="#bc4c00"/>
+<text x="304" y="26" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="384" y="12" width="112" height="20" fill="#d4a72c"/>
+<text x="440" y="26" text-anchor="middle" fill="#1f2328">7</text>
 <rect x="496" y="12" width="16" height="20" fill="#8250df"/>
 <text x="504" y="26" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="512" y="12" width="96" height="20" fill="#8c959f"/>
@@ -19,10 +19,10 @@
 <text x="224" y="56" text-anchor="middle" fill="#ffffff">16</text>
 <rect x="352" y="42" width="64" height="20" fill="#0969da"/>
 <text x="384" y="56" text-anchor="middle" fill="#ffffff">4</text>
-<rect x="416" y="42" width="32" height="20" fill="#bc4c00"/>
-<text x="432" y="56" text-anchor="middle" fill="#ffffff">2</text>
-<rect x="448" y="42" width="48" height="20" fill="#d4a72c"/>
-<text x="472" y="56" text-anchor="middle" fill="#1f2328">3</text>
+<rect x="416" y="42" width="64" height="20" fill="#bc4c00"/>
+<text x="448" y="56" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="480" y="42" width="16" height="20" fill="#d4a72c"/>
+<text x="488" y="56" text-anchor="middle" fill="#1f2328">1</text>
 <rect x="496" y="42" width="16" height="20" fill="#8250df"/>
 <text x="504" y="56" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="512" y="42" width="96" height="20" fill="#8c959f"/>
@@ -32,10 +32,10 @@
 <text x="232" y="86" text-anchor="middle" fill="#ffffff">17</text>
 <rect x="368" y="72" width="112" height="20" fill="#0969da"/>
 <text x="424" y="86" text-anchor="middle" fill="#ffffff">7</text>
-<rect x="480" y="72" width="32" height="20" fill="#bc4c00"/>
-<text x="496" y="86" text-anchor="middle" fill="#ffffff">2</text>
-<rect x="512" y="72" width="80" height="20" fill="#d4a72c"/>
-<text x="552" y="86" text-anchor="middle" fill="#1f2328">5</text>
+<rect x="480" y="72" width="80" height="20" fill="#bc4c00"/>
+<text x="520" y="86" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="560" y="72" width="32" height="20" fill="#d4a72c"/>
+<text x="576" y="86" text-anchor="middle" fill="#1f2328">2</text>
 <rect x="592" y="72" width="16" height="20" fill="#8250df"/>
 <text x="600" y="86" text-anchor="middle" fill="#ffffff">1</text>
 <text class="label" x="88" y="116" text-anchor="end">Reth</text>
@@ -43,10 +43,10 @@
 <text x="256" y="116" text-anchor="middle" fill="#ffffff">20</text>
 <rect x="416" y="102" width="32" height="20" fill="#0969da"/>
 <text x="432" y="116" text-anchor="middle" fill="#ffffff">2</text>
-<rect x="448" y="102" width="48" height="20" fill="#bc4c00"/>
-<text x="472" y="116" text-anchor="middle" fill="#ffffff">3</text>
-<rect x="496" y="102" width="80" height="20" fill="#d4a72c"/>
-<text x="536" y="116" text-anchor="middle" fill="#1f2328">5</text>
+<rect x="448" y="102" width="80" height="20" fill="#bc4c00"/>
+<text x="488" y="116" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="528" y="102" width="48" height="20" fill="#d4a72c"/>
+<text x="552" y="116" text-anchor="middle" fill="#1f2328">3</text>
 <rect x="576" y="102" width="16" height="20" fill="#8250df"/>
 <text x="584" y="116" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="592" y="102" width="16" height="20" fill="#8c959f"/>
@@ -54,10 +54,10 @@
 <text class="label" x="88" y="146" text-anchor="end">Anvil</text>
 <rect x="96" y="132" width="144" height="20" fill="#1a7f37"/>
 <text x="168" y="146" text-anchor="middle" fill="#ffffff">9</text>
-<rect x="240" y="132" width="144" height="20" fill="#bc4c00"/>
-<text x="312" y="146" text-anchor="middle" fill="#ffffff">9</text>
-<rect x="384" y="132" width="144" height="20" fill="#d4a72c"/>
-<text x="456" y="146" text-anchor="middle" fill="#1f2328">9</text>
+<rect x="240" y="132" width="176" height="20" fill="#bc4c00"/>
+<text x="328" y="146" text-anchor="middle" fill="#ffffff">11</text>
+<rect x="416" y="132" width="112" height="20" fill="#d4a72c"/>
+<text x="472" y="146" text-anchor="middle" fill="#1f2328">7</text>
 <rect x="528" y="132" width="16" height="20" fill="#8250df"/>
 <text x="536" y="146" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="544" y="132" width="64" height="20" fill="#8c959f"/>

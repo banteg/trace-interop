@@ -24,7 +24,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **57 of 128** c
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | ·👍·· | **Invalid-parameter error codes**<br>Which error codes do malformed parameters and rejected unsigned calls return? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ·👍·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🛠️⚠️⚠️🟡⚠️ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️⚠️—🟡 | ⚠️🟡✅✅✅🟡 |
-| [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️🛠️—⚠️ | 🟡🟡✅✅✅⚠️ |
+| [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️🛠️—🛠️ | 🟡🟡✅✅✅🛠️ |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅🛠️—⚠️ | 🟡✅✅✅✅🟡 |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅🛠️—⚠️ | 🟡🟡✅✅✅🟡 |
 | [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·· | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️🛠️⚠️🛠️✅⚠️ |
@@ -33,7 +33,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **57 of 128** c
 | [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍·· | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️🛠️🛠️🛠️✅🟡 |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅✅ |
-| [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🟡 | 🛠️✅✅⚠️✅⚠️ |
+| [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🛠️ | 🛠️✅✅⚠️✅🛠️ |
 | [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅🟡—✅ | 🛠️✅✅🟡✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—⚠️ | ⚠️✅🛠️✅✅⚠️ |

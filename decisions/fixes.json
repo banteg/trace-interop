@@ -1063,17 +1063,17 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-27T11:39:12Z",
+      "partial": [
+        "H32"
+      ],
+      "note": "fixes the pending tag; block-hash filter bounds still accepted",
       "uptake": {
         "merge_commit": "c881f89ebabaa34debd37b6ebeaaf2537927b62d",
         "builds": {
           "3904de4338492a6d1b3593138fac44b0bd427e6d": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
-      },
-      "partial": [
-        "H32"
-      ],
-      "note": "fixes the pending tag; block-hash filter bounds still accepted"
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24351",
@@ -1155,17 +1155,17 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-09-27T13:35:31Z",
+      "partial": [
+        "H32"
+      ],
+      "note": "fixes the pending tag; block-hash filter bounds still accepted",
       "uptake": {
         "merge_commit": "b5f43a529336f9e3161f0f4a983b5f9057b3bd54",
         "builds": {
           "5ece5fbab520229a871481d5b87c0d0926b351da": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
-      },
-      "partial": [
-        "H32"
-      ],
-      "note": "fixes the pending tag; block-hash filter bounds still accepted"
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13937",
@@ -1794,6 +1794,64 @@
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13957"
       ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24357",
+      "client": "erigon",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "note": "past-head and unknown-hash filter bounds; the reversed range is #24341. Companion erigontech/rpc-tests#611",
+      "title": "fix(rpc/jsonrpc): trace_filter rejects a bound past the head with -32602",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27478",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "note": "unknown-block replay errors like trace_block",
+      "title": "fix(rpc): error on unknown block in trace_replayBlockTransactions",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11381",
+      "client": "besu",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "note": "trace_block and trace_replayBlockTransactions return block not found instead of null",
+      "title": "fix(rpc): return block not found from trace_block and block replays",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17106",
+      "client": "anvil",
+      "decisions": [
+        "H17",
+        "H26"
+      ],
+      "note": "absent accounts read as absent for the state-diff builder, fixing born-account markers and temporary-account deaths since revm-inspectors 0.44.0",
+      "title": "fix(anvil): mark created accounts as added in trace statediff",
       "state": "open",
       "draft": false,
       "merged_at": null

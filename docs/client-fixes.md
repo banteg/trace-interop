@@ -9,6 +9,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Foundry #17089](https://github.com/foundry-rs/foundry/pull/17089) | Return null from trace_transaction for an unknown hash; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | 2026-09-27 | — | — | — | — |
+| [Foundry #17106](https://github.com/foundry-rs/foundry/pull/17106) | Mark created accounts as added in trace statediff; absent accounts read as absent for the state-diff builder, fixing born-account markers and temporary-account deaths since revm-inspectors 0.44.0 | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | — | — | — | — | — |
 
 ## Besu
 
@@ -26,6 +27,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | — | — | — | — | — |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) | — | — | — | — | — |
 | [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
+| [Besu #11381](https://github.com/besu-eth/besu/pull/11381) | Return block not found from trace_block and block replays; trace_block and trace_replayBlockTransactions return block not found instead of null | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Erigon
 
@@ -68,6 +70,7 @@ flowchart LR
 | [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24355](https://github.com/erigontech/erigon/pull/24355) | Report a reverted create as {gasUsed, output} | [H09](../reports/decisions/H09.md) (partial), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
 | [Erigon #24356](https://github.com/erigontech/erigon/pull/24356) | Use parity failure labels in trace frames; needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests · after Erigon #24355 | [H09](../reports/decisions/H09.md) | — | — | — | — | — |
+| [Erigon #24357](https://github.com/erigontech/erigon/pull/24357) | Trace_filter rejects a bound past the head with -32602; past-head and unknown-hash filter bounds; the reversed range is #24341. Companion erigontech/rpc-tests#611 | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -171,6 +174,7 @@ flowchart LR
 | [Reth #27411](https://github.com/paradigmxyz/reth/pull/27411) | Default trace_filter to latest | [H30](../reports/decisions/H30.md) | 2026-09-24 | — | — | dev | dev |
 | [Reth #27423](https://github.com/paradigmxyz/reth/pull/27423) | Omit genesis block reward traces | [H05](../reports/decisions/H05.md) | 2026-09-24 | — | — | dev | dev |
 | [Reth #27429](https://github.com/paradigmxyz/reth/pull/27429) | Don't treat stale persisted fcu head as canonical; fixes the intermittent reorg scenario restoration: a stale on-disk head was taken as already canonical | — | 2026-09-25 | — | — | dev | — |
+| [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478) | Error on unknown block in trace_replayBlockTransactions; unknown-block replay errors like trace_block | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
 | [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete Parity VM execution deltas; its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev | — |
 | [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs | [H18](../reports/decisions/H18.md) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev | dev |

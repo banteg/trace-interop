@@ -1035,6 +1035,34 @@
       "merged_at": null
     },
     {
+      "url": "https://github.com/erigontech/erigon/pull/24351",
+      "title": "fix(rpc/jsonrpc): trace_call and trace_callMany reject a chainId for another chain",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24352",
+      "title": "fix(rpc/jsonrpc): trace_rawTransaction reads the block's GASLIMIT",
+      "client": "erigon",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
       "url": "https://github.com/NethermindEth/nethermind/pull/13897",
       "title": "fix(rpc): read an explicit null input or trace_filter after as omitted",
       "client": "nethermind",
@@ -1579,6 +1607,48 @@
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13956",
+      "title": "fix(rpc): reject a trace_call chainId for another chain as invalid params",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13957",
+      "title": "fix(tracing): emit failed frames for calls and creates that fail their precheck",
+      "client": "nethermind",
+      "decisions": [
+        "H29"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13958",
+      "title": "fix(tracing): include forwarded gas in the vmTrace cost of a create that enters no frame",
+      "client": "nethermind",
+      "decisions": [
+        "H20"
+      ],
+      "partial": [
+        "H20"
+      ],
+      "depends_on": [
+        "https://github.com/NethermindEth/nethermind/pull/13957"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
     }
   ]
 }

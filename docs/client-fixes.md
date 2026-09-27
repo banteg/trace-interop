@@ -53,6 +53,8 @@ flowchart LR
 | [Erigon #24343](https://github.com/erigontech/erigon/pull/24343) | Trace_call and trace_callMany use eth_call's fees and block environment | [H15](../reports/decisions/H15.md) | — | — | — | — | — |
 | [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602 | [H32](../reports/decisions/H32.md) | — | — | — | — | — |
+| [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -66,7 +68,10 @@ flowchart LR
 flowchart LR
   Nethermind_13857["Nethermind #13857"]:::open
   Nethermind_13897["Nethermind #13897"]:::open
+  Nethermind_13958["Nethermind #13958"]:::open
+  Nethermind_13957["Nethermind #13957"]:::open
   Nethermind_13857 -. conflicts .- Nethermind_13897
+  Nethermind_13957 --> Nethermind_13958
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
 ```
 
@@ -98,6 +103,9 @@ flowchart LR
 | [Nethermind #13937](https://github.com/NethermindEth/nethermind/pull/13937) | Return null from trace_transaction and trace_get for a missing transaction; unknown transaction hashes only; orphaned receipts, stale index entries and trace_replayTransaction are follow-ups | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Nethermind #13938](https://github.com/NethermindEth/nethermind/pull/13938) | Return no block reward records for post-merge blocks | [H05](../reports/decisions/H05.md) | — | — | — | — | — |
 | [Nethermind #13940](https://github.com/NethermindEth/nethermind/pull/13940) | Report vmTrace call output windows and keep halted operations; a CREATE that fails its precheck still reports its cost without the forwarded gas | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
+| [Nethermind #13956](https://github.com/NethermindEth/nethermind/pull/13956) | Reject a trace_call chainId for another chain as invalid params | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Nethermind #13957](https://github.com/NethermindEth/nethermind/pull/13957) | Emit failed frames for calls and creates that fail their precheck | [H29](../reports/decisions/H29.md) | — | — | — | — | — |
+| [Nethermind #13958](https://github.com/NethermindEth/nethermind/pull/13958) | Include forwarded gas in the vmTrace cost of a create that enters no frame · after Nethermind #13957 | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 
 ## Reth
 

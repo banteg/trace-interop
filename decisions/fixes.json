@@ -1135,7 +1135,7 @@
         "H06"
       ],
       "state": "open",
-      "draft": false,
+      "draft": true,
       "merged_at": null,
       "note": "unknown transaction hashes only; on hold: Nethermind prefers a not-found error over null, so the H06 missing-transaction rule is diverging"
     },

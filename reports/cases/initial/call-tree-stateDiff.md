@@ -2,12 +2,12 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. A deleted account reports storage {}; its account deletion implies every slot is wiped. Check accounting against independent gas. Assess the declared property.
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. A deleted account reports storage {}; its account deletion implies every slot is wiped. An account created and destroyed within the transaction is absent at both endpoints and has no account diff. Check accounting against independent gas. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
-| [Anvil · 1.8.4-nightly · 07915e32](../../clients/anvil_development.md) | 0 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
+| [Anvil · 1.8.4-nightly · 07915e32](../../clients/anvil_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
 | [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
 | [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
 | [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/initial/manifest.json) |
@@ -43,6 +43,7 @@
 
 **Anvil · 1.8.4-nightly · 07915e32** (`anvil Version: 1.8.4-nightly+07915e32`)
 
+- [H26](../../decisions/H26.md): An account created and destroyed within the transaction is absent at both endpoints and has no account diff. 0xe5f841427f4e0c33bb76fd34499298a93916ba51: {'balance': {'-': '0x0'}, 'code': {'-': '0x'}, 'nonce': {'-': '0x0'}, 'storage': {}}
 - [H15](../../decisions/H15.md): Check accounting against independent gas. The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0.
 - [H16](../../decisions/H16.md): Assess the declared property. For unsigned calls H16 defers to H15’s policy; this call’s fee accounting is judged under H15.
 

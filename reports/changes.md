@@ -22,7 +22,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 ## Verdict changes
 
-8 verdicts changed for 3 clients.
+9 verdicts changed for 3 clients.
 
 ### [Anvil](clients/anvil.md)
 
@@ -32,6 +32,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | [H08 · Empty output and unrequested components](decisions/H08.md) | Anvil dev | ⚠️ Differs | ✅ Checked cases agree |
 | [H18 · EIP-7702 code changes in stateDiff](decisions/H18.md) | Anvil dev | ⚠️ Differs | 🟡 Partially assessed |
 | [H19 · vmTrace executing bytecode](decisions/H19.md) | Anvil dev | ⚠️ Differs | 🟡 Partially assessed |
+| [H26 · Account deletion across Cancun](decisions/H26.md) | Anvil dev | 🟡 Partially assessed | ⚠️ Differs |
 | [H30 · Omitted trace_filter range bounds](decisions/H30.md) | Anvil dev | ⚠️ Differs | ✅ Checked cases agree |
 | [H31 · Omitted trace_callMany block](decisions/H31.md) | Anvil dev | ⚠️ Differs | ✅ Checked cases agree |
 

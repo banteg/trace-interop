@@ -3,6 +3,7 @@ import rlp
 from eth_hash.auto import keccak
 
 from .chain_model import decode_transaction
+from .oracles import TREE
 from .rules import accounting_topic
 from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram
 from functools import lru_cache
@@ -46,6 +47,31 @@ def creation_outcome(initcode, gas, exists, address):
     if reverted or len(runtime)>24576 or runtime[:1]==b'\xef' or remaining<200*len(runtime):
         return False
     return output
+
+
+def internal_creations(tx, codes, nonces):
+    """Addresses of the internal creations a transaction makes, advancing each creator's nonce.
+
+    The retained chains' only internal creation is the calltree's: one CREATE of
+    oracles.CHILD_INIT per execution, whose constructor self-destructs (oracles.anchor
+    anchors both frames). A child absent before the transaction is absent after it.
+    """
+    if str(tx['to']).lower() != TREE or codes.get(TREE, '0x') == '0x':
+        return []
+    nonce = nonces.get(TREE, 0)
+    nonces[TREE] = nonce+1
+    return [created_address(TREE, nonce)]
+
+
+def born_accounts(tx, exists, nonces):
+    """Accounts absent before the transaction that its top level provably leaves existing:
+    a value recipient and a creation the model proves to deploy."""
+    if tx['to'] is not None:
+        return [tx['to'].lower()] if tx['value'] and tx['to'].lower() not in exists else []
+    address = created_address(tx['sender'], nonces.get(tx['sender'], 0))
+    # Omitted gas runs at the server's execution cap, beyond any modelled constructor.
+    gas = tx['gas']-intrinsic(tx['data'], True)-tx.get('intrinsic_extra', 0) if tx['gas'] else 10_000_000
+    return [address] if isinstance(creation_outcome(tx['data'], gas, exists, address), str) else []
 
 
 def transactions(case):
@@ -126,6 +152,7 @@ internal constructor self-destructs within the same transaction.
             elif tx['value']:
                 exists.add(tx['to'])
                 codes.setdefault(tx['to'],'0x')
+            internal_creations(tx,codes,nonces)
             authorize(tx,exists,codes,nonces,context.get('_chain_id'))
         # Fees create the recipient if nonzero. Every nonempty fixture block has
         # positive tips; the dedicated model chain has empty blocks and no miner.
@@ -266,8 +293,17 @@ def assess(case, observation, peers, topics):
             elif prior['value']:
                 exists.add(prior['to'])
                 codes.setdefault(prior['to'],'0x')
+            internal_creations(prior,codes,nonces)
             if prior['price_cap']>block.get('base_fee',0) and block.get('miner'):
                 exists.add(block['miner'])
+        # Endpoint existence: an account absent before the transaction is either created and
+        # destroyed within it, so absent after it and omitted (H26), or born with + markers (H17).
+        temporary=[a for a in internal_creations(tx,codes,dict(nonces)) if a not in exists]
+        if 'H26' in topics and temporary and state_requested and isinstance(diff,dict):
+            accounts={a.lower():v for a,v in diff.items()}
+            reported=[f'{a}: {accounts[a]}' for a in temporary if a in accounts]
+            add('H26',not reported,'An account created and destroyed within the transaction is absent at both endpoints and has no account diff.',
+                '; '.join(reported) or 'Temporary account '+', '.join(temporary)+'.')
         if 'H18' in topics and tx['authorizations']:
             after_exists,after_codes,after_nonces=set(exists),dict(codes),dict(nonces)
             after_nonces[tx['sender']]=nonces.get(tx['sender'],0)+1
@@ -287,14 +323,15 @@ def assess(case, observation, peers, topics):
             bad=[]
             for address,account in diff.items():
                 account=mapping(account)
-                if address.lower() in unknown:
-                    continue
+                if address.lower() in unknown or address.lower() in temporary:
+                    continue  # H26 judges a reported temporary account.
                 if address.lower() in exists:
                     if any(isinstance(account.get(k),dict) and '+' in account[k] for k in ['balance','nonce','code']):
                         bad.append(address+': existing account has creation markers')
                 elif any(account.get(k) != {'+':mapping(account.get(k)).get('+')} for k in ['balance','nonce','code']):
                     bad.append(address+': new account lacks creation markers for all fields')
-            add('H17',bool(diff) and not bad,'State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields.', '; '.join(bad[:4]))
+            bad+=[address+': new account omitted' for address in born_accounts(tx,exists,nonces) if address not in map(str.lower,diff)]
+            add('H17',bool(diff) and not bad,'State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields; a modelled new account is reported.', '; '.join(bad[:4]))
         if topics & {'H19','H20'}:
             code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
             if code is not None:

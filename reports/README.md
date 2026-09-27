@@ -18,7 +18,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **57 of 128** c
 | [Erigon](clients/erigon.md) | 3.8.0-dev · 3904de43 | 16 | 5 | 2 | 2 | 1 | 6 | 3 | 13 / 9 |
 | [Nethermind](clients/nethermind.md) | 2.1.0-preview · 5ece5fba | 18 (+1) | 7 | 3 | 3 | 1 | 0 | 8 | 20 / 10 |
 | [Reth](clients/reth.md) | 2.5.2 · 863f7055 | 20 | 4 | 3 | 3 | 1 | 1 | 10 | 18 / 6 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 07915e32 | 13 (+4) | 0 | 7 | 5 | 1 | 6 | 4 | 1 / 0 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · 07915e32 | 13 (+4) | 0 | 8 | 5 | 1 | 5 | 4 | 1 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 

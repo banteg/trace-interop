@@ -2,7 +2,7 @@
 
 `trace_replayBlockTransactions` · forks · [All reports](../../README.md)
 
-**What this checks:** Mined traces follow the same frame policy as simulations: omit the calltree’s nested zero-value identity call. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Block replay has exactly one envelope per frozen transaction, with hashes in transaction order.
+**What this checks:** Mined traces follow the same frame policy as simulations: omit the calltree’s nested zero-value identity call. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Block replay has exactly one envelope per frozen transaction, with hashes in transaction order. An account created and destroyed within the transaction is absent at both endpoints and has no account diff.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

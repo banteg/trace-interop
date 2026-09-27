@@ -194,7 +194,8 @@ def properties(case, observation, peers, checks, expected):
             'Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment.')
 
     if status=='result':
-        checks.extend(assess_execution(case,observation,peers,declared & {'H16','H17','H18','H19','H20'}))
+        # H26's temporary-account check applies to every state diff that can show one, declared or not.
+        checks.extend(assess_execution(case,observation,peers,declared & {'H16','H17','H18','H19','H20'} | {'H26'}))
 
     # Independently decoded transaction roots make reference-only pages useful
     # without adopting the client's own list as its inventory.

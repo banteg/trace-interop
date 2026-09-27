@@ -23,7 +23,8 @@ in order. Root traces must preserve those hashes and recovered senders.
 Genesis, preceding signed transactions and recovered authorization tuples model
 account existence and delegation changes. This is specific to the retained
 chains: their persistent creations are top-level; the calltree's internal child
-self-destructs in its creation transaction. It is not a general state-transition
+self-destructs in its creation transaction. Each execution of the calltree advances
+its nonce, which derives that child's address. It is not a general state-transition
 engine for arbitrary chains.
 
 Fresh captures retain receipt gas for mined replays and block-trace references
@@ -40,6 +41,7 @@ missing or invalid witnesses cannot establish agreement.
 | Memory | MLOAD with and without expansion, MCOPY including overlap and zero length, MSTORE, RETURN and empty output distinguish writes from snapshots and allocation. |
 | Environment | A creation program returns GASPRICE, BASEFEE, NUMBER, TIMESTAMP and GASLIMIT. Zero and nonzero fees use the same frozen block values. |
 | Creation | The constructor address is derived from sender/nonce. Deployed bytes come from independent execution. Empty code and zero balance still require creation markers. |
+| Endpoint existence | Every state diff of a modelled transaction or call classifies an account absent before it. The calltree child is created and destroyed within the transaction, so it is absent at both endpoints and must be omitted (H26), whether or not H26 lists the case; a `-` death or any other entry for it differs. A top-level value recipient or a creation the model proves to deploy is born: on the cases H17 lists, it must appear with `+` on balance, nonce and code, any other reported account absent before must also carry `+` markers, and an existing one none. |
 | Transfer accounting | Known empty recipients and a funded sender establish exact 21000-gas debits, value credits, miner tips, base-fee burn and nonce changes. The second call starts from the first call's post-state. |
 | Broader accounting | Balance deltas conserve value, credit the miner and burn base fee using receipt gas, or an explicitly identified root-gas witness. This does not independently prove every internal transfer or refund. |
 | Replay and authorization | Decoded transaction ordering, recovered authorization authorities, before/after delegation code and genesis/initcode root execution sources. |
@@ -99,7 +101,8 @@ transactions or a modelled NUMBER read; otherwise it must be -32602 (H32).
 A check is judged under the decision whose rule it tests, not the decision its case is
 declared for, so one defect fails one decision (`trace_interop/isolation.py`):
 
-- Assertion sites tag checks by rule. Fee accounting of trace_call and trace_callMany is
+- Assertion sites tag checks by rule. A reported temporary account is H26's, not also an
+  H17 marker failure. Fee accounting of trace_call and trace_callMany is
   H15's, since H16 defers unsigned calls to H15's policy; signed and mined accounting stays
   H16. A trace_get of a transaction the chain does not contain is H06's rule, and a path
   within an existing transaction, including a missing one, is H02's. The bytecode of a signed

@@ -2,7 +2,7 @@
 
 `trace_replayTransaction` · initial · [All reports](../../README.md)
 
-**What this checks:** Individual replay includes its transactionHash. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. A deleted account reports storage {}; its account deletion implies every slot is wiped. The method responds without Method not found (-32601). State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. trace_replayTransaction Assess the declared property.
+**What this checks:** Individual replay includes its transactionHash. Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. A deleted account reports storage {}; its account deletion implies every slot is wiped. The method responds without Method not found (-32601). An account created and destroyed within the transaction is absent at both endpoints and has no account diff. State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields; a modelled new account is reported. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys. trace_replayTransaction Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -37,7 +37,7 @@
 **Anvil · 1.8.4-nightly · 07915e32** (`anvil Version: 1.8.4-nightly+07915e32`)
 
 - [H07](../../decisions/H07.md): Individual replay includes its transactionHash. transactionHash 'absent', expected 0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738.
-- [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields. 0x2d303c5b7911d87d594bf1b31fbb9aa187888893: new account lacks creation markers for all fields
+- [H26](../../decisions/H26.md): An account created and destroyed within the transaction is absent at both endpoints and has no account diff. 0x2d303c5b7911d87d594bf1b31fbb9aa187888893: {'balance': {'-': '0x0'}, 'code': {'-': '0x'}, 'nonce': {'-': '0x0'}, 'storage': {}}
 - Result shape at `/`: {'output': '0xffee', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x3b002', 'to': '0x63649'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x2d303c5b7911d87d594bf1b31fbb9aa187888893': {'balance': {'-': '0x0'}, 'code': {'-': '0x'}, 'nonce': {'-': '0x0'}, 'st
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)

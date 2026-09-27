@@ -109,6 +109,23 @@
       }
     ]
   },
+  "H09": {
+    "policy": "review",
+    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "sources": [],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Proposes the draft\u2019s reverted-CREATE shape itself: result {gasUsed, output} with error \"Reverted\", as a reverted CALL, since the error field already signals failure and EIP-211 fills the return-data buffer only when a create reverts. Success keeps {address, code, gasUsed}; other halts have a null result and the halt message.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857580711"
+          }
+        ]
+      }
+    }
+  },
   "H10": {
     "policy": "converged",
     "note": "Erigon, Nethermind and Reth agree on creation results and call actions in both builds. Besu reports deployed bytecode under `output` and omits `creationMethod` from most create frames; its open #11362 covers the self-destructing creation case only. This records direction from implementations, not unanimous formal approval.",
@@ -153,6 +170,23 @@
           {
             "label": "Erigon on execution-apis#890",
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857403064"
+          }
+        ]
+      }
+    }
+  },
+  "H15": {
+    "policy": "review",
+    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "sources": [],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Agrees with the fee defaults: omitted fees are 0, an unpriced call runs with GASPRICE, BASEFEE and BLOBBASEFEE 0, GASLIMIT is the block\u2019s, an omitted gas runs at the RPC cap, and a priced call pays for its gas. Fix PRs are open.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857638936"
           }
         ]
       }
@@ -236,6 +270,23 @@
         "url": "https://github.com/besu-eth/besu/pull/11346"
       }
     ]
+  },
+  "H23": {
+    "policy": "review",
+    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "sources": [],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "A reverted CREATE reports no would-be address, so trace_filter has nothing to match it by; the error field still marks the failure.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857580711"
+          }
+        ]
+      }
+    }
   },
   "H24": {
     "policy": "converged",

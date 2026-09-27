@@ -575,8 +575,8 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
               'A range bound beyond the head returns invalid params (-32602), as eth_getLogs does; never a clamped or partial result.')
     elif name.startswith('missing-block-'):
-        check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32001,
-              'An unknown single selected block returns Resource not found (-32001).')
+        check('H06', status == 'rpc_error',
+              'An unknown single selected block returns an error (-32001 recommended), never null or a result.')
     if name == 'call-unknown-field':
         check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
               'Unknown call-object fields are ignored without changing execution output.')

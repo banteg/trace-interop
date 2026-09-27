@@ -56,8 +56,10 @@ class RuleSafetyTests(unittest.TestCase):
             case = {'name': name, 'context': {'_chain': 'h30'}, 'request': {'method': method, 'params': params}}
             for code in [-32602, -32001]:
                 observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'x'}}}
+                # A range bound must be invalid params; an unknown single block may use any error (-32001 recommended).
+                ok = code == accepted or method != 'trace_filter'
                 self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']],
-                                 ['matches' if code == accepted else 'change_needed'])
+                                 ['matches' if ok else 'change_needed'])
 
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
@@ -258,8 +260,9 @@ class CoverageTests(unittest.TestCase):
             checks = evaluate(case, observation, {}, invalid_params=errors) + assess_probes(case, observation, {})
             return [c['status'] for c in checks if c['topic'] == topic]
         # H06: an unknown block for block replay, and a bound one block past the head, below any range cap.
-        self.assertEqual(statuses('a', 'missing-block-replay', error(-32001), 'H06'), ['matches'])
-        for observation in [result(None), result([]), error(-32000)]:  # Besu and Reth, Anvil, Erigon and Nethermind
+        for observation in [error(-32001), error(-32000)]:  # any error, -32001 recommended (Erigon and Nethermind)
+            self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['matches'])
+        for observation in [result(None), result([])]:  # Besu and Reth, Anvil
             self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])

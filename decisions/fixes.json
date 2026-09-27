@@ -1156,9 +1156,9 @@
         "H06"
       ],
       "state": "open",
-      "draft": true,
+      "draft": false,
       "merged_at": null,
-      "note": "unknown transaction hashes only; on hold: Nethermind prefers a not-found error over null, so the H06 missing-transaction rule is diverging"
+      "note": "unknown transaction hashes only; H06 converged on null with Reth and Erigon, Nethermind objecting"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13938",

@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/4bddcfb65dbad37b6b1ec43499e3707f86e9ea4c) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/ee9f957c4a911ecd3b36552e2c66344c210d84a1) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
@@ -101,10 +101,10 @@ What does a request return for each way of naming its block, when the block’s 
 | call-default | “Optional block, latest when omitted or null” |
 | call-state | “Execute against the state at the end of the selected block, default latest, under its fork rules and block environment.” |
 | many-state | “The first item runs against the same state and environment as trace_call at the selected block.” |
-| call-unknown | “an unknown selected block returns -32001 (Resource not found), and a known block whose required state is pruned returns 4444” |
+| call-unknown | “an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns 4444” |
 | call-pending | “is accepted only when the client has such a pending environment; a client without one returns -32602 rather than substitute another block” |
 | block-state | “Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules.” |
-| block-unknown | “An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444” |
+| block-unknown | “An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns 4444” |
 | block-pending | “Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending returns -32602.” |
 | filter-default | “defaults omitted fromBlock and toBlock to the same latest head” |
 | filter-range | “If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602” |

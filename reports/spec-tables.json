@@ -442,7 +442,7 @@
       },
       {
         "id": "call-unknown",
-        "quote": "an unknown selected block returns -32001 (Resource not found), and a known block whose required state is pruned returns 4444"
+        "quote": "an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns 4444"
       },
       {
         "id": "call-pending",
@@ -454,7 +454,7 @@
       },
       {
         "id": "block-unknown",
-        "quote": "An unknown selected block returns -32001 (Resource not found); a known block whose required state is pruned returns 4444"
+        "quote": "An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns 4444"
       },
       {
         "id": "block-pending",

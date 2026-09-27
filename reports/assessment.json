@@ -62,7 +62,7 @@
   "sources": {
     "decisions/impact.json": "ca2292768e17ae5a02f2dbeb2c05ae107674aa1816590cdd33f0a420c0f4789f",
     "decisions/laws.json": "7bd7130c191574dbf041172d8a44a39fa896d7992148205625e168e2f81aa002",
-    "decisions/ledger.json": "356c23d197e1b512c606d5f2c902c1fb9a886e556146e7a1ba4f40125989dc74",
+    "decisions/ledger.json": "637c7659c1498c643cbc3d70be8140dfe0d95e68886d4ee11b14c123b5c43915",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "f68b39835ed9fc71337a642df8e87b35ca990190b5b6247fda60ccac1d80734f",
     "fixtures/checksums.json": "8906c089bca1e42aa5ff32297f8ff2c5382e7608671bd70d89e64eaa71e259e8",
@@ -70,7 +70,7 @@
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "0beb37225557ab44ed6199a50e9b8d8d8c5109dc1a7aecfd6a5adee16c84cd0b",
     "scripts/run_matrix.py": "96bfc2b66302e8cffaf6a6d1c5862d1bfef388034940f2c3632025f84d29fa7c",
-    "spec.lock.json": "5041f0f7a6414ccd4206cf429ab1886c17369f44057c84a4fb9c95844fea4730",
+    "spec.lock.json": "1081247e0a1d1bbe0cf8c4bee16f47458d99f7bcdd25afb1fe2cf3fff8ec89c8",
     "trace_interop/chain_model.py": "62eb9fb7062474488f55e7b3d5d77e48edc16dbec4c6c4c600ce860ad793f546",
     "trace_interop/coverage.py": "afb8c4f8a1ffa449ce0bd5245841b6614d65b38608fa4bac3f158b967b611eb9",
     "trace_interop/execution_models.py": "f5f8fa8ef45b3b3af7620c99ac8da043209e305dddff707fca7fa5677ebc2498",
@@ -83,14 +83,14 @@
     "trace_interop/presentation.py": "dff35646718f13ef300b430fe134c7925898d4e50d4393469f85953bb3fc14ed",
     "trace_interop/probes.py": "6c64751ebe0c7772ab231dae96a2c5d692c3305ec2a8db8675bdc224aa5cebbe",
     "trace_interop/report.py": "b0a5b567abbc5ffc6726fb0e0a561a7be1f63ef85392ea9f02fae5c11fa92836",
-    "trace_interop/rules.py": "db6fd1dad027efe1957e38aa00ed72de07b36e35e57fcd4f382c246e227250ea",
+    "trace_interop/rules.py": "0b6fbdbfc4e2ab1e0dfd3b92ab7967bffc7b66995be0c0382bef0890a0ee44dc",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",
     "trace_interop/status.py": "2dda6844ed612dcb223da1f2d933b7818240882ec2a0b15b0dec41af26429355",
-    "trace_interop/tables.py": "0a7170ce1adf081b3098b9ff0a23feb1aac692b92ba31b461c2eeaf6df6a3239",
+    "trace_interop/tables.py": "6b897a3c2f8702de772f4bf8503593141699ba6411360918c714c4368707df4c",
     "trace_interop/validation.py": "a3a5c554ef9b79cf9c48e0082ff1f34de15b2dcf22f254db3c51364ace79aaf6",
     "trace_interop/versions.py": "1d132856e8a2ac964092051b0c11e3c53fe2e8774b702c5be34be50003a647a7",
     "trace_interop/vm_model.py": "f54cfde161f9de1691ea0fbc82bbd081787295c14f9bbfb9609c9c9d0710f5ae",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "4bddcfb65dbad37b6b1ec43499e3707f86e9ea4c"
+  "spec_commit": "ee9f957c4a911ecd3b36552e2c66344c210d84a1"
 }

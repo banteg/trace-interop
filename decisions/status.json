@@ -110,8 +110,8 @@
     ]
   },
   "H09": {
-    "policy": "review",
-    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "policy": "converged",
+    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, and fix PRs implement it for Erigon, Reth (revm-inspectors) and Nethermind. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [],
     "positions": {
       "erigon": {
@@ -231,8 +231,8 @@
     ]
   },
   "H20": {
-    "policy": "review",
-    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "policy": "converged",
+    "note": "Converged on the vmTrace step rules as revised by the divergent-decisions review: operand-range mem (the full CALL output window preferred, the copied bytes accepted), no synthetic operations, halted operations kept with ex: null. Erigon confirmed its own behavior already matches except what erigontech/erigon#24344 fixes; Nethermind (#13940) and Reth (revm-inspectors #532) have fix PRs. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [],
     "positions": {
       "erigon": {
@@ -272,8 +272,8 @@
     ]
   },
   "H23": {
-    "policy": "review",
-    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "policy": "converged",
+    "note": "Converged on matching a record only by the addresses it reports: a failed CREATE has no created-address match because its result carries no address (H09). Erigon agrees, and the reverted-CREATE fix PRs for Erigon, Reth and Nethermind implement it. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [],
     "positions": {
       "erigon": {

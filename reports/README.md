@@ -8,16 +8,16 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 18 more have a submitted fix, and **37 differ with no fix yet**: 24 on converged decisions and 13 on decisions still under review. 20 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **56 of 128** client decisions agree with the draft. 24 more have a submitted fix, and **31 differ with no fix yet**: 18 on converged decisions and 13 on decisions still under review. 20 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.9-develop · accdae00 | 3 | 5 | 10 | 7 | 1 | 6 | 0 | 0 / 12 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 | 4 | 4 | 1 | 1 | 6 | 3 | 11 / 9 |
-| [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 17 | 7 | 5 | 2 | 1 | 0 | 7 | 20 / 9 |
-| [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 20 | 2 | 5 | 3 | 1 | 1 | 10 | 18 / 5 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 7853b922 | 16 | 6 | 2 | 1 | 1 | 6 | 3 | 13 / 9 |
+| [Nethermind](clients/nethermind.md) | 2.1.0-preview · fca93966 | 17 | 9 | 3 | 2 | 1 | 0 | 7 | 20 / 10 |
+| [Reth](clients/reth.md) | 2.5.2 · df7b7fdf | 20 | 4 | 3 | 3 | 1 | 1 | 10 | 18 / 6 |
 | [Anvil](clients/anvil.md) | 1.8.4-nightly · 5a99f1a8 | 9 | 0 | 11 | 7 | 1 | 4 | 0 | 1 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)

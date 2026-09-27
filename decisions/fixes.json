@@ -1081,9 +1081,16 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T17:07:05Z",
+      "uptake": {
+        "merge_commit": "04dbf0f2fbe13498eaeed9b5ec2f9cb1ba08d7b1",
+        "builds": {
+          "7853b9226e37dd50a3f62c84da97d856cbbbbe12": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24352",
@@ -1095,9 +1102,16 @@
       "partial": [
         "H15"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T17:08:26Z",
+      "uptake": {
+        "merge_commit": "3904de4338492a6d1b3593138fac44b0bd427e6d",
+        "builds": {
+          "7853b9226e37dd50a3f62c84da97d856cbbbbe12": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13897",
@@ -1675,7 +1689,10 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "conflicts_with": [
+        "https://github.com/NethermindEth/nethermind/pull/13981"
+      ]
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13958",
@@ -1715,6 +1732,63 @@
           "cae51ad458f6abb64852b7709eb784352429825d": false
         }
       }
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24355",
+      "title": "fix(rpc/jsonrpc): report a reverted create as {gasUsed, output}",
+      "client": "erigon",
+      "decisions": [
+        "H09",
+        "H23"
+      ],
+      "partial": [
+        "H09"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24356",
+      "title": "fix(rpc/jsonrpc): use parity failure labels in trace frames",
+      "client": "erigon",
+      "decisions": [
+        "H09"
+      ],
+      "depends_on": [
+        "https://github.com/erigontech/erigon/pull/24355"
+      ],
+      "note": "needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/paradigmxyz/revm-inspectors/pull/533",
+      "title": "fix(parity): report reverted creations without an address",
+      "client": "reth",
+      "decisions": [
+        "H09",
+        "H23"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/13981",
+      "title": "fix(tracing): keep reverted frame results and use parity error labels",
+      "client": "nethermind",
+      "decisions": [
+        "H09",
+        "H23"
+      ],
+      "conflicts_with": [
+        "https://github.com/NethermindEth/nethermind/pull/13957"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
     }
   ]
 }

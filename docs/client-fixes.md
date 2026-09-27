@@ -35,8 +35,11 @@ flowchart LR
   Erigon_24032["Erigon #24032"]:::open
   Erigon_24336["Erigon #24336"]:::open
   Erigon_24334["Erigon #24334"]:::merged
+  Erigon_24356["Erigon #24356"]:::open
+  Erigon_24355["Erigon #24355"]:::open
   Erigon_24032 --> Erigon_24322
   Erigon_24334 --> Erigon_24336
+  Erigon_24355 --> Erigon_24356
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
 ```
@@ -61,8 +64,10 @@ flowchart LR
 | [Erigon #24343](https://github.com/erigontech/erigon/pull/24343) | Trace_call and trace_callMany use eth_call's fees and block environment | [H15](../reports/decisions/H15.md) | — | — | — | — | — |
 | [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602 | [H32](../reports/decisions/H32.md) | 2026-09-27 | — | — | — | — |
-| [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
-| [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
+| [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | — | — |
+| [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | 2026-09-27 | — | — | — | — |
+| [Erigon #24355](https://github.com/erigontech/erigon/pull/24355) | Report a reverted create as {gasUsed, output} | [H09](../reports/decisions/H09.md) (partial), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
+| [Erigon #24356](https://github.com/erigontech/erigon/pull/24356) | Use parity failure labels in trace frames; needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests · after Erigon #24355 | [H09](../reports/decisions/H09.md) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -76,9 +81,11 @@ flowchart LR
 flowchart LR
   Nethermind_13857["Nethermind #13857"]:::open
   Nethermind_13897["Nethermind #13897"]:::open
-  Nethermind_13958["Nethermind #13958"]:::open
   Nethermind_13957["Nethermind #13957"]:::open
+  Nethermind_13981["Nethermind #13981"]:::open
+  Nethermind_13958["Nethermind #13958"]:::open
   Nethermind_13857 -. conflicts .- Nethermind_13897
+  Nethermind_13957 -. conflicts .- Nethermind_13981
   Nethermind_13957 --> Nethermind_13958
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
 ```
@@ -112,8 +119,9 @@ flowchart LR
 | [Nethermind #13938](https://github.com/NethermindEth/nethermind/pull/13938) | Return no block reward records for post-merge blocks | [H05](../reports/decisions/H05.md) | — | — | — | — | — |
 | [Nethermind #13940](https://github.com/NethermindEth/nethermind/pull/13940) | Report vmTrace call output windows and keep halted operations; a CREATE that fails its precheck still reports its cost without the forwarded gas | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Nethermind #13956](https://github.com/NethermindEth/nethermind/pull/13956) | Reject a trace_call chainId for another chain as invalid params | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
-| [Nethermind #13957](https://github.com/NethermindEth/nethermind/pull/13957) | Emit failed frames for calls and creates that fail their precheck | [H29](../reports/decisions/H29.md) | — | — | — | — | — |
+| [Nethermind #13957](https://github.com/NethermindEth/nethermind/pull/13957) | Emit failed frames for calls and creates that fail their precheck · conflicts with Nethermind #13981 | [H29](../reports/decisions/H29.md) | — | — | — | — | — |
 | [Nethermind #13958](https://github.com/NethermindEth/nethermind/pull/13958) | Include forwarded gas in the vmTrace cost of a create that enters no frame · after Nethermind #13957 | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
+| [Nethermind #13981](https://github.com/NethermindEth/nethermind/pull/13981) | Keep reverted frame results and use parity error labels · conflicts with Nethermind #13957 | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
 
 ## Reth
 
@@ -131,6 +139,7 @@ flowchart LR
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
   revm_inspectors_530["revm-inspectors #530"]:::open
   revm_inspectors_532["revm-inspectors #532"]:::open
+  revm_inspectors_533["revm-inspectors #533"]:::open
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
@@ -140,6 +149,7 @@ flowchart LR
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
   revm_inspectors_530 -.-> next_revm_inspectors_release
   revm_inspectors_532 -.-> next_revm_inspectors_release
+  revm_inspectors_533 -.-> next_revm_inspectors_release
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
@@ -170,6 +180,7 @@ flowchart LR
 | [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev | — |
 | [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
 | [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
+| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
 
 ## Specifications, tests and other repositories
 

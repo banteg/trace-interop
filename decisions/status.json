@@ -47,7 +47,7 @@
   },
   "H06": {
     "policy": "converged",
-    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind\u2019s reviewer has said he prefers meaningful not-found errors; its alignment PR #13937 is open, and merging it would count as agreement. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. Open: Erigon asks whether an unknown selected block should also be null, by the same eth_* analogy (eth_getBlockByNumber), rather than the draft\u2019s -32001. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind\u2019s reviewer has said he prefers meaningful not-found errors; its alignment PR #13937 is open, and merging it would count as agreement. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind review of #13937",
@@ -64,6 +64,10 @@
       {
         "label": "Erigon on execution-apis#890",
         "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5856824874"
+      },
+      {
+        "label": "Unknown-block answer on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857021080"
       }
     ],
     "positions": {

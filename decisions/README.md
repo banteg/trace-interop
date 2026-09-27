@@ -39,7 +39,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **57 of 128** c
 | [H29](../reports/decisions/H29.md) | ⚪ Under review | ···· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—⚠️ | ⚠️✅🛠️✅✅⚠️ |
 | [H30](../reports/decisions/H30.md) | ⚪ Under review | ···👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️🛠️🛠️—⚠️ | ✅🛠️🛠️✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅⚠️—⚠️ | ⚠️✅✅✅✅✅ |
-| [H32](../reports/decisions/H32.md) | ⚪ Under review | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️🛠️🛠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️🟡⚠️ |
+| [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️🟡⚠️ |
 
 ## Status key
 

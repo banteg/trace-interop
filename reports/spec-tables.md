@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/ee9f957c4a911ecd3b36552e2c66344c210d84a1) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/7d29bab579c447fd9b7904d54fcc2bb8f579905d) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |

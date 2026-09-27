@@ -62,15 +62,15 @@
   "sources": {
     "decisions/impact.json": "125919ccc62adfc87158c54bbb4e9e2f473248d23297ab4f750742e9f95bf5fe",
     "decisions/laws.json": "5a7a45c54a5187580ad8fcff220d3b7f0fc88a959657a8e8c5aa670ec5fa4828",
-    "decisions/ledger.json": "4fa937d74ed430d3407b07e7911995942eb3406488d8479f64c2ee42e6e153db",
+    "decisions/ledger.json": "47ce2103670adf6d403a5e148a39c9ca7ce5664483c872a3493f3abf32db612b",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
-    "decisions/status.json": "a3be89efcfc37933204d1d7bfea328f2075437b7dbcc06b1d40819cbd58b84fd",
+    "decisions/status.json": "e4c8c8592c7d3d95a72b0eedce6bc6af428a2182da4a12a8b7ac28bacd3ac6df",
     "fixtures/checksums.json": "8906c089bca1e42aa5ff32297f8ff2c5382e7608671bd70d89e64eaa71e259e8",
     "locks/source-revisions.json": "597f57821b2ef3b381b029707352a6bc6dd1ef7492b6f0e0394c7957f616b5c8",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "4404e6411ce8d4fa15dfd4d749bdd81c0d68b6c695900eaa6fee17d06767e58c",
     "scripts/run_matrix.py": "96bfc2b66302e8cffaf6a6d1c5862d1bfef388034940f2c3632025f84d29fa7c",
-    "spec.lock.json": "1081247e0a1d1bbe0cf8c4bee16f47458d99f7bcdd25afb1fe2cf3fff8ec89c8",
+    "spec.lock.json": "4f6ee7f0b8492820a30aad88286e9e4ed9e099adba88dc6dc5ce264bb4dad0a6",
     "trace_interop/chain_model.py": "62eb9fb7062474488f55e7b3d5d77e48edc16dbec4c6c4c600ce860ad793f546",
     "trace_interop/coverage.py": "afb8c4f8a1ffa449ce0bd5245841b6614d65b38608fa4bac3f158b967b611eb9",
     "trace_interop/execution_models.py": "f5f8fa8ef45b3b3af7620c99ac8da043209e305dddff707fca7fa5677ebc2498",
@@ -92,5 +92,5 @@
     "trace_interop/vm_model.py": "f54cfde161f9de1691ea0fbc82bbd081787295c14f9bbfb9609c9c9d0710f5ae",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "ee9f957c4a911ecd3b36552e2c66344c210d84a1"
+  "spec_commit": "7d29bab579c447fd9b7904d54fcc2bb8f579905d"
 }

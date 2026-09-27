@@ -1069,7 +1069,11 @@
           "3904de4338492a6d1b3593138fac44b0bd427e6d": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
-      }
+      },
+      "partial": [
+        "H32"
+      ],
+      "note": "fixes the pending tag; block-hash filter bounds still accepted"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24351",
@@ -1157,7 +1161,11 @@
           "5ece5fbab520229a871481d5b87c0d0926b351da": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
-      }
+      },
+      "partial": [
+        "H32"
+      ],
+      "note": "fixes the pending tag; block-hash filter bounds still accepted"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13937",

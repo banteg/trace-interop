@@ -141,6 +141,23 @@
       }
     }
   },
+  "H14": {
+    "policy": "review",
+    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "sources": [],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Agrees with the direction. Erigon already maps the eth_simulateV1 codes but only that method uses them; the trace paths still need the -32003 fallback, -32602 for malformed input and unknown-field rejection in filter requests.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857403064"
+          }
+        ]
+      }
+    }
+  },
   "H17": {
     "policy": "converged",
     "note": "Nethermind and Reth development builds agree on created and deleted account markers (Nethermind #13668, revm-inspectors #526). Besu and Erigon are only partially assessed: some state-diff requests return errors, and no checked case differs. This records direction from implementations, not unanimous formal approval.",
@@ -178,6 +195,23 @@
         "url": "https://github.com/paradigmxyz/reth/pull/27213"
       }
     ]
+  },
+  "H20": {
+    "policy": "review",
+    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "sources": [],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "The operand-range mem rule matches Erigon already: MLOAD records the 32-byte range at its operand offset after the operation, and a call records the full declared output window. Its remaining difference is what #24344 addresses.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857403064"
+          }
+        ]
+      }
+    }
   },
   "H21": {
     "policy": "converged",

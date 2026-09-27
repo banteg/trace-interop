@@ -47,7 +47,7 @@
   },
   "H06": {
     "policy": "converged",
-    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind objects and prefers meaningful not-found errors. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. Open: Erigon asks whether an unknown selected block should also be null, by the same eth_* analogy (eth_getBlockByNumber), rather than the draft\u2019s -32001. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind\u2019s reviewer has said he prefers meaningful not-found errors; its alignment PR #13937 is open, and merging it would count as agreement. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. Open: Erigon asks whether an unknown selected block should also be null, by the same eth_* analogy (eth_getBlockByNumber), rather than the draft\u2019s -32001. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind review of #13937",
@@ -69,7 +69,7 @@
     "positions": {
       "nethermind": {
         "position": "object",
-        "note": "Prefers meaningful not-found errors over null for missing transactions, and would argue for moving other clients to errors.",
+        "note": "Its reviewer prefers meaningful not-found errors over null for missing transactions. The alignment PR #13937 is open; if Nethermind merges it, record Nethermind as agreeing.",
         "sources": [
           {
             "label": "Nethermind review of #13937",

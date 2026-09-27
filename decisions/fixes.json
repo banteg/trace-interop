@@ -10,6 +10,7 @@
     "erigontech/silkworm": "Silkworm",
     "ethereum/execution-apis": "execution-apis",
     "ethereum/go-ethereum": "Geth",
+    "foundry-rs/foundry": "Foundry",
     "NethermindEth/nethermind": "Nethermind",
     "paradigmxyz/reth": "Reth",
     "paradigmxyz/revm-inspectors": "revm-inspectors"
@@ -207,6 +208,20 @@
       ],
       "partial": [
         "H16"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11379",
+      "title": "fix(rpc): return null from trace_transaction for unknown hashes",
+      "client": "besu",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
       ],
       "state": "open",
       "draft": false,
@@ -1645,6 +1660,20 @@
       ],
       "depends_on": [
         "https://github.com/NethermindEth/nethermind/pull/13957"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17089",
+      "title": "fix(anvil): return null from trace_transaction for an unknown hash",
+      "client": "anvil",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
       ],
       "state": "open",
       "draft": false,

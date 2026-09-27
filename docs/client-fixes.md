@@ -4,6 +4,12 @@ Upstream PRs for the measured differences, and how far each has travelled toward
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
+## Anvil
+
+| PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [Foundry #17089](https://github.com/foundry-rs/foundry/pull/17089) | Return null from trace_transaction for an unknown hash | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
+
 ## Besu
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
@@ -19,6 +25,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) | — | — | — | — | — |
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | — | — | — | — | — |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary | [H16](../reports/decisions/H16.md) (partial) | — | — | — | — | — |
+| [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Erigon
 

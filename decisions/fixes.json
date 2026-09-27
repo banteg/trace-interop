@@ -453,9 +453,16 @@
       "partial": [
         "H15"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T08:28:59Z",
+      "uptake": {
+        "merge_commit": "134586d403e1b4e5ecff00b51749ced2ffa7dbbc",
+        "builds": {
+          "fca93966f6954856b818b913bfe5afd30f33aa08": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13779",
@@ -1053,9 +1060,16 @@
       "decisions": [
         "H32"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T11:39:12Z",
+      "uptake": {
+        "merge_commit": "c881f89ebabaa34debd37b6ebeaaf2537927b62d",
+        "builds": {
+          "7853b9226e37dd50a3f62c84da97d856cbbbbe12": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24351",
@@ -1120,9 +1134,16 @@
       "decisions": [
         "H32"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T13:35:31Z",
+      "uptake": {
+        "merge_commit": "b5f43a529336f9e3161f0f4a983b5f9057b3bd54",
+        "builds": {
+          "fca93966f6954856b818b913bfe5afd30f33aa08": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13937",
@@ -1683,10 +1704,17 @@
       "partial": [
         "H06"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06)"
+      "merged_at": "2026-09-27T08:58:45Z",
+      "note": "moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06)",
+      "uptake": {
+        "merge_commit": "84254d8a56a13aba9f2a11b88acdbc371c4d8f35",
+        "builds": {
+          "5a99f1a851488fe26863505088e80183ad73cf07": false,
+          "cae51ad458f6abb64852b7709eb784352429825d": false
+        }
+      }
     }
   ]
 }

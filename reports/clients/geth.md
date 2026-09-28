@@ -4,11 +4,11 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.17.7-unstable · e26833e3** (of 32 decisions): ✅ 28 agree (-1 since the previous capture) · ❔ 2 policy open · ⚪ 2 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.17.7-unstable · e26833e3** (of 32 decisions): ✅ 28 agree · ❔ 2 policy open · ⚪ 2 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`e26833e3`](https://github.com/banteg/go-ethereum/commit/e26833e3322f918c365f74be6971061c41736fc5) | 2026-09-26 | [2026-09-27](../../evidence/2026-09-27/eval/initial/manifest.json) |
+| `1.17.7-unstable` | [`e26833e3`](https://github.com/banteg/go-ethereum/commit/e26833e3322f918c365f74be6971061c41736fc5) | 2026-09-26 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

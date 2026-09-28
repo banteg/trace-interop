@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../clients/erigon_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../clients/nethermind_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 2 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/fork-followup/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 2 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/fork-followup/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -45,9 +45,5 @@
 
 - [H26](../../decisions/H26.md): Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
-
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
-
-- [H26](../../decisions/H26.md): Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
 
 </details>

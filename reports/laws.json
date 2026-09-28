@@ -18,7 +18,7 @@
         "violated": 1
       },
       "erigon_development": {
-        "held": 711,
+        "held": 723,
         "violated": 0
       },
       "erigon_release": {
@@ -64,7 +64,7 @@
         "violated": 0
       },
       "erigon_development": {
-        "held": 1286,
+        "held": 1433,
         "violated": 0
       },
       "erigon_release": {
@@ -88,7 +88,7 @@
         "violated": 0
       },
       "reth_release": {
-        "held": 1413,
+        "held": 1358,
         "violated": 0
       }
     },
@@ -110,7 +110,7 @@
         "violated": 3
       },
       "erigon_development": {
-        "held": 139,
+        "held": 136,
         "violated": 0
       },
       "erigon_release": {
@@ -156,7 +156,7 @@
         "violated": 0
       },
       "erigon_development": {
-        "held": 2456,
+        "held": 2414,
         "violated": 0
       },
       "erigon_release": {
@@ -222,7 +222,7 @@
         "violated": 0
       },
       "reth_release": {
-        "held": 3,
+        "held": 7,
         "violated": 0
       }
     },
@@ -352,8 +352,8 @@
         "violated": 0
       },
       "reth_release": {
-        "held": 19,
-        "violated": 2
+        "held": 21,
+        "violated": 0
       }
     },
     "L09": {
@@ -374,8 +374,8 @@
         "violated": 0
       },
       "erigon_development": {
-        "held": 172,
-        "violated": 184
+        "held": 197,
+        "violated": 192
       },
       "erigon_release": {
         "held": 171,
@@ -613,7 +613,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -635,7 +635,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -646,7 +646,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -657,7 +657,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -7710,7 +7710,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+07915e32"
+      "version": "anvil Version: 1.8.4-nightly+dd372126"
     },
     {
       "cases": [
@@ -7722,7 +7722,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+07915e32"
+      "version": "anvil Version: 1.8.4-nightly+dd372126"
     },
     {
       "cases": [
@@ -7758,7 +7758,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7770,7 +7770,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7782,7 +7782,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7794,7 +7794,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7806,7 +7806,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7818,7 +7818,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7830,7 +7830,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7842,7 +7842,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7854,7 +7854,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -7866,7 +7866,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+5ece5fba"
+      "version": "2.1.0-preview+45912ba3"
     },
     {
       "cases": [
@@ -8035,30 +8035,6 @@
       "law": "L08",
       "run": "initial",
       "version": "2.0.0+bec830cd"
-    },
-    {
-      "cases": [
-        "replay-revert-vmTrace",
-        "replay-block-tree"
-      ],
-      "client": "reth_release",
-      "corpus": "initial",
-      "detail": ".vmTrace.code: differs at character 2: \u20260x6000356142ff54501515603b577f4e487b710000 vs \u20260x",
-      "law": "L08",
-      "run": "initial",
-      "version": "Reth Version: 2.6.0+73a3a008"
-    },
-    {
-      "cases": [
-        "replay-tree-vmTrace",
-        "replay-block-tree"
-      ],
-      "client": "reth_release",
-      "corpus": "initial",
-      "detail": ".vmTrace.code: differs at character 2: \u20260x7fff010000000000000000000000000000000000 vs \u20260x",
-      "law": "L08",
-      "run": "initial",
-      "version": "Reth Version: 2.6.0+73a3a008"
     },
     {
       "cases": [
@@ -8610,7 +8586,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8622,7 +8598,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8634,7 +8610,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8646,7 +8622,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8658,7 +8634,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8670,7 +8646,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8682,7 +8658,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8694,7 +8670,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8706,7 +8682,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8718,7 +8694,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8730,7 +8706,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8742,7 +8718,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8754,7 +8730,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8766,7 +8742,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8778,7 +8754,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8790,7 +8766,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8802,7 +8778,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8814,7 +8790,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8826,7 +8802,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8838,7 +8814,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8850,7 +8826,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8862,7 +8838,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8874,7 +8850,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8886,7 +8862,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8898,7 +8874,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8910,7 +8886,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8922,7 +8898,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8934,7 +8910,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8946,7 +8922,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8958,7 +8934,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8970,7 +8946,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -8982,103 +8958,199 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/none",
-        "empty-sender-priced/many/none"
+        "empty-sender-free/call/none",
+        "empty-sender-free/many/none"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/stateDiff",
-        "empty-sender-priced/many/stateDiff"
+        "empty-sender-free/call/stateDiff",
+        "empty-sender-free/many/stateDiff"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/stateDiff-vmTrace",
-        "empty-sender-priced/many/stateDiff-vmTrace"
+        "empty-sender-free/call/stateDiff-vmTrace",
+        "empty-sender-free/many/stateDiff-vmTrace"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/trace",
-        "empty-sender-priced/many/trace"
+        "empty-sender-free/call/trace",
+        "empty-sender-free/many/trace"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/trace-stateDiff",
-        "empty-sender-priced/many/trace-stateDiff"
+        "empty-sender-free/call/trace-stateDiff",
+        "empty-sender-free/many/trace-stateDiff"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/trace-stateDiff-vmTrace",
-        "empty-sender-priced/many/trace-stateDiff-vmTrace"
+        "empty-sender-free/call/trace-stateDiff-vmTrace",
+        "empty-sender-free/many/trace-stateDiff-vmTrace"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/trace-vmTrace",
-        "empty-sender-priced/many/trace-vmTrace"
+        "empty-sender-free/call/trace-vmTrace",
+        "empty-sender-free/many/trace-vmTrace"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
-        "empty-sender-priced/call/vmTrace",
-        "empty-sender-priced/many/vmTrace"
+        "empty-sender-free/call/vmTrace",
+        "empty-sender-free/many/vmTrace"
       ],
       "client": "erigon_development",
       "corpus": "fee-policy",
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/none",
+        "funding-free-exact/many/none"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/stateDiff",
+        "funding-free-exact/many/stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/stateDiff-vmTrace",
+        "funding-free-exact/many/stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/trace",
+        "funding-free-exact/many/trace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/trace-stateDiff",
+        "funding-free-exact/many/trace-stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/trace-stateDiff-vmTrace",
+        "funding-free-exact/many/trace-stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/trace-vmTrace",
+        "funding-free-exact/many/trace-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "funding-free-exact/call/vmTrace",
+        "funding-free-exact/many/vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9090,7 +9162,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9102,7 +9174,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9114,7 +9186,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9126,7 +9198,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9138,7 +9210,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9150,7 +9222,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9162,7 +9234,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9174,199 +9246,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/none",
-        "funding-legacy-short/many/none"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/stateDiff",
-        "funding-legacy-short/many/stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/stateDiff-vmTrace",
-        "funding-legacy-short/many/stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/trace",
-        "funding-legacy-short/many/trace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/trace-stateDiff",
-        "funding-legacy-short/many/trace-stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/trace-stateDiff-vmTrace",
-        "funding-legacy-short/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/trace-vmTrace",
-        "funding-legacy-short/many/trace-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-legacy-short/call/vmTrace",
-        "funding-legacy-short/many/vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/none",
-        "funding-typed-effective-only/many/none"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/stateDiff",
-        "funding-typed-effective-only/many/stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/stateDiff-vmTrace",
-        "funding-typed-effective-only/many/stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/trace",
-        "funding-typed-effective-only/many/trace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/trace-stateDiff",
-        "funding-typed-effective-only/many/trace-stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/trace-stateDiff-vmTrace",
-        "funding-typed-effective-only/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/trace-vmTrace",
-        "funding-typed-effective-only/many/trace-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-effective-only/call/vmTrace",
-        "funding-typed-effective-only/many/vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9378,7 +9258,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9390,7 +9270,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9402,7 +9282,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9414,7 +9294,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9426,7 +9306,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9438,7 +9318,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9450,7 +9330,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9462,7 +9342,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9474,7 +9354,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9486,7 +9366,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9498,7 +9378,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9510,7 +9390,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9522,7 +9402,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9534,7 +9414,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9546,7 +9426,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9558,199 +9438,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/none",
-        "funding-typed-free-short/many/none"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/stateDiff",
-        "funding-typed-free-short/many/stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/stateDiff-vmTrace",
-        "funding-typed-free-short/many/stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/trace",
-        "funding-typed-free-short/many/trace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/trace-stateDiff",
-        "funding-typed-free-short/many/trace-stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/trace-stateDiff-vmTrace",
-        "funding-typed-free-short/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/trace-vmTrace",
-        "funding-typed-free-short/many/trace-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-free-short/call/vmTrace",
-        "funding-typed-free-short/many/vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/none",
-        "funding-typed-short/many/none"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/stateDiff",
-        "funding-typed-short/many/stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/stateDiff-vmTrace",
-        "funding-typed-short/many/stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/trace",
-        "funding-typed-short/many/trace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/trace-stateDiff",
-        "funding-typed-short/many/trace-stateDiff"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/trace-stateDiff-vmTrace",
-        "funding-typed-short/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/trace-vmTrace",
-        "funding-typed-short/many/trace-vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
-    },
-    {
-      "cases": [
-        "funding-typed-short/call/vmTrace",
-        "funding-typed-short/many/vmTrace"
-      ],
-      "client": "erigon_development",
-      "corpus": "fee-policy",
-      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
-      "law": "L09",
-      "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9762,7 +9450,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/none",
+        "mixed-legacy-priced-free-priced/many/none"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/none",
+        "mixed-legacy-selections/many/none"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9774,7 +9486,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/stateDiff",
+        "mixed-legacy-priced-free-priced/many/stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/stateDiff",
+        "mixed-legacy-selections/many/stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9786,7 +9522,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/stateDiff-vmTrace",
+        "mixed-legacy-priced-free-priced/many/stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/stateDiff-vmTrace",
+        "mixed-legacy-selections/many/stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9798,7 +9558,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace",
+        "mixed-legacy-priced-free-priced/many/trace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace",
+        "mixed-legacy-selections/many/trace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9810,7 +9594,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-stateDiff",
+        "mixed-legacy-priced-free-priced/many/trace-stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-stateDiff",
+        "mixed-legacy-selections/many/trace-stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9822,7 +9630,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-stateDiff-vmTrace",
+        "mixed-legacy-priced-free-priced/many/trace-stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-stateDiff-vmTrace",
+        "mixed-legacy-selections/many/trace-stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9834,7 +9666,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-vmTrace",
+        "mixed-legacy-priced-free-priced/many/trace-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/trace-vmTrace",
+        "mixed-legacy-selections/many/trace-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9846,7 +9702,31 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/vmTrace",
+        "mixed-legacy-priced-free-priced/many/vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-above-base/call/vmTrace",
+        "mixed-legacy-selections/many/vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9858,7 +9738,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9870,7 +9750,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9882,7 +9762,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9894,7 +9774,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9906,7 +9786,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9918,7 +9798,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9930,7 +9810,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9942,7 +9822,199 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/none",
+        "legacy-zero/many/none"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/none",
+        "mixed-legacy-free-priced-free/many/none"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/stateDiff",
+        "legacy-zero/many/stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/stateDiff",
+        "mixed-legacy-free-priced-free/many/stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/stateDiff-vmTrace",
+        "legacy-zero/many/stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/stateDiff-vmTrace",
+        "mixed-legacy-free-priced-free/many/stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace",
+        "legacy-zero/many/trace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace",
+        "mixed-legacy-free-priced-free/many/trace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-stateDiff",
+        "legacy-zero/many/trace-stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-stateDiff",
+        "mixed-legacy-free-priced-free/many/trace-stateDiff"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-stateDiff-vmTrace",
+        "legacy-zero/many/trace-stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-stateDiff-vmTrace",
+        "mixed-legacy-free-priced-free/many/trace-stateDiff-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-vmTrace",
+        "legacy-zero/many/trace-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/trace-vmTrace",
+        "mixed-legacy-free-priced-free/many/trace-vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/vmTrace",
+        "legacy-zero/many/vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
+    },
+    {
+      "cases": [
+        "legacy-zero/call/vmTrace",
+        "mixed-legacy-free-priced-free/many/vmTrace"
+      ],
+      "client": "erigon_development",
+      "corpus": "fee-policy",
+      "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
+      "law": "L09",
+      "run": "fee-policy",
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9954,7 +10026,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9966,7 +10038,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9978,7 +10050,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -9990,7 +10062,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10002,7 +10074,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10014,7 +10086,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10026,7 +10098,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10038,7 +10110,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10050,7 +10122,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10062,7 +10134,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10074,7 +10146,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10086,7 +10158,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10098,7 +10170,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10110,7 +10182,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10122,7 +10194,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10134,7 +10206,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10146,7 +10218,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10158,7 +10230,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10170,7 +10242,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10182,7 +10254,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10194,7 +10266,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10206,7 +10278,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10218,7 +10290,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10230,7 +10302,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10242,7 +10314,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10254,7 +10326,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10266,7 +10338,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10278,7 +10350,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10290,7 +10362,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10302,7 +10374,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10314,7 +10386,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10326,7 +10398,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10338,7 +10410,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10350,7 +10422,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10362,7 +10434,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10374,7 +10446,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10386,7 +10458,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10398,7 +10470,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10410,7 +10482,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10422,7 +10494,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10434,7 +10506,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10446,7 +10518,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10458,7 +10530,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10470,7 +10542,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10482,7 +10554,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10494,7 +10566,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10506,7 +10578,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10518,7 +10590,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10530,7 +10602,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10542,7 +10614,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10554,7 +10626,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10566,7 +10638,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10578,7 +10650,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10590,7 +10662,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10602,7 +10674,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10614,7 +10686,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10626,7 +10698,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10638,7 +10710,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10650,7 +10722,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10662,7 +10734,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10674,7 +10746,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10686,7 +10758,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10698,7 +10770,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10710,7 +10782,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10722,7 +10794,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10734,7 +10806,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10746,7 +10818,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10758,7 +10830,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10770,7 +10842,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10782,7 +10854,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10794,7 +10866,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -10806,7 +10878,7 @@
       "detail": ".output: differs at character 258: \u202600000014ffffffffffffffffffffffffffffffffffffffff vs \u2026000000140000000000000000000000000000000000000000",
       "law": "L09",
       "run": "fee-policy",
-      "version": "3.8.0-dev-3904de43"
+      "version": "3.8.0-dev-a1ce80fb"
     },
     {
       "cases": [
@@ -13039,7 +13111,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -13052,7 +13124,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -13065,7 +13137,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -13080,7 +13152,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [

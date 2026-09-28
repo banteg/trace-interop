@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Anvil · 1.8.4-nightly · 07915e32](../../../../clients/anvil_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-38012` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../../../clients/nethermind_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-compat/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../../../clients/anvil_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-38012` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../../../clients/nethermind_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,7 +43,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · 07915e32** (`anvil Version: 1.8.4-nightly+07915e32`)
+**Anvil · 1.8.4-nightly · dd372126** (`anvil Version: 1.8.4-nightly+dd372126`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Positive cap/price below BASEFEE or priority cap above total cap.
 
@@ -51,7 +51,7 @@
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Positive cap/price below BASEFEE or priority cap above total cap.
 
-**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
@@ -61,7 +61,7 @@
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
 
-**Erigon · 3.8.0-dev · 3904de43** (`3.8.0-dev-3904de43`)
+**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
 
 - [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. Positive cap/price below BASEFEE or priority cap above total cap.
 
@@ -69,7 +69,7 @@
 
 - [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. Positive cap/price below BASEFEE or priority cap above total cap.
 
-**Nethermind · 2.1.0-preview · 5ece5fba** (`2.1.0-preview+5ece5fba`)
+**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
 
 - [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. Positive cap/price below BASEFEE or priority cap above total cap.
 
@@ -78,11 +78,11 @@
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: base_fee rejection; trace_call: malformed_json.
 
-**Reth · 2.5.2 · 863f7055** (`Reth Version: 2.5.2+863f7055`)
+**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
 
 - [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. Positive cap/price below BASEFEE or priority cap above total cap.
 
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
 - [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: base_fee; observed base_fee with code -32000, which requires -38012. Positive cap/price below BASEFEE or priority cap above total cap.
 

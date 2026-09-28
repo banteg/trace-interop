@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Anvil · 1.8.4-nightly · 07915e32](../../../../clients/anvil_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../../../clients/erigon_development.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-27/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-27/eval/fee-policy/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../../../clients/anvil_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../../../clients/besu_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../../../clients/reth_development.md) | 2 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-28/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-28/eval/fee-policy/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -57,10 +57,6 @@
 }
 ```
 
-**Erigon · 3.8.0-dev · 3904de43** (`3.8.0-dev-3904de43`)
-
-- [H15](../../../../decisions/H15.md): Call 1: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a9000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0066bd2636575000000000000000000000000000000000000000000000000000000000000cfa4; independently charged gas 98623.
-
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../../../decisions/H15.md): Call 1: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a9000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0066bd2636575000000000000000000000000000000000000000000000000000000000000cfa4; independently charged gas 98623.
@@ -70,11 +66,11 @@
 - Result shape at `0/vmTrace`: {'code': '0x602a60005260206000fd', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 146859}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 146856}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x000000000
 - Result shape at `1/vmTrace`: {'code': '0x3a60005248602052436040524260605245608052333160a052413160c05260e06000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x000000000000000000000000000000000000000000000000000000002da282a9'], 'store': None, 'used': 146458}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push':
 
-**Reth · 2.5.2 · 863f7055** (`Reth Version: 2.5.2+863f7055`)
+**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
 
 - [H15](../../../../decisions/H15.md): Call 1: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a9000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0066bd2636575000000000000000000000000000000000000000000000000000000000000cfa4; independently charged gas 98623.
 
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
 - [H15](../../../../decisions/H15.md): Call 1: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x000000000000000000000000000000000000000000000000000000002da282a9000000000000000000000000000000000000000000000000000000002da282a8000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000de0066bd2636575000000000000000000000000000000000000000000000000000000000000cfa4; independently charged gas 98623.
 

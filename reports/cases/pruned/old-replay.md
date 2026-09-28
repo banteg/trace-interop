@@ -6,8 +6,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/pruned/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/pruned/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/pruned/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -26,11 +26,11 @@
 }
 ```
 
-**Reth · 2.5.2 · 863f7055** (`Reth Version: 2.5.2+863f7055`)
+**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
 
 - [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
 
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
 - [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
 

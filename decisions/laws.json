@@ -17,8 +17,7 @@
     "nethermind_release": "The same suicide serialization as the development build."
   },
   "L08": {
-    "nethermind_release": "H08 output and H20 `store`, as under L04.",
-    "reth_release": "H19: the single replay reports the executing bytecode as vmTrace `code` while the block replay reports `0x`; the development build agrees."
+    "nethermind_release": "H08 output and H20 `store`, as under L04."
   },
   "L09": {
     "anvil_release": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",

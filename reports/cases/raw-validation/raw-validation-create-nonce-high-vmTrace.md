@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Anvil · 1.8.4-nightly · 07915e32](../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 0 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 0 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../clients/erigon_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `2` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../clients/nethermind_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/raw-validation/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 0 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 0 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `2` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -34,7 +34,7 @@
 }
 ```
 
-**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 
@@ -42,7 +42,7 @@
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 
-**Erigon · 3.8.0-dev · 3904de43** (`3.8.0-dev-3904de43`)
+**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 
@@ -50,7 +50,7 @@
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 
-**Nethermind · 2.1.0-preview · 5ece5fba** (`2.1.0-preview+5ece5fba`)
+**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 
@@ -60,11 +60,11 @@
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. creation nonce above selected state
 - Result shape at `vmTrace`: {'code': '0x3060005260206000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x00de48310d77a4d56aa400248b0b1613508f5b73'], 'store': None, 'used': 46876}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46873}, 'pc': 1, 'sub': None}, {'cost': 6, '
 
-**Reth · 2.5.2 · 863f7055** (`Reth Version: 2.5.2+863f7055`)
+**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
 
 - [H13](../../decisions/H13.md): Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Identified nonce_high; code -32000; accepted [-32003, 2].
 
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
 - [H13](../../decisions/H13.md): Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Identified nonce_high; code -32000; accepted [-32003, 2].
 

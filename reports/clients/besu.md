@@ -4,18 +4,18 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 26.9-develop · accdae00** (of 32 decisions): ✅ 3 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (10 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 13 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 26.9-develop · c197ac57** (of 32 decisions): ✅ 3 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (10 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 13 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.9.0` | [`ee9c64c8`](https://github.com/besu-eth/besu/commit/ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4) | 2026-09-22 | [2026-09-27](../../evidence/2026-09-27/eval/initial/manifest.json) |
-| `26.9-develop` | [`accdae00`](https://github.com/besu-eth/besu/commit/accdae0061952615b23f3bc521ebcd82efd097d4) | 2026-09-25 | [2026-09-27](../../evidence/2026-09-27/eval/initial/manifest.json) |
+| `26.9.0` | [`ee9c64c8`](https://github.com/besu-eth/besu/commit/ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4) | 2026-09-22 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
+| `26.9-develop` | [`c197ac57`](https://github.com/besu-eth/besu/commit/c197ac57d1c4c132f68a9e3c3e056f360b417a93) | 2026-09-28 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 26.9.0 · ee9c64c8 | 26.9-develop · accdae00 | Proposed change |
+| Behavior | 26.9.0 · ee9c64c8 | 26.9-develop · c197ac57 | Proposed change |
 | --- | --- | --- | --- |
 | [Method coverage](../decisions/H01.md)<br>Individual transaction replay is unavailable. | ⛔ Method unavailable<br>[Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) | ⛔ Method unavailable<br>[Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) | Add `trace_replayTransaction`; the draft requires all nine methods. Checked requirements: trace_replayTransaction<br>[Block replay](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java#L58) |
 | [Filter composition and mode](../decisions/H03.md)<br>A recipient-only filter returns 1 of the 2 expected calls. Every recognized `mode` value is rejected with `-32602`, including `intersection` and `union`. | ⚠️ Differs<br>[Filter from only intersection](../cases/a/filter-from-only-intersection.md) | ⚠️ Differs<br>[Filter from only intersection](../cases/a/filter-from-only-intersection.md) | Make a one-sided query select every call matching the populated list. Accept `intersection` as the default and `union` as an explicit option; reject only unknown values.<br>[Filter execution pipeline](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java#L135) |
@@ -47,7 +47,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 26.9.0 · ee9c64c8 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 26.9-develop · accdae00 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 26.9-develop · c197ac57 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -56,17 +56,17 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
 | [Replay transactionHash field](../decisions/H07.md) | 26.9.0 · ee9c64c8 | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
-| [Replay transactionHash field](../decisions/H07.md) | 26.9-develop · accdae00 | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
+| [Replay transactionHash field](../decisions/H07.md) | 26.9-develop · c197ac57 | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
 | [Empty output and unrequested components](../decisions/H08.md) | 26.9.0 · ee9c64c8 | 1 blocked case: The RPC returned an error, so there is no execution result to inspect. 4 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
-| [Empty output and unrequested components](../decisions/H08.md) | 26.9-develop · accdae00 | 1 blocked case: The RPC returned an error, so there is no execution result to inspect. 4 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
+| [Empty output and unrequested components](../decisions/H08.md) | 26.9-develop · c197ac57 | 1 blocked case: The RPC returned an error, so there is no execution result to inspect. 4 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) |
 | [New-account stateDiff encoding](../decisions/H17.md) | 26.9.0 · ee9c64c8 | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. 5 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
-| [New-account stateDiff encoding](../decisions/H17.md) | 26.9-develop · accdae00 | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. 5 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [New-account stateDiff encoding](../decisions/H17.md) | 26.9-develop · c197ac57 | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. 5 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.9.0 · ee9c64c8 | 2 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay authorizations](../cases/mined-probes/replay-authorizations.md) |
-| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.9-develop · accdae00 | 2 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay authorizations](../cases/mined-probes/replay-authorizations.md) |
+| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.9-develop · c197ac57 | 2 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay authorizations](../cases/mined-probes/replay-authorizations.md) |
 | [vmTrace executing bytecode](../decisions/H19.md) | 26.9.0 · ee9c64c8 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 3 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
-| [vmTrace executing bytecode](../decisions/H19.md) | 26.9-develop · accdae00 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 3 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [vmTrace executing bytecode](../decisions/H19.md) | 26.9-develop · c197ac57 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 3 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 26.9.0 · ee9c64c8 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 2 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
-| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 26.9-develop · accdae00 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 2 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 26.9-develop · c197ac57 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. 2 blocked cases: unsupported. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 279 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 279 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 350 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../clients/erigon_development.md) | 350 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 350 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 375 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../clients/nethermind_development.md) | 375 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 350 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | 350 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 279 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 279 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 350 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 350 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 350 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 375 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 375 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 350 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 350 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,7 +32,7 @@
 }
 ```
 
-**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `24`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x92c0a3cd8b571ac5656d6974', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x2'}, 'blockHash': '0xc80abc7c7ff55e123dd2a22190a845894ebb363b3a0355c1cb5dfc57cbeb613e', 'blockNumber': 8, 'resu
 - Result shape at `25`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x4dde844b71bcdf95512fb4dc94e84fb67b512ed8', 'value': '0x1'}, 'blockHash': '0xc80abc7c7ff55e123dd2a22190a845894ebb363b3a0355c1cb5dfc57cbeb613e', 'blockNumber': 8, 'result': {'gasUsed': '0x0',
@@ -54,7 +54,7 @@
 - Result shape at `36`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0xb2cbef3dfb5e69d8656d6974', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x2'}, 'blockHash': '0xaa6cc431712ea8ebe17e14682184305add9f375af0cd6187d6b2b136eac85d1d', 'blockNumber': 11, 'res
 - Result shape at `37`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'input': '0x', 'to': '0x5f552da00dfb4d3749d9e62dcee3c918855a86a0', 'value': '0x1'}, 'blockHash': '0xaa6cc431712ea8ebe17e14682184305add9f375af0cd6187d6b2b136eac85d1d', 'blockNumber': 11, 'result': {'gasUsed': '0x0',
 
-**Erigon · 3.8.0-dev · 3904de43** (`3.8.0-dev-3904de43`)
+**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
 
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
@@ -76,7 +76,7 @@
 - Result shape at `7`: 'transactionHash' is a required property
 - Result shape at `7`: 'transactionPosition' is a required property
 
-**Nethermind · 2.1.0-preview · 5ece5fba** (`2.1.0-preview+5ece5fba`)
+**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - Result shape at `3`: 'transactionHash' is a required property
@@ -91,17 +91,6 @@
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
-- Result shape at `3`: 'transactionHash' is a required property
-- Result shape at `3`: 'transactionPosition' is a required property
-- Result shape at `5`: 'transactionHash' is a required property
-- Result shape at `5`: 'transactionPosition' is a required property
-- Result shape at `6`: 'transactionHash' is a required property
-- Result shape at `6`: 'transactionPosition' is a required property
-- Result shape at `7`: 'transactionHash' is a required property
-- Result shape at `7`: 'transactionPosition' is a required property
-
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
-
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 - Result shape at `5`: 'transactionHash' is a required property

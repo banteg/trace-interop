@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Anvil · 1.8.4-nightly · 07915e32](../../clients/anvil_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../clients/erigon_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../clients/nethermind_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,7 +31,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · 07915e32** (`anvil Version: 1.8.4-nightly+07915e32`)
+**Anvil · 1.8.4-nightly · dd372126** (`anvil Version: 1.8.4-nightly+dd372126`)
 
 - [H28](../../decisions/H28.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 
@@ -39,7 +39,7 @@
 
 - [H28](../../decisions/H28.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 
-**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result null.
 - [H28](../../decisions/H28.md): Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. call [0]: unexpected error 'Reverted'; result.output None != 0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e
@@ -57,7 +57,7 @@
 - [H28](../../decisions/H28.md): Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. call []: result.output 0x0000000000000000000000000000000000000000000000000000000000000000 != 0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d
 - Result shape at `1`: {'action': {'callType': 'staticcall', 'from': '0x0000000000000000000000000000000000004788', 'gas': '0x2a634', 'input': '0x0000000000000000000000000000000000000000000000000000000000000014', 'to': '0x000f3df6d732807ef1319fb7b8bb8522d0beac02', 'value': '0x0'}, 'blockHash': '0xd049e8e91a6e93a831bb365b75
 
-**Nethermind · 2.1.0-preview · 5ece5fba** (`2.1.0-preview+5ece5fba`)
+**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
 
 - Result shape at `4`: 'transactionHash' is a required property
 - Result shape at `4`: 'transactionPosition' is a required property

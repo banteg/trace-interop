@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Besu · 26.9-develop · accdae00](../../clients/besu_development.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · 3904de43](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0-preview · 5ece5fba](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Reth · 2.6.0 · 73a3a008](../../clients/reth_release.md) | 3 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
-| [Reth · 2.5.2 · 863f7055](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-27/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-27/eval/probes-forks/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | `[]` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -35,7 +35,7 @@
 }
 ```
 
-**Besu · 26.9-develop · accdae00** (`besu/v26.9-develop-accdae0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - [H05](../../decisions/H05.md): A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97', 'blockNumber': 1, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}
 
@@ -43,7 +43,7 @@
 
 - [H05](../../decisions/H05.md): A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97', 'blockNumber': 1, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}
 
-**Erigon · 3.8.0-dev · 3904de43** (`3.8.0-dev-3904de43`)
+**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
 
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property
@@ -57,7 +57,7 @@
 - Result shape at `1`: 'transactionHash' is a required property
 - Result shape at `1`: 'transactionPosition' is a required property
 
-**Nethermind · 2.1.0-preview · 5ece5fba** (`2.1.0-preview+5ece5fba`)
+**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
 
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property
@@ -67,15 +67,5 @@
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H05](../../decisions/H05.md): A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97', 'blockNumber': 1, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}
-
-**Reth · 2.6.0 · 73a3a008** (`Reth Version: 2.6.0+73a3a008`)
-
-- [H05](../../decisions/H05.md): A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards. record 0: expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97', 'blockNumber': 1, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}, got {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409', 'blockNumber': 0, 'result': None, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}
-- Result shape at `0`: 'transactionHash' is a required property
-- Result shape at `0`: 'transactionPosition' is a required property
-- Result shape at `1`: 'transactionHash' is a required property
-- Result shape at `1`: 'transactionPosition' is a required property
-- Result shape at `2`: 'transactionHash' is a required property
-- Result shape at `2`: 'transactionPosition' is a required property
 
 </details>

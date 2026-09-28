@@ -11,19 +11,20 @@ spec.loader.exec_module(announce)
 
 
 class AnnounceTests(unittest.TestCase):
-    def test_caption_summarizes_the_selected_matrix(self):
+    def test_caption_scores_every_charted_client(self):
         matrix = json.loads((ROOT/'reports.lock.json').read_text())['matrix']
+        progress = json.loads((ROOT/'reports/progress.json').read_text())
         text = announce.caption(ROOT, 'https://example.test/blob/abc')
-        self.assertTrue(text.startswith('<b>Eval'))
-        self.assertIn('client decisions agree with the draft', text)
+        self.assertTrue(text.startswith(f'<b>Eval {Path(matrix).parent.name}</b>'))
+        dev = text.split('\nDev: ', 1)[1].split('\n', 1)[0]
+        self.assertEqual([part.split()[0] for part in dev.split(' · ')], [c['name'] for c in progress['clients']])
         self.assertIn(f'href="https://example.test/blob/abc/{matrix}/README.md"', text)
-        self.assertNotIn('**', text)
 
-    def test_markdown_becomes_telegram_html(self):
-        self.assertEqual(announce.inline('**3 of 4** agree in [Reth](clients/reth.md) & <b>'),
-                         '<b>3 of 4</b> agree in Reth &amp; &lt;b&gt;')
-        self.assertEqual(announce.paragraph('# T\n\n## Verdict changes\n\nNo captured verdict changed.\n', '## Verdict changes'),
-                         'No captured verdict changed.')
+    def test_scores_show_gains_and_losses(self):
+        self.assertEqual(announce.score(20), '20')
+        self.assertEqual(announce.score(20, gained=0, lost=0, build=['2.7.0']), '20')
+        self.assertEqual(announce.score(23, gained=7), '23 (+7)')
+        self.assertEqual(announce.score(9, gained=2, lost=1), '9 (+2 −1)')
 
 
 if __name__ == '__main__':

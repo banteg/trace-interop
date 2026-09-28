@@ -1,0 +1,185 @@
+{
+  "clients": [
+    {
+      "builds": {
+        "development": {
+          "agree": 3,
+          "build": [
+            "26.9-develop \u00b7 c197ac57"
+          ],
+          "gained": 0,
+          "lost": 0
+        },
+        "release": {
+          "agree": 3,
+          "build": [
+            "26.9.0 \u00b7 ee9c64c8"
+          ],
+          "gained": 0,
+          "lost": 0
+        }
+      },
+      "client": "besu",
+      "counted": true,
+      "counts": {
+        "agree": 3,
+        "converged": 10,
+        "fix": 5,
+        "policy": 1,
+        "review": 7,
+        "unmeasured": 6
+      },
+      "dev_only": 0,
+      "name": "Besu",
+      "prs": {
+        "merged": 0,
+        "open": 13
+      }
+    },
+    {
+      "builds": {
+        "development": {
+          "agree": 23,
+          "build": [
+            "3.8.0-dev \u00b7 a1ce80fb"
+          ],
+          "gained": 7,
+          "lost": 0
+        },
+        "release": {
+          "agree": 13,
+          "build": [
+            "3.7.0 \u00b7 bdc78cc4"
+          ],
+          "gained": 0,
+          "lost": 0
+        }
+      },
+      "client": "erigon",
+      "counted": true,
+      "counts": {
+        "agree": 23,
+        "converged": 2,
+        "fix": 4,
+        "policy": 1,
+        "review": 2,
+        "unmeasured": 0
+      },
+      "dev_only": 10,
+      "name": "Erigon",
+      "prs": {
+        "merged": 19,
+        "open": 4
+      }
+    },
+    {
+      "builds": {
+        "development": {
+          "agree": 18,
+          "build": [
+            "2.1.0-preview \u00b7 45912ba3"
+          ],
+          "gained": 0,
+          "lost": 0
+        },
+        "release": {
+          "agree": 10,
+          "build": [
+            "2.0.0 \u00b7 bec830cd"
+          ],
+          "gained": 0,
+          "lost": 0
+        }
+      },
+      "client": "nethermind",
+      "counted": true,
+      "counts": {
+        "agree": 18,
+        "converged": 3,
+        "fix": 7,
+        "policy": 1,
+        "review": 3,
+        "unmeasured": 0
+      },
+      "dev_only": 8,
+      "name": "Nethermind",
+      "prs": {
+        "merged": 29,
+        "open": 1
+      }
+    },
+    {
+      "builds": {
+        "development": {
+          "agree": 20,
+          "build": [
+            "2.5.2 \u00b7 5723a3fe"
+          ],
+          "gained": 0,
+          "lost": 0
+        },
+        "release": {
+          "agree": 20,
+          "build": [
+            "2.7.0 \u00b7 3d592ece"
+          ],
+          "gained": 10,
+          "lost": 0
+        }
+      },
+      "client": "reth",
+      "counted": true,
+      "counts": {
+        "agree": 20,
+        "converged": 3,
+        "fix": 4,
+        "policy": 1,
+        "review": 3,
+        "unmeasured": 1
+      },
+      "dev_only": 0,
+      "name": "Reth",
+      "prs": {
+        "merged": 18,
+        "open": 7
+      }
+    },
+    {
+      "builds": {
+        "development": {
+          "agree": 13,
+          "build": [
+            "1.8.4-nightly \u00b7 dd372126"
+          ],
+          "gained": 0,
+          "lost": 0
+        },
+        "release": {
+          "agree": 9,
+          "build": [
+            "1.8.3 \u00b7 cae51ad4"
+          ],
+          "gained": 0,
+          "lost": 0
+        }
+      },
+      "client": "anvil",
+      "counted": false,
+      "counts": {
+        "agree": 13,
+        "converged": 6,
+        "fix": 2,
+        "policy": 1,
+        "review": 5,
+        "unmeasured": 5
+      },
+      "dev_only": 4,
+      "name": "Anvil",
+      "prs": {
+        "merged": 1,
+        "open": 1
+      }
+    }
+  ],
+  "decisions": 32
+}

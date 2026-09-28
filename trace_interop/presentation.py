@@ -6,6 +6,7 @@ import json
 import os
 import re
 
+from .cli import write
 from .progress import BUCKETS, pr_counts, svg, tally
 from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
 
@@ -635,6 +636,15 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                 f'and {sums["review"]} on decisions still under review. '
                 f'{sum(progress[f]["dev_only"] or 0 for f in native)} agreements are in development builds but not yet in a stable release.') if native else ''
 
+    def scores(client):
+        """A build's agreements, and the decisions it gained and lost since the previous capture."""
+        now = agreed(by_client[client])
+        score = dict(build=[build_label(client, v, revisions) for v in sorted(captured[client])], agree=len(now))
+        if previous and client in previous['by_client']:
+            before = agreed(previous['by_client'][client])
+            score.update(gained=len(now - before), lost=len(before - now))
+        return score
+
     def progress_line(f):
         p = progress[f]; counts = p['counts']
         pending = counts['converged'] + counts['review']
@@ -836,6 +846,12 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += 'For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).\n\n'
     if native:
         save(output/'progress.svg', svg([(editorial['clients'][f]['name'], progress[f]['counts']) for f in shown], len(decisions)))
+        write(output/'progress.json', dict(decisions=len(decisions), clients=[dict(
+            client=f, name=editorial['clients'][f]['name'], counted=f in native,
+            counts={key: progress[f]['counts'][key] for key, *_ in BUCKETS}, dev_only=progress[f]['dev_only'],
+            prs=dict(zip(('merged', 'open'), progress[f]['prs'])),
+            builds={channel: scores(c) for channel, c in (('development', progress[f]['build']), ('release', f + '_release')) if c in by_client})
+            for f in shown]))
         text += '## Progress\n\n' + headline + '\n\n![Decision outcomes per client development build](progress.svg)\n\n'
         text += table(['Client', 'Build', *[f'{symbol} {label}' for _, symbol, label, _, _ in BUCKETS], 'In dev, not stable', 'Fix PRs merged / open'], [
             [f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', label(progress[f]['build']),
@@ -849,6 +865,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                  '[Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)\n\n')
     else:
         (output/'progress.svg').unlink(missing_ok=True)
+        (output/'progress.json').unlink(missing_ok=True)
     text += '## Start with your client\n\n'
     text += table(['Client', 'Main review areas'], [[f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', editorial['clients'][f]['summary']] for f in families])
     text += '## Decisions to review\n\n'

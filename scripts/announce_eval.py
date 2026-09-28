@@ -1,8 +1,9 @@
 """Print the Telegram caption announcing the eval matrix that reports.lock.json selects.
 
-The caption reuses the generated reports: the eval notes' title, the progress headline and the
-verdict-change summary, with links to the pages at `--url`. It is Telegram HTML whose visible text
-stays within the 1024-character photo caption limit; the progress chart is sent as the photo.
+The caption gives each client's development and stable scores from reports/progress.json, the
+decisions its build agrees on with their change since the previous matrix, and links to the
+pages at `--url`. It is Telegram HTML whose visible text stays within the 1024-character photo
+caption limit; the progress chart is sent as the photo.
 """
 import argparse
 from html import escape, unescape
@@ -14,31 +15,39 @@ ROOT = Path(__file__).resolve().parents[1]
 CAPTION_LIMIT = 1024
 
 
-def paragraph(text, heading):
-    """The first paragraph under a markdown heading."""
-    section = text.split(f'\n{heading}\n', 1)[1]
-    return section.strip().split('\n\n', 1)[0]
+def delta(gained=0, lost=0):
+    return ' '.join(f'{sign}{n}' for sign, n in (('+', gained), ('−', lost)) if n)
 
 
-def inline(markdown):
-    """Telegram HTML for a markdown paragraph: bold kept, links reduced to their text."""
-    text = escape(re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', markdown), quote=False)
-    return re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
+def score(agree, gained=0, lost=0, **_):
+    change = delta(gained, lost)
+    return f'{agree} ({change})' if change else str(agree)
+
+
+def channel(clients, name):
+    return ' · '.join(f'{escape(c["name"])} {score(**c["builds"][name])}' for c in clients if name in c['builds'])
 
 
 def caption(root, url):
-    matrix = json.loads((root/'reports.lock.json').read_text())['matrix']
-    notes = root/matrix/'README.md'
-    title = notes.read_text().split('\n', 1)[0].removeprefix('# ')
-    lines = [f'<b>{escape(title, quote=False)}</b>', inline(paragraph((root/'reports/README.md').read_text(), '## Progress'))]
+    matrix = Path(json.loads((root/'reports.lock.json').read_text())['matrix'])
+    progress = json.loads((root/'reports/progress.json').read_text())
+    counted = [c for c in progress['clients'] if c['counted']]
+    total = {key: sum(c['builds']['development'].get(key, 0) for c in counted) for key in ('agree', 'gained', 'lost')}
+    change = delta(total['gained'], total['lost'])
+    omitted = [c['name'] for c in progress['clients'] if not c['counted']]
     links = [('Progress', 'reports/README.md#progress')]
-    changes = root/'reports/changes.md'
-    if changes.exists():
-        lines.append(inline(paragraph(changes.read_text(), '## Verdict changes')))
+    if (root/'reports/changes.md').exists():
         links.append(('Changes', 'reports/changes.md'))
-    links.append(('Eval notes', notes.relative_to(root).as_posix()))
-    lines.append(' · '.join(f'<a href="{escape(f"{url}/{path}")}">{name}</a>' for name, path in links))
-    text = '\n\n'.join(lines)
+    links.append(('Eval notes', (matrix/'README.md').as_posix()))
+    text = '\n'.join([
+        f'<b>Eval {escape(matrix.parent.name)}</b> · {total["agree"]} of {len(counted) * progress["decisions"]} agree' + (f' ({change})' if change else ''),
+        '',
+        f'Dev: {channel(progress["clients"], "development")}',
+        f'Stable: {channel(progress["clients"], "release")}',
+        '',
+        f'Scores count decisions that agree with the draft, of {progress["decisions"]}' + (f'; the total omits {escape(", ".join(omitted))}.' if omitted else '.'),
+        ' · '.join(f'<a href="{escape(f"{url}/{path}")}">{name}</a>' for name, path in links),
+    ])
     visible = len(unescape(re.sub(r'<[^>]+>', '', text)))
     if visible > CAPTION_LIMIT:
         raise ValueError(f'caption is {visible} characters; Telegram allows {CAPTION_LIMIT}')

@@ -218,3 +218,10 @@ class ProgressTests(unittest.TestCase):
         agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in native)
         self.assertIn(f'**{agree} of {len(native) * decisions}**', page)
         self.assertTrue((root/'reports/progress.svg').is_file())
+        progress = json.loads((root/'reports/progress.json').read_text())
+        self.assertEqual(progress['decisions'], decisions)
+        self.assertEqual(sum(c['builds']['development']['agree'] for c in progress['clients'] if c['counted']), agree)
+        for c in progress['clients']:
+            with self.subTest(client=c['client']):
+                self.assertEqual(sum(c['counts'].values()), decisions)
+                self.assertEqual(c['counts']['agree'], c['builds']['development']['agree'])

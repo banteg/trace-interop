@@ -41,8 +41,9 @@ hook explicit. Report regeneration is left to `scripts/check.sh`.
 
 When a push to `main` points `reports.lock.json` at a new matrix, the `Announce eval` workflow
 posts the committed `reports/progress.svg`, rendered to PNG, to the working group's Telegram chat.
-The caption comes from `scripts/announce_eval.py`: the eval notes' title, the progress headline,
-the verdict-change count and links to the reports at that commit. Running the workflow by hand
+The caption comes from `scripts/announce_eval.py`: the development and stable agreement scores
+per client from `reports/progress.json`, each with its gains and losses since the previous matrix,
+the headline total and links to the reports at that commit. Running the workflow by hand
 reposts the current matrix. It needs a bot in the group and the repository secrets
 `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Preview the caption with
 `uv run python scripts/announce_eval.py --url https://github.com/banteg/trace-interop/blob/main`.
@@ -264,7 +265,8 @@ harmonization milestones are unchanged. The same markers feed
 [progress by client](../reports/README.md#progress) and its chart, `reports/progress.svg`:
 one outcome per decision on each native development build, with differences that have no
 submitted fix split by the decision's policy status, and the change in agreements since the
-previous matrix. Refresh PR states and uptake facts from GitHub after each new capture, then regenerate:
+previous matrix. `reports/progress.json` holds the same outcomes, plus each development and stable
+build's agreements and the decisions it gained and lost since the previous matrix. Refresh PR states and uptake facts from GitHub after each new capture, then regenerate:
 
 ```sh
 uv run python scripts/refresh_fixes.py

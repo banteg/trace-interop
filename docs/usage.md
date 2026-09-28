@@ -37,6 +37,16 @@ uvx prek run --all-files   # run the commit hooks once without committing
 The first command installs both hook types listed in the config; the second makes the pre-push
 hook explicit. Report regeneration is left to `scripts/check.sh`.
 
+## Eval announcements
+
+When a push to `main` points `reports.lock.json` at a new matrix, the `Announce eval` workflow
+posts the committed `reports/progress.svg`, rendered to PNG, to the working group's Telegram chat.
+The caption comes from `scripts/announce_eval.py`: the eval notes' title, the progress headline,
+the verdict-change count and links to the reports at that commit. Running the workflow by hand
+reposts the current matrix. It needs a bot in the group and the repository secrets
+`TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Preview the caption with
+`uv run python scripts/announce_eval.py --url https://github.com/banteg/trace-interop/blob/main`.
+
 ## Reproduce one disagreement
 
 The committed lock selects immutable client image digests, not moving tags:

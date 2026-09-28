@@ -1,0 +1,50 @@
+name: Announce eval
+# A push that points reports.lock.json at a new matrix posts the progress chart and summary to the
+# working group; a manual run reposts the current one.
+on:
+  push:
+    branches: [main]
+    paths: [reports.lock.json]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency: announce
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          current=$(jq -r .matrix reports.lock.json)
+          if [ "$GITHUB_EVENT_NAME" = push ] && git fetch --depth=1 origin "$BEFORE" &&
+             [ "$(git show "$BEFORE:reports.lock.json" | jq -r .matrix)" = "$current" ]; then
+            echo "reports.lock.json still selects $current; nothing to announce."
+          else
+            echo new=true >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.matrix.outputs.new
+        uses: astral-sh/setup-uv@v6
+      - if: steps.matrix.outputs.new
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y --no-install-recommends librsvg2-bin
+          rsvg-convert --zoom 2 --background-color white reports/progress.svg -o progress.png
+          uv run --locked python scripts/announce_eval.py --url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA" > caption.html
+      - if: steps.matrix.outputs.new
+        uses: actions/upload-artifact@v4
+        with:
+          name: announcement
+          path: |
+            progress.png
+            caption.html
+      - if: steps.matrix.outputs.new
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          curl --silent --show-error --fail-with-body \
+            -F chat_id="$TELEGRAM_CHAT_ID" -F photo=@progress.png \
+            -F parse_mode=HTML -F caption="<caption.html" \
+            "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto"

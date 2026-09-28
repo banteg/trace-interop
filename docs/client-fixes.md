@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-09-27**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-09-28**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -62,7 +62,7 @@ flowchart LR
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) | — | — | — | — | — |
 | [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ · after Erigon #24334 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
-| [Erigon #24341](https://github.com/erigontech/erigon/pull/24341) | Default an omitted trace_filter fromBlock to latest | [H30](../reports/decisions/H30.md) | — | — | — | — | — |
+| [Erigon #24341](https://github.com/erigontech/erigon/pull/24341) | Default an omitted trace_filter fromBlock to latest | [H30](../reports/decisions/H30.md) | 2026-09-27 | — | — | — | — |
 | [Erigon #24343](https://github.com/erigontech/erigon/pull/24343) | Trace_call and trace_callMany use eth_call's fees and block environment | [H15](../reports/decisions/H15.md) | — | — | — | — | — |
 | [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602; fixes the pending tag; block-hash filter bounds still accepted | [H32](../reports/decisions/H32.md) (partial) | 2026-09-27 | — | — | dev | — |

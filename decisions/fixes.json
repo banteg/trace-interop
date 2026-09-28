@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-27",
+  "checked_at": "2026-09-28",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -1027,9 +1027,16 @@
       "decisions": [
         "H30"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-27T22:08:18Z",
+      "uptake": {
+        "merge_commit": "9ec5861189a455e78ab5810bdbfa1b470f495c30",
+        "builds": {
+          "3904de4338492a6d1b3593138fac44b0bd427e6d": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24343",

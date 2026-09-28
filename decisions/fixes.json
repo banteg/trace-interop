@@ -1047,7 +1047,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "rebased on #24330, which fixed the fee defaults; keeps the eth_call message rules, block GASLIMIT, overridden block environment and eth_simulateV1 codes. Companion erigontech/rpc-tests#613"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24344",

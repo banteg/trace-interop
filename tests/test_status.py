@@ -110,5 +110,5 @@ class ClientPositionTests(unittest.TestCase):
         self.assertIn('| Besu | · No response |', page)
         self.assertIn('[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216)', page)
         index = (root/'decisions/README.md').read_text()
-        self.assertTrue(any('[H03]' in line and '| ·👍·👍 |' in line for line in index.splitlines()))
+        self.assertTrue(any('[H03]' in line and '| ·👍👍👍 |' in line for line in index.splitlines()))
         self.assertIn('### Client positions', index)

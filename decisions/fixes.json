@@ -386,10 +386,17 @@
       "partial": [
         "H13"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed"
+      "merged_at": "2026-09-28T22:15:07Z",
+      "note": "validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed",
+      "uptake": {
+        "merge_commit": "558586f0d4613e8a23e9d5c01c0e499322b7070b",
+        "builds": {
+          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/ethereum/execution-apis/pull/895",
@@ -623,10 +630,17 @@
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13897"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "a second commit reads an empty address list as unrestricted (H04), replacing the earlier \"matches no address\" reading"
+      "merged_at": "2026-09-28T19:30:46Z",
+      "note": "a second commit reads an empty address list as unrestricted (H04), replacing the earlier \"matches no address\" reading",
+      "uptake": {
+        "merge_commit": "fb94d2cb7451c08081496a1d358aca8f98ab688b",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13858",
@@ -1153,9 +1167,16 @@
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13857"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T18:24:23Z",
+      "uptake": {
+        "merge_commit": "a37a6994332909785c2ed892743588e116473cd1",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13935",
@@ -1164,9 +1185,16 @@
       "decisions": [
         "H30"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T18:24:01Z",
+      "uptake": {
+        "merge_commit": "0ff7e2d25455a4f62353cb005bb244625c10c1d5",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13936",
@@ -1200,10 +1228,17 @@
       "partial": [
         "H06"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "unknown transaction hashes only; H06 converged on null with Reth and Erigon, Nethermind objecting"
+      "merged_at": "2026-09-28T18:23:45Z",
+      "note": "unknown transaction hashes only; H06 converged on null with Reth and Erigon, Nethermind objecting",
+      "uptake": {
+        "merge_commit": "27695c0c5e2c06b9f1648864e72574fc57acc7f4",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13938",
@@ -1212,9 +1247,16 @@
       "decisions": [
         "H05"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T18:23:23Z",
+      "uptake": {
+        "merge_commit": "4e3f217871c0cdf7ffb1de7fbb3aa5f90a564906",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13940",
@@ -1226,10 +1268,17 @@
       "partial": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "a CREATE that fails its precheck still reports its cost without the forwarded gas"
+      "merged_at": "2026-09-28T18:38:08Z",
+      "note": "a CREATE that fails its precheck still reports its cost without the forwarded gas",
+      "uptake": {
+        "merge_commit": "e470937bfa4ee74b1b283f531e35ca386edb36ee",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/23952",
@@ -1707,9 +1756,16 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T18:22:39Z",
+      "uptake": {
+        "merge_commit": "ff29cfd732d20a0db9004d1a3f275d5cbf0402be",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13957",
@@ -1718,12 +1774,19 @@
       "decisions": [
         "H29"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-09-28T21:15:48Z",
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13981"
-      ]
+      ],
+      "uptake": {
+        "merge_commit": "82516987c7b0d3e04abfcf89773d0b2db01452ea",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13958",
@@ -1738,9 +1801,16 @@
       "depends_on": [
         "https://github.com/NethermindEth/nethermind/pull/13957"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T19:29:57Z",
+      "uptake": {
+        "merge_commit": "f3b93df46329aa153626ecb235dc4b06327e9c8d",
+        "builds": {
+          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17089",
@@ -1775,9 +1845,16 @@
       "partial": [
         "H09"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T19:12:50Z",
+      "uptake": {
+        "merge_commit": "38ebf979d850faa56aacf357c0b80676a258b16b",
+        "builds": {
+          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24356",
@@ -1790,9 +1867,16 @@
         "https://github.com/erigontech/erigon/pull/24355"
       ],
       "note": "needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-28T20:44:17Z",
+      "uptake": {
+        "merge_commit": "16df794662d53934ff974f8ad26242d8bfeade16",
+        "builds": {
+          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/revm-inspectors/pull/533",

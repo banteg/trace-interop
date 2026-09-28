@@ -47,7 +47,7 @@
   },
   "H06": {
     "policy": "converged",
-    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Nethermind\u2019s reviewer has said he prefers meaningful not-found errors; its alignment PR #13937 is open, and merging it would count as agreement. Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, Nethermind merged its alignment (#13937), matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind review of #13937",
@@ -72,12 +72,12 @@
     ],
     "positions": {
       "nethermind": {
-        "position": "object",
-        "note": "Its reviewer prefers meaningful not-found errors over null for missing transactions. The alignment PR #13937 is open; if Nethermind merges it, record Nethermind as agreeing.",
+        "position": "agree",
+        "note": "Merged #13937, which returns null for a missing transaction as the draft does; its reviewer had preferred not-found errors, and the merge records agreement.",
         "sources": [
           {
-            "label": "Nethermind review of #13937",
-            "url": "https://github.com/NethermindEth/nethermind/pull/13937#issuecomment-5853618602"
+            "label": "NethermindEth/nethermind#13937 (merged)",
+            "url": "https://github.com/NethermindEth/nethermind/pull/13937"
           }
         ]
       },

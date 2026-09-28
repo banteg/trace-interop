@@ -64,7 +64,7 @@ flowchart LR
 | [Erigon #24336](https://github.com/erigontech/erigon/pull/24336) | Reject call objects whose data and input differ · after Erigon #24334 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Erigon #24341](https://github.com/erigontech/erigon/pull/24341) | Default an omitted trace_filter fromBlock to latest | [H30](../reports/decisions/H30.md) | 2026-09-27 | — | — | — | — |
 | [Erigon #24343](https://github.com/erigontech/erigon/pull/24343) | Trace_call and trace_callMany use eth_call's fees and block environment | [H15](../reports/decisions/H15.md) | — | — | — | — | — |
-| [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
+| [Erigon #24344](https://github.com/erigontech/erigon/pull/24344) | VmTrace reports only operations that executed; needs erigontech/rpc-tests#612 released and RPC_VERSION bumped for its integration tests | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Erigon #24345](https://github.com/erigontech/erigon/pull/24345) | Reject pending in tracing methods with -32602; fixes the pending tag; block-hash filter bounds still accepted | [H32](../reports/decisions/H32.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24351](https://github.com/erigontech/erigon/pull/24351) | Trace_call and trace_callMany reject a chainId for another chain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | dev | — |
 | [Erigon #24352](https://github.com/erigontech/erigon/pull/24352) | Trace_rawTransaction reads the block's GASLIMIT | [H15](../reports/decisions/H15.md) (partial) | 2026-09-27 | — | — | dev | — |

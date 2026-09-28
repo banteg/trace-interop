@@ -1058,7 +1058,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "needs erigontech/rpc-tests#612 released and RPC_VERSION bumped for its integration tests"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24345",

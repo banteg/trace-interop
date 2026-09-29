@@ -41,9 +41,9 @@
         "development": {
           "agree": 25,
           "build": [
-            "3.8.0-dev \u00b7 558586f0"
+            "3.8.0-dev \u00b7 a2a19253"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -75,11 +75,11 @@
     {
       "builds": {
         "development": {
-          "agree": 24,
+          "agree": 25,
           "build": [
-            "2.1.0-preview \u00b7 82516987"
+            "2.2.0-preview \u00b7 287f54f0"
           ],
-          "gained": 6,
+          "gained": 1,
           "lost": 0
         },
         "release": {
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 24,
-        "converged": 2,
-        "fix": 2,
+        "agree": 25,
+        "converged": 3,
+        "fix": 0,
         "policy": 1,
         "review": 3,
         "unmeasured": 0
       },
-      "dev_only": 14,
+      "dev_only": 15,
       "name": "Nethermind",
       "prs": {
         "merged": 30,
@@ -113,7 +113,7 @@
         "development": {
           "agree": 20,
           "build": [
-            "2.5.2 \u00b7 5723a3fe"
+            "2.7.0 \u00b7 60aeb532"
           ],
           "gained": 0,
           "lost": 0
@@ -149,7 +149,7 @@
         "development": {
           "agree": 13,
           "build": [
-            "1.8.4-nightly \u00b7 dd372126"
+            "1.8.4-nightly \u00b7 00989695"
           ],
           "gained": 0,
           "lost": 0

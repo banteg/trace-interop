@@ -7710,7 +7710,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+dd372126"
+      "version": "anvil Version: 1.8.4-nightly+00989695"
     },
     {
       "cases": [
@@ -7722,7 +7722,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+dd372126"
+      "version": "anvil Version: 1.8.4-nightly+00989695"
     },
     {
       "cases": [
@@ -7758,7 +7758,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7770,7 +7770,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7782,7 +7782,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7794,7 +7794,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7806,7 +7806,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7818,7 +7818,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7830,7 +7830,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7842,7 +7842,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7854,7 +7854,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [
@@ -7866,7 +7866,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0-preview+82516987"
+      "version": "2.2.0-preview+287f54f0"
     },
     {
       "cases": [

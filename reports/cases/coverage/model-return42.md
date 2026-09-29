@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -42,7 +42,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · dd372126** (`anvil Version: 1.8.4-nightly+dd372126`)
+**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
 - [H17](../../decisions/H17.md): State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields; a modelled new account is reported. 0x0000000000000000000000000000000000000000: new account lacks creation markers for all fields; 0x00de48310d77a4d56aa400248b0b1613508f5b73: new account lacks creation markers for all fields
 - [H17](../../decisions/H17.md): A new contract has creation markers for nonce one, returned runtime and balance, including empty values.

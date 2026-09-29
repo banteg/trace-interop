@@ -6,8 +6,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | Object returned | 🔎 Control / not applicable | [Response](../../../evidence/2026-09-29/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/pruned/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | Object returned | 🔎 Control / not applicable | [Response](../../../evidence/2026-09-29/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/pruned/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | Object returned | 🔎 Control / not applicable | [Response](../../../evidence/2026-09-29/refresh/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/pruned/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | Object returned | 🔎 Control / not applicable | [Response](../../../evidence/2026-09-29/refresh/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -22,7 +22,7 @@
 }
 ```
 
-**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
+**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
 - [H06](../../decisions/H06.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

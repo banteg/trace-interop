@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 3 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 3 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,7 +41,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · dd372126** (`anvil Version: 1.8.4-nightly+dd372126`)
+**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
 - [H20](../../decisions/H20.md): The CALL whose precheck failed has sub null; the sibling that entered a frame has a sub. Operations missing at pc []; wrong sub at pc [14].
 
@@ -80,7 +80,7 @@
 - [H09](../../decisions/H09.md): A CALL that fails its balance precheck has error "Insufficient balance for transfer". No frame matches {'action': {'value': '0x1'}, 'traceAddress': [0], 'type': 'call'}.
 - Result shape at `vmTrace`: {'code': '0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246469}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 246466}, 'pc': 2,
 
-**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
+**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
 - [H20](../../decisions/H20.md): The CALL whose precheck failed has sub null; the sibling that entered a frame has a sub. Operations missing at pc []; wrong sub at pc [14].
 

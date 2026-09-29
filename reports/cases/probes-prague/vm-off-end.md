@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -42,7 +42,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · dd372126** (`anvil Version: 1.8.4-nightly+dd372126`)
+**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
 - [H20](../../decisions/H20.md): Code that runs off its end has no synthetic STOP; every pc lies inside code. Extra operations after the last instruction at pc [6]; code size 6.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. operation count 5 != 4
@@ -66,7 +66,7 @@
 
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x3c476', 'init': '0x600160020150', 'value': '0x0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x', 'gasUsed': '0xb'}, 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under
 
-**Erigon · 3.8.0-dev · 558586f0** (`3.8.0-dev-558586f0`)
+**Erigon · 3.8.0-dev · a2a19253** (`3.8.0-dev-a2a19253`)
 
 - [H20](../../decisions/H20.md): Code that runs off its end has no synthetic STOP; every pc lies inside code. Extra operations after the last instruction at pc [6]; code size 6.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. operation count 5 != 4
@@ -87,7 +87,7 @@
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'+': '0x3b9f8b3d1538'}, 'code': '=', 'nonce': {'+': '0x0'}, 'storage': {}}, '0x00de48310d77a4d56aa400248b0b1613508f5b73': {'balance': {'+': '0x0'}, 'code': '=', 'nonce': {'+': '0x1'}, 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395
 - Result shape at `vmTrace`: {'code': '0x600160020150', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x01'], 'store': None, 'used': 246899}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x02'], 'store': None, 'used': 246896}, 'pc': 2, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00000000000
 
-**Reth · 2.5.2 · 5723a3fe** (`Reth Version: 2.5.2+5723a3fe`)
+**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
 - [H20](../../decisions/H20.md): Code that runs off its end has no synthetic STOP; every pc lies inside code. Extra operations after the last instruction at pc [6]; code size 6.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. operation count 5 != 4

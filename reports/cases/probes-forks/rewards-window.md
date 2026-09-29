@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | `[]` | 🚧 Blocked | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | `[]` | 🚧 Blocked | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 5 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -49,7 +49,7 @@
 
 - [H03](../../decisions/H03.md): A page over matching records crosses a block boundary and reward records in block, transaction, reward order. Expected a result; observed rpc_error -32602 Invalid filter params
 
-**Erigon · 3.8.0-dev · 558586f0** (`3.8.0-dev-558586f0`)
+**Erigon · 3.8.0-dev · a2a19253** (`3.8.0-dev-a2a19253`)
 
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property
@@ -71,7 +71,7 @@
 - Result shape at `4`: 'transactionHash' is a required property
 - Result shape at `4`: 'transactionPosition' is a required property
 
-**Nethermind · 2.1.0-preview · 82516987** (`2.1.0-preview+82516987`)
+**Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property

@@ -165,7 +165,7 @@
   },
   "H09": {
     "policy": "converged",
-    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, Erigon\u2019s development build implements it (#24355, #24356), and fix PRs implement it for Reth (revm-inspectors) and Nethermind. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, the Erigon and Nethermind development builds implement it (#24355, #24356; #13981), and a fix PR implements it for Reth (revm-inspectors). Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Reverted-CREATE heads-up on execution-apis#890",
@@ -363,7 +363,7 @@
   },
   "H23": {
     "policy": "converged",
-    "note": "Converged on matching a record only by the addresses it reports: a failed CREATE has no created-address match because its result carries no address (H09). Erigon agrees and its development build implements it (#24355); the reverted-CREATE fix PRs for Reth and Nethermind implement it too. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on matching a record only by the addresses it reports: a failed CREATE has no created-address match because its result carries no address (H09). Erigon agrees and its development build implements it (#24355); the reverted-CREATE fix PR for Reth implements it too. Nethermind\u2019s development build drops the address from the reverted CREATE result (#13981), but its trace_filter still matches the would-be address through the internal `action.To`. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Reverted-CREATE heads-up on execution-apis#890",
@@ -433,7 +433,7 @@
   },
   "H28": {
     "policy": "converged",
-    "note": "Historical trace_call agrees on every captured native build, including Erigon 3.7.0, which ships the end-of-block history boundary from #24056 (merged 2026-09-18). Two differences remain outside trace_call, both captured and both with an open fix. Besu block replay skips the block\u2019s pre-block system calls, so the mined beacon-root and history reads see the parent\u2019s values (Besu #10953). Erigon\u2019s historical trace_callMany read the next block\u2019s system writes at block 55; #24293 fixed it on main and the development build now agrees. The stricter Harmonized milestone is also blocked by schema-invalid beacon-call-55 responses from Besu and Nethermind: the beacon-roots contract REVERTs and both omit the REVERT frame result that H09 requires. This records agreement on the checked block boundary, not complete system-operation coverage or unanimous formal approval.",
+    "note": "Historical trace_call agrees on every captured native build, including Erigon 3.7.0, which ships the end-of-block history boundary from #24056 (merged 2026-09-18). Two differences remain outside trace_call, both captured and both with an open fix. Besu block replay skips the block\u2019s pre-block system calls, so the mined beacon-root and history reads see the parent\u2019s values (Besu #10953). Erigon\u2019s historical trace_callMany read the next block\u2019s system writes at block 55; #24293 fixed it on main and the development build now agrees. The stricter Harmonized milestone is also blocked by schema-invalid beacon-call-55 responses from Besu and Nethermind 2.0.0: the beacon-roots contract REVERTs and both omit the REVERT frame result that H09 requires; Nethermind\u2019s development build keeps it since #13981. This records agreement on the checked block boundary, not complete system-operation coverage or unanimous formal approval.",
     "sources": [
       {
         "label": "Erigon #24056: read account state at the end of the requested block",

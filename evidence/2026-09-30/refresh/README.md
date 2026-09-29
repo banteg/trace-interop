@@ -53,3 +53,5 @@ uv run python scripts/run_matrix.py --reproduce-lock evidence/2026-09-30/refresh
 Rebuild the recorded clean Geth source image if the local image is absent, following [the usage guide](../../../docs/usage.md). The matrix command exits nonzero for the two retained incomplete scenarios; this does not turn captured observation placeholders into conformance verdicts.
 
 [validation.json](validation.json) records checks against the selected evidence and generated assessment.
+
+[Cleanup verification](cleanup.json): removed the 654 MiB task workspace/cache and rebuilt development adapters/simulator; no test containers or anonymous volumes remained. The archive Reth process retained PID `1213964`, and unrelated Docker services were unchanged. Published base images and pre-existing source-built Geth cache remain available for reproduction.

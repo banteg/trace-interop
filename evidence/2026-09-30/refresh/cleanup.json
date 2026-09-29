@@ -1,0 +1,17 @@
+{
+  "host": "fedora",
+  "task_workspace": "/home/banteg/dev/trace-eval.gIIEPnUn",
+  "workspace_removed": true,
+  "removed_adapter_tags": [
+    "hive/clients/besu_development:latest",
+    "hive/clients/erigon_development:latest",
+    "hive/clients/nethermind_development:latest",
+    "hive/simulators/ethereum/rpc-compat:latest"
+  ],
+  "task_client_containers_remaining": 0,
+  "anonymous_volumes_remaining": 0,
+  "archive_reth_pid_before": 1213964,
+  "archive_reth_pid_after": 1213964,
+  "existing_user_containers_unchanged": true,
+  "retained": "Published native client images and pre-existing Geth image/cache; no global prune."
+}

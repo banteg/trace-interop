@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `809` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Besu · 26.9-develop · 3cbf077c](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Erigon · 3.8.0-dev · 85e1ca92](../../clients/erigon_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `809` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Nethermind · 2.2.0-preview · f69690c5](../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -36,7 +36,7 @@
 }
 ```
 
-**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. value is affordable but upfront gas plus value is not
 - Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0xde0b6b3a7640000'}, 'result': {'gasUsed': '0x0', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under

@@ -2,47 +2,47 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 689,
+        "held": 691,
         "violated": 0
       },
       "anvil_release": {
-        "held": 744,
+        "held": 746,
         "violated": 0
       },
       "besu_development": {
-        "held": 574,
+        "held": 579,
         "violated": 1
       },
       "besu_release": {
-        "held": 574,
+        "held": 579,
         "violated": 1
       },
       "erigon_development": {
-        "held": 709,
-        "violated": 0
-      },
-      "erigon_release": {
-        "held": 722,
-        "violated": 0
-      },
-      "go-ethereum_trace": {
         "held": 714,
         "violated": 0
       },
+      "erigon_release": {
+        "held": 729,
+        "violated": 0
+      },
+      "go-ethereum_trace": {
+        "held": 719,
+        "violated": 0
+      },
       "nethermind_development": {
-        "held": 724,
+        "held": 731,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 724,
+        "held": 729,
         "violated": 0
       },
       "reth_development": {
-        "held": 853,
+        "held": 860,
         "violated": 0
       },
       "reth_release": {
-        "held": 853,
+        "held": 860,
         "violated": 0
       }
     },
@@ -56,39 +56,39 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 1036,
+        "held": 1046,
         "violated": 0
       },
       "besu_release": {
-        "held": 1036,
+        "held": 1046,
         "violated": 0
       },
       "erigon_development": {
-        "held": 1389,
+        "held": 1399,
         "violated": 0
       },
       "erigon_release": {
-        "held": 1295,
+        "held": 1302,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 1389,
+        "held": 1399,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 1433,
+        "held": 1443,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 1425,
+        "held": 1438,
         "violated": 0
       },
       "reth_development": {
-        "held": 1358,
+        "held": 1362,
         "violated": 0
       },
       "reth_release": {
-        "held": 1358,
+        "held": 1362,
         "violated": 0
       }
     },
@@ -102,39 +102,39 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 141,
+        "held": 143,
         "violated": 3
       },
       "besu_release": {
-        "held": 141,
+        "held": 143,
         "violated": 3
       },
       "erigon_development": {
-        "held": 126,
+        "held": 128,
         "violated": 0
       },
       "erigon_release": {
-        "held": 149,
+        "held": 151,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 125,
+        "held": 127,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 134,
+        "held": 136,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 137,
+        "held": 139,
         "violated": 0
       },
       "reth_development": {
-        "held": 135,
+        "held": 137,
         "violated": 0
       },
       "reth_release": {
-        "held": 135,
+        "held": 137,
         "violated": 0
       }
     },
@@ -358,47 +358,47 @@
     },
     "L09": {
       "anvil_development": {
-        "held": 491,
+        "held": 492,
         "violated": 0
       },
       "anvil_release": {
-        "held": 446,
+        "held": 447,
         "violated": 45
       },
       "besu_development": {
-        "held": 236,
+        "held": 237,
         "violated": 0
       },
       "besu_release": {
-        "held": 236,
+        "held": 237,
         "violated": 0
       },
       "erigon_development": {
-        "held": 389,
+        "held": 390,
         "violated": 0
       },
       "erigon_release": {
-        "held": 171,
+        "held": 173,
         "violated": 185
       },
       "go-ethereum_trace": {
-        "held": 389,
+        "held": 390,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 389,
+        "held": 390,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 333,
+        "held": 334,
         "violated": 0
       },
       "reth_development": {
-        "held": 493,
+        "held": 495,
         "violated": 0
       },
       "reth_release": {
-        "held": 493,
+        "held": 495,
         "violated": 0
       }
     },
@@ -432,7 +432,7 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 78,
+        "held": 75,
         "violated": 0
       },
       "nethermind_release": {
@@ -478,7 +478,7 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 11,
+        "held": 10,
         "violated": 0
       },
       "nethermind_release": {
@@ -613,7 +613,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -635,7 +635,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -646,7 +646,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -657,7 +657,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -7758,7 +7758,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7770,7 +7770,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7782,7 +7782,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7794,7 +7794,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7806,7 +7806,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7818,7 +7818,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7830,7 +7830,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7842,7 +7842,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7854,7 +7854,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -7866,7 +7866,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+287f54f0"
+      "version": "2.2.0-preview+f69690c5"
     },
     {
       "cases": [
@@ -10807,7 +10807,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -10820,7 +10820,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -10833,7 +10833,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -10848,7 +10848,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [

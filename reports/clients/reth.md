@@ -8,8 +8,8 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-09-29](../../evidence/2026-09-29/refresh/initial/manifest.json) |
-| `2.7.0` | [`60aeb532`](https://github.com/paradigmxyz/reth/commit/60aeb53225c2ed80410c01bcfd922791480a31d2) | 2026-09-28 | [2026-09-29](../../evidence/2026-09-29/refresh/initial/manifest.json) |
+| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-09-29](../../evidence/2026-09-30/refresh/initial/manifest.json) |
+| `2.7.0` | [`60aeb532`](https://github.com/paradigmxyz/reth/commit/60aeb53225c2ed80410c01bcfd922791480a31d2) | 2026-09-28 | [2026-09-29](../../evidence/2026-09-30/refresh/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

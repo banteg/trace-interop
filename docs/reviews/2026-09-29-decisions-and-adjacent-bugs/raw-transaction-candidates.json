@@ -1,0 +1,80 @@
+{
+  "chain_id": "0xc72dd9d5e883e",
+  "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+  "fixture": "fixtures/corpora/raw-validation.json",
+  "execution_status": "Requests generated and signatures checked; Besu/Nethermind RPCs not run.",
+  "cases": [
+    {
+      "name": "valid-low-s-control",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "expected": "Execute the frozen marker transaction with a normal server cap."
+    },
+    {
+      "name": "high-s-signature",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "expected": "Reject the Homestead-invalid original signature, not trace a replacement signature."
+    },
+    {
+      "name": "signed-gas-above-server-cap",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "client_configuration": {
+        "besu": "--rpc-gas-cap=30000",
+        "nethermind": "--JsonRpc.GasCap=30000"
+      },
+      "expected": "Reject the signed gas limit of 100000; do not execute with 30000 gas."
+    },
+    {
+      "name": "type-4-empty-authorization-list",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f86f870c72dd9d5e883e0a01842da282a9830186a09400000000000000000000000000000000000010020180c0c080a01afd52c97780621c27da78bb2637b9607fbd74a1e1511a5c77a8271361c25e77a035c83bd0944394b6a9165b3d88787af70f8b593aba5f3fc1c8e0f7e98ace0281",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "expected": "Reject the empty type-4 authorization list; do not downgrade it to type 2."
+    }
+  ]
+}

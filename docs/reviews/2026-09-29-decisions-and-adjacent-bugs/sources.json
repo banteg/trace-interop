@@ -1,0 +1,569 @@
+{
+  "sources": [
+    {
+      "repository": "paradigmxyz/reth",
+      "revision": "098ca328fee57ac866503e15a6dee332b7ef2257",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "snapshot": "upstream-heads/paradigmxyz/098ca328fee5/crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "sha256": "073501405072f6d3f06ea97b12e727d3f2860179422ea3c05b8c6c1c73251be2"
+    },
+    {
+      "repository": "paradigmxyz/reth",
+      "revision": "098ca328fee57ac866503e15a6dee332b7ef2257",
+      "path": "Cargo.lock",
+      "snapshot": "upstream-heads/paradigmxyz/098ca328fee5/Cargo.lock",
+      "sha256": "bf4a4c297a9e0d4f7ac4f60076a6a8ebff1709c51129dac7c579cbef18a0581b"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "4aae97e671e54f70938f5924f2222663a766d166",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "snapshot": "upstream-heads/NethermindEth/4aae97e671e5/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "sha256": "7921abe74a5d6015d3a237f4b901596d8220cbfd7ef8fe5a4bef5bfb1c6404d2"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "4aae97e671e54f70938f5924f2222663a766d166",
+      "path": "src/Nethermind/Nethermind.Core/TransactionExtensions.cs",
+      "snapshot": "upstream-heads/NethermindEth/4aae97e671e5/src/Nethermind/Nethermind.Core/TransactionExtensions.cs",
+      "sha256": "e9f7773aa515c0a56b4a9f2664f957c6000d3cc509ad690bc93d6fd1079b973e"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "4aae97e671e54f70938f5924f2222663a766d166",
+      "path": "src/Nethermind/Nethermind.Evm/TransactionProcessing/TraceTransactionProcessorAdapter.cs",
+      "snapshot": "upstream-heads/NethermindEth/4aae97e671e5/src/Nethermind/Nethermind.Evm/TransactionProcessing/TraceTransactionProcessorAdapter.cs",
+      "sha256": "ce271cae93b7689408446f0253780c7d6e72281cb78874f002a2c431c006678f"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "4aae97e671e54f70938f5924f2222663a766d166",
+      "path": "src/Nethermind/Nethermind.Evm/TransactionProcessing/TransactionProcessor.cs",
+      "snapshot": "upstream-heads/NethermindEth/4aae97e671e5/src/Nethermind/Nethermind.Evm/TransactionProcessing/TransactionProcessor.cs",
+      "sha256": "e49142721f088199adc1aa80d0da0cc98fc551c6d65235ae0b8a4037647808d0"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceRawTransaction.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceRawTransaction.java",
+      "sha256": "1063c43b1cfda04e1ffdc962e018dfc29f80ca26bd8c44f3eccfd619397c2f79"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "sha256": "f3689ebd4632a27e11c534dfa0ef49fba7bbc680adff2f95a219e70a4618f473"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "sha256": "6d7e65eeac2da24c81b0cc3151f586eb0da771f1bbcdacc4851912eb8d7e7f52"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/CodeDelegationTransactionDecoder.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/CodeDelegationTransactionDecoder.java",
+      "sha256": "fb250f86403a24894351aafb6c9be47da329edd686121614ace6fb30a829a7e8"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/Transaction.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/Transaction.java",
+      "sha256": "f3157c7f9893a1f4f56161faadd1da583498700147d918efc23d4f8e913537fc"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/util/DomainObjectDecodeUtils.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/util/DomainObjectDecodeUtils.java",
+      "sha256": "2f3d36c044528375bb97c6fc3225927af9d587b56205b67760716c78ac9bd283"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/TransactionDecoder.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/TransactionDecoder.java",
+      "sha256": "7b5395cf37ff83c1c74bb5de9ba4e3f361d6d24bd9cd563a0e758fbd1253029d"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/FrontierTransactionDecoder.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/FrontierTransactionDecoder.java",
+      "sha256": "52667463d7ff71933f139b7a4c3cd6678395abab82bfce84d15d0878b652aa9d"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "crypto/algorithms/src/main/java/org/hyperledger/besu/crypto/SECPSignature.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/crypto/algorithms/src/main/java/org/hyperledger/besu/crypto/SECPSignature.java",
+      "sha256": "c6afd11f329e13dca855cbec76e502f7fb746ac5452a66bc2acac00d5d881a2b"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "3cbf077c5d71acfcdc02a1292c9bba9416b40672",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/MainnetTransactionValidator.java",
+      "snapshot": "upstream-heads/besu-eth/3cbf077c5d71/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/MainnetTransactionValidator.java",
+      "sha256": "ebdf6cc41f21a5047c0940c898ab20449a1d6c7787d1d9019f60cb0e937deb90"
+    }
+  ],
+  "inspector_tag": {
+    "sha": "25203b21dd367ac357251f1172314371eb3d959b",
+    "type": "commit",
+    "url": "https://api.github.com/repos/paradigmxyz/revm-inspectors/git/commits/25203b21dd367ac357251f1172314371eb3d959b"
+  },
+  "source_cache_root": "runs/decision-review-2026-09-29",
+  "retained_source_snapshots": [
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityLikeTxTracer.cs",
+      "sha256": "615fcf8ffd475a73e6a937105aeb79fd403b05fa6241984f72681a63eeb82c1a",
+      "origin": "retained"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmOperationTraceConverter.cs",
+      "sha256": "fa047a0d0dea09ec09fcd5728d672814f1bda5ba5a43d35ff5108181cb4b4b6f",
+      "origin": "retained"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.Core/TransactionExtensions.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.Core/TransactionExtensions.cs",
+      "sha256": "d3df04cb465668a3dcc842f33e5bc7a16d2420cdc1dcd03edf1c3275c2b24852",
+      "origin": "https://raw.githubusercontent.com/NethermindEth/nethermind/287f54f00b29d38935b33c7e7a3d7317d6aa884a/src/Nethermind/Nethermind.Core/TransactionExtensions.cs"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ParityReplayEnvelopeWriter.cs",
+      "sha256": "c42289bbe30777f12fcea0a161228614a57398ae35d4ed7e3206f44adfde59eb",
+      "origin": "retained"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "sha256": "b8b15863ac857ee35db47d02bfd24a927e1da20596b63f3127cebcc25028f4d5",
+      "origin": "retained"
+    },
+    {
+      "repository": "NethermindEth/nethermind",
+      "revision": "287f54f00b29d38935b33c7e7a3d7317d6aa884a",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs",
+      "snapshot": "sources/NethermindEth/287f54f00b29/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs",
+      "sha256": "2995ace2eb75f1e5fbe8103bd0b9fc14311f2e45f9add81d12c8908337aa5ce3",
+      "origin": "retained"
+    },
+    {
+      "repository": "banteg/go-ethereum",
+      "revision": "e26833e3322f918c365f74be6971061c41736fc5",
+      "path": "eth/tracers/trace_capture.go",
+      "snapshot": "sources/banteg/e26833e3322f/eth/tracers/trace_capture.go",
+      "sha256": "ef976cb073af657ea38ba35435e601be0624e6a4885f01283a019e98c765785c",
+      "origin": "retained"
+    },
+    {
+      "repository": "banteg/go-ethereum",
+      "revision": "e26833e3322f918c365f74be6971061c41736fc5",
+      "path": "eth/tracers/trace_namespace.go",
+      "snapshot": "sources/banteg/e26833e3322f/eth/tracers/trace_namespace.go",
+      "sha256": "dfa7137efa4a5df03c855062c193f29eee4db8fa42708fb1fb881fb32967acfe",
+      "origin": "retained"
+    },
+    {
+      "repository": "banteg/go-ethereum",
+      "revision": "e26833e3322f918c365f74be6971061c41736fc5",
+      "path": "internal/ethapi/transaction_args.go",
+      "snapshot": "sources/banteg/e26833e3322f/internal/ethapi/transaction_args.go",
+      "sha256": "4b130e145951ce405b0ceebd1e3ac86ae7ba284f66b45c83f407d850d451dde2",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "crypto/algorithms/src/main/java/org/hyperledger/besu/crypto/SECPSignature.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/crypto/algorithms/src/main/java/org/hyperledger/besu/crypto/SECPSignature.java",
+      "sha256": "c6afd11f329e13dca855cbec76e502f7fb746ac5452a66bc2acac00d5d881a2b",
+      "origin": "https://raw.githubusercontent.com/besu-eth/besu/c197ac57d1c4c132f68a9e3c3e056f360b417a93/crypto/algorithms/src/main/java/org/hyperledger/besu/crypto/SECPSignature.java"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceCall.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceCall.java",
+      "sha256": "e489003aaa5208e351e49d0ab521bccd4f5d9a9a742e77c8d351ab91569d41cb",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java",
+      "sha256": "19c7c0b97d4f341747c4daf1658b8ffa91c5c7c597d28f51433aabe505407fc0",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "sha256": "bcd49f29649a3c8c23fb1761576730590c49b074c8661d5b57c6002181623bfa",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceGet.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceGet.java",
+      "sha256": "60f383885d776739dc57f372289930d00f0d68141609025cb24d031477f178d6",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceRawTransaction.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceRawTransaction.java",
+      "sha256": "1063c43b1cfda04e1ffdc962e018dfc29f80ca26bd8c44f3eccfd619397c2f79",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java",
+      "sha256": "b68d6a364800bf9530ae10b9815348279a60c6031cc1c7e91dcc2c8bf2537f14",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+      "sha256": "c1df587c85d624a0a8942a4765e4646977b9a32ff90606d17edc126890a5eada",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/diff/StateTraceGenerator.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/diff/StateTraceGenerator.java",
+      "sha256": "947d884c089ed7b4fb2142634621b68800f095630986de52882d46f99fc3e554",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/flat/FlatTraceGenerator.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/flat/FlatTraceGenerator.java",
+      "sha256": "c0e8188218798b3258abe9a8a0e159cfb777282722ed8ef73d866511d1adc8ff",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/vm/VmTraceGenerator.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/results/tracing/vm/VmTraceGenerator.java",
+      "sha256": "a5857a3a0a4e911a18e1a979c49c6dd2d26f47421d968e27281c37ea9ba6a39f",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/util/DomainObjectDecodeUtils.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/util/DomainObjectDecodeUtils.java",
+      "sha256": "2f3d36c044528375bb97c6fc3225927af9d587b56205b67760716c78ac9bd283",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/Transaction.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/Transaction.java",
+      "sha256": "de4e1f45b5592a692570f8213cc125d8ccf1994399a4b4577259d2eec7da5dbb",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/FrontierTransactionDecoder.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/FrontierTransactionDecoder.java",
+      "sha256": "52667463d7ff71933f139b7a4c3cd6678395abab82bfce84d15d0878b652aa9d",
+      "origin": "https://raw.githubusercontent.com/besu-eth/besu/c197ac57d1c4c132f68a9e3c3e056f360b417a93/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/FrontierTransactionDecoder.java"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/TransactionDecoder.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/core/encoding/TransactionDecoder.java",
+      "sha256": "7b5395cf37ff83c1c74bb5de9ba4e3f361d6d24bd9cd563a0e758fbd1253029d",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/MainnetTransactionValidator.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/MainnetTransactionValidator.java",
+      "sha256": "ebdf6cc41f21a5047c0940c898ab20449a1d6c7787d1d9019f60cb0e937deb90",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "sha256": "f3689ebd4632a27e11c534dfa0ef49fba7bbc680adff2f95a219e70a4618f473",
+      "origin": "retained"
+    },
+    {
+      "repository": "besu-eth/besu",
+      "revision": "c197ac57d1c4c132f68a9e3c3e056f360b417a93",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "snapshot": "sources/besu-eth/c197ac57d1c4/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "sha256": "6d7e65eeac2da24c81b0cc3151f586eb0da771f1bbcdacc4851912eb8d7e7f52",
+      "origin": "retained"
+    },
+    {
+      "repository": "erigontech/erigon",
+      "revision": "a2a192535bb96246af6d537ea846e2350e484678",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "snapshot": "sources/erigontech/a2a192535bb9/rpc/jsonrpc/trace_adhoc.go",
+      "sha256": "3a7b293e374025100fe0a6b9ff117e6baf79617ab98a72ec425c7951ef59d50e",
+      "origin": "retained"
+    },
+    {
+      "repository": "erigontech/erigon",
+      "revision": "a2a192535bb96246af6d537ea846e2350e484678",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "snapshot": "sources/erigontech/a2a192535bb9/rpc/jsonrpc/trace_filtering.go",
+      "sha256": "963a20cacf8b3411f05bb632423c4f47b88dd85bf4c7ac077c87e62e0781507c",
+      "origin": "retained"
+    },
+    {
+      "repository": "foundry-rs/foundry",
+      "revision": "009896955c0e5a49fbf76a1976ce522795f41183",
+      "path": "crates/anvil/src/eth/api.rs",
+      "snapshot": "sources/foundry-rs/009896955c0e/crates/anvil/src/eth/api.rs",
+      "sha256": "bea8ba45ffdf45bf4e5a3037cad084aaf2e1afb362df63be25451fead078cefb",
+      "origin": "retained"
+    },
+    {
+      "repository": "foundry-rs/foundry",
+      "revision": "009896955c0e5a49fbf76a1976ce522795f41183",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "snapshot": "sources/foundry-rs/009896955c0e/crates/anvil/src/eth/backend/mem/mod.rs",
+      "sha256": "f6426eaf407523eb1bbef52d58c74225a6bb25fcf19a765a590345d90928af74",
+      "origin": "retained"
+    },
+    {
+      "repository": "foundry-rs/foundry",
+      "revision": "009896955c0e5a49fbf76a1976ce522795f41183",
+      "path": "crates/anvil/src/eth/backend/mem/storage.rs",
+      "snapshot": "sources/foundry-rs/009896955c0e/crates/anvil/src/eth/backend/mem/storage.rs",
+      "sha256": "0bda4f3f41a896e4c706f121087b62b5d0374c91c5466a32cf2196200a86e36d",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/account-state/src/account.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/account-state/src/account.rs",
+      "sha256": "726f6df76a8b003c26cda346174fbe0b4f02b13b53b719515673dd02c087560d",
+      "origin": "local Git object"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/account-state/src/state.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/account-state/src/state.rs",
+      "sha256": "3efe6b64f72c9424dd458971f2b2884a9fd3decbcf750980afcef974a5a8b698",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/evm/src/interpreter/mod.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/evm/src/interpreter/mod.rs",
+      "sha256": "97d4b9b932e1ebad83fe6b378d1f934a675b120ba6ca480f4162728105f4bda6",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/machine/src/executive.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/machine/src/executive.rs",
+      "sha256": "cfa379372c77fde330e056f68b179d5f10454770e4e3869b80fb660a79879db0",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/pod/src/account.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/pod/src/account.rs",
+      "sha256": "c51c314193ef83ef9a1e29b2e5cc8940055a7531e34f99ada81f526eb3d0f001",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/pod/src/state.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/pod/src/state.rs",
+      "sha256": "95190a17418142dd692997ef755be71be1f160173ab069d3cd80dd297c9c644e",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/src/client/client.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/src/client/client.rs",
+      "sha256": "e538d641339ce521a65c71eff95b6037c202aa4e6416a1ba57b6c01e32bc513a",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/trace/src/executive_tracer.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/trace/src/executive_tracer.rs",
+      "sha256": "28072b24f0cd3927df04054ac838f564c755a85f0cae9f7b67631ab3c79d44fd",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "ethcore/trace/src/types/filter.rs",
+      "snapshot": "sources/openethereum/55c90d401650/ethcore/trace/src/types/filter.rs",
+      "sha256": "6308b824700a6de20ecdc2f9c71075c97b8c16d48258e133ae0067bf0d18da0c",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "rpc/src/v1/impls/traces.rs",
+      "snapshot": "sources/openethereum/55c90d401650/rpc/src/v1/impls/traces.rs",
+      "sha256": "a1f35bf5b7253f3b146086cdfd14cbe081b422b215029f15d7a18943fea08688",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "rpc/src/v1/types/block_number.rs",
+      "snapshot": "sources/openethereum/55c90d401650/rpc/src/v1/types/block_number.rs",
+      "sha256": "b04759a87756088afd51d129f86be53048b56c10c19284fda20d82a7935e8a46",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "rpc/src/v1/types/index.rs",
+      "snapshot": "sources/openethereum/55c90d401650/rpc/src/v1/types/index.rs",
+      "sha256": "e65f563c2425b6833275ffa4ed17438c56006331fafedc7f7a5c7dc988082a8f",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "rpc/src/v1/types/trace.rs",
+      "snapshot": "sources/openethereum/55c90d401650/rpc/src/v1/types/trace.rs",
+      "sha256": "bb9034c8549f2f814e93eb07dde4ce026c307c2f87409929e32a3a67e4280599",
+      "origin": "retained"
+    },
+    {
+      "repository": "openethereum/parity-ethereum",
+      "revision": "55c90d4016505317034e3e98f699af07f5404b63",
+      "path": "rpc/src/v1/types/trace_filter.rs",
+      "snapshot": "sources/openethereum/55c90d401650/rpc/src/v1/types/trace_filter.rs",
+      "sha256": "6f9b296e11797178fc05f40084223858290465d9f00adc89644cf8546e301b8d",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/reth",
+      "revision": "60aeb53225c2ed80410c01bcfd922791480a31d2",
+      "path": "Cargo.lock",
+      "snapshot": "sources/paradigmxyz/60aeb53225c2/Cargo.lock",
+      "sha256": "68e2bb5e863d534f8d649a2dafa5c4d90b3d743baeac5aeccd4e324099dc34b8",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/reth",
+      "revision": "60aeb53225c2ed80410c01bcfd922791480a31d2",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "snapshot": "sources/paradigmxyz/60aeb53225c2/crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "sha256": "073501405072f6d3f06ea97b12e727d3f2860179422ea3c05b8c6c1c73251be2",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/reth",
+      "revision": "60aeb53225c2ed80410c01bcfd922791480a31d2",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "snapshot": "sources/paradigmxyz/60aeb53225c2/crates/rpc/rpc/src/trace.rs",
+      "sha256": "ddd40bcb7d10d3a3f219b927eba72586aa0f96c5395f9e685638519ccf724c4d",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/builder/parity.rs",
+      "snapshot": "sources/paradigmxyz/453c67d7ccdf/src/tracing/builder/parity.rs",
+      "sha256": "4d3ae5678361a678bf6c101e0f8e6585d53c6cad793071bbe7f0469bd85acf76",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "453c67d7ccdf51327c9e7687ac6ba0b8651e7f87",
+      "path": "src/tracing/mod.rs",
+      "snapshot": "sources/paradigmxyz/453c67d7ccdf/src/tracing/mod.rs",
+      "sha256": "2133f1d3042a165430b3ad1096e37f52b90b5e7499a45f4c2173d6e1e7c8d050",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "v0.44.0",
+      "path": "src/tracing/builder/parity.rs",
+      "snapshot": "sources/paradigmxyz/v0.44.0/src/tracing/builder/parity.rs",
+      "sha256": "d8e6b92bb34499fe9f01e7fdc3dc3b3172e65342dc0ee5f851dae39c60c5c0df",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "v0.44.0",
+      "path": "src/tracing/config.rs",
+      "snapshot": "sources/paradigmxyz/v0.44.0/src/tracing/config.rs",
+      "sha256": "208268e6fbee1482a202cfa7c39bed534293518c26da4f1cfecd81886aa07479",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "v0.44.0",
+      "path": "src/tracing/mod.rs",
+      "snapshot": "sources/paradigmxyz/v0.44.0/src/tracing/mod.rs",
+      "sha256": "7c5ffba3aaf9a1aedad05eb7a731c99b6da389ae45636cb2ffb1bf0a3df2e229",
+      "origin": "retained"
+    },
+    {
+      "repository": "paradigmxyz/revm-inspectors",
+      "revision": "v0.44.0",
+      "path": "src/tracing/types.rs",
+      "snapshot": "sources/paradigmxyz/v0.44.0/src/tracing/types.rs",
+      "sha256": "1e8a4c311f28d75dc803bd7a89618597166dbe62c44ebf74cb8d027200323c2e",
+      "origin": "retained"
+    }
+  ],
+  "alloy_evm_0_39_0_call_source": {
+    "path": "src/call.rs",
+    "registry_checksum": "7b6bd5f7e5ce9858bac99275e3f548c3b63bb3e5806da0142dc0b2f518d3ec4a",
+    "source_sha256": "e5311e87dc894830a55537f70b0e66f5a5a54492dbdc5517c4382f93f29ec782"
+  }
+}

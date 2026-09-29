@@ -1,0 +1,578 @@
+{
+  "client": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "reth/v2.6.0-73a3a00/x86_64-unknown-linux-gnu"
+  },
+  "chain": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": "0x1"
+  },
+  "anchor": {
+    "number": "0x15ef3c0",
+    "hash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+    "gasLimit": "0x2aea540",
+    "baseFeePerGas": "0xe49b92d"
+  },
+  "latest_anchor": {
+    "number": "0x18e0713",
+    "hash": "0x895a5a4ffcdf78157afeefe5ed6d8b4b22c30d2eeeae9b6aadd66db46895b15c",
+    "gasLimit": "0x3938700",
+    "baseFeePerGas": "0x37fea843"
+  },
+  "signature_control": {
+    "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+    "low_s": "0x68ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+    "high_s": "0x9711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43"
+  },
+  "records": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "web3_clientVersion",
+        "params": []
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"reth/v2.6.0-73a3a00/x86_64-unknown-linux-gnu\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": "reth/v2.6.0-73a3a00/x86_64-unknown-linux-gnu"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "eth_chainId",
+        "params": []
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x1\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": "0x1"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000"
+          },
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":4,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000013496\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "result": "0x0000000000000000000000000000000000000000000000000000000000013496"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000"
+          },
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":5,\"result\":{\"output\":\"0x0000000000000000000000000000000000000000000000000000000000013496\",\"stateDiff\":null,\"trace\":[{\"type\":\"call\",\"action\":{\"from\":\"0x0000000000000000000000000000000000001234\",\"callType\":\"call\",\"gas\":\"0x13498\",\"input\":\"0x\",\"to\":\"0x0000000000000000000000000000000000005678\",\"value\":\"0x0\"},\"result\":{\"gasUsed\":\"0x11\",\"output\":\"0x0000000000000000000000000000000000000000000000000000000000013496\"},\"subtraces\":0,\"traceAddress\":[]}],\"vmTrace\":null}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "result": {
+          "output": "0x0000000000000000000000000000000000000000000000000000000000013496",
+          "stateDiff": null,
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001234",
+                "callType": "call",
+                "gas": "0x13498",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000005678",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x11",
+                "output": "0x0000000000000000000000000000000000000000000000000000000000013496"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000",
+            "gas": "0x186a0"
+          },
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":6,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000013496\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "result": "0x0000000000000000000000000000000000000000000000000000000000013496"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000",
+            "gas": "0x186a0"
+          },
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":7,\"result\":{\"output\":\"0x0000000000000000000000000000000000000000000000000000000000013496\",\"stateDiff\":null,\"trace\":[{\"type\":\"call\",\"action\":{\"from\":\"0x0000000000000000000000000000000000001234\",\"callType\":\"call\",\"gas\":\"0x13498\",\"input\":\"0x\",\"to\":\"0x0000000000000000000000000000000000005678\",\"value\":\"0x0\"},\"result\":{\"gasUsed\":\"0x11\",\"output\":\"0x0000000000000000000000000000000000000000000000000000000000013496\"},\"subtraces\":0,\"traceAddress\":[]}],\"vmTrace\":null}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "result": {
+          "output": "0x0000000000000000000000000000000000000000000000000000000000013496",
+          "stateDiff": null,
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001234",
+                "callType": "call",
+                "gas": "0x13498",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000005678",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x11",
+                "output": "0x0000000000000000000000000000000000000000000000000000000000013496"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000",
+            "gas": "0xf4240"
+          },
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":8,\"result\":\"0x00000000000000000000000000000000000000000000000000000000000ef036\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "result": "0x00000000000000000000000000000000000000000000000000000000000ef036"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000",
+            "gas": "0xf4240"
+          },
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0xe368c631c74a82c3043e6d44c4bef6e6139a6501b39c7700c2552554d10e6c3b",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0x16345785d8a0000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":9,\"result\":{\"output\":\"0x00000000000000000000000000000000000000000000000000000000000ef036\",\"stateDiff\":null,\"trace\":[{\"type\":\"call\",\"action\":{\"from\":\"0x0000000000000000000000000000000000001234\",\"callType\":\"call\",\"gas\":\"0xef038\",\"input\":\"0x\",\"to\":\"0x0000000000000000000000000000000000005678\",\"value\":\"0x0\"},\"result\":{\"gasUsed\":\"0x11\",\"output\":\"0x00000000000000000000000000000000000000000000000000000000000ef036\"},\"subtraces\":0,\"traceAddress\":[]}],\"vmTrace\":null}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "result": {
+          "output": "0x00000000000000000000000000000000000000000000000000000000000ef036",
+          "stateDiff": null,
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001234",
+                "callType": "call",
+                "gas": "0xef038",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000005678",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x11",
+                "output": "0x00000000000000000000000000000000000000000000000000000000000ef036"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0x0"
+          },
+          {
+            "blockHash": "0x895a5a4ffcdf78157afeefe5ed6d8b4b22c30d2eeeae9b6aadd66db46895b15c",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0xd3c21bcecceda1000000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":11,\"result\":\"0x0000000000000000000000000000000000000000000000000000000002fa9e76\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "result": "0x0000000000000000000000000000000000000000000000000000000002fa9e76"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 12,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0x895a5a4ffcdf78157afeefe5ed6d8b4b22c30d2eeeae9b6aadd66db46895b15c",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0xd3c21bcecceda1000000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":12,\"result\":{\"output\":\"0x0000000000000000000000000000000000000000000000000000000002fa9e76\",\"stateDiff\":null,\"trace\":[{\"type\":\"call\",\"action\":{\"from\":\"0x0000000000000000000000000000000000001234\",\"callType\":\"call\",\"gas\":\"0x2fa9e78\",\"input\":\"0x\",\"to\":\"0x0000000000000000000000000000000000005678\",\"value\":\"0x0\"},\"result\":{\"gasUsed\":\"0x11\",\"output\":\"0x0000000000000000000000000000000000000000000000000000000002fa9e76\"},\"subtraces\":0,\"traceAddress\":[]}],\"vmTrace\":null}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 12,
+        "result": {
+          "output": "0x0000000000000000000000000000000000000000000000000000000002fa9e76",
+          "stateDiff": null,
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001234",
+                "callType": "call",
+                "gas": "0x2fa9e78",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000005678",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x11",
+                "output": "0x0000000000000000000000000000000000000000000000000000000002fa9e76"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 13,
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000"
+          },
+          {
+            "blockHash": "0x895a5a4ffcdf78157afeefe5ed6d8b4b22c30d2eeeae9b6aadd66db46895b15c",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0xd3c21bcecceda1000000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":13,\"result\":\"0x00000000000000000000000000000000000000000000000000000000039334f6\"}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 13,
+        "result": "0x00000000000000000000000000000000000000000000000000000000039334f6"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 14,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0000000000000000000000000000000000001234",
+            "to": "0x0000000000000000000000000000000000005678",
+            "gasPrice": "0xe8d4a51000"
+          },
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0x895a5a4ffcdf78157afeefe5ed6d8b4b22c30d2eeeae9b6aadd66db46895b15c",
+            "requireCanonical": true
+          },
+          {
+            "0x0000000000000000000000000000000000001234": {
+              "balance": "0xd3c21bcecceda1000000",
+              "nonce": "0x0",
+              "code": "0x"
+            },
+            "0x0000000000000000000000000000000000005678": {
+              "code": "0x5a60005260206000f3"
+            }
+          }
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":14,\"result\":{\"output\":\"0x00000000000000000000000000000000000000000000000000000000039334f6\",\"stateDiff\":null,\"trace\":[{\"type\":\"call\",\"action\":{\"from\":\"0x0000000000000000000000000000000000001234\",\"callType\":\"call\",\"gas\":\"0x39334f8\",\"input\":\"0x\",\"to\":\"0x0000000000000000000000000000000000005678\",\"value\":\"0x0\"},\"result\":{\"gasUsed\":\"0x11\",\"output\":\"0x00000000000000000000000000000000000000000000000000000000039334f6\"},\"subtraces\":0,\"traceAddress\":[]}],\"vmTrace\":null}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 14,
+        "result": {
+          "output": "0x00000000000000000000000000000000000000000000000000000000039334f6",
+          "stateDiff": null,
+          "trace": [
+            {
+              "type": "call",
+              "action": {
+                "from": "0x0000000000000000000000000000000000001234",
+                "callType": "call",
+                "gas": "0x39334f8",
+                "input": "0x",
+                "to": "0x0000000000000000000000000000000000005678",
+                "value": "0x0"
+              },
+              "result": {
+                "gasUsed": "0x11",
+                "output": "0x00000000000000000000000000000000000000000000000000000000039334f6"
+              },
+              "subtraces": 0,
+              "traceAddress": []
+            }
+          ],
+          "vmTrace": null
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 15,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":15,\"error\":{\"code\":-32000,\"message\":\"invalid chain ID\"}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 15,
+        "error": {
+          "code": -32000,
+          "message": "invalid chain ID"
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 16,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "raw_response": "{\"jsonrpc\":\"2.0\",\"id\":16,\"error\":{\"code\":-32602,\"message\":\"invalid transaction signature\"}}",
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 16,
+        "error": {
+          "code": -32602,
+          "message": "invalid transaction signature"
+        }
+      }
+    }
+  ],
+  "block_control_note": "Anchor headers are summarized above; complete raw header responses remain in runs/decision-review-2026-09-29/local-reth-probes.json."
+}

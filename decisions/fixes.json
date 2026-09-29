@@ -2040,9 +2040,16 @@
         "H23"
       ],
       "note": "trace_filter matches a failed CREATE only by its creator, since #13981 removed its address from the result",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:19:22Z",
+      "uptake": {
+        "merge_commit": "03e555b0931df8541138f08e99d5150360ffe4a3",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14040",
@@ -2052,9 +2059,16 @@
         "H06"
       ],
       "note": "trace_filter and the TraceStore plugin return -32602 for a bound past the head, sharing eth_getLogs' check and message",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:19:54Z",
+      "uptake": {
+        "merge_commit": "687b530b837bed30f30ad20d26b68233efc81fee",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14045",
@@ -2067,9 +2081,16 @@
         "H15"
       ],
       "note": "trace_call and each trace_callMany call priced at zero run with BASEFEE 0 as eth_call does; callMany sets it per call, so free/priced/free sees 0/B/0; blob-fee items remain",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:20:20Z",
+      "uptake": {
+        "merge_commit": "d49fd0cda02a7fbace6c37c0d2f03238bee47ba9",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14046",
@@ -2082,9 +2103,16 @@
         "H15"
       ],
       "note": "trace_call and trace_callMany run eth_call's tip-above-cap check, so a tip-only request is rejected for the tip above the defaulted zero cap (code stays -32000); blob-fee items remain",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:23:07Z",
+      "uptake": {
+        "merge_commit": "25b7ce3576748e9b55b1d89900036705b4f45076",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14048",
@@ -2112,9 +2140,16 @@
         "H14"
       ],
       "note": "an explicit null blobVersionedHashes, authorizationList or other type discriminator no longer selects a transaction type in call objects, shared by eth_call, eth_estimateGas, eth_simulateV1 and trace_call",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:21:44Z",
+      "uptake": {
+        "merge_commit": "568cf64ece3828f19c0288ef99b2d3e441eef3bc",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14050",
@@ -2127,9 +2162,16 @@
         "H14"
       ],
       "note": "trace_filter and the TraceStore plugin return -32602 for an unknown filter member or a negative after or count; data/input agreement and the unsigned-call codes remain",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T17:22:40Z",
+      "uptake": {
+        "merge_commit": "7103a1b0bbac38adb7b44a1e4d1c267861d693aa",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     }
   ]
 }

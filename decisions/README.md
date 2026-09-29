@@ -30,7 +30,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 132** c
 | [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·👍 | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️🛠️✅🛠️✅⚠️ |
 | [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡🛠️✅—✅ | 🟡✅✅✅✅✅ |
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
-| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍·👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅🛠️🛠️✅🟡 |
+| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍👍👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅🛠️🛠️✅🟡 |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🛠️ | 🛠️✅✅⚠️✅🛠️ |

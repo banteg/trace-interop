@@ -349,6 +349,9 @@ def execute(args):
             if request['method']!='trace_filter' or not request.get('params') or not isinstance(request['params'][0],dict):
                 continue
             filt=request['params'][0]
+            # A blockHash selection names one block, compared with its numeric twin (H33); its bounds scan nothing.
+            if filt.get('blockHash') is not None:
+                continue
             def bound(value):
                 if value in ['latest','safe','finalized',None]:return int(head['number'],16)
                 if value=='earliest':return 0

@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **77 of 128** client decisions agree with the draft (+1 since the previous capture). 10 more have a submitted fix, and **33 differ with no fix yet**: 21 on converged decisions and 12 on decisions still under review. 27 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **77 of 128** client decisions agree with the draft (+1 since the previous capture). 11 more have a submitted fix, and **32 differ with no fix yet**: 20 on converged decisions and 12 on decisions still under review. 27 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **77 of 128** c
 | [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·· | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️🛠️✅🛠️✅⚠️ |
 | [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡🛠️✅—✅ | 🟡✅✅✅✅✅ |
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
-| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍·· | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️⚠️🛠️—🟡 | ⚠️✅⚠️🛠️✅🟡 |
+| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍·· | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅🛠️🛠️✅🟡 |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🛠️ | 🛠️✅✅⚠️✅🛠️ |

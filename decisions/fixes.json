@@ -793,10 +793,19 @@
       "partial": [
         "H26"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage"
+      "merged_at": "2026-09-29T09:23:05Z",
+      "note": "storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage",
+      "uptake": {
+        "merge_commit": "1efe6aa831c5200898edb8f7ca706707888bc6f2",
+        "releases": [],
+        "client": null,
+        "builds": {
+          "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
+          "3d592ece6de8c4559987416a544fc215fd6d6921": false
+        }
+      }
     },
     {
       "url": "https://github.com/bluealloy/revm/pull/3833",
@@ -1085,10 +1094,17 @@
       "decisions": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "needs erigontech/rpc-tests#612 released and RPC_VERSION bumped for its integration tests"
+      "merged_at": "2026-09-29T09:33:22Z",
+      "note": "needs erigontech/rpc-tests#612 released and RPC_VERSION bumped for its integration tests",
+      "uptake": {
+        "merge_commit": "bbdba5f0d1504dc713fe454abbaa0c88cfd00572",
+        "builds": {
+          "a2a192535bb96246af6d537ea846e2350e484678": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24345",
@@ -1980,6 +1996,18 @@
         "H06"
       ],
       "note": "trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head still differs in its code",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14039",
+      "title": "fix(rpc): match a failed CREATE in trace_filter only by its creator",
+      "client": "nethermind",
+      "decisions": [
+        "H23"
+      ],
+      "note": "trace_filter matches a failed CREATE only by its creator, since #13981 removed its address from the result",
       "state": "open",
       "draft": false,
       "merged_at": null

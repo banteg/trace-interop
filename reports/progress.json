@@ -68,8 +68,8 @@
       "dev_only": 12,
       "name": "Erigon",
       "prs": {
-        "merged": 19,
-        "open": 4
+        "merged": 20,
+        "open": 3
       }
     },
     {
@@ -95,8 +95,8 @@
       "counted": true,
       "counts": {
         "agree": 26,
-        "converged": 3,
-        "fix": 0,
+        "converged": 2,
+        "fix": 1,
         "policy": 0,
         "review": 3,
         "unmeasured": 0
@@ -105,7 +105,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 30,
-        "open": 1
+        "open": 2
       }
     },
     {
@@ -140,8 +140,8 @@
       "dev_only": 0,
       "name": "Reth",
       "prs": {
-        "merged": 18,
-        "open": 7
+        "merged": 19,
+        "open": 6
       }
     },
     {

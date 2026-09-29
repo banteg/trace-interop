@@ -66,6 +66,17 @@ class RuleSafetyTests(unittest.TestCase):
             observation = {'status': 'result', 'response': {'result': []}}
             self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']], ['change_needed'])
 
+    def test_unknown_block_lookup_allows_parity_null_but_no_successful_collection(self):
+        for method, params in [('trace_block', ['0xffff']), ('trace_replayBlockTransactions', ['0xffff', ['trace']])]:
+            for value, expected in [(None, 'matches'), ([], 'change_needed'), ({}, 'change_needed')]:
+                checks = assess('missing-block-block', value, method, params)
+                self.assertEqual([c['status'] for c in checks if c['topic'] == 'H06'], [expected])
+        for method, params in [('trace_call', [{}, ['trace'], '0xffff']),
+                               ('trace_callMany', [[[{}, ['trace']]], '0xffff']),
+                               ('trace_filter', [{'fromBlock': '0xffff', 'toBlock': '0xffff'}])]:
+            checks = assess('missing-block-call', None, method, params)
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H06'], ['change_needed'])
+
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
                        {'output': '0x', 'trace': [{'error': 'insufficient funds', 'traceAddress': []}]}]:
@@ -267,8 +278,8 @@ class CoverageTests(unittest.TestCase):
         # H06: an unknown block for block replay, and a bound one block past the head, below any range cap.
         for observation in [error(-32001), error(-32000)]:  # any error, -32001 recommended (Erigon and Nethermind)
             self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['matches'])
-        for observation in [result(None), result([])]:  # Besu and Reth, Anvil
-            self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['change_needed'])
+        self.assertEqual(statuses('a', 'missing-block-replay', result(None), 'H06'), ['matches'])  # Parity/Besu absence.
+        self.assertEqual(statuses('a', 'missing-block-replay', result([]), 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])
         # H32: pending block methods need a pending block; hash bounds are rejected.

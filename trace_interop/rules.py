@@ -598,6 +598,11 @@ def evaluate(case, observation, peers, invalid_params=None):
 
     if name.startswith('missing-block-') and method == 'trace_filter':
         rejected('H06', 'A range bound beyond the head returns an error (-32602 recommended), as eth_getLogs does; never a clamped or partial result.', -32602)
+    elif name.startswith('missing-block-') and method in ('trace_block', 'trace_replayBlockTransactions'):
+        if status == 'result' and 'result' in response and result is None:
+            check('H06', True, 'An unknown selected block returns null or an error (-32001 recommended), never a successful collection.')
+        else:
+            rejected('H06', 'An unknown selected block returns null or an error (-32001 recommended), never a successful collection.', -32001)
     elif name.startswith('missing-block-'):
         rejected('H06', 'An unknown single selected block returns an error (-32001 recommended), never null or a result.', -32001)
     if name == 'call-unknown-field':

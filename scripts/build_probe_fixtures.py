@@ -334,8 +334,25 @@ def prague():
     gas_call = {'from': sender, 'input': '0x'+asm('GAS', 0, 'MSTORE', 32, 0, 'RETURN')}
     case(cases, 'field-gas-omitted-eth-call', 'eth_call', [gas_call, 'latest'])
     case(cases, 'field-gas-omitted', 'trace_call', [gas_call, ['trace'], 'latest'],
-         probes=[probe('H14', 'same-output', 'An omitted gas runs with the server execution cap, as eth_call does: GAS reports the same value.',
+         probes=[probe('H14', 'same-output', 'Omitted gas follows the client\'s eth_call default at the selected state: GAS reports the same value.',
                        reference='field-gas-omitted-eth-call')])
+    # A zero-price, explicitly over-cap call discovers this server's cap without
+    # making any one implementation's default budget a portable constant.
+    cap_reference = 'field-gas-cap-eth-call'
+    case(cases, cap_reference, 'eth_call', [dict(gas_call, gas=hex(2**64-1), gasPrice='0x0'), 'latest'])
+    for label, gas_price in [('allowance', int(balance, 16)//100_000), ('funded', int(price, 16))]:
+        priced = dict(gas_call, gasPrice=hex(gas_price))
+        reference = f'field-gas-omitted-{label}-eth-call'
+        bounded = probe('H15', 'gas-output-bound', 'A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.',
+                        reference=cap_reference)
+        dependency = {'topic': 'H15', 'reason': 'The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.'}
+        case(cases, reference, 'eth_call', [priced, 'latest'], probes=[dict(bounded, depends=dependency)])
+        paired = probe('H15', 'same-output', 'A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.',
+                       reference=reference, depends=dependency)
+        case(cases, f'field-gas-omitted-{label}', 'trace_call', [priced, ['trace'], 'latest'],
+             probes=[paired, dict(bounded, depends=dependency)])
+        case(cases, f'field-gas-omitted-{label}-many', 'trace_callMany', [[[priced, ['trace']]], 'latest'],
+             probes=[dict(paired, index=0), dict(bounded, index=0, depends=dependency)])
     case(cases, 'field-chain-id', 'trace_call', [dict(base, input='0x'+ret42, chainId=hex(chain_id)), ['trace'], 'latest'],
          probes=[effect('A matching chainId is accepted and the initcode returns word 42.', words(42))])
     case(cases, 'field-chain-id-mismatch', 'trace_call', [dict(base, input='0x'+ret42, chainId='0x1'), ['trace'], 'latest'],

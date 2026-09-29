@@ -2,7 +2,7 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. An omitted gas runs with the server execution cap, as eth_call does: GAS reports the same value.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Omitted gas follows the client's eth_call default at the selected state: GAS reports the same value.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -48,6 +48,6 @@
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H14](../../decisions/H14.md): An omitted gas runs with the server execution cap, as eth_call does: GAS reports the same value. Reference 0x0000000000000000000000000000000000000000000000000000000002fa20fc; got 0x
+- [H14](../../decisions/H14.md): Omitted gas follows the client's eth_call default at the selected state: GAS reports the same value. Reference 0x0000000000000000000000000000000000000000000000000000000002fa20fc; got 0x
 
 </details>

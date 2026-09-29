@@ -1913,7 +1913,7 @@
         {
           "kind": "same-output",
           "reference": "field-gas-omitted-eth-call",
-          "requirement": "An omitted gas runs with the server execution cap, as eth_call does: GAS reports the same value.",
+          "requirement": "Omitted gas follows the client's eth_call default at the selected state: GAS reports the same value.",
           "topic": "H14"
         }
       ],
@@ -1928,6 +1928,255 @@
           },
           [
             "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-cap-eth-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0xffffffffffffffff",
+            "gasPrice": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance-eth-call",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x9184e72a000",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "same-output",
+          "reference": "field-gas-omitted-allowance-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x9184e72a000",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance-many",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "same-output",
+          "reference": "field-gas-omitted-allowance-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gasPrice": "0x9184e72a000",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded-eth-call",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x77359400",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "same-output",
+          "reference": "field-gas-omitted-funded-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x77359400",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded-many",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "same-output",
+          "reference": "field-gas-omitted-funded-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gasPrice": "0x77359400",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
           ],
           "latest"
         ]

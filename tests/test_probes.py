@@ -317,12 +317,51 @@ class FieldProbeTests(Probe):
             self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, real if value == 0 else 0)}))
             self.assertDiffers(case, error(-32000))
 
-    def test_omitted_gas_is_the_eth_call_cap(self):
+    def test_omitted_gas_follows_eth_call_default(self):
         case = PRAGUE['field-gas-omitted']
         peers = {'field-gas-omitted-eth-call': result('0x'+f'{49_978_000:064x}')}
         self.assertMatches(case, result({'output': '0x'+f'{49_978_000:064x}', 'trace': []}), peers)
         self.assertDiffers(case, result({'output': '0x'+f'{99_978_000:064x}', 'trace': []}), peers)
         self.assertEqual(statuses(case, result({'output': '0x', 'trace': []}), {}), ['blocked'])
+
+    def test_priced_gas_defaults_allow_smaller_budgets_but_never_raise_the_cap(self):
+        for label in ['allowance', 'funded']:
+            for suffix in ['', '-many', '-eth-call']:
+                case = PRAGUE[f'field-gas-omitted-{label}{suffix}']
+                call = case['request']['params'][0]
+                if suffix == '-many':
+                    call = call[0][0]
+                cost = intrinsic(call['input'], True)+2  # First GAS, before any other opcode.
+                word = lambda budget: '0x'+f'{budget-cost:064x}'
+                observed = lambda budget: result(word(budget) if suffix == '-eth-call' else
+                                                [dict(output=word(budget), trace=[])] if suffix == '-many' else
+                                                dict(output=word(budget), trace=[]))
+                for cap in [30_000_000, 50_000_000]:
+                    for budget in [100_000, 10_000_000, cap]:
+                        with self.subTest(case=case['name'], cap=cap, budget=budget):
+                            peers = {'field-gas-cap-eth-call': result(word(cap)),
+                                     f'field-gas-omitted-{label}-eth-call': result(word(budget))}
+                            self.assertMatches(case, observed(budget), peers)
+                            # Reth: both methods agree on an allowance/block limit above the RPC cap.
+                            peers[f'field-gas-omitted-{label}-eth-call'] = result(word(100_000_000))
+                            self.assertDiffers(case, observed(100_000_000), peers)
+                    peers[f'field-gas-omitted-{label}-eth-call'] = result(word(100_000))
+                    if suffix != '-eth-call':
+                        # Requiring the full cap ignores a smaller eth_call allowance.
+                        self.assertDiffers(case, observed(cap), peers)
+                self.assertEqual(set(statuses(case, error(-38014), {})), {'blocked'})
+                self.assertEqual(set(statuses(case, observed(100_000), {})), {'blocked'})
+                if suffix != '-eth-call':
+                    peers[f'field-gas-omitted-{label}-eth-call'] = result(word(100_000))
+                    self.assertIn('change_needed', statuses(case, error(-38014), peers))
+
+    def test_gas_cap_probe_requires_a_complete_word(self):
+        case = PRAGUE['field-gas-omitted-funded-eth-call']
+        peers = {'field-gas-cap-eth-call': result('0x'+f'{50_000_000:064x}')}
+        for output in ['0x', '0x1', '0x'+'z'*64, None]:
+            self.assertDiffers(case, result(output), peers)
+            self.assertEqual(statuses(case, result('0x'+f'{100_000:064x}'),
+                                      {'field-gas-cap-eth-call': result(output)}), ['blocked'])
 
     def test_authorization_tuple_recovers_key_one(self):
         import rlp

@@ -282,7 +282,7 @@ def assess(case, observation, peers):
             # An error envelope wrapped as a result (H25) carries no result either.
             error = mapping(response.get('error') or mapping(result).get('error'))
             observed = f'{status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip()
-            if 'depends' in probe:
+            if 'depends' in probe and not (kind == 'same-output' and isinstance(peer_result(probe['reference']), str)):
                 checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
                                'detail': f'Depends on {probe["depends"]["topic"]}: {probe["depends"]["reason"]} Observed {observed}.'})
                 continue
@@ -310,6 +310,15 @@ def assess(case, observation, peers):
                 continue
             output = envelope(probe.get('index')).get('output')
             add(topic, output == reference, requirement, f'Reference {reference[:140]}; got {str(output)[:140]}')
+        elif kind == 'gas-output-bound':
+            reference = peer_result(probe['reference'])
+            output = envelope(probe.get('index')).get('output') if method.startswith('trace_') else result
+            if not isinstance(reference, str) or len(reference) != 66 or quantity(reference) is None:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                               'detail': 'The cap reference '+probe['reference']+' returned no GAS word.'})
+                continue
+            ok = isinstance(output, str) and len(output) == 66 and quantity(output) is not None and quantity(output) <= quantity(reference)
+            add(topic, ok, requirement, f'Cap GAS word {reference}; got {str(output)[:140]}')
         elif kind == 'same-result':
             # The whole result equals the reference request's, e.g. explicit nulls against omitted members.
             reference = peer_result(probe['reference'])
@@ -398,4 +407,3 @@ def assess(case, observation, peers):
         else:
             raise ValueError('unknown probe kind: '+kind)
     return checks
-

@@ -10,14 +10,21 @@ probes-forks (forks chain): reward matching, pagination across block boundaries 
 reward records, a reversed range, genesis and the callMany twin of the historical
 beacon-root call. Expected records are decoded from the frozen chain (headers, uncles
 and transactions), never taken from a client.
+
+raw-selector (chain a): H12 state witnesses for trace_rawTransaction. One signed creation,
+valid at every block, returns NUMBER, a witness account's BALANCE and BASEFEE; it is sent
+with two arguments and with explicit latest, number, hash, EIP-1898 and pending selectors.
+The initial corpus's signed cases gain the same probe, read from the sender's stateDiff nonce.
+Candidate states and environments come from the frozen headers, genesis and transactions.
 """
+import json
 from pathlib import Path
 
 import rlp
 from eth_hash.auto import keccak
 from eth_keys import keys
 
-from trace_interop.chain_model import fake_exponential, load_chain
+from trace_interop.chain_model import decode_transaction, fake_exponential, load_chain
 from trace_interop.cli import read, sha, write
 from trace_interop.execution_models import created_address, opcodes
 from trace_interop.vm_model import execute, intrinsic
@@ -25,7 +32,7 @@ from trace_interop.vm_model import execute, intrinsic
 ROOT = Path(__file__).resolve().parents[1]
 OPS = {'STOP': 0x00, 'SUB': 0x03, 'ADDRESS': 0x30, 'DUP6': 0x85, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
        'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
-       'BLOBBASEFEE': 0x4a, 'MSTORE': 0x52, 'MSTORE8': 0x53, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
+       'NUMBER': 0x43, 'BASEFEE': 0x48, 'BLOBBASEFEE': 0x4a, 'MSTORE': 0x52, 'MSTORE8': 0x53, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
        'TLOAD': 0x5c, 'TSTORE': 0x5d, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
        'RETURN': 0xf3, 'CREATE2': 0xf5, 'REVERT': 0xfd, 'SELFDESTRUCT': 0xff}
 NAMES = {v: k for k, v in OPS.items()}
@@ -486,10 +493,159 @@ def forks():
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin and the call depth limit at a Homestead block on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 
+def next_base_fee(header):
+    """The EIP-1559 base fee of the block after `header` (elasticity 2, denominator 8)."""
+    base, used, target = (int(header[k], 16) for k in ['baseFeePerGas', 'gasUsed', 'gasLimit'])
+    target //= 2
+    if used == target:
+        return base
+    delta = base*abs(used-target)//target//8
+    return base + max(delta, 1) if used > target else base - delta
+
+
+def sign_legacy(key, chain_id, nonce, gas_price, gas, to, value, data):
+    """An EIP-155 legacy transaction, signed deterministically (RFC 6979)."""
+    fields = [nonce, gas_price, gas, bytes.fromhex(to[2:]) if to else b'', value, bytes.fromhex(data[2:])]
+    signature = key.sign_msg_hash(keccak(rlp.encode(fields+[chain_id, 0, 0])))
+    return '0x'+rlp.encode(fields+[signature.v+35+2*chain_id, signature.r, signature.s]).hex()
+
+
+def state_probe(requirement, witness, states, expected, environments=(), **fields):
+    """H12: which state (and block environment) a signed transaction ran against, read from `witness`
+    (output words or a stateDiff account field) and matched against candidates derived from the chain."""
+    return probe('H12', 'state', requirement, witness=witness, states=[list(s) for s in states],
+                 environments=[list(e) for e in environments], expected=expected, **fields)
+
+
+# The extension probes record behavior; H12 keeps the explicit selector outside the baseline.
+EXTENSION = 'Explicit third block selector (extension outside the two-argument baseline).'
+
+
+def selector():
+    """raw-selector (chain a): one signed creation from an account that never transacts on the chain,
+    so it is valid at every block, returns NUMBER, BALANCE(witness) and BASEFEE. The witness account
+    receives one-wei transfers in some blocks, so its balance names the state the transaction ran against."""
+    chain = ROOT/'fixtures/chains/a'
+    genesis = read(chain/'genesis.json')
+    chain_id = genesis['config']['chainId']
+    alloc = {'0x'+a.lower(): v for a, v in genesis['alloc'].items()}
+    blocks = load_chain(chain/'chain.rlp')
+    headers = {h['number']: h for h in read(chain/'headers.json')}
+    head = read(chain/'headblock.json')
+    headstate = {a.lower(): v for a, v in read(chain/'headstate.json')['accounts'].items()}
+    top = int(head['number'], 16)
+    # Hive's public hivechain key for 0x84E75c28… (cmd/hivechain/accounts.go at the pinned Hive revision):
+    # funded in genesis and never a sender or recipient on this chain, so its nonce is 0 at every block.
+    key = keys.PrivateKey(bytes.fromhex('f6a8f1603b8368f3ca373292b7310c53bec7b508aecacd442554ebc1c5d0c856'))
+    sender = key.public_key.to_checksum_address().lower()
+    witness = '0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df'  # A prefunded hivechain account with one-wei receipts.
+    transactions = [t for b in blocks.values() for t in b['transactions']]
+    assert not any(sender in [t['sender'].lower(), str(t['to']).lower()] for t in transactions)
+    assert 'code' not in alloc[witness] and not any(t['sender'].lower() == witness for t in transactions)
+    # No withdrawal or internal transfer reaches the witness: its genesis balance plus the values sent to it
+    # equals its head balance.
+    received = {n: sum(t['value'] for b in blocks.values() if b['number'] <= n for t in b['transactions']
+                       if str(t['to']).lower() == witness) for n in range(top+1)}
+    balance = lambda n: int(alloc[witness]['balance'], 16) + received[n]
+    assert balance(top) == int(headstate[witness]['balance'])
+    # A block whose own transactions change the witness balance, with a later change before the head, so
+    # the selected block's post-state, its parent's post-state (the selected block's pre-state) and latest differ.
+    selected = next(n for n in range(top//2, top) if received[n] != received[n-1] and received[top] != received[n])
+    number = hex(selected)
+    gas_price = 0x77359400
+    assert all(gas_price >= b['base_fee'] for b in blocks.values())
+    code = asm('NUMBER', 0, 'MSTORE', int(witness, 16), 'BALANCE', 32, 'MSTORE', 'BASEFEE', 64, 'MSTORE', 96, 0, 'RETURN')
+    raw = sign_legacy(key, chain_id, 0, gas_price, 0x30d40, None, 0, '0x'+code)
+
+    def at(n):
+        return {'NUMBER': hex(n), 'BASEFEE': headers[hex(n)]['baseFeePerGas']}
+    states = [(f'the block {number} post-state', {'BALANCE': hex(balance(selected))}),
+              (f'the block {hex(selected-1)} post-state (the block {number} pre-state)', {'BALANCE': hex(balance(selected-1))}),
+              (f'the latest (block {head["number"]}) post-state', {'BALANCE': hex(balance(top))})]
+    environments = [(f'the block {number} environment', at(selected)),
+                    (f'the block {hex(selected+1)} environment', at(selected+1)),
+                    (f'the head (block {head["number"]}) environment', at(top)),
+                    (f'the pending block {hex(top+1)} environment', {'NUMBER': hex(top+1), 'BASEFEE': hex(next_base_fee(head))})]
+    words = {'NUMBER': {'word': 0}, 'BALANCE': {'word': 1}, 'BASEFEE': {'word': 2}}
+    latest = {'state': states[2][0], 'environment': environments[2][0]}
+    cases = []
+    for label, address, field, block, value in [
+            ('witness-balance-parent', witness, 'balance', hex(selected-1), hex(balance(selected-1))),
+            ('witness-balance-selected', witness, 'balance', number, hex(balance(selected))),
+            ('witness-balance-latest', witness, 'balance', 'latest', hex(balance(top))),
+            ('sender-nonce-selected', sender, 'nonce', number, '0x0'),
+            ('sender-nonce-latest', sender, 'nonce', 'latest', '0x0'),
+            ('sender-balance-latest', sender, 'balance', 'latest', alloc[sender]['balance'])]:
+        method = {'nonce': 'eth_getTransactionCount', 'balance': 'eth_getBalance'}[field]
+        case(cases, '_control/'+label, method, [address, block], expected_control=value)
+    case(cases, '_control/selected-block', 'eth_getBlockByNumber', [number, False],
+         expected_control_fields={'hash': headers[number]['hash'], 'baseFeePerGas': headers[number]['baseFeePerGas']})
+    baseline = ('The two-argument request runs against latest: the head block post-state and environment, '
+                'as trace_call at latest (H31).')
+    case(cases, 'raw-state-default', 'trace_rawTransaction', [raw, ['trace']],
+         probes=[state_probe(baseline, words, states, latest, environments)])
+    selected_state = {'state': states[0][0], 'environment': environments[0][0]}
+    pending = {'state': states[2][0], 'environment': environments[3][0]}
+    for name, block, expected, selector in [
+            ('latest', 'latest', latest, 'latest'), ('number', number, selected_state, f'block {number} by number'),
+            ('hash', headers[number]['hash'], selected_state, f'block {number} by hash'),
+            ('hash-object', {'blockHash': headers[number]['hash']}, selected_state, f'block {number} as an EIP-1898 object'),
+            ('pending', 'pending', pending, 'pending')]:
+        case(cases, f'raw-state-{name}', 'trace_rawTransaction', [raw, ['trace'], block],
+             probes=[state_probe('Record which state and block environment an explicit third selector uses.', words,
+                                 states, expected, environments, default=latest, selector=selector,
+                                 observe=EXTENSION, extension=True)])
+    return {'description': f'H12: one signed creation, valid at every block, returns NUMBER, BALANCE({witness}) and '
+                           f'BASEFEE, sent with two arguments and with latest, block {number} by number, hash and '
+                           'EIP-1898 object, and pending.', 'cases': cases}
+
+
+def annotate_initial():
+    """H12 state witnesses for the initial corpus's signed transactions: the sender nonce a stateDiff
+    starts from names the state the transaction ran against."""
+    chain = ROOT/'fixtures/chains/initial'
+    blocks = load_chain(chain/'chain.rlp')
+    alloc = {'0x'+a.lower(): v for a, v in read(chain/'genesis.json')['alloc'].items()}
+    top = int(read(chain/'headblock.json')['number'], 16)
+    corpus = read(ROOT/'fixtures/corpora/initial.json')
+    by_name = {c['name']: c for c in corpus['cases']}
+
+    def nonce(sender, n):
+        return int(alloc[sender].get('nonce', '0x0'), 16) + sum(
+            t['sender'].lower() == sender for b in blocks.values() if b['number'] <= n for t in b['transactions'])
+
+    def states(sender, numbers):
+        return [((f'the latest (block {hex(n)}) post-state' if n == top else f'the block {hex(n)} post-state')
+                 + f', sender nonce {nonce(sender, n)}', {'NONCE': hex(nonce(sender, n))}) for n in numbers]
+    for name, selected in [('raw-valid', 0), ('raw-valid-current-nonce', None)]:
+        request = by_name[name]['request']
+        params = request['params']
+        assert request['method'] == 'trace_rawTransaction' and 'stateDiff' in params[1]
+        tx = decode_transaction(bytes.fromhex(params[0][2:]))
+        sender = tx['sender'].lower()
+        witness = {'NONCE': {'account': sender, 'field': 'nonce'}}
+        if selected is None:
+            candidates = states(sender, [top, top-1])
+            assert len(params) == 2 and tx['nonce'] == nonce(sender, top) != nonce(sender, top-1)
+            by_name[name]['probes'] = [state_probe('The two-argument request runs against the latest post-state.',
+                                                   witness, candidates, {'state': candidates[0][0]})]
+        else:
+            candidates = states(sender, [int(params[2], 16), top])
+            assert int(params[2], 16) == selected and tx['nonce'] == nonce(sender, selected) != nonce(sender, top)
+            by_name[name]['probes'] = [state_probe('Record which state an explicit third selector uses.', witness, candidates,
+                                                   {'state': candidates[0][0]}, default={'state': candidates[1][0]},
+                                                   selector=f'block {params[2]} by number', observe=EXTENSION, extension=True)]
+    return corpus
+
+
 if __name__ == '__main__':
     checksums = read(ROOT/'fixtures/checksums.json')
-    for name, corpus in [('probes-prague', prague()), ('probes-forks', forks())]:
+    for name, corpus in [('probes-prague', prague()), ('probes-forks', forks()), ('raw-selector', selector()),
+                         ('initial', annotate_initial())]:
         path = ROOT/'fixtures/corpora'/(name+'.json')
-        write(path, corpus)
+        if name == 'initial':  # Hand-written: keep its key order and layout.
+            path.write_text(json.dumps(corpus, indent=2)+'\n')
+        else:
+            write(path, corpus)
         checksums['corpora/'+name+'.json'] = sha(path)
     write(ROOT/'fixtures/checksums.json', checksums)

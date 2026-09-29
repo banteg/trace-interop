@@ -658,7 +658,44 @@
           "0x0"
         ]
       },
-      "capture_only": true
+      "capture_only": true,
+      "probes": [
+        {
+          "topic": "H12",
+          "kind": "state",
+          "requirement": "Record which state an explicit third selector uses.",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          },
+          "states": [
+            [
+              "the block 0x0 post-state, sender nonce 0",
+              {
+                "NONCE": "0x0"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ]
+          ],
+          "environments": [],
+          "expected": {
+            "state": "the block 0x0 post-state, sender nonce 0"
+          },
+          "default": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          },
+          "selector": "block 0x0 by number",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "extension": true
+        }
+      ]
     },
     {
       "name": "raw-invalid",
@@ -907,7 +944,38 @@
           ]
         ]
       },
-      "capture_only": true
+      "capture_only": true,
+      "probes": [
+        {
+          "topic": "H12",
+          "kind": "state",
+          "requirement": "The two-argument request runs against the latest post-state.",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          },
+          "states": [
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ],
+            [
+              "the block 0x2f post-state, sender nonce 130",
+              {
+                "NONCE": "0x82"
+              }
+            ]
+          ],
+          "environments": [],
+          "expected": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          }
+        }
+      ]
     },
     {
       "name": "call-transfer-trace",

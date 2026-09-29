@@ -12,6 +12,8 @@ from trace_interop.vm_model import execute, intrinsic, local_invariants
 
 PRAGUE = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-prague.json')['cases']}
 FORKS = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-forks.json')['cases']}
+SELECTOR = {c['name']: c for c in read(ROOT/'fixtures/corpora/raw-selector.json')['cases']}
+INITIAL = {c['name']: c for c in read(ROOT/'fixtures/corpora/initial.json')['cases']}
 
 
 def realize(spec, label='Reverted'):
@@ -496,3 +498,74 @@ class NullMemberTests(Probe):
         methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
         self.assertEqual(request_errors(PRAGUE['field-null-members']['request'], methods), [])
         self.assertEqual(request_errors(PRAGUE['field-data-input-differ']['request'], methods), ['data and input must agree'])
+
+
+class RawSelectorTests(Probe):
+    """H12: which state and block environment a signed transaction ran against. The two-argument
+    request must use latest; an explicit third selector is extension evidence, classified only."""
+    def execute(self, name, state, environment):
+        """The creation's output words (NUMBER, BALANCE, BASEFEE) under one state and environment candidate."""
+        case = SELECTOR[name]
+        probe = case['probes'][0]
+        values = dict(dict(probe['states'])[state], **dict(probe['environments'])[environment])
+        output = '0x'+''.join(f'{int(values[k], 16):064x}' for k in ['NUMBER', 'BALANCE', 'BASEFEE'])
+        return assess(case, result({'output': output, 'trace': [], 'stateDiff': None, 'vmTrace': None}), {})
+
+    def test_two_arguments_run_against_the_latest_state_and_head_environment(self):
+        probe = SELECTOR['raw-state-default']['probes'][0]
+        latest = probe['expected']
+        self.assertEqual([c['status'] for c in self.execute('raw-state-default', latest['state'], latest['environment'])], ['matches'])
+        states, environments = [s for s, _ in probe['states']], [e for e, _ in probe['environments']]
+        # A pending default: latest state, the next block's environment.
+        self.assertEqual([c['status'] for c in self.execute('raw-state-default', latest['state'], environments[3])], ['change_needed'])
+        # A stale state in the head environment.
+        self.assertEqual([c['status'] for c in self.execute('raw-state-default', states[0], latest['environment'])], ['change_needed'])
+        self.assertEqual(statuses(SELECTOR['raw-state-default'], error(-32602)), ['change_needed'])
+        # A validation rejection belongs to H13 (the transaction is valid everywhere); H12 cannot inspect a state.
+        rejected = {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': -32000, 'message': 'nonce too low'}}}
+        case = dict(SELECTOR['raw-state-default'], context={})
+        self.assertEqual([c['status'] for c in supplement(case, rejected, {}, [], ['H12']) if c['topic'] == 'H12'], ['blocked'])
+
+    def test_explicit_selectors_are_classified_extension_observations(self):
+        probe = SELECTOR['raw-state-number']['probes'][0]
+        states, environments = [s for s, _ in probe['states']], [e for e, _ in probe['environments']]
+        for (state, environment), verdict in [((states[0], environments[0]), 'Honors the selector.'),
+                                              ((states[2], environments[2]), 'Ignores the selector'),
+                                              ((states[0], environments[1]), 'Selects the state but not its block environment.'),
+                                              ((states[1], environments[0]), 'Uses neither')]:
+            checks = self.execute('raw-state-number', state, environment)
+            self.assertEqual([(c['status'], c.get('extension')) for c in checks], [('observation', True)])
+            self.assertIn(verdict, checks[0]['detail'])
+        rejected = assess(SELECTOR['raw-state-number'], error(-32602), {})
+        self.assertEqual(rejected[0]['status'], 'observation')
+        self.assertIn('Selector block 0x19 by number: Rejects the request as invalid params', rejected[0]['detail'])
+        # Pending with no pending transactions: the latest state in the next block's environment.
+        pending = SELECTOR['raw-state-pending']['probes'][0]['expected']
+        self.assertIn('Honors', self.execute('raw-state-pending', pending['state'], pending['environment'])[0]['detail'])
+
+    def test_initial_signed_cases_read_the_state_from_the_sender_nonce(self):
+        sender = '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f'
+
+        def diff(nonce):
+            return result({'output': '0x', 'trace': [], 'vmTrace': None,
+                           'stateDiff': {sender: {'nonce': {'*': {'from': nonce, 'to': hex(int(nonce, 16)+1)}}}}})
+        # Reth and Anvil at block 0: the sender nonce starts at 0; a client ignoring the selector starts at 133.
+        self.assertIn('Honors the selector.', assess(INITIAL['raw-valid'], diff('0x0'), {})[0]['detail'])
+        self.assertIn('Ignores the selector', assess(INITIAL['raw-valid'], diff('0x85'), {})[0]['detail'])
+        nonce_low = {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': 1, 'message': 'nonce too low'}}}
+        self.assertIn('Rejects the transaction (nonce_low', assess(INITIAL['raw-valid'], nonce_low, {})[0]['detail'])
+        self.assertEqual(statuses(INITIAL['raw-valid-current-nonce'], diff('0x85')), ['matches'])
+        self.assertEqual(statuses(INITIAL['raw-valid-current-nonce'], diff('0x82')), ['change_needed'])
+
+    def test_probed_selector_replaces_the_generic_observation(self):
+        from trace_interop.rules import evaluate
+        checks = evaluate(dict(INITIAL['raw-valid'], context={}), error(-32602), {})
+        self.assertEqual([c['topic'] for c in checks], ['H25'])
+
+    def test_extension_evidence_does_not_hold_a_settled_verdict_open(self):
+        from trace_interop.presentation import verdict
+        baseline, extension = {'status': 'matches'}, {'status': 'observation', 'extension': True}
+        self.assertEqual(verdict([baseline, extension]), 'Checked cases agree')
+        self.assertEqual(verdict([extension]), 'Policy open')
+        self.assertEqual(verdict([baseline, {'status': 'observation'}]), 'Policy open')
+        self.assertEqual(verdict([{'status': 'change_needed'}, extension]), 'Differs')

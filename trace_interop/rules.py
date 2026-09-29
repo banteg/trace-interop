@@ -186,15 +186,17 @@ def evaluate(case, observation, peers, invalid_params=None):
             return checks
 
     if is_extension_request(request):
-        if status == 'result':
-            detail = 'The third-argument request returned a result; this does not prove which block state was used.'
-        elif status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602:
-            detail = 'The third-argument request was rejected as invalid params.'
-        else:
-            detail = 'The third-argument request returned an error; extension support is not established.'
-        checks.append({'topic': 'H12', 'status': 'observation',
-                       'requirement': 'Observe the explicit block-selector extension separately from the two-argument baseline.',
-                       'detail': detail})
+        # A case with an H12 state probe (probes.state_check) classifies which state the selector used.
+        if not any(p['topic'] == 'H12' for p in case.get('probes', [])):
+            if status == 'result':
+                detail = 'The third-argument request returned a result; this does not prove which block state was used.'
+            elif status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602:
+                detail = 'The third-argument request was rejected as invalid params.'
+            else:
+                detail = 'The third-argument request returned an error; extension support is not established.'
+            checks.append({'topic': 'H12', 'status': 'observation', 'extension': True,
+                           'requirement': 'Observe the explicit block-selector extension separately from the two-argument baseline.',
+                           'detail': detail})
         return checks
 
     def other(n):

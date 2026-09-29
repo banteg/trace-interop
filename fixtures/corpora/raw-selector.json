@@ -1,0 +1,657 @@
+{
+  "cases": [
+    {
+      "expected_control": "0xc097ce7bc90715b34b9f1000000004",
+      "name": "_control/witness-balance-parent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+          "0x18"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xc097ce7bc90715b34b9f1000000005",
+      "name": "_control/witness-balance-selected",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+          "0x19"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xc097ce7bc90715b34b9f1000000006",
+      "name": "_control/witness-balance-latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/sender-nonce-selected",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x84e75c28348fb86acea1a93a39426d7d60f4cc46",
+          "0x19"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/sender-nonce-latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x84e75c28348fb86acea1a93a39426d7d60f4cc46",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xc097ce7bc90715b34b9f1000000000",
+      "name": "_control/sender-balance-latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x84e75c28348fb86acea1a93a39426d7d60f4cc46",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "baseFeePerGas": "0x22337ae",
+        "hash": "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733"
+      },
+      "name": "_control/selected-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x19",
+          false
+        ]
+      }
+    },
+    {
+      "name": "raw-state-default",
+      "probes": [
+        {
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "kind": "state",
+          "requirement": "The two-argument request runs against latest: the head block post-state and environment, as trace_call at latest (H31).",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "raw-state-latest",
+      "probes": [
+        {
+          "default": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state and block environment an explicit third selector uses.",
+          "selector": "latest",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "raw-state-number",
+      "probes": [
+        {
+          "default": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the block 0x19 environment",
+            "state": "the block 0x19 post-state"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state and block environment an explicit third selector uses.",
+          "selector": "block 0x19 by number",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ],
+          "0x19"
+        ]
+      }
+    },
+    {
+      "name": "raw-state-hash",
+      "probes": [
+        {
+          "default": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the block 0x19 environment",
+            "state": "the block 0x19 post-state"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state and block environment an explicit third selector uses.",
+          "selector": "block 0x19 by hash",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ],
+          "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733"
+        ]
+      }
+    },
+    {
+      "name": "raw-state-hash-object",
+      "probes": [
+        {
+          "default": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the block 0x19 environment",
+            "state": "the block 0x19 post-state"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state and block environment an explicit third selector uses.",
+          "selector": "block 0x19 as an EIP-1898 object",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ],
+          {
+            "blockHash": "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733"
+          }
+        ]
+      }
+    },
+    {
+      "name": "raw-state-pending",
+      "probes": [
+        {
+          "default": {
+            "environment": "the head (block 0x30) environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "environments": [
+            [
+              "the block 0x19 environment",
+              {
+                "BASEFEE": "0x22337ae",
+                "NUMBER": "0x19"
+              }
+            ],
+            [
+              "the block 0x1a environment",
+              {
+                "BASEFEE": "0x1dedf6e",
+                "NUMBER": "0x1a"
+              }
+            ],
+            [
+              "the head (block 0x30) environment",
+              {
+                "BASEFEE": "0x199876",
+                "NUMBER": "0x30"
+              }
+            ],
+            [
+              "the pending block 0x31 environment",
+              {
+                "BASEFEE": "0x166670",
+                "NUMBER": "0x31"
+              }
+            ]
+          ],
+          "expected": {
+            "environment": "the pending block 0x31 environment",
+            "state": "the latest (block 0x30) post-state"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state and block environment an explicit third selector uses.",
+          "selector": "pending",
+          "states": [
+            [
+              "the block 0x19 post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000005"
+              }
+            ],
+            [
+              "the block 0x18 post-state (the block 0x19 pre-state)",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000004"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state",
+              {
+                "BALANCE": "0xc097ce7bc90715b34b9f1000000006"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "BALANCE": {
+              "word": 1
+            },
+            "BASEFEE": {
+              "word": 2
+            },
+            "NUMBER": {
+              "word": 0
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf87d80847735940083030d408080a643600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f38718e5bb3abd109fa0379dd8d06b2adb0b1c56d2112a5d9be3ce05b49d06ff57de79c26da3d879ea3da0020894ecc2d5844a5e7cd262bcb0190889f17d549a8b230cfa3e10f646e852cf",
+          [
+            "trace"
+          ],
+          "pending"
+        ]
+      }
+    }
+  ],
+  "description": "H12: one signed creation, valid at every block, returns NUMBER, BALANCE(0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df) and BASEFEE, sent with two arguments and with latest, block 0x19 by number, hash and EIP-1898 object, and pending."
+}

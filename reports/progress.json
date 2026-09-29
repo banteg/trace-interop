@@ -3,7 +3,7 @@
     {
       "builds": {
         "development": {
-          "agree": 3,
+          "agree": 4,
           "build": [
             "26.9-develop \u00b7 c197ac57"
           ],
@@ -11,7 +11,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 3,
+          "agree": 4,
           "build": [
             "26.9.0 \u00b7 ee9c64c8"
           ],
@@ -22,10 +22,10 @@
       "client": "besu",
       "counted": true,
       "counts": {
-        "agree": 3,
+        "agree": 4,
         "converged": 13,
         "fix": 5,
-        "policy": 1,
+        "policy": 0,
         "review": 4,
         "unmeasured": 6
       },
@@ -39,7 +39,7 @@
     {
       "builds": {
         "development": {
-          "agree": 25,
+          "agree": 26,
           "build": [
             "3.8.0-dev \u00b7 a2a19253"
           ],
@@ -47,7 +47,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 13,
+          "agree": 14,
           "build": [
             "3.7.0 \u00b7 bdc78cc4"
           ],
@@ -58,10 +58,10 @@
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 25,
+        "agree": 26,
         "converged": 2,
         "fix": 1,
-        "policy": 1,
+        "policy": 0,
         "review": 2,
         "unmeasured": 1
       },
@@ -75,7 +75,7 @@
     {
       "builds": {
         "development": {
-          "agree": 25,
+          "agree": 26,
           "build": [
             "2.2.0-preview \u00b7 287f54f0"
           ],
@@ -83,7 +83,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 10,
+          "agree": 11,
           "build": [
             "2.0.0 \u00b7 bec830cd"
           ],
@@ -94,10 +94,10 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 25,
+        "agree": 26,
         "converged": 3,
         "fix": 0,
-        "policy": 1,
+        "policy": 0,
         "review": 3,
         "unmeasured": 0
       },
@@ -111,7 +111,7 @@
     {
       "builds": {
         "development": {
-          "agree": 20,
+          "agree": 21,
           "build": [
             "2.7.0 \u00b7 60aeb532"
           ],
@@ -119,7 +119,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 20,
+          "agree": 21,
           "build": [
             "2.7.0 \u00b7 3d592ece"
           ],
@@ -130,10 +130,10 @@
       "client": "reth",
       "counted": true,
       "counts": {
-        "agree": 20,
+        "agree": 21,
         "converged": 3,
         "fix": 4,
-        "policy": 1,
+        "policy": 0,
         "review": 3,
         "unmeasured": 1
       },
@@ -147,7 +147,7 @@
     {
       "builds": {
         "development": {
-          "agree": 13,
+          "agree": 14,
           "build": [
             "1.8.4-nightly \u00b7 00989695"
           ],
@@ -155,7 +155,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 9,
+          "agree": 10,
           "build": [
             "1.8.3 \u00b7 cae51ad4"
           ],
@@ -166,10 +166,10 @@
       "client": "anvil",
       "counted": false,
       "counts": {
-        "agree": 13,
+        "agree": 14,
         "converged": 8,
         "fix": 2,
-        "policy": 1,
+        "policy": 0,
         "review": 3,
         "unmeasured": 5
       },

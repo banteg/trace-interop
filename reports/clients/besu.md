@@ -4,7 +4,7 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 26.9-develop · c197ac57** (of 32 decisions): ✅ 3 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (13 on converged decisions) · ❔ 1 policy open · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 13 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 26.9-develop · c197ac57** (of 32 decisions): ✅ 4 agree · 🛠️ 5 fix submitted · ⚠️ 17 with no fix yet (13 on converged decisions) · ⚪ 6 not fully measured. Upstream fix PRs: 0 merged, 13 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -46,8 +46,10 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 26.9.0 · ee9c64c8 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 26.9-develop · c197ac57 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 26.9.0 · ee9c64c8 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid number of params | [Raw valid](../cases/initial/raw-valid.md) |
+| 26.9-develop · c197ac57 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid number of params | [Raw valid](../cases/initial/raw-valid.md) |
+| 26.9.0 · ee9c64c8 | [Invalid-parameter error codes](../decisions/H14.md) | 2 blocked cases: Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected a result; observed rpc_error -32603 Internal error | [Field authorization](../cases/probes-prague/field-authorization.md) |
+| 26.9-develop · c197ac57 | [Invalid-parameter error codes](../decisions/H14.md) | 2 blocked cases: Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected a result; observed rpc_error -32603 Internal error | [Field authorization](../cases/probes-prague/field-authorization.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -74,6 +76,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | --- | --- |
 | [trace_get selector and return shape](../decisions/H02.md) | [_reference/block/0x30](../cases/a/_reference/block/0x30.md) · [Block 2](../cases/a/block-2.md) |
 | [Empty address lists](../decisions/H04.md) | [Filter both null](../cases/a/filter-both-null.md) · [Filter from empty to set](../cases/a/filter-from-empty-to-set.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) |
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 
 </details>

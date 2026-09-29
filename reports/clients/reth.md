@@ -4,7 +4,7 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.7.0 · 60aeb532** (of 32 decisions): ✅ 20 agree · 🛠️ 4 fix submitted · ⚠️ 6 with no fix yet (3 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. Upstream fix PRs: 18 merged, 7 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.7.0 · 60aeb532** (of 32 decisions): ✅ 21 agree · 🛠️ 4 fix submitted · ⚠️ 6 with no fix yet (3 on converged decisions) · ⚪ 1 not fully measured. Upstream fix PRs: 18 merged, 7 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -34,8 +34,10 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 2.7.0 · 3d592ece | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request returned a result; this does not prove which block state was used. | [Raw valid](../cases/initial/raw-valid.md) |
-| 2.7.0 · 60aeb532 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request returned a result; this does not prove which block state was used. | [Raw valid](../cases/initial/raw-valid.md) |
+| 2.7.0 · 3d592ece | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0). | [Raw valid](../cases/initial/raw-valid.md) |
+| 2.7.0 · 60aeb532 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0). | [Raw valid](../cases/initial/raw-valid.md) |
+| 2.7.0 · 3d592ece | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
+| 2.7.0 · 60aeb532 | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -57,6 +59,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Empty output and unrequested components](../decisions/H08.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) |
 | [Fee accounting and sequential state diffs](../decisions/H16.md) | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
 | [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |

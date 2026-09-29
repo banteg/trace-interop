@@ -109,7 +109,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H17 | blocked | No state-diff object was returned; account markers cannot be assessed. | 2 |
 | H17 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 14 |
 | H17 | blocked | The RPC returned an error, so there is no execution result to inspect. | 6 |
-| H17 | not_applicable | The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior. | 11 |
+| H17 | not_applicable | The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects. | 11 |
 | H17 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 6 |
 | H18 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H18 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 4 |

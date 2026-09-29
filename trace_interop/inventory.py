@@ -26,8 +26,12 @@ def report_runs(root):
         if preflight.get('status') != 'current' or preflight.get('clients') != builds or not preflight.get('checked_at'):
             raise ValueError('current report matrix lacks a matching freshness preflight')
         captured = json.loads((matrix/'matrix.json').read_text())
-        if {p.resolve() for p in paths} != {(matrix/r['corpus']).resolve() for r in captured}:
+        if not {(matrix/r['corpus']).resolve() for r in captured} <= {p.resolve() for p in paths}:
             raise ValueError('report selection must retain the entire current matrix, including incomplete runs')
+        # A focused capture outside the matrix directory adds a corpus the matrix lacks, with the matrix's builds.
+        corpora = [json.loads((path/'manifest.json').read_text())['corpus'] for path in paths]
+        if len(corpora) != len(set(corpora)):
+            raise ValueError('a focused run repeats a corpus of the current matrix')
         for path in paths:
             manifest = json.loads((path/'manifest.json').read_text())
             expected = {n for n in builds if compatible(manifest['corpus'], pinned['clients'][n])}

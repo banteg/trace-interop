@@ -93,7 +93,9 @@ def verdict(checks):
         if substantive & {'matches','observation'}:
             return 'Partially assessed'
         return 'Not assessed' if 'unassessed' in substantive else 'Blocked'
-    if 'observation' in statuses:
+    # Extension evidence (an explicit H12 block selector) is recorded, but it does not hold open a
+    # verdict that the topic's own baseline checks settle.
+    if any(c['status'] == 'observation' and not (c.get('extension') and 'matches' in statuses) for c in checks):
         return 'Policy open'
     if 'matches' in statuses:
         return 'Checked cases agree'
@@ -335,9 +337,11 @@ def coverage_summary(checks):
         detail = detail.removeprefix('Cannot inspect this property: ').rstrip('.')
         if detail == 'malformed_json':
             detail = 'malformed JSON response'
+        if status == 'observation':
+            status = 'extension' if c.get('extension') else 'policy-open'
         groups[status, detail].add((c.get('corpus'), c.get('case')))
     return ' '.join(
-        f'{len(cases)} {"policy-open" if status == "observation" else status} '
+        f'{len(cases)} {status} '
         f'{"case" if len(cases) == 1 else "cases"}' + (f': {detail}.' if detail else '.')
         for (status, detail), cases in sorted(groups.items()))
 
@@ -721,6 +725,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if verdict(checks) == 'Policy open':
                 observations.append(topic)
                 continue
+            if any(q['status'] == 'observation' for q in checks):
+                observations.append(topic)  # extension evidence beside a settled baseline verdict
             if not any(q['status'] in BAD for q in checks):
                 if topic != 'H01':
                     (partial if any(q['status'] in ['unassessed','blocked'] for q in checks) else matched if any(q['status']=='matches' for q in checks) else untested).append(topic)
@@ -822,7 +828,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
                                                   if q['status'] == 'observation' and q['detail']))
                     if observed:
                         details.append(f'{label(c)}: ' + ' '.join(observed))
-                behavior = ('Evaluated requirements agree in the checked cases. ' if any(q['status']=='matches' for q in checks) else '') + '<br>'.join(details) + ' Policy remains open; these observations alone do not require a baseline change.'
+                extension = all(q.get('extension') for q in checks if q['status'] == 'observation')
+                behavior = ('Evaluated requirements agree in the checked cases. ' if any(q['status']=='matches' for q in checks) else '') + '<br>'.join(details) + (
+                    ' The extension observations are outside baseline conformance.' if extension else
+                    ' Policy remains open; these observations alone do not require a baseline change.')
             else:
                 behavior = 'No change identified in the checked cases.' if checks else 'No automated assertion yet; review the recommendation.'
             build_cells = '<br>'.join(f'{label(c)}: {build_verdict(c, topic)}' +

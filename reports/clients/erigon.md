@@ -4,7 +4,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.8.0-dev · a2a19253** (of 32 decisions): ✅ 25 agree · 🛠️ 1 fix submitted · ⚠️ 4 with no fix yet (2 on converged decisions) · ❔ 1 policy open · ⚪ 1 not fully measured. 12 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 19 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.8.0-dev · a2a19253** (of 32 decisions): ✅ 26 agree · 🛠️ 1 fix submitted · ⚠️ 4 with no fix yet (2 on converged decisions) · ⚪ 1 not fully measured. 12 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 19 merged, 4 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -37,8 +37,10 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 3.7.0 · bdc78cc4 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
-| 3.8.0-dev · a2a19253 | [Raw-transaction block argument](../decisions/H12.md) | 1 policy-open case. The third-argument request was rejected as invalid params. | [Raw valid](../cases/initial/raw-valid.md) |
+| 3.7.0 · bdc78cc4 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Rejects the request as invalid params (-32602): too many arguments, want at most 2 | [Raw valid](../cases/initial/raw-valid.md) |
+| 3.8.0-dev · a2a19253 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Rejects the request as invalid params (-32602): too many arguments, want at most 2 | [Raw valid](../cases/initial/raw-valid.md) |
+| 3.7.0 · bdc78cc4 | [Invalid-parameter error codes](../decisions/H14.md) | 1 blocked case: Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
+| 3.8.0-dev · a2a19253 | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -60,6 +62,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Empty address lists](../decisions/H04.md) | [Filter both null](../cases/a/filter-both-null.md) · [Filter from empty to set](../cases/a/filter-from-empty-to-set.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |

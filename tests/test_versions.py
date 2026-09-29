@@ -147,6 +147,16 @@ class MatrixInventoryTests(unittest.TestCase):
                 write(matrix/corpus/'manifest.json',manifests[corpus])
             write(root/'reports.lock.json',dict(selection,runs=selection['runs'][:1]))
             with self.assertRaisesRegex(ValueError, 'entire current matrix'): report_runs(root)
+            # A focused capture of a new corpus joins the matrix only with the matrix's own builds.
+            focused = root/'evidence/focused'
+            write(focused/'raw-selector/manifest.json', dict(corpus='raw-selector', clients=copy.deepcopy(clients)))
+            write(root/'reports.lock.json',dict(selection,runs=selection['runs']+['evidence/focused/raw-selector']))
+            self.assertEqual(len(report_runs(root)),4)
+            write(focused/'raw-selector/manifest.json', dict(corpus='raw-selector', clients=dict(clients, reth_release=dict(clients['reth_release'], image_id='old'))))
+            with self.assertRaisesRegex(ValueError, 'mixed or missing'): report_runs(root)
+            write(focused/'a/manifest.json', dict(corpus='a', clients=copy.deepcopy(clients)))
+            write(root/'reports.lock.json',dict(selection,runs=selection['runs']+['evidence/focused/a']))
+            with self.assertRaisesRegex(ValueError, 'repeats a corpus'): report_runs(root)
             write(root/'reports.lock.json',selection)
             manifests['a']['clients']['reth_release']['image_id']='old'
             write(matrix/'a/manifest.json',manifests['a'])

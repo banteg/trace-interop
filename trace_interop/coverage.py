@@ -85,7 +85,7 @@ def properties(case, observation, peers, checks, expected):
     checks.extend(assess_probe(case, observation, peers))
     if method == 'trace_rawTransaction' and len(params)>2:
         for topic in sorted(declared - {c['topic'] for c in checks}):
-            explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records its unresolved behavior.')
+            explain(topic, 'not_applicable', 'The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.')
         return checks
     if status == 'rpc_error' and any(c['topic']=='H13' and c['status']=='matches' for c in checks):
         for topic in sorted(declared - {c['topic'] for c in checks}):

@@ -5,9 +5,10 @@ its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
 the error cannot separate its property from that dependency. A probe with `observe` (a
-reason) records its outcome as an observation, never as a verdict.
+reason) records its outcome as an observation, never as a verdict; with `extension` it is
+extension evidence, which does not hold a topic's verdict open (presentation.verdict).
 """
-from .rules import embedded_error, page_dependencies
+from .rules import embedded_error, page_dependencies, violation
 from .vm_model import UnsupportedProgram, execute, store_words, words
 
 
@@ -60,6 +61,80 @@ def first_difference(actual, expected):
     return ''
 
 
+def quantity(value):
+    try:
+        return int(value, 16) if isinstance(value, str) else None
+    except ValueError:
+        return None
+
+
+def witness_values(witness, result):
+    """Each named witness read from a result: a 32-byte output word, or the value a stateDiff
+    account field changed from, i.e. its value in the state the transaction ran against."""
+    output = mapping(result).get('output')
+    data = output[2:] if isinstance(output, str) and output.startswith('0x') else ''
+    diff = mapping(mapping(result).get('stateDiff'))
+    values = {}
+    for name, source in witness.items():
+        if 'word' in source:
+            value = quantity('0x'+data[64*source['word']:64*source['word']+64]) if len(data) >= 64*source['word']+64 else None
+        else:
+            value = quantity(mapping(mapping(mapping(diff.get(source['account'])).get(source['field'])).get('*')).get('from'))
+        values[name] = value
+    return values
+
+
+def candidate(candidates, values):
+    """The first candidate label whose every witness equals the observed value, or None."""
+    return next((label for label, want in candidates
+                 if all(values.get(k) is not None and values[k] == quantity(v) for k, v in want.items())), None)
+
+
+def state_check(probe, status, response, result):
+    """H12: which state, and with `environments` which block environment, a request ran against.
+    An `observe` probe classifies an explicit selector against its `expected` and `default` (the
+    two-argument choice) candidates; otherwise the expected candidates are required."""
+    expected, observe = probe['expected'], 'observe' in probe
+    prefix = 'Selector '+probe['selector']+': ' if 'selector' in probe else ''
+    if status != 'result' or embedded_error(response):
+        error = mapping(response.get('error') or mapping(result).get('error'))
+        code, message = error.get('code'), str(error.get('message', ''))[:120]
+        if code == -32602:
+            detail = f'Rejects the request as invalid params (-32602): {message}'
+        elif violation(message):
+            detail = f'Rejects the transaction ({violation(message)}, {code}: {message}), although it is valid at the expected state.'
+        else:
+            detail = f'Returns {status} {code}: {message}'
+    else:
+        values = witness_values(probe['witness'], result)
+        state = candidate(probe['states'], values)
+        environment = candidate(probe['environments'], values)
+        ran = 'Ran against ' + (state or 'an unrecognised state') + (
+            ' in ' + (environment or 'an unrecognised environment') if probe['environments'] else '') + (
+            ' (' + ', '.join(f'{k} {"none" if v is None else hex(v)}' for k, v in values.items()) + ').')
+        matched = state == expected['state'] and environment == expected.get('environment')
+        default = probe.get('default', {})
+        if not observe:
+            detail = ran if matched else f'Expected {expected["state"]}' + (
+                f' in {expected["environment"]}' if 'environment' in expected else '') + '. ' + ran
+        elif matched:
+            detail = 'Honors the selector. ' + ran
+        elif state == default.get('state') and environment == default.get('environment'):
+            detail = 'Ignores the selector, running as the two-argument request does. ' + ran
+        elif state == expected['state']:
+            detail = 'Selects the state but not its block environment. ' + ran
+        else:
+            detail = 'Uses neither the selected nor the two-argument state. ' + ran
+        if not observe:
+            return {'topic': probe['topic'], 'status': 'matches' if matched else 'change_needed',
+                    'requirement': probe['requirement'], 'detail': detail, 'role': 'result'}
+    if observe:
+        return {'topic': probe['topic'], 'status': 'observation', 'requirement': probe['requirement'],
+                'detail': prefix+detail, **({'extension': True} if probe.get('extension') else {})}
+    return {'topic': probe['topic'], 'status': 'change_needed', 'requirement': probe['requirement'],
+            'detail': prefix+'Expected an execution; '+detail[0].lower()+detail[1:], 'role': 'result'}
+
+
 def model_steps(case):
     model = case['model']
     call = case['request']['params'][0]
@@ -97,6 +172,9 @@ def assess(case, observation, peers):
     for probe in probes:
         topic, kind = probe['topic'], probe['kind']
         requirement = probe['requirement']
+        if kind == 'state':
+            checks.append(state_check(probe, status, response, result))
+            continue
         if kind == 'error':
             error = mapping(response.get('error'))
             code = probe.get('code')

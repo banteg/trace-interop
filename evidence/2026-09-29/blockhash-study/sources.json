@@ -1,0 +1,128 @@
+[
+  {
+    "repo": "erigontech/erigon",
+    "sha": "48d3a168fbbf3ccf28b0361a7472bca4c8d92376",
+    "path": "rpc/jsonrpc/trace_filtering.go",
+    "sha256": "963a20cacf8b3411f05bb632423c4f47b88dd85bf4c7ac077c87e62e0781507c",
+    "url": "https://github.com/erigontech/erigon/blob/48d3a168fbbf3ccf28b0361a7472bca4c8d92376/rpc/jsonrpc/trace_filtering.go"
+  },
+  {
+    "repo": "erigontech/erigon",
+    "sha": "48d3a168fbbf3ccf28b0361a7472bca4c8d92376",
+    "path": "rpc/jsonrpc/trace_adhoc.go",
+    "sha256": "4d542589b49b5be4c36e7b553c791338c49f1b7e5ce512f3918235e907b23bf8",
+    "url": "https://github.com/erigontech/erigon/blob/48d3a168fbbf3ccf28b0361a7472bca4c8d92376/rpc/jsonrpc/trace_adhoc.go"
+  },
+  {
+    "repo": "erigontech/erigon",
+    "sha": "48d3a168fbbf3ccf28b0361a7472bca4c8d92376",
+    "path": "rpc/jsonrpc/eth_receipts.go",
+    "sha256": "4e0eb6c70798417bd0dff8ef1dbf9fb82974d4f5b525ebece652c16486da9a84",
+    "url": "https://github.com/erigontech/erigon/blob/48d3a168fbbf3ccf28b0361a7472bca4c8d92376/rpc/jsonrpc/eth_receipts.go"
+  },
+  {
+    "repo": "NethermindEth/nethermind",
+    "sha": "83c8d6cec184fbe82b23b09c1c1f76da7e953a6f",
+    "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+    "sha256": "b8b15863ac857ee35db47d02bfd24a927e1da20596b63f3127cebcc25028f4d5",
+    "url": "https://github.com/NethermindEth/nethermind/blob/83c8d6cec184fbe82b23b09c1c1f76da7e953a6f/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs"
+  },
+  {
+    "repo": "NethermindEth/nethermind",
+    "sha": "83c8d6cec184fbe82b23b09c1c1f76da7e953a6f",
+    "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceFilterForRpc.cs",
+    "sha256": "124c02a478008aa71d8c3bc5e417deee1520f80f8ed11b37790edbaab11cce92",
+    "url": "https://github.com/NethermindEth/nethermind/blob/83c8d6cec184fbe82b23b09c1c1f76da7e953a6f/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceFilterForRpc.cs"
+  },
+  {
+    "repo": "besu-eth/besu",
+    "sha": "d4ad1359b3c04b0f72cf216283a4c0dd1562424b",
+    "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+    "sha256": "bcd49f29649a3c8c23fb1761576730590c49b074c8661d5b57c6002181623bfa",
+    "url": "https://github.com/besu-eth/besu/blob/d4ad1359b3c04b0f72cf216283a4c0dd1562424b/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java"
+  },
+  {
+    "repo": "besu-eth/besu",
+    "sha": "d4ad1359b3c04b0f72cf216283a4c0dd1562424b",
+    "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceBlock.java",
+    "sha256": "6917122275a23c8fda56ef2f395844221ec04822d01cfbea22820905499e9c90",
+    "url": "https://github.com/besu-eth/besu/blob/d4ad1359b3c04b0f72cf216283a4c0dd1562424b/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceBlock.java"
+  },
+  {
+    "repo": "besu-eth/besu",
+    "sha": "d4ad1359b3c04b0f72cf216283a4c0dd1562424b",
+    "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+    "sha256": "c1df587c85d624a0a8942a4765e4646977b9a32ff90606d17edc126890a5eada",
+    "url": "https://github.com/besu-eth/besu/blob/d4ad1359b3c04b0f72cf216283a4c0dd1562424b/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java"
+  },
+  {
+    "repo": "paradigmxyz/reth",
+    "sha": "1cb086adcbf6d9c18627ce03dd2fc9ec550f9c11",
+    "path": "crates/rpc/rpc/src/trace.rs",
+    "sha256": "b3e324036f104fb227ebd11bd6a1384ad6de4de2224ba38e4a7feec99d3070b4",
+    "url": "https://github.com/paradigmxyz/reth/blob/1cb086adcbf6d9c18627ce03dd2fc9ec550f9c11/crates/rpc/rpc/src/trace.rs"
+  },
+  {
+    "repo": "paradigmxyz/reth",
+    "sha": "1cb086adcbf6d9c18627ce03dd2fc9ec550f9c11",
+    "path": "crates/rpc/rpc-api/src/trace.rs",
+    "sha256": "b1e66686348659d8853ef4d7d3ae2ec655671b48cd89248994bca1487efa4cbb",
+    "url": "https://github.com/paradigmxyz/reth/blob/1cb086adcbf6d9c18627ce03dd2fc9ec550f9c11/crates/rpc/rpc-api/src/trace.rs"
+  },
+  {
+    "repo": "banteg/execution-apis",
+    "sha": "afcbc676aa2d11cc5a3afcc73555b99a8f69ac33",
+    "path": "src/trace/methods.yaml",
+    "sha256": "70d76085060ef40bf98edcbae49b8e7f422c7d05edce180cea06b4fbf387a7d4",
+    "url": "https://github.com/banteg/execution-apis/blob/afcbc676aa2d11cc5a3afcc73555b99a8f69ac33/src/trace/methods.yaml"
+  },
+  {
+    "repo": "banteg/execution-apis",
+    "sha": "afcbc676aa2d11cc5a3afcc73555b99a8f69ac33",
+    "path": "src/schemas/trace.yaml",
+    "sha256": "116e2014d78a667f4f5fb1aa1242e5bf7424fe92dec60fb9400bedddb870bb6c",
+    "url": "https://github.com/banteg/execution-apis/blob/afcbc676aa2d11cc5a3afcc73555b99a8f69ac33/src/schemas/trace.yaml"
+  },
+  {
+    "repo": "banteg/execution-apis",
+    "sha": "afcbc676aa2d11cc5a3afcc73555b99a8f69ac33",
+    "path": "docs-api/docs/trace-profile.md",
+    "sha256": "571c1542fd320101a22e8a17dff7bfb82c1115352b41c07abd444562f6abc788",
+    "url": "https://github.com/banteg/execution-apis/blob/afcbc676aa2d11cc5a3afcc73555b99a8f69ac33/docs-api/docs/trace-profile.md"
+  },
+  {
+    "repo": "ethereum/execution-apis",
+    "sha": "5bcdc34a477b10af278c079525374e6a4046f291",
+    "path": "src/eth/filter.yaml",
+    "sha256": "a16df0057b4a4265cc0e51052ff958cad1182ab5b4feb597ec2f5be0899af445",
+    "url": "https://github.com/ethereum/execution-apis/blob/5bcdc34a477b10af278c079525374e6a4046f291/src/eth/filter.yaml"
+  },
+  {
+    "repo": "ethereum/execution-apis",
+    "sha": "5bcdc34a477b10af278c079525374e6a4046f291",
+    "path": "src/schemas/filter.yaml",
+    "sha256": "1cffdb444b3eaf6c22acebb5b98ce540036240a74001c7cee94bb3201d107010",
+    "url": "https://github.com/ethereum/execution-apis/blob/5bcdc34a477b10af278c079525374e6a4046f291/src/schemas/filter.yaml"
+  },
+  {
+    "repo": "erigontech/erigon",
+    "sha": "48d3a168fbbf3ccf28b0361a7472bca4c8d92376",
+    "path": "rpc/jsonrpc/eth_api.go",
+    "sha256": "51b15c42227036a028351b40d8b979c85cc91305a2b9921ca68270cdc49f4248",
+    "url": "https://github.com/erigontech/erigon/blob/48d3a168fbbf3ccf28b0361a7472bca4c8d92376/rpc/jsonrpc/eth_api.go"
+  },
+  {
+    "repo": "NethermindEth/nethermind",
+    "sha": "83c8d6cec184fbe82b23b09c1c1f76da7e953a6f",
+    "path": "src/Nethermind/Nethermind.JsonRpc/Modules/BlockFinderExtensions.cs",
+    "sha256": "60c2ddc38e5102cbc0ab8c58df2a886d3f5c2f4081577dfd5ad011f1a217661d",
+    "url": "https://github.com/NethermindEth/nethermind/blob/83c8d6cec184fbe82b23b09c1c1f76da7e953a6f/src/Nethermind/Nethermind.JsonRpc/Modules/BlockFinderExtensions.cs"
+  },
+  {
+    "repo": "NethermindEth/nethermind",
+    "sha": "83c8d6cec184fbe82b23b09c1c1f76da7e953a6f",
+    "path": "src/Nethermind/Nethermind.Blockchain/Find/BlockParameter.cs",
+    "sha256": "6f901bb84a33157a471beb3f6acf96fb9a1eb082ce2c835dfcf8f5de97a84f55",
+    "url": "https://github.com/NethermindEth/nethermind/blob/83c8d6cec184fbe82b23b09c1c1f76da7e953a6f/src/Nethermind/Nethermind.Blockchain/Find/BlockParameter.cs"
+  }
+]

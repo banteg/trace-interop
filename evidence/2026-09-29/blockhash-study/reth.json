@@ -1,0 +1,336 @@
+{
+  "captured_at": "2026-09-29T11:24:14.497580+00:00",
+  "scope": "Mainnet canonical block 1; no induced reorg or noncanonical execution test",
+  "observations": [
+    {
+      "name": "version",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "web3_clientVersion",
+        "params": []
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": "reth/v2.6.0-73a3a00/x86_64-unknown-linux-gnu"
+      }
+    },
+    {
+      "name": "block-one",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x1",
+          false
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "hash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+          "parentHash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+          "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+          "miner": "0x05a56e2d52c817161883f50c441c3228cfe54d9f",
+          "stateRoot": "0xd67e4d450343046425ae4271474353857ab860dbc0a1dde64b41b5cd3a532bf3",
+          "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+          "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+          "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "difficulty": "0x3ff800000",
+          "number": "0x1",
+          "gasLimit": "0x1388",
+          "gasUsed": "0x0",
+          "timestamp": "0x55ba4224",
+          "extraData": "0x476574682f76312e302e302f6c696e75782f676f312e342e32",
+          "mixHash": "0x969b900de27b6ac6a67742365dd65f55a0526c41fd18e1b16f1a1215c2e66f59",
+          "nonce": "0x539bd4979fef1ec4",
+          "size": "0x219",
+          "uncles": [],
+          "transactions": []
+        }
+      }
+    },
+    {
+      "name": "block-number",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "trace_block",
+        "params": [
+          "0x1"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": [
+          {
+            "action": {
+              "author": "0x05a56e2d52c817161883f50c441c3228cfe54d9f",
+              "rewardType": "block",
+              "value": "0x4563918244f40000"
+            },
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "blockNumber": 1,
+            "result": null,
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "reward"
+          }
+        ]
+      }
+    },
+    {
+      "name": "block-hash",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "trace_block",
+        "params": [
+          "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "result": [
+          {
+            "action": {
+              "author": "0x05a56e2d52c817161883f50c441c3228cfe54d9f",
+              "rewardType": "block",
+              "value": "0x4563918244f40000"
+            },
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "blockNumber": 1,
+            "result": null,
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "reward"
+          }
+        ]
+      }
+    },
+    {
+      "name": "block-hash-canonical",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "trace_block",
+        "params": [
+          {
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "requireCanonical": true
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "result": [
+          {
+            "action": {
+              "author": "0x05a56e2d52c817161883f50c441c3228cfe54d9f",
+              "rewardType": "block",
+              "value": "0x4563918244f40000"
+            },
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "blockNumber": 1,
+            "result": null,
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "reward"
+          }
+        ]
+      }
+    },
+    {
+      "name": "block-unknown-hash",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "trace_block",
+        "params": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000"
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "error": {
+          "code": -32001,
+          "message": "block not found: hash 0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "name": "filter-range-reward",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x1",
+            "toBlock": "0x1",
+            "toAddress": [
+              "0x05a56e2d52c817161883f50c441c3228cfe54d9f"
+            ]
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "result": [
+          {
+            "action": {
+              "author": "0x05a56e2d52c817161883f50c441c3228cfe54d9f",
+              "rewardType": "block",
+              "value": "0x4563918244f40000"
+            },
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "blockNumber": 1,
+            "result": null,
+            "subtraces": 0,
+            "traceAddress": [],
+            "type": "reward"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-hash-reward",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "toAddress": [
+              "0x05a56e2d52c817161883f50c441c3228cfe54d9f"
+            ],
+            "count": 1
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "error": {
+          "code": -32602,
+          "message": "Invalid params",
+          "data": "unknown field `blockHash`, expected one of `fromBlock`, `toBlock`, `fromAddress`, `toAddress`, `mode`, `after`, `count` at line 1 column 12"
+        }
+      }
+    },
+    {
+      "name": "filter-hash-and-range",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "fromBlock": "0x1",
+            "toBlock": "0x1"
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "error": {
+          "code": -32602,
+          "message": "Invalid params",
+          "data": "unknown field `blockHash`, expected one of `fromBlock`, `toBlock`, `fromAddress`, `toAddress`, `mode`, `after`, `count` at line 1 column 12"
+        }
+      }
+    },
+    {
+      "name": "filter-hash-count-zero",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+            "count": 0
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "error": {
+          "code": -32602,
+          "message": "Invalid params",
+          "data": "unknown field `blockHash`, expected one of `fromBlock`, `toBlock`, `fromAddress`, `toAddress`, `mode`, `after`, `count` at line 1 column 12"
+        }
+      }
+    },
+    {
+      "name": "replay-hash",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "result": []
+      }
+    },
+    {
+      "name": "logs-known-empty",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 12,
+        "method": "eth_getLogs",
+        "params": [
+          {
+            "blockHash": "0x88e96d4537bea4d9c05d12549907b32561d3bf31f45aae734cdc119f13406cb6"
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 12,
+        "result": []
+      }
+    },
+    {
+      "name": "logs-unknown-hash",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 13,
+        "method": "eth_getLogs",
+        "params": [
+          {
+            "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 13,
+        "error": {
+          "code": -32001,
+          "message": "block not found: hash 0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    }
+  ]
+}

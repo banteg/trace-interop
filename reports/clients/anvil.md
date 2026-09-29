@@ -4,7 +4,7 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.8.4-nightly · dd372126** (of 32 decisions): ✅ 13 agree · 🛠️ 2 fix submitted · ⚠️ 11 with no fix yet (6 on converged decisions) · ❔ 1 policy open · ⚪ 5 not fully measured. 4 of these agreements are not yet in 1.8.3 · cae51ad4. Upstream fix PRs: 1 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.8.4-nightly · dd372126** (of 32 decisions): ✅ 13 agree · 🛠️ 2 fix submitted · ⚠️ 11 with no fix yet (8 on converged decisions) · ❔ 1 policy open · ⚪ 5 not fully measured. 4 of these agreements are not yet in 1.8.3 · cae51ad4. Upstream fix PRs: 1 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

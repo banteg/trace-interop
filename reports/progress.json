@@ -23,10 +23,10 @@
       "counted": true,
       "counts": {
         "agree": 3,
-        "converged": 10,
+        "converged": 13,
         "fix": 5,
         "policy": 1,
-        "review": 7,
+        "review": 4,
         "unmeasured": 6
       },
       "dev_only": 0,
@@ -167,10 +167,10 @@
       "counted": false,
       "counts": {
         "agree": 13,
-        "converged": 6,
+        "converged": 8,
         "fix": 2,
         "policy": 1,
-        "review": 5,
+        "review": 3,
         "unmeasured": 5
       },
       "dev_only": 4,

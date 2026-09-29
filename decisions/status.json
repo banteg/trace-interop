@@ -45,6 +45,46 @@
       }
     }
   },
+  "H04": {
+    "policy": "converged",
+    "note": "Every development build treats an omitted, null or empty address list as no restriction: Besu and the Geth draft already did, and Erigon (#24255) and Nethermind (#13857) merged the change. Reth takes it through Alloy #4257, merged but not yet in an Alloy release that Reth ships. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "erigontech/erigon#24255 (merged)",
+        "url": "https://github.com/erigontech/erigon/pull/24255"
+      },
+      {
+        "label": "NethermindEth/nethermind#13857 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13857"
+      },
+      {
+        "label": "alloy-rs/alloy#4257 (merged)",
+        "url": "https://github.com/alloy-rs/alloy/pull/4257"
+      }
+    ]
+  },
+  "H05": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind, Reth and the Geth draft emit no synthetic reward on a PoS block and no records for genesis, after merged fixes in each (Erigon #24295, Nethermind #13783/#13801/#13938, Reth #27423 with Alloy #4218). Besu still differs, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "erigontech/erigon#24295 (merged)",
+        "url": "https://github.com/erigontech/erigon/pull/24295"
+      },
+      {
+        "label": "NethermindEth/nethermind#13938 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13938"
+      },
+      {
+        "label": "paradigmxyz/reth#27423 (merged)",
+        "url": "https://github.com/paradigmxyz/reth/pull/27423"
+      },
+      {
+        "label": "alloy-rs/alloy#4218 (merged)",
+        "url": "https://github.com/alloy-rs/alloy/pull/4218"
+      }
+    ]
+  },
   "H06": {
     "policy": "converged",
     "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, Nethermind merged its alignment (#13937), matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
@@ -113,6 +153,16 @@
       }
     ]
   },
+  "H08": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind (#13667), Reth and the Geth draft keep the stable envelope: output is the return bytes, trace is [] and stateDiff/vmTrace are null when not requested, and the tracer selection never changes the output. Besu is only partially assessed. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "NethermindEth/nethermind#13667 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13667"
+      }
+    ]
+  },
   "H09": {
     "policy": "converged",
     "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, Erigon\u2019s development build implements it (#24355, #24356), and fix PRs implement it for Reth (revm-inspectors) and Nethermind. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
@@ -146,6 +196,16 @@
       {
         "label": "Besu #11362: report empty code for self-destructing creations",
         "url": "https://github.com/besu-eth/besu/pull/11362"
+      }
+    ]
+  },
+  "H11": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind (#13667), Reth and the Geth draft accept an empty trace-type selection, execute the call and return its output. Besu still differs, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "NethermindEth/nethermind#13667 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13667"
       }
     ]
   },
@@ -386,6 +446,38 @@
       {
         "label": "Besu #10953: replay block pre-execution before tracing transactions",
         "url": "https://github.com/besu-eth/besu/pull/10953"
+      }
+    ]
+  },
+  "H29": {
+    "policy": "converged",
+    "note": "Erigon, Nethermind (#13957), Reth and the Geth draft keep root precompile calls and omit nested zero-value precompile frames while keeping value-bearing ones. Besu has a partial fix open (#11360); Anvil nightly keeps nested zero-value frames in mined traces. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "NethermindEth/nethermind#13957 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13957"
+      },
+      {
+        "label": "besu-eth/besu#11360 (open, partial)",
+        "url": "https://github.com/besu-eth/besu/pull/11360"
+      }
+    ]
+  },
+  "H30": {
+    "policy": "converged",
+    "note": "Every development build defaults omitted trace_filter bounds to latest against one head: Reth (#27411, released in 2.7.0), Erigon (#24341) and Nethermind (#13935) merged the change, and Besu and the Geth draft already matched. Erigon\u2019s maintainer agreed to ship it without a deprecation period. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "paradigmxyz/reth#27411 (merged)",
+        "url": "https://github.com/paradigmxyz/reth/pull/27411"
+      },
+      {
+        "label": "erigontech/erigon#24341 (merged)",
+        "url": "https://github.com/erigontech/erigon/pull/24341"
+      },
+      {
+        "label": "NethermindEth/nethermind#13935 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/13935"
       }
     ]
   },

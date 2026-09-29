@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from trace_interop.cli import HIVE
-from trace_interop.versions import current_references, check_current, matrix_lock, NAMES
+from trace_interop.versions import current_references, check_current, lagging_development, matrix_lock, NAMES
 
 
 class VersionTests(unittest.TestCase):
@@ -76,6 +76,31 @@ class VersionTests(unittest.TestCase):
             check_current(self.lock())
         with self.assertRaisesRegex(ValueError, 'empty'):
             check_current({'clients':{}})
+
+    def test_flags_development_builds_older_than_their_release_build(self):
+        # 2026-09-29 matrix: the Reth nightly was built hours before the v2.7.0 release image.
+        clients = {
+            'reth_development': dict(created='2026-09-28T01:42:58.151009851Z'),
+            'reth_release': dict(created='2026-09-28T11:08:00.92360729Z', release=dict(tag='v2.7.0')),
+            'erigon_development': dict(created='2026-09-28T22:16:55Z'),
+            'erigon_release': dict(created='2026-09-24T12:26:33Z', release=dict(tag='v3.7.0')),
+            'besu_development': dict(created='2026-09-28T16:20:49Z'),
+            'go-ethereum_trace': dict(image_id='sha256:geth')}
+        self.assertEqual(lagging_development(clients), {'reth_development': dict(
+            created='2026-09-28T01:42:58.151009851Z', release='v2.7.0', release_created='2026-09-28T11:08:00.92360729Z')})
+
+    @patch('trace_interop.versions.github_json')
+    @patch('trace_interop.cli.run')
+    def test_preflight_records_lagging_development_builds_without_failing(self, run, fetch):
+        fetch.side_effect = self.release
+        run.side_effect = self.command
+        lock = self.lock()
+        lock['clients']['reth_release'].update(created='2026-09-22T00:00:00Z', release=dict(tag='v2.0.0'))
+        lock['clients']['reth_development'] = dict(requested='ghcr.io/paradigmxyz/reth:nightly', image_id='sha256:one',
+                                                   digest='repo@sha256:one', created='2026-09-21T01:00:00Z')
+        result = check_current(lock)
+        self.assertEqual(result['status'], 'current')
+        self.assertEqual(list(result['lagging_development']), ['reth_development'])
 
     @patch('trace_interop.versions.resolve_geth')
     @patch('trace_interop.versions.resolve_native')

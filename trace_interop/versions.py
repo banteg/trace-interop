@@ -118,6 +118,23 @@ def matrix_lock(output, reproduce=None):
     return lock
 
 
+def lagging_development(clients):
+    """Development builds created before their client's release build.
+
+    A moving development tag can be current yet older than a release that shipped after it was
+    built (for example a nightly published hours before the release). Such a build measures an
+    earlier revision than the release, so it is reported rather than silently labeled newer.
+    """
+    created = lambda info: dt.datetime.fromisoformat(info['created'])
+    lagging = {}
+    for client in CLIENTS:
+        development, release = (clients.get(f'{client}_{channel}') for channel in ('development', 'release'))
+        if development and release and created(development) < created(release):
+            lagging[f'{client}_development'] = dict(created=development['created'], release=release['release']['tag'],
+                                                    release_created=release['created'])
+    return lagging
+
+
 def check_current(lock):
     """Live preflight: stale references/digests or a moved draft head fail closed.
 
@@ -152,4 +169,5 @@ def check_current(lock):
     if stale:
         raise ValueError('stale client lock; resolve a fresh matrix or explicitly reproduce history:\n'+'\n'.join(stale))
     return dict(checked_at=dt.datetime.now(dt.timezone.utc).isoformat(), status='current',
-                clients={name:info['image_id'] for name,info in lock['clients'].items()})
+                clients={name:info['image_id'] for name,info in lock['clients'].items()},
+                lagging_development=lagging_development(lock['clients']))

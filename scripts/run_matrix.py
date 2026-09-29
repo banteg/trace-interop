@@ -15,8 +15,12 @@ args=p.parse_args()
 out=Path(args.output).resolve()
 out.mkdir(parents=True,exist_ok=False)
 lock=matrix_lock(out/'clients.lock.json',args.reproduce_lock)
-write(out/'preflight.json', check_current(lock) if not args.reproduce_lock else
-      {'status':'historical-reproduction','lock':str(Path(args.reproduce_lock).resolve())})
+preflight=(check_current(lock) if not args.reproduce_lock else
+           {'status':'historical-reproduction','lock':str(Path(args.reproduce_lock).resolve())})
+write(out/'preflight.json',preflight)
+for name,lag in preflight.get('lagging_development',{}).items():
+    print(f'warning: {name} was built {lag["created"]}, before the {lag["release"]} release build '
+          f'({lag["release_created"]}); it measures an older revision than the release',file=sys.stderr,flush=True)
 results=[]
 for corpus in args.corpora.split(','):
     command=[sys.executable,'-m','trace_interop','run','--lock',str(out/'clients.lock.json'),

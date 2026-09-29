@@ -4,6 +4,8 @@ The clients already share much of the `trace_*` API. These reports show where ad
 
 Published builds checked at **2026-09-28T23:39:02.591371+00:00**. [Freshness preflight](../evidence/2026-09-29/eval/preflight.json) · [Build lock](../evidence/2026-09-29/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
+The Reth development build (built 2026-09-28 01:42 UTC) predates its v2.7.0 release build (2026-09-28 11:08 UTC), so it tests an earlier revision than that release.
+
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 
 ## Progress

@@ -4,6 +4,8 @@
 
 Published builds checked at **2026-09-28T23:39:02.591371+00:00**. [Freshness preflight](../evidence/2026-09-29/eval/preflight.json) · [Build lock](../evidence/2026-09-29/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
+The Reth development build (built 2026-09-28 01:42 UTC) predates its v2.7.0 release build (2026-09-28 11:08 UTC), so it tests an earlier revision than that release.
+
 The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Version and commit labels identify captured builds; channel identifiers in raw artifacts describe how updates are discovered.
 
 The experimental Geth fork implements the draft and is not an independent vote for its decisions. No verified pruning scenario is included for that fork.

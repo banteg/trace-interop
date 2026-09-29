@@ -82,6 +82,12 @@ records when they were checked. Tags are not refreshed between corpora. Thus res
 show the current published builds **as of the preflight**, not a promise that upstream
 has stayed unchanged since then. The Geth cache refuses dirty source.
 
+A current development tag can still be older than its client's latest release: Reth
+publishes `nightly` once a day (around 01:30 UTC), so a release cut later that day is newer than
+the nightly until the next one. The preflight does not fail on this, but records such builds under
+`lagging_development` in `preflight.json`, prints a warning, and the reports name them.
+Resolve the matrix after the next development build to measure the client's main branch.
+
 For an intentional historical reproduction, supply the combined lock:
 
 ```sh

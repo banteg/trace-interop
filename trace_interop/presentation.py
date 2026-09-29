@@ -8,6 +8,7 @@ import re
 
 from .cli import write
 from .progress import BUCKETS, pr_counts, svg, tally
+from .versions import lagging_development
 from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
 
 
@@ -347,6 +348,14 @@ def utc_date(timestamp):
     return datetime.fromisoformat(timestamp.replace('Z', '+00:00')).astimezone(timezone.utc).date().isoformat()
 
 
+def lagging_note(lagging, editorial):
+    """Name development builds that predate their client's release build."""
+    when = lambda value: timestamp(value).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+    return ''.join(f'The {editorial["clients"][family(name)]["name"]} development build (built {when(lag["created"])}) predates '
+                   f'its {lag["release"]} release build ({when(lag["release_created"])}), so it tests an earlier revision than that release.\n\n'
+                   for name, lag in lagging.items())
+
+
 def build_rows(selected, runs, revisions, parent):
     """Pair exact tested versions with source commits, never infer from a channel label."""
     groups = {}
@@ -591,6 +600,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         matrix = root/selection['matrix']
         preflight = json.loads((matrix/'preflight.json').read_text())
         freshness = f'Published builds checked at **{preflight["checked_at"]}**. [Freshness preflight]({relative(matrix/"preflight.json", output)}) · [Build lock]({relative(matrix/"clients.lock.json", output)}). All corpora use this snapshot; later upstream changes require a new capture.\n\n'
+        freshness += lagging_note(lagging_development(json.loads((matrix/'clients.lock.json').read_text())['clients']), editorial)
     availability = defaultdict(lambda: defaultdict(set))
     for entries in case_pages.values():
         for e in entries:

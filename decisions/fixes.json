@@ -2101,6 +2101,21 @@
       "state": "open",
       "draft": false,
       "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14050",
+      "title": "fix(rpc): reject unknown members and negative after or count in trace_filter",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "note": "trace_filter and the TraceStore plugin return -32602 for an unknown filter member or a negative after or count; data/input agreement and the unsigned-call codes remain",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
     }
   ]
 }

@@ -104,7 +104,8 @@ flowchart LR
 | [Nethermind #13956](https://github.com/NethermindEth/nethermind/pull/13956) | Reject a trace_call chainId for another chain as invalid params | [H14](../reports/decisions/H14.md) (partial) | 2026-09-28 | — | — | dev | — |
 | [Nethermind #13957](https://github.com/NethermindEth/nethermind/pull/13957) | Emit failed frames for calls and creates that fail their precheck · conflicts with Nethermind #13981 | [H29](../reports/decisions/H29.md) | 2026-09-28 | — | — | dev | dev |
 | [Nethermind #13958](https://github.com/NethermindEth/nethermind/pull/13958) | Include forwarded gas in the vmTrace cost of a create that enters no frame · after Nethermind #13957 | [H20](../reports/decisions/H20.md) (partial) | 2026-09-28 | — | — | dev | — |
-| [Nethermind #13981](https://github.com/NethermindEth/nethermind/pull/13981) | Keep reverted frame results and use parity error labels · conflicts with Nethermind #13957 | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
+| [Nethermind #13981](https://github.com/NethermindEth/nethermind/pull/13981) | Keep reverted frame results and use parity error labels · conflicts with Nethermind #13957 | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | — | — | — | — |
+| [Nethermind #14037](https://github.com/NethermindEth/nethermind/pull/14037) | Return null from trace_replayTransaction for a missing transaction; trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head still differs in its code | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 
 ## Reth
 

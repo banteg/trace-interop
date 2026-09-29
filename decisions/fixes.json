@@ -1901,9 +1901,16 @@
       "conflicts_with": [
         "https://github.com/NethermindEth/nethermind/pull/13957"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T00:06:56Z",
+      "uptake": {
+        "merge_commit": "aab075e575aa3ecf0f43ed2aeadb438f6b13f88a",
+        "builds": {
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24357",
@@ -1959,6 +1966,21 @@
       ],
       "note": "absent accounts read as absent for the state-diff builder, fixing born-account markers and temporary-account deaths since revm-inspectors 0.44.0",
       "title": "fix(anvil): mark created accounts as added in trace statediff",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14037",
+      "title": "fix(rpc): return null from trace_replayTransaction for a missing transaction",
+      "client": "nethermind",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "note": "trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head still differs in its code",
       "state": "open",
       "draft": false,
       "merged_at": null

@@ -61,8 +61,10 @@ def verify_inventory(root):
         manifest = json.loads((path/'manifest.json').read_text())
         available.update(manifest['corpus']+'/'+c['name'] for c in manifest['selected_cases'])
     items = json.loads((root/'decisions/ledger.json').read_text())['items']
+    status = json.loads((root/'decisions/status.json').read_text())
     for item in items:
-        if not item['cases']:
+        # A decision still under review may precede its cases; a policy conclusion needs evidence.
+        if not item['cases'] and status.get(item['id'], {}).get('policy', 'review') != 'review':
             raise ValueError(f'empty evidence references: {item["id"]}')
         if set(item['cases']) & set(item.get('references', [])):
             raise ValueError(f'case is also a reference: {item["id"]}')

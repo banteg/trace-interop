@@ -290,7 +290,7 @@ class CoverageTests(unittest.TestCase):
             checks = assess('call-many', result, 'trace_callMany', params)
             self.assertEqual([c['status'] for c in checks if c['topic'] in ['H15','H16']], ['change_needed']*2)
 
-    def test_inventory_rejects_empty_and_stale_references(self):
+    def test_inventory_rejects_stale_references_and_unevidenced_conclusions(self):
         import tempfile
         from trace_interop.inventory import verify_inventory
         with tempfile.TemporaryDirectory() as tmp:
@@ -298,11 +298,13 @@ class CoverageTests(unittest.TestCase):
             (root/'evidence/run').mkdir(parents=True); (root/'decisions').mkdir()
             (root/'reports.lock.json').write_text(json.dumps({'runs':['evidence/run']}))
             (root/'evidence/run/manifest.json').write_text(json.dumps({'corpus':'precompiles', 'selected_cases':[{'name':'root-success'}]}))
+            (root/'decisions/status.json').write_text(json.dumps({'H29': {'policy': 'converged'}}))
             for references in [[], ['initial/old-case']]:
                 (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':references}]}))
                 with self.assertRaises(ValueError): verify_inventory(root)
-            (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':['precompiles/root-success']}]}))
-            self.assertEqual(verify_inventory(root), 1)
+            (root/'decisions/ledger.json').write_text(json.dumps({'items':[{'id':'H29','cases':['precompiles/root-success']},
+                                                                            {'id':'H33','cases':[]}]}))
+            self.assertEqual(verify_inventory(root), 2)
 
 class PrecompileValueTests(unittest.TestCase):
     def test_child_value_not_outer_value_controls_inclusion(self):

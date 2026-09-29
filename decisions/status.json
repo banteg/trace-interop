@@ -500,5 +500,33 @@
         "url": "https://github.com/paradigmxyz/reth/pull/27410"
       }
     ]
+  },
+  "H32": {
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "trace_filter should take the same bound types as eth_getLogs, so no block-hash or EIP-1898 range bounds; reviewing #24357 showed the cost of keeping them (the same block past the executed head is -32602 by number and -32000 by hash). Raised single-block selection by hash as a separate question (H33), with either answer acceptable to Erigon.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
+          }
+        ]
+      }
+    }
+  },
+  "H33": {
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Raised the concern: without a blockHash member no single call pins a block by hash and filters by address, and an empty numeric result is ambiguous after a reorg. Proposed aligning trace_filter with eth_getLogs\u2019 EIP-234 member and said either answer works for Erigon. The recommendation\u2019s canonical-only narrowing has not yet been put to Erigon.",
+        "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
+          }
+        ]
+      }
+    }
   }
 }

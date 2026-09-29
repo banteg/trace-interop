@@ -5,8 +5,9 @@ selected state and fork. This includes both nonce directions, chain identity, si
 funds for value and upfront gas, intrinsic gas, fee validity and sender-code restrictions
 with the EIP-7702 exception. Local pool replacement, already-known and minimum-tip rules
 are outside this contract. A valid transaction that REVERTs or exhausts execution gas
-still returns a trace. The proposed `-32003` validation code is scored separately from
-rejection itself; malformed bytes/parameters use `-32602`.
+still returns a trace. A rejection must name its own violation; its code is recommended,
+not scored (the `eth_sendRawTransaction` error groups with the `-32003` fallback, and
+`-32602` for malformed bytes or parameters).
 
 This tightens legacy diagnostic behavior. Signed pre-broadcast inspection, pool-transaction
 inspection and experimentation against another state are all legitimate uses; we have

@@ -6,7 +6,7 @@ upfront payment and prior-call settlement observable even without stateDiff.
 import re
 
 from .execution_models import balance_delta, created_address, quantity
-from .rules import violation
+from .rules import recommended_note, rejection, violation
 from .vm_model import intrinsic
 
 SENDER = '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf'
@@ -22,13 +22,12 @@ PROGRAMS = {
     'revert': '0x602a60005260206000fd',
     'out-of-gas': '0x63ffffffff51',
 }
-# eth_simulateV1 codes for trace_call/trace_callMany validation; tip above cap is invalid params.
+# Recommended eth_simulateV1 codes for the fee/funding violations of trace_call and trace_callMany
+# validation; tip above cap recommends invalid params. The violation is required, the code is not (H14).
 SIMULATE_CODES = {'funds': -38014, 'base_fee': -38012, 'priority': -32602}
 # Defects that make the call object invalid regardless of state; they take precedence over
 # state-dependent rejections when a call violates several rules (H14).
 STATELESS = {'priority'}
-# Codes that can carry a validation rejection; internal, parse and method errors cannot.
-REJECTION_CODES = [-32000, -32003, -32602, *range(-38026, -38009)]
 
 
 def gas_used(program, gas_limit=GAS):
@@ -142,17 +141,18 @@ def assess(case, observation):
             return checks
         message = str(error.get('message','')).lower()
         kind = violation(message)
-        if error.get('code') not in REJECTION_CODES or kind not in SIMULATE_CODES:
+        if not rejection(status, response) or kind not in SIMULATE_CODES:
             return [dict(topic='H15',status='blocked',requirement='Identify a fee/funding validation rejection.',
                          detail='A generic/internal/crash error does not prove validation: '+message)]
         named_index = re.search(r'(?:call |txindex )(\d+)', message)
         expected = reportable(violations)
         precedence = f' {kind} is violated too, but {" and ".join(sorted(expected))} takes precedence.' if kind in violations - expected else ''
-        add(kind in expected and (named_index is None or int(named_index[1]) == index)
-            and error.get('code') == SIMULATE_CODES[kind],
-            'Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence.',
-            f'Expected call {index}: {" or ".join(sorted(expected))}; observed {kind} with code {error.get("code")}, '
-            f'which requires {SIMULATE_CODES[kind]}.'+precedence+' '+policy['reason'])
+        code = error.get('code')
+        add(kind in expected and (named_index is None or int(named_index[1]) == index),
+            'Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. '
+            'The eth_simulateV1 code is recommended.',
+            f'Expected call {index}: {" or ".join(sorted(expected))}; observed {kind} with code {code}'
+            f'{recommended_note(code, SIMULATE_CODES[kind])}.'+precedence+' '+policy['reason'])
         return checks
     result = response.get('result')
     envelopes = result if case['request']['method'] == 'trace_callMany' else [result]
@@ -216,10 +216,8 @@ def assess_compatibility(case, observation, peers):
             error = response.get('error', {})
             message = str(error.get('message', '')).lower()
             kind = violation(message)
-            # Besu eth_call uses dedicated base-fee/funding codes. Compare the
-            # identified condition without imposing trace error-code policy on it.
-            codes = REJECTION_CODES + ([-32009, -32004] if eth else [])
-            if error.get('code') in codes and kind in SIMULATE_CODES:
+            # Compare the condition the message identifies; error codes are only recommended.
+            if rejection(status, response) and kind in SIMULATE_CODES:
                 return ('rejection', kind), ''
             return None, 'unclassified RPC error: '+message
         return None, status

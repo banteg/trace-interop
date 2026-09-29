@@ -2,7 +2,7 @@
 
 `trace_replayTransaction` · pruned · [All reports](../../README.md)
 
-**What this checks:** Unavailable historical state uses the proposed pruned-history error (4444).
+**What this checks:** Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -28,10 +28,10 @@
 
 **Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
-- [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
+- [H06](../../decisions/H06.md): Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null. Code -32603 (4444 recommended).
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
-- [H06](../../decisions/H06.md): Unavailable historical state uses the proposed pruned-history error (4444).
+- [H06](../../decisions/H06.md): Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null. Code -32603 (4444 recommended).
 
 </details>

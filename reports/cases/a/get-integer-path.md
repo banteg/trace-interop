@@ -2,7 +2,7 @@
 
 `trace_get` · a · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602).
+**What this checks:** Malformed input returns an error (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -37,18 +37,18 @@
 
 **Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 6 is not of type 'string'; 0 is not of type 'string'
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). 6 is not of type 'string'; 0 is not of type 'string'
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 6 is not of type 'string'; 0 is not of type 'string'
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). 6 is not of type 'string'; 0 is not of type 'string'
 
 **Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 6 is not of type 'string'; 0 is not of type 'string'
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). 6 is not of type 'string'; 0 is not of type 'string'
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). 6 is not of type 'string'; 0 is not of type 'string'
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). 6 is not of type 'string'; 0 is not of type 'string'
 
 </details>

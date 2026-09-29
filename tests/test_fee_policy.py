@@ -107,11 +107,12 @@ class FeePolicyTests(unittest.TestCase):
         observation = dict(status='rpc_error',response={'error':{'code':-38014,'message':'insufficient funds'}})
         checks = supplement(case, observation, {}, evaluate(case,observation,{}), ['H15'])
         self.assertEqual([c['status'] for c in checks if c['topic']=='H15'], ['matches'])
-        # A generic code is a difference, but the identified violation is retained.
+        # The violation decides; a generic code is only noted, since -38014 is recommended.
         observation['response']['error']['code']=-32000
         check = assess(case,observation)[0]
-        self.assertEqual(check['status'],'change_needed')
-        self.assertIn('observed funds with code -32000, which requires -38014',check['detail'])
+        self.assertEqual(check['status'],'matches')
+        self.assertIn('observed funds with code -32000 (-38014 recommended)',check['detail'])
+        # JSON-RPC protocol failures report no rejection, whatever their message.
         for code in [-32603,-32601,-32700]:
             observation['response']['error']['code']=code
             self.assertEqual(assess(case,observation)[0]['status'],'blocked')

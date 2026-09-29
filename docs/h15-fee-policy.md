@@ -72,9 +72,9 @@ malformed responses, invalid output and unavailable baselines block comparison;
 they do not prove a matching validation reason. Omitted fee fields default to zero,
 as in eth_call and eth_simulateV1: omitted or zero-only fields are zero-fee calls, a
 cap alone is charged at the base fee, and a tip alone exceeds its zero cap. Rejections
-must carry the eth_simulateV1 code for the identified violation (-38014 funds, -38012
-base fee, -32602 tip above cap); -32000 is a difference whose detail still names the
-violation.
+must name the violation; the eth_simulateV1 code for it is recommended (-38014 funds,
+-38012 base fee, -32602 tip above cap), so -32000 agrees and its detail notes the
+recommended code.
 Mutation tests cover shared wrong BASEFEE, missing upfront debit despite equal
 fee opcodes, mismatched rejection reasons and per-item fee-environment reset.
 

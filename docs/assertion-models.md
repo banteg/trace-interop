@@ -103,11 +103,23 @@ under H15 against the selected block, while its step semantics (H20) and returne
 bytes (H08) are judged under the environment its vmTrace reports, so a simulation
 environment the model does not share fails only H15. Among several fee violations, a
 defect that makes the call object invalid regardless of state (a priority fee above
-the fee cap, -32602) takes precedence; naming another violation is a difference
+the fee cap, -32602 recommended) takes precedence; naming another violation is a difference
 (H14, H15). A `pending` block on trace_block, trace_replayBlockTransactions,
 trace_call or trace_callMany is accepted only with a real pending environment, the
 block after the head, shown by record block numbers, non-canonical replayed
-transactions or a modelled NUMBER read; otherwise it must be -32602 (H32).
+transactions or a modelled NUMBER read; otherwise it must be rejected (H32).
+
+Error codes are recommended, not required (H14, since 2026-09-29). Where the draft
+requires an error, a check requires an error response and only reports a code other
+than the recommended one in its detail, such as `Code -32000 (-32602 recommended).`
+Any JSON-RPC error rejects the request except the base protocol's parse error, invalid
+request, method not found and internal error (-32700, -32600, -32601, -32603), which
+report a failure, not a rejection (`rules.rejection`); an unserved method stays H01's
+-32601. Behavior stays required: execute versus reject, null versus an error versus
+`[]`, and a rejection for the request's own violation. A signed transaction or fee
+rejection must name its violation in the message (H13, H15), so a transaction signed
+for another chain that is rejected for the funds of the sender its signature recovers
+remains a difference, and an `error` probe's `recommended` code is reported, not required.
 
 A check is judged under the decision whose rule it tests, not the decision its case is
 declared for, so one defect fails one decision (`trace_interop/isolation.py`):
@@ -177,14 +189,14 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
   `maxFeePerBlobGas` is 0 or defaulted with blob hashes present, otherwise the head's blob base fee (1 wei, from
   its zero excess blob gas). `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
   the sender's, and the creation must still return the address of the state nonce.
-- H14: `probes-prague/field-chain-id-mismatch` now expects -32003. A chainId mismatch is a well-formed call this
-  chain rejects, with no listed code, as trace_rawTransaction reports it; -32602 is reserved for call objects
-  invalid regardless of state.
-- H06, in `a`: `missing-block-replay` replays unknown block 0xffff (-32001, never null or `[]`), and
-  `missing-block-filter-next` ends one block past the head, a two-block range that no range cap rejects first
-  (-32602).
+- H14: `probes-prague/field-chain-id-mismatch` must be rejected. A chainId for another chain is invalid
+  regardless of state, so -32602 is recommended.
+- H06, in `a`: `missing-block-replay` replays unknown block 0xffff (an error, -32001 recommended, never null
+  or `[]`), and `missing-block-filter-next` ends one block past the head, a two-block range that no range cap
+  rejects first (an error, -32602 recommended).
 - H32, in `h30`: `block-pending` and `replay-pending` select the pending block, and `filter-hash-bounds` and
-  `filter-hash-object-bounds` bound a filter by block 2's hash, as a string and as an EIP-1898 object (-32602).
+  `filter-hash-object-bounds` bound a filter by block 2's hash, as a string and as an EIP-1898 object (rejected,
+  -32602 recommended).
 
 No frozen chain has the Erigon reward-leak block (H23): the forks chain's only transaction to the coinbase is in
 post-merge block 60, which has no reward, so a PoW block in which a listed sender also pays the coinbase needs a

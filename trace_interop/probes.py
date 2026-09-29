@@ -3,12 +3,19 @@
 A case lists `probes`: each names its decision topic, a kind and the expected values
 its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
+An `error` probe requires an error response; its optional `recommended` code is reported, not required.
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
 the error cannot separate its property from that dependency. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict; with `extension` it is
 extension evidence, which does not hold a topic's verdict open (presentation.verdict).
 """
-from .rules import embedded_error, page_dependencies, violation
+from .rules import (
+    embedded_error,
+    page_dependencies,
+    recommended_note,
+    rejection,
+    violation,
+)
 from .vm_model import UnsupportedProgram, execute, store_words, words
 
 
@@ -178,11 +185,11 @@ def assess(case, observation, peers):
             checks.append(state_check(probe, status, response, result))
             continue
         if kind == 'error':
+            # Any error response satisfies the rule; a `recommended` code is reported, never required.
             error = mapping(response.get('error'))
-            code = probe.get('code')
-            ok = status == 'rpc_error' and (code is None or error.get('code') == code)
-            add(topic, ok, requirement,
-                f'Observed {status}' + (f' {error.get("code")}: {str(error.get("message"))[:120]}' if status == 'rpc_error'
+            add(topic, rejection(status, response), requirement,
+                f'Observed {status}' + (f' {error.get("code")}: {str(error.get("message"))[:120]}'
+                                        + recommended_note(error.get('code'), probe.get('recommended')) if status == 'rpc_error'
                                         else f' with output {str(mapping(result).get("output", result))[:140]}'),
                 role='rejection')
             continue

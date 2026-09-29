@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602).
+**What this checks:** Malformed input returns an error (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -37,18 +37,18 @@
 
 **Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). -1 is not valid under any of the given schemas
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). -1 is not valid under any of the given schemas
 
 **Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). -1 is not valid under any of the given schemas
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). -1 is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). -1 is not valid under any of the given schemas
 
 </details>

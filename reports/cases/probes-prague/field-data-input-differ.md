@@ -2,7 +2,7 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602). Disagreeing data and input are invalid params (-32602).
+**What this checks:** Malformed input returns an error (-32602 recommended). Disagreeing data and input are rejected (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -43,27 +43,27 @@
 
 **Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). data and input must agree
-- [H14](../../decisions/H14.md): Disagreeing data and input are invalid params (-32602). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). data and input must agree
+- [H14](../../decisions/H14.md): Disagreeing data and input are rejected (-32602 recommended). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). data and input must agree
-- [H14](../../decisions/H14.md): Disagreeing data and input are invalid params (-32602). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). data and input must agree
+- [H14](../../decisions/H14.md): Disagreeing data and input are rejected (-32602 recommended). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). data and input must agree
-- [H14](../../decisions/H14.md): Disagreeing data and input are invalid params (-32602). Observed result with output 0x000000000000000000000000000000000000000000000000000000000000002a
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). data and input must agree
+- [H14](../../decisions/H14.md): Disagreeing data and input are rejected (-32602 recommended). Observed result with output 0x000000000000000000000000000000000000000000000000000000000000002a
 
 **Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). data and input must agree
-- [H14](../../decisions/H14.md): Disagreeing data and input are invalid params (-32602). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). data and input must agree
+- [H14](../../decisions/H14.md): Disagreeing data and input are rejected (-32602 recommended). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). data and input must agree
-- [H14](../../decisions/H14.md): Disagreeing data and input are invalid params (-32602). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). data and input must agree
+- [H14](../../decisions/H14.md): Disagreeing data and input are rejected (-32602 recommended). Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000001
 
 </details>

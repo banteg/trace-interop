@@ -2,7 +2,7 @@
 
 `trace_callMany` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Identify a fee/funding validation rejection.
+**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Identify a fee/funding validation rejection.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Anvil · 1.8.4-nightly · 00989695](../../../../clients/anvil_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | Error envelope nested inside result | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Besu · 26.9-develop · c197ac57](../../../../clients/besu_development.md) | Error envelope nested inside result | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Erigon · 3.8.0-dev · a2a19253](../../../../clients/erigon_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
@@ -57,13 +57,9 @@
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. The omitted fee cap defaults to zero, below the supplied priority fee.
 - Result shape at `/`: {'error': {'code': -32603, 'message': 'Internal error'}, 'id': 1, 'jsonrpc': '2.0'} is not of type 'array'
 
-**Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. The omitted fee cap defaults to zero, below the supplied priority fee.
-
 **Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed base_fee with code -32000, which requires -38012. base_fee is violated too, but priority takes precedence. The omitted fee cap defaults to zero, below the supplied priority fee.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Expected call 0: priority; observed base_fee with code -32000 (-38012 recommended). base_fee is violated too, but priority takes precedence. The omitted fee cap defaults to zero, below the supplied priority fee.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

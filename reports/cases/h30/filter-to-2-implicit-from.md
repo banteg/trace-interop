@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.
+**What this checks:** An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range and is rejected (-32602 recommended, as eth_getLogs), not a historical search.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -13,7 +13,7 @@
 | [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 3 records | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
 | [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
 | [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
 | [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
 | [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/h30/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/h30/manifest.json) |
@@ -36,14 +36,10 @@
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.
+- [H30](../../decisions/H30.md): An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range and is rejected (-32602 recommended, as eth_getLogs), not a historical search.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H30](../../decisions/H30.md): An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.
-
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
-
-- [H30](../../decisions/H30.md): An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.
+- [H30](../../decisions/H30.md): An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range and is rejected (-32602 recommended, as eth_getLogs), not a historical search.
 
 </details>

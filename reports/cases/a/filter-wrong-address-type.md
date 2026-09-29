@@ -2,7 +2,7 @@
 
 `trace_filter` · a · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602).
+**What this checks:** Malformed input returns an error (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -37,12 +37,12 @@
 
 **Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f' is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f' is not valid under any of the given schemas
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Malformed input returns invalid params (-32602). '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f' is not valid under any of the given schemas
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f' is not valid under any of the given schemas
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 </details>

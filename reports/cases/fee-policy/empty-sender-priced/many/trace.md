@@ -2,19 +2,19 @@
 
 `trace_callMany` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Assess the declared property.
+**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Return one execution envelope per input call, in order. Reject this independently invalid fee/funding request before execution. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
-| [Anvil · 1.8.4-nightly · 00989695](../../../../clients/anvil_development.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | Error envelope nested inside result | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Besu · 26.9-develop · c197ac57](../../../../clients/besu_development.md) | Error envelope nested inside result | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Erigon · 3.8.0-dev · a2a19253](../../../../clients/erigon_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
-| [Nethermind · 2.2.0-preview · 287f54f0](../../../../clients/nethermind_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
+| [Nethermind · 2.2.0-preview · 287f54f0](../../../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 1 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 | [Reth · 2.7.0 · 60aeb532](../../../../clients/reth_development.md) | 1 records | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-policy/manifest.json) |
 
@@ -45,14 +45,6 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed funds with code -32003, which requires -38014. An unfunded sender cannot afford positive gas fees.
-
-**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed funds with code -32003, which requires -38014. An unfunded sender cannot afford positive gas fees.
-
 **Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
@@ -70,10 +62,6 @@
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. An unfunded sender cannot afford positive gas fees.
-
-**Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: funds; observed funds with code -32000, which requires -38014. An unfunded sender cannot afford positive gas fees.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

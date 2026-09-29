@@ -30,25 +30,28 @@ class RuleSafetyTests(unittest.TestCase):
                                      ('raw-below-basefee', 'max fee per gas less than block base fee', 806)]:
             for selection in [['trace'], ['stateDiff'], ['vmTrace'], ['trace', 'stateDiff', 'vmTrace']]:
                 case = {'name': name, 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', selection]}}
+                # The violation decides; the error group or -32003 is only recommended, so -32000 matches too.
                 for code in [-32003, -32000] + ([group] if group else []):
                     observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': message}}}
                     checks = [c for c in evaluate(case, observation, {}) if c['topic'] == 'H13']
-                    self.assertEqual(checks[0]['status'], 'matches')
-                    self.assertEqual(checks[1]['status'], 'change_needed' if code == -32000 else 'matches')
+                    self.assertEqual([c['status'] for c in checks], ['matches'])
+                    self.assertEqual('recommended' in checks[0]['detail'], code == -32000)
                 checks = assess(name, {'output': '0x', 'trace': []}, 'trace_rawTransaction', case['request']['params'])
                 self.assertEqual([c['status'] for c in checks if c['topic'] == 'H13'], ['change_needed'])
 
     def test_signed_rejection_must_name_its_own_violation(self):
         case = {'name': 'raw-nonce-high', 'request': {'method': 'trace_rawTransaction', 'params': ['0x01', ['trace']]}}
-        for message, statuses in [('intrinsic gas too low', ['change_needed', 'change_needed']),
+        for message, statuses in [('intrinsic gas too low', ['change_needed']),
                                   ('internal error', ['blocked'])]:
             observation = {'status': 'rpc_error', 'response': {'error': {'code': -32003, 'message': message}}}
             self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], statuses)
-        # Another violation's error group is not accepted either.
+        # Another violation's error group is only noted: the recommended group for nonce too high is 2.
         observation = {'status': 'rpc_error', 'response': {'error': {'code': 1, 'message': 'nonce too high'}}}
-        self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], ['matches', 'change_needed'])
+        checks = [c for c in evaluate(case, observation, {}) if c['topic'] == 'H13']
+        self.assertEqual([c['status'] for c in checks], ['matches'])
+        self.assertIn('(2 or -32003 recommended)', checks[0]['detail'])
 
-    def test_beyond_head_range_is_invalid_params_but_unknown_block_is_not_found(self):
+    def test_beyond_head_range_and_unknown_block_require_an_error_with_a_recommended_code(self):
         for name, method, params, accepted in [
                 ('missing-block-filter', 'trace_filter', [{'fromBlock': '0x2f', 'toBlock': '0xffff'}], -32602),
                 ('missing-block-block', 'trace_block', ['0xffff'], -32001),
@@ -56,10 +59,12 @@ class RuleSafetyTests(unittest.TestCase):
             case = {'name': name, 'context': {'_chain': 'h30'}, 'request': {'method': method, 'params': params}}
             for code in [-32602, -32001]:
                 observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'x'}}}
-                # A range bound must be invalid params; an unknown single block may use any error (-32001 recommended).
-                ok = code == accepted or method != 'trace_filter'
-                self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']],
-                                 ['matches' if ok else 'change_needed'])
+                # Any error matches; a code other than the recommended one is only noted.
+                checks = [c for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']]
+                self.assertEqual([c['status'] for c in checks], ['matches'])
+                self.assertEqual(checks[0]['detail'], '' if code == accepted else f'Code {code} ({accepted} recommended).')
+            observation = {'status': 'result', 'response': {'result': []}}
+            self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']], ['change_needed'])
 
     def test_nested_and_partial_results_are_not_validation_rejection(self):
         for result in [None, {}, {'jsonrpc': '2.0', 'error': {'code': -32003}},
@@ -225,9 +230,9 @@ class CoverageTests(unittest.TestCase):
         error = lambda code: {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'pending'}}}
         record = lambda number: {'type': 'call', 'blockNumber': number, 'traceAddress': [], 'action': {}}
         schema = ['pending is not one of the block forms']
-        # trace_block: the schema omits pending, so H32 alone decides it.
+        # trace_block: the schema omits pending, so H32 alone decides it. Any error rejects it (-32602 recommended).
         self.assertEqual(status('trace_block', ['pending'], error(-32602), schema), {'H14': ['not_applicable'], 'H32': ['matches']})
-        self.assertEqual(status('trace_block', ['pending'], error(-32000), schema), {'H14': ['not_applicable'], 'H32': ['change_needed']})
+        self.assertEqual(status('trace_block', ['pending'], error(-32000), schema), {'H14': ['not_applicable'], 'H32': ['matches']})
         self.assertEqual(status('trace_block', ['pending'], result([record(pending)]), schema)['H32'], ['matches'])
         self.assertEqual(status('trace_block', ['pending'], result([record(head)]), schema)['H32'], ['change_needed'])
         self.assertEqual(status('trace_block', ['pending'], result([]), schema)['H32'], ['blocked'])
@@ -406,21 +411,23 @@ class HistoricalAssessmentTests(unittest.TestCase):
                 build=f'{client}_{channel}'
                 self.assertEqual(verdict(build,'filter-no-bounds','H30'),
                                  ['matches' if client in ['besu','nethermind'] else 'change_needed'])
-                # Nethermind rejects the reversed range with -32000, not -32602.
+                # Nethermind rejects the reversed range with -32000; -32602 is only recommended.
                 self.assertEqual(verdict(build,'filter-to-2-implicit-from','H30'),
-                                 ['matches' if client == 'besu' else 'change_needed'])
+                                 ['matches' if client in ['besu','nethermind'] else 'change_needed'])
                 self.assertEqual(verdict(build,'many-number-default','H31'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
                 self.assertEqual(verdict(build,'many-number-latest','H31'),['matches'])
                 self.assertEqual(verdict(build,'filter-safe','H32'),
                                  ['change_needed' if client in ['besu','reth'] else 'matches'])
-                # Filter bounds exclude pending as eth_getLogs does; only Reth returns -32602.
-                self.assertEqual(verdict(build,'filter-pending','H32'),
-                                 ['matches' if client == 'reth' else 'change_needed'])
-                # pending needs a real pending environment (NUMBER 49, Reth) or -32602: Besu and
-                # Nethermind evaluate latest (NUMBER 48) and Erigon rejects with -32000.
+                # Filter bounds exclude pending as eth_getLogs does: Reth rejects them with -32602 and
+                # Erigon's development build with -32000 (-32602 recommended); Besu's -32603 is an
+                # internal error, not a rejection.
+                rejects = client == 'reth' or build == 'erigon_development'
+                self.assertEqual(verdict(build,'filter-pending','H32'), ['matches' if rejects else 'change_needed'])
+                # pending needs a real pending environment (NUMBER 49, Reth) or a rejection (Erigon development,
+                # -32000): Besu, Nethermind and Erigon 3.7.0 evaluate latest (NUMBER 48).
                 for case in ['call-number-pending','many-number-pending']:
-                    self.assertEqual(verdict(build,case,'H32'),['matches' if client == 'reth' else 'change_needed'])
+                    self.assertEqual(verdict(build,case,'H32'),['matches' if rejects else 'change_needed'])
 
         for case,topic in [('many-number-default','H31'), ('many-number-latest','H31'),
                            ('filter-earliest','H32'), ('filter-safe','H32')]:

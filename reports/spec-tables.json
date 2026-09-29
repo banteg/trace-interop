@@ -442,11 +442,11 @@
       },
       {
         "id": "call-unknown",
-        "quote": "an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns 4444"
+        "quote": "an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended)"
       },
       {
         "id": "call-pending",
-        "quote": "is accepted only when the client has such a pending environment; a client without one returns -32602 rather than substitute another block"
+        "quote": "is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block"
       },
       {
         "id": "block-state",
@@ -454,11 +454,11 @@
       },
       {
         "id": "block-unknown",
-        "quote": "An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns 4444"
+        "quote": "An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)"
       },
       {
         "id": "block-pending",
-        "quote": "Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending returns -32602."
+        "quote": "Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended)."
       },
       {
         "id": "filter-default",
@@ -466,7 +466,7 @@
       },
       {
         "id": "filter-range",
-        "quote": "If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602"
+        "quote": "If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended)"
       },
       {
         "id": "filter-records",
@@ -474,7 +474,7 @@
       },
       {
         "id": "filter-pruned",
-        "quote": "return 4444 if required history is unavailable"
+        "quote": "return an error (4444 recommended) if required history is unavailable"
       }
     ],
     "dimensions": {

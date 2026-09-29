@@ -567,9 +567,9 @@
       "name": "range-reversed",
       "probes": [
         {
-          "code": -32602,
           "kind": "error",
-          "requirement": "An explicit fromBlock above toBlock is invalid params (-32602), as eth_getLogs does.",
+          "recommended": -32602,
+          "requirement": "An explicit fromBlock above toBlock is rejected (-32602 recommended), as eth_getLogs does.",
           "topic": "H06"
         }
       ],

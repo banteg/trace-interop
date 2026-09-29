@@ -899,7 +899,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             ('H32', 'Which tags and pending state can trace methods use?', 'Resolve mined-block tags; agree pending state and localization per method.'),
             ('H09', 'What survives a failed call?', 'Keep the error on that frame and preserve revert bytes and measured gas when available.'),
             ('H29', 'Which precompile frames are visible?', 'Keep root frames and nested frames with nonzero value; omit zero-value nested frames.'),
-            ('H13', 'Signed transaction execution validity', 'Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; propose -32003 for validation rejection.'),
+            ('H13', 'Signed transaction execution validity', 'Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; reject each invalid transaction for its own violation.'),
         ]])
     text += '[Status definitions](../decisions/README.md#status-key). Policy direction is distinct from verified implementation on the captured builds.\n\n'
     text += '[All decisions](../decisions/README.md) · [Method availability](decisions/H01.md)\n\n'

@@ -282,7 +282,7 @@ def prague():
     case(cases, 'field-data-input-equal', 'trace_call', [dict(base, data='0x'+ret42, input='0x'+ret42), ['trace'], 'latest'],
          probes=[effect('Equal data and input execute once as the initcode.', words(42))])
     case(cases, 'field-data-input-differ', 'trace_call', [dict(base, data='0x'+ret42, input='0x'+ret1), ['trace'], 'latest'],
-         probes=[probe('H14', 'error', 'Disagreeing data and input are invalid params (-32602).', code=-32602)])
+         probes=[probe('H14', 'error', 'Disagreeing data and input are rejected (-32602 recommended).', recommended=-32602)])
     # An explicit null for an optional member or parameter is the same as omitting it (H14).
     nulls = dict(base, data='0x'+ret42, **dict.fromkeys(['input', 'value', 'nonce', 'maxFeePerBlobGas', 'chainId', 'type', 'accessList',
                                                         'blobVersionedHashes', 'authorizationList', 'maxFeePerGas', 'maxPriorityFeePerGas']))
@@ -335,8 +335,8 @@ def prague():
     case(cases, 'field-chain-id', 'trace_call', [dict(base, input='0x'+ret42, chainId=hex(chain_id)), ['trace'], 'latest'],
          probes=[effect('A matching chainId is accepted and the initcode returns word 42.', words(42))])
     case(cases, 'field-chain-id-mismatch', 'trace_call', [dict(base, input='0x'+ret42, chainId='0x1'), ['trace'], 'latest'],
-         probes=[probe('H14', 'error', 'A chainId that does not match the chain rejects the request.'),
-                 probe('H14', 'error', 'A chainId for another chain is invalid regardless of state, so it is invalid params (-32602).', code=-32602)])
+         probes=[probe('H14', 'error', 'A chainId that does not match the chain rejects the request; it is invalid regardless of state '
+                       '(-32602 recommended).', recommended=-32602)])
     # BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is 0 or defaulted (H15). A blob call needs a recipient, so it
     # calls the genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read as its code.
     factory = '0x4e59b44847b379578588920ca78fbf26c0b4956c'
@@ -442,7 +442,7 @@ def forks():
     case(cases, 'rewards-window', 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x4', 'fromAddress': [sender], 'toAddress': [coinbase], 'mode': 'union', 'after': 3, 'count': 5}],
          probes=[probe('H03', 'records', 'A page over matching records crosses a block boundary and reward records in block, transaction, reward order.', expected=selected[3:8])])
     case(cases, 'range-reversed', 'trace_filter', [{'fromBlock': '0x3', 'toBlock': '0x2'}],
-         probes=[probe('H06', 'error', 'An explicit fromBlock above toBlock is invalid params (-32602), as eth_getLogs does.', code=-32602)])
+         probes=[probe('H06', 'error', 'An explicit fromBlock above toBlock is rejected (-32602 recommended), as eth_getLogs does.', recommended=-32602)])
     genesis_requirement = 'The genesis block has no transaction or reward records.'
     case(cases, 'genesis-block', 'trace_block', ['0x0'], probes=[probe('H05', 'records', genesis_requirement, expected=[])])
     case(cases, 'genesis-replay', 'trace_replayBlockTransactions', ['0x0', ['trace']], probes=[probe('H05', 'records', genesis_requirement+' Block replay returns [].', expected=[])])

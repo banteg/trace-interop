@@ -34,8 +34,26 @@ RAW_VIOLATIONS = [
 SPECIAL_ACTIONS = ('create', 'suicide', 'reward')
 # Unsigned simulations; H16 defers their fee accounting to H15's policy.
 SIMULATIONS = ('trace_call', 'trace_callMany')
-# eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
+# Recommended eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
 RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
+
+
+# JSON-RPC 2.0 base-protocol errors: parse error, invalid request, method not found and internal error.
+# They report a failure of the protocol or server, not a rejection of the request, so they never
+# serve as an error the draft requires; any other code does, since the draft only recommends codes.
+PROTOCOL_FAILURES = (-32700, -32600, -32601, -32603)
+
+
+def rejection(status, response):
+    """Whether a response is an error that rejects the request, whatever its (recommended) code."""
+    return status == 'rpc_error' and mapping(mapping(response).get('error')).get('code') not in PROTOCOL_FAILURES
+
+
+def recommended_note(code, recommended):
+    """A note when an error's code differs from the recommended one. The draft requires the error
+    response and recommends its code (H14), so a different code is reported, never a failure."""
+    wanted = recommended if isinstance(recommended, list) else [recommended]
+    return '' if recommended is None or code in wanted else f' ({" or ".join(map(str, wanted))} recommended)'
 
 
 def violation(message):
@@ -97,16 +115,16 @@ def observed_number(call, output, context):
 
 def pending_check(method, params, status, response, result, context):
     """H32: a block method or simulation accepts `pending` only with a real pending environment, the
-    block after the head; a client without one rejects it with -32602 rather than substituting latest."""
+    block after the head; a client without one rejects it (-32602 recommended) rather than substituting latest."""
     requirement = ('Accept pending only with a real pending environment, the block after the head; '
-                   'otherwise reject it with invalid params (-32602), never evaluating latest instead.')
+                   'otherwise reject it (-32602 recommended), never evaluating latest instead.')
     head = mapping(context.get('_environment')).get('NUMBER')
 
     def verdict(value, detail):
         return {'topic': 'H32', 'status': value, 'requirement': requirement, 'detail': detail, 'role': 'rejection'}
     if status == 'rpc_error':
         code = mapping(response.get('error')).get('code')
-        return verdict('matches' if code == -32602 else 'change_needed', f'RPC error {code}.')
+        return verdict('matches' if rejection(status, response) else 'change_needed', f'RPC error {code}{recommended_note(code, -32602)}.')
     if status != 'result' or head is None:
         return verdict('blocked', f'No block witness: {status}.')
     if method in ['trace_call', 'trace_callMany']:
@@ -172,6 +190,12 @@ def evaluate(case, observation, peers, invalid_params=None):
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
                        'requirement': requirement, 'detail': detail, **{k: v for k, v in tags.items() if v}})
 
+    def rejected(topic, requirement, recommended, **tags):
+        # The draft requires the error response itself; its code is only recommended.
+        code = mapping(response.get('error')).get('code')
+        note = recommended_note(code, recommended) if status == 'rpc_error' else ''
+        check(topic, rejection(status, response), requirement, f'Code {code}{note}.' if note else '', **tags)
+
     if method.startswith('trace_'):
         if status == 'unsupported':
             checks.append({'topic': 'H01', 'status': 'unsupported', 'requirement': method,
@@ -214,14 +238,14 @@ def evaluate(case, observation, peers, invalid_params=None):
     if invalid_params:
         # The schema-derived check yields to a decision that owns this rejection, such as pending_check
         # for the block methods, whose schema omits pending (coverage.isolate).
-        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-              'Malformed input returns invalid params (-32602).', '; '.join(invalid_params), role='schema')
+        code = mapping(response.get('error')).get('code')
+        note = recommended_note(code, -32602) if status == 'rpc_error' else ''
+        check('H14', rejection(status, response), 'Malformed input returns an error (-32602 recommended).',
+              '; '.join(invalid_params) + (f'. Code {code}{note}.' if note else ''), role='schema')
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'mode' in params[0]:
-            check('H03', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'Unknown mode values return invalid params (-32602).', role='rejection')
+            rejected('H03', 'Unknown mode values are rejected (-32602 recommended).', -32602, role='rejection')
         if method == 'trace_filter' and params and isinstance(params[0],dict) and 'pending' in [params[0].get('fromBlock'), params[0].get('toBlock')]:
-            check('H32', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'trace_filter range bounds exclude pending, as eth_getLogs does (-32602).', role='rejection')
+            rejected('H32', 'trace_filter range bounds exclude pending, as eth_getLogs does (-32602 recommended).', -32602, role='rejection')
         return checks
 
     if context.get('_chain') == 'h30':
@@ -233,8 +257,8 @@ def evaluate(case, observation, peers, invalid_params=None):
                   and result == head,
                   'Omitting both range bounds selects latest only, as an explicit head-only query does.', role='result')
         if name == 'filter-to-2-implicit-from':
-            check('H30', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-                  'An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range (-32602, as eth_getLogs), not a historical search.')
+            rejected('H30', 'An omitted fromBlock resolves to latest; an earlier explicit toBlock is a reversed range and is rejected '
+                     '(-32602 recommended, as eth_getLogs), not a historical search.', -32602)
         if name in ['call-number-default', 'call-number-latest']:
             check('H31', status == 'result' and mapping(result).get('output') == number_48,
                   'An omitted or explicit latest trace_call block uses the frozen head (NUMBER 48).', role='result')
@@ -510,7 +534,7 @@ def evaluate(case, observation, peers, invalid_params=None):
                            'requirement':'Check canonical storage after the ordered simulation.',
                            'detail':'Ordered capture, initial zero slot or successful simulated write/read not established.'})
     if name in ['get-path-wrong-type','call-wrong-type','call-unknown-mode','call-scalar-mode','raw-invalid']:
-        check('H14', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602, 'Malformed input returns invalid params (-32602).')
+        rejected('H14', 'Malformed input returns an error (-32602 recommended).', -32602)
     expected_violation = next((kind for label, kind in RAW_VIOLATIONS
                                if name == label or name.startswith(label+'-') or case.get('reason') == label), None)
     if method == 'trace_rawTransaction' and expected_violation:
@@ -520,16 +544,15 @@ def evaluate(case, observation, peers, invalid_params=None):
         observed = violation(error.get('message'))
         if status != 'rpc_error':
             check('H13', False, requirement, reason)
-        elif observed is None:
+        elif observed is None or not rejection(status, response):
             checks.append({'topic': 'H13', 'status': 'blocked', 'requirement': requirement,
-                           'detail': 'The error message does not identify a validation failure: '+str(error.get('message'))[:120]})
+                           'detail': f'The error does not identify a validation failure: {error.get("code")} '+str(error.get('message'))[:120]})
         else:
+            # The eth_sendRawTransaction error group, or -32003, is recommended, not required.
+            codes = ([RAW_CODES[expected_violation]] if expected_violation in RAW_CODES else []) + [-32003]
             check('H13', observed == expected_violation, requirement,
-                  f'Expected {expected_violation}; the error identifies {observed}. {reason}')
-            codes = [-32003] + ([RAW_CODES[observed]] if observed in RAW_CODES else [])
-            check('H13', observed == expected_violation and error.get('code') in codes,
-                  'Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected).',
-                  f'Identified {observed}; code {error.get("code")}; accepted {codes}.')
+                  f'Expected {expected_violation}; the error identifies {observed}; code {error.get("code")}'
+                  f'{recommended_note(error.get("code"), codes)}. {reason}')
     if method == 'trace_rawTransaction' and case.get('validation') == 'execute':
         check('H13', status == 'result' and mapping(result).get('output') == case['expected_output'] and not embedded_error(response),
               'The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection.')
@@ -574,11 +597,9 @@ def evaluate(case, observation, peers, invalid_params=None):
                       'Valid creation uses the address derived from the matching signed and state nonce.')
 
     if name.startswith('missing-block-') and method == 'trace_filter':
-        check('H06', status == 'rpc_error' and mapping(response.get('error')).get('code') == -32602,
-              'A range bound beyond the head returns invalid params (-32602), as eth_getLogs does; never a clamped or partial result.')
+        rejected('H06', 'A range bound beyond the head returns an error (-32602 recommended), as eth_getLogs does; never a clamped or partial result.', -32602)
     elif name.startswith('missing-block-'):
-        check('H06', status == 'rpc_error',
-              'An unknown single selected block returns an error (-32001 recommended), never null or a result.')
+        rejected('H06', 'An unknown single selected block returns an error (-32001 recommended), never null or a result.', -32001)
     if name == 'call-unknown-field':
         check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
               'Unknown call-object fields are ignored without changing execution output.')
@@ -674,7 +695,7 @@ def evaluate(case, observation, peers, invalid_params=None):
         h=next((h for h in context.get('headers',[]) if h.get('number')=='0x38'),None)
         if h:check('H28', isinstance(result,dict) and result.get('output')==('0x' if name.endswith('55') else h['parentBeaconBlockRoot']), 'Historical trace_call uses only system changes through the selected block.', role='result')
     if context.get('_chain')=='pruned' and method.startswith('trace_') and name.startswith('old-'):
-        check('H06', status=='rpc_error' and mapping(response.get('error')).get('code')==4444, 'Unavailable historical state uses the proposed pruned-history error (4444).')
+        rejected('H06', 'Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null.', 4444)
     # A reference that contradicts its anchored fixture actions is a client
     # difference, not an unestablished inventory.
     for c in checks:

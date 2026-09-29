@@ -2,7 +2,7 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** Malformed input returns invalid params (-32602).
+**What this checks:** Malformed input returns an error (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

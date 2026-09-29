@@ -275,8 +275,8 @@
         {
           "topic": "H32",
           "kind": "error",
-          "requirement": "Filter bounds are block numbers or tags, never block hashes: a hash bound is invalid params (-32602), as eth_getLogs range bounds.",
-          "code": -32602
+          "requirement": "Filter bounds are block numbers or tags, never block hashes: a hash bound is rejected (-32602 recommended), as eth_getLogs range bounds are.",
+          "recommended": -32602
         }
       ]
     },
@@ -302,8 +302,8 @@
         {
           "topic": "H32",
           "kind": "error",
-          "requirement": "Filter bounds do not accept EIP-1898 block-hash objects, which Parity, Erigon and Nethermind accepted: invalid params (-32602).",
-          "code": -32602
+          "requirement": "Filter bounds do not accept EIP-1898 block-hash objects, which Parity, Erigon and Nethermind accepted: the request is rejected (-32602 recommended).",
+          "recommended": -32602
         }
       ]
     }

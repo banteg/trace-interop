@@ -2,7 +2,7 @@
 
 `trace_rawTransaction` · raw-validation · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected).
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -11,7 +11,7 @@
 | [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
 | [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
 | [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
-| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
+| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
 | [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/refresh/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/refresh/raw-validation/manifest.json) |
@@ -49,10 +49,6 @@
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - [H13](../../decisions/H13.md): Reject a signed transaction that fails execution validity at the selected state before EVM execution, for its own violation. EIP-3607 ordinary-code sender (not delegation)
-
-**Erigon · 3.8.0-dev · a2a19253** (`3.8.0-dev-a2a19253`)
-
-- [H13](../../decisions/H13.md): Use the eth_sendRawTransaction error group for the violation, or -32003 (Transaction rejected). Identified sender; code -32000; accepted [-32003].
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 

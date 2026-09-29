@@ -264,11 +264,11 @@ class FieldProbeTests(Probe):
                 for observation in [result({'output': '0x', 'trace': []}), error(-32602), error(-32603)]:
                     self.assertEqual(set(statuses(case, observation)), {'observation'}, name)
             elif kinds == {'error'}:
-                code = next((p['code'] for p in case['probes'] if 'code' in p), -32602)
-                self.assertMatches(case, error(code))
+                # Any rejection matches, whatever its code; an execution or an internal error does not.
+                for code in [-32602, -32000]:
+                    self.assertMatches(case, error(code))
                 self.assertDiffers(case, result({'output': '0x'+f'{42:064x}', 'trace': []}))
-                if any('code' in p for p in case['probes']):
-                    self.assertDiffers(case, error(-32000))
+                self.assertDiffers(case, error(-32603))
             elif kinds == {'outputs'}:
                 want = case['probes'][0]['expected'][0]
                 self.assertMatches(case, result({'output': want, 'trace': []}))
@@ -277,12 +277,14 @@ class FieldProbeTests(Probe):
                 # Besu: an unfunded zero-address sender under a base-fee default fails on H15, not the field.
                 self.assertEqual(statuses(case, error(-32603)), ['blocked' if 'depends' in case['probes'][0] else 'change_needed'], name)
 
-    def test_fallback_codes_split_stateless_defects_from_rejections(self):
-        # A priority fee above the cap and a chainId for another chain are invalid regardless of state (-32602).
-        self.assertEqual([p.get('code') for p in PRAGUE['field-chain-id-mismatch']['probes']], [None, -32602])
+    def test_fallback_codes_are_recommended(self):
+        # A chainId for another chain is invalid regardless of state, so -32602 is recommended; any rejection matches.
+        self.assertEqual([p.get('recommended') for p in PRAGUE['field-chain-id-mismatch']['probes']], [-32602])
         self.assertMatches(PRAGUE['field-chain-id-mismatch'], error(-32602))
-        self.assertDiffers(PRAGUE['field-chain-id-mismatch'], error(-32003))
-        self.assertEqual(PRAGUE['field-data-input-differ']['probes'][0]['code'], -32602)
+        self.assertMatches(PRAGUE['field-chain-id-mismatch'], error(-32003))
+        [check] = assess(PRAGUE['field-chain-id-mismatch'], error(-32003), {})
+        self.assertIn('(-32602 recommended)', check['detail'])
+        self.assertEqual(PRAGUE['field-data-input-differ']['probes'][0]['recommended'], -32602)
 
     def test_supplied_nonce_is_ignored(self):
         for name in ['field-nonce-above', 'field-nonce-below']:
@@ -381,9 +383,9 @@ class ForksProbeTests(Probe):
         self.assertDiffers(FORKS['genesis-range-rewards'], result([reward]+rewards))
         self.assertDiffers(FORKS['genesis-range-rewards'], result([]))  # Nethermind: truncated at genesis.
 
-    def test_reversed_range_is_invalid_params(self):
+    def test_reversed_range_is_rejected(self):
         self.assertMatches(FORKS['range-reversed'], error(-32602))
-        self.assertDiffers(FORKS['range-reversed'], error(-32000))  # Erigon, Nethermind
+        self.assertMatches(FORKS['range-reversed'], error(-32000))  # Erigon, Nethermind: -32602 is recommended
         self.assertDiffers(FORKS['range-reversed'], result([]))     # Parity
 
     def test_rewards_intersection_mode_dependency(self):

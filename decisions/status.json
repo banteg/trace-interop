@@ -87,7 +87,7 @@
   },
   "H06": {
     "policy": "converged",
-    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, Nethermind merged its alignment (#13937), matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is -32602. An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on null for a missing transaction or trace path: Reth and Erigon support it, Nethermind merged its alignment (#13937), matching Parity, eth_getTransactionByHash in every client, and the current behavior of Erigon, Reth and Besu (Besu for trace_get). Errors stay for what cannot be answered: pruned history returns an error, never a fake absence, and a bad range is an error (-32602 recommended). An unknown selected block errors (-32001 recommended); Erigon\u2019s question whether it should also be null was answered on #890, and trace_replayBlockTransactions follows trace_block. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind review of #13937",
@@ -221,7 +221,7 @@
   },
   "H13": {
     "policy": "converged",
-    "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error-code mapping and compatibility migration remain open; client implementations are not harmonized.",
+    "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error codes are recommended, not required (2026-09-29): the eth_sendRawTransaction groups with the -32003 fallback, so a rejection agrees when it names its own violation. Erigon\u2019s development build and Reth agree; Besu and Nethermind differ in behavior, and compatibility migration remains open.",
     "sources": [
       {
         "label": "Erigon\u2019s trace API review",

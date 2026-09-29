@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/7d29bab579c447fd9b7904d54fcc2bb8f579905d) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/afcbc676aa2d11cc5a3afcc73555b99a8f69ac33) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
@@ -101,14 +101,14 @@ What does a request return for each way of naming its block, when the block’s 
 | call-default | “Optional block, latest when omitted or null” |
 | call-state | “Execute against the state at the end of the selected block, default latest, under its fork rules and block environment.” |
 | many-state | “The first item runs against the same state and environment as trace_call at the selected block.” |
-| call-unknown | “an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns 4444” |
-| call-pending | “is accepted only when the client has such a pending environment; a client without one returns -32602 rather than substitute another block” |
+| call-unknown | “an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended)” |
+| call-pending | “is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block” |
 | block-state | “Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules.” |
-| block-unknown | “An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns 4444” |
-| block-pending | “Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending returns -32602.” |
+| block-unknown | “An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)” |
+| block-pending | “Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended).” |
 | filter-default | “defaults omitted fromBlock and toBlock to the same latest head” |
-| filter-range | “If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return -32602” |
+| filter-range | “If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended)” |
 | filter-records | “Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state.” |
-| filter-pruned | “return 4444 if required history is unavailable” |
+| filter-pruned | “return an error (4444 recommended) if required history is unavailable” |
 
 </details>

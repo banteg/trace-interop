@@ -2,7 +2,7 @@
 
 `trace_call` · fee-compat · [All reports](../../../../README.md)
 
-**What this checks:** The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Reject this independently invalid fee/funding request before execution.
+**What this checks:** The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Reject this independently invalid fee/funding request before execution.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | [Anvil · 1.8.4-nightly · 00989695](../../../../clients/anvil_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
 | [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
 | [Besu · 26.9-develop · c197ac57](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
 | [Erigon · 3.8.0-dev · a2a19253](../../../../clients/erigon_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
 | [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-29/refresh/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-29/refresh/fee-compat/manifest.json) |
@@ -52,14 +52,10 @@
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
 
-**Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
-
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed priority with code -32000, which requires -32602. The omitted fee cap defaults to zero, below the supplied priority fee.
-
 **Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class. eth_call: priority rejection; trace_call: base_fee rejection.
-- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation, with its eth_simulateV1 error code; a defect invalid regardless of state takes precedence. Expected call 0: priority; observed base_fee with code -32000, which requires -38012. base_fee is violated too, but priority takes precedence. The omitted fee cap defaults to zero, below the supplied priority fee.
+- [H15](../../../../decisions/H15.md): Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Expected call 0: priority; observed base_fee with code -32000 (-38012 recommended). base_fee is violated too, but priority takes precedence. The omitted fee cap defaults to zero, below the supplied priority fee.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

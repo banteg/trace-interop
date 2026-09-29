@@ -39,11 +39,11 @@
     {
       "builds": {
         "development": {
-          "agree": 23,
+          "agree": 25,
           "build": [
-            "3.8.0-dev \u00b7 a1ce80fb"
+            "3.8.0-dev \u00b7 558586f0"
           ],
-          "gained": 7,
+          "gained": 2,
           "lost": 0
         },
         "release": {
@@ -58,14 +58,14 @@
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 23,
+        "agree": 25,
         "converged": 2,
-        "fix": 4,
+        "fix": 1,
         "policy": 1,
         "review": 2,
-        "unmeasured": 0
+        "unmeasured": 1
       },
-      "dev_only": 10,
+      "dev_only": 12,
       "name": "Erigon",
       "prs": {
         "merged": 19,
@@ -75,11 +75,11 @@
     {
       "builds": {
         "development": {
-          "agree": 18,
+          "agree": 24,
           "build": [
-            "2.1.0-preview \u00b7 45912ba3"
+            "2.1.0-preview \u00b7 82516987"
           ],
-          "gained": 0,
+          "gained": 6,
           "lost": 0
         },
         "release": {
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 18,
-        "converged": 3,
-        "fix": 7,
+        "agree": 24,
+        "converged": 2,
+        "fix": 2,
         "policy": 1,
         "review": 3,
         "unmeasured": 0
       },
-      "dev_only": 8,
+      "dev_only": 14,
       "name": "Nethermind",
       "prs": {
         "merged": 29,
@@ -123,7 +123,7 @@
           "build": [
             "2.7.0 \u00b7 3d592ece"
           ],
-          "gained": 10,
+          "gained": 0,
           "lost": 0
         }
       },

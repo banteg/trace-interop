@@ -8,8 +8,8 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.8.3` | [`cae51ad4`](https://github.com/foundry-rs/foundry/commit/cae51ad458f6abb64852b7709eb784352429825d) | 2026-09-15 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
-| `1.8.4-nightly` | [`dd372126`](https://github.com/foundry-rs/foundry/commit/dd3721265167da6f8ea4d6bb16383f083310f68b) | 2026-09-27 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
+| `1.8.3` | [`cae51ad4`](https://github.com/foundry-rs/foundry/commit/cae51ad458f6abb64852b7709eb784352429825d) | 2026-09-15 | [2026-09-28](../../evidence/2026-09-29/eval/initial/manifest.json) |
+| `1.8.4-nightly` | [`dd372126`](https://github.com/foundry-rs/foundry/commit/dd3721265167da6f8ea4d6bb16383f083310f68b) | 2026-09-27 | [2026-09-28](../../evidence/2026-09-29/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

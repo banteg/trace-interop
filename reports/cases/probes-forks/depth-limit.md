@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1026 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 1026 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/probes-forks/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1026 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1028 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -54,18 +54,9 @@
 - Result shape at `trace/1`: {'action': {'from': '0x3cf2e7052ebd484a8d6fbca579ddb3cf920de9d3', 'gas': '0x1e2ad6', 'init': '0x601e80600b6000396000f360006000600060006000306102005a03f1601c57600060006000f0505b00', 'value': '0x0'}, 'result': {'address': '0xb56c1cce8dc86e312b79166e061a8398544480b4', 'code': '0x60006000600060006000306
 - Result shape at `trace/1026`: {'action': {'from': '0x3cf2e7052ebd484a8d6fbca579ddb3cf920de9d3', 'gas': '0x1561a9', 'init': '0x60006000600060006000306102005a03f1601c57600060006000f0505b00', 'value': '0x0'}, 'result': {'address': '0xb56c1cce8dc86e312b79166e061a8398544480b4', 'code': '0x', 'gasUsed': '0xffffffffffffa921'}, 'subtrac
 
-**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
-
-- [H09](../../decisions/H09.md): A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded". Expected labels ['Max call depth exceeded', 'Max call depth exceeded']; got ['max call depth exceeded', 'max call depth exceeded'].
-
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H09](../../decisions/H09.md): A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded". Expected labels ['Max call depth exceeded', 'Max call depth exceeded']; got ['max call depth exceeded', 'max call depth exceeded'].
-
-**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
-
-- [H29](../../decisions/H29.md): Under the deepest executed frame, at depth 1024, the CALL and CREATE that fail the depth precheck each emit a failed frame with no result and no subtraces. Deepest executed frame at depth 1024 with subtraces 0; attempts beyond it (type, error, result, subtraces): [].
-- [H09](../../decisions/H09.md): A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded". No failed attempts ['call', 'create'] under the deepest executed frame at depth 1024.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

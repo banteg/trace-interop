@@ -21,8 +21,7 @@
   },
   "L09": {
     "anvil_release": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",
-    "erigon_development": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit.",
-    "erigon_release": "H15 GASLIMIT, as in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."
+    "erigon_release": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit, fixed by erigon#24343 in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."
   },
   "L10": {
     "besu_development": "H27: range filters across a fork boundary (blocks 35–36, 55–56 and 59–60, and 2–5 across the Homestead transition at block 4) differ from the same blocks’ traces.",

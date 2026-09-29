@@ -1,0 +1,20 @@
+{
+  "files": {
+    "harness-tests.log": "20e2ccb0de7f5e6780827fb6589fd701f9d568a75b88427821c7f47a6dc48f88",
+    "harness-verify.log": "acb4683c5f06297724cdcf875a4481e73f7409af1ab30ddfc599a6123e2fe284",
+    "source-audit.json": "d2a2180ccadd703cf0a6f3b6f68d352d655a5d4acdafd0ef500dca13eebb4d93"
+  },
+  "host": "Darwin arm64",
+  "report_assessment_sha256": "8a81e8431ff575485be42af4fbe3ed167ddf65891393fca3486dc57c91495dce",
+  "tests": {
+    "command": "uv run python -m unittest discover -s tests",
+    "exit_code": 0,
+    "passed": 312
+  },
+  "verify": {
+    "command": "uv run trace-interop verify",
+    "decisions": 32,
+    "exit_code": 0,
+    "frozen_inputs": 71
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-28",
+  "checked_at": "2026-09-29",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -245,7 +245,7 @@
       "uptake": {
         "merge_commit": "2ee94b8b77ce809e52834e3d9b1d1429df1e111c",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -267,7 +267,7 @@
       "uptake": {
         "merge_commit": "4d16cd8b42dda591fb1ac93ed19a454f09e0734e",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -291,7 +291,7 @@
       "uptake": {
         "merge_commit": "8ad6a94a29a154e1552bb034427049669af2d268",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -309,7 +309,7 @@
       "uptake": {
         "merge_commit": "3a4cf7a0bb085bdf437e4b9c4529b6a390ce8415",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -331,7 +331,7 @@
       "uptake": {
         "merge_commit": "5bd37443d20cbaa0f2f6f3e31ffd86504aec4a27",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -349,7 +349,7 @@
       "uptake": {
         "merge_commit": "98f02c35565ba0aa7c9f07ec46f286c1812a07a5",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -371,7 +371,7 @@
       "uptake": {
         "merge_commit": "524ed8cfac7d5a5ea55727988373e23d4887ae54",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -393,7 +393,7 @@
       "uptake": {
         "merge_commit": "558586f0d4613e8a23e9d5c01c0e499322b7070b",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -428,7 +428,7 @@
       "uptake": {
         "merge_commit": "74a0915b2c33a18adc86156c70c51491432c3cbe",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -444,7 +444,7 @@
       "uptake": {
         "merge_commit": "1f53e788ec24614c4fa7b544d5c322d6a6489541",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -466,7 +466,7 @@
       "uptake": {
         "merge_commit": "134586d403e1b4e5ecff00b51749ced2ffa7dbbc",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -487,7 +487,7 @@
       "uptake": {
         "merge_commit": "4a5226a267785f7c7c7bc9feddca4bef31a3a55c",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -505,7 +505,7 @@
       "uptake": {
         "merge_commit": "df86d9821b2ab52ecce7a5062eb3538bc15b1727",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -526,7 +526,7 @@
       "uptake": {
         "merge_commit": "fa26d1f5431666bf5eb20c504fdf821237cd2c39",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -548,7 +548,7 @@
       "uptake": {
         "merge_commit": "83bd7e7d9dcb78ca26a9dd0a81e11c1d60bf66a2",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -570,7 +570,7 @@
       "uptake": {
         "merge_commit": "54b760cd22ca56f960ddeb298dd639c169946ba0",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -592,7 +592,7 @@
       "uptake": {
         "merge_commit": "8761ee6ee3a161380841457aa1e72bb910f7f38f",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -614,7 +614,7 @@
       "uptake": {
         "merge_commit": "29b4dce93cf8f0ef82d49cb6ff099f88f1d250f3",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -637,7 +637,7 @@
       "uptake": {
         "merge_commit": "fb94d2cb7451c08081496a1d358aca8f98ab688b",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -656,7 +656,7 @@
       "uptake": {
         "merge_commit": "e35ea1ea4e2b1137f6d76777f0484fa0493e7fba",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -843,7 +843,7 @@
       "uptake": {
         "merge_commit": "a24c2f4e7ee07c073aa0bca63fc96007b055c0da",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -864,7 +864,7 @@
       "uptake": {
         "merge_commit": "9d6e8b8d4f8f1d3518cfbc852725d8ab35c8f027",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -885,7 +885,7 @@
       "uptake": {
         "merge_commit": "2a3b2531b4dcfaa58b21e4197c27cbab959a7f3e",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -903,7 +903,7 @@
       "uptake": {
         "merge_commit": "657bb6f65ca262b76f78119672791eeda4688672",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1012,7 +1012,7 @@
       "uptake": {
         "merge_commit": "fa9c3c580d3769571584d766babee120eb5e49b6",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1036,7 +1036,7 @@
       "uptake": {
         "merge_commit": "0c87dc310a866f3b9d3e86d969e5e0d56c977f19",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1054,7 +1054,7 @@
       "uptake": {
         "merge_commit": "9ec5861189a455e78ab5810bdbfa1b470f495c30",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1073,7 +1073,7 @@
       "uptake": {
         "merge_commit": "fbd309a4d416365618924f9c4a8d632c453143c6",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1107,7 +1107,7 @@
       "uptake": {
         "merge_commit": "c881f89ebabaa34debd37b6ebeaaf2537927b62d",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1128,7 +1128,7 @@
       "uptake": {
         "merge_commit": "04dbf0f2fbe13498eaeed9b5ec2f9cb1ba08d7b1",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1149,7 +1149,7 @@
       "uptake": {
         "merge_commit": "3904de4338492a6d1b3593138fac44b0bd427e6d",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1173,7 +1173,7 @@
       "uptake": {
         "merge_commit": "a37a6994332909785c2ed892743588e116473cd1",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1191,7 +1191,7 @@
       "uptake": {
         "merge_commit": "0ff7e2d25455a4f62353cb005bb244625c10c1d5",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1213,7 +1213,7 @@
       "uptake": {
         "merge_commit": "b5f43a529336f9e3161f0f4a983b5f9057b3bd54",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1235,7 +1235,7 @@
       "uptake": {
         "merge_commit": "27695c0c5e2c06b9f1648864e72574fc57acc7f4",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1253,7 +1253,7 @@
       "uptake": {
         "merge_commit": "4e3f217871c0cdf7ffb1de7fbb3aa5f90a564906",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1275,7 +1275,7 @@
       "uptake": {
         "merge_commit": "e470937bfa4ee74b1b283f531e35ca386edb36ee",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1296,7 +1296,7 @@
       "uptake": {
         "merge_commit": "94aae64c4fbe387fc8ec53bef590bb5f2fe1e168",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": true
         }
       }
@@ -1314,7 +1314,7 @@
       "uptake": {
         "merge_commit": "66571d043907723f190fbe1f882008c27008fa29",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": true,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": true
         }
       }
@@ -1334,7 +1334,7 @@
       "uptake": {
         "merge_commit": "7df26c3d48657a7f38f3cf56f9dff54401b30123",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1670,7 +1670,7 @@
         "merge_commit": "bbb1e6b37b224b9c36e0c7ede3e4f738d1195031",
         "via": "https://github.com/NethermindEth/nethermind/pull/13622",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1691,7 +1691,7 @@
         "merge_commit": "c5a6579059cde8223ad8e165fb044a82195576cc",
         "via": "https://github.com/NethermindEth/nethermind/pull/13551",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1741,7 +1741,7 @@
       "uptake": {
         "merge_commit": "f9412dd335f0975e1c459b579740742391a7674d",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": true,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1762,7 +1762,7 @@
       "uptake": {
         "merge_commit": "ff29cfd732d20a0db9004d1a3f275d5cbf0402be",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1783,7 +1783,7 @@
       "uptake": {
         "merge_commit": "82516987c7b0d3e04abfcf89773d0b2db01452ea",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1807,7 +1807,7 @@
       "uptake": {
         "merge_commit": "f3b93df46329aa153626ecb235dc4b06327e9c8d",
         "builds": {
-          "45912ba3c49703d28846e4f56d4cbf52cd8eea9e": false,
+          "82516987c7b0d3e04abfcf89773d0b2db01452ea": true,
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
@@ -1851,7 +1851,7 @@
       "uptake": {
         "merge_commit": "38ebf979d850faa56aacf357c0b80676a258b16b",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }
@@ -1873,7 +1873,7 @@
       "uptake": {
         "merge_commit": "16df794662d53934ff974f8ad26242d8bfeade16",
         "builds": {
-          "a1ce80fbf7508d1394367ba548cac3c60a425ece": false,
+          "558586f0d4613e8a23e9d5c01c0e499322b7070b": true,
           "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
         }
       }

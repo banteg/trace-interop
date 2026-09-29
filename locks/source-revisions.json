@@ -107,6 +107,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "a1ce80fbf7508d1394367ba548cac3c60a425ece",
       "committed_at": "2026-09-28T13:29:25Z"
+    },
+    {
+      "version": "3.8.0-dev-558586f0",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "558586f0d4613e8a23e9d5c01c0e499322b7070b",
+      "committed_at": "2026-09-28T21:34:21Z"
     }
   ],
   "besu_release": [
@@ -241,6 +247,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "45912ba3c49703d28846e4f56d4cbf52cd8eea9e",
       "committed_at": "2026-09-28T14:24:00Z"
+    },
+    {
+      "version": "2.1.0-preview+82516987",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "82516987c7b0d3e04abfcf89773d0b2db01452ea",
+      "committed_at": "2026-09-28T21:15:47Z"
     }
   ],
   "go-ethereum_trace": [

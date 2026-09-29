@@ -8,8 +8,8 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
-| `2.5.2` | [`5723a3fe`](https://github.com/paradigmxyz/reth/commit/5723a3fed5521fad105b44f86876580242f31be9) | 2026-09-27 | [2026-09-28](../../evidence/2026-09-28/eval/initial/manifest.json) |
+| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-09-28](../../evidence/2026-09-29/eval/initial/manifest.json) |
+| `2.5.2` | [`5723a3fe`](https://github.com/paradigmxyz/reth/commit/5723a3fed5521fad105b44f86876580242f31be9) | 2026-09-27 | [2026-09-28](../../evidence/2026-09-29/eval/initial/manifest.json) |
 
 **The 2.5.2 nightly is older than 2.7.0.** It was built from 5723a3fe, four commits before the 2.7.0 release commit, none of which changes tracing; the development branch version has not received the release bump. Use the commit dates above and [revision comparison](https://github.com/paradigmxyz/reth/compare/5723a3fed5521fad105b44f86876580242f31be9...3d592ece6de8c4559987416a544fc215fd6d6921).
 

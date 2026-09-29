@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 9 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 9 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 9 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 9 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 8 records | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 8 records | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 9 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 9 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 9 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 8 records | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 8 records | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 8 records | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/mined-probes/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -52,11 +52,6 @@
 - [H26](../../decisions/H26.md): The creation succeeds with empty code before destroying itself. create [0]: result {'address': '0xedd09273eb6f5c2fcfb36f667405c3869a71bebb', 'gasUsed': '0x138a', 'output': '0x'} != {'address': '0xedd09273eb6f5c2fcfb36f667405c3869a71bebb', 'code': '0x', 'gasUsed': '0x138a'}
 - Result shape at `3`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x23509', 'init': '0x30ff', 'value': '0x100'}, 'blockHash': '0xc8c95be3c7677411d196b7ef4b16b998aa6e584f82bd0d360eb5aaf21b40ded4', 'blockNumber': 4, 'result': {'address': '0xeac0306941fda13b06e9e7a41
 - Result shape at `6`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x23509', 'init': '0x30ff', 'value': '0x100'}, 'blockHash': '0xc8c95be3c7677411d196b7ef4b16b998aa6e584f82bd0d360eb5aaf21b40ded4', 'blockNumber': 4, 'result': {'address': '0xedd09273eb6f5c2fcfb36f667
-
-**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
-
-- Result shape at `8`: 'transactionHash' is a required property
-- Result shape at `8`: 'transactionPosition' is a required property
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 

@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Erigon · 3.8.0-dev · a1ce80fb](../../clients/erigon_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Nethermind · 2.1.0-preview · 45912ba3](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
-| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-28/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-28/eval/coverage/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Anvil · 1.8.4-nightly · dd372126](../../clients/anvil_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Erigon · 3.8.0-dev · 558586f0](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Nethermind · 2.1.0-preview · 82516987](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
+| [Reth · 2.5.2 · 5723a3fe](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/eval/coverage/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/eval/coverage/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -76,10 +76,6 @@
 - [H20](../../decisions/H20.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 - [H21](../../decisions/H21.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
-**Erigon · 3.8.0-dev · a1ce80fb** (`3.8.0-dev-a1ce80fb`)
-
-- [H15](../../decisions/H15.md): GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.
-
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
@@ -89,7 +85,7 @@
 - [H20](../../decisions/H20.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 - [H21](../../decisions/H21.md): Assess the declared property. The RPC returned an error, so there is no execution result to inspect.
 
-**Nethermind · 2.1.0-preview · 45912ba3** (`2.1.0-preview+45912ba3`)
+**Nethermind · 2.1.0-preview · 82516987** (`2.1.0-preview+82516987`)
 
 - [H15](../../decisions/H15.md): GASPRICE reflects the supplied fee; BASEFEE is zero for a zero-fee call, otherwise the selected base fee; other block fields are preserved.
 

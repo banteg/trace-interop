@@ -68,8 +68,8 @@
       "dev_only": 13,
       "name": "Erigon",
       "prs": {
-        "merged": 20,
-        "open": 3
+        "merged": 21,
+        "open": 2
       }
     },
     {
@@ -104,8 +104,8 @@
       "dev_only": 14,
       "name": "Nethermind",
       "prs": {
-        "merged": 30,
-        "open": 8
+        "merged": 31,
+        "open": 7
       }
     },
     {

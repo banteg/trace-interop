@@ -1956,9 +1956,16 @@
       ],
       "note": "past-head and unknown-hash filter bounds; the reversed range is #24341. Companion erigontech/rpc-tests#611",
       "title": "fix(rpc/jsonrpc): trace_filter rejects a bound past the head with -32602",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T11:47:50Z",
+      "uptake": {
+        "merge_commit": "0ed29ffb67b542ca1e997b4c33bdac6673caf285",
+        "builds": {
+          "a2a192535bb96246af6d537ea846e2350e484678": false,
+          "bdc78cc4377c8ebf3a44c5646a4d4cdcd7afad74": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27478",
@@ -2014,9 +2021,16 @@
         "H06"
       ],
       "note": "trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head is #14040",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T12:02:57Z",
+      "uptake": {
+        "merge_commit": "ed2ea14ead3a5413cb54c0f12b6d6da2f1be91b9",
+        "builds": {
+          "287f54f00b29d38935b33c7e7a3d7317d6aa884a": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14039",

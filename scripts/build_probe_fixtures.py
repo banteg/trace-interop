@@ -667,12 +667,16 @@ def annotate_blockhash():
     genesis = {'number': '0x0', 'hash': blocks['0x1']['parent_hash']}
     head = read(chain/'headblock.json')
     senders = sorted({t['sender'].lower() for t in block['transactions']})
+    recipients = sorted({t['to'].lower() for t in block['transactions'] if t['to']})
     coinbase = block['miner']
-    # Every block after genesis on chain a is proof of stake, so none has a reward record; the coinbase recipient list
-    # matches its ordinary calls and any synthetic reward a build emits (H05), as the numeric filter does.
+    # Every block after genesis on chain a is proof of stake, so none has a reward record; the coinbase, one of
+    # block 2's recipients, matches a call and any synthetic reward a build emits (H05), as the numeric filter does.
     assert block['difficulty'] == 0 and all(b['difficulty'] == 0 for b in blocks.values())
-    assert coinbase in {str(t['to']).lower() for t in block['transactions']}
-    assert all(t['sender'].lower() != coinbase for b in blocks.values() for t in b['transactions'])
+    assert coinbase in recipients and all(t['sender'].lower() != coinbase for b in blocks.values() for t in b['transactions'])
+    # The senders and recipients also transact in other blocks, so a build that scans a wider range than the
+    # hashed block (Erigon 3.7.0 scans from genesis to latest when both bounds are omitted) returns more than the twin.
+    elsewhere = [t for b in blocks.values() if b['number'] != 2 for t in b['transactions']]
+    assert {t['sender'].lower() for t in elsewhere} >= set(senders) and {str(t['to']).lower() for t in elsewhere} & set(recipients)
     known = {b['hash'] for b in [*blocks.values(), *alternate.values()]} | {genesis['hash']}
     unknown = '0x'+keccak(b'trace-interop H33 unknown block').hex()
     assert unknown not in known and int(head['number'], 16) > 2
@@ -682,7 +686,7 @@ def annotate_blockhash():
             ('', {'count': 3}, discriminating, True),
             ('-address-from', {'fromAddress': senders},
              'Address matching applies to the hash-selected block as to the numeric single-block filter.', True),
-            ('-address-to', {'toAddress': [coinbase]},
+            ('-address-to', {'toAddress': recipients},
              'Recipient matching, including a reward matched by its author, applies to the hash-selected block as to the numeric single-block filter.', True),
             ('-union', {'fromAddress': senders, 'toAddress': [coinbase], 'mode': 'union'},
              'mode union applies to the hash-selected block as to the numeric single-block filter.', True),

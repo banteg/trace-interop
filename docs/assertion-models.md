@@ -99,7 +99,9 @@ H33, not H14's unknown-member rule, judges these requests. Each `h30` hash case 
 (`filter-blockhash`, `-address-from`, `-address-to`, `-union`, `-page`, `-page-past-end`,
 `-empty`, `-null-bounds`) has a numeric twin `filter-block-2…` with the same members and
 `fromBlock = toBlock = 0x2`, and must equal that twin's records at block 2 from the same build.
-Equality proves the selection because the records carry `blockNumber` and `blockHash`. A twin
+Equality proves the selection because the records carry `blockNumber` and `blockHash`, and the
+address lists also match records in other blocks, so a build that scans more than the hashed block
+returns more than its twin. A twin
 without records at the block blocks a case that needs them (`nonempty`). `-page-past-end` and
 `-empty` expect `[]` and cannot discriminate alone; `filter-blockhash-genesis` expects `[]`, and
 `filter-blockhash-null` (a null member with numeric bounds) equals the twin. `-and-range`,

@@ -42,6 +42,30 @@ def scored(case, observation, peers):
 
 
 class AuditRegressions(unittest.TestCase):
+    def test_zero_fee_accounting_does_not_require_an_exact_refund(self):
+        _, _, case, observation, peers, _ = capture(
+            'initial', 'call-tree-stateDiff', 'reth_release')
+        accounting = lambda obs: [c for c in assess(case, obs, peers, {'H16'})
+                                  if c['topic'] == 'H15']
+        self.assertEqual([c['status'] for c in accounting(observation)], ['matches'])
+        # Refund uncertainty must not hide an unexpected debit or beneficiary payment.
+        miner = case['context']['_blocks']['0x30']['miner']
+        for conserve in [False, True]:
+            changed = deepcopy(observation)
+            diff = changed['response']['result']['stateDiff']
+            diff[miner] = {'balance': {'+': '0x1'}}
+            if conserve:
+                sender = case['request']['params'][0]['from']
+                diff[sender]['balance'] = {'*': {'from': '0x2', 'to': '0x1'}}
+            self.assertEqual([c['status'] for c in accounting(changed)], ['change_needed'])
+
+    def test_priced_accounting_retains_unproved_refund_gap(self):
+        _, _, case, observation, peers, _ = capture(
+            'initial', 'call-tree-stateDiff-priced', 'anvil_release')
+        checks = assess(case, observation, peers, {'H16'})
+        self.assertEqual([c['status'] for c in checks], ['blocked'])
+        self.assertIn('refund is not independently derived', checks[0]['detail'])
+
     def test_invalid_result_shape_is_reported_without_aborting_the_report(self):
         folder, manifest, case, observation, _, observations = capture(
             'coverage', 'model-transfer', 'besu_development')

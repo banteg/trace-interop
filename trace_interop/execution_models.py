@@ -446,8 +446,9 @@ def assess(case, observation, peers, topics):
         miner=balance_delta(mapping(diff.get(block.get('miner'))).get('balance','='))
         settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,removed)
         detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee and destroyed wei={removed}.'
-        if low!=gas and settled is not None:
+        if low!=gas and settled is not None and (tip_price or burn_price):
             # Settling within the refund bound is consistent but does not prove the refund.
+            # At zero fees, every possible refund gives the same exact balance obligations.
             checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',
                                detail='The refund is not independently derived; balances settle within the refund bound. '+detail))
             continue

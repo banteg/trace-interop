@@ -73,6 +73,54 @@ class FeeCompatibilityTests(unittest.TestCase):
             self.assertEqual(assess_compatibility(case,obs,peers)[0]['status'],expected)
         self.assertEqual(assess_compatibility(case,error('base fee'),{})[0]['status'],'blocked')
 
+    def test_execution_halt_is_distinct_from_empty_output_and_validation(self):
+        case = self.case('funding-free-short/trace/trace')
+        halt = dict(status='rpc_error', response={'error': {
+            'code': -32003, 'message': 'EVM error: OutOfFunds'}})
+        trace = self.observation('0x')
+        trace['response']['result']['trace'] = [{
+            'traceAddress': [], 'error': 'Insufficient balance for transfer'}]
+        peers = {case['fee_reference']: halt}
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'matches')
+        # Compatible method outcomes do not make the admission policy correct.
+        self.assertEqual(assess(case, trace)[0]['status'], 'change_needed')
+        for eth in [self.observation('0x', eth=True), dict(status='rpc_error', response={
+                'error': {'code': -32003, 'message': 'insufficient funds'}})]:
+            peers[case['fee_reference']] = eth
+            self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'change_needed')
+        peers[case['fee_reference']] = halt
+        trace['response']['result']['trace'][0].pop('error')
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'change_needed')
+        trace['response']['result']['trace'] = []
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'blocked')
+
+    def test_unknown_root_failure_cannot_masquerade_as_successful_output(self):
+        case = self.case('legacy-zero/trace/trace')
+        output = expected_steps(case)[0]['output']
+        trace = self.observation(output)
+        peers = {case['fee_reference']: self.observation(output, eth=True)}
+        trace['response']['result']['trace'] = [{'traceAddress': [], 'error': 'unclassified failure'}]
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'blocked')
+        trace['response']['result']['trace'] = [
+            {'traceAddress': []}, {'traceAddress': [0], 'error': 'unclassified failure'}]
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'matches')
+
+    def test_captured_reth_funding_halts_agree_only_with_root_witness(self):
+        from trace_interop.cli import load_observations
+        from trace_interop.report import run_context
+        folder = ROOT/'evidence/2026-09-29/refresh/fee-compat'
+        manifest = read(folder/'manifest.json')
+        context = run_context(ROOT, manifest)
+        observations = load_observations(folder)
+        for client in ['reth_release', 'reth_development']:
+            peers = {n: entries[client] for n, entries in observations.items()}
+            for family in ['funding-free-short', 'funding-typed-free-short']:
+                for selection, expected in [('trace', 'matches'), ('none', 'blocked')]:
+                    name = family+'/trace/'+selection
+                    case = dict(next(c for c in manifest['selected_cases'] if c['name'] == name), context=context)
+                    checks = assess_compatibility(case, peers[name], peers)
+                    self.assertEqual(checks[0]['status'], expected, (client, name, checks))
+
     def test_default_families_compare_with_eth_call(self):
         for family in ['defaults-omitted', 'defaults-tip-only-positive']:
             case = self.case(family+'/trace/none')

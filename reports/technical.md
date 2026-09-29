@@ -37,15 +37,18 @@ uv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \
 
 ## Assertion coverage
 
-Coverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.
+Coverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one assertion has a verdict and another is blocked or unassessed. This includes follow-on properties blocked by a client defect, unsupported methods, and missing independent evidence; it is a coverage label, not a client verdict. A checked assertion is not proof of the rest of the topic.
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14198 |
-| 🟡 Partial | 1176 |
+| 🔎 Assessed | 14222 |
+| 🟡 Partial | 1152 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 608 |
 | 🔎 Control | 35 |
+
+
+Of the partial observations, 1072 already have a differing assertion; 80 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -88,7 +91,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 489 |
 | H15 | blocked | Cannot inspect this property: malformed_json. | 204 |
 | H15 | blocked | No receipt gas or execution-gas witness was captured. | 6 |
-| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=0, expected tip=0/gas, burn=0/gas, blob fee and destroyed wei=0. | 8 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 8 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 32 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 10 |
@@ -97,10 +99,10 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error. | 118 |
 | H15 | blocked | eth_call: execution output (224 bytes); trace_call: invalid execution output. | 18 |
 | H15 | blocked | eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error. | 130 |
+| H15 | blocked | eth_call: funds execution halt; trace_call: No root trace was returned to distinguish an execution halt from empty output. | 16 |
 | H15 | blocked | eth_call: funds rejection; trace_call: malformed_json. | 42 |
 | H15 | blocked | eth_call: funds rejection; trace_call: unclassified RPC error: internal error. | 102 |
 | H15 | blocked | eth_call: priority rejection; trace_call: unclassified RPC error: internal error. | 16 |
-| H15 | blocked | eth_call: unclassified RPC error: evm error: outoffunds; trace_call: execution output (0 bytes). | 32 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 24 |
 | H16 | blocked | H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect. | 1 |
 | H16 | blocked | H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect. | 514 |

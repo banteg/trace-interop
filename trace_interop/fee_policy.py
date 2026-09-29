@@ -208,6 +208,15 @@ def assess_compatibility(case, observation, peers):
         status = obs.get('status', 'not_observed')
         if status == 'result':
             result = response.get('result')
+            if not eth and isinstance(result, dict):
+                roots = [f for f in result.get('trace', []) if isinstance(f, dict)
+                         and f.get('traceAddress') == []] if isinstance(result.get('trace'), list) else []
+                if len(roots) == 1 and roots[0].get('error'):
+                    # This is a failed EVM execution, not a validation rejection.
+                    # Empty output bytes alone cannot establish successful execution.
+                    if str(roots[0]['error']).lower() == 'insufficient balance for transfer':
+                        return ('halt', 'funds'), ''
+                    return None, 'unclassified root execution error: '+str(roots[0]['error'])
             output = result if eth else result.get('output') if isinstance(result, dict) and 'error' not in result else None
             if isinstance(output, str) and re.fullmatch(r'0x(?:[0-9a-fA-F]{2})*', output):
                 return ('output', output.lower()), ''
@@ -215,6 +224,8 @@ def assess_compatibility(case, observation, peers):
         if status == 'rpc_error':
             error = response.get('error', {})
             message = str(error.get('message', '')).lower()
+            if rejection(status, response) and message == 'evm error: outoffunds':
+                return ('halt', 'funds'), ''
             kind = violation(message)
             # Compare the condition the message identifies; error codes are only recommended.
             if rejection(status, response) and kind in SIMULATE_CODES:
@@ -223,11 +234,19 @@ def assess_compatibility(case, observation, peers):
         return None, status
     left, left_error = outcome(peers.get(reference, {}), eth=True)
     right, right_error = outcome(observation)
+    if left and left[0] == 'halt' and right and right[0] == 'output':
+        result = observation.get('response', {}).get('result')
+        roots = [f for f in result.get('trace', []) if isinstance(f, dict)
+                 and f.get('traceAddress') == []] if isinstance(result, dict) and isinstance(result.get('trace'), list) else []
+        if not roots:
+            right, right_error = None, 'No root trace was returned to distinguish an execution halt from empty output'
     def describe(value, error):
         if value is None:
             return error
         if value[0] == 'output':
             return f'execution output ({(len(value[1])-2)//2} bytes)'
+        if value[0] == 'halt':
+            return f'{value[1]} execution halt'
         return f'{value[1]} rejection'
     detail = f'eth_call: {describe(left,left_error)}; trace_call: {describe(right,right_error)}.'
     if left and right and left[0] == right[0] == 'output':
@@ -242,5 +261,5 @@ def assess_compatibility(case, observation, peers):
             detail += ' Output bytes differ.'
     status = 'blocked' if left is None or right is None else 'matches' if left == right else 'change_needed'
     return [dict(topic='H15', status=status,
-                 requirement='The identical eth_call and trace_call request has the same observable execution output or fee/funding rejection class.',
+                 requirement='The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class.',
                  detail=detail)]

@@ -950,8 +950,11 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += '[checks.json](checks.json) retains every assertion; [comparisons.json](comparisons.json) groups exact responses; [assessment.json](assessment.json) pins the specification and assessment source hashes. Each case links its original response and run manifest.\n\n'
     text += 'To reproduce one case, use its linked manifest and the exact client, corpus and case name:\n\n```sh\nuv run trace-interop run --lock evidence/2026-09-21/RUN/manifest.json \\\n  --clients CLIENT --corpus CORPUS --case "^CASE$" --output runs/reproduce\n```\n\n'
     gaps = sorted({(r['client'],r['run'],r['corpus']) for r in records if not r['eligible']})
-    text += '## Assertion coverage\n\nCoverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one declared topic was not checked. A checked assertion is not proof of the rest of the topic.\n\n'
+    text += '## Assertion coverage\n\nCoverage below counts all selected trace observations, including missing responses and failed setup, separately from schema validation. Partially assessed means at least one assertion has a verdict and another is blocked or unassessed. This includes follow-on properties blocked by a client defect, unsupported methods, and missing independent evidence; it is a coverage label, not a client verdict. A checked assertion is not proof of the rest of the topic.\n\n'
     text += table(['Coverage', 'Observations'], [[{'assessed': '🔎 Assessed', 'partial': '🟡 Partial', 'unassessed': '⚪ Unassessed', 'blocked':'🚧 Blocked', 'control':'🔎 Control'}[status], sum(r.get('assessment')==status for r in records if r['method'].startswith('trace_'))] for status in ['assessed','partial','unassessed','blocked','control']])
+    partial_records = [r for r in records if r['method'].startswith('trace_') and r.get('assessment') == 'partial']
+    partial_differences = sum(any(c['status'] == 'change_needed' for c in r['checks']) for r in partial_records)
+    text += f'\nOf the partial observations, {partial_differences} already have a differing assertion; {len(partial_records)-partial_differences} have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.\n\n'
     property_gaps = defaultdict(lambda: defaultdict(int))
     for r in records:
         if r['method'].startswith('trace_'):

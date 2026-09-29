@@ -20,8 +20,8 @@ def anchored_reference(context, peers, name):
 def anchor(context, peers, name):
     """Return (reference, mismatch) after checking the independent fixture inventory.
 
-    This anchors required roots and the calltree's non-precompile children. It is
-    deliberately a minimum inventory, not a general EVM or full trace oracle.
+    This anchors the complete decoded root inventory when available and the calltree's
+    non-precompile children. It is not a general EVM or full child-trace oracle.
     Optional precompile frames may shift paths; emitted paths must form a tree.
     An unestablished inventory gives (None, None); frames that contradict an
     anchored action field give (None, description naming each field).
@@ -50,6 +50,25 @@ def anchor(context, peers, name):
     def expect(label, got, want):
         if got != want:
             mismatches.append(f'{label}: expected {want}, got {got}')
+    # An extra transaction cannot become a filter expectation just because both
+    # methods report it. Legacy indexed txinfo alone is not a complete block inventory.
+    inventory = None
+    if request.get('method') == 'trace_transaction':
+        inventory = [params[0]]
+    elif request.get('method') == 'trace_block':
+        block = context.get('_blocks', {}).get(params[0])
+        if isinstance(block, dict) and isinstance(block.get('transactions'), list):
+            inventory = [tx['hash'] for tx in block['transactions']]
+        elif '_decoded' in context.get('txinfo', {}):
+            inventory = [tx['txhash'] for tx in context['txinfo']['_decoded'] if tx['block'] == params[0]]
+    if inventory is not None:
+        roots = [f.get('transactionHash') for f in frames
+                 if f.get('traceAddress') == [] and f.get('type') in ['call','create']]
+        expect('transaction root inventory', roots, inventory)
+        extra = [f.get('transactionHash') for f in frames
+                 if f.get('type') != 'reward' and f.get('transactionHash') not in inventory]
+        if extra:
+            mismatches.append('records for transactions outside the frozen inventory: '+str(extra[:4]))
     for kind, tx in transactions:
         tree = [f for f in frames if f.get('transactionHash') == tx['txhash']]
         roots = [f for f in tree if f.get('traceAddress') == []]

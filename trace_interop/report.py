@@ -35,6 +35,8 @@ def run_context(root, manifest):
     context['_chain_id'] = genesis['config']['chainId']
     context['_blocks'] = load_chain(chain/'chain.rlp')
     context['_head'] = header
+    forkchoice = read(chain/'headfcu.json')['params'][0]
+    context['_block_tags'] = {tag: forkchoice[tag+'BlockHash'] for tag in ['safe','finalized']}
     context['txinfo'] = dict(context.get('txinfo', {}), _decoded=[
         {'txhash':t['hash'],'sender':t['sender'],'block':number,'indexInBlock':i}
         for number,b in context['_blocks'].items() for i,t in enumerate(b['transactions'])])

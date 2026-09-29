@@ -204,7 +204,8 @@ def evaluate(context, cases, peers):
             root = next((f for f in sequence(e.get('trace')) if mapping(f).get('traceAddress') == []), None)
             output = mapping(mapping(root).get('result')).get('output')
             if mapping(root).get('type') == 'call' and 'error' not in root and output is not None:
-                law('L03', [case['name']], None if output == e.get('output') else f'{label} root output {output[:74]} vs envelope {shown(e.get("output"))}'.strip())
+                detail = output[:74] if isinstance(output, str) else shown(output)
+                law('L03', [case['name']], None if output == e.get('output') else f'{label} root output {detail} vs envelope {shown(e.get("output"))}'.strip())
 
     if not run.frozen:
         return found

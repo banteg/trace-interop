@@ -7,7 +7,7 @@ import re
 
 from .oracles import anchor
 from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, reported_environment, UnsupportedProgram, NAMES
-from .chain_model import decode_transaction
+from .chain_model import decode_transaction, resolve_block
 import rlp
 from eth_hash.auto import keccak
 from .execution_models import assess as assess_execution
@@ -100,7 +100,7 @@ def properties(case, observation, peers, checks, expected):
 
     if method in ['trace_replayTransaction', 'trace_replayBlockTransactions']:
         if method == 'trace_replayBlockTransactions':
-            transactions = obj(blocks.get(params[0])).get('transactions')
+            transactions = obj(resolve_block(context, params[0])).get('transactions')
             if transactions is not None:
                 add('H07', isinstance(result, list) and [obj(e).get('transactionHash') for e in result] == [t['hash'] for t in transactions],
                     'Block replay has exactly one envelope per frozen transaction, with hashes in transaction order.')

@@ -10,6 +10,26 @@ def number(raw):
     return int.from_bytes(raw, 'big')
 
 
+def resolve_block(context, selector):
+    """Resolve a selector to a frozen block, or None without an independent header.
+
+    Null defaults to latest. Safe/finalized hashes come from the frozen forkchoice;
+    pending has no independently captured header and never substitutes the head.
+    """
+    blocks = context.get('_blocks', {})
+    if selector is None or selector == 'latest':
+        selector = context.get('_head', {}).get('number')
+    elif isinstance(selector, str) and selector in ['safe', 'finalized']:
+        selector = context.get('_block_tags', {}).get(selector)
+    elif selector == 'earliest':
+        selector = '0x0'
+    if not isinstance(selector, str):
+        return None
+    if selector in blocks:
+        return blocks[selector]
+    return next((b for b in blocks.values() if b.get('hash') == selector.lower()), None)
+
+
 def decode_transaction(raw):
     wire = rlp.encode(raw) if isinstance(raw, list) else raw
     return _decode_transaction(wire)

@@ -2,10 +2,10 @@
 import rlp
 from eth_hash.auto import keccak
 
-from .chain_model import decode_transaction
+from .chain_model import decode_transaction, resolve_block
 from .oracles import TREE
 from .rules import accounting_topic
-from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram
+from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram, OutOfGas
 from functools import lru_cache
 
 
@@ -24,22 +24,21 @@ def created_address(sender, nonce):
     return '0x'+keccak(rlp.encode([bytes.fromhex(sender[2:]),nonce]))[-20:].hex()
 
 
-@lru_cache(maxsize=64)
-def deployed_code(initcode):
-    try:
-        _,output,reverted=execute(initcode,10_000_000)
-        return None if reverted else output
-    except UnsupportedProgram:
-        return None
-
-
 def creation_outcome(initcode, gas, exists, address):
     """Runtime code a top-level creation with this execution gas installs, False if it provably
     creates nothing, or None when the model cannot establish the outcome."""
     if address in exists:
         return None  # A collision depends on the address's nonce and code.
+    return deployment_outcome(initcode, gas)
+
+
+@lru_cache(maxsize=256)
+def deployment_outcome(initcode, gas):
+    """A constructor's proven finalized runtime, False on proven failure, otherwise None."""
     try:
-        steps,output,reverted=execute(initcode,gas)
+        steps,output,reverted=execute(initcode,gas,environment={'FRESH_ACCOUNT':True})
+    except OutOfGas:
+        return False
     except UnsupportedProgram:
         return None
     runtime=bytes.fromhex(output[2:])
@@ -82,10 +81,10 @@ def transactions(case):
     head = context.get('_head', {}).get('number')
     position=1 if method=='trace_callMany' else 2
     selected = params[position] if method in ['trace_call','trace_callMany'] and len(params)>position else head
-    block = blocks.get(selected if selected not in ['latest','pending'] else head, {})
+    block = resolve_block(context, selected)
     if method == 'trace_replayBlockTransactions':
-        block = blocks.get(params[0], {})
-        return [(tx,block,i) for i,tx in enumerate(block.get('transactions',[]))]
+        block = resolve_block(context, params[0])
+        return [(tx,block,i) for i,tx in enumerate(mapping(block).get('transactions',[]))]
     if method in ['trace_replayTransaction','trace_transaction']:
         return [(tx,b,i) for b in blocks.values() for i,tx in enumerate(b['transactions']) if tx['hash']==params[0]]
     if method == 'trace_rawTransaction':
@@ -145,10 +144,15 @@ internal constructor self-destructs within the same transaction.
             nonces[tx['sender']]=tx['nonce']+1
             if tx['to'] is None:
                 address=created_address(tx['sender'],tx['nonce'])
-                exists.add(address)
-                runtime=deployed_code(tx['data'])
-                codes[address]=runtime
-                nonces[address]=1
+                gas=tx['gas']-intrinsic(tx['data'],True)-tx.get('intrinsic_extra',0)
+                runtime=creation_outcome(tx['data'],gas,exists,address)
+                if isinstance(runtime,str):
+                    exists.add(address)
+                    codes[address]=runtime
+                    nonces[address]=1
+                elif runtime is None:
+                    # Code without proven existence denotes an uncertain creation, not a birth.
+                    codes[address]=None
             elif tx['value']:
                 exists.add(tx['to'])
                 codes.setdefault(tx['to'],'0x')
@@ -262,6 +266,14 @@ def assess(case, observation, peers, topics):
         params=case['request']['params']
         modes=params[0][i][1] if method=='trace_callMany' else params[1] if len(params)>1 else []
         state_requested=isinstance(modes,list) and 'stateDiff' in modes
+        if block is None and context.get('_blocks'):
+            needed = topics & {'H18','H19','H20'} | (topics & {'H16','H17','H26'} if state_requested else set())
+            for topic in sorted(needed):
+                checks.append(dict(topic=accounting_topic(method) if topic=='H16' else topic,
+                    status='blocked',requirement='Resolve the selected block independently before modelling execution.',
+                    detail='The selector has no independently established frozen header.'))
+            continue
+        block = mapping(block)  # Small synthetic models may supply genesis state without a chain.
         for topic in sorted(topics & {'H16','H17'}) if state_requested else []:
             if not isinstance(diff,dict):
                 if topic == 'H17':
@@ -274,7 +286,7 @@ def assess(case, observation, peers, topics):
         # Earlier bundle items persist: the sender's nonce, a modelled creation and
         # a funded recipient. Internal value recipients are not modelled, and an
         # unmodelled creation leaves its address undetermined.
-        unknown=set()
+        unknown=set(codes)-exists
         for prior,_,_ in models[:i] if method=='trace_callMany' else []:
             exists.add(prior['sender'])
             codes.setdefault(prior['sender'],'0x')
@@ -330,8 +342,15 @@ def assess(case, observation, peers, topics):
                         bad.append(address+': existing account has creation markers')
                 elif any(account.get(k) != {'+':mapping(account.get(k)).get('+')} for k in ['balance','nonce','code']):
                     bad.append(address+': new account lacks creation markers for all fields')
-            bad+=[address+': new account omitted' for address in born_accounts(tx,exists,nonces) if address not in map(str.lower,diff)]
-            add('H17',bool(diff) and not bad,'State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields; a modelled new account is reported.', '; '.join(bad[:4]))
+            births = set(born_accounts(tx,exists,nonces))
+            bad+=[address+': new account omitted' for address in births-unknown if address not in map(str.lower,diff)]
+            uncertain = unknown & ({a.lower() for a in diff} | births)
+            if uncertain and not bad:
+                checks.append(dict(topic='H17',status='blocked',
+                    requirement='Establish account existence before judging birth markers.',
+                    detail='Prior creation outcome is unknown for '+', '.join(sorted(uncertain))+'.'))
+            else:
+                add('H17',bool(diff) and not bad,'State-diff account markers agree with genesis and prior signed-transaction existence, including empty fields; a modelled new account is reported.', '; '.join(bad[:4]))
         if topics & {'H19','H20'}:
             code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
             if code is not None:

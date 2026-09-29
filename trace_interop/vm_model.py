@@ -28,6 +28,10 @@ class UnsupportedProgram(ValueError):
     pass
 
 
+class OutOfGas(UnsupportedProgram):
+    """Execution provably halts for lack of gas, without a modeled VM trace."""
+
+
 def intrinsic(data, creation=False):
     raw = bytes.fromhex(data.removeprefix('0x'))
     return 21000 + sum(4 if b == 0 else 16 for b in raw) + (32000 + 2*((len(raw)+31)//32) if creation else 0)
@@ -126,7 +130,7 @@ def execute(code, gas, calldata='0x', environment=None):
                 else:
                     value=stack.pop()
                     if gas<=2300:
-                        raise UnsupportedProgram('SSTORE sentry requires an OOG model')
+                        raise OutOfGas('SSTORE sentry requires an OOG model')
                     before=original_value(slot)
                     # EIP-2200 with EIP-2929 cold surcharges and EIP-3529 refunds.
                     if now==value:
@@ -202,7 +206,7 @@ def execute(code, gas, calldata='0x', environment=None):
             elif op != 0:
                 raise UnsupportedProgram(f'unmodelled opcode {op:#x}')
             if gas < cost:
-                raise UnsupportedProgram('exceptional halt requires an OOG model')
+                raise OutOfGas('exceptional halt requires an OOG model')
             gas -= cost
             steps.append({'pc': at, 'cost': cost, 'op': NAMES[op], 'sub': None,
                           'ex': {'used': gas, 'push': [hex(v) for v in push], 'mem': mem, 'store': store}})

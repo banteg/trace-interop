@@ -108,6 +108,8 @@ flowchart LR
 | [Nethermind #14037](https://github.com/NethermindEth/nethermind/pull/14037) | Return null from trace_replayTransaction for a missing transaction; trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head is #14040 | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Nethermind #14039](https://github.com/NethermindEth/nethermind/pull/14039) | Match a failed CREATE in trace_filter only by its creator; trace_filter matches a failed CREATE only by its creator, since #13981 removed its address from the result | [H23](../reports/decisions/H23.md) | — | — | — | — | — |
 | [Nethermind #14040](https://github.com/NethermindEth/nethermind/pull/14040) | Return invalid params for a trace_filter bound past the head; trace_filter and the TraceStore plugin return -32602 for a bound past the head, sharing eth_getLogs' check and message | [H06](../reports/decisions/H06.md) | — | — | — | — | — |
+| [Nethermind #14045](https://github.com/NethermindEth/nethermind/pull/14045) | Run zero-fee trace_call and trace_callMany calls with a zero base fee; trace_call and each trace_callMany call priced at zero run with BASEFEE 0 as eth_call does; callMany sets it per call, so free/priced/free sees 0/B/0; blob-fee items remain | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
+| [Nethermind #14046](https://github.com/NethermindEth/nethermind/pull/14046) | Reject a priority fee above the fee cap in trace_call and trace_callMany; trace_call and trace_callMany run eth_call's tip-above-cap check, so a tip-only request is rejected for the tip above the defaulted zero cap (code stays -32000); blob-fee items remain | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 
 ## Reth
 
@@ -124,8 +126,8 @@ flowchart LR
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
   revm_inspectors_530["revm-inspectors #530"]:::merged
-  revm_inspectors_532["revm-inspectors #532"]:::open
-  revm_inspectors_533["revm-inspectors #533"]:::open
+  revm_inspectors_532["revm-inspectors #532"]:::merged
+  revm_inspectors_533["revm-inspectors #533"]:::merged
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
@@ -166,8 +168,8 @@ flowchart LR
 | [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence in state diffs | [H17](../reports/decisions/H17.md) | 2026-09-24 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | dev, stable |
 | [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | — |
 | [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | 2026-09-29 | — | — | — | — |
-| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
-| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | — | — | — | — | — |
+| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | 2026-09-29 | — | — | — | — |
+| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | — | — | — | — |
 
 ## Specifications, tests and other repositories
 

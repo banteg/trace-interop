@@ -1607,9 +1607,18 @@
       "decisions": [
         "H20"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T10:25:47Z",
+      "uptake": {
+        "merge_commit": "0824cc0fc8864174099ff59def9bfaef74a82fa6",
+        "releases": [],
+        "client": null,
+        "builds": {
+          "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
+          "3d592ece6de8c4559987416a544fc215fd6d6921": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/rpc-tests/pull/604",
@@ -1902,9 +1911,18 @@
         "H09",
         "H23"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-09-29T10:26:08Z",
+      "uptake": {
+        "merge_commit": "8603a0f4cfd1790d22f323d1a80c3f122c52e6bf",
+        "releases": [],
+        "client": null,
+        "builds": {
+          "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
+          "3d592ece6de8c4559987416a544fc215fd6d6921": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13981",
@@ -2020,6 +2038,36 @@
         "H06"
       ],
       "note": "trace_filter and the TraceStore plugin return -32602 for a bound past the head, sharing eth_getLogs' check and message",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14045",
+      "title": "fix(rpc): run zero-fee trace_call and trace_callMany calls with a zero base fee",
+      "client": "nethermind",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "note": "trace_call and each trace_callMany call priced at zero run with BASEFEE 0 as eth_call does; callMany sets it per call, so free/priced/free sees 0/B/0; blob-fee items remain",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14046",
+      "title": "fix(rpc): reject a priority fee above the fee cap in trace_call and trace_callMany",
+      "client": "nethermind",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "note": "trace_call and trace_callMany run eth_call's tip-above-cap check, so a tip-only request is rejected for the tip above the defaulted zero cap (code stays -32000); blob-fee items remain",
       "state": "open",
       "draft": false,
       "merged_at": null

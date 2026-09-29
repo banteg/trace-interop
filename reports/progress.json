@@ -105,7 +105,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 30,
-        "open": 3
+        "open": 5
       }
     },
     {
@@ -140,8 +140,8 @@
       "dev_only": 0,
       "name": "Reth",
       "prs": {
-        "merged": 19,
-        "open": 6
+        "merged": 21,
+        "open": 4
       }
     },
     {

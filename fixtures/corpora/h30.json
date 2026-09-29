@@ -306,6 +306,540 @@
           "recommended": -32602
         }
       ]
+    },
+    {
+      "name": "filter-block-2",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "count": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block\u2019s records.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-address-from",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-address-from",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ]
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Address matching applies to the hash-selected block as to the numeric single-block filter.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-address-from",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-address-to",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-address-to",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ]
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Recipient matching, including a reward matched by its author, applies to the hash-selected block as to the numeric single-block filter.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-address-to",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-union",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "mode": "union"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-union",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "mode": "union"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "mode union applies to the hash-selected block as to the numeric single-block filter.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-union",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-page",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "after": 1,
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-page",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "after": 1,
+            "count": 1
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "after and count page the hash-selected block\u2019s records as they page the numeric single-block filter.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-page",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-page-past-end",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "after": 1000,
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-page-past-end",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "after": 1000,
+            "count": 1
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A page past the end of the hash-selected block is [], as for the numeric single-block filter; alone it cannot show which block was selected.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-page-past-end",
+          "nonempty": false
+        }
+      ]
+    },
+    {
+      "name": "filter-block-2-empty",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "fromAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-blockhash-empty",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "fromAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ]
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A known block without matching records returns [], not an error, as the numeric single-block filter does; alone it cannot show which block was selected.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2-empty",
+          "nonempty": false
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-genesis",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "The genesis hash selects the genesis block, which has no trace records: [].",
+          "block": {
+            "number": "0x0",
+            "hash": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582"
+          },
+          "expected": []
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-and-range",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "fromBlock": "0x2",
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reject": true,
+          "recommended": -32602
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-null-bounds",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e",
+            "fromBlock": null,
+            "toBlock": null,
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-null",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": null,
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "count": 3
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A null blockHash is omitted, so the numeric range applies.",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reference": "filter-block-2",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-unknown",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf41d91222581f534cea6e7278e4a4e7e8e1c4fb3494dc9e4be41268beeaadd79"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "An unknown hash is an error (-32001 recommended), never [] or another block\u2019s records.",
+          "block": null,
+          "reject": true,
+          "recommended": -32001
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-unknown-count-zero",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf41d91222581f534cea6e7278e4a4e7e8e1c4fb3494dc9e4be41268beeaadd79",
+            "count": 0
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.",
+          "block": null,
+          "reject": true,
+          "recommended": -32001
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-malformed-short",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xf5de2a84"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "A blockHash that is not a 32-byte hash is rejected (-32602 recommended).",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reject": true,
+          "recommended": -32602
+        }
+      ]
+    },
+    {
+      "name": "filter-blockhash-malformed-object",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": {
+              "blockHash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+            }
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "blockHash takes a bare 32-byte hash, not an EIP-1898 object: it is rejected (-32602 recommended).",
+          "block": {
+            "number": "0x2",
+            "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
+          },
+          "reject": true,
+          "recommended": -32602
+        }
+      ]
     }
   ]
 }

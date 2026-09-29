@@ -16,6 +16,10 @@ valid at every block, returns NUMBER, a witness account's BALANCE and BASEFEE; i
 with two arguments and with explicit latest, number, hash, EIP-1898 and pending selectors.
 The initial corpus's signed cases gain the same probe, read from the sender's stateDiff nonce.
 Candidate states and environments come from the frozen headers, genesis and transactions.
+
+h30, reorg and reorg-safe (chain a and branch B): H33 trace_filter blockHash cases, each compared
+with the numeric filter of the same block (the h30 `filter-block-2…` twins, the reorg phases'
+`filter-tail`), plus genesis, conflicting, null, unknown and malformed hashes.
 """
 import json
 from pathlib import Path
@@ -638,12 +642,113 @@ def annotate_initial():
     return corpus
 
 
+def hash_probe(requirement, block, **fields):
+    """H33: which block a trace_filter blockHash selects. `block` is the {number, hash} the hash names
+    (None for an unknown hash); the result must equal `reference`'s records at that block, equal
+    `expected`, or, with `reject`, be an error."""
+    return probe('H33', 'block-hash', requirement, block=block, **fields)
+
+
+def replace_cases(corpus, cases):
+    """The hand-written corpus with `cases` appended, replacing earlier generated cases of the same names."""
+    names = {c['name'] for c in cases}
+    return dict(corpus, cases=[c for c in corpus['cases'] if c['name'] not in names]+cases)
+
+
+def annotate_blockhash():
+    """H33 blockHash selection on chain a (h30) and across the reorg scenarios. Each hash case is
+    compared with the numeric filter of the same block from the same build, so equality shows that
+    the hash selected that block; the frozen chains name every hash and address."""
+    chain = ROOT/'fixtures/chains/a'
+    blocks = load_chain(chain/'chain.rlp')
+    alternate = load_chain(ROOT/'fixtures/chains/b/chain.rlp')
+    block = blocks['0x2']
+    selected = {'number': '0x2', 'hash': block['hash']}
+    genesis = {'number': '0x0', 'hash': blocks['0x1']['parent_hash']}
+    head = read(chain/'headblock.json')
+    senders = sorted({t['sender'].lower() for t in block['transactions']})
+    coinbase = block['miner']
+    # Every block after genesis on chain a is proof of stake, so none has a reward record; the coinbase recipient list
+    # matches its ordinary calls and any synthetic reward a build emits (H05), as the numeric filter does.
+    assert block['difficulty'] == 0 and all(b['difficulty'] == 0 for b in blocks.values())
+    assert coinbase in {str(t['to']).lower() for t in block['transactions']}
+    assert all(t['sender'].lower() != coinbase for b in blocks.values() for t in b['transactions'])
+    known = {b['hash'] for b in [*blocks.values(), *alternate.values()]} | {genesis['hash']}
+    unknown = '0x'+keccak(b'trace-interop H33 unknown block').hex()
+    assert unknown not in known and int(head['number'], 16) > 2
+    cases = []
+    discriminating = 'A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block’s records.'
+    for suffix, extra, requirement, nonempty in [
+            ('', {'count': 3}, discriminating, True),
+            ('-address-from', {'fromAddress': senders},
+             'Address matching applies to the hash-selected block as to the numeric single-block filter.', True),
+            ('-address-to', {'toAddress': [coinbase]},
+             'Recipient matching, including a reward matched by its author, applies to the hash-selected block as to the numeric single-block filter.', True),
+            ('-union', {'fromAddress': senders, 'toAddress': [coinbase], 'mode': 'union'},
+             'mode union applies to the hash-selected block as to the numeric single-block filter.', True),
+            ('-page', {'after': 1, 'count': 1},
+             'after and count page the hash-selected block’s records as they page the numeric single-block filter.', True),
+            ('-page-past-end', {'after': 1000, 'count': 1},
+             'A page past the end of the hash-selected block is [], as for the numeric single-block filter; alone it cannot show which block was selected.', False),
+            ('-empty', {'fromAddress': [coinbase]},
+             'A known block without matching records returns [], not an error, as the numeric single-block filter does; alone it cannot show which block was selected.', False)]:
+        twin = 'filter-block-2'+suffix
+        case(cases, twin, 'trace_filter', [{'fromBlock': '0x2', 'toBlock': '0x2', **extra}])
+        case(cases, 'filter-blockhash'+suffix, 'trace_filter', [{'blockHash': selected['hash'], **extra}],
+             probes=[hash_probe(requirement, selected, reference=twin, nonempty=nonempty)])
+    case(cases, 'filter-blockhash-genesis', 'trace_filter', [{'blockHash': genesis['hash']}],
+         probes=[hash_probe('The genesis hash selects the genesis block, which has no trace records: [].', genesis, expected=[])])
+    case(cases, 'filter-blockhash-and-range', 'trace_filter', [{'blockHash': selected['hash'], 'fromBlock': '0x2', 'count': 3}],
+         probes=[hash_probe('A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector.',
+                            selected, reject=True, recommended=-32602)])
+    case(cases, 'filter-blockhash-null-bounds', 'trace_filter', [{'blockHash': selected['hash'], 'fromBlock': None, 'toBlock': None, 'count': 3}],
+         probes=[hash_probe('Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block.',
+                            selected, reference='filter-block-2', nonempty=True)])
+    case(cases, 'filter-blockhash-null', 'trace_filter', [{'blockHash': None, 'fromBlock': '0x2', 'toBlock': '0x2', 'count': 3}],
+         probes=[hash_probe('A null blockHash is omitted, so the numeric range applies.', selected, reference='filter-block-2', nonempty=True)])
+    for suffix, extra, requirement in [
+            ('', {}, 'An unknown hash is an error (-32001 recommended), never [] or another block’s records.'),
+            ('-count-zero', {'count': 0}, 'An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.')]:
+        case(cases, 'filter-blockhash-unknown'+suffix, 'trace_filter', [{'blockHash': unknown, **extra}],
+             probes=[hash_probe(requirement, None, reject=True, recommended=-32001)])
+    for suffix, value, requirement in [
+            ('short', selected['hash'][:10], 'A blockHash that is not a 32-byte hash is rejected (-32602 recommended).'),
+            ('object', {'blockHash': selected['hash']}, 'blockHash takes a bare 32-byte hash, not an EIP-1898 object: it is rejected (-32602 recommended).')]:
+        case(cases, 'filter-blockhash-malformed-'+suffix, 'trace_filter', [{'blockHash': value}],
+             probes=[hash_probe(requirement, selected, reject=True, recommended=-32602)])
+    corpora = {'h30': replace_cases(read(ROOT/'fixtures/corpora/h30.json'), cases)}
+    for name in ['reorg', 'reorg-safe']:
+        corpus = read(ROOT/'fixtures/corpora'/(name+'.json'))
+        # Branch B replaces A's tail at the same heights with empty blocks; a tail block with records on A
+        # has none on B, so a replacement's [] is what a hash selection must never return for A.
+        tail = next(c['request']['params'][0] for c in corpus['cases'] if c['name'] == 'before/block-tail')
+        heads = {branch: {h['number']: h['hash'] for h in corpus['heads_'+branch]} for branch in 'ab'}
+        a, b = ({'number': tail, 'hash': heads[branch][tail]} for branch in 'ab')
+        assert a['hash'] == blocks[tail]['hash'] and b['hash'] == alternate[tail]['hash'] != a['hash']
+        assert blocks[tail]['transactions'] and not alternate[tail]['transactions']
+        assert {p['params'][0]['blockHash'] for p in corpus['plan']['payloads']} >= {b['hash']}
+        cases = []
+        for phase, branch, expectation, requirement in [
+                ('before', a, 'reference', f'Before the switch, branch A’s block {tail} is canonical: its hash selects A’s records, as the numeric range does.'),
+                ('after', a, 'reject', f'After the switch to branch B, A’s block {tail} is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records.'),
+                ('restored', a, 'reference', f'Once branch A is restored, the hash of its block {tail} selects A’s records again.'),
+                ('before', b, 'reject', f'Before B’s payloads arrive, B’s block {tail} is unknown: an error (-32001 recommended).'),
+                ('after', b, 'reference', f'After the switch, B’s block {tail} is canonical: its hash selects that block, which has no records, as the numeric range shows.'),
+                ('restored', b, 'reject', f'Once branch A is restored, B’s block {tail} is noncanonical: an error (-32001 recommended), never A’s records.')]:
+            fields = ({'reject': True, 'recommended': -32001} if expectation == 'reject'
+                      else {'reference': phase+'/filter-tail', 'nonempty': branch is a})
+            case(cases, f'{phase}/filter-hash-{"a" if branch is a else "b"}', 'trace_filter', [{'blockHash': branch['hash']}],
+                 probes=[hash_probe(requirement, branch, **fields)])
+        corpora[name] = replace_cases(corpus, cases)
+    return corpora
+
+
 if __name__ == '__main__':
     checksums = read(ROOT/'fixtures/checksums.json')
     for name, corpus in [('probes-prague', prague()), ('probes-forks', forks()), ('raw-selector', selector()),
-                         ('initial', annotate_initial())]:
+                         ('initial', annotate_initial()), *annotate_blockhash().items()]:
         path = ROOT/'fixtures/corpora'/(name+'.json')
-        if name == 'initial':  # Hand-written: keep its key order and layout.
+        if name in ['initial', 'h30', 'reorg', 'reorg-safe']:  # Hand-written: keep its key order and layout.
             path.write_text(json.dumps(corpus, indent=2)+'\n')
         else:
             write(path, corpus)

@@ -336,7 +336,9 @@ unavailable-history behavior is not yet verified by that scenario.
 ## Report inventory and assertion coverage
 
 `reports.lock.json` selects the retained run directories used by both report generation
-and `trace-interop verify`. Its `previous` field names the matrix that
+and `trace-interop verify`. Besides the matrix's runs it may select a focused capture made with
+the matrix's own builds (`run_matrix.py --reproduce-lock`): one of a corpus the matrix lacks, or a
+recapture that replaces the matrix's run of a corpus, which must resend every request that run sent. Its `previous` field names the matrix that
 [changes since the previous matrix](../reports/changes.md) compares against: report generation
 assesses every run of that matrix with the same code, ledger and draft, and lists the captured
 verdicts that changed per decision and build, plus new, updated and removed builds. Ledger references use `corpus/case` identities and must be

@@ -157,6 +157,16 @@ class MatrixInventoryTests(unittest.TestCase):
             write(focused/'a/manifest.json', dict(corpus='a', clients=copy.deepcopy(clients)))
             write(root/'reports.lock.json',dict(selection,runs=selection['runs']+['evidence/focused/a']))
             with self.assertRaisesRegex(ValueError, 'repeats a corpus'): report_runs(root)
+            # A focused recapture replaces the matrix's run of a corpus when it resends every request that run sent.
+            sent = [dict(name='filter', request=dict(method='trace_filter', params=[{}]))]
+            added = [dict(name='filter-blockhash', request=dict(method='trace_filter', params=[{'blockHash': '0x02'}]))]
+            write(matrix/'a/manifest.json', dict(manifests['a'], selected_cases=sent))
+            write(focused/'a/manifest.json', dict(corpus='a', clients=copy.deepcopy(clients), selected_cases=sent+added))
+            write(root/'reports.lock.json',dict(selection,runs=[r for r in selection['runs'] if r != 'evidence/current/a']+['evidence/focused/a']))
+            self.assertEqual(len(report_runs(root)),3)
+            write(focused/'a/manifest.json', dict(corpus='a', clients=copy.deepcopy(clients), selected_cases=added))
+            with self.assertRaisesRegex(ValueError, 'resend every request'): report_runs(root)
+            write(matrix/'a/manifest.json',manifests['a'])
             write(root/'reports.lock.json',selection)
             manifests['a']['clients']['reth_release']['image_id']='old'
             write(matrix/'a/manifest.json',manifests['a'])

@@ -91,7 +91,28 @@ an `extension` observation: it records whether the server honors the selector, i
 (running as the two-argument request does), rejects it, or uses another state or
 environment, without a verdict. Extension observations do not hold open a verdict that the
 baseline checks settle, so H12 shows the baseline result with the extension behavior beside it.
-A signed transaction rejected for a validity violation is H13's; the baseline check is then blocked. Setup controls establish only chain
+A signed transaction rejected for a validity violation is H13's; the baseline check is then blocked.
+
+H33's block-hash probes (kind `block-hash`) judge the `blockHash` trace_filter member the
+decision proposes. The draft's schema has no such member, so request validation drops it and
+H33, not H14's unknown-member rule, judges these requests. Each `h30` hash case of block 2
+(`filter-blockhash`, `-address-from`, `-address-to`, `-union`, `-page`, `-page-past-end`,
+`-empty`, `-null-bounds`) has a numeric twin `filter-block-2…` with the same members and
+`fromBlock = toBlock = 0x2`, and must equal that twin's records at block 2 from the same build.
+Equality proves the selection because the records carry `blockNumber` and `blockHash`. A twin
+without records at the block blocks a case that needs them (`nonempty`). `-page-past-end` and
+`-empty` expect `[]` and cannot discriminate alone; `filter-blockhash-genesis` expects `[]`, and
+`filter-blockhash-null` (a null member with numeric bounds) equals the twin. `-and-range`,
+`-unknown`, `-unknown-count-zero` (where `[]` fails) and `-malformed-short`/`-object` require an
+error with -32602 or -32001 recommended. The detail classifies each response: honored; rejected
+with its code; answered another block, when any record is localized elsewhere, such as the head
+block a client answers when it ignores the member and defaults its bounds to latest; `[]` where
+the block has records; or partial, the block's records but not the twin's. In `reorg` and
+`reorg-safe`, `<phase>/filter-hash-a` and `-b` select block 0x2d of branch A (two transactions)
+and of branch B (empty) by hash in each phase. A canonical block must equal that phase's
+`filter-tail` records at the block with that hash, and a block that is unknown or noncanonical in
+the phase (B before the switch, A after it, B after the restore) must be an error, never B's `[]`
+or records. Setup controls establish only chain
 state that every build must show; a read whose value is itself a decision property,
 such as the block-55 beacon-root slots (H28), is a probe.
 

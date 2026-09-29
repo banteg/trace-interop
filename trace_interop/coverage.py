@@ -147,7 +147,8 @@ def properties(case, observation, peers, checks, expected):
             if baseline is not None or mismatch:
                 add('H04', result == baseline, 'Omitted address lists impose no address restriction.',
                     'Reference frames contradict the fixture: '+mismatch if mismatch else '')
-        if 'after' in filt or 'count' in filt or name in ['filter-transfer', 'withdrawal-filter-51', 'withdrawal-filter-52', 'withdrawal-filter-53']:
+        # A blockHash selection is compared with its numeric equivalent under H33 (probes.block_hash_check).
+        if 'blockHash' not in filt and ('after' in filt or 'count' in filt or name in ['filter-transfer', 'withdrawal-filter-51', 'withdrawal-filter-52', 'withdrawal-filter-53']):
             baseline, mismatch = None, None
             for c in context.get('cases', []):
                 req = c['request']
@@ -210,7 +211,7 @@ def properties(case, observation, peers, checks, expected):
             add('H02',isinstance(result,list) and [f.get('transactionHash') for f in roots]==[t['hash'] for t in wanted]
                 and all(obj(f.get('action')).get('from')==t['sender'] for f,t in zip(roots,wanted)),
                 'Trace roots preserve the frozen transaction inventory and recovered senders in canonical order.')
-    if method=='trace_filter' and name.startswith(('before/','after/','restored/')) and blocks:
+    if method=='trace_filter' and name.startswith(('before/','after/','restored/')) and blocks and 'blockHash' not in obj(params[0]):
         selected_blocks=context.get('_alternate_blocks',{}) if name.startswith('after/') else blocks
         filt=params[0]
         selected=[b for b in selected_blocks.values() if int(filt['fromBlock'],16)<=b['number']<=int(filt['toBlock'],16)]

@@ -170,6 +170,162 @@
           "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
         ]
       }
+    },
+    {
+      "name": "before/filter-hash-a",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Before the switch, branch A\u2019s block 0x2d is canonical: its hash selects A\u2019s records, as the numeric range does.",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          },
+          "reference": "before/filter-tail",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "after/filter-hash-a",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "After the switch to branch B, A\u2019s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B\u2019s [] or records.",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          },
+          "reject": true,
+          "recommended": -32001
+        }
+      ]
+    },
+    {
+      "name": "restored/filter-hash-a",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Once branch A is restored, the hash of its block 0x2d selects A\u2019s records again.",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          },
+          "reference": "restored/filter-tail",
+          "nonempty": true
+        }
+      ]
+    },
+    {
+      "name": "before/filter-hash-b",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Before B\u2019s payloads arrive, B\u2019s block 0x2d is unknown: an error (-32001 recommended).",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          },
+          "reject": true,
+          "recommended": -32001
+        }
+      ]
+    },
+    {
+      "name": "after/filter-hash-b",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "After the switch, B\u2019s block 0x2d is canonical: its hash selects that block, which has no records, as the numeric range shows.",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          },
+          "reference": "after/filter-tail",
+          "nonempty": false
+        }
+      ]
+    },
+    {
+      "name": "restored/filter-hash-b",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "topic": "H33",
+          "kind": "block-hash",
+          "requirement": "Once branch A is restored, B\u2019s block 0x2d is noncanonical: an error (-32001 recommended), never A\u2019s records.",
+          "block": {
+            "number": "0x2d",
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          },
+          "reject": true,
+          "recommended": -32001
+        }
+      ]
     }
   ],
   "heads_a": [

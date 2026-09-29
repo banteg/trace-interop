@@ -14,6 +14,8 @@ PRAGUE = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-prague.json')
 FORKS = {c['name']: c for c in read(ROOT/'fixtures/corpora/probes-forks.json')['cases']}
 SELECTOR = {c['name']: c for c in read(ROOT/'fixtures/corpora/raw-selector.json')['cases']}
 INITIAL = {c['name']: c for c in read(ROOT/'fixtures/corpora/initial.json')['cases']}
+H30 = {c['name']: c for c in read(ROOT/'fixtures/corpora/h30.json')['cases']}
+REORG = {c['name']: c for c in read(ROOT/'fixtures/corpora/reorg-safe.json')['cases']}
 
 
 def realize(spec, label='Reverted'):
@@ -571,3 +573,100 @@ class RawSelectorTests(Probe):
         self.assertEqual(verdict([extension]), 'Policy open')
         self.assertEqual(verdict([baseline, {'status': 'observation'}]), 'Policy open')
         self.assertEqual(verdict([{'status': 'change_needed'}, extension]), 'Differs')
+
+
+class BlockHashTests(Probe):
+    """H33: a trace_filter blockHash selects exactly that block. Each case is compared with the numeric
+    filter of the same block, so a silent answer for latest, a rejection and a partial answer differ."""
+    H2 = H30['filter-blockhash']['request']['params'][0]['blockHash']
+
+    @staticmethod
+    def records(number, digest, count=3):
+        return [{'type': 'call', 'blockNumber': number, 'blockHash': digest, 'transactionPosition': i, 'traceAddress': []}
+                for i in range(count)]
+
+    def check(self, name, observation, peers=None, cases=H30):
+        case = dict(cases[name], context={'_head': {'number': '0x30'}})
+        checks = [c for c in assess(case, observation, peers or {}) if c['topic'] == 'H33']
+        self.assertEqual(len(checks), 1)
+        return checks[0]['status'], checks[0]['detail']
+
+    def test_selection_equals_the_numeric_equivalent(self):
+        block = self.records(2, self.H2)
+        twin = {'filter-block-2': result(block)}
+        self.assertEqual(self.check('filter-blockhash', result(block), twin)[0], 'matches')
+        self.assertIn('Honored', self.check('filter-blockhash-null-bounds', result(block), twin)[1])
+        # Besu, Erigon and Nethermind today: the member is ignored and the omitted bounds select latest.
+        status, detail = self.check('filter-blockhash', result(self.records(48, '0xf0b1')), twin)
+        self.assertEqual(status, 'change_needed')
+        self.assertIn('Answered another block: 3 records from block 0x30 (the head)', detail)
+        # Localization, not the height alone, names the block.
+        self.assertIn('with hash 0xf0b1', self.check('filter-blockhash', result(self.records(2, '0xf0b1')), twin)[1])
+        # Reth, Anvil and the Geth draft reject the unknown member.
+        status, detail = self.check('filter-blockhash', error(-32602), twin)
+        self.assertEqual(status, 'change_needed')
+        self.assertTrue(detail.startswith('Rejected (-32602'))
+        self.assertTrue(self.check('filter-blockhash', result([]), twin)[1].startswith('Returned []'))
+        status, detail = self.check('filter-blockhash', result(block[:2]), twin)
+        self.assertEqual(status, 'change_needed')
+        self.assertIn('Partial', detail)
+        # The numeric equivalent must show the block's records before the comparison can.
+        for peer in [error(-32602), result([]), result(self.records(48, '0xf0b1'))]:
+            self.assertEqual(self.check('filter-blockhash', result(block), {'filter-block-2': peer})[0], 'blocked')
+
+    def test_empty_selections_match_but_do_not_discriminate(self):
+        status, detail = self.check('filter-blockhash-empty', result([]), {'filter-block-2-empty': result([])})
+        self.assertEqual(status, 'matches')
+        self.assertIn('cannot show which block was selected', detail)
+        self.assertEqual(self.check('filter-blockhash-genesis', result([]))[0], 'matches')
+        self.assertIn('Answered another block', self.check('filter-blockhash-genesis', result(self.records(48, '0xf0b1')))[1])
+        # A null blockHash is omitted, so the numeric range applies.
+        block = self.records(2, self.H2)
+        self.assertEqual(self.check('filter-blockhash-null', result(block), {'filter-block-2': result(block)})[0], 'matches')
+
+    def test_conflicts_unknown_and_malformed_hashes_are_errors(self):
+        for name, code in [('filter-blockhash-and-range', -32602), ('filter-blockhash-unknown', -32001),
+                           ('filter-blockhash-malformed-short', -32602), ('filter-blockhash-malformed-object', -32602)]:
+            self.assertEqual(self.check(name, error(code)), ('matches', f'Rejected ({code}: invalid).'))
+            status, detail = self.check(name, error(-32000))
+            self.assertEqual(status, 'matches')
+            self.assertIn(f'({code} recommended)', detail)
+            self.assertEqual(self.check(name, error(-32603))[0], 'change_needed')
+        self.assertEqual(self.check('filter-blockhash-and-range', result(self.records(2, self.H2))),
+                         ('change_needed', 'Accepted: answered block 0x2\u2019s 3 records.'))
+        self.assertIn('Accepted: answered another block, 3 records from block 0x30 (the head)',
+                      self.check('filter-blockhash-unknown', result(self.records(48, '0xf0b1')))[1])
+        # count 0 must not hide an unvalidated selector.
+        self.assertIn('count 0 shortcut', self.check('filter-blockhash-unknown-count-zero', result([]))[1])
+
+    def test_reorg_phases_select_the_canonical_branch_only(self):
+        a = REORG['before/filter-hash-a']['probes'][0]['block']
+        b = REORG['after/filter-hash-b']['probes'][0]['block']
+        tail = self.records(0x2c, '0xa2c', 1) + self.records(0x2d, a['hash'], 2) + self.records(0x2e, '0xa2e', 1)
+        for phase in ['before', 'restored']:
+            status, detail = self.check(f'{phase}/filter-hash-a', result(tail[1:3]), {f'{phase}/filter-tail': result(tail)}, REORG)
+            self.assertEqual(status, 'matches', detail)
+        # After the switch A's hash is noncanonical: B's empty block, B's records or A's served as an orphan all differ.
+        for answer, detail in [([], 'Accepted: returned [].'), (self.records(0x2d, b['hash'], 1), 'with hash'),
+                               (tail[1:3], 'Accepted: answered block 0x2d\u2019s 2 records.')]:
+            status, observed = self.check('after/filter-hash-a', result(answer), {}, REORG)
+            self.assertEqual(status, 'change_needed')
+            self.assertIn(detail, observed)
+        self.assertEqual(self.check('after/filter-hash-a', error(-32001), {}, REORG)[0], 'matches')
+        self.assertEqual(self.check('before/filter-hash-b', error(-32001), {}, REORG)[0], 'matches')
+        self.assertEqual(self.check('after/filter-hash-b', result([]), {'after/filter-tail': result([])}, REORG)[0], 'matches')
+        self.assertEqual(self.check('restored/filter-hash-b', result(tail[1:3]), {}, REORG)[0], 'change_needed')
+
+    def test_the_proposed_member_is_judged_by_h33_not_the_schema(self):
+        from trace_interop.validation import request_errors
+        methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
+        for name in ['filter-blockhash', 'filter-blockhash-null', 'filter-blockhash-malformed-object', 'filter-blockhash-and-range']:
+            self.assertEqual(request_errors(H30[name]['request'], methods), [], name)
+        request = copy.deepcopy(H30['filter-blockhash']['request'])
+        request['params'][0]['unknownDiagnosticFlag'] = True
+        self.assertTrue(request_errors(request, methods))
+        # The page comparison is H33's; H03's per-block page check needs numeric bounds.
+        case = dict(H30['filter-blockhash-page'], context={'_head': {'number': '0x30'}, 'cases': []})
+        block = self.records(2, self.H2)
+        checks = supplement(case, result(block[1:2]), {'filter-block-2-page': result(block[1:2])}, [], ['H33'])
+        self.assertEqual([(c['topic'], c['status']) for c in checks], [('H33', 'matches')])

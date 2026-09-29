@@ -8,6 +8,7 @@ A probe may declare `depends` ({topic, reason}): an error response then blocks i
 the error cannot separate its property from that dependency. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict; with `extension` it is
 extension evidence, which does not hold a topic's verdict open (presentation.verdict).
+A `block-hash` probe (H33) classifies which block a trace_filter blockHash selected.
 """
 from .rules import (
     embedded_error,
@@ -144,6 +145,76 @@ def state_check(probe, status, response, result):
             'detail': prefix+detail, **({'extension': True} if probe.get('extension') else {})}
 
 
+def block_hash_check(probe, case, status, response, result, reference):
+    """H33: whether a trace_filter blockHash selected exactly the block it names. A selection is
+    compared with the numeric filter `reference` of the same build, restricted to that block, or with
+    `expected`; with `reject` the request must be an error. The detail classifies the response as
+    honored, rejected, answered another block (records localized elsewhere, such as the head),
+    [] where the block has records, or partial (the block's records, but not the equivalent's)."""
+    block = probe['block']
+    wanted = (int(block['number'], 16), block['hash']) if block else None
+    head = mapping(case.get('context', {}).get('_head')).get('number')
+
+    def at(record):
+        return (mapping(record).get('blockNumber'), mapping(record).get('blockHash'))
+
+    def described(records):
+        places = list(dict.fromkeys(at(r) for r in records))
+        names = []
+        for number, digest in places:
+            name = f'block {hex(number)}' if type(number) is int else f'block {number!r}'
+            if type(number) is int and head and number == int(head, 16):
+                name += ' (the head)'
+            if wanted and number == wanted[0] and digest != wanted[1]:
+                name += f' with hash {str(digest)[:10]}…'
+            names.append(name)
+        return f'{len(records)} {"record" if len(records) == 1 else "records"} from {", ".join(names)}'
+    requested = f'block {block["number"]}' if block else 'the requested block'
+
+    def verdict(ok, detail, role):
+        return {'topic': probe['topic'], 'status': 'matches' if ok else 'change_needed',
+                'requirement': probe['requirement'], 'detail': detail, 'role': role}
+    role = 'rejection' if probe.get('reject') else 'result'
+    if status == 'rpc_error' or embedded_error(response):
+        error = mapping(response.get('error') or mapping(result).get('error'))
+        code, message = error.get('code'), str(error.get('message', ''))[:120]
+        if not rejection(status, response):
+            return verdict(False, f'Failed with {code}: {message}, a server failure rather than a rejection.', role)
+        if probe.get('reject'):
+            return verdict(True, f'Rejected ({code}: {message}){recommended_note(code, probe.get("recommended"))}.', role)
+        return verdict(False, f'Rejected ({code}: {message}), where {requested} has a result.', role)
+    if status != 'result' or not isinstance(result, list) or not all(isinstance(r, dict) for r in result):
+        return verdict(False, f'Expected a list of trace records; observed {status} {str(result)[:120]}.', role)
+    elsewhere = [r for r in result if at(r) != wanted]
+    if probe.get('reject'):
+        if not result:
+            count = mapping(sequence(case['request'].get('params'))[0]).get('count')
+            return verdict(False, 'Accepted: returned []' + (', the count 0 shortcut before validating the selector.' if count == 0 else '.'), role)
+        if elsewhere:
+            return verdict(False, f'Accepted: answered another block, {described(result)}.', role)
+        return verdict(False, f'Accepted: answered {requested}’s {len(result)} records.', role)
+    if 'expected' in probe:
+        expected, source = probe['expected'], requested
+    else:
+        if reference is None:
+            return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'],
+                    'detail': f'The numeric equivalent {probe["reference"]} returned no result.'}
+        expected, source = [r for r in reference if at(r) == wanted], f'the numeric equivalent {probe["reference"]}'
+        if probe.get('nonempty') and not expected:
+            return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'],
+                    'detail': f'The numeric equivalent {probe["reference"]} has no records from {requested}, so it cannot show which block was selected.'}
+    if result == expected:
+        return verdict(True, f'Honored: {described(result) if result else "[]"}, the same as {source}'
+                       + ('.' if result else '; an empty result alone cannot show which block was selected.'), role)
+    has = f'{source} has ' + (described(expected) if expected else '[]')
+    if elsewhere:
+        return verdict(False, f'Answered another block: {described(result)}, where {has}.', role)
+    if not result:
+        return verdict(False, f'Returned [] where {has}.', role)
+    index = next((i for i, (got, want) in enumerate(zip(result, expected)) if got != want), min(len(result), len(expected)))
+    return verdict(False, f'Partial: {described(result)}, where {has}; they first differ at record {index}.', role)
+
+
 def model_steps(case):
     model = case['model']
     call = case['request']['params'][0]
@@ -183,6 +254,11 @@ def assess(case, observation, peers):
         requirement = probe['requirement']
         if kind == 'state':
             checks.append(state_check(probe, status, response, result))
+            continue
+        if kind == 'block-hash':
+            reference = peer_result(probe['reference']) if 'reference' in probe else None
+            checks.append(block_hash_check(probe, case, status, response, result,
+                                           reference if isinstance(reference, list) else None))
             continue
         if kind == 'error':
             # Any error response satisfies the rule; a `recommended` code is reported, never required.

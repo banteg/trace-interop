@@ -25,15 +25,21 @@ def report_runs(root):
             raise ValueError('current report matrix requires every native build and the Geth fork')
         if preflight.get('status') != 'current' or preflight.get('clients') != builds or not preflight.get('checked_at'):
             raise ValueError('current report matrix lacks a matching freshness preflight')
-        captured = json.loads((matrix/'matrix.json').read_text())
-        if not {(matrix/r['corpus']).resolve() for r in captured} <= {p.resolve() for p in paths}:
-            raise ValueError('report selection must retain the entire current matrix, including incomplete runs')
-        # A focused capture outside the matrix directory adds a corpus the matrix lacks, with the matrix's builds.
-        corpora = [json.loads((path/'manifest.json').read_text())['corpus'] for path in paths]
-        if len(corpora) != len(set(corpora)):
+        # A focused capture outside the matrix directory, with the matrix's builds, adds a corpus the
+        # matrix lacks or replaces the matrix's run of a corpus when it resends every request that run sent.
+        manifests = {path: json.loads((path/'manifest.json').read_text()) for path in paths}
+        corpora = {manifest['corpus']: path for path, manifest in manifests.items()}
+        if len(corpora) != len(paths):
             raise ValueError('a focused run repeats a corpus of the current matrix')
-        for path in paths:
-            manifest = json.loads((path/'manifest.json').read_text())
+        for run in json.loads((matrix/'matrix.json').read_text()):
+            own, chosen = (matrix/run['corpus']).resolve(), corpora.get(run['corpus'])
+            if chosen is None:
+                raise ValueError('report selection must retain the entire current matrix, including incomplete runs')
+            if chosen != own:
+                sent = {c['name']: c['request'] for c in manifests[chosen]['selected_cases']}
+                if any(sent.get(c['name']) != c['request'] for c in json.loads((own/'manifest.json').read_text())['selected_cases']):
+                    raise ValueError(f'a focused recapture must resend every request of the matrix run it replaces: {chosen}')
+        for path, manifest in manifests.items():
             expected = {n for n in builds if compatible(manifest['corpus'], pinned['clients'][n])}
             if set(manifest['clients']) != expected or any(
                 info != pinned['clients'].get(name) for name,info in manifest['clients'].items()

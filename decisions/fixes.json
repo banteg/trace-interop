@@ -2071,6 +2071,36 @@
       "state": "open",
       "draft": false,
       "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14048",
+      "title": "fix(rpc): reject a trace_rawTransaction signed for another chain",
+      "client": "nethermind",
+      "decisions": [
+        "H13"
+      ],
+      "partial": [
+        "H13"
+      ],
+      "note": "trace_rawTransaction rejects a legacy or typed transaction signed for another chain before tracing, with eth_sendRawTransaction's chain-id rules; the nonce and EIP-3607 checks still differ",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14049",
+      "title": "fix(rpc): don't select a transaction type from a null field",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "note": "an explicit null blobVersionedHashes, authorizationList or other type discriminator no longer selects a transaction type in call objects, shared by eth_call, eth_estimateGas, eth_simulateV1 and trace_call",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
     }
   ]
 }

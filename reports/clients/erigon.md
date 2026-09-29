@@ -4,7 +4,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.8.0-dev · a2a19253** (of 32 decisions): ✅ 27 agree · 🛠️ 1 fix submitted · ⚠️ 3 with no fix yet (1 on converged decisions) · ⚪ 1 not fully measured. 13 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 20 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.8.0-dev · a2a19253** (of 33 decisions): ✅ 27 agree · 🛠️ 1 fix submitted · ⚠️ 3 with no fix yet (1 on converged decisions) · ⚪ 2 not fully measured. 13 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 20 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -73,6 +73,8 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
+
+**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
 
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 

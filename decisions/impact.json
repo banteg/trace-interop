@@ -18,7 +18,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision except simulation pending, which remains a policy observation; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
+      "summary": "The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces stay blocked on the frozen chain\u2019s empty pending block, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
     },
     "anvil": {
       "name": "Anvil",

@@ -64,6 +64,8 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 </details>
 
+**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
+
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 
 For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).

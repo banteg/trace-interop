@@ -27,7 +27,7 @@
         "fix": 5,
         "policy": 0,
         "review": 4,
-        "unmeasured": 6
+        "unmeasured": 7
       },
       "dev_only": 0,
       "name": "Besu",
@@ -63,7 +63,7 @@
         "fix": 1,
         "policy": 0,
         "review": 2,
-        "unmeasured": 1
+        "unmeasured": 2
       },
       "dev_only": 13,
       "name": "Erigon",
@@ -99,7 +99,7 @@
         "fix": 2,
         "policy": 0,
         "review": 3,
-        "unmeasured": 0
+        "unmeasured": 1
       },
       "dev_only": 14,
       "name": "Nethermind",
@@ -135,7 +135,7 @@
         "fix": 4,
         "policy": 0,
         "review": 3,
-        "unmeasured": 1
+        "unmeasured": 2
       },
       "dev_only": 0,
       "name": "Reth",
@@ -171,7 +171,7 @@
         "fix": 2,
         "policy": 0,
         "review": 3,
-        "unmeasured": 5
+        "unmeasured": 6
       },
       "dev_only": 4,
       "name": "Anvil",
@@ -181,5 +181,5 @@
       }
     }
   ],
-  "decisions": 32
+  "decisions": 33
 }

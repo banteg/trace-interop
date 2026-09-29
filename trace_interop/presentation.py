@@ -23,6 +23,7 @@ SOURCE_GROUPS = {
     'H24': ['frames'], 'H25': ['raw', 'replay'], 'H26': ['state'],
     'H27': ['filter'], 'H28': ['call'], 'H29': ['frames'],
     'H30': ['bounds'], 'H31': ['many'], 'H32': ['tags', 'many'],
+    'H33': ['filter'],
 }
 BAD = {'change_needed', 'unsupported'}
 PR_FIELDS = {'url', 'title', 'client', 'decisions', 'partial', 'state', 'draft', 'merged_at', 'note',

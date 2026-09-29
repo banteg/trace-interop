@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 128** client decisions agree with the draft (+1 since the previous capture). 12 more have a submitted fix, and **29 differ with no fix yet**: 17 on converged decisions and 12 on decisions still under review. 27 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 132** client decisions agree with the draft (+1 since the previous capture). 12 more have a submitted fix, and **29 differ with no fix yet**: 17 on converged decisions and 12 on decisions still under review. 27 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -40,6 +40,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 128** c
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—⚠️ | ✅✅✅✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅✅—⚠️ | ⚠️✅✅✅✅✅ |
 | [H32](../reports/decisions/H32.md) | ⚪ Under review | ···· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️🟡⚠️ |
+| [H33](../reports/decisions/H33.md) | ⚪ Under review | ···· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | ⚪⚪⚪⚪—⚪ | ⚪⚪⚪⚪⚪⚪ |
 
 ## Status key
 

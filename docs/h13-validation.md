@@ -55,7 +55,12 @@ The CREATE constructor returns its own ADDRESS. For signed nonces 9 and 11, Erig
 Nethermind both execute at `0x00de48310d77a4d56aa400248b0b1613508f5b73`, derived from state
 nonce 10. Output bytes, the returned root address and newly created code in stateDiff
 agree. The independently computed signed-nonce addresses differ. This establishes the
-observable execution semantics; it does not claim either client mutated signed bytes.
+observable execution semantics. For Nethermind the source also shows the mechanism:
+trace_rawTransaction runs with trace_call's `LoadNonceFromState` option, under which
+`currentTx.Nonce = stateProvider.GetNonce(sender)` replaces the signed nonce in memory before
+execution ([TransactionProcessorAdapterExtensions.cs L20-L23](https://github.com/NethermindEth/nethermind/blob/de17a1a837375b742b91c65527aa517a99ee87bc/src/Nethermind/Nethermind.Consensus/Processing/TransactionProcessorAdapterExtensions.cs#L20-L23)),
+so the executed transaction is not the signed one. The wire evidence does not identify
+Erigon's mechanism.
 Besu's empty CREATE envelopes name the signed-nonce address without executing initcode.
 
 Erigon executes a value transfer of `1000000000000000001` wei from a sender independently

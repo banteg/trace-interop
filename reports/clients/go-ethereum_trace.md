@@ -1,6 +1,6 @@
 # Geth draft fork: changes to review
 
-The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision except simulation pending, which remains a policy observation; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
+The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces stay blocked on the frozen chain’s empty pending block, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
@@ -64,6 +64,8 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
+
+**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
 
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 

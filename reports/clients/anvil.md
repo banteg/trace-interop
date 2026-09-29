@@ -4,7 +4,7 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.8.4-nightly · 00989695** (of 32 decisions): ✅ 14 agree · 🛠️ 2 fix submitted · ⚠️ 11 with no fix yet (8 on converged decisions) · ⚪ 5 not fully measured. 4 of these agreements are not yet in 1.8.3 · cae51ad4. Upstream fix PRs: 1 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.8.4-nightly · 00989695** (of 33 decisions): ✅ 14 agree · 🛠️ 2 fix submitted · ⚠️ 11 with no fix yet (8 on converged decisions) · ⚪ 6 not fully measured. 4 of these agreements are not yet in 1.8.3 · cae51ad4. Upstream fix PRs: 1 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -76,6 +76,8 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [_reference/block/0x30](../cases/a/_reference/block/0x30.md) |
 
 </details>
+
+**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
 
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 

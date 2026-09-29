@@ -26,8 +26,8 @@
         "converged": 13,
         "fix": 5,
         "policy": 0,
-        "review": 4,
-        "unmeasured": 7
+        "review": 5,
+        "unmeasured": 6
       },
       "dev_only": 0,
       "name": "Besu",
@@ -62,8 +62,8 @@
         "converged": 1,
         "fix": 1,
         "policy": 0,
-        "review": 2,
-        "unmeasured": 2
+        "review": 3,
+        "unmeasured": 1
       },
       "dev_only": 13,
       "name": "Erigon",
@@ -98,8 +98,8 @@
         "converged": 1,
         "fix": 2,
         "policy": 0,
-        "review": 3,
-        "unmeasured": 1
+        "review": 4,
+        "unmeasured": 0
       },
       "dev_only": 14,
       "name": "Nethermind",
@@ -134,8 +134,8 @@
         "converged": 2,
         "fix": 4,
         "policy": 0,
-        "review": 3,
-        "unmeasured": 2
+        "review": 4,
+        "unmeasured": 1
       },
       "dev_only": 0,
       "name": "Reth",
@@ -170,8 +170,8 @@
         "converged": 8,
         "fix": 2,
         "policy": 0,
-        "review": 3,
-        "unmeasured": 6
+        "review": 4,
+        "unmeasured": 5
       },
       "dev_only": 4,
       "name": "Anvil",

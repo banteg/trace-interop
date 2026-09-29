@@ -481,6 +481,33 @@
         "observed": "`trace_callMany` does not start each call at a transaction boundary, so a later call\u2019s SSTORE uses the pre-bundle original value: the second `initial/call-many-priced` call uses 5,600 gas less than on every other build.",
         "change": "Mark a transaction boundary before each call, as block replay already does, so original values, access sets, transient storage and refunds start afresh."
       }
+    },
+    "H33": {
+      "append_checked_requirements": false,
+      "besu": {
+        "observed": "Both builds parse `blockHash` but never read it, so `{blockHash: H2}` traces the head (block 0x30) with or without address lists, a page, null bounds or the genesis hash, and returns `[]` where the head has no matching records. An unknown hash also answers with the head, and `[]` with `count: 0`; `{blockHash, fromBlock: 0x2}` answers block 2. A short hash and an EIP-1898 object are rejected with -32602. In the reorg scenario every A and B hash answers with the current head, including A\u2019s after the switch. The mode union case is blocked: Besu rejects mode union without the member too.",
+        "change": "Select exactly the hashed block, canonical in the request\u2019s chain view, and reject an unknown, noncanonical or unexecuted hash (-32001 recommended), a hash with non-null bounds and a malformed hash (-32602 recommended), before any `count: 0` shortcut."
+      },
+      "erigon": {
+        "observed": "Both builds accept `blockHash` as an unknown member and ignore it: 3.8.0-dev \u00b7 a2a19253 traces the head (block 0x30), and 3.7.0 \u00b7 bdc78cc4 scans from genesis to the head, so its address-filtered answers span every matching block. Unknown, short and EIP-1898-object hashes get the same answer, `count: 0` returns `[]`, and `{blockHash, fromBlock: 0x2}` answers block 2. The reorg phases are blocked: both builds stop at the branch switch (\u201cInvalid forkchoice state\u201d).",
+        "change": "Select exactly the hashed block within one read transaction, reusing the eth_getLogs hash resolver, and reject an unknown or noncanonical hash (-32001 recommended), a hash with non-null bounds and a malformed hash (-32602 recommended), before any `count: 0` shortcut."
+      },
+      "nethermind": {
+        "observed": "Both builds accept `blockHash` as an unknown member and trace the head (block 0x30) instead, with or without address lists, a page, null bounds, the genesis hash or an unknown, short or EIP-1898-object hash; `count: 0` returns `[]`, and `{blockHash, fromBlock: 0x2}` answers block 2. In the reorg scenario every A and B hash answers with the current head; after the switch to B, 2.2.0-preview \u00b7 287f54f0 returns B\u2019s empty head, `[]`, for A\u2019s hash. #14050 rejects the unknown member, which stops the silent answer but does not select the block.",
+        "change": "Select exactly the hashed block, rejecting side-chain blocks as `SearchForBlocksOnMainChain` already does, and reject an unknown or noncanonical hash (-32001 recommended), a hash with non-null bounds and a malformed hash (-32602 recommended), before any `count: 0` shortcut."
+      },
+      "reth": {
+        "observed": "Both builds reject every non-null `blockHash` with -32602 (Alloy\u2019s `TraceFilter` denies unknown fields), so they pass the error cases, including the reorg phases where the hash is unknown or noncanonical, and differ wherever block 2\u2019s records are expected. A null `blockHash` beside numeric bounds is rejected too.",
+        "change": "Add an optional `blockHash` to Alloy\u2019s `TraceFilter` and map it to a single-block range in one chain view; treat a null member as omitted."
+      },
+      "anvil": {
+        "observed": "Both builds reject every non-null `blockHash` with -32602 through Alloy\u2019s `TraceFilter`, so they pass the error cases and differ wherever block 2\u2019s records are expected. A null `blockHash` beside numeric bounds is rejected too. The reorg scenario does not run on the replica.",
+        "change": "Take the Alloy `TraceFilter` member and select exactly the hashed block; treat a null member as omitted."
+      },
+      "geth": {
+        "observed": "Rejects every non-null `blockHash` as an unknown field (-32602), so it passes the error cases, including the reorg phases, and differs wherever block 2\u2019s records are expected. A null `blockHash` beside numeric bounds is dropped as omitted.",
+        "change": "Add the member to the draft fork\u2019s filter type and select exactly the hashed block in one chain view."
+      }
     }
   }
 }

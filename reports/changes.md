@@ -22,10 +22,46 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 ## Verdict changes
 
-1 verdict changed for 1 client.
+12 verdicts changed for 6 clients.
+
+### [Anvil](clients/anvil.md)
+
+| Decision | Build | Previous | Current |
+| --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Anvil stable | ⚪ Not assessed | ⚠️ Differs |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Anvil dev | ⚪ Not assessed | ⚠️ Differs |
+
+### [Besu](clients/besu.md)
+
+| Decision | Build | Previous | Current |
+| --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Besu stable | 🔎 Control / not applicable | ⚠️ Differs |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Besu dev | 🔎 Control / not applicable | ⚠️ Differs |
+
+### [Erigon](clients/erigon.md)
+
+| Decision | Build | Previous | Current |
+| --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Erigon stable | 🚧 Blocked | ⚠️ Differs |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Erigon dev | 🚧 Blocked | ⚠️ Differs |
+
+### [Geth draft fork](clients/geth.md)
+
+| Decision | Build | Previous | Current |
+| --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Geth draft fork | 🔎 Control / not applicable | ⚠️ Differs |
 
 ### [Nethermind](clients/nethermind.md)
 
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Nethermind stable | 🔎 Control / not applicable | ⚠️ Differs |
 | [H09 · Failed frame results and error labels](decisions/H09.md) | Nethermind dev | ⚠️ Differs | ✅ Checked cases agree |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Nethermind dev | 🔎 Control / not applicable | ⚠️ Differs |
+
+### [Reth](clients/reth.md)
+
+| Decision | Build | Previous | Current |
+| --- | --- | --- | --- |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Reth stable | 🔎 Control / not applicable | ⚠️ Differs |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Reth dev | 🔎 Control / not applicable | ⚠️ Differs |

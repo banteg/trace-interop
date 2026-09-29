@@ -404,47 +404,47 @@
     },
     "L10": {
       "anvil_development": {
-        "held": 28,
+        "held": 35,
         "violated": 0
       },
       "anvil_release": {
-        "held": 28,
+        "held": 35,
         "violated": 0
       },
       "besu_development": {
-        "held": 54,
+        "held": 61,
         "violated": 4
       },
       "besu_release": {
-        "held": 54,
+        "held": 61,
         "violated": 4
       },
       "erigon_development": {
-        "held": 69,
+        "held": 77,
         "violated": 0
       },
       "erigon_release": {
-        "held": 69,
+        "held": 77,
         "violated": 1
       },
       "go-ethereum_trace": {
-        "held": 67,
+        "held": 75,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 70,
+        "held": 78,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 68,
+        "held": 76,
         "violated": 0
       },
       "reth_development": {
-        "held": 63,
+        "held": 70,
         "violated": 0
       },
       "reth_release": {
-        "held": 63,
+        "held": 70,
         "violated": 0
       }
     },
@@ -458,19 +458,19 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "besu_release": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "erigon_development": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "erigon_release": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "go-ethereum_trace": {
@@ -478,11 +478,11 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 10,
+        "held": 11,
         "violated": 0
       },
       "reth_development": {
@@ -512,11 +512,11 @@
         "violated": 0
       },
       "erigon_development": {
-        "held": 1,
+        "held": 2,
         "violated": 0
       },
       "erigon_release": {
-        "held": 1,
+        "held": 2,
         "violated": 0
       },
       "go-ethereum_trace": {
@@ -524,11 +524,11 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 1,
+        "held": 2,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 1,
+        "held": 2,
         "violated": 0
       },
       "reth_development": {

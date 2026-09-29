@@ -14,11 +14,11 @@
     "evidence/2026-09-29/refresh/fee-policy",
     "evidence/2026-09-29/refresh/fee-compat",
     "evidence/2026-09-29/refresh/callmany-isolation",
-    "evidence/2026-09-29/refresh/h30",
+    "evidence/2026-09-29/h33-blockhash/h30",
     "evidence/2026-09-29/refresh/probes-prague",
     "evidence/2026-09-29/refresh/probes-forks",
     "evidence/2026-09-29/refresh/mined-probes",
-    "evidence/2026-09-29/refresh/reorg-safe",
+    "evidence/2026-09-29/h33-blockhash/reorg-safe",
     "evidence/2026-09-29/refresh/pruned",
     "evidence/2026-09-29/raw-selector/raw-selector"
   ]

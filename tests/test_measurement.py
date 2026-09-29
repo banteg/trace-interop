@@ -453,7 +453,7 @@ class PublishedAssessmentTests(unittest.TestCase):
         records = json.loads((ROOT/'reports/checks.json').read_text())
         from trace_interop.versions import NAMES
         builds = len(NAMES) + 1  # every native build, Anvil included, and the Geth fork capture these chains
-        for corpus, cases in [('precompile-values',8),('h30',17),('fee-policy',744),('fee-compat',256)]:
+        for corpus, cases in [('precompile-values',8),('h30',39),('fee-policy',744),('fee-compat',256)]:
             rows = [r for r in records if r['corpus']==corpus and r['method'].startswith('trace_')
                     and not r['case'].startswith(('_control','_reference/'))]
             self.assertEqual(len(rows), cases*builds, corpus)

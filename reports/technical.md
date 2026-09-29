@@ -41,11 +41,11 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 13930 |
+| 🔎 Assessed | 14198 |
 | 🟡 Partial | 1176 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 594 |
-| 🔎 Control | 21 |
+| 🚧 Blocked | 608 |
+| 🔎 Control | 35 |
 
 
 ### Unevaluated properties
@@ -140,6 +140,9 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 | H32 | blocked | An empty result names no block, so it cannot show a pending environment. | 6 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
+| H33 | blocked | Scenario setup stopped: Invalid forkchoice state | 18 |
+| H33 | blocked | The numeric equivalent filter-block-2-union returned no result. | 2 |
+| H33 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 98 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.
 
@@ -149,8 +152,8 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 | --- | --- | --- |
 | Anvil · 1.8.4-nightly · 00989695 | mined-probes | [mined-probes](../evidence/2026-09-29/refresh/mined-probes/summary.json) |
 | Anvil · 1.8.3 · cae51ad4 | mined-probes | [mined-probes](../evidence/2026-09-29/refresh/mined-probes/summary.json) |
-| Erigon · 3.8.0-dev · a2a19253 | reorg-safe | [reorg-safe](../evidence/2026-09-29/refresh/reorg-safe/summary.json) |
-| Erigon · 3.7.0 · bdc78cc4 | reorg-safe | [reorg-safe](../evidence/2026-09-29/refresh/reorg-safe/summary.json) |
+| Erigon · 3.8.0-dev · a2a19253 | reorg-safe | [reorg-safe](../evidence/2026-09-29/h33-blockhash/reorg-safe/summary.json) |
+| Erigon · 3.7.0 · bdc78cc4 | reorg-safe | [reorg-safe](../evidence/2026-09-29/h33-blockhash/reorg-safe/summary.json) |
 
 ## Result-shape checks
 
@@ -944,6 +947,15 @@ These cases returned results that differ from the draft schema. The case pages r
 | [h30/call-number-default](cases/h30/call-number-default.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [h30/call-number-latest](cases/h30/call-number-latest.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [h30/call-number-pending](cases/h30/call-number-pending.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
+| [h30/filter-block-2](cases/h30/filter-block-2.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
+| [h30/filter-block-2-address-from](cases/h30/filter-block-2-address-from.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
+| [h30/filter-block-2-address-to](cases/h30/filter-block-2-address-to.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-and-range](cases/h30/filter-blockhash-and-range.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-genesis](cases/h30/filter-blockhash-genesis.md) | Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-malformed-object](cases/h30/filter-blockhash-malformed-object.md) | Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-malformed-short](cases/h30/filter-blockhash-malformed-short.md) | Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-null](cases/h30/filter-blockhash-null.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
+| [h30/filter-blockhash-unknown](cases/h30/filter-blockhash-unknown.md) | Nethermind 2.0.0 · bec830cd |
 | [h30/filter-hash-bounds](cases/h30/filter-hash-bounds.md) | Nethermind 2.0.0 · bec830cd |
 | [h30/filter-hash-object-bounds](cases/h30/filter-hash-object-bounds.md) | Nethermind 2.0.0 · bec830cd |
 | [h30/many-number-latest](cases/h30/many-number-latest.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
@@ -1133,10 +1145,16 @@ These cases returned results that differ from the draft schema. The case pages r
 | [raw-validation/raw-validation-valid-stateDiff](cases/raw-validation/raw-validation-valid-stateDiff.md) | Nethermind 2.0.0 · bec830cd |
 | [raw-validation/raw-validation-valid-vmTrace](cases/raw-validation/raw-validation-valid-vmTrace.md) | Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/after/block-tail](cases/reorg-safe/after/block-tail.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/after/filter-hash-a](cases/reorg-safe/after/filter-hash-a.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/after/filter-hash-b](cases/reorg-safe/after/filter-hash-b.md) | Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/after/filter-tail](cases/reorg-safe/after/filter-tail.md) | Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/before/block-tail](cases/reorg-safe/before/block-tail.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/before/filter-hash-a](cases/reorg-safe/before/filter-hash-a.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/before/filter-hash-b](cases/reorg-safe/before/filter-hash-b.md) | Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/before/filter-tail](cases/reorg-safe/before/filter-tail.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/restored/block-tail](cases/reorg-safe/restored/block-tail.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/restored/filter-hash-a](cases/reorg-safe/restored/filter-hash-a.md) | Nethermind 2.0.0 · bec830cd |
+| [reorg-safe/restored/filter-hash-b](cases/reorg-safe/restored/filter-hash-b.md) | Nethermind 2.0.0 · bec830cd |
 | [reorg-safe/restored/filter-tail](cases/reorg-safe/restored/filter-tail.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [repeat/auth-set-revert](cases/repeat/auth-set-revert.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [repeat/call-gas7400](cases/repeat/call-gas7400.md) | Nethermind 2.0.0 · bec830cd |
@@ -1177,10 +1195,10 @@ Capture completeness records whether requests finished, not whether their result
 | [fee-policy](../evidence/2026-09-29/refresh/fee-policy/manifest.json) | fee-policy | ✅ Yes |
 | [fee-compat](../evidence/2026-09-29/refresh/fee-compat/manifest.json) | fee-compat | ✅ Yes |
 | [callmany-isolation](../evidence/2026-09-29/refresh/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
-| [h30](../evidence/2026-09-29/refresh/h30/manifest.json) | h30 | ✅ Yes |
+| [h30](../evidence/2026-09-29/h33-blockhash/h30/manifest.json) | h30 | ✅ Yes |
 | [probes-prague](../evidence/2026-09-29/refresh/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-09-29/refresh/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-09-29/refresh/mined-probes/manifest.json) | mined-probes | ⚠️ No |
-| [reorg-safe](../evidence/2026-09-29/refresh/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
+| [reorg-safe](../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-09-29/refresh/pruned/manifest.json) | pruned | ✅ Yes |
 | [raw-selector](../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) | raw-selector | ✅ Yes |

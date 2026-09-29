@@ -32,6 +32,7 @@ Code links use the tested development sources (or the Geth fork). These are prop
 | [Omitted trace_filter range bounds](../decisions/H30.md)<br>1.8.3 starts an omitted fromBlock at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. The nightly 00989695 includes #17078: omitted bounds default to latest and toBlock 2 alone is rejected as a reversed range. Ranges are capped at 300 blocks. | ⚠️ Differs<br>[Filter no bounds](../cases/h30/filter-no-bounds.md) | Ship #17078 in a release.<br>[Filter range defaults](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L4228) |
 | [Omitted trace_callMany block](../decisions/H31.md)<br>1.8.3 runs an omitted trace_callMany block at pending (NUMBER 49), while trace_call defaults to latest. The nightly 00989695 includes #17078 and defaults to latest. | ⚠️ Differs<br>[Many number default](../cases/h30/many-number-default.md) | Ship #17078 in a release.<br>[Batched call block default](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/api.rs#L4148) |
 | [Trace block tags and pending state](../decisions/H32.md)<br>The linked case differs from the proposed behavior. | ⚠️ Differs<br>[Block pending](../cases/h30/block-pending.md) | The safe tag resolves to the fixture safe head, block 48. The earliest tag resolves like explicit block 0 on this fixture. Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.<br>[Batched call block default](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/api.rs#L4148) |
+| [Single-block hash selection in trace_filter](../decisions/H33.md)<br>Both builds reject every non-null `blockHash` with -32602 through Alloy’s `TraceFilter`, so they pass the error cases and differ wherever block 2’s records are expected. A null `blockHash` beside numeric bounds is rejected too. The reorg scenario does not run on the replica. | ⚠️ Differs<br>[Filter blockhash](../cases/h30/filter-blockhash.md) | Take the Alloy `TraceFilter` member and select exactly the hashed block; treat a null member as omitted.<br>[Address filtering](https://github.com/foundry-rs/foundry/blob/5a99f1a851488fe26863505088e80183ad73cf07/crates/anvil/src/eth/backend/mem/mod.rs#L4223) |
 
 ## Open policy observations
 
@@ -68,8 +69,6 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [_reference/block/0x30](../cases/a/_reference/block/0x30.md) |
 
 </details>
-
-**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
 
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 

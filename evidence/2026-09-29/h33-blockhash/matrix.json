@@ -1,0 +1,38 @@
+[
+  {
+    "complete": true,
+    "corpus": "h30",
+    "eligible": {
+      "anvil_development": true,
+      "anvil_release": true,
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 495,
+    "exit_code": 0
+  },
+  {
+    "complete": false,
+    "corpus": "reorg-safe",
+    "eligible": {
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": false,
+      "erigon_release": false,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 188,
+    "exit_code": 1
+  }
+]

@@ -600,6 +600,10 @@ class BlockHashTests(Probe):
         status, detail = self.check('filter-blockhash', result(self.records(48, '0xf0b1')), twin)
         self.assertEqual(status, 'change_needed')
         self.assertIn('Answered another block: 3 records from block 0x30 (the head)', detail)
+        # Erigon 3.7.0 scans from genesis to latest when both bounds are omitted.
+        scan = [r for n in range(1, 49) for r in self.records(n, self.H2 if n == 2 else hex(n), 1)]
+        self.assertIn('48 records from 48 blocks, block 0x1 to block 0x30 (the head)',
+                      self.check('filter-blockhash', result(scan), twin)[1])
         # Localization, not the height alone, names the block.
         self.assertIn('with hash 0xf0b1', self.check('filter-blockhash', result(self.records(2, '0xf0b1')), twin)[1])
         # Reth, Anvil and the Geth draft reject the unknown member.
@@ -610,9 +614,11 @@ class BlockHashTests(Probe):
         status, detail = self.check('filter-blockhash', result(block[:2]), twin)
         self.assertEqual(status, 'change_needed')
         self.assertIn('Partial', detail)
-        # The numeric equivalent must show the block's records before the comparison can.
+        # The numeric equivalent must show the block's records before the comparison can: Besu rejects
+        # mode union with or without the member, so its hash rejection says nothing about H33.
         for peer in [error(-32602), result([]), result(self.records(48, '0xf0b1'))]:
-            self.assertEqual(self.check('filter-blockhash', result(block), {'filter-block-2': peer})[0], 'blocked')
+            for answer in [result(block), error(-32602)]:
+                self.assertEqual(self.check('filter-blockhash', answer, {'filter-block-2': peer})[0], 'blocked')
 
     def test_empty_selections_match_but_do_not_discriminate(self):
         status, detail = self.check('filter-blockhash-empty', result([]), {'filter-block-2-empty': result([])})

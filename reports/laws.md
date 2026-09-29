@@ -19,9 +19,9 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 526 | Anvil 1.8.4-nightly · 00989695, Anvil 1.8.3 · cae51ad4, Nethermind 2.2.0-preview · 287f54f0, Nethermind 2.0.0 · bec830cd |
 | **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every selected component. | 167 | Nethermind 2.0.0 · bec830cd |
 | **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4296 | Anvil 1.8.3 · cae51ad4, Erigon 3.7.0 · bdc78cc4 |
-| **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 642 | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Erigon 3.7.0 · bdc78cc4 |
-| **L11** Paging slices the filter | trace_filter with after and count returns that slice of the same filter without them. | 110 | — |
-| **L12** Equivalent block and address spellings | The same request, or one that differs only in address letter case or in naming one block by number, hash or head tag, returns the same result. | 11 | — |
+| **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 724 | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Erigon 3.7.0 · bdc78cc4 |
+| **L11** Paging slices the filter | trace_filter with after and count returns that slice of the same filter without them. | 116 | — |
+| **L12** Equivalent block and address spellings | The same request, or one that differs only in address letter case or in naming one block by number, hash or head tag, returns the same result. | 15 | — |
 
 ## Violations
 

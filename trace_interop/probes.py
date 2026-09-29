@@ -158,55 +158,64 @@ def block_hash_check(probe, case, status, response, result, reference):
     def at(record):
         return (mapping(record).get('blockNumber'), mapping(record).get('blockHash'))
 
+    def name(number, digest=None):
+        text = f'block {hex(number)}' if type(number) is int else f'block {number!r}'
+        if type(number) is int and head and number == int(head, 16):
+            text += ' (the head)'
+        if wanted and number == wanted[0] and digest != wanted[1]:
+            text += f' with hash {str(digest)[:10]}…'
+        return text
+
     def described(records):
         places = list(dict.fromkeys(at(r) for r in records))
-        names = []
-        for number, digest in places:
-            name = f'block {hex(number)}' if type(number) is int else f'block {number!r}'
-            if type(number) is int and head and number == int(head, 16):
-                name += ' (the head)'
-            if wanted and number == wanted[0] and digest != wanted[1]:
-                name += f' with hash {str(digest)[:10]}…'
-            names.append(name)
-        return f'{len(records)} {"record" if len(records) == 1 else "records"} from {", ".join(names)}'
+        count = f'{len(records)} {"record" if len(records) == 1 else "records"}'
+        numbers = [n for n, _ in places if type(n) is int]
+        if len(places) > 3 and len(numbers) == len(places):
+            return f'{count} from {len(places)} blocks, {name(min(numbers))} to {name(max(numbers))}'
+        return f'{count} from {", ".join(name(*place) for place in places)}'
     requested = f'block {block["number"]}' if block else 'the requested block'
 
     def verdict(ok, detail, role):
         return {'topic': probe['topic'], 'status': 'matches' if ok else 'change_needed',
                 'requirement': probe['requirement'], 'detail': detail, 'role': role}
+
+    def blocked(detail):
+        return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'], 'detail': detail}
     role = 'rejection' if probe.get('reject') else 'result'
+    # What a selection must return, established before the response is judged: without the twin's
+    # records, neither a rejection nor a result shows how the member behaves. None requires an error.
+    has = None
+    if not probe.get('reject'):
+        if 'expected' in probe:
+            expected, source = probe['expected'], requested
+        elif reference is None:
+            return blocked(f'The numeric equivalent {probe["reference"]} returned no result.')
+        else:
+            expected, source = [r for r in reference if at(r) == wanted], f'the numeric equivalent {probe["reference"]}'
+            if probe.get('nonempty') and not expected:
+                return blocked(f'The numeric equivalent {probe["reference"]} has no records from {requested}, so it cannot show which block was selected.')
+        has = f'{source} has ' + (described(expected) if expected else '[]')
     if status == 'rpc_error' or embedded_error(response):
         error = mapping(response.get('error') or mapping(result).get('error'))
         code, message = error.get('code'), str(error.get('message', ''))[:120]
         if not rejection(status, response):
             return verdict(False, f'Failed with {code}: {message}, a server failure rather than a rejection.', role)
-        if probe.get('reject'):
+        if has is None:
             return verdict(True, f'Rejected ({code}: {message}){recommended_note(code, probe.get("recommended"))}.', role)
-        return verdict(False, f'Rejected ({code}: {message}), where {requested} has a result.', role)
+        return verdict(False, f'Rejected ({code}: {message}), where {has}.', role)
     if status != 'result' or not isinstance(result, list) or not all(isinstance(r, dict) for r in result):
         return verdict(False, f'Expected a list of trace records; observed {status} {str(result)[:120]}.', role)
     elsewhere = [r for r in result if at(r) != wanted]
-    if probe.get('reject'):
+    if has is None:
         if not result:
             count = mapping(sequence(case['request'].get('params'))[0]).get('count')
             return verdict(False, 'Accepted: returned []' + (', the count 0 shortcut before validating the selector.' if count == 0 else '.'), role)
         if elsewhere:
             return verdict(False, f'Accepted: answered another block, {described(result)}.', role)
         return verdict(False, f'Accepted: answered {requested}’s {len(result)} records.', role)
-    if 'expected' in probe:
-        expected, source = probe['expected'], requested
-    else:
-        if reference is None:
-            return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'],
-                    'detail': f'The numeric equivalent {probe["reference"]} returned no result.'}
-        expected, source = [r for r in reference if at(r) == wanted], f'the numeric equivalent {probe["reference"]}'
-        if probe.get('nonempty') and not expected:
-            return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'],
-                    'detail': f'The numeric equivalent {probe["reference"]} has no records from {requested}, so it cannot show which block was selected.'}
     if result == expected:
         return verdict(True, f'Honored: {described(result) if result else "[]"}, the same as {source}'
                        + ('.' if result else '; an empty result alone cannot show which block was selected.'), role)
-    has = f'{source} has ' + (described(expected) if expected else '[]')
     if elsewhere:
         return verdict(False, f'Answered another block: {described(result)}, where {has}.', role)
     if not result:

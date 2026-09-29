@@ -4,7 +4,7 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.17.7-unstable · e26833e3** (of 33 decisions): ✅ 29 agree · ❔ 1 policy open · ⚪ 3 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.17.7-unstable · e26833e3** (of 33 decisions): ✅ 29 agree · ⚠️ 1 with no fix yet · ❔ 1 policy open · ⚪ 2 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
@@ -14,7 +14,9 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 ## Changes to discuss
 
-No differences were found by the selected semantic assertions.
+| Behavior | 1.17.7-unstable · e26833e3 | Proposed change |
+| --- | --- | --- |
+| [Single-block hash selection in trace_filter](../decisions/H33.md)<br>Rejects every non-null `blockHash` as an unknown field (-32602), so it passes the error cases, including the reorg phases, and differs wherever block 2’s records are expected. A null `blockHash` beside numeric bounds is dropped as omitted. | ⚠️ Differs<br>[Filter blockhash](../cases/h30/filter-blockhash.md) | Add the member to the draft fork’s filter type and select exactly the hashed block in one chain view.<br>[Address filtering](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L187) |
 
 ## Open policy observations
 
@@ -66,8 +68,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 
 </details>
-
-**⚪ Still needs review:** [Single-block hash selection in trace_filter](../decisions/H33.md).
 
 [Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)
 

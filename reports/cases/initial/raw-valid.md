@@ -39,57 +39,57 @@
 
 **Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0).
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0.
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0).
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0.
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid number of params
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid number of params).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid number of params
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid number of params).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Erigon · 3.8.0-dev · a2a19253** (`3.8.0-dev-a2a19253`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): too many arguments, want at most 2
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): too many arguments, want at most 2
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Geth draft fork · 1.17.7-unstable · e26833e3** (`Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): too many arguments, want at most 2
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid params
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Rejects the request as invalid params (-32602): Invalid params
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params).
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0).
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0.
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
-- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0).
+- [H12](../../decisions/H12.md): Record which state an explicit third selector uses. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0.
 - [H17](../../decisions/H17.md): Assess the declared property. The explicit block-selector extension is outside the two-argument baseline; H12 records which state it selects.
 
 </details>

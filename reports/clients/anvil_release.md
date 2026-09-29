@@ -39,7 +39,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.8.3 · cae51ad4 | [Raw-transaction block argument](../decisions/H12.md) | 1 extension case. Selector block 0x0 by number: Honors the selector. Ran against the block 0x0 post-state, sender nonce 0 (NONCE 0x0). | [Raw valid](../cases/initial/raw-valid.md) |
+| 1.8.3 · cae51ad4 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 | 1.8.3 · cae51ad4 | [Invalid-parameter error codes](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
@@ -60,7 +60,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Post-merge reward records](../decisions/H05.md) | [_reference/block/0x30](../cases/a/_reference/block/0x30.md) · [Block 2](../cases/a/block-2.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
-| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |

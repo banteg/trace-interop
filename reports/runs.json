@@ -341,5 +341,25 @@
       "reth_development": "Reth Version: 2.7.0+60aeb532",
       "reth_release": "Reth Version: 2.7.0+3d592ece"
     }
+  },
+  {
+    "complete": true,
+    "corpus": "raw-selector",
+    "digest": "0a8b4d11c9f568d2ae91d1a85b6560b349f87f6a02b79be727cf5122cce1683f",
+    "manifest": "../evidence/2026-09-29/raw-selector/raw-selector/manifest.json",
+    "name": "raw-selector",
+    "versions": {
+      "anvil_development": "anvil Version: 1.8.4-nightly+00989695",
+      "anvil_release": "anvil Version: 1.8.3+cae51ad4",
+      "besu_development": "besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.9.0/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-a2a19253",
+      "erigon_release": "3.7.0-bdc78cc4",
+      "go-ethereum_trace": "Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1",
+      "nethermind_development": "2.2.0-preview+287f54f0",
+      "nethermind_release": "2.0.0+bec830cd",
+      "reth_development": "Reth Version: 2.7.0+60aeb532",
+      "reth_release": "Reth Version: 2.7.0+3d592ece"
+    }
   }
 ]

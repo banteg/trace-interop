@@ -529,19 +529,19 @@ class RawSelectorTests(Probe):
     def test_explicit_selectors_are_classified_extension_observations(self):
         probe = SELECTOR['raw-state-number']['probes'][0]
         states, environments = [s for s, _ in probe['states']], [e for e, _ in probe['environments']]
-        for (state, environment), verdict in [((states[0], environments[0]), 'Honors the selector.'),
-                                              ((states[2], environments[2]), 'Ignores the selector'),
-                                              ((states[0], environments[1]), 'Selects the state but not its block environment.'),
-                                              ((states[1], environments[0]), 'Uses neither')]:
+        for (state, environment), verdict in [((states[0], environments[0]), 'honored:'),
+                                              ((states[2], environments[2]), 'ignored, running as the two-argument request'),
+                                              ((states[0], environments[1]), 'state honored, environment not'),
+                                              ((states[1], environments[0]), 'neither the selected')]:
             checks = self.execute('raw-state-number', state, environment)
             self.assertEqual([(c['status'], c.get('extension')) for c in checks], [('observation', True)])
             self.assertIn(verdict, checks[0]['detail'])
         rejected = assess(SELECTOR['raw-state-number'], error(-32602), {})
         self.assertEqual(rejected[0]['status'], 'observation')
-        self.assertIn('Selector block 0x19 by number: Rejects the request as invalid params', rejected[0]['detail'])
+        self.assertIn('Selector block 0x19 by number: rejected as invalid params (-32602', rejected[0]['detail'])
         # Pending with no pending transactions: the latest state in the next block's environment.
         pending = SELECTOR['raw-state-pending']['probes'][0]['expected']
-        self.assertIn('Honors', self.execute('raw-state-pending', pending['state'], pending['environment'])[0]['detail'])
+        self.assertIn('honored:', self.execute('raw-state-pending', pending['state'], pending['environment'])[0]['detail'])
 
     def test_initial_signed_cases_read_the_state_from_the_sender_nonce(self):
         sender = '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f'
@@ -550,10 +550,10 @@ class RawSelectorTests(Probe):
             return result({'output': '0x', 'trace': [], 'vmTrace': None,
                            'stateDiff': {sender: {'nonce': {'*': {'from': nonce, 'to': hex(int(nonce, 16)+1)}}}}})
         # Reth and Anvil at block 0: the sender nonce starts at 0; a client ignoring the selector starts at 133.
-        self.assertIn('Honors the selector.', assess(INITIAL['raw-valid'], diff('0x0'), {})[0]['detail'])
-        self.assertIn('Ignores the selector', assess(INITIAL['raw-valid'], diff('0x85'), {})[0]['detail'])
+        self.assertIn('honored:', assess(INITIAL['raw-valid'], diff('0x0'), {})[0]['detail'])
+        self.assertIn('ignored, running as the two-argument request', assess(INITIAL['raw-valid'], diff('0x85'), {})[0]['detail'])
         nonce_low = {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': 1, 'message': 'nonce too low'}}}
-        self.assertIn('Rejects the transaction (nonce_low', assess(INITIAL['raw-valid'], nonce_low, {})[0]['detail'])
+        self.assertIn('rejected as nonce_low (1: nonce too low)', assess(INITIAL['raw-valid'], nonce_low, {})[0]['detail'])
         self.assertEqual(statuses(INITIAL['raw-valid-current-nonce'], diff('0x85')), ['matches'])
         self.assertEqual(statuses(INITIAL['raw-valid-current-nonce'], diff('0x82')), ['change_needed'])
 

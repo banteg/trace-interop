@@ -24,13 +24,14 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 13864,
+    "assessed": 13930,
     "blocked": 594,
     "control": 21,
     "partial": 1176,
     "unassessed": 0
   },
   "evidence": {
+    "../evidence/2026-09-29/raw-selector/raw-selector/manifest.json": "0a8b4d11c9f568d2ae91d1a85b6560b349f87f6a02b79be727cf5122cce1683f",
     "../evidence/2026-09-29/refresh/a/manifest.json": "0247e224ded714dea8464cecd184c99451020a99b21d906a4a42b496c4b47ccd",
     "../evidence/2026-09-29/refresh/callmany-isolation/manifest.json": "c10be66e05a010f029814a8cb2576471379b00cbcc656c17b1d0a4e305e43d13",
     "../evidence/2026-09-29/refresh/coverage/manifest.json": "a8ab5983acc9f16efc6896a680d7a24f1d2543191df495a4ceea68369acb5f54",
@@ -63,13 +64,13 @@
   "sources": {
     "decisions/impact.json": "092eb6b257c65f4268c8be21749f19874814f7e43c4ed15536c2c307e9fd7aa4",
     "decisions/laws.json": "765e01433b2703cb1538a11d72573c2047ac6b7ca73d938d43b3d4c5733c0914",
-    "decisions/ledger.json": "7267ad8b9d79ad5a070ebc3654d2947ea804e8c5f6ed6be6cbce29bb51b8ad9f",
+    "decisions/ledger.json": "ab477a70333bdbc0b96e8fad602ecd54b4da5f059390feead057100c10023a2c",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "58e9f6692c7ac6cd5231a362aa2934f76a08c9a4c08cab73ed2ce9899f69370a",
     "fixtures/checksums.json": "176d9a033b55065bc2452ea6e83c1c124e27d16dcafb9c9b4b4123ce50b76235",
     "locks/source-revisions.json": "a3eec3c007bae6b8074b1113170128b8094c24c35eef30310d9210b9d3fd6ae7",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "010a39389c689f746e1e2854ed63a0b6e5f61940e093a7dbf7ec00f3c651d6fe",
+    "reports.lock.json": "20f3c9b18262d4ac569f4f8aa26487ea85d67dee21fd7a6ac7a47d63d7679953",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "4f6ee7f0b8492820a30aad88286e9e4ed9e099adba88dc6dc5ce264bb4dad0a6",
     "trace_interop/chain_model.py": "62eb9fb7062474488f55e7b3d5d77e48edc16dbec4c6c4c600ce860ad793f546",
@@ -82,7 +83,7 @@
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "0994d2cd52e4bf8c69dded9afc63b22422820caaf90b7b73c0e89e37cdaad93a",
     "trace_interop/presentation.py": "415c77487f208f1dc906f0ec7d72a9cc4242db5894cca46345d1e691933e1397",
-    "trace_interop/probes.py": "9db0894c65c83aa05286ba32f5eded02b366f4496cc7661baf85d2c3b9e6face",
+    "trace_interop/probes.py": "8a6fcbc4bd0dcab4c5feca55150e4b802cea3ea9f844523d6082987aadd430ad",
     "trace_interop/report.py": "b0a5b567abbc5ffc6726fb0e0a561a7be1f63ef85392ea9f02fae5c11fa92836",
     "trace_interop/rules.py": "2d21b7336f4b104d417905b385f3ec116543c433ee612a086b839273adbb2bf5",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",

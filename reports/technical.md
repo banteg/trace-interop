@@ -41,7 +41,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 13864 |
+| 🔎 Assessed | 13930 |
 | 🟡 Partial | 1176 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 594 |
@@ -1089,6 +1089,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-prague/vm-push-order](cases/probes-prague/vm-push-order.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [probes-prague/vm-store](cases/probes-prague/vm-store.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [probes-prague/vm-store-vm-only](cases/probes-prague/vm-store-vm-only.md) | Nethermind 2.0.0 · bec830cd |
+| [raw-selector/raw-state-default](cases/raw-selector/raw-state-default.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [raw-validation/raw-validation-below-basefee-all](cases/raw-validation/raw-validation-below-basefee-all.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [raw-validation/raw-validation-below-basefee-trace](cases/raw-validation/raw-validation-below-basefee-trace.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [raw-validation/raw-validation-code-sender-all](cases/raw-validation/raw-validation-code-sender-all.md) | Nethermind 2.0.0 · bec830cd |
@@ -1180,3 +1181,4 @@ Capture completeness records whether requests finished, not whether their result
 | [mined-probes](../evidence/2026-09-29/refresh/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-09-29/refresh/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-09-29/refresh/pruned/manifest.json) | pruned | ✅ Yes |
+| [raw-selector](../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) | raw-selector | ✅ Yes |

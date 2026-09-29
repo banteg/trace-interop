@@ -93,46 +93,48 @@ def candidate(candidates, values):
 def state_check(probe, status, response, result):
     """H12: which state, and with `environments` which block environment, a request ran against.
     An `observe` probe classifies an explicit selector against its `expected` and `default` (the
-    two-argument choice) candidates; otherwise the expected candidates are required."""
+    two-argument choice) candidates as honored, ignored or rejected; otherwise the expected
+    candidates are required. Witness values are shown only when no candidate explains them."""
     expected, observe = probe['expected'], 'observe' in probe
     prefix = 'Selector '+probe['selector']+': ' if 'selector' in probe else ''
     if status != 'result' or embedded_error(response):
         error = mapping(response.get('error') or mapping(result).get('error'))
         code, message = error.get('code'), str(error.get('message', ''))[:120]
         if code == -32602:
-            detail = f'Rejects the request as invalid params (-32602): {message}'
+            detail = f'rejected as invalid params (-32602: {message}).'
         elif violation(message):
-            detail = f'Rejects the transaction ({violation(message)}, {code}: {message}), although it is valid at the expected state.'
+            detail = f'rejected as {violation(message)} ({code}: {message}), although valid at the expected state.'
         else:
-            detail = f'Returns {status} {code}: {message}'
+            detail = f'{status} {code}: {message}.'
+        if observe:
+            return {'topic': probe['topic'], 'status': 'observation', 'requirement': probe['requirement'],
+                    'detail': prefix+detail, **({'extension': True} if probe.get('extension') else {})}
+        return {'topic': probe['topic'], 'status': 'change_needed', 'requirement': probe['requirement'],
+                'detail': prefix+'Expected an execution; '+detail, 'role': 'result'}
+    values = witness_values(probe['witness'], result)
+    state = candidate(probe['states'], values)
+    environment = candidate(probe['environments'], values)
+    ran = (state or 'an unrecognised state') + (
+        ' in ' + (environment or 'an unrecognised environment') if probe['environments'] else '')
+    if state is None or probe['environments'] and environment is None:
+        ran += ' (' + ', '.join(f'{k} {"none" if v is None else hex(v)}' for k, v in values.items()) + ')'
+    matched = state == expected['state'] and environment == expected.get('environment')
+    if not observe:
+        target = expected['state'] + (' in '+expected['environment'] if 'environment' in expected else '')
+        return {'topic': probe['topic'], 'status': 'matches' if matched else 'change_needed',
+                'requirement': probe['requirement'], 'role': 'result',
+                'detail': f'Ran against {ran}.' if matched else f'Expected {target}; ran against {ran}.'}
+    default = probe.get('default', {})
+    if matched:
+        detail = f'honored: {ran}.'
+    elif state == default.get('state') and environment == default.get('environment'):
+        detail = f'ignored, running as the two-argument request: {ran}.'
+    elif state == expected['state']:
+        detail = f'state honored, environment not: {ran}.'
     else:
-        values = witness_values(probe['witness'], result)
-        state = candidate(probe['states'], values)
-        environment = candidate(probe['environments'], values)
-        ran = 'Ran against ' + (state or 'an unrecognised state') + (
-            ' in ' + (environment or 'an unrecognised environment') if probe['environments'] else '') + (
-            ' (' + ', '.join(f'{k} {"none" if v is None else hex(v)}' for k, v in values.items()) + ').')
-        matched = state == expected['state'] and environment == expected.get('environment')
-        default = probe.get('default', {})
-        if not observe:
-            detail = ran if matched else f'Expected {expected["state"]}' + (
-                f' in {expected["environment"]}' if 'environment' in expected else '') + '. ' + ran
-        elif matched:
-            detail = 'Honors the selector. ' + ran
-        elif state == default.get('state') and environment == default.get('environment'):
-            detail = 'Ignores the selector, running as the two-argument request does. ' + ran
-        elif state == expected['state']:
-            detail = 'Selects the state but not its block environment. ' + ran
-        else:
-            detail = 'Uses neither the selected nor the two-argument state. ' + ran
-        if not observe:
-            return {'topic': probe['topic'], 'status': 'matches' if matched else 'change_needed',
-                    'requirement': probe['requirement'], 'detail': detail, 'role': 'result'}
-    if observe:
-        return {'topic': probe['topic'], 'status': 'observation', 'requirement': probe['requirement'],
-                'detail': prefix+detail, **({'extension': True} if probe.get('extension') else {})}
-    return {'topic': probe['topic'], 'status': 'change_needed', 'requirement': probe['requirement'],
-            'detail': prefix+'Expected an execution; '+detail[0].lower()+detail[1:], 'role': 'result'}
+        detail = f'neither the selected nor the two-argument state: {ran}.'
+    return {'topic': probe['topic'], 'status': 'observation', 'requirement': probe['requirement'],
+            'detail': prefix+detail, **({'extension': True} if probe.get('extension') else {})}
 
 
 def model_steps(case):

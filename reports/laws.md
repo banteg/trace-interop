@@ -10,7 +10,7 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Law | Statement | Pairs checked | Builds with violations |
 | --- | --- | --- | --- |
-| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 7851 | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
+| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 7882 | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 16152 | — |
 | **L03** Root output | A successful root call frame reports the envelope output. | 1394 | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 26823 | Nethermind 2.0.0 · bec830cd |

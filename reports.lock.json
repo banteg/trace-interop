@@ -19,6 +19,7 @@
     "evidence/2026-09-29/refresh/probes-forks",
     "evidence/2026-09-29/refresh/mined-probes",
     "evidence/2026-09-29/refresh/reorg-safe",
-    "evidence/2026-09-29/refresh/pruned"
+    "evidence/2026-09-29/refresh/pruned",
+    "evidence/2026-09-29/raw-selector/raw-selector"
   ]
 }

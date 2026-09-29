@@ -2,47 +2,47 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 683,
+        "held": 689,
         "violated": 0
       },
       "anvil_release": {
-        "held": 738,
+        "held": 744,
         "violated": 0
       },
       "besu_development": {
-        "held": 573,
+        "held": 574,
         "violated": 1
       },
       "besu_release": {
-        "held": 573,
+        "held": 574,
         "violated": 1
       },
       "erigon_development": {
-        "held": 708,
+        "held": 709,
         "violated": 0
       },
       "erigon_release": {
-        "held": 721,
+        "held": 722,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 713,
+        "held": 714,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 723,
+        "held": 724,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 723,
+        "held": 724,
         "violated": 0
       },
       "reth_development": {
-        "held": 847,
+        "held": 853,
         "violated": 0
       },
       "reth_release": {
-        "held": 847,
+        "held": 853,
         "violated": 0
       }
     },

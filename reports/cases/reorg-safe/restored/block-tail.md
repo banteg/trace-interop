@@ -31,7 +31,6 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- Result shape at `2`: 'transactionHash' is a required property
-- Result shape at `2`: 'transactionPosition' is a required property
+- Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x0', 'input': '0x', 'to': '0x16c57edf7fa9d9525378b0b81bf8a3ced0620c1c', 'value': '0x1'}, 'blockHash': '0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d', 'blockNumber': 45, 'result': {'g
 
 </details>

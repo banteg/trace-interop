@@ -53,8 +53,7 @@
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): Replay output carries the revert bytes. Expected 0xdeadbeef, got 0x.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0xdeadbeef', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of th
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [0], 'type': 'create'} is not valid under any of the given schemas
+- Result shape at `/`: [{'output': '0x', 'revertReason': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
@@ -62,39 +61,34 @@
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): Replay output carries the revert bytes. Expected 0xdeadbeef, got 0x.
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'revertReason': '0xdeadbeef', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of th
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [0], 'type': 'create'} is not valid under any of the given schemas
+- Result shape at `/`: [{'output': '0x', 'revertReason': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result {"address": "0x51a240271ab8ab9f9a21c82d9a85396b704e164d", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
+- Result shape at `/`: [{'output': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x8ac586582972c6a3', 'to
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result None != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schemas
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [0], 'type': 'create'} is not valid under any of the given schemas
+- Result shape at `/`: [{'output': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x8ac586582972c6a3', 'to
 
 **Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result {"address": "0x51a240271ab8ab9f9a21c82d9a85396b704e164d", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
+- Result shape at `/`: [{'output': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x8ac586582972c6a3', 'to
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result {"address": "0x51a240271ab8ab9f9a21c82d9a85396b704e164d", "code": "0xdeadbeef", "gasUsed": "0x11"}.
 - [H09](../../decisions/H09.md): A reverted CREATE reports error Reverted and result {gasUsed, output} with its revert bytes and no address or code; root action.gas excludes intrinsic gas. create []: result {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
 - [H09](../../decisions/H09.md): A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. create [0]: result {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'} != {'gasUsed': '0x11', 'output': '0xdeadbeef'}
-- Result shape at `0/trace/0`: {'action': {'creationMethod': 'create', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23d76', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0x51a240271ab8ab9f9a21c82d9a85396b704e164d', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
-- Result shape at `1/trace/1`: {'action': {'creationMethod': 'create', 'from': '0x000000000000000000000000000000000000fac0', 'gas': '0x2346c', 'init': '0x63deadbeef5f526004601cfd', 'value': '0x0'}, 'error': 'Reverted', 'result': {'address': '0xd8353791c13be48589d7247c3284625edca5aa72', 'code': '0xdeadbeef', 'gasUsed': '0x11'}, 's
+- Result shape at `/`: [{'output': '0xdeadbeef', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x128ea5b8aec00', 'to': '0x189b4a90c8800'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf': {'balance': {'*': {'from': '0x8ac586582972c6a3', 'to
 
 </details>

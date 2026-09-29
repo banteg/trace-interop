@@ -1,6 +1,87 @@
 {
   "cases": [
     {
+      "name": "many-write-delete-storage",
+      "probes": [
+        {
+          "address": "0x8a700907005c5c3b442322abfb6bec88772ebd11",
+          "expected": {
+            "balance": {
+              "-": "0x0"
+            },
+            "code": {
+              "-": "0x36156008576000ff5b602a60005500"
+            },
+            "nonce": {
+              "-": "0x1"
+            }
+          },
+          "index": 2,
+          "kind": "account",
+          "requirement": "Before Cancun the final item deletes the account created by an earlier item.",
+          "topic": "H26"
+        },
+        {
+          "address": "0x8a700907005c5c3b442322abfb6bec88772ebd11",
+          "expected": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0x000000000000000000000000000000000000000000000000000000000000002a"
+          },
+          "index": 2,
+          "kind": "deleted-storage",
+          "requirement": "Account deletion wipes all storage; optional - entries report the item's pre-values, including slot zero written to 42 by the preceding item.",
+          "topic": "H26"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x600f80600b6000396000f336156008576000ff5b602a60005500",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x8a700907005c5c3b442322abfb6bec88772ebd11"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x01",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x8a700907005c5c3b442322abfb6bec88772ebd11"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
       "name": "_control/beacon-timestamp-55",
       "probes": [
         {

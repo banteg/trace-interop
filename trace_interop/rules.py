@@ -20,6 +20,15 @@ def sequence(value):
     return value if isinstance(value, list) else []
 
 
+def deleted_storage_shape(storage):
+    """Deletion wipes every slot; optional details contain only old 32-byte words."""
+    return isinstance(storage, dict) and all(
+        isinstance(slot, str) and re.fullmatch(r'0x[0-9a-fA-F]{64}', slot)
+        and isinstance(change, dict) and set(change) == {'-'}
+        and isinstance(change['-'], str) and re.fullmatch(r'0x[0-9a-fA-F]{64}', change['-'])
+        for slot, change in storage.items())
+
+
 # Signed-transaction fixtures and the independent violation each one carries.
 RAW_VIOLATIONS = [
     ('raw-nonce-high', 'nonce_high'), ('raw-wrong-chain', 'chain'), ('raw-insufficient-funds', 'funds'),
@@ -672,16 +681,17 @@ def evaluate(case, observation, peers, invalid_params=None):
         ok=(mapping(change).get('code') == {'-':'0x611008ff'}
             and mapping(change).get('nonce') == {'-':'0x0'}
             and (balance is None or mapping(change).get('balance') == {'-':hex(int(balance,16))})
-            and mapping(change).get('storage') == {}) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
-        check('H26', ok, 'Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.')
+            and deleted_storage_shape(mapping(change).get('storage'))
+            and all(int(slot['-'], 16) == 0 for slot in change['storage'].values())) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
+        check('H26', ok, 'Report the exact deleted balance, code and nonce before Cancun; optional slot deletions match the known zero pre-values. Preserve an existing account after EIP-6780.')
     diffs = [mapping(e).get('stateDiff') for e in ([result] if isinstance(result, dict) else sequence(result)
                                                    if method in ['trace_callMany', 'trace_replayBlockTransactions'] else [])]
     deleted = [(address, account) for diff in diffs for address, account in mapping(diff).items()
                if any(isinstance(mapping(account).get(k), dict) and '-' in account[k] for k in ['balance', 'nonce', 'code'])]
     if deleted:
-        check('H26', all(mapping(account).get('storage') == {} for _, account in deleted),
-              'A deleted account reports storage {}; its account deletion implies every slot is wiped.',
-              '; '.join(address for address, account in deleted if mapping(account).get('storage') != {})[:200])
+        check('H26', all(deleted_storage_shape(mapping(account).get('storage')) for _, account in deleted),
+              'A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped.',
+              '; '.join(address for address, account in deleted if not deleted_storage_shape(mapping(account).get('storage')))[:200])
     if name.startswith('filter-across-'):
         boundary=int(name.rsplit('-',1)[1]); a,b=reference('block-'+str(boundary-1)),reference('block-'+str(boundary))
         if isinstance(a,list) and isinstance(b,list):check('H27', result==a+b, 'A fork-crossing range equals the corresponding per-block traces.', role='result')

@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. A deleted account reports storage {}; its account deletion implies every slot is wiped. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. An account created and destroyed within the transaction is absent at both endpoints and has no account diff. Check accounting against independent gas. Assess the declared property. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys.
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped. Unsigned execution accepts the supplied nonzero fee and returns one envelope per call; exact environment values are checked by coverage/model-environment. An account created and destroyed within the transaction is absent at both endpoints and has no account diff. Check accounting against independent gas. Assess the declared property. Account balance deltas conserve transferred value, pay the exact miner tip and burn the selected block base fee, blob fee and any wei a same-transaction SELFDESTRUCT destroys.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

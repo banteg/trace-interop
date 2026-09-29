@@ -191,8 +191,6 @@ These cases returned results that differ from the draft schema. The case pages r
 | [a/get-nested-parent](cases/a/get-nested-parent.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
 | [a/get-nested-positive](cases/a/get-nested-positive.md) | Nethermind 2.0.0 · bec830cd |
 | [a/many-storage-write-revert-read](cases/a/many-storage-write-revert-read.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Nethermind 2.0.0 · bec830cd |
-| [a/missing-block-block](cases/a/missing-block-block.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
-| [a/missing-block-replay](cases/a/missing-block-replay.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8, Reth 2.7.0 · 60aeb532, Reth 2.7.0 · 3d592ece |
 | [a/raw-below-basefee](cases/a/raw-below-basefee.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [a/raw-insufficient-funds](cases/a/raw-insufficient-funds.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |
 | [a/raw-low-gas](cases/a/raw-low-gas.md) | Besu 26.9-develop · c197ac57, Besu 26.9.0 · ee9c64c8 |

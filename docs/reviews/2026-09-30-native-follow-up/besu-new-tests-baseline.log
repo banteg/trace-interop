@@ -1,0 +1,308 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Generating project version as supplied is version not semver: unspecified
+
+> Task :consensus:common:processResources NO-SOURCE
+> Task :consensus:ibft:processResources NO-SOURCE
+> Task :consensus:qbft:processResources NO-SOURCE
+> Task :plugin-api:processResources NO-SOURCE
+> Task :ethereum:blockcreation:processResources NO-SOURCE
+> Task :consensus:clique:processResources NO-SOURCE
+> Task :consensus:qbft-core:processResources NO-SOURCE
+> Task :consensus:merge:processResources NO-SOURCE
+> Task :crypto:services:processResources NO-SOURCE
+> Task :datatypes:processResources NO-SOURCE
+> Task :crypto:plugin-api:processResources NO-SOURCE
+> Task :consensus:ibftlegacy:processResources NO-SOURCE
+> Task :ethereum:ethstats:processResources NO-SOURCE
+> Task :ethereum:trie:processResources NO-SOURCE
+> Task :ethereum:p2p:processResources NO-SOURCE
+> Task :metrics:core:processResources NO-SOURCE
+> Task :ethereum:permissioning:processResources NO-SOURCE
+> Task :plugins:health:processResources NO-SOURCE
+> Task :metrics:plugin-api:processResources NO-SOURCE
+> Task :metrics:rocksdb:processResources NO-SOURCE
+> Task :plugin-api:core:processResources NO-SOURCE
+> Task :ethereum:eth:processResources NO-SOURCE
+> Task :crypto:services:processTestSupportResources NO-SOURCE
+> Task :plugins:rocksdb:processResources NO-SOURCE
+> Task :services:kvstore:processResources NO-SOURCE
+> Task :ethereum:api:plugin-api:processResources NO-SOURCE
+> Task :services:tasks:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-execution:processResources NO-SOURCE
+> Task :services:pipeline:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate-backend:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-chain:processResources NO-SOURCE
+> Task :ethereum:eth:plugin-api-sync:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-validation:processResources NO-SOURCE
+> Task :ethereum:p2p:plugin-api:processResources NO-SOURCE
+> Task :services:kvstore:plugin-api:processResources NO-SOURCE
+> Task :ethereum:eth:plugin-api-txpool:processResources NO-SOURCE
+> Task :ethereum:permissioning:plugin-api:processResources NO-SOURCE
+> Task :ethereum:core:processResources UP-TO-DATE
+> Task :testutil:processResources UP-TO-DATE
+> Task :ethereum:api:processResources UP-TO-DATE
+> Task :config:processResources UP-TO-DATE
+> Task :evm:processResources UP-TO-DATE
+> Task :ethereum:api:processTestSupportResources NO-SOURCE
+> Task :ethereum:core:processTestSupportResources NO-SOURCE
+> Task :ethereum:core:processTestResources UP-TO-DATE
+> Task :nat:compileJava UP-TO-DATE
+> Task :ethereum:rlp:compileJava UP-TO-DATE
+> Task :crypto:algorithms:compileJava UP-TO-DATE
+> Task :crypto:algorithms:processResources NO-SOURCE
+> Task :crypto:algorithms:classes UP-TO-DATE
+> Task :util:compileJava UP-TO-DATE
+> Task :nat:processResources NO-SOURCE
+> Task :ethereum:rlp:processResources NO-SOURCE
+> Task :nat:classes UP-TO-DATE
+> Task :ethereum:rlp:classes UP-TO-DATE
+> Task :util:processResources NO-SOURCE
+> Task :util:classes UP-TO-DATE
+> Task :crypto:algorithms:jar UP-TO-DATE
+> Task :ethereum:rlp:jar UP-TO-DATE
+> Task :util:jar UP-TO-DATE
+> Task :datatypes:compileJava UP-TO-DATE
+> Task :datatypes:classes UP-TO-DATE
+> Task :datatypes:jar UP-TO-DATE
+> Task :nat:jar UP-TO-DATE
+> Task :plugin-api:core:compileJava UP-TO-DATE
+> Task :plugin-api:core:classes UP-TO-DATE
+> Task :config:compileJava UP-TO-DATE
+> Task :config:classes UP-TO-DATE
+> Task :plugin-api:core:jar UP-TO-DATE
+> Task :config:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:compileJava UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:api:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:compileJava UP-TO-DATE
+> Task :ethereum:api:plugin-api:classes UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:classes UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:classes UP-TO-DATE
+> Task :crypto:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:classes UP-TO-DATE
+> Task :crypto:plugin-api:classes UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:compileJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:classes UP-TO-DATE
+> Task :ethereum:api:plugin-api:jar UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:jar UP-TO-DATE
+> Task :metrics:plugin-api:compileJava UP-TO-DATE
+> Task :crypto:plugin-api:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:jar UP-TO-DATE
+> Task :metrics:plugin-api:classes UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:classes UP-TO-DATE
+> Task :metrics:plugin-api:jar UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:jar UP-TO-DATE
+> Task :evm:compileJava UP-TO-DATE
+> Task :evm:classes UP-TO-DATE
+> Task :evm:jar UP-TO-DATE
+> Task :services:kvstore:plugin-api:compileJava UP-TO-DATE
+> Task :services:kvstore:plugin-api:classes UP-TO-DATE
+> Task :services:kvstore:plugin-api:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:jar UP-TO-DATE
+> Task :ethereum:api:processTestResources UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:jar UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:classes UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:jar UP-TO-DATE
+> Task :plugin-api:compileJava UP-TO-DATE
+> Task :plugin-api:classes UP-TO-DATE
+> Task :plugin-api:jar UP-TO-DATE
+> Task :services:kvstore:compileJava UP-TO-DATE
+> Task :services:kvstore:classes UP-TO-DATE
+> Task :crypto:services:compileJava UP-TO-DATE
+> Task :crypto:services:classes UP-TO-DATE
+> Task :plugins:health:compileJava UP-TO-DATE
+> Task :plugins:health:classes UP-TO-DATE
+> Task :services:kvstore:jar UP-TO-DATE
+> Task :crypto:services:jar UP-TO-DATE
+> Task :plugins:health:jar UP-TO-DATE
+> Task :ethereum:trie:compileJava UP-TO-DATE
+> Task :ethereum:trie:classes UP-TO-DATE
+> Task :ethereum:trie:jar UP-TO-DATE
+> Task :metrics:core:compileJava UP-TO-DATE
+> Task :metrics:core:classes UP-TO-DATE
+> Task :crypto:services:compileTestSupportJava UP-TO-DATE
+> Task :crypto:services:testSupportClasses UP-TO-DATE
+> Task :crypto:services:testSupportJar UP-TO-DATE
+> Task :metrics:core:jar UP-TO-DATE
+> Task :services:tasks:compileJava UP-TO-DATE
+> Task :services:tasks:classes UP-TO-DATE
+> Task :services:tasks:jar UP-TO-DATE
+> Task :services:pipeline:compileJava UP-TO-DATE
+> Task :services:pipeline:classes UP-TO-DATE
+> Task :services:pipeline:jar UP-TO-DATE
+> Task :metrics:rocksdb:compileJava UP-TO-DATE
+> Task :metrics:rocksdb:classes UP-TO-DATE
+> Task :metrics:rocksdb:jar UP-TO-DATE
+
+> Task :generateArtifactsCatalog
+Artifacts catalog written to:
+  JSON: /home/banteg/dev/trace-adjacent.hVSt4eWi/besu/build/reports/dependencies/besu-artifacts-catalog.json
+
+> Task :app:copyArtifactsCatalogToResources UP-TO-DATE
+> Task :app:processResources UP-TO-DATE
+> Task :ethereum:core:compileJava FROM-CACHE
+> Task :ethereum:core:classes UP-TO-DATE
+> Task :plugins:rocksdb:compileJava FROM-CACHE
+> Task :plugins:rocksdb:classes UP-TO-DATE
+> Task :plugins:rocksdb:jar UP-TO-DATE
+> Task :ethereum:p2p:compileJava FROM-CACHE
+> Task :ethereum:p2p:classes UP-TO-DATE
+> Task :ethereum:p2p:jar UP-TO-DATE
+> Task :ethereum:permissioning:compileJava FROM-CACHE
+> Task :ethereum:permissioning:classes UP-TO-DATE
+> Task :ethereum:permissioning:jar UP-TO-DATE
+> Task :ethereum:core:jar
+> Task :ethereum:eth:compileJava FROM-CACHE
+> Task :ethereum:eth:classes UP-TO-DATE
+> Task :ethereum:eth:jar UP-TO-DATE
+> Task :testutil:compileJava UP-TO-DATE
+> Task :testutil:classes UP-TO-DATE
+> Task :testutil:jar UP-TO-DATE
+> Task :ethereum:blockcreation:compileJava FROM-CACHE
+> Task :ethereum:blockcreation:classes UP-TO-DATE
+> Task :ethereum:blockcreation:jar UP-TO-DATE
+> Task :ethereum:core:compileTestSupportJava FROM-CACHE
+> Task :ethereum:core:testSupportClasses UP-TO-DATE
+> Task :ethereum:core:testSupportJar UP-TO-DATE
+> Task :consensus:merge:compileJava FROM-CACHE
+> Task :consensus:merge:classes UP-TO-DATE
+> Task :consensus:merge:jar UP-TO-DATE
+> Task :ethereum:referencetests:compileJava FROM-CACHE
+> Task :ethereum:api:compileJava FROM-CACHE
+> Task :ethereum:api:classes UP-TO-DATE
+> Task :consensus:common:compileJava FROM-CACHE
+> Task :consensus:common:classes UP-TO-DATE
+> Task :consensus:common:jar UP-TO-DATE
+> Task :consensus:clique:compileJava FROM-CACHE
+> Task :consensus:clique:classes UP-TO-DATE
+> Task :consensus:qbft-core:compileJava FROM-CACHE
+> Task :consensus:clique:jar UP-TO-DATE
+> Task :consensus:qbft-core:classes UP-TO-DATE
+> Task :ethereum:api:jar
+> Task :consensus:qbft-core:jar UP-TO-DATE
+> Task :consensus:ibft:compileJava FROM-CACHE
+> Task :consensus:ibft:classes UP-TO-DATE
+> Task :consensus:ibft:jar UP-TO-DATE
+> Task :consensus:ibftlegacy:compileJava FROM-CACHE
+> Task :consensus:ibftlegacy:classes UP-TO-DATE
+> Task :ethereum:ethstats:compileJava FROM-CACHE
+> Task :ethereum:ethstats:classes UP-TO-DATE
+> Task :consensus:ibftlegacy:jar UP-TO-DATE
+> Task :ethereum:ethstats:jar UP-TO-DATE
+> Task :consensus:qbft:compileJava FROM-CACHE
+> Task :consensus:qbft:classes UP-TO-DATE
+> Task :consensus:qbft:jar UP-TO-DATE
+> Task :app:compileJava FROM-CACHE
+> Task :app:classes UP-TO-DATE
+> Task :app:jar UP-TO-DATE
+> Task :ethereum:api:compileTestSupportJava UP-TO-DATE
+> Task :ethereum:api:testSupportClasses UP-TO-DATE
+> Task :ethereum:core:compileTestJava
+> Task :ethereum:core:testClasses
+> Task :ethereum:core:testJar UP-TO-DATE
+> Task :ethereum:api:compileTestJava
+
+> Task :ethereum:api:importTestBlocks
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by ethereum.ckzg4844.CKZG4844JNI in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.consensys.protocols/jc-kzg-4844/2.1.8/e90fff0e946f2906bafb35185fd87331fc62d160/jc-kzg-4844-2.1.8.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Task :ethereum:api:exportTestBlocks
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.jna.Native in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.18.1/b27ba04287cc4abe769642fe8318d39fc89bf937/jna-5.18.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Task :ethereum:api:generateTestBlockchain
+> Task :ethereum:api:testClasses
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.17.Final/57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a/netty-common-4.2.17.Final.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :ethereum:api:test
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=legacy-high-s, raw=0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43, error=INVALID_TRANSACTION_SIGNATURE, halt=false], [trace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=legacy-high-s, raw=0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43, error=INVALID_TRANSACTION_SIGNATURE, halt=false], [stateDiff] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=legacy-high-s, raw=0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43, error=INVALID_TRANSACTION_SIGNATURE, halt=false], [vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=legacy-high-s, raw=0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a09711655677524da3db3e22b77970ec52484d8111511d59226c096ff04de7da43, error=INVALID_TRANSACTION_SIGNATURE, halt=false], [trace, stateDiff, vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=type-4-empty, raw=0x04f86f870c72dd9d5e883e0a01842da282a9830186a09400000000000000000000000000000000000010020180c0c080a01afd52c97780621c27da78bb2637b9607fbd74a1e1511a5c77a8271361c25e77a035c83bd0944394b6a9165b3d88787af70f8b593aba5f3fc1c8e0f7e98ace0281, error=INVALID_TRANSACTION_TYPE, halt=false], [trace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=type-4-empty, raw=0x04f86f870c72dd9d5e883e0a01842da282a9830186a09400000000000000000000000000000000000010020180c0c080a01afd52c97780621c27da78bb2637b9607fbd74a1e1511a5c77a8271361c25e77a035c83bd0944394b6a9165b3d88787af70f8b593aba5f3fc1c8e0f7e98ace0281, error=INVALID_TRANSACTION_TYPE, halt=false], [stateDiff] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=type-4-empty, raw=0x04f86f870c72dd9d5e883e0a01842da282a9830186a09400000000000000000000000000000000000010020180c0c080a01afd52c97780621c27da78bb2637b9607fbd74a1e1511a5c77a8271361c25e77a035c83bd0944394b6a9165b3d88787af70f8b593aba5f3fc1c8e0f7e98ace0281, error=INVALID_TRANSACTION_TYPE, halt=false], [vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=type-4-empty, raw=0x04f86f870c72dd9d5e883e0a01842da282a9830186a09400000000000000000000000000000000000010020180c0c080a01afd52c97780621c27da78bb2637b9607fbd74a1e1511a5c77a8271361c25e77a035c83bd0944394b6a9165b3d88787af70f8b593aba5f3fc1c8e0f7e98ace0281, error=INVALID_TRANSACTION_TYPE, halt=false], [trace, stateDiff, vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=signed-gas-over-cap, raw=0xf86b0a842da282a983030d4094000000000000000000000000000000000000100201808718e5bb3abd10a0a02bfe1071ab946fcf37c9c53b25e79519a9b3123276ce10d17eb998020befefb3a04fd7fb37cf8dff46b28ee7d6a1b23383c787987387d5ad116297dd09c407f949, error=EXCEEDS_TRANSACTION_GAS_LIMIT, halt=false], [trace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=signed-gas-over-cap, raw=0xf86b0a842da282a983030d4094000000000000000000000000000000000000100201808718e5bb3abd10a0a02bfe1071ab946fcf37c9c53b25e79519a9b3123276ce10d17eb998020befefb3a04fd7fb37cf8dff46b28ee7d6a1b23383c787987387d5ad116297dd09c407f949, error=EXCEEDS_TRANSACTION_GAS_LIMIT, halt=false], [stateDiff] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=signed-gas-over-cap, raw=0xf86b0a842da282a983030d4094000000000000000000000000000000000000100201808718e5bb3abd10a0a02bfe1071ab946fcf37c9c53b25e79519a9b3123276ce10d17eb998020befefb3a04fd7fb37cf8dff46b28ee7d6a1b23383c787987387d5ad116297dd09c407f949, error=EXCEEDS_TRANSACTION_GAS_LIMIT, halt=false], [vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+TraceRawTransactionSignedTest > shouldValidateAndExecuteTheOriginalSignedTransaction(SignedCase, String[]) > SignedCase[name=signed-gas-over-cap, raw=0xf86b0a842da282a983030d4094000000000000000000000000000000000000100201808718e5bb3abd10a0a02bfe1071ab946fcf37c9c53b25e79519a9b3123276ce10d17eb998020befefb3a04fd7fb37cf8dff46b28ee7d6a1b23383c787987387d5ad116297dd09c407f949, error=EXCEEDS_TRANSACTION_GAS_LIMIT, halt=false], [trace, stateDiff, vmTrace] FAILED
+    org.opentest4j.AssertionFailedError at TraceRawTransactionSignedTest.java:124
+
+28 tests completed, 12 failed
+
+> Task :ethereum:api:test FAILED
+> Task :ethereum:api:jacocoTestReport
+
+[Incubating] Problems report is available at: file:///home/banteg/dev/trace-adjacent.hVSt4eWi/besu/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':ethereum:api:test'.
+> There were failing tests. See the report at: file:///home/banteg/dev/trace-adjacent.hVSt4eWi/besu/ethereum/api/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 52s
+119 actionable tasks: 9 executed, 18 from cache, 92 up-to-date

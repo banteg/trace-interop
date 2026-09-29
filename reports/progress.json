@@ -33,7 +33,7 @@
       "name": "Besu",
       "prs": {
         "merged": 0,
-        "open": 13
+        "open": 14
       }
     },
     {
@@ -105,7 +105,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 37,
-        "open": 1
+        "open": 2
       }
     },
     {
@@ -141,7 +141,7 @@
       "name": "Reth",
       "prs": {
         "merged": 21,
-        "open": 4
+        "open": 5
       }
     },
     {

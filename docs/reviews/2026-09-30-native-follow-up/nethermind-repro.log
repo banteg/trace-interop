@@ -1,0 +1,63 @@
+Running tests from /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64)
+failed Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(50000UL,True) (383ms)
+  from /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64)
+    {"jsonrpc":"2.0","result":{"vmTrace":null,"output":"0x","stateDiff":null,"trace":[{"action":{"callType":"call","from":"0x5c99f3668b236f57b30b73b00cb4385dc72a71aa","gas":"0x7148","input":"0x","to":"0x76e68a8696537e4141926f3e528733af9e237d69","value":"0x0"},"result":{"gasUsed":"0x0","output":"0x"},"subtraces":0,"traceAddress":[],"type":"call"}]},"id":67}
+  Assert.That(response.TryGetProperty("error", out JsonElement error), Is.True)
+    Expected: True
+    But was:  False
+  
+    at Nethermind.JsonRpc.Test.Modules.TraceRpcModuleTests.Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(Nullable`1 gasCap, Boolean streaming) in /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs:2371
+    at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+    at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+    at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+    at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(TestExecutionContext context, Func`1 invoke)
+    at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+    at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+    at NUnit.Framework.Internal.Execution.SimpleWorkItem.<>c__DisplayClass3_0.<PerformWork>b__0()
+    at NUnit.Framework.Internal.ContextUtils.<>c__DisplayClass1_0`1.<DoIsolated>b__0(Object _)
+    at NUnit.Framework.Internal.ContextUtils.<>c__DisplayClass2_0.<DoIsolated>b__0(Object s)
+    
+    1)    at Nethermind.JsonRpc.Test.Modules.TraceRpcModuleTests.Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(Nullable`1 gasCap, Boolean streaming) in /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs:line 2371
+    at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.ExecutionContextCallback(Object s)
+    
+    
+  Standard output
+    {"jsonrpc":"2.0","result":{"vmTrace":null,"output":"0x","stateDiff":null,"trace":[{"action":{"callType":"call","from":"0x5c99f3668b236f57b30b73b00cb4385dc72a71aa","gas":"0x7148","input":"0x","to":"0x76e68a8696537e4141926f3e528733af9e237d69","value":"0x0"},"result":{"gasUsed":"0x0","output":"0x"},"subtraces":0,"traceAddress":[],"type":"call"}]},"id":67}
+    
+  Error output
+failed Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(50000UL,False) (278ms)
+  from /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64)
+    {"jsonrpc":"2.0","result":{"output":"0x","stateDiff":null,"trace":[{"action":{"callType":"call","from":"0x5c99f3668b236f57b30b73b00cb4385dc72a71aa","gas":"0x7148","input":"0x","to":"0x76e68a8696537e4141926f3e528733af9e237d69","value":"0x0"},"result":{"gasUsed":"0x0","output":"0x"},"subtraces":0,"traceAddress":[],"type":"call"}],"vmTrace":null},"id":67}
+  Assert.That(response.TryGetProperty("error", out JsonElement error), Is.True)
+    Expected: True
+    But was:  False
+  
+    at Nethermind.JsonRpc.Test.Modules.TraceRpcModuleTests.Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(Nullable`1 gasCap, Boolean streaming) in /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs:2371
+    at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+    at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+    at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+    at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(TestExecutionContext context, Func`1 invoke)
+    at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+    at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+    at NUnit.Framework.Internal.Execution.SimpleWorkItem.<>c__DisplayClass3_0.<PerformWork>b__0()
+    at NUnit.Framework.Internal.ContextUtils.<>c__DisplayClass1_0`1.<DoIsolated>b__0(Object _)
+    at NUnit.Framework.Internal.ContextUtils.<>c__DisplayClass2_0.<DoIsolated>b__0(Object s)
+    
+    1)    at Nethermind.JsonRpc.Test.Modules.TraceRpcModuleTests.Trace_rawTransaction_preserves_signed_gas_or_rejects_above_cap(Nullable`1 gasCap, Boolean streaming) in /home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/Nethermind.JsonRpc.Test/Modules/TraceRpcModuleTests.cs:line 2371
+    at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.ExecutionContextCallback(Object s)
+    
+    
+  Standard output
+    {"jsonrpc":"2.0","result":{"output":"0x","stateDiff":null,"trace":[{"action":{"callType":"call","from":"0x5c99f3668b236f57b30b73b00cb4385dc72a71aa","gas":"0x7148","input":"0x","to":"0x76e68a8696537e4141926f3e528733af9e237d69","value":"0x0"},"result":{"gasUsed":"0x0","output":"0x"},"subtraces":0,"traceAddress":[],"type":"call"}],"vmTrace":null},"id":67}
+    
+  Error output
+/home/banteg/dev/trace-adjacent.hVSt4eWi/nethermind/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.Test/release/Nethermind.JsonRpc.Test.dll (net10.0|x64) failed with 2 error(s) (6s 270ms)
+Exit code: 2
+
+Test run summary: Failed!
+  total: 10
+  failed: 2
+  succeeded: 8
+  skipped: 0
+  duration: 6s 527ms
+Test run completed with non-success exit code: 2 (see: https://aka.ms/testingplatform/exitcodes)

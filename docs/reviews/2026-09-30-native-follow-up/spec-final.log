@@ -1,0 +1,156 @@
+make -C tools build
+make[1]: Entering directory '/home/banteg/dev/trace-adjacent.hVSt4eWi/execution-apis/tools'
+go build -o rpctestgen ./cmd/rpctestgen
+go build -o speccheck ./cmd/speccheck
+go build -o specgen ./cmd/specgen
+make[1]: Leaving directory '/home/banteg/dev/trace-adjacent.hVSt4eWi/execution-apis/tools'
+./tools/specgen -o refs-openrpc.json -schemas 'src/schemas' -schemas 'src/engine/openrpc/schemas' -methods 'src/eth' -methods 'src/debug' -methods 'src/trace' -methods 'src/txpool' -methods 'src/engine/openrpc/methods' -methods 'src/testing' -error-groups 'src/error-groups'
+added methods from src/eth/block.yaml
+added methods from src/eth/capabilities.yaml
+added methods from src/eth/client.yaml
+added methods from src/eth/execute.yaml
+added methods from src/eth/fee_market.yaml
+added methods from src/eth/fill.yaml
+added methods from src/eth/filter.yaml
+added methods from src/eth/sign.yaml
+added methods from src/eth/state.yaml
+added methods from src/eth/submit.yaml
+added methods from src/eth/subscribe.yaml
+added methods from src/eth/transaction.yaml
+added methods from src/debug/getters.yaml
+added methods from src/debug/trace.yaml
+added methods from src/trace/methods.yaml
+added methods from src/txpool/pool.yaml
+added methods from src/engine/openrpc/methods/blob.yaml
+added methods from src/engine/openrpc/methods/capabilities.yaml
+added methods from src/engine/openrpc/methods/forkchoice.yaml
+added methods from src/engine/openrpc/methods/inclusion_list.yaml
+added methods from src/engine/openrpc/methods/payload.yaml
+added methods from src/engine/openrpc/methods/transition_configuration.yaml
+added methods from src/testing/testing_buildBlockV1.yaml
+added methods from src/testing/testing_commitBlockV1.yaml
+added schemas from src/schemas/base-types.yaml
+added schemas from src/schemas/block-access-list.yaml
+added schemas from src/schemas/block.yaml
+added schemas from src/schemas/capabilities.yaml
+added schemas from src/schemas/client.yaml
+added schemas from src/schemas/execute.yaml
+added schemas from src/schemas/filter.yaml
+added schemas from src/schemas/opcode-tracer.yaml
+added schemas from src/schemas/receipt.yaml
+added schemas from src/schemas/state.yaml
+added schemas from src/schemas/trace.yaml
+added schemas from src/schemas/transaction.yaml
+added schemas from src/schemas/txpool.yaml
+added schemas from src/schemas/withdrawal.yaml
+added schemas from src/engine/openrpc/schemas/blob.yaml
+added schemas from src/engine/openrpc/schemas/forkchoice.yaml
+added schemas from src/engine/openrpc/schemas/payload.yaml
+added schemas from src/engine/openrpc/schemas/transition_configuration.yaml
+added error groups from src/error-groups/execution-errors.yaml
+added error groups from src/error-groups/gas-errors.yaml
+added error groups from src/error-groups/rpc-non-standard-errors.yaml
+added error groups from src/error-groups/rpc-standard-errors.yaml
+added error groups from src/error-groups/txpool-errors.yaml
+added error groups from src/error-groups/zk-execution-errors.yaml
+wrote spec to refs-openrpc.json
+./tools/specgen -o openrpc.json -deref -schemas 'src/schemas' -schemas 'src/engine/openrpc/schemas' -methods 'src/eth' -methods 'src/debug' -methods 'src/trace' -methods 'src/txpool' -methods 'src/engine/openrpc/methods' -methods 'src/testing' -error-groups 'src/error-groups'
+added methods from src/eth/block.yaml
+added methods from src/eth/capabilities.yaml
+added methods from src/eth/client.yaml
+added methods from src/eth/execute.yaml
+added methods from src/eth/fee_market.yaml
+added methods from src/eth/fill.yaml
+added methods from src/eth/filter.yaml
+added methods from src/eth/sign.yaml
+added methods from src/eth/state.yaml
+added methods from src/eth/submit.yaml
+added methods from src/eth/subscribe.yaml
+added methods from src/eth/transaction.yaml
+added methods from src/debug/getters.yaml
+added methods from src/debug/trace.yaml
+added methods from src/trace/methods.yaml
+added methods from src/txpool/pool.yaml
+added methods from src/engine/openrpc/methods/blob.yaml
+added methods from src/engine/openrpc/methods/capabilities.yaml
+added methods from src/engine/openrpc/methods/forkchoice.yaml
+added methods from src/engine/openrpc/methods/inclusion_list.yaml
+added methods from src/engine/openrpc/methods/payload.yaml
+added methods from src/engine/openrpc/methods/transition_configuration.yaml
+added methods from src/testing/testing_buildBlockV1.yaml
+added methods from src/testing/testing_commitBlockV1.yaml
+added schemas from src/schemas/base-types.yaml
+added schemas from src/schemas/block-access-list.yaml
+added schemas from src/schemas/block.yaml
+added schemas from src/schemas/capabilities.yaml
+added schemas from src/schemas/client.yaml
+added schemas from src/schemas/execute.yaml
+added schemas from src/schemas/filter.yaml
+added schemas from src/schemas/opcode-tracer.yaml
+added schemas from src/schemas/receipt.yaml
+added schemas from src/schemas/state.yaml
+added schemas from src/schemas/trace.yaml
+added schemas from src/schemas/transaction.yaml
+added schemas from src/schemas/txpool.yaml
+added schemas from src/schemas/withdrawal.yaml
+added schemas from src/engine/openrpc/schemas/blob.yaml
+added schemas from src/engine/openrpc/schemas/forkchoice.yaml
+added schemas from src/engine/openrpc/schemas/payload.yaml
+added schemas from src/engine/openrpc/schemas/transition_configuration.yaml
+added error groups from src/error-groups/execution-errors.yaml
+added error groups from src/error-groups/gas-errors.yaml
+added error groups from src/error-groups/rpc-non-standard-errors.yaml
+added error groups from src/error-groups/rpc-standard-errors.yaml
+added error groups from src/error-groups/txpool-errors.yaml
+added error groups from src/error-groups/zk-execution-errors.yaml
+wrote spec to openrpc.json
+./tools/speccheck -v
+all passing.
+
+> execution-apis@0.0.0 docs:spec
+> node scripts/docs-spec.cjs
+
+
+> execution-apis@0.0.0 test:docs
+> node --test scripts/docs-spec.test.cjs
+
+TAP version 13
+# Subtest: recursive resources become labeled display nodes without mutating validation input
+ok 1 - recursive resources become labeled display nodes without mutating validation input
+  ---
+  duration_ms: 4.894741
+  type: 'test'
+  ...
+# Subtest: unscoped recursion fails and ordinary references are preserved
+ok 2 - unscoped recursion fails and ordinary references are preserved
+  ---
+  duration_ms: 0.786233
+  type: 'test'
+  ...
+# Subtest: actual generated trace pages retain array, variant fields and localization
+ok 3 - actual generated trace pages retain array, variant fields and localization
+  ---
+  duration_ms: 1383.891325
+  type: 'test'
+  ...
+# Subtest: projection preserves examples as data
+ok 4 - projection preserves examples as data
+  ---
+  duration_ms: 0.458641
+  type: 'test'
+  ...
+# Subtest: watched rebuild refreshes the projection; startup/release hooks preserve prepared specs
+ok 5 - watched rebuild refreshes the projection; startup/release hooks preserve prepared specs
+  ---
+  duration_ms: 3962.463523
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5569.783148

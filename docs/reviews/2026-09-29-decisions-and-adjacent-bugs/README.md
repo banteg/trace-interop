@@ -293,3 +293,7 @@ it does not claim client convergence or exhaustive runtime coverage.
 I would address C1 and correct D1 first. C2–C4 should get focused native captures before upstream
 patches. D2 needs a policy decision before changing a serializer or reversing the already tracked
 deleted-storage recommendation.
+
+## Native follow-up, 2026-09-30
+
+H15 wording and probe coverage are implemented; H06 missing block nulls are grandfathered, and H13 remains strict. Latest-development Nethermind and Besu reproductions produced [Nethermind #14060](https://github.com/NethermindEth/nethermind/pull/14060) and [Besu #11395](https://github.com/besu-eth/besu/pull/11395). The latter addresses signed gas clamping, high-s admission and empty type-4 authorization lists through the original signed-transaction processor. OpenEthereum 3.3.5 confirmed the H26 optional deleted-slot exception at runtime. See [the native follow-up](../2026-09-30-native-follow-up/README.md) for exact source pins, controls, test counts and limitations.

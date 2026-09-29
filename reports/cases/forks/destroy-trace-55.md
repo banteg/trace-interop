@@ -2,7 +2,7 @@
 
 `trace_call` · forks · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780. A deleted account reports storage {}; its account deletion implies every slot is wiped.
+**What this checks:** Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Report the exact deleted balance, code and nonce before Cancun; optional slot deletions match the known zero pre-values. Preserve an existing account after EIP-6780. A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -43,7 +43,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H26](../../decisions/H26.md): Report the exact deleted balance, code, nonce and empty storage before Cancun; preserve an existing account after EIP-6780.
+- [H26](../../decisions/H26.md): Report the exact deleted balance, code and nonce before Cancun; optional slot deletions match the known zero pre-values. Preserve an existing account after EIP-6780.
 - Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0xc4f200cb8a8742bfd', 'to': '0xc4f206a5aa5411442'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000001007': {'balance': {'*': {'from': '0x64', 'to': None}}, 'code': {'*': {'from': '0x611008ff
 
 </details>

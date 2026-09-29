@@ -428,6 +428,22 @@ def forks():
     from_sender = lambda r: r['type'] == 'call' and r['action']['from'] == sender
     cases = []
     beacon = '0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02'
+    funder = '0x0c2c51a0990aee1d73c1228de158688341557508'
+    assert not any(tx['sender'] == funder for b in blocks.values() if b['number'] <= 55 for tx in b['transactions'])
+    assert int(genesis['alloc'][funder[2:]].get('nonce', '0x0'), 16) == 0
+    address = created_address(funder, 0)
+    assert address not in codes
+    # Empty calldata writes 42 to slot zero; nonempty calldata deletes the account.
+    runtime = '36156008576000ff5b602a60005500'
+    base = {'from': funder, 'gas': '0x493e0', 'gasPrice': '0x77359400'}
+    bundle = [[dict(base, data='0x'+deploy(runtime)), ['trace', 'stateDiff']],
+              [dict(base, to=address, data='0x'), ['trace', 'stateDiff']],
+              [dict(base, to=address, data='0x01'), ['trace', 'stateDiff']]]
+    case(cases, 'many-write-delete-storage', 'trace_callMany', [bundle, '0x37'], probes=[
+        probe('H26', 'account', 'Before Cancun the final item deletes the account created by an earlier item.',
+              index=2, address=address, expected={'balance': {'-': '0x0'}, 'nonce': {'-': '0x1'}, 'code': {'-': '0x'+runtime}}),
+        probe('H26', 'deleted-storage', 'Account deletion wipes all storage; optional - entries report the item\'s pre-values, including slot zero written to 42 by the preceding item.',
+              index=2, address=address, expected={'0x'+word(0): '0x'+word(42)})])
     timestamp = int(headers['0x38']['timestamp'], 16)
     history = 8191  # EIP-4788 ring buffer length.
     # Block 56 wrote the ring-buffer slots: the chain state every build must show. Block 55

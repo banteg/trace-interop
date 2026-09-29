@@ -383,6 +383,27 @@ class ForksProbeTests(Probe):
     def records(self, name):
         return [realize(r) for r in FORKS[name]['probes'][0]['expected']]
 
+    def test_deleted_storage_allows_accurate_optional_old_values(self):
+        case = FORKS['many-write-delete-storage']
+        address = case['probes'][0]['address']
+        account = copy.deepcopy(case['probes'][0]['expected'])
+        slot = '0x' + '00'*32
+        old = '0x' + f'{42:064x}'
+        for storage in [{}, {slot: {'-': old}}]:
+            with self.subTest(storage=storage):
+                account['storage'] = storage
+                self.assertMatches(case, result([{}, {}, {'stateDiff': {address: account}}]))
+        for storage in [None, {slot: {'-': '0x1'}}, {slot: {'-': '0x'+f'{1:064x}'}},
+                        {slot: {'*': {'from': old, 'to': '0x'+'00'*32}}},
+                        {slot: {'+': old}}, {'0x01': {'-': old}},
+                        {'0x'+f'{1:064x}': {'-': old}}]:
+            with self.subTest(storage=storage):
+                account['storage'] = storage
+                self.assertDiffers(case, result([{}, {}, {'stateDiff': {address: account}}]))
+        account['storage'] = {}
+        account['code'] = '='
+        self.assertDiffers(case, result([{}, {}, {'stateDiff': {address: account}}]))
+
     def test_reward_matching_and_modes(self):
         rewards = self.records('rewards-to')
         self.assertEqual([(r['blockNumber'], r['action']['rewardType'], int(r['action']['value'], 16)) for r in rewards],

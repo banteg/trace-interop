@@ -2172,6 +2172,51 @@
           "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
         }
       }
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27586",
+      "title": "fix(rpc): keep omitted-gas calls within the RPC gas cap",
+      "client": "reth",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Native Fedora regression: historical block or sender allowance must not raise omitted unsigned-call gas above the RPC cap."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14060",
+      "title": "fix(rpc): reject signed raw transaction gas above the cap",
+      "client": "nethermind",
+      "decisions": [
+        "H13"
+      ],
+      "partial": [
+        "H13"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Preserves signed gas when the RPC cap is disabled or sufficient; rejects over-cap raw transactions rather than silently clamping. Reproduced on latest master; 278 TraceRpcModule tests passed. Commit author corrected to the requested GitHub noreply identity."
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11395",
+      "title": "fix(rpc): preserve and validate signed raw trace transactions",
+      "client": "besu",
+      "decisions": [
+        "H13"
+      ],
+      "partial": [
+        "H13"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Latest main reproductions confirm signed gas clamping, high-s admission and empty type-4 admission. Executes the original transaction with strict fork validation; 28 new HTTP regressions and 1,291 focused tests passed, one skipped. Signed off with the requested GitHub noreply identity."
     }
   ]
 }

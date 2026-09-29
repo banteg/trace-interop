@@ -31,7 +31,6 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- Result shape at `0`: 'transactionHash' is a required property
-- Result shape at `0`: 'transactionPosition' is a required property
+- Result shape at `/`: [{'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x0'}, 'blockHash': '0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110', 'blockNumber': 45, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}] is not valid under any of the give
 
 </details>

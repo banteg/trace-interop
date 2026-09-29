@@ -11,6 +11,7 @@ extension evidence, which does not hold a topic's verdict open (presentation.ver
 A `block-hash` probe (H33) classifies which block a trace_filter blockHash selected.
 """
 from .rules import (
+    deleted_storage_shape,
     embedded_error,
     page_dependencies,
     recommended_note,
@@ -364,6 +365,13 @@ def assess(case, observation, peers):
                     f'Expected labels {probe["labels"]}; got {[f.get("error") for f in attempts]}.')
             else:
                 add(topic, ok, requirement, f'Deepest executed frame at depth {depth} with subtraces {deepest.get("subtraces") if deepest else None}; attempts beyond it (type, error, result, subtraces): {shapes}.')
+        elif kind == 'deleted-storage':
+            diff = envelope(probe.get('index')).get('stateDiff')
+            storage = mapping(mapping(diff).get(probe['address'])).get('storage')
+            ok = deleted_storage_shape(storage) and all(
+                int(change['-'], 16) == int(probe['expected'].get(slot.lower(), '0x'+'0'*64), 16)
+                for slot, change in storage.items())
+            add(topic, ok, requirement, f'Known pre-state slots {probe["expected"]}; got {storage}')
         elif kind == 'account':
             diff = envelope(probe.get('index')).get('stateDiff')
             account = mapping(mapping(diff).get(probe['address']))

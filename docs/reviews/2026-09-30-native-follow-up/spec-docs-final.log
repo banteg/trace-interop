@@ -1,0 +1,75 @@
+
+> execution-apis@0.0.0 test:docs
+> node --test scripts/docs-spec.test.cjs
+
+TAP version 13
+# Subtest: recursive resources become labeled display nodes without mutating validation input
+ok 1 - recursive resources become labeled display nodes without mutating validation input
+  ---
+  duration_ms: 4.654176
+  type: 'test'
+  ...
+# Subtest: unscoped recursion fails and ordinary references are preserved
+ok 2 - unscoped recursion fails and ordinary references are preserved
+  ---
+  duration_ms: 0.649814
+  type: 'test'
+  ...
+# Subtest: actual generated trace pages retain array, variant fields and localization
+ok 3 - actual generated trace pages retain array, variant fields and localization
+  ---
+  duration_ms: 1343.23086
+  type: 'test'
+  ...
+# Subtest: projection preserves examples as data
+ok 4 - projection preserves examples as data
+  ---
+  duration_ms: 0.394295
+  type: 'test'
+  ...
+# Subtest: watched rebuild refreshes the projection; startup/release hooks preserve prepared specs
+ok 5 - watched rebuild refreshes the projection; startup/release hooks preserve prepared specs
+  ---
+  duration_ms: 3866.901129
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5429.182296
+
+> execution-apis@0.0.0 build:docs:core
+> npm run docs:copy && npm run build:docusaurus
+
+
+> execution-apis@0.0.0 docs:copy
+> cp README.md ./docs-api/docs/quickstart.md
+
+
+> execution-apis@0.0.0 prebuild:docusaurus
+> npm run docs:spec
+
+
+> execution-apis@0.0.0 docs:spec
+> node scripts/docs-spec.cjs
+
+
+> execution-apis@0.0.0 build:docusaurus
+> docusaurus build
+
+[INFO] [en] Creating an optimized production build...
+Warn: `docsDir` doesn't exist: "/home/banteg/dev/trace-adjacent.hVSt4eWi/execution-apis/docs".
+[INFO] [@open-rpc/docusaurus-plugin] loadContent called
+[INFO] [@open-rpc/docusaurus-plugin] contentLoaded called
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 39.70s
+[webpackbar] ✔ Client: Compiled successfully in 50.83s
+[INFO] [@open-rpc/docusaurus-plugin] postBuild called
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.

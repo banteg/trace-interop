@@ -68,7 +68,7 @@ def born_accounts(tx, exists, nonces):
     if tx['to'] is not None:
         return [tx['to'].lower()] if tx['value'] and tx['to'].lower() not in exists else []
     address = created_address(tx['sender'], nonces.get(tx['sender'], 0))
-    # Omitted gas runs at the server's execution cap, beyond any modelled constructor.
+    # Omitted gas uses a provisional model budget; defaulting is checked separately.
     gas = tx['gas']-intrinsic(tx['data'], True)-tx.get('intrinsic_extra', 0) if tx['gas'] else 10_000_000
     return [address] if isinstance(creation_outcome(tx['data'], gas, exists, address), str) else []
 
@@ -295,7 +295,7 @@ def assess(case, observation, peers, topics):
             if prior['to'] is None:
                 # Only a creation the model proves to survive, with the item's own gas, exists.
                 address=created_address(prior['sender'],nonce)
-                # Omitted gas runs at the server's execution cap, beyond any modelled constructor.
+                # Omitted gas uses a provisional model budget; defaulting is checked separately.
                 gas=prior['gas']-intrinsic(prior['data'],True) if prior['gas'] else 10_000_000
                 runtime=creation_outcome(prior['data'],gas,exists,address)
                 if runtime is None:

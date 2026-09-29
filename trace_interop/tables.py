@@ -292,10 +292,10 @@ def blocks(spec):
                    lambda c: c['method'] == 'trace_call' and c['selector'] == 'pending', lambda c: {'response': 'pending state, or an error (-32602 recommended) without one'}),
             Clause('block-state', 'Trace the block from its parent\'s post-block state with its own pre-transaction system operations applied, under its own fork rules.',
                    lambda c: c['method'] in replayed and names(c, KNOWN) and c['history'] == 'available', lambda c: {'response': 'selected block'}),
-            Clause('block-unknown', 'An unknown selected block returns an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)',
+            Clause('block-unknown', 'An unknown selected block returns null or an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)',
                    lambda c: c['method'] in replayed and names(c, ('number', 'hash', 'number beyond head', 'unknown hash', 'unresolvable safe'))
                    and (c['selector'] not in ('number', 'hash') or c['history'] == 'pruned'),
-                   lambda c: {'response': 'error (4444 recommended)' if c['history'] == 'pruned' else 'error (-32001 recommended)'}),
+                   lambda c: {'response': 'error (4444 recommended)' if c['history'] == 'pruned' else 'null or error (-32001 recommended)'}),
             Clause('block-pending', 'Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended).',
                    lambda c: c['method'] in replayed and c['selector'] == 'pending', lambda c: {'response': 'pending block, or an error (-32602 recommended) without one'}),
             Clause('filter-default', 'defaults omitted fromBlock and toBlock to the same latest head',

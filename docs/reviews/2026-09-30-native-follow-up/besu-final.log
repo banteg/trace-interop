@@ -1,0 +1,900 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Generating project version as supplied is version not semver: unspecified
+
+> Task :ethereum:permissioning:processResources NO-SOURCE
+> Task :crypto:plugin-api:processResources NO-SOURCE
+> Task :consensus:merge:processResources NO-SOURCE
+> Task :metrics:core:processResources NO-SOURCE
+> Task :ethereum:blockcreation:processResources NO-SOURCE
+> Task :ethereum:p2p:processResources NO-SOURCE
+> Task :datatypes:processResources NO-SOURCE
+> Task :crypto:services:processResources NO-SOURCE
+> Task :plugin-api:processResources NO-SOURCE
+> Task :metrics:plugin-api:processResources NO-SOURCE
+> Task :ethereum:eth:processResources NO-SOURCE
+> Task :services:kvstore:processResources NO-SOURCE
+> Task :ethereum:trie:processResources NO-SOURCE
+> Task :spotlessInternalRegisterDependencies UP-TO-DATE
+> Task :services:pipeline:processResources NO-SOURCE
+> Task :plugins:rocksdb:processResources NO-SOURCE
+> Task :plugin-api:core:processResources NO-SOURCE
+> Task :services:tasks:processResources NO-SOURCE
+> Task :ethereum:api:plugin-api:processResources NO-SOURCE
+> Task :metrics:rocksdb:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-chain:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-execution:processResources NO-SOURCE
+> Task :evm:processResources UP-TO-DATE
+> Task :ethereum:core:processResources UP-TO-DATE
+> Task :ethereum:api:processResources UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:processResources NO-SOURCE
+> Task :config:processResources UP-TO-DATE
+> Task :testutil:processResources UP-TO-DATE
+> Task :ethereum:referencetests:validateReferenceTestSubmodule
+> Task :util:compileJava UP-TO-DATE
+> Task :ethereum:rlp:compileJava UP-TO-DATE
+> Task :nat:compileJava UP-TO-DATE
+> Task :crypto:algorithms:compileJava UP-TO-DATE
+> Task :datatypes:spotlessGroovyGradle UP-TO-DATE
+> Task :datatypes:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:spotlessGroovyGradleApply UP-TO-DATE
+> Task :nat:spotlessGroovyGradle UP-TO-DATE
+> Task :crypto:spotlessGroovyGradle UP-TO-DATE
+> Task :config:spotlessGroovyGradle UP-TO-DATE
+> Task :platform:spotlessGroovyGradle UP-TO-DATE
+> Task :platform:spotlessGroovyGradleApply UP-TO-DATE
+> Task :crypto:spotlessGroovyGradleApply UP-TO-DATE
+> Task :nat:spotlessGroovyGradleApply UP-TO-DATE
+> Task :config:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:spotlessGroovyGradle UP-TO-DATE
+> Task :platform:spotlessApply UP-TO-DATE
+> Task :consensus:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessGroovyGradle UP-TO-DATE
+> Task :services:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessGroovyGradleApply UP-TO-DATE
+> Task :services:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessGroovyGradleApply UP-TO-DATE
+> Task :evm:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:clique:spotlessGroovyGradle UP-TO-DATE
+> Task :metrics:spotlessGroovyGradle UP-TO-DATE
+> Task :spotlessGroovyGradle UP-TO-DATE
+> Task :app:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessGroovyGradle UP-TO-DATE
+> Task :testfuzz:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:spotlessGroovyGradle UP-TO-DATE
+> Task :plugins:spotlessGroovyGradle UP-TO-DATE
+> Task :evm:spotlessGroovyGradleApply UP-TO-DATE
+> Task :metrics:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:spotlessGroovyGradleApply UP-TO-DATE
+> Task :plugins:spotlessGroovyGradleApply UP-TO-DATE
+> Task :spotlessGroovyGradleApply UP-TO-DATE
+> Task :app:spotlessGroovyGradleApply UP-TO-DATE
+> Task :testfuzz:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:clique:spotlessGroovyGradleApply UP-TO-DATE
+> Task :util:spotlessGroovyGradle UP-TO-DATE
+> Task :testutil:spotlessGroovyGradle UP-TO-DATE
+> Task :testutil:spotlessGroovyGradleApply UP-TO-DATE
+> Task :util:spotlessGroovyGradleApply UP-TO-DATE
+> Task :plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessJavaApply UP-TO-DATE
+> Task :nat:spotlessJava UP-TO-DATE
+> Task :nat:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessShellScripts UP-TO-DATE
+> Task :testutil:spotlessJava UP-TO-DATE
+> Task :testutil:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessShellScriptsApply UP-TO-DATE
+> Task :plugins:spotlessJava UP-TO-DATE
+> Task :plugins:spotlessJavaApply UP-TO-DATE
+> Task :crypto:spotlessJava UP-TO-DATE
+> Task :nat:spotlessShellScripts UP-TO-DATE
+> Task :nat:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:spotlessJavaApply UP-TO-DATE
+> Task :testutil:spotlessShellScripts UP-TO-DATE
+> Task :testutil:spotlessShellScriptsApply UP-TO-DATE
+> Task :config:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessSolidity UP-TO-DATE
+> Task :services:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessSolidityApply UP-TO-DATE
+> Task :plugin-api:spotlessJava UP-TO-DATE
+> Task :services:spotlessJavaApply UP-TO-DATE
+> Task :consensus:clique:spotlessJava UP-TO-DATE
+> Task :datatypes:spotlessJava UP-TO-DATE
+> Task :config:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:spotlessJava UP-TO-DATE
+> Task :datatypes:spotlessJavaApply UP-TO-DATE
+> Task :plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:catalogless-test-plugins:spotlessApply UP-TO-DATE
+> Task :metrics:spotlessJava UP-TO-DATE
+> Task :consensus:clique:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:spotlessJavaApply UP-TO-DATE
+> Task :metrics:spotlessJavaApply UP-TO-DATE
+> Task :util:spotlessJava UP-TO-DATE
+> Task :nat:spotlessSolidity UP-TO-DATE
+> Task :testutil:spotlessSolidity UP-TO-DATE
+> Task :util:spotlessJavaApply UP-TO-DATE
+> Task :testutil:spotlessSolidityApply UP-TO-DATE
+> Task :nat:spotlessSolidityApply UP-TO-DATE
+> Task :testutil:spotlessApply UP-TO-DATE
+> Task :nat:spotlessApply UP-TO-DATE
+> Task :consensus:common:spotlessGroovyGradle UP-TO-DATE
+> Task :plugins:spotlessShellScripts UP-TO-DATE
+> Task :datatypes:spotlessShellScripts UP-TO-DATE
+> Task :consensus:common:spotlessGroovyGradleApply UP-TO-DATE
+> Task :plugins:spotlessShellScriptsApply UP-TO-DATE
+> Task :datatypes:spotlessShellScriptsApply UP-TO-DATE
+> Task :testfuzz:spotlessJava UP-TO-DATE
+> Task :testfuzz:spotlessJavaApply UP-TO-DATE
+> Task :crypto:spotlessShellScripts UP-TO-DATE
+> Task :config:spotlessShellScripts UP-TO-DATE
+> Task :plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :crypto:spotlessShellScriptsApply UP-TO-DATE
+> Task :plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :config:spotlessShellScriptsApply UP-TO-DATE
+> Task :datatypes:spotlessSolidity UP-TO-DATE
+> Task :util:spotlessShellScripts UP-TO-DATE
+> Task :consensus:clique:spotlessShellScripts UP-TO-DATE
+> Task :datatypes:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:clique:spotlessShellScriptsApply UP-TO-DATE
+> Task :util:spotlessShellScriptsApply UP-TO-DATE
+> Task :datatypes:spotlessApply UP-TO-DATE
+> Task :services:spotlessShellScripts UP-TO-DATE
+> Task :services:spotlessShellScriptsApply UP-TO-DATE
+> Task :plugins:spotlessSolidity UP-TO-DATE
+> Task :plugins:spotlessSolidityApply UP-TO-DATE
+> Task :plugins:spotlessApply UP-TO-DATE
+> Task :testfuzz:spotlessShellScripts UP-TO-DATE
+> Task :config:spotlessSolidity UP-TO-DATE
+> Task :testfuzz:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:clique:spotlessSolidity UP-TO-DATE
+> Task :config:spotlessSolidityApply UP-TO-DATE
+> Task :config:spotlessApply UP-TO-DATE
+> Task :consensus:clique:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:clique:spotlessApply UP-TO-DATE
+> Task :util:spotlessSolidity UP-TO-DATE
+> Task :plugin-api:spotlessSolidity UP-TO-DATE
+> Task :plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:spotlessShellScripts UP-TO-DATE
+> Task :plugin-api:spotlessApply UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessJava UP-TO-DATE
+> Task :util:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessJavaApply UP-TO-DATE
+> Task :util:spotlessApply UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessJava UP-TO-DATE
+> Task :metrics:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:spotlessSolidity UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessJavaApply UP-TO-DATE
+> Task :crypto:spotlessSolidityApply UP-TO-DATE
+> Task :crypto:spotlessApply UP-TO-DATE
+> Task :services:spotlessSolidity UP-TO-DATE
+> Task :services:spotlessSolidityApply UP-TO-DATE
+> Task :services:spotlessApply UP-TO-DATE
+> Task :testfuzz:spotlessSolidity UP-TO-DATE
+> Task :testfuzz:spotlessSolidityApply UP-TO-DATE
+> Task :testfuzz:spotlessApply UP-TO-DATE
+> Task :acceptance-tests:spotlessShellScripts UP-TO-DATE
+> Task :acceptance-tests:spotlessShellScriptsApply UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessShellScripts UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessShellScripts UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessShellScriptsApply UP-TO-DATE
+> Task :metrics:spotlessSolidity UP-TO-DATE
+> Task :consensus:spotlessJavaApply UP-TO-DATE
+> Task :metrics:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:spotlessApply UP-TO-DATE
+> Task :consensus:merge:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:merge:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessSolidity UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:dsl:spotlessApply UP-TO-DATE
+> Task :consensus:common:spotlessJava UP-TO-DATE
+> Task :consensus:common:spotlessJavaApply UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:ibft:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:ibft:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessSolidity UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:tests:spotlessApply UP-TO-DATE
+> Task :consensus:merge:spotlessJava UP-TO-DATE
+> Task :consensus:merge:spotlessJavaApply UP-TO-DATE
+> Task :consensus:qbft:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:qbft:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:common:spotlessShellScripts UP-TO-DATE
+> Task :app:spotlessJava UP-TO-DATE
+> Task :app:spotlessJavaApply UP-TO-DATE
+> Task :consensus:common:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessJava UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessJavaApply UP-TO-DATE
+> Task :consensus:merge:spotlessShellScripts UP-TO-DATE
+> Task :evm:spotlessJava UP-TO-DATE
+> Task :consensus:merge:spotlessShellScriptsApply UP-TO-DATE
+> Task :evm:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:spotlessSolidity UP-TO-DATE
+> Task :acceptance-tests:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:spotlessApply UP-TO-DATE
+> Task :consensus:ibft:spotlessJava UP-TO-DATE
+> Task :consensus:ibft:spotlessJavaApply UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessShellScripts UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:qbft-core:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessSolidity UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:ibftlegacy:spotlessApply UP-TO-DATE
+> Task :consensus:qbft:spotlessJava UP-TO-DATE
+> Task :consensus:common:spotlessSolidity UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:common:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:common:spotlessApply UP-TO-DATE
+> Task :consensus:merge:spotlessSolidity UP-TO-DATE
+> Task :consensus:qbft:spotlessJavaApply UP-TO-DATE
+> Task :consensus:merge:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:merge:spotlessApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessGroovyGradle UP-TO-DATE
+> Task :crypto:algorithms:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:ibft:spotlessShellScripts UP-TO-DATE
+> Task :consensus:ibft:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:api:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :evm:spotlessShellScripts UP-TO-DATE
+> Task :evm:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:qbft:spotlessShellScripts UP-TO-DATE
+> Task :app:spotlessShellScripts UP-TO-DATE
+> Task :consensus:qbft:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:services:spotlessGroovyGradle UP-TO-DATE
+> Task :consensus:ibft:spotlessSolidity UP-TO-DATE
+> Task :crypto:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :app:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:services:spotlessGroovyGradleApply UP-TO-DATE
+> Task :crypto:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:ibft:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:ibft:spotlessApply UP-TO-DATE
+> Task :consensus:spotlessShellScripts UP-TO-DATE
+> Task :consensus:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:qbft:spotlessSolidity UP-TO-DATE
+> Task :consensus:qbft:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:qbft:spotlessApply UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessJava UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessJavaApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessJava UP-TO-DATE
+> Task :crypto:algorithms:spotlessJavaApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessJava UP-TO-DATE
+> Task :consensus:qbft-core:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:core:spotlessGroovyGradleApply UP-TO-DATE
+> Task :crypto:plugin-api:spotlessJava UP-TO-DATE
+> Task :crypto:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :crypto:services:spotlessJava UP-TO-DATE
+> Task :evm:spotlessSolidity UP-TO-DATE
+> Task :crypto:services:spotlessJavaApply UP-TO-DATE
+> Task :evm:spotlessSolidityApply UP-TO-DATE
+> Task :evm:spotlessApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessShellScripts UP-TO-DATE
+> Task :crypto:algorithms:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:ethstats:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:ethstats:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:evmtool:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:evmtool:spotlessGroovyGradleApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessSolidity UP-TO-DATE
+> Task :crypto:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :crypto:services:spotlessShellScripts UP-TO-DATE
+> Task :crypto:services:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessSolidityApply UP-TO-DATE
+> Task :crypto:algorithms:spotlessApply UP-TO-DATE
+> Task :crypto:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :app:spotlessSolidity UP-TO-DATE
+> Task :app:spotlessSolidityApply UP-TO-DATE
+> Task :app:spotlessApply UP-TO-DATE
+> Task :crypto:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :crypto:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :crypto:plugin-api:spotlessApply UP-TO-DATE
+> Task :crypto:services:spotlessSolidity UP-TO-DATE
+> Task :crypto:services:spotlessSolidityApply UP-TO-DATE
+> Task :crypto:services:spotlessApply UP-TO-DATE
+> Task :ethereum:eth:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:p2p:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:eth:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:p2p:spotlessGroovyGradleApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessShellScripts UP-TO-DATE
+> Task :consensus:qbft-core:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessSolidity UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:referencetests:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:referencetests:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:blockcreation:spotlessApply UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessJava UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:ethstats:spotlessJava UP-TO-DATE
+> Task :ethereum:ethstats:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:evmtool:spotlessJava UP-TO-DATE
+> Task :ethereum:evmtool:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:rlp:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:rlp:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:referencetests:spotlessJava UP-TO-DATE
+> Task :ethereum:referencetests:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:ethstats:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:ethstats:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:referencetests:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:referencetests:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:spotlessSolidity UP-TO-DATE
+> Task :consensus:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:spotlessApply UP-TO-DATE
+> Task :ethereum:permissioning:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:evmtool:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:permissioning:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:evmtool:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessSolidity UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:mock-p2p:spotlessApply UP-TO-DATE
+> Task :ethereum:ethstats:spotlessSolidity UP-TO-DATE
+> Task :ethereum:ethstats:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:ethstats:spotlessApply UP-TO-DATE
+> Task :metrics:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :metrics:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:rlp:spotlessJava UP-TO-DATE
+> Task :ethereum:rlp:spotlessJavaApply UP-TO-DATE
+> Task :metrics:core:spotlessGroovyGradle UP-TO-DATE
+> Task :metrics:core:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:trie:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:trie:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:referencetests:spotlessSolidity UP-TO-DATE
+> Task :ethereum:referencetests:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:referencetests:spotlessApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessSolidity UP-TO-DATE
+> Task :ethereum:rlp:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:rlp:spotlessShellScriptsApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessSolidityApply UP-TO-DATE
+> Task :consensus:qbft-core:spotlessApply UP-TO-DATE
+> Task :plugins:rocksdb:spotlessGroovyGradle UP-TO-DATE
+> Task :plugins:rocksdb:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:rlp:spotlessSolidity UP-TO-DATE
+> Task :ethereum:rlp:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:rlp:spotlessApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessGroovyGradleApply UP-TO-DATE
+> Task :plugins:health:spotlessGroovyGradle UP-TO-DATE
+> Task :plugins:health:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:permissioning:spotlessJava UP-TO-DATE
+> Task :ethereum:permissioning:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:evmtool:spotlessSolidity UP-TO-DATE
+> Task :ethereum:evmtool:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:evmtool:spotlessApply UP-TO-DATE
+> Task :metrics:plugin-api:spotlessJava UP-TO-DATE
+> Task :metrics:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:trie:spotlessJava UP-TO-DATE
+> Task :plugins:health:spotlessJava UP-TO-DATE
+> Task :ethereum:trie:spotlessJavaApply UP-TO-DATE
+> Task :plugins:health:spotlessJavaApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessJava UP-TO-DATE
+> Task :metrics:rocksdb:spotlessJavaApply UP-TO-DATE
+> Task :plugins:rocksdb:spotlessJava UP-TO-DATE
+> Task :ethereum:trie:spotlessShellScripts UP-TO-DATE
+> Task :plugins:rocksdb:spotlessJavaApply UP-TO-DATE
+> Task :metrics:core:spotlessJava UP-TO-DATE
+> Task :ethereum:trie:spotlessShellScriptsApply UP-TO-DATE
+> Task :metrics:core:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:permissioning:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:permissioning:spotlessShellScriptsApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessShellScripts UP-TO-DATE
+> Task :metrics:rocksdb:spotlessShellScriptsApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessSolidity UP-TO-DATE
+> Task :metrics:rocksdb:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:rocksdb:spotlessApply UP-TO-DATE
+> Task :ethereum:p2p:spotlessJava UP-TO-DATE
+> Task :ethereum:p2p:spotlessJavaApply UP-TO-DATE
+> Task :plugins:health:spotlessShellScripts UP-TO-DATE
+> Task :plugins:health:spotlessShellScriptsApply UP-TO-DATE
+> Task :metrics:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :metrics:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:permissioning:spotlessSolidity UP-TO-DATE
+> Task :plugins:rocksdb:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:permissioning:spotlessSolidityApply UP-TO-DATE
+> Task :plugins:rocksdb:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:permissioning:spotlessApply UP-TO-DATE
+> Task :plugin-api:core:spotlessGroovyGradle UP-TO-DATE
+> Task :metrics:core:spotlessShellScripts UP-TO-DATE
+> Task :metrics:core:spotlessShellScriptsApply UP-TO-DATE
+> Task :plugin-api:core:spotlessGroovyGradleApply UP-TO-DATE
+> Task :plugins:health:spotlessSolidity UP-TO-DATE
+> Task :plugins:health:spotlessSolidityApply UP-TO-DATE
+> Task :plugins:health:spotlessApply UP-TO-DATE
+> Task :services:kvstore:spotlessGroovyGradle UP-TO-DATE
+> Task :services:kvstore:spotlessGroovyGradleApply UP-TO-DATE
+> Task :metrics:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :metrics:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:trie:spotlessSolidity UP-TO-DATE
+> Task :ethereum:trie:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:trie:spotlessApply UP-TO-DATE
+> Task :plugin-api:core:spotlessJava UP-TO-DATE
+> Task :plugin-api:core:spotlessJavaApply UP-TO-DATE
+> Task :metrics:core:spotlessSolidity UP-TO-DATE
+> Task :metrics:core:spotlessSolidityApply UP-TO-DATE
+> Task :metrics:core:spotlessApply UP-TO-DATE
+> Task :plugins:rocksdb:spotlessSolidity UP-TO-DATE
+> Task :plugin-api:core:spotlessShellScripts UP-TO-DATE
+> Task :plugins:rocksdb:spotlessSolidityApply UP-TO-DATE
+> Task :plugins:rocksdb:spotlessApply UP-TO-DATE
+> Task :plugin-api:core:spotlessShellScriptsApply UP-TO-DATE
+> Task :plugin-api:core:spotlessSolidity UP-TO-DATE
+> Task :plugin-api:core:spotlessSolidityApply UP-TO-DATE
+> Task :plugin-api:core:spotlessApply UP-TO-DATE
+> Task :services:kvstore:spotlessJava UP-TO-DATE
+> Task :services:kvstore:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:p2p:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:p2p:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:eth:spotlessJava UP-TO-DATE
+> Task :ethereum:eth:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessGroovyGradleApply UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessShellScripts UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessJava UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessShellScriptsApply UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessJavaApply UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessShellScripts UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessSolidity UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessShellScriptsApply UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:tests:shanghai:spotlessApply UP-TO-DATE
+> Task :services:kvstore:spotlessShellScripts UP-TO-DATE
+> Task :services:kvstore:spotlessShellScriptsApply UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessSolidity UP-TO-DATE
+> Task :services:pipeline:spotlessGroovyGradle UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessSolidityApply UP-TO-DATE
+> Task :acceptance-tests:tests:osaka:spotlessApply UP-TO-DATE
+> Task :services:pipeline:spotlessGroovyGradleApply UP-TO-DATE
+> Task :services:tasks:spotlessGroovyGradle UP-TO-DATE
+> Task :services:tasks:spotlessGroovyGradleApply UP-TO-DATE
+> Task :services:kvstore:spotlessSolidity UP-TO-DATE
+> Task :services:kvstore:spotlessSolidityApply UP-TO-DATE
+> Task :services:kvstore:spotlessApply UP-TO-DATE
+> Task :nat:processResources NO-SOURCE
+> Task :nat:classes UP-TO-DATE
+> Task :services:tasks:spotlessJava UP-TO-DATE
+> Task :services:tasks:spotlessJavaApply UP-TO-DATE
+> Task :datatypes:compileJava UP-TO-DATE
+> Task :services:pipeline:spotlessJava UP-TO-DATE
+> Task :services:pipeline:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :nat:jar UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:p2p:spotlessSolidity UP-TO-DATE
+> Task :services:tasks:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:p2p:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:p2p:spotlessApply UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :services:tasks:spotlessShellScriptsApply UP-TO-DATE
+> Task :services:pipeline:spotlessShellScripts UP-TO-DATE
+> Task :services:pipeline:spotlessShellScriptsApply UP-TO-DATE
+> Task :services:tasks:spotlessSolidity UP-TO-DATE
+> Task :services:tasks:spotlessSolidityApply UP-TO-DATE
+> Task :services:tasks:spotlessApply UP-TO-DATE
+> Task :datatypes:classes UP-TO-DATE
+> Task :ethereum:eth:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:eth:spotlessShellScriptsApply UP-TO-DATE
+> Task :datatypes:jar UP-TO-DATE
+> Task :plugin-api:core:compileJava UP-TO-DATE
+> Task :config:compileJava UP-TO-DATE
+> Task :util:processResources NO-SOURCE
+> Task :config:classes UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessJava UP-TO-DATE
+> Task :config:jar UP-TO-DATE
+> Task :util:classes UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessJava UP-TO-DATE
+> Task :util:jar UP-TO-DATE
+> Task :services:pipeline:spotlessSolidity UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :services:pipeline:spotlessSolidityApply UP-TO-DATE
+> Task :services:pipeline:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessGroovyGradle UP-TO-DATE
+> Task :crypto:algorithms:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate:spotlessGroovyGradleApply UP-TO-DATE
+> Task :crypto:plugin-api:compileJava UP-TO-DATE
+> Task :crypto:algorithms:classes UP-TO-DATE
+> Task :crypto:plugin-api:classes UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessJava UP-TO-DATE
+> Task :ethereum:referencetests:processResources UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessJavaApply UP-TO-DATE
+> Task :crypto:plugin-api:jar UP-TO-DATE
+> Task :crypto:algorithms:jar UP-TO-DATE
+> Task :metrics:plugin-api:compileJava UP-TO-DATE
+> Task :plugin-api:core:classes UP-TO-DATE
+> Task :metrics:plugin-api:classes UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :crypto:services:processTestSupportResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessGroovyGradle UP-TO-DATE
+> Task :plugin-api:core:jar UP-TO-DATE
+> Task :ethereum:rlp:processResources NO-SOURCE
+> Task :ethereum:rlp:classes UP-TO-DATE
+> Task :consensus:common:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessGroovyGradleApply UP-TO-DATE
+> Task :metrics:plugin-api:jar UP-TO-DATE
+> Task :consensus:ibft:processResources NO-SOURCE
+> Task :consensus:clique:processResources NO-SOURCE
+> Task :consensus:ibftlegacy:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :consensus:qbft:processResources NO-SOURCE
+> Task :ethereum:api:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :consensus:qbft-core:processResources NO-SOURCE
+> Task :ethereum:ethstats:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:rlp:jar UP-TO-DATE
+> Task :plugins:health:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:api:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:evmtool:processResources NO-SOURCE
+> Task :ethereum:permissioning:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :testfuzz:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate:spotlessJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessGroovyGradleApply UP-TO-DATE
+> Task :evm:compileJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :evm:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessShellScriptsApply UP-TO-DATE
+> Task :evm:jar UP-TO-DATE
+> Task :ethereum:api:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:api:plugin-api:classes UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessJava UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:spotlessApply UP-TO-DATE
+> Task :ethereum:api:plugin-api:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessSolidity UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessJava UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessGroovyGradle UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessSolidityApply UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessGroovyGradleApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessJava UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:processResources NO-SOURCE
+> Task :ethereum:eth:plugin-api-sync:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessJava UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-chain:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-worldstate:classes UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessSolidity UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessSolidity UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:spotlessApply UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:spotlessApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:eth:spotlessSolidity UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:compileJava UP-TO-DATE
+> Task :ethereum:eth:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:eth:spotlessApply UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:processResources NO-SOURCE
+> Task :ethereum:core:plugin-api-validation:compileJava UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:classes UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:processResources NO-SOURCE
+> Task :ethereum:permissioning:plugin-api:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:classes UP-TO-DATE
+> Task :ethereum:permissioning:plugin-api:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-sync:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-validation:jar UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:processResources NO-SOURCE
+> Task :ethereum:eth:plugin-api-txpool:classes UP-TO-DATE
+> Task :ethereum:eth:plugin-api-txpool:jar UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessSolidity UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:spotlessApply UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:processResources NO-SOURCE
+> Task :ethereum:p2p:plugin-api:classes UP-TO-DATE
+> Task :ethereum:p2p:plugin-api:jar UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:compileJava UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessSolidityApply UP-TO-DATE
+> Task :services:kvstore:plugin-api:spotlessApply UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-execution:jar UP-TO-DATE
+> Task :services:kvstore:plugin-api:compileJava UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:compileJava UP-TO-DATE
+> Task :services:kvstore:plugin-api:processResources NO-SOURCE
+> Task :ethereum:blockcreation:plugin-api:classes UP-TO-DATE
+> Task :services:kvstore:plugin-api:classes UP-TO-DATE
+> Task :services:kvstore:plugin-api:jar UP-TO-DATE
+> Task :ethereum:blockcreation:plugin-api:jar UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:compileJava UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:classes UP-TO-DATE
+> Task :ethereum:core:plugin-api-worldstate-backend:jar UP-TO-DATE
+> Task :plugin-api:compileJava UP-TO-DATE
+> Task :plugin-api:classes UP-TO-DATE
+> Task :plugin-api:jar UP-TO-DATE
+> Task :plugins:health:compileJava UP-TO-DATE
+> Task :crypto:services:compileJava UP-TO-DATE
+> Task :services:kvstore:compileJava UP-TO-DATE
+> Task :plugins:health:classes UP-TO-DATE
+> Task :crypto:services:classes UP-TO-DATE
+> Task :services:kvstore:classes UP-TO-DATE
+> Task :plugins:health:jar UP-TO-DATE
+> Task :services:kvstore:jar UP-TO-DATE
+> Task :crypto:services:jar UP-TO-DATE
+> Task :ethereum:trie:compileJava UP-TO-DATE
+> Task :ethereum:trie:classes UP-TO-DATE
+> Task :ethereum:trie:jar UP-TO-DATE
+> Task :crypto:services:compileTestSupportJava UP-TO-DATE
+> Task :crypto:services:testSupportClasses UP-TO-DATE
+> Task :crypto:services:testSupportJar UP-TO-DATE
+> Task :metrics:core:compileJava UP-TO-DATE
+> Task :metrics:core:classes UP-TO-DATE
+> Task :metrics:core:jar UP-TO-DATE
+> Task :services:tasks:compileJava UP-TO-DATE
+> Task :services:pipeline:compileJava UP-TO-DATE
+> Task :metrics:rocksdb:compileJava UP-TO-DATE
+> Task :services:tasks:classes UP-TO-DATE
+> Task :metrics:rocksdb:classes UP-TO-DATE
+> Task :services:pipeline:classes UP-TO-DATE
+> Task :services:tasks:jar UP-TO-DATE
+> Task :metrics:rocksdb:jar UP-TO-DATE
+> Task :services:pipeline:jar UP-TO-DATE
+> Task :ethereum:spotlessJava UP-TO-DATE
+> Task :ethereum:spotlessJavaApply UP-TO-DATE
+> Task :ethereum:api:spotlessJava
+> Task :ethereum:api:spotlessJavaApply
+> Task :ethereum:core:spotlessJava
+> Task :ethereum:core:spotlessJavaApply
+> Task :spotlessJava UP-TO-DATE
+> Task :spotlessJavaApply UP-TO-DATE
+> Task :ethereum:core:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:core:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:spotlessSolidity UP-TO-DATE
+> Task :ethereum:core:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:core:spotlessApply
+> Task :ethereum:api:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:api:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:spotlessShellScripts UP-TO-DATE
+> Task :ethereum:spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:core:compileJava FROM-CACHE
+> Task :ethereum:core:classes UP-TO-DATE
+> Task :plugins:rocksdb:compileJava FROM-CACHE
+> Task :plugins:rocksdb:classes UP-TO-DATE
+> Task :plugins:rocksdb:jar UP-TO-DATE
+> Task :ethereum:p2p:compileJava FROM-CACHE
+> Task :ethereum:p2p:classes UP-TO-DATE
+> Task :ethereum:p2p:jar UP-TO-DATE
+> Task :ethereum:permissioning:compileJava FROM-CACHE
+> Task :ethereum:permissioning:classes UP-TO-DATE
+> Task :ethereum:permissioning:jar UP-TO-DATE
+> Task :ethereum:core:jar
+> Task :ethereum:core:processTestSupportResources NO-SOURCE
+> Task :ethereum:core:processTestResources UP-TO-DATE
+> Task :ethereum:api:spotlessSolidity UP-TO-DATE
+> Task :ethereum:api:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:api:spotlessApply
+> Task :ethereum:api:processTestSupportResources NO-SOURCE
+> Task :ethereum:eth:compileJava FROM-CACHE
+> Task :ethereum:eth:classes UP-TO-DATE
+> Task :ethereum:eth:jar UP-TO-DATE
+> Task :testutil:compileJava UP-TO-DATE
+> Task :testutil:classes UP-TO-DATE
+> Task :ethereum:api:processTestResources UP-TO-DATE
+> Task :testutil:jar UP-TO-DATE
+> Task :ethereum:blockcreation:compileJava FROM-CACHE
+> Task :ethereum:blockcreation:classes UP-TO-DATE
+> Task :ethereum:blockcreation:jar UP-TO-DATE
+> Task :ethereum:core:compileTestSupportJava FROM-CACHE
+> Task :ethereum:core:testSupportClasses UP-TO-DATE
+> Task :ethereum:core:testSupportJar UP-TO-DATE
+> Task :consensus:merge:compileJava FROM-CACHE
+> Task :consensus:merge:classes UP-TO-DATE
+> Task :consensus:merge:jar UP-TO-DATE
+> Task :ethereum:referencetests:compileJava FROM-CACHE
+> Task :ethereum:referencetests:classes UP-TO-DATE
+> Task :ethereum:referencetests:jar UP-TO-DATE
+> Task :ethereum:api:compileJava FROM-CACHE
+> Task :ethereum:api:classes UP-TO-DATE
+> Task :consensus:common:compileJava FROM-CACHE
+> Task :consensus:common:classes UP-TO-DATE
+> Task :consensus:common:jar UP-TO-DATE
+> Task :consensus:clique:compileJava FROM-CACHE
+> Task :consensus:clique:classes UP-TO-DATE
+> Task :consensus:qbft-core:compileJava FROM-CACHE
+> Task :consensus:qbft-core:classes UP-TO-DATE
+> Task :consensus:clique:jar UP-TO-DATE
+> Task :consensus:ibft:compileJava FROM-CACHE
+> Task :consensus:ibft:classes UP-TO-DATE
+> Task :consensus:qbft-core:jar UP-TO-DATE
+> Task :consensus:ibft:jar UP-TO-DATE
+> Task :ethereum:ethstats:compileJava FROM-CACHE
+> Task :ethereum:ethstats:classes UP-TO-DATE
+> Task :ethereum:ethstats:jar UP-TO-DATE
+> Task :consensus:ibftlegacy:compileJava FROM-CACHE
+> Task :ethereum:api:jar
+> Task :consensus:qbft:compileJava FROM-CACHE
+> Task :ethereum:api:compileTestSupportJava FROM-CACHE
+> Task :ethereum:api:testSupportClasses UP-TO-DATE
+> Task :consensus:ibftlegacy:classes UP-TO-DATE
+> Task :consensus:ibftlegacy:jar UP-TO-DATE
+> Task :consensus:qbft:classes UP-TO-DATE
+> Task :consensus:qbft:jar UP-TO-DATE
+> Task :app:compileJava FROM-CACHE
+> Task :testfuzz:compileJava UP-TO-DATE
+> Task :testfuzz:classes UP-TO-DATE
+> Task :testfuzz:jar UP-TO-DATE
+> Task :ethereum:evmtool:compileJava UP-TO-DATE
+> Task :ethereum:evmtool:classes UP-TO-DATE
+> Task :ethereum:evmtool:jar UP-TO-DATE
+> Task :spotlessShellScripts UP-TO-DATE
+> Task :spotlessShellScriptsApply UP-TO-DATE
+> Task :ethereum:spotlessSolidity UP-TO-DATE
+> Task :ethereum:spotlessSolidityApply UP-TO-DATE
+> Task :ethereum:spotlessApply UP-TO-DATE
+> Task :spotlessSolidity UP-TO-DATE
+> Task :spotlessSolidityApply UP-TO-DATE
+> Task :spotlessApply UP-TO-DATE
+
+> Task :generateArtifactsCatalog
+Artifacts catalog written to:
+  JSON: /home/banteg/dev/trace-adjacent.hVSt4eWi/besu/build/reports/dependencies/besu-artifacts-catalog.json
+
+> Task :compileJava NO-SOURCE
+> Task :app:copyArtifactsCatalogToResources UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :jar SKIPPED
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+> Task :app:jar UP-TO-DATE
+> Task :ethereum:evmtool:startScripts
+> Task :testfuzz:startScripts
+> Task :ethereum:evmtool:installDist
+> Task :testfuzz:installDist
+> Task :testfuzz:copyJacoco
+> Task :autocomplete
+> Task :evmToolStartScripts
+> Task :startScripts
+> Task :untunedStartScripts
+> Task :installDist
+> Task :ethereum:core:compileTestJava
+> Task :ethereum:core:testClasses
+> Task :ethereum:core:testJar
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by ethereum.ckzg4844.CKZG4844JNI in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.consensys.protocols/jc-kzg-4844/2.1.8/e90fff0e946f2906bafb35185fd87331fc62d160/jc-kzg-4844-2.1.8.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+> Task :ethereum:api:compileTestJava
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :ethereum:api:importTestBlocks
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by ethereum.ckzg4844.CKZG4844JNI in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.consensys.protocols/jc-kzg-4844/2.1.8/e90fff0e946f2906bafb35185fd87331fc62d160/jc-kzg-4844-2.1.8.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Task :ethereum:core:test
+> Task :ethereum:core:jacocoTestReport
+
+> Task :ethereum:api:exportTestBlocks
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.jna.Native in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.18.1/b27ba04287cc4abe769642fe8318d39fc89bf937/jna-5.18.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Task :ethereum:api:generateTestBlockchain
+> Task :ethereum:api:testClasses
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.17.Final/57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a/netty-common-4.2.17.Final.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.17.Final/57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a/netty-common-4.2.17.Final.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.17.Final/57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a/netty-common-4.2.17.Final.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by io.netty.util.internal.NativeLibraryUtil in an unnamed module (file:/home/banteg/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.17.Final/57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a/netty-common-4.2.17.Final.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :ethereum:api:test
+> Task :ethereum:api:jacocoTestReport
+
+[Incubating] Problems report is available at: file:///home/banteg/dev/trace-adjacent.hVSt4eWi/besu/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 50s
+661 actionable tasks: 27 executed, 19 from cache, 615 up-to-date

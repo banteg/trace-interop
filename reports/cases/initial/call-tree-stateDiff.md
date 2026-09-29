@@ -2,7 +2,7 @@
 
 `trace_call` · initial · [All reports](../../README.md)
 
-**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. A deleted account reports storage {}; its account deletion implies every slot is wiped. An account created and destroyed within the transaction is absent at both endpoints and has no account diff. Check accounting against independent gas. Assess the declared property.
+**What this checks:** Unrequested trace is an empty array. Unrequested vmTrace is null. Output remains a byte string under every trace selection. Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately. A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped. An account created and destroyed within the transaction is absent at both endpoints and has no account diff. Check accounting against independent gas. Assess the declared property.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

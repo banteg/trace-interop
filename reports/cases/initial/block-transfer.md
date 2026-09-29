@@ -42,7 +42,6 @@
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
-- Result shape at `2`: 'transactionHash' is a required property
-- Result shape at `2`: 'transactionPosition' is a required property
+- Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x0', 'input': '0x', 'to': '0x1f4924b14f34e24159387c0a4cdbaa32f3ddb0cf', 'value': '0x1'}, 'blockHash': '0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698', 'blockNumber': 5, 'result': {'ga
 
 </details>

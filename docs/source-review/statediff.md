@@ -165,6 +165,8 @@ Confidence: medium-high, from source.
 
 **Coverage gap.** The current H26 fixture account has no storage, so it cannot discriminate between these behaviours.
 
+**2026-09-30 follow-up.** The empty-storage-only proposal above is superseded. An isolated OpenEthereum 3.3.5 node emitted an accurate old-slot `-` entry after an earlier `trace_callMany` item wrote 42. H26 now permits `{}` or accurate optional `-` details, with no enumeration obligation. Existing-account slots still use `*`, and born-account slots use `+`. See [the native evidence](../reviews/2026-09-30-native-follow-up/README.md). The new `probes-forks/many-write-delete-storage` bundle and regression mutations check this exception.
+
 ### 7. [B, latent false positives] The H18 oracle mis-models multiple authorizations and absent authorities
 
 Confidence: **high**, demonstrated.

@@ -19,7 +19,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **77 of 128** c
 | [H09](../reports/decisions/H09.md) | 🤝 Converged | ·👍👍· | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️🛠️🛠️🛠️—⚠️ | ⚠️✅✅🛠️✅⚠️ |
 | [H10](../reports/decisions/H10.md) | 🤝 Converged | ···· | **Creation result field names**<br>Which fields and values describe a creation result and a call action? | ⚠️✅✅✅—✅ | ⚠️✅✅✅✅✅ |
 | [H11](../reports/decisions/H11.md) | 🤝 Converged | ··👍· | **Empty trace-type selection**<br>What happens when the trace-type list is empty? | ⚠️🟡🛠️✅—✅ | ⚠️✅✅✅✅✅ |
-| [H12](../reports/decisions/H12.md) | ⚪ Under review | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
+| [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | ·👍·· | **Invalid-parameter error codes**<br>Which error codes do malformed parameters and rejected unsigned calls return? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ·👍·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡⚠️⚠️🟡⚠️ |

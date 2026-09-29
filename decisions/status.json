@@ -209,6 +209,16 @@
       }
     ]
   },
+  "H12": {
+    "policy": "converged",
+    "note": "Every build runs two-argument trace_rawTransaction against latest state in the head block environment, so the baseline is settled. The optional third block selector is an extension: Reth and Anvil honor it (the selected block\u2019s post-state and header; pending uses the next-block environment over latest), and Erigon, Nethermind, Besu and the Geth draft reject it with -32602. No client ignores it. This records direction from implementations, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "H12 raw-selector capture (2026-09-29)",
+        "url": "https://github.com/banteg/trace-interop/blob/main/evidence/2026-09-29/raw-selector/README.md"
+      }
+    ]
+  },
   "H13": {
     "policy": "converged",
     "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error-code mapping and compatibility migration remain open; client implementations are not harmonized.",

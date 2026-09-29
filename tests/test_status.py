@@ -43,6 +43,14 @@ class DecisionStatusTests(unittest.TestCase):
         records.append(dict(records[0],build_id='ambiguous-build'))
         self.assertEqual(self.label(records),'🤝 Converged')
 
+    def test_extension_observations_do_not_block_assessed_cases(self):
+        self.decision['cases'].append('a/extension')
+        records = copy.deepcopy(self.records) + [dict(r, case='extension', checks=[{'topic': 'H03', 'status': 'observation'}])
+                                                 for r in copy.deepcopy(self.records)]
+        self.assertEqual(self.label(records), '✅ Harmonized · stable')
+        records[-1]['eligible'] = False
+        self.assertEqual(self.label(records), '🧪 Harmonized · dev')
+
     def test_missing_declared_case_and_empty_scope_block_harmonization(self):
         self.decision['cases'].append('a/uncaptured')
         self.assertEqual(self.label(), '🤝 Converged')

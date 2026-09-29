@@ -43,14 +43,20 @@ def channel_harmonized(decision, records, channel):
                          or any(c['topic'] == topic for c in r['checks']))]
         if not required <= {r['corpus']+'/'+r['case'] for r in relevant}:
             return False
+        assessed = False
         for record in relevant:
-            checks = [c for c in record['checks'] if c['topic'] == topic and c['status'] not in ['control','not_applicable']]
-            if not checks and record['corpus']+'/'+record['case'] not in required:
+            topical = [c for c in record['checks'] if c['topic'] == topic]
+            checks = [c for c in topical if c['status'] not in ['control','not_applicable','observation']]
+            if not checks and (record['corpus']+'/'+record['case'] not in required
+                               or record['eligible'] and any(c['status'] == 'observation' for c in topical)):
                 continue
             if not record['eligible'] or not checks or any(c['status'] != 'matches' for c in checks):
                 return False
             if record.get('schema', {}).get('status') == 'invalid':
                 return False
+            assessed = True
+        if not assessed:
+            return False
     return True
 
 

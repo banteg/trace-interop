@@ -1995,7 +1995,7 @@
       "partial": [
         "H06"
       ],
-      "note": "trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head still differs in its code",
+      "note": "trace_replayTransaction returns null for a missing transaction, following #13937; the filter bound past the head is #14040",
       "state": "open",
       "draft": false,
       "merged_at": null
@@ -2008,6 +2008,18 @@
         "H23"
       ],
       "note": "trace_filter matches a failed CREATE only by its creator, since #13981 removed its address from the result",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14040",
+      "title": "fix(rpc): return invalid params for a trace_filter bound past the head",
+      "client": "nethermind",
+      "decisions": [
+        "H06"
+      ],
+      "note": "trace_filter and the TraceStore plugin return -32602 for a bound past the head, sharing eth_getLogs' check and message",
       "state": "open",
       "draft": false,
       "merged_at": null

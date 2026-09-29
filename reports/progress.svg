@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 4 agree, 5 fix submitted, 13 no fix · converged, 4 no fix · under review, 6 not fully measured; Erigon 26 agree, 1 fix submitted, 2 no fix · converged, 2 no fix · under review, 1 not fully measured; Nethermind 26 agree, 1 fix submitted, 2 no fix · converged, 3 no fix · under review; Reth 21 agree, 4 fix submitted, 3 no fix · converged, 3 no fix · under review, 1 not fully measured; Anvil 14 agree, 2 fix submitted, 8 no fix · converged, 3 no fix · under review, 5 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 4 agree, 5 fix submitted, 13 no fix · converged, 4 no fix · under review, 6 not fully measured; Erigon 26 agree, 1 fix submitted, 2 no fix · converged, 2 no fix · under review, 1 not fully measured; Nethermind 26 agree, 2 fix submitted, 1 no fix · converged, 3 no fix · under review; Reth 21 agree, 4 fix submitted, 3 no fix · converged, 3 no fix · under review, 1 not fully measured; Anvil 14 agree, 2 fix submitted, 8 no fix · converged, 3 no fix · under review, 5 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect x="96" y="12" width="64" height="20" fill="#1a7f37"/>
@@ -26,10 +26,10 @@
 <text class="label" x="88" y="86" text-anchor="end">Nethermind</text>
 <rect x="96" y="72" width="416" height="20" fill="#1a7f37"/>
 <text x="304" y="86" text-anchor="middle" fill="#ffffff">26</text>
-<rect x="512" y="72" width="16" height="20" fill="#0969da"/>
-<text x="520" y="86" text-anchor="middle" fill="#ffffff">1</text>
-<rect x="528" y="72" width="32" height="20" fill="#bc4c00"/>
-<text x="544" y="86" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="512" y="72" width="32" height="20" fill="#0969da"/>
+<text x="528" y="86" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="544" y="72" width="16" height="20" fill="#bc4c00"/>
+<text x="552" y="86" text-anchor="middle" fill="#ffffff">1</text>
 <rect x="560" y="72" width="48" height="20" fill="#d4a72c"/>
 <text x="584" y="86" text-anchor="middle" fill="#1f2328">3</text>
 <text class="label" x="88" y="116" text-anchor="end">Reth</text>

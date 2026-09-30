@@ -131,6 +131,7 @@ flowchart LR
   Alloy_4257["Alloy #4257"]:::merged
   next_Alloy_release(["next Alloy release"]):::pending
   Reth_takes_next_Alloy_release[["Reth takes next Alloy release"]]:::pending
+  Alloy_4274["Alloy #4274"]:::open
   Alloy_EVM_411["Alloy EVM #411"]:::open
   next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
   Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
@@ -145,6 +146,7 @@ flowchart LR
   revm_inspectors_533["revm-inspectors #533"]:::released
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
+  Alloy_4274 -.-> next_Alloy_release
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
   next_Alloy_EVM_release -.-> Reth_takes_next_Alloy_EVM_release
   revm_3833 -.-> next_revm_release
@@ -166,6 +168,7 @@ flowchart LR
 | [Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216) | Default address filters to intersection | [H03](../reports/decisions/H03.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
 | [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H04](../reports/decisions/H04.md), [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | — | — | — | — |
+| [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | — | — | — | — | — |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev, stable | dev, stable |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 | — | — | dev, stable | — |

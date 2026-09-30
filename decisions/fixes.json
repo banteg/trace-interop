@@ -2371,6 +2371,21 @@
       "draft": false,
       "merged_at": null,
       "note": "Adds the missing method by reusing block replay's execution and result steps, so each result equals the trace_replayBlockTransactions entry for that transaction (L08). Unknown hash returns null; missing body, state or trie nodes return 4444. Inherits #10953's pre-block system calls through Tracer.processTracing. Remaining Besu trace work is tracked in besu-eth/besu#11405."
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4274",
+      "title": "feat(rpc-types-trace): add blockHash to TraceFilter",
+      "client": "reth",
+      "decisions": [
+        "H33"
+      ],
+      "partial": [
+        "H33"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release."
     }
   ]
 }

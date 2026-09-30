@@ -2345,7 +2345,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "TraceStore vmTrace and nonempty stateDiff could not deserialize, failing every stored trace read; single-pass readers also take legacy hex memory offsets and read 1,025 nested frames on a 1 MiB stack; native TraceStore suite passed 112 tests on Fedora"
+      "note": "TraceStore vmTrace and nonempty stateDiff could not deserialize, failing every stored trace read; single-pass readers also take legacy hex offsets and deletions, skip unknown members, and read 1,025 nested frames on a 1 MiB stack; native TraceStore suite passed 111 tests on Fedora"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14115",
@@ -2358,7 +2358,27 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "TraceStore replay returned the stored vmTrace for a trace-only selection and cleared top-level ex.store without stateDiff, unlike live replay (#13779 fixed the live path for H20); native TraceStore suite passed 128 tests on Fedora"
+      "note": "TraceStore replay returned the stored vmTrace for a trace-only selection and cleared top-level ex.store without stateDiff, unlike live replay (#13779 fixed the live path for H20); native TraceStore suite passed 127 tests on Fedora"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14123",
+      "title": "fix(tracing): serve only recorded trace types from TraceStore",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "TraceStore answered requests for trace types it does not record with null fields, e.g. vmTrace and stateDiff on the default Trace, Rewards store; it now falls back to live tracing, as it does for a transaction replay that requests rewards; native TraceStore suite passed 104 tests on Fedora"
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14122",
+      "title": "fix(tracing): require canonical blocks for stored transaction traces",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Stored transaction lookups ignored traceNonCanonical, so with CompactTxIndex=false a receipt still pointing at a reorged-out block returned that block's stored traces; native TraceStore suite passed 96 tests on Fedora"
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24435",

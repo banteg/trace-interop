@@ -2312,7 +2312,7 @@
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14091",
-      "title": "fix(rpc): validate a trace_rawTransaction as block inclusion does",
+      "title": "fix(rpc): validate a trace_rawTransaction with block inclusion's checks",
       "client": "nethermind",
       "decisions": [
         "H13"
@@ -2320,7 +2320,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "Implements Nethermind's 2026-09-30 #890 position: trace_rawTransaction runs through the validating Execute adapter without LoadNonceFromState (nonce low/high, EIP-3607 with the 7702 delegation exception, fee cap vs base fee, funds, block gas limit) after the node's ITxValidator; trace_call/callMany and replays unchanged. Existing -32000 mapping kept. 10 new rejection cases fail on master; JsonRpc.Test 3185 passed."
+      "note": "Implements Nethermind's 2026-09-30 #890 position: trace_rawTransaction runs through the validating Execute adapter without LoadNonceFromState (nonce low/high, EIP-3607 with the 7702 delegation exception, fee cap vs base fee, funds, block gas limit) after the node's ITxValidator, in the latest block's context (not head+1); trace_call/callMany and replays unchanged. Existing -32000 mapping kept. 10 new rejection cases fail on master; JsonRpc.Test 3185 passed. Review follow-up 8aebcf8c24 (2026-09-30): head-block context documented; ITracer.ExecuteSigned kept because trace_block's fork-override replay relies on LoadNonceFromState in Execute."
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14092",

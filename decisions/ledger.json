@@ -26,7 +26,7 @@
       ],
       "id": "H01",
       "kind": "Scope decision",
-      "next_step": "Besu: implement trace_replayTransaction (Besu #11357 asks the team to reconsider it). The draft profile states that all nine methods are required.",
+      "next_step": "Besu: review Besu #11406, which adds trace_replayTransaction for Besu #11357; Besu #11405 tracks the remaining Besu trace work. The draft profile states that all nine methods are required.",
       "question": "Which trace_* methods must a client implement, and how does it signal the ones it does not?",
       "rationale": "A caller should be able to distinguish an unsupported operation from a valid query with no trace.",
       "recommendation": "A client that serves the trace namespace implements all nine methods; there is no optional subset or discovery mechanism. A method the client does not serve returns -32601, never a fabricated empty result, so an unsupported operation stays distinguishable from a valid query with no trace. Besu adds individual replay, trace_replayTransaction.",

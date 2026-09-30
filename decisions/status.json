@@ -1,13 +1,29 @@
 {
   "H01": {
     "policy": "converged",
-    "note": "Converged on the full namespace: a client that serves `trace_*` implements all nine methods, with no optional subset or discovery mechanism. Erigon, Nethermind and Reth expose all nine, and so does the Geth draft fork; Besu lacks only individual replay, `trace_replayTransaction`, which Besu #11357 asks the team to reconsider. A method a client does not serve still returns -32601, never an empty result. This records direction from implementations, not unanimous formal approval.",
+    "note": "Converged on the full namespace: a client that serves `trace_*` implements all nine methods, with no optional subset or discovery mechanism. Erigon, Nethermind and Reth expose all nine, and so does the Geth draft fork; Besu lacks only individual replay, `trace_replayTransaction`; a Besu maintainer called adding it a good suggestion on #11357, and Besu #11406 implements it. A method a client does not serve still returns -32601, never an empty result. This records direction from implementations, not unanimous formal approval.",
     "sources": [
       {
         "label": "Besu #11357: reconsider trace_replayTransaction",
         "url": "https://github.com/besu-eth/besu/issues/11357"
+      },
+      {
+        "label": "Besu #11406: add trace_replayTransaction",
+        "url": "https://github.com/besu-eth/besu/pull/11406"
       }
-    ]
+    ],
+    "positions": {
+      "besu": {
+        "position": "agree",
+        "note": "Justin Florentine called adding trace_replayTransaction a good suggestion and asked Usman Saleem for input; Besu #11406 implements it.",
+        "sources": [
+          {
+            "label": "Besu #11357 maintainer comment",
+            "url": "https://github.com/besu-eth/besu/issues/11357#issuecomment-5872954140"
+          }
+        ]
+      }
+    }
   },
   "H02": {
     "policy": "converged",

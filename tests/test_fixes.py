@@ -167,6 +167,7 @@ class FixSubmittedTests(unittest.TestCase):
         self.assertEqual(self.verdict(DIFFERS, fixes), '🛠️ Fix submitted: [Besu #1](https://github.com/besu-eth/besu/pull/1)'
                          ' · [Besu #2](https://github.com/besu-eth/besu/pull/2)')
         self.assertTrue(self.verdict([{'status': 'matches'}, {'status': 'blocked'}], fixes).startswith('🛠️ Fix submitted'))
+        self.assertTrue(self.verdict([{'status': 'unsupported'}], fixes).startswith('🛠️ Fix submitted'))
 
     def test_merged_pr_marks_a_build_until_it_is_in_the_build(self):
         fixes = catalog(merged('besu_development'))
@@ -182,7 +183,6 @@ class FixSubmittedTests(unittest.TestCase):
     def test_other_outcomes_clients_decisions_and_closed_prs_are_unchanged(self):
         fixes = catalog({})
         self.assertEqual(self.verdict([{'status': 'matches'}], fixes), '✅ Checked cases agree')
-        self.assertEqual(self.verdict([{'status': 'unsupported'}], fixes), '⛔ Method unavailable')
         self.assertEqual(self.verdict([{'status': 'observation'}], fixes), '❔ Policy open')
         self.assertEqual(self.verdict(DIFFERS, fixes, client='erigon_release'), '⚠️ Differs')
         self.assertEqual(self.verdict(DIFFERS, fixes, topic='H09'), '⚠️ Differs')
@@ -195,6 +195,7 @@ class FixSubmittedTests(unittest.TestCase):
         link = '[Besu #1](https://github.com/besu-eth/besu/pull/1) (partial fix)'
         self.assertEqual(self.verdict(DIFFERS, catalog(partial)), f'⚠️ Differs · {link}')
         self.assertEqual(self.verdict([{'status': 'matches'}, {'status': 'unassessed'}], catalog(partial)), f'🟡 Partially assessed · {link}')
+        self.assertEqual(self.verdict([{'status': 'unsupported'}], catalog(partial)), f'⛔ Method unavailable · {link}')
         self.assertTrue(self.verdict(DIFFERS, catalog(partial), topic='H09').startswith('🛠️ Fix submitted'))
         self.assertEqual(self.verdict(DIFFERS, catalog(partial, {})),
                          f'🛠️ Fix submitted: {link} · [Besu #2](https://github.com/besu-eth/besu/pull/2)')

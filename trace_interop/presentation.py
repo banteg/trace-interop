@@ -106,7 +106,7 @@ def verdict(checks):
 
 
 def display_verdict(checks, fixes=()):
-    """Link submitted (pr, partial) fixes to a difference or partial assessment; only a complete fix replaces it."""
+    """Link submitted (pr, partial) fixes to a difference, missing method or partial assessment; only a complete fix replaces it."""
     label = verdict(checks)
     icon = {
         'Checked cases agree': '✅',
@@ -118,7 +118,7 @@ def display_verdict(checks, fixes=()):
         'Blocked': '🚧',
         'Control / not applicable': '🔎',
     }[label]
-    if not fixes or label not in ('Differs', 'Partially assessed'):
+    if not fixes or label not in ('Differs', 'Method unavailable', 'Partially assessed'):
         return f'{icon} {label}'
     links = ' · '.join(f'[{pr["label"]}]({pr["url"]})' + (' (partial fix)' if partial else '') for pr, partial in fixes)
     return f'{icon} {label} · {links}' if all(partial for _, partial in fixes) else f'🛠️ Fix submitted: {links}'
@@ -308,7 +308,7 @@ def fixes_page(fixes, root, parent, clients):
             'Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.\n\n'
             'A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. '
             'Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. '
-            'Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️ or 🟡 for that build and decision; partial PRs are linked without replacing them. '
+            'Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. '
             'Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; '
             'dashed steps are pending, and a client with nothing left has none.\n\n')
     for f in sorted({pr['client'] for pr in fixes['prs'] if pr['client']}, key=lambda f: clients[f]['name']) + [None]:
@@ -935,9 +935,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     text += ('## Test status key\n\n'
              '- ✅ **Checked cases agree:** the evaluated cases match the proposed contract; not full conformance.\n'
              '- ⚠️ **Differs:** at least one checked assertion differs from the proposal.\n'
-             '- 🛠️ **Fix submitted:** the build differs or is partially assessed, and linked PRs for its client and decision cover the measured difference. '
+             '- 🛠️ **Fix submitted:** the build differs, lacks the method or is partially assessed, and linked PRs for its client and decision cover the measured difference. '
              'Each is open, or merged but not yet in the build: its commit, or for a library its release, is not in the build’s source or lockfile. '
-             'The captured checks are unchanged; the marker leaves a build once the recorded uptake facts show the fix in it. A difference with only partial fixes keeps ⚠️ or 🟡 and links them as “partial fix”. '
+             'The captured checks are unchanged; the marker leaves a build once the recorded uptake facts show the fix in it. A difference with only partial fixes keeps ⚠️, ⛔ or 🟡 and links them as “partial fix”. '
              '[Related PRs](../docs/client-fixes.md).\n'
              '- ⛔ **Method unavailable:** the tested method is unsupported.\n'
              '- 🟡 **Partially assessed:** some declared cases or topics were not evaluated.\n'
@@ -999,8 +999,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += '**Client order:** ' + ' → '.join(f'[{editorial["clients"][f]["name"]}](../reports/clients/{f}.md)' for f in index_families) + '. Geth is the experimental draft fork, dev only; — marks its absent stable build. Anvil is Foundry’s development node, reported alongside but outside harmonization and positions.\n\n'
         text += ('Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · '
                  '🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. '
-                 '🛠️ replaces ⚠️ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference '
-                 'and are not yet in the build; partial fixes leave ⚠️ or 🟡 in place. The captured checks are unchanged. '
+                 '🛠️ replaces ⚠️, ⛔ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference '
+                 'and are not yet in the build; partial fixes leave ⚠️, ⛔ or 🟡 in place. The captured checks are unchanged. '
                  '[Outcome details](../reports/technical.md#test-status-key).\n\n')
         text += '### Policy status\n\n' + LEGEND + '\n\n### Client positions\n\n' + POSITION_LEGEND + '\n'
         text += '\nDecision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.\n'

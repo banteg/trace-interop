@@ -2359,6 +2359,18 @@
       "draft": false,
       "merged_at": null,
       "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes keep Erigon's -32000 (draft recommends -32001). MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main."
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11406",
+      "title": "feat(rpc): add trace_replayTransaction",
+      "client": "besu",
+      "decisions": [
+        "H01"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Adds the missing method by reusing block replay's execution and result steps, so each result equals the trace_replayBlockTransactions entry for that transaction (L08). Unknown hash returns null; missing body, state or trie nodes return 4444. Inherits #10953's pre-block system calls through Tracer.processTracing. Remaining Besu trace work is tracked in besu-eth/besu#11405."
     }
   ]
 }

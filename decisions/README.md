@@ -4,11 +4,11 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 14 more have a submitted fix, and **26 differ with no fix yet**: 23 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 15 more have a submitted fix, and **25 differ with no fix yet**: 22 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
-| [H01](../reports/decisions/H01.md) | 🤝 Converged | ···· | **Method coverage**<br>Which trace_* methods must a client implement, and how does it signal the ones it does not? | ⛔✅✅✅—✅ | ⛔✅✅✅✅✅ |
+| [H01](../reports/decisions/H01.md) | 🤝 Converged | 👍··· | **Method coverage**<br>Which trace_* methods must a client implement, and how does it signal the ones it does not? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H02](../reports/decisions/H02.md) | 🤝 Converged | ··👍👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅🛠️✅—⚠️ | ✅✅✅✅✅⚠️ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍👍👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | ⚠️🛠️🛠️✅—⚠️ | ⚠️✅✅✅✅✅ |
 | [H04](../reports/decisions/H04.md) | 🤝 Converged | ·👍👍👍 | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ✅✅🛠️🛠️—⚠️ | ✅✅✅🛠️✅⚠️ |
@@ -48,7 +48,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** c
 
 **Client order:** [Besu](../reports/clients/besu.md) → [Erigon](../reports/clients/erigon.md) → [Nethermind](../reports/clients/nethermind.md) → [Reth](../reports/clients/reth.md) → [Geth draft fork](../reports/clients/geth.md) → [Anvil](../reports/clients/anvil.md). Geth is the experimental draft fork, dev only; — marks its absent stable build. Anvil is Foundry’s development node, reported alongside but outside harmonization and positions.
 
-Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · 🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. 🛠️ replaces ⚠️ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference and are not yet in the build; partial fixes leave ⚠️ or 🟡 in place. The captured checks are unchanged. [Outcome details](../reports/technical.md#test-status-key).
+Stable/dev symbols describe captured checks: ✅ agree · ⚠️ differ · 🛠️ fix submitted · ⛔ unavailable · 🟡 partial · ⚪ unassessed · 🚧 blocked · ❔ policy open · 🔎 control/N/A. 🛠️ replaces ⚠️, ⛔ or 🟡 while [related PRs](../docs/client-fixes.md) for that client and decision cover the measured difference and are not yet in the build; partial fixes leave ⚠️, ⛔ or 🟡 in place. The captured checks are unchanged. [Outcome details](../reports/technical.md#test-status-key).
 
 ### Policy status
 

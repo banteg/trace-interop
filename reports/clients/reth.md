@@ -4,7 +4,7 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.7.0 · 60aeb532** (of 33 decisions): ✅ 22 agree · 🛠️ 4 fix submitted · ⚠️ 6 with no fix yet (5 on converged decisions) · ⚪ 1 not fully measured. Upstream fix PRs: 21 merged, 5 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.7.0 · 60aeb532** (of 33 decisions): ✅ 22 agree · 🛠️ 4 fix submitted · ⚠️ 6 with no fix yet (5 on converged decisions) · ⚪ 1 not fully measured. Upstream fix PRs: 21 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

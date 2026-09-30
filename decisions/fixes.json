@@ -415,7 +415,7 @@
       "state": "open",
       "draft": true,
       "merged_at": null,
-      "note": "implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue"
+      "note": "implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue; Frontier CREATE code-deposit regression fixed in commit 472c0bd8 on the draft PR branch"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13551",
@@ -2223,6 +2223,16 @@
       "note": "Native Fedora regression: historical block or sender allowance must not raise omitted unsigned-call gas above the RPC cap."
     },
     {
+      "url": "https://github.com/paradigmxyz/reth/pull/27593",
+      "title": "fix(rpc): use pending state for simulations",
+      "client": "reth",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Locally built pending state returned slot 42 to storage_at but slot 7 to a pending call; Fedora regression and 131 affected RPC tests passed after fix"
+    },
+    {
       "url": "https://github.com/NethermindEth/nethermind/pull/14060",
       "title": "fix(rpc): reject signed raw transaction gas above the cap",
       "client": "nethermind",
@@ -2326,6 +2336,16 @@
       "draft": false,
       "merged_at": null,
       "note": "blob-fee-defaulted: trace_call/trace_callMany crashed (-32603 Nullable object must have a value) on a blob call without maxFeePerBlobGas; now defaults it to the block's blob base fee exactly as eth_call's PrepareCall, and traces on the header the call was converted for. Blob normalization stays unresolved in H15."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14093",
+      "title": "fix(tracing): round-trip TraceStore vm and state",
+      "client": "nethermind",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "TraceStore vmTrace and nonempty stateDiff could not deserialize; native TraceStore suite passed 98 tests on Fedora"
     }
   ]
 }

@@ -210,10 +210,12 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
   the caller sees CREATE push 0, and a separate probe checks the label: "Out of gas" for both deposit failures,
   as Parity and EIP-170 report them, and "Invalid code", as OpenEthereum does.
 - H15, in `probes-prague`: `blob-fee-defaulted`, `blob-fee-zero`, `blob-fee-priced` and `blob-fee-none` call the
-  genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read. Zero/default blob pricing
-  remains separately unresolved: those retained outcomes are unassessed policy evidence, not universal-zero
-  failures or agreement. Covering positive pricing and calls without blob fields still preserve the head's
-  blob base fee (1 wei, from its zero excess blob gas). `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
+  genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read. Under Erigon's blob rule
+  (2026-10-01), a blob call whose `maxFeePerBlobGas` is omitted or 0 must execute and read 0; the head's blob
+  base fee, or rejecting the explicit zero cap, is a difference. A covering positive cap and a call without
+  blob fields read the head's blob base fee (1 wei, from its zero excess blob gas). These probes select only
+  `trace`, so they do not witness the blob fee itself: that a positive cap is charged and a zero cap is not
+  still needs a stateDiff probe. `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
   the sender's, and the creation must still return the address of the state nonce.
 - H14: `probes-prague/field-chain-id-mismatch` must be rejected. A chainId for another chain is invalid
   regardless of state, so -32602 is recommended.

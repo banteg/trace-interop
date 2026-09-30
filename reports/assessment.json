@@ -15,7 +15,7 @@
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
     "probes-forks.json": "96e02a3874278fd883bad5b984755e13b3f6fd426138dbd2badcf42e64e2c9ef",
-    "probes-prague.json": "ee86687e0b4854ccc1155e9d0b17d0201dbbad05278c945700926ff80e3bfd39",
+    "probes-prague.json": "e55385a51c24cef26a8069f36b6f7ef0e94c7f246e988fce724bc210b19d4d46",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-selector.json": "0ff3b0cea0cd99cde7fc538825957a49c01500a2034229ccc0138f9d514191f8",
     "raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
@@ -24,11 +24,11 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 14238,
-    "blocked": 623,
+    "assessed": 14259,
+    "blocked": 620,
     "control": 35,
-    "partial": 1168,
-    "unassessed": 6
+    "partial": 1156,
+    "unassessed": 0
   },
   "evidence": {
     "../evidence/2026-09-30/eval/a/manifest.json": "e2105c33dd322e759502d92c980500ba1d19efccb920e2347db4463f4b7d6cd4",
@@ -62,17 +62,17 @@
     "../evidence/2026-09-30/refresh/preflight.json": "0512522e371b191a3f6cb7cc3b5850001c40186e30ca51b409c9436e7571a8e5"
   },
   "sources": {
-    "decisions/impact.json": "75bd053724b2b618a32700151d5cdf4330b99e51fec30eea422809820fd1c749",
+    "decisions/impact.json": "f7a7a6b12588ef42ec7dbd051c757f6c83902a35654d2e8879e8cab80a5e668f",
     "decisions/laws.json": "765e01433b2703cb1538a11d72573c2047ac6b7ca73d938d43b3d4c5733c0914",
-    "decisions/ledger.json": "57bad2ae35c5c9ccc7a2775d5df28abdac08d3ca2805d885ca23d8795fdca780",
+    "decisions/ledger.json": "c69d8d538063bd5b47f8a38ac4c85c3d08c0fb153f4df1bc5f5003596debdd59",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
-    "decisions/status.json": "556707dcc4ddb619e6b1e10f9893ec38c66be4cd584da54c404557563a902976",
-    "fixtures/checksums.json": "e7d1500e12cc65b3dc4974ff7f19e04fa5d9430b2934d06467c5bbd09f1feb2c",
+    "decisions/status.json": "b4be4a4a409c0e6175d5b0c5100b11d9359b38bc46cd579d2d0f31a26f219767",
+    "fixtures/checksums.json": "a9fcd88bf2da0b274edf1ab65b61351f540fb29aea8e9d81d0dd50bdb7a1db1b",
     "locks/source-revisions.json": "a2d3200183da449357801a0358106828cb1d0ccfe8cbbe2e0eae6c33297d6713",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "361a725961e5888ad7a043d1a54c12853407656e63e90937988d3d8827b4d8ae",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
-    "spec.lock.json": "7640a5621eba654aef137085894c7c8d0cc709a5e208c60c98903e934c10848e",
+    "spec.lock.json": "624b763b0626c7b6d38df3b967505a25df12817a90a2cf67aa6598a37339bcc5",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "c8912eebde81ae3bd65830ca0d37ba34b7f56fa5537359279bc483b564724f5f",
     "trace_interop/execution_models.py": "4d6575ffa49b70fc569acd7346c3a7aca9a3c334adebb4a9a63dcc6200c5e2e3",
@@ -83,7 +83,7 @@
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "42091ebc2cd25f820c6f24a46e8d03fb4512a9444187d25d4691be316ac88fa7",
     "trace_interop/presentation.py": "f26d05ca5cdfe5c08e33afef4e4574837c910311d1d8ade3d7c3b221d14717f3",
-    "trace_interop/probes.py": "d16f95908d87fd9c3ad2e31ae0c0160fa77c563861e737e8078936471898bfe7",
+    "trace_interop/probes.py": "3317ea194257ed6ba4f378dc64a62ebd17bd0a923a79dd84e9b1defb2b27b571",
     "trace_interop/report.py": "075e9294a06d1df9cd7d372140b2e1b75b1417bb8b06060040590ce112f1ad06",
     "trace_interop/rules.py": "98cc10e38d109754d13cfad09ea13fe55ff6e24cef837e46784aa49090e91917",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",
@@ -94,5 +94,5 @@
     "trace_interop/vm_model.py": "d385b7627603df336cdbacea3cbf07db204a659c318180d44768b0f6b03eb9c8",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "3a376476548a12b59cdb0dcebc828d9f3cf5ba93"
+  "spec_commit": "7a5a2b4f10c3d1376ff234c92994650470873583"
 }

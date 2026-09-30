@@ -86,9 +86,11 @@ sender/beneficiary/value accounting, nonce and batch length to ensure the oracle
 detects errors that schema checks alone would miss.
 
 The scope is unsigned execution fees on a positive-base-fee Prague block. Blob
-fees and block/state overrides remain outside this policy assertion. Zero/default blob normalization
-is separately unresolved; the retained opcode probes are unassessed policy evidence. Covering positive
-blob pricing and non-blob calls preserve the selected blob price. Preferred positional overrides and
+fees and block/state overrides remain outside this policy assertion. The blob fee is decided
+independently of the execution fee (Erigon's rule, adopted 2026-10-01): a blob call with an omitted or
+zero `maxFeePerBlobGas` runs with BLOBBASEFEE 0 and pays no blob fee, a positive cap is validated
+against the selected blob base fee and charged, and non-blob calls keep the selected blob price. The
+`probes-prague` opcode probes check the BLOBBASEFEE half. Preferred positional overrides and
 recognized existing wrappers are optional extensions whose accepted contents must take effect.
 Signed validation stays in H13's separate corpus.
 These are proposed policy checks, not a claim of client-team agreement. The

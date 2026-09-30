@@ -2253,7 +2253,7 @@
             }
           },
           "kind": "frame",
-          "requirement": "With blobVersionedHashes and no maxFeePerBlobGas, the blob fee cap defaults to 0, so BLOBBASEFEE is 0. The factory's CREATE2 child deploys the word it read.",
+          "requirement": "A blob call without maxFeePerBlobGas runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
           "select": {
             "traceAddress": [
               0
@@ -2297,7 +2297,7 @@
             }
           },
           "kind": "frame",
-          "requirement": "An explicit zero maxFeePerBlobGas runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
+          "requirement": "An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
           "select": {
             "traceAddress": [
               0

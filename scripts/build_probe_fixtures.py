@@ -358,8 +358,9 @@ def prague():
     case(cases, 'field-chain-id-mismatch', 'trace_call', [dict(base, input='0x'+ret42, chainId='0x1'), ['trace'], 'latest'],
          probes=[probe('H14', 'error', 'A chainId that does not match the chain rejects the request; it is invalid regardless of state '
                        '(-32602 recommended).', recommended=-32602)])
-    # BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is 0 or defaulted (H15). A blob call needs a recipient, so it
-    # calls the genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read as its code.
+    # A blob call (blob hashes or a blob fee cap) whose maxFeePerBlobGas is omitted or 0 runs with BLOBBASEFEE 0 (H15).
+    # A blob call needs a recipient, so it calls the genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word
+    # it read as its code.
     factory = '0x4e59b44847b379578588920ca78fbf26c0b4956c'
     assert alloc[factory]['code'].startswith('0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081')
     head = read(ROOT/'fixtures/chains/raw-validation/headblock.json')
@@ -370,9 +371,9 @@ def prague():
                  'data': '0x'+word(0)+blob_init}
     for name, fields, value, requirement in [
             ('blob-fee-defaulted', {'blobVersionedHashes': [versioned]}, 0,
-             'With blobVersionedHashes and no maxFeePerBlobGas, the blob fee cap defaults to 0, so BLOBBASEFEE is 0.'),
+             'A blob call without maxFeePerBlobGas runs with BLOBBASEFEE 0.'),
             ('blob-fee-zero', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': '0x0'}, 0,
-             'An explicit zero maxFeePerBlobGas runs with BLOBBASEFEE 0.'),
+             'An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0.'),
             ('blob-fee-priced', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': hex(blob_base_fee)}, blob_base_fee,
              'A maxFeePerBlobGas that covers the blob base fee keeps the selected block\'s BLOBBASEFEE.'),
             ('blob-fee-none', {}, blob_base_fee, 'A call without blob fields keeps the selected block\'s BLOBBASEFEE.')]:

@@ -262,19 +262,6 @@ def assess(case, observation, peers):
     for probe in probes:
         topic, kind = probe['topic'], probe['kind']
         requirement = probe['requirement']
-        # These frozen probes captured the earlier universal-zero proposal. Keep their
-        # responses, but do not turn either normalization or rejection into agreement.
-        if topic == 'H15' and kind == 'frame' and case['name'] in ['blob-fee-zero', 'blob-fee-defaulted']:
-            frames = sequence(mapping(result).get('trace'))
-            frame = next((f for f in frames if isinstance(f, dict) and same(f, probe['select'])), {})
-            word = mapping(frame.get('result')).get('code')
-            error = mapping(response.get('error') or mapping(result).get('error'))
-            detail = (f'Observed deployed BLOBBASEFEE word {word}.' if status == 'result'
-                      else f'Observed {status} {error.get("code")}: {error.get("message")}.')
-            checks.append({'topic': topic, 'status': 'unassessed' if status == 'result' or rejection(status, response) else 'blocked',
-                           'requirement': 'Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved.',
-                           'detail': detail+' The retained universal-zero expectation no longer defines conformance.'})
-            continue
         if kind == 'state':
             checks.append(state_check(probe, status, response, result))
             continue

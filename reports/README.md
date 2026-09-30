@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/3a376476548a12b59cdb0dcebc828d9f3cf5ba93) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/7a5a2b4f10c3d1376ff234c92994650470873583) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 Published builds checked at **2026-09-30T13:03:47.160133+00:00**. [Freshness preflight](../evidence/2026-09-30/eval/preflight.json) · [Build lock](../evidence/2026-09-30/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
@@ -8,7 +8,7 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft. 18 more have a submitted fix, and **22 differ with no fix yet**: 19 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft. 18 more have a submitted fix, and **23 differ with no fix yet**: 19 on converged decisions and 4 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
@@ -16,7 +16,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** c
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.9-develop · 67ce4ab1 | 4 | 8 | 13 | 2 | 0 | 6 | 0 | 0 / 18 |
 | [Erigon](clients/erigon.md) | 3.8.0-dev · 923b4d31 | 28 | 2 | 1 | 0 | 0 | 2 | 14 | 21 / 3 |
-| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 79173d14 | 27 | 4 | 0 | 0 | 0 | 2 | 15 | 39 / 8 |
+| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 79173d14 | 27 | 4 | 0 | 1 | 0 | 1 | 15 | 39 / 8 |
 | [Reth](clients/reth.md) | 2.7.0 · 43a93dbc | 22 | 4 | 5 | 1 | 0 | 1 | 0 | 21 / 7 |
 | [Anvil](clients/anvil.md) | 1.8.4-nightly · e3429853 | 14 | 2 | 11 | 1 | 0 | 5 | 4 | 1 / 1 |
 

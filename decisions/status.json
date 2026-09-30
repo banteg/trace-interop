@@ -309,16 +309,16 @@
   },
   "H15": {
     "policy": "review",
-    "note": "No policy conclusion is recorded yet; client positions are listed below.",
+    "note": "No policy conclusion is recorded yet. Only Erigon has stated a position on the current recommendation: it agrees with the ordinary fee rules, has shipped them and proposed the blob rule the recommendation adopted on 2026-10-01. The other clients have not responded and Reth\u2019s priced fee-charging question (reth#27476) is open, so the convergence criterion is not met.",
     "sources": [],
     "positions": {
       "erigon": {
-        "position": "previous",
-        "note": "Recorded agreement with the earlier recommendation: Agrees with the fee defaults: omitted fees are 0, an unpriced call runs with GASPRICE, BASEFEE and BLOBBASEFEE 0, GASLIMIT is the block\u2019s, an omitted gas runs at the RPC cap, and a priced call pays for its gas. Its development build implements this (#24330, #24343). The September 30 grandfathering revision has not been explicitly reviewed by the client; this position is retained as historical evidence.",
+        "position": "agree",
+        "note": "Agrees and has shipped the ordinary fee rules: omitted fees default to 0, a zero effective price runs with GASPRICE and BASEFEE 0 and no fee balance effects, validation is skipped only when both caps are 0, and a priced call pays upfront gas, refunds, burn and tip. Proposed the blob rule H15 adopted: each fee is decided independently, BASEFEE zeroed at a zero execution price and BLOBBASEFEE zeroed for a blob call (blobVersionedHashes or maxFeePerBlobGas present) whose maxFeePerBlobGas is not positive. Will fix its trace_callMany, which recognizes the configuration wrapper but never applies its state overrides. Asked whether an explicit gas: 0 means omitted, which is open.",
         "sources": [
           {
-            "label": "Erigon on execution-apis#890",
-            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857638936"
+            "label": "Erigon on execution-apis#890 (2026-09-30)",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5920232075"
           }
         ]
       }

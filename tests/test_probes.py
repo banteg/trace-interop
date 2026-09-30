@@ -307,15 +307,19 @@ class FieldProbeTests(Probe):
                 {'traceAddress': [0], 'type': 'create', 'subtraces': 0, 'action': {'from': factory},
                  'result': {'address': '0x'+'22'*20, 'code': '0x'+f'{deployed:064x}', 'gasUsed': '0x1'}}]
 
-    def test_blob_zero_and_default_normalization_remain_unresolved(self):
+    def test_unpriced_blob_calls_run_with_zero_blob_base_fee(self):
+        # Erigon's rule (H15): a blob call whose maxFeePerBlobGas is omitted or 0 executes with BLOBBASEFEE 0.
         for name in ['blob-fee-defaulted', 'blob-fee-zero']:
             case = PRAGUE[name]
-            factory = case['request']['params'][0]['to']
-            for value in [0, 1]:
-                self.assertEqual(statuses(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, value)})), ['unassessed'])
-            self.assertEqual(statuses(case, error(-32000)), ['unassessed'])
-            self.assertEqual(statuses(case, error(-32603)), ['blocked'])
-            self.assertEqual(statuses(case, {'status': 'malformed_json'}), ['blocked'])
+            call = case['request']['params'][0]
+            self.assertTrue(call['blobVersionedHashes'])
+            self.assertEqual(call.get('maxFeePerBlobGas', '0x0'), '0x0')
+            factory = call['to']
+            self.assertMatches(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, 0)}))
+            # Reth, Besu, Anvil and Erigon 3.7.0 keep the selected blob base fee; rejecting the cap is a difference too.
+            self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, 1)}))
+            for code in [-32000, -32003, -32603]:
+                self.assertDiffers(case, error(code))
 
     def test_blob_positive_and_nonblob_calls_preserve_selected_price(self):
         real = 1  # The raw-validation head has no excess blob gas: the minimum blob base fee.

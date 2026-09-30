@@ -221,11 +221,15 @@
   },
   "H13": {
     "policy": "converged",
-    "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error codes are recommended, not required (2026-09-29): the eth_sendRawTransaction groups with the -32003 fallback, so a rejection agrees when it names its own violation. Erigon\u2019s development build and Reth agree; Besu and Nethermind differ in behavior, and compatibility migration remains open.",
+    "note": "Converged on strict execution validation, including nonce, balance and sender-code checks. Error codes are recommended, not required (2026-09-29): the eth_sendRawTransaction groups with the -32003 fallback, so a rejection agrees when it names its own violation. Erigon\u2019s development build and Reth agree; Besu and Nethermind differ in behavior, and compatibility migration remains open. Nethermind explicitly supports block-inclusion validation for trace_rawTransaction and permissive eth_call-like trace_call (2026-09-30); this is policy agreement, not changed captured behavior.",
     "sources": [
       {
         "label": "Erigon\u2019s trace API review",
         "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
+      },
+      {
+        "label": "Nethermind positions (2026-09-30)",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5906720536"
       }
     ],
     "positions": {
@@ -238,13 +242,32 @@
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5784143408"
           }
         ]
+      },
+      "nethermind": {
+        "position": "agree",
+        "note": "Supports strict trace_rawTransaction validation with the same checks as block inclusion; trace_call remains permissive like eth_call. This does not approve every fee default in H15 or claim implementation uptake.",
+        "sources": [
+          {
+            "label": "Nethermind positions (2026-09-30)",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5906720536"
+          }
+        ]
       }
     }
   },
   "H14": {
-    "policy": "review",
-    "note": "No policy conclusion is recorded yet; client positions are listed below.",
-    "sources": [],
+    "policy": "converged",
+    "note": "Converged on the core parameter and rejection direction: malformed input and conflicting data/input are rejected, equal calldata values are accepted, and validation errors name the actual violation. Erigon agrees with the direction; Nethermind explicitly supports the calldata rule and prefers one error map shared by all methods (2026-09-30). The shared-map preference is recorded without treating it as approval of every recommended numeric code or every H14 clause. Codes remain recommended, implementation differences remain, and this is direction aligned rather than unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Erigon on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857403064"
+      },
+      {
+        "label": "Nethermind positions (2026-09-30)",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5906720536"
+      }
+    ],
     "positions": {
       "erigon": {
         "position": "agree",
@@ -253,6 +276,16 @@
           {
             "label": "Erigon on execution-apis#890",
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5857403064"
+          }
+        ]
+      },
+      "nethermind": {
+        "position": "scoped",
+        "note": "Supports rejecting unequal data/input everywhere with -32602, matching Geth, while accepting equal values. Prefers one shared error map so the same failure gets the same code across methods. The comment does not endorse every H14 clause or settle the full numeric map; the draft still recommends codes rather than requiring them.",
+        "sources": [
+          {
+            "label": "Nethermind positions (2026-09-30)",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5906720536"
           }
         ]
       }
@@ -515,5 +548,21 @@
       }
     }
   },
-  "H33": {}
+  "H33": {
+    "note": "Under review. Erigon privately supports canonical-only hash resolution, a permitted choice in the current optional exact-block-or-error recommendation. This narrower position does not settle universal blockHash support or require other clients to reject accurately served orphans. Nethermind says its H32/H33 positions will follow.",
+    "positions": {
+      "erigon": {
+        "position": "scoped",
+        "note": "Supports canonical-only hash resolution and reports that existing eth_getLogs and trace_filter hash resolution is canonical-only. This privately relayed position concerns canonicality; it is not evidence that the trace_filter.blockHash member is implemented or an endorsement of every H33 clause. The current proposal permits canonical-only clients to reject noncanonical hashes.",
+        "sources": [
+          {
+            "label": "Erigon canonicality feedback",
+            "kind": "private",
+            "received_at": "2026-09-30",
+            "provenance": "relayed by the user; no independently verifiable public source"
+          }
+        ]
+      }
+    }
+  }
 }

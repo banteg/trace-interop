@@ -23,10 +23,10 @@
       "counted": true,
       "counts": {
         "agree": 4,
-        "converged": 13,
+        "converged": 14,
         "fix": 5,
         "policy": 0,
-        "review": 5,
+        "review": 4,
         "unmeasured": 6
       },
       "dev_only": 0,
@@ -59,10 +59,10 @@
       "counted": true,
       "counts": {
         "agree": 29,
-        "converged": 0,
+        "converged": 1,
         "fix": 0,
         "policy": 0,
-        "review": 2,
+        "review": 1,
         "unmeasured": 2
       },
       "dev_only": 14,
@@ -95,10 +95,10 @@
       "counted": true,
       "counts": {
         "agree": 28,
-        "converged": 1,
+        "converged": 2,
         "fix": 0,
         "policy": 0,
-        "review": 2,
+        "review": 1,
         "unmeasured": 2
       },
       "dev_only": 16,
@@ -131,10 +131,10 @@
       "counted": true,
       "counts": {
         "agree": 22,
-        "converged": 2,
+        "converged": 3,
         "fix": 4,
         "policy": 0,
-        "review": 4,
+        "review": 3,
         "unmeasured": 1
       },
       "dev_only": 0,
@@ -167,10 +167,10 @@
       "counted": false,
       "counts": {
         "agree": 14,
-        "converged": 8,
+        "converged": 9,
         "fix": 2,
         "policy": 0,
-        "review": 4,
+        "review": 3,
         "unmeasured": 5
       },
       "dev_only": 4,

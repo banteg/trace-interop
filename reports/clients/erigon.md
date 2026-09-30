@@ -4,7 +4,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.8.0-dev · 85e1ca92** (of 33 decisions): ✅ 29 agree (+2 since the previous capture) · ⚠️ 2 with no fix yet · ⚪ 2 not fully measured. 14 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 21 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.8.0-dev · 85e1ca92** (of 33 decisions): ✅ 29 agree (+2 since the previous capture) · ⚠️ 2 with no fix yet (1 on converged decisions) · ⚪ 2 not fully measured. 14 of these agreements are not yet in 3.7.0 · bdc78cc4. Upstream fix PRs: 21 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

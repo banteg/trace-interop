@@ -3,7 +3,7 @@ from pathlib import Path
 import unittest
 
 from trace_interop.presentation import check_fixes, merged_fixes
-from trace_interop.status import check_positions, client_positions, decision_status, NATIVE_CLIENTS
+from trace_interop.status import check_positions, client_positions, decision_status, NATIVE_CLIENTS, position_source
 
 
 class DecisionStatusTests(unittest.TestCase):
@@ -81,6 +81,7 @@ class DecisionStatusTests(unittest.TestCase):
 
 class ClientPositionTests(unittest.TestCase):
     source = {'label': 'Client review', 'url': 'https://example.org/review'}
+    private_source = {'label': 'Client feedback', 'kind': 'private', 'received_at': '2026-09-30', 'provenance': 'relayed by the user'}
 
     def entry(self, **change):
         return {'position': 'agree', 'note': 'Agrees.', 'sources': [self.source]} | change
@@ -110,6 +111,38 @@ class ClientPositionTests(unittest.TestCase):
         self.assertEqual(positions['reth']['position'], 'agree')
         self.assertEqual(positions['reth']['sources'], [fix])
         self.assertEqual(client_positions({}, []), {})
+
+    def test_private_positions_require_explicit_provenance(self):
+        entry = self.entry(position='scoped', sources=[self.private_source])
+        check_positions({'H33': {'positions': {'erigon': entry}}}, {'H33'})
+        for change in [{'kind': 'unknown'}, {'kind': 'public'}, {'received_at': None}, {'received_at': 'bad'},
+                       {'provenance': ''}, {'label': ''}, {'url': 'https://example.org/not-private'}]:
+            source = self.private_source | change
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                check_positions({'H33': {'positions': {'erigon': self.entry(sources=[source])}}}, {'H33'})
+
+    def test_private_sources_render_without_links_and_keep_public_fixes(self):
+        self.assertEqual(position_source(self.source), '[Client review](https://example.org/review)')
+        self.assertEqual(position_source(self.private_source), 'Client feedback (private; relayed by the user; received 2026-09-30)')
+        fix = {'label': 'Client fix', 'url': 'https://example.org/fix'}
+        for sources in [[self.private_source], [self.private_source, fix]]:
+            recorded = self.entry(position='scoped', sources=sources)
+            positions = client_positions({'erigon': recorded}, [('erigon', fix)])
+            self.assertEqual(positions['erigon'], self.entry(position='scoped', sources=[self.private_source, fix]))
+
+    def test_published_scoped_positions_preserve_limits(self):
+        root = Path(__file__).resolve().parents[1]
+        h14 = (root/'reports/decisions/H14.md').read_text()
+        h33 = (root/'reports/decisions/H33.md').read_text()
+        index = (root/'decisions/README.md').read_text()
+        self.assertIn('**Status: 🤝 Converged**', h14)
+        self.assertTrue(any('[H14]' in line and '🤝 Converged' in line for line in index.splitlines()))
+        self.assertIn('| Nethermind | ◐ Scoped support |', h14)
+        self.assertIn('issuecomment-5906720536', h14)
+        self.assertIn('**Status: ⚪ Under review**', h33)
+        self.assertIn('| Erigon | ◐ Scoped support |', h33)
+        self.assertIn('Erigon canonicality feedback (private; relayed by the user;', h33)
+        self.assertNotIn('[Erigon canonicality feedback]', h33)
 
     def test_published_positions(self):
         root = Path(__file__).resolve().parents[1]

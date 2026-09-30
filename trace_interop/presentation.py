@@ -9,7 +9,7 @@ import re
 from .cli import write
 from .progress import BUCKETS, pr_counts, svg, tally
 from .versions import lagging_development
-from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions
+from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions, position_source
 
 
 SOURCE_GROUPS = {
@@ -797,10 +797,10 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += f'**Status: {statuses[topic]}** · [Status definitions](../../decisions/README.md#status-key)\n\n'
         text += position.get('note', 'No policy conclusion has been recorded. Implementation observations below do not establish client-team agreement.') + '\n\n'
         if position.get('sources'):
-            text += 'Policy evidence: ' + ' · '.join(f'[{source["label"]}]({source["url"]})' for source in position['sources']) + '.\n\n'
+            text += 'Policy evidence: ' + ' · '.join(position_source(source) for source in position['sources']) + '.\n\n'
         key = '[Client positions](../../decisions/README.md#client-positions)'
         text += f'{key}: none recorded.\n\n' if not stances[topic] else f'{key}:\n\n' + table(['Client', 'Position', 'Note', 'Sources'], [
-            [editorial['clients'][c]['name'], POSITIONS[s['position']], s['note'], ' · '.join(f'[{source["label"]}]({source["url"]})' for source in s['sources'])]
+            [editorial['clients'][c]['name'], POSITIONS[s['position']], s['note'], ' · '.join(position_source(source) for source in s['sources'])]
             if (s := stances[topic].get(c)) else [editorial['clients'][c]['name'], NO_POSITION, '', ''] for c in NATIVE_CLIENTS])
         sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
         if topic in sections:

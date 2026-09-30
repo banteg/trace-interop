@@ -1,6 +1,6 @@
 """Policy progress is editorial; implementation milestones require captured evidence."""
 
-from datetime import datetime
+from datetime import date, datetime
 
 NATIVE_CLIENTS = ('besu', 'erigon', 'nethermind', 'reth')
 # Implementations shown with the native clients' progress but outside harmonization, positions and totals.
@@ -73,13 +73,34 @@ def decision_status(decision, records, position):
     return POLICY_LABELS[policy]
 
 
-POSITIONS = {'agree': '👍 Agrees', 'conditional': '✋ Conditional', 'object': '👎 Objects', 'previous': '◷ Earlier proposal'}
+POSITIONS = {'agree': '👍 Agrees', 'scoped': '◐ Scoped support', 'conditional': '✋ Conditional', 'object': '👎 Objects', 'previous': '◷ Earlier proposal'}
 NO_POSITION = '· No response'
 POSITION_LEGEND = (
-    '**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · ◷ earlier proposal · `·` no response. '
+    '**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ◐ supports the named part only · ✋ agrees on conditions · 👎 objects · ◷ earlier proposal · `·` no response. '
     'A position is a client team’s stated view of the recommendation, or a maintainer-merged fix that implements it '
-    '(a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Positions are separate from the policy status and from the captured checks.'
+    '(a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Private feedback is explicitly marked with its provenance and has no public evidence link. Positions are separate from the policy status and from the captured checks.'
 )
+
+
+def valid_position_source(source):
+    if not source.get('label'):
+        return False
+    if source.get('kind', 'public') == 'public':
+        return bool(source.get('url'))
+    if source.get('kind') != 'private' or source.get('url') or not source.get('provenance'):
+        return False
+    try:
+        date.fromisoformat(source['received_at'])
+    except (KeyError, TypeError, ValueError):
+        return False
+    return True
+
+
+def position_source(source):
+    """Public evidence links and explicitly attributed, unlinked private feedback."""
+    if source.get('kind') == 'private':
+        return f'{source["label"]} (private; {source["provenance"]}; received {source["received_at"]})'
+    return f'[{source["label"]}]({source["url"]})'
 
 
 def check_positions(status, decisions):
@@ -89,7 +110,7 @@ def check_positions(status, decisions):
             raise ValueError(f'Policy status references an unknown decision: {topic}')
         for client, position in entry.get('positions', {}).items():
             if (client not in NATIVE_CLIENTS or position.get('position') not in POSITIONS or not position.get('note')
-                    or not position.get('sources') or any(not s.get('label') or not s.get('url') for s in position['sources'])):
+                    or not position.get('sources') or any(not valid_position_source(s) for s in position['sources'])):
                 raise ValueError(f'invalid client position: {topic}/{client}')
     return status
 
@@ -100,6 +121,6 @@ def client_positions(recorded, merged):
     for client, source in merged:
         positions.setdefault(client, {'position': 'agree', 'note': 'Merged a fix implementing the recommendation.', 'sources': []})['sources'].append(source)
     for client, position in recorded.items():
-        known = {s['url'] for s in position['sources']}
+        known = {s['url'] for s in position['sources'] if s.get('url')}
         positions[client] = dict(position, sources=position['sources'] + [s for s in positions.get(client, {}).get('sources', []) if s['url'] not in known])
     return positions

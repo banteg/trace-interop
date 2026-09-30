@@ -68,8 +68,9 @@ def born_accounts(tx, exists, nonces):
     if tx['to'] is not None:
         return [tx['to'].lower()] if tx['value'] and tx['to'].lower() not in exists else []
     address = created_address(tx['sender'], nonces.get(tx['sender'], 0))
-    # Omitted gas uses a provisional model budget; defaulting is checked separately.
-    gas = tx['gas']-intrinsic(tx['data'], True)-tx.get('intrinsic_extra', 0) if tx['gas'] else 10_000_000
+    # Omitted or null gas uses a provisional model budget; defaulting is checked separately.
+    # An explicit 0 is a zero limit (H15), not an omission.
+    gas = 10_000_000 if tx['gas'] is None else tx['gas']-intrinsic(tx['data'], True)-tx.get('intrinsic_extra', 0)
     return [address] if isinstance(creation_outcome(tx['data'], gas, exists, address), str) else []
 
 
@@ -98,7 +99,7 @@ def transactions(case):
         calls = [params[0]] if method=='trace_call' else [c[0] for c in params[0]]
         return [({'sender':c.get('from','0x'+'00'*20).lower(), 'to':c.get('to'),
                   'value':quantity(c.get('value','0x0')), 'data':c.get('data',c.get('input','0x')),
-                  'gas':quantity(c.get('gas','0x0')), 'price_cap':quantity(c.get('gasPrice',c.get('maxFeePerGas','0x0'))),
+                  'gas':quantity(c.get('gas')), 'price_cap':quantity(c.get('gasPrice',c.get('maxFeePerGas','0x0'))),
                   'tip_cap':quantity(c.get('gasPrice',c.get('maxPriorityFeePerGas','0x0'))),
                   'authorizations':[], 'nonce':quantity(c.get('nonce','0x0'))},block,None) for c in calls if isinstance(c,dict)]
     return []
@@ -295,8 +296,8 @@ def assess(case, observation, peers, topics):
             if prior['to'] is None:
                 # Only a creation the model proves to survive, with the item's own gas, exists.
                 address=created_address(prior['sender'],nonce)
-                # Omitted gas uses a provisional model budget; defaulting is checked separately.
-                gas=prior['gas']-intrinsic(prior['data'],True) if prior['gas'] else 10_000_000
+                # Omitted or null gas uses a provisional model budget; an explicit 0 is a zero limit.
+                gas=10_000_000 if prior['gas'] is None else prior['gas']-intrinsic(prior['data'],True)
                 runtime=creation_outcome(prior['data'],gas,exists,address)
                 if runtime is None:
                     unknown.add(address)

@@ -337,6 +337,37 @@ class FieldProbeTests(Probe):
         self.assertDiffers(case, result({'output': '0x'+f'{99_978_000:064x}', 'trace': []}), peers)
         self.assertEqual(statuses(case, result({'output': '0x', 'trace': []}), {}), ['blocked'])
 
+    def test_null_gas_is_omitted(self):
+        case = PRAGUE['field-gas-null']
+        self.assertIsNone(case['request']['params'][0]['gas'])
+        default = '0x'+f'{49_978_000:064x}'
+        peers = {'field-gas-omitted': result({'output': default, 'trace': []})}
+        self.assertMatches(case, result({'output': default, 'trace': []}), peers)
+        # A zero budget (Erigon's trace_call reading of 0) or a rejection differs from the omitted twin.
+        self.assertDiffers(case, result({'output': '0x', 'trace': [{'error': 'out of gas'}]}), peers)
+        self.assertDiffers(case, error(-38013), peers)
+        self.assertEqual(statuses(case, result({'output': default, 'trace': []}), {}), ['blocked'])
+
+    def test_explicit_zero_gas_is_rejected(self):
+        frame = {'type': 'create', 'error': 'out of gas', 'result': None, 'subtraces': 0, 'traceAddress': []}
+        default = '0x'+f'{49_978_000:064x}'
+        for name, oog, defaulted in [('field-gas-zero', result({'output': '0x', 'trace': [frame]}), result({'output': default, 'trace': []})),
+                                     ('field-gas-zero-many', result([{'output': '0x', 'trace': [frame]}]), result([{'output': default, 'trace': []}]))]:
+            case = PRAGUE[name]
+            call = case['request']['params'][0]
+            self.assertEqual((call[0][0] if name.endswith('-many') else call)['gas'], '0x0')
+            for code in [-38013, -32000, -32602]:
+                self.assertMatches(case, error(code))
+            # Neither an out-of-gas frame nor the eth_call default budget (0 read as omitted) is a rejection.
+            self.assertDiffers(case, oog)
+            self.assertDiffers(case, defaulted)
+            self.assertDiffers(case, error(-32603))
+        # The eth_call twin is a parity control: observed, never scored.
+        control = PRAGUE['field-gas-zero-eth-call']
+        self.assertEqual(control['request']['params'][0], PRAGUE['field-gas-zero']['request']['params'][0])
+        for observation in [error(-38013), result(default)]:
+            self.assertEqual(statuses(control, observation), ['observation'])
+
     def test_priced_gas_defaults_allow_smaller_budgets_but_never_raise_the_cap(self):
         for label in ['allowance', 'funded']:
             for suffix in ['', '-many', '-eth-call']:
@@ -574,6 +605,8 @@ class NullMemberTests(Probe):
         from trace_interop.validation import request_errors
         methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
         self.assertEqual(request_errors(PRAGUE['field-null-members']['request'], methods), [])
+        for name in ['field-gas-null', 'field-gas-zero', 'field-gas-zero-many']:
+            self.assertEqual(request_errors(PRAGUE[name]['request'], methods), [], name)
         self.assertEqual(request_errors(PRAGUE['field-data-input-differ']['request'], methods), ['data and input must agree'])
 
 

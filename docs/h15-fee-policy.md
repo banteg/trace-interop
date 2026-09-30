@@ -93,6 +93,14 @@ against the selected blob base fee and charged, and non-blob calls keep the sele
 `probes-prague` opcode probes check the BLOBBASEFEE half. Preferred positional overrides and
 recognized existing wrappers are optional extensions whose accepted contents must take effect.
 Signed validation stays in H13's separate corpus.
+
+Gas limits follow eth_call too. Omitted or null gas takes the client's eth_call default, bounded by
+the RPC cap (`probes-prague/field-gas-omitted*` and `field-gas-null`). An explicit `gas: 0` is a
+supplied zero limit (decided 2026-10-01), not an omission: it fails the intrinsic-gas check, so
+`field-gas-zero` and the one-item `field-gas-zero-many` require a rejection (-38013 recommended),
+never a result with the default budget or an out-of-gas frame. `field-gas-zero-eth-call` sends the
+same call object through eth_call as an observed parity control; only Erigon's eth_call family reads
+0 as omitted.
 These are proposed policy checks, not a claim of client-team agreement. The
 pinned OpenRPC artifact (`execution-apis` b979aefe) still describes the earlier
 BASEFEE-preserving proposal. Schema validation checks response structure; the

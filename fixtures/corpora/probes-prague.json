@@ -1934,6 +1934,116 @@
       }
     },
     {
+      "name": "field-gas-null",
+      "probes": [
+        {
+          "kind": "same-output",
+          "reference": "field-gas-omitted",
+          "requirement": "An explicit null gas is omitted: GAS reports the same value as the omitted-gas twin.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": null,
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and eth_call in every client but Erigon, whose eth_call treats 0 as omitted.",
+          "recommended": -38013,
+          "requirement": "An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected (-38013 recommended) with no trace, never run with the default budget or traced out of gas.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -38013,
+          "requirement": "An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected (-38013 recommended) with no trace, never run with the default budget or traced out of gas.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero-many",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -38013,
+          "requirement": "A trace_callMany item with an explicit gas of 0 fails the intrinsic-gas check, so the whole request is rejected (-38013 recommended) with no partial results.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x0",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
       "name": "field-gas-cap-eth-call",
       "request": {
         "id": 1,

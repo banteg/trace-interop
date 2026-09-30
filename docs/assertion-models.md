@@ -231,6 +231,19 @@ No frozen chain has the Erigon reward-leak block (H23): the forks chain's only t
 post-merge block 60, which has no reward, so a PoW block in which a listed sender also pays the coinbase needs a
 new chain.
 
+### Explicit and null gas
+
+Added with the 2026-10-01 gas rule (H15) to `probes-prague`. Each sends the `field-gas-omitted` GAS program
+with an explicit gas member:
+
+- `field-gas-zero` (trace_call) and `field-gas-zero-many` (a one-item trace_callMany) send `"gas": "0x0"`.
+  An explicit 0 is a supplied limit below the intrinsic cost, so the probe requires an error and only notes a
+  code other than the recommended -38013. A result differs, whether it carries the default budget's GAS word
+  or an out-of-gas frame. `field-gas-zero-eth-call` sends the same object through eth_call. Its probe is an observation,
+  never a verdict: it records each client's eth_call reading beside its trace_call one.
+- `field-gas-null` (H14) sends `"gas": null` and must return the same GAS word as its omitted twin
+  `field-gas-omitted`, from the same build.
+
 ### Corrected siblings
 
 These siblings were first captured in the

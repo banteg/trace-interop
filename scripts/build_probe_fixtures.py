@@ -336,6 +336,21 @@ def prague():
     case(cases, 'field-gas-omitted', 'trace_call', [gas_call, ['trace'], 'latest'],
          probes=[probe('H14', 'same-output', 'Omitted gas follows the client\'s eth_call default at the selected state: GAS reports the same value.',
                        reference='field-gas-omitted-eth-call')])
+    case(cases, 'field-gas-null', 'trace_call', [dict(gas_call, gas=None), ['trace'], 'latest'],
+         probes=[probe('H14', 'same-output', 'An explicit null gas is omitted: GAS reports the same value as the omitted-gas twin.',
+                       reference='field-gas-omitted')])
+    # Only omitted or null gas takes the default (H15). An explicit 0 is a supplied limit below the
+    # intrinsic cost, so the call is rejected rather than defaulted or traced as out of gas.
+    zero_gas = dict(gas_call, gas='0x0')
+    zero_rejected = probe('H15', 'error', 'An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected '
+                          '(-38013 recommended) with no trace, never run with the default budget or traced out of gas.', recommended=-38013)
+    case(cases, 'field-gas-zero-eth-call', 'eth_call', [zero_gas, 'latest'],
+         probes=[dict(zero_rejected, observe='eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and '
+                      'eth_call in every client but Erigon, whose eth_call treats 0 as omitted.')])
+    case(cases, 'field-gas-zero', 'trace_call', [zero_gas, ['trace'], 'latest'], probes=[zero_rejected])
+    case(cases, 'field-gas-zero-many', 'trace_callMany', [[[zero_gas, ['trace']]], 'latest'],
+         probes=[dict(zero_rejected, requirement='A trace_callMany item with an explicit gas of 0 fails the intrinsic-gas check, '
+                      'so the whole request is rejected (-38013 recommended) with no partial results.')])
     # A zero-price, explicitly over-cap call discovers this server's cap without
     # making any one implementation's default budget a portable constant.
     cap_reference = 'field-gas-cap-eth-call'

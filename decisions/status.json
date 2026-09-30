@@ -535,31 +535,78 @@
     ]
   },
   "H32": {
+    "policy": "converged",
+    "note": "Converged on numeric and tag trace_filter bounds only: a block-hash string or EIP-1898 object as fromBlock or toBlock is rejected (-32602 recommended), as eth_getLogs range bounds reject them, and a single block is pinned by hash through H33\u2019s blockHash member. Erigon (2026-09-29) and Nethermind (2026-09-30) asked for this contract publicly, which reverses the September 30 grandfathering of canonical hash endpoints. Pending, safe/finalized and single-view rules are unchanged. Reth and Besu have not answered; this is direction aligned rather than unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Erigon on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
+      },
+      {
+        "label": "Nethermind on execution-apis#890 (H32/H33)",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5910488976"
+      }
+    ],
     "positions": {
       "erigon": {
-        "position": "previous",
-        "note": "Recorded agreement with the earlier recommendation: trace_filter should take the same bound types as eth_getLogs, so no block-hash or EIP-1898 range bounds; reviewing #24357 showed the cost of keeping them (the same block past the executed head is -32602 by number and -32000 by hash). Raised single-block selection by hash as a separate question (H33), with either answer acceptable to Erigon. The September 30 grandfathering revision has not been explicitly reviewed by the client; this position is retained as historical evidence.",
+        "position": "agree",
+        "note": "trace_filter should take the same bound types as eth_getLogs, so no block-hash or EIP-1898 range bounds; reviewing #24357 showed the cost of keeping them (the same block past the executed head is -32602 by number and -32000 by hash). Raised single-block selection by hash as a separate question (H33). The September 30 grandfathering revision was reversed back to this stricter contract, so the agreement applies again.",
         "sources": [
           {
             "label": "Erigon on execution-apis#890",
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
           }
         ]
+      },
+      "nethermind": {
+        "position": "agree",
+        "note": "Rejects hash range bounds (-32602) and wants a single block pinned through a trace_filter blockHash member instead, as eth_getLogs does.",
+        "sources": [
+          {
+            "label": "Nethermind on execution-apis#890 (H32/H33)",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5910488976"
+          }
+        ]
       }
     }
   },
   "H33": {
-    "note": "Under review. Erigon privately supports canonical-only hash resolution, a permitted choice in the current optional exact-block-or-error recommendation. This narrower position does not settle universal blockHash support or require other clients to reject accurately served orphans. Nethermind says its H32/H33 positions will follow.",
+    "policy": "converged",
+    "note": "Converged on a canonical-only blockHash member for trace_filter, in the EIP-234 shape: mutually exclusive with non-null bounds (-32602 recommended), exactly the hashed block including [], and an error rather than [] or another block\u2019s records for an unknown or noncanonical hash. Nethermind asked for this contract publicly; Erigon raised the member publicly and privately supports canonical-only resolution. Reth and Besu have not answered. Serving side-chain blocks is out of scope. Direction aligned, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Erigon on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
+      },
+      {
+        "label": "Nethermind on execution-apis#890 (H32/H33)",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5910488976"
+      }
+    ],
     "positions": {
       "erigon": {
-        "position": "scoped",
-        "note": "Supports canonical-only hash resolution and reports that existing eth_getLogs and trace_filter hash resolution is canonical-only. This privately relayed position concerns canonicality; it is not evidence that the trace_filter.blockHash member is implemented or an endorsement of every H33 clause. The current proposal permits canonical-only clients to reject noncanonical hashes.",
+        "position": "agree",
+        "note": "Raised the member publicly: without it no single call pins a block by hash and filters by address, and an empty numeric result is ambiguous after a reorg; proposed aligning trace_filter with eth_getLogs\u2019 EIP-234 member and said either answer works for Erigon. Privately supports canonical-only hash resolution and reports that its existing eth_getLogs and trace_filter hash resolution is canonical-only. Together these cover the recommendation\u2019s two choices, the member and canonical-only selection; no Erigon build implements the member yet.",
         "sources": [
+          {
+            "label": "Erigon on execution-apis#890",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
+          },
           {
             "label": "Erigon canonicality feedback",
             "kind": "private",
             "received_at": "2026-09-30",
             "provenance": "relayed by the user; no independently verifiable public source"
+          }
+        ]
+      },
+      "nethermind": {
+        "position": "agree",
+        "note": "Add a blockHash member to trace_filter and reject hash bounds (-32602); a non-null blockHash with fromBlock/toBlock is rejected, and an unknown or non-canonical hash returns an error, not [].",
+        "sources": [
+          {
+            "label": "Nethermind on execution-apis#890 (H32/H33)",
+            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5910488976"
           }
         ]
       }

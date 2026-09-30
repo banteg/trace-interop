@@ -18,6 +18,11 @@ implements canonical, executed hash selection and preserves identity across a re
 it rejects noncanonical and unexecuted selections. Its regression and full repository checks passed.
 The tables below retain the inspected revisions; this follow-up is not in the selected client captures.
 
+The optional, orphan-permitting revision above was [reversed later on 2026-09-30](../../reports/decisions/H33.md#client-positions-and-reversal-2026-09-30):
+on Nethermind's and Erigon's stated positions, H33 requires the member with canonical-only
+selection, and H32 rejects hash range bounds again. The `requireCanonical` rule for optional
+selectors on other methods stands.
+
 For trace methods the selector shape is not uniform, even within one client. The following table describes acceptance of the EIP-1898 block-hash object, not proof that its canonicality flag is enforced.
 
 | Method | Reth | Nethermind | Erigon | Besu | Anvil | Geth trace draft fork |

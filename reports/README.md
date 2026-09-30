@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/7281ad53dea560ed99859319ebe60a8240fedabc) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/d45f43668d7d3d44d2c5d7130cc98df4e76d6199) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 Published builds checked at **2026-09-29T21:59:40.336677+00:00**. [Freshness preflight](../evidence/2026-09-30/refresh/preflight.json) · [Build lock](../evidence/2026-09-30/refresh/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
@@ -8,17 +8,17 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+4 since the previous capture). 10 more have a submitted fix, and **28 differ with no fix yet**: 19 on converged decisions and 9 on decisions still under review. 30 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 10 more have a submitted fix, and **30 differ with no fix yet**: 27 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Besu](clients/besu.md) | 26.9-develop · 3cbf077c | 4 | 6 | 13 | 4 | 0 | 6 | 0 | 0 / 16 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · 85e1ca92 | 29 (+2) | 0 | 1 | 1 | 0 | 2 | 14 | 21 / 2 |
-| [Nethermind](clients/nethermind.md) | 2.2.0-preview · f69690c5 | 28 (+2) | 0 | 2 | 1 | 0 | 2 | 16 | 39 / 0 |
-| [Reth](clients/reth.md) | 2.7.0 · 60aeb532 | 22 | 4 | 3 | 3 | 0 | 1 | 0 | 21 / 5 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 00989695 | 14 | 2 | 9 | 3 | 0 | 5 | 4 | 1 / 1 |
+| [Besu](clients/besu.md) | 26.9-develop · 3cbf077c | 4 | 6 | 15 | 2 | 0 | 6 | 0 | 0 / 16 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 85e1ca92 | 28 (+1) | 0 | 3 | 0 | 0 | 2 | 14 | 21 / 2 |
+| [Nethermind](clients/nethermind.md) | 2.2.0-preview · f69690c5 | 27 (+1) | 0 | 4 | 0 | 0 | 2 | 15 | 39 / 0 |
+| [Reth](clients/reth.md) | 2.7.0 · 60aeb532 | 22 | 4 | 5 | 1 | 0 | 1 | 0 | 21 / 5 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · 00989695 | 14 | 2 | 11 | 1 | 0 | 5 | 4 | 1 / 1 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
@@ -43,7 +43,7 @@ The largest API choices are [tree-path lookup](decisions/H02.md), [address-filte
 | [How do address filters combine?](decisions/H03.md) | 🤝 Converged | OR within each list, AND between sender and recipient lists. |
 | [Where does an unbounded filter start?](decisions/H30.md) | 🧪 Harmonized · dev | Default both omitted bounds to latest; historical searches specify fromBlock. |
 | [What block does trace_callMany use by default?](decisions/H31.md) | 🤝 Converged | Accept an omitted block and use latest, matching trace_call. |
-| [Which tags and pending state can trace methods use?](decisions/H32.md) | ⚪ Under review | Resolve mined-block tags; agree pending state and localization per method. |
+| [Which tags and pending state can trace methods use?](decisions/H32.md) | 🤝 Converged | Resolve mined-block tags; agree pending state and localization per method. |
 | [What survives a failed call?](decisions/H09.md) | 🤝 Converged | Keep the error on that frame and preserve revert bytes and measured gas when available. |
 | [Which precompile frames are visible?](decisions/H29.md) | 🤝 Converged | Keep root frames and nested frames with nonzero value; omit zero-value nested frames. |
 | [Signed transaction execution validity](decisions/H13.md) | 🤝 Converged | Validate against the selected state, including nonce, funds and gas. Keep pool policies separate; reject each invalid transaction for its own violation. |

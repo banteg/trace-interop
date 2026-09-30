@@ -12,7 +12,9 @@ Code links use the tested development sources (or the Geth fork). These are prop
 
 ## Changes to discuss
 
-No differences were found by the selected semantic assertions.
+| Behavior | 1.17.7-unstable · e26833e3 | Proposed change |
+| --- | --- | --- |
+| [Single-block hash selection in trace_filter](../decisions/H33.md)<br>Rejects every non-null `blockHash` as an unknown field (-32602), so it passes the error cases, including the reorg phases, and differs wherever block 2’s records are expected. A null `blockHash` beside numeric bounds is dropped as omitted. The uncaptured follow-up ec1cec0be8 implements canonical, executed hash selection and explicit errors for unknown/noncanonical/unexecuted hashes, including with count: 0; its reorg regression preserves the requested block. The selected matrix still reports the older e26833e3 build. | ⚠️ Differs<br>[Filter blockhash](../cases/h30/filter-blockhash.md) | Recapture the follow-up ec1cec0be8, which implements the canonical-only member, against h30 and reorg-safe before reporting measured support.<br>[Address filtering](https://github.com/banteg/go-ethereum/blob/fa8ecb9242dda61858c44cf43c70d00548fbd7cd/eth/tracers/trace_namespace.go#L187) |
 
 ## Open policy observations
 
@@ -62,7 +64,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Block 2](../cases/a/block-2.md) · [Filter all](../cases/a/filter-all.md) |
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
-| [Single-block hash selection in trace_filter](../decisions/H33.md) | [Filter blockhash](../cases/h30/filter-blockhash.md) · [Filter blockhash address from](../cases/h30/filter-blockhash-address-from.md) |
 
 </details>
 

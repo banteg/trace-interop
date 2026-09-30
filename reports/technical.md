@@ -41,10 +41,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14240 |
+| 🔎 Assessed | 14238 |
 | 🟡 Partial | 1168 |
 | ⚪ Unassessed | 6 |
-| 🚧 Blocked | 621 |
+| 🚧 Blocked | 623 |
 | 🔎 Control | 35 |
 
 
@@ -84,9 +84,11 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 4 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | H32 owns this request’s rejection. '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas; '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas | 8 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32000 (-32602 recommended). | 1 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32603 (-32602 recommended). | 2 |
+| H14 | not_applicable | H32 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas; {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. '0x2' is not of type 'null' | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
@@ -163,6 +165,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H32 | blocked | An empty result names no block, so it cannot show a pending environment. | 6 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 | H33 | blocked | Scenario setup stopped: Invalid forkchoice state | 18 |
+| H33 | blocked | The numeric equivalent filter-block-2-union returned no result. | 2 |
 | H33 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 98 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.

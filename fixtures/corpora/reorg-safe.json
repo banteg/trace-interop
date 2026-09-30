@@ -187,12 +187,11 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Before the switch, branch A\u2019s block 0x2d is canonical: its hash selects A\u2019s records, as the numeric range does.",
+          "requirement": "Before the switch, branch A\u2019s block 0x2d is canonical: its hash selects A\u2019s records, as the numeric range does.",
           "block": {
             "number": "0x2d",
             "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
           },
-          "allow_reject": true,
           "reference": "before/filter-tail",
           "nonempty": true
         }
@@ -214,14 +213,13 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: After the switch to branch B, A\u2019s block 0x2d is noncanonical: reject explicitly or return exactly A\u2019s retained records, never B\u2019s [] or records.",
+          "requirement": "After the switch to branch B, A\u2019s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B\u2019s [] or records.",
           "block": {
             "number": "0x2d",
             "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
           },
-          "allow_reject": true,
-          "reference": "before/filter-tail",
-          "nonempty": true
+          "reject": true,
+          "recommended": -32001
         }
       ]
     },
@@ -241,12 +239,11 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, the hash of its block 0x2d selects A\u2019s records again.",
+          "requirement": "Once branch A is restored, the hash of its block 0x2d selects A\u2019s records again.",
           "block": {
             "number": "0x2d",
             "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
           },
-          "allow_reject": true,
           "reference": "restored/filter-tail",
           "nonempty": true
         }
@@ -273,7 +270,6 @@
             "number": "0x2d",
             "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
           },
-          "allow_reject": false,
           "reject": true,
           "recommended": -32001
         }
@@ -295,12 +291,11 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: After the switch, B\u2019s block 0x2d is canonical: its hash selects that block, which has no records, as the numeric range shows.",
+          "requirement": "After the switch, B\u2019s block 0x2d is canonical: its hash selects that block, which has no records, as the numeric range shows.",
           "block": {
             "number": "0x2d",
             "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
           },
-          "allow_reject": true,
           "reference": "after/filter-tail",
           "nonempty": false
         }
@@ -322,13 +317,13 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, B\u2019s block 0x2d is noncanonical: reject explicitly or return B\u2019s retained empty result, never A\u2019s records.",
+          "requirement": "Once branch A is restored, B\u2019s block 0x2d is noncanonical: an error (-32001 recommended), never A\u2019s records.",
           "block": {
             "number": "0x2d",
             "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
           },
-          "allow_reject": true,
-          "expected": []
+          "reject": true,
+          "recommended": -32001
         }
       ]
     }

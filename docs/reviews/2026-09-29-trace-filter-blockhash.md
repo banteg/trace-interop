@@ -3,10 +3,11 @@
 Study, 2026-09-29. **Recommendation, not an adopted decision.** No specification, ledger,
 client implementation or conformance verdict is changed by this note.
 
-The original mandatory-implementation, canonical-only recommendation below is superseded by
-[H33's September 30 revision](../../reports/decisions/H33.md#softened-recommendation-2026-09-30):
-support is optional, explicit rejection is allowed, and accurate orphan replies may be served
-where supported. Exact requested-block identity remains mandatory for accepted collections.
+H33's [September 30 softening](../../reports/decisions/H33.md#softened-recommendation-2026-09-30)
+made support optional and allowed accurate orphan replies. It was
+[reversed the same day](../../reports/decisions/H33.md#client-positions-and-reversal-2026-09-30) on Nethermind's and Erigon's stated positions: the mandatory,
+canonical-only recommendation below is the converged decision, and serving side-chain blocks is
+left to a possible later extension.
 
 Add a separate `blockHash` selector and continue rejecting hashes in `fromBlock`/`toBlock`.
 Require support in the eventual trace profile, while making use of the field optional for callers.

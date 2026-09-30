@@ -473,14 +473,6 @@
         "quote": "Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state."
       },
       {
-        "id": "filter-hash-extension",
-        "quote": "Canonical hash strings or blockHash objects are optional range extensions"
-      },
-      {
-        "id": "filter-hash-unavailable",
-        "quote": "Unknown, noncanonical, unexecuted or unavailable endpoints return an error"
-      },
-      {
         "id": "filter-finality-unavailable",
         "quote": "Unresolvable safe or finalized tags return an error"
       },
@@ -582,8 +574,8 @@
         "reading": "unresolvable safe stands for either tag before the chain has one."
       },
       {
-        "quote": "Portable bounds are numbers and mined tags, excluding pending; numeric bounds fit uint64.",
-        "reading": "Canonical hash endpoints are optional extensions, with accepted endpoints resolved in one coherent canonical view."
+        "quote": "pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64",
+        "reading": "This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it."
       }
     ],
     "question": "What does a request return for each way of naming its block, when the block\u2019s state is available or pruned?",

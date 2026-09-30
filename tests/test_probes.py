@@ -646,7 +646,7 @@ class RawSelectorTests(Probe):
 
 class BlockHashTests(Probe):
     """H33: a trace_filter blockHash selects exactly that block. Each case is compared with the numeric
-    filter of the same block. Explicit rejection is allowed; latest substitution and partial answers differ."""
+    filter of the same block, so a silent answer for latest, a rejection and a partial answer differ."""
     H2 = H30['filter-blockhash']['request']['params'][0]['blockHash']
 
     @staticmethod
@@ -677,23 +677,17 @@ class BlockHashTests(Probe):
         self.assertIn('with hash 0xf0b1', self.check('filter-blockhash', result(self.records(2, '0xf0b1')), twin)[1])
         # Reth, Anvil and the Geth draft reject the unknown member.
         status, detail = self.check('filter-blockhash', error(-32602), twin)
-        self.assertEqual(status, 'matches')
-        self.assertIn('does not establish support', detail)
+        self.assertEqual(status, 'change_needed')
+        self.assertTrue(detail.startswith('Rejected (-32602'))
         self.assertTrue(self.check('filter-blockhash', result([]), twin)[1].startswith('Returned []'))
         status, detail = self.check('filter-blockhash', result(block[:2]), twin)
         self.assertEqual(status, 'change_needed')
         self.assertIn('Partial', detail)
-        # An accepted collection needs a discriminating numeric control. An explicit rejection
-        # satisfies the optional contract without that control and without establishing support.
+        # The numeric equivalent must show the block's records before the comparison can: Besu rejects
+        # mode union with or without the member, so its hash rejection says nothing about H33.
         for peer in [error(-32602), result([]), result(self.records(48, '0xf0b1'))]:
-            self.assertEqual(self.check('filter-blockhash', result(block), {'filter-block-2': peer})[0], 'blocked')
-            self.assertEqual(self.check('filter-blockhash', error(-32602), {'filter-block-2': peer})[0], 'matches')
-
-    def test_optional_rejection_needs_no_control_but_server_failures_do_not_pass(self):
-        for code in [-32602, -32000, -32001]:
-            self.assertEqual(self.check('filter-blockhash', error(code))[0], 'matches')
-        self.assertEqual(self.check('filter-blockhash', error(-32603))[0], 'change_needed')
-        self.assertEqual(self.check('filter-blockhash', result(None))[0], 'change_needed')
+            for answer in [result(block), error(-32602)]:
+                self.assertEqual(self.check('filter-blockhash', answer, {'filter-block-2': peer})[0], 'blocked')
 
     def test_empty_selections_match_but_do_not_discriminate(self):
         status, detail = self.check('filter-blockhash-empty', result([]), {'filter-block-2-empty': result([])})
@@ -721,30 +715,28 @@ class BlockHashTests(Probe):
         # count 0 must not hide an unvalidated selector.
         self.assertIn('count 0 shortcut', self.check('filter-blockhash-unknown-count-zero', result([]))[1])
 
-    def test_reorg_phases_allow_exact_orphan_results_or_explicit_rejection(self):
+    def test_reorg_phases_select_the_canonical_branch_only(self):
         a = REORG['before/filter-hash-a']['probes'][0]['block']
         b = REORG['after/filter-hash-b']['probes'][0]['block']
         tail = self.records(0x2c, '0xa2c', 1) + self.records(0x2d, a['hash'], 2) + self.records(0x2e, '0xa2e', 1)
         for phase in ['before', 'restored']:
             status, detail = self.check(f'{phase}/filter-hash-a', result(tail[1:3]), {f'{phase}/filter-tail': result(tail)}, REORG)
             self.assertEqual(status, 'matches', detail)
-        # After the switch A's retained records still belong to A; compare with its pre-switch
-        # numeric control, never B's current numeric range. Wrong branches and partial replies fail.
+        # After the switch A's hash is noncanonical: B's empty block, B's records or A's served as an orphan all differ.
         peers = {'before/filter-tail': result(tail)}
-        self.assertEqual(self.check('after/filter-hash-a', result(tail[1:3]), peers, REORG)[0], 'matches')
-        for answer, detail in [([], 'Returned []'), (self.records(0x2d, b['hash'], 1), 'with hash'),
-                               (tail[1:2], 'Partial')]:
+        for answer, detail in [([], 'Accepted: returned [].'), (self.records(0x2d, b['hash'], 1), 'with hash'),
+                               (tail[1:3], 'Accepted: answered block 0x2d\u2019s 2 records.')]:
             status, observed = self.check('after/filter-hash-a', result(answer), peers, REORG)
             self.assertEqual(status, 'change_needed')
             self.assertIn(detail, observed)
         self.assertEqual(self.check('after/filter-hash-a', error(-32001), {}, REORG)[0], 'matches')
         self.assertEqual(self.check('before/filter-hash-b', error(-32001), {}, REORG)[0], 'matches')
-        self.assertEqual(self.check('after/filter-hash-b', result([]), {'after/filter-tail': result([])}, REORG)[0], 'matches')
-        self.assertEqual(self.check('restored/filter-hash-b', result(tail[1:3]), {}, REORG)[0], 'change_needed')
-        self.assertEqual(self.check('restored/filter-hash-b', result([]), {}, REORG)[0], 'matches')
-        self.assertEqual(self.check('restored/filter-hash-b', error(-32001), {}, REORG)[0], 'matches')
-        # B is genuinely unknown before its payloads arrive, so even its eventual empty result fails.
         self.assertEqual(self.check('before/filter-hash-b', result([]), {}, REORG)[0], 'change_needed')
+        self.assertEqual(self.check('after/filter-hash-b', result([]), {'after/filter-tail': result([])}, REORG)[0], 'matches')
+        # Once A is restored, B is noncanonical: A's records and B's own orphan [] both differ.
+        for answer in [tail[1:3], []]:
+            self.assertEqual(self.check('restored/filter-hash-b', result(answer), {}, REORG)[0], 'change_needed')
+        self.assertEqual(self.check('restored/filter-hash-b', error(-32001), {}, REORG)[0], 'matches')
 
     def test_the_pinned_schema_checks_hash_shape_and_h33_checks_selection(self):
         from trace_interop.validation import request_errors

@@ -19,7 +19,6 @@ from .rules import (
     violation,
 )
 from .vm_model import UnsupportedProgram, execute, store_words, words
-from .chain_model import resolve_block
 
 
 def mapping(value):
@@ -150,8 +149,7 @@ def state_check(probe, status, response, result):
 def block_hash_check(probe, case, status, response, result, reference):
     """H33: whether a trace_filter blockHash selected exactly the block it names. A selection is
     compared with the numeric filter `reference` of the same build, restricted to that block, or with
-    `expected`; with `reject` the request must be an error. `allow_reject` permits an explicit
-    rejection of the optional capability without establishing support. The detail classifies the response as
+    `expected`; with `reject` the request must be an error. The detail classifies the response as
     honored, rejected, answered another block (records localized elsewhere, such as the head),
     [] where the block has records, or partial (the block's records, but not the equivalent's)."""
     block = probe['block']
@@ -185,18 +183,8 @@ def block_hash_check(probe, case, status, response, result, reference):
     def blocked(detail):
         return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'], 'detail': detail}
     role = 'rejection' if probe.get('reject') else 'result'
-    # Optional hash selection may be rejected even when its numeric control is unavailable.
-    # Judge the rejection first; only an accepted collection needs a selection oracle.
-    if probe.get('allow_reject') and (status == 'rpc_error' or embedded_error(response)):
-        error = mapping(response.get('error') or mapping(result).get('error'))
-        code, message = error.get('code'), str(error.get('message', ''))[:120]
-        if not rejection(status, response):
-            return verdict(False, f'Failed with {code}: {message}, a server failure rather than a rejection.', 'rejection')
-        return verdict(True, f'Rejected optional hash selection ({code}: {message}); this does not establish support.', 'rejection')
-    if status == 'result' and (not isinstance(result, list) or not all(isinstance(r, dict) for r in result)):
-        return verdict(False, f'Expected a list of trace records; observed {status} {str(result)[:120]}.', role)
-    # An accepted selection needs the twin's records or an independent expected result.
-    # Without either oracle its identity is unassessed. `reject` permits no collection.
+    # What a selection must return, established before the response is judged: without the twin's
+    # records, neither a rejection nor a result shows how the member behaves. None requires an error.
     has = None
     if not probe.get('reject'):
         if 'expected' in probe:
@@ -286,22 +274,6 @@ def assess(case, observation, peers):
             checks.append({'topic': topic, 'status': 'unassessed' if status == 'result' or rejection(status, response) else 'blocked',
                            'requirement': 'Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved.',
                            'detail': detail+' The retained universal-zero expectation no longer defines conformance.'})
-            continue
-        # Grandfather canonical hash-to-height range endpoints as optional extensions.
-        # This frozen pair has identical endpoints and a numeric page with the same count.
-        if topic == 'H32' and kind == 'error' and case['name'] in ['filter-hash-bounds', 'filter-hash-object-bounds']:
-            bound = case['request']['params'][0]['fromBlock']
-            block = resolve_block(case.get('context', {}), mapping(bound).get('blockHash') if isinstance(bound, dict) else bound)
-            if block is None:
-                checks.append({'topic': topic, 'status': 'blocked', 'requirement': 'Resolve the optional hash range endpoint.',
-                               'detail': 'No independent canonical header is available for this endpoint.'})
-                continue
-            selected = dict(block, number=hex(block['number']))
-            revised = dict(probe, block=selected, reference='filter-block-2', nonempty=True, allow_reject=True,
-                           requirement='Reject unsupported canonical hash range bounds, or return the same canonical page as the numeric range.')
-            reference = peer_result(revised['reference'])
-            checks.append(block_hash_check(revised, case, status, response, result,
-                                           reference if isinstance(reference, list) else None))
             continue
         if kind == 'state':
             checks.append(state_check(probe, status, response, result))

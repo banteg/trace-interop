@@ -269,11 +269,11 @@ class CoverageTests(unittest.TestCase):
         methods = {m['name']: m for m in json.loads((ROOT/'spec/trace-openrpc.json').read_text())['methods']}
         error = lambda code: {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'rejected'}}}
         result = lambda value: {'status': 'result', 'response': {'result': value}}
-        def statuses(corpus, name, observation, topic, peers=None):
+        def statuses(corpus, name, observation, topic):
             context = run_context(ROOT, {'corpus': corpus})
             case = dict(next(c for c in context['cases'] if c['name'] == name), context=context)
             errors = request_errors(case['request'], methods)
-            checks = evaluate(case, observation, peers or {}, invalid_params=errors) + assess_probes(case, observation, peers or {})
+            checks = evaluate(case, observation, {}, invalid_params=errors) + assess_probes(case, observation, {})
             return [c['status'] for c in checks if c['topic'] == topic]
         # H06: an unknown block for block replay, and a bound one block past the head, below any range cap.
         for observation in [error(-32001), error(-32000)]:  # any error, -32001 recommended (Erigon and Nethermind)
@@ -282,7 +282,7 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(statuses('a', 'missing-block-replay', result([]), 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])
-        # H32: pending needs a pending block; canonical hash bounds are optional.
+        # H32: pending block methods need a pending block; hash bounds are rejected.
         self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H32'), ['matches'])
         self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H14'), [])
         record = lambda n: {'type': 'call', 'blockNumber': n, 'traceAddress': [], 'action': {}}
@@ -293,15 +293,9 @@ class CoverageTests(unittest.TestCase):
                          ['change_needed'])
         for name in ['filter-hash-bounds', 'filter-hash-object-bounds']:
             self.assertEqual(statuses('h30', name, error(-32602), 'H32'), ['matches'])
-            context = run_context(ROOT, {'corpus': 'h30'})
-            block = context['_blocks']['0x2']
-            page = [dict(record(2), blockHash=block['hash'])]
-            peers = {'filter-block-2': result(page)}
-            self.assertEqual(statuses('h30', name, result(page), 'H32', peers), ['matches'])
-            self.assertEqual(statuses('h30', name, result([]), 'H32', peers), ['change_needed'])
-            self.assertEqual(statuses('h30', name, result([dict(page[0], blockNumber=48)]), 'H32', peers), ['change_needed'])
-            self.assertEqual(statuses('h30', name, result(page), 'H32'), ['blocked'])
-            self.assertEqual(statuses('h30', name, error(-32603), 'H32'), ['change_needed'])
+            self.assertEqual(statuses('h30', name, result([]), 'H32'), ['change_needed'])
+            # Accepting the bound as a hash-to-height endpoint is a difference even with the right page.
+            self.assertEqual(statuses('h30', name, result([record(2)]), 'H32'), ['change_needed'])
 
     def test_zero_fee_many_errors_and_cardinality(self):
         params = [[ [{'gasPrice': '0x0'}, ['trace']] ], 'latest']

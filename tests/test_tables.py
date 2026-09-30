@@ -53,7 +53,7 @@ class Tables(unittest.TestCase):
         self.assertTrue({'hash', 'pending', 'omitted'} <= schema_forms(SPEC, 'trace_call'))
         self.assertIn('omitted', schema_forms(SPEC, 'trace_filter'))
         self.assertNotIn('pending', schema_forms(SPEC, 'trace_filter'))
-        self.assertIn('hash', schema_forms(SPEC, 'trace_filter'))
+        self.assertNotIn('hash', schema_forms(SPEC, 'trace_filter'))
 
 
 if __name__ == '__main__':

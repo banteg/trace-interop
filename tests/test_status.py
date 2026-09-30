@@ -139,8 +139,9 @@ class ClientPositionTests(unittest.TestCase):
         self.assertTrue(any('[H14]' in line and '🤝 Converged' in line for line in index.splitlines()))
         self.assertIn('| Nethermind | ◐ Scoped support |', h14)
         self.assertIn('issuecomment-5906720536', h14)
-        self.assertIn('**Status: ⚪ Under review**', h33)
-        self.assertIn('| Erigon | ◐ Scoped support |', h33)
+        self.assertIn('**Status: 🤝 Converged**', h33)
+        self.assertIn('| Erigon | 👍 Agrees |', h33)
+        self.assertIn('| Nethermind | 👍 Agrees |', h33)
         self.assertIn('Erigon canonicality feedback (private; relayed by the user;', h33)
         self.assertNotIn('[Erigon canonicality feedback]', h33)
 

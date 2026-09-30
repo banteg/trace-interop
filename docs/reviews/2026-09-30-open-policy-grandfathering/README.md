@@ -4,7 +4,7 @@ The strongest changes are to make H16's structured batch index optional, separat
 
 ## Recommendation uptake
 
-On September 30 the user approved applying the proposed softenings: H16's index is recommended, H15's ordinary fees follow eth_call with zero/default blob normalization separately unresolved, override forms are optional extensions, and H32 permits correct canonical hash range endpoints. The ledger, draft and assessment rules were aligned. Retained captures were not rewritten, and client policy review remains open; earlier Erigon agreement is labelled as concerning the previous proposal. The evidence and disposition below preserve the research snapshot and its remaining proof gaps.
+On September 30 the user approved applying the proposed softenings: H16's index is recommended, H15's ordinary fees follow eth_call with zero/default blob normalization separately unresolved, override forms are optional extensions, and H32 permits correct canonical hash range endpoints. The ledger, draft and assessment rules were aligned. The H32 hash-endpoint grandfathering and H33's optional, orphan-permitting contract were [reversed later that day](../../../reports/decisions/H33.md#client-positions-and-reversal-2026-09-30) on Nethermind's and Erigon's stated positions, which ask for rejected hash bounds and a required, canonical-only `blockHash` member; the other uptake stands. Retained captures were not rewritten, and client policy review remains open; earlier Erigon agreement is labelled as concerning the previous proposal. The evidence and disposition below preserve the research snapshot and its remaining proof gaps.
 
 ## Evidence and decision criteria
 

@@ -23,10 +23,10 @@
       "counted": true,
       "counts": {
         "agree": 4,
-        "converged": 13,
+        "converged": 15,
         "fix": 6,
         "policy": 0,
-        "review": 4,
+        "review": 2,
         "unmeasured": 6
       },
       "dev_only": 0,
@@ -39,30 +39,30 @@
     {
       "builds": {
         "development": {
-          "agree": 29,
+          "agree": 28,
           "build": [
             "3.8.0-dev \u00b7 85e1ca92"
           ],
-          "gained": 3,
+          "gained": 2,
           "lost": 1
         },
         "release": {
-          "agree": 15,
+          "agree": 14,
           "build": [
             "3.7.0 \u00b7 bdc78cc4"
           ],
-          "gained": 1,
+          "gained": 0,
           "lost": 0
         }
       },
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 29,
-        "converged": 1,
+        "agree": 28,
+        "converged": 3,
         "fix": 0,
         "policy": 0,
-        "review": 1,
+        "review": 0,
         "unmeasured": 2
       },
       "dev_only": 14,
@@ -75,11 +75,11 @@
     {
       "builds": {
         "development": {
-          "agree": 28,
+          "agree": 27,
           "build": [
             "2.2.0-preview \u00b7 f69690c5"
           ],
-          "gained": 3,
+          "gained": 2,
           "lost": 1
         },
         "release": {
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 28,
-        "converged": 2,
+        "agree": 27,
+        "converged": 4,
         "fix": 0,
         "policy": 0,
-        "review": 1,
+        "review": 0,
         "unmeasured": 2
       },
-      "dev_only": 16,
+      "dev_only": 15,
       "name": "Nethermind",
       "prs": {
         "merged": 39,
@@ -131,10 +131,10 @@
       "counted": true,
       "counts": {
         "agree": 22,
-        "converged": 3,
+        "converged": 5,
         "fix": 4,
         "policy": 0,
-        "review": 3,
+        "review": 1,
         "unmeasured": 1
       },
       "dev_only": 0,
@@ -167,10 +167,10 @@
       "counted": false,
       "counts": {
         "agree": 14,
-        "converged": 9,
+        "converged": 11,
         "fix": 2,
         "policy": 0,
-        "review": 3,
+        "review": 1,
         "unmeasured": 5
       },
       "dev_only": 4,

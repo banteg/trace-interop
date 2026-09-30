@@ -64,7 +64,7 @@
   "sources": {
     "decisions/impact.json": "017d6f4a1c088eefacf57b0c51b3faccea4502db1c4de1d66cdd17dc3ea97123",
     "decisions/laws.json": "765e01433b2703cb1538a11d72573c2047ac6b7ca73d938d43b3d4c5733c0914",
-    "decisions/ledger.json": "56a896b58a455ba210e70aa8865a53a7d07009911b7d609ba8ca08b21a27c054",
+    "decisions/ledger.json": "af0be03963f74f4075ef8ede25b6a4d07c94ac71cd844e4ee8ce57a615df94ba",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "935d844e47b5f9fa5b6503f98301434d1093ce3b29f31f4e125a00dd54a30329",
     "fixtures/checksums.json": "e7d1500e12cc65b3dc4974ff7f19e04fa5d9430b2934d06467c5bbd09f1feb2c",

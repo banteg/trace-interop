@@ -2346,6 +2346,19 @@
       "draft": false,
       "merged_at": null,
       "note": "TraceStore vmTrace and nonempty stateDiff could not deserialize; native TraceStore suite passed 98 tests on Fedora"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24435",
+      "title": "feat(rpc/jsonrpc): trace_filter selects a block by blockHash and rejects hash bounds",
+      "client": "erigon",
+      "decisions": [
+        "H33",
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes keep Erigon's -32000 (draft recommends -32001). MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main."
     }
   ]
 }

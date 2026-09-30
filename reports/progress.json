@@ -59,8 +59,8 @@
       "counted": true,
       "counts": {
         "agree": 28,
-        "converged": 3,
-        "fix": 0,
+        "converged": 1,
+        "fix": 2,
         "policy": 0,
         "review": 0,
         "unmeasured": 2
@@ -69,7 +69,7 @@
       "name": "Erigon",
       "prs": {
         "merged": 21,
-        "open": 2
+        "open": 3
       }
     },
     {

@@ -233,7 +233,8 @@ new chain.
 
 ### Explicit and null gas
 
-Added with the 2026-10-01 gas rule (H15) to `probes-prague`. Each sends the `field-gas-omitted` GAS program
+Added with the 2026-10-01 gas rule (H15) to `probes-prague` and first captured in the
+[2026-10-01 gas-zero run](../evidence/2026-10-01/gas-zero/README.md). Each sends the `field-gas-omitted` GAS program
 with an explicit gas member:
 
 - `field-gas-zero` (trace_call) and `field-gas-zero-many` (a one-item trace_callMany) send `"gas": "0x0"`.

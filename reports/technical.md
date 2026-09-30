@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14259 |
-| 🟡 Partial | 1156 |
+| 🔎 Assessed | 14290 |
+| 🟡 Partial | 1158 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 620 |
 | 🔎 Control | 35 |
 
 
-Of the partial observations, 1076 already have a differing assertion; 80 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 1078 already have a differing assertion; 80 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -93,7 +93,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 489 |
-| H15 | blocked | Cannot inspect this property: malformed_json. | 204 |
+| H15 | blocked | Cannot inspect this property: malformed_json. | 206 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed result -32603 Internal error. | 4 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32000 insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000. | 4 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32003 Insufficient funds for gas * price + value. | 8 |
@@ -1102,10 +1102,12 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-prague/field-chain-id](cases/probes-prague/field-chain-id.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-chain-id-mismatch](cases/probes-prague/field-chain-id-mismatch.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-data-input-equal](cases/probes-prague/field-data-input-equal.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/field-gas-null](cases/probes-prague/field-gas-null.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-gas-omitted](cases/probes-prague/field-gas-omitted.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-gas-omitted-allowance-many](cases/probes-prague/field-gas-omitted-allowance-many.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-gas-omitted-funded](cases/probes-prague/field-gas-omitted-funded.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-gas-omitted-funded-many](cases/probes-prague/field-gas-omitted-funded-many.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/field-gas-zero-many](cases/probes-prague/field-gas-zero-many.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-input-only](cases/probes-prague/field-input-only.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-null-accessList-unpriced](cases/probes-prague/field-null-accessList-unpriced.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/field-null-authorizationList-unpriced](cases/probes-prague/field-null-authorizationList-unpriced.md) | Besu 26.9-develop · 67ce4ab1, Besu 26.9.0 · ee9c64c8 |
@@ -1217,7 +1219,7 @@ Capture completeness records whether requests finished, not whether their result
 | [callmany-isolation](../evidence/2026-09-30/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
 | [h30](../evidence/2026-09-30/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-09-30/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-09-30/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-prague](../evidence/2026-10-01/gas-zero/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-09-30/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-09-30/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-09-30/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |

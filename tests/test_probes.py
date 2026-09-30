@@ -362,6 +362,11 @@ class FieldProbeTests(Probe):
             self.assertDiffers(case, oog)
             self.assertDiffers(case, defaulted)
             self.assertDiffers(case, error(-32603))
+        # A required rejection has no sequential envelopes, so H16 does not count them.
+        from trace_interop.rules import evaluate
+        many = dict(PRAGUE['field-gas-zero-many'], context={})
+        for observation in [error(-38013), error(-32603)]:
+            self.assertNotIn('H16', {c['topic'] for c in evaluate(many, observation, {})})
         # The eth_call twin is a parity control: observed, never scored.
         control = PRAGUE['field-gas-zero-eth-call']
         self.assertEqual(control['request']['params'][0], PRAGUE['field-gas-zero']['request']['params'][0])

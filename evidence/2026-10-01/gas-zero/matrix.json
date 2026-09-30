@@ -1,0 +1,21 @@
+[
+  {
+    "complete": true,
+    "corpus": "probes-prague",
+    "eligible": {
+      "anvil_development": true,
+      "anvil_release": true,
+      "besu_development": true,
+      "besu_release": true,
+      "erigon_development": true,
+      "erigon_release": true,
+      "go-ethereum_trace": true,
+      "nethermind_development": true,
+      "nethermind_release": true,
+      "reth_development": true,
+      "reth_release": true
+    },
+    "exchanges": 836,
+    "exit_code": 0
+  }
+]

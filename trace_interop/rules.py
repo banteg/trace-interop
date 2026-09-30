@@ -492,9 +492,11 @@ def evaluate(case, observation, peers, invalid_params=None):
     if name == 'filter-two-blocks' and not any(c['topic']=='H27' for c in checks):
         checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
     # H15 deliberately submits invalid and unresolved-default requests. An RPC
-    # rejection there must not become a spurious sequential-envelope failure.
+    # rejection there must not become a spurious sequential-envelope failure, and
+    # a case whose probe requires a rejection has no envelopes to count.
+    rejects = any(p['kind'] == 'error' for p in case.get('probes', []))
     if (method == 'trace_callMany' and context.get('_chain') != 'h30' and params and isinstance(params[0], list)
-            and (not case.get('fee_policy') or status == 'result')):
+            and not rejects and (not case.get('fee_policy') or status == 'result')):
         check('H16', status == 'result' and isinstance(result,list) and len(result) == len(params[0])
               and all(isinstance(r,dict) and isinstance(r.get('output'),str) and isinstance(r.get('trace'),list) for r in sequence(result)),
               'Return one execution envelope per input call, in order.', role='result')

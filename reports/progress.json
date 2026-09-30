@@ -95,8 +95,8 @@
       "counted": true,
       "counts": {
         "agree": 27,
-        "converged": 3,
-        "fix": 1,
+        "converged": 2,
+        "fix": 2,
         "policy": 0,
         "review": 0,
         "unmeasured": 2
@@ -105,7 +105,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 39,
-        "open": 1
+        "open": 3
       }
     },
     {

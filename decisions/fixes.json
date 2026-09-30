@@ -2299,6 +2299,33 @@
       "state": "open",
       "draft": false,
       "merged_at": null
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14091",
+      "title": "fix(rpc): validate a trace_rawTransaction as block inclusion does",
+      "client": "nethermind",
+      "decisions": [
+        "H13"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "Implements Nethermind's 2026-09-30 #890 position: trace_rawTransaction runs through the validating Execute adapter without LoadNonceFromState (nonce low/high, EIP-3607 with the 7702 delegation exception, fee cap vs base fee, funds, block gas limit) after the node's ITxValidator; trace_call/callMany and replays unchanged. Existing -32000 mapping kept. 10 new rejection cases fail on master; JsonRpc.Test 3185 passed."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14092",
+      "title": "fix(rpc): default an omitted blob fee cap in trace_call as eth_call does",
+      "client": "nethermind",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "blob-fee-defaulted: trace_call/trace_callMany crashed (-32603 Nullable object must have a value) on a blob call without maxFeePerBlobGas; now defaults it to the block's blob base fee exactly as eth_call's PrepareCall, and traces on the header the call was converted for. Blob normalization stays unresolved in H15."
     }
   ]
 }

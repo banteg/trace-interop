@@ -148,6 +148,12 @@ def assess(case, observation):
         expected = reportable(violations)
         precedence = f' {kind} is violated too, but {" and ".join(sorted(expected))} takes precedence.' if kind in violations - expected else ''
         code = error.get('code')
+        data = error.get('data')
+        if case['request']['method'] == 'trace_callMany' and isinstance(data, dict) and 'index' in data:
+            reported = data['index']
+            checks.append(dict(topic='H16', status='matches' if type(reported) is int and reported == index else 'change_needed',
+                               requirement='A supplied error.data.index must identify the failing decoded item; the field is recommended.',
+                               detail=f'Expected item {index}; reported {reported!r}.'))
         add(kind in expected and (named_index is None or int(named_index[1]) == index),
             'Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. '
             'The eth_simulateV1 code is recommended.',

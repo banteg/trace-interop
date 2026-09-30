@@ -171,12 +171,12 @@
         "change": "Match eth_call: default omitted fees to zero, zero BASEFEE for a zero effective price and ignore a supplied nonce. Retain priced accounting and return the eth_simulateV1 validation codes."
       },
       "erigon": {
-        "observed": "3.7.0 \u00b7 bdc78cc4: eth_call uses BASEFEE 0 for explicit zero fees and debits priced gas upfront. trace_call rejects legacy zero, reprices typed zero and omitted fees to B, changes GASLIMIT and skips the sender gas debit; its stateDiff still credits tips. Both methods reject positive legacy/typed caps below B. 3.8.0-dev \u00b7 a2a19253 includes #24330 and #24343: trace_call and trace_callMany price gas like eth_call, run zero and defaulted blob fees with BLOBBASEFEE 0, charge priced calls, keep the block GASLIMIT and report fee and funding rejections with the eth_simulateV1 codes (-38012 for a fee cap below the base fee). Only the refund-bound accounting checks stay unassessed, as for the Geth draft.",
+        "observed": "3.7.0 \u00b7 bdc78cc4: eth_call uses BASEFEE 0 for explicit zero fees and debits priced gas upfront. trace_call rejects legacy zero, reprices typed zero and omitted fees to B, changes GASLIMIT and skips the sender gas debit; its stateDiff still credits tips. Both methods reject positive legacy/typed caps below B. 3.8.0-dev \u00b7 a2a19253 includes #24330 and #24343: trace_call and trace_callMany price gas like eth_call, run zero and defaulted blob fees with BLOBBASEFEE 0, charge priced calls, keep the block GASLIMIT and report fee and funding rejections with the eth_simulateV1 codes (-38012 for a fee cap below the base fee). Refund-bound accounting remains unassessed; zero/default blob normalization is now separately unresolved rather than a universal-zero conformance rule.",
         "change": "Ship #24330 and #24343 in a release: preserve the block GASLIMIT and keep the recommended eth_simulateV1 codes, keeping eth_call\u2019s fee defaults and priced accounting."
       },
       "nethermind": {
         "observed": "Both tested builds use BASEFEE 0 in zero-fee eth_call but preserve B in trace_call, for explicit and omitted fees alike. Priced upfront debit matches in both methods when execution output is returned. 641592d2 fixes the release\u2019s selection/output bugs. 2.0.0 truncates fee/funding rejections in trace_call; 2.1.0-preview \u00b7 45912ba3 includes #13666 and returns them complete but with -32000 instead of the eth_simulateV1 codes (see the [streaming investigation](../../docs/nethermind-streamed-errors.md)). An explicit zero `maxFeePerBlobGas` is rejected, and a blob fee defaulted with blob hashes present returns -32603.",
-        "change": "Zero BASEFEE whenever the effective price is zero, including omitted fees, name the violation in validation errors, with the eth_simulateV1 codes recommended; run a zero or defaulted blob fee with BLOBBASEFEE 0; retain normal priced accounting."
+        "change": "Zero BASEFEE whenever the effective execution price is zero, including omitted fees, name the violation in validation errors, with the eth_simulateV1 codes recommended; retain normal priced accounting. Recapture the new unpriced-call adapter. Blob zero/default normalization remains separately unresolved; an internal error is still a server defect."
       },
       "reth": {
         "observed": "Both methods use BASEFEE 0 for explicit zero fees and both omit priced upfront gas payment: the shared call environment sets `disable_fee_charge`, added for OP operator fees (#18634, reverted in #18645, re-added in #19073), which also skips the funding check. Both accept underpriced legacy calls and reject underpriced typed caps; a tip-only request is priced at the base fee. Method consistency agrees in 200 defined-policy pairs per build; two underfunded-value families have unclassified EVM failures. Independent priced accounting/funding checks still differ.",
@@ -446,7 +446,7 @@
       },
       "erigon": {
         "observed": "3.7.0 \u00b7 bdc78cc4 rejects pending with -32000 (\u201ctracing on top of pending is not supported\u201d). 3.8.0-dev \u00b7 a1ce80fb includes #24345 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
-        "change": "Ship #24345 in a release. Reject block-hash filter bounds (`-32602` recommended), as eth_getLogs range bounds do."
+        "change": "Ship #24345 in a release. Existing canonical block-hash filter bounds may remain a documented optional extension: resolve accepted endpoints in one coherent canonical view, and explicitly error for unknown, noncanonical, unexecuted or unavailable endpoints. Retest against the numeric range and under reorgs; unsupported hash forms may be rejected."
       },
       "geth": {
         "observed": "`earliest` resolves to block 0 rather than the lowest available block. `trace_block` and `trace_replayBlockTransactions` at pending trace the miner\u2019s pending block, which is empty on the frozen chain, so the capture cannot show its environment.",
@@ -454,7 +454,7 @@
       },
       "nethermind": {
         "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 45912ba3 includes #13936 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
-        "change": "Ship #13936 in a release. Reject block-hash filter bounds (`-32602` recommended), as eth_getLogs range bounds do."
+        "change": "Ship #13936 in a release. Existing canonical block-hash filter bounds may remain a documented optional extension: resolve accepted endpoints in one coherent canonical view, and explicitly error for unknown, noncanonical, unexecuted or unavailable endpoints. Retest against the numeric range and under reorgs; unsupported hash forms may be rejected."
       }
     },
     "H17": {

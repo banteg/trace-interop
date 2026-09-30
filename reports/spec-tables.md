@@ -2,13 +2,13 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/6a9a69b3a9e1488c26ea71f046f25c331b3ccf37) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/7281ad53dea560ed99859319ebe60a8240fedabc) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
 | [Frame emission](#frame-emission) | [H09](decisions/H09.md), [H29](decisions/H29.md) | 107 | 4 | 45 | 25 |
 | [Address filtering](#address-filtering) | [H03](decisions/H03.md), [H04](decisions/H04.md), [H23](decisions/H23.md) | 144 | 0 | 0 | 8 |
-| [Block selection](#block-selection) | [H06](decisions/H06.md), [H30](decisions/H30.md), [H31](decisions/H31.md), [H32](decisions/H32.md) | 70 | 0 | 9 | 0 |
+| [Block selection](#block-selection) | [H06](decisions/H06.md), [H30](decisions/H30.md), [H31](decisions/H31.md), [H32](decisions/H32.md) | 70 | 0 | 8 | 0 |
 
 ## Frame emission
 
@@ -87,11 +87,11 @@ What does a request return for each way of naming its block, when the block’s 
 
 - “Resolve tags once per request.” trace_filter is read with both bounds naming the same block.
 - “If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.” unresolvable safe stands for either tag before the chain has one.
-- “Bounds exclude pending and block hashes; numeric bounds fit uint64.” This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.
+- “Portable bounds are numbers and mined tags, excluding pending; numeric bounds fit uint64.” Canonical hash endpoints are optional extensions, with accepted endpoints resolved in one coherent canonical view.
 
 | Finding | Outcome | Cells where | Cells | Clauses |
 | --- | --- | --- | --- | --- |
-| Gap | response | trace_call · non-canonical hash · available<br>trace_callMany · number · pruned<br>trace_callMany · number beyond head · available<br>trace_callMany · hash · pruned<br>trace_callMany · unknown hash · available<br>trace_callMany · non-canonical hash · available<br>trace_callMany · unresolvable safe · available<br>trace_callMany · pending · available<br>trace_filter · unresolvable safe · available | 9 | no clause decides it |
+| Gap | response | trace_call · non-canonical hash · available<br>trace_callMany · number · pruned<br>trace_callMany · number beyond head · available<br>trace_callMany · hash · pruned<br>trace_callMany · unknown hash · available<br>trace_callMany · non-canonical hash · available<br>trace_callMany · unresolvable safe · available<br>trace_callMany · pending · available | 8 | no clause decides it |
 
 <details><summary>Clauses</summary>
 
@@ -109,6 +109,9 @@ What does a request return for each way of naming its block, when the block’s 
 | filter-default | “defaults omitted fromBlock and toBlock to the same latest head” |
 | filter-range | “If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended)” |
 | filter-records | “Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state.” |
+| filter-hash-extension | “Canonical hash strings or blockHash objects are optional range extensions” |
+| filter-hash-unavailable | “Unknown, noncanonical, unexecuted or unavailable endpoints return an error” |
+| filter-finality-unavailable | “Unresolvable safe or finalized tags return an error” |
 | filter-pruned | “return an error (4444 recommended) if required history is unavailable” |
 
 </details>

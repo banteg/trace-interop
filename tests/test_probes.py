@@ -307,14 +307,23 @@ class FieldProbeTests(Probe):
                 {'traceAddress': [0], 'type': 'create', 'subtraces': 0, 'action': {'from': factory},
                  'result': {'address': '0x'+'22'*20, 'code': '0x'+f'{deployed:064x}', 'gasUsed': '0x1'}}]
 
-    def test_blob_base_fee_is_zero_only_for_a_zero_or_defaulted_cap(self):
+    def test_blob_zero_and_default_normalization_remain_unresolved(self):
+        for name in ['blob-fee-defaulted', 'blob-fee-zero']:
+            case = PRAGUE[name]
+            factory = case['request']['params'][0]['to']
+            for value in [0, 1]:
+                self.assertEqual(statuses(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, value)})), ['unassessed'])
+            self.assertEqual(statuses(case, error(-32000)), ['unassessed'])
+            self.assertEqual(statuses(case, error(-32603)), ['blocked'])
+            self.assertEqual(statuses(case, {'status': 'malformed_json'}), ['blocked'])
+
+    def test_blob_positive_and_nonblob_calls_preserve_selected_price(self):
         real = 1  # The raw-validation head has no excess blob gas: the minimum blob base fee.
-        for name, value in [('blob-fee-defaulted', 0), ('blob-fee-zero', 0), ('blob-fee-priced', real), ('blob-fee-none', real)]:
+        for name, value in [('blob-fee-priced', real), ('blob-fee-none', real)]:
             case = PRAGUE[name]
             factory = case['request']['params'][0]['to']
             self.assertMatches(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, value)}))
-            # Erigon drops blobVersionedHashes, so the real blob base fee is read; a client that never zeroes it likewise.
-            self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, real if value == 0 else 0)}))
+            self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, 0)}))
             self.assertDiffers(case, error(-32000))
 
     def test_omitted_gas_follows_eth_call_default(self):

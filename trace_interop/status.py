@@ -73,10 +73,10 @@ def decision_status(decision, records, position):
     return POLICY_LABELS[policy]
 
 
-POSITIONS = {'agree': '👍 Agrees', 'conditional': '✋ Conditional', 'object': '👎 Objects'}
+POSITIONS = {'agree': '👍 Agrees', 'conditional': '✋ Conditional', 'object': '👎 Objects', 'previous': '◷ Earlier proposal'}
 NO_POSITION = '· No response'
 POSITION_LEGEND = (
-    '**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · `·` no response. '
+    '**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · ◷ earlier proposal · `·` no response. '
     'A position is a client team’s stated view of the recommendation, or a maintainer-merged fix that implements it '
     '(a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Positions are separate from the policy status and from the captured checks.'
 )

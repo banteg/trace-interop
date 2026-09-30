@@ -264,8 +264,8 @@
     "sources": [],
     "positions": {
       "erigon": {
-        "position": "agree",
-        "note": "Agrees with the fee defaults: omitted fees are 0, an unpriced call runs with GASPRICE, BASEFEE and BLOBBASEFEE 0, GASLIMIT is the block\u2019s, an omitted gas runs at the RPC cap, and a priced call pays for its gas. Its development build implements this (#24330, #24343).",
+        "position": "previous",
+        "note": "Recorded agreement with the earlier recommendation: Agrees with the fee defaults: omitted fees are 0, an unpriced call runs with GASPRICE, BASEFEE and BLOBBASEFEE 0, GASLIMIT is the block\u2019s, an omitted gas runs at the RPC cap, and a priced call pays for its gas. Its development build implements this (#24330, #24343). The September 30 grandfathering revision has not been explicitly reviewed by the client; this position is retained as historical evidence.",
         "sources": [
           {
             "label": "Erigon on execution-apis#890",
@@ -504,8 +504,8 @@
   "H32": {
     "positions": {
       "erigon": {
-        "position": "agree",
-        "note": "trace_filter should take the same bound types as eth_getLogs, so no block-hash or EIP-1898 range bounds; reviewing #24357 showed the cost of keeping them (the same block past the executed head is -32602 by number and -32000 by hash). Raised single-block selection by hash as a separate question (H33), with either answer acceptable to Erigon.",
+        "position": "previous",
+        "note": "Recorded agreement with the earlier recommendation: trace_filter should take the same bound types as eth_getLogs, so no block-hash or EIP-1898 range bounds; reviewing #24357 showed the cost of keeping them (the same block past the executed head is -32602 by number and -32000 by hash). Raised single-block selection by hash as a separate question (H33), with either answer acceptable to Erigon. The September 30 grandfathering revision has not been explicitly reviewed by the client; this position is retained as historical evidence.",
         "sources": [
           {
             "label": "Erigon on execution-apis#890",

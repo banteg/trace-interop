@@ -473,6 +473,18 @@
         "quote": "Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state."
       },
       {
+        "id": "filter-hash-extension",
+        "quote": "Canonical hash strings or blockHash objects are optional range extensions"
+      },
+      {
+        "id": "filter-hash-unavailable",
+        "quote": "Unknown, noncanonical, unexecuted or unavailable endpoints return an error"
+      },
+      {
+        "id": "filter-finality-unavailable",
+        "quote": "Unresolvable safe or finalized tags return an error"
+      },
+      {
         "id": "filter-pruned",
         "quote": "return an error (4444 recommended) if required history is unavailable"
       }
@@ -507,7 +519,7 @@
     "findings": [
       {
         "attribute": "response",
-        "cells": 9,
+        "cells": 8,
         "detail": [],
         "kind": "gap",
         "members": [
@@ -550,16 +562,11 @@
             "history": "available",
             "method": "trace_callMany",
             "selector": "pending"
-          },
-          {
-            "history": "available",
-            "method": "trace_filter",
-            "selector": "unresolvable safe"
           }
         ],
         "span": {
           "history": "*",
-          "method": "trace_call, trace_callMany, trace_filter",
+          "method": "trace_call, trace_callMany",
           "selector": "number, number beyond head, hash, unknown hash, non-canonical hash, unresolvable safe, pending"
         }
       }
@@ -575,8 +582,8 @@
         "reading": "unresolvable safe stands for either tag before the chain has one."
       },
       {
-        "quote": "Bounds exclude pending and block hashes; numeric bounds fit uint64.",
-        "reading": "This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it."
+        "quote": "Portable bounds are numbers and mined tags, excluding pending; numeric bounds fit uint64.",
+        "reading": "Canonical hash endpoints are optional extensions, with accepted endpoints resolved in one coherent canonical view."
       }
     ],
     "question": "What does a request return for each way of naming its block, when the block\u2019s state is available or pruned?",

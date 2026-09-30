@@ -141,6 +141,16 @@ class FeePolicyTests(unittest.TestCase):
         self.assertEqual([c['status'] for c in assess(case,obs)], ['matches'])
         self.assertEqual(assess(case,{'status':'malformed_json'})[0]['status'],'blocked')
 
+    def test_batch_error_index_is_optional_but_must_be_correct_if_supplied(self):
+        case = self.case('mixed-legacy-free-then-invalid/many/trace')
+        error = {'code': -38012, 'message': 'fee cap less than block base fee'}
+        observation = dict(status='rpc_error', response={'error': error})
+        self.assertEqual([c['status'] for c in assess(case, observation)], ['matches'])
+        for index, expected in [(1, 'matches'), (0, 'change_needed'), (True, 'change_needed'), ('1', 'change_needed'), (None, 'change_needed')]:
+            error['data'] = {'index': index}
+            checks = assess(case, observation)
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H16'], [expected])
+
     def test_captured_defaults_receive_verdicts(self):
         observations = load_observations(ROOT/'evidence/2026-09-24/current-matrix/fee-policy')
         defaults = [name for name in self.cases if name.startswith('defaults-')]

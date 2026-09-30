@@ -86,7 +86,11 @@ sender/beneficiary/value accounting, nonce and batch length to ensure the oracle
 detects errors that schema checks alone would miss.
 
 The scope is unsigned execution fees on a positive-base-fee Prague block. Blob
-fees and block/state overrides remain outside this policy assertion. Signed validation stays in H13's separate corpus.
+fees and block/state overrides remain outside this policy assertion. Zero/default blob normalization
+is separately unresolved; the retained opcode probes are unassessed policy evidence. Covering positive
+blob pricing and non-blob calls preserve the selected blob price. Preferred positional overrides and
+recognized existing wrappers are optional extensions whose accepted contents must take effect.
+Signed validation stays in H13's separate corpus.
 These are proposed policy checks, not a claim of client-team agreement. The
 pinned OpenRPC artifact (`execution-apis` b979aefe) still describes the earlier
 BASEFEE-preserving proposal. Schema validation checks response structure; the

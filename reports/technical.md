@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14261 |
-| 🟡 Partial | 1156 |
-| ⚪ Unassessed | 0 |
-| 🚧 Blocked | 618 |
+| 🔎 Assessed | 14240 |
+| 🟡 Partial | 1168 |
+| ⚪ Unassessed | 6 |
+| 🚧 Blocked | 621 |
 | 🔎 Control | 35 |
 
 
-Of the partial observations, 1076 already have a differing assertion; 80 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 1076 already have a differing assertion; 92 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -84,11 +84,9 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 4 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
-| H14 | not_applicable | H32 owns this request’s rejection. '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas; '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas | 8 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32000 (-32602 recommended). | 1 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32603 (-32602 recommended). | 2 |
-| H14 | not_applicable | H32 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas; {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. '0x2' is not of type 'null' | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
@@ -102,6 +100,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -38014 first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. | 2 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -38014 insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000. | 4 |
 | H15 | blocked | No receipt gas or execution-gas witness was captured. | 6 |
+| H15 | blocked | Observed rpc_error -32603: Internal error. The retained universal-zero expectation no longer defines conformance. | 3 |
 | H15 | blocked | The reference field-gas-omitted-allowance-eth-call returned no successful output. | 2 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 8 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 32 |
@@ -115,6 +114,11 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | eth_call: funds rejection; trace_call: malformed_json. | 42 |
 | H15 | blocked | eth_call: funds rejection; trace_call: unclassified RPC error: internal error. | 102 |
 | H15 | blocked | eth_call: priority rejection; trace_call: unclassified RPC error: internal error. | 16 |
+| H15 | unassessed | Observed deployed BLOBBASEFEE word 0x0000000000000000000000000000000000000000000000000000000000000000. The retained universal-zero expectation no longer defines conformance. | 4 |
+| H15 | unassessed | Observed deployed BLOBBASEFEE word 0x0000000000000000000000000000000000000000000000000000000000000001. The retained universal-zero expectation no longer defines conformance. | 8 |
+| H15 | unassessed | Observed rpc_error -32000: maxFeePerBlobGas, if specified, must be non-zero. The retained universal-zero expectation no longer defines conformance. | 2 |
+| H15 | unassessed | Observed rpc_error -32003: Block `blob_gas_price` is greater than tx-specified `max_fee_per_blob_gas`. The retained universal-zero expectation no longer defines conformance. | 2 |
+| H15 | unassessed | Observed rpc_error -32003: max fee per blob gas less than block blob gas fee. The retained universal-zero expectation no longer defines conformance. | 2 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 24 |
 | H16 | blocked | H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect. | 1 |
 | H16 | blocked | H15 owns this error, a funds validation rejection: Insufficient funds for gas * price + value. There is no executed result to inspect. | 2 |

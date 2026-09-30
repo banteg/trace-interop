@@ -22,7 +22,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 ## Verdict changes
 
-18 verdicts changed for 6 clients.
+22 verdicts changed for 6 clients.
 
 ### [Anvil](clients/anvil.md)
 
@@ -42,10 +42,12 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
+| [H32 · Trace block tags and pending state](decisions/H32.md) | Erigon stable | 🟡 Partially assessed | ✅ Checked cases agree |
 | [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Erigon stable | 🚧 Blocked | ⚠️ Differs |
 | [H06 · Missing transactions and paths](decisions/H06.md) | Erigon dev | ⚠️ Differs | ✅ Checked cases agree |
 | [H16 · Fee accounting and sequential state diffs](decisions/H16.md) | Erigon dev | ✅ Checked cases agree | 🟡 Partially assessed |
 | [H20 · vmTrace step timing and deltas](decisions/H20.md) | Erigon dev | ⚠️ Differs | ✅ Checked cases agree |
+| [H32 · Trace block tags and pending state](decisions/H32.md) | Erigon dev | 🟡 Partially assessed | ✅ Checked cases agree |
 | [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Erigon dev | 🚧 Blocked | ⚠️ Differs |
 
 ### [Geth draft fork](clients/geth.md)
@@ -61,8 +63,10 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | --- | --- | --- | --- |
 | [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Nethermind stable | 🔎 Control / not applicable | ⚠️ Differs |
 | [H06 · Missing transactions and paths](decisions/H06.md) | Nethermind dev | ⚠️ Differs | ✅ Checked cases agree |
+| [H15 · Unsigned simulation fees and block environment](decisions/H15.md) | Nethermind dev | ⚠️ Differs | 🟡 Partially assessed |
 | [H16 · Fee accounting and sequential state diffs](decisions/H16.md) | Nethermind dev | ✅ Checked cases agree | 🟡 Partially assessed |
 | [H23 · Special-action address matching](decisions/H23.md) | Nethermind dev | ⚠️ Differs | ✅ Checked cases agree |
+| [H32 · Trace block tags and pending state](decisions/H32.md) | Nethermind dev | 🟡 Partially assessed | ✅ Checked cases agree |
 | [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Nethermind dev | 🔎 Control / not applicable | ⚠️ Differs |
 
 ### [Reth](clients/reth.md)

@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 9 more have a submitted fix, and **32 differ with no fix yet**: 16 on converged decisions and 16 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+4 since the previous capture). 9 more have a submitted fix, and **29 differ with no fix yet**: 16 on converged decisions and 13 on decisions still under review. 30 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** c
 | [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️⚠️✅—⚠️ | ⚠️✅⚠️✅✅⚠️ |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | ·👍·· | **Invalid parameters and rejected calls**<br>How do malformed parameters and rejected unsigned calls fail, and which error codes are recommended? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |
-| [H15](../reports/decisions/H15.md) | ⚪ Under review | ·👍·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡⚠️⚠️🟡⚠️ |
+| [H15](../reports/decisions/H15.md) | ⚪ Under review | ·◷·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡🟡⚠️🟡⚠️ |
 | [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️✅—🟡 | ⚠️🟡🟡✅🟡🟡 |
 | [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️✅—🛠️ | 🟡✅✅✅✅🛠️ |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅✅—⚠️ | 🟡✅✅✅✅🟡 |
@@ -39,7 +39,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** c
 | [H29](../reports/decisions/H29.md) | 🤝 Converged | ··👍· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—⚠️ | ⚠️✅✅✅✅⚠️ |
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—⚠️ | ✅✅✅✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅✅—⚠️ | ⚠️✅✅✅✅✅ |
-| [H32](../reports/decisions/H32.md) | ⚪ Under review | ·👍·· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️🟡⚠️ |
+| [H32](../reports/decisions/H32.md) | ⚪ Under review | ·◷·· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️✅⚠️⚠️—⚠️ | ⚠️✅✅⚠️🟡⚠️ |
 | [H33](../reports/decisions/H33.md) | ⚪ Under review | ···· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 
 ## Status key
@@ -62,6 +62,6 @@ Missing cases, ineligible runs, unsupported methods, unchecked assertions and in
 
 ### Client positions
 
-**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · `·` no response. A position is a client team’s stated view of the recommendation, or a maintainer-merged fix that implements it (a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Positions are separate from the policy status and from the captured checks.
+**Client order:** Besu → Erigon → Nethermind → Reth. 👍 agrees · ✋ agrees on conditions · 👎 objects · ◷ earlier proposal · `·` no response. A position is a client team’s stated view of the recommendation, or a maintainer-merged fix that implements it (a complete, non-partial PR in [client fixes](../docs/client-fixes.md)). Positions are separate from the policy status and from the captured checks.
 
 Decision pages link directly relevant upstream issues and PRs as context. A filed issue, proposed patch or merged change does not establish cross-client agreement or change the captured checks for the pinned builds; 🛠️ only marks a difference with a submitted fix, and [client fixes](../docs/client-fixes.md) tracks implementation and retesting.

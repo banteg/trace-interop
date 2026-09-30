@@ -215,9 +215,10 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
   the caller sees CREATE push 0, and a separate probe checks the label: "Out of gas" for both deposit failures,
   as Parity and EIP-170 report them, and "Invalid code", as OpenEthereum does.
 - H15, in `probes-prague`: `blob-fee-defaulted`, `blob-fee-zero`, `blob-fee-priced` and `blob-fee-none` call the
-  genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read; it must be 0 exactly when
-  `maxFeePerBlobGas` is 0 or defaulted with blob hashes present, otherwise the head's blob base fee (1 wei, from
-  its zero excess blob gas). `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
+  genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read. Zero/default blob pricing
+  remains separately unresolved: those retained outcomes are unassessed policy evidence, not universal-zero
+  failures or agreement. Covering positive pricing and calls without blob fields still preserve the head's
+  blob base fee (1 wei, from its zero excess blob gas). `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
   the sender's, and the creation must still return the address of the state nonce.
 - H14: `probes-prague/field-chain-id-mismatch` must be rejected. A chainId for another chain is invalid
   regardless of state, so -32602 is recommended.
@@ -225,8 +226,9 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
   or `[]`), and `missing-block-filter-next` ends one block past the head, a two-block range that no range cap
   rejects first (an error, -32602 recommended).
 - H32, in `h30`: `block-pending` and `replay-pending` select the pending block, and `filter-hash-bounds` and
-  `filter-hash-object-bounds` bound a filter by block 2's hash, as a string and as an EIP-1898 object (rejected,
-  -32602 recommended).
+  `filter-hash-object-bounds` bound a filter by block 2's canonical hash, as a string and as an EIP-1898
+  object. Unsupported forms may be rejected (-32602 recommended); accepted forms must match the numeric
+  range's page and canonical localization. Reorg consistency remains a separate proof gap.
 
 No frozen chain has the Erigon reward-leak block (H23): the forks chain's only transaction to the coinbase is in
 post-merge block 60, which has no reward, so a PoW block in which a listed sender also pays the coinbase needs a

@@ -42,7 +42,7 @@ class Tables(unittest.TestCase):
         gaps = {(c['method'], c['selector'], c['history']) for c, _ in findings(blocks(SPEC), 'gaps')}
         self.assertIn(('trace_callMany', 'unknown hash', 'available'), gaps)
         self.assertIn(('trace_call', 'non-canonical hash', 'available'), gaps)
-        self.assertIn(('trace_filter', 'unresolvable safe', 'available'), gaps)
+        self.assertNotIn(('trace_filter', 'unresolvable safe', 'available'), gaps)
         self.assertNotIn(('trace_call', 'unknown hash', 'available'), gaps)
         self.assertEqual(findings(blocks(SPEC), 'conflicts'), [])
 
@@ -53,6 +53,7 @@ class Tables(unittest.TestCase):
         self.assertTrue({'hash', 'pending', 'omitted'} <= schema_forms(SPEC, 'trace_call'))
         self.assertIn('omitted', schema_forms(SPEC, 'trace_filter'))
         self.assertNotIn('pending', schema_forms(SPEC, 'trace_filter'))
+        self.assertIn('hash', schema_forms(SPEC, 'trace_filter'))
 
 
 if __name__ == '__main__':

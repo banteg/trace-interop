@@ -1,6 +1,10 @@
 # Remaining trace policy decisions and existing client behavior
 
-The strongest changes are to make H16's structured batch index optional, separate H15's blob simulation policy from ordinary execution fees, and preserve correct existing selector and override extensions. H14, H16's execution contract, and H33's optional exact-block contract are close to a defensible recommendation. This is a review of H14, H15, H16, H32 and H33, using grandfathering and consistency with sibling methods as the decision criteria. It does not change the ledger, pinned specification, assertions, or recorded client positions.
+The strongest changes are to make H16's structured batch index optional, separate H15's blob simulation policy from ordinary execution fees, and preserve correct existing selector and override extensions. H14, H16's execution contract, and H33's optional exact-block contract are close to a defensible recommendation. This is a review of H14, H15, H16, H32 and H33, using grandfathering and consistency with sibling methods as the decision criteria. The research snapshot did not change the ledger, pinned specification, assertions, or recorded client positions; subsequent approved uptake is recorded below.
+
+## Recommendation uptake
+
+On September 30 the user approved applying the proposed softenings: H16's index is recommended, H15's ordinary fees follow eth_call with zero/default blob normalization separately unresolved, override forms are optional extensions, and H32 permits correct canonical hash range endpoints. The ledger, draft and assessment rules were aligned. Retained captures were not rewritten, and client policy review remains open; earlier Erigon agreement is labelled as concerning the previous proposal. The evidence and disposition below preserve the research snapshot and its remaining proof gaps.
 
 ## Evidence and decision criteria
 
@@ -142,7 +146,7 @@ One follow-up remains before claiming client agreement: the public thread still 
 | H32 | Keep pending/tag behavior; grandfather correct canonical hash endpoints as an optional extension. | Nethermind response on bounds, unavailable-finality and pruning cases, concurrent-reorg endpoint validation. |
 | H33 | Keep optional exact-block-or-error and optional orphan serving. | Explicit review of the softened proposal; the pinned specification was subsequently aligned in `b7ce46a1`. |
 
-This order avoids holding established transaction semantics behind new diagnostics or extension uniformity. It also avoids counting source uptake, a proposed relaxation or an unmeasured response as harmonization. No policy status or conformance total was changed.
+This order avoids holding established transaction semantics behind new diagnostics or extension uniformity. It also avoids counting source uptake, a proposed relaxation or an unmeasured response as harmonization. The research snapshot changed no policy status or conformance total. Subsequent approved uptake regenerates assessments against the relaxed recommendation without treating unresolved blob normalization as agreement.
 
 [E-call]: https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/trace_adhoc.go#L186
 [E-args]: https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/ethapi/api.go#L201

@@ -19,6 +19,7 @@ from .rules import (
     violation,
 )
 from .vm_model import UnsupportedProgram, execute, store_words, words
+from .chain_model import resolve_block
 
 
 def mapping(value):
@@ -273,6 +274,35 @@ def assess(case, observation, peers):
     for probe in probes:
         topic, kind = probe['topic'], probe['kind']
         requirement = probe['requirement']
+        # These frozen probes captured the earlier universal-zero proposal. Keep their
+        # responses, but do not turn either normalization or rejection into agreement.
+        if topic == 'H15' and kind == 'frame' and case['name'] in ['blob-fee-zero', 'blob-fee-defaulted']:
+            frames = sequence(mapping(result).get('trace'))
+            frame = next((f for f in frames if isinstance(f, dict) and same(f, probe['select'])), {})
+            word = mapping(frame.get('result')).get('code')
+            error = mapping(response.get('error') or mapping(result).get('error'))
+            detail = (f'Observed deployed BLOBBASEFEE word {word}.' if status == 'result'
+                      else f'Observed {status} {error.get("code")}: {error.get("message")}.')
+            checks.append({'topic': topic, 'status': 'unassessed' if status == 'result' or rejection(status, response) else 'blocked',
+                           'requirement': 'Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved.',
+                           'detail': detail+' The retained universal-zero expectation no longer defines conformance.'})
+            continue
+        # Grandfather canonical hash-to-height range endpoints as optional extensions.
+        # This frozen pair has identical endpoints and a numeric page with the same count.
+        if topic == 'H32' and kind == 'error' and case['name'] in ['filter-hash-bounds', 'filter-hash-object-bounds']:
+            bound = case['request']['params'][0]['fromBlock']
+            block = resolve_block(case.get('context', {}), mapping(bound).get('blockHash') if isinstance(bound, dict) else bound)
+            if block is None:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': 'Resolve the optional hash range endpoint.',
+                               'detail': 'No independent canonical header is available for this endpoint.'})
+                continue
+            selected = dict(block, number=hex(block['number']))
+            revised = dict(probe, block=selected, reference='filter-block-2', nonempty=True, allow_reject=True,
+                           requirement='Reject unsupported canonical hash range bounds, or return the same canonical page as the numeric range.')
+            reference = peer_result(revised['reference'])
+            checks.append(block_hash_check(revised, case, status, response, result,
+                                           reference if isinstance(reference, list) else None))
+            continue
         if kind == 'state':
             checks.append(state_check(probe, status, response, result))
             continue

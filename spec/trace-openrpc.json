@@ -712,7 +712,7 @@
       "summary": "Returns localized call traces for a block."
     },
     {
-      "description": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment. Block accepts a number, tag or block hash; an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended). pending selects the client's pending block, the next block number built on latest with its pending transactions, and is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block (H32). Fees follow eth_call and eth_simulateV1 (H15). Omitted fee fields default to 0. The effective gas price is gasPrice, or min(maxPriorityFeePerGas + base fee, maxFeePerGas), computed after defaulting; when it is 0, GASPRICE and BASEFEE are both 0 and no gas fee is paid. BLOBBASEFEE is 0 exactly when maxFeePerBlobGas is supplied as 0 or defaulted to 0; a call without blob fields keeps the block's BLOBBASEFEE. Other block fields are unchanged. Fee validation is skipped only when both fee caps are 0, as with gasPrice 0. Omitted gas follows the client's eth_call default at the selected state, bounded by the server's execution cap; a block limit or sender allowance may lower that budget but never raise it above the cap. Supplied gas above the cap runs with the cap. Callers requiring a portable budget supply gas explicitly; the cap is server policy, not a truncated result. A validation failure is an error that reports its violation. A defect that makes the call object invalid regardless of state, such as a priority fee above the fee cap, an impossible type and field combination or an empty authorization list, takes precedence when several rules are violated (-32602 recommended); any other validation failure without a listed code recommends -32003 (Transaction rejected). Unsigned calls skip the EIP-3607 sender-code check, as eth_call does. Otherwise the price must cover the base fee (-38012 recommended), maxPriorityFeePerGas must not exceed maxFeePerGas (-32602 recommended), and the sender must fund the upfront cost (-38014 recommended); execution then charges the upfront gas payment, applies refunds, burns the base fee and pays the tip. A zero price does not exempt value transfers from funding. Validation rejections recommend the eth_simulateV1 codes listed below; malformed requests are rejected (-32602 recommended). Optional StateOverrides and BlockOverrides use the eth_simulateV1 schemas and apply before execution; block overrides replace fields of the selected block environment, and the zero-fee rule then uses the overridden base fee. A client that does not implement an override parameter must reject a non-null value (-32602 recommended). Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H14,H15,H28). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment. Block accepts a number, tag or block hash; an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended). pending selects the client's pending block, the next block number built on latest with its pending transactions, and is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block (H32). Ordinary execution fees follow eth_call (H15). Omitted execution-fee fields default to 0. The effective gas price is gasPrice, or min(maxPriorityFeePerGas + base fee, maxFeePerGas), computed after defaulting; when it is 0, GASPRICE and BASEFEE are both 0 and no gas fee is paid. Blob simulation defaults, fee-cap validation and opcode-visible BLOBBASEFEE for omitted or zero blob pricing remain separately unresolved (H15); no universal zero rule is required. A covering positive blob cap and calls without blob fields preserve the selected block's BLOBBASEFEE. Defined blob fields must take effect or cause rejection, never be ignored. Other block fields are unchanged. Execution-fee validation is skipped only when both execution fee caps are 0, as with gasPrice 0. Omitted gas follows the client's eth_call default at the selected state, bounded by the server's execution cap; a block limit or sender allowance may lower that budget but never raise it above the cap. Supplied gas above the cap runs with the cap. Callers requiring a portable budget supply gas explicitly; the cap is server policy, not a truncated result. A validation failure is an error that reports its violation. A defect that makes the call object invalid regardless of state, such as a priority fee above the fee cap, an impossible type and field combination or an empty authorization list, takes precedence when several rules are violated (-32602 recommended); any other validation failure without a listed code recommends -32003 (Transaction rejected). Unsigned calls skip the EIP-3607 sender-code check, as eth_call does. Otherwise the price must cover the base fee (-38012 recommended), maxPriorityFeePerGas must not exceed maxFeePerGas (-32602 recommended), and the sender must fund the upfront cost (-38014 recommended); execution then charges the upfront gas payment, applies refunds, burns the base fee and pays the tip. A zero price does not exempt value transfers from funding. Validation rejections recommend the eth_simulateV1 codes listed below; malformed requests are rejected (-32602 recommended). Positional StateOverrides and BlockOverrides are preferred optional extensions, using the eth_simulateV1 schemas and applying before execution. Existing recognized configuration wrappers remain optional extensions where their contents take effect. The baseline call arity does not require either form. Reject an unsupported non-null override shape (-32602 recommended), never silently treat a state map as an empty configuration. Block overrides replace fields of the selected block environment, and the zero-fee rule then uses the overridden base fee. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H14,H15,H28). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -795,7 +795,7 @@
           "required": true,
           "schema": {
             "additionalProperties": true,
-            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap. A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap. A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. Blob simulation defaults, validation and opcode-visible BLOBBASEFEE for omitted or zero maxFeePerBlobGas remain separately unresolved; a universal zero default is not required (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
             "not": {
               "anyOf": [
                 {
@@ -1168,100 +1168,252 @@
             "anyOf": [
               {
                 "additionalProperties": false,
+                "description": "The StateOverrides fields with optional storage, preserving existing balance/code/nonce-only trace and eth_call overrides. State and stateDiff are mutually exclusive. Accepted contents must take effect (H15).",
                 "patternProperties": {
                   "^0x[a-fA-F0-9]{40}$": {
-                    "oneOf": [
-                      {
-                        "description": "It is possible to override any kind of address (EOA's, contracts and precompiles)",
-                        "properties": {
-                          "balance": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "Balance",
-                            "type": "string"
-                          },
-                          "code": {
-                            "pattern": "^0x[0-9a-f]*$",
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "movePrecompileToAddress": {
-                            "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. When the specified address is not a precompile, the behaviour is undefined and different clients might behave differently.",
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "MovePrecompileToAddress",
-                            "type": "string"
-                          },
-                          "nonce": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                            "title": "Nonce",
-                            "type": "string"
-                          },
-                          "state": {
-                            "additionalProperties": false,
-                            "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
-                            "patternProperties": {
-                              "^0x[a-fA-F0-9]{64}$": {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              }
-                            },
-                            "title": "Storage",
-                            "type": "object"
-                          }
-                        },
-                        "required": [
-                          "state"
-                        ],
-                        "title": "Account override with whole storage replacement"
+                    "additionalProperties": false,
+                    "not": {
+                      "required": [
+                        "state",
+                        "stateDiff"
+                      ]
+                    },
+                    "properties": {
+                      "balance": {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                        "title": "Balance",
+                        "type": "string"
                       },
-                      {
-                        "properties": {
-                          "balance": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "Balance",
+                      "code": {
+                        "pattern": "^0x[0-9a-f]*$",
+                        "title": "Code",
+                        "type": "string"
+                      },
+                      "movePrecompileToAddress": {
+                        "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
+                        "pattern": "^0x[0-9a-fA-F]{40}$",
+                        "title": "MovePrecompileToAddress",
+                        "type": "string"
+                      },
+                      "nonce": {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                        "title": "Nonce",
+                        "type": "string"
+                      },
+                      "state": {
+                        "additionalProperties": false,
+                        "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{64}$": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
                             "type": "string"
-                          },
-                          "code": {
-                            "pattern": "^0x[0-9a-f]*$",
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "movePrecompileToAddress": {
-                            "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "MovePrecompileToAddress",
-                            "type": "string"
-                          },
-                          "nonce": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                            "title": "Nonce",
-                            "type": "string"
-                          },
-                          "stateDiff": {
-                            "additionalProperties": false,
-                            "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
-                            "patternProperties": {
-                              "^0x[a-fA-F0-9]{64}$": {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              }
-                            },
-                            "title": "Storage difference",
-                            "type": "object"
                           }
                         },
-                        "required": [
-                          "stateDiff"
-                        ],
-                        "title": "Account override with partial storage modification"
+                        "title": "Storage",
+                        "type": "object"
+                      },
+                      "stateDiff": {
+                        "additionalProperties": false,
+                        "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{64}$": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
+                            "type": "string"
+                          }
+                        },
+                        "title": "Storage difference",
+                        "type": "object"
                       }
-                    ],
-                    "title": "Details of an account to be overridden",
+                    },
                     "type": "object"
                   }
                 },
-                "title": "Dictionary of addresses in the state to be overridden",
+                "title": "Optional trace state overrides",
+                "type": "object"
+              },
+              {
+                "additionalProperties": true,
+                "anyOf": [
+                  {
+                    "required": [
+                      "stateOverrides"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "blockOverrides"
+                    ]
+                  }
+                ],
+                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected (H15).",
+                "properties": {
+                  "blockOverrides": {
+                    "anyOf": [
+                      {
+                        "properties": {
+                          "baseFeePerGas": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "Base fee per unit of gas",
+                            "type": "string"
+                          },
+                          "blobBaseFee": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Base fee per unit of blob gas",
+                            "type": "string"
+                          },
+                          "feeRecipient": {
+                            "description": "Address set by the proposer/builder to receive priority fees. Often matches the block header `feeRecipient` field but is not the COINBASE EVM opcode.",
+                            "pattern": "^0x[0-9a-fA-F]{40}$",
+                            "title": "Fee recipient",
+                            "type": "string"
+                          },
+                          "gasLimit": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Gas limit",
+                            "type": "string"
+                          },
+                          "number": {
+                            "description": "When overriding block numbers across multiple blocks, block number need to be increasing. Skipping over blocks numbers is possible. If block number is not specified, it's incremented by one for each block.",
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Number",
+                            "type": "string"
+                          },
+                          "prevRandao": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "The Previous value of randomness beacon",
+                            "type": "string"
+                          },
+                          "time": {
+                            "description": "Time must either increase or remain constant relative to the previous block. If time is not specified, it's incremented by one for each block.",
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Time",
+                            "type": "string"
+                          },
+                          "withdrawals": {
+                            "description": "This array can have a maximum length of 16.",
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "address": {
+                                  "pattern": "^0x[0-9a-fA-F]{40}$",
+                                  "title": "recipient address for withdrawal value",
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                  "title": "value contained in withdrawal",
+                                  "type": "string"
+                                },
+                                "index": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                  "title": "index of withdrawal",
+                                  "type": "string"
+                                },
+                                "validatorIndex": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                  "title": "index of validator that generated withdrawal",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "index",
+                                "validatorIndex",
+                                "address",
+                                "amount"
+                              ],
+                              "title": "Validator withdrawal",
+                              "type": "object"
+                            },
+                            "title": "Withdrawals made by validators",
+                            "type": "array"
+                          }
+                        },
+                        "title": "Context fields related to the block being executed",
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "stateOverrides": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "description": "The StateOverrides fields with optional storage, preserving existing balance/code/nonce-only trace and eth_call overrides. State and stateDiff are mutually exclusive. Accepted contents must take effect (H15).",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{40}$": {
+                            "additionalProperties": false,
+                            "not": {
+                              "required": [
+                                "state",
+                                "stateDiff"
+                              ]
+                            },
+                            "properties": {
+                              "balance": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "Balance",
+                                "type": "string"
+                              },
+                              "code": {
+                                "pattern": "^0x[0-9a-f]*$",
+                                "title": "Code",
+                                "type": "string"
+                              },
+                              "movePrecompileToAddress": {
+                                "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
+                                "pattern": "^0x[0-9a-fA-F]{40}$",
+                                "title": "MovePrecompileToAddress",
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                "title": "Nonce",
+                                "type": "string"
+                              },
+                              "state": {
+                                "additionalProperties": false,
+                                "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                                "patternProperties": {
+                                  "^0x[a-fA-F0-9]{64}$": {
+                                    "pattern": "^0x[0-9a-f]{64}$",
+                                    "title": "32 byte hex value",
+                                    "type": "string"
+                                  }
+                                },
+                                "title": "Storage",
+                                "type": "object"
+                              },
+                              "stateDiff": {
+                                "additionalProperties": false,
+                                "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                                "patternProperties": {
+                                  "^0x[a-fA-F0-9]{64}$": {
+                                    "pattern": "^0x[0-9a-f]{64}$",
+                                    "title": "32 byte hex value",
+                                    "type": "string"
+                                  }
+                                },
+                                "title": "Storage difference",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "title": "Optional trace state overrides",
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "title": "Optional legacy override configuration",
                 "type": "object"
               },
               {
@@ -2587,7 +2739,7 @@
       "summary": "Executes an unsigned call and returns selected traces."
     },
     {
-      "description": "Each [call, traceTypes] item is a separate transaction executed in order on the preceding item's post-state. EIP-2200 and EIP-3529 original storage values, EIP-2929 access sets, EIP-1153 transient storage, the refund counter and the EIP-6780 same-transaction scope all start afresh for each item. All items share one block environment, as selected for trace_call; NUMBER and TIMESTAMP do not advance between items. The first item runs against the same state and environment as trace_call at the selected block. The trace_call fee rules, including the zero-fee BASEFEE adjustment, apply to each item independently. Each stateDiff is relative to the preceding item's post-state. Reverted writes roll back and subsequent items continue; transaction-level nonce and fee effects survive. If any decoded item fails validation, return one error for the whole request, with the trace_call codes recommended, whose error.data object carries the zero-based index of the failing item as index; return no partial results. A malformed item is rejected without an index (-32602 recommended). A server may cap the item count or total gas only with an explicit error (-38026 recommended), never by truncating. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns []. Block defaults to latest; StateOverrides and BlockOverrides apply once, before the first item, as for trace_call (H15,H16,H25,H31). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Each [call, traceTypes] item is a separate transaction executed in order on the preceding item's post-state. EIP-2200 and EIP-3529 original storage values, EIP-2929 access sets, EIP-1153 transient storage, the refund counter and the EIP-6780 same-transaction scope all start afresh for each item. All items share one block environment, as selected for trace_call; NUMBER and TIMESTAMP do not advance between items. The first item runs against the same state and environment as trace_call at the selected block. The trace_call fee rules, including the zero-fee BASEFEE adjustment, apply to each item independently. Each stateDiff is relative to the preceding item's post-state. Reverted writes roll back and subsequent items continue; transaction-level nonce and fee effects survive. If any decoded item fails validation, return one error for the whole request, with the trace_call codes recommended; return no partial results. A client SHOULD include the failing item's zero-based index in error.data.index. If present, the index MUST identify the failing item. A malformed item is rejected without an index (-32602 recommended). A server may cap the item count or total gas only with an explicit error (-38026 recommended), never by truncating. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns []. Block defaults to latest; preferred positional overrides or recognized existing override wrappers are optional, and accepted overrides apply once, before the first item, as for trace_call (H15,H16,H25,H31). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -2712,7 +2864,7 @@
               "items": [
                 {
                   "additionalProperties": true,
-                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap. A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call and eth_simulateV1; maxFeePerBlobGas defaults to 0 when blobVersionedHashes are present (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap. A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. Blob simulation defaults, validation and opcode-visible BLOBBASEFEE for omitted or zero maxFeePerBlobGas remain separately unresolved; a universal zero default is not required (H15). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
                   "not": {
                     "anyOf": [
                       {
@@ -3089,100 +3241,252 @@
             "anyOf": [
               {
                 "additionalProperties": false,
+                "description": "The StateOverrides fields with optional storage, preserving existing balance/code/nonce-only trace and eth_call overrides. State and stateDiff are mutually exclusive. Accepted contents must take effect (H15).",
                 "patternProperties": {
                   "^0x[a-fA-F0-9]{40}$": {
-                    "oneOf": [
-                      {
-                        "description": "It is possible to override any kind of address (EOA's, contracts and precompiles)",
-                        "properties": {
-                          "balance": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "Balance",
-                            "type": "string"
-                          },
-                          "code": {
-                            "pattern": "^0x[0-9a-f]*$",
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "movePrecompileToAddress": {
-                            "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. When the specified address is not a precompile, the behaviour is undefined and different clients might behave differently.",
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "MovePrecompileToAddress",
-                            "type": "string"
-                          },
-                          "nonce": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                            "title": "Nonce",
-                            "type": "string"
-                          },
-                          "state": {
-                            "additionalProperties": false,
-                            "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
-                            "patternProperties": {
-                              "^0x[a-fA-F0-9]{64}$": {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              }
-                            },
-                            "title": "Storage",
-                            "type": "object"
-                          }
-                        },
-                        "required": [
-                          "state"
-                        ],
-                        "title": "Account override with whole storage replacement"
+                    "additionalProperties": false,
+                    "not": {
+                      "required": [
+                        "state",
+                        "stateDiff"
+                      ]
+                    },
+                    "properties": {
+                      "balance": {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                        "title": "Balance",
+                        "type": "string"
                       },
-                      {
-                        "properties": {
-                          "balance": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
-                            "title": "Balance",
+                      "code": {
+                        "pattern": "^0x[0-9a-f]*$",
+                        "title": "Code",
+                        "type": "string"
+                      },
+                      "movePrecompileToAddress": {
+                        "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
+                        "pattern": "^0x[0-9a-fA-F]{40}$",
+                        "title": "MovePrecompileToAddress",
+                        "type": "string"
+                      },
+                      "nonce": {
+                        "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                        "title": "Nonce",
+                        "type": "string"
+                      },
+                      "state": {
+                        "additionalProperties": false,
+                        "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{64}$": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
                             "type": "string"
-                          },
-                          "code": {
-                            "pattern": "^0x[0-9a-f]*$",
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "movePrecompileToAddress": {
-                            "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
-                            "pattern": "^0x[0-9a-fA-F]{40}$",
-                            "title": "MovePrecompileToAddress",
-                            "type": "string"
-                          },
-                          "nonce": {
-                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
-                            "title": "Nonce",
-                            "type": "string"
-                          },
-                          "stateDiff": {
-                            "additionalProperties": false,
-                            "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
-                            "patternProperties": {
-                              "^0x[a-fA-F0-9]{64}$": {
-                                "pattern": "^0x[0-9a-f]{64}$",
-                                "title": "32 byte hex value",
-                                "type": "string"
-                              }
-                            },
-                            "title": "Storage difference",
-                            "type": "object"
                           }
                         },
-                        "required": [
-                          "stateDiff"
-                        ],
-                        "title": "Account override with partial storage modification"
+                        "title": "Storage",
+                        "type": "object"
+                      },
+                      "stateDiff": {
+                        "additionalProperties": false,
+                        "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{64}$": {
+                            "pattern": "^0x[0-9a-f]{64}$",
+                            "title": "32 byte hex value",
+                            "type": "string"
+                          }
+                        },
+                        "title": "Storage difference",
+                        "type": "object"
                       }
-                    ],
-                    "title": "Details of an account to be overridden",
+                    },
                     "type": "object"
                   }
                 },
-                "title": "Dictionary of addresses in the state to be overridden",
+                "title": "Optional trace state overrides",
+                "type": "object"
+              },
+              {
+                "additionalProperties": true,
+                "anyOf": [
+                  {
+                    "required": [
+                      "stateOverrides"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "blockOverrides"
+                    ]
+                  }
+                ],
+                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected (H15).",
+                "properties": {
+                  "blockOverrides": {
+                    "anyOf": [
+                      {
+                        "properties": {
+                          "baseFeePerGas": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "Base fee per unit of gas",
+                            "type": "string"
+                          },
+                          "blobBaseFee": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Base fee per unit of blob gas",
+                            "type": "string"
+                          },
+                          "feeRecipient": {
+                            "description": "Address set by the proposer/builder to receive priority fees. Often matches the block header `feeRecipient` field but is not the COINBASE EVM opcode.",
+                            "pattern": "^0x[0-9a-fA-F]{40}$",
+                            "title": "Fee recipient",
+                            "type": "string"
+                          },
+                          "gasLimit": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Gas limit",
+                            "type": "string"
+                          },
+                          "number": {
+                            "description": "When overriding block numbers across multiple blocks, block number need to be increasing. Skipping over blocks numbers is possible. If block number is not specified, it's incremented by one for each block.",
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Number",
+                            "type": "string"
+                          },
+                          "prevRandao": {
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                            "title": "The Previous value of randomness beacon",
+                            "type": "string"
+                          },
+                          "time": {
+                            "description": "Time must either increase or remain constant relative to the previous block. If time is not specified, it's incremented by one for each block.",
+                            "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                            "title": "Time",
+                            "type": "string"
+                          },
+                          "withdrawals": {
+                            "description": "This array can have a maximum length of 16.",
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "address": {
+                                  "pattern": "^0x[0-9a-fA-F]{40}$",
+                                  "title": "recipient address for withdrawal value",
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                  "title": "value contained in withdrawal",
+                                  "type": "string"
+                                },
+                                "index": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                  "title": "index of withdrawal",
+                                  "type": "string"
+                                },
+                                "validatorIndex": {
+                                  "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                  "title": "index of validator that generated withdrawal",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "index",
+                                "validatorIndex",
+                                "address",
+                                "amount"
+                              ],
+                              "title": "Validator withdrawal",
+                              "type": "object"
+                            },
+                            "title": "Withdrawals made by validators",
+                            "type": "array"
+                          }
+                        },
+                        "title": "Context fields related to the block being executed",
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "stateOverrides": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "description": "The StateOverrides fields with optional storage, preserving existing balance/code/nonce-only trace and eth_call overrides. State and stateDiff are mutually exclusive. Accepted contents must take effect (H15).",
+                        "patternProperties": {
+                          "^0x[a-fA-F0-9]{40}$": {
+                            "additionalProperties": false,
+                            "not": {
+                              "required": [
+                                "state",
+                                "stateDiff"
+                              ]
+                            },
+                            "properties": {
+                              "balance": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$",
+                                "title": "Balance",
+                                "type": "string"
+                              },
+                              "code": {
+                                "pattern": "^0x[0-9a-f]*$",
+                                "title": "Code",
+                                "type": "string"
+                              },
+                              "movePrecompileToAddress": {
+                                "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles.",
+                                "pattern": "^0x[0-9a-fA-F]{40}$",
+                                "title": "MovePrecompileToAddress",
+                                "type": "string"
+                              },
+                              "nonce": {
+                                "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
+                                "title": "Nonce",
+                                "type": "string"
+                              },
+                              "state": {
+                                "additionalProperties": false,
+                                "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                                "patternProperties": {
+                                  "^0x[a-fA-F0-9]{64}$": {
+                                    "pattern": "^0x[0-9a-f]{64}$",
+                                    "title": "32 byte hex value",
+                                    "type": "string"
+                                  }
+                                },
+                                "title": "Storage",
+                                "type": "object"
+                              },
+                              "stateDiff": {
+                                "additionalProperties": false,
+                                "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+                                "patternProperties": {
+                                  "^0x[a-fA-F0-9]{64}$": {
+                                    "pattern": "^0x[0-9a-f]{64}$",
+                                    "title": "32 byte hex value",
+                                    "type": "string"
+                                  }
+                                },
+                                "title": "Storage difference",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "title": "Optional trace state overrides",
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "title": "Optional legacy override configuration",
                 "type": "object"
               },
               {
@@ -4556,7 +4860,7 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "An explicit null member is the same as an omitted one. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds exclude pending and block hashes; numeric bounds fit uint64. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; validate selectors before count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work A non-null blockHash is mutually exclusive with non-null bounds. Accepted hash selections return only that block's records with its own hash, including accurate noncanonical records where supported; orphan support and retention are optional. Unknown, unexecuted or otherwise unavailable hashes return an error (-32001 recommended; 4444 for pruned required history), never null, [], partial results or another block's records. Preserve exact identity in one coherent view, never substituting a block by height (H03,H04,H06,H23,H27,H30,H32,H33).",
+            "description": "An explicit null member is the same as an omitted one. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Portable bounds are numbers and mined tags, excluding pending; numeric bounds fit uint64. Canonical hash strings or blockHash objects are optional range extensions; resolve accepted endpoints to heights in one coherent canonical view, or explicitly reject unsupported forms. Unknown, noncanonical, unexecuted or unavailable endpoints return an error, never a substituted bound. These endpoints do not provide exact block identity across a reorg; use blockHash for that (H32,H33). Unresolvable safe or finalized tags return an error, never head substitution or an empty result. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; validate selectors before count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work A non-null blockHash is mutually exclusive with non-null bounds. Accepted hash selections return only that block's records with its own hash, including accurate noncanonical records where supported; orphan support and retention are optional. Unknown, unexecuted or otherwise unavailable hashes return an error (-32001 recommended; 4444 for pruned required history), never null, [], partial results or another block's records. Preserve exact identity in one coherent view, never substituting a block by height (H03,H04,H06,H23,H27,H30,H32,H33).",
             "if": {
               "properties": {
                 "blockHash": {
@@ -4645,9 +4949,32 @@
                     "title": "Block number or tag"
                   },
                   {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "Block hash",
+                    "type": "string"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "blockHash": {
+                        "pattern": "^0x[0-9a-f]{64}$",
+                        "title": "32 byte hex value",
+                        "type": "string"
+                      },
+                      "requireCanonical": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "blockHash"
+                    ],
+                    "type": "object"
+                  },
+                  {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "Numbers and mined tags are the portable baseline. Canonical hash strings or blockHash objects are optional range extensions, resolved to heights in one coherent canonical view; unsupported forms are explicitly rejected, never ignored (H32)."
               },
               "mode": {
                 "anyOf": [
@@ -4704,9 +5031,32 @@
                     "title": "Block number or tag"
                   },
                   {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "Block hash",
+                    "type": "string"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "blockHash": {
+                        "pattern": "^0x[0-9a-f]{64}$",
+                        "title": "32 byte hex value",
+                        "type": "string"
+                      },
+                      "requireCanonical": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "blockHash"
+                    ],
+                    "type": "object"
+                  },
+                  {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "Numbers and mined tags are the portable baseline. Canonical hash strings or blockHash objects are optional range extensions, resolved to heights in one coherent canonical view; unsupported forms are explicitly rejected, never ignored (H32)."
               }
             },
             "required": [],

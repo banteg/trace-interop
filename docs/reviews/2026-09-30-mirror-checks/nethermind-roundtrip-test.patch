@@ -1,0 +1,59 @@
+--- a/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs
++++ b/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs
+@@ -8,6 +8,8 @@
+ 
+ using Nethermind.Blockchain.Tracing.ParityStyle;
+ using Nethermind.Logging;
++using Nethermind.Core;
++using Nethermind.Serialization.Json;
+ 
+ using NUnit.Framework;
+ 
+@@ -55,6 +57,47 @@
+         }
+     }
+ 
++    [Test]
++    public void round_trips_stored_trace_families([Values("trace", "empty-state", "vm", "state")] string family)
++    {
++        ParityLikeTraceSerializer serializer = new(LimboLogs.Instance);
++        ParityLikeTxTrace trace = new()
++        {
++            Output = [],
++            Action = new ParityTraceAction
++            {
++                Type = "call",
++                CallType = "call",
++                From = Address.Zero,
++                To = Address.Zero,
++                Result = new ParityTraceResult { GasUsed = 1, Output = [] },
++            },
++        };
++        if (family == "vm")
++        {
++            trace.VmTrace = new ParityVmTrace { Code = [0x00], Operations = [] };
++        }
++        if (family == "empty-state")
++        {
++            trace.StateChanges = [];
++        }
++        if (family == "state")
++        {
++            trace.StateChanges = new Dictionary<Address, ParityAccountStateChange>
++            {
++                [Address.Zero] = new()
++                {
++                    Code = new ParityStateChange<byte[]>([0x00], [0x01]),
++                },
++            };
++        }
++
++        byte[] stored = serializer.Serialize([trace]);
++        List<ParityLikeTxTrace>? restored = serializer.Deserialize(stored);
++        EthereumJsonSerializer json = new();
++        Assert.That(json.Serialize(restored), Is.EqualTo(json.Serialize(new[] { trace })));
++    }
++
+     private List<ParityLikeTxTrace>? Deserialize(ITraceSerializer<ParityLikeTxTrace> serializer)
+     {
+         Type type = GetType();

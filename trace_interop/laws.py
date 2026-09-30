@@ -5,7 +5,8 @@ denote the same execution, or the same records, and compares what one client
 returned for both. It needs no expected value and no other client, and it holds
 under every policy the decision ledger is still weighing: a law never asks which
 precompile frames exist, how a record is encoded or which errors a request earns,
-only that a client answers the same question the same way. An error on either
+only that a client answers the same question the same way. Selector and identity
+checks additionally require the pinned trace profile. An error on either
 side is not a violation; it leaves the pair unevaluated.
 """
 from __future__ import annotations
@@ -25,10 +26,10 @@ LAWS = {
     'L02': ('Changed values', 'A stateDiff `*` entry changes its value: `from` differs from `to`.'),
     'L03': ('Root output', 'A successful root call frame reports the envelope output.'),
     'L04': ('Selection is a projection', 'Requests that differ only in their trace types return the same output and the same value for every component both select.'),
-    'L05': ('trace_get selects from trace_transaction', 'A record trace_get returns is one of the trace_transaction records, unchanged.'),
+    'L05': ('trace_get selects from trace_transaction', 'A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path.'),
     'L06': ('trace_transaction is a slice of trace_block', 'trace_transaction(tx) equals the trace_block records carrying its hash, in order.'),
     'L07': ('Stored and replayed frames agree', 'The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields.'),
-    'L08': ('Single and block replay agree', 'trace_replayTransaction(tx) equals the block replay envelope of that transaction for every selected component.'),
+    'L08': ('Single and block replay agree', 'trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash.'),
     'L09': ('A bundle item is a call', 'trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block.'),
     'L10': ('Filters select block records', 'trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them.'),
     'L11': ('Paging slices the filter', 'trace_filter with after and count returns that slice of the same filter without them.'),
@@ -171,8 +172,12 @@ def first_difference(a, b, path=''):
     return None if a == b else f'{path or "value"}: {shown(a)} vs {shown(b)}'
 
 
-def evaluate(context, cases, peers):
-    """Every law instance this run supports for one client, as {law, cases, holds, detail} dicts."""
+def evaluate(context, cases, peers, *, profile=False):
+    """Every law instance this run supports for one client, as {law, cases, holds, detail} dicts.
+
+    profile enables the pinned trace profile's tree-path lookup and ordered,
+    transaction-identified block replay requirements.
+    """
     run = Run(context, cases, peers)
     found = []
 
@@ -239,10 +244,17 @@ def evaluate(context, cases, peers):
         tree = trees.get(params[0]) if params else None
         if tree is None:
             continue
-        # Which record a selector names, and whether a miss is null, belong to H02 and H06.
         record = run.results[case['name']]
-        if isinstance(record, dict):
-            law('L05', [case['name'], tree['name']], None if record in sequence(run.results[tree['name']]) else
+        frames = run.results[tree['name']]
+        selector = params[1] if len(params) > 1 else None
+        if (profile and isinstance(frames, list) and frames and all(isinstance(f, dict) for f in frames)
+                and isinstance(selector, list) and all(isinstance(i, str) and re.fullmatch(r'0x(?:0|[1-9a-f][0-9a-f]*)', i) for i in selector)):
+            path = [int(i, 16) for i in selector]
+            expected = next((f for f in frames if f.get('traceAddress') == path), None)
+            diff = first_difference(expected, record)
+            law('L05', [case['name'], tree['name']], f'requested traceAddress {path}: {diff}' if diff else None)
+        elif isinstance(record, dict) and isinstance(frames, list):
+            law('L05', [case['name'], tree['name']], None if record in frames else
                 f'{record.get("type")} record at {record.get("traceAddress")} is not in the transaction trace')
 
     # L06, L07: stored records against block records and replays.
@@ -291,13 +303,18 @@ def evaluate(context, cases, peers):
         for other in run.of('trace_replayBlockTransactions'):
             other_params = other['request']['params']
             envelope = sequence(run.results[other['name']])
-            if len(other_params) < 2 or run.block(other_params[0]) != located[0] or located[1] >= len(envelope):
+            if len(other_params) < 2 or run.block(other_params[0]) != located[0] or not isinstance(run.results[other['name']], list):
                 continue
             shared = [k for k in COMPONENTS if k in sequence(params[1]) and k in sequence(other_params[1])]
-            if shared:
+            if shared or profile:
+                if located[1] >= len(envelope):
+                    if profile:
+                        law('L08', [case['name'], other['name']], f'block replay omits transaction {params[0]} at index {located[1]}')
+                    continue
                 other_env = mapping(envelope[located[1]])
                 law('L08', [case['name'], other['name']],
-                    next((d for k in ['output', *shared] if (d := first_difference(result.get(k), other_env.get(k), '.'+k))), None))
+                    next((d for k in (['transactionHash'] if profile else []) + ['output', *shared]
+                          if (d := first_difference(params[0] if k == 'transactionHash' else result.get(k), other_env.get(k), '.'+k))), None))
 
     # L09: bundle prefixes and first items.
     bundles = run.of('trace_callMany')

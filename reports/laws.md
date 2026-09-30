@@ -17,7 +17,7 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 90 | Anvil 1.8.4-nightly · 00989695, Anvil 1.8.3 · cae51ad4, Nethermind 2.0.0 · bec830cd |
 | **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 136 | — |
 | **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 526 | Anvil 1.8.4-nightly · 00989695, Anvil 1.8.3 · cae51ad4, Nethermind 2.2.0-preview · f69690c5, Nethermind 2.0.0 · bec830cd |
-| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 167 | Nethermind 2.0.0 · bec830cd |
+| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 185 | Nethermind 2.0.0 · bec830cd |
 | **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4310 | Anvil 1.8.3 · cae51ad4, Erigon 3.7.0 · bdc78cc4 |
 | **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 721 | Besu 26.9-develop · 3cbf077c, Besu 26.9.0 · ee9c64c8, Erigon 3.7.0 · bdc78cc4 |
 | **L11** Paging slices the filter | trace_filter with after and count returns that slice of the same filter without them. | 115 | — |
@@ -49,9 +49,9 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Anvil 1.8.4-nightly · 00989695 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `.action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `.action.gas: differs at character 2: …0xea60 vs …0xf35c` |
-| Anvil 1.8.3 · cae51ad4 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `.action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `.action.gas: differs at character 2: …0xea60 vs …0xf35c` |
-| Nethermind 2.0.0 · bec830cd | 8 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `value: {"action": {"creationMethod": "create", "from": "0x9dcd17433742f4c0ca53122ab541d vs [{"action": {"creationMethod": "create", "from": "0x9dcd17433742f4c0c` |
+| Anvil 1.8.4-nightly · 00989695 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `requested traceAddress [6]: .action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `requested traceAddress [1]: .action.gas: differs at character 2: …0xea60 vs …0xf35c` |
+| Anvil 1.8.3 · cae51ad4 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `requested traceAddress [6]: .action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `requested traceAddress [1]: .action.gas: differs at character 2: …0xea60 vs …0xf35c` |
+| Nethermind 2.0.0 · bec830cd | 8 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `requested traceAddress [6]: value: {"action": {"creationMethod": "create", "from": "0x9dcd17433742f4c0ca53122ab541d vs [{"action": {"creationMethod": "create", ` · [get-nested-positive](cases/a/get-nested-positive.md) vs [transaction-tree](cases/a/transaction-tree.md): `requested traceAddress [6, 0]: value: {"action": {"address": "0x2d303c5b7911d87d594bf1b31fbb9aa187888893", "balance":  vs [{"action": {"creationMethod": "create` |
 
 ### L07 Stored and replayed frames agree
 
@@ -66,7 +66,7 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Nethermind 2.0.0 · bec830cd | 4 | H08 output and H20 `store`, as under L04. | [replay-7702-stateDiff](cases/initial/replay-7702-stateDiff.md) vs [replay-block-tree](cases/initial/replay-block-tree.md): `.output: null vs "0x"` · [replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) vs [replay-block-tree](cases/initial/replay-block-tree.md): `.vmTrace.ops[49].sub.ops[11].ex.store: null vs {"key": "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c", "v` |
+| Nethermind 2.0.0 · bec830cd | 5 | H08 output and H20 `store`, as under L04. | [replay-7702-stateDiff](cases/initial/replay-7702-stateDiff.md) vs [replay-block-tree](cases/initial/replay-block-tree.md): `.output: null vs "0x"` · [replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) vs [replay-block-tree](cases/initial/replay-block-tree.md): `.vmTrace.ops[49].sub.ops[11].ex.store: null vs {"key": "0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c", "v` |
 
 ### L09 A bundle item is a call
 

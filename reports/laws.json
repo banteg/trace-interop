@@ -324,39 +324,39 @@
     },
     "L08": {
       "anvil_development": {
-        "held": 10,
+        "held": 12,
         "violated": 0
       },
       "anvil_release": {
-        "held": 10,
+        "held": 12,
         "violated": 0
       },
       "erigon_development": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       },
       "erigon_release": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 17,
-        "violated": 4
+        "held": 18,
+        "violated": 5
       },
       "reth_development": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       },
       "reth_release": {
-        "held": 21,
+        "held": 23,
         "violated": 0
       }
     },
@@ -7711,7 +7711,7 @@
       ],
       "client": "anvil_development",
       "corpus": "a",
-      "detail": ".action.callType: differs at character 4: \u2026call vs \u2026callcode",
+      "detail": "requested traceAddress [6]: .action.callType: differs at character 4: \u2026call vs \u2026callcode",
       "law": "L05",
       "run": "a",
       "version": "anvil Version: 1.8.4-nightly+00989695"
@@ -7723,7 +7723,7 @@
       ],
       "client": "anvil_development",
       "corpus": "initial",
-      "detail": ".action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
+      "detail": "requested traceAddress [1]: .action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.4-nightly+00989695"
@@ -7735,7 +7735,7 @@
       ],
       "client": "anvil_development",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.4-nightly+00989695"
@@ -7747,7 +7747,7 @@
       ],
       "client": "anvil_development",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.4-nightly+00989695"
@@ -7759,7 +7759,7 @@
       ],
       "client": "anvil_development",
       "corpus": "initial",
-      "detail": ".action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "detail": "requested traceAddress [0]: .action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.4-nightly+00989695"
@@ -7771,7 +7771,7 @@
       ],
       "client": "anvil_release",
       "corpus": "a",
-      "detail": ".action.callType: differs at character 4: \u2026call vs \u2026callcode",
+      "detail": "requested traceAddress [6]: .action.callType: differs at character 4: \u2026call vs \u2026callcode",
       "law": "L05",
       "run": "a",
       "version": "anvil Version: 1.8.3+cae51ad4"
@@ -7783,7 +7783,7 @@
       ],
       "client": "anvil_release",
       "corpus": "initial",
-      "detail": ".action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
+      "detail": "requested traceAddress [1]: .action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.3+cae51ad4"
@@ -7795,7 +7795,7 @@
       ],
       "client": "anvil_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.3+cae51ad4"
@@ -7807,7 +7807,7 @@
       ],
       "client": "anvil_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.3+cae51ad4"
@@ -7819,7 +7819,7 @@
       ],
       "client": "anvil_release",
       "corpus": "initial",
-      "detail": ".action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "detail": "requested traceAddress [0]: .action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
       "law": "L05",
       "run": "initial",
       "version": "anvil Version: 1.8.3+cae51ad4"
@@ -7831,7 +7831,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "a",
-      "detail": "value: {\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
+      "detail": "requested traceAddress [6]: value: {\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
       "law": "L05",
       "run": "a",
       "version": "2.0.0+bec830cd"
@@ -7843,7 +7843,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "a",
-      "detail": "value: {\"action\": {\"address\": \"0x2d303c5b7911d87d594bf1b31fbb9aa187888893\", \"balance\":  vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
+      "detail": "requested traceAddress [6, 0]: value: {\"action\": {\"address\": \"0x2d303c5b7911d87d594bf1b31fbb9aa187888893\", \"balance\":  vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
       "law": "L05",
       "run": "a",
       "version": "2.0.0+bec830cd"
@@ -7855,7 +7855,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: null vs []",
+      "detail": "requested traceAddress [65535]: value: null vs []",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -7867,7 +7867,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: null vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "detail": "requested traceAddress [0, 0]: value: null vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -7879,7 +7879,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "detail": "requested traceAddress [1]: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -7891,7 +7891,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -7903,7 +7903,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
+      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -7915,7 +7915,7 @@
       ],
       "client": "nethermind_release",
       "corpus": "initial",
-      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "detail": "requested traceAddress [0]: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
       "law": "L05",
       "run": "initial",
       "version": "2.0.0+bec830cd"
@@ -8228,6 +8228,18 @@
       "client": "nethermind_release",
       "corpus": "initial",
       "detail": ".output: null vs \"0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000",
+      "law": "L08",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "replay-transfer-stateDiff",
+        "replay-block-transfer"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": ".output: null vs \"0x\"",
       "law": "L08",
       "run": "initial",
       "version": "2.0.0+bec830cd"

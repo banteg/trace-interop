@@ -134,7 +134,7 @@ def assess_runs(root, runs, output, decisions, pinned):
             peers={name:clients.get(client,{}) for name,clients in obs.items()}
             if eligible:
                 laws += [dict(law, run=folder.name, corpus=manifest['corpus'], client=client, version=summary['versions'].get(client, 'unknown'))
-                         for law in consistency.evaluate(rule_context, cases, peers)]
+                         for law in consistency.evaluate(rule_context, cases, peers, profile=spec)]
             assessed=[]
             for case in cases:
                 name=case['name']; observation=peers.get(name,{})

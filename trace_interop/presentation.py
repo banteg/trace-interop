@@ -472,6 +472,7 @@ def laws_page(laws, notes, name):
              'a request selected with different trace types, a transaction through trace_transaction and trace_block, a stored trace and its replay, '
              'a bundle item and the same call, a filter and the blocks it covers. '
              'A law needs no expected value and no other client, and never asks which frames exist, how a record is encoded or which errors a request earns. '
+             'Selector and transaction-identity checks in L05 and L08 additionally require the pinned trace profile. '
              'An error on either side leaves the pair unevaluated.\n\n'
              'Violations are reported here and are not decision verdicts: most repeat a difference a decision already measures, '
              'so they do not change the progress counts. A cause names the decision that already measures the difference; '

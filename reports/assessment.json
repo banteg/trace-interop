@@ -79,7 +79,7 @@
     "trace_interop/fee_policy.py": "89859fe4d2a85bf3ea800dd219b81e85da62554544025d47474b9d7a78ba61a8",
     "trace_interop/inventory.py": "c18981e20d46231a977703c3aba56d57af8adc6500f06a6880f24dcb68462f91",
     "trace_interop/isolation.py": "816a36b78d9e7ad10ba62c05a3e011bf6ee1630583bd45260a6f1ee10fd3d6ec",
-    "trace_interop/laws.py": "076101eb1452493413a2a50401d91682dc68cd059d82b5e68b6fbd1edbd6fd17",
+    "trace_interop/laws.py": "d0ac48a7811aab477492de9bc5b22977168ea83b771eaa641081afbc45100ad7",
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "42091ebc2cd25f820c6f24a46e8d03fb4512a9444187d25d4691be316ac88fa7",
     "trace_interop/presentation.py": "30e49ae84c63ba4e4ccc025b87e1bc48e1e4251cbc7693d24ec05ee3cea8a970",

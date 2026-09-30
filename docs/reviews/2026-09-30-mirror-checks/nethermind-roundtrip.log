@@ -1,0 +1,96 @@
+/home/banteg/.nuget/packages/microsoft.build.tasks.git/10.0.401/build/Microsoft.Build.Tasks.Git.targets(25,5): warning : Unable to locate repository with working directory that contains directory '/tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Kademlia'. [/tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Kademlia/Nethermind.Kademlia.csproj]
+/home/banteg/.nuget/packages/microsoft.sourcelink.common/10.0.401/build/Microsoft.SourceLink.Common.targets(56,5): warning : Source control information is not available - the generated source link is empty. [/tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Kademlia/Nethermind.Kademlia.csproj]
+Running tests from /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.TraceStore.Test/release/Nethermind.JsonRpc.TraceStore.Test.dll (net10.0|x64)
+failed round_trips_stored_trace_families("vm") (24ms)
+  from /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.TraceStore.Test/release/Nethermind.JsonRpc.TraceStore.Test.dll (net10.0|x64)
+  System.NotSupportedException : Specified method is not supported. The unsupported member type is located on type 'Nethermind.Blockchain.Tracing.ParityStyle.ParityVmTrace'. Path: $[0].vmTrace | LineNumber: 0 | BytePositionInLine: 43.
+    ----> System.NotSupportedException : Specified method is not supported.
+    at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, Exception innerException)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize[TReadBufferState,TStream](TReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, T& value)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Stream utf8Json)
+    at Nethermind.Serialization.Json.EthereumJsonSerializer.Deserialize[T](Stream stream) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Serialization.Json/EthereumJsonSerializer.cs:78
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Stream serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:38
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Span`1 serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:31
+    at Nethermind.JsonRpc.TraceStore.Test.TraceSerializerTests.round_trips_stored_trace_families(String family) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs:96
+    at InvokeStub_TraceSerializerTests.round_trips_stored_trace_families(Object, Span`1)
+    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+    --NotSupportedException
+    at Nethermind.Blockchain.Tracing.ParityStyle.ParityVmTraceConverter.Read(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmTraceConverter.cs:22
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+    at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TCollection& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    1)    at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, Exception innerException)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize[TReadBufferState,TStream](TReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, T& value)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Stream utf8Json)
+    at Nethermind.Serialization.Json.EthereumJsonSerializer.Deserialize[T](Stream stream) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Serialization.Json/EthereumJsonSerializer.cs:78
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Stream serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:38
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Span`1 serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:31
+    at Nethermind.JsonRpc.TraceStore.Test.TraceSerializerTests.round_trips_stored_trace_families(String family) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs:96
+    at InvokeStub_TraceSerializerTests.round_trips_stored_trace_families(Object, Span`1)
+    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+    --NotSupportedException
+    at Nethermind.Blockchain.Tracing.ParityStyle.ParityVmTraceConverter.Read(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityVmTraceConverter.cs:22
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+    at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TCollection& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    
+failed round_trips_stored_trace_families("state") (9ms)
+  from /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.TraceStore.Test/release/Nethermind.JsonRpc.TraceStore.Test.dll (net10.0|x64)
+  System.NotImplementedException : The method or operation is not implemented.
+    at Nethermind.Blockchain.Tracing.ParityStyle.ParityAccountStateChangeJsonConverter.Read(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs:24
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TDictionary& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+    at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TCollection& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize[TReadBufferState,TStream](TReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, T& value)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Stream utf8Json)
+    at Nethermind.Serialization.Json.EthereumJsonSerializer.Deserialize[T](Stream stream) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Serialization.Json/EthereumJsonSerializer.cs:78
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Stream serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:38
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Span`1 serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:31
+    at Nethermind.JsonRpc.TraceStore.Test.TraceSerializerTests.round_trips_stored_trace_families(String family) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs:96
+    at InvokeStub_TraceSerializerTests.round_trips_stored_trace_families(Object, Span`1)
+    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+    1)    at Nethermind.Blockchain.Tracing.ParityStyle.ParityAccountStateChangeJsonConverter.Read(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Blockchain/Tracing/ParityStyle/ParityAccountStateChangeJsonConverter.cs:line 24
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TDictionary& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+    at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, TCollection& value)
+    at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+    at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize[TReadBufferState,TStream](TReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, T& value)
+    at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Stream utf8Json)
+    at Nethermind.Serialization.Json.EthereumJsonSerializer.Deserialize[T](Stream stream) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.Serialization.Json/EthereumJsonSerializer.cs:78
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Stream serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:38
+    at Nethermind.JsonRpc.TraceStore.ParityLikeTraceSerializer.Deserialize(Span`1 serialized) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore/ParityLikeTraceSerializer.cs:31
+    at Nethermind.JsonRpc.TraceStore.Test.TraceSerializerTests.round_trips_stored_trace_families(String family) in /tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/Nethermind.JsonRpc.TraceStore.Test/TraceSerializerTests.cs:96
+    at InvokeStub_TraceSerializerTests.round_trips_stored_trace_families(Object, Span`1)
+    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+    
+/tmp/trace-store-roundtrip-20260930/nethermind-2cb4e9e655b695063557df2eb57312128941e88c/src/Nethermind/artifacts/bin/Nethermind.JsonRpc.TraceStore.Test/release/Nethermind.JsonRpc.TraceStore.Test.dll (net10.0|x64) failed with 2 error(s) (2s 373ms)
+Exit code: 2
+
+Test run summary: Failed!
+  total: 7
+  failed: 2
+  succeeded: 5
+  skipped: 0
+  duration: 2s 984ms
+Test run completed with non-success exit code: 2 (see: https://aka.ms/testingplatform/exitcodes)

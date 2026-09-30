@@ -32,11 +32,66 @@ CONTEXT = {'_blocks': {'0x2': {'number': 2, 'hash': '0x' + 'aa' * 32}}, '_head':
            'txinfo': {'_decoded': [{'txhash': TX, 'sender': SENDER, 'block': '0x2', 'indexInBlock': 0}]}}
 
 
-def laws(cases, responses, context=CONTEXT):
-    return {(f['law'], f['holds']) for f in evaluate(context, cases, {c['name']: responses[c['name']] for c in cases})}
+def laws(cases, responses, context=CONTEXT, profile=True):
+    return {(f['law'], f['holds']) for f in evaluate(context, cases, {c['name']: responses[c['name']] for c in cases}, profile=profile)}
 
 
 class Laws(unittest.TestCase):
+    def test_get_selects_requested_path(self):
+        stored = [located([], 1), located([0], 1), located([0, 0])]
+        tree = case('tree', 'trace_transaction', [TX])
+        for selector, expected in [([], stored[0]), (['0x0'], stored[1]), (['0x0', '0x0'], stored[2]), (['0x1'], None)]:
+            with self.subTest(selector=selector):
+                get = case('get', 'trace_get', [TX, selector])
+                self.assertIn(('L05', True), laws([tree, get], {'tree': ok(stored), 'get': ok(expected)}))
+                wrong = stored[1] if not selector else stored[0]
+                self.assertIn(('L05', False), laws([tree, get], {'tree': ok(stored), 'get': ok(wrong)}))
+        get = case('get', 'trace_get', [TX, ['0x0']])
+        self.assertIn(('L05', False), laws([tree, get], {'tree': ok(stored), 'get': ok(None)}))
+        self.assertIn(('L05', False), laws([tree, get], {'tree': ok(stored), 'get': ok(dict(stored[1], subtraces=2))}))
+        self.assertIn(('L05', True), laws([tree, get], {'tree': ok(stored), 'get': ok(stored[0])}, profile=False))
+        self.assertNotIn('L05', {law for law, _ in laws([tree, get], {'tree': ok([]), 'get': ok(None)})})
+        invalid = case('get', 'trace_get', [TX, [0]])
+        self.assertIn(('L05', True), laws([tree, invalid], {'tree': ok(stored), 'get': ok(stored[0])}))
+
+    def test_block_replay_preserves_transaction_identity(self):
+        replay = case('replay', 'trace_replayTransaction', [TX, ['trace']])
+        block = case('block', 'trace_replayBlockTransactions', ['0x2', ['trace']])
+        envelope = {'output': '0x', 'trace': [frame([])], 'stateDiff': None, 'vmTrace': None}
+        good = dict(envelope, transactionHash=TX)
+        self.assertIn(('L08', True), laws([replay, block], {'replay': ok(envelope), 'block': ok([good])}))
+        for bad in [[], [dict(good, transactionHash='0x' + '33' * 32)], [envelope], [dict(good, output='0x01')]]:
+            with self.subTest(bad=bad):
+                self.assertIn(('L08', False), laws([replay, block], {'replay': ok(envelope), 'block': ok(bad)}))
+        self.assertIn(('L08', True), laws([replay, block], {'replay': ok(envelope), 'block': ok([envelope])}, profile=False))
+        self.assertNotIn('L08', {law for law, _ in laws([replay, block], {'replay': ok(envelope), 'block': ok([])}, profile=False)})
+        # Identity comes from the request, even when the single replay is also mislabeled.
+        wrong = dict(good, transactionHash='0x' + '33' * 32)
+        self.assertIn(('L08', False), laws([replay, block], {'replay': ok(wrong), 'block': ok([wrong])}))
+        disjoint = case('block', 'trace_replayBlockTransactions', ['0x2', ['stateDiff']])
+        unknown = case('block', 'trace_replayBlockTransactions', ['0x3', ['trace']])
+        self.assertIn(('L08', False), laws([replay, disjoint], {'replay': ok(envelope), 'block': ok([])}))
+        self.assertNotIn('L08', {law for law, _ in laws([replay, unknown], {'replay': ok(envelope), 'block': ok([])})})
+        # A later transaction must occur at its own index, even if another envelope matches.
+        later = copy.deepcopy(CONTEXT)
+        later['txinfo']['_decoded'][0]['indexInBlock'] = 1
+        self.assertIn(('L08', False), laws([replay, block], {'replay': ok(envelope), 'block': ok([good])}, later))
+        self.assertIn(('L08', True), laws([replay, block], {'replay': ok(envelope), 'block': ok([wrong, good])}, later))
+
+    def test_selector_and_identity_pairs_require_success_and_frozen_chain(self):
+        tree, get = case('tree', 'trace_transaction', [TX]), case('get', 'trace_get', [TX, ['0x0']])
+        replay, block = case('replay', 'trace_replayTransaction', [TX, ['trace']]), case('block', 'trace_replayBlockTransactions', ['0x2', ['trace']])
+        envelope = {'output': '0x', 'trace': [frame([])]}
+        error = {'status': 'rpc_error', 'response': {'error': {'code': -32000, 'message': 'unavailable'}}}
+        wrapped = ok({'jsonrpc': '2.0', 'id': 1, 'error': {'code': -32000, 'message': 'unavailable'}})
+        for cases, responses, code in [([tree, get], {'tree': ok([located([], 1), located([0])]), 'get': ok(located([]))}, 'L05'),
+                                        ([replay, block], {'replay': ok(envelope), 'block': ok([])}, 'L08')]:
+            for name in responses:
+                for failure in [error, wrapped]:
+                    self.assertNotIn(code, {law for law, _ in laws(cases, responses | {name: failure})})
+            moving = dict(CONTEXT, _scenario_phases=['before', 'after'])
+            self.assertNotIn(code, {law for law, _ in laws(cases, responses, moving)})
+
     def test_tree_shape(self):
         tree = [frame([], 1), frame([0])]
         self.assertEqual(tree_violations(tree), [])

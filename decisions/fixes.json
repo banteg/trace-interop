@@ -2386,6 +2386,18 @@
       "draft": false,
       "merged_at": null,
       "note": "Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release."
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11407",
+      "title": "fix(rpc): select exactly the blockHash block in trace_filter",
+      "client": "besu",
+      "decisions": [
+        "H33"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after."
     }
   ]
 }

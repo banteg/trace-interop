@@ -187,42 +187,46 @@
     "L05": {
       "anvil_development": {
         "held": 3,
-        "violated": 0
+        "violated": 5
       },
       "anvil_release": {
         "held": 3,
-        "violated": 0
+        "violated": 5
       },
       "besu_development": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
       "besu_release": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
       "erigon_development": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
       "erigon_release": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 6,
+        "held": 8,
         "violated": 0
       },
+      "nethermind_release": {
+        "held": 0,
+        "violated": 8
+      },
       "reth_development": {
-        "held": 7,
+        "held": 9,
         "violated": 0
       },
       "reth_release": {
-        "held": 7,
+        "held": 9,
         "violated": 0
       }
     },
@@ -564,7 +568,7 @@
     },
     {
       "id": "L05",
-      "statement": "A record trace_get returns is one of the trace_transaction records, unchanged.",
+      "statement": "A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path.",
       "title": "trace_get selects from trace_transaction"
     },
     {
@@ -579,7 +583,7 @@
     },
     {
       "id": "L08",
-      "statement": "trace_replayTransaction(tx) equals the block replay envelope of that transaction for every selected component.",
+      "statement": "trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash.",
       "title": "Single and block replay agree"
     },
     {
@@ -7698,6 +7702,222 @@
       "detail": ".output: \"0x\" vs null",
       "law": "L04",
       "run": "repeat",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-nested-parent",
+        "transaction-tree"
+      ],
+      "client": "anvil_development",
+      "corpus": "a",
+      "detail": ".action.callType: differs at character 4: \u2026call vs \u2026callcode",
+      "law": "L05",
+      "run": "a",
+      "version": "anvil Version: 1.8.4-nightly+00989695"
+    },
+    {
+      "cases": [
+        "get-one",
+        "transaction-tree"
+      ],
+      "client": "anvil_development",
+      "corpus": "initial",
+      "detail": ".action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.4-nightly+00989695"
+    },
+    {
+      "cases": [
+        "get-root",
+        "transaction-tree"
+      ],
+      "client": "anvil_development",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.4-nightly+00989695"
+    },
+    {
+      "cases": [
+        "get-transfer-root",
+        "transaction-transfer"
+      ],
+      "client": "anvil_development",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.4-nightly+00989695"
+    },
+    {
+      "cases": [
+        "get-zero",
+        "transaction-tree"
+      ],
+      "client": "anvil_development",
+      "corpus": "initial",
+      "detail": ".action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.4-nightly+00989695"
+    },
+    {
+      "cases": [
+        "get-nested-parent",
+        "transaction-tree"
+      ],
+      "client": "anvil_release",
+      "corpus": "a",
+      "detail": ".action.callType: differs at character 4: \u2026call vs \u2026callcode",
+      "law": "L05",
+      "run": "a",
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    },
+    {
+      "cases": [
+        "get-one",
+        "transaction-tree"
+      ],
+      "client": "anvil_release",
+      "corpus": "initial",
+      "detail": ".action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    },
+    {
+      "cases": [
+        "get-root",
+        "transaction-tree"
+      ],
+      "client": "anvil_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    },
+    {
+      "cases": [
+        "get-transfer-root",
+        "transaction-transfer"
+      ],
+      "client": "anvil_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    },
+    {
+      "cases": [
+        "get-zero",
+        "transaction-tree"
+      ],
+      "client": "anvil_release",
+      "corpus": "initial",
+      "detail": ".action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+      "law": "L05",
+      "run": "initial",
+      "version": "anvil Version: 1.8.3+cae51ad4"
+    },
+    {
+      "cases": [
+        "get-nested-parent",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "a",
+      "detail": "value: {\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
+      "law": "L05",
+      "run": "a",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-nested-positive",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "a",
+      "detail": "value: {\"action\": {\"address\": \"0x2d303c5b7911d87d594bf1b31fbb9aa187888893\", \"balance\":  vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
+      "law": "L05",
+      "run": "a",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-missing",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: null vs []",
+      "law": "L05",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-nested",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: null vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "law": "L05",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-one",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "law": "L05",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-root",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
+      "law": "L05",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-transfer-root",
+        "transaction-transfer"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
+      "law": "L05",
+      "run": "initial",
+      "version": "2.0.0+bec830cd"
+    },
+    {
+      "cases": [
+        "get-zero",
+        "transaction-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
+      "law": "L05",
+      "run": "initial",
       "version": "2.0.0+bec830cd"
     },
     {

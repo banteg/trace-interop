@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md) · [Spec decision tables](spec-tables.md)
 
-Every trace method projects one execution, so some pairs of responses must agree whatever the draft decides. A law pairs two captured requests that denote the same execution or the same records and compares what one build returned for both: a request selected with different trace types, a transaction through trace_transaction and trace_block, a stored trace and its replay, a bundle item and the same call, a filter and the blocks it covers. A law needs no expected value and no other client, and never asks which frames exist, how a record is encoded or which errors a request earns. An error on either side leaves the pair unevaluated.
+Every trace method projects one execution, so some pairs of responses must agree whatever the draft decides. A law pairs two captured requests that denote the same execution or the same records and compares what one build returned for both: a request selected with different trace types, a transaction through trace_transaction and trace_block, a stored trace and its replay, a bundle item and the same call, a filter and the blocks it covers. A law needs no expected value and no other client, and never asks which frames exist, how a record is encoded or which errors a request earns. Selector and transaction-identity checks in L05 and L08 additionally require the pinned trace profile. An error on either side leaves the pair unevaluated.
 
 Violations are reported here and are not decision verdicts: most repeat a difference a decision already measures, so they do not change the progress counts. A cause names the decision that already measures the difference; “Found by this law” marks one no decision assertion checks. Laws run on the eligible responses of every run in the current matrix; [laws.json](laws.json) keeps every violation.
 
@@ -14,10 +14,10 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 16230 | — |
 | **L03** Root output | A successful root call frame reports the envelope output. | 1412 | Besu 26.9-develop · 3cbf077c, Besu 26.9.0 · ee9c64c8 |
 | **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 26823 | Nethermind 2.0.0 · bec830cd |
-| **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged. | 56 | — |
+| **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 90 | Anvil 1.8.4-nightly · 00989695, Anvil 1.8.3 · cae51ad4, Nethermind 2.0.0 · bec830cd |
 | **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 136 | — |
 | **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 526 | Anvil 1.8.4-nightly · 00989695, Anvil 1.8.3 · cae51ad4, Nethermind 2.2.0-preview · f69690c5, Nethermind 2.0.0 · bec830cd |
-| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every selected component. | 167 | Nethermind 2.0.0 · bec830cd |
+| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 167 | Nethermind 2.0.0 · bec830cd |
 | **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4310 | Anvil 1.8.3 · cae51ad4, Erigon 3.7.0 · bdc78cc4 |
 | **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 721 | Besu 26.9-develop · 3cbf077c, Besu 26.9.0 · ee9c64c8, Erigon 3.7.0 · bdc78cc4 |
 | **L11** Paging slices the filter | trace_filter with after and count returns that slice of the same filter without them. | 115 | — |
@@ -44,6 +44,14 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
 | Nethermind 2.0.0 · bec830cd | 584 | H08: output is missing when stateDiff alone is selected. H20: vmTrace `store` appears only when stateDiff is also selected. The development build has neither. | [call-return42](cases/a/call-return42.md) vs [state-only-nonempty-output](cases/a/state-only-nonempty-output.md): `.output: "0x000000000000000000000000000000000000000000000000000000000000002a" vs null` · [defaults-cap-only-positive/many/stateDiff](cases/fee-policy/defaults-cap-only-positive/many/stateDiff.md) vs [defaults-cap-only-positive/many/stateDiff-vmTrace](cases/fee-policy/defaults-cap-only-positive/many/stateDiff-vmTrace.md): `[0].output: null vs "0x000000000000000000000000000000000000000000000000000000002da282a80000000000000` |
+
+### L05 trace_get selects from trace_transaction
+
+| Build | Violations | Cause | Examples |
+| --- | --- | --- | --- |
+| Anvil 1.8.4-nightly · 00989695 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `.action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `.action.gas: differs at character 2: …0xea60 vs …0xf35c` |
+| Anvil 1.8.3 · cae51ad4 | 5 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `.action.callType: differs at character 4: …call vs …callcode` · [get-one](cases/initial/get-one.md) vs [transaction-tree](cases/initial/transaction-tree.md): `.action.gas: differs at character 2: …0xea60 vs …0xf35c` |
+| Nethermind 2.0.0 · bec830cd | 8 | Not yet triaged. | [get-nested-parent](cases/a/get-nested-parent.md) vs [transaction-tree](cases/a/transaction-tree.md): `value: {"action": {"creationMethod": "create", "from": "0x9dcd17433742f4c0ca53122ab541d vs [{"action": {"creationMethod": "create", "from": "0x9dcd17433742f4c0c` |
 
 ### L07 Stored and replayed frames agree
 

@@ -2231,6 +2231,18 @@
       "draft": false,
       "merged_at": null,
       "note": "Latest main reproductions confirm signed gas clamping, high-s admission and empty type-4 admission. Executes the original transaction with strict fork validation; 28 new HTTP regressions and 1,291 focused tests passed, one skipped. Signed off with the requested GitHub noreply identity."
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11401",
+      "title": "fix(rpc): return trace_callMany failures as json-rpc errors",
+      "client": "besu",
+      "decisions": [
+        "H25"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_callMany returns a failing bundle as one JSON-RPC error instead of an error envelope inside a successful result; the underlying zero-fee rejection is H15"
     }
   ]
 }

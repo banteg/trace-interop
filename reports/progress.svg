@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 4 agree, 5 fix submitted, 14 no fix · converged, 4 no fix · under review, 6 not fully measured; Erigon 29 agree, 1 no fix · converged, 1 no fix · under review, 2 not fully measured; Nethermind 28 agree, 2 no fix · converged, 1 no fix · under review, 2 not fully measured; Reth 22 agree, 4 fix submitted, 3 no fix · converged, 3 no fix · under review, 1 not fully measured; Anvil 14 agree, 2 fix submitted, 9 no fix · converged, 3 no fix · under review, 5 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 4 agree, 6 fix submitted, 13 no fix · converged, 4 no fix · under review, 6 not fully measured; Erigon 29 agree, 1 no fix · converged, 1 no fix · under review, 2 not fully measured; Nethermind 28 agree, 2 no fix · converged, 1 no fix · under review, 2 not fully measured; Reth 22 agree, 4 fix submitted, 3 no fix · converged, 3 no fix · under review, 1 not fully measured; Anvil 14 agree, 2 fix submitted, 9 no fix · converged, 3 no fix · under review, 5 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect x="96" y="12" width="62" height="20" fill="#1a7f37"/>
 <text x="127" y="26" text-anchor="middle" fill="#ffffff">4</text>
-<rect x="158" y="12" width="78" height="20" fill="#0969da"/>
-<text x="197" y="26" text-anchor="middle" fill="#ffffff">5</text>
-<rect x="236" y="12" width="217" height="20" fill="#bc4c00"/>
-<text x="344.5" y="26" text-anchor="middle" fill="#ffffff">14</text>
+<rect x="158" y="12" width="93" height="20" fill="#0969da"/>
+<text x="204.5" y="26" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="251" y="12" width="202" height="20" fill="#bc4c00"/>
+<text x="352" y="26" text-anchor="middle" fill="#ffffff">13</text>
 <rect x="453" y="12" width="62" height="20" fill="#d4a72c"/>
 <text x="484" y="26" text-anchor="middle" fill="#1f2328">4</text>
 <rect x="515" y="12" width="93" height="20" fill="#8c959f"/>

@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+4 since the previous capture). 9 more have a submitted fix, and **29 differ with no fix yet**: 20 on converged decisions and 9 on decisions still under review. 30 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+4 since the previous capture). 10 more have a submitted fix, and **28 differ with no fix yet**: 19 on converged decisions and 9 on decisions still under review. 30 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -32,7 +32,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** c
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍👍👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅✅🛠️✅🟡 |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
-| [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅✅ |
+| [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | 🛠️✅🛠️✅—✅ | 🛠️✅✅✅✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🛠️ | 🛠️✅✅⚠️✅🛠️ |
 | [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅🟡—✅ | 🛠️✅✅🟡✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |

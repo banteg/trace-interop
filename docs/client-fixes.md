@@ -29,6 +29,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Besu #11381](https://github.com/besu-eth/besu/pull/11381) | Return block not found from trace_block and block replays; trace_block and trace_replayBlockTransactions return block not found instead of null | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Besu #11395](https://github.com/besu-eth/besu/pull/11395) | Preserve and validate signed raw trace transactions; Latest main reproductions confirm signed gas clamping, high-s admission and empty type-4 admission. Executes the original transaction with strict fork validation; 28 new HTTP regressions and 1,291 focused tests passed, one skipped. Signed off with the requested GitHub noreply identity. | [H13](../reports/decisions/H13.md) (partial) | — | — | — | — | — |
+| [Besu #11401](https://github.com/besu-eth/besu/pull/11401) | Return trace_callMany failures as json-rpc errors; trace_callMany returns a failing bundle as one JSON-RPC error instead of an error envelope inside a successful result; the underlying zero-fee rejection is H15 | [H25](../reports/decisions/H25.md) | — | — | — | — | — |
 
 ## Erigon
 

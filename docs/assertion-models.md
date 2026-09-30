@@ -93,16 +93,19 @@ environment, without a verdict. Extension observations do not hold open a verdic
 baseline checks settle, so H12 shows the baseline result with the extension behavior beside it.
 A signed transaction rejected for a validity violation is H13's; the baseline check is then blocked.
 
-H33's block-hash probes (kind `block-hash`) judge the `blockHash` trace_filter member the
-decision proposes. The draft's schema has no such member, so request validation drops it and
-H33, not H14's unknown-member rule, judges these requests. Each `h30` hash case of block 2
+H33's block-hash probes (kind `block-hash`) judge the optional `blockHash` trace_filter member
+the decision proposes. The draft's schema has no such member, so request validation drops it and
+H33, not H14's unknown-member rule, judges these requests. A probe with `allow_reject` accepts
+an explicit RPC rejection of the optional capability without requiring a numeric control and
+without establishing support; a server failure does not pass. The null-member case has no such
+exception: H14 treats null as omission, so its numeric range still applies. Each accepted `h30` hash case of block 2
 (`filter-blockhash`, `-address-from`, `-address-to`, `-union`, `-page`, `-page-past-end`,
 `-empty`, `-null-bounds`) has a numeric twin `filter-block-2…` with the same members and
 `fromBlock = toBlock = 0x2`, and must equal that twin's records at block 2 from the same build.
 Equality proves the selection because the records carry `blockNumber` and `blockHash`, and the
 address lists also match records in other blocks, so a build that scans more than the hashed block
 returns more than its twin. A twin
-without records at the block blocks a case that needs them (`nonempty`). `-page-past-end` and
+without records at the block blocks an accepted case that needs them (`nonempty`). `-page-past-end` and
 `-empty` expect `[]` and cannot discriminate alone; `filter-blockhash-genesis` expects `[]`, and
 `filter-blockhash-null` (a null member with numeric bounds) equals the twin. `-and-range`,
 `-unknown`, `-unknown-count-zero` (where `[]` fails) and `-malformed-short`/`-object` require an
@@ -111,10 +114,13 @@ with its code; answered another block, when any record is localized elsewhere, s
 block a client answers when it ignores the member and defaults its bounds to latest; `[]` where
 the block has records; or partial, the block's records but not the twin's. In `reorg` and
 `reorg-safe`, `<phase>/filter-hash-a` and `-b` select block 0x2d of branch A (two transactions)
-and of branch B (empty) by hash in each phase. A canonical block must equal that phase's
-`filter-tail` records at the block with that hash, and a block that is unknown or noncanonical in
-the phase (B before the switch, A after it, B after the restore) must be an error, never B's `[]`
-or records. Setup controls establish only chain
+and of branch B (empty) by hash in each phase. Accepted canonical selections must equal that phase's
+`filter-tail` records at the requested hash. After the switch, A's accurate orphan records may be
+served and are compared with `before/filter-tail` from the same build, rather than B's current
+numeric range; explicit rejection also passes. After the restore, B may return its own frozen
+empty result or an error, never A's records. B before its payloads arrive is unknown and must
+error, even though its eventual result would be empty. These cases do not require orphan retention;
+rejection and successful empty results alone do not establish support. Setup controls establish only chain
 state that every build must show; a read whose value is itself a decision property,
 such as the block-55 beacon-root slots (H28), is a probe.
 

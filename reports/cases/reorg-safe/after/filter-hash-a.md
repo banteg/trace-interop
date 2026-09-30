@@ -2,7 +2,7 @@
 
 `trace_filter` · reorg-safe · [All reports](../../../README.md)
 
-**What this checks:** After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records. Assess this declared topic case.
+**What this checks:** Optional hash selection may be explicitly rejected. For an accepted collection: After the switch to branch B, A’s block 0x2d is noncanonical: reject explicitly or return exactly A’s retained records, never B’s [] or records. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -33,11 +33,11 @@
 
 **Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
-- [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records. Accepted: answered another block, 1 record from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: After the switch to branch B, A’s block 0x2d is noncanonical: reject explicitly or return exactly A’s retained records, never B’s [] or records. Answered another block: 1 record from block 0x30 (the head), where the numeric equivalent before/filter-tail has 3 records from block 0x2d.
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records. Accepted: answered another block, 1 record from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: After the switch to branch B, A’s block 0x2d is noncanonical: reject explicitly or return exactly A’s retained records, never B’s [] or records. Answered another block: 1 record from block 0x30 (the head), where the numeric equivalent before/filter-tail has 3 records from block 0x2d.
 
 **Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
 
@@ -49,7 +49,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records. Accepted: answered another block, 1 record from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: After the switch to branch B, A’s block 0x2d is noncanonical: reject explicitly or return exactly A’s retained records, never B’s [] or records. Answered another block: 1 record from block 0x30 (the head), where the numeric equivalent before/filter-tail has 3 records from block 0x2d.
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property
 

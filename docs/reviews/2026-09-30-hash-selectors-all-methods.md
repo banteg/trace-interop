@@ -6,6 +6,12 @@ Checked 2026-09-30. Scope: all nine common Parity-style trace methods, EIP-1898'
 
 EIP-1898 standardizes the object selector and requireCanonical for eth_getBalance, eth_getStorageAt, eth_getTransactionCount, eth_getCode, eth_call and eth_getProof. It does not list any trace or debug methods. EIP-234 standardizes a separate blockHash member for log filters. Neither automatically extends trace_filter.
 
+[H33's revised recommendation](../../reports/decisions/H33.md#softened-recommendation-2026-09-30)
+specifies optional exact-block selection: a non-null member may be explicitly rejected, but an
+accepted collection must belong to the requested block. Accurate orphan results are permitted
+where supported, with no orphan-retention requirement. Null still means omission under H14.
+This is a proposal for client review, not a claim that the implementations below support it.
+
 For trace methods the selector shape is not uniform, even within one client. The following table describes acceptance of the EIP-1898 block-hash object, not proof that its canonicality flag is enforced.
 
 | Method | Reth | Nethermind | Erigon | Besu | Anvil | Geth trace draft fork |

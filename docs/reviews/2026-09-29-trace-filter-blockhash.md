@@ -3,6 +3,11 @@
 Study, 2026-09-29. **Recommendation, not an adopted decision.** No specification, ledger,
 client implementation or conformance verdict is changed by this note.
 
+The original mandatory-implementation, canonical-only recommendation below is superseded by
+[H33's September 30 revision](../../reports/decisions/H33.md#softened-recommendation-2026-09-30):
+support is optional, explicit rejection is allowed, and accurate orphan replies may be served
+where supported. Exact requested-block identity remains mandatory for accepted collections.
+
 Add a separate `blockHash` selector and continue rejecting hashes in `fromBlock`/`toBlock`.
 Require support in the eventual trace profile, while making use of the field optional for callers.
 The useful contract is **exact requested block or error**, including for empty results and pages.

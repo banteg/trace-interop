@@ -515,18 +515,5 @@
       }
     }
   },
-  "H33": {
-    "positions": {
-      "erigon": {
-        "position": "agree",
-        "note": "Raised the concern: without a blockHash member no single call pins a block by hash and filters by address, and an empty numeric result is ambiguous after a reorg. Proposed aligning trace_filter with eth_getLogs\u2019 EIP-234 member and said either answer works for Erigon. The recommendation\u2019s canonical-only narrowing has not yet been put to Erigon.",
-        "sources": [
-          {
-            "label": "Erigon on execution-apis#890",
-            "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5889999591"
-          }
-        ]
-      }
-    }
-  }
+  "H33": {}
 }

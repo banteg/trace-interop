@@ -53,7 +53,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | Decision | Build | Previous | Current |
 | --- | --- | --- | --- |
 | [H16 · Fee accounting and sequential state diffs](decisions/H16.md) | Geth draft fork | ✅ Checked cases agree | 🟡 Partially assessed |
-| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Geth draft fork | 🔎 Control / not applicable | ⚠️ Differs |
+| [H33 · Single-block hash selection in trace_filter](decisions/H33.md) | Geth draft fork | 🔎 Control / not applicable | ✅ Checked cases agree |
 
 ### [Nethermind](clients/nethermind.md)
 

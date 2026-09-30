@@ -339,11 +339,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block\u2019s records.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: The hash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block\u2019s records.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2",
           "nonempty": true
         }
@@ -385,11 +386,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Address matching applies to the hash-selected block as to the numeric single-block filter.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Address matching applies to the hash-selected block as to the numeric single-block filter.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-address-from",
           "nonempty": true
         }
@@ -437,11 +439,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Recipient matching, including a reward matched by its author, applies to the hash-selected block as to the numeric single-block filter.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Recipient matching, including a reward matched by its author, applies to the hash-selected block as to the numeric single-block filter.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-address-to",
           "nonempty": true
         }
@@ -491,11 +494,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "mode union applies to the hash-selected block as to the numeric single-block filter.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: mode union applies to the hash-selected block as to the numeric single-block filter.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-union",
           "nonempty": true
         }
@@ -535,11 +539,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "after and count page the hash-selected block\u2019s records as they page the numeric single-block filter.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: after and count page the hash-selected block\u2019s records as they page the numeric single-block filter.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-page",
           "nonempty": true
         }
@@ -579,11 +584,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "A page past the end of the hash-selected block is [], as for the numeric single-block filter; alone it cannot show which block was selected.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: A page past the end of the hash-selected block is [], as for the numeric single-block filter; alone it cannot show which block was selected.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-page-past-end",
           "nonempty": false
         }
@@ -625,11 +631,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "A known block without matching records returns [], not an error, as the numeric single-block filter does; alone it cannot show which block was selected.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: A known block without matching records returns [], not an error, as the numeric single-block filter does; alone it cannot show which block was selected.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2-empty",
           "nonempty": false
         }
@@ -651,11 +658,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "The genesis hash selects the genesis block, which has no trace records: [].",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: The genesis hash selects the genesis block, which has no trace records: [].",
           "block": {
             "number": "0x0",
             "hash": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582"
           },
+          "allow_reject": true,
           "expected": []
         }
       ]
@@ -683,6 +691,7 @@
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": false,
           "reject": true,
           "recommended": -32602
         }
@@ -707,11 +716,12 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block.",
+          "requirement": "Optional hash selection may be explicitly rejected. For an accepted collection: Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block.",
           "block": {
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": true,
           "reference": "filter-block-2",
           "nonempty": true
         }
@@ -741,6 +751,7 @@
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": false,
           "reference": "filter-block-2",
           "nonempty": true
         }
@@ -764,6 +775,7 @@
           "kind": "block-hash",
           "requirement": "An unknown hash is an error (-32001 recommended), never [] or another block\u2019s records.",
           "block": null,
+          "allow_reject": false,
           "reject": true,
           "recommended": -32001
         }
@@ -788,6 +800,7 @@
           "kind": "block-hash",
           "requirement": "An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.",
           "block": null,
+          "allow_reject": false,
           "reject": true,
           "recommended": -32001
         }
@@ -814,6 +827,7 @@
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": false,
           "reject": true,
           "recommended": -32602
         }
@@ -842,6 +856,7 @@
             "number": "0x2",
             "hash": "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e"
           },
+          "allow_reject": false,
           "reject": true,
           "recommended": -32602
         }

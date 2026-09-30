@@ -149,7 +149,8 @@ def state_check(probe, status, response, result):
 def block_hash_check(probe, case, status, response, result, reference):
     """H33: whether a trace_filter blockHash selected exactly the block it names. A selection is
     compared with the numeric filter `reference` of the same build, restricted to that block, or with
-    `expected`; with `reject` the request must be an error. The detail classifies the response as
+    `expected`; with `reject` the request must be an error. `allow_reject` permits an explicit
+    rejection of the optional capability without establishing support. The detail classifies the response as
     honored, rejected, answered another block (records localized elsewhere, such as the head),
     [] where the block has records, or partial (the block's records, but not the equivalent's)."""
     block = probe['block']
@@ -183,8 +184,18 @@ def block_hash_check(probe, case, status, response, result, reference):
     def blocked(detail):
         return {'topic': probe['topic'], 'status': 'blocked', 'requirement': probe['requirement'], 'detail': detail}
     role = 'rejection' if probe.get('reject') else 'result'
-    # What a selection must return, established before the response is judged: without the twin's
-    # records, neither a rejection nor a result shows how the member behaves. None requires an error.
+    # Optional hash selection may be rejected even when its numeric control is unavailable.
+    # Judge the rejection first; only an accepted collection needs a selection oracle.
+    if probe.get('allow_reject') and (status == 'rpc_error' or embedded_error(response)):
+        error = mapping(response.get('error') or mapping(result).get('error'))
+        code, message = error.get('code'), str(error.get('message', ''))[:120]
+        if not rejection(status, response):
+            return verdict(False, f'Failed with {code}: {message}, a server failure rather than a rejection.', 'rejection')
+        return verdict(True, f'Rejected optional hash selection ({code}: {message}); this does not establish support.', 'rejection')
+    if status == 'result' and (not isinstance(result, list) or not all(isinstance(r, dict) for r in result)):
+        return verdict(False, f'Expected a list of trace records; observed {status} {str(result)[:120]}.', role)
+    # An accepted selection needs the twin's records or an independent expected result.
+    # Without either oracle its identity is unassessed. `reject` permits no collection.
     has = None
     if not probe.get('reject'):
         if 'expected' in probe:

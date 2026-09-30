@@ -678,8 +678,12 @@ def annotate_initial():
 def hash_probe(requirement, block, **fields):
     """H33: which block a trace_filter blockHash selects. `block` is the {number, hash} the hash names
     (None for an unknown hash); the result must equal `reference`'s records at that block, equal
-    `expected`, or, with `reject`, be an error."""
-    return probe('H33', 'block-hash', requirement, block=block, **fields)
+    `expected`, or, with `reject`, be an error. Explicit rejection of the optional member is
+    permitted; a null member instead exercises H14's omission rule."""
+    allow_reject = fields.pop('allow_reject', not fields.get('reject'))
+    if allow_reject:
+        requirement = 'Optional hash selection may be explicitly rejected. For an accepted collection: ' + requirement
+    return probe('H33', 'block-hash', requirement, block=block, allow_reject=allow_reject, **fields)
 
 
 def replace_cases(corpus, cases):
@@ -714,7 +718,7 @@ def annotate_blockhash():
     unknown = '0x'+keccak(b'trace-interop H33 unknown block').hex()
     assert unknown not in known and int(head['number'], 16) > 2
     cases = []
-    discriminating = 'A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block’s records.'
+    discriminating = 'The hash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block’s records.'
     for suffix, extra, requirement, nonempty in [
             ('', {'count': 3}, discriminating, True),
             ('-address-from', {'fromAddress': senders},
@@ -742,7 +746,7 @@ def annotate_blockhash():
          probes=[hash_probe('Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block.',
                             selected, reference='filter-block-2', nonempty=True)])
     case(cases, 'filter-blockhash-null', 'trace_filter', [{'blockHash': None, 'fromBlock': '0x2', 'toBlock': '0x2', 'count': 3}],
-         probes=[hash_probe('A null blockHash is omitted, so the numeric range applies.', selected, reference='filter-block-2', nonempty=True)])
+         probes=[hash_probe('A null blockHash is omitted, so the numeric range applies.', selected, reference='filter-block-2', nonempty=True, allow_reject=False)])
     for suffix, extra, requirement in [
             ('', {}, 'An unknown hash is an error (-32001 recommended), never [] or another block’s records.'),
             ('-count-zero', {'count': 0}, 'An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.')]:
@@ -767,12 +771,14 @@ def annotate_blockhash():
         cases = []
         for phase, branch, expectation, requirement in [
                 ('before', a, 'reference', f'Before the switch, branch A’s block {tail} is canonical: its hash selects A’s records, as the numeric range does.'),
-                ('after', a, 'reject', f'After the switch to branch B, A’s block {tail} is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records.'),
+                ('after', a, 'orphan-a', f'After the switch to branch B, A’s block {tail} is noncanonical: reject explicitly or return exactly A’s retained records, never B’s [] or records.'),
                 ('restored', a, 'reference', f'Once branch A is restored, the hash of its block {tail} selects A’s records again.'),
                 ('before', b, 'reject', f'Before B’s payloads arrive, B’s block {tail} is unknown: an error (-32001 recommended).'),
                 ('after', b, 'reference', f'After the switch, B’s block {tail} is canonical: its hash selects that block, which has no records, as the numeric range shows.'),
-                ('restored', b, 'reject', f'Once branch A is restored, B’s block {tail} is noncanonical: an error (-32001 recommended), never A’s records.')]:
+                ('restored', b, 'orphan-b', f'Once branch A is restored, B’s block {tail} is noncanonical: reject explicitly or return B’s retained empty result, never A’s records.')]:
             fields = ({'reject': True, 'recommended': -32001} if expectation == 'reject'
+                      else {'reference': 'before/filter-tail', 'nonempty': True} if expectation == 'orphan-a'
+                      else {'expected': []} if expectation == 'orphan-b'
                       else {'reference': phase+'/filter-tail', 'nonempty': branch is a})
             case(cases, f'{phase}/filter-hash-{"a" if branch is a else "b"}', 'trace_filter', [{'blockHash': branch['hash']}],
                  probes=[hash_probe(requirement, branch, **fields)])

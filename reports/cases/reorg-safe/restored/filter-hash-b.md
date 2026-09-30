@@ -2,7 +2,7 @@
 
 `trace_filter` · reorg-safe · [All reports](../../../README.md)
 
-**What this checks:** Once branch A is restored, B’s block 0x2d is noncanonical: an error (-32001 recommended), never A’s records. Assess this declared topic case.
+**What this checks:** Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, B’s block 0x2d is noncanonical: reject explicitly or return B’s retained empty result, never A’s records. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -33,11 +33,11 @@
 
 **Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
-- [H33](../../../decisions/H33.md): Once branch A is restored, B’s block 0x2d is noncanonical: an error (-32001 recommended), never A’s records. Accepted: answered another block, 4 records from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, B’s block 0x2d is noncanonical: reject explicitly or return B’s retained empty result, never A’s records. Answered another block: 4 records from block 0x30 (the head), where block 0x2d has [].
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H33](../../../decisions/H33.md): Once branch A is restored, B’s block 0x2d is noncanonical: an error (-32001 recommended), never A’s records. Accepted: answered another block, 4 records from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, B’s block 0x2d is noncanonical: reject explicitly or return B’s retained empty result, never A’s records. Answered another block: 4 records from block 0x30 (the head), where block 0x2d has [].
 
 **Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
 
@@ -49,7 +49,7 @@
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H33](../../../decisions/H33.md): Once branch A is restored, B’s block 0x2d is noncanonical: an error (-32001 recommended), never A’s records. Accepted: answered another block, 4 records from block 0x30 (the head).
+- [H33](../../../decisions/H33.md): Optional hash selection may be explicitly rejected. For an accepted collection: Once branch A is restored, B’s block 0x2d is noncanonical: reject explicitly or return B’s retained empty result, never A’s records. Answered another block: 4 records from block 0x30 (the head), where block 0x2d has [].
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 

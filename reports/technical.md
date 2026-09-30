@@ -41,10 +41,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14259 |
+| 🔎 Assessed | 14261 |
 | 🟡 Partial | 1156 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 620 |
+| 🚧 Blocked | 618 |
 | 🔎 Control | 35 |
 
 
@@ -155,7 +155,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H32 | blocked | An empty result names no block, so it cannot show a pending environment. | 6 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 | H33 | blocked | Scenario setup stopped: Invalid forkchoice state | 18 |
-| H33 | blocked | The numeric equivalent filter-block-2-union returned no result. | 2 |
 | H33 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 98 |
 
 Eligibility is recomputed from the frozen head and independent scenario controls. `capture_eligible` in checks.json preserves the original capture decision; original summaries and wire observations are unchanged.

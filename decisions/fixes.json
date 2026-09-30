@@ -799,7 +799,16 @@
       "note": "storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage",
       "uptake": {
         "merge_commit": "1efe6aa831c5200898edb8f7ca706707888bc6f2",
-        "releases": [],
+        "releases": [
+          {
+            "repo": "paradigmxyz/revm-inspectors",
+            "tag": "v0.44.1",
+            "date": "2026-09-30T12:15:13Z",
+            "crates": {
+              "revm-inspectors": "0.44.1"
+            }
+          }
+        ],
         "client": null,
         "builds": {
           "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
@@ -1612,7 +1621,16 @@
       "merged_at": "2026-09-29T10:25:47Z",
       "uptake": {
         "merge_commit": "0824cc0fc8864174099ff59def9bfaef74a82fa6",
-        "releases": [],
+        "releases": [
+          {
+            "repo": "paradigmxyz/revm-inspectors",
+            "tag": "v0.44.1",
+            "date": "2026-09-30T12:15:13Z",
+            "crates": {
+              "revm-inspectors": "0.44.1"
+            }
+          }
+        ],
         "client": null,
         "builds": {
           "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
@@ -1916,7 +1934,16 @@
       "merged_at": "2026-09-29T10:26:08Z",
       "uptake": {
         "merge_commit": "8603a0f4cfd1790d22f323d1a80c3f122c52e6bf",
-        "releases": [],
+        "releases": [
+          {
+            "repo": "paradigmxyz/revm-inspectors",
+            "tag": "v0.44.1",
+            "date": "2026-09-30T12:15:13Z",
+            "crates": {
+              "revm-inspectors": "0.44.1"
+            }
+          }
+        ],
         "client": null,
         "builds": {
           "60aeb53225c2ed80410c01bcfd922791480a31d2": false,
@@ -2260,6 +2287,18 @@
       "draft": false,
       "merged_at": null,
       "note": "trace_call and each trace_callMany call select validation with eth_call's rule: unpriced calls run with GASPRICE and BASEFEE 0 and no fee effects, priced calls stay validated and charged, and trace_call validation failures return their reason. Blob pricing keeps eth_call's 1-wei relaxed path and overrides are out of scope (H15); callMany free/priced/free bundles now run for H16's accounting checks, with the transaction boundary left to #11365 and the error envelope to #11401. Independent of both; merges cleanly."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14089",
+      "title": "fix(rpc): reject a call object whose data and input differ",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "note": "differing data and input in a call object are rejected with -32602 and Geth's message instead of the last member winning; equal values, either alone, or one null stay accepted. Shared by eth_call, eth_estimateGas, eth_createAccessList, eth_simulateV1, eth_send/sign/fillTransaction, debug_traceCall and trace_call(Many)",
+      "state": "open",
+      "draft": false,
+      "merged_at": null
     }
   ]
 }

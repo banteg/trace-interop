@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Besu · 26.9-develop · 3cbf077c](../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Erigon · 3.8.0-dev · 85e1ca92](../../clients/erigon_development.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | RPC error `-32000` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Nethermind · 2.2.0-preview · f69690c5](../../clients/nethermind_development.md) | RPC error `-32000` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/refresh/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/probes-prague/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.4-nightly · e3429853](../../clients/anvil_development.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Besu · 26.9-develop · 67ce4ab1](../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Erigon · 3.8.0-dev · 923b4d31](../../clients/erigon_development.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · ec1cec0b](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | 🟡 Partially assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | RPC error `-32000` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.2.0-preview · 79173d14](../../clients/nethermind_development.md) | RPC error `-32000` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 43a93dbc](../../clients/reth_development.md) | RPC error `-32003` | ⚪ Not assessed | [Response](../../../evidence/2026-09-30/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/eval/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -46,7 +46,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
+**Anvil · 1.8.4-nightly · e3429853** (`anvil Version: 1.8.4-nightly+e3429853`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32003: Block `blob_gas_price` is greater than tx-specified `max_fee_per_blob_gas`. The retained universal-zero expectation no longer defines conformance.
 
@@ -54,7 +54,7 @@
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32003: Block `blob_gas_price` is greater than tx-specified `max_fee_per_blob_gas`. The retained universal-zero expectation no longer defines conformance.
 
-**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 67ce4ab1** (`besu/v26.9-develop-67ce4ab/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32603: Internal error. The retained universal-zero expectation no longer defines conformance.
 
@@ -62,7 +62,7 @@
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32603: Internal error. The retained universal-zero expectation no longer defines conformance.
 
-**Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
+**Erigon · 3.8.0-dev · 923b4d31** (`3.8.0-dev-923b4d31`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed deployed BLOBBASEFEE word 0x0000000000000000000000000000000000000000000000000000000000000000. The retained universal-zero expectation no longer defines conformance.
 
@@ -70,11 +70,11 @@
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed deployed BLOBBASEFEE word 0x0000000000000000000000000000000000000000000000000000000000000001. The retained universal-zero expectation no longer defines conformance.
 
-**Geth draft fork · 1.17.7-unstable · e26833e3** (`Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.7-unstable · ec1cec0b** (`Geth/v1.17.7-unstable-ec1cec0b-2026-09-30/linux-amd64/go1.26.1`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed deployed BLOBBASEFEE word 0x0000000000000000000000000000000000000000000000000000000000000000. The retained universal-zero expectation no longer defines conformance.
 
-**Nethermind · 2.2.0-preview · f69690c5** (`2.2.0-preview+f69690c5`)
+**Nethermind · 2.2.0-preview · 79173d14** (`2.2.0-preview+79173d14`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32000: maxFeePerBlobGas, if specified, must be non-zero. The retained universal-zero expectation no longer defines conformance.
 
@@ -82,7 +82,7 @@
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32000: maxFeePerBlobGas, if specified, must be non-zero. The retained universal-zero expectation no longer defines conformance.
 
-**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
+**Reth · 2.7.0 · 43a93dbc** (`Reth Version: 2.7.0+43a93dbc`)
 
 - [H15](../../decisions/H15.md): Blob defaults, validation and BLOBBASEFEE for omitted or zero pricing remain separately unresolved. Observed rpc_error -32003: max fee per blob gas less than block blob gas fee. The retained universal-zero expectation no longer defines conformance.
 

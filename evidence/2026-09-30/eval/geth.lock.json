@@ -1,0 +1,27 @@
+{
+  "clients": {
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "fe8ffe6fe5692ba2761dbd780599d10d65f01ca8116845e53b66c7ba4183f481",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:54be23d10026e34742dc4e24b4f56beeaad29f7745f0a2d7496825fbca52c1cf",
+      "local_image": "trace-interop/geth-source:fe8ffe6fe5692ba2761dbd780599d10d65f01ca8116845e53b66c7ba4183f481",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "ec1cec0be8d5bb62f5a53bb21fb97bbae05cd301",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "fd19ab884b76c0794e372882cdcd579ea7f59f45f40b85ac2ce3e2eb197fb50f"
+      }
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolved_at": "2026-09-30T13:03:30.188243+00:00"
+}

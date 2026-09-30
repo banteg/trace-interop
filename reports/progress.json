@@ -5,7 +5,7 @@
         "development": {
           "agree": 4,
           "build": [
-            "26.9-develop \u00b7 3cbf077c"
+            "26.9-develop \u00b7 67ce4ab1"
           ],
           "gained": 0,
           "lost": 0
@@ -41,10 +41,10 @@
         "development": {
           "agree": 28,
           "build": [
-            "3.8.0-dev \u00b7 85e1ca92"
+            "3.8.0-dev \u00b7 923b4d31"
           ],
-          "gained": 2,
-          "lost": 1
+          "gained": 0,
+          "lost": 0
         },
         "release": {
           "agree": 14,
@@ -77,10 +77,10 @@
         "development": {
           "agree": 27,
           "build": [
-            "2.2.0-preview \u00b7 f69690c5"
+            "2.2.0-preview \u00b7 79173d14"
           ],
-          "gained": 2,
-          "lost": 1
+          "gained": 0,
+          "lost": 0
         },
         "release": {
           "agree": 12,
@@ -113,7 +113,7 @@
         "development": {
           "agree": 22,
           "build": [
-            "2.7.0 \u00b7 60aeb532"
+            "2.7.0 \u00b7 43a93dbc"
           ],
           "gained": 0,
           "lost": 0
@@ -149,7 +149,7 @@
         "development": {
           "agree": 14,
           "build": [
-            "1.8.4-nightly \u00b7 00989695"
+            "1.8.4-nightly \u00b7 e3429853"
           ],
           "gained": 0,
           "lost": 0

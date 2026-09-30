@@ -1,18 +1,18 @@
 # Reth: changes to review
 
-Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 · 60aeb532, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833).
+Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 · 43a93dbc, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833).
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.7.0` | [`60aeb532`](https://github.com/paradigmxyz/reth/commit/60aeb53225c2ed80410c01bcfd922791480a31d2) | 2026-09-28 | [2026-09-29](../../evidence/2026-09-30/refresh/initial/manifest.json) |
+| `2.7.0` | [`43a93dbc`](https://github.com/paradigmxyz/reth/commit/43a93dbcffd5d5cd41664ad6d29fc58291a22c13) | 2026-09-29 | [2026-09-30](../../evidence/2026-09-30/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.7.0 · 60aeb532 | Proposed change |
+| Behavior | 2.7.0 · 43a93dbc | Proposed change |
 | --- | --- | --- |
 | [Empty address lists](../decisions/H04.md)<br>Treats `[]` as unrestricted in both builds and rejects only a null address list, because Alloy’s `TraceFilter` defaults the lists only when they are absent. Alloy #4257 fixes this and is merged, but no Alloy release carries it; 2.7.0 locks alloy-rpc-types-trace 2.5.0. | 🛠️ Fix submitted: [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257)<br>[Filter both null](../cases/a/filter-both-null.md) | Take up Alloy #4257 so a null list is treated as omitted. Checked requirements: Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted.<br>[Address filtering](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L370) |
 | [Missing transactions and paths](../decisions/H06.md)<br>2.7.0 · 3d592ece and the nightly return null for a missing individual replay (#27364) and from trace_replayBlockTransactions for an unknown block, and -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification. | ⚠️ Differs · [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) (partial fix) · [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) (partial fix) · [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478) (partial fix)<br>[Old block](../cases/pruned/old-block.md) | Return `null` for absent transactions and an error for an unknown selected block, including a block replay (-32001 recommended), as trace_block already does (open #27478). For known transactions whose state is unavailable, return an error that reports unavailable history (`4444` recommended) rather than an internal error. A filter bound beyond the head already returns an error; `-32602` is recommended. Checked requirements: Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null.<br>[Trace lookup](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L218) · [Replay results](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L195) |
@@ -31,8 +31,8 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 2.7.0 · 60aeb532 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
-| 2.7.0 · 60aeb532 | [Invalid parameters and rejected calls](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
+| 2.7.0 · 43a93dbc | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 2.7.0 · 43a93dbc | [Invalid parameters and rejected calls](../decisions/H14.md) | 1 policy-open case. Mixing legacy gasPrice with an authorizationList is an open input policy, since no signed transaction type carries both; the response does not isolate the authorization field, which field-authorization-1559 asserts with EIP-1559 fees. Observed: Expected ['0x000000000000000000000000000000000000000000000000000000000000002a']; got ['0x000000000000000000000000000000000000000000000000000000000000002a'] | [Field authorization](../cases/probes-prague/field-authorization.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -40,7 +40,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Filter execution across fork boundaries](../decisions/H27.md) | 2.7.0 · 60aeb532 | 1 blocked case: Per-block reference unavailable: rpc_error. | [_reference/block/0x3](../cases/pruned/_reference/block/0x3.md) |
+| [Filter execution across fork boundaries](../decisions/H27.md) | 2.7.0 · 43a93dbc | 1 blocked case: Per-block reference unavailable: rpc_error. | [_reference/block/0x3](../cases/pruned/_reference/block/0x3.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

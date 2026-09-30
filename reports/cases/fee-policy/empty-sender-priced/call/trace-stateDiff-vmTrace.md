@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Anvil · 1.8.4-nightly · 00989695](../../../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Besu · 26.9-develop · 3cbf077c](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Erigon · 3.8.0-dev · 85e1ca92](../../../../clients/erigon_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Nethermind · 2.2.0-preview · f69690c5](../../../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
-| [Reth · 2.7.0 · 60aeb532](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/refresh/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/refresh/fee-policy/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Anvil · 1.8.4-nightly · e3429853](../../../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Besu · 26.9-develop · 67ce4ab1](../../../../clients/besu_development.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Erigon · 3.8.0-dev · 923b4d31](../../../../clients/erigon_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · ec1cec0b](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.2.0-preview · 79173d14](../../../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
+| [Reth · 2.7.0 · 43a93dbc](../../../../clients/reth_development.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-09-30/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-09-30/eval/fee-policy/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,7 +43,7 @@
 }
 ```
 
-**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 67ce4ab1** (`besu/v26.9-develop-67ce4ab/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
 
@@ -60,7 +60,7 @@
 - [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 - [H15](../../../../decisions/H15.md): Assess the declared property. Cannot inspect this property: malformed_json.
 
-**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
+**Reth · 2.7.0 · 43a93dbc** (`Reth Version: 2.7.0+43a93dbc`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. An unfunded sender cannot afford positive gas fees.
 

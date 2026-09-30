@@ -2,23 +2,23 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/3a376476548a12b59cdb0dcebc828d9f3cf5ba93) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-09-29T21:59:40.336677+00:00**. [Freshness preflight](../evidence/2026-09-30/refresh/preflight.json) · [Build lock](../evidence/2026-09-30/refresh/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-09-30T13:03:47.160133+00:00**. [Freshness preflight](../evidence/2026-09-30/eval/preflight.json) · [Build lock](../evidence/2026-09-30/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 15 more have a submitted fix, and **25 differ with no fix yet**: 22 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft. 15 more have a submitted fix, and **25 differ with no fix yet**: 22 on converged decisions and 3 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Besu](clients/besu.md) | 26.9-develop · 3cbf077c | 4 | 7 | 14 | 2 | 0 | 6 | 0 | 0 / 17 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · 85e1ca92 | 28 (+1) | 2 | 1 | 0 | 0 | 2 | 14 | 21 / 3 |
-| [Nethermind](clients/nethermind.md) | 2.2.0-preview · f69690c5 | 27 (+1) | 2 | 2 | 0 | 0 | 2 | 15 | 39 / 4 |
-| [Reth](clients/reth.md) | 2.7.0 · 60aeb532 | 22 | 4 | 5 | 1 | 0 | 1 | 0 | 21 / 7 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 00989695 | 14 | 2 | 11 | 1 | 0 | 5 | 4 | 1 / 1 |
+| [Besu](clients/besu.md) | 26.9-develop · 67ce4ab1 | 4 | 7 | 14 | 2 | 0 | 6 | 0 | 0 / 17 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 923b4d31 | 28 | 2 | 1 | 0 | 0 | 2 | 14 | 21 / 3 |
+| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 79173d14 | 27 | 2 | 2 | 0 | 0 | 2 | 15 | 39 / 4 |
+| [Reth](clients/reth.md) | 2.7.0 · 43a93dbc | 22 | 4 | 5 | 1 | 0 | 1 | 0 | 21 / 7 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · e3429853 | 14 | 2 | 11 | 1 | 0 | 5 | 4 | 1 / 1 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
@@ -31,7 +31,7 @@ Each client has one outcome per decision on its development build. A difference 
 | [Erigon](clients/erigon.md) | The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, the genesis reward, omitted trace_filter bounds (#24341), reverted-CREATE results and failure labels (#24355, #24356) and failed-CREATE filter matching, several of which still differ in 3.7.0. Since #24330 and #24343 its trace_call prices gas like eth_call, keeps the block GASLIMIT and returns the eth_simulateV1 codes. It validates signed transactions at the selected state (#24329) rejecting each for its own violation (with -32000; the error-group codes are recommended); a filter bound past the head still returns [] (#24357 is open) and vmTrace still keeps halted-operation details (#24344 is open). |
 | [Geth draft fork](clients/geth.md) | The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces stay blocked on the frozen chain’s empty pending block, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage. |
 | [Nethermind](clients/nethermind.md) | 2.2.0-preview · 287f54f0 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957) and failed-frame results and labels (#13981); 2.0.0 · bec830cd still differs on all of these. trace_transaction and trace_get return null for a missing transaction (#13937), but trace_replayTransaction still errors (#14037 is open). trace_filter still matches a failed CREATE by its would-be address; raw-transaction validation, malformed-input rejection, simulation fees and block-hash filter bounds remain review areas. |
-| [Reth](clients/reth.md) | Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 · 60aeb532, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833). |
+| [Reth](clients/reth.md) | Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 · 43a93dbc, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833). |
 
 ## Decisions to review
 

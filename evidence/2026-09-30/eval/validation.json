@@ -1,0 +1,17 @@
+{
+  "host": "Darwin arm64",
+  "capture_host": "Fedora x86_64",
+  "capture_source": "573ea55a5d7d783ab1bb0522c723c700739bfbfe",
+  "assessment_source": "eb3ba3da",
+  "check": {
+    "command": "bash scripts/check.sh",
+    "exit_code": 0,
+    "tests": 350,
+    "schemas": 9,
+    "generated_reports_stable": true
+  },
+  "report_assessment_sha256": "a7d7f84f90c0a934c4b539e8ee949e4fbd75478a02fb2811b5dcfc6414c393b2",
+  "files": {
+    "check.log.gz": "80e31f785e765ea38d1d3d776998a052793d10d74d92702322e616656389e2be"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "host": "fedora",
+  "task_workspace": "/home/banteg/dev/trace-eval-2026-09-30",
+  "workspace_removed": true,
+  "removed_adapter_tags": [
+    "hive/clients/besu_development:latest",
+    "hive/clients/erigon_development:latest",
+    "hive/clients/nethermind_development:latest",
+    "hive/simulators/ethereum/rpc-compat:latest"
+  ],
+  "replaced_adapter_images_removed_by_runner": [
+    "hive/clients/go-ethereum_trace:latest",
+    "hive/clients/reth_development:latest",
+    "hive/clients/reth_release:latest"
+  ],
+  "removed_superseded_development_images": [
+    "erigontech/erigon:main-latest@sha256:add8bcaf9dcfdcecacd1ccd75679a0bfd08f91db81cd6a3714ba4f75501205bb",
+    "ghcr.io/foundry-rs/foundry:nightly@sha256:8454076548762c90611e5a78284a89c87402839684b27a201d07318bcf9d4886",
+    "ghcr.io/paradigmxyz/reth:nightly@sha256:5d257d143851732fee0d7ba58af56d321a55d8895541a5febee7e16d4ac3f5a8",
+    "hyperledger/besu:develop@sha256:76bfb9b7848e3b97aeabfd020be386da001ee418c2c45ae53ef5118b0b5f12b1",
+    "nethermindeth/nethermind:master@sha256:7283059708b1c366893975340b0238a5ab3edc1d27d1e50aba2b00ed9d233452"
+  ],
+  "task_client_containers_remaining": 0,
+  "anonymous_volumes_remaining": 0,
+  "existing_user_containers_unchanged": true,
+  "docker_images_bytes_before": "39.71GB",
+  "docker_images_bytes_after": "39.8GB",
+  "retained": "Published native client images, the new source-built Geth image and every other trace-interop/* image; no global prune."
+}

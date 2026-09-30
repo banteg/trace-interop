@@ -14,7 +14,7 @@
     },
     "reth": {
       "name": "Reth",
-      "summary": "Reth 2.7.0 \u00b7 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 \u00b7 60aeb532, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833)."
+      "summary": "Reth 2.7.0 \u00b7 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 \u00b7 43a93dbc, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833)."
     },
     "geth": {
       "name": "Geth draft fork",
@@ -505,8 +505,8 @@
         "change": "Take the Alloy `TraceFilter` member and select exactly the hashed canonical block; treat a null member as omitted."
       },
       "geth": {
-        "observed": "Rejects every non-null `blockHash` as an unknown field (-32602), so it passes the error cases, including the reorg phases, and differs wherever block 2\u2019s records are expected. A null `blockHash` beside numeric bounds is dropped as omitted. The uncaptured follow-up ec1cec0be8 implements canonical, executed hash selection and explicit errors for unknown/noncanonical/unexecuted hashes, including with count: 0; its reorg regression preserves the requested block. The selected matrix still reports the older e26833e3 build.",
-        "change": "Recapture the follow-up ec1cec0be8, which implements the canonical-only member, against h30 and reorg-safe before reporting measured support."
+        "observed": "Since ec1cec0b the fork selects exactly the hashed canonical, executed block: every hash case answers with block 2\u2019s records (the genesis hash and a page past the end with `[]`), a hash with non-null bounds and a malformed hash are rejected with -32602, and an unknown hash with -32001, also with `count: 0`. In the reorg scenario, A\u2019s hash after the switch and B\u2019s after the restore return -32001 (\u201cis not canonical\u201d). A null `blockHash` is treated as omitted.",
+        "change": "No change. This is draft-fork work, not upstream Geth adoption."
       }
     }
   }

@@ -4,7 +4,7 @@
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.2.0-preview · f69690c5** (of 33 decisions): ✅ 28 agree (+2 since the previous capture) · ⚠️ 3 with no fix yet (2 on converged decisions) · ⚪ 2 not fully measured. 16 of these agreements are not yet in 2.0.0 · bec830cd. Upstream fix PRs: 38 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.2.0-preview · f69690c5** (of 33 decisions): ✅ 28 agree (+2 since the previous capture) · ⚠️ 3 with no fix yet (2 on converged decisions) · ⚪ 2 not fully measured. 16 of these agreements are not yet in 2.0.0 · bec830cd. Upstream fix PRs: 39 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |

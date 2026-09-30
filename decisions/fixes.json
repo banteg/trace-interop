@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-29",
+  "checked_at": "2026-09-30",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2205,10 +2205,17 @@
       "partial": [
         "H13"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Preserves signed gas when the RPC cap is disabled or sufficient; rejects over-cap raw transactions rather than silently clamping. Reproduced on latest master; 278 TraceRpcModule tests passed. Commit author corrected to the requested GitHub noreply identity."
+      "merged_at": "2026-09-30T00:02:08Z",
+      "note": "Preserves signed gas when the RPC cap is disabled or sufficient; rejects over-cap raw transactions rather than silently clamping. Reproduced on latest master; 278 TraceRpcModule tests passed. Commit author corrected to the requested GitHub noreply identity.",
+      "uptake": {
+        "merge_commit": "ec3d1c6b1f51ef257a8db79e9a7e05c968ad1d2c",
+        "builds": {
+          "f69690c56fb88fdf39abe1bb3f0b86bd4962efe1": false,
+          "bec830cdfbd28c3a4d6040bc967c68c49d19dc9f": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11395",

@@ -2398,6 +2398,19 @@
       "draft": false,
       "merged_at": null,
       "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after."
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14111",
+      "title": "feat(rpc): select a block by hash in trace_filter and reject hash bounds",
+      "client": "nethermind",
+      "decisions": [
+        "H33",
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_filter and the TraceStore plugin take blockHash for exactly one canonical block (errors for unknown, side-chain, past-head, missing-state and pruned hashes, including with count 0; -32602 with a bound; null omitted) and reject hash-string and EIP-1898 hash bounds with -32602, as Nethermind agreed on execution-apis#890. Also makes the FindBlock head shortcut atomic and returns 4444 for a pruned canonical body. Red on master: 59 of 83 targeted cases; JsonRpc.Test 3242 passed, TraceStore.Test 110 passed."
     }
   ]
 }

@@ -274,7 +274,7 @@ def blocks(spec):
         notes=(('Resolve tags once per request.', 'trace_filter is read with both bounds naming the same block.'),
                ('If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.',
                 'unresolvable safe stands for either tag before the chain has one.'),
-               ('Bounds exclude pending and block hashes.', 'This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.')),
+               ('Bounds exclude pending and block hashes; numeric bounds fit uint64.', 'This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.')),
         clauses=(
             Clause('schema', 'Invalid params',
                    lambda c: c['selector'] not in forms[c['method']], lambda c: {'response': 'error (-32602 recommended)'}, general=True),

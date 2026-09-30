@@ -13,7 +13,7 @@
   },
   "methods": [
     {
-      "description": "Return transaction records in transaction-index order, each tree in preorder, followed by the block's historical PoW rewards, the block reward first and then uncle rewards in ommer order. The genesis block has no transaction or reward records and returns []. Do not emit synthetic zero PoW rewards after the Merge. Withdrawals and system operations are applied to state but are not trace records. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). Records from the pending block carry its number and the hash of the block the client built, which is not canonical; all other records carry canonical block hashes. An unknown selected block returns null or an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended) (H05,H06,H27,H28,H32). Where an error is required, codes named in this profile are recommended. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Return transaction records in transaction-index order, each tree in preorder, followed by the block's historical PoW rewards, the block reward first and then uncle rewards in ommer order. The genesis block has no transaction or reward records and returns []. Do not emit synthetic zero PoW rewards after the Merge. Withdrawals and system operations are applied to state but are not trace records. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). Records from the pending block carry its number and the hash of the block the client built, which is not canonical; numeric and tag selections otherwise carry canonical block hashes. Correct optional hash-selector extensions may return the requested noncanonical block's own records (H33). An unknown selected block returns null or an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended) (H05,H06,H27,H28,H32). Where an error is required, codes named in this profile are recommended. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -4511,7 +4511,7 @@
       "summary": "Executes dependent unsigned calls in order."
     },
     {
-      "description": "Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Omitted bounds mean latest through latest, resolved against one canonical head. As for eth_getLogs, if either bound resolves to a block number greater than the current head block, or fromBlock resolves above toBlock, return an error (-32602, Invalid params, recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range or return a partial result. Historical searches must explicitly set fromBlock. earliest means the lowest block the client has available; never replace an explicit endpoint with the retained-history boundary, and return an error (4444 recommended) when required history is unavailable. Resource limits produce errors, never silently narrowed ranges. count limits returned records, not scan or replay work. Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state. Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary; after EIP-6780 that account usually survives. A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match. A reward matches toAddress by author and has no from side; in intersection mode it is excluded whenever fromAddress is populated, while in union mode a toAddress match suffices. The genesis block contributes no records. Order records by block, then transaction, then preorder, with each block's rewards after its transaction records (block reward, then uncle rewards in ommer order). Filter first, then skip after records and take count. Offsets are stable only for a fixed, numerically resolved range. Capture one canonical snapshot for the request (H03-H06,H23,H27,H30,H32). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "An optional blockHash member selects exactly one block, using the eth_getLogs selector shape. Clients without support explicitly reject a non-null member (-32602 recommended), never ignore it; null is omitted even without support (H14). A non-null hash is mutually exclusive with non-null range bounds (-32602 recommended). Accepted collections, including [], belong entirely to the requested block and each record carries its own hash. Accurate noncanonical results may be served where supported; orphan support and retention are optional. Unknown, unexecuted or otherwise unavailable hashes return an error (-32001 recommended; 4444 for pruned required history), never null, [], partial results or another block's records. Validate the selector before a count 0 shortcut. Resolve and trace against one coherent view, preserving identity rather than scanning a replacement block at the same height. Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Omitted bounds mean latest through latest, resolved against one canonical head. As for eth_getLogs, if either bound resolves to a block number greater than the current head block, or fromBlock resolves above toBlock, return an error (-32602, Invalid params, recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range or return a partial result. Historical searches must explicitly set fromBlock. earliest means the lowest block the client has available; never replace an explicit endpoint with the retained-history boundary, and return an error (4444 recommended) when required history is unavailable. Resource limits produce errors, never silently narrowed ranges. count limits returned records, not scan or replay work. Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state. Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary; after EIP-6780 that account usually survives. A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match. A reward matches toAddress by author and has no from side; in intersection mode it is excluded whenever fromAddress is populated, while in union mode a toAddress match suffices. The genesis block contributes no records. Order records by block, then transaction, then preorder, with each block's rewards after its transaction records (block reward, then uncle rewards in ommer order). Filter first, then skip after records and take count. Offsets are stable only for a fixed selection. Capture one coherent snapshot for the request; numeric and tag ranges select its canonical blocks (H03-H06,H23,H27,H30,H32,H33). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
       "errors": [
         {
           "code": -32601,
@@ -4520,6 +4520,10 @@
         {
           "code": -32602,
           "message": "Invalid params"
+        },
+        {
+          "code": -32001,
+          "message": "Resource not found"
         },
         {
           "code": 4444,
@@ -4552,7 +4556,17 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "An explicit null member is the same as an omitted one. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds exclude pending and block hashes. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work (H03,H04,H06,H23,H27,H30,H32).",
+            "description": "An explicit null member is the same as an omitted one. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds exclude pending and block hashes; numeric bounds fit uint64. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; validate selectors before count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work A non-null blockHash is mutually exclusive with non-null bounds. Accepted hash selections return only that block's records with its own hash, including accurate noncanonical records where supported; orphan support and retention are optional. Unknown, unexecuted or otherwise unavailable hashes return an error (-32001 recommended; 4444 for pruned required history), never null, [], partial results or another block's records. Preserve exact identity in one coherent view, never substituting a block by height (H03,H04,H06,H23,H27,H30,H32,H33).",
+            "if": {
+              "properties": {
+                "blockHash": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "blockHash"
+              ]
+            },
             "properties": {
               "after": {
                 "anyOf": [
@@ -4565,6 +4579,19 @@
                     "type": "null"
                   }
                 ]
+              },
+              "blockHash": {
+                "anyOf": [
+                  {
+                    "pattern": "^0x[0-9a-f]{64}$",
+                    "title": "32 byte hex value",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Optional exact-block selection (H33). Explicitly reject a non-null member when unsupported (-32602 recommended), never ignore it. Null is omitted, including on clients without support."
               },
               "count": {
                 "anyOf": [
@@ -4596,6 +4623,7 @@
               "fromBlock": {
                 "anyOf": [
                   {
+                    "maxLength": 18,
                     "oneOf": [
                       {
                         "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
@@ -4654,6 +4682,7 @@
               "toBlock": {
                 "anyOf": [
                   {
+                    "maxLength": 18,
                     "oneOf": [
                       {
                         "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$",
@@ -4681,6 +4710,16 @@
               }
             },
             "required": [],
+            "then": {
+              "properties": {
+                "fromBlock": {
+                  "type": "null"
+                },
+                "toBlock": {
+                  "type": "null"
+                }
+              }
+            },
             "title": "TraceFilter",
             "type": "object"
           }

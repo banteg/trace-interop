@@ -575,7 +575,7 @@
         "reading": "unresolvable safe stands for either tag before the chain has one."
       },
       {
-        "quote": "Bounds exclude pending and block hashes.",
+        "quote": "Bounds exclude pending and block hashes; numeric bounds fit uint64.",
         "reading": "This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it."
       }
     ],

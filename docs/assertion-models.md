@@ -94,8 +94,9 @@ baseline checks settle, so H12 shows the baseline result with the extension beha
 A signed transaction rejected for a validity violation is H13's; the baseline check is then blocked.
 
 H33's block-hash probes (kind `block-hash`) judge the optional `blockHash` trace_filter member
-the decision proposes. The draft's schema has no such member, so request validation drops it and
-H33, not H14's unknown-member rule, judges these requests. A probe with `allow_reject` accepts
+the decision proposes. The pinned draft now recognizes this member and validates hash shape and
+hash-plus-range exclusivity. H33 judges exact selection; schema rejection checks yield to its
+rejection checks on the same malformed request. A probe with `allow_reject` accepts
 an explicit RPC rejection of the optional capability without requiring a numeric control and
 without establishing support; a server failure does not pass. The null-member case has no such
 exception: H14 treats null as omission, so its numeric range still applies. Each accepted `h30` hash case of block 2

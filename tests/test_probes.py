@@ -737,11 +737,13 @@ class BlockHashTests(Probe):
         # B is genuinely unknown before its payloads arrive, so even its eventual empty result fails.
         self.assertEqual(self.check('before/filter-hash-b', result([]), {}, REORG)[0], 'change_needed')
 
-    def test_the_proposed_member_is_judged_by_h33_not_the_schema(self):
+    def test_the_pinned_schema_checks_hash_shape_and_h33_checks_selection(self):
         from trace_interop.validation import request_errors
         methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
-        for name in ['filter-blockhash', 'filter-blockhash-null', 'filter-blockhash-malformed-object', 'filter-blockhash-and-range']:
+        for name in ['filter-blockhash', 'filter-blockhash-null', 'filter-blockhash-null-bounds']:
             self.assertEqual(request_errors(H30[name]['request'], methods), [], name)
+        for name in ['filter-blockhash-malformed-object', 'filter-blockhash-malformed-short', 'filter-blockhash-and-range']:
+            self.assertTrue(request_errors(H30[name]['request'], methods), name)
         request = copy.deepcopy(H30['filter-blockhash']['request'])
         request['params'][0]['unknownDiagnosticFlag'] = True
         self.assertTrue(request_errors(request, methods))

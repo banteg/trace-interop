@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** A blockHash that is not a 32-byte hash is rejected (-32602 recommended). Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** Malformed input returns an error (-32602 recommended). A blockHash that is not a 32-byte hash is rejected (-32602 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -33,18 +33,53 @@
 }
 ```
 
+**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
+**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
+**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
+**Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
 **Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
 
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
 - [H33](../../decisions/H33.md): A blockHash that is not a 32-byte hash is rejected (-32602 recommended). Accepted: answered another block, 3 records from block 0x30 (the head).
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
 - [H33](../../decisions/H33.md): A blockHash that is not a 32-byte hash is rejected (-32602 recommended). Accepted: answered another block, 245 records from 48 blocks, block 0x1 to block 0x30 (the head).
+
+**Geth draft fork · 1.17.7-unstable · e26833e3** (`Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
+**Nethermind · 2.2.0-preview · f69690c5** (`2.2.0-preview+f69690c5`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
 - [H33](../../decisions/H33.md): A blockHash that is not a 32-byte hash is rejected (-32602 recommended). Accepted: answered another block, 4 records from block 0x30 (the head).
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
+
+**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
+
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas
 
 </details>

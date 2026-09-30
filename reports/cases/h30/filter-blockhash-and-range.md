@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** Malformed input returns an error (-32602 recommended). A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -35,30 +35,56 @@
 }
 ```
 
+**Anvil · 1.8.4-nightly · 00989695** (`anvil Version: 1.8.4-nightly+00989695`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
+
+**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
+
 **Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 - [H33](../../decisions/H33.md): A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Accepted: answered block 0x2’s 3 records.
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 - [H33](../../decisions/H33.md): A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Accepted: answered block 0x2’s 3 records.
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
 
 **Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
 
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 - [H33](../../decisions/H33.md): A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Accepted: answered block 0x2’s 3 records.
 
 **Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
 
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 - [H33](../../decisions/H33.md): A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Accepted: answered block 0x2’s 3 records.
+
+**Geth draft fork · 1.17.7-unstable · e26833e3** (`Geth/v1.17.7-unstable-e26833e3-2026-09-26/linux-amd64/go1.26.1`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
+
+**Nethermind · 2.2.0-preview · f69690c5** (`2.2.0-preview+f69690c5`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
-- [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 - [H33](../../decisions/H33.md): A non-null blockHash with a non-null fromBlock or toBlock is rejected (-32602 recommended), never answered by either selector. Accepted: answered block 0x2’s 3 records.
 - Result shape at `0`: {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13488', 'input': '0x01', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'error':
+
+**Reth · 2.7.0 · 60aeb532** (`Reth Version: 2.7.0+60aeb532`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
+
+**Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
+
+- [H14](../../decisions/H14.md): Malformed input returns an error (-32602 recommended). H33 owns this request’s rejection. '0x2' is not of type 'null'
 
 </details>

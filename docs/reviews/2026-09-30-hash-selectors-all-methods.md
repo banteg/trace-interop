@@ -12,6 +12,12 @@ accepted collection must belong to the requested block. Accurate orphan results 
 where supported, with no orphan-retention requirement. Null still means omission under H14.
 This is a proposal for client review, not a claim that the implementations below support it.
 
+The subsequent [draft update](https://github.com/banteg/execution-apis/commit/6a9a69b3)
+adds this optional filter member. The [Geth fork follow-up](https://github.com/banteg/go-ethereum/commit/ec1cec0be8)
+implements canonical, executed hash selection and preserves identity across a reorg during lookup;
+it rejects noncanonical and unexecuted selections. Its regression and full repository checks passed.
+The tables below retain the inspected revisions; this follow-up is not in the selected client captures.
+
 For trace methods the selector shape is not uniform, even within one client. The following table describes acceptance of the EIP-1898 block-hash object, not proof that its canonicality flag is enforced.
 
 | Method | Reth | Nethermind | Erigon | Besu | Anvil | Geth trace draft fork |

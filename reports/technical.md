@@ -84,10 +84,14 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 4 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | H32 owns this request’s rejection. '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas; '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas | 8 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32000 (-32602 recommended). | 1 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas. Code -32603 (-32602 recommended). | 2 |
 | H14 | not_applicable | H32 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas; {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | H33 owns this request’s rejection. '0x2' is not of type 'null' | 11 |
+| H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 489 |
 | H15 | blocked | Cannot inspect this property: malformed_json. | 204 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed result -32603 Internal error. | 4 |

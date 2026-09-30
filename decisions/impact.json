@@ -505,8 +505,8 @@
         "change": "Explicit rejection of non-null blockHash already satisfies the optional capability contract and does not establish support. Treat a null member as omitted under H14. If implemented later, preserve exact requested-block identity, allowing accurate orphan results where supported and rejecting unavailable history."
       },
       "geth": {
-        "observed": "Rejects every non-null `blockHash` as an unknown field (-32602), so its non-null rejections satisfy the optional contract without establishing support. A null `blockHash` beside numeric bounds is dropped as omitted.",
-        "change": "Explicit rejection of non-null blockHash already satisfies the optional capability contract and does not establish support. Treat a null member as omitted under H14. If implemented later, preserve exact requested-block identity, allowing accurate orphan results where supported and rejecting unavailable history."
+        "observed": "Rejects every non-null `blockHash` as an unknown field (-32602), so its non-null rejections satisfy the optional contract without establishing support. A null `blockHash` beside numeric bounds is dropped as omitted. The uncaptured follow-up ec1cec0be8 implements canonical, executed hash selection and explicit errors for unknown/noncanonical/unexecuted hashes, including with count: 0; its reorg regression preserves the requested block. The selected matrix still reports the older e26833e3 build.",
+        "change": "The captured non-null rejections already satisfy the optional contract. Recapture the follow-up implementation against h30 and reorg-safe before reporting measured support; accurate orphan serving remains optional."
       }
     }
   }

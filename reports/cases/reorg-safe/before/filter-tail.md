@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../../clients/besu_development.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Erigon · 3.8.0-dev · a2a19253](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../clients/go-ethereum_trace.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.0-preview · 287f54f0](../../../clients/nethermind_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 60aeb532](../../../clients/reth_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-29/h33-blockhash/reorg-safe/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Besu · 26.9-develop · 3cbf077c](../../../clients/besu_development.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Erigon · 3.8.0-dev · 85e1ca92](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../../clients/go-ethereum_trace.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.0-preview · f69690c5](../../../clients/nethermind_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../../clients/reth_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-30/refresh/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/refresh/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,7 +32,7 @@
 }
 ```
 
-**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
@@ -54,7 +54,7 @@
 - Result shape at `33`: {'action': {'callType': 'call', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x0000000000000000000000000000000000000000000000000000000000000001', 'to': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431
 - Result shape at `38`: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6d70b', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'result': {'address': '0x9e
 
-**Erigon · 3.8.0-dev · a2a19253** (`3.8.0-dev-a2a19253`)
+**Erigon · 3.8.0-dev · 85e1ca92** (`3.8.0-dev-85e1ca92`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Scenario setup stopped: Invalid forkchoice state
 
@@ -66,7 +66,7 @@
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 2.2.0-preview · 287f54f0** (`2.2.0-preview+287f54f0`)
+**Nethermind · 2.2.0-preview · f69690c5** (`2.2.0-preview+f69690c5`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

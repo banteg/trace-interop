@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Besu · 26.9-develop · c197ac57](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Erigon · 3.8.0-dev · a2a19253](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Nethermind · 2.2.0-preview · 287f54f0](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
-| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-29/raw-selector/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-29/raw-selector/raw-selector/manifest.json) |
+| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Anvil · 1.8.4-nightly · 00989695](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Besu · 26.9-develop · 3cbf077c](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Erigon · 3.8.0-dev · 85e1ca92](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e26833e3](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Nethermind · 2.2.0-preview · f69690c5](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
+| [Reth · 2.7.0 · 60aeb532](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-09-30/refresh/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-09-30/refresh/raw-selector/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -34,7 +34,7 @@
 }
 ```
 
-**Besu · 26.9-develop · c197ac57** (`besu/v26.9-develop-c197ac5/linux-x86_64/openjdk-java-25`)
+**Besu · 26.9-develop · 3cbf077c** (`besu/v26.9-develop-3cbf077/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x84e75c28348fb86acea1a93a39426d7d60f4cc46', 'gas': '0x23bec', 'init': '0x43600052734a0f1452281bcec5bd90c3dce6162a5995bfe9df316020524860405260606000f3', 'value': '0x0'}, 'result': {'address': '0x8f5f2010035e665e196b022236f98b33de7c72ca', 'code': '0x000000000000000000000000000000
 

@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 132** client decisions agree with the draft (+1 since the previous capture). 12 more have a submitted fix, and **33 differ with no fix yet**: 17 on converged decisions and 16 on decisions still under review. 27 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **81 of 132** client decisions agree with the draft (+2 since the previous capture). 9 more have a submitted fix, and **32 differ with no fix yet**: 16 on converged decisions and 16 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -13,7 +13,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 132** c
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍👍👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | ⚠️🛠️🛠️✅—⚠️ | ⚠️✅✅✅✅✅ |
 | [H04](../reports/decisions/H04.md) | 🤝 Converged | ·👍👍👍 | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ✅✅🛠️🛠️—⚠️ | ✅✅✅🛠️✅⚠️ |
 | [H05](../reports/decisions/H05.md) | 🤝 Converged | ·👍👍👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️🛠️✅—✅ | ⚠️✅✅✅✅✅ |
-| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️⚠️🛠️⚠️✅⚠️ |
+| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️✅✅⚠️✅⚠️ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | **Replay transactionHash field**<br>Which replay results carry `transactionHash`? | 🟡✅✅✅—⚠️ | 🟡✅✅✅✅⚠️ |
 | [H08](../reports/decisions/H08.md) | 🤝 Converged | ···· | **Empty output and unrequested components**<br>What do `output`, `trace`, `stateDiff` and `vmTrace` hold when they are empty or not requested? | 🟡🟡⚠️✅—⚠️ | 🟡✅✅✅✅✅ |
 | [H09](../reports/decisions/H09.md) | 🤝 Converged | ·👍👍👍 | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️🛠️🛠️🛠️—⚠️ | ⚠️✅✅🛠️✅⚠️ |
@@ -23,14 +23,14 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **79 of 132** c
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍·· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️⚠️✅—⚠️ | ⚠️✅⚠️✅✅⚠️ |
 | [H14](../reports/decisions/H14.md) | ⚪ Under review | ·👍·· | **Invalid parameters and rejected calls**<br>How do malformed parameters and rejected unsigned calls fail, and which error codes are recommended? | ⚠️⚠️⚠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️❔⚠️ |
 | [H15](../reports/decisions/H15.md) | ⚪ Under review | ·👍·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡⚠️⚠️🟡⚠️ |
-| [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️✅—🟡 | ⚠️✅✅✅✅🟡 |
+| [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️✅—🟡 | ⚠️🟡🟡✅🟡🟡 |
 | [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️✅—🛠️ | 🟡✅✅✅✅🛠️ |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅✅—⚠️ | 🟡✅✅✅✅🟡 |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅✅—⚠️ | 🟡✅✅✅✅🟡 |
-| [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·👍 | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️🛠️✅🛠️✅⚠️ |
+| [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·👍 | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️⚠️🛠️—⚠️ | ⚠️✅✅🛠️✅⚠️ |
 | [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡🛠️✅—✅ | 🟡✅✅✅✅✅ |
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
-| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍👍👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅🛠️🛠️✅🟡 |
+| [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍👍👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅✅🛠️✅🟡 |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | 🤝 Converged | ··👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅🛠️⚠️—🛠️ | 🛠️✅✅⚠️✅🛠️ |

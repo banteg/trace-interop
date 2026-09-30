@@ -1,0 +1,26 @@
+{
+  "capture_source": "e5b50e4f8efebe70d85f22dd5adaf64148bb4755",
+  "source_dirty": false,
+  "manifest_count": 19,
+  "manifests": {
+    "fee-compat/manifest.json": "7f460682a68d4d76ce2b464bbc317ea50fbf5109dd0e57ed51ca30d8e6bb3626",
+    "repeat/manifest.json": "16d7f285325e672de564555868c6dc3a1b74087c4367ecd20018ef071220ac99",
+    "probes-forks/manifest.json": "81ab9fcf8a61bb9c7e502a681e8a213066e94e43855edec22f0a37bfeea3c049",
+    "initial/manifest.json": "019f4421b04606a01508e369e036d8fe80aa4c92294e8606bd4389ddfac26f70",
+    "precompiles/manifest.json": "55610151b322e026e4a914673565914b3ac22005fc8e9c28c653524a62b7c5d3",
+    "callmany-isolation/manifest.json": "c07cf31ce9e170b1080630a2614e85b062ba5caa1a33dc4662a339c81f6b17a5",
+    "raw-validation/manifest.json": "922003b89a7c1c80d1b8a3b743da74bad9e49449863e7ac7a4c23cb138f83e3f",
+    "raw-selector/manifest.json": "7cbb28124d8900c54d7c891a6efc3286d8dbc4baabf280cfa78adb0a8adadb30",
+    "a/manifest.json": "658836cf57d52d9a3db7f3e4181142623375d33762f6099e26b4c36d907209d8",
+    "fork-followup/manifest.json": "974a4857d84aa8fb09b4d8e6e3c96a5fa5e8edd15fbde0f883639e2d415dbe8c",
+    "reorg-safe/manifest.json": "50cb761f6c1809fcc90f067eabe37f4cfe380e4707dc2bee82130b13906b6f0d",
+    "forks/manifest.json": "a484ddbddc7c240777e4c05f115cfdb972318c41219a690ce990cd33fbef1711",
+    "probes-prague/manifest.json": "465797e049d98219a84af69a812af8fb3cd876093760c92f387008aa791c8bdf",
+    "pruned/manifest.json": "9ac1955922d2157d27b1f186f1eddfefabcd25390b59b95051caba394c52a1dc",
+    "h30/manifest.json": "9d0e5f9f3049633f079d59ac91c201700c79bee886ffad71e19397080e091418",
+    "mined-probes/manifest.json": "ba365d042f5b280a6f59aa469e6874835b911069804937f0053908d580c7b387",
+    "coverage/manifest.json": "01190f4df32d5ea4df8fc268bfb00df00129ed87b1383b6b6244a1866c1c0ea9",
+    "fee-policy/manifest.json": "f5cf7715724d1b8a8ac4772996b4102d8564a28b685e39c34627cd9aac7df0f1",
+    "precompile-values/manifest.json": "92967097c9d24549b3ec0cc34b133c0f32d5b7b25dd695d36add8815eeb9420d"
+  }
+}

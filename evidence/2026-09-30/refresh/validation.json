@@ -1,0 +1,17 @@
+{
+  "host": "Darwin arm64",
+  "capture_host": "Fedora x86_64",
+  "capture_source": "e5b50e4f8efebe70d85f22dd5adaf64148bb4755",
+  "assessment_source": "9171832a",
+  "check": {
+    "command": "UV_CACHE_DIR=/private/tmp/trace-eval-uv-cache bash scripts/check.sh",
+    "exit_code": 0,
+    "tests": 342,
+    "schemas": 9,
+    "generated_reports_stable": true
+  },
+  "report_assessment_sha256": "d69f7e8ba95febf68c8d064939a37201ad778942ab7db5b5a75cda99a20982b6",
+  "files": {
+    "check.log.gz": "8bd772fd9d80277b5830dcf849ded51771b263470c54a2b81a449e464bc717e7"
+  }
+}

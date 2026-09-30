@@ -1,0 +1,640 @@
+{
+  "heads": [
+    {
+      "client": "reth",
+      "repo": "paradigmxyz/reth",
+      "branch": "main",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "date": "2026-09-29T19:33:33Z"
+    },
+    {
+      "client": "erigon",
+      "repo": "erigontech/erigon",
+      "branch": "main",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "date": "2026-09-29T14:44:27Z"
+    },
+    {
+      "client": "nethermind",
+      "repo": "NethermindEth/nethermind",
+      "branch": "master",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "date": "2026-09-30T00:25:38Z"
+    },
+    {
+      "client": "besu",
+      "repo": "besu-eth/besu",
+      "branch": "main",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "date": "2026-09-30T00:53:27Z"
+    },
+    {
+      "client": "geth",
+      "repo": "ethereum/go-ethereum",
+      "branch": "master",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "date": "2026-09-29T13:03:26Z"
+    },
+    {
+      "client": "anvil",
+      "repo": "foundry-rs/foundry",
+      "branch": "master",
+      "sha": "ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054",
+      "date": "2026-09-30T00:32:04Z"
+    },
+    {
+      "client": "draft",
+      "repo": "banteg/go-ethereum",
+      "branch": "feat/trace",
+      "sha": "e26833e3322f918c365f74be6971061c41736fc5",
+      "date": "2026-09-26T19:37:45Z"
+    },
+    {
+      "client": "spec",
+      "repo": "banteg/execution-apis",
+      "branch": "feat/trace",
+      "sha": "b9febf5ea6e7e673bf361137606584bad12280a1",
+      "date": "2026-09-29T21:32:16Z"
+    }
+  ],
+  "files": [
+    {
+      "client": "reth",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "bytes": 39709,
+      "sha256": "073501405072f6d3f06ea97b12e727d3f2860179422ea3c05b8c6c1c73251be2",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-api/src/helpers/call.rs"
+    },
+    {
+      "client": "reth",
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc/src/trace.rs",
+      "bytes": 54865,
+      "sha256": "bc2ae609b33cdb7fa6af1d044e1d2ce69c5c9aebdfe12f5c5cca2e235a36b2af",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc/src/trace.rs"
+    },
+    {
+      "client": "reth",
+      "path": "crates/storage/storage-api/src/block_id.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/storage/storage-api/src/block_id.rs",
+      "bytes": 6298,
+      "sha256": "95eb82c01dd232d33fa2990c3ac7cdde27d289a55e34f4d9211b6fbc2988a1d4",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/storage/storage-api/src/block_id.rs"
+    },
+    {
+      "client": "reth",
+      "path": "Cargo.lock",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/Cargo.lock",
+      "bytes": 324712,
+      "sha256": "bf4a4c297a9e0d4f7ac4f60076a6a8ebff1709c51129dac7c579cbef18a0581b",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/Cargo.lock"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/jsonrpc/trace_adhoc.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/trace_adhoc.go",
+      "bytes": 63682,
+      "sha256": "586b5ed1b300f25b9c6847e237371ac251c13a8659528080e39c1cf1e3a8c22c",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/trace_adhoc.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/jsonrpc/trace_filtering.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/trace_filtering.go",
+      "bytes": 34397,
+      "sha256": "0af2a193b1d6a37463c7c13b47c0dd0e7a57618528437ef8024329b6dde983fe",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/trace_filtering.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/jsonrpc/tracing.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/tracing.go",
+      "bytes": 16776,
+      "sha256": "94b00ce098e79f0a390b7762d2944e4a4e05a1993fb6093c627bf5460090761d",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/tracing.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/jsonrpc/eth_call.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/eth_call.go",
+      "bytes": 41743,
+      "sha256": "6042704d6f2c11ac2db6f7576e4b7f49269cbac818c56682302c83929d40d1f1",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/jsonrpc/eth_call.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/transactions/call.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/transactions/call.go",
+      "bytes": 11109,
+      "sha256": "f96f93d61042dcdae1036c50b726950665dacafab357e1dffb375d0ba3313eef",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/transactions/call.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/types.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/types.go",
+      "bytes": 11688,
+      "sha256": "f2af06672e9437d4dd15c8ed3098f0436f573a167262a7e8a2f8838ced36f36a",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/types.go"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs",
+      "bytes": 45510,
+      "sha256": "37b9b644ab6161115773f2140b34ce413b8a20771ee3174b8b17c6e2d4984c67",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Eth/EthRpcModule.TransactionExecutor.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Eth/EthRpcModule.TransactionExecutor.cs",
+      "bytes": 16460,
+      "sha256": "3c1775e3d7e57c1328b9f0cfdcce89a876aac586ba24038ee00ce731c4ded2c8",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Eth/EthRpcModule.TransactionExecutor.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/TransactionForRpc.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/TransactionForRpc.cs",
+      "bytes": 16106,
+      "sha256": "4b56aca7fa05cd2bb5512948bfd23c005c689d3aeb8d9005457d92cd1218bf93",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/TransactionForRpc.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/LegacyTransactionForRpc.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/LegacyTransactionForRpc.cs",
+      "bytes": 5899,
+      "sha256": "a6d0f4fd7abd5c26338372b1e822979d50d801bc92842503e4a19bbfd0281df2",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/LegacyTransactionForRpc.cs"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceByBlock.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceByBlock.java",
+      "bytes": 6011,
+      "sha256": "f68e192788e29ff3761b9984894e81048f3d6ef3de0580e751662d57dcf1292c",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractTraceByBlock.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCall.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCall.java",
+      "bytes": 4914,
+      "sha256": "41724e594c907b9444de50cdb68e0759a52bb0452cbf1cb448d49adbdd6599cd",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCall.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java",
+      "bytes": 9392,
+      "sha256": "19c7c0b97d4f341747c4daf1658b8ffa91c5c7c597d28f51433aabe505407fc0",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceCallMany.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java",
+      "bytes": 12862,
+      "sha256": "bcd49f29649a3c8c23fb1761576730590c49b074c8661d5b57c6002181623bfa",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/EthCall.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/EthCall.java",
+      "bytes": 8105,
+      "sha256": "5f0fe1d87db0b2e91a0f22a68befec3fc5978fc2b08e45ff5822eb32d1b81da0",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/EthCall.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/CallParameterUtil.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/CallParameterUtil.java",
+      "bytes": 3415,
+      "sha256": "438fb798d77bf3497dc1114739d5c30735e8ed72ad104ed312d67fe3aae586a8",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/CallParameterUtil.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/BlockParameter.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/BlockParameter.java",
+      "bytes": 4770,
+      "sha256": "4f0dfdd9242c946cab000fd461e3a305e79381574f948d54543d05c3575881f1",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/BlockParameter.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java",
+      "bytes": 6887,
+      "sha256": "c1df587c85d624a0a8942a4765e4646977b9a32ff90606d17edc126890a5eada",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/parameters/FilterParameter.java"
+    },
+    {
+      "client": "geth",
+      "path": "internal/ethapi/api.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/api.go",
+      "bytes": 82572,
+      "sha256": "df5d20455fe37005d4b953a448a019f5ba0ec7aaee258060c7ed28d142743990",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/api.go"
+    },
+    {
+      "client": "geth",
+      "path": "internal/ethapi/transaction_args.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/transaction_args.go",
+      "bytes": 22600,
+      "sha256": "4b130e145951ce405b0ceebd1e3ac86ae7ba284f66b45c83f407d850d451dde2",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/transaction_args.go"
+    },
+    {
+      "client": "geth",
+      "path": "internal/ethapi/simulate.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/simulate.go",
+      "bytes": 21219,
+      "sha256": "18535eb72dd1adc6dcd2ce318e91a5d9dabc9b1dc470597c088b9070ab195784",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/internal/ethapi/simulate.go"
+    },
+    {
+      "client": "geth",
+      "path": "eth/api_backend.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/api_backend.go",
+      "bytes": 19305,
+      "sha256": "e7c08fc7fd7b0f573520ac5df84d3dc8f6a9e20a33f20f5b6203c92d195f8d1f",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/api_backend.go"
+    },
+    {
+      "client": "geth",
+      "path": "core/state_transition.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/core/state_transition.go",
+      "bytes": 47412,
+      "sha256": "72e7a68d1f180069920dd5db624fe8fbc7f4cb96f4491d3478239a91ae3d170d",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/core/state_transition.go"
+    },
+    {
+      "client": "geth",
+      "path": "core/vm/evm.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/core/vm/evm.go",
+      "bytes": 31775,
+      "sha256": "2f32a8fcc5b1e551a1d6203a1190a9410779b40ab047ccb23e78b0f2cf19905b",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/core/vm/evm.go"
+    },
+    {
+      "client": "geth",
+      "path": "rpc/types.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/rpc/types.go",
+      "bytes": 7207,
+      "sha256": "12f471483ee8985f4ff3e7d3241f46a95452b942e9a3c60770235b21ad41e8f4",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/rpc/types.go"
+    },
+    {
+      "client": "anvil",
+      "path": "crates/anvil/src/eth/api.rs",
+      "sha": "ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054",
+      "url": "https://raw.githubusercontent.com/foundry-rs/foundry/ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054/crates/anvil/src/eth/api.rs",
+      "bytes": 242573,
+      "sha256": "7b594f850470526e2da2c6e8e43ace6725fb7670f0ec573abb904ad84350272e",
+      "github_url": "https://github.com/foundry-rs/foundry/blob/ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054/crates/anvil/src/eth/api.rs"
+    },
+    {
+      "client": "anvil",
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "sha": "ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054",
+      "url": "https://raw.githubusercontent.com/foundry-rs/foundry/ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054/crates/anvil/src/eth/backend/mem/mod.rs",
+      "bytes": 458523,
+      "sha256": "242b9136935d35456224ae9bb9cc6bb28364f023f179bf87bd2d922af3d85a91",
+      "github_url": "https://github.com/foundry-rs/foundry/blob/ccc793cc1f66aa7d7f71f6cd7af6fbc7d21a2054/crates/anvil/src/eth/backend/mem/mod.rs"
+    },
+    {
+      "client": "draft",
+      "path": "eth/tracers/trace_namespace.go",
+      "sha": "e26833e3322f918c365f74be6971061c41736fc5",
+      "url": "https://raw.githubusercontent.com/banteg/go-ethereum/e26833e3322f918c365f74be6971061c41736fc5/eth/tracers/trace_namespace.go",
+      "bytes": 28060,
+      "sha256": "dfa7137efa4a5df03c855062c193f29eee4db8fa42708fb1fb881fb32967acfe",
+      "github_url": "https://github.com/banteg/go-ethereum/blob/e26833e3322f918c365f74be6971061c41736fc5/eth/tracers/trace_namespace.go"
+    },
+    {
+      "client": "spec",
+      "path": "docs-api/docs/trace-profile.md",
+      "sha": "b9febf5ea6e7e673bf361137606584bad12280a1",
+      "url": "https://raw.githubusercontent.com/banteg/execution-apis/b9febf5ea6e7e673bf361137606584bad12280a1/docs-api/docs/trace-profile.md",
+      "bytes": 27797,
+      "sha256": "b9ab65c72f1c0e2d27bd707977208ad92580e20513aa8c3037c98dbacf9a7dce",
+      "github_url": "https://github.com/banteg/execution-apis/blob/b9febf5ea6e7e673bf361137606584bad12280a1/docs-api/docs/trace-profile.md"
+    },
+    {
+      "client": "spec",
+      "path": "src/schemas/block.yaml",
+      "sha": "b9febf5ea6e7e673bf361137606584bad12280a1",
+      "url": "https://raw.githubusercontent.com/banteg/execution-apis/b9febf5ea6e7e673bf361137606584bad12280a1/src/schemas/block.yaml",
+      "bytes": 5531,
+      "sha256": "9d363f9bebaef1bc958a981154912ab144d19c0dede85f3ca7988ecba6e6e367",
+      "github_url": "https://github.com/banteg/execution-apis/blob/b9febf5ea6e7e673bf361137606584bad12280a1/src/schemas/block.yaml"
+    },
+    {
+      "client": "spec",
+      "path": "src/schemas/filter.yaml",
+      "sha": "b9febf5ea6e7e673bf361137606584bad12280a1",
+      "url": "https://raw.githubusercontent.com/banteg/execution-apis/b9febf5ea6e7e673bf361137606584bad12280a1/src/schemas/filter.yaml",
+      "bytes": 2096,
+      "sha256": "1cffdb444b3eaf6c22acebb5b98ce540036240a74001c7cee94bb3201d107010",
+      "github_url": "https://github.com/banteg/execution-apis/blob/b9febf5ea6e7e673bf361137606584bad12280a1/src/schemas/filter.yaml"
+    },
+    {
+      "client": "spec",
+      "path": "src/trace/methods.yaml",
+      "sha": "b9febf5ea6e7e673bf361137606584bad12280a1",
+      "url": "https://raw.githubusercontent.com/banteg/execution-apis/b9febf5ea6e7e673bf361137606584bad12280a1/src/trace/methods.yaml",
+      "bytes": 23466,
+      "sha256": "159ebe13273b56b16636b0763fa53f9cfe36ed30cde79be13027a408041f1e02",
+      "github_url": "https://github.com/banteg/execution-apis/blob/b9febf5ea6e7e673bf361137606584bad12280a1/src/trace/methods.yaml"
+    },
+    {
+      "client": "reth",
+      "path": "crates/rpc/rpc-api/src/trace.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-api/src/trace.rs",
+      "bytes": 4206,
+      "sha256": "b1e66686348659d8853ef4d7d3ae2ec655671b48cd89248994bca1487efa4cbb",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-api/src/trace.rs"
+    },
+    {
+      "client": "reth",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/pending_block.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-api/src/helpers/pending_block.rs",
+      "bytes": 26162,
+      "sha256": "183a8a4d92e0aa22c049481e6dc66ed9d860f26c2fa84f2a4c5cc944a5ffb6e1",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-api/src/helpers/pending_block.rs"
+    },
+    {
+      "client": "reth",
+      "path": "crates/rpc/rpc-eth-types/src/block.rs",
+      "sha": "43a93dbcffd5d5cd41664ad6d29fc58291a22c13",
+      "url": "https://raw.githubusercontent.com/paradigmxyz/reth/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-types/src/block.rs",
+      "bytes": 8145,
+      "sha256": "6171780c55eaeda6f4dddee7bf47ae7c01650f7ce2cde32b1a52c779ed1a5517",
+      "github_url": "https://github.com/paradigmxyz/reth/blob/43a93dbcffd5d5cd41664ad6d29fc58291a22c13/crates/rpc/rpc-eth-types/src/block.rs"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/ethapi/api.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/ethapi/api.go",
+      "bytes": 29192,
+      "sha256": "7f3afef66ee4474115be6826e438da1fc0bc5e141cd357b3b436e7211859b8a2",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/ethapi/api.go"
+    },
+    {
+      "client": "erigon",
+      "path": "rpc/rpchelper/helper.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/rpchelper/helper.go",
+      "bytes": 11901,
+      "sha256": "b92b17d9a5c44863152d7abb0dc33d67bd21c032c9181f34f018148292feb51a",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/rpc/rpchelper/helper.go"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Blockchain/Find/BlockParameter.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Blockchain/Find/BlockParameter.cs",
+      "bytes": 15032,
+      "sha256": "6f901bb84a33157a471beb3f6acf96fb9a1eb082ce2c835dfcf8f5de97a84f55",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Blockchain/Find/BlockParameter.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Blockchain/Find/IBlockFinderExtensions.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Blockchain/Find/IBlockFinderExtensions.cs",
+      "bytes": 1766,
+      "sha256": "14b49bb2e0fd63083c7c3f8d2926d5a659f7ea06a0ed1f19d9c497cebc5d649e",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Blockchain/Find/IBlockFinderExtensions.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/BlockFinderExtensions.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/BlockFinderExtensions.cs",
+      "bytes": 6887,
+      "sha256": "72b3ad25ac1983848db819fe35fe7e809e15e58087779bdb618ebe1de103c755",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/BlockFinderExtensions.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/BlobTransactionForRpc.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/BlobTransactionForRpc.cs",
+      "bytes": 6444,
+      "sha256": "cf5b0dec1cfbac0add21dbdeaede23bbd02cce1807d0dca8a7c6268da1be5d6a",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/BlobTransactionForRpc.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/EIP1559TransactionForRpc.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/EIP1559TransactionForRpc.cs",
+      "bytes": 3303,
+      "sha256": "3cb4ce485c882903902280033f21d87a7a575d5cf631655861786db5d916bdf2",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/EIP1559TransactionForRpc.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ITraceRpcModule.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ITraceRpcModule.cs",
+      "bytes": 11334,
+      "sha256": "458affa8bfb525505c59adc26ff11e36bccf6f75c17ad0090fd2705c2e6f13d1",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/ITraceRpcModule.cs"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java",
+      "bytes": 29078,
+      "sha256": "6d7e65eeac2da24c81b0cc3151f586eb0da771f1bbcdacc4851912eb8d7e7f52",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/TransactionSimulator.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/TransactionValidationParams.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/TransactionValidationParams.java",
+      "bytes": 7632,
+      "sha256": "dd9c4438b77fccc52d378b716921199fb3e2dbe07cd90a30b24ac62ec2d7c6e2",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/mainnet/TransactionValidationParams.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterMethod.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterMethod.java",
+      "bytes": 4462,
+      "sha256": "cd300a1006daa2607488c4ca3d237d5fceeb8e88b49a72d184d7c9a9c5be1152",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterMethod.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterOrBlockHashMethod.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterOrBlockHashMethod.java",
+      "bytes": 7768,
+      "sha256": "0b41e021e7457b026ee358ea5d1993a3262b9058ed7ceed8de7227573e38bbeb",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/AbstractBlockParameterOrBlockHashMethod.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java",
+      "bytes": 6232,
+      "sha256": "f3689ebd4632a27e11c534dfa0ef49fba7bbc680adff2f95a219e70a4618f473",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/query/BlockchainQueries.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/query/BlockchainQueries.java",
+      "bytes": 54079,
+      "sha256": "8fd20e0d660cd7dfaeff015f8a6b337e3d79d3ad39c1f1e6e6100fcde22abc76",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/query/BlockchainQueries.java"
+    },
+    {
+      "client": "geth",
+      "path": "eth/filters/api.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/filters/api.go",
+      "bytes": 22040,
+      "sha256": "369b5333f3c98dc99de21992bb27d215b86d14325fad92c77b8e1a834a54ded7",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/filters/api.go"
+    },
+    {
+      "client": "erigon",
+      "path": "execution/vm/evm.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/execution/vm/evm.go",
+      "bytes": 35954,
+      "sha256": "17b68ab151460f5191e675876873c6d4f0934c2657d5c4dc046f3e6189a31f99",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/execution/vm/evm.go"
+    },
+    {
+      "client": "erigon",
+      "path": "execution/tracing/tracers/config/api.go",
+      "sha": "85e1ca92dd1bd471d748f13878d22e4ed18863f0",
+      "url": "https://raw.githubusercontent.com/erigontech/erigon/85e1ca92dd1bd471d748f13878d22e4ed18863f0/execution/tracing/tracers/config/api.go",
+      "bytes": 1543,
+      "sha256": "2d9599f8d2923711610371f1f5409a00d617e7746997794ff0eb786d3d835e5f",
+      "github_url": "https://github.com/erigontech/erigon/blob/85e1ca92dd1bd471d748f13878d22e4ed18863f0/execution/tracing/tracers/config/api.go"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Evm/TransactionProcessing/TraceTransactionProcessorAdapter.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Evm/TransactionProcessing/TraceTransactionProcessorAdapter.cs",
+      "bytes": 685,
+      "sha256": "ce271cae93b7689408446f0253780c7d6e72281cb78874f002a2c431c006678f",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Evm/TransactionProcessing/TraceTransactionProcessorAdapter.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.Evm/TransactionProcessing/TransactionProcessor.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Evm/TransactionProcessing/TransactionProcessor.cs",
+      "bytes": 107100,
+      "sha256": "e49142721f088199adc1aa80d0da0cc98fc551c6d65235ae0b8a4037647808d0",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.Evm/TransactionProcessing/TransactionProcessor.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceFilterForRpc.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceFilterForRpc.cs",
+      "bytes": 1158,
+      "sha256": "0a40bc6c62f58ca735f17ed32e22b211c3a650a77501b4df88b93fb612db9622",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceFilterForRpc.cs"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceModuleFactory.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceModuleFactory.cs",
+      "bytes": 3784,
+      "sha256": "3d4c16b1afe9cd396e095ff4bbcac527e45d941ae58c5b7b5bc73f6577770846",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceModuleFactory.cs"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceBlock.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceBlock.java",
+      "bytes": 9273,
+      "sha256": "6917122275a23c8fda56ef2f395844221ec04822d01cfbea22820905499e9c90",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceBlock.java"
+    },
+    {
+      "client": "besu",
+      "path": "ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java",
+      "sha": "045e00792b89f1ed97f212cbfb300f4c0979cb17",
+      "url": "https://raw.githubusercontent.com/besu-eth/besu/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java",
+      "bytes": 8687,
+      "sha256": "b68d6a364800bf9530ae10b9815348279a60c6031cc1c7e91dcc2c8bf2537f14",
+      "github_url": "https://github.com/besu-eth/besu/blob/045e00792b89f1ed97f212cbfb300f4c0979cb17/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java"
+    },
+    {
+      "client": "geth",
+      "path": "eth/filters/filter.go",
+      "sha": "5dcdd05159ac162239e6c4ba2e7de03fc40b6581",
+      "url": "https://raw.githubusercontent.com/ethereum/go-ethereum/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/filters/filter.go",
+      "bytes": 21103,
+      "sha256": "b80b7930ee27a01308abc3f9f38c012d20299e35cd7787fb48c288373a824e0f",
+      "github_url": "https://github.com/ethereum/go-ethereum/blob/5dcdd05159ac162239e6c4ba2e7de03fc40b6581/eth/filters/filter.go"
+    },
+    {
+      "client": "nethermind",
+      "path": "src/Nethermind/Nethermind.JsonRpc/Modules/Trace/UnpricedCallTraceAdapter.cs",
+      "sha": "83fae5b6a3cf482692e4a5a086bec0e90edb66c7",
+      "url": "https://raw.githubusercontent.com/NethermindEth/nethermind/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/UnpricedCallTraceAdapter.cs",
+      "bytes": 1773,
+      "sha256": "bcffc4336f41a3477d8cad60a0bd2a9b53b76611b1601971aa46c0ad10f5a504",
+      "github_url": "https://github.com/NethermindEth/nethermind/blob/83fae5b6a3cf482692e4a5a086bec0e90edb66c7/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/UnpricedCallTraceAdapter.cs"
+    }
+  ],
+  "checked_at": "2026-09-30T01:06:51.473008+00:00",
+  "scope": "Read-only source review of H14/H15/H16/H32/H33, current public heads; source is distinct from selected captured builds."
+}

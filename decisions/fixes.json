@@ -2224,7 +2224,7 @@
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27593",
-      "title": "fix(rpc): use pending state for simulations",
+      "title": "fix(rpc): use the local pending block for pending simulations",
       "client": "reth",
       "decisions": [],
       "state": "open",
@@ -2324,7 +2324,7 @@
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14092",
-      "title": "fix(rpc): default an omitted blob fee cap in trace_call as eth_call does",
+      "title": "fix(rpc): run blob calls without a positive blob fee cap at a zero blob base fee",
       "client": "nethermind",
       "decisions": [
         "H15"
@@ -2335,7 +2335,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "blob-fee-defaulted: trace_call/trace_callMany crashed (-32603 Nullable object must have a value) on a blob call without maxFeePerBlobGas; now defaults it to the block's blob base fee exactly as eth_call's PrepareCall, and traces on the header the call was converted for. Blob normalization stays unresolved in H15."
+      "note": "blob-fee-defaulted, blob-fee-zero: trace_call/trace_callMany crashed (-32603 Nullable object must have a value) on a blob call without maxFeePerBlobGas and rejected an explicit 0 at input (-32000). Reworked 2026-10-01 to H15's adopted blob rule: a blob call whose cap is omitted, null or 0 runs with BLOBBASEFEE 0 and pays no blob fee (per-call in trace_callMany, via UnpricedCallTraceAdapter and a blob fee calculator decorator; also trace_rawTransaction), a positive cap is validated and charged, and non-blob calls keep the block's BLOBBASEFEE. eth_call and eth_estimateGas move to the same rule (as Geth's eth_call), so trace_* keeps the eth_call parity the approval rested on; eth_createAccessList keeps send-style defaults as in Geth, and signing/fill still reject a zero cap. debug_traceCall and proof_call are left for a follow-up. Traces on the header the call was converted for. Head 488ad3e895: 19 JsonRpc and 4 Facade cases fail without the fix; JsonRpc.Test 3202 passed, Facade.Test 191 passed."
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14093",

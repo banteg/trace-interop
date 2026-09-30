@@ -2243,6 +2243,23 @@
       "draft": false,
       "merged_at": null,
       "note": "trace_callMany returns a failing bundle as one JSON-RPC error instead of an error envelope inside a successful result; the underlying zero-fee rejection is H15"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11404",
+      "title": "fix(rpc): run unpriced trace_call and trace_callMany like eth_call",
+      "client": "besu",
+      "decisions": [
+        "H15",
+        "H16"
+      ],
+      "partial": [
+        "H15",
+        "H16"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_call and each trace_callMany call select validation with eth_call's rule: unpriced calls run with GASPRICE and BASEFEE 0 and no fee effects, priced calls stay validated and charged, and trace_call validation failures return their reason. Blob pricing keeps eth_call's 1-wei relaxed path and overrides are out of scope (H15); callMany free/priced/free bundles now run for H16's accounting checks, with the transaction boundary left to #11365 and the error envelope to #11401. Independent of both; merges cleanly."
     }
   ]
 }

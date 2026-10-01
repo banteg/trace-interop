@@ -491,7 +491,7 @@ def evaluate(case, observation, peers, invalid_params=None):
             check('H27', result == a+b, 'Range traces equal concatenated per-block traces in canonical order.', role='result')
     if name == 'filter-two-blocks' and not any(c['topic']=='H27' for c in checks):
         checks.append({'topic':'H27','status':'unassessed','requirement':'Compare anchored per-block traces.', 'detail':'Independent reference inventory unavailable.'})
-    # H15 deliberately submits invalid and unresolved-default requests. An RPC
+    # H15 deliberately submits invalid and blob-default requests. An RPC
     # rejection there must not become a spurious sequential-envelope failure, and
     # a case whose probe requires a rejection has no envelopes to count.
     rejects = any(p['kind'] == 'error' for p in case.get('probes', []))

@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+2 since the previous capture). 14 more have a submitted fix, and **22 differ with no fix yet**: 19 on converged decisions and 3 on decisions still under review. 31 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** client decisions agree with the draft (+2 since the previous capture). 14 more have a submitted fix, and **22 differ with no fix yet**: 22 on converged decisions and 0 on decisions still under review. 31 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -22,8 +22,8 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **83 of 132** c
 | [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍👍· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️🛠️✅—⚠️ | ⚠️✅🟡✅✅⚠️ |
 | [H14](../reports/decisions/H14.md) | 🤝 Converged | ·👍◐· | **Invalid parameters and rejected calls**<br>How do malformed parameters and rejected unsigned calls fail, and which error codes are recommended? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️⚠️❔⚠️❔⚠️ |
-| [H15](../reports/decisions/H15.md) | ⚪ Under review | ·👍·· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡🟡⚠️🟡⚠️ |
-| [H16](../reports/decisions/H16.md) | ⚪ Under review | ···· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️✅—🟡 | ⚠️🟡🟡✅🟡🟡 |
+| [H15](../reports/decisions/H15.md) | 🤝 Converged | ·👍👍· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡🟡⚠️🟡⚠️ |
+| [H16](../reports/decisions/H16.md) | 🤝 Converged | ·👍·· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️⚠️✅—🟡 | ⚠️🟡🟡✅🟡🟡 |
 | [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡🛠️✅—🛠️ | 🟡✅✅✅✅🛠️ |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅✅—⚠️ | 🟡✅✅✅✅🟡 |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅✅—⚠️ | 🟡✅✅✅✅🟡 |

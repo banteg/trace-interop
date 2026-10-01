@@ -308,9 +308,26 @@
     }
   },
   "H15": {
-    "policy": "review",
-    "note": "No policy conclusion is recorded yet. Only Erigon has stated a position on the current recommendation: it agrees with the ordinary fee rules, has shipped them and proposed the blob rule the recommendation adopted on 2026-10-01. The other clients have not responded and Reth\u2019s priced fee-charging question (reth#27476) is open, so the convergence criterion is not met.",
-    "sources": [],
+    "policy": "converged",
+    "note": "Converged: ordinary execution fees follow eth_call (omitted fees are 0; a zero effective price runs with GASPRICE and BASEFEE 0 and no fee effects; priced calls are validated and charged), blob calls without a positive maxFeePerBlobGas run with BLOBBASEFEE 0 (Erigon\u2019s rule), and an explicit gas of 0 is a zero limit. Erigon agreed on execution-apis#890 and shipped it; Nethermind merged its alignment (#14045, #14046, #14092), which counts as agreement. Remaining gaps are implementation: Reth\u2019s disable_fee_charge question (paradigmxyz/reth#27476) and Besu\u2019s open #11404. This records direction from implementations and client teams, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "Erigon on execution-apis#890",
+        "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5920232075"
+      },
+      {
+        "label": "NethermindEth/nethermind#14045 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/14045"
+      },
+      {
+        "label": "NethermindEth/nethermind#14046 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/14046"
+      },
+      {
+        "label": "NethermindEth/nethermind#14092 (merged)",
+        "url": "https://github.com/NethermindEth/nethermind/pull/14092"
+      }
+    ],
     "positions": {
       "erigon": {
         "position": "agree",
@@ -319,6 +336,50 @@
           {
             "label": "Erigon on execution-apis#890 (2026-09-30)",
             "url": "https://github.com/ethereum/execution-apis/issues/890#issuecomment-5920232075"
+          }
+        ]
+      },
+      "nethermind": {
+        "position": "agree",
+        "note": "Merged the H15 alignment: zero-fee calls see BASEFEE 0 (#14045), tip-above-cap precedence (#14046) and the blob-fee rule for eth_call and trace calls (#14092).",
+        "sources": [
+          {
+            "label": "NethermindEth/nethermind#14045 (merged)",
+            "url": "https://github.com/NethermindEth/nethermind/pull/14045"
+          },
+          {
+            "label": "NethermindEth/nethermind#14046 (merged)",
+            "url": "https://github.com/NethermindEth/nethermind/pull/14046"
+          },
+          {
+            "label": "NethermindEth/nethermind#14092 (merged)",
+            "url": "https://github.com/NethermindEth/nethermind/pull/14092"
+          }
+        ]
+      }
+    }
+  },
+  "H16": {
+    "policy": "converged",
+    "note": "Converged on implementation evidence: a transaction\u2019s stateDiff reports its fee payments, block-level balance changes stay out of transaction diffs, and each trace_callMany item is a separate transaction that starts fresh per-transaction scopes (original storage, access sets, transient storage, refunds) from the preceding item\u2019s post-state in one shared block environment; a failing item returns one error, with error.data.index recommended. Reth\u2019s development build agrees on every case and Nethermind, Erigon (after merged #24328) and the Geth draft agree on every assessable case; Besu has #11365 open. This records direction from implementations and client teams, not unanimous formal approval.",
+    "sources": [
+      {
+        "label": "erigontech/erigon#24328 (merged)",
+        "url": "https://github.com/erigontech/erigon/pull/24328"
+      },
+      {
+        "label": "besu-eth/besu#11365 (open)",
+        "url": "https://github.com/besu-eth/besu/pull/11365"
+      }
+    ],
+    "positions": {
+      "erigon": {
+        "position": "agree",
+        "note": "Merged its H16 alignment (#24328), which counts as agreement.",
+        "sources": [
+          {
+            "label": "erigontech/erigon#24328 (merged)",
+            "url": "https://github.com/erigontech/erigon/pull/24328"
           }
         ]
       }

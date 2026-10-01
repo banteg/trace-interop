@@ -10,11 +10,11 @@
     },
     "nethermind": {
       "name": "Nethermind",
-      "summary": "2.2.0-preview \u00b7 287f54f0 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957) and failed-frame results and labels (#13981); 2.0.0 \u00b7 bec830cd still differs on all of these. trace_transaction and trace_get return null for a missing transaction (#13937), but trace_replayTransaction still errors (#14037 is open). trace_filter still matches a failed CREATE by its would-be address; raw-transaction validation, malformed-input rejection, simulation fees and block-hash filter bounds remain review areas."
+      "summary": "2.2.0-preview \u00b7 759efed7 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957), failed-frame results and labels (#13981) and null for a missing transaction or replay (#13937, #14037); 2.0.0 \u00b7 bec830cd still differs on all of these. Since the 2026-10-01 merges it also validates trace_rawTransaction as block inclusion does (#14091), rejects disagreeing data and input (#14089), rejects block-hash filter bounds and selects one block with the trace_filter blockHash member (#14111), and runs blob calls without a positive blob fee cap at BLOBBASEFEE 0 (#14092). No checked case differs in the development build; a code sender\u2019s rejection message, gas-defaulting probes its funds cannot cover and the legacy-priced authorization list remain unassessed or open."
     },
     "reth": {
       "name": "Reth",
-      "summary": "Reth 2.7.0 \u00b7 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 \u00b7 43a93dbc, built from main after the release, returns the same responses. Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833)."
+      "summary": "Reth 2.7.0 \u00b7 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, default filter intersection, missing-replay nulls, replay transaction hashes, the genesis reward, omitted filter bounds, the omitted trace_callMany block, new-account stateDiff markers, EIP-7702 code changes and executing initcode in vmTrace, all of which differed in 2.6.0; the nightly 2.7.0 \u00b7 5b686303, built from main after the release, returns the same responses except that it caps an omitted-gas call at the RPC gas cap (#27586). Remaining work includes simulation fees, the rest of vmTrace, null filter address lists (Alloy #4257, not yet in an Alloy release) and the SELFDESTRUCT payload (revm #3833)."
     },
     "geth": {
       "name": "Geth draft fork",
@@ -22,7 +22,7 @@
     },
     "anvil": {
       "name": "Anvil",
-      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. The nightly 1.8.4 \u00b7 00989695 takes up revm-inspectors 0.44.0 (#17073), which brings the EIP-7702 stateDiff, executing-bytecode and vmTrace step fixes also in Reth 2.7.0, corrects the empty trace-type selection, omitted filter bounds and the trace_callMany default block (#17078) and returns null from trace_transaction for a missing transaction (#17089); 1.8.3 still differs on all of these. With 0.44.0 the nightly also loses the creation markers of a contract created in trace_call and reports an account created and destroyed in one transaction as deleted (open #17106 fixes both). Its own RPC layer still differs in tree-path lookup, missing blocks and replays, replay transaction hashes, conflicting data/input and zero-fee BASEFEE. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
+      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. The nightly 1.8.4 \u00b7 df92604b takes up revm-inspectors 0.44.1 (#17226). Its 0.44.0 changes (#17073) bring the EIP-7702 stateDiff, executing-bytecode and vmTrace step fixes also in Reth 2.7.0, and 0.44.1 adds the reverted-CREATE result and failure labels (#533) and vmTrace memory and subs that follow execution (#532), which Reth does not pin yet. The nightly also corrects the empty trace-type selection, omitted filter bounds and the trace_callMany default block (#17078) and returns null from trace_transaction for a missing transaction (#17089); 1.8.3 still differs on all of these. Since 0.44.0 the nightly loses the creation markers of a contract created in trace_call and reports an account created and destroyed in one transaction as deleted; #17106 fixes both but merged after df92604b was built. Its own RPC layer still differs in tree-path lookup, missing blocks and replays, replay transaction hashes, conflicting data/input and zero-fee BASEFEE. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
     }
   },
   "topics": {
@@ -101,7 +101,7 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "trace_block returns `[]` for a missing block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602. trace_replayBlockTransactions of an unknown block returns `[]`, and a filter ending one block past the head returns the head\u2019s records instead of an error. For a missing transaction, trace_transaction returns `[]` in 1.8.3 and null in the nightly 00989695 (#17089).",
+        "observed": "trace_block returns `[]` for a missing block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602. trace_replayBlockTransactions of an unknown block returns `[]`, and a filter ending one block past the head returns the head\u2019s records instead of an error. For a missing transaction, trace_transaction returns `[]` in 1.8.3 and null in the nightly df92604b (#17089).",
         "change": "Return `null` for a missing path or replay and an error for an unknown selected block (-32001 recommended), including the trace_call and block-replay blocks, and for a filter bound beyond the head (-32602 recommended). Ship #17089 in a release."
       }
     },
@@ -300,7 +300,7 @@
         "change": "Always retain output bytes. The return-42 fixture should still return its 32-byte word when only state differences are requested."
       },
       "anvil": {
-        "observed": "1.8.3 treats an empty trace-type list in trace_call as `[\"trace\"]`, so it returns call frames that were not requested. The nightly 00989695 includes #17078 and returns `trace: []` with the execution output.",
+        "observed": "1.8.3 treats an empty trace-type list in trace_call as `[\"trace\"]`, so it returns call frames that were not requested. The nightly df92604b includes #17078 and returns `trace: []` with the execution output.",
         "change": "Ship #17078 in a release."
       }
     },
@@ -310,8 +310,8 @@
         "change": "Reject malformed input, unknown filter fields and unknown trace types (`-32602` recommended), separately from execution rejection. Ship the call-field fixes in a release."
       },
       "nethermind": {
-        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds. An unpriced call with a null `blobVersionedHashes` or `authorizationList` takes that member\u2019s transaction type: 2.1.0-preview \u00b7 45912ba3 rejects it with -32000 (\u201cneed at least 1 blob\u201d, \u201cEIP-7702 transaction cannot be used to create contract\u201d) and 2.0.0 truncates the authorizationList response.",
-        "change": "Reject malformed input, such as a negative filter count or disagreeing `data` and `input` (`-32602` recommended). Treat a null member as omitted, so it selects no transaction type."
+        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds. An unpriced call with a null `blobVersionedHashes` or `authorizationList` takes that member\u2019s transaction type: 2.1.0-preview \u00b7 45912ba3 rejects it with -32000 (\u201cneed at least 1 blob\u201d, \u201cEIP-7702 transaction cannot be used to create contract\u201d) and 2.0.0 truncates the authorizationList response. 2.2.0-preview \u00b7 759efed7 treats a null member as omitted (#14049), rejects a negative filter count (#14050) and rejects disagreeing `data` and `input` with -32602 (#14089).",
+        "change": "Ship #14049, #14050 and #14089 in a release: reject malformed input, such as a negative filter count or disagreeing `data` and `input` (`-32602` recommended), and treat a null member as omitted, so it selects no transaction type."
       },
       "besu": {
         "observed": "Wrong address-list types and negative count can return results rather than invalid params.",
@@ -370,8 +370,8 @@
         "change": "Report a deleted account\u2019s storage as `{}`."
       },
       "anvil": {
-        "observed": "The nightly 00989695, on revm-inspectors 0.44.0, reports the calltree\u2019s child, created and self-destructed in one transaction and absent at both endpoints, as a deleted account (`-` from zero balance, empty code and nonce 0) in trace_call and both replays; 1.8.3 omits it.",
-        "change": "Omit an account absent at both endpoints from stateDiff. Open #17106 makes absent accounts read as absent for the state-diff builder."
+        "observed": "The nightlies since 00989695 (revm-inspectors 0.44.0, and df92604b on 0.44.1) report the calltree\u2019s child, created and self-destructed in one transaction and absent at both endpoints, as a deleted account (`-` from zero balance, empty code and nonce 0) in trace_call and both replays; 1.8.3 omits it.",
+        "change": "Omit an account absent at both endpoints from stateDiff. #17106, merged on 2026-10-01 after the nightly df92604b was built, makes absent accounts read as absent for the state-diff builder; recapture a nightly that includes it."
       }
     },
     "H07": {
@@ -415,7 +415,7 @@
         "change": "Ship #13935 in a release."
       },
       "anvil": {
-        "observed": "1.8.3 starts an omitted fromBlock at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. The nightly 00989695 includes #17078: omitted bounds default to latest and toBlock 2 alone is rejected as a reversed range. Ranges are capped at 300 blocks.",
+        "observed": "1.8.3 starts an omitted fromBlock at block 0 and an omitted toBlock at the head, so toBlock 2 alone searches the early range. The nightly df92604b includes #17078: omitted bounds default to latest and toBlock 2 alone is rejected as a reversed range. Ranges are capped at 300 blocks.",
         "change": "Ship #17078 in a release."
       }
     },
@@ -430,7 +430,7 @@
         "change": "No change; pending applies only when explicitly requested and supported."
       },
       "anvil": {
-        "observed": "1.8.3 runs an omitted trace_callMany block at pending (NUMBER 49), while trace_call defaults to latest. The nightly 00989695 includes #17078 and defaults to latest.",
+        "observed": "1.8.3 runs an omitted trace_callMany block at pending (NUMBER 49), while trace_call defaults to latest. The nightly df92604b includes #17078 and defaults to latest.",
         "change": "Ship #17078 in a release."
       }
     },
@@ -453,8 +453,8 @@
         "change": "Resolve `earliest` to the lowest available block, as eth_getLogs does, and keep an error (4444 recommended) for explicit numbers below retained history."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 45912ba3 includes #13936 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
-        "change": "Ship #13936 in a release. Reject block-hash filter bounds, as a string or an EIP-1898 object (`-32602` recommended), as eth_getLogs range bounds do; pin a single block with the H33 `blockHash` member instead."
+        "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 45912ba3 includes #13936 and rejects pending in every trace method with -32602. 2.0.0 accepts a block hash as a trace_filter bound, as a string or an EIP-1898 object; 2.2.0-preview \u00b7 759efed7 includes #14111 and rejects both with -32602.",
+        "change": "Ship #13936 and #14111 in a release: reject pending in every trace method and block-hash filter bounds, as a string or an EIP-1898 object (`-32602` recommended), and pin a single block with the H33 `blockHash` member instead."
       }
     },
     "H17": {
@@ -472,8 +472,8 @@
         "change": "Use `*` with 32-byte from/to words for every slot change on a surviving account; reserve `+` and `-` for account birth and deletion."
       },
       "anvil": {
-        "observed": "A first transfer to an absent account, including the zero-address fee recipient, reports balance as a change from zero and code/nonce as unchanged. 1.8.3 marks a contract created in trace_call with `+`; the nightly 00989695, on revm-inspectors 0.44.0, reports it as `*` changes with balance `=`, although Reth 2.7.0 on the same release marks it correctly.",
-        "change": "Mark every field of an account absent before the call with `+`, for transfers and creations alike. Open #17106 makes absent accounts read as absent for the 0.44.0 state-diff builder."
+        "observed": "A first transfer to an absent account, including the zero-address fee recipient, reports balance as a change from zero and code/nonce as unchanged. 1.8.3 marks a contract created in trace_call with `+`; the nightlies since 00989695 (revm-inspectors 0.44.0, and df92604b on 0.44.1) report it as `*` changes with balance `=`, although Reth 2.7.0 on the same release marks it correctly.",
+        "change": "Mark every field of an account absent before the call with `+`, for transfers and creations alike. #17106, merged on 2026-10-01 after the nightly df92604b was built, makes absent accounts read as absent for the 0.44 state-diff builder; recapture a nightly that includes it."
       }
     },
     "H16": {

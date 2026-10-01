@@ -5,7 +5,7 @@
         "development": {
           "agree": 4,
           "build": [
-            "26.9-develop \u00b7 67ce4ab1"
+            "26.10-develop \u00b7 28edf391"
           ],
           "gained": 0,
           "lost": 0
@@ -41,7 +41,7 @@
         "development": {
           "agree": 28,
           "build": [
-            "3.8.0-dev \u00b7 923b4d31"
+            "3.8.0-dev \u00b7 50e2cc4f"
           ],
           "gained": 0,
           "lost": 0
@@ -75,11 +75,11 @@
     {
       "builds": {
         "development": {
-          "agree": 27,
+          "agree": 29,
           "build": [
-            "2.2.0-preview \u00b7 79173d14"
+            "2.2.0-preview \u00b7 759efed7"
           ],
-          "gained": 0,
+          "gained": 2,
           "lost": 0
         },
         "release": {
@@ -94,18 +94,18 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 27,
+        "agree": 29,
         "converged": 0,
-        "fix": 4,
-        "policy": 0,
-        "review": 1,
-        "unmeasured": 1
+        "fix": 0,
+        "policy": 1,
+        "review": 0,
+        "unmeasured": 3
       },
-      "dev_only": 15,
+      "dev_only": 17,
       "name": "Nethermind",
       "prs": {
-        "merged": 39,
-        "open": 8
+        "merged": 47,
+        "open": 0
       }
     },
     {
@@ -113,7 +113,7 @@
         "development": {
           "agree": 22,
           "build": [
-            "2.7.0 \u00b7 43a93dbc"
+            "2.7.0 \u00b7 5b686303"
           ],
           "gained": 0,
           "lost": 0
@@ -140,8 +140,8 @@
       "dev_only": 0,
       "name": "Reth",
       "prs": {
-        "merged": 21,
-        "open": 7
+        "merged": 22,
+        "open": 6
       }
     },
     {
@@ -149,7 +149,7 @@
         "development": {
           "agree": 14,
           "build": [
-            "1.8.4-nightly \u00b7 e3429853"
+            "1.8.4-nightly \u00b7 df92604b"
           ],
           "gained": 0,
           "lost": 0
@@ -167,17 +167,17 @@
       "counted": false,
       "counts": {
         "agree": 14,
-        "converged": 11,
+        "converged": 9,
         "fix": 2,
         "policy": 0,
         "review": 1,
-        "unmeasured": 5
+        "unmeasured": 7
       },
       "dev_only": 4,
       "name": "Anvil",
       "prs": {
-        "merged": 1,
-        "open": 1
+        "merged": 2,
+        "open": 0
       }
     }
   ],

@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Besu · 26.9-develop · 67ce4ab1](../../../clients/besu_development.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.8.0-dev · 923b4d31](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · ec1cec0b](../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 4 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.0-preview · 79173d14](../../../clients/nethermind_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 43a93dbc](../../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-09-30/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/reorg-safe/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Besu · 26.10-develop · 28edf391](../../../clients/besu_development.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.8.0-dev · 50e2cc4f](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 4 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.0-preview · 759efed7](../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 5b686303](../../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,7 +31,7 @@
 }
 ```
 
-**Besu · 26.9-develop · 67ce4ab1** (`besu/v26.9-develop-67ce4ab/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 28edf391** (`besu/v26.10-develop-28edf39/linux-x86_64/openjdk-java-25`)
 
 - [H33](../../../decisions/H33.md): Once branch A is restored, the hash of its block 0x2d selects A’s records again. Answered another block: 4 records from block 0x30 (the head), where the numeric equivalent restored/filter-tail has 3 records from block 0x2d.
 
@@ -39,7 +39,7 @@
 
 - [H33](../../../decisions/H33.md): Once branch A is restored, the hash of its block 0x2d selects A’s records again. Answered another block: 4 records from block 0x30 (the head), where the numeric equivalent restored/filter-tail has 3 records from block 0x2d.
 
-**Erigon · 3.8.0-dev · 923b4d31** (`3.8.0-dev-923b4d31`)
+**Erigon · 3.8.0-dev · 50e2cc4f** (`3.8.0-dev-50e2cc4f`)
 
 - [H33](../../../decisions/H33.md): Assess this declared topic case. Scenario setup stopped: Invalid forkchoice state
 
@@ -47,17 +47,13 @@
 
 - [H33](../../../decisions/H33.md): Assess this declared topic case. Scenario setup stopped: Invalid forkchoice state
 
-**Nethermind · 2.2.0-preview · 79173d14** (`2.2.0-preview+79173d14`)
-
-- [H33](../../../decisions/H33.md): Once branch A is restored, the hash of its block 0x2d selects A’s records again. Rejected (-32602: Invalid params), where the numeric equivalent restored/filter-tail has 2 records from block 0x2d.
-
 **Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
 
 - [H33](../../../decisions/H33.md): Once branch A is restored, the hash of its block 0x2d selects A’s records again. Answered another block: 4 records from block 0x30 (the head), where the numeric equivalent restored/filter-tail has 3 records from block 0x2d.
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 
-**Reth · 2.7.0 · 43a93dbc** (`Reth Version: 2.7.0+43a93dbc`)
+**Reth · 2.7.0 · 5b686303** (`Reth Version: 2.7.0+5b686303`)
 
 - [H33](../../../decisions/H33.md): Once branch A is restored, the hash of its block 0x2d selects A’s records again. Rejected (-32602: Invalid params), where the numeric equivalent restored/filter-tail has 2 records from block 0x2d.
 

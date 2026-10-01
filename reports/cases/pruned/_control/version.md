@@ -4,8 +4,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | `reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu` | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/eval/pruned/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/pruned/manifest.json) |
-| [Reth · 2.7.0 · 43a93dbc](../../../clients/reth_development.md) | `reth/v2.7.0-43a93db/x86_64-unknown-linux-gnu` | ⚪ Not assessed | [Response](../../../../evidence/2026-09-30/eval/pruned/observations.json.gz) · [Build/run](../../../../evidence/2026-09-30/eval/pruned/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | `reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu` | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/pruned/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/pruned/manifest.json) |
+| [Reth · 2.7.0 · 5b686303](../../../clients/reth_development.md) | `reth/v2.7.0-5b68630/x86_64-unknown-linux-gnu` | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/pruned/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 

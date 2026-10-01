@@ -1,0 +1,41 @@
+{
+  "host": "fedora",
+  "task_workspace": "/home/banteg/dev/trace-eval-2026-10-01",
+  "workspace_removed": true,
+  "task_log_and_marker_removed": true,
+  "rebuilt_adapter_tags_retained": [
+    "hive/clients/besu_development:latest",
+    "hive/clients/erigon_development:latest",
+    "hive/clients/go-ethereum_trace:latest",
+    "hive/clients/nethermind_development:latest",
+    "hive/clients/reth_development:latest",
+    "hive/clients/reth_release:latest",
+    "hive/simulators/ethereum/rpc-compat:latest"
+  ],
+  "replaced_adapter_images_removed_by_runner": [
+    "hive/clients/besu_development:latest",
+    "hive/clients/erigon_development:latest",
+    "hive/clients/go-ethereum_trace:latest",
+    "hive/clients/nethermind_development:latest",
+    "hive/clients/reth_development:latest",
+    "hive/clients/reth_release:latest"
+  ],
+  "removed_replaced_simulator_images": [
+    "hive/simulators/ethereum/rpc-compat:latest"
+  ],
+  "removed_superseded_development_images": [
+    "erigontech/erigon:main-latest@sha256:0bacdb75336cd94f31a419583986a5c091cecfa7aa0404104c1fb41f7ae0340d",
+    "ghcr.io/foundry-rs/foundry:nightly@sha256:689b9784d7f7c30506af898238f2c92175089a41c5dfaadfc94a5061f18fbc11",
+    "ghcr.io/paradigmxyz/reth:nightly@sha256:2c66ecfaf42f38471339b2f9e260a5d9844d07a01b47790b19312f19e72457ed",
+    "hyperledger/besu:develop@sha256:78e33b87633e4bea790051eba43159f46f946a6006ab6b2cfc58398e4e6b65e1",
+    "nethermindeth/nethermind:master@sha256:2408b6cd37ad40f20f4c8b8718e6fb5093684cc34334d579034a2bef10c60072"
+  ],
+  "task_client_containers_remaining": 0,
+  "anonymous_volumes_added": 0,
+  "existing_user_containers_unchanged": true,
+  "docker_images_bytes_before": "40.23GB",
+  "docker_images_bytes_after": "40.33GB",
+  "root_filesystem_used_before": "303G",
+  "root_filesystem_used_after": "302G",
+  "retained": "Published native client images, the new source-built Geth image (trace-interop/go-ethereum:179b84b2) and every other trace-interop/* image, and dangling images and volumes that predate this run; no global prune."
+}

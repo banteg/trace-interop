@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Anvil · 1.8.4-nightly · df92604b](../../clients/anvil_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Besu · 26.10-develop · 28edf391](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Erigon · 3.8.0-dev · 50e2cc4f](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Nethermind · 2.2.0-preview · 759efed7](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
-| [Reth · 2.7.0 · 5b686303](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/repeat/manifest.json) |
+| [Anvil · 1.8.4 · 50af4efe](../../clients/anvil_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Anvil · 1.8.4-nightly · 328811cb](../../clients/anvil_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Besu · 26.10-develop · 711f8142](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Erigon · 3.8.0-dev · 6da806cb](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Nethermind · 2.2.0-preview · 3370d566](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
+| [Reth · 2.7.0 · 078d0262](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/repeat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,13 +43,7 @@
 }
 ```
 
-**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
-
-- [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 0 (PUSH1) used: expected 578997, got 579000; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 578994, got 578997; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
-- [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem. operation 2 post-step gas does not deduct this operation cost; operation 3 post-step gas does not deduct this operation cost; operation 6 post-step gas does not deduct this operation cost; operation 7 post-step gas does not deduct this operation cost
-- [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 0 (PUSH1) used: expected 578997, got 579000; step 0 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}; step 1 (PUSH1) used: expected 578994, got 578997; step 1 (PUSH1) mem: expected None, got {'data': '0x', 'off': 0}
-
-**Besu · 26.10-develop · 28edf391** (`besu/v26.10-develop-28edf39/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
 - [H20](../../decisions/H20.md): MCOPY reports its same-step write of word 42 at offset 32.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 6 (MCOPY) mem: expected {'off': 32, 'data': '0x000000000000000000000000000000000000000000000000000000000000002a'}, got None
@@ -60,10 +54,5 @@
 - [H20](../../decisions/H20.md): MCOPY reports its same-step write of word 42 at offset 32.
 - [H20](../../decisions/H20.md): The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. step 6 (MCOPY) mem: expected {'off': 32, 'data': '0x000000000000000000000000000000000000000000000000000000000000002a'}, got None
 - [H20](../../decisions/H20.md): Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. step 6 (MCOPY) mem: expected {'off': 32, 'data': '0x000000000000000000000000000000000000000000000000000000000000002a'}, got None
-
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
-
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 2: ex {"mem": null, "push": ["0x00"], "store": null, "used": 578994} (2 in total).
-- Result shape at `vmTrace`: {'code': '0x602a6000526020600060205e00', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 578997}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 578994}, 'pc': 2, 'sub': None}, {'cost': 6, 'ex': {'mem': {'data': '0x000
 
 </details>

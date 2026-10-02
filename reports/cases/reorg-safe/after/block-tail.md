@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 1 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Besu · 26.10-develop · 28edf391](../../../clients/besu_development.md) | 1 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.8.0-dev · 50e2cc4f](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../clients/go-ethereum_trace.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../clients/nethermind_release.md) | 1 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.0-preview · 759efed7](../../../clients/nethermind_development.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 5b686303](../../../clients/reth_development.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-01/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-01/eval/reorg-safe/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 1 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Besu · 26.10-develop · 711f8142](../../../clients/besu_development.md) | 1 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.8.0-dev · 6da806cb](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../clients/go-ethereum_trace.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../../clients/nethermind_release.md) | 1 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.0-preview · 3370d566](../../../clients/nethermind_development.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 078d0262](../../../clients/reth_development.md) | `[]` | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -29,7 +29,7 @@
 }
 ```
 
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
+**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
 - Result shape at `/`: [{'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x0'}, 'blockHash': '0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110', 'blockNumber': 45, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}] is not valid under any of the give
 

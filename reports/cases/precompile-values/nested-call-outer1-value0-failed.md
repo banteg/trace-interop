@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Anvil · 1.8.4-nightly · df92604b](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Besu · 26.10-develop · 28edf391](../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Erigon · 3.8.0-dev · 50e2cc4f](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Nethermind · 2.2.0-preview · 759efed7](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
-| [Reth · 2.7.0 · 5b686303](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/precompile-values/manifest.json) |
+| [Anvil · 1.8.4 · 50af4efe](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Anvil · 1.8.4-nightly · 328811cb](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Besu · 26.10-develop · 711f8142](../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Erigon · 3.8.0-dev · 6da806cb](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Nethermind · 2.2.0-preview · 3370d566](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
+| [Reth · 2.7.0 · 078d0262](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/precompile-values/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,7 +43,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 28edf391** (`besu/v26.10-develop-28edf39/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f5e', 'init': '0x602a600052604060006080600060006006620186a0f160005260206000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
@@ -52,10 +52,5 @@
 
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f5e', 'init': '0x602a600052604060006080600060006006620186a0f160005260206000f3', 'value': '0x1'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
-
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
-
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 2: ex {"mem": null, "push": ["0x00"], "store": null, "used": 995160} (9 in total).
-- Result shape at `vmTrace`: {'code': '0x602a600052604060006080600060006006620186a0f160005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995163}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 995160}, 'pc': 2, 'sub': None}, {'cost'
 
 </details>

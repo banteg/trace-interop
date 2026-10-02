@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 4 agree, 8 fix submitted, 15 no fix · converged, 6 not fully measured; Erigon 28 agree, 2 fix submitted, 1 no fix · converged, 2 not fully measured; Nethermind 29 agree, 1 policy open, 3 not fully measured; Reth 22 agree, 4 fix submitted, 6 no fix · converged, 1 not fully measured; Anvil 14 agree, 2 fix submitted, 10 no fix · converged, 7 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 6 agree, 7 fix submitted, 14 no fix · converged, 6 not fully measured; Erigon 28 agree, 2 fix submitted, 1 no fix · converged, 2 not fully measured; Nethermind 29 agree, 1 policy open, 3 not fully measured; Reth 22 agree, 4 fix submitted, 6 no fix · converged, 1 not fully measured; Anvil 14 agree, 10 no fix · converged, 9 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.label{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
-<rect x="96" y="12" width="62" height="20" fill="#1a7f37"/>
-<text x="127" y="26" text-anchor="middle" fill="#ffffff">4</text>
-<rect x="158" y="12" width="124" height="20" fill="#0969da"/>
-<text x="220" y="26" text-anchor="middle" fill="#ffffff">8</text>
-<rect x="282" y="12" width="233" height="20" fill="#bc4c00"/>
-<text x="398.5" y="26" text-anchor="middle" fill="#ffffff">15</text>
+<rect x="96" y="12" width="93" height="20" fill="#1a7f37"/>
+<text x="142.5" y="26" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="189" y="12" width="109" height="20" fill="#0969da"/>
+<text x="243.5" y="26" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="298" y="12" width="217" height="20" fill="#bc4c00"/>
+<text x="406.5" y="26" text-anchor="middle" fill="#ffffff">14</text>
 <rect x="515" y="12" width="93" height="20" fill="#8c959f"/>
 <text x="561.5" y="26" text-anchor="middle" fill="#1f2328">6</text>
 <text class="label" x="88" y="56" text-anchor="end">Erigon</text>
@@ -38,12 +38,10 @@
 <text class="label" x="88" y="146" text-anchor="end">Anvil</text>
 <rect x="96" y="132" width="217" height="20" fill="#1a7f37"/>
 <text x="204.5" y="146" text-anchor="middle" fill="#ffffff">14</text>
-<rect x="313" y="132" width="31" height="20" fill="#0969da"/>
-<text x="328.5" y="146" text-anchor="middle" fill="#ffffff">2</text>
-<rect x="344" y="132" width="155" height="20" fill="#bc4c00"/>
-<text x="421.5" y="146" text-anchor="middle" fill="#ffffff">10</text>
-<rect x="499" y="132" width="109" height="20" fill="#8c959f"/>
-<text x="553.5" y="146" text-anchor="middle" fill="#1f2328">7</text>
+<rect x="313" y="132" width="155" height="20" fill="#bc4c00"/>
+<text x="390.5" y="146" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="468" y="132" width="140" height="20" fill="#8c959f"/>
+<text x="538" y="146" text-anchor="middle" fill="#1f2328">9</text>
 <rect x="96" y="170" width="12" height="12" fill="#1a7f37"/>
 <text class="label" x="114" y="180">Agree</text>
 <rect x="266" y="170" width="12" height="12" fill="#0969da"/>

@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../../../clients/anvil_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Anvil · 1.8.4-nightly · df92604b](../../../../clients/anvil_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Besu · 26.10-develop · 28edf391](../../../../clients/besu_development.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Erigon · 3.8.0-dev · 50e2cc4f](../../../../clients/erigon_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../../../clients/nethermind_release.md) | 0 call frames; output `null` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Nethermind · 2.2.0-preview · 759efed7](../../../../clients/nethermind_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
-| [Reth · 2.7.0 · 5b686303](../../../../clients/reth_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-01/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-01/eval/fee-compat/manifest.json) |
+| [Anvil · 1.8.4 · 50af4efe](../../../../clients/anvil_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Anvil · 1.8.4-nightly · 328811cb](../../../../clients/anvil_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Besu · 26.10-develop · 711f8142](../../../../clients/besu_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Erigon · 3.8.0-dev · 6da806cb](../../../../clients/erigon_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../../clients/go-ethereum_trace.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../../../clients/nethermind_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Nethermind · 2.2.0-preview · 3370d566](../../../../clients/nethermind_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
+| [Reth · 2.7.0 · 078d0262](../../../../clients/reth_development.md) | 0 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-02/eval/fee-compat/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-02/eval/fee-compat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,35 +41,27 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · df92604b** (`anvil Version: 1.8.4-nightly+df92604b`)
+**Anvil · 1.8.4-nightly · 328811cb** (`anvil Version: 1.8.4-nightly+328811cb`)
 
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
 
-**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
+**Anvil · 1.8.4 · 50af4efe** (`anvil Version: 1.8.4+50af4efe`)
 
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
-
-**Besu · 26.10-develop · 28edf391** (`besu/v26.10-develop-28edf39/linux-x86_64/openjdk-java-25`)
-
-- [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error.
-- [H15](../../../../decisions/H15.md): Execute each valid simulation and return one envelope per call.
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error.
 - [H15](../../../../decisions/H15.md): Execute each valid simulation and return one envelope per call.
 
-**Erigon · 3.7.0 · bdc78cc4** (`3.7.0-bdc78cc4`)
+**Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
 - [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: base_fee rejection.
 - [H15](../../../../decisions/H15.md): Execute each valid simulation and return one envelope per call.
 
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
+**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
-- [H08](../../../../decisions/H08.md): Output remains a byte string under every trace selection.
-- [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: invalid execution output.
+- [H15](../../../../decisions/H15.md): The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. eth_call: execution output (224 bytes); trace_call: execution output (224 bytes). Differing words: BASEFEE: eth_call 0, trace_call 765625000.
 - [H15](../../../../decisions/H15.md): Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Expected output 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000005f5e10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; independently charged gas 98623.
-- Result shape at `output`: None is not of type 'string'
-- Result shape at `stateDiff`: {'0x0000000000000000000000000000000000004444': {'balance': {'+': '0x0'}, 'code': '=', 'nonce': {'+': '0x1'}, 'storage': {}}, '0x45b63b3e87047ee96a2f1bd45319c6aacc82390a': {'balance': {'+': '0x0'}, 'code': {'+': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 </details>

@@ -20,7 +20,6 @@
     "nethermind_release": "H08 output and H20 `store`, as under L04."
   },
   "L09": {
-    "anvil_release": "H11: an empty trace-type list returns call frames from trace_call but not from the same item in trace_callMany.",
     "erigon_release": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit, fixed by erigon#24343 in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."
   },
   "L10": {

@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.3 · cae51ad4](../../clients/anvil_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Anvil · 1.8.4-nightly · df92604b](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Besu · 26.10-develop · 28edf391](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Erigon · 3.7.0 · bdc78cc4](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Erigon · 3.8.0-dev · 50e2cc4f](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.0.0 · bec830cd](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.2.0-preview · 759efed7](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
-| [Reth · 2.7.0 · 5b686303](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-01/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-01/eval/raw-validation/manifest.json) |
+| [Anvil · 1.8.4 · 50af4efe](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Anvil · 1.8.4-nightly · 328811cb](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Besu · 26.10-develop · 711f8142](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Erigon · 3.8.0-dev · 6da806cb](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.2.0-preview · 3370d566](../../clients/nethermind_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
+| [Reth · 2.7.0 · 078d0262](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-02/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-02/eval/raw-validation/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -36,22 +36,12 @@
 }
 ```
 
-**Anvil · 1.8.3 · cae51ad4** (`anvil Version: 1.8.3+cae51ad4`)
-
-- [H19](../../decisions/H19.md): Requested vmTrace holds the executing fixture bytecode. Expected 0x3060005260206000f3; got 0x.
-
-**Besu · 26.10-develop · 28edf391** (`besu/v26.10-develop-28edf39/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0xb71e', 'init': '0x3060005260206000f3', 'value': '0x1'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73', 'gasUsed': '0x1911'},
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0xb71e', 'init': '0x3060005260206000f3', 'value': '0x1'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73', 'gasUsed': '0x1911'},
-
-**Nethermind · 2.0.0 · bec830cd** (`2.0.0+bec830cd`)
-
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: ex {"mem": null, "push": ["0x00de48310d77a4d56aa400248b0b1613508f5b73"], "store": null, "used": 46876} (3 in total).
-- Result shape at `stateDiff`: {'0x0000000000000000000000000000000000000000': {'balance': {'+': '0xe893'}, 'code': '=', 'nonce': {'+': '0x0'}, 'storage': {}}, '0x00de48310d77a4d56aa400248b0b1613508f5b73': {'balance': {'+': '0x1'}, 'code': {'+': '0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73'}, 'nonce': {'+':
-- Result shape at `vmTrace`: {'code': '0x3060005260206000f3', 'ops': [{'cost': 2, 'ex': {'mem': None, 'push': ['0x00de48310d77a4d56aa400248b0b1613508f5b73'], 'store': None, 'used': 46876}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x00'], 'store': None, 'used': 46873}, 'pc': 1, 'sub': None}, {'cost': 6, '
 
 </details>

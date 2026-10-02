@@ -1,0 +1,54 @@
+{
+  "host": "fedora",
+  "task_workspace": "/home/banteg/dev/trace-eval-2026-10-02",
+  "workspace_removed": true,
+  "task_log_and_marker_removed": true,
+  "task_launcher_removed": true,
+  "rebuilt_adapter_tags_retained": [
+    "hive/clients/besu_development:latest",
+    "hive/clients/erigon_development:latest",
+    "hive/clients/erigon_release:latest",
+    "hive/clients/nethermind_development:latest",
+    "hive/clients/nethermind_release:latest",
+    "hive/clients/reth_development:latest",
+    "hive/clients/reth_release:latest"
+  ],
+  "replaced_adapter_images_removed_by_runner": [
+    "hive/clients/besu_development:latest@sha256:0ec422de1ccbbabcf20f46b5055a3c931a6f92010e66a0d80d129ee6f267344b",
+    "hive/clients/erigon_development:latest@sha256:5f391fa31428c9439673208fe0d8732449c65726d7c78cc2468266c40ee28342",
+    "hive/clients/erigon_release:latest@sha256:e2151e2dd40bad446f844a8664d036ec8dba94d3d6f5cb2a35588594a23641a8",
+    "hive/clients/nethermind_development:latest@sha256:bb5717280eca56a8c53415d6d9b362bff54e6dd21650e676ed33d7cca7d33eb4",
+    "hive/clients/nethermind_release:latest@sha256:d0bb551cb3e57d9da7312b00c667bc245ac5e36e2e0b44cd4fc02478e34d3a59",
+    "hive/clients/reth_development:latest@sha256:1c94205d41956aa145f1839ac2398fe82733fc8f6f3644210fdb82478d6828ce",
+    "hive/clients/reth_release:latest@sha256:76564b18cfa39178c95ee04c48c410e0e0cbefa831abd155ffd539193f1c096d"
+  ],
+  "unchanged_adapter_and_simulator_tags": [
+    "hive/clients/besu_release:latest",
+    "hive/clients/go-ethereum_trace:latest",
+    "hive/simulators/ethereum/rpc-compat:latest"
+  ],
+  "removed_dangling_simulator_images": [
+    "sha256:551144f69357 (rpc-compat build from this run, superseded when the tag returned to its cached image)"
+  ],
+  "removed_superseded_development_images": [
+    "erigontech/erigon:main-latest@sha256:757cb679f52d5b44d9510c9fe589506177be297f787c52e505523754ebd99c50",
+    "ghcr.io/foundry-rs/foundry:nightly@sha256:391c32c8f51d787e27a79b66fbec93a9cd0a34a03fb93ac2da3e7c366b8b7e10",
+    "ghcr.io/paradigmxyz/reth:nightly@sha256:22f94f20a6fc078db4d5dc01c0770cb6fc620543c26657bdc1c770d43dd906a2",
+    "hyperledger/besu:develop@sha256:a65efb364f72e1a3c754cc9091d447870619d1fd045f3cb1418f6eb7a6986d2d",
+    "nethermindeth/nethermind:master@sha256:cfb9a00b3f479c409eb10a47feb80f35d06b3ea60fe2f18896f2cb2c7c822150"
+  ],
+  "new_release_images_pulled": [
+    "erigontech/erigon:v3.7.1",
+    "ghcr.io/foundry-rs/foundry:v1.8.4",
+    "nethermind/nethermind:2.1.0"
+  ],
+  "task_client_containers_remaining": 0,
+  "anonymous_volumes_added": 0,
+  "dangling_images_added": 0,
+  "existing_user_containers_unchanged": true,
+  "docker_images_bytes_before": "40.33GB",
+  "docker_images_bytes_after": "42.26GB",
+  "root_filesystem_used_before": "304G",
+  "root_filesystem_used_after": "307G",
+  "retained": "Published native client images, including the previous release images (Erigon 3.7.0, Nethermind 2.0.0, Foundry 1.8.3) that the September 30 and October 1 locks reproduce, every trace-interop/* image, and dangling images and volumes that predate this run; no global prune. The root filesystem is shared with concurrent client builds, so its usage is not attributable to this run alone."
+}

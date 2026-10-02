@@ -181,7 +181,7 @@
   },
   "H09": {
     "policy": "converged",
-    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, the Erigon and Nethermind development builds implement it (#24355, #24356; #13981), and revm-inspectors #533 implements it, released in 0.44.1, which the Anvil nightly ships and Reth does not pin yet. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, the Erigon and Nethermind development builds implement it (#24355, #24356; #13981), and revm-inspectors #533 implements it, released in 0.44.1, which Foundry 1.8.4 and the Anvil nightly ship and Reth does not pin yet. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Reverted-CREATE heads-up on execution-apis#890",
@@ -217,7 +217,7 @@
   },
   "H11": {
     "policy": "converged",
-    "note": "Erigon, Nethermind (#13667), Reth and the Geth draft accept an empty trace-type selection, execute the call and return its output. Besu still differs, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "note": "Erigon, Nethermind (#13667, shipped in 2.1.0), Reth and the Geth draft accept an empty trace-type selection, execute the call and return its output. Besu\u2019s development build agrees since #11404 lets the zero-fee call run; its empty selection needed no separate fix. This records direction from implementations, not unanimous formal approval.",
     "sources": [
       {
         "label": "NethermindEth/nethermind#13667 (merged)",
@@ -309,7 +309,7 @@
   },
   "H15": {
     "policy": "converged",
-    "note": "Converged: ordinary execution fees follow eth_call (omitted fees are 0; a zero effective price runs with GASPRICE and BASEFEE 0 and no fee effects; priced calls are validated and charged), blob calls without a positive maxFeePerBlobGas run with BLOBBASEFEE 0 (Erigon\u2019s rule), and an explicit gas of 0 is a zero limit. Erigon agreed on execution-apis#890 and shipped it; Nethermind merged its alignment (#14045, #14046, #14092), which counts as agreement. Remaining gaps are implementation: Reth\u2019s disable_fee_charge question (paradigmxyz/reth#27476) and Besu\u2019s open #11404. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged: ordinary execution fees follow eth_call (omitted fees are 0; a zero effective price runs with GASPRICE and BASEFEE 0 and no fee effects; priced calls are validated and charged), blob calls without a positive maxFeePerBlobGas run with BLOBBASEFEE 0 (Erigon\u2019s rule), and an explicit gas of 0 is a zero limit. Erigon agreed on execution-apis#890 and shipped it; Nethermind merged its alignment (#14045, #14046, #14092), which counts as agreement. Besu merged #11404 (2026-10-02), which runs unsigned trace calls like eth_call. Remaining gaps are implementation: Reth\u2019s disable_fee_charge question (paradigmxyz/reth#27476), and Besu\u2019s trace_callMany rejections, which return an internal error instead of the violation, and blob calls at the head\u2019s BLOBBASEFEE. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Erigon on execution-apis#890",
@@ -326,6 +326,10 @@
       {
         "label": "NethermindEth/nethermind#14092 (merged)",
         "url": "https://github.com/NethermindEth/nethermind/pull/14092"
+      },
+      {
+        "label": "besu-eth/besu#11404 (merged)",
+        "url": "https://github.com/besu-eth/besu/pull/11404"
       }
     ],
     "positions": {
@@ -361,7 +365,7 @@
   },
   "H16": {
     "policy": "converged",
-    "note": "Converged on implementation evidence: a transaction\u2019s stateDiff reports its fee payments, block-level balance changes stay out of transaction diffs, and each trace_callMany item is a separate transaction that starts fresh per-transaction scopes (original storage, access sets, transient storage, refunds) from the preceding item\u2019s post-state in one shared block environment; a failing item returns one error, with error.data.index recommended. Reth\u2019s development build agrees on every case and Nethermind, Erigon (after merged #24328) and the Geth draft agree on every assessable case; Besu has #11365 open. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on implementation evidence: a transaction\u2019s stateDiff reports its fee payments, block-level balance changes stay out of transaction diffs, and each trace_callMany item is a separate transaction that starts fresh per-transaction scopes (original storage, access sets, transient storage, refunds) from the preceding item\u2019s post-state in one shared block environment; a failing item returns one error, with error.data.index recommended. Reth\u2019s development build agrees on every case and Nethermind, Erigon (after merged #24328) and the Geth draft agree on every assessable case; Besu\u2019s development build runs every bundle since #11404 and shows the missing per-call boundary as original storage values carried across calls (5,600 gas less in `initial/call-many`), which #11365, open, fixes. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "erigontech/erigon#24328 (merged)",
@@ -425,7 +429,7 @@
   },
   "H20": {
     "policy": "converged",
-    "note": "Converged on the vmTrace step rules as revised by the divergent-decisions review: operand-range mem (the full CALL output window preferred, the copied bytes accepted), no synthetic operations, halted operations kept with ex: null. Erigon confirmed its own behavior already matches except what erigontech/erigon#24344 fixes; Nethermind\u2019s development build agrees since #13940 and #13958, and revm-inspectors #532, released in 0.44.1, brings the Anvil nightly into agreement on the checked cases; Reth does not pin 0.44.1 yet. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on the vmTrace step rules as revised by the divergent-decisions review: operand-range mem (the full CALL output window preferred, the copied bytes accepted), no synthetic operations, halted operations kept with ex: null. Erigon confirmed its own behavior already matches except what erigontech/erigon#24344 fixes; Nethermind\u2019s development build agrees since #13940 and #13958, and revm-inspectors #532, released in 0.44.1, brings Foundry 1.8.4 and the Anvil nightly into agreement on the checked cases; Reth does not pin 0.44.1 yet. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Erigon on execution-apis#890",
@@ -519,11 +523,15 @@
   },
   "H25": {
     "policy": "converged",
-    "note": "Erigon and Reth report a failure found before output as one complete JSON-RPC error. Nethermind can leave truncated JSON on the wire for a rejected signed transaction; #13666 fixes it and has both reviewers' approval. Besu nests a complete error envelope inside a trace_callMany result, with no submitted fix. This records direction from implementations, not unanimous formal approval.",
+    "note": "Erigon and Reth report a failure found before output as one complete JSON-RPC error. Nethermind can leave truncated JSON on the wire for a rejected signed transaction; #13666, merged, fixes it in the development build. Besu\u2019s development build agrees since #11401 (merged 2026-10-02) and returns a rejected trace_callMany bundle as one error; Besu 26.9.0 still nests a complete error envelope inside the result. Nethermind 2.1.0 was cut without #13666 and still truncates. This records direction from implementations, not unanimous formal approval.",
     "sources": [
       {
         "label": "Nethermind #13666: preserve error responses for streamed traces",
         "url": "https://github.com/NethermindEth/nethermind/pull/13666"
+      },
+      {
+        "label": "besu-eth/besu#11401 (merged)",
+        "url": "https://github.com/besu-eth/besu/pull/11401"
       }
     ]
   },

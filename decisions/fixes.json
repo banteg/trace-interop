@@ -2559,6 +2559,27 @@
       "draft": false,
       "merged_at": null,
       "note": "trace_callMany names a rejected call\u2019s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/27668",
+      "title": "chore(deps): bump revm-inspectors to 0.44.1",
+      "client": "reth",
+      "decisions": [
+        "H09",
+        "H20",
+        "H23",
+        "H26"
+      ],
+      "partial": [
+        "H09",
+        "H20",
+        "H23",
+        "H26"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth"
     }
   ]
 }

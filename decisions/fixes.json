@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-01",
+  "checked_at": "2026-10-02",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2454,7 +2454,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes keep Erigon's -32000 (draft recommends -32001). MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main."
+      "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes return -32001 (new rpc.ResourceNotFoundError), as H33 recommends, after lupin012's review (e1df6f80805); a pruned body keeps the prune-boundary error, and eth_getLogs and trace_block keep -32000. MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main."
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11406",
@@ -2478,10 +2478,19 @@
       "partial": [
         "H33"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release."
+      "merged_at": "2026-10-01T12:10:13Z",
+      "note": "Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release.",
+      "uptake": {
+        "merge_commit": "9efe110486c1a6b285960f78188886ce778d6435",
+        "releases": [],
+        "client": null,
+        "builds": {
+          "5b6863039392746e48e2bfb0160c5ca2a888daed": false,
+          "3d592ece6de8c4559987416a544fc215fd6d6921": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11407",

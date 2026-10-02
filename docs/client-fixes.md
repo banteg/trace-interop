@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-01**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-02**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -69,7 +69,7 @@ flowchart LR
 | [Erigon #24355](https://github.com/erigontech/erigon/pull/24355) | Report a reverted create as {gasUsed, output} | [H09](../reports/decisions/H09.md) (partial), [H23](../reports/decisions/H23.md) | 2026-09-28 | — | — | dev | dev |
 | [Erigon #24356](https://github.com/erigontech/erigon/pull/24356) | Use parity failure labels in trace frames; needs rpc-tests#610 released and RPC_VERSION bumped for its integration tests · after Erigon #24355 | [H09](../reports/decisions/H09.md) | 2026-09-28 | — | — | dev | dev |
 | [Erigon #24357](https://github.com/erigontech/erigon/pull/24357) | Trace_filter rejects a bound past the head with -32602; past-head and unknown-hash filter bounds; the reversed range is #24341. Companion erigontech/rpc-tests#611 | [H06](../reports/decisions/H06.md) (partial) | 2026-09-29 | — | — | dev | — |
-| [Erigon #24435](https://github.com/erigontech/erigon/pull/24435) | Trace_filter selects a block by blockHash and rejects hash bounds; Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes keep Erigon's -32000 (draft recommends -32001). MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main. | [H33](../reports/decisions/H33.md), [H32](../reports/decisions/H32.md) | — | — | — | — | — |
+| [Erigon #24435](https://github.com/erigontech/erigon/pull/24435) | Trace_filter selects a block by blockHash and rejects hash bounds; Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes return -32001 (new rpc.ResourceNotFoundError), as H33 recommends, after lupin012's review (e1df6f80805); a pruned body keeps the prune-boundary error, and eth_getLogs and trace_block keep -32000. MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main. | [H33](../reports/decisions/H33.md), [H32](../reports/decisions/H32.md) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -136,7 +136,7 @@ flowchart LR
   Alloy_4257["Alloy #4257"]:::merged
   next_Alloy_release(["next Alloy release"]):::pending
   Reth_takes_next_Alloy_release[["Reth takes next Alloy release"]]:::pending
-  Alloy_4274["Alloy #4274"]:::open
+  Alloy_4274["Alloy #4274"]:::merged
   Alloy_EVM_411["Alloy EVM #411"]:::open
   next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
   Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
@@ -173,7 +173,7 @@ flowchart LR
 | [Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216) | Default address filters to intersection | [H03](../reports/decisions/H03.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
 | [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H04](../reports/decisions/H04.md), [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | — | — | — | — |
-| [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | — | — | — | — | — |
+| [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | 2026-10-01 | — | — | — | — |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev, stable | dev, stable |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 | — | — | dev, stable | — |

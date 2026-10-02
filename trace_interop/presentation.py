@@ -874,7 +874,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             builds={channel: scores(c) for channel, c in (('development', progress[f]['build']), ('release', f + '_release')) if c in by_client})
             for f in shown]))
         text += '## Progress\n\n' + headline + '\n\n![Decision outcomes per client development build](progress.svg)\n\n'
-        text += table(['Client', 'Build', *[f'{symbol} {label}' for _, symbol, label, _, _ in BUCKETS], 'In dev, not stable', 'Fix PRs merged / open'], [
+        text += table(['Client', 'Build', *[f'{symbol} {label}' for _, symbol, label in BUCKETS], 'In dev, not stable', 'Fix PRs merged / open'], [
             [f'[{editorial["clients"][f]["name"]}](clients/{f}.md)', label(progress[f]['build']),
              *[str(progress[f]['counts'][key]) + (signed(progress[f]['gained']).replace(' since the previous capture', '') if key == 'agree' and progress[f]['gained'] else '')
                for key, *_ in BUCKETS],

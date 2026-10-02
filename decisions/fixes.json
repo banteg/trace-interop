@@ -2465,10 +2465,17 @@
         "H33",
         "H32"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes return -32001 (new rpc.ResourceNotFoundError), as H33 recommends, after lupin012's review (e1df6f80805); a pruned body keeps the prune-boundary error, and eth_getLogs and trace_block keep -32000. MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main."
+      "merged_at": "2026-10-02T18:31:36Z",
+      "note": "Implements the converged #890 contract: a blockHash member resolved in the request's read tx by eth_getLogs's resolveLogsBlockHash (canonical only, pruned-body boundary) plus CheckBlockExecuted, before the count: 0 shortcut; blockHash with a non-null bound is -32602; fromBlock/toBlock become rpc.BlockNumber, so hash-string and EIP-1898 object bounds are -32602. Unknown, noncanonical and unexecuted hashes return -32001 (new rpc.ResourceNotFoundError), as H33 recommends, after lupin012's review (e1df6f80805); a pruned body keeps the prune-boundary error, and eth_getLogs and trace_block keep -32000. MCP trace_filter forwards blockHash. No rpc-tests fixture uses hash bounds or blockHash, so no companion PR. 23 new subtests fail on main.",
+      "uptake": {
+        "merge_commit": "301ffbc21685c583f526335d0ac53666a2364624",
+        "builds": {
+          "6da806cb7483f3cfcd6d5d6a2bdc1743f3b1094d": false,
+          "8c1e3893d77d230720d172f1492d95b5777a862c": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11406",

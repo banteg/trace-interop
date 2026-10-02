@@ -395,6 +395,21 @@ def prague():
         case(cases, name, 'trace_call', [dict(blob_call, **fields), ['trace'], 'latest'], probes=[
             probe('H15', 'frame', requirement+' The factory\'s CREATE2 child deploys the word it read.',
                   select={'traceAddress': [0], 'type': 'create'}, expected={'error': None, 'result': {'code': words(value)}})])
+    # The blob fee itself: each blob call runs the same gas at the same price as its non-blob twin, so the sender's
+    # extra charge in stateDiff is the blob fee alone, blob gas times the blob base fee for a positive cap and nothing
+    # for an omitted or zero one.
+    blob_gas = 131072  # GAS_PER_BLOB (EIP-4844)
+    reference = 'blob-fee-none-stateDiff'
+    case(cases, reference, 'trace_call', [blob_call, ['stateDiff'], 'latest'])
+    for name, fields, charged in [('blob-fee-defaulted', {'blobVersionedHashes': [versioned]}, 0),
+                                  ('blob-fee-zero', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': '0x0'}, 0),
+                                  ('blob-fee-priced', {'blobVersionedHashes': [versioned], 'maxFeePerBlobGas': hex(blob_base_fee)},
+                                   blob_gas*blob_base_fee)]:
+        requirement = (f'A covering positive maxFeePerBlobGas is charged: blob gas {blob_gas} at blob base fee {blob_base_fee}'
+                       if charged else 'A blob call whose maxFeePerBlobGas is omitted or 0 pays no blob fee')
+        case(cases, name+'-stateDiff', 'trace_call', [dict(blob_call, **fields), ['stateDiff'], 'latest'], probes=[
+            probe('H15', 'extra-charge', requirement+f', so the sender pays {charged} wei more than the same call without blob fields.',
+                  address=sender, reference=reference, expected=charged)])
     # A supplied nonce is accepted but neither validated nor used: the creation address follows the state nonce (H15).
     address = asm('ADDRESS', 0, 'MSTORE', 32, 0, 'RETURN')
     for name, supplied in [('field-nonce-above', nonce+3), ('field-nonce-below', nonce-3)]:

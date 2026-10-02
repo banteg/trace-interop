@@ -330,6 +330,23 @@ class FieldProbeTests(Probe):
             self.assertDiffers(case, result({'output': '0x'+'22'*20, 'trace': self.blob_frames(factory, 0)}))
             self.assertDiffers(case, error(-32000))
 
+    def test_blob_fee_is_charged_only_for_a_positive_cap(self):
+        sender = PRAGUE['blob-fee-none-stateDiff']['request']['params'][0]['from']
+
+        def charged(wei):
+            balance = {'*': {'from': hex(10**18), 'to': hex(10**18 - wei)}} if wei else '='
+            return result({'output': '0x', 'trace': [], 'stateDiff': {sender: {'balance': balance}}})
+        execution = 21_000 * 2 * 10**9
+        peers = {'blob-fee-none-stateDiff': charged(execution)}
+        for name, fee in [('blob-fee-defaulted-stateDiff', 0), ('blob-fee-zero-stateDiff', 0), ('blob-fee-priced-stateDiff', 131072)]:
+            case = PRAGUE[name]
+            self.assertMatches(case, charged(execution + fee), peers)
+            # Charging the head's blob price for an unpriced cap, or not charging a priced one, differs.
+            self.assertDiffers(case, charged(execution + (131072 - fee)), peers)
+            self.assertDiffers(case, result({'output': '0x', 'trace': [], 'stateDiff': None}), peers)
+            self.assertDiffers(case, error(-32000), peers)
+            self.assertEqual(statuses(case, charged(execution + fee), {}), ['blocked'])
+
     def test_omitted_gas_follows_eth_call_default(self):
         case = PRAGUE['field-gas-omitted']
         peers = {'field-gas-omitted-eth-call': result('0x'+f'{49_978_000:064x}')}

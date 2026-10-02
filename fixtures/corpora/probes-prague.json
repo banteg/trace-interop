@@ -2528,6 +2528,135 @@
       }
     },
     {
+      "name": "blob-fee-none-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-defaulted-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 0,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A blob call whose maxFeePerBlobGas is omitted or 0 pays no blob fee, so the sender pays 0 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-zero-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 0,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A blob call whose maxFeePerBlobGas is omitted or 0 pays no blob fee, so the sender pays 0 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-priced-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 131072,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A covering positive maxFeePerBlobGas is charged: blob gas 131072 at blob base fee 1, so the sender pays 131072 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
       "name": "field-nonce-above",
       "probes": [
         {

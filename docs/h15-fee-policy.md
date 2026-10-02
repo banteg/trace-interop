@@ -90,7 +90,7 @@ fees and block/state overrides remain outside this policy assertion. The blob fe
 independently of the execution fee (Erigon's rule, adopted 2026-10-01): a blob call with an omitted or
 zero `maxFeePerBlobGas` runs with BLOBBASEFEE 0 and pays no blob fee, a positive cap is validated
 against the selected blob base fee and charged, and non-blob calls keep the selected blob price. The
-`probes-prague` opcode probes check the BLOBBASEFEE half. Preferred positional overrides and
+`probes-prague` opcode probes check the BLOBBASEFEE half, and their `-stateDiff` twins the charge. Preferred positional overrides and
 recognized existing wrappers are optional extensions whose accepted contents must take effect.
 Signed validation stays in H13's separate corpus.
 

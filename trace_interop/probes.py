@@ -8,8 +8,11 @@ A probe may declare `depends` ({topic, reason}): an error response then blocks i
 the error cannot separate its property from that dependency. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict; with `extension` it is
 extension evidence, which does not hold a topic's verdict open (presentation.verdict).
-A `block-hash` probe (H33) classifies which block a trace_filter blockHash selected.
+A `block-hash` probe (H33) classifies which block a trace_filter blockHash selected. An
+`extra-charge` probe compares an account's stateDiff balance change with a reference twin's
+that runs the same gas at the same price, so the difference isolates one fee, such as the blob fee.
 """
+from .execution_models import balance_delta
 from .rules import (
     deleted_storage_shape,
     embedded_error,
@@ -329,6 +332,20 @@ def assess(case, observation, peers):
                 continue
             add(topic, status == 'result' and result == reference, requirement,
                 f'Reference {str(reference)[:140]}; got ' + (str(result)[:140] if status == 'result' else f'{status} {mapping(response.get("error")).get("code")}'))
+        elif kind == 'extra-charge':
+            def charge(value, address=probe['address']):
+                diff = mapping(value).get('stateDiff')
+                delta = balance_delta(mapping(diff.get(address)).get('balance', '=')) if isinstance(diff, dict) else None
+                return -delta if delta is not None else None
+            reference = charge(peer_result(probe['reference']))
+            if reference is None:
+                checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
+                               'detail': 'The reference '+probe['reference']+' returned no readable balance change.'})
+                continue
+            got = charge(envelope(probe.get('index')))
+            add(topic, got is not None and got - reference == probe['expected'], requirement,
+                f'Expected {probe["expected"]} wei beyond the reference charge {reference}; '
+                + (f'charged {got - reference}.' if got is not None else 'no readable balance change was returned.'))
         elif kind == 'frames':
             frames = envelope(probe.get('index')).get('trace')
             detail = first_difference(frames, probe['expected'])

@@ -213,9 +213,10 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
   genesis CREATE2 factory, whose child deploys the BLOBBASEFEE word it read. Under Erigon's blob rule
   (2026-10-01), a blob call whose `maxFeePerBlobGas` is omitted or 0 must execute and read 0; the head's blob
   base fee, or rejecting the explicit zero cap, is a difference. A covering positive cap and a call without
-  blob fields read the head's blob base fee (1 wei, from its zero excess blob gas). These probes select only
-  `trace`, so they do not witness the blob fee itself: that a positive cap is charged and a zero cap is not
-  still needs a stateDiff probe. `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
+  blob fields read the head's blob base fee (1 wei, from its zero excess blob gas). Their `-stateDiff`
+  twins witness the blob fee itself: each runs the same gas at the same price as `blob-fee-none-stateDiff`, so
+  the sender's extra charge must be 0 for an omitted or zero cap and 131072 blob gas times the 1 wei blob base
+  fee for the covering cap. `field-nonce-above` and `field-nonce-below` supply a nonce three above and below
   the sender's, and the creation must still return the address of the state nonce.
 - H14: `probes-prague/field-chain-id-mismatch` must be rejected. A chainId for another chain is invalid
   regardless of state, so -32602 is recommended.

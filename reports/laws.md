@@ -11,9 +11,9 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | Law | Statement | Pairs checked | Builds with violations |
 | --- | --- | --- | --- |
 | **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8055 | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
-| **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 14748 | — |
+| **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 14849 | — |
 | **L03** Root output | A successful root call frame reports the envelope output. | 1405 | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
-| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 28312 | Nethermind 2.1.0 · b3e7e84c |
+| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 28349 | Nethermind 2.1.0 · b3e7e84c |
 | **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 90 | Anvil 1.8.4-nightly · 328811cb, Anvil 1.8.4 · 50af4efe, Nethermind 2.1.0 · b3e7e84c |
 | **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 136 | — |
 | **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 526 | Anvil 1.8.4-nightly · 328811cb, Anvil 1.8.4 · 50af4efe, Nethermind 2.2.0-preview · 3370d566, Nethermind 2.1.0 · b3e7e84c |

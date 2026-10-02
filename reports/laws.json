@@ -48,47 +48,47 @@
     },
     "L02": {
       "anvil_development": {
-        "held": 1339,
+        "held": 1348,
         "violated": 0
       },
       "anvil_release": {
-        "held": 1339,
+        "held": 1348,
         "violated": 0
       },
       "besu_development": {
-        "held": 1358,
+        "held": 1370,
         "violated": 0
       },
       "besu_release": {
-        "held": 1046,
+        "held": 1055,
         "violated": 0
       },
       "erigon_development": {
-        "held": 1399,
+        "held": 1411,
         "violated": 0
       },
       "erigon_release": {
-        "held": 1302,
+        "held": 1310,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 1399,
+        "held": 1411,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 1399,
+        "held": 1411,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 1443,
+        "held": 1449,
         "violated": 0
       },
       "reth_development": {
-        "held": 1362,
+        "held": 1368,
         "violated": 0
       },
       "reth_release": {
-        "held": 1362,
+        "held": 1368,
         "violated": 0
       }
     },
@@ -140,47 +140,47 @@
     },
     "L04": {
       "anvil_development": {
-        "held": 2916,
+        "held": 2919,
         "violated": 0
       },
       "anvil_release": {
-        "held": 2916,
+        "held": 2919,
         "violated": 0
       },
       "besu_development": {
-        "held": 2456,
+        "held": 2460,
         "violated": 0
       },
       "besu_release": {
-        "held": 1566,
+        "held": 1569,
         "violated": 0
       },
       "erigon_development": {
-        "held": 2378,
+        "held": 2382,
         "violated": 0
       },
       "erigon_release": {
-        "held": 2474,
+        "held": 2478,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 2378,
+        "held": 2382,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 2378,
+        "held": 2382,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 2384,
+        "held": 2386,
         "violated": 30
       },
       "reth_development": {
-        "held": 3218,
+        "held": 3221,
         "violated": 0
       },
       "reth_release": {
-        "held": 3218,
+        "held": 3221,
         "violated": 0
       }
     },

@@ -278,8 +278,8 @@
   {
     "complete": true,
     "corpus": "probes-prague",
-    "digest": "d326d848db54969447bdeb67dc6a11c2efd53bec0943335f5d170963b3ff9d23",
-    "manifest": "../evidence/2026-10-02/eval/probes-prague/manifest.json",
+    "digest": "6dc2a2ee9071a4ffd32237fee72e8c0f2b42b5a409e9488224532a45c771beb9",
+    "manifest": "../evidence/2026-10-03/blob-charge/probes-prague/manifest.json",
     "name": "probes-prague",
     "versions": {
       "anvil_development": "anvil Version: 1.8.4-nightly+328811cb",

@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14714 |
-| 🟡 Partial | 848 |
+| 🔎 Assessed | 14757 |
+| 🟡 Partial | 849 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 506 |
 | 🔎 Control | 35 |
 
 
-Of the partial observations, 762 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 763 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -94,7 +94,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 376 |
-| H15 | blocked | Cannot inspect this property: malformed_json. | 235 |
+| H15 | blocked | Cannot inspect this property: malformed_json. | 236 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed result -32603 Internal error. | 2 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32003 Insufficient funds for gas * price + value. | 8 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32004 Upfront gas cost exceeds account balance (transaction up-front gas cost 0x1b1ae4d6e2ef500000 exceeds transaction sender. | 2 |
@@ -1018,7 +1018,7 @@ Capture completeness records whether requests finished, not whether their result
 | [callmany-isolation](../evidence/2026-10-02/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
 | [h30](../evidence/2026-10-02/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-10-02/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-10-02/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-prague](../evidence/2026-10-03/blob-charge/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-10-02/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-02/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-02/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |

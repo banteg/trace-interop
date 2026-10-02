@@ -345,7 +345,7 @@ def assess(case, observation, peers):
             got = charge(envelope(probe.get('index')))
             add(topic, got is not None and got - reference == probe['expected'], requirement,
                 f'Expected {probe["expected"]} wei beyond the reference charge {reference}; '
-                + (f'charged {got - reference}.' if got is not None else 'no readable balance change was returned.'))
+                + (f'charged {got}, {got - reference:+} against the reference.' if got is not None else 'no readable balance change was returned.'))
         elif kind == 'frames':
             frames = envelope(probe.get('index')).get('trace')
             detail = first_difference(frames, probe['expected'])

@@ -24,10 +24,10 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 14714,
+    "assessed": 14757,
     "blocked": 506,
     "control": 35,
-    "partial": 848,
+    "partial": 849,
     "unassessed": 0
   },
   "evidence": {
@@ -44,12 +44,12 @@
     "../evidence/2026-10-02/eval/precompile-values/manifest.json": "0d10b4026d80a84ce917632f76cd730ef91f28ad42785d1c85db3b8f9e1d91bf",
     "../evidence/2026-10-02/eval/precompiles/manifest.json": "d2a173e54f6ea81a945f2ff64ae44b0fbb3a3779cb09cc859af0372d305c7666",
     "../evidence/2026-10-02/eval/probes-forks/manifest.json": "830535667d30c88a6fad76b4b8d35137375a6ee8a79e5a084fc37cf38d1e5a10",
-    "../evidence/2026-10-02/eval/probes-prague/manifest.json": "d326d848db54969447bdeb67dc6a11c2efd53bec0943335f5d170963b3ff9d23",
     "../evidence/2026-10-02/eval/pruned/manifest.json": "9404ea1b8a2de3c345b33f8263fc15ea77e5fe0df6ba1ae8d946316711d950cd",
     "../evidence/2026-10-02/eval/raw-selector/manifest.json": "9173e4adf0a5a295704ee68878dac3bd1a235da198b4cb6eed5afa2f1397ee64",
     "../evidence/2026-10-02/eval/raw-validation/manifest.json": "24ce8c91f50bad28f2bbfc8a71ffd31039d3f03d1cbeb3d909d445dabf42ba87",
     "../evidence/2026-10-02/eval/reorg-safe/manifest.json": "18cae49f8c012074a698627508ccc392be829f3df27b6b8ff0486324122c79d6",
-    "../evidence/2026-10-02/eval/repeat/manifest.json": "925bd6c7ad334845e0388f019a68815bf82104443ce40cd8f2f16256cc7b59b4"
+    "../evidence/2026-10-02/eval/repeat/manifest.json": "925bd6c7ad334845e0388f019a68815bf82104443ce40cd8f2f16256cc7b59b4",
+    "../evidence/2026-10-03/blob-charge/probes-prague/manifest.json": "6dc2a2ee9071a4ffd32237fee72e8c0f2b42b5a409e9488224532a45c771beb9"
   },
   "matrix": {
     "../evidence/2026-10-02/eval/clients.lock.json": "3e089d22538c8192b986365d07144cb510a9221ed37410267940b4f16a8d8476",
@@ -64,13 +64,13 @@
   "sources": {
     "decisions/impact.json": "97d0d937c3e8267ed6f6ad258245bf34569a1d8ec2f86af6918e240f781ef98c",
     "decisions/laws.json": "a96b80df2902e0b1ddac1cd13748c818a479cef9bd6124be7884f27e6084a5be",
-    "decisions/ledger.json": "ffce672943b3fe7803ce75d57d5dbcbd54a5e1f9d5330102fb45b3d6e3ec4362",
+    "decisions/ledger.json": "74f90bd875a52713e1cf33ff546e38157c889c1817db292d8762551865eaee6b",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "6c4b9d8603588a2775e848d95327e8df36d05df2abd36dd40a65339a2cf256d2",
     "fixtures/checksums.json": "29dca3ee5444ca82ccc9e44991beb5dee06304bcead6b7018f38c8aabb1e724a",
     "locks/source-revisions.json": "7eb92d4137b3f7de34679ceb45591fda0ba510d3407cc502f3997f1f2d6dfc35",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "3931df45a559f88d580432a51ed9995f2b282c4d2af7116f48773f4b9b254fff",
+    "reports.lock.json": "8f1c021d15353fd97d1035c96813ca267022aeadaeced8f6e403dc5627ded910",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "8dd782a7c802ba449485fb3124c8ed3d1c8a867c07609bb7a17833e3ca21a83b",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
@@ -83,7 +83,7 @@
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "42091ebc2cd25f820c6f24a46e8d03fb4512a9444187d25d4691be316ac88fa7",
     "trace_interop/presentation.py": "a24c15e448e70b478bf593db9a258b5e7c93765c4ec0805a7b873ca65ba419a8",
-    "trace_interop/probes.py": "816e67b775c83180397722e702d6ca628d97ae69f64a3f2d6b9fcc2b089a9bd6",
+    "trace_interop/probes.py": "e35c5a93a1a8e31303b6d99d6c1df98f9248895e0e345fdcce2ab66a8e19023d",
     "trace_interop/report.py": "075e9294a06d1df9cd7d372140b2e1b75b1417bb8b06060040590ce112f1ad06",
     "trace_interop/rules.py": "c1acbef94e5f35dd673f7026bec0aecc430d7e5b8535c82260eabcb0145517ab",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",

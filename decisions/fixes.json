@@ -2550,15 +2550,17 @@
       "title": "fix(rpc): align trace_call and trace_callMany validation with the trace spec draft",
       "client": "besu",
       "decisions": [
+        "H14",
         "H15"
       ],
       "partial": [
+        "H14",
         "H15"
       ],
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1"
+      "note": "trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain"
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11435",

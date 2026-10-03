@@ -87,7 +87,8 @@
 <rect class="b-converged" x="16" y="436" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="449" text-anchor="middle">H14</text>
 <text class="label" x="70" y="449">Invalid parameters and rejected calls</text>
-<text class="muted" x="400" y="449">no fix PR</text>
+<rect class="pr edge partial" x="400" y="436" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="449" text-anchor="middle">#11432</text>
 <rect class="b-converged" x="16" y="460" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="473" text-anchor="middle">H15</text>
 <text class="label" x="70" y="473">Unsigned simulation fees and block environment</text>

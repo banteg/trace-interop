@@ -1284,7 +1284,835 @@
           "0x3"
         ]
       }
+    },
+    {
+      "name": "fork-access-list-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-access-list-before.",
+          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 32, at Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x20"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-at-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-access-list-at.",
+          "requirement": "Recorded: whether the call runs at block 32, at Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x20"
+        ]
+      }
+    },
+    {
+      "name": "fork-type1-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-type1-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-type1-before.",
+          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x1"
+          },
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-dynamic-fees-before.",
+          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 36, at London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-at-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-dynamic-fees-at.",
+          "requirement": "Recorded: whether the call runs at block 36, at London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-type2-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x2"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-type2-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-type2-before.",
+          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x2"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-blob-before.",
+          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 56, at Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-at-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-blob-at.",
+          "requirement": "Recorded: whether the call runs at block 56, at Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-type3-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x3"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-type3-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-type3-before.",
+          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x3"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-authorization-before.",
+          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 60, at Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-at-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-authorization-at.",
+          "requirement": "Recorded: whether the call runs at block 60, at Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "name": "fork-type4-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "Fork activation of call-object features is under review.",
+          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x4"
+          },
+          [
+            "trace"
+          ],
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-type4-before-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for fork-type4-before.",
+          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x4"
+          },
+          "0x3b"
+        ]
+      }
     }
   ],
-  "description": "Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin and the call depth limit at a Homestead block on the frozen PoW-to-PoS forks chain."
+  "description": "Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain."
 }

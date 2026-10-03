@@ -1,0 +1,517 @@
+{
+  "date": "2026-10-03",
+  "request": "Study and recommend the right approach to RPC explicit transaction type policy; no PR changes requested.",
+  "pr": {
+    "url": "https://github.com/NethermindEth/nethermind/pull/14212",
+    "head": "5a7126bff8a1f5d866df521cddb084c5d9d73d02"
+  },
+  "recommendation": [
+    "Use field-driven ordinary Ethereum simulation inputs; explicit type must not select a class or suppress execution fields.",
+    "Keep exact-envelope signing policy a separate explicit compatibility decision; prefer preserving Nethermind signed-input intent while rejecting incompatible supplied fields.",
+    "Preserve response type, signed envelope decoding, and chain-specific extension dispatch.",
+    "Remove the explicit-type fork gate from H14 if semantic type ignoring is adopted; validate requested features at the selected fork."
+  ],
+  "limits": [
+    "272 method responses, including unsupported eth_fillTransaction on Anvil; no transaction broadcast.",
+    "Geth 1.17.5 and Anvil 1.5.1 on disposable localhost chains; Reth 2.7.0 archive read-only.",
+    "Reth signing and current Anvil signing were traced in pinned source, not executed live.",
+    "Nethermind PR tests were read, not rerun."
+  ],
+  "runtime": [
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_call",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_call",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "debug_traceCall",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "debug_traceCall",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_estimateGas",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_estimateGas",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_createAccessList",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_createAccessList",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_fillTransaction",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x2"
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_fillTransaction",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x0"
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_signTransaction",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x2"
+    },
+    {
+      "client": "geth",
+      "version": "Geth/v1.17.5-stable/darwin-arm64/go1.26.5",
+      "method": "eth_signTransaction",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x0"
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_call",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_call",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "debug_traceCall",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "debug_traceCall",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_estimateGas",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_estimateGas",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_createAccessList",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_createAccessList",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_fillTransaction",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x2"
+    },
+    {
+      "client": "reth",
+      "version": "reth/v2.7.0-3d592ec/x86_64-unknown-linux-gnu",
+      "method": "eth_fillTransaction",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null,
+      "baseline_envelope_type": "0x0"
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_call",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_call",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "debug_traceCall",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "debug_traceCall",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_estimateGas",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_estimateGas",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_createAccessList",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_createAccessList",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": null
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_fillTransaction",
+      "pricing": "dynamic",
+      "explicit_type_differences": [],
+      "baseline_error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_fillTransaction",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [],
+      "baseline_error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_signTransaction",
+      "pricing": "dynamic",
+      "explicit_type_differences": [
+        "0x0",
+        "0x1",
+        "0x3",
+        "0x4",
+        "0x7f",
+        "0xff"
+      ],
+      "baseline_error": null,
+      "outcomes": {
+        "omitted": {
+          "encoded_first_byte": "02"
+        },
+        "0x0": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0x1": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0x2": {
+          "encoded_first_byte": "02"
+        },
+        "0x3": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0x4": {
+          "encoded_first_byte": "04"
+        },
+        "0x7f": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0xff": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        }
+      }
+    },
+    {
+      "client": "anvil",
+      "version": "anvil/v1.5.1",
+      "method": "eth_signTransaction",
+      "pricing": "gasPrice",
+      "explicit_type_differences": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0x4",
+        "0x7f",
+        "0xff"
+      ],
+      "baseline_error": null,
+      "outcomes": {
+        "omitted": {
+          "encoded_first_byte": "f8"
+        },
+        "0x0": {
+          "encoded_first_byte": "f8"
+        },
+        "0x1": {
+          "encoded_first_byte": "01"
+        },
+        "0x2": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0x3": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0x4": {
+          "encoded_first_byte": "04"
+        },
+        "0x7f": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        },
+        "0xff": {
+          "code": -32602,
+          "message": "Failed to decode transaction"
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/ethereum/go-ethereum/blob/c9a2bc73c847319a8faa57de59e42c0efc420682/internal/ethapi/transaction_args.go#L42-L76",
+      "sha256": "4b130e145951ce405b0ceebd1e3ac86ae7ba284f66b45c83f407d850d451dde2",
+      "start": 42,
+      "end": 76,
+      "text": "type TransactionArgs struct {\n\tFrom                 *common.Address `json:\"from\"`\n\tTo                   *common.Address `json:\"to\"`\n\tGas                  *hexutil.Uint64 `json:\"gas\"`\n\tGasPrice             *hexutil.Big    `json:\"gasPrice\"`\n\tMaxFeePerGas         *hexutil.Big    `json:\"maxFeePerGas\"`\n\tMaxPriorityFeePerGas *hexutil.Big    `json:\"maxPriorityFeePerGas\"`\n\tValue                *hexutil.Big    `json:\"value\"`\n\tNonce                *hexutil.Uint64 `json:\"nonce\"`\n\n\t// We accept \"data\" and \"input\" for backwards-compatibility reasons.\n\t// \"input\" is the newer name and should be preferred by clients.\n\t// Issue detail: https://github.com/ethereum/go-ethereum/issues/15628\n\tData  *hexutil.Bytes `json:\"data\"`\n\tInput *hexutil.Bytes `json:\"input\"`\n\n\t// Introduced by AccessListTxType transaction.\n\tAccessList *types.AccessList `json:\"accessList,omitempty\"`\n\tChainID    *hexutil.Big      `json:\"chainId,omitempty\"`\n\n\t// For BlobTxType\n\tBlobFeeCap *hexutil.Big  `json:\"maxFeePerBlobGas\"`\n\tBlobHashes []common.Hash `json:\"blobVersionedHashes,omitempty\"`\n\n\t// For BlobTxType transactions with blob sidecar\n\tBlobs       []kzg4844.Blob       `json:\"blobs\"`\n\tCommitments []kzg4844.Commitment `json:\"commitments\"`\n\tProofs      []kzg4844.Proof      `json:\"proofs\"`\n\n\t// For SetCodeTxType\n\tAuthorizationList []types.SetCodeAuthorization `json:\"authorizationList\"`\n}\n\n// from retrieves the transaction sender address.\nfunc (args *TransactionArgs) from() common.Address {"
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/blob/c9a2bc73c847319a8faa57de59e42c0efc420682/internal/ethapi/transaction_args.go#L521-L539",
+      "sha256": "4b130e145951ce405b0ceebd1e3ac86ae7ba284f66b45c83f407d850d451dde2",
+      "start": 521,
+      "end": 539,
+      "text": "// ToTransaction converts the arguments to a transaction.\n// This assumes that setDefaults has been called.\nfunc (args *TransactionArgs) ToTransaction(defaultType int) *types.Transaction {\n\tusedType := types.LegacyTxType\n\tswitch {\n\tcase args.AuthorizationList != nil || defaultType == types.SetCodeTxType:\n\t\tusedType = types.SetCodeTxType\n\tcase args.BlobHashes != nil || defaultType == types.BlobTxType:\n\t\tusedType = types.BlobTxType\n\tcase args.MaxFeePerGas != nil || defaultType == types.DynamicFeeTxType:\n\t\tusedType = types.DynamicFeeTxType\n\tcase args.AccessList != nil || defaultType == types.AccessListTxType:\n\t\tusedType = types.AccessListTxType\n\t}\n\t// Make it possible to default to newer tx, but use legacy if gasprice is provided\n\tif args.GasPrice != nil {\n\t\tusedType = types.LegacyTxType\n\t}\n\tvar data types.TxData"
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/blob/c9a2bc73c847319a8faa57de59e42c0efc420682/internal/ethapi/api.go#L1685-L1736",
+      "sha256": "df5d20455fe37005d4b953a448a019f5ba0ec7aaee258060c7ed28d142743990",
+      "start": 1685,
+      "end": 1736,
+      "text": "func (api *TransactionAPI) SendTransaction(ctx context.Context, args TransactionArgs) (common.Hash, error) {\n\t// Look up the wallet containing the requested signer\n\taccount := accounts.Account{Address: args.from()}\n\n\twallet, err := api.b.AccountManager().Find(account)\n\tif err != nil {\n\t\treturn common.Hash{}, err\n\t}\n\n\tif args.Nonce == nil {\n\t\t// Hold the mutex around signing to prevent concurrent assignment of\n\t\t// the same nonce to multiple accounts.\n\t\tapi.nonceLock.LockAddr(args.from())\n\t\tdefer api.nonceLock.UnlockAddr(args.from())\n\t}\n\tif args.IsEIP4844() {\n\t\treturn common.Hash{}, errBlobTxNotSupported\n\t}\n\n\t// Set some sanity defaults and terminate on failure\n\tif err := args.setDefaults(ctx, api.b, sidecarConfig{}); err != nil {\n\t\treturn common.Hash{}, err\n\t}\n\t// Assemble the transaction and sign with the wallet\n\ttx := args.ToTransaction(types.DynamicFeeTxType)\n\n\tsigned, err := wallet.SignTx(account, tx, api.b.ChainConfig().ChainID)\n\tif err != nil {\n\t\treturn common.Hash{}, err\n\t}\n\treturn SubmitTransaction(ctx, api.b, signed)\n}\n\n// FillTransaction fills the defaults (nonce, gas, gasPrice or 1559 fields)\n// on a given unsigned transaction, and returns it to the caller for further\n// processing (signing + broadcast).\nfunc (api *TransactionAPI) FillTransaction(ctx context.Context, args TransactionArgs) (*SignTransactionResult, error) {\n\t// Set some sanity defaults and terminate on failure\n\tconfig := sidecarConfig{\n\t\tblobSidecarAllowed: true,\n\t\tblobSidecarVersion: api.currentBlobSidecarVersion(),\n\t}\n\tif err := args.setDefaults(ctx, api.b, config); err != nil {\n\t\treturn nil, err\n\t}\n\t// Assemble the transaction and obtain rlp\n\ttx := args.ToTransaction(types.DynamicFeeTxType)\n\tdata, err := tx.MarshalBinary()\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\treturn &SignTransactionResult{data, tx}, nil"
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/blob/c9a2bc73c847319a8faa57de59e42c0efc420682/eth/tracers/api.go#L940-L955",
+      "sha256": "aefda8ee44e7ac2d5f12622b0497e8803d2645822cd480cbcd29db698a845eeb",
+      "start": 940,
+      "end": 955,
+      "text": "\t\trules := api.backend.ChainConfig().Rules(blockContext.BlockNumber, blockContext.Random != nil, blockContext.Time)\n\t\tprecompiles = vm.ActivePrecompiledContracts(rules)\n\t\tif err := config.StateOverrides.Apply(statedb, precompiles); err != nil {\n\t\t\treturn nil, err\n\t\t}\n\t}\n\n\t// Execute the trace.\n\tif err := args.CallDefaults(api.backend.RPCGasCap(), blockContext.BaseFee, api.backend.ChainConfig().ChainID); err != nil {\n\t\treturn nil, err\n\t}\n\tvar (\n\t\tmsg         = args.ToMessage(blockContext.BaseFee, true)\n\t\ttx          = args.ToTransaction(types.DynamicFeeTxType)\n\t\ttraceConfig *TraceConfig\n\t)"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/blob/59174912873b337ea5868c295cefa70997596f29/crates/rpc-types-eth/src/transaction/request.rs#L18-L25",
+      "sha256": "f17e38deed72ac159471c24d8b9b9de1f48897b4ffa9bcb693eae257804f8915",
+      "start": 18,
+      "end": 25,
+      "text": "\n/// Represents _all_ transaction requests to/from RPC.\n///\n/// Transaction type selection is field-driven. The [`Self::transaction_type`] field is retained\n/// for RPC serialization, but is not consulted by [`Self::minimal_tx_type`],\n/// [`Self::preferred_type`], or the transaction build methods. Typed transaction builders use\n/// mainnet chain ID `1` when [`Self::chain_id`] is absent.\n#[derive(Clone, Debug, Default, PartialEq, Eq, Hash)]"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/blob/59174912873b337ea5868c295cefa70997596f29/crates/rpc-types-eth/src/transaction/request.rs#L821-L833",
+      "sha256": "f17e38deed72ac159471c24d8b9b9de1f48897b4ffa9bcb693eae257804f8915",
+      "start": 821,
+      "end": 833,
+      "text": "    pub const fn minimal_tx_type(&self) -> TxType {\n        if self.authorization_list.is_some() {\n            TxType::Eip7702\n        } else if self.has_eip4844_blob_data() {\n            TxType::Eip4844\n        } else if self.has_eip1559_fields() {\n            TxType::Eip1559\n        } else if self.access_list.is_some() {\n            TxType::Eip2930\n        } else {\n            TxType::Legacy\n        }\n    }"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/blob/59174912873b337ea5868c295cefa70997596f29/crates/rpc-types-eth/src/transaction/request.rs#L912-L924",
+      "sha256": "f17e38deed72ac159471c24d8b9b9de1f48897b4ffa9bcb693eae257804f8915",
+      "start": 912,
+      "end": 924,
+      "text": "    pub const fn preferred_type(&self) -> TxType {\n        if self.authorization_list.is_some() {\n            TxType::Eip7702\n        } else if self.has_eip4844_blob_data() {\n            TxType::Eip4844\n        } else if self.access_list.is_some() && self.gas_price.is_some() {\n            TxType::Eip2930\n        } else if self.gas_price.is_some() {\n            TxType::Legacy\n        } else {\n            TxType::Eip1559\n        }\n    }"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/blob/301ffbc21685c583f526335d0ac53666a2364624/rpc/ethapi/api.go#L43-L71",
+      "sha256": "e74fb1f7e970c5584c720b8157ca9f17a684fa479520e950fded56484a627c7c",
+      "start": 43,
+      "end": 71,
+      "text": "// CallArgs represents the arguments for a call.\ntype CallArgs struct {\n\tFrom                 *common.Address           `json:\"from\"`\n\tTo                   *common.Address           `json:\"to\"`\n\tGas                  *hexutil.Uint64           `json:\"gas\"`\n\tGasPrice             *hexutil.U256             `json:\"gasPrice\"`\n\tMaxPriorityFeePerGas *hexutil.U256             `json:\"maxPriorityFeePerGas\"`\n\tMaxFeePerGas         *hexutil.U256             `json:\"maxFeePerGas\"`\n\tMaxFeePerBlobGas     *hexutil.U256             `json:\"maxFeePerBlobGas\"`\n\tValue                *hexutil.U256             `json:\"value\"`\n\tNonce                *hexutil.Uint64           `json:\"nonce\"`\n\tData                 *hexutil.Bytes            `json:\"data\"`\n\tInput                *hexutil.Bytes            `json:\"input\"`\n\tAccessList           *types.AccessList         `json:\"accessList\"`\n\tChainID              *hexutil.U256             `json:\"chainId,omitempty\"`\n\tBlobVersionedHashes  []common.Hash             `json:\"blobVersionedHashes,omitempty\"`\n\tBlobs                []hexutil.Bytes           `json:\"blobs\"`\n\tCommitments          []hexutil.Bytes           `json:\"commitments\"`\n\tProofs               []hexutil.Bytes           `json:\"proofs\"`\n\tAuthorizationList    []types.JsonAuthorization `json:\"authorizationList\"`\n}\n\n// UnmarshalJSON decodes a call object and rejects one whose data and input disagree.\nfunc (args *CallArgs) UnmarshalJSON(raw []byte) error {\n\ttype callArgs CallArgs\n\tif err := json.Unmarshal(raw, (*callArgs)(args)); err != nil {\n\t\treturn err\n\t}\n\treturn CheckCallData(args.Data, args.Input)"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/blob/301ffbc21685c583f526335d0ac53666a2364624/rpc/jsonrpc/eth_fill_transaction.go#L147-L166",
+      "sha256": "60f205026dca7a82f5d6996760b2c3cd0524195cdd7344be4eccd61954a652dc",
+      "start": 147,
+      "end": 166,
+      "text": "\t\targs.ChainID = (*hexutil.U256)(new(uint256.Int).Set(cc.ChainID))\n\t}\n\n\tif args.Gas == nil {\n\t\testimated, err := api.EstimateGas(ctx, &args, &latestNumOrHash, nil, nil)\n\t\tif err != nil {\n\t\t\treturn nil, err\n\t\t}\n\t\targs.Gas = &estimated\n\t}\n\n\ttxn, err := args.ToTransaction(0, head.BaseFee)\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\n\tvar buf bytes.Buffer\n\tif sidecar != nil {\n\t\tsidecar = txn.(*types.BlobTx).WithSidecar(sidecar)\n\t\terr = sidecar.MarshalBinaryWrapped(&buf)"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/blob/301ffbc21685c583f526335d0ac53666a2364624/rpc/jsonrpc/send_transaction.go#L153-L156",
+      "sha256": "c2736885aa802c88709105d488e36bb49b7dd6833a2d932dfb830d0d1bf76899",
+      "start": 153,
+      "end": 156,
+      "text": "\n// SendTransaction implements eth_sendTransaction. Creates new message call transaction or a contract creation if the data field contains code.\nfunc (api *APIImpl) SendTransaction(_ context.Context, _ any) (common.Hash, error) {\n\treturn common.Hash{0}, fmt.Errorf(NotImplemented, \"eth_sendTransaction\")"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/blob/1d62d893baed6c148313bb3d9d64f5c316d371e2/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/transaction/CallParameter.java#L40-L78",
+      "sha256": "f3689ebd4632a27e11c534dfa0ef49fba7bbc680adff2f95a219e70a4618f473",
+      "start": 40,
+      "end": 78,
+      "text": "@JsonDeserialize(as = ImmutableCallParameter.class)\n@JsonIgnoreProperties(ignoreUnknown = true)\npublic abstract class CallParameter implements org.hyperledger.besu.datatypes.CallParameter {\n  @Override\n  @JsonDeserialize(contentUsing = ChainIdJson.Deserializer.class)\n  public abstract Optional<BigInteger> getChainId();\n\n  @Override\n  @JsonProperty(\"from\")\n  public abstract Optional<Address> getSender();\n\n  @Override\n  public abstract Optional<Address> getTo();\n\n  @Override\n  @JsonDeserialize(using = QuantityJson.OptionalLongDeserializer.class)\n  public abstract OptionalLong getGas();\n\n  @Override\n  public abstract Optional<Wei> getMaxPriorityFeePerGas();\n\n  @Override\n  public abstract Optional<Wei> getMaxFeePerGas();\n\n  @Override\n  public abstract Optional<Wei> getMaxFeePerBlobGas();\n\n  @Override\n  public abstract Optional<Wei> getGasPrice();\n\n  @Override\n  public abstract Optional<Wei> getValue();\n\n  @Override\n  public abstract Optional<List<AccessListEntry>> getAccessList();\n\n  @Override\n  public abstract Optional<List<VersionedHash>> getBlobVersionedHashes();\n"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/blob/1d62d893baed6c148313bb3d9d64f5c316d371e2/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/EthSendTransaction.java#L30-L35",
+      "sha256": "d626dfa62424651fa523cc2dbddd2deeca269af62c47346380f72f76792bf816",
+      "start": 30,
+      "end": 35,
+      "text": "  @Override\n  public JsonRpcResponse response(final JsonRpcRequestContext requestContext) {\n    return new JsonRpcErrorResponse(\n        requestContext.getRequest().getId(), RpcErrorType.ETH_SEND_TX_NOT_AVAILABLE);\n  }\n}"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/blob/8275f7ede1f197cdc6f3b24a80ee9d025b325375/crates/primitives/src/transaction/request.rs#L142-L158",
+      "sha256": "0ba06f5c45a5d9d9b1599581ac712b99858dfaef1ab5b9d4721bc46b8a59eae8",
+      "start": 142,
+      "end": 158,
+      "text": "    pub fn preferred_type(&self) -> FoundryTxType {\n        match self {\n            Self::Ethereum(tx) => tx.preferred_type().into(),\n            #[cfg(feature = \"base\")]\n            Self::Base(_) => FoundryTxType::Eip8130,\n            #[cfg(feature = \"optimism\")]\n            Self::Op(tx) if tx.inner.transaction_type == Some(POST_EXEC_TX_TYPE_ID) => {\n                FoundryTxType::PostExec\n            }\n            #[cfg(any(feature = \"base\", feature = \"optimism\"))]\n            Self::Op(_) => FoundryTxType::Deposit,\n            Self::Tempo(_) => FoundryTxType::Tempo,\n        }\n    }\n\n    /// Check if all necessary keys are present to build a 4844 transaction,\n    /// returning a list of keys that are missing."
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/blob/8275f7ede1f197cdc6f3b24a80ee9d025b325375/crates/primitives/src/transaction/request.rs#L332-L379",
+      "sha256": "0ba06f5c45a5d9d9b1599581ac712b99858dfaef1ab5b9d4721bc46b8a59eae8",
+      "start": 332,
+      "end": 379,
+      "text": "impl TryFrom<WithOtherFields<TransactionRequest>> for FoundryTransactionRequest {\n    type Error = serde_json::Error;\n\n    fn try_from(tx: WithOtherFields<TransactionRequest>) -> Result<Self, Self::Error> {\n        #[derive(Deserialize)]\n        struct NonZeroQuantity(#[serde(with = \"alloy_serde::quantity::opt\")] Option<NonZeroU64>);\n\n        #[cfg(feature = \"base\")]\n        {\n            let present = |field: &str| tx.other.get(field).is_some_and(|value| !value.is_null());\n            let base_fields =\n                [\"accountChanges\", \"metadata\", \"sender\", \"senderAuth\", \"payer\", \"payerAuth\"]\n                    .iter()\n                    .any(|field| present(field));\n            let phased_calls = tx\n                .other\n                .get(\"calls\")\n                .and_then(serde_json::Value::as_array)\n                .is_some_and(|calls| calls.first().is_some_and(serde_json::Value::is_array));\n            let explicit_base = tx.transaction_type == Some(EIP8130_TRANSACTION_TYPE);\n            if base_fields || phased_calls || explicit_base {\n                if tx.transaction_type.is_some() && !explicit_base {\n                    return Err(serde::de::Error::custom(\n                        \"Base fields conflict with transaction type\",\n                    ));\n                }\n                if TEMPO_REQUEST_FIELDS.iter().any(|field| {\n                    !matches!(*field, \"nonceKey\" | \"calls\" | \"validBefore\" | \"validAfter\")\n                        && present(field)\n                }) {\n                    return Err(serde::de::Error::custom(\n                        \"conflicting Base and Tempo request fields\",\n                    ));\n                }\n                let mut base =\n                    serde_json::from_value::<BaseTransactionRequest>(serde_json::to_value(&tx)?)?;\n                base.as_mut().transaction_type = Some(EIP8130_TRANSACTION_TYPE);\n                return Ok(Self::Base(base));\n            }\n        }\n\n        if tx.transaction_type == Some(TEMPO_TX_TYPE_ID)\n            || TEMPO_REQUEST_FIELDS.iter().any(|field| {\n                tx.other.get(*field).is_some_and(|value| {\n                    !value.is_null()\n                        && !matches!(\n                            (*field, value),\n                            ("
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/blob/5a7126bff8a1f5d866df521cddb084c5d9d73d02/src/Nethermind/Nethermind.Facade/Eth/RpcTransaction/TransactionForRpc.cs#L347-L387",
+      "sha256": "b1650d8191e777ab5b96696a7cfcca0a19b99cf8050e1be43b47205f97a2674b",
+      "start": 347,
+      "end": 387,
+      "text": "            }\n\n            requestedType = setType;\n\n            // An explicit type counts like a discriminator, so neither drops the other's fields: type 0x0 with\n            // maxFeePerGas keeps its dynamic fees, and type 0x2 with authorizationList keeps its authorizations.\n            if (setType is not null)\n            {\n                int index = -1;\n                for (int i = 0; i < registry.Types.Length; i++)\n                {\n                    if (registry.Types[i].TxType == setType)\n                    {\n                        index = i;\n                        break;\n                    }\n                }\n\n                if (index == -1) throw new JsonException(\"Unknown transaction type\");\n                discriminated |= 1UL << index;\n            }\n\n            // Discriminator field is a strong signal \u2014 not a default. It wins over gasPrice, otherwise a\n            // legacy-priced request would silently lose its accessList/blobVersionedHashes/authorizationList.\n            // The newest indicated type must have every discriminator field seen; fields no single type\n            // carries, such as blobVersionedHashes with authorizationList, are rejected rather than dropped.\n            if (discriminated != 0)\n            {\n                int index = BitOperations.TrailingZeroCount(discriminated);\n                TxTypeInfo selected = registry.Types[index];\n                ulong missing = seen & ~registry.NamesByType[index];\n                if (missing != 0)\n                    throw new JsonException($\"{registry.Names[BitOperations.TrailingZeroCount(missing)]} is not a field of transaction type {(byte)selected.TxType}\");\n\n                isDefaulted = false;\n                return selected.Type;\n            }\n\n            if (hasGasPrice)\n            {\n                isDefaulted = true;"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/blob/4440e205fd6e4a0f837ea6b11a71efcfe2f9a633/crates/rpc/rpc/src/eth/helpers/signer.rs#L87-L100",
+      "sha256": "73ccaa86635cdf3679ea15325e40f32ac4c33d60429ffc640eb1c8875a6df3d9",
+      "start": 87,
+      "end": 100,
+      "text": "\n    async fn sign_transaction(&self, request: TxReq, address: &Address) -> Result<T> {\n        // create local signer wallet from signing key\n        let signer = self.accounts.get(address).ok_or(SignError::NoAccount)?.clone();\n\n        // build and sign transaction with signer\n        let tx = request\n            .try_build_and_sign(&signer)\n            .await\n            .map_err(|_| SignError::InvalidTransactionRequest)?;\n\n        Ok(tx)\n    }\n"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/blob/8275f7ede1f197cdc6f3b24a80ee9d025b325375/crates/primitives/src/transaction/request.rs#L225-L262",
+      "sha256": "0ba06f5c45a5d9d9b1599581ac712b99858dfaef1ab5b9d4721bc46b8a59eae8",
+      "start": 225,
+      "end": 262,
+      "text": "    pub fn build_typed_tx(self) -> Result<FoundryTypedTx, Self> {\n        #[cfg(feature = \"base\")]\n        if self.is_base() {\n            return Err(self);\n        }\n        #[cfg(any(feature = \"base\", feature = \"optimism\"))]\n        if let Ok(deposit_tx_parts) = self.get_deposit_tx_parts() {\n            // Build deposit transaction\n            return Ok(FoundryTypedTx::Deposit(TxDeposit {\n                from: self.from().unwrap_or_default(),\n                source_hash: deposit_tx_parts.source_hash,\n                to: self.kind().unwrap_or_default(),\n                mint: deposit_tx_parts.mint.unwrap_or_default(),\n                value: self.value().unwrap_or_default(),\n                gas_limit: self.gas_limit().unwrap_or_default(),\n                is_system_transaction: deposit_tx_parts.is_system_transaction,\n                input: self.input().cloned().unwrap_or_default(),\n            }));\n        }\n        if self.complete_tempo().is_ok()\n            && let Self::Tempo(tx_req) = self\n        {\n            // Build Tempo transaction\n            Ok(FoundryTypedTx::Tempo(\n                tx_req.build_aa().map_err(|e| Self::Tempo(Box::new(e.into_value())))?,\n            ))\n        } else if self.as_ref().has_eip4844_fields() && self.blob_sidecar().is_none() {\n            // if request has eip4844 fields but no blob sidecar (neither eip4844 nor eip7594\n            // format), try to build to eip4844 without sidecar\n            self.into_inner()\n                .build_4844_without_sidecar()\n                .map_err(|e| Self::Ethereum(e.into_value()))\n                .map(|tx| FoundryTypedTx::Eip4844(tx.into()))\n        } else {\n            // Use the inner transaction request to build EthereumTypedTransaction\n            let typed_tx = self.into_inner().build_typed_tx().map_err(Self::Ethereum)?;\n            // Convert EthereumTypedTransaction to FoundryTypedTx\n            Ok(match typed_tx {"
+    },
+    {
+      "package": "reth-rpc-traits",
+      "version": "0.8.2",
+      "package_checksum": "8a4658e897dcc67b1710af3ec82e7bb4bcd766c171523b8ecf79baef43851d1a",
+      "url": "https://crates.io/api/v1/crates/reth-rpc-traits/0.8.2/download",
+      "path": "src/signable.rs",
+      "sha256": "c86277bf6860b20f6273e04601423495400489e0f7f3c56bb2c2cb5c564a8959",
+      "text": "use core::{fmt::Debug, future::Future};\n\nuse alloy_consensus::{EthereumTxEnvelope, SignableTransaction, TxEip4844};\nuse alloy_network::TxSigner;\nuse alloy_primitives::Signature;\nuse alloy_rpc_types_eth::TransactionRequest;\n\n/// Error for [`SignableTxRequest`] trait.\n#[derive(Debug, thiserror::Error)]\npub enum SignTxRequestError {\n    /// The transaction request is invalid.\n    #[error(\"invalid transaction request\")]\n    InvalidTransactionRequest,\n\n    /// The signer is not supported.\n    #[error(transparent)]\n    SignerNotSupported(#[from] alloy_signer::Error),\n}\n\n/// An abstraction over transaction requests that can be signed.\npub trait SignableTxRequest<T>: Send + Sync + 'static {\n    /// Attempts to build a transaction request and sign it with the given signer.\n    fn try_build_and_sign(\n        self,\n        signer: impl TxSigner<Signature> + Send,\n    ) -> impl Future<Output = Result<T, SignTxRequestError>> + Send;\n}\n\nimpl SignableTxRequest<EthereumTxEnvelope<TxEip4844>> for TransactionRequest {\n    async fn try_build_and_sign(\n        self,\n        signer: impl TxSigner<Signature> + Send,\n    ) -> Result<EthereumTxEnvelope<TxEip4844>, SignTxRequestError> {\n        let mut tx =\n            self.build_typed_tx().map_err(|_| SignTxRequestError::InvalidTransactionRequest)?;\n        let signature = signer.sign_transaction(&mut tx).await?;\n        Ok(tx.into_signed(signature).into())\n    }\n}\n"
+    }
+  ],
+  "corrections": [
+    "EIP-2718 selection paragraph concerns identifier assignment, not selection from RPC request fields.",
+    "GenericTransaction defines optional type but does not specify precedence over fields.",
+    "Current PR uses explicit type as a discriminator and therefore does not implement ignoring it.",
+    "Current ordinary Ethereum Alloy builders ignore type; older Anvil signing and current extension dispatch are counterexamples to a blanket statement."
+  ]
+}

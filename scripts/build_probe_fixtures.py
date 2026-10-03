@@ -620,7 +620,40 @@ def forks():
                        depth=1024, attempts=['call', 'create']),
                  probe('H09', 'depth', 'A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded".',
                        depth=1024, attempts=['call', 'create'], labels=['Max call depth exceeded']*2)])
-    return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin and the call depth limit at a Homestead block on the frozen PoW-to-PoS forks chain.', 'cases': cases}
+    # Fork activation of call-object features (H14), recorded until decided: each feature's fields one block
+    # before and at its activation (Berlin access lists, London dynamic fees, Cancun blobs, Prague authorizations),
+    # and an explicit type with no feature fields just before its fork. A trace_call at block N runs under N's
+    # rules (H12). Each case has an eth_call twin; all calls are unpriced and reach a code-free address.
+    chain_id = genesis['config']['chainId']
+    target = '0x' + '00'*19 + 'ee'
+    assert target not in codes
+    key = keys.PrivateKey((1).to_bytes(32, 'big'))
+    digest = keccak(b'\x05'+rlp.encode([chain_id, bytes.fromhex(target[2:]), 0]))
+    signature = key.sign_msg_hash(digest)
+    authorization = {'chainId': hex(chain_id), 'address': target, 'nonce': '0x0', 'yParity': hex(signature.v),
+                     'r': hex(signature.r), 's': hex(signature.s)}
+    versioned = next(iter(read(ROOT/'fixtures/blobs.json')))
+    dynamic = {'maxFeePerGas': '0x0', 'maxPriorityFeePerGas': '0x0'}
+    activation = {'berlin': int(forkenv['HIVE_FORK_BERLIN']), 'london': int(forkenv['HIVE_FORK_LONDON'])}
+    by_time = lambda t: next(n for n in sorted(int(k, 16) for k in headers) if int(headers[hex(n)]['timestamp'], 16) >= t)
+    activation['cancun'] = by_time(genesis['config']['cancunTime'])
+    activation['prague'] = by_time(genesis['config']['pragueTime'])
+    features = {'berlin': ('access-list', {'gasPrice': '0x0', 'accessList': [{'address': target, 'storageKeys': []}]}, '0x1'),
+                'london': ('dynamic-fees', dynamic, '0x2'),
+                'cancun': ('blob', {**dynamic, 'blobVersionedHashes': [versioned]}, '0x3'),
+                'prague': ('authorization', {**dynamic, 'authorizationList': [authorization]}, '0x4')}
+    for fork, (feature, fields, kind) in features.items():
+        first = activation[fork]
+        runs = [(f'fork-{feature}-before', fields, first-1), (f'fork-{feature}-at', fields, first),
+                (f'fork-type{int(kind, 16)}-before', {'gasPrice': '0x0', 'type': kind}, first-1)]
+        for name, extra, block in runs:
+            call = dict({'from': sender, 'to': target, 'gas': '0x186a0', 'data': '0x'}, **extra)
+            note = f'Recorded: whether the call runs at block {block}, {"before" if block < first else "at"} {fork.capitalize()} (block {first}).'
+            outcome = probe('H14', 'outputs', note, expected=['0x'], observe='Fork activation of call-object features is under review.')
+            case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
+            case(cases, name+'-eth-call', 'eth_call', [call, hex(block)],
+                 probes=[dict(outcome, observe='eth_call parity control for '+name+'.')])
+    return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 
 def next_base_fee(header):

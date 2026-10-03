@@ -4,6 +4,7 @@ import contextlib
 import io
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -16,6 +17,18 @@ from trace_interop.scenarios import verify_state
 
 
 class ReportingRegressions(unittest.TestCase):
+    def test_report_rejects_unchecksummed_observations(self):
+        from trace_interop.report import generate
+        source = ROOT/'evidence/2026-09-23/geth-40eecf3-initial'
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp); folder = base/'unchecksummed'; folder.mkdir()
+            for name in ['manifest.json', 'summary.json', 'observations.json.gz']:
+                shutil.copy(source/name, folder/name)
+            write(folder/'checksums.json', {name: sha(folder/name) for name in ['manifest.json', 'summary.json']})
+            with patch('trace_interop.presentation.render'), contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaisesRegex(ValueError, 'evidence not checksummed: .*observations.json.gz'):
+                    generate(ROOT, [folder], base/'report')
+
     def test_missing_and_ineligible_observations_are_accounted(self):
         from trace_interop.report import generate
         source = ROOT/'evidence/2026-09-23/geth-40eecf3-initial'

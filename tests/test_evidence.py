@@ -153,6 +153,36 @@ class CompactObservationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 verify_evidence(path)
 
+    def test_unlisted_capture_file_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)
+            for name in ['manifest.json', 'summary.json', OBSERVATIONS]:
+                (path/name).write_text('{}')
+            (path/'runner.log.gz').write_bytes(gzip.compress(b'log', mtime=0))
+            checksums = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in path.iterdir()}
+            for missing in checksums:
+                with self.subTest(missing=missing):
+                    write(path/'checksums.json', {name: digest for name, digest in checksums.items() if name != missing})
+                    with self.assertRaisesRegex(ValueError, f'evidence not checksummed: .*{missing}'):
+                        verify_evidence(path)
+
+    def test_converted_observations_keep_the_original_digest(self):
+        source = ROOT/'evidence/2026-09-23/raw-validation-native'
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)
+            shutil.copy(source/COMPACT_OBSERVATIONS, path/COMPACT_OBSERVATIONS)
+            write(path/'checksums.json', {OBSERVATIONS: read(source/'checksums.json')[OBSERVATIONS]})
+            verify_evidence(path)
+
+    def test_second_observation_format_cannot_bypass_checksum(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)
+            (path/OBSERVATIONS).write_text('{}')
+            write_observations(path, {})
+            write(path/'checksums.json', {OBSERVATIONS: hashlib.sha256(b'{}').hexdigest()})
+            with self.assertRaisesRegex(ValueError, f'evidence not checksummed: .*{COMPACT_OBSERVATIONS}'):
+                verify_evidence(path)
+
 
 class CompressedLogTests(unittest.TestCase):
     def test_new_capture_stores_compressed_logs(self):

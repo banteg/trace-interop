@@ -2,9 +2,9 @@
 
 Hive imports a chain through the Engine API. Anvil has none, so it starts from the chain's
 genesis, mines each block with the fixture's environment, and every block is compared with the
-fixture header before any case is sent. Block hashes necessarily differ (the replica cannot set a
-parent beacon root), so requests are sent with the replica's hashes and each parsed response maps
-them back; the wire bytes stay verbatim.
+fixture header before any case is sent. Block hashes differ (the replica's state also holds the
+dev accounts Anvil funds at genesis), so requests are sent with the replica's hashes and each
+parsed response maps them back; the wire bytes stay verbatim.
 """
 import hashlib
 import json
@@ -21,7 +21,7 @@ REPLICA_CLIENTS = {'anvil'}
 # Timestamp-activated forks in genesis-config order; a replica runs exactly one of them.
 FORKS = ['shanghai', 'cancun', 'prague', 'osaka']
 # Header fields a replayed block must reproduce, by header index. The state root and hash cannot
-# match: the EIP-4788 and EIP-2935 system contracts store the replica's beacon roots and hashes.
+# match: the replica's state also holds the dev accounts Anvil funds at genesis.
 # Withdrawals are credited separately, so the withdrawals root is not compared either.
 QUANTITIES = {'gasLimit': 9, 'gasUsed': 10, 'timestamp': 11, 'baseFeePerGas': 15, 'blobGasUsed': 17, 'excessBlobGas': 18}
 DATA = {'miner': 2, 'transactionsRoot': 4, 'receiptsRoot': 5, 'logsBloom': 6, 'mixHash': 13, 'requestsHash': 20}
@@ -127,6 +127,11 @@ def replay(rpc, chain, sidecars):
         rpc('anvil_setNextBlockBaseFeePerGas', hex(number(header[15])))
         rpc('anvil_setNextBlockPrevRandao', hexbytes(header[13]))
         rpc('anvil_setCoinbase', hexbytes(header[2]))
+        if len(header) > 19:
+            try:
+                rpc('anvil_setNextBlockParentBeaconBlockRoot', hexbytes(header[19]))
+            except ValueError:
+                pass  # Builds without the method mine the zero root.
         for tx in block[1]:
             rpc('eth_sendRawTransaction', hexbytes(network_form(tx, sidecars)))
         rpc('evm_mine')

@@ -410,6 +410,24 @@ def prague():
         case(cases, name+'-stateDiff', 'trace_call', [dict(blob_call, **fields), ['stateDiff'], 'latest'], probes=[
             probe('H15', 'extra-charge', requirement+f', so the sender pays {charged} wei more than the same call without blob fields.',
                   address=sender, reference=reference, expected=charged)])
+    # A positive blob fee cap on a call without execution fee fields: only the execution fees decide whether execution
+    # is priced, so it pays no gas, while the blob fee is priced on its own at the selected block's BLOBBASEFEE (H15).
+    unpriced = {k: v for k, v in blob_call.items() if k not in ('maxFeePerGas', 'maxPriorityFeePerGas')}
+    cap_only = dict(unpriced, blobVersionedHashes=[versioned], maxFeePerBlobGas=hex(blob_base_fee))
+    requirement = 'A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block\'s BLOBBASEFEE.'
+    deployed = probe('H15', 'frame', requirement+' The factory\'s CREATE2 child deploys the word it read.',
+                     select={'traceAddress': [0], 'type': 'create'}, expected={'error': None, 'result': {'code': words(blob_base_fee)}})
+    case(cases, 'blob-fee-cap-unpriced', 'trace_call', [cap_only, ['trace'], 'latest'], probes=[deployed])
+    # eth_call returns the factory's child address.
+    case(cases, 'blob-fee-cap-unpriced-eth-call', 'eth_call', [cap_only, 'latest'], probes=[
+        probe('H15', 'outputs', requirement, expected=[None], control='eth_call parity control for blob-fee-cap-unpriced.')])
+    reference = 'blob-fee-none-unpriced-stateDiff'
+    case(cases, reference, 'trace_call', [unpriced, ['stateDiff'], 'latest'])
+    charged = blob_gas*blob_base_fee
+    case(cases, 'blob-fee-cap-unpriced-stateDiff', 'trace_call', [cap_only, ['stateDiff'], 'latest'], probes=[
+        probe('H15', 'extra-charge', f'A covering positive maxFeePerBlobGas is charged on an unpriced call: blob gas {blob_gas} at '
+              f'blob base fee {blob_base_fee}, so the sender pays {charged} wei more than the same call without blob fields.',
+              address=sender, reference=reference, expected=charged)])
     # Fee and type field combinations no signed transaction carries (H14, decided 2026-10-03 from client source,
     # upstream Geth and EIP-1559's legacy mapping). gasPrice with maxFeePerGas or maxPriorityFeePerGas is rejected.
     # A legacy gasPrice otherwise serves as both execution fee caps, with an authorization list or blob fields

@@ -345,7 +345,7 @@ def prague():
     zero_rejected = probe('H15', 'error', 'An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected '
                           '(-38013 recommended) with no trace, never run with the default budget or traced out of gas.', recommended=-38013)
     case(cases, 'field-gas-zero-eth-call', 'eth_call', [zero_gas, 'latest'],
-         probes=[dict(zero_rejected, observe='eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and '
+         probes=[dict(zero_rejected, control='eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and '
                       'eth_call in every client but Erigon, whose eth_call treats 0 as omitted.')])
     case(cases, 'field-gas-zero', 'trace_call', [zero_gas, ['trace'], 'latest'], probes=[zero_rejected])
     case(cases, 'field-gas-zero-many', 'trace_callMany', [[[zero_gas, ['trace']]], 'latest'],
@@ -470,8 +470,8 @@ def prague():
         case(cases, 'combo-'+name, 'trace_call', [call, types, 'latest'], probes=[outcome])
         # eth_call returns the creation's GASPRICE word, the marker's 42, or the factory's child address.
         case(cases, f'combo-{name}-eth-call', 'eth_call', [call, 'latest'],
-             probes=[dict(outcome, observe='eth_call parity control for combo-'+name+'.') if both else
-                     probe('H14', 'outputs', outcome['requirement'], expected=twin, observe='eth_call parity control for combo-'+name+'.')])
+             probes=[dict(outcome, control='eth_call parity control for combo-'+name+'.') if both else
+                     probe('H14', 'outputs', outcome['requirement'], expected=twin, control='eth_call parity control for combo-'+name+'.')])
     # A supplied nonce is accepted but neither validated nor used: the creation address follows the state nonce (H15).
     address = asm('ADDRESS', 0, 'MSTORE', 32, 0, 'RETURN')
     for name, supplied in [('field-nonce-above', nonce+3), ('field-nonce-below', nonce-3)]:
@@ -620,10 +620,12 @@ def forks():
                        depth=1024, attempts=['call', 'create']),
                  probe('H09', 'depth', 'A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded".',
                        depth=1024, attempts=['call', 'create'], labels=['Max call depth exceeded']*2)])
-    # Fork activation of call-object features (H14), recorded until decided: each feature's fields one block
-    # before and at its activation (Berlin access lists, London dynamic fees, Cancun blobs, Prague authorizations),
-    # and an explicit type with no feature fields just before its fork. A trace_call at block N runs under N's
-    # rules (H12). Each case has an eth_call twin; all calls are unpriced and reach a code-free address.
+    # Fork activation of call-object features (H14, decided 2026-10-03): an access list before Berlin, blob fields
+    # before Cancun and an authorization list before Prague are rejected (-32003 recommended), and run at their
+    # fork. An explicit type is not a feature, so a type with no feature fields runs just before its fork. Zero
+    # dynamic fees before London stay recorded: they price at 0 whether a client applies or ignores them. A
+    # trace_call at block N runs under N's rules (H12). Each case has an eth_call twin, recorded only; all calls
+    # are unpriced and reach a code-free address.
     chain_id = genesis['config']['chainId']
     target = '0x' + '00'*19 + 'ee'
     assert target not in codes
@@ -638,21 +640,30 @@ def forks():
     by_time = lambda t: next(n for n in sorted(int(k, 16) for k in headers) if int(headers[hex(n)]['timestamp'], 16) >= t)
     activation['cancun'] = by_time(genesis['config']['cancunTime'])
     activation['prague'] = by_time(genesis['config']['pragueTime'])
-    features = {'berlin': ('access-list', {'gasPrice': '0x0', 'accessList': [{'address': target, 'storageKeys': []}]}, '0x1'),
+    features = {'berlin': ('access-list', {'accessList': [{'address': target, 'storageKeys': []}]}, '0x1'),
                 'london': ('dynamic-fees', dynamic, '0x2'),
                 'cancun': ('blob', {**dynamic, 'blobVersionedHashes': [versioned]}, '0x3'),
                 'prague': ('authorization', {**dynamic, 'authorizationList': [authorization]}, '0x4')}
     for fork, (feature, fields, kind) in features.items():
         first = activation[fork]
         runs = [(f'fork-{feature}-before', fields, first-1), (f'fork-{feature}-at', fields, first),
-                (f'fork-type{int(kind, 16)}-before', {'gasPrice': '0x0', 'type': kind}, first-1)]
+                (f'fork-type{int(kind, 16)}-before', {'type': kind}, first-1)]
         for name, extra, block in runs:
             call = dict({'from': sender, 'to': target, 'gas': '0x186a0', 'data': '0x'}, **extra)
-            note = f'Recorded: whether the call runs at block {block}, {"before" if block < first else "at"} {fork.capitalize()} (block {first}).'
-            outcome = probe('H14', 'outputs', note, expected=['0x'], observe='Fork activation of call-object features is under review.')
+            where = f'at block {block}, {"before" if block < first else "at"} {fork.capitalize()} (block {first})'
+            if 'type' in extra:
+                outcome = probe('H14', 'outputs', f'An explicit type {int(kind, 16)} with no {feature} fields runs {where}: type is not a feature.', expected=['0x'])
+            elif block >= first:
+                outcome = probe('H14', 'outputs', f'The {feature} fields run {where}.', expected=['0x'])
+            elif fork == 'london':
+                outcome = probe('H14', 'outputs', f'Recorded: zero dynamic fees {where}.', expected=['0x'],
+                                control='Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two.')
+            else:
+                outcome = probe('H14', 'error', f'The {feature} fields {where} name a feature not active at the selected block, so the call is rejected (-32003 recommended).',
+                                recommended=-32003)
             case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
             case(cases, name+'-eth-call', 'eth_call', [call, hex(block)],
-                 probes=[dict(outcome, observe='eth_call parity control for '+name+'.')])
+                 probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 

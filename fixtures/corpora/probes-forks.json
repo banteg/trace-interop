@@ -1289,12 +1289,9 @@
       "name": "fork-access-list-before",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1313,7 +1310,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee"
           },
           [
@@ -1327,12 +1323,10 @@
       "name": "fork-access-list-before-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "eth_call parity control for fork-access-list-before.",
-          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "control": "eth_call parity control for fork-access-list-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1351,7 +1345,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee"
           },
           "0x1f"
@@ -1366,8 +1359,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 32, at Berlin (block 32).",
+          "requirement": "The access-list fields run at block 32, at Berlin (block 32).",
           "topic": "H14"
         }
       ],
@@ -1386,7 +1378,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee"
           },
           [
@@ -1400,12 +1391,12 @@
       "name": "fork-access-list-at-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-access-list-at.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-access-list-at.",
-          "requirement": "Recorded: whether the call runs at block 32, at Berlin (block 32).",
+          "requirement": "The access-list fields run at block 32, at Berlin (block 32).",
           "topic": "H14"
         }
       ],
@@ -1424,7 +1415,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee"
           },
           "0x20"
@@ -1439,8 +1429,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "requirement": "An explicit type 1 with no access-list fields runs at block 31, before Berlin (block 32): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1453,7 +1442,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x1"
           },
@@ -1468,12 +1456,12 @@
       "name": "fork-type1-before-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-type1-before.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-type1-before.",
-          "requirement": "Recorded: whether the call runs at block 31, before Berlin (block 32).",
+          "requirement": "An explicit type 1 with no access-list fields runs at block 31, before Berlin (block 32): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1486,7 +1474,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x1"
           },
@@ -1498,12 +1485,12 @@
       "name": "fork-dynamic-fees-before",
       "probes": [
         {
+          "control": "Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "requirement": "Recorded: zero dynamic fees at block 35, before London (block 36).",
           "topic": "H14"
         }
       ],
@@ -1531,12 +1518,12 @@
       "name": "fork-dynamic-fees-before-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-dynamic-fees-before.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-dynamic-fees-before.",
-          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "requirement": "Recorded: zero dynamic fees at block 35, before London (block 36).",
           "topic": "H14"
         }
       ],
@@ -1565,8 +1552,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 36, at London (block 36).",
+          "requirement": "The dynamic-fees fields run at block 36, at London (block 36).",
           "topic": "H14"
         }
       ],
@@ -1594,12 +1580,12 @@
       "name": "fork-dynamic-fees-at-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-dynamic-fees-at.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-dynamic-fees-at.",
-          "requirement": "Recorded: whether the call runs at block 36, at London (block 36).",
+          "requirement": "The dynamic-fees fields run at block 36, at London (block 36).",
           "topic": "H14"
         }
       ],
@@ -1628,8 +1614,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "requirement": "An explicit type 2 with no dynamic-fees fields runs at block 35, before London (block 36): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1642,7 +1627,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x2"
           },
@@ -1657,12 +1641,12 @@
       "name": "fork-type2-before-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-type2-before.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-type2-before.",
-          "requirement": "Recorded: whether the call runs at block 35, before London (block 36).",
+          "requirement": "An explicit type 2 with no dynamic-fees fields runs at block 35, before London (block 36): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1675,7 +1659,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x2"
           },
@@ -1687,12 +1670,9 @@
       "name": "fork-blob-before",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1723,12 +1703,10 @@
       "name": "fork-blob-before-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "eth_call parity control for fork-blob-before.",
-          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "control": "eth_call parity control for fork-blob-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1760,8 +1738,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 56, at Cancun (block 56).",
+          "requirement": "The blob fields run at block 56, at Cancun (block 56).",
           "topic": "H14"
         }
       ],
@@ -1792,12 +1769,12 @@
       "name": "fork-blob-at-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-blob-at.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-blob-at.",
-          "requirement": "Recorded: whether the call runs at block 56, at Cancun (block 56).",
+          "requirement": "The blob fields run at block 56, at Cancun (block 56).",
           "topic": "H14"
         }
       ],
@@ -1829,8 +1806,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "requirement": "An explicit type 3 with no blob fields runs at block 55, before Cancun (block 56): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1843,7 +1819,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x3"
           },
@@ -1858,12 +1833,12 @@
       "name": "fork-type3-before-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-type3-before.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-type3-before.",
-          "requirement": "Recorded: whether the call runs at block 55, before Cancun (block 56).",
+          "requirement": "An explicit type 3 with no blob fields runs at block 55, before Cancun (block 56): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -1876,7 +1851,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x3"
           },
@@ -1888,12 +1862,9 @@
       "name": "fork-authorization-before",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1931,12 +1902,10 @@
       "name": "fork-authorization-before-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "observe": "eth_call parity control for fork-authorization-before.",
-          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "control": "eth_call parity control for fork-authorization-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1975,8 +1944,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 60, at Prague (block 60).",
+          "requirement": "The authorization fields run at block 60, at Prague (block 60).",
           "topic": "H14"
         }
       ],
@@ -2014,12 +1982,12 @@
       "name": "fork-authorization-at-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-authorization-at.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-authorization-at.",
-          "requirement": "Recorded: whether the call runs at block 60, at Prague (block 60).",
+          "requirement": "The authorization fields run at block 60, at Prague (block 60).",
           "topic": "H14"
         }
       ],
@@ -2058,8 +2026,7 @@
             "0x"
           ],
           "kind": "outputs",
-          "observe": "Fork activation of call-object features is under review.",
-          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "requirement": "An explicit type 4 with no authorization fields runs at block 59, before Prague (block 60): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -2072,7 +2039,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x4"
           },
@@ -2087,12 +2053,12 @@
       "name": "fork-type4-before-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for fork-type4-before.",
           "expected": [
             "0x"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for fork-type4-before.",
-          "requirement": "Recorded: whether the call runs at block 59, before Prague (block 60).",
+          "requirement": "An explicit type 4 with no authorization fields runs at block 59, before Prague (block 60): type is not a feature.",
           "topic": "H14"
         }
       ],
@@ -2105,7 +2071,6 @@
             "data": "0x",
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
-            "gasPrice": "0x0",
             "to": "0x00000000000000000000000000000000000000ee",
             "type": "0x4"
           },

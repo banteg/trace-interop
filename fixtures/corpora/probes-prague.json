@@ -1963,8 +1963,8 @@
       "name": "field-gas-zero-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and eth_call in every client but Erigon, whose eth_call treats 0 as omitted.",
           "kind": "error",
-          "observe": "eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and eth_call in every client but Erigon, whose eth_call treats 0 as omitted.",
           "recommended": -38013,
           "requirement": "An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected (-38013 recommended) with no trace, never run with the default budget or traced out of gas.",
           "topic": "H15"
@@ -2688,8 +2688,8 @@
       "name": "combo-gasprice-maxfee-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-gasprice-maxfee.",
           "kind": "error",
-          "observe": "eth_call parity control for combo-gasprice-maxfee.",
           "recommended": -32602,
           "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
@@ -2744,8 +2744,8 @@
       "name": "combo-gasprice-tip-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-gasprice-tip.",
           "kind": "error",
-          "observe": "eth_call parity control for combo-gasprice-tip.",
           "recommended": -32602,
           "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
@@ -2801,8 +2801,8 @@
       "name": "combo-gasprice-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-gasprice-dynamic.",
           "kind": "error",
-          "observe": "eth_call parity control for combo-gasprice-dynamic.",
           "recommended": -32602,
           "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
@@ -2859,8 +2859,8 @@
       "name": "combo-gasprice-dynamic-equal-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-gasprice-dynamic-equal.",
           "kind": "error",
-          "observe": "eth_call parity control for combo-gasprice-dynamic-equal.",
           "recommended": -32602,
           "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
@@ -2918,11 +2918,11 @@
       "name": "combo-untyped-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-untyped-dynamic.",
           "expected": [
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-untyped-dynamic.",
           "requirement": "The call runs at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
@@ -2978,11 +2978,11 @@
       "name": "combo-type0-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type0-gasprice.",
           "expected": [
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type0-gasprice.",
           "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
@@ -3039,11 +3039,11 @@
       "name": "combo-type0-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type0-dynamic.",
           "expected": [
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type0-dynamic.",
           "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
@@ -3101,11 +3101,11 @@
       "name": "combo-type1-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type1-gasprice.",
           "expected": [
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type1-gasprice.",
           "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
@@ -3164,11 +3164,11 @@
       "name": "combo-type1-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type1-dynamic.",
           "expected": [
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type1-dynamic.",
           "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
@@ -3226,11 +3226,11 @@
       "name": "combo-type2-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type2-gasprice.",
           "expected": [
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type2-gasprice.",
           "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
@@ -3287,11 +3287,11 @@
       "name": "combo-type2-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-type2-dynamic.",
           "expected": [
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-type2-dynamic.",
           "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
@@ -3360,11 +3360,11 @@
       "name": "combo-auth-type4-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-auth-type4-dynamic.",
           "expected": [
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-auth-type4-dynamic.",
           "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
@@ -3443,11 +3443,11 @@
       "name": "combo-auth-type4-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-auth-type4-gasprice.",
           "expected": [
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-auth-type4-gasprice.",
           "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
@@ -3524,8 +3524,8 @@
       "name": "combo-auth-gasprice-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-auth-gasprice-dynamic.",
           "kind": "error",
-          "observe": "eth_call parity control for combo-auth-gasprice-dynamic.",
           "recommended": -32602,
           "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
@@ -3606,11 +3606,11 @@
       "name": "combo-auth-type2-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-auth-type2-dynamic.",
           "expected": [
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-auth-type2-dynamic.",
           "requirement": "The call runs with type 2, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
@@ -3694,11 +3694,11 @@
       "name": "combo-blob-type3-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-blob-type3-dynamic.",
           "expected": [
             null
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-blob-type3-dynamic.",
           "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
@@ -3773,11 +3773,11 @@
       "name": "combo-blob-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-blob-gasprice.",
           "expected": [
             null
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-blob-gasprice.",
           "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
@@ -3850,11 +3850,11 @@
       "name": "combo-blob-gasprice-capped-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-blob-gasprice-capped.",
           "expected": [
             null
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-blob-gasprice-capped.",
           "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
@@ -3929,11 +3929,11 @@
       "name": "combo-blob-type3-gasprice-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-blob-type3-gasprice.",
           "expected": [
             null
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-blob-type3-gasprice.",
           "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
@@ -4010,11 +4010,11 @@
       "name": "combo-blob-type2-dynamic-eth-call",
       "probes": [
         {
+          "control": "eth_call parity control for combo-blob-type2-dynamic.",
           "expected": [
             null
           ],
           "kind": "outputs",
-          "observe": "eth_call parity control for combo-blob-type2-dynamic.",
           "requirement": "The blob call runs with type 2, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }

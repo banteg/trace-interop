@@ -7,7 +7,9 @@ An `error` probe requires an error response; its optional `recommended` code is 
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
 the error cannot separate its property from that dependency. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict; with `extension` it is
-extension evidence, which does not hold a topic's verdict open (presentation.verdict).
+extension evidence, which does not hold a topic's verdict open (presentation.verdict). A probe with
+`control` (a reason) records its outcome as supporting evidence, such as an eth_call parity twin,
+which neither judges the build nor holds the topic open.
 A `block-hash` probe (H33) classifies which block a trace_filter blockHash selected. An
 `extra-charge` probe compares an account's stateDiff balance change with a reference twin's
 that runs the same gas at the same price, so the difference isolates one fee, such as the blob fee.
@@ -246,9 +248,9 @@ def assess(case, observation, peers):
     checks = []
 
     def add(topic, ok, requirement, detail='', **tags):
-        if 'observe' in probe:
-            checks.append({'topic': topic, 'status': 'observation', 'requirement': requirement,
-                           'detail': probe['observe']+(' Observed: '+detail if detail else '')})
+        if 'observe' in probe or 'control' in probe:
+            checks.append({'topic': topic, 'status': 'observation' if 'observe' in probe else 'control', 'requirement': requirement,
+                           'detail': probe.get('observe', probe.get('control'))+(' Observed: '+detail if detail else '')})
             return
         checks.append({'topic': topic, 'status': 'matches' if ok else 'change_needed',
                        'requirement': requirement, 'detail': detail, **{k: v for k, v in tags.items() if v}})

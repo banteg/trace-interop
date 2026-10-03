@@ -262,9 +262,9 @@ class FieldProbeTests(Probe):
             if not name.startswith('field-') or 'probes' not in case:
                 continue
             kinds = {p['kind'] for p in case['probes']}
-            if any('observe' in p for p in case['probes']):
+            if any('observe' in p or 'control' in p for p in case['probes']):
                 for observation in [result({'output': '0x', 'trace': []}), error(-32602), error(-32603)]:
-                    self.assertEqual(set(statuses(case, observation)), {'observation'}, name)
+                    self.assertEqual(set(statuses(case, observation)), {'observation' if 'observe' in case['probes'][0] else 'control'}, name)
             elif kinds == {'error'}:
                 # Any rejection matches, whatever its code; an execution or an internal error does not.
                 for code in [-32602, -32000]:
@@ -384,11 +384,11 @@ class FieldProbeTests(Probe):
         many = dict(PRAGUE['field-gas-zero-many'], context={})
         for observation in [error(-38013), error(-32603)]:
             self.assertNotIn('H16', {c['topic'] for c in evaluate(many, observation, {})})
-        # The eth_call twin is a parity control: observed, never scored.
+        # The eth_call twin is a parity control: recorded, never scored, and never holding the topic open.
         control = PRAGUE['field-gas-zero-eth-call']
         self.assertEqual(control['request']['params'][0], PRAGUE['field-gas-zero']['request']['params'][0])
         for observation in [error(-38013), result(default)]:
-            self.assertEqual(statuses(control, observation), ['observation'])
+            self.assertEqual(statuses(control, observation), ['control'])
 
     def test_priced_gas_defaults_allow_smaller_budgets_but_never_raise_the_cap(self):
         for label in ['allowance', 'funded']:

@@ -15,7 +15,7 @@
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
     "probes-forks.json": "96e02a3874278fd883bad5b984755e13b3f6fd426138dbd2badcf42e64e2c9ef",
-    "probes-prague.json": "bbcf7c35eb98b9c2fd4b34af965e6fffffec4eaae0368c74c6cf2cc188317e2a",
+    "probes-prague.json": "0d95458bc36c15374f052d6d6fc3ec5029a97b1c4cef74c5fbffcdafb939e57a",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-selector.json": "0ff3b0cea0cd99cde7fc538825957a49c01500a2034229ccc0138f9d514191f8",
     "raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
@@ -64,15 +64,15 @@
   "sources": {
     "decisions/impact.json": "97d0d937c3e8267ed6f6ad258245bf34569a1d8ec2f86af6918e240f781ef98c",
     "decisions/laws.json": "a96b80df2902e0b1ddac1cd13748c818a479cef9bd6124be7884f27e6084a5be",
-    "decisions/ledger.json": "74f90bd875a52713e1cf33ff546e38157c889c1817db292d8762551865eaee6b",
+    "decisions/ledger.json": "38f3ebe7287e7a10ba1f224c499dd27b3e7e610649a5f8930f8bc40ffb3e8041",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "6c4b9d8603588a2775e848d95327e8df36d05df2abd36dd40a65339a2cf256d2",
-    "fixtures/checksums.json": "29dca3ee5444ca82ccc9e44991beb5dee06304bcead6b7018f38c8aabb1e724a",
+    "fixtures/checksums.json": "0efe10e8c6aef4c807ccbac80d0facb78aca5e8aa4330a000c64943c3088d56d",
     "locks/source-revisions.json": "7eb92d4137b3f7de34679ceb45591fda0ba510d3407cc502f3997f1f2d6dfc35",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "8f1c021d15353fd97d1035c96813ca267022aeadaeced8f6e403dc5627ded910",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
-    "spec.lock.json": "8dd782a7c802ba449485fb3124c8ed3d1c8a867c07609bb7a17833e3ca21a83b",
+    "spec.lock.json": "eb81711fdc9f0ee4add51e67a43bd560362c0c86017f72d22fcb80d25fed91fe",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "c8912eebde81ae3bd65830ca0d37ba34b7f56fa5537359279bc483b564724f5f",
     "trace_interop/execution_models.py": "ea1caa89675076af1a853cb407295ad9e61b7a5d2507d562a3c71a0d80b162ff",
@@ -94,5 +94,5 @@
     "trace_interop/vm_model.py": "d385b7627603df336cdbacea3cbf07db204a659c318180d44768b0f6b03eb9c8",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "66bf490273d35e75dd46b709c0ad19ab9b98f17f"
+  "spec_commit": "8a9b4dfa0276bd4bb62e8624b9fe429096803a6b"
 }

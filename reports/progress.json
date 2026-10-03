@@ -75,7 +75,7 @@
     {
       "builds": {
         "development": {
-          "agree": 29,
+          "agree": 30,
           "build": [
             "2.2.0-preview \u00b7 3370d566"
           ],
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 29,
+        "agree": 30,
         "converged": 0,
         "fix": 0,
-        "policy": 1,
+        "policy": 0,
         "review": 0,
         "unmeasured": 3
       },
-      "dev_only": 13,
+      "dev_only": 14,
       "name": "Nethermind",
       "prs": {
         "merged": 47,

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="306" viewBox="0 0 760 306" role="img" aria-labelledby="title">
-<title id="title">Geth draft fork decisions and fix PRs: 29 agree, 1 policy open, 3 not fully measured</title>
+<title id="title">Geth draft fork decisions and fix PRs: 29 agree, 1 no fix · converged, 3 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.head{font-weight:600}.partial{stroke-dasharray:3 2}.label{fill:#1f2328}.muted{fill:#59636e}.pr{fill:none;stroke:#11756f}.edge{stroke:#11756f}.b-agree{fill:#11756f}.n-agree{fill:#ffffff}.b-fix{fill:#79c7bd}.n-fix{fill:#1f2328}.b-converged{fill:#c8641a}.n-converged{fill:#ffffff}.b-review{fill:#f2b36b}.n-review{fill:#1f2328}.b-policy{fill:#8172c4}.n-policy{fill:#ffffff}.b-unmeasured{fill:#dde1e6}.n-unmeasured{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}.muted{fill:#9198a1}.pr{fill:none;stroke:#3aa59a}.edge{stroke:#3aa59a}.b-agree{fill:#3aa59a}.n-agree{fill:#0d1117}.b-fix{fill:#1a6b62}.n-fix{fill:#ffffff}.b-converged{fill:#e5843a}.n-converged{fill:#0d1117}.b-review{fill:#8f5420}.n-review{fill:#ffffff}.b-policy{fill:#9b8fe0}.n-policy{fill:#0d1117}.b-unmeasured{fill:#2d333b}.n-unmeasured{fill:#e6edf3}}</style>
 <text class="label head" x="16" y="25">Agree (29)</text>
 <rect class="b-agree" x="16" y="36" width="44" height="18" rx="4"/>
@@ -60,9 +60,9 @@
 <text class="n-agree" x="688" y="73" text-anchor="middle">H31</text>
 <rect class="b-agree" x="16" y="84" width="44" height="18" rx="4"/>
 <text class="n-agree" x="38" y="97" text-anchor="middle">H33</text>
-<text class="label head" x="16" y="129">Policy open (1)</text>
-<rect class="b-policy" x="16" y="140" width="44" height="18" rx="4"/>
-<text class="n-policy" x="38" y="153" text-anchor="middle">H14</text>
+<text class="label head" x="16" y="129">No fix · converged (1)</text>
+<rect class="b-converged" x="16" y="140" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="153" text-anchor="middle">H14</text>
 <text class="label" x="70" y="153">Invalid parameters and rejected calls</text>
 <text class="muted" x="400" y="153">no fix PR</text>
 <text class="label head" x="16" y="185">Not fully measured (3)</text>

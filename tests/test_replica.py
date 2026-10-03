@@ -4,20 +4,57 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import rlp
 
 from trace_interop.chain_model import load_chain
 from trace_interop.cli import ROOT, collect, compatible, log_bytes, read, write
-from trace_interop.replica import blocks, expected_header, hardfork, network_form, replay, translate
+from trace_interop.replica import (
+    RpcError,
+    blocks,
+    expected_header,
+    hardfork,
+    network_form,
+    replay,
+    translate,
+)
 
 CHAINS = ROOT/'fixtures/chains'
 HEAD = read(CHAINS/'initial/headblock.json')
 REPLICA_HEAD = '0x' + 'ab' * 32
+ZERO_ROOT = '0x' + '00' * 32
 
 
 def request(method, *params):
     return {'jsonrpc': '2.0', 'id': 1, 'method': method, 'params': list(params)}
+
+
+class Node:
+    """A replica node that mines the fixture block it is asked for, with the beacon root it was given."""
+    def __init__(self, fixture, beacon_error=None, ignores_beacon_root=False):
+        self.fixture, self.beacon_error, self.ignores_beacon_root = fixture, beacon_error, ignores_beacon_root
+        self.calls, self.mined, self.balance, self.root = [], {}, {}, ZERO_ROOT
+
+    def __call__(self, method, *params):
+        self.calls.append((method, params))
+        if method == 'anvil_setNextBlockParentBeaconBlockRoot':
+            if self.beacon_error:
+                raise RpcError(method, self.beacon_error)
+            if not self.ignores_beacon_root:
+                self.root = params[0]
+        if method == 'evm_mine':
+            block = self.fixture[len(self.mined)]
+            header = dict(expected_header(block), hash='0x%064x' % (len(self.mined) + 1))
+            if 'parentBeaconBlockRoot' in header:
+                header['parentBeaconBlockRoot'] = self.root
+            self.mined[hex(len(self.mined) + 1)], self.root = header, ZERO_ROOT
+        if method == 'eth_getBlockByNumber':
+            return {'hash': '0x' + '00' * 32} if params[0] == '0x0' else self.mined[params[0]]
+        if method == 'eth_getBalance':
+            return hex(self.balance.get(params[0], 0))
+        if method == 'anvil_setBalance':
+            self.balance[params[0]] = int(params[1], 16)
 
 
 class Replayability(unittest.TestCase):
@@ -60,33 +97,51 @@ class BlockComparison(unittest.TestCase):
             network_form(tx, tampered)
 
     def test_replay_mines_each_block_and_credits_withdrawals_after_it(self):
-        class Node:
-            def __init__(self):
-                self.calls, self.mined, self.balance = [], {}, {}
-
-            def __call__(self, method, *params):
-                self.calls.append(method)
-                if method == 'evm_mine':
-                    block = fixture[len(self.mined)]
-                    self.mined[hex(len(self.mined) + 1)] = dict(expected_header(block), hash='0x%064x' % (len(self.mined) + 1))
-                if method == 'eth_getBlockByNumber':
-                    return {'hash': '0x' + '00' * 32} if params[0] == '0x0' else self.mined[params[0]]
-                if method == 'eth_getBalance':
-                    return hex(self.balance.get(params[0], 0))
-                if method == 'anvil_setBalance':
-                    self.balance[params[0]] = int(params[1], 16)
         fixture = list(blocks(CHAINS/'initial'))
-        node = Node()
-        compared, hashes = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        node = Node(fixture)
+        compared, hashes, beacon_roots = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
         self.assertEqual(len(compared), len(fixture))
         self.assertFalse(any(b['differs'] for b in compared))
-        self.assertEqual(hashes[HEAD['hash']], '0x%064x' % int(HEAD['number'], 16))
+        self.assertTrue(beacon_roots)
+        self.assertEqual(hashes[HEAD['hash']], '0x{:064x}'.format(int(HEAD['number'], 16)))
         self.assertIn(HEAD['parentHash'], hashes)
         # A block's withdrawals follow its mining, never precede it.
         first = next(i for i, b in enumerate(fixture) if len(b) > 3 and b[3])
-        mines = [i for i, m in enumerate(node.calls) if m == 'evm_mine']
-        self.assertLess(mines[first], node.calls.index('anvil_setBalance'))
+        mines = [i for i, (m, _) in enumerate(node.calls) if m == 'evm_mine']
+        self.assertLess(mines[first], [m for m, _ in node.calls].index('anvil_setBalance'))
         self.assertTrue(node.balance)
+
+    def test_each_block_gets_the_fixture_parent_beacon_root(self):
+        fixture = list(blocks(CHAINS/'initial'))
+        node = Node(fixture)
+        compared, _, _ = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        roots = [p[0] for m, p in node.calls if m == 'anvil_setNextBlockParentBeaconBlockRoot']
+        self.assertEqual(roots, ['0x' + bytes(b[0][19]).hex() for b in fixture])
+        # A build that ignores the override mines the zero root, and the comparison names it.
+        node = Node(fixture, ignores_beacon_root=True)
+        compared, _, _ = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        self.assertTrue(all(b['differs'] == ['parentBeaconBlockRoot'] for b in compared))
+
+    def test_a_build_without_the_beacon_root_method_keeps_the_zero_root(self):
+        fixture = list(blocks(CHAINS/'initial'))
+        node = Node(fixture, beacon_error={'code': -32601, 'message': 'Method not found'})
+        compared, _, beacon_roots = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        self.assertIs(beacon_roots, False)
+        self.assertFalse(any(b['differs'] for b in compared))
+        # The method is asked for once, not before every block.
+        self.assertEqual([m for m, _ in node.calls].count('anvil_setNextBlockParentBeaconBlockRoot'), 1)
+        node = Node(fixture, beacon_error={'code': -32602, 'message': 'invalid params'})
+        with self.assertRaisesRegex(RpcError, 'invalid params'):
+            replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+
+    def test_chains_without_beacon_roots_never_ask_for_the_method(self):
+        fixture = [[b[0][:19], *b[1:]] for b in blocks(CHAINS/'initial')]
+        node = Node(fixture)
+        with patch('trace_interop.replica.blocks', return_value=iter(fixture)):
+            compared, _, beacon_roots = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        self.assertIsNone(beacon_roots)
+        self.assertNotIn('anvil_setNextBlockParentBeaconBlockRoot', [m for m, _ in node.calls])
+        self.assertFalse(any(b['differs'] for b in compared))
 
     def test_translation_covers_prefixed_and_embedded_hashes(self):
         mapping = {'0x' + '11' * 32: '0x' + '22' * 32}

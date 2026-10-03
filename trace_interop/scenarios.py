@@ -1,6 +1,5 @@
 """Small scenario overlays on the pinned Hive simulator; no production node access."""
 import json
-from pathlib import Path
 import subprocess
 
 READINESS = r'''package main
@@ -237,7 +236,7 @@ def verify_setup(manifest, corpus, observations, client, launches=()):
             lines = [line for line in str(launch.get('log', '')).splitlines() if line.strip()]
             return False, 'Scenario setup stopped: '+(lines[-1] if lines else 'client launch failed')
     # A replica is compared block by block while it is replayed. Its state root cannot match:
-    # the EIP-4788 and EIP-2935 system contracts hold its own beacon roots and block hashes.
+    # withdrawals are credited outside their block and the EIP-2935 contract holds its own hashes.
     identity = ['number', 'hash', 'stateRoot', 'transactionsRoot', 'receiptsRoot']
     replica = manifest.get('replica', {}).get(client)
     if replica:

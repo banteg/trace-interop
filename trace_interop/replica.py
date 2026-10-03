@@ -2,16 +2,17 @@
 
 Hive imports a chain through the Engine API. Anvil has none, so it starts from the chain's
 genesis, mines each block with the fixture's environment, and every block is compared with the
-fixture header before any case is sent. Block hashes necessarily differ (the replica cannot set a
-parent beacon root), so requests are sent with the replica's hashes and each parsed response maps
-them back; the wire bytes stay verbatim.
+fixture header before any case is sent. Block hashes necessarily differ (withdrawals are credited
+outside the block, and builds without `anvil_setNextBlockParentBeaconBlockRoot` mine the zero parent
+beacon root), so requests are sent with the replica's hashes and each parsed response maps them
+back; the wire bytes stay verbatim.
 """
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import time
 import urllib.request
+from pathlib import Path
 
 import rlp
 from eth_hash.auto import keccak
@@ -21,11 +22,14 @@ REPLICA_CLIENTS = {'anvil'}
 # Timestamp-activated forks in genesis-config order; a replica runs exactly one of them.
 FORKS = ['shanghai', 'cancun', 'prague', 'osaka']
 # Header fields a replayed block must reproduce, by header index. The state root and hash cannot
-# match: the EIP-4788 and EIP-2935 system contracts store the replica's beacon roots and hashes.
-# Withdrawals are credited separately, so the withdrawals root is not compared either.
+# match: withdrawals are credited separately, so the withdrawals root differs and the EIP-2935
+# system contract stores the replica's hashes. The parent beacon root is compared only on builds
+# that can set it.
 QUANTITIES = {'gasLimit': 9, 'gasUsed': 10, 'timestamp': 11, 'baseFeePerGas': 15, 'blobGasUsed': 17, 'excessBlobGas': 18}
-DATA = {'miner': 2, 'transactionsRoot': 4, 'receiptsRoot': 5, 'logsBloom': 6, 'mixHash': 13, 'requestsHash': 20}
+DATA = {'miner': 2, 'transactionsRoot': 4, 'receiptsRoot': 5, 'logsBloom': 6, 'mixHash': 13,
+        'parentBeaconBlockRoot': 19, 'requestsHash': 20}
 BLOB_SIZE = 131072
+METHOD_NOT_FOUND = -32601
 
 
 def hardfork(genesis):
@@ -88,6 +92,12 @@ def translate(text, mapping):
     return text
 
 
+class RpcError(ValueError):
+    def __init__(self, method, error):
+        super().__init__(f'replica {method} failed: {error}')
+        self.error = error
+
+
 class Rpc:
     def __init__(self, url):
         self.url = url
@@ -101,7 +111,7 @@ class Rpc:
     def __call__(self, method, *params):
         reply = json.loads(self.raw({'jsonrpc': '2.0', 'id': 1, 'method': method, 'params': list(params)}))
         if 'error' in reply:
-            raise ValueError(f'replica {method} failed: {reply["error"]}')
+            raise RpcError(method, reply['error'])
         return reply['result']
 
     def wait(self, seconds=60):
@@ -115,9 +125,21 @@ class Rpc:
                 time.sleep(0.2)
 
 
+def set_parent_beacon_root(rpc, root):
+    """Override the next block's parent beacon root; False on a build without the method."""
+    try:
+        rpc('anvil_setNextBlockParentBeaconBlockRoot', root)
+    except RpcError as exc:
+        if exc.error.get('code') != METHOD_NOT_FOUND:
+            raise
+        return False
+    return True
+
+
 def replay(rpc, chain, sidecars):
-    """Mine every fixture block; return per-block comparisons and the fixture→replica hash map."""
-    compared, hashes = [], {}
+    """Mine every fixture block; return per-block comparisons, the fixture→replica hash map and
+    whether the build set the fixture's parent beacon roots (None for a chain without them)."""
+    compared, hashes, beacon_roots = [], {}, None
     for block in blocks(chain):
         header = block[0]
         n = hex(number(header[8]))
@@ -127,11 +149,16 @@ def replay(rpc, chain, sidecars):
         rpc('anvil_setNextBlockBaseFeePerGas', hex(number(header[15])))
         rpc('anvil_setNextBlockPrevRandao', hexbytes(header[13]))
         rpc('anvil_setCoinbase', hexbytes(header[2]))
+        # Older builds mine the zero root (foundry#17305); asked once, then they keep it.
+        if len(header) > 19 and beacon_roots is not False:
+            beacon_roots = set_parent_beacon_root(rpc, hexbytes(header[19]))
         for tx in block[1]:
             rpc('eth_sendRawTransaction', hexbytes(network_form(tx, sidecars)))
         rpc('evm_mine')
         mined = rpc('eth_getBlockByNumber', n, False)
         expected = expected_header(block)
+        if not beacon_roots:
+            expected.pop('parentBeaconBlockRoot', None)
         compared.append({'number': n, 'hash': mined['hash'],
                          'differs': sorted(k for k, v in expected.items() if mined.get(k) != v)})
         hashes[hexbytes(keccak(rlp.encode(header)))] = mined['hash']
@@ -141,7 +168,7 @@ def replay(rpc, chain, sidecars):
             address = hexbytes(withdrawal[2])
             balance = int(rpc('eth_getBalance', address, 'latest'), 16)
             rpc('anvil_setBalance', address, hex(balance + number(withdrawal[3]) * 10**9))
-    return compared, hashes
+    return compared, hashes, beacon_roots
 
 
 def divergence(record):
@@ -181,7 +208,7 @@ def capture(out, chain, cases, names, image_for):
             rpc = Rpc(f'http://127.0.0.1:{port}')
             rpc.wait()
             about = dict(line.split(': ', 1) for line in run('docker', 'exec', container, 'anvil', '--version', capture=True).splitlines() if ': ' in line)
-            compared, hashes = replay(rpc, chain, sidecars)
+            compared, hashes, beacon_roots = replay(rpc, chain, sidecars)
             with (folder/(name + '.exchanges.log')).open('w') as log:
                 for case in cases:
                     request = json.loads(translate(json.dumps(case['request']), hashes))
@@ -195,7 +222,7 @@ def capture(out, chain, cases, names, image_for):
             (folder/(name + '.log')).write_bytes(logs.stdout)
             subprocess.run(['docker', 'rm', '-f', container], stdout=subprocess.DEVNULL, check=False)
         records[name] = {'command': command, 'version': f'anvil Version: {about["anvil Version"]}+{about["Commit SHA"][:8]}',
-                         'blocks': compared, 'hashes': hashes}
+                         'blocks': compared, 'hashes': hashes, 'parent_beacon_roots': beacon_roots}
     return records
 
 

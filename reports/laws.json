@@ -10,39 +10,39 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 772,
+        "held": 774,
         "violated": 1
       },
       "besu_release": {
-        "held": 604,
+        "held": 606,
         "violated": 1
       },
       "erigon_development": {
-        "held": 739,
-        "violated": 0
-      },
-      "erigon_release": {
-        "held": 761,
-        "violated": 0
-      },
-      "go-ethereum_trace": {
-        "held": 731,
-        "violated": 0
-      },
-      "nethermind_development": {
         "held": 741,
         "violated": 0
       },
+      "erigon_release": {
+        "held": 763,
+        "violated": 0
+      },
+      "go-ethereum_trace": {
+        "held": 733,
+        "violated": 0
+      },
+      "nethermind_development": {
+        "held": 743,
+        "violated": 0
+      },
       "nethermind_release": {
-        "held": 757,
+        "held": 759,
         "violated": 0
       },
       "reth_development": {
-        "held": 882,
+        "held": 883,
         "violated": 0
       },
       "reth_release": {
-        "held": 882,
+        "held": 883,
         "violated": 0
       }
     },

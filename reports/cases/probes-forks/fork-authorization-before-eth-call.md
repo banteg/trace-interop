@@ -49,11 +49,11 @@
 
 **Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-authorization-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type DELEGATE_CODE is invalid, accepted transaction types are [FRONTIER, BLOB, ACC (-32003 recommended)
+- [H14](../../decisions/H14.md): The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-authorization-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type DELEGATE_CODE is invalid, accepted transaction types are [FRONTIER, ACCESS_LI (-32003 recommended)
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-authorization-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type DELEGATE_CODE is invalid, accepted transaction types are [EIP1559, BLOB, ACCE (-32003 recommended)
+- [H14](../../decisions/H14.md): The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-authorization-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type DELEGATE_CODE is invalid, accepted transaction types are [BLOB, ACCESS_LIST,  (-32003 recommended)
 
 **Erigon · 3.8.0-dev · 6da806cb** (`3.8.0-dev-6da806cb`)
 

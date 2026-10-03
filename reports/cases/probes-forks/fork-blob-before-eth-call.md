@@ -42,7 +42,7 @@
 
 **Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-blob-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type BLOB is invalid, accepted transaction types are [FRONTIER, ACCESS_LIST, EIP15 (-32003 recommended)
+- [H14](../../decisions/H14.md): The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-blob-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type BLOB is invalid, accepted transaction types are [FRONTIER, EIP1559, ACCESS_LI (-32003 recommended)
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 

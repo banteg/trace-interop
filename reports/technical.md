@@ -41,11 +41,11 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15076 |
+| 🔎 Assessed | 15092 |
 | 🟡 Partial | 856 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 506 |
-| 🔎 Control | 37 |
+| 🔎 Control | 39 |
 
 
 Of the partial observations, 770 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
@@ -84,6 +84,10 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 1 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 2 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
+| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000000000000'] | 4 |
+| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x000000000000000000000000000000000000000000000000000000003b9aca00'] | 3 |
+| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400'] | 9 |
+| H14 | control | Priced dynamic fees around London are under review. Observed: Expected a result; observed rpc_error -32003 transaction type not supported | 2 |
 | H14 | control | Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two. Observed: Expected ['0x']; got ['0x'] | 7 |
 | H14 | control | Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two. Observed: Expected a result; observed rpc_error -32003 transaction type not supported | 2 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
@@ -903,6 +907,8 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-forks/filter-null-toBlock](cases/probes-forks/filter-null-toBlock.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/filter-omitted-fromBlock](cases/probes-forks/filter-omitted-fromBlock.md) | Erigon 3.7.1 · 8c1e3893, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/filter-omitted-toBlock](cases/probes-forks/filter-omitted-toBlock.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/fork-dynamic-fees-priced-at](cases/probes-forks/fork-dynamic-fees-priced-at.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-forks/fork-dynamic-fees-priced-before](cases/probes-forks/fork-dynamic-fees-priced-before.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-forks/genesis-filter](cases/probes-forks/genesis-filter.md) | Erigon 3.7.1 · 8c1e3893 |
 | [probes-forks/genesis-range-rewards](cases/probes-forks/genesis-range-rewards.md) | Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566 |
 | [probes-forks/many-write-delete-storage](cases/probes-forks/many-write-delete-storage.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |

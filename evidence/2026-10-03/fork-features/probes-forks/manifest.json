@@ -201,8 +201,8 @@
     }
   },
   "corpus": "probes-forks",
-  "finished_at": "2026-10-03T12:48:00.152011+00:00",
-  "fixture_manifest_sha256": "3cea06f3dafcb672a3378e478e37b950b1de71c5d52c8a3bfe71121bb02ee0ee",
+  "finished_at": "2026-10-03T13:05:56.900802+00:00",
+  "fixture_manifest_sha256": "cdaf12ed90f958036235bca6c7f85d3c3bc0793d10a3deab22bf55652df82192",
   "format": 1,
   "head": {
     "baseFeePerGas": "0x7d97fd",
@@ -2347,6 +2347,128 @@
       }
     },
     {
+      "name": "fork-dynamic-fees-priced-before",
+      "probes": [
+        {
+          "control": "Priced dynamic fees around London are under review.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-before.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at",
+      "probes": [
+        {
+          "control": "Priced dynamic fees around London are under review.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-at.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x24"
+        ]
+      }
+    },
+    {
       "name": "_reference/block/0x1",
       "request": {
         "id": 1,
@@ -2419,13 +2541,13 @@
       "role": "reference"
     }
   ],
-  "source_commit": "17cca5a3aa787783301b7fdd68caaebb31549003",
+  "source_commit": "1387ccc23621fa3ac4c640c82572bb2fea17f1b0",
   "source_dirty": true,
   "spec": {
     "branch": "feat/trace",
-    "commit": "b8d0d7aedd13a6cb6cc111413f7083360cb2d43a",
-    "generated_sha256": "ae9b42e1f1d25d112ff6211275eb1ec86c77d7b6eaf360fb47f4e9c1d33dbdde",
+    "commit": "7c040d99816a58a42481f38c2fc134aee1b81362",
+    "generated_sha256": "f8e07198c02d68b1f499b1c5e35126d3c863d1ace406d07f0e60f0c1a77c2bfa",
     "repository": "https://github.com/banteg/execution-apis"
   },
-  "started_at": "2026-10-03T12:46:21.977679+00:00"
+  "started_at": "2026-10-03T13:04:24.239193+00:00"
 }

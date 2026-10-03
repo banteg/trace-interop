@@ -664,6 +664,15 @@ def forks():
             case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
             case(cases, name+'-eth-call', 'eth_call', [call, hex(block)],
                  probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
+    # Priced dynamic fees around London, recorded until decided: a creation returns the GASPRICE it ran at, so a
+    # client that rejects, ignores (GASPRICE 0) or applies the fees before London can be told apart.
+    gas_price = asm('GASPRICE', 0, 'MSTORE', 32, 0, 'RETURN')
+    priced = {'maxFeePerGas': hex(2*10**9), 'maxPriorityFeePerGas': hex(10**9)}
+    for name, block in [('fork-dynamic-fees-priced-before', activation['london']-1), ('fork-dynamic-fees-priced-at', activation['london'])]:
+        call = dict({'from': sender, 'gas': '0x186a0', 'data': '0x'+gas_price}, **priced)
+        outcome = probe('H14', 'outputs', f'Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block {block}.', expected=[None])
+        case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[dict(outcome, control='Priced dynamic fees around London are under review.')])
+        case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 

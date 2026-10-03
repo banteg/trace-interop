@@ -2077,6 +2077,128 @@
           "0x3b"
         ]
       }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-before",
+      "probes": [
+        {
+          "control": "Priced dynamic fees around London are under review.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-before.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at",
+      "probes": [
+        {
+          "control": "Priced dynamic fees around London are under review.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-at.",
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x24"
+        ]
+      }
     }
   ],
   "description": "Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain."

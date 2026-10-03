@@ -2558,7 +2558,38 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "trace_callMany names a rejected call\u2019s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1"
+      "note": "trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11435",
+      "title": "fix(rpc): report creationMethod on every create trace frame",
+      "client": "besu",
+      "decisions": [
+        "H10"
+      ],
+      "partial": [
+        "H10"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11436",
+      "title": "feat(rpc): accept the trace_filter mode member",
+      "client": "besu",
+      "decisions": [
+        "H03",
+        "H23"
+      ],
+      "partial": [
+        "H23"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_filter accepts mode intersection (default, also for null) and union, rejects other values with -32602; block rewards match by author against toAddress, so a reward is selectable with fromAddress empty or in union mode; CREATE and SELFDESTRUCT address matching unchanged"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",

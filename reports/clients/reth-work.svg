@@ -98,11 +98,15 @@
 <text class="label" x="70" y="329">Invalid parameters and rejected calls</text>
 <rect class="b-fix edge partial" x="400" y="316" width="89" height="18" rx="4"/>
 <text class="n-fix" x="444.5" y="329" text-anchor="middle">Alloy #4257</text>
+<rect class="pr edge partial" x="495" y="316" width="109" height="18" rx="4"/>
+<text class="label" x="549.5" y="329" text-anchor="middle">Alloy EVM #427</text>
 <rect class="b-converged" x="16" y="340" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="353" text-anchor="middle">H15</text>
 <text class="label" x="70" y="353">Unsigned simulation fees and block environment</text>
-<rect class="b-agree edge partial" x="400" y="340" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="353" text-anchor="middle">#27586</text>
+<rect class="pr edge partial" x="400" y="340" width="109" height="18" rx="4"/>
+<text class="label" x="454.5" y="353" text-anchor="middle">Alloy EVM #427</text>
+<rect class="b-agree edge partial" x="515" y="340" width="55" height="18" rx="4"/>
+<text class="n-agree" x="542.5" y="353" text-anchor="middle">#27586</text>
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H26</text>
 <text class="label" x="70" y="377">Account deletion across Cancun</text>

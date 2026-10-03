@@ -23,8 +23,8 @@
       "counted": true,
       "counts": {
         "agree": 6,
-        "converged": 13,
-        "fix": 8,
+        "converged": 11,
+        "fix": 10,
         "policy": 0,
         "review": 0,
         "unmeasured": 6
@@ -33,7 +33,7 @@
       "name": "Besu",
       "prs": {
         "merged": 2,
-        "open": 19
+        "open": 22
       }
     },
     {
@@ -69,7 +69,7 @@
       "name": "Erigon",
       "prs": {
         "merged": 22,
-        "open": 2
+        "open": 3
       }
     },
     {
@@ -141,7 +141,7 @@
       "name": "Reth",
       "prs": {
         "merged": 23,
-        "open": 6
+        "open": 7
       }
     },
     {

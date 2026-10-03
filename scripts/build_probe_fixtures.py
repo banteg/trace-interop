@@ -35,7 +35,7 @@ from trace_interop.vm_model import execute, intrinsic
 
 ROOT = Path(__file__).resolve().parents[1]
 OPS = {'STOP': 0x00, 'SUB': 0x03, 'ADDRESS': 0x30, 'DUP6': 0x85, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
-       'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
+       'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'GASPRICE': 0x3a, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
        'NUMBER': 0x43, 'BASEFEE': 0x48, 'BLOBBASEFEE': 0x4a, 'MSTORE': 0x52, 'MSTORE8': 0x53, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
        'TLOAD': 0x5c, 'TSTORE': 0x5d, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
        'RETURN': 0xf3, 'CREATE2': 0xf5, 'REVERT': 0xfd, 'SELFDESTRUCT': 0xff}
@@ -410,6 +410,55 @@ def prague():
         case(cases, name+'-stateDiff', 'trace_call', [dict(blob_call, **fields), ['stateDiff'], 'latest'], probes=[
             probe('H15', 'extra-charge', requirement+f', so the sender pays {charged} wei more than the same call without blob fields.',
                   address=sender, reference=reference, expected=charged)])
+    # Fee and type field combinations no signed transaction carries (H14), recorded until each is decided.
+    # Each trace_call has an eth_call twin. The legacy and dynamic prices differ, so GASPRICE shows which one
+    # priced the call: a creation returns it, a blob call's CREATE2 child deploys it with BLOBBASEFEE, and an
+    # authorization call returns the marker's 42 when the authorization applied.
+    legacy, dynamic = price, hex(int(price, 16) * 3 // 2)
+    fees = {'gasPrice': {'gasPrice': legacy}, 'dynamic': {'maxFeePerGas': dynamic, 'maxPriorityFeePerGas': dynamic}}
+    gas_price = asm('GASPRICE', 0, 'MSTORE', 32, 0, 'RETURN')
+    priced_init = asm('GASPRICE', 0, 'MSTORE', 'BLOBBASEFEE', 32, 'MSTORE', 64, 0, 'RETURN')
+    combos = {
+        'gasprice-maxfee': ('price', {'gasPrice': legacy, 'maxFeePerGas': dynamic}),
+        'gasprice-tip': ('price', {'gasPrice': legacy, 'maxPriorityFeePerGas': dynamic}),
+        'gasprice-dynamic': ('price', {**fees['gasPrice'], **fees['dynamic']}),
+        'gasprice-dynamic-equal': ('price', {'gasPrice': legacy, 'maxFeePerGas': legacy, 'maxPriorityFeePerGas': legacy}),
+        'untyped-dynamic': ('price', fees['dynamic']),
+        'type0-gasprice': ('price', {'type': '0x0', **fees['gasPrice']}),
+        'type0-dynamic': ('price', {'type': '0x0', **fees['dynamic']}),
+        'type1-gasprice': ('price', {'type': '0x1', 'accessList': [], **fees['gasPrice']}),
+        'type1-dynamic': ('price', {'type': '0x1', 'accessList': [], **fees['dynamic']}),
+        'type2-gasprice': ('price', {'type': '0x2', **fees['gasPrice']}),
+        'type2-dynamic': ('price', {'type': '0x2', **fees['dynamic']}),
+        'auth-type4-dynamic': ('auth', {'type': '0x4', **fees['dynamic']}),
+        'auth-type4-gasprice': ('auth', {'type': '0x4', **fees['gasPrice']}),
+        'auth-gasprice-dynamic': ('auth', {**fees['gasPrice'], **fees['dynamic']}),
+        'auth-type2-dynamic': ('auth', {'type': '0x2', **fees['dynamic']}),
+        'blob-type3-dynamic': ('blob', {'type': '0x3', 'maxFeePerBlobGas': hex(blob_base_fee), **fees['dynamic']}),
+        'blob-gasprice': ('blob', fees['gasPrice']),
+        'blob-gasprice-capped': ('blob', {'maxFeePerBlobGas': hex(blob_base_fee), **fees['gasPrice']}),
+        'blob-type3-gasprice': ('blob', {'type': '0x3', 'maxFeePerBlobGas': hex(blob_base_fee), **fees['gasPrice']}),
+        'blob-type2-dynamic': ('blob', {'type': '0x2', 'maxFeePerBlobGas': hex(blob_base_fee), **fees['dynamic']}),
+    }
+    for name, (shape, fields) in combos.items():
+        if shape == 'price':
+            call, types = dict({'from': sender, 'gas': gas, 'data': '0x'+gas_price}, **fields), ['trace']
+            want = words(int(fields.get('gasPrice', dynamic), 16))
+            outcome = probe('H14', 'outputs', 'Recorded: whether the combination runs, and the GASPRICE it runs at.', expected=[want])
+        elif shape == 'auth':
+            call, types = dict({'from': funder, 'to': sender, 'gas': gas, 'data': '0x', 'authorizationList': [authorization]}, **fields), ['trace']
+            outcome = probe('H14', 'outputs', 'Recorded: whether the combination runs with its authorization applied (word 42).', expected=[words(42)])
+        else:
+            call, types = dict({'from': sender, 'to': factory, 'gas': gas, 'data': '0x'+word(0)+priced_init, 'blobVersionedHashes': [versioned]}, **fields), ['trace', 'stateDiff']
+            outcome = probe('H14', 'frame', 'Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.',
+                            select={'traceAddress': [0], 'type': 'create'},
+                            expected={'error': None, 'result': {'code': '0x'+word(int(fields.get('gasPrice', dynamic), 16))+word(blob_base_fee)}})
+        note = 'A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.'
+        case(cases, 'combo-'+name, 'trace_call', [call, types, 'latest'], probes=[dict(outcome, observe=note)])
+        # eth_call returns the creation's GASPRICE word, the marker's 42, or the factory's child address.
+        case(cases, f'combo-{name}-eth-call', 'eth_call', [call, 'latest'],
+             probes=[probe('H14', 'outputs', outcome['requirement'], expected=[want if shape == 'price' else words(42) if shape == 'auth' else None],
+                           observe='eth_call parity control for combo-'+name+'.')])
     # A supplied nonce is accepted but neither validated nor used: the creation address follows the state nonce (H15).
     address = asm('ADDRESS', 0, 'MSTORE', 32, 0, 'RETURN')
     for name, supplied in [('field-nonce-above', nonce+3), ('field-nonce-below', nonce-3)]:

@@ -167,8 +167,8 @@
       "counted": false,
       "counts": {
         "agree": 14,
-        "converged": 10,
-        "fix": 0,
+        "converged": 5,
+        "fix": 5,
         "policy": 0,
         "review": 0,
         "unmeasured": 9
@@ -177,7 +177,7 @@
       "name": "Anvil",
       "prs": {
         "merged": 2,
-        "open": 0
+        "open": 12
       }
     }
   ],

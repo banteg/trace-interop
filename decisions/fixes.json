@@ -2626,6 +2626,192 @@
       "draft": false,
       "merged_at": null,
       "note": "bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17301",
+      "title": "fix(anvil): include transactionHash in trace_replayTransaction",
+      "client": "anvil",
+      "decisions": [
+        "H07"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "returns the TraceResultsWithTransactionHash envelope block replays already use, as Reth does since 2.7.0"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17302",
+      "title": "fix(anvil): select trace_get frames by trace address",
+      "client": "anvil",
+      "decisions": [
+        "H02"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "reads the indices as one traceAddress path, so [] selects the root and nested paths resolve, instead of indexing the flattened frame list"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17303",
+      "title": "fix(anvil): omit nested precompile calls from mined traces",
+      "client": "anvil",
+      "decisions": [
+        "H29"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "mined traces detach nested zero-value precompile calls with the block's active precompiles, matching trace_call and the replays; debug traces keep them"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17304",
+      "title": "fix(anvil): reject code senders in trace_rawTransaction",
+      "client": "anvil",
+      "decisions": [
+        "H13"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "enables the EIP-3607 check for trace_rawTransaction only, so a sender with ordinary code is rejected while 7702-delegated senders still trace; mining keeps it off"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17305",
+      "title": "feat(anvil): add anvil_setNextBlockParentBeaconBlockRoot",
+      "client": "anvil",
+      "decisions": [
+        "H09",
+        "H16",
+        "H17",
+        "H18",
+        "H19",
+        "H20",
+        "H23",
+        "H26",
+        "H28"
+      ],
+      "partial": [
+        "H09",
+        "H16",
+        "H17",
+        "H18",
+        "H19",
+        "H20",
+        "H23",
+        "H26",
+        "H28"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; needs a matching replica.py change with a zero-root fallback. H23 and H26 then wait on bluealloy/revm#3833"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17306",
+      "title": "fix(anvil): report unknown trace blocks and transactions",
+      "client": "anvil",
+      "decisions": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "unknown blocks return -32001 from trace_block and block replays, a trace_filter bound past the head is rejected with -32602, and an unknown replay returns null; stacked on #17301",
+      "depends_on": [
+        "https://github.com/foundry-rs/foundry/pull/17301"
+      ]
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17307",
+      "title": "fix(anvil): reject conflicting call fee and input fields",
+      "client": "anvil",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "rejects disagreeing data and input and gasPrice with maxFeePerGas or maxPriorityFeePerGas in every unsigned simulation, and prices a legacy blob call by its gasPrice instead of running it at GASPRICE 0"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17308",
+      "title": "fix(anvil): reject integer trace_get indices",
+      "client": "anvil",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "rejects JSON integer trace_get indices with -32602; with #17307 it covers Anvil's measured H14 differences"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17309",
+      "title": "fix(anvil): reject pending in block trace methods",
+      "client": "anvil",
+      "decisions": [
+        "H32"
+      ],
+      "partial": [
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "rejects pending in trace_block and trace_replayBlockTransactions instead of evaluating it as latest; safe and earliest trace_filter bounds still need Alloy's TraceFilter to accept tags"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17310",
+      "title": "fix(anvil): run fee-free calls at zero base and blob base fees",
+      "client": "anvil",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "zero-fee calls see BASEFEE 0, and blob calls without a cap see BLOBBASEFEE 0 and pay no blob fee; an explicit zero cap is accepted"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17311",
+      "title": "fix(anvil): charge cap-only calls at the base fee",
+      "client": "anvil",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "a missing tip defaults to zero, so a maxFeePerGas-only call pays min(cap, base fee) instead of its cap"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17312",
+      "title": "fix(anvil): cap omitted call gas by the sender's allowance",
+      "client": "anvil",
+      "decisions": [
+        "H15",
+        "H16"
+      ],
+      "partial": [
+        "H15",
+        "H16"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "caps the default gas of a priced call to what the sender can afford, as Reth does, which unblocks the last H16 probe held by the funds check"
     }
   ]
 }

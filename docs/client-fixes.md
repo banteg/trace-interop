@@ -6,10 +6,30 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 ## Anvil
 
+```mermaid
+flowchart LR
+  Foundry_17306["Foundry #17306"]:::open
+  Foundry_17301["Foundry #17301"]:::open
+  Foundry_17301 --> Foundry_17306
+  classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
+```
+
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Foundry #17089](https://github.com/foundry-rs/foundry/pull/17089) | Return null from trace_transaction for an unknown hash; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | 2026-09-27 | — | — | dev, stable | — |
 | [Foundry #17106](https://github.com/foundry-rs/foundry/pull/17106) | Mark created accounts as added in trace statediff; absent accounts read as absent for the state-diff builder, fixing born-account markers and temporary-account deaths since revm-inspectors 0.44.0 | [H17](../reports/decisions/H17.md), [H26](../reports/decisions/H26.md) | 2026-10-01 | — | — | dev, stable | — |
+| [Foundry #17301](https://github.com/foundry-rs/foundry/pull/17301) | Include transactionHash in trace_replayTransaction; returns the TraceResultsWithTransactionHash envelope block replays already use, as Reth does since 2.7.0 | [H07](../reports/decisions/H07.md) | — | — | — | — | — |
+| [Foundry #17302](https://github.com/foundry-rs/foundry/pull/17302) | Select trace_get frames by trace address; reads the indices as one traceAddress path, so [] selects the root and nested paths resolve, instead of indexing the flattened frame list | [H02](../reports/decisions/H02.md) | — | — | — | — | — |
+| [Foundry #17303](https://github.com/foundry-rs/foundry/pull/17303) | Omit nested precompile calls from mined traces; mined traces detach nested zero-value precompile calls with the block's active precompiles, matching trace_call and the replays; debug traces keep them | [H29](../reports/decisions/H29.md) | — | — | — | — | — |
+| [Foundry #17304](https://github.com/foundry-rs/foundry/pull/17304) | Reject code senders in trace_rawTransaction; enables the EIP-3607 check for trace_rawTransaction only, so a sender with ordinary code is rejected while 7702-delegated senders still trace; mining keeps it off | [H13](../reports/decisions/H13.md) | — | — | — | — | — |
+| [Foundry #17305](https://github.com/foundry-rs/foundry/pull/17305) | Add anvil_setNextBlockParentBeaconBlockRoot; not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; needs a matching replica.py change with a zero-root fallback. H23 and H26 then wait on bluealloy/revm#3833 | [H09](../reports/decisions/H09.md) (partial), [H16](../reports/decisions/H16.md) (partial), [H17](../reports/decisions/H17.md) (partial), [H18](../reports/decisions/H18.md) (partial), [H19](../reports/decisions/H19.md) (partial), [H20](../reports/decisions/H20.md) (partial), [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial), [H28](../reports/decisions/H28.md) (partial) | — | — | — | — | — |
+| [Foundry #17306](https://github.com/foundry-rs/foundry/pull/17306) | Report unknown trace blocks and transactions; unknown blocks return -32001 from trace_block and block replays, a trace_filter bound past the head is rejected with -32602, and an unknown replay returns null; stacked on #17301 · after Foundry #17301 | [H06](../reports/decisions/H06.md) | — | — | — | — | — |
+| [Foundry #17307](https://github.com/foundry-rs/foundry/pull/17307) | Reject conflicting call fee and input fields; rejects disagreeing data and input and gasPrice with maxFeePerGas or maxPriorityFeePerGas in every unsigned simulation, and prices a legacy blob call by its gasPrice instead of running it at GASPRICE 0 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Foundry #17308](https://github.com/foundry-rs/foundry/pull/17308) | Reject integer trace_get indices; rejects JSON integer trace_get indices with -32602; with #17307 it covers Anvil's measured H14 differences | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
+| [Foundry #17309](https://github.com/foundry-rs/foundry/pull/17309) | Reject pending in block trace methods; rejects pending in trace_block and trace_replayBlockTransactions instead of evaluating it as latest; safe and earliest trace_filter bounds still need Alloy's TraceFilter to accept tags | [H32](../reports/decisions/H32.md) (partial) | — | — | — | — | — |
+| [Foundry #17310](https://github.com/foundry-rs/foundry/pull/17310) | Run fee-free calls at zero base and blob base fees; zero-fee calls see BASEFEE 0, and blob calls without a cap see BLOBBASEFEE 0 and pay no blob fee; an explicit zero cap is accepted | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
+| [Foundry #17311](https://github.com/foundry-rs/foundry/pull/17311) | Charge cap-only calls at the base fee; a missing tip defaults to zero, so a maxFeePerGas-only call pays min(cap, base fee) instead of its cap | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
+| [Foundry #17312](https://github.com/foundry-rs/foundry/pull/17312) | Cap omitted call gas by the sender's allowance; caps the default gas of a priced call to what the sender can afford, as Reth does, which unblocks the last H16 probe held by the funds check | [H15](../reports/decisions/H15.md) (partial), [H16](../reports/decisions/H16.md) (partial) | — | — | — | — | — |
 
 ## Besu
 

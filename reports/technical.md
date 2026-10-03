@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 14757 |
-| 🟡 Partial | 849 |
+| 🔎 Assessed | 14976 |
+| 🟡 Partial | 850 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 506 |
 | 🔎 Control | 35 |
 
 
-Of the partial observations, 763 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 764 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -80,7 +80,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H11 | blocked | H15 owns this error, a base_fee validation rejection: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430. There is no executed result to inspect. | 1 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 36 |
 | H13 | blocked | The error does not identify a validation failure: -32000 sender has deployed code | 4 |
-| H14 | blocked | Cannot inspect this property: malformed_json. | 1 |
+| H14 | blocked | Cannot inspect this property: malformed_json. | 2 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 1 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 2 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
@@ -913,6 +913,21 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-prague/blob-fee-priced](cases/probes-prague/blob-fee-priced.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-zero](cases/probes-prague/blob-fee-zero.md) | Besu 26.10-develop · 711f8142 |
 | [probes-prague/callmany-null-block](cases/probes-prague/callmany-null-block.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-blob-gasprice](cases/probes-prague/combo-blob-gasprice.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-blob-gasprice-capped](cases/probes-prague/combo-blob-gasprice-capped.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-blob-type2-dynamic](cases/probes-prague/combo-blob-type2-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-blob-type3-dynamic](cases/probes-prague/combo-blob-type3-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-blob-type3-gasprice](cases/probes-prague/combo-blob-type3-gasprice.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-gasprice-dynamic](cases/probes-prague/combo-gasprice-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-gasprice-dynamic-equal](cases/probes-prague/combo-gasprice-dynamic-equal.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-gasprice-maxfee](cases/probes-prague/combo-gasprice-maxfee.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type0-dynamic](cases/probes-prague/combo-type0-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type0-gasprice](cases/probes-prague/combo-type0-gasprice.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type1-dynamic](cases/probes-prague/combo-type1-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type1-gasprice](cases/probes-prague/combo-type1-gasprice.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type2-dynamic](cases/probes-prague/combo-type2-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-type2-gasprice](cases/probes-prague/combo-type2-gasprice.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
+| [probes-prague/combo-untyped-dynamic](cases/probes-prague/combo-untyped-dynamic.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/create-code-deposit-oog](cases/probes-prague/create-code-deposit-oog.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/create-code-size-limit](cases/probes-prague/create-code-size-limit.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/create-ef-prefix](cases/probes-prague/create-ef-prefix.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
@@ -1018,7 +1033,7 @@ Capture completeness records whether requests finished, not whether their result
 | [callmany-isolation](../evidence/2026-10-02/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
 | [h30](../evidence/2026-10-02/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-10-02/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-10-03/blob-charge/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-prague](../evidence/2026-10-03/fee-combos/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-10-02/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-02/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-02/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |

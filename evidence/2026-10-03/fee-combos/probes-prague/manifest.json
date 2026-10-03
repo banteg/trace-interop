@@ -1,0 +1,4526 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-10-02T07:34:30.617231701Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:b98ad715d3530266d3faa3b412a5c87fbe40fafc3b3120edb0f7c5f09a47630d",
+      "image_id": "sha256:d95db66dcba87acc8e0d10e7fee96a0366d95efe5362bcf216d9a5061eff23dd",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-02T07:14:05.396Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "328811cbb4a9b9b7115d234a097053474601296a",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-10-01T15:19:17.607726434Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:f69e1b8d1dda17d89227a4d0513b1d86f93ece430dea8d87aaea643da3607d3e",
+      "image_id": "sha256:6dd94d884c77da77a805ceee20adfe4e0e0f9dc3c7ed20bcb9a62381ad272ba1",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-01T14:59:02.720Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "50af4efe189dc64bad2b75ed6990b835de66c4ae",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.8.4"
+      },
+      "release": {
+        "published_at": "2026-10-01T15:41:43Z",
+        "tag": "v1.8.4",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.8.4"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.8.4"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-02T13:44:07.923502599Z",
+      "digest": "hyperledger/besu@sha256:737f3316da5811cf3121fdef3d78f5ce21d97012d82d3f5c03baf06e5d782bea",
+      "image_id": "sha256:f80ed5f38fa29842c2a8c0845011dda64cacd9ab769107986b2b3e98482c95a5",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "711f8142eb12750a1777ef366e0e0eeeca69513d",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-25T21:56:58.835401325Z",
+      "digest": "hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0",
+      "image_id": "sha256:ca05efeb8050497e45bc2b4ed22111a8189a8b85ffa7aca09da18f45a417810d",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.9.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T22:22:13Z",
+        "tag": "26.9.0",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.9.0"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.9.0"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-02T14:26:48.007759734Z",
+      "digest": "erigontech/erigon@sha256:2988eab4109dd3667e6f37f1210bd7a8c027dba9bda84213f3f3833a610ace83",
+      "image_id": "sha256:ee242d0c380f11cce77d77ef4e29abc142d6746fbe28cacbba91164c9f4fa43f",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-02T14:25:07Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "6da806cb7483f3cfcd6d5d6a2bdc1743f3b1094d",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "6da806c",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "6da806cb7483f3cfcd6d5d6a2bdc1743f3b1094d"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-01T20:05:57.904718012Z",
+      "digest": "erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481",
+      "image_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-01T20:03:37Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.7",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.7.1"
+      },
+      "release": {
+        "published_at": "2026-10-02T08:12:41Z",
+        "tag": "v3.7.1",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.7.1"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.7.1"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "c0793adcdd3cdc9a40058835487db8697a8a7ee79bf517967da397373e558e42",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:179b84b23296b4c71e45f203053e20fd21b89926c2f83e10921649eb4e1ff24d",
+      "local_image": "trace-interop/geth-source:c0793adcdd3cdc9a40058835487db8697a8a7ee79bf517967da397373e558e42",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "67f41deaa056d8bba18dffd21cc32338633878a0",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "bb34cf5d80d9a56adae45465d4c305bb2ab12a09b0e07543a121481543e2e60e"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-02T13:21:30Z",
+      "digest": "nethermindeth/nethermind@sha256:2c6c4f3ee1573874af024fcdf625c9fe5799aed09c3a936847013f150e39d168",
+      "image_id": "sha256:ee1df7c804e9ed3ccd7a75d6b916d12a36a669c650c9341eeeab9f0805b87bcb",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-02T13:21:30Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "3370d566b67ad741e91a6e647d98c5c28c3a2ed9",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-01T21:50:32Z",
+      "digest": "nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0",
+      "image_id": "sha256:2954427b4c521fc9247b4cbdc16bdabbb149fd0b9036b73542fb095c6e00f54c",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-01T21:50:32Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "b3e7e84c1695420e771326f73801b66fa0574871",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.1.0"
+      },
+      "release": {
+        "published_at": "2026-10-01T22:43:39Z",
+        "tag": "2.1.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.1.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.1.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-02T01:39:34.817321386Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:73256294307530bdd17887f868b2a063e387ee7a105a0afaab6a91e90faf4087",
+      "image_id": "sha256:d59b075a4781842685e0249cefb3195ad775fade18a155c0cef90141bcc63188",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-28T11:08:00.92360729Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336",
+      "image_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-28T12:45:27Z",
+        "tag": "v2.7.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.7.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.7.0"
+    }
+  },
+  "corpus": "probes-prague",
+  "finished_at": "2026-10-03T01:44:52.439786+00:00",
+  "fixture_manifest_sha256": "7937f0163440ce2b4c51c53834e5db092289f79c93cd29ac547b083a99e604bb",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x2da282a8",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0x0",
+    "hash": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x2",
+    "parentBeaconBlockRoot": "0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e",
+    "parentHash": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x842ee32b527dc0e28b92a8479b9a8ec6b7bbdf85c5d055e1fafbac3c2d19b1a1",
+    "timestamp": "0x14",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "4540d51b4a77d1f8abc88cb9a25fda0d84e5b6ff20908ff7cfcce549dfdc3536",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x667d4825488ce33c322c20e4be6d19f1ccdddb7175f76c418e366df92e91b254",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0x13d2007de4e0e4ad7938b25d6f7811e4d947d1cd80b9e6fd9f5f81983f423f08",
+          "number": "0x2"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e": "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e",
+        "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b": "0x667d4825488ce33c322c20e4be6d19f1ccdddb7175f76c418e366df92e91b254",
+        "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956": "0x13d2007de4e0e4ad7938b25d6f7811e4d947d1cd80b9e6fd9f5f81983f423f08"
+      },
+      "version": "anvil Version: 1.8.4-nightly+328811cb"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x667d4825488ce33c322c20e4be6d19f1ccdddb7175f76c418e366df92e91b254",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0x13d2007de4e0e4ad7938b25d6f7811e4d947d1cd80b9e6fd9f5f81983f423f08",
+          "number": "0x2"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e": "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e",
+        "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b": "0x667d4825488ce33c322c20e4be6d19f1ccdddb7175f76c418e366df92e91b254",
+        "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956": "0x13d2007de4e0e4ad7938b25d6f7811e4d947d1cd80b9e6fd9f5f81983f423f08"
+      },
+      "version": "anvil Version: 1.8.4+50af4efe"
+    }
+  },
+  "replica_sha256": "ebfc89e4ca2e303b31e4a169c850f1dbd2e266304e5351992f5abeb0ffde7f99",
+  "runner_exit_code": 1,
+  "runner_sha256": "cade523514ad566638ea18c00e704cecb5fabb7f56edd8847be68f419e8de4ae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x2",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": "0xa",
+      "name": "_control/sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xde0b6b3a7640000",
+      "name": "_control/sender-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/sender-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/creation-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/creation-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/creation-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x602a600055602a60005260206000f3",
+      "name": "_control/marker-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/empty-probe-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x000000000000000000000000000000000000c0de",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/empty-probe-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x000000000000000000000000000000000000c0de",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/empty-probe-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000c0de",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/beneficiary-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x000000000000000000000000000000000000beef",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/beneficiary-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000beef",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/funder-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0c2c51a0990aee1d73c1228de158688341557508",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "name": "_control/marker-slot",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xc72dd9d5e883e",
+      "name": "_control/chain-id",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "model": {
+        "code": "0x600160026003829190805050505050600080f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "vm-push-order",
+      "probes": [
+        {
+          "kind": "push",
+          "requirement": "DUPn and SWAPn push the top n+1 stack words after execution, deepest first.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600160026003829190805050505050600080f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a600155602a600155600254600760035d60035c600080f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "vm-store",
+      "probes": [
+        {
+          "kind": "store",
+          "requirement": "store is set by each completed SSTORE with its key and value, including an unchanged warm write; SLOAD, TSTORE and TLOAD never set it. Its presence does not depend on selecting stateDiff.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600155602a600155600254600760035d60035c600080f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a600155602a600155600254600760035d60035c600080f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "vm-store-vm-only",
+      "probes": [
+        {
+          "kind": "store",
+          "requirement": "store is set by each completed SSTORE with its key and value, including an unchanged warm write; SLOAD, TSTORE and TLOAD never set it. Its presence does not depend on selecting stateDiff.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600155602a600155600254600760035d60035c600080f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x600160020150",
+        "creation": true,
+        "environment": false
+      },
+      "name": "vm-off-end",
+      "probes": [
+        {
+          "kind": "end",
+          "requirement": "Code that runs off its end has no synthetic STOP; every pc lies inside code.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600160020150",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "precheck-call-value",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 2,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x1"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "call"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.",
+          "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Insufficient balance for transfer"
+          },
+          "kind": "frame",
+          "requirement": "A CALL that fails its balance precheck has error \"Insufficient balance for transfer\".",
+          "select": {
+            "action": {
+              "value": "0x1"
+            },
+            "traceAddress": [
+              0
+            ],
+            "type": "call"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller continues: the failed CALL pushes 0 and the next CALL succeeds.",
+          "topic": "H29"
+        },
+        {
+          "kind": "subs",
+          "null": [
+            14
+          ],
+          "object": [
+            32
+          ],
+          "requirement": "The CALL whose precheck failed has sub null; the sibling that entered a frame has a sub.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "precheck-create-value",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 2,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60006000f3",
+                "value": "0x1"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60006000f3",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0xa121e69656643935d9773b079316e0bf2bcfead3",
+                "code": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "A CALL or CREATE that fails its balance precheck emits a failed frame with no result and no subtraces; the next sibling follows at [1] and the parent counts both.",
+          "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Insufficient balance for transfer"
+          },
+          "kind": "frame",
+          "requirement": "A CREATE that fails its balance precheck has error \"Insufficient balance for transfer\".",
+          "select": {
+            "action": {
+              "value": "0x1"
+            },
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a121e69656643935d9773b079316e0bf2bcfead3"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller continues: the failed CREATE pushes 0 and the next CREATE uses the unchanged creator nonce.",
+          "topic": "H29"
+        },
+        {
+          "kind": "subs",
+          "null": [
+            15
+          ],
+          "object": [
+            25
+          ],
+          "requirement": "The CREATE whose precheck failed has sub null; the sibling that entered a frame has a sub.",
+          "topic": "H20"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6460006000f36000526005601b6001f06020526005601b6000f060405260406020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "precheck-call-value-debug-callTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-call-value-debug-flatCallTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x600060006000600060016110025af1600052600060006000600060006110025af160205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "flatCallTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-create-value-debug-callTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x6460006000f36000526005601b6001f06020526005601b6000f060405260406020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "precheck-create-value-debug-flatCallTracer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x6460006000f36000526005601b6001f06020526005601b6000f060405260406020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          "latest",
+          {
+            "tracer": "flatCallTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create2-collision",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 3,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60006000f3",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x2ff5d0da975b92c71e01d1eb0cde4e0126e9d75a",
+                "code": "0x"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60006000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                1
+              ],
+              "type": "create"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "to": "0x0000000000000000000000000000000000001002",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "output": "0x000000000000000000000000000000000000000000000000000000000000002a"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                2
+              ],
+              "type": "call"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "A CREATE2 address collision emits a failed create frame with no result; the caller continues with a later sibling at [2].",
+          "topic": "H29"
+        },
+        {
+          "expected": {
+            "error": "Contract address collision"
+          },
+          "kind": "frame",
+          "requirement": "A CREATE2 address collision frame has error \"Contract address collision\".",
+          "select": {
+            "traceAddress": [
+              1
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000002ff5d0da975b92c71e01d1eb0cde4e0126e9d75a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"
+          ],
+          "kind": "outputs",
+          "requirement": "The collision pushes 0 and the caller continues to a successful CALL.",
+          "topic": "H29"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6460006000f3600052602a6005601b6000f5602052602a6005601b6000f5604052600060006000600060006110025af160605260606020f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x4c4b40",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-reverted",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "absent": [
+                "address",
+                "code"
+              ],
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x63deadbeef6000526004601cfd",
+                "value": "0x0"
+              },
+              "error": "Reverted",
+              "result": {
+                "gasUsed": "0x12",
+                "output": "0xdeadbeef"
+              },
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "A reverted nested CREATE has error \"Reverted\" and result {gasUsed, output} with its revert bytes and execution gas, without address or code.",
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0 and four bytes of return data.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6c63deadbeef6000526004601cfd600052600d60136000f06000523d60205260406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-code-size-limit",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x6160016000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Out of gas"
+          },
+          "kind": "frame",
+          "requirement": "Code above the EIP-170 size limit fails the creation with \"Out of gas\", as Parity and EIP-170 report it.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x656160016000f36000526006601a6000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x4c4b40",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-code-deposit-oog",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x615dc06000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Out of gas"
+          },
+          "kind": "frame",
+          "requirement": "Code whose deposit costs more than the child's remaining gas fails the creation with \"Out of gas\".",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x65615dc06000f36000526006601a6000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x14a67e",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create-ef-prefix",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "value": "0x0"
+              },
+              "error": null,
+              "result": {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              "subtraces": 1,
+              "traceAddress": [],
+              "type": "create"
+            },
+            {
+              "action": {
+                "from": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "init": "0x60ef60005360016000f3",
+                "value": "0x0"
+              },
+              "error": "*",
+              "result": null,
+              "subtraces": 0,
+              "traceAddress": [
+                0
+              ],
+              "type": "create"
+            }
+          ],
+          "kind": "frames",
+          "requirement": "The failed creation frame has an error and no result; the caller continues.",
+          "topic": "H09"
+        },
+        {
+          "expected": {
+            "error": "Invalid code"
+          },
+          "kind": "frame",
+          "requirement": "Code beginning with 0xEF (EIP-3541) fails the creation with \"Invalid code\", as OpenEthereum reports it.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H09"
+        },
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "The caller sees CREATE push 0.",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6960ef60005360016000f3600052600a60166000f060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x4c4b40",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-transient",
+      "probes": [
+        {
+          "expected": [
+            "0x3615600b5760003560005d5b60005c60005260206000f3",
+            "0x000000000000000000000000000000000000000000000000000000000000002a",
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "Transient storage written in one item is visible within it and reset for the next item.",
+          "topic": "H16"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x601780600b6000396000f33615600b5760003560005d5b60005c60005260206000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-warm",
+      "probes": [
+        {
+          "expected": [
+            "0x5a61c0de31505a90036000525a61c0de31505a90036020525a600054505a90036040525a600054505a900360605260806000f3",
+            "0x0000000000000000000000000000000000000000000000000000000000000a2f000000000000000000000000000000000000000000000000000000000000006b000000000000000000000000000000000000000000000000000000000000083b000000000000000000000000000000000000000000000000000000000000006b"
+          ],
+          "kind": "outputs",
+          "requirement": "Accounts and slots warmed by one item are cold again in the next: BALANCE then SLOAD cost cold, then warm.",
+          "topic": "H16"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x61c0de31506000545060338060146000396000f35a61c0de31505a90036000525a61c0de31505a90036020525a600054505a90036040525a600054505a900360605260806000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-selfdestruct",
+      "probes": [
+        {
+          "expected": [
+            "0x61beefff",
+            "0x",
+            "0x00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000005"
+          ],
+          "kind": "outputs",
+          "requirement": "A contract created by an earlier item survives SELFDESTRUCT in a later item (EIP-6780): its code remains and its balance moves.",
+          "topic": "H16"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x600480600b6000396000f361beefff",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "value": "0x5"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x72de48310d77a4d56aa400248b0b1613508f5b733b60005261beef3160205260406000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-selfdestruct-diff",
+      "probes": [
+        {
+          "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+          "expected": {
+            "balance": {
+              "*": {
+                "from": "0x5",
+                "to": "0x0"
+              }
+            },
+            "code": "=",
+            "nonce": "="
+          },
+          "index": 1,
+          "kind": "account",
+          "requirement": "SELFDESTRUCT of a contract created by an earlier item keeps the account: balance changes, code and nonce are unchanged, no deletion markers.",
+          "topic": "H26"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x600480600b6000396000f361beefff",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "value": "0x5"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x72de48310d77a4d56aa400248b0b1613508f5b733b60005261beef3160205260406000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "many-original-value",
+      "probes": [
+        {
+          "expected": [
+            "0x5a60026000555a900360005260206000f3",
+            "0x0000000000000000000000000000000000000000000000000000000000001390"
+          ],
+          "kind": "outputs",
+          "requirement": "Each item snapshots original storage: a slot committed by the previous item is clean and cold (5000 gas), not dirty.",
+          "topic": "H16"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x600160005560118060106000396000f35a60026000555a900360005260206000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x00de48310d77a4d56aa400248b0b1613508f5b73"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-input-only",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "input alone supplies the initcode, which returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": "0x602a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-data-input-equal",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "Equal data and input execute once as the initcode.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": "0x602a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-data-input-differ",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "Disagreeing data and input are rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": "0x600160005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-null-members",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "Explicit null members are omitted, so the initcode in data runs and returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": null,
+            "authorizationList": null,
+            "blobVersionedHashes": null,
+            "chainId": null,
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": null,
+            "maxFeePerBlobGas": null,
+            "maxFeePerGas": null,
+            "maxPriorityFeePerGas": null,
+            "nonce": null,
+            "type": null,
+            "value": null
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-null-block",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null block parameter is latest.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          null
+        ]
+      }
+    },
+    {
+      "name": "callmany-null-block",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null trace_callMany block parameter is latest.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x602a60005260206000f3",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          null
+        ]
+      }
+    },
+    {
+      "name": "field-null-accessList-unpriced",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null accessList is omitted and selects no transaction type, so the unpriced initcode returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": null,
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-null-blobVersionedHashes-unpriced",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null blobVersionedHashes is omitted and selects no transaction type, so the unpriced initcode returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": null,
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-null-authorizationList-unpriced",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A null authorizationList is omitted and selects no transaction type, so the unpriced initcode returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": null,
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-access-list",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000006b"
+          ],
+          "kind": "outputs",
+          "requirement": "An access-listed slot of the creation address is warm: PUSH, SLOAD 100, POP and GAS cost 107.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00de48310d77a4d56aa400248b0b1613508f5b73",
+                "storageKeys": [
+                  "0x0000000000000000000000000000000000000000000000000000000000000000"
+                ]
+              }
+            ],
+            "data": "0x5a600054505a900360005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-access-list-absent",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000083b"
+          ],
+          "kind": "outputs",
+          "requirement": "Without an access list the same SLOAD is cold: 2107.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x5a600054505a900360005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-authorization",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A legacy gasPrice with an authorizationList is accepted and priced as both fee caps; the valid authorization still delegates key 1 to the marker contract, which returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-authorization-absent",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "Without the authorization the same call reaches an EOA and returns no bytes.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-authorization-1559",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A valid authorization on an EIP-1559-priced call delegates key 1 to the marker contract, which returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-authorization-absent-1559",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "Without the authorization the same EIP-1559-priced call reaches an EOA and returns no bytes.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-from-omitted",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default.",
+            "topic": "H15"
+          },
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "An omitted from defaults to the zero address, observed by CALLER.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "gas": "0x493e0",
+            "input": "0x3360005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-from-omitted-zero-fee",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default.",
+            "topic": "H15"
+          },
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "An omitted from defaults to the zero address, observed by CALLER, on an explicitly zero-fee call.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3360005260206000f3",
+            "gas": "0x493e0",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-eth-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted",
+      "probes": [
+        {
+          "kind": "same-output",
+          "reference": "field-gas-omitted-eth-call",
+          "requirement": "Omitted gas follows the client's eth_call default at the selected state: GAS reports the same value.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-null",
+      "probes": [
+        {
+          "kind": "same-output",
+          "reference": "field-gas-omitted",
+          "requirement": "An explicit null gas is omitted: GAS reports the same value as the omitted-gas twin.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": null,
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for field-gas-zero; the rule follows eth_simulateV1 and eth_call in every client but Erigon, whose eth_call treats 0 as omitted.",
+          "recommended": -38013,
+          "requirement": "An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected (-38013 recommended) with no trace, never run with the default budget or traced out of gas.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -38013,
+          "requirement": "An explicit gas of 0 is a zero limit that fails the intrinsic-gas check: the call is rejected (-38013 recommended) with no trace, never run with the default budget or traced out of gas.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-zero-many",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -38013,
+          "requirement": "A trace_callMany item with an explicit gas of 0 fails the intrinsic-gas check, so the whole request is rejected (-38013 recommended) with no partial results.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x0",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-cap-eth-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0xffffffffffffffff",
+            "gasPrice": "0x0",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance-eth-call",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x9184e72a000",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "same-output",
+          "reference": "field-gas-omitted-allowance-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x9184e72a000",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-allowance-many",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "same-output",
+          "reference": "field-gas-omitted-allowance-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gasPrice": "0x9184e72a000",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded-eth-call",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x77359400",
+            "input": "0x5a60005260206000f3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "same-output",
+          "reference": "field-gas-omitted-funded-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gasPrice": "0x77359400",
+            "input": "0x5a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-gas-omitted-funded-many",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "same-output",
+          "reference": "field-gas-omitted-funded-eth-call",
+          "requirement": "A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit.",
+          "topic": "H15"
+        },
+        {
+          "depends": {
+            "reason": "The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control.",
+            "topic": "H15"
+          },
+          "index": 0,
+          "kind": "gas-output-bound",
+          "reference": "field-gas-cap-eth-call",
+          "requirement": "A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gasPrice": "0x77359400",
+                "input": "0x5a60005260206000f3"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-chain-id",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "A matching chainId is accepted and the initcode returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "chainId": "0xc72dd9d5e883e",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": "0x602a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-chain-id-mismatch",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "A chainId that does not match the chain rejects the request; it is invalid regardless of state (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "chainId": "0x1",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "input": "0x602a60005260206000f3"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-defaulted",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "kind": "frame",
+          "requirement": "A blob call without maxFeePerBlobGas runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-zero",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "kind": "frame",
+          "requirement": "An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-priced",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            }
+          },
+          "kind": "frame",
+          "requirement": "A maxFeePerBlobGas that covers the blob base fee keeps the selected block's BLOBBASEFEE. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-none",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            }
+          },
+          "kind": "frame",
+          "requirement": "A call without blob fields keeps the selected block's BLOBBASEFEE. The factory's CREATE2 child deploys the word it read.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-none-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-defaulted-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 0,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A blob call whose maxFeePerBlobGas is omitted or 0 pays no blob fee, so the sender pays 0 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-zero-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 0,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A blob call whose maxFeePerBlobGas is omitted or 0 pays no blob fee, so the sender pays 0 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "blob-fee-priced-stateDiff",
+      "probes": [
+        {
+          "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "expected": 131072,
+          "kind": "extra-charge",
+          "reference": "blob-fee-none-stateDiff",
+          "requirement": "A covering positive maxFeePerBlobGas is charged: blob gas 131072 at blob base fee 1, so the sender pays 131072 wei more than the same call without blob fields.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000004a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-maxfee",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-maxfee-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for combo-gasprice-maxfee.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-tip",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-tip-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for combo-gasprice-tip.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-dynamic",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-dynamic-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for combo-gasprice-dynamic.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-dynamic-equal",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-gasprice-dynamic-equal-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for combo-gasprice-dynamic-equal.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x77359400"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-untyped-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-untyped-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-untyped-dynamic.",
+          "requirement": "The call runs at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type0-gasprice",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type0-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type0-gasprice.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x0"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type0-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type0-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type0-dynamic.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x0"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type1-gasprice",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [],
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type1-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type1-gasprice.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [],
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x1"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type1-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [],
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type1-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type1-dynamic.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [],
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x1"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type2-gasprice",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x2"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type2-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type2-gasprice.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "type": "0x2"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type2-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x2"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-type2-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-type2-dynamic.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "type": "0x2"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type4-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x4"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type4-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-auth-type4-dynamic.",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x4"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type4-gasprice",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x4"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type4-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-auth-type4-gasprice.",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x4"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-gasprice-dynamic",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-gasprice-dynamic-eth-call",
+      "probes": [
+        {
+          "kind": "error",
+          "observe": "eth_call parity control for combo-auth-gasprice-dynamic.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type2-dynamic",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "requirement": "The call runs with type 2, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x2"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-auth-type2-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            "0x000000000000000000000000000000000000000000000000000000000000002a"
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-auth-type2-dynamic.",
+          "requirement": "The call runs with type 2, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x0000000000000000000000000000000000001002",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0xa",
+                "r": "0x4e9c1a2430ff1f88a19f6567e51648c181b00616b4adcff8548b9785e3898814",
+                "s": "0x707840665ae678f4933987814326a609a2ddb271ed461970ad744c0aae11779f",
+                "yParity": "0x0"
+              }
+            ],
+            "data": "0x",
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x493e0",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "type": "0x2"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type3-dynamic",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+            }
+          },
+          "kind": "frame",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x3"
+          },
+          [
+            "trace",
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type3-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-blob-type3-dynamic.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-gasprice",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
+            }
+          },
+          "kind": "frame",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-blob-gasprice.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-gasprice-capped",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
+            }
+          },
+          "kind": "frame",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerBlobGas": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-gasprice-capped-eth-call",
+      "probes": [
+        {
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-blob-gasprice-capped.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerBlobGas": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type3-gasprice",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
+            }
+          },
+          "kind": "frame",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerBlobGas": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x3"
+          },
+          [
+            "trace",
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type3-gasprice-eth-call",
+      "probes": [
+        {
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-blob-type3-gasprice.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "maxFeePerBlobGas": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x3"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type2-dynamic",
+      "probes": [
+        {
+          "expected": {
+            "error": null,
+            "result": {
+              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
+            }
+          },
+          "kind": "frame",
+          "requirement": "The blob call runs with type 2, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
+          "select": {
+            "traceAddress": [
+              0
+            ],
+            "type": "create"
+          },
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x2"
+          },
+          [
+            "trace",
+            "stateDiff"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "combo-blob-type2-dynamic-eth-call",
+      "probes": [
+        {
+          "expected": [
+            null
+          ],
+          "kind": "outputs",
+          "observe": "eth_call parity control for combo-blob-type2-dynamic.",
+          "requirement": "The blob call runs with type 2, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0xb2d05e00",
+            "maxPriorityFeePerGas": "0xb2d05e00",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+            "type": "0x2"
+          },
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-nonce-above",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73"
+          ],
+          "kind": "outputs",
+          "requirement": "A supplied nonce 13 is ignored: the creation runs at the address of state nonce 10.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "nonce": "0xd"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "field-nonce-below",
+      "probes": [
+        {
+          "expected": [
+            "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73"
+          ],
+          "kind": "outputs",
+          "requirement": "A supplied nonce 7 is ignored: the creation runs at the address of state nonce 10.",
+          "topic": "H15"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3060005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400",
+            "nonce": "0x7"
+          },
+          [
+            "trace"
+          ],
+          "latest"
+        ]
+      }
+    }
+  ],
+  "source_commit": "eaf2f72d32960865020705d186ac276a08921b48",
+  "source_dirty": true,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "8a9b4dfa0276bd4bb62e8624b9fe429096803a6b",
+    "generated_sha256": "c0fdb565f83745f4a822f19d5c7b4572845af40a1ba37969e813cdabecca7dd5",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-03T01:43:54.668100+00:00"
+}

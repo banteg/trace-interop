@@ -15,7 +15,7 @@
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
     "probes-forks.json": "96e02a3874278fd883bad5b984755e13b3f6fd426138dbd2badcf42e64e2c9ef",
-    "probes-prague.json": "e738912d4a0c676bbfd3e3480ed826ad4d0c87855d79de56124756c03ef32ce1",
+    "probes-prague.json": "48a35686b94c833643c73d2b84157840ec0474fccb0655a7d709b8f7a75a1049",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-selector.json": "0ff3b0cea0cd99cde7fc538825957a49c01500a2034229ccc0138f9d514191f8",
     "raw-validation.json": "8996a7a3f5629d3aaeea85200a526fb7372ad7dd460d7a9706d3727e482f526b",
@@ -24,10 +24,10 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 14757,
+    "assessed": 14976,
     "blocked": 506,
     "control": 35,
-    "partial": 849,
+    "partial": 850,
     "unassessed": 0
   },
   "evidence": {
@@ -49,7 +49,7 @@
     "../evidence/2026-10-02/eval/raw-validation/manifest.json": "24ce8c91f50bad28f2bbfc8a71ffd31039d3f03d1cbeb3d909d445dabf42ba87",
     "../evidence/2026-10-02/eval/reorg-safe/manifest.json": "18cae49f8c012074a698627508ccc392be829f3df27b6b8ff0486324122c79d6",
     "../evidence/2026-10-02/eval/repeat/manifest.json": "925bd6c7ad334845e0388f019a68815bf82104443ce40cd8f2f16256cc7b59b4",
-    "../evidence/2026-10-03/blob-charge/probes-prague/manifest.json": "6dc2a2ee9071a4ffd32237fee72e8c0f2b42b5a409e9488224532a45c771beb9"
+    "../evidence/2026-10-03/fee-combos/probes-prague/manifest.json": "1d76974e1f9e1eb41596aff082a96776cb2973c1bccde72c1b37b71dc84632a7"
   },
   "matrix": {
     "../evidence/2026-10-02/eval/clients.lock.json": "3e089d22538c8192b986365d07144cb510a9221ed37410267940b4f16a8d8476",
@@ -64,13 +64,13 @@
   "sources": {
     "decisions/impact.json": "97d0d937c3e8267ed6f6ad258245bf34569a1d8ec2f86af6918e240f781ef98c",
     "decisions/laws.json": "a96b80df2902e0b1ddac1cd13748c818a479cef9bd6124be7884f27e6084a5be",
-    "decisions/ledger.json": "38f3ebe7287e7a10ba1f224c499dd27b3e7e610649a5f8930f8bc40ffb3e8041",
+    "decisions/ledger.json": "d5fb70e1225a48a9a8da0635d61bf0de611306e61fdd457fc0b2e08ae0ee2769",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "6c4b9d8603588a2775e848d95327e8df36d05df2abd36dd40a65339a2cf256d2",
-    "fixtures/checksums.json": "e4e257cc51db1f90d42452bc40c43bf97bf5a8800ff5988069585a2c600a595a",
+    "fixtures/checksums.json": "7937f0163440ce2b4c51c53834e5db092289f79c93cd29ac547b083a99e604bb",
     "locks/source-revisions.json": "7eb92d4137b3f7de34679ceb45591fda0ba510d3407cc502f3997f1f2d6dfc35",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "8f1c021d15353fd97d1035c96813ca267022aeadaeced8f6e403dc5627ded910",
+    "reports.lock.json": "b9854c2c65e88f278b3d3f967ed20482b27d9e5009330c1341894542ca08825e",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "eb81711fdc9f0ee4add51e67a43bd560362c0c86017f72d22fcb80d25fed91fe",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
@@ -78,14 +78,14 @@
     "trace_interop/execution_models.py": "ea1caa89675076af1a853cb407295ad9e61b7a5d2507d562a3c71a0d80b162ff",
     "trace_interop/fee_policy.py": "89859fe4d2a85bf3ea800dd219b81e85da62554544025d47474b9d7a78ba61a8",
     "trace_interop/inventory.py": "c18981e20d46231a977703c3aba56d57af8adc6500f06a6880f24dcb68462f91",
-    "trace_interop/isolation.py": "816a36b78d9e7ad10ba62c05a3e011bf6ee1630583bd45260a6f1ee10fd3d6ec",
+    "trace_interop/isolation.py": "c3bf4390205a227238abcb7ff76cfafa91571db111bcfc248a2598608b0a8ccd",
     "trace_interop/laws.py": "d0ac48a7811aab477492de9bc5b22977168ea83b771eaa641081afbc45100ad7",
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "42091ebc2cd25f820c6f24a46e8d03fb4512a9444187d25d4691be316ac88fa7",
     "trace_interop/presentation.py": "6d752d4d517a5dd97f9326bdc022b4c7f09a0a8ad8e837c92b63379358fff465",
     "trace_interop/probes.py": "e35c5a93a1a8e31303b6d99d6c1df98f9248895e0e345fdcce2ab66a8e19023d",
     "trace_interop/report.py": "075e9294a06d1df9cd7d372140b2e1b75b1417bb8b06060040590ce112f1ad06",
-    "trace_interop/rules.py": "c1acbef94e5f35dd673f7026bec0aecc430d7e5b8535c82260eabcb0145517ab",
+    "trace_interop/rules.py": "08c04228fa001a0e44586a6de72f95a1fa7a42bef33c7d72c7942f09cc5d0ec2",
     "trace_interop/scenarios.py": "4e310faf73a3b97756bf4a4967b34ae313d1782f8419f1c069943ebb40213e4b",
     "trace_interop/status.py": "c0fdd3cdc40fe29ca469c154d2786895944e98c5aa765e9b297dc017d4b90c8d",
     "trace_interop/tables.py": "338c20cfe1b1175188a5d656ae2f3af9564827d70d8bc9dcf157db6ad7dc0a6a",

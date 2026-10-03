@@ -22,7 +22,7 @@ Captured check verdicts per decision and build: the current matrix (builds check
 
 ## Verdict changes
 
-18 verdicts changed for 3 clients.
+19 verdicts changed for 3 clients.
 
 ### [Anvil](clients/anvil.md)
 
@@ -56,3 +56,4 @@ Captured check verdicts per decision and build: the current matrix (builds check
 | [H16 · Fee accounting and sequential state diffs](decisions/H16.md) | Nethermind stable | ⚠️ Differs | ✅ Checked cases agree |
 | [H17 · New-account stateDiff encoding](decisions/H17.md) | Nethermind stable | ⚠️ Differs | ✅ Checked cases agree |
 | [H26 · Account deletion across Cancun](decisions/H26.md) | Nethermind stable | ⚠️ Differs | ✅ Checked cases agree |
+| [H14 · Invalid parameters and rejected calls](decisions/H14.md) | Nethermind dev | ✅ Checked cases agree | ⚠️ Differs |

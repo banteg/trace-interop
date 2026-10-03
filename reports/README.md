@@ -8,7 +8,7 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **86 of 132** client decisions agree with the draft (+2 since the previous capture). 14 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 30 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **85 of 132** client decisions agree with the draft (+1 since the previous capture). 14 more have a submitted fix, and **21 differ with no fix yet**: 21 on converged decisions and 0 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
@@ -16,7 +16,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **86 of 132** c
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Besu](clients/besu.md) | 26.10-develop · 711f8142 | 6 (+2) | 8 | 13 | 0 | 0 | 6 | 2 | 2 / 19 |
 | [Erigon](clients/erigon.md) | 3.8.0-dev · 6da806cb | 28 | 2 | 1 | 0 | 0 | 2 | 14 | 22 / 2 |
-| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 3370d566 | 30 | 0 | 0 | 0 | 0 | 3 | 14 | 47 / 0 |
+| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 3370d566 | 29 (-1) | 0 | 1 | 0 | 0 | 3 | 13 | 47 / 0 |
 | [Reth](clients/reth.md) | 2.7.0 · 078d0262 | 22 | 4 | 6 | 0 | 0 | 1 | 0 | 23 / 6 |
 | [Anvil](clients/anvil.md) | 1.8.4-nightly · 328811cb | 14 | 0 | 10 | 0 | 0 | 9 | 0 | 2 / 0 |
 

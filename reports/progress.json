@@ -75,12 +75,12 @@
     {
       "builds": {
         "development": {
-          "agree": 30,
+          "agree": 29,
           "build": [
             "2.2.0-preview \u00b7 3370d566"
           ],
           "gained": 0,
-          "lost": 0
+          "lost": 1
         },
         "release": {
           "agree": 17,
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 30,
-        "converged": 0,
+        "agree": 29,
+        "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 3
       },
-      "dev_only": 14,
+      "dev_only": 13,
       "name": "Nethermind",
       "prs": {
         "merged": 47,

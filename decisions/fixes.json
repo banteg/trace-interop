@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-02",
+  "checked_at": "2026-10-03",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -809,7 +809,10 @@
             }
           }
         ],
-        "client": null,
+        "client": {
+          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
+          "date": "2026-10-03T04:32:16Z"
+        },
         "builds": {
           "078d026239a1977f5d79eeb67fa44d2087ebf7e5": false,
           "3d592ece6de8c4559987416a544fc215fd6d6921": false
@@ -1631,7 +1634,10 @@
             }
           }
         ],
-        "client": null,
+        "client": {
+          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
+          "date": "2026-10-03T04:32:16Z"
+        },
         "builds": {
           "078d026239a1977f5d79eeb67fa44d2087ebf7e5": false,
           "3d592ece6de8c4559987416a544fc215fd6d6921": false
@@ -1944,7 +1950,10 @@
             }
           }
         ],
-        "client": null,
+        "client": {
+          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
+          "date": "2026-10-03T04:32:16Z"
+        },
         "builds": {
           "078d026239a1977f5d79eeb67fa44d2087ebf7e5": false,
           "3d592ece6de8c4559987416a544fc215fd6d6921": false
@@ -2560,7 +2569,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain"
+      "note": "trace_callMany names a rejected call\u2019s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain"
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11435",
@@ -2624,10 +2633,17 @@
         "H23",
         "H26"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth"
+      "merged_at": "2026-10-03T04:45:21Z",
+      "note": "bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth",
+      "uptake": {
+        "merge_commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
+        "builds": {
+          "078d026239a1977f5d79eeb67fa44d2087ebf7e5": false,
+          "3d592ece6de8c4559987416a544fc215fd6d6921": false
+        }
+      }
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17301",
@@ -2706,7 +2722,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301–#17312 replays every mined-probes block and agrees on H09, H16–H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833"
+      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301\u2013#17312 replays every mined-probes block and agrees on H09, H16\u2013H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833"
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17306",

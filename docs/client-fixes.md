@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-02**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-03**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -173,11 +173,11 @@ flowchart LR
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
-  revm_inspectors_530["revm-inspectors #530"]:::released
+  revm_inspectors_530["revm-inspectors #530"]:::in_client
   revm_inspectors_v0_44_1(["revm-inspectors v0.44.1"]):::done
-  Reth_takes_revm_inspectors_v0_44_1[["Reth takes revm-inspectors v0.44.1"]]:::pending
-  revm_inspectors_532["revm-inspectors #532"]:::released
-  revm_inspectors_533["revm-inspectors #533"]:::released
+  Reth_takes_revm_inspectors_v0_44_1[["Reth takes revm-inspectors v0.44.1"]]:::done
+  revm_inspectors_532["revm-inspectors #532"]:::in_client
+  revm_inspectors_533["revm-inspectors #533"]:::in_client
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_4274 -.-> next_Alloy_release
@@ -188,12 +188,12 @@ flowchart LR
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
   revm_inspectors_530 --> revm_inspectors_v0_44_1
-  revm_inspectors_v0_44_1 -.-> Reth_takes_revm_inspectors_v0_44_1
+  revm_inspectors_v0_44_1 --> Reth_takes_revm_inspectors_v0_44_1
   revm_inspectors_532 --> revm_inspectors_v0_44_1
   revm_inspectors_533 --> revm_inspectors_v0_44_1
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
-  classDef released fill:#fbefff,stroke:#8250df,color:#1f2328
+  classDef in_client fill:#fff8c5,stroke:#9a6700,color:#1f2328
   classDef done fill:#ffffff,stroke:#1a7f37,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
 ```
@@ -219,7 +219,7 @@ flowchart LR
 | [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478) | Error on unknown block in trace_replayBlockTransactions; unknown-block replay errors like trace_block | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Reth #27586](https://github.com/paradigmxyz/reth/pull/27586) | Keep omitted-gas calls within the RPC gas cap; Native Fedora regression: historical block or sender allowance must not raise omitted unsigned-call gas above the RPC cap. | [H15](../reports/decisions/H15.md) (partial) | 2026-10-01 | — | — | dev | — |
 | [Reth #27593](https://github.com/paradigmxyz/reth/pull/27593) | Use the local pending block for pending simulations; Locally built pending state returned slot 42 to storage_at but slot 7 to a pending call; Fedora regression and 131 affected RPC tests passed after fix | — | — | — | — | — | — |
-| [Reth #27668](https://github.com/paradigmxyz/reth/pull/27668) | Bump revm-inspectors to 0.44.1; bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth | [H09](../reports/decisions/H09.md) (partial), [H20](../reports/decisions/H20.md) (partial), [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
+| [Reth #27668](https://github.com/paradigmxyz/reth/pull/27668) | Bump revm-inspectors to 0.44.1; bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth | [H09](../reports/decisions/H09.md) (partial), [H20](../reports/decisions/H20.md) (partial), [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | 2026-10-03 | — | — | — | — |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
 | [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete Parity VM execution deltas; its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | — |
 | [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs | [H18](../reports/decisions/H18.md) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | dev, stable |
@@ -227,9 +227,9 @@ flowchart LR
 | [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode in VM traces | [H19](../reports/decisions/H19.md) | 2026-09-22 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | dev, stable |
 | [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence in state diffs | [H17](../reports/decisions/H17.md) | 2026-09-24 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | dev, stable |
 | [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | — |
-| [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
-| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
-| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
+| [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | [2026-10-03](https://github.com/paradigmxyz/reth/commit/ce5c26d2c064333cf27c142f67b6ec52d1ec7158) | — | — |
+| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | [2026-10-03](https://github.com/paradigmxyz/reth/commit/ce5c26d2c064333cf27c142f67b6ec52d1ec7158) | — | — |
+| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | [2026-10-03](https://github.com/paradigmxyz/reth/commit/ce5c26d2c064333cf27c142f67b6ec52d1ec7158) | — | — |
 
 ## Specifications, tests and other repositories
 

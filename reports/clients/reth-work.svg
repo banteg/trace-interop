@@ -55,15 +55,15 @@
 <rect class="b-fix" x="16" y="140" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="153" text-anchor="middle">H09</text>
 <text class="label" x="70" y="153">Failed frame results and error labels</text>
-<rect class="pr edge partial" x="400" y="140" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="153" text-anchor="middle">#27668</text>
+<rect class="b-fix edge partial" x="400" y="140" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="153" text-anchor="middle">#27668</text>
 <rect class="b-fix" x="461" y="140" width="150" height="18" rx="4"/>
 <text class="n-fix" x="536" y="153" text-anchor="middle">revm-inspectors #533</text>
 <rect class="b-fix" x="16" y="164" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="177" text-anchor="middle">H20</text>
 <text class="label" x="70" y="177">vmTrace step timing and deltas</text>
-<rect class="pr edge partial" x="400" y="164" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="177" text-anchor="middle">#27668</text>
+<rect class="b-fix edge partial" x="400" y="164" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="177" text-anchor="middle">#27668</text>
 <rect class="b-agree edge partial" x="461" y="164" width="150" height="18" rx="4"/>
 <text class="n-agree" x="536" y="177" text-anchor="middle">revm-inspectors #504</text>
 <rect class="b-agree edge partial" x="400" y="188" width="150" height="18" rx="4"/>
@@ -73,8 +73,8 @@
 <rect class="b-fix" x="16" y="212" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="225" text-anchor="middle">H23</text>
 <text class="label" x="70" y="225">Special-action address matching</text>
-<rect class="pr edge partial" x="400" y="212" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="225" text-anchor="middle">#27668</text>
+<rect class="b-fix edge partial" x="400" y="212" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="225" text-anchor="middle">#27668</text>
 <rect class="pr edge partial" x="461" y="212" width="82" height="18" rx="4"/>
 <text class="label" x="502" y="225" text-anchor="middle">revm #3833</text>
 <rect class="b-fix" x="549" y="212" width="150" height="18" rx="4"/>
@@ -110,8 +110,8 @@
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H26</text>
 <text class="label" x="70" y="377">Account deletion across Cancun</text>
-<rect class="pr edge partial" x="400" y="364" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="377" text-anchor="middle">#27668</text>
+<rect class="b-fix edge partial" x="400" y="364" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="377" text-anchor="middle">#27668</text>
 <rect class="pr edge partial" x="461" y="364" width="82" height="18" rx="4"/>
 <text class="label" x="502" y="377" text-anchor="middle">revm #3833</text>
 <rect class="b-agree edge partial" x="549" y="364" width="150" height="18" rx="4"/>

@@ -6,6 +6,10 @@
 
 **Progress on 2.2.0-preview · 3370d566** (of 33 decisions): ✅ 29 agree · ❔ 1 policy open · ⚪ 3 not fully measured. 13 of these agreements are not yet in 2.1.0 · b3e7e84c. Upstream fix PRs: 47 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
 
+![Nethermind decisions by outcome, with fix PRs](nethermind-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `2.1.0` | [`b3e7e84c`](https://github.com/NethermindEth/nethermind/commit/b3e7e84c1695420e771326f73801b66fa0574871) | 2026-10-01 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

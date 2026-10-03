@@ -6,6 +6,10 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 **Progress on 1.17.7-unstable · 67f41dea** (of 33 decisions): ✅ 29 agree · ❔ 1 policy open · ⚪ 3 not fully measured. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
+![Geth draft fork decisions by outcome, with fix PRs](geth-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `1.17.7-unstable` | [`67f41dea`](https://github.com/banteg/go-ethereum/commit/67f41deaa056d8bba18dffd21cc32338633878a0) | 2026-09-30 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

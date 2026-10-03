@@ -6,6 +6,10 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 **Progress on 2.7.0 · 078d0262** (of 33 decisions): ✅ 22 agree · 🛠️ 4 fix submitted · ⚠️ 6 with no fix yet (6 on converged decisions) · ⚪ 1 not fully measured. Upstream fix PRs: 23 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
 
+![Reth decisions by outcome, with fix PRs](reth-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

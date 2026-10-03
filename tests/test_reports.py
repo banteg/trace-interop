@@ -181,12 +181,14 @@ class ChangesPageTests(unittest.TestCase):
 
 class ProgressTests(unittest.TestCase):
     def test_buckets_separate_unfixed_differences_by_policy(self):
-        from trace_interop.progress import bucket, tally
+        from collections import Counter
+
+        from trace_interop.progress import bucket
         self.assertEqual(bucket('⚠️', True), 'converged')
         self.assertEqual(bucket('⛔', False), 'review')  # an unavailable method still needs a change
         self.assertEqual(bucket('🟡', True), 'unmeasured')  # a partial assessment is not a measured difference
         self.assertEqual(bucket('🛠️', False), 'fix')
-        counts = tally({'H01': '✅', 'H02': '⚠️', 'H03': '⚠️', 'H04': '❔'}, {'H02'})
+        counts = Counter(bucket(symbol, topic in {'H02'}) for topic, symbol in {'H01': '✅', 'H02': '⚠️', 'H03': '⚠️', 'H04': '❔'}.items())
         self.assertEqual(dict(counts), {'agree': 1, 'converged': 1, 'review': 1, 'policy': 1})
 
     def test_chart_is_deterministic_and_names_every_count(self):
@@ -198,6 +200,23 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(chart, svg(rows, 32))
         self.assertIn('Besu 2 agree, 30 no fix · under review', chart)
         self.assertIn('Reth 15 agree, 3 fix submitted, 14 no fix · converged', chart)
+
+    def test_work_map_groups_decisions_and_styles_fix_prs_by_stage(self):
+        from trace_interop.progress import work_svg
+        entries = [('H01', 'Method coverage', 'agree', [], ''),
+                   ('H03', 'Filter composition and mode', 'fix', [('#1', 'open', False)], ''),
+                   ('H15', 'Unsigned simulation fees', 'converged', [('#2', 'built', True), ('#3', 'merged', False)], ''),
+                   ('H07', 'Replay transactionHash field', 'unmeasured', [], '12 blocked cases: unsupported.'),
+                   ('H05', 'Post-merge reward records', 'converged', [], '')]
+        chart = work_svg('Besu', entries)
+        self.assertEqual(chart, work_svg('Besu', entries))
+        self.assertIn('Besu decisions and fix PRs: 1 agree, 1 fix submitted, 2 no fix · converged, 1 not fully measured', chart)
+        self.assertIn('No fix · converged (2)', chart)
+        self.assertIn('class="pr" ', chart)  # an open, complete fix
+        self.assertIn('class="b-agree edge partial"', chart)  # a partial fix in the measured build
+        self.assertIn('class="b-fix"', chart)  # merged, not yet in the measured build
+        self.assertIn('12 blocked cases: unsupported.', chart)
+        self.assertIn('no fix PR', chart)
 
     def test_published_progress_matches_the_checks(self):
         root = Path(__file__).resolve().parents[1]
@@ -218,6 +237,10 @@ class ProgressTests(unittest.TestCase):
         agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in native)
         self.assertIn(f'**{agree} of {len(native) * decisions}**', page)
         self.assertTrue((root/'reports/progress.svg').is_file())
+        for f in [*NATIVE_CLIENTS, *REPORTED_CLIENTS]:
+            with self.subTest(work_map=f):
+                self.assertIn(f']({f}-work.svg)', (root/f'reports/clients/{f}.md').read_text())
+                self.assertTrue((root/f'reports/clients/{f}-work.svg').is_file())
         progress = json.loads((root/'reports/progress.json').read_text())
         self.assertEqual(progress['decisions'], decisions)
         self.assertEqual(sum(c['builds']['development']['agree'] for c in progress['clients'] if c['counted']), agree)

@@ -6,6 +6,10 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 **Progress on 26.10-develop · 711f8142** (of 33 decisions): ✅ 6 agree (+2 since the previous capture) · 🛠️ 8 fix submitted · ⚠️ 13 with no fix yet (13 on converged decisions) · ⚪ 6 not fully measured. 2 of these agreements are not yet in 26.9.0 · ee9c64c8. Upstream fix PRs: 2 merged, 19 open ([client fixes](../../docs/client-fixes.md)).
 
+![Besu decisions by outcome, with fix PRs](besu-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `26.9.0` | [`ee9c64c8`](https://github.com/besu-eth/besu/commit/ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4) | 2026-09-22 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

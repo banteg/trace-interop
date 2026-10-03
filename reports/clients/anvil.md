@@ -6,6 +6,10 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 **Progress on 1.8.4-nightly · 328811cb** (of 33 decisions): ✅ 14 agree · ⚠️ 10 with no fix yet (10 on converged decisions) · ⚪ 9 not fully measured. Upstream fix PRs: 2 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
 
+![Anvil decisions by outcome, with fix PRs](anvil-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `1.8.4` | [`50af4efe`](https://github.com/foundry-rs/foundry/commit/50af4efe189dc64bad2b75ed6990b835de66c4ae) | 2026-10-01 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

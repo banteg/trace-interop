@@ -30,8 +30,24 @@ COLOURS = {
 }
 
 
+# Page text per colour scheme: (label, muted).
+TEXT = {'light': ('#1f2328', '#59636e'), 'dark': ('#e6edf3', '#9198a1')}
+
+
 def style(scheme):
-    return ''.join(f'.b-{key}{{fill:{bar}}}.n-{key}{{fill:{number}}}' for key, (bar, number) in COLOURS[scheme].items())
+    label, muted = TEXT[scheme]
+    agree = COLOURS[scheme]['agree'][0]
+    return (f'.label{{fill:{label}}}.muted{{fill:{muted}}}.pr{{fill:none;stroke:{agree}}}.edge{{stroke:{agree}}}'
+            + ''.join(f'.b-{key}{{fill:{bar}}}.n-{key}{{fill:{number}}}' for key, (bar, number) in COLOURS[scheme].items()))
+
+
+def header(width, height, title):
+    """An svg root with the shared font and light and dark palettes; `title` is its accessible name."""
+    return [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title">',
+            f'<title id="title">{escape(title)}</title>',
+            ('<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}'
+             f'.head{{font-weight:600}}.partial{{stroke-dasharray:3 2}}{style("light")}'
+             f'@media (prefers-color-scheme:dark){{{style("dark")}}}</style>')]
 
 
 def bucket(symbol, converged):
@@ -45,11 +61,6 @@ def bucket(symbol, converged):
     if symbol == '❔':
         return 'policy'
     return 'unmeasured'
-
-
-def tally(symbols, converged):
-    """Counter of buckets for {topic: verdict symbol}, given the set of converged topics."""
-    return Counter(bucket(symbol, topic in converged) for topic, symbol in symbols.items())
 
 
 def pr_counts(fixes, client):
@@ -68,12 +79,7 @@ def svg(rows, total):
     canvas = (left + width + 16, legend_top + legend_height + 4)
     summary = '; '.join(f'{name} ' + ', '.join(f'{counts[key]} {label.lower()}' for key, _, label in BUCKETS if counts[key])
                         for name, counts in rows)
-    out = [(f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas[0]}" height="{canvas[1]}" '
-            f'viewBox="0 0 {canvas[0]} {canvas[1]}" role="img" aria-labelledby="title">'),
-           f'<title id="title">Decision outcomes per client: {escape(summary)}</title>',
-           ('<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}'
-            f'.label{{fill:#1f2328}}{style("light")}'
-            f'@media (prefers-color-scheme:dark){{.label{{fill:#e6edf3}}{style("dark")}}}</style>')]
+    out = header(*canvas, f'Decision outcomes per client: {summary}')
     for i, (name, counts) in enumerate(rows):
         y = top + i * step
         out.append(f'<text class="label" x="{left - 8}" y="{y + height / 2 + 4:g}" text-anchor="end">{escape(name)}</text>')
@@ -92,3 +98,74 @@ def svg(rows, total):
         out.append(f'<rect class="b-{key}" x="{x}" y="{y}" width="12" height="12" rx="2"/>')
         out.append(f'<text class="label" x="{x + 18}" y="{y + 10}">{escape(label)}</text>')
     return '\n'.join(out) + '\n</svg>\n'
+
+
+# (rect, text) classes of a fix PR chip by stage: in the measured build, merged but not in it, open.
+PR_STAGES = {'built': ('b-agree', 'n-agree'), 'merged': ('b-fix', 'n-fix'), 'open': ('pr', 'label')}
+
+
+def chip_width(text):
+    """An estimate of a 12px label's width, generous enough for the system fonts the chart names."""
+    return round(len(text) * 6.8) + 14
+
+
+def work_svg(name, entries):
+    """Deterministic map of one client's remaining work: entries are (topic, title, bucket, prs, note), prs being
+    (label, stage, partial) fix PRs, stage one of PR_STAGES, and note what stands in for them when there are
+    none, such as why a decision is not fully measured. Decisions are grouped by bucket in bar order; agreeing
+    decisions are listed compactly, the others one per row with their PRs: filled when in the measured build or
+    merged but not in it yet, outlined when open, with a dashed edge when the PR covers only part of the decision."""
+    width, left, title_x, pr_x, row, chip = 760, 16, 70, 400, 24, 18
+    out, y = [], 12
+    counts = {key: sum(1 for e in entries if e[2] == key) for key, *_ in BUCKETS}
+
+    def chips(x, y, labels, classes):
+        for text, cls in zip(labels, classes):
+            w = chip_width(text)
+            if x + w > width - left:
+                x, y = pr_x, y + row
+            out.append(f'<rect class="{cls[0]}" x="{x}" y="{y}" width="{w}" height="{chip}" rx="4"/>')
+            out.append(f'<text class="{cls[1]}" x="{x + w / 2:g}" y="{y + 13}" text-anchor="middle">{escape(text)}</text>')
+            x += w + 6
+        return y
+
+    for key, _, label in BUCKETS:
+        group = [e for e in entries if e[2] == key]
+        if not group:
+            continue
+        out.append(f'<text class="label head" x="{left}" y="{y + 13}">{escape(label)} ({len(group)})</text>')
+        y += row
+        if key == 'agree':
+            x = left
+            for topic, *_ in group:
+                if x + 44 > width - left:
+                    x, y = left, y + row
+                out.append(f'<rect class="b-{key}" x="{x}" y="{y}" width="44" height="{chip}" rx="4"/>')
+                out.append(f'<text class="n-{key}" x="{x + 22}" y="{y + 13}" text-anchor="middle">{topic}</text>')
+                x += 50
+            y += row + 8
+            continue
+        for topic, title, _, prs, note in group:
+            out.append(f'<rect class="b-{key}" x="{left}" y="{y}" width="44" height="{chip}" rx="4"/>')
+            out.append(f'<text class="n-{key}" x="{left + 22}" y="{y + 13}" text-anchor="middle">{topic}</text>')
+            short = title if len(title) <= 46 else title[:45].rstrip() + '…'
+            out.append(f'<text class="label" x="{title_x}" y="{y + 13}">{escape(short)}</text>')
+            if prs:
+                y = chips(pr_x, y, [p[0] for p in prs],
+                          [(PR_STAGES[stage][0] + ' edge partial' * partial, PR_STAGES[stage][1]) for _, stage, partial in prs])
+            else:
+                note = note or 'no fix PR'
+                out.append(f'<text class="muted" x="{pr_x}" y="{y + 13}">{escape(note if len(note) <= 50 else note[:49].rstrip() + "…")}</text>')
+            y += row
+        y += 8
+    legend = [(*PR_STAGES['built'], 'in measured build'), (*PR_STAGES['merged'], 'merged, not in build'),
+              (*PR_STAGES['open'], 'open'), ('pr partial', 'label', 'partial (any stage)')]
+    x = left
+    for rect, text, word in legend:
+        w = chip_width(word)
+        out.append(f'<rect class="{rect}" x="{x}" y="{y}" width="{w}" height="{chip}" rx="4"/>')
+        out.append(f'<text class="{text}" x="{x + w / 2:g}" y="{y + 13}" text-anchor="middle">{word}</text>')
+        x += w + 6
+    out.append(f'<text class="muted" x="{x + 6}" y="{y + 13}">fix PRs, by state</text>')
+    summary = ', '.join(f'{counts[key]} {label.lower()}' for key, _, label in BUCKETS if counts[key])
+    return '\n'.join(header(width, y + chip + 12, f'{name} decisions and fix PRs: {summary}') + out) + '\n</svg>\n'

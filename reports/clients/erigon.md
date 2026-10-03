@@ -6,6 +6,10 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 **Progress on 3.8.0-dev · 6da806cb** (of 33 decisions): ✅ 28 agree · 🛠️ 2 fix submitted · ⚠️ 1 with no fix yet (1 on converged decisions) · ⚪ 2 not fully measured. 14 of these agreements are not yet in 3.7.1 · 8c1e3893. Upstream fix PRs: 22 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
 
+![Erigon decisions by outcome, with fix PRs](erigon-work.svg)
+
+Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs ([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.
+
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
 | `3.7.1` | [`8c1e3893`](https://github.com/erigontech/erigon/commit/8c1e3893d77d230720d172f1492d95b5777a862c) | 2026-10-01 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json) |

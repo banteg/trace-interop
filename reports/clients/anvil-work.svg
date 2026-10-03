@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="618" viewBox="0 0 760 618" role="img" aria-labelledby="title">
+<title id="title">Anvil decisions and fix PRs: 14 agree, 10 no fix · converged, 9 not fully measured</title>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.head{font-weight:600}.partial{stroke-dasharray:3 2}.label{fill:#1f2328}.muted{fill:#59636e}.pr{fill:none;stroke:#11756f}.edge{stroke:#11756f}.b-agree{fill:#11756f}.n-agree{fill:#ffffff}.b-fix{fill:#79c7bd}.n-fix{fill:#1f2328}.b-converged{fill:#c8641a}.n-converged{fill:#ffffff}.b-review{fill:#f2b36b}.n-review{fill:#1f2328}.b-policy{fill:#8172c4}.n-policy{fill:#ffffff}.b-unmeasured{fill:#dde1e6}.n-unmeasured{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}.muted{fill:#9198a1}.pr{fill:none;stroke:#3aa59a}.edge{stroke:#3aa59a}.b-agree{fill:#3aa59a}.n-agree{fill:#0d1117}.b-fix{fill:#1a6b62}.n-fix{fill:#ffffff}.b-converged{fill:#e5843a}.n-converged{fill:#0d1117}.b-review{fill:#8f5420}.n-review{fill:#ffffff}.b-policy{fill:#9b8fe0}.n-policy{fill:#0d1117}.b-unmeasured{fill:#2d333b}.n-unmeasured{fill:#e6edf3}}</style>
+<text class="label head" x="16" y="25">Agree (14)</text>
+<rect class="b-agree" x="16" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="38" y="49" text-anchor="middle">H01</text>
+<rect class="b-agree" x="66" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="88" y="49" text-anchor="middle">H03</text>
+<rect class="b-agree" x="116" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="138" y="49" text-anchor="middle">H05</text>
+<rect class="b-agree" x="166" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="188" y="49" text-anchor="middle">H08</text>
+<rect class="b-agree" x="216" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="238" y="49" text-anchor="middle">H10</text>
+<rect class="b-agree" x="266" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="288" y="49" text-anchor="middle">H11</text>
+<rect class="b-agree" x="316" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="338" y="49" text-anchor="middle">H12</text>
+<rect class="b-agree" x="366" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="388" y="49" text-anchor="middle">H21</text>
+<rect class="b-agree" x="416" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="438" y="49" text-anchor="middle">H22</text>
+<rect class="b-agree" x="466" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="488" y="49" text-anchor="middle">H24</text>
+<rect class="b-agree" x="516" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="538" y="49" text-anchor="middle">H25</text>
+<rect class="b-agree" x="566" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="588" y="49" text-anchor="middle">H27</text>
+<rect class="b-agree" x="616" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="638" y="49" text-anchor="middle">H30</text>
+<rect class="b-agree" x="666" y="36" width="44" height="18" rx="4"/>
+<text class="n-agree" x="688" y="49" text-anchor="middle">H31</text>
+<text class="label head" x="16" y="81">No fix · converged (10)</text>
+<rect class="b-converged" x="16" y="92" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="105" text-anchor="middle">H02</text>
+<text class="label" x="70" y="105">trace_get selector and return shape</text>
+<text class="muted" x="400" y="105">no fix PR</text>
+<rect class="b-converged" x="16" y="116" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="129" text-anchor="middle">H04</text>
+<text class="label" x="70" y="129">Empty address lists</text>
+<text class="muted" x="400" y="129">no fix PR</text>
+<rect class="b-converged" x="16" y="140" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="153" text-anchor="middle">H06</text>
+<text class="label" x="70" y="153">Missing transactions and paths</text>
+<rect class="b-agree edge partial" x="400" y="140" width="109" height="18" rx="4"/>
+<text class="n-agree" x="454.5" y="153" text-anchor="middle">Foundry #17089</text>
+<rect class="b-converged" x="16" y="164" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="177" text-anchor="middle">H07</text>
+<text class="label" x="70" y="177">Replay transactionHash field</text>
+<text class="muted" x="400" y="177">no fix PR</text>
+<rect class="b-converged" x="16" y="188" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="201" text-anchor="middle">H13</text>
+<text class="label" x="70" y="201">Signed transaction execution validity</text>
+<text class="muted" x="400" y="201">no fix PR</text>
+<rect class="b-converged" x="16" y="212" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="225" text-anchor="middle">H14</text>
+<text class="label" x="70" y="225">Invalid parameters and rejected calls</text>
+<text class="muted" x="400" y="225">no fix PR</text>
+<rect class="b-converged" x="16" y="236" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="249" text-anchor="middle">H15</text>
+<text class="label" x="70" y="249">Unsigned simulation fees and block environment</text>
+<text class="muted" x="400" y="249">no fix PR</text>
+<rect class="b-converged" x="16" y="260" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="273" text-anchor="middle">H29</text>
+<text class="label" x="70" y="273">Precompile call-frame inclusion</text>
+<text class="muted" x="400" y="273">no fix PR</text>
+<rect class="b-converged" x="16" y="284" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="297" text-anchor="middle">H32</text>
+<text class="label" x="70" y="297">Trace block tags and pending state</text>
+<text class="muted" x="400" y="297">no fix PR</text>
+<rect class="b-converged" x="16" y="308" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="321" text-anchor="middle">H33</text>
+<text class="label" x="70" y="321">Single-block hash selection in trace_filter</text>
+<text class="muted" x="400" y="321">no fix PR</text>
+<text class="label head" x="16" y="353">Not fully measured (9)</text>
+<rect class="b-unmeasured" x="16" y="364" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="377" text-anchor="middle">H09</text>
+<text class="label" x="70" y="377">Failed frame results and error labels</text>
+<text class="muted" x="400" y="377">12 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-unmeasured" x="16" y="388" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="401" text-anchor="middle">H16</text>
+<text class="label" x="70" y="401">Fee accounting and sequential state diffs</text>
+<text class="muted" x="400" y="401">1 blocked case: H15 owns this error, a funds vali…</text>
+<rect class="b-unmeasured" x="16" y="412" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="425" text-anchor="middle">H17</text>
+<text class="label" x="70" y="425">New-account stateDiff encoding</text>
+<rect class="b-agree" x="400" y="412" width="109" height="18" rx="4"/>
+<text class="n-agree" x="454.5" y="425" text-anchor="middle">Foundry #17106</text>
+<rect class="b-unmeasured" x="16" y="436" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="449" text-anchor="middle">H18</text>
+<text class="label" x="70" y="449">EIP-7702 code changes in stateDiff</text>
+<text class="muted" x="400" y="449">2 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-unmeasured" x="16" y="460" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="473" text-anchor="middle">H19</text>
+<text class="label" x="70" y="473">vmTrace executing bytecode</text>
+<text class="muted" x="400" y="473">2 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-unmeasured" x="16" y="484" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="497" text-anchor="middle">H20</text>
+<text class="label" x="70" y="497">vmTrace step timing and deltas</text>
+<text class="muted" x="400" y="497">2 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-unmeasured" x="16" y="508" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="521" text-anchor="middle">H23</text>
+<text class="label" x="70" y="521">Special-action address matching</text>
+<text class="muted" x="400" y="521">9 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-unmeasured" x="16" y="532" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="545" text-anchor="middle">H26</text>
+<text class="label" x="70" y="545">Account deletion across Cancun</text>
+<rect class="b-agree" x="400" y="532" width="109" height="18" rx="4"/>
+<text class="n-agree" x="454.5" y="545" text-anchor="middle">Foundry #17106</text>
+<rect class="b-unmeasured" x="16" y="556" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="569" text-anchor="middle">H28</text>
+<text class="label" x="70" y="569">Historical state at system-operation boundari…</text>
+<text class="muted" x="400" y="569">6 blocked cases: Replayed chain differs from the…</text>
+<rect class="b-agree" x="16" y="588" width="130" height="18" rx="4"/>
+<text class="n-agree" x="81" y="601" text-anchor="middle">in measured build</text>
+<rect class="b-fix" x="152" y="588" width="150" height="18" rx="4"/>
+<text class="n-fix" x="227" y="601" text-anchor="middle">merged, not in build</text>
+<rect class="pr" x="308" y="588" width="41" height="18" rx="4"/>
+<text class="label" x="328.5" y="601" text-anchor="middle">open</text>
+<rect class="pr partial" x="355" y="588" width="143" height="18" rx="4"/>
+<text class="label" x="426.5" y="601" text-anchor="middle">partial (any stage)</text>
+<text class="muted" x="510" y="601">fix PRs, by state</text>
+</svg>

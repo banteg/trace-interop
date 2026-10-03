@@ -7,7 +7,7 @@ import os
 import re
 
 from .cli import write
-from .progress import BUCKETS, pr_counts, svg, tally
+from .progress import BUCKETS, bucket, pr_counts, svg, work_svg
 from .versions import lagging_development
 from .status import decision_status, LEGEND, NATIVE_CLIENTS, REPORTED_CLIENTS, POSITIONS, NO_POSITION, POSITION_LEGEND, check_positions, client_positions, position_source
 
@@ -635,8 +635,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         if c not in by_client:
             continue
         stable = f + '_release'
+        buckets = {t: bucket(build_verdict(c, t).split(' ', 1)[0], t in converged) for t in decisions}
         progress[f] = dict(
-            build=c, counts=tally({t: build_verdict(c, t).split(' ', 1)[0] for t in decisions}, converged),
+            build=c, buckets=buckets, counts=Counter(buckets.values()),
             gained=len(agreed(by_client[c])) - len(agreed(previous['by_client'][c])) if previous and c in previous['by_client'] else None,
             dev_only=len(agreed(by_client[c]) - agreed(by_client[stable])) if stable in by_client else None,
             prs=pr_counts(fixes, f))
@@ -715,6 +716,16 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text = f'# {profile["name"]}: changes to review\n\n{profile["summary"]}\n\n[All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)\n\n'
         if f in progress and path.name == f + '.md':
             text += progress_line(f)
+            prs = [pr for pr in sorted(fixes['prs'], key=lambda pr: pr['order']) if pr['client'] == f and pr['state'] != 'closed']
+            save(path.with_name(f + '-work.svg'), work_svg(profile['name'], [
+                (t, d['title'], progress[f]['buckets'][t],
+                 [(pr['label'].removeprefix(profile['name'] + ' '), 'open' if pr['state'] == 'open' else 'built' if progress[f]['build'] in pr['builds'] else 'merged',
+                   t in pr.get('partial', [])) for pr in prs if t in pr['decisions']],
+                 coverage_summary(by_client[progress[f]['build']].get(t, [])) if progress[f]['buckets'][t] == 'unmeasured' else '')
+                for t, d in decisions.items()]))
+            text += (f'![{profile["name"]} decisions by outcome, with fix PRs]({f}-work.svg)\n\n'
+                     'Each decision on the development build, grouped as in the [progress chart](../README.md#progress), with the client’s fix PRs '
+                     '([client fixes](../../docs/client-fixes.md)), styled by stage as its legend shows: in the measured development build, merged but not in that build yet, or open, with a dashed edge when a PR covers only part of the decision.\n\n')
         text += table(['Tested version', 'Commit', 'Commit date (UTC)', 'Tested (UTC)'], build_rows(selected, build_runs, revisions, path.parent))
         versions = {r['version'] for r in records if r['client'] in selected}
         for build_note in profile.get('build_notes', []):
@@ -786,6 +797,8 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += 'For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).\n'
         save(path, text)
 
+    for stale in set((output/'clients').glob('*-work.svg')) - {output/'clients'/(f + '-work.svg') for f in progress}:
+        stale.unlink()
     for f, selected in by_family.items():
         client_page(f, selected, output/'clients'/(f + '.md'))
         for c in selected:

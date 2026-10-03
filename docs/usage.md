@@ -127,9 +127,10 @@ logs bloom and requests hash, plus the parent beacon root when the build can set
 eligible only if every block reproduces; otherwise setup verification names the differing blocks
 and fields, and its cases are blocked. On a build that mines the zero root, the `mined-probes`
 block that reads its own beacon root differs, so that corpus is ineligible. The hash and state
-root never match: withdrawals are credited outside their block, and the EIP-2935 system contract
-stores the replica's block hashes (and EIP-4788 the zero roots, where they were not set). Its head
-is therefore verified without the state root. The manifest's `parent_beacon_roots` records whether
+root never match: Anvil funds its default dev accounts at genesis even with `--init`, so the state
+root differs from the first block, withdrawals are credited outside their block, and the EIP-2935
+system contract then stores the replica's block hashes (and EIP-4788 the zero roots, where they
+were not set). Its head is therefore verified without the state root. The manifest's `parent_beacon_roots` records whether
 the roots were set (`null` for a chain without them).
 
 Requests are sent with the replica's block hashes, and each parsed `response` maps them back to

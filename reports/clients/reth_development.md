@@ -6,7 +6,7 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.7.0` | [`078d0262`](https://github.com/paradigmxyz/reth/commit/078d026239a1977f5d79eeb67fa44d2087ebf7e5) | 2026-10-01 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json)<br>[2026-10-03](../../evidence/2026-10-03/fee-combos/probes-prague/manifest.json) |
+| `2.7.0` | [`078d0262`](https://github.com/paradigmxyz/reth/commit/078d026239a1977f5d79eeb67fa44d2087ebf7e5) | 2026-10-01 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json)<br>[2026-10-03](../../evidence/2026-10-04/blob-cap/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

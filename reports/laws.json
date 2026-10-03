@@ -2,185 +2,185 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 711,
+        "held": 712,
         "violated": 0
       },
       "anvil_release": {
-        "held": 711,
+        "held": 712,
         "violated": 0
       },
       "besu_development": {
-        "held": 774,
+        "held": 775,
         "violated": 1
       },
       "besu_release": {
-        "held": 606,
+        "held": 607,
         "violated": 1
       },
       "erigon_development": {
-        "held": 741,
+        "held": 742,
         "violated": 0
       },
       "erigon_release": {
-        "held": 763,
+        "held": 764,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 733,
+        "held": 734,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 743,
+        "held": 744,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 759,
+        "held": 760,
         "violated": 0
       },
       "reth_development": {
-        "held": 883,
+        "held": 884,
         "violated": 0
       },
       "reth_release": {
-        "held": 883,
+        "held": 884,
         "violated": 0
       }
     },
     "L02": {
       "anvil_development": {
-        "held": 1363,
+        "held": 1368,
         "violated": 0
       },
       "anvil_release": {
-        "held": 1363,
+        "held": 1368,
         "violated": 0
       },
       "besu_development": {
-        "held": 1385,
+        "held": 1390,
         "violated": 0
       },
       "besu_release": {
-        "held": 1070,
+        "held": 1076,
         "violated": 0
       },
       "erigon_development": {
-        "held": 1426,
+        "held": 1431,
         "violated": 0
       },
       "erigon_release": {
-        "held": 1320,
+        "held": 1324,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 1414,
+        "held": 1419,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 1426,
+        "held": 1431,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 1461,
+        "held": 1466,
         "violated": 0
       },
       "reth_development": {
-        "held": 1374,
+        "held": 1378,
         "violated": 0
       },
       "reth_release": {
-        "held": 1374,
+        "held": 1378,
         "violated": 0
       }
     },
     "L03": {
       "anvil_development": {
-        "held": 90,
+        "held": 91,
         "violated": 0
       },
       "anvil_release": {
-        "held": 90,
+        "held": 91,
         "violated": 0
       },
       "besu_development": {
-        "held": 164,
+        "held": 165,
         "violated": 3
       },
       "besu_release": {
-        "held": 157,
+        "held": 158,
         "violated": 3
       },
       "erigon_development": {
-        "held": 145,
+        "held": 146,
         "violated": 0
       },
       "erigon_release": {
-        "held": 171,
+        "held": 172,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 134,
+        "held": 135,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 143,
+        "held": 144,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 151,
+        "held": 152,
         "violated": 0
       },
       "reth_development": {
-        "held": 151,
+        "held": 152,
         "violated": 0
       },
       "reth_release": {
-        "held": 151,
+        "held": 152,
         "violated": 0
       }
     },
     "L04": {
       "anvil_development": {
-        "held": 2919,
+        "held": 2920,
         "violated": 0
       },
       "anvil_release": {
-        "held": 2919,
+        "held": 2920,
         "violated": 0
       },
       "besu_development": {
-        "held": 2460,
+        "held": 2461,
         "violated": 0
       },
       "besu_release": {
-        "held": 1569,
+        "held": 1570,
         "violated": 0
       },
       "erigon_development": {
-        "held": 2382,
+        "held": 2383,
         "violated": 0
       },
       "erigon_release": {
-        "held": 2478,
+        "held": 2479,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 2382,
+        "held": 2383,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 2382,
+        "held": 2383,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 2386,
+        "held": 2387,
         "violated": 30
       },
       "reth_development": {
-        "held": 3221,
+        "held": 3222,
         "violated": 0
       },
       "reth_release": {
-        "held": 3221,
+        "held": 3222,
         "violated": 0
       }
     },

@@ -24,7 +24,7 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 15096,
+    "assessed": 15129,
     "blocked": 506,
     "control": 35,
     "partial": 856,
@@ -48,8 +48,8 @@
     "../evidence/2026-10-02/eval/raw-validation/manifest.json": "24ce8c91f50bad28f2bbfc8a71ffd31039d3f03d1cbeb3d909d445dabf42ba87",
     "../evidence/2026-10-02/eval/reorg-safe/manifest.json": "18cae49f8c012074a698627508ccc392be829f3df27b6b8ff0486324122c79d6",
     "../evidence/2026-10-02/eval/repeat/manifest.json": "925bd6c7ad334845e0388f019a68815bf82104443ce40cd8f2f16256cc7b59b4",
-    "../evidence/2026-10-03/fee-combos/probes-prague/manifest.json": "1d76974e1f9e1eb41596aff082a96776cb2973c1bccde72c1b37b71dc84632a7",
-    "../evidence/2026-10-03/fork-features/probes-forks/manifest.json": "ebbfee6e90bb166e01d5f018bbe7bcf26fe45ccfc89f4ab9842cf3e5781460ab"
+    "../evidence/2026-10-03/fork-features/probes-forks/manifest.json": "ebbfee6e90bb166e01d5f018bbe7bcf26fe45ccfc89f4ab9842cf3e5781460ab",
+    "../evidence/2026-10-04/blob-cap/probes-prague/manifest.json": "38191f2e48ba328ee347fb1235ea61c81c9e32beeb64dc5862a443a47cde17a9"
   },
   "matrix": {
     "../evidence/2026-10-02/eval/clients.lock.json": "3e089d22538c8192b986365d07144cb510a9221ed37410267940b4f16a8d8476",
@@ -70,7 +70,7 @@
     "fixtures/checksums.json": "ae033f54344e0594050dcc7c05ca4a79da222bbf10bf3dee7449268be928e30b",
     "locks/source-revisions.json": "7eb92d4137b3f7de34679ceb45591fda0ba510d3407cc502f3997f1f2d6dfc35",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "56e2e8c3c9a29089c4b1063ed4880db01960cc1abce404958e8e40507f2c6922",
+    "reports.lock.json": "206c4b4410981aac42aa91986e2babdd2c60a5e9b985caf6eae00c145cc853b2",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "4279b2d7c17088254ad313f6ddd58ba9d0736ac9df91dd1c46451d53783e6a88",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",

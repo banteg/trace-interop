@@ -157187,6 +157187,252 @@
     ]
   },
   {
+    "case": "blob-fee-cap-unpriced",
+    "corpus": "probes-prague",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "anvil_development",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4-nightly+328811cb"
+          },
+          {
+            "client": "anvil_release",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4+50af4efe"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "88c6de0d45782dfc01afead66ac9eaf81ac0b2bea361cd6f5412014350f318f6"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "5f52c3f3ea61b8e1f2ec97f57ef3395979652feb5ea3b455c7cd007765fe649f"
+      }
+    ]
+  },
+  {
+    "case": "blob-fee-cap-unpriced-eth-call",
+    "corpus": "probes-prague",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "anvil_development",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4-nightly+328811cb"
+          },
+          {
+            "client": "anvil_release",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4+50af4efe"
+          },
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "4cff8f8be0db5731594b2abd70066b495c62960378c89ede28fb980367699d0b"
+      }
+    ]
+  },
+  {
+    "case": "blob-fee-cap-unpriced-stateDiff",
+    "corpus": "probes-prague",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "anvil_development",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4-nightly+328811cb"
+          },
+          {
+            "client": "anvil_release",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4+50af4efe"
+          },
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "079da849aa1acfdc7f1d99a28279c2bfea34f1d8cfc59e5eb8db7914ed8b7e07"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "7af8043e544b37ba233fb95f1a87a8e6df119537e006bf923fc7c0d88e26cfae"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "e55292108e8acc1697c67e52b5d50e5ddb0fd734c20f9a2143cb4f5fdd233330"
+      }
+    ]
+  },
+  {
     "case": "blob-fee-defaulted",
     "corpus": "probes-prague",
     "groups": [
@@ -157546,6 +157792,88 @@
           }
         ],
         "sha256": "e55292108e8acc1697c67e52b5d50e5ddb0fd734c20f9a2143cb4f5fdd233330"
+      }
+    ]
+  },
+  {
+    "case": "blob-fee-none-unpriced-stateDiff",
+    "corpus": "probes-prague",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "anvil_development",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4-nightly+328811cb"
+          },
+          {
+            "client": "anvil_release",
+            "eligible": true,
+            "status": "result",
+            "version": "anvil Version: 1.8.4+50af4efe"
+          },
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "e55292108e8acc1697c67e52b5d50e5ddb0fd734c20f9a2143cb4f5fdd233330"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "c340d6cc9b173193f3979b7778e2dc2f3ca3f73b70b710da9ce449b1b2cb1579"
       }
     ]
   },

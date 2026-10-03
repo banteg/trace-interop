@@ -41,7 +41,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15096 |
+| 🔎 Assessed | 15129 |
 | 🟡 Partial | 856 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 506 |
@@ -910,6 +910,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-forks/rewards-to](cases/probes-forks/rewards-to.md) | Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566 |
 | [probes-forks/rewards-union](cases/probes-forks/rewards-union.md) | Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566 |
 | [probes-forks/rewards-window](cases/probes-forks/rewards-window.md) | Erigon 3.8.0-dev · 6da806cb, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 3370d566 |
+| [probes-prague/blob-fee-cap-unpriced](cases/probes-prague/blob-fee-cap-unpriced.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-defaulted](cases/probes-prague/blob-fee-defaulted.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-none](cases/probes-prague/blob-fee-none.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-priced](cases/probes-prague/blob-fee-priced.md) | Besu 26.10-develop · 711f8142, Besu 26.9.0 · ee9c64c8 |
@@ -1035,7 +1036,7 @@ Capture completeness records whether requests finished, not whether their result
 | [callmany-isolation](../evidence/2026-10-02/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
 | [h30](../evidence/2026-10-02/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-10-02/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-10-03/fee-combos/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-prague](../evidence/2026-10-04/blob-cap/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-10-03/fork-features/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-02/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-02/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |

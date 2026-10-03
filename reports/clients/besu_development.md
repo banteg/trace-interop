@@ -6,7 +6,7 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.10-develop` | [`711f8142`](https://github.com/besu-eth/besu/commit/711f8142eb12750a1777ef366e0e0eeeca69513d) | 2026-10-02 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json)<br>[2026-10-03](../../evidence/2026-10-03/fee-combos/probes-prague/manifest.json) |
+| `26.10-develop` | [`711f8142`](https://github.com/besu-eth/besu/commit/711f8142eb12750a1777ef366e0e0eeeca69513d) | 2026-10-02 | [2026-10-02](../../evidence/2026-10-02/eval/initial/manifest.json)<br>[2026-10-03](../../evidence/2026-10-04/blob-cap/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

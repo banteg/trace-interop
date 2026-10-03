@@ -278,8 +278,8 @@
   {
     "complete": true,
     "corpus": "probes-prague",
-    "digest": "1d76974e1f9e1eb41596aff082a96776cb2973c1bccde72c1b37b71dc84632a7",
-    "manifest": "../evidence/2026-10-03/fee-combos/probes-prague/manifest.json",
+    "digest": "38191f2e48ba328ee347fb1235ea61c81c9e32beeb64dc5862a443a47cde17a9",
+    "manifest": "../evidence/2026-10-04/blob-cap/probes-prague/manifest.json",
     "name": "probes-prague",
     "versions": {
       "anvil_development": "anvil Version: 1.8.4-nightly+328811cb",

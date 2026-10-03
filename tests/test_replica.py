@@ -62,10 +62,11 @@ class BlockComparison(unittest.TestCase):
     def test_replay_mines_each_block_and_credits_withdrawals_after_it(self):
         class Node:
             def __init__(self):
-                self.calls, self.mined, self.balance = [], {}, {}
+                self.calls, self.requests, self.mined, self.balance = [], [], {}, {}
 
             def __call__(self, method, *params):
                 self.calls.append(method)
+                self.requests.append((method, params))
                 if method == 'evm_mine':
                     block = fixture[len(self.mined)]
                     self.mined[hex(len(self.mined) + 1)] = dict(expected_header(block), hash='0x%064x' % (len(self.mined) + 1))
@@ -87,6 +88,27 @@ class BlockComparison(unittest.TestCase):
         mines = [i for i, m in enumerate(node.calls) if m == 'evm_mine']
         self.assertLess(mines[first], node.calls.index('anvil_setBalance'))
         self.assertTrue(node.balance)
+        # Each block is mined with the fixture's parent beacon root.
+        roots = [params[0] for method, params in node.requests if method == 'anvil_setNextBlockParentBeaconBlockRoot']
+        self.assertEqual(roots, ['0x' + bytes(b[0][19]).hex() for b in fixture])
+
+    def test_replay_mines_the_zero_root_on_builds_without_the_beacon_root_method(self):
+        class Node:
+            def __init__(self):
+                self.mined = 0
+
+            def __call__(self, method, *params):
+                if method == 'anvil_setNextBlockParentBeaconBlockRoot':
+                    raise ValueError(f'replica {method} failed: Method not found')
+                if method == 'evm_mine':
+                    self.mined += 1
+                if method == 'eth_getBlockByNumber':
+                    return {'hash': '0x' + '00' * 32}
+                if method == 'eth_getBalance':
+                    return '0x0'
+        node = Node()
+        compared, _ = replay(node, CHAINS/'initial', read(ROOT/'fixtures/blobs.json'))
+        self.assertEqual(node.mined, len(compared))
 
     def test_translation_covers_prefixed_and_embedded_hashes(self):
         mapping = {'0x' + '11' * 32: '0x' + '22' * 32}

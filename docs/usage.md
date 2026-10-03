@@ -115,18 +115,19 @@ Anvil has no Engine API, so Hive cannot import a chain into it. Its builds are i
 *replicas*: the run starts the locked Foundry image with the chain's genesis
 (`anvil --init`, the one hardfork the chain runs, its chain ID and gas limit, FIFO ordering,
 no automatic mining) and mines every fixture block again. Before each block it sets the
-fixture's timestamp, base fee, prevrandao and coinbase, then submits the block's transactions
-in order. Type-3 transactions get their sidecars from [`fixtures/blobs.json`](../fixtures/blobs.json),
+fixture's timestamp, base fee, prevrandao, coinbase and, on builds with
+`anvil_setNextBlockParentBeaconBlockRoot` ([Foundry #17305](https://github.com/foundry-rs/foundry/pull/17305)),
+parent beacon root, then submits the block's transactions in order. Type-3 transactions get their sidecars from [`fixtures/blobs.json`](../fixtures/blobs.json),
 and withdrawals are credited with `anvil_setBalance` after their block.
 
 Each mined block is compared with the fixture header: transaction hashes and order, gas used
 and limit, timestamp, base fee, blob gas, prevrandao, coinbase, transactions and receipts roots,
 logs bloom and requests hash. A build is eligible only if every block reproduces; otherwise
-setup verification names the differing blocks and fields, and its cases are blocked. The replica
-cannot set a parent beacon root. That makes the `mined-probes` block that reads its own beacon
-root differ, and means the hash and state root never match: the EIP-4788 and EIP-2935 system
-contracts store the replica's beacon roots and block hashes. Its head is therefore verified
-without the state root.
+setup verification names the differing blocks and fields, and its cases are blocked. Builds
+without that method mine the zero parent beacon root, so the `mined-probes` block that reads its
+own beacon root differs on them. The hash and state root never match, because the replica's
+state also holds the dev accounts Anvil funds at genesis. Its head is therefore verified without
+the state root.
 
 Requests are sent with the replica's block hashes, and each parsed `response` maps them back to
 the fixture's, with or without a `0x` prefix. `raw_response` keeps the wire bytes. The manifest

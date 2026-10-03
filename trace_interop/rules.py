@@ -68,7 +68,8 @@ def recommended_note(code, recommended):
 def violation(message):
     """Classify a validation error message; None when it names no known violation."""
     message = str(message).lower()
-    for kind, pattern in [('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
+    # A gasPrice beside dynamic fee fields is a field combination (H14), whatever fee its message names.
+    for kind, pattern in [('fee_fields', r'both gasprice and'), ('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
                           ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
                           ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
                           ('priority', r'(?:priority|\btip\b).*(?:fee|cap)'),

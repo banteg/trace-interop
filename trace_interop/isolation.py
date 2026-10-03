@@ -29,6 +29,8 @@ def error_owner(method, response):
     if embedded_error(response):
         return 'H25', 'an error envelope returned as a successful result'
     message = mapping(response.get('error')).get('message')
+    if violation(message) == 'fee_fields':
+        return 'H14', f'a fee field combination rejection: {str(message)[:120]}'
     if method in VALIDATION_OWNERS and violation(message):
         return VALIDATION_OWNERS[method], f'a {violation(message)} validation rejection: {str(message)[:120]}'
     return None

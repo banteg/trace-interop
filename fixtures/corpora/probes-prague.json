@@ -2659,12 +2659,9 @@
       "name": "combo-gasprice-maxfee",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2691,12 +2688,10 @@
       "name": "combo-gasprice-maxfee-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
+          "kind": "error",
           "observe": "eth_call parity control for combo-gasprice-maxfee.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2720,12 +2715,9 @@
       "name": "combo-gasprice-tip",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2752,12 +2744,10 @@
       "name": "combo-gasprice-tip-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
+          "kind": "error",
           "observe": "eth_call parity control for combo-gasprice-tip.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2781,12 +2771,9 @@
       "name": "combo-gasprice-dynamic",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2814,12 +2801,10 @@
       "name": "combo-gasprice-dynamic-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
+          "kind": "error",
           "observe": "eth_call parity control for combo-gasprice-dynamic.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2844,12 +2829,9 @@
       "name": "combo-gasprice-dynamic-equal",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2877,12 +2859,10 @@
       "name": "combo-gasprice-dynamic-equal-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x0000000000000000000000000000000000000000000000000000000077359400"
-          ],
-          "kind": "outputs",
+          "kind": "error",
           "observe": "eth_call parity control for combo-gasprice-dynamic-equal.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -2911,8 +2891,7 @@
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -2944,7 +2923,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-untyped-dynamic.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -2972,8 +2951,7 @@
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3005,7 +2983,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type0-gasprice.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3033,8 +3011,7 @@
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3067,7 +3044,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type0-dynamic.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 0, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3096,8 +3073,7 @@
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3130,7 +3106,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type1-gasprice.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3159,8 +3135,7 @@
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3194,7 +3169,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type1-dynamic.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3224,8 +3199,7 @@
             "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3257,7 +3231,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type2-gasprice.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 2000000000, its legacy gasPrice serving as both fee caps.",
           "topic": "H14"
         }
       ],
@@ -3285,8 +3259,7 @@
             "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3319,7 +3292,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-type2-dynamic.",
-          "requirement": "Recorded: whether the combination runs, and the GASPRICE it runs at.",
+          "requirement": "The call runs with type 2, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps.",
           "topic": "H14"
         }
       ],
@@ -3348,8 +3321,7 @@
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3393,7 +3365,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-auth-type4-dynamic.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3433,8 +3405,7 @@
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3477,7 +3448,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-auth-type4-gasprice.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 4, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3512,12 +3483,9 @@
       "name": "combo-auth-gasprice-dynamic",
       "probes": [
         {
-          "expected": [
-            "0x000000000000000000000000000000000000000000000000000000000000002a"
-          ],
-          "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -3556,12 +3524,10 @@
       "name": "combo-auth-gasprice-dynamic-eth-call",
       "probes": [
         {
-          "expected": [
-            "0x000000000000000000000000000000000000000000000000000000000000002a"
-          ],
-          "kind": "outputs",
+          "kind": "error",
           "observe": "eth_call parity control for combo-auth-gasprice-dynamic.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "recommended": -32602,
+          "requirement": "gasPrice with maxFeePerGas or maxPriorityFeePerGas is a fee combination no call can carry, so the call is rejected (-32602 recommended).",
           "topic": "H14"
         }
       ],
@@ -3601,8 +3567,7 @@
             "0x000000000000000000000000000000000000000000000000000000000000002a"
           ],
           "kind": "outputs",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 2, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3646,7 +3611,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-auth-type2-dynamic.",
-          "requirement": "Recorded: whether the combination runs with its authorization applied (word 42).",
+          "requirement": "The call runs with type 2, which does not change execution, with its authorization applied, so the delegated marker returns word 42.",
           "topic": "H14"
         }
       ],
@@ -3685,12 +3650,11 @@
           "expected": {
             "error": null,
             "result": {
-              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e000000000000000000000000000000000000000000000000000000000000000001"
+              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
             }
           },
           "kind": "frame",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "select": {
             "traceAddress": [
               0
@@ -3709,7 +3673,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "maxFeePerBlobGas": "0x1",
@@ -3735,7 +3699,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-blob-type3-dynamic.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
       ],
@@ -3748,7 +3712,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "maxFeePerBlobGas": "0x1",
@@ -3768,12 +3732,11 @@
           "expected": {
             "error": null,
             "result": {
-              "code": "0x00000000000000000000000000000000000000000000000000000000773594000000000000000000000000000000000000000000000000000000000000000001"
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
             }
           },
           "kind": "frame",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "select": {
             "traceAddress": [
               0
@@ -3792,7 +3755,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -3815,7 +3778,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-blob-gasprice.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
       ],
@@ -3828,7 +3791,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -3845,12 +3808,11 @@
           "expected": {
             "error": null,
             "result": {
-              "code": "0x00000000000000000000000000000000000000000000000000000000773594000000000000000000000000000000000000000000000000000000000000000001"
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
             }
           },
           "kind": "frame",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "select": {
             "traceAddress": [
               0
@@ -3869,7 +3831,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -3893,7 +3855,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-blob-gasprice-capped.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
       ],
@@ -3906,7 +3868,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -3924,12 +3886,11 @@
           "expected": {
             "error": null,
             "result": {
-              "code": "0x00000000000000000000000000000000000000000000000000000000773594000000000000000000000000000000000000000000000000000000000000000001"
+              "code": "0x0000000000000000000000000000000000000000000000000000000077359400"
             }
           },
           "kind": "frame",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "select": {
             "traceAddress": [
               0
@@ -3948,7 +3909,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -3973,7 +3934,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-blob-type3-gasprice.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
       ],
@@ -3986,7 +3947,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "gasPrice": "0x77359400",
@@ -4005,12 +3966,11 @@
           "expected": {
             "error": null,
             "result": {
-              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e000000000000000000000000000000000000000000000000000000000000000001"
+              "code": "0x00000000000000000000000000000000000000000000000000000000b2d05e00"
             }
           },
           "kind": "frame",
-          "observe": "A fee and type field combination no signed transaction carries; its policy is open, so the outcome is recorded.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 2, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "select": {
             "traceAddress": [
               0
@@ -4029,7 +3989,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "maxFeePerBlobGas": "0x1",
@@ -4055,7 +4015,7 @@
           ],
           "kind": "outputs",
           "observe": "eth_call parity control for combo-blob-type2-dynamic.",
-          "requirement": "Recorded: whether the blob combination runs, and the GASPRICE and BLOBBASEFEE its CREATE2 child deploys.",
+          "requirement": "The blob call runs with type 2, which does not change execution, at GASPRICE 3000000000, the word its CREATE2 child deploys.",
           "topic": "H14"
         }
       ],
@@ -4068,7 +4028,7 @@
             "blobVersionedHashes": [
               "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
             ],
-            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a6000524a60205260406000f3",
+            "data": "0x00000000000000000000000000000000000000000000000000000000000000003a60005260206000f3",
             "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
             "gas": "0x493e0",
             "maxFeePerBlobGas": "0x1",

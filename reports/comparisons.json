@@ -152706,6 +152706,1831 @@
     ]
   },
   {
+    "case": "fork-access-list-at",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "b00fe9b717a3f38c2975d7a34b3c538c2773ba0a0f10982edd2508e805b462a9"
+      }
+    ]
+  },
+  {
+    "case": "fork-access-list-at-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      }
+    ]
+  },
+  {
+    "case": "fork-access-list-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "24c1d6b1fae71e4548d1dbc4588548a8df244cd60401464c702a7b368726debd"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "ca118bc64772dac72d8b60bab6eddcce49257b22e2f01f27510452b9f96dda42"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "cfcb2e3e98e460be65f6ce7fc237882a5ee7234dc2269cc470373733e8c9304c"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "7d75f03e6c6dda6874f860ae75d52a6e62afed56f3aade7acacda2a065ab5db3"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-access-list-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "24c1d6b1fae71e4548d1dbc4588548a8df244cd60401464c702a7b368726debd"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "ca118bc64772dac72d8b60bab6eddcce49257b22e2f01f27510452b9f96dda42"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "705d5f925e1935ad3e0f8ca2028c899ea68dd1b1ae3ea1e2a3fe0e87b2d1235d"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "7d75f03e6c6dda6874f860ae75d52a6e62afed56f3aade7acacda2a065ab5db3"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-authorization-at",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "975c8920d13230310dc447462e03cb2d1696d32ddef34b7a1a9e8c6e99d68f1a"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      }
+    ]
+  },
+  {
+    "case": "fork-authorization-at-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      }
+    ]
+  },
+  {
+    "case": "fork-authorization-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "8286f1637b072235a5320f305d4fdc099cfb9e0decb6a4893656df0af6ae6f58"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          }
+        ],
+        "sha256": "144264916f3bb52629969c6c8aa418a72ac7cc49ed9d6500a3ac0b5000c4a084"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "4b57f037b26492e898d8d7b0c18b7819de3b944961ae8b5e806eaa6532adc32c"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "26a9b3af5aeca2d13057c53968bb954cedadb7be711513a47eabcc8df46565c0"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-authorization-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "8286f1637b072235a5320f305d4fdc099cfb9e0decb6a4893656df0af6ae6f58"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "a2a20a6bb23059deec53e36f67f1439bffca34fa331abaae351204c63ccd406c"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "144264916f3bb52629969c6c8aa418a72ac7cc49ed9d6500a3ac0b5000c4a084"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "fd5e5db85b8cc6bc7e55ebf38a0231b24dc63e79fe545fc535f27b762e673561"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "26a9b3af5aeca2d13057c53968bb954cedadb7be711513a47eabcc8df46565c0"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-blob-at",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      }
+    ]
+  },
+  {
+    "case": "fork-blob-at-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      }
+    ]
+  },
+  {
+    "case": "fork-blob-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "13246fc17a9af590434b5c48e5c84e0947d7f3214d85e4e1a41fce4c5e318d1d"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          }
+        ],
+        "sha256": "17a72f99bfbe2c2e56697c0c6afe7d99416c18d7984ed0a4b157b4fe1651b10d"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "264d8172191afa9cd5d1c90f0c54c2e5a03474b8c16f25cd0a56433340c3ceb3"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-blob-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "13246fc17a9af590434b5c48e5c84e0947d7f3214d85e4e1a41fce4c5e318d1d"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "de584ddb74b1b6d515739a88a9ba4e0a7faa6aff502152196639a1bc3e554228"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "17a72f99bfbe2c2e56697c0c6afe7d99416c18d7984ed0a4b157b4fe1651b10d"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "4960d9455bcee418d8651e5a97ea1495ff36ab1d4972f9eb330cba710f87ac0a"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "79ea574d58ad2828c72102b6e2d82d215988b9d510329ba1e353369fb8f2d050"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-dynamic-fees-at",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "0b0cc8d6ceb7f14b04d837fc2973d4b61ff7a44a9bae5fe78b5cc73ee39b55cf"
+      }
+    ]
+  },
+  {
+    "case": "fork-dynamic-fees-at-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      }
+    ]
+  },
+  {
+    "case": "fork-dynamic-fees-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-dynamic-fees-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-type1-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "7d75f03e6c6dda6874f860ae75d52a6e62afed56f3aade7acacda2a065ab5db3"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      }
+    ]
+  },
+  {
+    "case": "fork-type1-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "7d75f03e6c6dda6874f860ae75d52a6e62afed56f3aade7acacda2a065ab5db3"
+      }
+    ]
+  },
+  {
+    "case": "fork-type2-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "128b06d6f41989719e015c8906ed04432bdc90723d186fe226efe5d90ac0bafe"
+      }
+    ]
+  },
+  {
+    "case": "fork-type2-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.1.0+b3e7e84c"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      }
+    ]
+  },
+  {
+    "case": "fork-type3-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "133263645b669d7f2c9810b6b5cc11e0fe2074bc2c90bcd5388124c021a54f28"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "f18656443df81251b9d7743d706d313d8a85288aa8e6dd0e64edfa6142c2d15c"
+      }
+    ]
+  },
+  {
+    "case": "fork-type3-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "f18656443df81251b9d7743d706d313d8a85288aa8e6dd0e64edfa6142c2d15c"
+      }
+    ]
+  },
+  {
+    "case": "fork-type4-before",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "df9ba81ad6b3b5962d959a09e53cb336406ae0dfeed9b563b798804e2faa0c31"
+      },
+      {
+        "observations": [
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          }
+        ],
+        "sha256": "5ec0f34b56172e1e5e27259b73367f329aa6e05f01c054cf0fad1674555e55ec"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          }
+        ],
+        "sha256": "26a9b3af5aeca2d13057c53968bb954cedadb7be711513a47eabcc8df46565c0"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "malformed_json",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "fb20b30c87d4f4a43de6b303399922b30e90e98a6138329f5599044547c21319"
+      }
+    ]
+  },
+  {
+    "case": "fork-type4-before-eth-call",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.8.0-dev-6da806cb"
+          },
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+078d0262"
+          },
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "5a5c64a8c2805c5429ac0bab88d1f03f5aedd61d46c3956eb5e6d7ef2512974e"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.2.0-preview+3370d566"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "rpc_error",
+            "version": "2.1.0+b3e7e84c"
+          }
+        ],
+        "sha256": "26a9b3af5aeca2d13057c53968bb954cedadb7be711513a47eabcc8df46565c0"
+      }
+    ]
+  },
+  {
     "case": "genesis-block",
     "corpus": "probes-forks",
     "groups": [

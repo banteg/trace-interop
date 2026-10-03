@@ -1,0 +1,41 @@
+Using CPython 3.14.7 interpreter at: /usr/bin/python3
+Creating virtual environment at: .venv
+   Building trace-interop @ file:///home/banteg/dev/trace-fork-features
+      Built trace-interop @ file:///home/banteg/dev/trace-fork-features
+Installed 20 packages in 48ms
+From https://github.com/ethereum/hive
+ * branch            43ea47bef5761351e3da7b726050ea80ab362c52 -> FETCH_HEAD
+HEAD is now at 43ea47b simulators/ethereum/engine: apply withdrawals CL mock config (#1604)
+docker.io/hyperledger/besu@sha256:737f3316da5811cf3121fdef3d78f5ce21d97012d82d3f5c03baf06e5d782bea: Pulling from hyperledger/besu
+Digest: sha256:737f3316da5811cf3121fdef3d78f5ce21d97012d82d3f5c03baf06e5d782bea
+Status: Image is up to date for hyperledger/besu@sha256:737f3316da5811cf3121fdef3d78f5ce21d97012d82d3f5c03baf06e5d782bea
+docker.io/hyperledger/besu@sha256:737f3316da5811cf3121fdef3d78f5ce21d97012d82d3f5c03baf06e5d782bea
+docker.io/hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0: Pulling from hyperledger/besu
+Digest: sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0
+Status: Image is up to date for hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0
+docker.io/hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0
+docker.io/erigontech/erigon@sha256:2988eab4109dd3667e6f37f1210bd7a8c027dba9bda84213f3f3833a610ace83: Pulling from erigontech/erigon
+Digest: sha256:2988eab4109dd3667e6f37f1210bd7a8c027dba9bda84213f3f3833a610ace83
+Status: Image is up to date for erigontech/erigon@sha256:2988eab4109dd3667e6f37f1210bd7a8c027dba9bda84213f3f3833a610ace83
+docker.io/erigontech/erigon@sha256:2988eab4109dd3667e6f37f1210bd7a8c027dba9bda84213f3f3833a610ace83
+docker.io/erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481: Pulling from erigontech/erigon
+Digest: sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481
+Status: Image is up to date for erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481
+docker.io/erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481
+docker.io/nethermindeth/nethermind@sha256:2c6c4f3ee1573874af024fcdf625c9fe5799aed09c3a936847013f150e39d168: Pulling from nethermindeth/nethermind
+Digest: sha256:2c6c4f3ee1573874af024fcdf625c9fe5799aed09c3a936847013f150e39d168
+Status: Image is up to date for nethermindeth/nethermind@sha256:2c6c4f3ee1573874af024fcdf625c9fe5799aed09c3a936847013f150e39d168
+docker.io/nethermindeth/nethermind@sha256:2c6c4f3ee1573874af024fcdf625c9fe5799aed09c3a936847013f150e39d168
+docker.io/nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0: Pulling from nethermind/nethermind
+Digest: sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0
+Status: Image is up to date for nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0
+docker.io/nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0
+ghcr.io/paradigmxyz/reth@sha256:73256294307530bdd17887f868b2a063e387ee7a105a0afaab6a91e90faf4087: Pulling from paradigmxyz/reth
+Digest: sha256:73256294307530bdd17887f868b2a063e387ee7a105a0afaab6a91e90faf4087
+Status: Image is up to date for ghcr.io/paradigmxyz/reth@sha256:73256294307530bdd17887f868b2a063e387ee7a105a0afaab6a91e90faf4087
+ghcr.io/paradigmxyz/reth@sha256:73256294307530bdd17887f868b2a063e387ee7a105a0afaab6a91e90faf4087
+ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336: Pulling from paradigmxyz/reth
+Digest: sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336
+Status: Image is up to date for ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336
+ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336
+Captured 531 responses in /home/banteg/dev/trace-fork-features/evidence/2026-10-03/fork-features/probes-forks

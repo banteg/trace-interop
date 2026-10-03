@@ -298,8 +298,8 @@
   {
     "complete": true,
     "corpus": "probes-forks",
-    "digest": "830535667d30c88a6fad76b4b8d35137375a6ee8a79e5a084fc37cf38d1e5a10",
-    "manifest": "../evidence/2026-10-02/eval/probes-forks/manifest.json",
+    "digest": "5d3a7274a5dc5d2e54562685761f2e5c9f49249c410aefbd0bab484ba9dde7ee",
+    "manifest": "../evidence/2026-10-03/fork-features/probes-forks/manifest.json",
     "name": "probes-forks",
     "versions": {
       "besu_development": "besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25",

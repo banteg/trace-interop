@@ -2,7 +2,7 @@
 
 `eth_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Recorded: zero dynamic fees at block 35, before London (block 36).
+**What this checks:** The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -39,38 +39,38 @@
 
 **Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Erigon · 3.8.0-dev · 6da806cb** (`3.8.0-dev-6da806cb`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Geth draft fork · 1.17.7-unstable · 67f41dea** (`Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Nethermind · 2.2.0-preview · 3370d566** (`2.2.0-preview+3370d566`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected ['0x']; got ['0x']
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed result with output 0x
 
 **Reth · 2.7.0 · 078d0262** (`Reth Version: 2.7.0+078d0262`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected a result; observed rpc_error -32003 transaction type not supported
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed rpc_error -32003: transaction type not supported
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
-- [H14](../../decisions/H14.md): Recorded: zero dynamic fees at block 35, before London (block 36). eth_call parity control for fork-dynamic-fees-before. Observed: Expected a result; observed rpc_error -32003 transaction type not supported
+- [H14](../../decisions/H14.md): The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-dynamic-fees-before. Observed: Observed rpc_error -32003: transaction type not supported
 
 </details>

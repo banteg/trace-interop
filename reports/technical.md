@@ -41,11 +41,11 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15092 |
+| 🔎 Assessed | 15096 |
 | 🟡 Partial | 856 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 506 |
-| 🔎 Control | 39 |
+| 🔎 Control | 35 |
 
 
 Of the partial observations, 770 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
@@ -84,12 +84,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 1 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 2 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
-| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000000000000'] | 4 |
-| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x000000000000000000000000000000000000000000000000000000003b9aca00'] | 3 |
-| H14 | control | Priced dynamic fees around London are under review. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400'] | 9 |
-| H14 | control | Priced dynamic fees around London are under review. Observed: Expected a result; observed rpc_error -32003 transaction type not supported | 2 |
-| H14 | control | Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two. Observed: Expected ['0x']; got ['0x'] | 7 |
-| H14 | control | Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two. Observed: Expected a result; observed rpc_error -32003 transaction type not supported | 2 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H32 owns this request’s rejection. '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas; '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H32 owns this request’s rejection. 'pending' is not valid under any of the given schemas; 'pending' is not valid under any of the given schemas | 8 |

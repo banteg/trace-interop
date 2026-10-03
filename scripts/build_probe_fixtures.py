@@ -620,12 +620,12 @@ def forks():
                        depth=1024, attempts=['call', 'create']),
                  probe('H09', 'depth', 'A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded".',
                        depth=1024, attempts=['call', 'create'], labels=['Max call depth exceeded']*2)])
-    # Fork activation of call-object features (H14, decided 2026-10-03): an access list before Berlin, blob fields
-    # before Cancun and an authorization list before Prague are rejected (-32003 recommended), and run at their
-    # fork. An explicit type is not a feature, so a type with no feature fields runs just before its fork. Zero
-    # dynamic fees before London stay recorded: they price at 0 whether a client applies or ignores them. A
-    # trace_call at block N runs under N's rules (H12). Each case has an eth_call twin, recorded only; all calls
-    # are unpriced and reach a code-free address.
+    # Fork activation of call-object features (H14, decided 2026-10-03): an access list before Berlin, dynamic fee
+    # fields before London (even zero ones: no transaction carried them yet), blob fields before Cancun and an
+    # authorization list before Prague are rejected (-32003 recommended), and run at their fork. An explicit type
+    # is not a feature, so a type with no feature fields runs just before its fork. A trace_call at block N runs
+    # under N's rules (H12). Each case has an eth_call twin, recorded only; all calls are unpriced and reach a
+    # code-free address.
     chain_id = genesis['config']['chainId']
     target = '0x' + '00'*19 + 'ee'
     assert target not in codes
@@ -655,23 +655,28 @@ def forks():
                 outcome = probe('H14', 'outputs', f'An explicit type {int(kind, 16)} with no {feature} fields runs {where}: type is not a feature.', expected=['0x'])
             elif block >= first:
                 outcome = probe('H14', 'outputs', f'The {feature} fields run {where}.', expected=['0x'])
-            elif fork == 'london':
-                outcome = probe('H14', 'outputs', f'Recorded: zero dynamic fees {where}.', expected=['0x'],
-                                control='Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two.')
             else:
                 outcome = probe('H14', 'error', f'The {feature} fields {where} name a feature not active at the selected block, so the call is rejected (-32003 recommended).',
                                 recommended=-32003)
             case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
             case(cases, name+'-eth-call', 'eth_call', [call, hex(block)],
                  probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
-    # Priced dynamic fees around London, recorded until decided: a creation returns the GASPRICE it ran at, so a
-    # client that rejects, ignores (GASPRICE 0) or applies the fees before London can be told apart.
+    # Priced dynamic fees around London: a creation returns the GASPRICE it ran at. Before London the fields are
+    # rejected, never ignored (GASPRICE 0) or applied; at London they run at min(tip + base fee, cap).
     gas_price = asm('GASPRICE', 0, 'MSTORE', 32, 0, 'RETURN')
     priced = {'maxFeePerGas': hex(2*10**9), 'maxPriorityFeePerGas': hex(10**9)}
     for name, block in [('fork-dynamic-fees-priced-before', activation['london']-1), ('fork-dynamic-fees-priced-at', activation['london'])]:
         call = dict({'from': sender, 'gas': '0x186a0', 'data': '0x'+gas_price}, **priced)
-        outcome = probe('H14', 'outputs', f'Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block {block}.', expected=[None])
-        case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[dict(outcome, control='Priced dynamic fees around London are under review.')])
+        if block < activation['london']:
+            outcome = probe('H14', 'error', f'Dynamic fee fields at block {block}, before London (block {activation["london"]}), name a feature not active '
+                            'at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.',
+                            recommended=-32003)
+        else:
+            base_fee = int(headers[hex(block)]['baseFeePerGas'], 16)
+            effective = min(int(priced['maxPriorityFeePerGas'], 16) + base_fee, int(priced['maxFeePerGas'], 16))
+            outcome = probe('H14', 'outputs', f'At London (block {block}) the dynamic fees run at GASPRICE {effective}, min(tip + base fee, cap).',
+                            expected=[words(effective)])
+        case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
         case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 

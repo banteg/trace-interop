@@ -1485,12 +1485,9 @@
       "name": "fork-dynamic-fees-before",
       "probes": [
         {
-          "control": "Zero dynamic fees price at 0 whether they are applied or ignored, so this case cannot separate the two.",
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "requirement": "Recorded: zero dynamic fees at block 35, before London (block 36).",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -1519,11 +1516,9 @@
       "probes": [
         {
           "control": "eth_call parity control for fork-dynamic-fees-before.",
-          "expected": [
-            "0x"
-          ],
-          "kind": "outputs",
-          "requirement": "Recorded: zero dynamic fees at block 35, before London (block 36).",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
           "topic": "H14"
         }
       ],
@@ -2082,12 +2077,9 @@
       "name": "fork-dynamic-fees-priced-before",
       "probes": [
         {
-          "control": "Priced dynamic fees around London are under review.",
-          "expected": [
-            null
-          ],
-          "kind": "outputs",
-          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.",
           "topic": "H14"
         }
       ],
@@ -2115,11 +2107,9 @@
       "probes": [
         {
           "control": "eth_call parity control for fork-dynamic-fees-priced-before.",
-          "expected": [
-            null
-          ],
-          "kind": "outputs",
-          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 35.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.",
           "topic": "H14"
         }
       ],
@@ -2143,12 +2133,11 @@
       "name": "fork-dynamic-fees-priced-at",
       "probes": [
         {
-          "control": "Priced dynamic fees around London are under review.",
           "expected": [
-            null
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "requirement": "At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap).",
           "topic": "H14"
         }
       ],
@@ -2177,10 +2166,10 @@
         {
           "control": "eth_call parity control for fork-dynamic-fees-priced-at.",
           "expected": [
-            null
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
           ],
           "kind": "outputs",
-          "requirement": "Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.",
+          "requirement": "At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap).",
           "topic": "H14"
         }
       ],

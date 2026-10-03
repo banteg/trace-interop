@@ -47,8 +47,9 @@ its own parameter handling (Erigon 3.7.1) or crashes (Besu 26.9.0).
 - Zero dynamic fees before London run everywhere but Reth. Priced ones (`dynamic-fees-priced-*`, a creation that
   returns GASPRICE with a 2 gwei cap and 1 gwei tip) split three ways before London: Besu, Erigon's development
   build and upstream Geth's `eth_call` run at GASPRICE 0, ignoring the fields; Nethermind runs at the 1 gwei tip;
-  Reth rejects with -32003. At London every build runs at 2 gwei. This case is recorded, not judged.
+  Reth rejects with -32003. At London every build runs at 2 gwei. H14 rejects dynamic fee fields before London,
+  zero or not, so only Reth agrees today.
 
 [H14](../../../reports/decisions/H14.md) states the resulting rule: an access list, blob fields or an authorization
-list before its fork is rejected (-32003 recommended), and `type` adds no requirement of its own. Dynamic fees
-before London are still open.
+list before its fork, and dynamic fee fields before London, are rejected (-32003 recommended), and `type` adds no
+requirement of its own.

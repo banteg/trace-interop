@@ -2,7 +2,7 @@
 
 `eth_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36.
+**What this checks:** At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap).
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -38,38 +38,38 @@
 
 **Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Erigon · 3.8.0-dev · 6da806cb** (`3.8.0-dev-6da806cb`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Geth draft fork · 1.17.7-unstable · 67f41dea** (`Geth/v1.17.7-unstable-67f41dea-2026-09-30/linux-amd64/go1.26.1`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Nethermind · 2.2.0-preview · 3370d566** (`2.2.0-preview+3370d566`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Reth · 2.7.0 · 078d0262** (`Reth Version: 2.7.0+078d0262`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 **Reth · 2.7.0 · 3d592ece** (`Reth Version: 2.7.0+3d592ece`)
 
-- [H14](../../decisions/H14.md): Recorded: the GASPRICE that 2 gwei/1 gwei dynamic fees run at, at block 36. eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected [None]; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
+- [H14](../../decisions/H14.md): At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap). eth_call parity control for fork-dynamic-fees-priced-at. Observed: Expected ['0x0000000000000000000000000000000000000000000000000000000077359400']; got ['0x0000000000000000000000000000000000000000000000000000000077359400']
 
 </details>

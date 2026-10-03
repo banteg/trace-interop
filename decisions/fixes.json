@@ -2592,6 +2592,21 @@
       "note": "trace_filter accepts mode intersection (default, also for null) and union, rejects other values with -32602; block rewards match by author against toAddress, so a reward is selectable with fromAddress empty or in union mode; CREATE and SELFDESTRUCT address matching unchanged"
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14212",
+      "title": "fix(rpc): keep call object fields that an explicit type lacks",
+      "client": "nethermind",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "an explicit type counts like a discriminator, so the newest indicated class wins and no supplied field is dropped (type 0/1 with dynamic fees, type 2 with an authorization list); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction reject an explicit type its fields don't fit"
+    },
+    {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",
       "title": "chore(deps): bump revm-inspectors to 0.44.1",
       "client": "reth",

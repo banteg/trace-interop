@@ -2595,7 +2595,7 @@
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14212",
-      "title": "fix(rpc): let a call object's fields, not its type, decide how it runs",
+      "title": "fix(rpc): let a call's fields decide how it runs, and reject fields its fork lacks",
       "client": "nethermind",
       "decisions": [
         "H14"
@@ -2606,7 +2606,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "for types 0x0-0x4 the fields pick the call's class, so a call neither drops a field nor takes a requirement from its type (type 0/1 with dynamic fees, type 2 with an authorization list, type 3 without blobs); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction apply the requested type when its class can carry the fields and reject it otherwise"
+      "note": "for types 0x0-0x4 the fields pick the call's class, so a call neither drops a field nor takes a requirement from its type (type 0/1 with dynamic fees, type 2 with an authorization list, type 3 without blobs); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction apply the requested type when its class can carry the fields and reject it otherwise; since 2026-10-03 also the fork rule: a call field the block's fork lacks (access list before Berlin, dynamic fees before London, blob hashes before Cancun, authorization list before Prague) is rejected at conversion, zero or empty included, instead of -32603 or being ignored; eth_simulateV1 checks against the base block"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",
@@ -2706,7 +2706,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; needs a matching replica.py change with a zero-root fallback. H23 and H26 then wait on bluealloy/revm#3833"
+      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301–#17312 replays every mined-probes block and agrees on H09, H16–H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833"
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17306",
@@ -2814,6 +2814,77 @@
       "draft": false,
       "merged_at": null,
       "note": "caps the default gas of a priced call to what the sender can afford, as Reth does, which unblocks the last H16 probe held by the funds check"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/24536",
+      "title": "fix(rpc): reject dynamic fee fields before london",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "call objects with maxFeePerGas or maxPriorityFeePerGas before London are rejected (zero included) through the preCheck gate that already rejects the other fork-gated fields, across the call, estimate, access-list, callMany, simulate and trace methods, instead of running at GASPRICE 0"
+    },
+    {
+      "url": "https://github.com/alloy-rs/evm/pull/427",
+      "title": "fix(rpc): price blob calls by a legacy gas price",
+      "client": "reth",
+      "decisions": [
+        "H14",
+        "H15"
+      ],
+      "partial": [
+        "H14",
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth needs the alloy-evm release; its eth_simulateV1 builds transactions separately and still differs"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11439",
+      "title": "fix(rpc): reject malformed trace_filter members and legacy calls for another chain",
+      "client": "besu",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_filter rejects a bare address string and negative after/count with -32602; a legacy call keeps a foreign chainId so validation rejects it (-32000) in trace_call and eth_call; trace_rawTransaction is left to #11395"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11440",
+      "title": "fix(rpc): default the trace_callMany block to latest",
+      "client": "besu",
+      "decisions": [
+        "H31"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_callMany accepts one argument and runs at latest, as trace_call does"
+    },
+    {
+      "url": "https://github.com/besu-eth/besu/pull/11441",
+      "title": "fix(rpc): resolve safe trace_filter bounds and reject pending in trace methods",
+      "client": "besu",
+      "decisions": [
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_filter resolves safe and finalized bounds (rejecting them when absent) and rejects pending instead of -32603; trace_block, trace_replayBlockTransactions, trace_call and trace_callMany reject pending instead of evaluating it as latest"
     }
   ]
 }

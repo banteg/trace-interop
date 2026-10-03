@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **85 of 132** client decisions agree with the draft (+1 since the previous capture). 14 more have a submitted fix, and **21 differ with no fix yet**: 21 on converged decisions and 0 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **85 of 132** client decisions agree with the draft (+1 since the previous capture). 16 more have a submitted fix, and **19 differ with no fix yet**: 19 on converged decisions and 0 on decisions still under review. 29 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -38,8 +38,8 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **85 of 132** c
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
 | [H29](../reports/decisions/H29.md) | 🤝 Converged | ··👍· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—🛠️ | ⚠️✅✅✅✅🛠️ |
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—✅ | ✅✅✅✅✅✅ |
-| [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | ⚠️✅✅✅—✅ | ⚠️✅✅✅✅✅ |
-| [H32](../reports/decisions/H32.md) | 🤝 Converged | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️🛠️🛠️⚠️—⚠️ | ⚠️🛠️✅⚠️🟡⚠️ |
+| [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
+| [H32](../reports/decisions/H32.md) | 🤝 Converged | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | 🛠️🛠️🛠️⚠️—⚠️ | 🛠️🛠️✅⚠️🟡⚠️ |
 | [H33](../reports/decisions/H33.md) | 🤝 Converged | ·👍👍· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | 🛠️🛠️🛠️⚠️—⚠️ | 🛠️🛠️✅⚠️✅⚠️ |
 
 ## Status key

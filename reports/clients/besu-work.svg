@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="842" viewBox="0 0 760 842" role="img" aria-labelledby="title">
-<title id="title">Besu decisions and fix PRs: 6 agree, 8 fix submitted, 13 no fix · converged, 6 not fully measured</title>
+<title id="title">Besu decisions and fix PRs: 6 agree, 10 fix submitted, 11 no fix · converged, 6 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.head{font-weight:600}.partial{stroke-dasharray:3 2}.label{fill:#1f2328}.muted{fill:#59636e}.pr{fill:none;stroke:#11756f}.edge{stroke:#11756f}.b-agree{fill:#11756f}.n-agree{fill:#ffffff}.b-fix{fill:#79c7bd}.n-fix{fill:#1f2328}.b-converged{fill:#c8641a}.n-converged{fill:#ffffff}.b-review{fill:#f2b36b}.n-review{fill:#1f2328}.b-policy{fill:#8172c4}.n-policy{fill:#ffffff}.b-unmeasured{fill:#dde1e6}.n-unmeasured{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}.muted{fill:#9198a1}.pr{fill:none;stroke:#3aa59a}.edge{stroke:#3aa59a}.b-agree{fill:#3aa59a}.n-agree{fill:#0d1117}.b-fix{fill:#1a6b62}.n-fix{fill:#ffffff}.b-converged{fill:#e5843a}.n-converged{fill:#0d1117}.b-review{fill:#8f5420}.n-review{fill:#ffffff}.b-policy{fill:#9b8fe0}.n-policy{fill:#0d1117}.b-unmeasured{fill:#2d333b}.n-unmeasured{fill:#e6edf3}}</style>
 <text class="label head" x="16" y="25">Agree (6)</text>
 <rect class="b-agree" x="16" y="36" width="44" height="18" rx="4"/>
@@ -14,7 +14,7 @@
 <text class="n-agree" x="238" y="49" text-anchor="middle">H25</text>
 <rect class="b-agree" x="266" y="36" width="44" height="18" rx="4"/>
 <text class="n-agree" x="288" y="49" text-anchor="middle">H30</text>
-<text class="label head" x="16" y="81">Fix submitted (8)</text>
+<text class="label head" x="16" y="81">Fix submitted (10)</text>
 <rect class="b-fix" x="16" y="92" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="105" text-anchor="middle">H01</text>
 <text class="label" x="70" y="105">Method coverage</text>
@@ -51,87 +51,91 @@
 <rect class="pr" x="400" y="236" width="55" height="18" rx="4"/>
 <text class="label" x="427.5" y="249" text-anchor="middle">#10953</text>
 <rect class="b-fix" x="16" y="260" width="44" height="18" rx="4"/>
-<text class="n-fix" x="38" y="273" text-anchor="middle">H33</text>
-<text class="label" x="70" y="273">Single-block hash selection in trace_filter</text>
+<text class="n-fix" x="38" y="273" text-anchor="middle">H31</text>
+<text class="label" x="70" y="273">Omitted trace_callMany block</text>
 <rect class="pr" x="400" y="260" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="273" text-anchor="middle">#11407</text>
-<text class="label head" x="16" y="305">No fix · converged (13)</text>
-<rect class="b-converged" x="16" y="316" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="329" text-anchor="middle">H05</text>
-<text class="label" x="70" y="329">Post-merge reward records</text>
-<text class="muted" x="400" y="329">no fix PR</text>
-<rect class="b-converged" x="16" y="340" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="353" text-anchor="middle">H06</text>
-<text class="label" x="70" y="353">Missing transactions and paths</text>
-<rect class="pr edge partial" x="400" y="340" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="353" text-anchor="middle">#11379</text>
-<rect class="pr edge partial" x="461" y="340" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="353" text-anchor="middle">#11381</text>
+<text class="label" x="427.5" y="273" text-anchor="middle">#11440</text>
+<rect class="b-fix" x="16" y="284" width="44" height="18" rx="4"/>
+<text class="n-fix" x="38" y="297" text-anchor="middle">H32</text>
+<text class="label" x="70" y="297">Trace block tags and pending state</text>
+<rect class="pr" x="400" y="284" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="297" text-anchor="middle">#11441</text>
+<rect class="b-fix" x="16" y="308" width="44" height="18" rx="4"/>
+<text class="n-fix" x="38" y="321" text-anchor="middle">H33</text>
+<text class="label" x="70" y="321">Single-block hash selection in trace_filter</text>
+<rect class="pr" x="400" y="308" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="321" text-anchor="middle">#11407</text>
+<text class="label head" x="16" y="353">No fix · converged (11)</text>
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="377" text-anchor="middle">H09</text>
-<text class="label" x="70" y="377">Failed frame results and error labels</text>
-<rect class="pr edge partial" x="400" y="364" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="377" text-anchor="middle">#11347</text>
+<text class="n-converged" x="38" y="377" text-anchor="middle">H05</text>
+<text class="label" x="70" y="377">Post-merge reward records</text>
+<text class="muted" x="400" y="377">no fix PR</text>
 <rect class="b-converged" x="16" y="388" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="401" text-anchor="middle">H10</text>
-<text class="label" x="70" y="401">Creation result field names</text>
+<text class="n-converged" x="38" y="401" text-anchor="middle">H06</text>
+<text class="label" x="70" y="401">Missing transactions and paths</text>
 <rect class="pr edge partial" x="400" y="388" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="401" text-anchor="middle">#11362</text>
+<text class="label" x="427.5" y="401" text-anchor="middle">#11379</text>
 <rect class="pr edge partial" x="461" y="388" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="401" text-anchor="middle">#11435</text>
+<text class="label" x="488.5" y="401" text-anchor="middle">#11381</text>
 <rect class="b-converged" x="16" y="412" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="425" text-anchor="middle">H13</text>
-<text class="label" x="70" y="425">Signed transaction execution validity</text>
+<text class="n-converged" x="38" y="425" text-anchor="middle">H09</text>
+<text class="label" x="70" y="425">Failed frame results and error labels</text>
 <rect class="pr edge partial" x="400" y="412" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="425" text-anchor="middle">#11395</text>
+<text class="label" x="427.5" y="425" text-anchor="middle">#11347</text>
 <rect class="b-converged" x="16" y="436" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="449" text-anchor="middle">H14</text>
-<text class="label" x="70" y="449">Invalid parameters and rejected calls</text>
+<text class="n-converged" x="38" y="449" text-anchor="middle">H10</text>
+<text class="label" x="70" y="449">Creation result field names</text>
 <rect class="pr edge partial" x="400" y="436" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="449" text-anchor="middle">#11432</text>
+<text class="label" x="427.5" y="449" text-anchor="middle">#11362</text>
+<rect class="pr edge partial" x="461" y="436" width="55" height="18" rx="4"/>
+<text class="label" x="488.5" y="449" text-anchor="middle">#11435</text>
 <rect class="b-converged" x="16" y="460" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="473" text-anchor="middle">H15</text>
-<text class="label" x="70" y="473">Unsigned simulation fees and block environment</text>
-<rect class="b-agree edge partial" x="400" y="460" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="473" text-anchor="middle">#11404</text>
-<rect class="pr edge partial" x="461" y="460" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="473" text-anchor="middle">#11432</text>
+<text class="n-converged" x="38" y="473" text-anchor="middle">H13</text>
+<text class="label" x="70" y="473">Signed transaction execution validity</text>
+<rect class="pr edge partial" x="400" y="460" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="473" text-anchor="middle">#11395</text>
 <rect class="b-converged" x="16" y="484" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="497" text-anchor="middle">H16</text>
-<text class="label" x="70" y="497">Fee accounting and sequential state diffs</text>
+<text class="n-converged" x="38" y="497" text-anchor="middle">H14</text>
+<text class="label" x="70" y="497">Invalid parameters and rejected calls</text>
 <rect class="pr edge partial" x="400" y="484" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="497" text-anchor="middle">#11365</text>
-<rect class="b-agree edge partial" x="461" y="484" width="55" height="18" rx="4"/>
-<text class="n-agree" x="488.5" y="497" text-anchor="middle">#11404</text>
+<text class="label" x="427.5" y="497" text-anchor="middle">#11432</text>
+<rect class="pr edge partial" x="461" y="484" width="55" height="18" rx="4"/>
+<text class="label" x="488.5" y="497" text-anchor="middle">#11439</text>
 <rect class="b-converged" x="16" y="508" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="521" text-anchor="middle">H20</text>
-<text class="label" x="70" y="521">vmTrace step timing and deltas</text>
-<rect class="pr edge partial" x="400" y="508" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="521" text-anchor="middle">#11286</text>
+<text class="n-converged" x="38" y="521" text-anchor="middle">H15</text>
+<text class="label" x="70" y="521">Unsigned simulation fees and block environment</text>
+<rect class="b-agree edge partial" x="400" y="508" width="55" height="18" rx="4"/>
+<text class="n-agree" x="427.5" y="521" text-anchor="middle">#11404</text>
 <rect class="pr edge partial" x="461" y="508" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="521" text-anchor="middle">#11350</text>
-<rect class="pr edge partial" x="522" y="508" width="55" height="18" rx="4"/>
-<text class="label" x="549.5" y="521" text-anchor="middle">#11352</text>
-<rect class="pr edge partial" x="583" y="508" width="55" height="18" rx="4"/>
-<text class="label" x="610.5" y="521" text-anchor="middle">#11353</text>
+<text class="label" x="488.5" y="521" text-anchor="middle">#11432</text>
 <rect class="b-converged" x="16" y="532" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="545" text-anchor="middle">H23</text>
-<text class="label" x="70" y="545">Special-action address matching</text>
+<text class="n-converged" x="38" y="545" text-anchor="middle">H16</text>
+<text class="label" x="70" y="545">Fee accounting and sequential state diffs</text>
 <rect class="pr edge partial" x="400" y="532" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="545" text-anchor="middle">#11436</text>
+<text class="label" x="427.5" y="545" text-anchor="middle">#11365</text>
+<rect class="b-agree edge partial" x="461" y="532" width="55" height="18" rx="4"/>
+<text class="n-agree" x="488.5" y="545" text-anchor="middle">#11404</text>
 <rect class="b-converged" x="16" y="556" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="569" text-anchor="middle">H29</text>
-<text class="label" x="70" y="569">Precompile call-frame inclusion</text>
+<text class="n-converged" x="38" y="569" text-anchor="middle">H20</text>
+<text class="label" x="70" y="569">vmTrace step timing and deltas</text>
 <rect class="pr edge partial" x="400" y="556" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="569" text-anchor="middle">#11360</text>
+<text class="label" x="427.5" y="569" text-anchor="middle">#11286</text>
+<rect class="pr edge partial" x="461" y="556" width="55" height="18" rx="4"/>
+<text class="label" x="488.5" y="569" text-anchor="middle">#11350</text>
+<rect class="pr edge partial" x="522" y="556" width="55" height="18" rx="4"/>
+<text class="label" x="549.5" y="569" text-anchor="middle">#11352</text>
+<rect class="pr edge partial" x="583" y="556" width="55" height="18" rx="4"/>
+<text class="label" x="610.5" y="569" text-anchor="middle">#11353</text>
 <rect class="b-converged" x="16" y="580" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="593" text-anchor="middle">H31</text>
-<text class="label" x="70" y="593">Omitted trace_callMany block</text>
-<text class="muted" x="400" y="593">no fix PR</text>
+<text class="n-converged" x="38" y="593" text-anchor="middle">H23</text>
+<text class="label" x="70" y="593">Special-action address matching</text>
+<rect class="pr edge partial" x="400" y="580" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="593" text-anchor="middle">#11436</text>
 <rect class="b-converged" x="16" y="604" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="617" text-anchor="middle">H32</text>
-<text class="label" x="70" y="617">Trace block tags and pending state</text>
-<text class="muted" x="400" y="617">no fix PR</text>
+<text class="n-converged" x="38" y="617" text-anchor="middle">H29</text>
+<text class="label" x="70" y="617">Precompile call-frame inclusion</text>
+<rect class="pr edge partial" x="400" y="604" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="617" text-anchor="middle">#11360</text>
 <text class="label head" x="16" y="649">Not fully measured (6)</text>
 <rect class="b-unmeasured" x="16" y="660" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="673" text-anchor="middle">H07</text>

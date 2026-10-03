@@ -1,0 +1,1744 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "build": {
+        "binary_sha256": "f315ced1f85b8955f71cdb8d9a478cb47966f7e0c037dcea2210e6194cffa174",
+        "command": "cargo +1.98.1 build --locked --bin anvil",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY anvil /usr/local/bin/anvil\nENTRYPOINT [\"/bin/sh\", \"-c\"]\n",
+        "profile": "dev",
+        "runtime_version": "anvil Version: 1.8.4-dev\nCommit SHA: d98588120f481075aee3050996dc786e4b9fe3e2\nBuild Timestamp: 2026-10-03T16:51:17.380890886Z (1791046277)\nBuild Profile: debug\n",
+        "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      "channel": "development",
+      "client": "anvil",
+      "image_id": "sha256:0d31c8cf43348a1e1f8b100d5022bc536b63396d3b444e6e07ffac0d562f7bef",
+      "local_image": "trace-interop/anvil-source:d98588120f",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "foundry-rs/foundry:master@2620d3b6a9d385ef2ade1e4c77b59ed97013208b + pull/17301..17312 heads",
+      "source": {
+        "base": {
+          "commit": "2620d3b6a9d385ef2ade1e4c77b59ed97013208b",
+          "ref": "master"
+        },
+        "commit": "d98588120f481075aee3050996dc786e4b9fe3e2",
+        "dirty": false,
+        "merge": "git merge of each pull/<n>/head onto master in PR order; no conflicts",
+        "merged_pulls": {
+          "https://github.com/foundry-rs/foundry/pull/17301": "545d68de1ebdbf4d02813f8e3c767420a757c37c",
+          "https://github.com/foundry-rs/foundry/pull/17302": "5411d053a0fc850c35774b8e3685549a766bfdcc",
+          "https://github.com/foundry-rs/foundry/pull/17303": "85b4a54c1adc66108f333037d59bbb28dd86870c",
+          "https://github.com/foundry-rs/foundry/pull/17304": "1613c9dcebf168688ccaa98906d0ed9cdabf76d0",
+          "https://github.com/foundry-rs/foundry/pull/17305": "705cb8b5e7ea37bf1e83f9099c41fcd2656cd02c",
+          "https://github.com/foundry-rs/foundry/pull/17306": "117f19ed5443fb6daef37e42b304dfd2ccc39a57",
+          "https://github.com/foundry-rs/foundry/pull/17307": "894bd4521d35cba3a03d8c8ce4a8fa7cf9833df5",
+          "https://github.com/foundry-rs/foundry/pull/17308": "6c254ace96a44684b0c867c4c507151be72f758b",
+          "https://github.com/foundry-rs/foundry/pull/17309": "667d32a2d80759022b90fa0d2c0736e2dcc7b301",
+          "https://github.com/foundry-rs/foundry/pull/17310": "2a95cdc57962fb55fb93d0bf5d472c9a66629021",
+          "https://github.com/foundry-rs/foundry/pull/17311": "9a9d2f06e1599963f0c0849692c68f3aaa469cc5",
+          "https://github.com/foundry-rs/foundry/pull/17312": "9c5b9e9cb8c789ee97c1a4ff013d3b931f23ebf1"
+        },
+        "repository": "https://github.com/foundry-rs/foundry"
+      }
+    }
+  },
+  "corpus": "initial",
+  "finished_at": "2026-10-03T16:59:42.028182+00:00",
+  "fixture_manifest_sha256": "bbc6958b44af7560918cf9566b4c9344d10ad409d6777e17147909a963494995",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x49efb89bc8d0142ac4ad09280950583c3050ee48988e66772dded8aba7087bc9",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": null,
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x64ba7be81de3fc32bb692601ce392774f324d608fd453d9fb189d9311c51c470",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0x613eeb5ea7afcc421080937bf927a4a174afca9bbd25c5e1401326f71741910b",
+          "number": "0x2"
+        },
+        {
+          "differs": [],
+          "hash": "0xd9a73ed9f39b94074b6c54ff206e1c8a6787710e5f98a0165701dddca55a70f2",
+          "number": "0x3"
+        },
+        {
+          "differs": [],
+          "hash": "0x9e0004be29418d6250d3ec4fbd97f3942838fa0d599a18a4ce523add5672a09e",
+          "number": "0x4"
+        },
+        {
+          "differs": [],
+          "hash": "0x39b04a2bde13cc566c1f72bcf25e8d84bb57c0e04a7423faaa726c863f329398",
+          "number": "0x5"
+        },
+        {
+          "differs": [],
+          "hash": "0x3531b47c7a00057739ee7539c90536a847b80793d90e873d674b942468679739",
+          "number": "0x6"
+        },
+        {
+          "differs": [],
+          "hash": "0xe980ddf062f9e8759cb4fe384c0230288f373cf48c31402d0801f622d8cbae76",
+          "number": "0x7"
+        },
+        {
+          "differs": [],
+          "hash": "0xbddb6e80ab6dce3caff7ca0c75783b51c9a8dd9255550855e2f9fb2db465b0a7",
+          "number": "0x8"
+        },
+        {
+          "differs": [],
+          "hash": "0x58db434e0c6bcd08fa6c5ed16df403364e2b2d3669269a0dd509290f10821aa2",
+          "number": "0x9"
+        },
+        {
+          "differs": [],
+          "hash": "0x04ff2007e5d5594f907681b9dd4ca4ac582bd83cd6b8a9e8a0d822fc72a05ca9",
+          "number": "0xa"
+        },
+        {
+          "differs": [],
+          "hash": "0x747d3aff1c78f37df5006892f8662bd001ad929c5c82f8d9e858d5504b6f3868",
+          "number": "0xb"
+        },
+        {
+          "differs": [],
+          "hash": "0x95e43044890db6ea56e0f1c3a5f13b7da5286784b951cf3752af882b61b25473",
+          "number": "0xc"
+        },
+        {
+          "differs": [],
+          "hash": "0x436ceda2eb06f023e84e00e0b03e7fc9340d8bafb90730ac62cade8701577818",
+          "number": "0xd"
+        },
+        {
+          "differs": [],
+          "hash": "0x90554b1f03140aa919135342a37cc8a93005feaa221bd765d6fcb73b3e1f90f4",
+          "number": "0xe"
+        },
+        {
+          "differs": [],
+          "hash": "0x85c351d96ee7872fa4775f32c8501cb6caa50fc7d4ca0aefd41dd036fae7e571",
+          "number": "0xf"
+        },
+        {
+          "differs": [],
+          "hash": "0x609404d84dbdf7808ca875cf65cf8abe0fa2059a061d793a13c29f80f87b1ed0",
+          "number": "0x10"
+        },
+        {
+          "differs": [],
+          "hash": "0x8d004a7b6dea263a1615cb90253f617f692993656c6c0a379c6b39ddf2652582",
+          "number": "0x11"
+        },
+        {
+          "differs": [],
+          "hash": "0x6eb456eccaece3604b58b3e8d5200eacce9b69259a3ab2b63cad499e277c06e0",
+          "number": "0x12"
+        },
+        {
+          "differs": [],
+          "hash": "0x86e2ae1b2bbdbeaf630f1921d489f16523f22e7999cc7d938508428cd7106347",
+          "number": "0x13"
+        },
+        {
+          "differs": [],
+          "hash": "0xde96ffca8b3d0921ec5169edefe96ed0e9786f887c82ecc24bf8f4eabd3ffcd5",
+          "number": "0x14"
+        },
+        {
+          "differs": [],
+          "hash": "0x876a93544f33394a119a05809f4350f1c927e6cce0fbc4ca0f497a730f8b275e",
+          "number": "0x15"
+        },
+        {
+          "differs": [],
+          "hash": "0x5f0235f4fa3b2255450c3df669dd1c523dce5d1bc21bf13cd53469f635cf3908",
+          "number": "0x16"
+        },
+        {
+          "differs": [],
+          "hash": "0xb7123d5f2668003d8560d162851cb3cc89bd983e7334ef8883b91e80d30c21e8",
+          "number": "0x17"
+        },
+        {
+          "differs": [],
+          "hash": "0xf345093a0ed52a5c4a90fba7ff87676379ae92b3782e3354ef54d75a227f047b",
+          "number": "0x18"
+        },
+        {
+          "differs": [],
+          "hash": "0x7b76718ce34394f5e57b438744c3477ecaf1f4b59a48570523f91cd83c54f39f",
+          "number": "0x19"
+        },
+        {
+          "differs": [],
+          "hash": "0x46e9b2917901ac7f5ceef22b5efdb3f57a99603b5cdf29db663edbc7665feca3",
+          "number": "0x1a"
+        },
+        {
+          "differs": [],
+          "hash": "0x03d6f8c755ffdbebf1b7a73d57fd0529022f6ad1eedd1627339b47e585679ef0",
+          "number": "0x1b"
+        },
+        {
+          "differs": [],
+          "hash": "0x82c6ab5c950f307efacaefba7df14257d75bd8efe23afdc60d4f152843699e66",
+          "number": "0x1c"
+        },
+        {
+          "differs": [],
+          "hash": "0x6ae262af8cb262ecfe50d050c8fb03df20e7c59823533bca4d16dfb1a0408fc6",
+          "number": "0x1d"
+        },
+        {
+          "differs": [],
+          "hash": "0x9be5785f6dc7a8216d656568c7096332239a301c79115034271c9bae43055002",
+          "number": "0x1e"
+        },
+        {
+          "differs": [],
+          "hash": "0x575f1e18171af22d2ebfcf2859a19384716164911a07a6d26ad67158a34e8b5b",
+          "number": "0x1f"
+        },
+        {
+          "differs": [],
+          "hash": "0x295964b68c976463af4483649b3f59962f7b0024f9b8746f5512081ea66ddd8e",
+          "number": "0x20"
+        },
+        {
+          "differs": [],
+          "hash": "0x4f17cba5113c9197ef089154578fccfe96e5b8cbb7696d18f42167af4009e918",
+          "number": "0x21"
+        },
+        {
+          "differs": [],
+          "hash": "0x51cde289c6faa3666245b093cee5992aeed0eb95ad30516ba7af8caafe2e0d36",
+          "number": "0x22"
+        },
+        {
+          "differs": [],
+          "hash": "0x6630d66da76cf68e48c699f23065fd0a65e4bd2170b7871dbca6a5f75f53bde9",
+          "number": "0x23"
+        },
+        {
+          "differs": [],
+          "hash": "0xce57b543ec4fcd584f87286cd90ee62a514e595145bf18ea9eb6d6051e5228bf",
+          "number": "0x24"
+        },
+        {
+          "differs": [],
+          "hash": "0x19cfcd096fb3062ad93763e757780081a88e9c123772848db7873c0e22d85da3",
+          "number": "0x25"
+        },
+        {
+          "differs": [],
+          "hash": "0x53f11d7ee1607432045599b5e61571c894180e018cc50c2859810b28b7306801",
+          "number": "0x26"
+        },
+        {
+          "differs": [],
+          "hash": "0xa9e947e687cef3a672460bffcc54702d074efc96df3728fa331836211ae30cf5",
+          "number": "0x27"
+        },
+        {
+          "differs": [],
+          "hash": "0xf68072de6fc1832c9a3a4b7676d88159b9df2bc5f1cc5dcd1b7c918c2cae7661",
+          "number": "0x28"
+        },
+        {
+          "differs": [],
+          "hash": "0x512a60deab9474fbb6e984c2bebb8a2a4f2e42db0449edb1d9ee566651a110e0",
+          "number": "0x29"
+        },
+        {
+          "differs": [],
+          "hash": "0x6715450c44036e14d463f0b4d0c4f00cb67abf95968ca3bb6fc12b2f6971740b",
+          "number": "0x2a"
+        },
+        {
+          "differs": [],
+          "hash": "0xb335a77c4727e554dabc82b6ea0051d1e6ae68c0897505be502049d23011ac7b",
+          "number": "0x2b"
+        },
+        {
+          "differs": [],
+          "hash": "0xe791f39ade4d59c2d0b5839ec74cb03491f2dc64ad4c22b6c36f10877b7d18f8",
+          "number": "0x2c"
+        },
+        {
+          "differs": [],
+          "hash": "0xb5715196ad8382ac3f89dfdabab0392d454c8c49f042fdca042e037a9479e06c",
+          "number": "0x2d"
+        },
+        {
+          "differs": [],
+          "hash": "0x0b8359ea63c271b15b8c5c676210ac8272b26f4c583ab9f0f461bef2b376c6ff",
+          "number": "0x2e"
+        },
+        {
+          "differs": [],
+          "hash": "0x9d22a9f10b49ce4957aa1736c269a8d0ae92412d323294bebcdbbe884743f393",
+          "number": "0x2f"
+        },
+        {
+          "differs": [],
+          "hash": "0x52499b189ccfe2d0a08f7a648ebd51a7054487d0ec21aa411a8d5dac149c5774",
+          "number": "0x30"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da": "0x9d22a9f10b49ce4957aa1736c269a8d0ae92412d323294bebcdbbe884743f393",
+        "0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85": "0x4f17cba5113c9197ef089154578fccfe96e5b8cbb7696d18f42167af4009e918",
+        "0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7": "0xb5715196ad8382ac3f89dfdabab0392d454c8c49f042fdca042e037a9479e06c",
+        "0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3": "0x3531b47c7a00057739ee7539c90536a847b80793d90e873d674b942468679739",
+        "0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e": "0xde96ffca8b3d0921ec5169edefe96ed0e9786f887c82ecc24bf8f4eabd3ffcd5",
+        "0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3": "0xa9e947e687cef3a672460bffcc54702d074efc96df3728fa331836211ae30cf5",
+        "0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9": "0x512a60deab9474fbb6e984c2bebb8a2a4f2e42db0449edb1d9ee566651a110e0",
+        "0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918": "0x6630d66da76cf68e48c699f23065fd0a65e4bd2170b7871dbca6a5f75f53bde9",
+        "0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca": "0x6715450c44036e14d463f0b4d0c4f00cb67abf95968ca3bb6fc12b2f6971740b",
+        "0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef": "0x609404d84dbdf7808ca875cf65cf8abe0fa2059a061d793a13c29f80f87b1ed0",
+        "0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f": "0x7b76718ce34394f5e57b438744c3477ecaf1f4b59a48570523f91cd83c54f39f",
+        "0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4": "0x747d3aff1c78f37df5006892f8662bd001ad929c5c82f8d9e858d5504b6f3868",
+        "0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f": "0xd9a73ed9f39b94074b6c54ff206e1c8a6787710e5f98a0165701dddca55a70f2",
+        "0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84": "0x6eb456eccaece3604b58b3e8d5200eacce9b69259a3ab2b63cad499e277c06e0",
+        "0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da": "0x04ff2007e5d5594f907681b9dd4ca4ac582bd83cd6b8a9e8a0d822fc72a05ca9",
+        "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2": "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2",
+        "0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c": "0x9be5785f6dc7a8216d656568c7096332239a301c79115034271c9bae43055002",
+        "0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1": "0x90554b1f03140aa919135342a37cc8a93005feaa221bd765d6fcb73b3e1f90f4",
+        "0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147": "0x436ceda2eb06f023e84e00e0b03e7fc9340d8bafb90730ac62cade8701577818",
+        "0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467": "0x51cde289c6faa3666245b093cee5992aeed0eb95ad30516ba7af8caafe2e0d36",
+        "0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb": "0xf68072de6fc1832c9a3a4b7676d88159b9df2bc5f1cc5dcd1b7c918c2cae7661",
+        "0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e": "0xce57b543ec4fcd584f87286cd90ee62a514e595145bf18ea9eb6d6051e5228bf",
+        "0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09": "0xb7123d5f2668003d8560d162851cb3cc89bd983e7334ef8883b91e80d30c21e8",
+        "0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46": "0x03d6f8c755ffdbebf1b7a73d57fd0529022f6ad1eedd1627339b47e585679ef0",
+        "0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2": "0xb335a77c4727e554dabc82b6ea0051d1e6ae68c0897505be502049d23011ac7b",
+        "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2": "0x613eeb5ea7afcc421080937bf927a4a174afca9bbd25c5e1401326f71741910b",
+        "0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944": "0x575f1e18171af22d2ebfcf2859a19384716164911a07a6d26ad67158a34e8b5b",
+        "0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698": "0x39b04a2bde13cc566c1f72bcf25e8d84bb57c0e04a7423faaa726c863f329398",
+        "0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558": "0x46e9b2917901ac7f5ceef22b5efdb3f57a99603b5cdf29db663edbc7665feca3",
+        "0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12": "0x8d004a7b6dea263a1615cb90253f617f692993656c6c0a379c6b39ddf2652582",
+        "0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999": "0x5f0235f4fa3b2255450c3df669dd1c523dce5d1bc21bf13cd53469f635cf3908",
+        "0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3": "0x53f11d7ee1607432045599b5e61571c894180e018cc50c2859810b28b7306801",
+        "0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e": "0x95e43044890db6ea56e0f1c3a5f13b7da5286784b951cf3752af882b61b25473",
+        "0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143": "0x295964b68c976463af4483649b3f59962f7b0024f9b8746f5512081ea66ddd8e",
+        "0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20": "0x85c351d96ee7872fa4775f32c8501cb6caa50fc7d4ca0aefd41dd036fae7e571",
+        "0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e": "0x9e0004be29418d6250d3ec4fbd97f3942838fa0d599a18a4ce523add5672a09e",
+        "0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c": "0x82c6ab5c950f307efacaefba7df14257d75bd8efe23afdc60d4f152843699e66",
+        "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5": "0x52499b189ccfe2d0a08f7a648ebd51a7054487d0ec21aa411a8d5dac149c5774",
+        "0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05": "0xe791f39ade4d59c2d0b5839ec74cb03491f2dc64ad4c22b6c36f10877b7d18f8",
+        "0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7": "0xe980ddf062f9e8759cb4fe384c0230288f373cf48c31402d0801f622d8cbae76",
+        "0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23": "0x64ba7be81de3fc32bb692601ce392774f324d608fd453d9fb189d9311c51c470",
+        "0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6": "0x876a93544f33394a119a05809f4350f1c927e6cce0fbc4ca0f497a730f8b275e",
+        "0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b": "0xf345093a0ed52a5c4a90fba7ff87676379ae92b3782e3354ef54d75a227f047b",
+        "0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635": "0x58db434e0c6bcd08fa6c5ed16df403364e2b2d3669269a0dd509290f10821aa2",
+        "0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a": "0x0b8359ea63c271b15b8c5c676210ac8272b26f4c583ab9f0f461bef2b376c6ff",
+        "0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076": "0x86e2ae1b2bbdbeaf630f1921d489f16523f22e7999cc7d938508428cd7106347",
+        "0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f": "0x19cfcd096fb3062ad93763e757780081a88e9c123772848db7873c0e22d85da3",
+        "0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20": "0xbddb6e80ab6dce3caff7ca0c75783b51c9a8dd9255550855e2f9fb2db465b0a7",
+        "0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1": "0x6ae262af8cb262ecfe50d050c8fb03df20e7c59823533bca4d16dfb1a0408fc6"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.8.4-dev+d9858812"
+    }
+  },
+  "replica_sha256": "70a5ec571dcd0eedc460036c2a513f564b263a3dc1ed79d5e48520bbbdc79290",
+  "runner_sha256": "cade523514ad566638ea18c00e704cecb5fabb7f56edd8847be68f419e8de4ae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "capture_only": false,
+      "name": "control-chain-id",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "capture_only": false,
+      "name": "control-height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-tree-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-7702",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "block-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-block-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x2",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-zero",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-one",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x1"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-nested",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x0",
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0xffff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-all",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [],
+            "fromBlock": "0x2",
+            "toAddress": [],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-to",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-both",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-page",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 1,
+            "count": 2,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-zero",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 0,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-empty-types",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-constructor",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60016000526001601ff3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x0",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x0",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid",
+      "probes": [
+        {
+          "default": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          },
+          "environments": [],
+          "expected": {
+            "state": "the block 0x0 post-state, sender nonce 0"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state an explicit third selector uses.",
+          "selector": "block 0x0 by number",
+          "states": [
+            [
+              "the block 0x0 post-state, sender nonce 0",
+              {
+                "NONCE": "0x0"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a04c833abdb116ad76fc98610ae0e626d7e35154f1fba38ce6bfdaf69a31eec42ca035ecfb996cc68a2a03df0e1087194e25180b01bf0469f69b4f1d330eea9d027a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x0"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-invalid",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x00",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-missing-tx",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-trace-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-stateDiff-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-vmTrace-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-empty-types-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-constructor-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60016000526001601ff3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid-default-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a04c833abdb116ad76fc98610ae0e626d7e35154f1fba38ce6bfdaf69a31eec42ca035ecfb996cc68a2a03df0e1087194e25180b01bf0469f69b4f1d330eea9d027a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid-current-nonce",
+      "probes": [
+        {
+          "environments": [],
+          "expected": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          },
+          "kind": "state",
+          "requirement": "The two-argument request runs against the latest post-state.",
+          "states": [
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ],
+            [
+              "the block 0x2f post-state, sender nonce 130",
+              {
+                "NONCE": "0x82"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8185847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a8d391fb09e2f92ffc93fe7ac7b1eb7f1e24289f707eec0f34292c1713f795ffa0554e314f2ec6166290fc977d4bd4c86a9e0cadc2366f6139bd907d893bb4e237",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x11223344",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000000004",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many-transfers",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-transfer-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "block-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x5"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-block-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x5",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x5",
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x4e0240fe2995f7a21013fbe4af0ad9330daac8c29008e22b7d71b4672357f014",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x4e0240fe2995f7a21013fbe4af0ad9330daac8c29008e22b7d71b4672357f014"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x512b5deddff16d21ebba7b730d935b4287dbb839e77eb05b37b34ce5eb229933",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x512b5deddff16d21ebba7b730d935b4287dbb839e77eb05b37b34ce5eb229933"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x9ec036cb031f2ffa622a8162eef40431fa33684e50217af50d3bbf856f21ca22",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x9ec036cb031f2ffa622a8162eef40431fa33684e50217af50d3bbf856f21ca22"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a"
+        ]
+      }
+    }
+  ],
+  "source_commit": "12ed8fe2d2f022d332604ddcf5966661ed93a42f",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-03T16:59:26.857854+00:00"
+}

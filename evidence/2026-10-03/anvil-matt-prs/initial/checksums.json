@@ -1,0 +1,7 @@
+{
+  "manifest.json": "cf52779bad2e105567491374f55e02480f791b8d122a9fd622d8552a6f7e19f5",
+  "observations.json.gz": "d96d7a2801cdef52c1ee2e4918cb0189096ee283ba771be9ce4e4b8430e90d02",
+  "replica/anvil_development.exchanges.log.gz": "865f35381fe5ac20c3c4a67760c04cc4e03ee46b88e8ba79d5bf57ec82aa9430",
+  "replica/anvil_development.log.gz": "570ad0ef8ac1f113e4a4b8650f0d621474cf55d8f6f670815a6fb89f28672f42",
+  "summary.json": "42ba0284b895103511af5026ab64d7dfd5c20d4d000f9234a07ad971b3eadd3a"
+}

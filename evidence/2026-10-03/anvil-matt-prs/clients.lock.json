@@ -1,0 +1,47 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "build": {
+        "binary_sha256": "f315ced1f85b8955f71cdb8d9a478cb47966f7e0c037dcea2210e6194cffa174",
+        "command": "cargo +1.98.1 build --locked --bin anvil",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY anvil /usr/local/bin/anvil\nENTRYPOINT [\"/bin/sh\", \"-c\"]\n",
+        "profile": "dev",
+        "runtime_version": "anvil Version: 1.8.4-dev\nCommit SHA: d98588120f481075aee3050996dc786e4b9fe3e2\nBuild Timestamp: 2026-10-03T16:51:17.380890886Z (1791046277)\nBuild Profile: debug\n",
+        "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      "channel": "development",
+      "client": "anvil",
+      "image_id": "sha256:0d31c8cf43348a1e1f8b100d5022bc536b63396d3b444e6e07ffac0d562f7bef",
+      "local_image": "trace-interop/anvil-source:d98588120f",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "foundry-rs/foundry:master@2620d3b6a9d385ef2ade1e4c77b59ed97013208b + pull/17301..17312 heads",
+      "source": {
+        "base": {
+          "commit": "2620d3b6a9d385ef2ade1e4c77b59ed97013208b",
+          "ref": "master"
+        },
+        "commit": "d98588120f481075aee3050996dc786e4b9fe3e2",
+        "dirty": false,
+        "merge": "git merge of each pull/<n>/head onto master in PR order; no conflicts",
+        "merged_pulls": {
+          "https://github.com/foundry-rs/foundry/pull/17301": "545d68de1ebdbf4d02813f8e3c767420a757c37c",
+          "https://github.com/foundry-rs/foundry/pull/17302": "5411d053a0fc850c35774b8e3685549a766bfdcc",
+          "https://github.com/foundry-rs/foundry/pull/17303": "85b4a54c1adc66108f333037d59bbb28dd86870c",
+          "https://github.com/foundry-rs/foundry/pull/17304": "1613c9dcebf168688ccaa98906d0ed9cdabf76d0",
+          "https://github.com/foundry-rs/foundry/pull/17305": "705cb8b5e7ea37bf1e83f9099c41fcd2656cd02c",
+          "https://github.com/foundry-rs/foundry/pull/17306": "117f19ed5443fb6daef37e42b304dfd2ccc39a57",
+          "https://github.com/foundry-rs/foundry/pull/17307": "894bd4521d35cba3a03d8c8ce4a8fa7cf9833df5",
+          "https://github.com/foundry-rs/foundry/pull/17308": "6c254ace96a44684b0c867c4c507151be72f758b",
+          "https://github.com/foundry-rs/foundry/pull/17309": "667d32a2d80759022b90fa0d2c0736e2dcc7b301",
+          "https://github.com/foundry-rs/foundry/pull/17310": "2a95cdc57962fb55fb93d0bf5d472c9a66629021",
+          "https://github.com/foundry-rs/foundry/pull/17311": "9a9d2f06e1599963f0c0849692c68f3aaa469cc5",
+          "https://github.com/foundry-rs/foundry/pull/17312": "9c5b9e9cb8c789ee97c1a4ff013d3b931f23ebf1"
+        },
+        "repository": "https://github.com/foundry-rs/foundry"
+      }
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolved_at": "2026-10-03T16:58:38.586496+00:00"
+}

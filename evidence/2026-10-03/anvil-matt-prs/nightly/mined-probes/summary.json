@@ -1,0 +1,20 @@
+{
+  "complete": false,
+  "eligible": {
+    "anvil_development": false
+  },
+  "exchange_count": 89,
+  "launches": [],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "anvil_development": {
+      "detail": "Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)",
+      "verified": false
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "anvil_development": "anvil Version: 1.8.4-nightly+328811cb"
+  }
+}

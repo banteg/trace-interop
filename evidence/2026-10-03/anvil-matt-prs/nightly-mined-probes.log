@@ -1,0 +1,10 @@
+Using CPython 3.14.7 interpreter at: /usr/bin/python3
+Creating virtual environment at: .venv
+   Building trace-interop @ file:///home/banteg/dev/trace-anvil-matt-prs-2026-10-03
+      Built trace-interop @ file:///home/banteg/dev/trace-anvil-matt-prs-2026-10-03
+Installed 20 packages in 24ms
+ghcr.io/foundry-rs/foundry@sha256:b98ad715d3530266d3faa3b412a5c87fbe40fafc3b3120edb0f7c5f09a47630d: Pulling from foundry-rs/foundry
+Digest: sha256:b98ad715d3530266d3faa3b412a5c87fbe40fafc3b3120edb0f7c5f09a47630d
+Status: Image is up to date for ghcr.io/foundry-rs/foundry@sha256:b98ad715d3530266d3faa3b412a5c87fbe40fafc3b3120edb0f7c5f09a47630d
+ghcr.io/foundry-rs/foundry@sha256:b98ad715d3530266d3faa3b412a5c87fbe40fafc3b3120edb0f7c5f09a47630d
+error: run incomplete; evidence saved to /home/banteg/dev/trace-anvil-matt-prs-2026-10-03/runs/nightly/mined-probes

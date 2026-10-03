@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "eligible": {
+    "anvil_development": true
+  },
+  "exchange_count": 24,
+  "launches": [],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "anvil_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "anvil_development": "anvil Version: 1.8.4-dev+d9858812"
+  }
+}

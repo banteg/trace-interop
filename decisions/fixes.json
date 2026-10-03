@@ -2706,7 +2706,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. H23 and H26 then wait on bluealloy/revm#3833"
+      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301–#17312 replays every mined-probes block and agrees on H09, H16–H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833"
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17306",

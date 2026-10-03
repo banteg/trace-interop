@@ -1,0 +1,635 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "build": {
+        "binary_sha256": "f315ced1f85b8955f71cdb8d9a478cb47966f7e0c037dcea2210e6194cffa174",
+        "command": "cargo +1.98.1 build --locked --bin anvil",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY anvil /usr/local/bin/anvil\nENTRYPOINT [\"/bin/sh\", \"-c\"]\n",
+        "profile": "dev",
+        "runtime_version": "anvil Version: 1.8.4-dev\nCommit SHA: d98588120f481075aee3050996dc786e4b9fe3e2\nBuild Timestamp: 2026-10-03T16:51:17.380890886Z (1791046277)\nBuild Profile: debug\n",
+        "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      "channel": "development",
+      "client": "anvil",
+      "image_id": "sha256:0d31c8cf43348a1e1f8b100d5022bc536b63396d3b444e6e07ffac0d562f7bef",
+      "local_image": "trace-interop/anvil-source:d98588120f",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "foundry-rs/foundry:master@2620d3b6a9d385ef2ade1e4c77b59ed97013208b + pull/17301..17312 heads",
+      "source": {
+        "base": {
+          "commit": "2620d3b6a9d385ef2ade1e4c77b59ed97013208b",
+          "ref": "master"
+        },
+        "commit": "d98588120f481075aee3050996dc786e4b9fe3e2",
+        "dirty": false,
+        "merge": "git merge of each pull/<n>/head onto master in PR order; no conflicts",
+        "merged_pulls": {
+          "https://github.com/foundry-rs/foundry/pull/17301": "545d68de1ebdbf4d02813f8e3c767420a757c37c",
+          "https://github.com/foundry-rs/foundry/pull/17302": "5411d053a0fc850c35774b8e3685549a766bfdcc",
+          "https://github.com/foundry-rs/foundry/pull/17303": "85b4a54c1adc66108f333037d59bbb28dd86870c",
+          "https://github.com/foundry-rs/foundry/pull/17304": "1613c9dcebf168688ccaa98906d0ed9cdabf76d0",
+          "https://github.com/foundry-rs/foundry/pull/17305": "705cb8b5e7ea37bf1e83f9099c41fcd2656cd02c",
+          "https://github.com/foundry-rs/foundry/pull/17306": "117f19ed5443fb6daef37e42b304dfd2ccc39a57",
+          "https://github.com/foundry-rs/foundry/pull/17307": "894bd4521d35cba3a03d8c8ce4a8fa7cf9833df5",
+          "https://github.com/foundry-rs/foundry/pull/17308": "6c254ace96a44684b0c867c4c507151be72f758b",
+          "https://github.com/foundry-rs/foundry/pull/17309": "667d32a2d80759022b90fa0d2c0736e2dcc7b301",
+          "https://github.com/foundry-rs/foundry/pull/17310": "2a95cdc57962fb55fb93d0bf5d472c9a66629021",
+          "https://github.com/foundry-rs/foundry/pull/17311": "9a9d2f06e1599963f0c0849692c68f3aaa469cc5",
+          "https://github.com/foundry-rs/foundry/pull/17312": "9c5b9e9cb8c789ee97c1a4ff013d3b931f23ebf1"
+        },
+        "repository": "https://github.com/foundry-rs/foundry"
+      }
+    }
+  },
+  "corpus": "coverage",
+  "finished_at": "2026-10-03T17:00:48.771215+00:00",
+  "fixture_manifest_sha256": "bbc6958b44af7560918cf9566b4c9344d10ad409d6777e17147909a963494995",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x2da282a8",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0x0",
+    "hash": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x2",
+    "parentBeaconBlockRoot": "0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e",
+    "parentHash": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x842ee32b527dc0e28b92a8479b9a8ec6b7bbdf85c5d055e1fafbac3c2d19b1a1",
+    "timestamp": "0x14",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": null,
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0xa687064184ce2efb7d836aaf53fb05878694132ca9ed31425f18616522032698",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0xdce5c2d93ee092d756b915a23ad8751d78b4249ad91c4da009854ea5d8bada26",
+          "number": "0x2"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e": "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e",
+        "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b": "0xa687064184ce2efb7d836aaf53fb05878694132ca9ed31425f18616522032698",
+        "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956": "0xdce5c2d93ee092d756b915a23ad8751d78b4249ad91c4da009854ea5d8bada26"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.8.4-dev+d9858812"
+    }
+  },
+  "replica_sha256": "70a5ec571dcd0eedc460036c2a513f564b263a3dc1ed79d5e48520bbbdc79290",
+  "runner_sha256": "cade523514ad566638ea18c00e704cecb5fabb7f56edd8847be68f419e8de4ae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x2",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": "0xa",
+      "name": "_control/sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0xde0b6b3a7640000",
+      "name": "_control/sender-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/sender-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/target-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x0000000000000000000000000000000000004444",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/target-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x0000000000000000000000000000000000004444",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/target-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000004444",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/miner-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x0000000000000000000000000000000000000000",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0",
+      "name": "_control/miner-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x0000000000000000000000000000000000000000",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x",
+      "name": "_control/miner-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000000000",
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a60005260206000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x6040515060006000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-mload-expansion",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6040515060006000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a6000526000515060006000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-mload-existing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a6000526000515060006000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a6000526020600060205e60406000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a6000526020600060205e60406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a6000526020600060015e60406000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-mcopy-overlap",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a6000526020600060015e60406000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x600060ff60ff5e60006000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-mcopy-zero",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060ff60ff5e60006000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x60006000f3",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-empty-runtime",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60006000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x602a60005260206000fd",
+        "creation": true,
+        "environment": false
+      },
+      "name": "model-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260206000fd",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x3a6000524860205243604052426060524560805260a06000f3",
+        "creation": true,
+        "environment": true
+      },
+      "name": "model-environment-free",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a6000524860205243604052426060524560805260a06000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "model": {
+        "code": "0x3a6000524860205243604052426060524560805260a06000f3",
+        "creation": true,
+        "environment": true
+      },
+      "name": "model-environment",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a6000524860205243604052426060524560805260a06000f3",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x493e0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "model-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000004444",
+            "value": "0x7"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      },
+      "transfer_model": {
+        "balance": 1000000000000000000,
+        "miner": "0x0000000000000000000000000000000000000000",
+        "miner_absent": true,
+        "nonce": 10,
+        "price": 2000000000,
+        "sender": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+        "target": "0x0000000000000000000000000000000000004444",
+        "value": 7
+      }
+    },
+    {
+      "name": "model-many-transfers",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000004444",
+                "value": "0x7"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000004444",
+                "value": "0x7"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "latest"
+        ]
+      },
+      "transfer_model": {
+        "balance": 1000000000000000000,
+        "miner": "0x0000000000000000000000000000000000000000",
+        "miner_absent": true,
+        "nonce": 10,
+        "price": 2000000000,
+        "sender": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+        "target": "0x0000000000000000000000000000000000004444",
+        "value": 7
+      }
+    }
+  ],
+  "source_commit": "12ed8fe2d2f022d332604ddcf5966661ed93a42f",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-03T17:00:46.316447+00:00"
+}

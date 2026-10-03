@@ -1,0 +1,2176 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "build": {
+        "binary_sha256": "f315ced1f85b8955f71cdb8d9a478cb47966f7e0c037dcea2210e6194cffa174",
+        "command": "cargo +1.98.1 build --locked --bin anvil",
+        "dockerfile": "FROM ubuntu@sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78\nCOPY anvil /usr/local/bin/anvil\nENTRYPOINT [\"/bin/sh\", \"-c\"]\n",
+        "profile": "dev",
+        "runtime_version": "anvil Version: 1.8.4-dev\nCommit SHA: d98588120f481075aee3050996dc786e4b9fe3e2\nBuild Timestamp: 2026-10-03T16:51:17.380890886Z (1791046277)\nBuild Profile: debug\n",
+        "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
+      },
+      "channel": "development",
+      "client": "anvil",
+      "image_id": "sha256:0d31c8cf43348a1e1f8b100d5022bc536b63396d3b444e6e07ffac0d562f7bef",
+      "local_image": "trace-interop/anvil-source:d98588120f",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "foundry-rs/foundry:master@2620d3b6a9d385ef2ade1e4c77b59ed97013208b + pull/17301..17312 heads",
+      "source": {
+        "base": {
+          "commit": "2620d3b6a9d385ef2ade1e4c77b59ed97013208b",
+          "ref": "master"
+        },
+        "commit": "d98588120f481075aee3050996dc786e4b9fe3e2",
+        "dirty": false,
+        "merge": "git merge of each pull/<n>/head onto master in PR order; no conflicts",
+        "merged_pulls": {
+          "https://github.com/foundry-rs/foundry/pull/17301": "545d68de1ebdbf4d02813f8e3c767420a757c37c",
+          "https://github.com/foundry-rs/foundry/pull/17302": "5411d053a0fc850c35774b8e3685549a766bfdcc",
+          "https://github.com/foundry-rs/foundry/pull/17303": "85b4a54c1adc66108f333037d59bbb28dd86870c",
+          "https://github.com/foundry-rs/foundry/pull/17304": "1613c9dcebf168688ccaa98906d0ed9cdabf76d0",
+          "https://github.com/foundry-rs/foundry/pull/17305": "705cb8b5e7ea37bf1e83f9099c41fcd2656cd02c",
+          "https://github.com/foundry-rs/foundry/pull/17306": "117f19ed5443fb6daef37e42b304dfd2ccc39a57",
+          "https://github.com/foundry-rs/foundry/pull/17307": "894bd4521d35cba3a03d8c8ce4a8fa7cf9833df5",
+          "https://github.com/foundry-rs/foundry/pull/17308": "6c254ace96a44684b0c867c4c507151be72f758b",
+          "https://github.com/foundry-rs/foundry/pull/17309": "667d32a2d80759022b90fa0d2c0736e2dcc7b301",
+          "https://github.com/foundry-rs/foundry/pull/17310": "2a95cdc57962fb55fb93d0bf5d472c9a66629021",
+          "https://github.com/foundry-rs/foundry/pull/17311": "9a9d2f06e1599963f0c0849692c68f3aaa469cc5",
+          "https://github.com/foundry-rs/foundry/pull/17312": "9c5b9e9cb8c789ee97c1a4ff013d3b931f23ebf1"
+        },
+        "repository": "https://github.com/foundry-rs/foundry"
+      }
+    }
+  },
+  "corpus": "a",
+  "finished_at": "2026-10-03T17:00:01.451295+00:00",
+  "fixture_manifest_sha256": "bbc6958b44af7560918cf9566b4c9344d10ad409d6777e17147909a963494995",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": null,
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x7e362b35f5e510b210b1ab4315407fd12de3875b1ec9128e80adb0237343059f",
+          "number": "0x1"
+        },
+        {
+          "differs": [],
+          "hash": "0x6b9fb7c394e31f04577824f3f7ce85e90363f1a51c638a95407134c3ddb366c3",
+          "number": "0x2"
+        },
+        {
+          "differs": [],
+          "hash": "0xe48d87d35c1baaf53e4b1163ce1d6a579d209707132e5b16cd9402ae91f1261b",
+          "number": "0x3"
+        },
+        {
+          "differs": [],
+          "hash": "0x61b9aa99c9f1da5f8b737cdef35832f16130fc7bfa3978f8b7eb74f70821dbf8",
+          "number": "0x4"
+        },
+        {
+          "differs": [],
+          "hash": "0xbd0c6a497a15107c8a94567956a558772da9537e5f8c91c2ae3ce7ad25b6d6ed",
+          "number": "0x5"
+        },
+        {
+          "differs": [],
+          "hash": "0xaf51d506da3df88882cfb03a14cdb0179ece304a5186358697d1c70eaf54a6bc",
+          "number": "0x6"
+        },
+        {
+          "differs": [],
+          "hash": "0xc6565ec8f9da3c16870c1c4ae3d37ba7422862da12d20f7cb974a0f0e814c747",
+          "number": "0x7"
+        },
+        {
+          "differs": [],
+          "hash": "0x619c800c85855c68dbb70a9e8ba6490511315c8dadbdabb2cd0bfa5a068b0e4a",
+          "number": "0x8"
+        },
+        {
+          "differs": [],
+          "hash": "0x013284e35324fcfbb68ead12acf792aac3495c02b60bde61543e99c92afd9bc4",
+          "number": "0x9"
+        },
+        {
+          "differs": [],
+          "hash": "0x63109e651743d46928dedaeb5ffdbfb1e1abad6160ebb9ee80dbc205dbbb4ea6",
+          "number": "0xa"
+        },
+        {
+          "differs": [],
+          "hash": "0x1c7d392f8d28509c5e5cf8d918fd3ac55826425d295afdbb294bff4bd6930e42",
+          "number": "0xb"
+        },
+        {
+          "differs": [],
+          "hash": "0x7e41c2ca8ff182984d7c5c0deb74afa4e4ae44912a52efd7fae0ffb5e04ed87b",
+          "number": "0xc"
+        },
+        {
+          "differs": [],
+          "hash": "0xd790eeb53ccd1c00ffb45e4a9ff9e425d35d95ab923a69793c5a325066beaf01",
+          "number": "0xd"
+        },
+        {
+          "differs": [],
+          "hash": "0x5fc7f5dd62a4a305c50dad8e68bb8a3118d0cd1190b7203a603ef5cfa6b51e9b",
+          "number": "0xe"
+        },
+        {
+          "differs": [],
+          "hash": "0xbc595c576ff485b25cb2409f67cdf8b7151615e222c5deeca76b8858a8ee4296",
+          "number": "0xf"
+        },
+        {
+          "differs": [],
+          "hash": "0xde27a37572f63346c4cab072d66961557c5fce5ad01205cbb7f92df5a48c26e4",
+          "number": "0x10"
+        },
+        {
+          "differs": [],
+          "hash": "0x85819c63621439d0c6eee9ac2784e0b92025f4f826a5d70be56a93cf3f4b9e86",
+          "number": "0x11"
+        },
+        {
+          "differs": [],
+          "hash": "0x2ca3a778cb41b08be6ca66e6882682830636ffc38f501a6b39ae7e80453880f0",
+          "number": "0x12"
+        },
+        {
+          "differs": [],
+          "hash": "0xb68344b063955c1e9dd25f80336a298ed37d509a4fcc2646632bf522752d415f",
+          "number": "0x13"
+        },
+        {
+          "differs": [],
+          "hash": "0x73f3c472b856a64a62db2d4a8e92a6cbc8b87ed4edc0b22335a3a96c22cd54fa",
+          "number": "0x14"
+        },
+        {
+          "differs": [],
+          "hash": "0x8421db6666786ba7180ebefbdd6ba1b7f86a2c745b3728abdc7165058f3df63a",
+          "number": "0x15"
+        },
+        {
+          "differs": [],
+          "hash": "0x564ad6a2db5f6998b2dd5ca038ea074b6a05289ba994fbe30680fb03104038d4",
+          "number": "0x16"
+        },
+        {
+          "differs": [],
+          "hash": "0xfed5c61f2b8b88f1ace633df218e50f019cd05ccbee16633e002de7d7adce3ee",
+          "number": "0x17"
+        },
+        {
+          "differs": [],
+          "hash": "0x672c27198a69a3b626b48ce01aed67766cf785cc5274995be29e8e5702b7cb07",
+          "number": "0x18"
+        },
+        {
+          "differs": [],
+          "hash": "0xc40911ec4850fd33bdca3edebe7ba6c1313e0ee472275e98b15546d34a66bfdb",
+          "number": "0x19"
+        },
+        {
+          "differs": [],
+          "hash": "0x33baf2e3a4e6ea02f82c3c9f085bdad69703739f80ad14c6ce0a096b3d548ced",
+          "number": "0x1a"
+        },
+        {
+          "differs": [],
+          "hash": "0x7770987b150070556790dd68ef981ce1bf1fadb21a40b1542ae9f91b754336ce",
+          "number": "0x1b"
+        },
+        {
+          "differs": [],
+          "hash": "0xc43f4c16cae13d139afb533bd3bac457a17b52c7beac0f728cdcec02e69d9507",
+          "number": "0x1c"
+        },
+        {
+          "differs": [],
+          "hash": "0x8a3e85ec9f7f41eded8dd08b1647633cc95df8d080b3d663c9a4cafd12b88d2d",
+          "number": "0x1d"
+        },
+        {
+          "differs": [],
+          "hash": "0xb8e4da2d4e97b99a3b35051af86348f943811595e2c19cf4f51a660c51a0e8b8",
+          "number": "0x1e"
+        },
+        {
+          "differs": [],
+          "hash": "0x53c4089e1cce0df3ba3b721fc7ba99ac03a81d7d005129eca2db20d31129d0da",
+          "number": "0x1f"
+        },
+        {
+          "differs": [],
+          "hash": "0x2ede4d8c91b9e4ad3a02472f59efad33d544d4a83c15b8747aca82af46ee0610",
+          "number": "0x20"
+        },
+        {
+          "differs": [],
+          "hash": "0x561719541dddaac9fc283d5cfa02cfda493112f86ad1e730cdd1c2a6249d43d8",
+          "number": "0x21"
+        },
+        {
+          "differs": [],
+          "hash": "0xb195643ad8b0e99e31f51137904c1c97f8f1a113a2d848859f2c225ec4b7cb4e",
+          "number": "0x22"
+        },
+        {
+          "differs": [],
+          "hash": "0x6fa981ab53340d8d54a629672b333df5ae456e427357f71ecaaeca4ea6304b6f",
+          "number": "0x23"
+        },
+        {
+          "differs": [],
+          "hash": "0xce74a56e776883df3c22bcf860c885a34e2fa977b4e96717e799d44702f88543",
+          "number": "0x24"
+        },
+        {
+          "differs": [],
+          "hash": "0x1359028964d35c426fd0f02f111d2c6fd2e31791cd32d4c0e60f9db72b6977ef",
+          "number": "0x25"
+        },
+        {
+          "differs": [],
+          "hash": "0x91005ec0a619df4dbed7d2ef2fb67d287650551d0c38576a364f22fb03e6b4c0",
+          "number": "0x26"
+        },
+        {
+          "differs": [],
+          "hash": "0xf0756a96236259aee2e67660639da0c1106728f6ce35360fca419a7284fb2171",
+          "number": "0x27"
+        },
+        {
+          "differs": [],
+          "hash": "0x5b6fcbbe0b718e61243ead6fdeec61af3e59218928cb2c155cd27019aee44b0d",
+          "number": "0x28"
+        },
+        {
+          "differs": [],
+          "hash": "0x9a4eeeef87950fad7a7e90a38d273aec98d74cbfebcc6ec09566988f73e82a40",
+          "number": "0x29"
+        },
+        {
+          "differs": [],
+          "hash": "0x05e783fa006e687895a74f4f46ac477decd925e48f333460850f4df5835162f5",
+          "number": "0x2a"
+        },
+        {
+          "differs": [],
+          "hash": "0x4836e9ed10098e3796a3a072b05add3da328696482207e1e8a9ad4154db3f1a2",
+          "number": "0x2b"
+        },
+        {
+          "differs": [],
+          "hash": "0x5328239e638ad26b96eb569d3927f56fa2c782f29f8fbe9f9d25f5feffe34b05",
+          "number": "0x2c"
+        },
+        {
+          "differs": [],
+          "hash": "0xf1cf3fdcea9bdf7885013c94bc2c790a1a9118a2394ecb27c23d5b8148ee52bd",
+          "number": "0x2d"
+        },
+        {
+          "differs": [],
+          "hash": "0x681c1248cf81f1abe2d13ec9e1cc0ece4955e90c4418ec01863482542c09c514",
+          "number": "0x2e"
+        },
+        {
+          "differs": [],
+          "hash": "0xaa595e6f71bb7742b739e5c49fcf85359559ed3e3711bb6d43a3098bbc9d8e84",
+          "number": "0x2f"
+        },
+        {
+          "differs": [],
+          "hash": "0x9a0babf5ad65d8c2117c00ed4282de561680fec18ab69b7367398fcfa4214847",
+          "number": "0x30"
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0xe48d87d35c1baaf53e4b1163ce1d6a579d209707132e5b16cd9402ae91f1261b",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0x7770987b150070556790dd68ef981ce1bf1fadb21a40b1542ae9f91b754336ce",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0x672c27198a69a3b626b48ce01aed67766cf785cc5274995be29e8e5702b7cb07",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x8a3e85ec9f7f41eded8dd08b1647633cc95df8d080b3d663c9a4cafd12b88d2d",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0x7e41c2ca8ff182984d7c5c0deb74afa4e4ae44912a52efd7fae0ffb5e04ed87b",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0x53c4089e1cce0df3ba3b721fc7ba99ac03a81d7d005129eca2db20d31129d0da",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0x73f3c472b856a64a62db2d4a8e92a6cbc8b87ed4edc0b22335a3a96c22cd54fa",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0x4836e9ed10098e3796a3a072b05add3da328696482207e1e8a9ad4154db3f1a2",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0x61b9aa99c9f1da5f8b737cdef35832f16130fc7bfa3978f8b7eb74f70821dbf8",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xb8e4da2d4e97b99a3b35051af86348f943811595e2c19cf4f51a660c51a0e8b8",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0xce74a56e776883df3c22bcf860c885a34e2fa977b4e96717e799d44702f88543",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0xfed5c61f2b8b88f1ace633df218e50f019cd05ccbee16633e002de7d7adce3ee",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x619c800c85855c68dbb70a9e8ba6490511315c8dadbdabb2cd0bfa5a068b0e4a",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0xbd0c6a497a15107c8a94567956a558772da9537e5f8c91c2ae3ce7ad25b6d6ed",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0x2ede4d8c91b9e4ad3a02472f59efad33d544d4a83c15b8747aca82af46ee0610",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0xc40911ec4850fd33bdca3edebe7ba6c1313e0ee472275e98b15546d34a66bfdb",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0xbc595c576ff485b25cb2409f67cdf8b7151615e222c5deeca76b8858a8ee4296",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0xc6565ec8f9da3c16870c1c4ae3d37ba7422862da12d20f7cb974a0f0e814c747",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0x5fc7f5dd62a4a305c50dad8e68bb8a3118d0cd1190b7203a603ef5cfa6b51e9b",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x681c1248cf81f1abe2d13ec9e1cc0ece4955e90c4418ec01863482542c09c514",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0xb68344b063955c1e9dd25f80336a298ed37d509a4fcc2646632bf522752d415f",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0x1c7d392f8d28509c5e5cf8d918fd3ac55826425d295afdbb294bff4bd6930e42",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0x2ca3a778cb41b08be6ca66e6882682830636ffc38f501a6b39ae7e80453880f0",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x05e783fa006e687895a74f4f46ac477decd925e48f333460850f4df5835162f5",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x63109e651743d46928dedaeb5ffdbfb1e1abad6160ebb9ee80dbc205dbbb4ea6",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x7e362b35f5e510b210b1ab4315407fd12de3875b1ec9128e80adb0237343059f",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0x1359028964d35c426fd0f02f111d2c6fd2e31791cd32d4c0e60f9db72b6977ef",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0x561719541dddaac9fc283d5cfa02cfda493112f86ad1e730cdd1c2a6249d43d8",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0x5328239e638ad26b96eb569d3927f56fa2c782f29f8fbe9f9d25f5feffe34b05",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0x013284e35324fcfbb68ead12acf792aac3495c02b60bde61543e99c92afd9bc4",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xb195643ad8b0e99e31f51137904c1c97f8f1a113a2d848859f2c225ec4b7cb4e",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x85819c63621439d0c6eee9ac2784e0b92025f4f826a5d70be56a93cf3f4b9e86",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xc43f4c16cae13d139afb533bd3bac457a17b52c7beac0f728cdcec02e69d9507",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0x9a4eeeef87950fad7a7e90a38d273aec98d74cbfebcc6ec09566988f73e82a40",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0x8421db6666786ba7180ebefbdd6ba1b7f86a2c745b3728abdc7165058f3df63a",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0xaa595e6f71bb7742b739e5c49fcf85359559ed3e3711bb6d43a3098bbc9d8e84",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x33baf2e3a4e6ea02f82c3c9f085bdad69703739f80ad14c6ce0a096b3d548ced",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x564ad6a2db5f6998b2dd5ca038ea074b6a05289ba994fbe30680fb03104038d4",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0xde27a37572f63346c4cab072d66961557c5fce5ad01205cbb7f92df5a48c26e4",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xaf51d506da3df88882cfb03a14cdb0179ece304a5186358697d1c70eaf54a6bc",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0xf0756a96236259aee2e67660639da0c1106728f6ce35360fca419a7284fb2171",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0x6fa981ab53340d8d54a629672b333df5ae456e427357f71ecaaeca4ea6304b6f",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x91005ec0a619df4dbed7d2ef2fb67d287650551d0c38576a364f22fb03e6b4c0",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0xf1cf3fdcea9bdf7885013c94bc2c790a1a9118a2394ecb27c23d5b8148ee52bd",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x9a0babf5ad65d8c2117c00ed4282de561680fec18ab69b7367398fcfa4214847",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0xd790eeb53ccd1c00ffb45e4a9ff9e425d35d95ab923a69793c5a325066beaf01",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0x6b9fb7c394e31f04577824f3f7ce85e90363f1a51c638a95407134c3ddb366c3",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0x5b6fcbbe0b718e61243ead6fdeec61af3e59218928cb2c155cd27019aee44b0d"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.8.4-dev+d9858812"
+    }
+  },
+  "replica_sha256": "70a5ec571dcd0eedc460036c2a513f564b263a3dc1ed79d5e48520bbbdc79290",
+  "runner_sha256": "cade523514ad566638ea18c00e704cecb5fabb7f56edd8847be68f419e8de4ae",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x30",
+      "name": "control-height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0xc72dd9d5e883e",
+      "name": "control-chain",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x85",
+      "name": "control-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x602a60005260206000f3",
+      "name": "control-code-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x60006000fd",
+      "name": "control-code-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001003",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "name": "control-code-storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6020600060006000600061100261ea60f1506020600060006000600061100361ea60f15000",
+      "name": "control-code-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001004",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+      "name": "control-code-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001005",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x601761001b600039601760006000f050607b601760006000f55000600a61000d600039600a6000f3602a60005260206000f3",
+      "name": "control-code-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001006",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x611008ff",
+      "name": "control-code-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001007",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6174e060006101803700",
+      "name": "control-code-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001009",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x602a6000526020600060205e00",
+      "name": "control-code-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000100a",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x",
+      "name": "control-code-prefunded-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000100b",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0xef01000000000000000000000000000000000000001002",
+      "name": "control-code-delegated",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x19e7e376e7c213b7e7e7e46cc70a5dd086daff2a",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x",
+      "name": "control-code-undelegated",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x1563915e194d8cfba1943570603f7606a3115508",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-nested-positive",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x6",
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-nested-parent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x6"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-integer-path",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            6,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-path-wrong-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "0x6"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "transaction-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-all",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": null,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": null,
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-both-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": null,
+            "fromBlock": "0x2",
+            "toAddress": null,
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-empty-to-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [],
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-empty-from-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toAddress": [],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-only-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-only-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-only-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-only-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-both-unknown-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "garbage",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-unknown-field",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "unknownDiagnosticFlag": true
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-wrong-address-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-negative-count",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": -1,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-past-end-page",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 10000,
+            "count": 1,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-created-to",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x2d303c5b7911d87d594bf1b31fbb9aa187888893"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-creator-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-suicide-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x2d303c5b7911d87d594bf1b31fbb9aa187888893"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-suicide-beneficiary",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001004"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001004"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001005"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001005"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001006"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "state-only-nonempty-output",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "vm-only-nonempty-output",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "prefunded-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100b",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "empty-types",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-gas7400-opcodes",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          "0x30",
+          {
+            "disableMemory": true,
+            "disableStack": true,
+            "disableStorage": true
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "many-storage-write-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "many-storage-write-revert-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-storage-after-many",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001001"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-wrong-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": {},
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-unknown-field",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002",
+            "unknownDiagnosticFlag": true
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-unknown-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "garbage"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-null-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          null,
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-scalar-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          "trace",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0xffff"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-filter",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 1,
+            "fromBlock": "0x2f",
+            "toBlock": "0xffff"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace"
+          ],
+          "0xffff"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-replay",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0xffff",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-filter-next",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 1,
+            "fromBlock": "0x30",
+            "toBlock": "0x31"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-valid",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8185847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a8d391fb09e2f92ffc93fe7ac7b1eb7f1e24289f707eec0f34292c1713f795ffa0554e314f2ec6166290fc977d4bd4c86a9e0cadc2366f6139bd907d893bb4e237",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-nonce-high",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8186847735940082520894000000000000000000000000000000000000123401808718e5bb3abd109fa07088ff5b782a62ee95e868e0cb949f05a4fa52e5dff86136e2d3f5eaa9cfb34ba053f2145a9d3b1d5f726bef1e95aa15db4ab7f50099330d2bbe31dae1e73698ce",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-wrong-chain",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86481858477359400825208940000000000000000000000000000000000001234018026a0680e20ade3f3bfbbb3d8e2246c26a13efb3a8e886c182c159cd240b4636342b8a027a25d70c994f869fa5abe6b841ddfff0ab32944d6e9719c830ace909c024a3b",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-insufficient-funds",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0aca7ebc30807b79807337959a904b47c9c067f725b99878e04064bbda2b253c3a03d83e51caa10aa91fc8422e47b95b7f8a2bbd409422f007a5bc93715e1de2b9e",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-low-gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b81858477359400824e2094000000000000000000000000000000000000123401808718e5bb3abd10a0a038e0b48a1022d5c55eea7e525942547d2009224ffa7ab6d1b40a5a16cb70a590a0279569cdb60041c1eac5043486547bdf086c64543c7e2d07870a288096213d33",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-below-basefee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86681850182520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a6525c23fcea9e006fece50614f7aaf6172e8bcc4cd6226480c174bbc055351c9fc17630ea66fe9c6ebfe8f96bb98c2433c16b43fc260cbd2530add6931d551a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d40941563915e194d8cfba1943570603f7606a31155088080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010028001a0909ccd479b49d4de221beaed4e2b48ee8623d1efe6c9ba4f10653c26855123d8a0489bae47a8c46d50d536a34d9695a07668c64e89e2e17e1df04d37acb228601501a0138e133d330b2ac9573aef02e8182d29d97e5669e09079e1828d4ffe7abb73b2a018efb64c0af5c267645bd3de711a50fa787eece3679231a6843a23b3f29892c1",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-replace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d409419e7e376e7c213b7e7e7e46cc70a5dd086daff2a8080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010038080a032b48971f74add2ebe91ce111113ff37b7f8d272ed23134e89aa7658b677ca45a05bc973423f88f2644a49fa4509864691835ff138f284a233ecba072e79dfb5f580a0d69accc0eaf71c8a02bf2b11adb6644f9b694243463e8300fc88feeff61f8884a02f3f0627d55d5268f16db3cef6ef2636ee568713e5a631e7f73656f3c0d26d76",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-clear",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d409419e7e376e7c213b7e7e7e46cc70a5dd086daff2a8080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000000008080a098be4e1c8200ba8e16556d95b598148f7ec1c6e18b76142e70007dfa5d18cf58a018a787b683426bb748bb03664d04512e382dca461e0e442f1d4c39c255f8dde501a0c0e27e354c443878b62ef28229d90a05e8414a30869bef4c3ddcf07fa205c734a0503d6a2d2293f18f5bcbb4330ac6dbeeae67c364b12a58294b8494b29782af51",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-set-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d40941563915e194d8cfba1943570603f7606a31155088080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010038080a01c3f9771a572f2fdc37253483e7c67cc8d8e294276bf1dccd8ebe091477d763ba04b0d0c594ea086b9c13812d8810b1320e83b99be260518f6ff94055e04ac61fc80a0eae005bf7758c07ba75a1a0b37133bac4a0625efe1c91958ce0949a08a1bb3bda07c1d251064247970bf84ce0e9c37a44096182fba91e65d4022e080ddc396a15f",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "block-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "block-3",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-two-blocks",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x3"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-0",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 0,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-1",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 4,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 8,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-snapshot",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "_reference/block/0x30",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x30"
+        ]
+      },
+      "role": "reference"
+    }
+  ],
+  "source_commit": "12ed8fe2d2f022d332604ddcf5966661ed93a42f",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-03T16:59:46.000772+00:00"
+}

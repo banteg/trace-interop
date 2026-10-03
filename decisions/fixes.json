@@ -2593,7 +2593,7 @@
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14212",
-      "title": "fix(rpc): keep call object fields that an explicit type lacks",
+      "title": "fix(rpc): let a call object's fields, not its type, decide how it runs",
       "client": "nethermind",
       "decisions": [
         "H14"
@@ -2604,7 +2604,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "an explicit type counts like a discriminator, so the newest indicated class wins and no supplied field is dropped (type 0/1 with dynamic fees, type 2 with an authorization list); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction reject an explicit type its fields don't fit"
+      "note": "for types 0x0-0x4 the fields pick the call's class, so a call neither drops a field nor takes a requirement from its type (type 0/1 with dynamic fees, type 2 with an authorization list, type 3 without blobs); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction apply the requested type when its class can carry the fields and reject it otherwise"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",

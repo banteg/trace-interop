@@ -72,7 +72,7 @@
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "b9854c2c65e88f278b3d3f967ed20482b27d9e5009330c1341894542ca08825e",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
-    "spec.lock.json": "eb81711fdc9f0ee4add51e67a43bd560362c0c86017f72d22fcb80d25fed91fe",
+    "spec.lock.json": "247fe4b8708a83d636e054d48b5296382aec4209a4a28be0e05763f00afab835",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "c8912eebde81ae3bd65830ca0d37ba34b7f56fa5537359279bc483b564724f5f",
     "trace_interop/execution_models.py": "ea1caa89675076af1a853cb407295ad9e61b7a5d2507d562a3c71a0d80b162ff",
@@ -94,5 +94,5 @@
     "trace_interop/vm_model.py": "d385b7627603df336cdbacea3cbf07db204a659c318180d44768b0f6b03eb9c8",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "8a9b4dfa0276bd4bb62e8624b9fe429096803a6b"
+  "spec_commit": "b8d0d7aedd13a6cb6cc111413f7083360cb2d43a"
 }

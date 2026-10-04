@@ -151,8 +151,8 @@ block that reads its own beacon root differs, so that corpus is ineligible. The 
 root never match: Anvil funds its default dev accounts at genesis even with `--init`, so the state
 root differs from the first block, withdrawals are credited outside their block, and the EIP-2935
 system contract then stores the replica's block hashes (and EIP-4788 the zero roots, where they
-were not set). Its head is therefore verified without the state root. The manifest's `parent_beacon_roots` records whether
-the roots were set (`null` for a chain without them).
+were not set). Its head is therefore verified without the state root. The manifest's
+`parent_beacon_roots` records whether the roots were set (`null` for a chain without them).
 
 Requests are sent with the replica's block hashes, and each parsed `response` maps them back to
 the fixture's, with or without a `0x` prefix. `raw_response` keeps the wire bytes. The manifest

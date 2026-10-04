@@ -12,6 +12,7 @@ from trace_interop.chain_model import load_chain
 from trace_interop.cli import ROOT, collect, compatible, log_bytes, read, write
 from trace_interop.replica import (
     RpcError,
+    anvil_command,
     blocks,
     expected_header,
     hardfork,
@@ -62,6 +63,10 @@ class Replayability(unittest.TestCase):
         self.assertEqual(hardfork(read(CHAINS/'initial/genesis.json')), 'prague')
         self.assertIsNone(hardfork(read(CHAINS/'forks/genesis.json')))
 
+    def test_anvil_starts_without_dev_accounts(self):
+        command = anvil_command(CHAINS/'initial')
+        self.assertEqual(command[command.index('--accounts') + 1], '0')
+
     def test_replica_builds_skip_hive_scenarios_and_multi_fork_chains(self):
         anvil, reth, besu = ({'client': c} for c in ('anvil', 'reth', 'besu'))
         for corpus, expected in [('initial', True), ('mined-probes', True), ('callmany-isolation', True),
@@ -103,6 +108,8 @@ class BlockComparison(unittest.TestCase):
         self.assertEqual(len(compared), len(fixture))
         self.assertFalse(any(b['differs'] for b in compared))
         self.assertTrue(beacon_roots)
+        # The fake node mines its own hashes, so no block claims the fixture's.
+        self.assertFalse(any(b['same_hash'] for b in compared))
         self.assertEqual(hashes[HEAD['hash']], '0x{:064x}'.format(int(HEAD['number'], 16)))
         self.assertIn(HEAD['parentHash'], hashes)
         # A block's withdrawals follow its mining, never precede it.

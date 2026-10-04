@@ -134,7 +134,7 @@ and Anvil captures only [replayable chains](#replica-captures).
 
 Anvil has no Engine API, so Hive cannot import a chain into it. Its builds are instead
 *replicas*: the run starts the locked Foundry image with the chain's genesis
-(`anvil --init`, the one hardfork the chain runs, its chain ID and gas limit, FIFO ordering,
+(`anvil --init` without dev accounts, the one hardfork the chain runs, its chain ID and gas limit, FIFO ordering,
 no automatic mining) and mines every fixture block again. Before each block it sets the
 fixture's timestamp, base fee, prevrandao, coinbase and parent beacon root, then submits the
 block's transactions in order. Builds without `anvil_setNextBlockParentBeaconBlockRoot`
@@ -147,12 +147,14 @@ and limit, timestamp, base fee, blob gas, prevrandao, coinbase, transactions and
 logs bloom and requests hash, plus the parent beacon root when the build can set it. A build is
 eligible only if every block reproduces; otherwise setup verification names the differing blocks
 and fields, and its cases are blocked. On a build that mines the zero root, the `mined-probes`
-block that reads its own beacon root differs, so that corpus is ineligible. The hash and state
-root never match: Anvil funds its default dev accounts at genesis even with `--init`, so the state
-root differs from the first block, withdrawals are credited outside their block, and the EIP-2935
-system contract then stores the replica's block hashes (and EIP-4788 the zero roots, where they
-were not set). Its head is therefore verified without the state root. The manifest's
-`parent_beacon_roots` records whether the roots were set (`null` for a chain without them).
+block that reads its own beacon root differs, so that corpus is ineligible. The replica starts
+without Anvil's dev accounts (`--accounts 0`), which Anvil otherwise funds at genesis even with
+`--init`, so a block can reproduce the fixture's hash and state root. Each block records whether
+it did (`same_hash`). Withdrawals are credited outside their block, so a block with withdrawals,
+and every block after it, differs; the EIP-2935 system contract then stores the replica's block
+hashes (and EIP-4788 the zero roots, where they were not set). The head is therefore verified
+without the state root. The manifest's `parent_beacon_roots` records whether the roots were set
+(`null` for a chain without them).
 
 Requests are sent with the replica's block hashes, and each parsed `response` maps them back to
 the fixture's, with or without a `0x` prefix. `raw_response` keeps the wire bytes. The manifest

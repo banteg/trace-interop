@@ -9,11 +9,11 @@
 <meta property="og:description" content="Merge order for the Ethereum trace_* standard as a game tech tree, built from the trace-interop tracker.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Cinzel:wght@600;800&family=Share+Tech+Mono&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
 [hidden] { display: none !important; }
-/* ---------- tokens: each skin is a deliberate single look ---------- */
-html.skin-civ {
+/* ---------- Civilization II palette ---------- */
+:root {
   color-scheme: light;
   --desk: #087c7a;
   --desk-ink: #f7f2dc;
@@ -34,28 +34,9 @@ html.skin-civ {
   --body: "Tinos", "Times New Roman", Times, serif;
   --mono: "Tinos", "Times New Roman", serif;
 }
-html.skin-sc {
-  color-scheme: dark;
-  --desk: #020407;
-  --desk-ink: #d9f7e4;
-  --gold: #f4d03f;
-  --ink: #cdf7d6;
-  --ink-soft: #79b996;
-  --line: #2fd59a;
-  --hl: #f4d03f;
-  --red: #ff5a4a;
-  --panel: #07120d;
-  --panel-2: #0c1d15;
-  --metal-a: #2a3531;
-  --metal-b: #121916;
-  --display: "Chakra Petch", "Eurostile", "Arial Narrow", sans-serif;
-  --body: "Chakra Petch", "Arial Narrow", sans-serif;
-  --mono: "Share Tech Mono", ui-monospace, Menlo, monospace;
-}
 
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--desk); color: var(--ink); font-family: var(--body); }
-html.skin-sc body { background: var(--desk) var(--stars, none) repeat; }
 .page { max-width: 1760px; margin: 0 auto; padding-block: 20px 40px; padding-inline: 16px; display: grid; gap: 18px; }
 canvas.spr { image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
 button { font: inherit; color: inherit; }
@@ -66,21 +47,10 @@ a { color: inherit; }
 .masthead { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px 24px; }
 .masthead h1 { margin: 0; font-family: var(--display); font-weight: 800; text-wrap: balance; line-height: 1; }
 .lede { margin: 8px 0 0; max-width: 62ch; line-height: 1.45; }
-.skins { display: flex; gap: 6px; }
-.skins button { cursor: pointer; padding: 7px 14px; }
 
-html.skin-civ .masthead h1 { font-size: clamp(30px, 5vw, 52px); color: var(--gold); letter-spacing: .04em;
+.masthead h1 { font-size: clamp(30px, 5vw, 52px); color: var(--gold); letter-spacing: .04em;
   text-shadow: 2px 2px 0 #3a2a05, 4px 4px 0 rgba(0,0,0,.35); }
-html.skin-civ .lede { color: var(--desk-ink); font-size: 16px; }
-html.skin-civ .skins button { background: var(--win); color: var(--ink); border: 0; font-weight: 700;
-  box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo), inset 2px 2px #dfdfdf; }
-html.skin-civ .skins button[aria-pressed="true"] { box-shadow: inset 1px 1px var(--win-dk), inset -1px -1px var(--win-hi), inset 2px 2px var(--win-lo), inset -2px -2px #dfdfdf; background: #d4d0c8; }
-
-html.skin-sc .masthead h1 { font-size: clamp(28px, 4.6vw, 48px); color: #eafcff; letter-spacing: .14em; text-transform: uppercase;
-  text-shadow: 0 0 18px rgba(47,213,154,.45); }
-html.skin-sc .lede { color: var(--ink-soft); font-family: var(--mono); font-size: 14.5px; }
-html.skin-sc .skins button { background: var(--panel); border: 1px solid #285c46; color: var(--ink-soft); font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
-html.skin-sc .skins button[aria-pressed="true"] { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 12px rgba(244,208,63,.25); }
+.lede { color: var(--desk-ink); font-size: 16px; }
 
 /* ---------- windows ---------- */
 .win { position: relative; min-width: 0; }
@@ -89,23 +59,15 @@ html.skin-sc .skins button[aria-pressed="true"] { color: var(--gold); border-col
 .tb-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .win-body { position: relative; }
 
-html.skin-civ .win { background: var(--win); padding: 3px;
+.win { background: var(--win); padding: 3px;
   box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px #dfdfdf, inset -2px -2px var(--win-lo), inset 2px 2px var(--win-hi), 6px 6px 0 rgba(0,0,0,.28); }
-html.skin-civ .titlebar { background: linear-gradient(90deg, var(--title-a), var(--title-b)); color: #fff; padding: 3px 4px 3px 8px; font-size: 14px; }
-html.skin-civ .tb-btns { display: flex; gap: 2px; }
-html.skin-civ .tb-btns i { width: 18px; height: 16px; background: var(--win); display: grid; place-items: center; color: #000; font: 700 11px/1 var(--body); font-style: normal;
+.titlebar { background: linear-gradient(90deg, var(--title-a), var(--title-b)); color: #fff; padding: 3px 4px 3px 8px; font-size: 14px; }
+.tb-btns { display: flex; gap: 2px; }
+.tb-btns i { width: 18px; height: 16px; background: var(--win); display: grid; place-items: center; color: #000; font: 700 11px/1 var(--body); font-style: normal;
   box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); }
-html.skin-civ .menubar { display: flex; gap: 2px 16px; flex-wrap: wrap; padding: 4px 8px; font-size: 14px; color: #000; }
-html.skin-civ .menubar span::first-letter { text-decoration: underline; }
-html.skin-civ .inset { box-shadow: inset 1px 1px var(--win-lo), inset -1px -1px var(--win-hi), inset 2px 2px var(--win-dk), inset -2px -2px #dfdfdf; padding: 2px; }
-html.skin-civ .res-bar, html.skin-civ .sc-only { display: none !important; }
-
-html.skin-sc .win { background: linear-gradient(180deg, var(--metal-a), var(--metal-b)); padding: 5px; border: 1px solid #3c4a44;
-  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px); }
-html.skin-sc .titlebar { padding: 6px 14px; font-family: var(--mono); color: var(--gold); text-transform: uppercase; letter-spacing: .12em; font-size: 13px;
-  background: repeating-linear-gradient(135deg, rgba(244,208,63,.07) 0 8px, transparent 8px 16px), #0a110e; border-bottom: 1px solid #23463a; }
-html.skin-sc .tb-btns, html.skin-sc .menubar, html.skin-sc .civ-only { display: none !important; }
-html.skin-sc .inset { background: var(--panel); border: 1px solid #1b3a2e; padding: 0; }
+.menubar { display: flex; gap: 2px 16px; flex-wrap: wrap; padding: 4px 8px; font-size: 14px; color: #000; }
+.menubar span::first-letter { text-decoration: underline; }
+.inset { box-shadow: inset 1px 1px var(--win-lo), inset -1px -1px var(--win-hi), inset 2px 2px var(--win-dk), inset -2px -2px #dfdfdf; padding: 2px; }
 
 /* ---------- toolbar ---------- */
 .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px 20px; flex-wrap: wrap; padding: 6px 8px; }
@@ -113,60 +75,38 @@ html.skin-sc .inset { background: var(--panel); border: 1px solid #1b3a2e; paddi
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 22px; height: 12px; display: inline-block; }
 .fit { cursor: pointer; padding: 4px 10px; font-size: 13px; }
-html.skin-civ .toolbar { color: #000; }
-html.skin-civ .legend .k-done i { background: #8fb57a; box-shadow: inset -1px -1px #000, inset 1px 1px #fff; }
-html.skin-civ .legend .k-active i { background: #7f9cc9; outline: 2px dashed #e0c400; outline-offset: 1px; }
-html.skin-civ .legend .k-crit i { height: 4px; background: #5a1810; }
-html.skin-civ .legend .k-locked i { background: #9c9c9c; box-shadow: inset -1px -1px #000, inset 1px 1px #fff; }
-html.skin-civ .fit { background: var(--win); border: 0; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); }
-html.skin-sc .toolbar { font-family: var(--mono); color: var(--ink-soft); }
-html.skin-sc .legend { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; }
-html.skin-sc .legend .k-done i { border: 1px solid var(--line); background: rgba(47,213,154,.2); }
-html.skin-sc .legend .k-active i { border: 1px solid var(--line); background: repeating-linear-gradient(135deg, #2fd59a 0 4px, #0b3a26 4px 8px); }
-html.skin-sc .legend .k-crit i { height: 3px; background: var(--gold); box-shadow: 0 0 6px var(--gold); }
-html.skin-sc .legend .k-locked i { border: 1px solid #6b2a24; background: rgba(255,90,74,.12); }
-html.skin-sc .fit { background: var(--panel); border: 1px solid #285c46; color: var(--ink); font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.toolbar { color: #000; }
+.legend .k-done i { background: #8fb57a; box-shadow: inset -1px -1px #000, inset 1px 1px #fff; }
+.legend .k-active i { background: #7f9cc9; outline: 2px dashed #e0c400; outline-offset: 1px; }
+.legend .k-crit i { height: 4px; background: #5a1810; }
+.legend .k-locked i { background: #9c9c9c; box-shadow: inset -1px -1px #000, inset 1px 1px #fff; }
+.fit { background: var(--win); border: 0; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); }
 
 /* ---------- board ---------- */
 .board-wrap { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
 .board-scale { position: relative; }
 .board { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 .board svg { position: absolute; inset: 0; overflow: visible; }
-html.skin-civ .board-wrap { background: #b9c0aa var(--marble, none); }
-html.skin-sc .board-wrap { background:
-  linear-gradient(rgba(47,213,154,.05) 1px, transparent 1px) 0 0 / 22px 22px,
-  linear-gradient(90deg, rgba(47,213,154,.05) 1px, transparent 1px) 0 0 / 22px 22px,
-  rgba(2,6,5,.82); }
+.board-wrap { background: #b9c0aa var(--marble, none); }
 
 .colhead { position: absolute; top: 10px; text-align: center; white-space: nowrap; }
-html.skin-civ .colhead { font: 800 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
+.colhead { font: 800 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
   background: var(--paper); padding: 5px 8px; box-shadow: inset -1px -1px #6d5a33, inset 1px 1px #fff8e2, 2px 2px 0 rgba(0,0,0,.25); }
-html.skin-sc .colhead { font: 12px/1 var(--mono); letter-spacing: .14em; color: var(--gold); padding: 4px 6px; border-bottom: 1px solid rgba(244,208,63,.35); }
 
 .edge { fill: none; transition: opacity .15s, stroke .15s; }
-html.skin-civ .edge { stroke: var(--line); stroke-width: 2; }
-html.skin-civ .edge.locked { stroke-dasharray: 5 4; stroke: #4b4236; }
-html.skin-civ .edge.crit { stroke-width: 4; stroke: #5a1810; }
-html.skin-civ .edge.crit.locked { stroke-dasharray: 9 5; }
-html.skin-civ .arrow.crit { fill: #5a1810; }
-html.skin-civ .edge.hl { stroke: var(--hl); stroke-width: 3.2; }
-html.skin-civ .edge.crit.hl { stroke-width: 4.4; }
-html.skin-civ .arrow { fill: var(--line); }
-html.skin-civ .arrow.hl { fill: var(--hl); }
-html.skin-sc .edges { filter: drop-shadow(0 0 3px rgba(47,213,154,.6)); }
-html.skin-sc .edge { stroke: var(--line); stroke-width: 1.5; opacity: .75; }
-html.skin-sc .edge.locked { stroke: #b0473d; stroke-dasharray: 3 4; opacity: .7; }
-html.skin-sc .edge.crit { stroke: var(--gold); stroke-width: 2.4; opacity: .9; }
-html.skin-sc .arrow.crit { fill: var(--gold); }
-html.skin-sc .edge.hl { stroke: var(--hl); opacity: 1; stroke-width: 2.2; }
-html.skin-sc .arrow { fill: var(--line); }
-html.skin-sc .arrow.locked { fill: #b0473d; }
-html.skin-sc .arrow.hl { fill: var(--hl); }
+.edge { stroke: var(--line); stroke-width: 2; }
+.edge.locked { stroke-dasharray: 5 4; stroke: #4b4236; }
+.edge.crit { stroke-width: 4; stroke: #5a1810; }
+.edge.crit.locked { stroke-dasharray: 9 5; }
+.arrow.crit { fill: #5a1810; }
+.edge.hl { stroke: var(--hl); stroke-width: 3.2; }
+.edge.crit.hl { stroke-width: 4.4; }
+.arrow { fill: var(--line); }
+.arrow.hl { fill: var(--hl); }
 .board.has-hl .edge:not(.hl), .board.has-hl .arrow:not(.hl) { opacity: .28; }
 .board.has-hl .node:not(.hl):not(.sel) { opacity: .55; }
 .lane-note { font-size: 12.5px; }
-html.skin-civ .lane-note { font-family: var(--body); font-style: italic; fill: var(--ink); }
-html.skin-sc .lane-note { font-family: var(--mono); fill: var(--ink-soft); letter-spacing: .04em; }
+.lane-note { font-family: var(--body); font-style: italic; fill: var(--ink); }
 
 /* ---------- nodes ---------- */
 .node { position: absolute; display: grid; grid-template-columns: 40px 1fr; gap: 7px; align-items: start; padding: 6px 7px 6px 6px; text-align: left; cursor: pointer; border: 0; transition: opacity .15s, transform .1s; }
@@ -186,55 +126,28 @@ html.skin-sc .lane-note { font-family: var(--mono); fill: var(--ink-soft); lette
 .node.tall .nd { font-size: 12px; line-height: 1.35; margin-top: 4px; }
 .node.tall .nb { justify-items: center; width: 100%; }
 
-html.skin-civ .node { color: var(--ink); background: var(--cat);
+.node { color: var(--ink); background: var(--cat);
   box-shadow: inset -1px -1px #000, inset 1px 1px rgba(255,255,255,.85), inset -2px -2px rgba(0,0,0,.35), inset 2px 2px rgba(255,255,255,.35), 3px 3px 0 rgba(0,0,0,.3); }
-html.skin-civ .node .portrait { background: var(--paper); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
-html.skin-civ .node .ns { font-style: italic; color: #2c241b; }
-html.skin-civ .node .meter { background: #f3ecd5; box-shadow: inset 1px 1px #6d5a33; }
-html.skin-civ .node .meter i { background: repeating-linear-gradient(90deg, #1d3f9e 0 5px, #3a63c9 5px 6px); }
-html.skin-civ .node .actor { background: var(--paper); box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 2px 2px 0 rgba(0,0,0,.3); }
-html.skin-civ .node.st-active { outline: 3px dashed #f5dc1e; outline-offset: 1px; }
-html.skin-civ .node.now { animation: civblink 1.1s steps(2) infinite; }
-html.skin-civ .node.st-locked { background: #a3a3a3; }
-html.skin-civ .node.st-locked .portrait canvas { filter: grayscale(1) contrast(.9); opacity: .7; }
-html.skin-civ .node.st-locked .nt, html.skin-civ .node.st-locked .ns { color: #3b3b3b; }
-html.skin-civ .node.sel { box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 0 0 0 3px var(--hl), 4px 4px 0 rgba(0,0,0,.35); }
-html.skin-civ .node:hover { transform: translate(-1px,-1px); }
+.node .portrait { background: var(--paper); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
+.node .ns { font-style: italic; color: #2c241b; }
+.node .meter { background: #f3ecd5; box-shadow: inset 1px 1px #6d5a33; }
+.node .meter i { background: repeating-linear-gradient(90deg, #1d3f9e 0 5px, #3a63c9 5px 6px); }
+.node .actor { background: var(--paper); box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 2px 2px 0 rgba(0,0,0,.3); }
+.node.st-active { outline: 3px dashed #f5dc1e; outline-offset: 1px; }
+.node.now { animation: civblink 1.1s steps(2) infinite; }
+.node.st-locked { background: #a3a3a3; }
+.node.st-locked .portrait canvas { filter: grayscale(1) contrast(.9); opacity: .7; }
+.node.st-locked .nt, .node.st-locked .ns { color: #3b3b3b; }
+.node.sel { box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 0 0 0 3px var(--hl), 4px 4px 0 rgba(0,0,0,.35); }
+.node:hover { transform: translate(-1px,-1px); }
 @keyframes civblink { 0% { outline-color: #f5dc1e; } 100% { outline-color: #1b1612; } }
-
-html.skin-sc .node { color: var(--ink); background: rgba(5,18,12,.94); border: 1px solid #2a7a5a; font-family: var(--body); }
-html.skin-sc .node .portrait { background: #03100a; border: 1px solid #1f5a42; overflow: hidden; }
-html.skin-sc .node .portrait::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px); pointer-events: none; }
-html.skin-sc .node .nt { color: #effff2; font-family: var(--display); font-size: 12px; letter-spacing: 0; }
-html.skin-sc .node .nt::first-letter { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
-html.skin-sc .node .ns { font-family: var(--mono); color: var(--ink-soft); font-size: 10px; letter-spacing: -.02em; }
-html.skin-sc .node .nf { font-family: var(--mono); color: var(--ink); font-size: 11px; }
-html.skin-sc .node .meter { background: #052015; border: 1px solid #1d5a40; }
-html.skin-sc .node .meter i { background: #2fd59a; box-shadow: 0 0 6px #2fd59a; }
-html.skin-sc .node.st-active .meter i { background: repeating-linear-gradient(135deg, #5cf0b5 0 5px, #1d9f6d 5px 10px); background-size: 14px 14px; animation: scbuild 1s linear infinite; }
-html.skin-sc .node .actor { background: #03100a; border: 1px solid #2fd59a; }
-html.skin-sc .node.st-done { border-color: #2fd59a; box-shadow: 0 0 10px rgba(47,213,154,.18); }
-html.skin-sc .node.st-active { border-color: #45e6aa; box-shadow: 0 0 14px rgba(47,213,154,.28); }
-html.skin-sc .node.st-locked { border-color: #6b2a24; background: rgba(20,6,5,.92); }
-html.skin-sc .node.st-locked .nt { color: #d9b3ad; }
-html.skin-sc .node.st-locked .nt::first-letter { color: var(--red); }
-html.skin-sc .node.st-locked .ns, html.skin-sc .node.st-locked .nf { color: #c2665b; }
-html.skin-sc .node.st-locked .portrait canvas { opacity: .45; }
-html.skin-sc .node.sel { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 0 18px rgba(244,208,63,.35); }
-html.skin-sc .node:hover { border-color: var(--gold); }
-@keyframes scbuild { to { background-position: 14px 0; } }
 
 /* ---------- status bars ---------- */
 .statusbar { display: flex; justify-content: space-between; align-items: center; gap: 8px 18px; flex-wrap: wrap; padding: 6px 8px; font-size: 13.5px; }
 .beakers { display: inline-block; height: 16px; width: 176px; position: relative; vertical-align: middle; background-repeat: repeat-x; background-size: 16px 16px; }
 .beakers i { position: absolute; inset: 0 auto 0 0; background-repeat: repeat-x; background-size: 16px 16px; }
-html.skin-civ .statusbar { color: #000; }
-html.skin-civ .statusbar .cell { padding: 3px 8px; box-shadow: inset 1px 1px var(--win-lo), inset -1px -1px var(--win-hi); display: inline-flex; gap: 8px; align-items: center; }
-html.skin-sc .statusbar { font-family: var(--mono); color: var(--ink); background: #050c09; border-top: 1px solid #23463a; text-transform: uppercase; letter-spacing: .05em; font-size: 12.5px; }
-html.skin-sc .alert { color: var(--gold); text-shadow: 0 0 8px rgba(244,208,63,.5); }
-.res-bar { display: flex; gap: 14px; align-items: center; font-family: var(--mono); color: #eafff0; font-size: 14px; text-transform: none; letter-spacing: 0; }
-.res-bar span { display: inline-flex; align-items: center; gap: 5px; }
-.res-bar small { color: var(--ink-soft); font-size: 11px; text-transform: uppercase; }
+.statusbar { color: #000; }
+.statusbar .cell { padding: 3px 8px; box-shadow: inset 1px 1px var(--win-lo), inset -1px -1px var(--win-hi); display: inline-flex; gap: 8px; align-items: center; }
 
 /* ---------- lower panels ---------- */
 .lower { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: start; }
@@ -253,25 +166,15 @@ ol.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-i
 .step-p { margin: 2px 0 0; line-height: 1.4; font-size: 14px; }
 .par { font-size: 11.5px; padding: 1px 6px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
 
-html.skin-civ .order-win .win-body, html.skin-civ .info-win .win-body, html.skin-civ .council-win .win-body { background: var(--paper); color: var(--ink); }
-html.skin-civ .advisor .face { background: var(--paper-2); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
-html.skin-civ .advisor p { font-size: 15.5px; }
-html.skin-civ .advisor .who { font-family: var(--display); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
-html.skin-civ .step-n { font-family: var(--display); color: #6b1a12; font-size: 15px; }
-html.skin-civ .step-h { font-size: 15.5px; }
-html.skin-civ .par { background: #2a4e9a; color: #fff; font-family: var(--body); }
-html.skin-civ ol.steps li { padding-bottom: 9px; border-bottom: 1px solid rgba(109,90,51,.35); }
-html.skin-civ ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; }
-
-html.skin-sc .order-win .win-body, html.skin-sc .info-win .win-body, html.skin-sc .council-win .win-body { background: var(--panel); color: var(--ink); }
-html.skin-sc .advisor .face { background: #03100a; border: 1px solid #2fd59a; position: relative; overflow: hidden; }
-html.skin-sc .advisor .face::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px); }
-html.skin-sc .advisor p { font-family: var(--mono); font-size: 14px; color: var(--ink); }
-html.skin-sc .advisor .who { color: var(--gold); font-family: var(--mono); letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
-html.skin-sc .step-n { font-family: var(--mono); color: var(--gold); font-size: 15px; }
-html.skin-sc .step-h { font-family: var(--display); font-size: 15px; color: #effff2; letter-spacing: .02em; }
-html.skin-sc .step-p { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
-html.skin-sc .par { border: 1px solid var(--gold); color: var(--gold); font-family: var(--mono); font-weight: 400; text-transform: uppercase; }
+.order-win .win-body, .info-win .win-body, .council-win .win-body { background: var(--paper); color: var(--ink); }
+.advisor .face { background: var(--paper-2); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
+.advisor p { font-size: 15.5px; }
+.advisor .who { font-family: var(--display); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.step-n { font-family: var(--display); color: #6b1a12; font-size: 15px; }
+.step-h { font-size: 15.5px; }
+.par { background: #2a4e9a; color: #fff; font-family: var(--body); }
+ol.steps li { padding-bottom: 9px; border-bottom: 1px solid rgba(109,90,51,.35); }
+ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; }
 
 /* info panel */
 .info-head { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: start; }
@@ -291,35 +194,16 @@ html.skin-sc .par { border: 1px solid var(--gold); color: var(--gold); font-fami
 .rel button { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px 2px 3px; cursor: pointer; font-size: 13px; }
 .links { margin-top: 12px; font-size: 13.5px; display: flex; gap: 6px 14px; flex-wrap: wrap; }
 
-html.skin-civ .info-kicker { font-family: var(--display); color: #6b1a12; }
-html.skin-civ .info-head h2 { font-family: var(--display); font-weight: 800; }
-html.skin-civ .info-sub { font-style: italic; }
-html.skin-civ .info-head .big { background: var(--paper-2); box-shadow: inset 2px 2px #6d5a33, inset -2px -2px #fff8e2; }
-html.skin-civ .chip { background: #1b1612; color: var(--paper); }
-html.skin-civ .chip.st-active { background: #2a4e9a; color: #fff; }
-html.skin-civ .chip.st-locked { background: #7a7a7a; color: #fff; }
-html.skin-civ .stat { background: var(--paper-2); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
-html.skin-civ .rel button { background: var(--win); border: 0; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); color: #000; }
-html.skin-civ .links a { color: #1d2f9e; }
-
-html.skin-sc .info-kicker { font-family: var(--mono); color: var(--gold); }
-html.skin-sc .info-head h2 { font-family: var(--display); color: #effff2; letter-spacing: .03em; text-transform: uppercase; }
-html.skin-sc .info-sub { font-family: var(--mono); color: var(--ink-soft); }
-html.skin-sc .info-head .big { background: #03100a; border: 1px solid #2fd59a; overflow: hidden; }
-html.skin-sc .info-head .big::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px); }
-html.skin-sc .chip { border: 1px solid var(--line); color: var(--line); font-family: var(--mono); font-weight: 400; text-transform: uppercase; letter-spacing: .08em; }
-html.skin-sc .chip.st-active { border-color: var(--gold); color: var(--gold); }
-html.skin-sc .chip.st-locked { border-color: var(--red); color: var(--red); }
-html.skin-sc .info-desc { font-family: var(--mono); font-size: 14px; color: var(--ink); }
-html.skin-sc .stat { border: 1px solid #1d5a40; background: #04140d; font-family: var(--mono); }
-html.skin-sc .stat b { color: #effff2; }
-html.skin-sc .stat span { color: var(--ink-soft); text-transform: uppercase; font-size: 11px; letter-spacing: .06em; }
-html.skin-sc .rel-row { font-family: var(--mono); }
-html.skin-sc .rel-row > span:first-child { color: var(--gold); text-transform: uppercase; font-weight: 400; letter-spacing: .06em; }
-html.skin-sc .rel button { background: #04140d; border: 1px solid #1d5a40; color: var(--ink); font-family: var(--mono); }
-html.skin-sc .rel button:hover { border-color: var(--gold); }
-html.skin-sc .links { font-family: var(--mono); }
-html.skin-sc .links a { color: var(--line); }
+.info-kicker { font-family: var(--display); color: #6b1a12; }
+.info-head h2 { font-family: var(--display); font-weight: 800; }
+.info-sub { font-style: italic; }
+.info-head .big { background: var(--paper-2); box-shadow: inset 2px 2px #6d5a33, inset -2px -2px #fff8e2; }
+.chip { background: #1b1612; color: var(--paper); }
+.chip.st-active { background: #2a4e9a; color: #fff; }
+.chip.st-locked { background: #7a7a7a; color: #fff; }
+.stat { background: var(--paper-2); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
+.rel button { background: var(--win); border: 0; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); color: #000; }
+.links a { color: #1d2f9e; }
 
 /* council */
 .council { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
@@ -331,26 +215,15 @@ html.skin-sc .links a { color: var(--line); }
 .repos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .repo { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 3px; font-size: 13px; text-decoration: none; }
 
-html.skin-civ .actor-card { background: var(--paper-2); box-shadow: inset 1px 1px #fff8e2, inset -1px -1px #6d5a33; }
-html.skin-civ .actor-card .face { background: var(--paper); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
-html.skin-civ .actor-card b { font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: .03em; }
-html.skin-civ .actor-card em { color: #6b1a12; }
-html.skin-civ .repo { background: var(--win); color: #000; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); }
-html.skin-civ .section-label { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #6b1a12; margin: 16px 0 0; }
-
-html.skin-sc .actor-card { border: 1px solid #1d5a40; background: #04140d; }
-html.skin-sc .actor-card .face { background: #03100a; border: 1px solid #2fd59a; overflow: hidden; }
-html.skin-sc .actor-card .face::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px); }
-html.skin-sc .actor-card b { font-family: var(--display); color: #effff2; letter-spacing: .04em; text-transform: uppercase; font-size: 14px; }
-html.skin-sc .actor-card em { font-style: normal; font-family: var(--mono); color: var(--gold); text-transform: uppercase; font-size: 11.5px; letter-spacing: .08em; }
-html.skin-sc .actor-card p { font-family: var(--mono); color: var(--ink-soft); font-size: 13px; }
-html.skin-sc .repo { border: 1px solid #1d5a40; background: #04140d; color: var(--ink); font-family: var(--mono); }
-html.skin-sc .repo:hover { border-color: var(--gold); }
-html.skin-sc .section-label { font-family: var(--mono); color: var(--gold); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; margin: 16px 0 0; }
+.actor-card { background: var(--paper-2); box-shadow: inset 1px 1px #fff8e2, inset -1px -1px #6d5a33; }
+.actor-card .face { background: var(--paper); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
+.actor-card b { font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: .03em; }
+.actor-card em { color: #6b1a12; }
+.repo { background: var(--win); color: #000; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); }
+.section-label { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #6b1a12; margin: 16px 0 0; }
 
 .foot { font-size: 13px; line-height: 1.5; max-width: 90ch; }
-html.skin-civ .foot { color: var(--desk-ink); }
-html.skin-sc .foot { color: var(--ink-soft); font-family: var(--mono); }
+.foot { color: var(--desk-ink); }
 
 @media (max-width: 560px) {
   .info-head { grid-template-columns: 80px 1fr; }
@@ -363,15 +236,6 @@ html.skin-sc .foot { color: var(--ink-soft); font-family: var(--mono); }
   * { animation: none !important; transition: none !important; }
 }
 </style>
-<script>
-(function () {
-  var s = 'civ';
-  try { s = localStorage.getItem('tt-skin') || s; } catch (e) {}
-  if (location.hash === '#starcraft') s = 'sc';
-  if (location.hash === '#civ') s = 'civ';
-  document.documentElement.classList.add('skin-' + s);
-})();
-</script>
 </head>
 <body>
 <div class="page">
@@ -380,17 +244,12 @@ html.skin-sc .foot { color: var(--ink-soft); font-family: var(--mono); }
       <h1>Trace Tech Tree</h1>
       <p class="lede" id="lede"></p>
     </div>
-    <div class="skins" role="group" aria-label="Skin">
-      <button type="button" data-skin="civ" id="skin-civ">Civilization II</button>
-      <button type="button" data-skin="sc" id="skin-sc">StarCraft</button>
-    </div>
   </header>
 
   <section class="win" aria-labelledby="tree-title">
     <div class="titlebar">
       <span class="tb-title" id="tree-title"></span>
       <span class="tb-right">
-        <span class="res-bar" id="res-bar"></span>
         <span class="tb-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span>
       </span>
     </div>
@@ -857,53 +716,15 @@ const SPR = {
     "..kkBBBBBBBBkk..",
     "...kBBBBBBBBk...",
     "...kkkkkkkkkk..."
-  ],
-  mineral: [
-    "................",
-    ".......kk.......",
-    "......kLLk......",
-    ".....kLwLBk.....",
-    "....kLwLLBBk....",
-    "....kLLLLBBk....",
-    "...kLLLLBBBNk...",
-    "...kLLLLBBBNk...",
-    "...kLLLBBBNNk...",
-    "....kLLBBBNk....",
-    "....kLLBBNNk....",
-    ".....kLBBNk.....",
-    "......kBNk......",
-    ".......kk.......",
-    "................",
-    "................"
-  ],
-  gas: [
-    "................",
-    "......kkkk......",
-    ".....kGGGGk.....",
-    "....kkkkkkkk....",
-    "...kEEwEEEEDk...",
-    "...kEwEEEEEDk...",
-    "...kEEEEEEEDk...",
-    "...kkkkkkkkkk...",
-    "...kEEEEEEEDk...",
-    "...kEwEEEEEDk...",
-    "...kEEEEEEEDk...",
-    "...kkkkkkkkkk...",
-    "...kEEEEEEEDk...",
-    "...kEEEEEEEDk...",
-    "....kkkkkkkk....",
-    "................"
   ]
 };
 const STAR = ["..kk..", ".kYYk.", "kYYYYk", ".kYYk.", "kYkkYk", "kk..kk"];
 
 const hex2rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
 const lum = h => { const [r, g, b] = hex2rgb(h); return (0.3 * r + 0.59 * g + 0.11 * b) / 255; };
-const mix = (a, b, t) => { const A = hex2rgb(a), B = hex2rgb(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`; };
 
 function pix(ch, mode) {
   const c = PAL[ch];
-  if (mode === 'wire') return ch === 'k' ? '#b8ffd9' : mix('#062a1b', '#56e8a0', lum(c) * 0.9);
   if (mode === 'grey') { const v = Math.round(90 + lum(c) * 110); return `rgb(${v},${v},${v})`; }
   return c;
 }
@@ -923,8 +744,7 @@ function sprite(name, size, mode, badge) {
   c.setAttribute('aria-hidden', 'true');
   return c;
 }
-const spriteMode = () => skin === 'sc' ? 'wire' : 'civ';
-const spr = (name, size, badge) => sprite(name, size, spriteMode(), badge);
+const spr = (name, size, badge) => sprite(name, size, 'civ', badge);
 
 /* ================= textures ================= */
 function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -950,16 +770,6 @@ function marble() {
   ctx.putImageData(img, 0, 0);
   return c.toDataURL();
 }
-function stars() {
-  const W = 420, rand = rng(42), c = document.createElement('canvas'); c.width = c.height = W;
-  const ctx = c.getContext('2d');
-  for (let i = 0; i < 260; i++) {
-    const a = rand(), s = a > .97 ? 2 : 1;
-    ctx.fillStyle = `rgba(${200 + rand() * 55 | 0},${210 + rand() * 45 | 0},255,${.25 + a * .7})`;
-    ctx.fillRect(rand() * W | 0, rand() * W | 0, s, s);
-  }
-  return c.toDataURL();
-}
 function beakerURL(mode) {
   const c = sprite('flask', 16, mode, false);
   return c.toDataURL();
@@ -977,27 +787,15 @@ const CAT_COLORS = {
   council: '#b896cc', geth: '#dcbc52', tests: '#d0c3a0', spec: '#d8d0b8', wonder: '#e6aa4e'
 };
 
-const SKINS = {
-  civ: {
-    lede: 'The merge order for the trace_* standard. Clients research in parallel, the Geth namespace unlocks the spec, and Hive is the wonder at the end.',
-    tree: 'Science Advisor: trace_* standard', order: 'Science Advisor', info: 'Civilopedia', council: 'High Council', repos: 'Known world (repositories)',
-    legend: { done: 'Known advance', active: 'Researching', locked: 'Not yet discovered' },
-    crit: 'Critical path',
-    cat: { foundation: 'Foundation', library: 'Library', dev: 'Dev build', stable: 'Stable release', council: 'Council', geth: 'Reference client', tests: 'Fixtures', spec: 'Code of laws', wonder: 'Wonder of the world' },
-    st: { done: 'Known', active: 'Researching', locked: 'Undiscovered' },
-    advisor: 'Science Advisor', unit: 'Advisor', allows: 'Allows',
-    fit: ['Actual size', 'Fit to window']
-  },
-  sc: {
-    lede: 'Build order for the trace_* standard. Dev builds go up in parallel, the Geth namespace unlocks the spec, and a green Hive is the win condition.',
-    tree: 'Tech tree // trace_*', order: 'Build order', info: 'Selected structure', council: 'Units', repos: 'Bases (repositories)',
-    legend: { done: 'Complete', active: 'Under construction', locked: 'Requires prerequisite' },
-    crit: 'Critical path',
-    cat: { foundation: 'Core', library: 'Refinery', dev: 'Dev build', stable: 'Release', council: 'Council', geth: 'Reference', tests: 'Fixtures', spec: 'Spec', wonder: 'Victory' },
-    st: { done: 'Complete', active: 'Constructing', locked: 'Requires' },
-    advisor: 'Adjutant', unit: 'Unit', allows: 'Unlocks',
-    fit: ['Actual size', 'Fit to window']
-  }
+const UI = {
+  lede: 'The merge order for the trace_* standard. Clients research in parallel, the Geth namespace unlocks the spec, and Hive is the wonder at the end.',
+  tree: 'Science Advisor: trace_* standard', order: 'Science Advisor', info: 'Civilopedia', council: 'High Council', repos: 'Known world (repositories)',
+  legend: { done: 'Known advance', active: 'Researching', locked: 'Not yet discovered' },
+  crit: 'Critical path',
+  cat: { foundation: 'Foundation', library: 'Library', dev: 'Dev build', stable: 'Stable release', council: 'Council', geth: 'Reference client', tests: 'Fixtures', spec: 'Code of laws', wonder: 'Wonder of the world' },
+  st: { done: 'Known', active: 'Researching', locked: 'Undiscovered' },
+  advisor: 'Science Advisor', unit: 'Advisor', allows: 'Allows',
+  fit: ['Actual size', 'Fit to window']
 };
 
 /* ================= layout ================= */
@@ -1018,7 +816,6 @@ function blocked(a, b) {
   return false;
 }
 
-let skin = document.documentElement.classList.contains('skin-sc') ? 'sc' : 'civ';
 let selected = DATA.researching || NODES[0].id;
 let fitMode = null;
 
@@ -1053,7 +850,6 @@ function edgesFor() {
 
 function pathFor(e) {
   const a = geo(byId[e.from]), b = geo(byId[e.to]);
-  const sc = skin === 'sc';
   if (e.kind === 'vert') {
     const x = a.x + a.w / 2;
     return a.y < b.y
@@ -1063,15 +859,13 @@ function pathFor(e) {
   if (e.kind === 'under') {
     // dips below the row to skip the nodes in between
     const x1 = a.x + a.w / 2 + 34, x2 = b.x + b.w / 2 - 34, y1 = a.y + a.h, low = y1 + 13;
-    const d = sc ? `M${x1},${y1} V${low} H${x2} V${y1 + 2}`
-                 : `M${x1},${y1} C${x1},${low + 8} ${x2},${low + 8} ${x2},${y1 + 2}`;
+    const d = `M${x1},${y1} C${x1},${low + 8} ${x2},${low + 8} ${x2},${y1 + 2}`;
     return { d, end: [x2, y1], dir: 'up' };
   }
   const x1 = a.x + a.w, x2 = b.x, y2 = e.y2;
   const y1 = Math.abs(e.y1 - y2) < 6 ? y2 : e.y1;
   let d;
   if (y1 === y2) d = `M${x1},${y1} H${x2 - 2}`;
-  else if (sc) { const mx = x1 + gutterAfter(byId[e.from].col) / 2; d = `M${x1},${y1} H${mx} V${y2} H${x2 - 2}`; }
   else if (byId[e.to].col - byId[e.from].col > 1) {
     // skip a column through the gutter, so the line never runs under a node
     const gx = x1 + gutterAfter(byId[e.from].col) / 2, r = 6, s = Math.sign(y2 - y1);
@@ -1101,7 +895,7 @@ const SVGNS = 'http://www.w3.org/2000/svg';
 const badged = n => n.category === 'stable';
 
 function renderBoard() {
-  const S = SKINS[skin];
+  const S = UI;
   const board = $('board');
   board.innerHTML = '';
   board.style.width = BW + 'px';
@@ -1109,7 +903,7 @@ function renderBoard() {
 
   DATA.eras.forEach(era => {
     const [c0, c1] = era.cols;
-    const c = el('div', 'colhead', era[skin]);
+    const c = el('div', 'colhead', era.text);
     c.style.left = G.colX[c0] + 'px';
     c.style.width = (G.colX[c1] + G.nodeW - G.colX[c0]) + 'px';
     board.append(c);
@@ -1139,7 +933,7 @@ function renderBoard() {
   note.setAttribute('x', (G.colX[lane.cols[0]] + G.colX[lane.cols[1]] + G.nodeW) / 2);
   note.setAttribute('y', G.top + lane.row * G.rowH - 9);
   note.setAttribute('text-anchor', 'middle');
-  note.textContent = lane[skin];
+  note.textContent = lane.text;
   svg.append(note);
   board.append(svg);
 
@@ -1190,8 +984,7 @@ function renderBoard() {
 
 function resChip({ merged, open }) {
   const s = el('span', 'res');
-  if (skin === 'sc') s.append(sprite('mineral', 12, 'civ'), document.createTextNode(merged + ' '), sprite('gas', 12, 'civ'), document.createTextNode(open));
-  else s.textContent = `✓${merged}  ○${open}`;
+  s.textContent = `✓${merged}  ○${open}`;
   return s;
 }
 
@@ -1214,7 +1007,7 @@ function select(id, quiet) {
 }
 
 function renderInfo() {
-  const S = SKINS[skin], n = byId[selected], box = $('info');
+  const S = UI, n = byId[selected], box = $('info');
   box.innerHTML = '';
   const head = el('div', 'info-head');
   const big = el('div', 'big'); big.append(spr(n.icon, 96, badged(n)));
@@ -1255,18 +1048,18 @@ function renderInfo() {
 }
 
 function renderOrder() {
-  const S = SKINS[skin], box = $('order');
+  const S = UI, box = $('order');
   box.innerHTML = '';
   const adv = el('div', 'advisor');
   const face = el('div', 'face'); face.append(spr('sage', 64));
-  const p = el('p'); p.append(el('span', 'who', S.advisor), document.createTextNode(DATA.advisor[skin]));
+  const p = el('p'); p.append(el('span', 'who', S.advisor), document.createTextNode(DATA.advisor.text));
   adv.append(face, p);
   box.append(adv);
   const ol = el('ol', 'steps');
   const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
   DATA.steps.forEach((s, i) => {
     const li = el('li');
-    li.append(el('span', 'step-n', skin === 'sc' ? String(i + 1).padStart(2, '0') : roman[i] + '.'));
+    li.append(el('span', 'step-n', roman[i] + '.'));
     const body = el('div');
     const h = el('div', 'step-h');
     const icons = el('span', 'icons');
@@ -1281,13 +1074,13 @@ function renderOrder() {
 }
 
 function renderCouncil() {
-  const S = SKINS[skin], box = $('council');
+  const S = UI, box = $('council');
   box.innerHTML = '';
   DATA.actors.forEach(a => {
     const c = el('div', 'actor-card');
     const f = el('div', 'face'); f.append(spr(a.icon, 48));
     const t = el('div');
-    t.append(el('b', null, a.name), el('em', null, a[skin]), el('p', null, a.note));
+    t.append(el('b', null, a.name), el('em', null, a.role), el('p', null, a.note));
     c.append(f, t);
     box.append(c);
   });
@@ -1301,42 +1094,29 @@ function renderCouncil() {
 }
 
 function renderChrome() {
-  const S = SKINS[skin], T = DATA.totals;
+  const S = UI, T = DATA.totals;
   $('lede').textContent = S.lede;
   $('tree-title').textContent = S.tree;
   $('order-title').textContent = S.order;
   $('info-title').textContent = S.info;
   $('council-title').textContent = S.council;
-  document.querySelectorAll('.skins button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.skin === skin)));
 
   const lg = $('legend'); lg.innerHTML = '';
   ['done', 'active', 'locked'].forEach(k => { const s = el('span', 'k-' + k); s.append(el('i'), document.createTextNode(S.legend[k])); lg.append(s); });
   const crit = el('span', 'k-crit'); crit.append(el('i'), document.createTextNode(S.crit)); lg.append(crit);
   const prs = el('span');
-  if (skin === 'sc') prs.append(sprite('mineral', 14, 'civ'), document.createTextNode('merged PRs'), sprite('gas', 14, 'civ'), document.createTextNode('open PRs'));
-  else prs.textContent = '✓ merged PRs · ○ open PRs';
+  prs.textContent = '✓ merged PRs · ○ open PRs';
   lg.append(prs);
-
-  const rb = $('res-bar'); rb.innerHTML = '';
-  const res = (icon, v, label) => { const s = el('span'); if (icon) s.append(sprite(icon, 16, 'civ')); s.append(document.createTextNode(v), el('small', null, label)); rb.append(s); };
-  res('mineral', String(T.merged), 'merged');
-  res('gas', String(T.open), 'open');
-  res(null, `${T.agree}/${T.of}`, 'agree');
 
   const researching = DATA.researching ? byId[DATA.researching].title : null;
   const captured = fmtDate(DATA.captured);
   const sb = $('statusbar'); sb.innerHTML = '';
-  if (skin === 'civ') {
-    const c1 = el('span', 'cell');
-    const bk = el('span', 'beakers'); bk.style.backgroundImage = `url(${beakerURL('grey')})`;
-    const fill = el('i'); fill.style.backgroundImage = `url(${beakerURL('civ')})`; fill.style.width = (176 * T.agree / T.of) + 'px';
-    bk.append(fill);
-    c1.append(document.createTextNode(`${researching ? `Researching: ${researching}` : 'Research complete'} · ${T.agree}/${T.of} decisions agree`), bk);
-    sb.append(c1, el('span', 'cell', `${T.merged} PRs merged · ${T.open} open`), el('span', 'cell', `${captured} A.D.`));
-  } else {
-    sb.append(el('span', 'alert', researching ? `Constructing: ${researching}. Additional reviews required.` : 'Victory.'),
-              el('span', null, `Across ${T.clients.join(', ')} dev builds · ${captured}`));
-  }
+  const c1 = el('span', 'cell');
+  const bk = el('span', 'beakers'); bk.style.backgroundImage = `url(${beakerURL('grey')})`;
+  const fill = el('i'); fill.style.backgroundImage = `url(${beakerURL('civ')})`; fill.style.width = (176 * T.agree / T.of) + 'px';
+  bk.append(fill);
+  c1.append(document.createTextNode(`${researching ? `Researching: ${researching}` : 'Research complete'} · ${T.agree}/${T.of} decisions agree`), bk);
+  sb.append(c1, el('span', 'cell', `${T.merged} PRs merged · ${T.open} open`), el('span', 'cell', `${captured} A.D.`));
 
   const foot = $('foot'); foot.innerHTML = '';
   const commit = el('a', null, DATA.commit);
@@ -1347,23 +1127,15 @@ function renderChrome() {
 }
 
 function applyFit() {
-  const wrap = $('board-wrap'), sc = $('board-scale'), board = $('board');
+  const wrap = $('board-wrap'), scale = $('board-scale'), board = $('board');
   const s = Math.min(1, wrap.clientWidth / BW);
   if (fitMode === null) fitMode = s >= 0.8;
   const k = fitMode ? s : 1;
   board.style.transform = k < 1 ? `scale(${k})` : '';
-  sc.style.width = (BW * k) + 'px';
-  sc.style.height = (BH * k) + 'px';
-  $('fit').textContent = SKINS[skin].fit[fitMode ? 0 : 1];
+  scale.style.width = (BW * k) + 'px';
+  scale.style.height = (BH * k) + 'px';
+  $('fit').textContent = UI.fit[fitMode ? 0 : 1];
   $('fit').hidden = s >= 1;
-}
-
-function setSkin(s) {
-  skin = s;
-  document.documentElement.classList.remove('skin-civ', 'skin-sc');
-  document.documentElement.classList.add('skin-' + s);
-  try { localStorage.setItem('tt-skin', s); } catch (e) {}
-  renderAll();
 }
 
 function renderAll() {
@@ -1375,14 +1147,8 @@ function renderAll() {
 }
 
 document.documentElement.style.setProperty('--marble', `url(${marble()})`);
-document.documentElement.style.setProperty('--stars', `url(${stars()})`);
-document.querySelectorAll('.skins button').forEach(b => b.addEventListener('click', () => setSkin(b.dataset.skin)));
 $('fit').addEventListener('click', () => { fitMode = !fitMode; applyFit(); });
 window.addEventListener('resize', applyFit);
-window.addEventListener('hashchange', () => {
-  if (location.hash === '#starcraft') setSkin('sc');
-  if (location.hash === '#civ') setSkin('civ');
-});
 renderAll();
 </script>
 </body>

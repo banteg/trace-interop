@@ -51,7 +51,7 @@ reposts the current matrix. It needs a bot in the group and the repository secre
 ## Tech tree
 
 The [live tech tree](https://trace.banteg.xyz/) draws the merge order toward a merged specification and Hive as a game tech tree,
-with a Civilization II skin and a StarCraft one (`#starcraft`). [`site/tech-tree/tree.toml`](../site/tech-tree/tree.toml)
+in the style of Civilization II. [`site/tech-tree/tree.toml`](../site/tech-tree/tree.toml)
 holds its layout and wording only. [`scripts/build_tech_tree.py`](../scripts/build_tech_tree.py)
 adds every state and number from the tracker: client builds from `reports/progress.json`, PR states
 from `decisions/fixes.json` and policy from `decisions/status.json`. A client build is done once it

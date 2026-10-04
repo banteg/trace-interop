@@ -14,46 +14,38 @@
 [layout]
 # gap after each column; wide where edges fan in or out
 gutters = [46, 46, 46, 34, 34, 34, 46]
-lane_note = { cols = [3, 6], row = 1, civ = "Releases ship the dev fixes on each client’s own schedule →", sc = "Releases ship dev fixes on each client’s own clock →" }
+lane_note = { cols = [3, 6], row = 1, text = "Releases ship the dev fixes on each client’s own schedule →" }
 
 [[era]]
 cols = [0, 1]
-civ = "I · Foundations & libraries"
-sc = "T0 Core / Refinery"
+text = "I · Foundations & libraries"
 
 [[era]]
 cols = [2, 2]
-civ = "II · Dev builds"
-sc = "T1 Dev builds"
+text = "II · Dev builds"
 
 [[era]]
 cols = [3, 3]
-civ = "III · Council"
-sc = "T2 Council"
+text = "III · Council"
 
 [[era]]
 cols = [4, 4]
-civ = "IV · Geth"
-sc = "T3 Reference"
+text = "IV · Geth"
 
 [[era]]
 cols = [5, 5]
-civ = "V · Fixtures"
-sc = "T4 Fixtures"
+text = "V · Fixtures"
 
 [[era]]
 cols = [6, 6]
-civ = "VI · Spec & releases"
-sc = "T5 Spec / Release"
+text = "VI · Spec & releases"
 
 [[era]]
 cols = [7, 7]
-civ = "VII · Wonder"
-sc = "T6 Victory"
+text = "VII · Wonder"
 
 [advisor]
-civ = "Sire, the clients can all research at once. The Geth namespace is our bottleneck: fixtures, the spec and Hive all wait on it. Releases arrive on their own."
-sc = "Additional reviews required. Dev builds can all build at once. Geth namespace is the choke point: fixtures, spec and Hive all wait on it."
+text = "Sire, the clients can all research at once. The Geth namespace is our bottleneck: fixtures, the spec and Hive all wait on it. Releases arrive on their own."
 
 # ---------- foundations ----------
 
@@ -352,48 +344,42 @@ text = "Besu’s latest release, the build Hive runs."
 id = "banteg"
 name = "banteg"
 icon = "explorer"
-civ = "Explorer"
-sc = "SCV"
+role = "Explorer"
 note = "Wrote the draft, the harness and most of the client PRs."
 
 [[actor]]
 id = "wg"
 name = "Trace working group"
 icon = "council"
-civ = "High Council"
-sc = "Command"
+role = "High Council"
 note = "Client developers coordinating on Telegram since 23 Sep 2026."
 
 [[actor]]
 id = "lightclient"
 name = "lightclient"
 icon = "lantern"
-civ = "Geth"
-sc = "Geth"
+role = "Geth"
 note = "Gave a preliminary go-ahead for a Geth trace namespace."
 
 [[actor]]
 id = "chase"
 name = "Chase"
 icon = "gavel"
-civ = "execution-apis"
-sc = "execution-apis"
+role = "execution-apis"
 note = "Spec editor. Advised against bikeshedding error codes."
 
 [[actor]]
 id = "usman"
 name = "Usman Saleem"
 icon = "envelope"
-civ = "Besu"
-sc = "Besu"
+role = "Besu"
 note = "Reviewer for Besu trace PRs; wrote Besu’s native call tracers."
 
 [[actor]]
 id = "consumers"
 name = "Trace consumers"
 icon = "wagon"
-civ = "Caravans"
-sc = "Civilians"
+role = "Caravans"
 note = "Indexers, explorers and tools that carry per-client workarounds today."
 
 # ---------- repositories ----------

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="362" viewBox="0 0 760 362" role="img" aria-labelledby="title">
-<title id="title">Erigon decisions and fix PRs: 28 agree, 2 fix submitted, 1 no fix · converged, 2 not fully measured</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" role="img" aria-labelledby="title">
+<title id="title">Erigon decisions and fix PRs: 29 agree, 1 no fix · converged, 3 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.head{font-weight:600}.partial{stroke-dasharray:3 2}.label{fill:#1f2328}.muted{fill:#59636e}.pr{fill:none;stroke:#11756f}.edge{stroke:#11756f}.b-agree{fill:#11756f}.n-agree{fill:#ffffff}.b-fix{fill:#79c7bd}.n-fix{fill:#1f2328}.b-converged{fill:#c8641a}.n-converged{fill:#ffffff}.b-review{fill:#f2b36b}.n-review{fill:#1f2328}.b-policy{fill:#8172c4}.n-policy{fill:#ffffff}.b-unmeasured{fill:#dde1e6}.n-unmeasured{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}.muted{fill:#9198a1}.pr{fill:none;stroke:#3aa59a}.edge{stroke:#3aa59a}.b-agree{fill:#3aa59a}.n-agree{fill:#0d1117}.b-fix{fill:#1a6b62}.n-fix{fill:#ffffff}.b-converged{fill:#e5843a}.n-converged{fill:#0d1117}.b-review{fill:#8f5420}.n-review{fill:#ffffff}.b-policy{fill:#9b8fe0}.n-policy{fill:#0d1117}.b-unmeasured{fill:#2d333b}.n-unmeasured{fill:#e6edf3}}</style>
-<text class="label head" x="16" y="25">Agree (28)</text>
+<text class="label head" x="16" y="25">Agree (29)</text>
 <rect class="b-agree" x="16" y="36" width="44" height="18" rx="4"/>
 <text class="n-agree" x="38" y="49" text-anchor="middle">H01</text>
 <rect class="b-agree" x="66" y="36" width="44" height="18" rx="4"/>
@@ -58,55 +58,49 @@
 <text class="n-agree" x="638" y="73" text-anchor="middle">H30</text>
 <rect class="b-agree" x="666" y="60" width="44" height="18" rx="4"/>
 <text class="n-agree" x="688" y="73" text-anchor="middle">H31</text>
-<text class="label head" x="16" y="105">Fix submitted (2)</text>
-<rect class="b-fix" x="16" y="116" width="44" height="18" rx="4"/>
-<text class="n-fix" x="38" y="129" text-anchor="middle">H32</text>
-<text class="label" x="70" y="129">Trace block tags and pending state</text>
-<rect class="b-agree edge partial" x="400" y="116" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="129" text-anchor="middle">#24345</text>
-<rect class="b-fix" x="461" y="116" width="55" height="18" rx="4"/>
-<text class="n-fix" x="488.5" y="129" text-anchor="middle">#24435</text>
-<rect class="b-fix" x="16" y="140" width="44" height="18" rx="4"/>
-<text class="n-fix" x="38" y="153" text-anchor="middle">H33</text>
-<text class="label" x="70" y="153">Single-block hash selection in trace_filter</text>
-<rect class="b-fix" x="400" y="140" width="55" height="18" rx="4"/>
-<text class="n-fix" x="427.5" y="153" text-anchor="middle">#24435</text>
-<text class="label head" x="16" y="185">No fix · converged (1)</text>
-<rect class="b-converged" x="16" y="196" width="44" height="18" rx="4"/>
-<text class="n-converged" x="38" y="209" text-anchor="middle">H14</text>
-<text class="label" x="70" y="209">Invalid parameters and rejected calls</text>
-<rect class="b-agree edge partial" x="400" y="196" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="209" text-anchor="middle">#24290</text>
-<rect class="b-agree edge partial" x="461" y="196" width="55" height="18" rx="4"/>
-<text class="n-agree" x="488.5" y="209" text-anchor="middle">#24294</text>
-<rect class="b-agree edge partial" x="522" y="196" width="55" height="18" rx="4"/>
-<text class="n-agree" x="549.5" y="209" text-anchor="middle">#24334</text>
-<rect class="b-agree edge partial" x="583" y="196" width="55" height="18" rx="4"/>
-<text class="n-agree" x="610.5" y="209" text-anchor="middle">#24336</text>
-<rect class="b-agree edge partial" x="644" y="196" width="55" height="18" rx="4"/>
-<text class="n-agree" x="671.5" y="209" text-anchor="middle">#24351</text>
-<rect class="pr edge partial" x="400" y="220" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="233" text-anchor="middle">#24536</text>
-<text class="label head" x="16" y="265">Not fully measured (2)</text>
-<rect class="b-unmeasured" x="16" y="276" width="44" height="18" rx="4"/>
-<text class="n-unmeasured" x="38" y="289" text-anchor="middle">H15</text>
-<text class="label" x="70" y="289">Unsigned simulation fees and block environment</text>
-<rect class="b-agree" x="400" y="276" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="289" text-anchor="middle">#24343</text>
-<rect class="b-agree edge partial" x="461" y="276" width="55" height="18" rx="4"/>
-<text class="n-agree" x="488.5" y="289" text-anchor="middle">#24352</text>
-<rect class="b-unmeasured" x="16" y="300" width="44" height="18" rx="4"/>
-<text class="n-unmeasured" x="38" y="313" text-anchor="middle">H16</text>
-<text class="label" x="70" y="313">Fee accounting and sequential state diffs</text>
-<rect class="b-agree edge partial" x="400" y="300" width="55" height="18" rx="4"/>
-<text class="n-agree" x="427.5" y="313" text-anchor="middle">#24328</text>
-<rect class="b-agree" x="16" y="332" width="130" height="18" rx="4"/>
-<text class="n-agree" x="81" y="345" text-anchor="middle">in measured build</text>
-<rect class="b-fix" x="152" y="332" width="150" height="18" rx="4"/>
-<text class="n-fix" x="227" y="345" text-anchor="middle">merged, not in build</text>
-<rect class="pr" x="308" y="332" width="41" height="18" rx="4"/>
-<text class="label" x="328.5" y="345" text-anchor="middle">open</text>
-<rect class="pr partial" x="355" y="332" width="143" height="18" rx="4"/>
-<text class="label" x="426.5" y="345" text-anchor="middle">partial (any stage)</text>
-<text class="muted" x="510" y="345">fix PRs, by state</text>
+<rect class="b-agree" x="16" y="84" width="44" height="18" rx="4"/>
+<text class="n-agree" x="38" y="97" text-anchor="middle">H32</text>
+<text class="label head" x="16" y="129">No fix · converged (1)</text>
+<rect class="b-converged" x="16" y="140" width="44" height="18" rx="4"/>
+<text class="n-converged" x="38" y="153" text-anchor="middle">H14</text>
+<text class="label" x="70" y="153">Invalid parameters and rejected calls</text>
+<rect class="b-agree edge partial" x="400" y="140" width="55" height="18" rx="4"/>
+<text class="n-agree" x="427.5" y="153" text-anchor="middle">#24290</text>
+<rect class="b-agree edge partial" x="461" y="140" width="55" height="18" rx="4"/>
+<text class="n-agree" x="488.5" y="153" text-anchor="middle">#24294</text>
+<rect class="b-agree edge partial" x="522" y="140" width="55" height="18" rx="4"/>
+<text class="n-agree" x="549.5" y="153" text-anchor="middle">#24334</text>
+<rect class="b-agree edge partial" x="583" y="140" width="55" height="18" rx="4"/>
+<text class="n-agree" x="610.5" y="153" text-anchor="middle">#24336</text>
+<rect class="b-agree edge partial" x="644" y="140" width="55" height="18" rx="4"/>
+<text class="n-agree" x="671.5" y="153" text-anchor="middle">#24351</text>
+<rect class="pr edge partial" x="400" y="164" width="55" height="18" rx="4"/>
+<text class="label" x="427.5" y="177" text-anchor="middle">#24536</text>
+<text class="label head" x="16" y="209">Not fully measured (3)</text>
+<rect class="b-unmeasured" x="16" y="220" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="233" text-anchor="middle">H15</text>
+<text class="label" x="70" y="233">Unsigned simulation fees and block environment</text>
+<rect class="b-agree" x="400" y="220" width="55" height="18" rx="4"/>
+<text class="n-agree" x="427.5" y="233" text-anchor="middle">#24343</text>
+<rect class="b-agree edge partial" x="461" y="220" width="55" height="18" rx="4"/>
+<text class="n-agree" x="488.5" y="233" text-anchor="middle">#24352</text>
+<rect class="b-unmeasured" x="16" y="244" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="257" text-anchor="middle">H16</text>
+<text class="label" x="70" y="257">Fee accounting and sequential state diffs</text>
+<rect class="b-agree edge partial" x="400" y="244" width="55" height="18" rx="4"/>
+<text class="n-agree" x="427.5" y="257" text-anchor="middle">#24328</text>
+<rect class="b-unmeasured" x="16" y="268" width="44" height="18" rx="4"/>
+<text class="n-unmeasured" x="38" y="281" text-anchor="middle">H33</text>
+<text class="label" x="70" y="281">Single-block hash selection in trace_filter</text>
+<rect class="b-agree" x="400" y="268" width="55" height="18" rx="4"/>
+<text class="n-agree" x="427.5" y="281" text-anchor="middle">#24435</text>
+<rect class="b-agree" x="16" y="300" width="130" height="18" rx="4"/>
+<text class="n-agree" x="81" y="313" text-anchor="middle">in measured build</text>
+<rect class="b-fix" x="152" y="300" width="150" height="18" rx="4"/>
+<text class="n-fix" x="227" y="313" text-anchor="middle">merged, not in build</text>
+<rect class="pr" x="308" y="300" width="41" height="18" rx="4"/>
+<text class="label" x="328.5" y="313" text-anchor="middle">open</text>
+<rect class="pr partial" x="355" y="300" width="143" height="18" rx="4"/>
+<text class="label" x="426.5" y="313" text-anchor="middle">partial (any stage)</text>
+<text class="muted" x="510" y="313">fix PRs, by state</text>
 </svg>

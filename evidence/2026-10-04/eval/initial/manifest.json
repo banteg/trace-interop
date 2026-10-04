@@ -1,0 +1,2381 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-10-04T09:25:03.312020121Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:bb18d8c39deaf297d0db2038b0431b95c8a796e57bb2cedd2c1c157707a4d8e0",
+      "image_id": "sha256:689b58edc9f980d5ea2706b4a4a9c73e805acf28e3bf3ddbcbc0333705d425f0",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-04T09:04:44.430Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "60255eee79332caef99f0c885f55589769f8f0c0",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-10-01T15:19:17.607726434Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:f69e1b8d1dda17d89227a4d0513b1d86f93ece430dea8d87aaea643da3607d3e",
+      "image_id": "sha256:6dd94d884c77da77a805ceee20adfe4e0e0f9dc3c7ed20bcb9a62381ad272ba1",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-01T14:59:02.720Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "50af4efe189dc64bad2b75ed6990b835de66c4ae",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.8.4"
+      },
+      "release": {
+        "published_at": "2026-10-01T15:41:43Z",
+        "tag": "v1.8.4",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.8.4"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.8.4"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-02T21:26:23.012928999Z",
+      "digest": "hyperledger/besu@sha256:c1f6febefb4207f44a5e4787310bf7f9c83a8fcf235e3fd1e4b651283d0f9615",
+      "image_id": "sha256:83c97c3e99976e8a25b64d108b71680e1d93455af9769f8dda1123e1f1dd1847",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "1d62d893baed6c148313bb3d9d64f5c316d371e2",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-25T21:56:58.835401325Z",
+      "digest": "hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0",
+      "image_id": "sha256:ca05efeb8050497e45bc2b4ed22111a8189a8b85ffa7aca09da18f45a417810d",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.9.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T22:22:13Z",
+        "tag": "26.9.0",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.9.0"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.9.0"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-04T03:26:08.15519589Z",
+      "digest": "erigontech/erigon@sha256:c0aaad4a51ff16a6e494dfeb2adde2477641ecfd8b2c4ce877f2980586bb137d",
+      "image_id": "sha256:ce556cf6c2c606ed81dcc140c23203e9ef931dd1650f91f476977e7b2d1ea126",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-04T03:24:37Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "5cb6c8674de8ff3967d36356cfdcd0f0b88e31ce",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "5cb6c86",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "5cb6c8674de8ff3967d36356cfdcd0f0b88e31ce"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-01T20:05:57.904718012Z",
+      "digest": "erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481",
+      "image_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-01T20:03:37Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.7",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.7.1"
+      },
+      "release": {
+        "published_at": "2026-10-02T08:12:41Z",
+        "tag": "v3.7.1",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.7.1"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.7.1"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "f228e25a27a29dd975351538d282e3483745e44d72adf2acffed15e972667933",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:1b158d1bc73ade3e65beabd448425ec5de15cde0660cc2a779418c352af6d63a",
+      "local_image": "trace-interop/geth-source:f228e25a27a29dd975351538d282e3483745e44d72adf2acffed15e972667933",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "e67cfd25108049d3765002924460d08fafebb59d",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "8c2d376945413bb927816fa9c2ac8bdff9d4ab3fb582b235cbf5f03c2f559802"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-04T16:41:54Z",
+      "digest": "nethermindeth/nethermind@sha256:8ab90065d390bc3a3b683ec48e68d623f2bafaa5ccf480c48888e356ce8ed0cb",
+      "image_id": "sha256:ffbb414d7ee27e57d0fd5995c335dcb60ff2e0808b09ddd3272d99d69c86d6aa",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-04T16:41:54Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "6dff813b6c3b8141689422e4113f6ea0760e0260",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-01T21:50:32Z",
+      "digest": "nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0",
+      "image_id": "sha256:2954427b4c521fc9247b4cbdc16bdabbb149fd0b9036b73542fb095c6e00f54c",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-01T21:50:32Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "b3e7e84c1695420e771326f73801b66fa0574871",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.1.0"
+      },
+      "release": {
+        "published_at": "2026-10-01T22:43:39Z",
+        "tag": "2.1.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.1.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.1.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-04T02:22:07.515652697Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:43b3ff884952886c6f5ca21d8074832a101212aa63977cafad80ff37fe6ad7b3",
+      "image_id": "sha256:139c21cfd0910fb3d840573a3a8e43bb7d04272194047465f22d6bfe8b4b6d28",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-28T11:08:00.92360729Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336",
+      "image_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-28T12:45:27Z",
+        "tag": "v2.7.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.7.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.7.0"
+    }
+  },
+  "corpus": "initial",
+  "finished_at": "2026-10-04T19:40:21.410476+00:00",
+  "fixture_manifest_sha256": "ae033f54344e0594050dcc7c05ca4a79da222bbf10bf3dee7449268be928e30b",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x49efb89bc8d0142ac4ad09280950583c3050ee48988e66772dded8aba7087bc9",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "affea36447152aba42747881d386a7d5ae5b31d55efebcf5f21222d60afc192b",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x3ffea733beef8bc92f7ad183fa1dd35f397d70e9bbead2a14d6a62dc8cf62db7",
+          "number": "0x1",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd3736a03dad7d8c037a0790d86b87742dc09744b846ec1a04afc0733e8ad386",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x33478119f7078b20bab269241344cc6008fe3851c518ac3c96c144c474dc0cf8",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2df07c0187a12999c7b923b99d00165289e28db4317f10a97ce64150b6f064d9",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd369849d0bd37a8de71e02a9d4b1853ec4c0591a8e8331c56c696d515b11a942",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0026579cd9e2fa024371844bc8f5d09de3a0180e1024e9febccae26d5240a7e1",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6b946e6e6a5e605bc33ecf109c6b887dd5881387b83abf13d10c22ccf9595e2e",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7199f25e6dbbcc1a00ba1e7fa4de22565f71f09604d9d8a46c6745e856506770",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x448fbe09ecc33b7813fd6228188bd0228af8e4871b2c4fde7b84f40a94e31fe1",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea1d843c982918b6af29c3ef70ad45f8a45ec8c327d86bfb9ac4334ad4b92f32",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x95fcf6c67f90ab9a132e793cd3d582e8053eed50a6831c6f00737042d8ebc9da",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x531f339bc0a2bb6d6f66db47be0af509628ac2c0a3feb5e8d58320b529848a5c",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8fd3d65d091623d87482c9332e67b267afd0ed1e7f64683f8d94cdab5aae58b6",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x773f5b0ecf0199fa00d0cb385cccb3b85a730c6b0d4dbf0bcb0bb71a1034a7c4",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa6091a30f52d7f75c7065e9b3d8a818955808e9b2267ff23c1f864308bde4e73",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5c3c0dfb716e9f5d5ec969bdbf908dea7eae846ef7cf9eb8ed4fe9e65f99febf",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdf597fb8f85086c9c5295969950966cf621627e0ece5ff9123fe3f8fcbbdfb1c",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf3a92cc09e1ffbacd4e60c42bf27f9daa06513420e3503b69c48a96c5a8e9795",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe5342c931ba3cfa9e55e170aa1d806a496d840355f3921668e941a2373a1e164",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x01df28d5d6310ccbbab01c1f251f4193e9f7e36f6c05577ef3124225ad68ecc4",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x30376b46a940ee3cdcdb27b21bcb96bbff15320ab1a7de1aca4e0ce6e799d441",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb2e6f098ea87309723bcfca3dc5c19f2175ed5091cc44b1936317475756642c1",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc45d564400dc4a3f2d099fb22467981b2bea9ad8e5dab25246c72d9eae666089",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa1a0591901d8572ea4c4ae46b70a3bd34f2bddc04317e28569bbcec49c7258b6",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9cd3f5ad40abc545c40b378bcce9f64553452677edaae450f46e8dede8a24ee4",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbdd223717df9de7db17a49d69f4b103b9e3b984e66263e3a41e3cb66dc6c539e",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x86938933812b0e8749cc29084487ace171ee6eb921acea960dbfc117e2004d48",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x53ba466e0543d08358783bdfab5cc2d9481f9afe7d28b8da7c923726c1770563",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8a76dd6b4399470e275ae8ba8a76f887b3e820ea9d0148ebb82520b4b890cc07",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x225c1814183cba889ff4f89e7a14e24b826f9ec76855557844fbb4323d7f446a",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc8b76cedc4bc4311ac2d7051724e50ebbf048d9271ec97bead6058f59a18e67a",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa0ca3399cb1551fd94ff63c4f8c5132e964f1abb7f2c509e0e55bbaf5dc40793",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf5e68c802eac8cbecf4bcd786f90c4af5e3e11d9f1776200cb3441edb91772ff",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xcc1f6da403904b706aef0647d51a810e3bf6bad2eecbd62127fc1336cfa24d57",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd446384b398bd9430a47e45784fd96006abff04cf351f255c994afa08f243a79",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x70b875a84ad5a2a1be05c616947e52c073bb8189803370683b39ec0163d8d6e1",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x1ccb9b9cbc8cb7c65d96a9f55a7268cc65ea2addecf0f46f1599b57465df2bad",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2efeb4c737566f3a190767202c0a306860524a21b55aad9c7a283abb9d61eee2",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x70b7554017be0c7c8e67b81b19e13ee8b90311a5f1f1887b44a6522f9d12be17",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x3e05e99301d19a22d6474d242c4157f0d3ab28ae3626033a930a562af5901190",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x96a7e2fbcacf1ea303144865de358927838be065c3707775fd455bacda8673b5",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe196273b3f79a60aff8d6fd3b57b8c467e9c096cbb4b3a2c1d2076647b58f321",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0ad50593534a53c213614713264de4233a0eeafee11d3d08ca670488ad6a11ee",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0da5dca54c8a6537ed6df8a75e9bec792dfe8906d6db3b8ce710ad1eccbc957b",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6497284d50b7656ee87d6ac6338b3ac76c9830d45a1e108bb5aaa2c0de6d5b2a",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x13e86190c25ff35a5f14626fa55b6dc19aeafb4e8759efedb256d9eb8f0adccc",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xfb5e7fa1c6c780ca2811aa16b8e83c1b330ffbaa3cc3556921f45643fc9db152",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbc8581e684595e149f98b44b9f0b89def1c949220a6bb3aae84b6246a00509a6",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da": "0xfb5e7fa1c6c780ca2811aa16b8e83c1b330ffbaa3cc3556921f45643fc9db152",
+        "0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85": "0xf5e68c802eac8cbecf4bcd786f90c4af5e3e11d9f1776200cb3441edb91772ff",
+        "0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7": "0x6497284d50b7656ee87d6ac6338b3ac76c9830d45a1e108bb5aaa2c0de6d5b2a",
+        "0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3": "0x0026579cd9e2fa024371844bc8f5d09de3a0180e1024e9febccae26d5240a7e1",
+        "0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e": "0x01df28d5d6310ccbbab01c1f251f4193e9f7e36f6c05577ef3124225ad68ecc4",
+        "0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3": "0x70b7554017be0c7c8e67b81b19e13ee8b90311a5f1f1887b44a6522f9d12be17",
+        "0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9": "0x96a7e2fbcacf1ea303144865de358927838be065c3707775fd455bacda8673b5",
+        "0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918": "0xd446384b398bd9430a47e45784fd96006abff04cf351f255c994afa08f243a79",
+        "0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca": "0xe196273b3f79a60aff8d6fd3b57b8c467e9c096cbb4b3a2c1d2076647b58f321",
+        "0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef": "0x5c3c0dfb716e9f5d5ec969bdbf908dea7eae846ef7cf9eb8ed4fe9e65f99febf",
+        "0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f": "0x9cd3f5ad40abc545c40b378bcce9f64553452677edaae450f46e8dede8a24ee4",
+        "0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4": "0x95fcf6c67f90ab9a132e793cd3d582e8053eed50a6831c6f00737042d8ebc9da",
+        "0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f": "0x33478119f7078b20bab269241344cc6008fe3851c518ac3c96c144c474dc0cf8",
+        "0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84": "0xf3a92cc09e1ffbacd4e60c42bf27f9daa06513420e3503b69c48a96c5a8e9795",
+        "0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da": "0xea1d843c982918b6af29c3ef70ad45f8a45ec8c327d86bfb9ac4334ad4b92f32",
+        "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2": "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2",
+        "0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c": "0x225c1814183cba889ff4f89e7a14e24b826f9ec76855557844fbb4323d7f446a",
+        "0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1": "0x773f5b0ecf0199fa00d0cb385cccb3b85a730c6b0d4dbf0bcb0bb71a1034a7c4",
+        "0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147": "0x8fd3d65d091623d87482c9332e67b267afd0ed1e7f64683f8d94cdab5aae58b6",
+        "0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467": "0xcc1f6da403904b706aef0647d51a810e3bf6bad2eecbd62127fc1336cfa24d57",
+        "0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb": "0x3e05e99301d19a22d6474d242c4157f0d3ab28ae3626033a930a562af5901190",
+        "0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e": "0x70b875a84ad5a2a1be05c616947e52c073bb8189803370683b39ec0163d8d6e1",
+        "0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09": "0xc45d564400dc4a3f2d099fb22467981b2bea9ad8e5dab25246c72d9eae666089",
+        "0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46": "0x86938933812b0e8749cc29084487ace171ee6eb921acea960dbfc117e2004d48",
+        "0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2": "0x0ad50593534a53c213614713264de4233a0eeafee11d3d08ca670488ad6a11ee",
+        "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2": "0xdd3736a03dad7d8c037a0790d86b87742dc09744b846ec1a04afc0733e8ad386",
+        "0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944": "0xc8b76cedc4bc4311ac2d7051724e50ebbf048d9271ec97bead6058f59a18e67a",
+        "0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698": "0xd369849d0bd37a8de71e02a9d4b1853ec4c0591a8e8331c56c696d515b11a942",
+        "0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558": "0xbdd223717df9de7db17a49d69f4b103b9e3b984e66263e3a41e3cb66dc6c539e",
+        "0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12": "0xdf597fb8f85086c9c5295969950966cf621627e0ece5ff9123fe3f8fcbbdfb1c",
+        "0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999": "0xb2e6f098ea87309723bcfca3dc5c19f2175ed5091cc44b1936317475756642c1",
+        "0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3": "0x2efeb4c737566f3a190767202c0a306860524a21b55aad9c7a283abb9d61eee2",
+        "0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e": "0x531f339bc0a2bb6d6f66db47be0af509628ac2c0a3feb5e8d58320b529848a5c",
+        "0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143": "0xa0ca3399cb1551fd94ff63c4f8c5132e964f1abb7f2c509e0e55bbaf5dc40793",
+        "0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20": "0xa6091a30f52d7f75c7065e9b3d8a818955808e9b2267ff23c1f864308bde4e73",
+        "0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e": "0x2df07c0187a12999c7b923b99d00165289e28db4317f10a97ce64150b6f064d9",
+        "0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c": "0x53ba466e0543d08358783bdfab5cc2d9481f9afe7d28b8da7c923726c1770563",
+        "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5": "0xbc8581e684595e149f98b44b9f0b89def1c949220a6bb3aae84b6246a00509a6",
+        "0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05": "0x0da5dca54c8a6537ed6df8a75e9bec792dfe8906d6db3b8ce710ad1eccbc957b",
+        "0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7": "0x6b946e6e6a5e605bc33ecf109c6b887dd5881387b83abf13d10c22ccf9595e2e",
+        "0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23": "0x3ffea733beef8bc92f7ad183fa1dd35f397d70e9bbead2a14d6a62dc8cf62db7",
+        "0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6": "0x30376b46a940ee3cdcdb27b21bcb96bbff15320ab1a7de1aca4e0ce6e799d441",
+        "0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b": "0xa1a0591901d8572ea4c4ae46b70a3bd34f2bddc04317e28569bbcec49c7258b6",
+        "0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635": "0x448fbe09ecc33b7813fd6228188bd0228af8e4871b2c4fde7b84f40a94e31fe1",
+        "0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a": "0x13e86190c25ff35a5f14626fa55b6dc19aeafb4e8759efedb256d9eb8f0adccc",
+        "0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076": "0xe5342c931ba3cfa9e55e170aa1d806a496d840355f3921668e941a2373a1e164",
+        "0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f": "0x1ccb9b9cbc8cb7c65d96a9f55a7268cc65ea2addecf0f46f1599b57465df2bad",
+        "0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20": "0x7199f25e6dbbcc1a00ba1e7fa4de22565f71f09604d9d8a46c6745e856506770",
+        "0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1": "0x8a76dd6b4399470e275ae8ba8a76f887b3e820ea9d0148ebb82520b4b890cc07"
+      },
+      "parent_beacon_roots": false,
+      "version": "anvil Version: 1.8.4-nightly+60255eee"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x3ffea733beef8bc92f7ad183fa1dd35f397d70e9bbead2a14d6a62dc8cf62db7",
+          "number": "0x1",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd3736a03dad7d8c037a0790d86b87742dc09744b846ec1a04afc0733e8ad386",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x33478119f7078b20bab269241344cc6008fe3851c518ac3c96c144c474dc0cf8",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2df07c0187a12999c7b923b99d00165289e28db4317f10a97ce64150b6f064d9",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd369849d0bd37a8de71e02a9d4b1853ec4c0591a8e8331c56c696d515b11a942",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0026579cd9e2fa024371844bc8f5d09de3a0180e1024e9febccae26d5240a7e1",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6b946e6e6a5e605bc33ecf109c6b887dd5881387b83abf13d10c22ccf9595e2e",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7199f25e6dbbcc1a00ba1e7fa4de22565f71f09604d9d8a46c6745e856506770",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x448fbe09ecc33b7813fd6228188bd0228af8e4871b2c4fde7b84f40a94e31fe1",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea1d843c982918b6af29c3ef70ad45f8a45ec8c327d86bfb9ac4334ad4b92f32",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x95fcf6c67f90ab9a132e793cd3d582e8053eed50a6831c6f00737042d8ebc9da",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x531f339bc0a2bb6d6f66db47be0af509628ac2c0a3feb5e8d58320b529848a5c",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8fd3d65d091623d87482c9332e67b267afd0ed1e7f64683f8d94cdab5aae58b6",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x773f5b0ecf0199fa00d0cb385cccb3b85a730c6b0d4dbf0bcb0bb71a1034a7c4",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa6091a30f52d7f75c7065e9b3d8a818955808e9b2267ff23c1f864308bde4e73",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5c3c0dfb716e9f5d5ec969bdbf908dea7eae846ef7cf9eb8ed4fe9e65f99febf",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdf597fb8f85086c9c5295969950966cf621627e0ece5ff9123fe3f8fcbbdfb1c",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf3a92cc09e1ffbacd4e60c42bf27f9daa06513420e3503b69c48a96c5a8e9795",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe5342c931ba3cfa9e55e170aa1d806a496d840355f3921668e941a2373a1e164",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x01df28d5d6310ccbbab01c1f251f4193e9f7e36f6c05577ef3124225ad68ecc4",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x30376b46a940ee3cdcdb27b21bcb96bbff15320ab1a7de1aca4e0ce6e799d441",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb2e6f098ea87309723bcfca3dc5c19f2175ed5091cc44b1936317475756642c1",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc45d564400dc4a3f2d099fb22467981b2bea9ad8e5dab25246c72d9eae666089",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa1a0591901d8572ea4c4ae46b70a3bd34f2bddc04317e28569bbcec49c7258b6",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9cd3f5ad40abc545c40b378bcce9f64553452677edaae450f46e8dede8a24ee4",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbdd223717df9de7db17a49d69f4b103b9e3b984e66263e3a41e3cb66dc6c539e",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x86938933812b0e8749cc29084487ace171ee6eb921acea960dbfc117e2004d48",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x53ba466e0543d08358783bdfab5cc2d9481f9afe7d28b8da7c923726c1770563",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8a76dd6b4399470e275ae8ba8a76f887b3e820ea9d0148ebb82520b4b890cc07",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x225c1814183cba889ff4f89e7a14e24b826f9ec76855557844fbb4323d7f446a",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc8b76cedc4bc4311ac2d7051724e50ebbf048d9271ec97bead6058f59a18e67a",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa0ca3399cb1551fd94ff63c4f8c5132e964f1abb7f2c509e0e55bbaf5dc40793",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf5e68c802eac8cbecf4bcd786f90c4af5e3e11d9f1776200cb3441edb91772ff",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xcc1f6da403904b706aef0647d51a810e3bf6bad2eecbd62127fc1336cfa24d57",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd446384b398bd9430a47e45784fd96006abff04cf351f255c994afa08f243a79",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x70b875a84ad5a2a1be05c616947e52c073bb8189803370683b39ec0163d8d6e1",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x1ccb9b9cbc8cb7c65d96a9f55a7268cc65ea2addecf0f46f1599b57465df2bad",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2efeb4c737566f3a190767202c0a306860524a21b55aad9c7a283abb9d61eee2",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x70b7554017be0c7c8e67b81b19e13ee8b90311a5f1f1887b44a6522f9d12be17",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x3e05e99301d19a22d6474d242c4157f0d3ab28ae3626033a930a562af5901190",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x96a7e2fbcacf1ea303144865de358927838be065c3707775fd455bacda8673b5",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe196273b3f79a60aff8d6fd3b57b8c467e9c096cbb4b3a2c1d2076647b58f321",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0ad50593534a53c213614713264de4233a0eeafee11d3d08ca670488ad6a11ee",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0da5dca54c8a6537ed6df8a75e9bec792dfe8906d6db3b8ce710ad1eccbc957b",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6497284d50b7656ee87d6ac6338b3ac76c9830d45a1e108bb5aaa2c0de6d5b2a",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x13e86190c25ff35a5f14626fa55b6dc19aeafb4e8759efedb256d9eb8f0adccc",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xfb5e7fa1c6c780ca2811aa16b8e83c1b330ffbaa3cc3556921f45643fc9db152",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbc8581e684595e149f98b44b9f0b89def1c949220a6bb3aae84b6246a00509a6",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x04d1e4ca6580b91666187a147f8d73a9f2057fb40806cd629228c40da61f35da": "0xfb5e7fa1c6c780ca2811aa16b8e83c1b330ffbaa3cc3556921f45643fc9db152",
+        "0x057489920ec3fa9d5d0ef1a9c2cbabe1d1e2c2cdbf2daf1ab62e4987d9f33a85": "0xf5e68c802eac8cbecf4bcd786f90c4af5e3e11d9f1776200cb3441edb91772ff",
+        "0x0a6b4e5eea1218ef891d70f3e2b5d32a884e6242780e28361a968a1cbdad60c7": "0x6497284d50b7656ee87d6ac6338b3ac76c9830d45a1e108bb5aaa2c0de6d5b2a",
+        "0x12bbe6261b775b890883d8b5d3837f5697f1f982f334e8073be3b97e3febfdd3": "0x0026579cd9e2fa024371844bc8f5d09de3a0180e1024e9febccae26d5240a7e1",
+        "0x1430f5e2a8948a9d70103b0e629f3b7cba9b397a0154b16088c65bbe5060374e": "0x01df28d5d6310ccbbab01c1f251f4193e9f7e36f6c05577ef3124225ad68ecc4",
+        "0x17ffe7be70d118e1ebb36c8ad694702ccfe8bf8fdb6a227eef1c18242ded85a3": "0x70b7554017be0c7c8e67b81b19e13ee8b90311a5f1f1887b44a6522f9d12be17",
+        "0x196e01fea6f48bb7cf2a8b79e831e9a4d3d0f8b49a753de04663ff8e67dd58d9": "0x96a7e2fbcacf1ea303144865de358927838be065c3707775fd455bacda8673b5",
+        "0x2cb91e4c26fe5b893209507b255b9faa224f25318ff1bf58e3c5057f7a8c1918": "0xd446384b398bd9430a47e45784fd96006abff04cf351f255c994afa08f243a79",
+        "0x3ae886a2b7f3a460d05de3218ec6fb20b3ff9162f7e64fded09d8f76dedf66ca": "0xe196273b3f79a60aff8d6fd3b57b8c467e9c096cbb4b3a2c1d2076647b58f321",
+        "0x49206a80057399ab410ac52388981d70ef686f287c7ec89d369c597efc9f5aef": "0x5c3c0dfb716e9f5d5ec969bdbf908dea7eae846ef7cf9eb8ed4fe9e65f99febf",
+        "0x499ebe84fadddf12315ff2874bccfcaa49d2b04758ae5eb9cc10fcc285ef343f": "0x9cd3f5ad40abc545c40b378bcce9f64553452677edaae450f46e8dede8a24ee4",
+        "0x4f100fbc2426dd78530f8a9ee479ef57d0c2ca330e8a9709fb50cfb05154aab4": "0x95fcf6c67f90ab9a132e793cd3d582e8053eed50a6831c6f00737042d8ebc9da",
+        "0x4f6471666cb95be7d70080067fcf43c23d7478f966fb49d6b43416c0c07a958f": "0x33478119f7078b20bab269241344cc6008fe3851c518ac3c96c144c474dc0cf8",
+        "0x51a82145bcf08f2bb1342263b3f5d3f9d9d8cbc44c4410ed93f14704a6120a84": "0xf3a92cc09e1ffbacd4e60c42bf27f9daa06513420e3503b69c48a96c5a8e9795",
+        "0x5d5d8359485588c10d412b752bf12da3dfe9aafbf822c202e2ced95d2defa6da": "0xea1d843c982918b6af29c3ef70ad45f8a45ec8c327d86bfb9ac4334ad4b92f32",
+        "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2": "0x6e3e66f455730ef01466715dbd45811c23a723b44756e722567d0fe9961f4fa2",
+        "0x6ec6ba98adcef83c11f2b9987a178588f696f7bf0215aa70b6b50686a261f37c": "0x225c1814183cba889ff4f89e7a14e24b826f9ec76855557844fbb4323d7f446a",
+        "0x741cdb66766dd9e2663b67b35b9a6b1f85f27b1fec786b3a874c11e8924db5a1": "0x773f5b0ecf0199fa00d0cb385cccb3b85a730c6b0d4dbf0bcb0bb71a1034a7c4",
+        "0x8e706b3677764eea9c540a03ac47b7da048104a31d0ef9d0f93285c4015f3147": "0x8fd3d65d091623d87482c9332e67b267afd0ed1e7f64683f8d94cdab5aae58b6",
+        "0x90a0658ce215e566bd117ffc510e1a39bcacb98ea5afc40eb018f4cb57ab0467": "0xcc1f6da403904b706aef0647d51a810e3bf6bad2eecbd62127fc1336cfa24d57",
+        "0x956fe2056d0337e633ba4447aa38033ca68dc4f7627fe878d65bd2d8bbbecfcb": "0x3e05e99301d19a22d6474d242c4157f0d3ab28ae3626033a930a562af5901190",
+        "0x9635ebe6a769e2463fa0ca48487e642906c80c4a6c48843b49b0931cfcbcaf2e": "0x70b875a84ad5a2a1be05c616947e52c073bb8189803370683b39ec0163d8d6e1",
+        "0x993bc6d6fa55ce8f8a5121a30ffc3523ad58490a82357571f69e5c72b9516a09": "0xc45d564400dc4a3f2d099fb22467981b2bea9ad8e5dab25246c72d9eae666089",
+        "0x9ab5625e350f90db00c21d328042d9a2d166c70723e0c472ef40da75f0ce6b46": "0x86938933812b0e8749cc29084487ace171ee6eb921acea960dbfc117e2004d48",
+        "0xa90052a99c0ea7f04af88db883c7b932421afa63d5187efdd367c8726955a2d2": "0x0ad50593534a53c213614713264de4233a0eeafee11d3d08ca670488ad6a11ee",
+        "0xad340c8620df478fa43b66e0ff842b64b6956d589a0aef951fc3fb9b7ddab4e2": "0xdd3736a03dad7d8c037a0790d86b87742dc09744b846ec1a04afc0733e8ad386",
+        "0xbb97434799e68c6f390478fea3b948aa830cedcebf3b08b4f51bed494b19d944": "0xc8b76cedc4bc4311ac2d7051724e50ebbf048d9271ec97bead6058f59a18e67a",
+        "0xc0324d9acd44e47557c69ccd5860ef02090301b272dff3f940972f2cf186e698": "0xd369849d0bd37a8de71e02a9d4b1853ec4c0591a8e8331c56c696d515b11a942",
+        "0xc10be75ee865d224ea5aef4cc45dde2ee7802e2e4540ed1aa8ec184f51274558": "0xbdd223717df9de7db17a49d69f4b103b9e3b984e66263e3a41e3cb66dc6c539e",
+        "0xc33697d060c595f5226288e87a6e29bf04539a6aea1cd08ea3376fbc99903c12": "0xdf597fb8f85086c9c5295969950966cf621627e0ece5ff9123fe3f8fcbbdfb1c",
+        "0xcbf0f2d6465313ed25c71c77cfd29c2fd3ea8c78fbc9a957590c24eb78dec999": "0xb2e6f098ea87309723bcfca3dc5c19f2175ed5091cc44b1936317475756642c1",
+        "0xcdfa89d344114ea9f95603c51e8b9397a4d47cb577ae05803074d80ea5f713b3": "0x2efeb4c737566f3a190767202c0a306860524a21b55aad9c7a283abb9d61eee2",
+        "0xce4d471fba8a3f256ca580caf0d1034c56ba671ab8d5417fa45a45be522bd53e": "0x531f339bc0a2bb6d6f66db47be0af509628ac2c0a3feb5e8d58320b529848a5c",
+        "0xd3dd4c6d825a48fdbeae6548149a2fb9c5e6752632f9499b1ac02c6ba5799143": "0xa0ca3399cb1551fd94ff63c4f8c5132e964f1abb7f2c509e0e55bbaf5dc40793",
+        "0xd45c9942a3d3f03bfac4a34e556e9fabe52f5c9d00755e5b477e8190b4dbde20": "0xa6091a30f52d7f75c7065e9b3d8a818955808e9b2267ff23c1f864308bde4e73",
+        "0xdbb3587e7f8d5d90940858d138d9df47b7f164960697d5aade2d2380f93d481e": "0x2df07c0187a12999c7b923b99d00165289e28db4317f10a97ce64150b6f064d9",
+        "0xdf38ea8af56199a3735945cc5cea80c3102886bdfb20a1f6ad2a53e5bd8b6a1c": "0x53ba466e0543d08358783bdfab5cc2d9481f9afe7d28b8da7c923726c1770563",
+        "0xdf99e6ef33b28babbdb93969e3a60851928f4912294c4fc26b5e6aebb4bd2fe5": "0xbc8581e684595e149f98b44b9f0b89def1c949220a6bb3aae84b6246a00509a6",
+        "0xe620abb99af5d66cc0e063ec4b61e9349bbc3c23ed9080f110b2c52cf9ac4b05": "0x0da5dca54c8a6537ed6df8a75e9bec792dfe8906d6db3b8ce710ad1eccbc957b",
+        "0xe9e86df6c0f6e88304867ac7f2b1db1d9ac80dc92b804c21402815fa098ceeb7": "0x6b946e6e6a5e605bc33ecf109c6b887dd5881387b83abf13d10c22ccf9595e2e",
+        "0xea61c45a77a333fdf79f41b502b2d36f342f06822d5b2918fa17b6147de8ee23": "0x3ffea733beef8bc92f7ad183fa1dd35f397d70e9bbead2a14d6a62dc8cf62db7",
+        "0xec81bd965db447abc5e4b7059f41bf3002bec2ddc711565ed004b9cf01e7a4e6": "0x30376b46a940ee3cdcdb27b21bcb96bbff15320ab1a7de1aca4e0ce6e799d441",
+        "0xeef27c394792f886d97e1f17a107998837956e775a729d3cff5c89b83042c25b": "0xa1a0591901d8572ea4c4ae46b70a3bd34f2bddc04317e28569bbcec49c7258b6",
+        "0xf0a0d5d601b4cf3d69f9f15aef19c1c585c13c0c9152e8557bcaa82f88196635": "0x448fbe09ecc33b7813fd6228188bd0228af8e4871b2c4fde7b84f40a94e31fe1",
+        "0xf3c6ee162cdeae7978eb2afdc76016fe12f84260bda522df339131bceb7d5e5a": "0x13e86190c25ff35a5f14626fa55b6dc19aeafb4e8759efedb256d9eb8f0adccc",
+        "0xf9026d3a44f603543c5db4a56bb8a135748d0bf9e2f39baebd3bb2ad07c5c076": "0xe5342c931ba3cfa9e55e170aa1d806a496d840355f3921668e941a2373a1e164",
+        "0xfa7bb7d90ce6f4c1d5efc4179956b6bf35e618a1079bb5b4162fa620c7e72d4f": "0x1ccb9b9cbc8cb7c65d96a9f55a7268cc65ea2addecf0f46f1599b57465df2bad",
+        "0xfdb8a4a9cf4b262de90654c0cb4c316f674eb8d7abf4b10b3f67cd5af2ae6e20": "0x7199f25e6dbbcc1a00ba1e7fa4de22565f71f09604d9d8a46c6745e856506770",
+        "0xffca6234cdd60e76f3059e2eb9103dddadde48634a1316c60ce27e1b2400c6a1": "0x8a76dd6b4399470e275ae8ba8a76f887b3e820ea9d0148ebb82520b4b890cc07"
+      },
+      "parent_beacon_roots": false,
+      "version": "anvil Version: 1.8.4+50af4efe"
+    }
+  },
+  "replica_sha256": "d173abfb6666f1515394bfd1621915596f890195d47bff1cdb8cd9da70357368",
+  "runner_exit_code": 1,
+  "runner_sha256": "572090f5c0c7477d94d4f37dbc1b43e1b5d21a68754ad04ac3d5f67301e2ac4a",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "capture_only": false,
+      "name": "control-chain-id",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "capture_only": false,
+      "name": "control-height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-tree-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-tree-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-revert-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-7702",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-7702-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "block-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-block-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x2",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-zero",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-one",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x1"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-nested",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x0",
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0xffff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-all",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [],
+            "fromBlock": "0x2",
+            "toAddress": [],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-to",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-both",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-page",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 1,
+            "count": 2,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-zero",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 0,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-empty-types",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-constructor",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60016000526001601ff3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x0",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x0",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid",
+      "probes": [
+        {
+          "default": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          },
+          "environments": [],
+          "expected": {
+            "state": "the block 0x0 post-state, sender nonce 0"
+          },
+          "extension": true,
+          "kind": "state",
+          "observe": "Explicit third block selector (extension outside the two-argument baseline).",
+          "requirement": "Record which state an explicit third selector uses.",
+          "selector": "block 0x0 by number",
+          "states": [
+            [
+              "the block 0x0 post-state, sender nonce 0",
+              {
+                "NONCE": "0x0"
+              }
+            ],
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a04c833abdb116ad76fc98610ae0e626d7e35154f1fba38ce6bfdaf69a31eec42ca035ecfb996cc68a2a03df0e1087194e25180b01bf0469f69b4f1d330eea9d027a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x0"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-invalid",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x00",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-missing",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-missing-tx",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0xfefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefe",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-trace-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-stateDiff-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-tree-vmTrace-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-empty-types-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-constructor-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60016000526001601ff3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many-priced",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid-default-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a04c833abdb116ad76fc98610ae0e626d7e35154f1fba38ce6bfdaf69a31eec42ca035ecfb996cc68a2a03df0e1087194e25180b01bf0469f69b4f1d330eea9d027a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "control-sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "raw-valid-current-nonce",
+      "probes": [
+        {
+          "environments": [],
+          "expected": {
+            "state": "the latest (block 0x30) post-state, sender nonce 133"
+          },
+          "kind": "state",
+          "requirement": "The two-argument request runs against the latest post-state.",
+          "states": [
+            [
+              "the latest (block 0x30) post-state, sender nonce 133",
+              {
+                "NONCE": "0x85"
+              }
+            ],
+            [
+              "the block 0x2f post-state, sender nonce 130",
+              {
+                "NONCE": "0x82"
+              }
+            ]
+          ],
+          "topic": "H12",
+          "witness": {
+            "NONCE": {
+              "account": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+              "field": "nonce"
+            }
+          }
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8185847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a8d391fb09e2f92ffc93fe7ac7b1eb7f1e24289f707eec0f34292c1713f795ffa0554e314f2ec6166290fc977d4bd4c86a9e0cadc2366f6139bd907d893bb4e237",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-transfer-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001234",
+            "value": "0x1"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x11223344",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000000004",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "call-many-transfers",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x186a0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001234",
+                "value": "0x1"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "transaction-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "get-transfer-root",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          []
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-trace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-stateDiff",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-transfer-vmTrace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+          [
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "block-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x5"
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "replay-block-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x5",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "capture_only": true,
+      "name": "filter-transfer",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x5",
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x4e0240fe2995f7a21013fbe4af0ad9330daac8c29008e22b7d71b4672357f014",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x4e0240fe2995f7a21013fbe4af0ad9330daac8c29008e22b7d71b4672357f014"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x512b5deddff16d21ebba7b730d935b4287dbb839e77eb05b37b34ce5eb229933",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x512b5deddff16d21ebba7b730d935b4287dbb839e77eb05b37b34ce5eb229933"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x99a8eb5c9ab03c42137bcb263c525487dac03192bebd5c6762c8511e3b867afe"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x9ec036cb031f2ffa622a8162eef40431fa33684e50217af50d3bbf856f21ca22",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x9ec036cb031f2ffa622a8162eef40431fa33684e50217af50d3bbf856f21ca22"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xb54bc1221b206db9ee0449a716ddde73c1e2d0f72d2e789fcb51230fe851cc8a"
+        ]
+      }
+    }
+  ],
+  "source_commit": "a7443ef7cfd120cae6f6c187af966eafe1c4550c",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-04T19:36:59.062132+00:00"
+}

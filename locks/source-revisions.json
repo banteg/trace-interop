@@ -73,6 +73,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "078d026239a1977f5d79eeb67fa44d2087ebf7e5",
       "committed_at": "2026-10-01T15:44:08Z"
+    },
+    {
+      "version": "Reth Version: 2.7.0+10bcf461",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "10bcf4615d197a01a7c4c33e6be40711553aff5a",
+      "committed_at": "2026-10-03T17:06:40Z"
     }
   ],
   "erigon_release": [
@@ -173,6 +179,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "6da806cb7483f3cfcd6d5d6a2bdc1743f3b1094d",
       "committed_at": "2026-10-02T13:46:04Z"
+    },
+    {
+      "version": "3.8.0-dev-5cb6c867",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "5cb6c8674de8ff3967d36356cfdcd0f0b88e31ce",
+      "committed_at": "2026-10-04T02:44:33Z"
     }
   ],
   "besu_release": [
@@ -249,6 +261,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "711f8142eb12750a1777ef366e0e0eeeca69513d",
       "committed_at": "2026-10-02T13:33:50Z"
+    },
+    {
+      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "1d62d893baed6c148313bb3d9d64f5c316d371e2",
+      "committed_at": "2026-10-02T21:12:31Z"
     }
   ],
   "nethermind_release": [
@@ -373,6 +391,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "3370d566b67ad741e91a6e647d98c5c28c3a2ed9",
       "committed_at": "2026-10-02T13:21:30Z"
+    },
+    {
+      "version": "2.2.0-preview+6dff813b",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "6dff813b6c3b8141689422e4113f6ea0760e0260",
+      "committed_at": "2026-10-04T16:41:54Z"
     }
   ],
   "go-ethereum_trace": [
@@ -423,6 +447,12 @@
       "repository": "https://github.com/banteg/go-ethereum",
       "commit": "67f41deaa056d8bba18dffd21cc32338633878a0",
       "committed_at": "2026-09-30T14:20:15Z"
+    },
+    {
+      "version": "Geth/v1.17.7-unstable-e67cfd25-2026-10-03/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e67cfd25108049d3765002924460d08fafebb59d",
+      "committed_at": "2026-10-03T14:20:08Z"
     }
   ],
   "anvil_release": [
@@ -481,6 +511,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "328811cbb4a9b9b7115d234a097053474601296a",
       "committed_at": "2026-10-02T05:14:36Z"
+    },
+    {
+      "version": "anvil Version: 1.8.4-nightly+60255eee",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "60255eee79332caef99f0c885f55589769f8f0c0",
+      "committed_at": "2026-10-03T18:29:47Z"
     }
   ]
 }

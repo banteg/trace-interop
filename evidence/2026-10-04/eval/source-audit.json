@@ -1,0 +1,26 @@
+{
+  "capture_source": "a7443ef7cfd120cae6f6c187af966eafe1c4550c",
+  "source_dirty": false,
+  "manifest_count": 19,
+  "manifests": {
+    "a/manifest.json": "20b7fda425ced4d26e9be682b11b1a9ff9eddf43abab87c874073a3ce10444e6",
+    "callmany-isolation/manifest.json": "7cc04bec6c7ee058370db3d436e075659541bdf3d56498e9ab47fe8be7bdeb57",
+    "coverage/manifest.json": "c04a32aa61270c4ebf83d04eab5e3f86a75e489835b90cf56a77bcd26fa71c50",
+    "fee-compat/manifest.json": "a77875c3eac11dcc78f1d644f76dc129cfdd295ca862ae921991b470e7457390",
+    "fee-policy/manifest.json": "4ec905cfa5f588aadb9cb4263ee123259d0fd59b23d7941a6cbfa762fac378dd",
+    "fork-followup/manifest.json": "4b6e3ff5d2269028dd61037a3d2d914f3575e302cfeebab4ac0876978c039e5d",
+    "forks/manifest.json": "4c2f5a350d498bdabf585d3a92fc06e89d5e88e94a7fda65d75ade52423692d7",
+    "h30/manifest.json": "8d4cc9682b5caeed00ace4a34727288b0936d57e1123e68a633cd7b8f7d01c4c",
+    "initial/manifest.json": "d745c4183ef85454dd58ae8417378571fbeb24b807d94a02236c2d6ff6983b6b",
+    "mined-probes/manifest.json": "594e0862f81e8e933c7587f3ed1be90e4871b832a6f38acaec1f7de19f043667",
+    "precompile-values/manifest.json": "3089cd1726e72cd9cfe5e12e6236e1d7192c4efe9b020619d3ca58591fc254cb",
+    "precompiles/manifest.json": "7ae8a8f876b4ca9eb391015512baaec0e88b61cb2cf30f84e85a36f9dd30ab8b",
+    "probes-forks/manifest.json": "36e4e8d8630462c08297f66daef9bfe7dcba4600057c2526f6883dba92642c5e",
+    "probes-prague/manifest.json": "2dee12fe5e08c20f9094ef4ecef9a5010de80c112dc6d379dbb2396cce8cb98e",
+    "pruned/manifest.json": "ce5d788f53e2c62f42dfb52142a2f3540b57f47e18707bac2a24a4988bd77c0b",
+    "raw-selector/manifest.json": "08d1f1cb8c2163820871ac751106dce27c185d3e750a6745b02f8511489034e7",
+    "raw-validation/manifest.json": "d9dfa26dde0650a72db12d955058a44f997fed05db4be60f9fdb689132ad8426",
+    "reorg-safe/manifest.json": "e083952379aa43209f03719a2466814c8c531b39212af1de7aa4db873f56bcf1",
+    "repeat/manifest.json": "54b108aaa4b4edc320e8338c8d6fb05a644983ff2c692ebc2c0dd3113c16a65b"
+  }
+}

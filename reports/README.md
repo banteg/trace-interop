@@ -2,23 +2,23 @@
 
 The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/7babebc596f2c6a94a836ff0f0fed78f6b85dcdf) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
-Published builds checked at **2026-10-02T14:41:05.957366+00:00**. [Freshness preflight](../evidence/2026-10-02/eval/preflight.json) · [Build lock](../evidence/2026-10-02/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-10-04T19:36:57.679798+00:00**. [Freshness preflight](../evidence/2026-10-04/eval/preflight.json) · [Build lock](../evidence/2026-10-04/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
 For verdicts that changed since the last capture, see [changes since the previous matrix](changes.md).
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **85 of 132** client decisions agree with the draft (+1 since the previous capture). 16 more have a submitted fix, and **19 differ with no fix yet**: 19 on converged decisions and 0 on decisions still under review. 29 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind and Reth development builds, **88 of 132** client decisions agree with the draft (+2 since the previous capture). 11 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 32 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Besu](clients/besu.md) | 26.10-develop · 711f8142 | 6 (+2) | 10 | 11 | 0 | 0 | 6 | 2 | 2 / 22 |
-| [Erigon](clients/erigon.md) | 3.8.0-dev · 6da806cb | 28 | 2 | 1 | 0 | 0 | 2 | 14 | 22 / 3 |
-| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 3370d566 | 29 (-1) | 0 | 1 | 0 | 0 | 3 | 13 | 47 / 1 |
-| [Reth](clients/reth.md) | 2.7.0 · 078d0262 | 22 | 4 | 6 | 0 | 0 | 1 | 0 | 24 / 6 |
-| [Anvil](clients/anvil.md) | 1.8.4-nightly · 328811cb | 14 | 5 | 5 | 0 | 0 | 9 | 0 | 2 / 12 |
+| [Besu](clients/besu.md) | 26.10-develop · 1d62d893 | 6 | 10 | 11 | 0 | 0 | 6 | 2 | 2 / 22 |
+| [Erigon](clients/erigon.md) | 3.8.0-dev · 5cb6c867 | 29 (+1) | 0 | 1 | 0 | 0 | 3 | 15 | 22 / 3 |
+| [Nethermind](clients/nethermind.md) | 2.2.0-preview · 6dff813b | 29 (-1) | 0 | 1 | 0 | 0 | 3 | 13 | 47 / 1 |
+| [Reth](clients/reth.md) | 2.7.0 · 10bcf461 | 24 (+2) | 1 | 7 | 0 | 0 | 1 | 2 | 24 / 6 |
+| [Anvil](clients/anvil.md) | 1.8.4-nightly · 60255eee | 14 | 5 | 5 | 0 | 0 | 9 | 0 | 6 / 8 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 

@@ -1,0 +1,16 @@
+{
+ "host": "fedora",
+ "task_workspace": "/home/banteg/dev/trace-eval-2026-10-04",
+ "workspace_removed": true,
+ "task_log_removed": true,
+ "dangling_images_removed": "docker image prune: 45 untagged images, including the superseded development images of the 2026-10-02 eval; tagged trace-interop/* source builds kept",
+ "task_client_containers_remaining": 0,
+ "containers_before": 10,
+ "containers_after": 10,
+ "volumes_before": 7,
+ "volumes_after": 7,
+ "docker_images_bytes_before": "51.51GB",
+ "docker_images_bytes_after": "40.22GB",
+ "root_filesystem_used_before": 356772220928,
+ "root_filesystem_used_after": 347957129216
+}

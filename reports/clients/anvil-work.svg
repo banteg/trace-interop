@@ -34,8 +34,8 @@
 <rect class="b-fix" x="16" y="92" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="105" text-anchor="middle">H02</text>
 <text class="label" x="70" y="105">trace_get selector and return shape</text>
-<rect class="pr" x="400" y="92" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="105" text-anchor="middle">Foundry #17302</text>
+<rect class="b-fix" x="400" y="92" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="105" text-anchor="middle">Foundry #17302</text>
 <rect class="b-fix" x="16" y="116" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="129" text-anchor="middle">H06</text>
 <text class="label" x="70" y="129">Missing transactions and paths</text>
@@ -46,13 +46,13 @@
 <rect class="b-fix" x="16" y="140" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="153" text-anchor="middle">H07</text>
 <text class="label" x="70" y="153">Replay transactionHash field</text>
-<rect class="pr" x="400" y="140" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="153" text-anchor="middle">Foundry #17301</text>
+<rect class="b-fix" x="400" y="140" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="153" text-anchor="middle">Foundry #17301</text>
 <rect class="b-fix" x="16" y="164" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="177" text-anchor="middle">H13</text>
 <text class="label" x="70" y="177">Signed transaction execution validity</text>
-<rect class="pr" x="400" y="164" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="177" text-anchor="middle">Foundry #17304</text>
+<rect class="b-fix" x="400" y="164" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="177" text-anchor="middle">Foundry #17304</text>
 <rect class="b-fix" x="16" y="188" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="201" text-anchor="middle">H29</text>
 <text class="label" x="70" y="201">Precompile call-frame inclusion</text>
@@ -75,8 +75,8 @@
 <text class="label" x="70" y="305">Unsigned simulation fees and block environment</text>
 <rect class="pr edge partial" x="400" y="292" width="109" height="18" rx="4"/>
 <text class="label" x="454.5" y="305" text-anchor="middle">Foundry #17310</text>
-<rect class="pr edge partial" x="515" y="292" width="109" height="18" rx="4"/>
-<text class="label" x="569.5" y="305" text-anchor="middle">Foundry #17311</text>
+<rect class="b-fix edge partial" x="515" y="292" width="109" height="18" rx="4"/>
+<text class="n-fix" x="569.5" y="305" text-anchor="middle">Foundry #17311</text>
 <rect class="pr edge partial" x="630" y="292" width="109" height="18" rx="4"/>
 <text class="label" x="684.5" y="305" text-anchor="middle">Foundry #17312</text>
 <rect class="b-converged" x="16" y="316" width="44" height="18" rx="4"/>

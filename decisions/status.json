@@ -181,7 +181,7 @@
   },
   "H09": {
     "policy": "converged",
-    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, the Erigon and Nethermind development builds implement it (#24355, #24356; #13981), and revm-inspectors #533 implements it, released in 0.44.1, which Foundry 1.8.4 and the Anvil nightly ship and Reth does not pin yet. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on the failed-frame format, including a reverted CREATE reporting {gasUsed, output} with error \"Reverted\" and no address or code, as a reverted CALL does. Erigon proposed the same shape on execution-apis#890 after the heads-up, the Erigon and Nethermind development builds implement it (#24355, #24356; #13981), and revm-inspectors #533 implements it, released in 0.44.1, which Foundry 1.8.4, the Anvil nightly and the Reth nightly (#27668) ship. Parity\u2019s failure labels, with the listed extensions, are part of the same fixes. This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Reverted-CREATE heads-up on execution-apis#890",
@@ -429,7 +429,7 @@
   },
   "H20": {
     "policy": "converged",
-    "note": "Converged on the vmTrace step rules as revised by the divergent-decisions review: operand-range mem (the full CALL output window preferred, the copied bytes accepted), no synthetic operations, halted operations kept with ex: null. Erigon confirmed its own behavior already matches except what erigontech/erigon#24344 fixes; Nethermind\u2019s development build agrees since #13940 and #13958, and revm-inspectors #532, released in 0.44.1, brings Foundry 1.8.4 and the Anvil nightly into agreement on the checked cases; Reth does not pin 0.44.1 yet. This records direction from implementations and client teams, not unanimous formal approval.",
+    "note": "Converged on the vmTrace step rules as revised by the divergent-decisions review: operand-range mem (the full CALL output window preferred, the copied bytes accepted), no synthetic operations, halted operations kept with ex: null. Erigon confirmed its own behavior already matches except what erigontech/erigon#24344 fixes; Nethermind\u2019s development build agrees since #13940 and #13958, and revm-inspectors #532, released in 0.44.1, brings Foundry 1.8.4 and the Anvil nightly into agreement on the checked cases; the Reth nightly agrees since it pins 0.44.1 (#27668). This records direction from implementations and client teams, not unanimous formal approval.",
     "sources": [
       {
         "label": "Erigon on execution-apis#890",

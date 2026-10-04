@@ -5,9 +5,9 @@
         "development": {
           "agree": 6,
           "build": [
-            "26.10-develop \u00b7 711f8142"
+            "26.10-develop \u00b7 1d62d893"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -39,11 +39,11 @@
     {
       "builds": {
         "development": {
-          "agree": 28,
+          "agree": 29,
           "build": [
-            "3.8.0-dev \u00b7 6da806cb"
+            "3.8.0-dev \u00b7 5cb6c867"
           ],
-          "gained": 0,
+          "gained": 1,
           "lost": 0
         },
         "release": {
@@ -58,14 +58,14 @@
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 28,
+        "agree": 29,
         "converged": 1,
-        "fix": 2,
+        "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 2
+        "unmeasured": 3
       },
-      "dev_only": 14,
+      "dev_only": 15,
       "name": "Erigon",
       "prs": {
         "merged": 22,
@@ -77,7 +77,7 @@
         "development": {
           "agree": 29,
           "build": [
-            "2.2.0-preview \u00b7 3370d566"
+            "2.2.0-preview \u00b7 6dff813b"
           ],
           "gained": 0,
           "lost": 1
@@ -87,7 +87,7 @@
           "build": [
             "2.1.0 \u00b7 b3e7e84c"
           ],
-          "gained": 5,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -111,11 +111,11 @@
     {
       "builds": {
         "development": {
-          "agree": 22,
+          "agree": 24,
           "build": [
-            "2.7.0 \u00b7 078d0262"
+            "2.7.0 \u00b7 10bcf461"
           ],
-          "gained": 0,
+          "gained": 2,
           "lost": 0
         },
         "release": {
@@ -130,14 +130,14 @@
       "client": "reth",
       "counted": true,
       "counts": {
-        "agree": 22,
-        "converged": 6,
-        "fix": 4,
+        "agree": 24,
+        "converged": 7,
+        "fix": 1,
         "policy": 0,
         "review": 0,
         "unmeasured": 1
       },
-      "dev_only": 0,
+      "dev_only": 2,
       "name": "Reth",
       "prs": {
         "merged": 24,
@@ -149,7 +149,7 @@
         "development": {
           "agree": 14,
           "build": [
-            "1.8.4-nightly \u00b7 328811cb"
+            "1.8.4-nightly \u00b7 60255eee"
           ],
           "gained": 0,
           "lost": 0
@@ -159,7 +159,7 @@
           "build": [
             "1.8.4 \u00b7 50af4efe"
           ],
-          "gained": 4,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -176,8 +176,8 @@
       "dev_only": 0,
       "name": "Anvil",
       "prs": {
-        "merged": 2,
-        "open": 12
+        "merged": 6,
+        "open": 8
       }
     }
   ],

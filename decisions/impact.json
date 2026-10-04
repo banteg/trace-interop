@@ -119,8 +119,8 @@
         "change": "Ship #24355 and #24356 in a release: a reverted CREATE as `{gasUsed, output}` without address or code, and the listed failure labels."
       },
       "reth": {
-        "observed": "A reverted CREATE reports `{address, code, gasUsed}` with the would-be address; other failures fall back to Rust `Debug` names such as `NotActivated`.",
-        "change": "Report a reverted CREATE as `{gasUsed, output}` without address or code, and use the listed failure labels."
+        "observed": "2.7.0 \u00b7 3d592ece reports a reverted CREATE as `{address, code, gasUsed}` with the would-be address, and other failures fall back to Rust `Debug` names such as `NotActivated`. The nightly 10bcf461 ships revm-inspectors 0.44.1 (#27668), which reports a reverted CREATE as `{gasUsed, output}` and uses the listed labels.",
+        "change": "Ship revm-inspectors 0.44.1 (#27668) in a release."
       },
       "geth": {
         "observed": "The fork uses the draft labels, including \u201cOut of gas\u201d for code above the EIP-170 limit or a failed code deposit and \u201cInvalid code\u201d for an EIP-3541 0xEF prefix (since e26833e3), and emits no `revertReason`.",
@@ -210,8 +210,8 @@
         "change": "No change."
       },
       "reth": {
-        "observed": "Reth 2.7.0 \u00b7 3d592ece and the nightly lock revm-inspectors 0.44.0, which fixes the pre-operation `used` and missing `store` of 2.6.0\u2019s 0.43.0 and reports the bytes a CALL copied, which the rule accepts, but reports no MLOAD memory, adds a synthetic STOP, gives precompile and empty-code callees a null `sub` and a failed-precheck call a `sub`, and keeps undefined opcodes.",
-        "change": "Report MLOAD memory (#504 left it out), drop the synthetic STOP, give precompile and empty-code callees `{code: \"0x\", ops: []}` and a failed-precheck call `sub: null`, and omit undefined opcodes."
+        "observed": "Reth 2.7.0 \u00b7 3d592ece locks revm-inspectors 0.44.0, which reports no MLOAD memory, adds a synthetic STOP, gives precompile and empty-code callees a null `sub` and a failed-precheck call a `sub`, and keeps undefined opcodes. The nightly 10bcf461 ships revm-inspectors 0.44.1 (#27668), which fixes each of these.",
+        "change": "Ship revm-inspectors 0.44.1 (#27668) in a release."
       },
       "anvil": {
         "observed": "1.8.3 locks revm-inspectors 0.43.0 (whole-memory `mem`, pre-operation `used`, no `store`). 1.8.4 and the nightly 328811cb ship 0.44.1 (#532): memory and subs follow execution, MLOAD reports its memory, there is no synthetic STOP, and a call that fails its precheck has no `sub`. Only the blocked mined-probes cases remain.",
@@ -310,8 +310,8 @@
         "change": "Reject malformed input, unknown filter fields and unknown trace types (`-32602` recommended), separately from execution rejection. Ship the call-field fixes in a release."
       },
       "nethermind": {
-        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds. An unpriced call with a null `blobVersionedHashes` or `authorizationList` takes that member\u2019s transaction type: 2.1.0-preview \u00b7 45912ba3 rejects it with -32000 (\u201cneed at least 1 blob\u201d, \u201cEIP-7702 transaction cannot be used to create contract\u201d) and 2.0.0 truncates the authorizationList response. 2.2.0-preview \u00b7 759efed7 treats a null member as omitted (#14049), rejects a negative filter count (#14050) and rejects disagreeing `data` and `input` with -32602 (#14089).",
-        "change": "Ship #14049, #14050 and #14089 in a release: reject malformed input, such as a negative filter count or disagreeing `data` and `input` (`-32602` recommended), and treat a null member as omitted, so it selects no transaction type."
+        "observed": "Malformed raw input, negative filter count and integer paths expose validation differences across the captured builds. An unpriced call with a null `blobVersionedHashes` or `authorizationList` takes that member\u2019s transaction type: 2.1.0-preview \u00b7 45912ba3 rejects it with -32000 (\u201cneed at least 1 blob\u201d, \u201cEIP-7702 transaction cannot be used to create contract\u201d) and 2.0.0 truncates the authorizationList response. 2.2.0-preview \u00b7 759efed7 treats a null member as omitted (#14049), rejects a negative filter count (#14050) and rejects disagreeing `data` and `input` with -32602 (#14089). The fee and type and fork probes, measured in the matrix since 2026-10-04, add two differences in every build: an explicit `type` picks the call's class and drops the fields it lacks (type 0 or 1 with dynamic fees runs at GASPRICE 0, type 2 with an authorization list ignores it), and a field before its fork fails with -32603 (access and authorization lists) or runs (dynamic fees at the tip, blob hashes before Cancun).",
+        "change": "Ship #14049, #14050 and #14089 in a release: reject malformed input, such as a negative filter count or disagreeing `data` and `input` (`-32602` recommended), and treat a null member as omitted, so it selects no transaction type. Merge #14212: the fields decide a call's type, and a field the call's fork lacks is rejected."
       },
       "besu": {
         "observed": "Wrong address-list types and negative count can return results rather than invalid params.",
@@ -363,7 +363,7 @@
       },
       "reth": {
         "observed": "2.7.0 \u00b7 3d592ece and the nightly report pre-Cancun deletion markers (revm-inspectors #510, released in 0.44.0), which 2.6.0 lost. After Cancun, a SELFDESTRUCT to self reports a zero executing account and balance because revm skips the inspector callback when the opcode changes no state (revm #3834).",
-        "change": "Report the SELFDESTRUCT payload, fixed by open revm #3833, which then needs revm-inspectors and Reth uptake. 0.44.0 lists a deleted account\u2019s accessed nonzero slots as `-`, which open revm-inspectors #530 changes to `storage: {}`."
+        "change": "Report the SELFDESTRUCT payload, fixed by open revm #3833, which then needs revm-inspectors and Reth uptake. 0.44.0 lists a deleted account\u2019s accessed nonzero slots as `-`; revm-inspectors #530 changes that to `storage: {}`, released in 0.44.1 and shipped in the nightly 10bcf461 (#27668)."
       },
       "geth": {
         "observed": "A deleted account lists its written slots with `-`.",
@@ -445,8 +445,8 @@
         "change": "Accept latest, earliest, safe and finalized filter bounds (an Alloy `TraceFilter` change), with earliest as the lowest available block, and keep rejecting pending bounds. Pending block traces are allowed; how their records are localized is still open."
       },
       "erigon": {
-        "observed": "3.7.0 \u00b7 bdc78cc4 rejects pending with -32000 (\u201ctracing on top of pending is not supported\u201d). 3.8.0-dev \u00b7 a1ce80fb includes #24345 and rejects pending in every trace method with -32602. Both builds accept a block hash as a trace_filter bound, as a string or an EIP-1898 object.",
-        "change": "Ship #24345 in a release. Reject block-hash filter bounds, as a string or an EIP-1898 object (`-32602` recommended), as eth_getLogs range bounds do; pin a single block with the H33 `blockHash` member instead."
+        "observed": "3.7.1 \u00b7 8c1e3893 rejects pending with -32000 (\u201ctracing on top of pending is not supported\u201d) and accepts a block hash as a trace_filter bound, as a string or an EIP-1898 object. 3.8.0-dev \u00b7 5cb6c867 includes #24345 and #24435: it rejects pending in every trace method and block-hash filter bounds with -32602.",
+        "change": "Ship #24345 and #24435 in a release."
       },
       "geth": {
         "observed": "`earliest` resolves to block 0 rather than the lowest available block. `trace_block` and `trace_replayBlockTransactions` at pending trace the miner\u2019s pending block, which is empty on the frozen chain, so the capture cannot show its environment.",
@@ -489,8 +489,8 @@
         "change": "Read the `blockHash` its `FilterParameter` already parses and select exactly that block, canonical in the request\u2019s chain view, resolving and tracing it in one view. Reject a hash with non-null bounds and a malformed hash (-32602 recommended) and an unknown, noncanonical, unexecuted or unavailable hash (-32001 recommended; 4444 for pruned history), before any `count: 0` shortcut; treat a null member as omitted."
       },
       "erigon": {
-        "observed": "Both builds accept `blockHash` as an unknown member and ignore it: 3.8.0-dev \u00b7 a2a19253 traces the head (block 0x30), and 3.7.0 \u00b7 bdc78cc4 scans from genesis to the head, so its address-filtered answers span every matching block. Unknown, short and EIP-1898-object hashes get the same answer, `count: 0` returns `[]`, and `{blockHash, fromBlock: 0x2}` answers block 2. The reorg phases are blocked: both builds stop at the branch switch (\u201cInvalid forkchoice state\u201d).",
-        "change": "Select exactly the hashed block within one read transaction, reusing the canonical-only eth_getLogs hash resolver. Reject a hash with non-null bounds and a malformed hash (-32602 recommended) and an unknown, noncanonical, unexecuted or unavailable hash (-32001 recommended; 4444 for pruned history), before any `count: 0` shortcut; treat a null member as omitted."
+        "observed": "3.7.1 \u00b7 8c1e3893 accepts `blockHash` as an unknown member and ignores it, scanning from genesis to the head. 3.8.0-dev \u00b7 5cb6c867 includes #24435: it selects exactly the hashed block and rejects a hash with bounds. The reorg phases are blocked: both builds stop at the branch switch (\u201cInvalid forkchoice state\u201d), so the development build is only partially assessed.",
+        "change": "Ship #24435 in a release. The noncanonical-hash cases need the reorg scenario to run on Erigon."
       },
       "nethermind": {
         "observed": "In the 2026-09-29 capture, both builds accepted `blockHash` as an unknown member and traced the head instead, including for unknown hashes; `count: 0` returned `[]`, and hash-plus-range requests used the range. After the reorg switch, the development build returned B\u2019s empty head for A\u2019s hash. The selected 2026-09-30 development build rejects non-null `blockHash` with -32602 following #14050, which stops the silent answer but does not select the block; it also rejects null beside numeric bounds. The stable build still ignores the member.",

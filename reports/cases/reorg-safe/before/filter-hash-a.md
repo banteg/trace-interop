@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Besu · 26.10-develop · 711f8142](../../../clients/besu_development.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.8.0-dev · 6da806cb](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 67f41dea](../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../../clients/nethermind_release.md) | 4 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.0-preview · 3370d566](../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
-| [Reth · 2.7.0 · 078d0262](../../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-02/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-02/eval/reorg-safe/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../clients/besu_release.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Besu · 26.10-develop · 1d62d893](../../../clients/besu_development.md) | 4 records | ⚠️ Differs | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../../clients/erigon_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.8.0-dev · 5cb6c867](../../../clients/erigon_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../../clients/nethermind_release.md) | 4 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.0-preview · 6dff813b](../../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
+| [Reth · 2.7.0 · 10bcf461](../../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-10-04/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-04/eval/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,7 +31,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 711f8142** (`besu/v26.10-develop-711f814/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 1d62d893** (`besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25`)
 
 - [H33](../../../decisions/H33.md): Before the switch, branch A’s block 0x2d is canonical: its hash selects A’s records, as the numeric range does. Answered another block: 4 records from block 0x30 (the head), where the numeric equivalent before/filter-tail has 3 records from block 0x2d.
 
@@ -39,7 +39,7 @@
 
 - [H33](../../../decisions/H33.md): Before the switch, branch A’s block 0x2d is canonical: its hash selects A’s records, as the numeric range does. Answered another block: 4 records from block 0x30 (the head), where the numeric equivalent before/filter-tail has 3 records from block 0x2d.
 
-**Erigon · 3.8.0-dev · 6da806cb** (`3.8.0-dev-6da806cb`)
+**Erigon · 3.8.0-dev · 5cb6c867** (`3.8.0-dev-5cb6c867`)
 
 - [H33](../../../decisions/H33.md): Assess this declared topic case. Scenario setup stopped: Invalid forkchoice state
 
@@ -53,7 +53,7 @@
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
 
-**Reth · 2.7.0 · 078d0262** (`Reth Version: 2.7.0+078d0262`)
+**Reth · 2.7.0 · 10bcf461** (`Reth Version: 2.7.0+10bcf461`)
 
 - [H33](../../../decisions/H33.md): Before the switch, branch A’s block 0x2d is canonical: its hash selects A’s records, as the numeric range does. Rejected (-32602: Invalid params), where the numeric equivalent before/filter-tail has 2 records from block 0x2d.
 

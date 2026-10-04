@@ -343,7 +343,7 @@ text = "Besu’s latest release, the build Hive runs."
 [[actor]]
 id = "banteg"
 name = "banteg"
-icon = "explorer"
+icon = "bunny"
 role = "Explorer"
 note = "Wrote the draft, the harness and most of the client PRs."
 

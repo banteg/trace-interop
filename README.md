@@ -90,4 +90,4 @@ Supporters fund the work; spec decisions stay public.
 
 **Reviews and audits:** [source review](docs/source-review/README.md) · [divergent decisions review](docs/reviews/2026-09-26-divergent-decisions/README.md) · historical records: [harness assertion audit](docs/harness-audit.md) · [H17 assessment audit](docs/h17-assessment-audit.md) · [measurement and draft review corrections](docs/review-corrections.md)
 
-**Upstream work:** [client fixes](docs/client-fixes.md) · [upstream acceptance](docs/upstream-acceptance.md) · [Geth draft implementation](docs/geth.md) · [tech tree](docs/usage.md#tech-tree)
+**Upstream work:** [client fixes](docs/client-fixes.md) · [upstream acceptance](docs/upstream-acceptance.md) · [Geth draft implementation](docs/geth.md) · [tech tree](https://trace.banteg.xyz/)

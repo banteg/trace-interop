@@ -50,7 +50,7 @@ reposts the current matrix. It needs a bot in the group and the repository secre
 
 ## Tech tree
 
-The tech tree draws the merge order toward a merged specification and Hive as a game tech tree,
+The [live tech tree](https://trace.banteg.xyz/) draws the merge order toward a merged specification and Hive as a game tech tree,
 with a Civilization II skin and a StarCraft one (`#starcraft`). [`site/tech-tree/tree.toml`](../site/tech-tree/tree.toml)
 holds its layout and wording only. [`scripts/build_tech_tree.py`](../scripts/build_tech_tree.py)
 adds every state and number from the tracker: client builds from `reports/progress.json`, PR states
@@ -66,7 +66,8 @@ python3 scripts/build_tech_tree.py
 Cloudflare Workers Builds deploys it on each push to `main`, so the page follows every
 `refresh_fixes.py` and `build_reports.py` commit. Its build settings: root directory `site`, build
 command `python3 ../scripts/build_tech_tree.py`, deploy command `npx wrangler deploy`, which reads
-[`site/wrangler.jsonc`](../site/wrangler.jsonc).
+[`site/wrangler.jsonc`](../site/wrangler.jsonc). The config also declares `trace.banteg.xyz` as its
+custom domain, keeping the hostname attached on future deployments.
 
 ## Reproduce one disagreement
 

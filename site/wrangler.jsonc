@@ -3,6 +3,13 @@
 {
   "name": "trace-tech-tree",
   "compatibility_date": "2026-10-04",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "trace.banteg.xyz",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist"
   }

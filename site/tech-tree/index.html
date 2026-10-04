@@ -213,6 +213,9 @@ ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; }
 .actor-card em { display: block; font-size: 12.5px; margin: 1px 0 3px; }
 .actor-card p { margin: 0; font-size: 13.5px; line-height: 1.4; }
 .repos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.roster { margin-top: 8px; display: grid; gap: 4px; font-size: 13.5px; line-height: 1.45; max-width: 90ch; }
+.roster p { margin: 0; }
+.roster b { font-family: var(--display); font-weight: 800; font-size: 12.5px; letter-spacing: .04em; color: #6b1a12; }
 .repo { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 3px; font-size: 13px; text-decoration: none; }
 
 .actor-card { background: var(--paper-2); box-shadow: inset 1px 1px #fff8e2, inset -1px -1px #6d5a33; }
@@ -285,6 +288,8 @@ ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; }
       <div class="council" id="council"></div>
       <p class="section-label" id="repos-label"></p>
       <div class="repos" id="repos"></div>
+      <p class="section-label" id="roster-label"></p>
+      <div class="roster" id="roster"></div>
     </div>
   </section>
 
@@ -300,7 +305,8 @@ const PAL = {
   y:'#e8b830', Y:'#fff0a0', b:'#9a6a2c', n:'#5c3c16',
   B:'#3461c1', L:'#8cc0ff', N:'#1e2f66', e:'#3e9a3a', E:'#93d46d', D:'#1f5a22',
   p:'#7a40a0', P:'#b98ae0', s:'#ecd9a8', S:'#c4a466', h:'#f0bd8e', H:'#c48a58',
-  i:'#e8559a', I:'#ff9ccb', V:'#dcc2f5'
+  i:'#e8559a', I:'#ff9ccb', V:'#dcc2f5', T:'#5bc1b0', t:'#2f8f80', X:'#3b3540', x:'#5d5466',
+  c:'#3ff0d8', z:'#2e2440', A:'#a3e2f4', j:'#2a1e18'
 };
 
 const SPR = {
@@ -628,59 +634,149 @@ const SPR = {
     "..kb........bk..",
     "..kk........kk.."
   ],
-  lantern: [
-    "................",
-    ".......kk.......",
-    "......k..k......",
+  miner: [
+    "..kkkkkkk...kkk.",
+    ".kXXXXXXXk.kccck",
+    ".kXxXXXxXk.k.b.k",
+    ".kXhhhhhXk...b..",
+    ".kXwBhBwXk...b..",
+    ".kXhhHhhXk...b..",
+    ".kXhnnnhXk...b..",
+    ".kkkkkkkkk...b..",
+    "kXXxXXXxXXk..b..",
+    "kXcXXXXXcXk..b..",
+    "kXXXXXXXXXkhhb..",
+    "kXXxXXXxXXk..b..",
+    "kkkkkkkkkkk..b..",
+    ".c....c.....c...",
+    "...c.....c......",
+    "................"
+  ],
+  legionary: [
+    "...krrrrrrrrk...",
+    "..krRrRrRrRrrk..",
+    "....kkkkkkkk....",
+    "...kyyyyyyyyk...",
+    "..kyYyyyyyyyyk..",
+    "..kykkkkkkkkyk..",
+    "..kykhhhhhhkyk..",
+    "..kykhkhhkhkyk..",
+    "..kyyhhHhhhyyk..",
+    "..kyyhhkkhhyyk..",
+    "...kykhhhhkyk...",
+    "....kkkhhkkk....",
+    "..kkrrrkkrrrkk..",
+    ".kgGgrrrrrrgGgk.",
+    ".kgggGGGGGGgggk.",
+    ".kGGGggggggGGGk."
+  ],
+  alpine: [
+    "...........w....",
+    ".....kkkkk.wGw..",
+    "....kGGGGGkGGGw.",
+    "...kGGGGGGGkGgg.",
+    "..kbbbbbbbbbbkgg",
+    "..kbhhhhhhhhbk..",
+    "..kbhkhhhhkhbk..",
+    "..kbhhhhHhhhbk..",
+    "..kbhHhhhhHhbk..",
+    "..kbbhHkkHhbbk..",
+    "...kbkHHHHkbk...",
+    "...kkwkHHkwkk...",
+    "..kwwwwkkwwwwk..",
+    ".kwGwwwwwwwwGwk.",
+    ".kwGwwwwwwwwGwk.",
+    ".kwGwwwwwwwwGwk."
+  ],
+  diplomat: [
+    "....kkkkkkkk....",
+    "....kzzzzzzk....",
+    "....kzzzzzzk....",
+    "....krrrrrrk....",
+    "..kkkkkkkkkkkk..",
+    "...kHHHHHHHHk...",
+    "...kHkkHHkkHk...",
+    "..kHHHHHHHHHHk..",
+    "...kgHHHHHHgk...",
+    "...kggGGGGggk...",
+    "...kgkwwwwkgk...",
+    "....kggggggk....",
+    "...kGGkNNkGGk...",
+    ".kGGGGkNNkGGGGk.",
+    ".kNGGGkNNkGGGNk.",
+    ".kNGGGkNNkGGGNk."
+  ],
+  knight: [
+    "......TTT.......",
+    ".....TTtTT......",
+    "......TTT.......",
     ".....kkkkkk.....",
-    "....kbbbbbbk....",
-    "....kkkkkkkk....",
-    ".Y..kYwYYYbk..Y.",
-    "....kYYwYYbk....",
-    "..Y.kYyyyYbk.Y..",
-    "....kyyoyybk....",
-    ".Y..kyoooybk..Y.",
-    "....kyyoyybk....",
-    "....kkkkkkkk....",
-    "...kbbbbbbbbk...",
-    "...kkkkkkkkkk...",
-    "................"
+    "....kGGGGGGk....",
+    "...kGGGGGGGGk...",
+    "...kGkkkkkkGk...",
+    "...kGGGGGGGGk...",
+    "...kGgGgGgGGk...",
+    "...kGGGGGGGGk...",
+    "....kggggggk....",
+    "..kkTTTTTTTTkk..",
+    ".kgTTTTwwTTTTgk.",
+    ".kgTTwwwwwwTTgk.",
+    ".kgTTTTwwTTTTgk.",
+    ".kgTTTTwwTTTTgk."
   ],
-  gavel: [
-    "................",
-    "..kkkkkkkk......",
-    ".kbYbbbbbbk.....",
-    ".kbbbbbbbbk.....",
-    ".knbbbbbbnk.....",
-    "..kkkkkkkk......",
-    ".....kbk........",
-    "......kbk.......",
-    ".......kbk......",
-    "........kbk.....",
-    ".........kbk....",
-    "..........kk....",
-    "................",
-    "...kkkkkkkkkk...",
-    "..kbbbbbbbbbbk..",
-    "..kkkkkkkkkkkk.."
+  punk: [
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAAAAAAAAAAAA",
+    "AAAAAjjjjjjjAAAA",
+    "AAAAjjjjjjjjjAAA",
+    "AAAAjjhhhhhhhjAA",
+    "AAAAjhhhhhhhhkAA",
+    "AAAkjhHHhhhHHkAA",
+    "AAkhjhkhhhhkhkAA",
+    "AAkhjhhhhhhhhkAA",
+    "AAAkjhhhhkhhhkAA",
+    "AAAAjhhhhhhhhkAA",
+    "AAAAjhhjjjjhhkAA",
+    "AAAAjjjgkkjjjkAA",
+    "AAAAkjjggggjjkAA",
+    "AAAAAkhhkkkkkAAA",
+    "AAAALkhhkAAAAAAA"
   ],
-  envelope: [
+  elephant: [
+    "................",
+    ".....kkkkkk.....",
+    ".kkkkGGGGGGkkkk.",
+    "kgggkGGGGGGkgggk",
+    "kgGgkGGGGGGkgGgk",
+    "kgGgkGkGGkGkgGgk",
+    "kgGgkGGGGGGkgGgk",
+    "kgggkGGggGGkgggk",
+    ".kggkkGggGkkggk.",
+    "..kkkwkggkwkkk..",
+    ".....wkggkw.....",
+    "......kggk......",
+    "......kggk......",
+    "......kggkk.....",
+    ".......kkgk.....",
+    ".........k......"
+  ],
+  unknown: [
     "................",
     "................",
-    "................",
-    "kkkkkkkkkkkkkkkk",
-    "kwkwwwwwwwwwwkwk",
-    "kwwkwwwwwwwwkwwk",
-    "kwwwkwwwwwwkwwwk",
-    "kwwwwkwwwwkwwwwk",
-    "kwwwwwkrrkwwwwwk",
-    "kwwwwkrRrrkwwwwk",
-    "kwwwkwkrrkwkwwwk",
-    "kwwkwwwwwwwwkwwk",
-    "kwkGGGGGGGGGGkwk",
-    "kkkkkkkkkkkkkkkk",
-    "................",
-    "................"
+    ".....kkkkkk.....",
+    "....kgwwwwgk....",
+    "...kgwwggwwgk...",
+    "...kggggwwggk...",
+    "...kgggwwgggk...",
+    "...kgggwwgggk...",
+    "...kggggggggk...",
+    "....kggwwggk....",
+    ".....kkkkkk.....",
+    "...kkggggggkk...",
+    "..kggggggggggk..",
+    ".kggggggggggggk.",
+    ".kggggggggggggk.",
+    ".kkkkkkkkkkkkkk."
   ],
   wagon: [
     "................",
@@ -790,12 +886,12 @@ const CAT_COLORS = {
 
 const UI = {
   lede: 'The merge order for the trace_* standard. Clients research in parallel, the Geth namespace unlocks the spec, and Hive is the wonder at the end.',
-  tree: 'Science Advisor: trace_* standard', order: 'Science Advisor', info: 'Civilopedia', council: 'High Council', repos: 'Known world (repositories)',
+  tree: 'Science Advisor: trace_* standard', order: 'Science Advisor', info: 'Civilopedia', council: 'High Council', repos: 'Known world (repositories)', roster: 'Reviewers and contributors',
   legend: { done: 'Known advance', active: 'Researching', locked: 'Not yet discovered' },
   crit: 'Critical path',
   cat: { foundation: 'Foundation', library: 'Library', dev: 'Dev build', stable: 'Stable release', council: 'Council', geth: 'Reference client', tests: 'Fixtures', spec: 'Code of laws', wonder: 'Wonder of the world' },
   st: { done: 'Known', active: 'Researching', locked: 'Undiscovered' },
-  advisor: 'Science Advisor', unit: 'Advisor', allows: 'Allows',
+  advisor: 'Science Advisor', unit: 'Contact', allows: 'Allows',
   fit: ['Actual size', 'Fit to window']
 };
 
@@ -1044,7 +1140,7 @@ function renderInfo() {
   const a = el('a', null, n.url.replace('https://github.com/', 'github.com/'));
   a.href = n.url; a.target = '_blank'; a.rel = 'noopener';
   links.append(a);
-  if (n.actor) links.append(el('span', null, `${S.unit}: ${actorById[n.actor].name}`));
+  if (n.actor) links.append(el('span', null, `${S.unit}: ${actorById[n.actor].name}${n.also ? `, with ${n.also}` : ''}`));
   box.append(links);
 }
 
@@ -1077,7 +1173,7 @@ function renderOrder() {
 function renderCouncil() {
   const S = UI, box = $('council');
   box.innerHTML = '';
-  DATA.actors.forEach(a => {
+  DATA.actors.filter(a => a.council !== false).forEach(a => {
     const c = el('div', 'actor-card');
     const f = el('div', 'face'); f.append(spr(a.icon, 48));
     const t = el('div');
@@ -1092,6 +1188,12 @@ function renderCouncil() {
     repos.append(a);
   });
   $('repos-label').textContent = S.repos;
+  $('roster-label').textContent = S.roster;
+  const roster = $('roster'); roster.innerHTML = '';
+  DATA.contributors.forEach(({ project, names }) => {
+    const row = el('p'); row.append(el('b', null, project), document.createTextNode(` ${names.join(', ')}`));
+    roster.append(row);
+  });
 }
 
 function renderChrome() {

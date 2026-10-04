@@ -21,7 +21,7 @@ def node(id, cell, **binding):
 
 
 def tree():
-    return {'layout': {'gutters': [40] * 6}, 'era': [], 'advisor': {}, 'actor': [], 'repo': [], 'step': [],
+    return {'layout': {'gutters': [40] * 6}, 'era': [], 'advisor': {}, 'actor': [], 'contributor': [], 'repo': [], 'step': [],
             'node': [node('lib', [0, 0], repos=['org/lib']),
                      node('dev', [1, 0], requires=['lib'], client='x', build='development'),
                      node('rel', [2, 0], requires=['dev'], client='x', build='release'),

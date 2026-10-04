@@ -75,7 +75,7 @@ def build(tree, progress, fixes, status, captured):
         col, row = spec['cell']
         node = {'id': spec['id'], 'title': spec['title'], 'sub': spec['sub'], 'icon': spec['icon'], 'col': col, 'row': row,
                 'span': spec.get('span', 1), 'category': spec['category'], 'critical': spec.get('critical', False),
-                'requires': spec.get('requires', []), 'actor': spec.get('actor'), 'url': spec['url'],
+                'requires': spec.get('requires', []), 'actor': spec.get('actor'), 'also': spec.get('also'), 'url': spec['url'],
                 'text': spec['text'], 'tag': spec.get('tag'), 'label': spec.get('label'), 'status': spec.get('status', 'active'),
                 'summary': None, 'progress': None, 'prs': None}
         if 'client' in spec:
@@ -120,6 +120,7 @@ def build(tree, progress, fixes, status, captured):
         'advisor': tree['advisor'],
         'nodes': list(nodes.values()),
         'actors': tree['actor'],
+        'contributors': tree['contributor'],
         'repos': [repo | {'url': f'https://github.com/{repo["name"]}'} for repo in tree['repo']],
         'steps': tree['step'],
     }

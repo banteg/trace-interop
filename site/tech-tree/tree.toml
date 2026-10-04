@@ -70,6 +70,7 @@ icon = "scroll"
 cell = [1, 3]
 category = "foundation"
 requires = ["harness"]
+actor = "banteg"
 status = "done"
 label = "Posted"
 url = "https://github.com/ethereum/execution-apis/pull/895"
@@ -85,6 +86,8 @@ icon = "gear"
 cell = [0, 1]
 category = "library"
 requires = ["harness"]
+actor = "mo4islona"
+also = "rakita (maintainer)"
 repos = ["bluealloy/revm"]
 url = "https://github.com/bluealloy/revm"
 text = "The EVM under revm-inspectors. A fix here reaches Reth only after a revm release, a revm-inspectors release and a Reth bump."
@@ -97,6 +100,8 @@ icon = "magnifier"
 cell = [1, 1]
 category = "library"
 requires = ["harness", "revm"]
+actor = "mattsse"
+also = "DaniPopes (reviewer)"
 repos = ["paradigmxyz/revm-inspectors"]
 url = "https://github.com/paradigmxyz/revm-inspectors"
 text = "The Parity tracer inside Reth and Foundry. Its fixes reach each client through a release and a version bump."
@@ -109,6 +114,8 @@ icon = "ingot"
 cell = [1, 0]
 category = "library"
 requires = ["harness"]
+actor = "mattsse"
+also = "DaniPopes (reviewer)"
 repos = ["alloy-rs/alloy", "alloy-rs/evm"]
 url = "https://github.com/alloy-rs/alloy"
 text = "Trace RPC types and the EVM glue for Reth and Foundry. Each fix reaches Reth only through an Alloy release and a Reth bump."
@@ -121,6 +128,7 @@ icon = "flask"
 cell = [1, 2]
 category = "library"
 requires = ["harness"]
+actor = "paolo"
 repos = ["erigontech/rpc-tests"]
 url = "https://github.com/erigontech/rpc-tests"
 text = "Erigon’s RPC fixture suite. Erigon CI pins an rpc-tests release, so fixture updates ship here first, then Erigon bumps RPC_VERSION."
@@ -135,6 +143,7 @@ icon = "anvil"
 cell = [2, 0]
 category = "dev"
 requires = ["inspectors", "alloy"]
+actor = "mattsse"
 client = "anvil"
 build = "development"
 url = "https://github.com/foundry-rs/foundry"
@@ -148,6 +157,7 @@ icon = "crab"
 cell = [2, 1]
 category = "dev"
 requires = ["inspectors", "alloy"]
+actor = "mattsse"
 client = "reth"
 build = "development"
 url = "https://github.com/paradigmxyz/reth"
@@ -161,6 +171,8 @@ icon = "temple"
 cell = [2, 2]
 category = "dev"
 requires = ["rpctests"]
+actor = "paolo"
+also = "Alex Sharov (merges)"
 client = "erigon"
 build = "development"
 url = "https://github.com/erigontech/erigon"
@@ -174,6 +186,8 @@ icon = "owl"
 cell = [2, 4]
 category = "dev"
 requires = ["harness"]
+actor = "anders"
+also = "Łukasz Rozmej (review and merge)"
 client = "nethermind"
 build = "development"
 url = "https://github.com/NethermindEth/nethermind"
@@ -220,6 +234,7 @@ category = "geth"
 critical = true
 requires = ["consensus"]
 actor = "lightclient"
+also = "Gary Rong (architecture)"
 pr = "https://github.com/ethereum/go-ethereum/pull/35791"
 url = "https://github.com/ethereum/go-ethereum/pull/35791"
 text = "The normal execution-apis path needs the methods in upstream Geth. The draft fork implements all nine and agrees on every assessed check. lightclient gave a preliminary go-ahead."
@@ -233,6 +248,8 @@ cell = [5, 3]
 category = "tests"
 critical = true
 requires = ["geth"]
+actor = "needed"
+also = "Chase (testing contact)"
 done_with = "specmerge"
 locked_until = ["geth"]
 label = "generating"
@@ -264,7 +281,7 @@ span = 3
 category = "wonder"
 critical = true
 requires = ["specmerge", "reth-st", "erigon-st", "nethermind-st", "besu-st"]
-actor = "consumers"
+actor = "needed"
 status = "active"
 locked_until = ["specmerge"]
 url = "https://github.com/ethereum/hive"
@@ -357,30 +374,88 @@ note = "Client developers coordinating on Telegram since 23 Sep 2026."
 [[actor]]
 id = "lightclient"
 name = "lightclient"
-icon = "lantern"
-role = "Geth"
+icon = "knight"
+role = "Knight · Geth"
 note = "Gave a preliminary go-ahead for a Geth trace namespace."
 
 [[actor]]
 id = "chase"
 name = "Chase"
-icon = "gavel"
-role = "execution-apis"
+icon = "punk"
+role = "Punk · execution-apis"
 note = "Spec editor. Advised against bikeshedding error codes."
 
 [[actor]]
 id = "usman"
 name = "Usman Saleem"
-icon = "envelope"
-role = "Besu"
+icon = "diplomat"
+role = "Diplomat · Besu"
 note = "Reviewer for Besu trace PRs; wrote Besu’s native call tracers."
+
+[[actor]]
+id = "mattsse"
+name = "Matthias Seitz"
+icon = "miner"
+role = "Miner · Reth, Foundry"
+note = "Leads the trace work in Reth and Foundry; merged every tracked revm-inspectors and Alloy fix."
+
+[[actor]]
+id = "paolo"
+name = "Paolo"
+icon = "legionary"
+role = "Legionary · Erigon"
+note = "Volunteered as Erigon’s contact; reviews and merges its client and rpc-tests fixture PRs."
+
+[[actor]]
+id = "anders"
+name = "Anders Kristiansen"
+icon = "alpine"
+role = "Alpine trooper · Nethermind"
+note = "Nethermind’s coordination contact since Łukasz’s handoff; posted its client positions."
+
+[[actor]]
+id = "mo4islona"
+name = "Evgeny Formanenko"
+icon = "elephant"
+role = "War elephant · revm"
+note = "Wrote revm #3833, the SELFDESTRUCT fix two decisions wait on."
 
 [[actor]]
 id = "consumers"
 name = "Trace consumers"
 icon = "wagon"
 role = "Caravans"
-note = "Indexers, explorers and tools that carry per-client workarounds today."
+note = "Indexers, explorers and tools that carry per-client workarounds today. Hive is for them."
+
+[[actor]]
+id = "needed"
+name = "Owner needed"
+icon = "unknown"
+role = "Open"
+note = "No one has committed to this yet."
+council = false
+
+# ---------- reviewers beyond the node contacts ----------
+
+[[contributor]]
+project = "Nethermind"
+names = ["Stavros Vlachakis", "Daniil Ankushin", "Marc (Marchhill)", "Manuel Arto", "Ben Adams", "Marcos Maceo", "Damian Orzechowski", "Ruben Buniatyan", "Aliaksei Osipau (flcl42)"]
+
+[[contributor]]
+project = "Erigon"
+names = ["awskii", "Alex Sharov", "Andrew Ashikhmin", "taratorio", "Michelangelo Riccobene"]
+
+[[contributor]]
+project = "Reth"
+names = ["DaniPopes", "Alexey Shekhirin", "joshieDo", "Emma Jamieson-Hoare"]
+
+[[contributor]]
+project = "Foundry"
+names = ["stevencartavia", "figtracer", "mablr", "Karl Yu"]
+
+[[contributor]]
+project = "Besu"
+names = ["ibondarev-gsu"]
 
 # ---------- repositories ----------
 

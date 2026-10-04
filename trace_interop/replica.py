@@ -2,10 +2,10 @@
 
 Hive imports a chain through the Engine API. Anvil has none, so it starts from the chain's
 genesis, mines each block with the fixture's environment, and every block is compared with the
-fixture header before any case is sent. Block hashes necessarily differ (withdrawals are credited
-outside the block, and builds without `anvil_setNextBlockParentBeaconBlockRoot` mine the zero parent
-beacon root), so requests are sent with the replica's hashes and each parsed response maps them
-back; the wire bytes stay verbatim.
+fixture header before any case is sent. Block hashes necessarily differ (Anvil funds its dev
+accounts at genesis, withdrawals are credited outside the block, and builds without
+`anvil_setNextBlockParentBeaconBlockRoot` mine the zero parent beacon root), so requests are sent
+with the replica's hashes and each parsed response maps them back; the wire bytes stay verbatim.
 """
 import hashlib
 import json
@@ -22,9 +22,9 @@ REPLICA_CLIENTS = {'anvil'}
 # Timestamp-activated forks in genesis-config order; a replica runs exactly one of them.
 FORKS = ['shanghai', 'cancun', 'prague', 'osaka']
 # Header fields a replayed block must reproduce, by header index. The state root and hash cannot
-# match: withdrawals are credited separately, so the withdrawals root differs and the EIP-2935
-# system contract stores the replica's hashes. The parent beacon root is compared only on builds
-# that can set it.
+# match: Anvil funds its dev accounts at genesis, withdrawals are credited separately, so the
+# withdrawals root differs, and the EIP-2935 system contract stores the replica's hashes. The parent
+# beacon root is compared only on builds that can set it.
 QUANTITIES = {'gasLimit': 9, 'gasUsed': 10, 'timestamp': 11, 'baseFeePerGas': 15, 'blobGasUsed': 17, 'excessBlobGas': 18}
 DATA = {'miner': 2, 'transactionsRoot': 4, 'receiptsRoot': 5, 'logsBloom': 6, 'mixHash': 13,
         'parentBeaconBlockRoot': 19, 'requestsHash': 20}

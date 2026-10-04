@@ -78,7 +78,9 @@ This is not a public testnet, performance benchmark, general EVM fuzzer or clien
   </picture>
 </a>
 
-Supported by a [Lido Ecosystem Grants Organization grant](https://research.lido.fi/t/11959). Supporters fund the work; spec decisions stay public.
+Supported by a [Lido Ecosystem Grants Organization grant](https://research.lido.fi/t/11959).
+
+Supporters fund the work; spec decisions stay public.
 
 ## Documentation index
 

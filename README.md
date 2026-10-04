@@ -69,6 +69,17 @@ The [Geth fork](https://github.com/banteg/go-ethereum/tree/feat/trace) is a cand
 
 This is not a public testnet, performance benchmark, general EVM fuzzer or client ranking. Tests use disposable generated chains, and no mainnet synchronization is required.
 
+## Support
+
+<a href="https://research.lido.fi/t/11959">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/supporters/lido-white.svg">
+    <img alt="Lido" src="docs/assets/supporters/lido-black.svg" height="36">
+  </picture>
+</a>
+
+Supported by a [Lido Ecosystem Grants Organization grant](https://research.lido.fi/t/11959). Supporters fund the work; spec decisions stay public.
+
 ## Documentation index
 
 **Methodology:** [reproduce and review](docs/usage.md) · [stateful scenarios](docs/scenarios.md) · [assertion models](docs/assertion-models.md) · [consistency laws and decision tables](docs/assertion-models.md#consistency-laws-and-decision-tables) · [reviewing a proposed rule](docs/review.md)

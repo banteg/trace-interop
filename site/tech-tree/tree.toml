@@ -1,0 +1,495 @@
+# Layout and wording of the trace_* tech tree. scripts/build_tech_tree.py adds every number and
+# state at build time from the tracker: reports/progress.json (client builds), decisions/fixes.json
+# (PR states) and decisions/status.json (policy), so text here should stay true as those change.
+#
+# A node takes its state from one binding:
+#   client + build   a client build in progress.json; done once it agrees on every settled decision
+#   repos            library PRs in fixes.json; done once none is open
+#   pr               one PR in fixes.json; done once merged
+#   done_with        done once that node is done
+#   status           a fixed state (default: active)
+# locked_until keeps a node locked until those nodes are done. `sub` may use {version}.
+# cell is [column, row]; span is a height in rows. Critical nodes form the highlighted path.
+
+[layout]
+# gap after each column; wide where edges fan in or out
+gutters = [46, 46, 46, 34, 34, 34, 46]
+lane_note = { cols = [3, 6], row = 1, civ = "Releases ship the dev fixes on each client’s own schedule →", sc = "Releases ship dev fixes on each client’s own clock →" }
+
+[[era]]
+cols = [0, 1]
+civ = "I · Foundations & libraries"
+sc = "T0 Core / Refinery"
+
+[[era]]
+cols = [2, 2]
+civ = "II · Dev builds"
+sc = "T1 Dev builds"
+
+[[era]]
+cols = [3, 3]
+civ = "III · Council"
+sc = "T2 Council"
+
+[[era]]
+cols = [4, 4]
+civ = "IV · Geth"
+sc = "T3 Reference"
+
+[[era]]
+cols = [5, 5]
+civ = "V · Fixtures"
+sc = "T4 Fixtures"
+
+[[era]]
+cols = [6, 6]
+civ = "VI · Spec & releases"
+sc = "T5 Spec / Release"
+
+[[era]]
+cols = [7, 7]
+civ = "VII · Wonder"
+sc = "T6 Victory"
+
+[advisor]
+civ = "Sire, the clients can all research at once. The Geth namespace is our bottleneck: fixtures, the spec and Hive all wait on it. Releases arrive on their own."
+sc = "Additional reviews required. Dev builds can all build at once. Geth namespace is the choke point: fixtures, spec and Hive all wait on it."
+
+# ---------- foundations ----------
+
+[[node]]
+id = "harness"
+title = "trace-interop"
+sub = "Hive matrix · evidence"
+icon = "telescope"
+cell = [0, 3]
+category = "foundation"
+actor = "banteg"
+status = "done"
+label = "Running"
+url = "https://github.com/banteg/trace-interop"
+text = "Frozen chains, request corpora and per-client reports. Hive runs them on the stable and dev build of every client, so each fix is verified on a real build."
+
+[[node]]
+id = "spec"
+title = "Spec draft"
+sub = "execution-apis #895"
+icon = "scroll"
+cell = [1, 3]
+category = "foundation"
+requires = ["harness"]
+status = "done"
+label = "Posted"
+url = "https://github.com/ethereum/execution-apis/pull/895"
+text = "The opinionated draft for all nine trace_* methods and the trace, stateDiff and vmTrace outputs. Kept as one PR so clients react to concrete rules instead of a poll."
+
+# ---------- libraries ----------
+
+[[node]]
+id = "revm"
+title = "revm"
+sub = "bluealloy/revm"
+icon = "gear"
+cell = [0, 1]
+category = "library"
+requires = ["harness"]
+repos = ["bluealloy/revm"]
+url = "https://github.com/bluealloy/revm"
+text = "The EVM under revm-inspectors. A fix here reaches Reth only after a revm release, a revm-inspectors release and a Reth bump."
+
+[[node]]
+id = "inspectors"
+title = "revm-inspectors"
+sub = "paradigmxyz"
+icon = "magnifier"
+cell = [1, 1]
+category = "library"
+requires = ["harness", "revm"]
+repos = ["paradigmxyz/revm-inspectors"]
+url = "https://github.com/paradigmxyz/revm-inspectors"
+text = "The Parity tracer inside Reth and Foundry. Its fixes reach each client through a release and a version bump."
+
+[[node]]
+id = "alloy"
+title = "Alloy"
+sub = "alloy-rs/alloy · alloy-evm"
+icon = "ingot"
+cell = [1, 0]
+category = "library"
+requires = ["harness"]
+repos = ["alloy-rs/alloy", "alloy-rs/evm"]
+url = "https://github.com/alloy-rs/alloy"
+text = "Trace RPC types and the EVM glue for Reth and Foundry. Each fix reaches Reth only through an Alloy release and a Reth bump."
+
+[[node]]
+id = "rpctests"
+title = "rpc-tests"
+sub = "erigontech/rpc-tests"
+icon = "flask"
+cell = [1, 2]
+category = "library"
+requires = ["harness"]
+repos = ["erigontech/rpc-tests"]
+url = "https://github.com/erigontech/rpc-tests"
+text = "Erigon’s RPC fixture suite. Erigon CI pins an rpc-tests release, so fixture updates ship here first, then Erigon bumps RPC_VERSION."
+
+# ---------- dev builds ----------
+
+[[node]]
+id = "anvil"
+title = "Anvil"
+sub = "dev · {version}"
+icon = "anvil"
+cell = [2, 0]
+category = "dev"
+requires = ["inspectors", "alloy"]
+client = "anvil"
+build = "development"
+url = "https://github.com/foundry-rs/foundry"
+text = "Foundry’s dev node, tracked for tooling compatibility and left out of the totals. It is captured by replaying chains because it has no Engine API, so it never enters Hive."
+
+[[node]]
+id = "reth"
+title = "Reth"
+sub = "dev · {version}"
+icon = "crab"
+cell = [2, 1]
+category = "dev"
+requires = ["inspectors", "alloy"]
+client = "reth"
+build = "development"
+url = "https://github.com/paradigmxyz/reth"
+text = "Reth’s development build. Its PR counts include the Rust libraries it takes fixes from."
+
+[[node]]
+id = "erigon"
+title = "Erigon"
+sub = "dev · {version}"
+icon = "temple"
+cell = [2, 2]
+category = "dev"
+requires = ["rpctests"]
+client = "erigon"
+build = "development"
+url = "https://github.com/erigontech/erigon"
+text = "Erigon’s development build. Fixture changes go through rpc-tests first."
+
+[[node]]
+id = "nethermind"
+title = "Nethermind"
+sub = "dev · {version}"
+icon = "owl"
+cell = [2, 4]
+category = "dev"
+requires = ["harness"]
+client = "nethermind"
+build = "development"
+url = "https://github.com/NethermindEth/nethermind"
+text = "Nethermind’s development build, which takes trace PRs directly."
+
+[[node]]
+id = "besu"
+title = "Besu"
+sub = "dev · {version}"
+icon = "castle"
+cell = [2, 5]
+category = "dev"
+requires = ["harness"]
+actor = "usman"
+client = "besu"
+build = "development"
+url = "https://github.com/besu-eth/besu/issues/11405"
+text = "Besu’s development build. Its open trace work is listed in besu#11405."
+
+# ---------- critical path ----------
+
+[[node]]
+id = "consensus"
+title = "Rough consensus"
+sub = "named reviews on #895"
+icon = "scales"
+cell = [3, 3]
+category = "council"
+critical = true
+requires = ["spec", "reth", "erigon", "nethermind", "besu"]
+actor = "wg"
+pr = "https://github.com/ethereum/execution-apis/pull/895"
+progress = "converged"
+url = "https://github.com/ethereum/execution-apis/issues/890"
+text = "execution-apis needs named reviews from client developers on #895. A vote count or silence doesn’t establish acceptance. This needs dev builds that agree, not releases."
+
+[[node]]
+id = "geth"
+title = "Geth namespace"
+sub = "go-ethereum #35791"
+icon = "crown"
+cell = [4, 3]
+category = "geth"
+critical = true
+requires = ["consensus"]
+actor = "lightclient"
+pr = "https://github.com/ethereum/go-ethereum/pull/35791"
+url = "https://github.com/ethereum/go-ethereum/pull/35791"
+text = "The normal execution-apis path needs the methods in upstream Geth. The draft fork implements all nine and agrees on every assessed check. lightclient gave a preliminary go-ahead."
+
+[[node]]
+id = "fixtures"
+title = "Test fixtures"
+sub = "rpctestgen · from Geth"
+icon = "press"
+cell = [5, 3]
+category = "tests"
+critical = true
+requires = ["geth"]
+done_with = "specmerge"
+locked_until = ["geth"]
+label = "generating"
+url = "https://github.com/lightclient/rpctestgen"
+text = "execution-apis generates its test fixtures by running rpctestgen against Geth on the repository’s own chain. The fallback is an explicit CI exception from the editors."
+
+[[node]]
+id = "specmerge"
+title = "Spec merged"
+sub = "execution-apis #895"
+icon = "tablet"
+cell = [6, 3]
+category = "spec"
+critical = true
+requires = ["fixtures", "consensus"]
+actor = "chase"
+pr = "https://github.com/ethereum/execution-apis/pull/895"
+locked_until = ["fixtures"]
+url = "https://github.com/ethereum/execution-apis/pull/895"
+text = "Schemas, speccheck, generated fixtures and client reviews land together. Once merged, the spec is canonical and its fixtures are what Hive runs."
+
+[[node]]
+id = "hive"
+title = "Hive rpc-compat"
+sub = "ethereum/hive"
+icon = "hive"
+cell = [7, 2]
+span = 3
+category = "wonder"
+critical = true
+requires = ["specmerge", "reth-st", "erigon-st", "nethermind-st", "besu-st"]
+actor = "consumers"
+status = "active"
+locked_until = ["specmerge"]
+url = "https://github.com/ethereum/hive"
+tag = "Fixtures replayed against every client. Stable releases must pass."
+text = "Hive’s rpc-compat simulator replays the execution-apis fixtures against client images, so stable releases have to pass. Consumers can then drop their per-client workarounds."
+
+# ---------- stable releases ----------
+
+[[node]]
+id = "anvil-st"
+title = "Anvil"
+sub = "stable · Foundry {version}"
+icon = "anvil"
+cell = [6, 0]
+category = "stable"
+requires = ["anvil"]
+client = "anvil"
+build = "release"
+url = "https://github.com/foundry-rs/foundry/releases"
+text = "Foundry’s latest release. A side branch: Anvil has no Engine API, so it doesn’t feed Hive."
+
+[[node]]
+id = "reth-st"
+title = "Reth"
+sub = "stable · {version}"
+icon = "crab"
+cell = [6, 1]
+category = "stable"
+requires = ["reth"]
+client = "reth"
+build = "release"
+url = "https://github.com/paradigmxyz/reth/releases"
+text = "Reth’s latest release, the build Hive runs."
+
+[[node]]
+id = "erigon-st"
+title = "Erigon"
+sub = "stable · {version}"
+icon = "temple"
+cell = [6, 2]
+category = "stable"
+requires = ["erigon"]
+client = "erigon"
+build = "release"
+url = "https://github.com/erigontech/erigon/releases"
+text = "Erigon’s latest release, the build Hive runs."
+
+[[node]]
+id = "nethermind-st"
+title = "Nethermind"
+sub = "stable · {version}"
+icon = "owl"
+cell = [6, 4]
+category = "stable"
+requires = ["nethermind"]
+client = "nethermind"
+build = "release"
+url = "https://github.com/NethermindEth/nethermind/releases"
+text = "Nethermind’s latest release, the build Hive runs."
+
+[[node]]
+id = "besu-st"
+title = "Besu"
+sub = "stable · {version}"
+icon = "castle"
+cell = [6, 5]
+category = "stable"
+requires = ["besu"]
+client = "besu"
+build = "release"
+url = "https://github.com/besu-eth/besu/releases"
+text = "Besu’s latest release, the build Hive runs."
+
+# ---------- people ----------
+
+[[actor]]
+id = "banteg"
+name = "banteg"
+icon = "explorer"
+civ = "Explorer"
+sc = "SCV"
+note = "Wrote the draft, the harness and most of the client PRs."
+
+[[actor]]
+id = "wg"
+name = "Trace working group"
+icon = "council"
+civ = "High Council"
+sc = "Command"
+note = "Client developers coordinating on Telegram since 23 Sep 2026."
+
+[[actor]]
+id = "lightclient"
+name = "lightclient"
+icon = "lantern"
+civ = "Geth"
+sc = "Geth"
+note = "Gave a preliminary go-ahead for a Geth trace namespace."
+
+[[actor]]
+id = "chase"
+name = "Chase"
+icon = "gavel"
+civ = "execution-apis"
+sc = "execution-apis"
+note = "Spec editor. Advised against bikeshedding error codes."
+
+[[actor]]
+id = "usman"
+name = "Usman Saleem"
+icon = "envelope"
+civ = "Besu"
+sc = "Besu"
+note = "Reviewer for Besu trace PRs; wrote Besu’s native call tracers."
+
+[[actor]]
+id = "consumers"
+name = "Trace consumers"
+icon = "wagon"
+civ = "Caravans"
+sc = "Civilians"
+note = "Indexers, explorers and tools that carry per-client workarounds today."
+
+# ---------- repositories ----------
+
+[[repo]]
+icon = "telescope"
+name = "banteg/trace-interop"
+
+[[repo]]
+icon = "scroll"
+name = "ethereum/execution-apis"
+
+[[repo]]
+icon = "crown"
+name = "ethereum/go-ethereum"
+
+[[repo]]
+icon = "press"
+name = "lightclient/rpctestgen"
+
+[[repo]]
+icon = "hive"
+name = "ethereum/hive"
+
+[[repo]]
+icon = "gear"
+name = "bluealloy/revm"
+
+[[repo]]
+icon = "magnifier"
+name = "paradigmxyz/revm-inspectors"
+
+[[repo]]
+icon = "ingot"
+name = "alloy-rs/alloy"
+
+[[repo]]
+icon = "flask"
+name = "erigontech/rpc-tests"
+
+[[repo]]
+icon = "crab"
+name = "paradigmxyz/reth"
+
+[[repo]]
+icon = "temple"
+name = "erigontech/erigon"
+
+[[repo]]
+icon = "owl"
+name = "NethermindEth/nethermind"
+
+[[repo]]
+icon = "castle"
+name = "besu-eth/besu"
+
+[[repo]]
+icon = "anvil"
+name = "foundry-rs/foundry"
+
+# ---------- merge order ----------
+
+[[step]]
+nodes = ["reth", "erigon", "nethermind", "besu", "anvil"]
+parallel = "all at once"
+title = "Dev fixes in every client"
+text = "Reth goes through revm → revm-inspectors and Alloy releases, then a bump. Erigon lands rpc-tests fixtures first. Nethermind and Besu take PRs directly. Anvil runs alongside for tooling."
+
+[[step]]
+nodes = ["consensus"]
+parallel = "overlaps 1"
+title = "Rough consensus on #895"
+text = "Named client reviews of the converged rules. Needs dev builds that agree, not releases."
+
+[[step]]
+nodes = ["geth"]
+title = "Geth trace namespace upstream"
+text = "Merge go-ethereum #35791. This is the bottleneck: fixtures, the spec and Hive all wait on it."
+
+[[step]]
+nodes = ["fixtures"]
+title = "Generate fixtures from Geth"
+text = "Run rpctestgen on the execution-apis chain. The fallback is an explicit CI exception from the editors."
+
+[[step]]
+nodes = ["specmerge"]
+title = "Merge execution-apis #895"
+text = "Spec, speccheck, fixtures and reviews in one PR. The trace namespace becomes canonical."
+
+[[step]]
+nodes = ["reth-st", "erigon-st", "nethermind-st", "besu-st"]
+parallel = "alongside 3–5"
+title = "Stable releases catch up"
+text = "Each client ships its dev fixes on its own schedule. Nothing to merge here, just releases to wait for."
+
+[[step]]
+nodes = ["hive"]
+title = "Hive rpc-compat green"
+text = "Hive runs the new fixtures against stable images. Anvil stays outside since it has no Engine API."

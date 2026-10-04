@@ -1,0 +1,9 @@
+// The tech tree as a static-assets Worker. Workers Builds runs from this directory:
+// build command `python3 ../scripts/build_tech_tree.py`, deploy command `npx wrangler deploy`.
+{
+  "name": "trace-tech-tree",
+  "compatibility_date": "2026-10-04",
+  "assets": {
+    "directory": "./dist"
+  }
+}

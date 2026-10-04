@@ -161,9 +161,23 @@ def evidence_bytes(folder, name):
 
 
 def verify_evidence(folder):
-    for name, digest in read(Path(folder) / 'checksums.json').items():
+    folder = Path(folder)
+    checksums = read(folder / 'checksums.json')
+    for path in folder.rglob('*'):
+        if not path.is_file() or path.name == 'checksums.json':
+            continue
+        name = str(path.relative_to(folder))
+        if name in checksums:
+            continue
+        # Converted captures retain the original digest after compressing observations or logs.
+        if name == COMPACT_OBSERVATIONS and OBSERVATIONS in checksums and not (folder / OBSERVATIONS).exists():
+            continue
+        if name.endswith('.log.gz') and name[:-3] in checksums and not (folder / name[:-3]).exists():
+            continue
+        raise ValueError(f'evidence not checksummed: {folder.name}/{name}')
+    for name, digest in checksums.items():
         if hashlib.sha256(evidence_bytes(folder, name)).hexdigest() != digest:
-            raise ValueError(f'evidence modified: {Path(folder).name}/{name}')
+            raise ValueError(f'evidence modified: {folder.name}/{name}')
 
 
 def run(*args, cwd=None, capture=False):

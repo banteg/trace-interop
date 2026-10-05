@@ -164,7 +164,7 @@ def verify_evidence(folder):
     folder = Path(folder)
     checksums = read(folder / 'checksums.json')
     for path in folder.rglob('*'):
-        if not path.is_file() or path.name == 'checksums.json':
+        if not path.is_file() or path == folder / 'checksums.json':
             continue
         name = str(path.relative_to(folder))
         if name in checksums:
@@ -562,7 +562,7 @@ def collect(out):
     write_observations(out, observations)
     compress_logs(out)
     write(out / 'summary.json', summary)
-    write(out / 'checksums.json', {str(p.relative_to(out)): sha(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name != 'checksums.json'})
+    write(out / 'checksums.json', {str(p.relative_to(out)): sha(p) for p in sorted(out.rglob('*')) if p.is_file() and p != out / 'checksums.json'})
     return summary
 
 

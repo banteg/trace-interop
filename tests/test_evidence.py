@@ -137,6 +137,7 @@ class CompactObservationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             path = Path(d); (path/'hive').mkdir()
             (path/'hive/details.log').write_text('')
+            (path/'hive/checksums.json').write_text('{}')
             write(path/'hive/suite.json', {'testDetailsLog': 'details.log', 'testCases': {'1': {
                 'name': 'interop/_control/head (reth_release)',
                 'summaryResult': {'pass': False, 'details': '>> '+json.dumps(request)+'\n<< '+json.dumps(reply)}}}})
@@ -145,9 +146,14 @@ class CompactObservationTests(unittest.TestCase):
             collect(path)
             self.assertFalse((path/OBSERVATIONS).exists())
             self.assertIn(COMPACT_OBSERVATIONS, read(path/'checksums.json'))
+            self.assertIn('hive/checksums.json', read(path/'checksums.json'))
             self.assertNotIn(OBSERVATIONS, read(path/'checksums.json'))
             self.assertEqual(load_observations(path)['_control/head']['reth_release']['response'], reply)
             verify_evidence(path)
+            (path/'hive/checksums.json').write_text('{"changed": true}')
+            with self.assertRaisesRegex(ValueError, r'evidence modified: .*hive/checksums\.json'):
+                verify_evidence(path)
+            (path/'hive/checksums.json').write_text('{}')
             data = gzip.decompress((path/COMPACT_OBSERVATIONS).read_bytes())
             (path/COMPACT_OBSERVATIONS).write_bytes(gzip.compress(data.replace(b'0x1', b'0x2'), mtime=0))
             with self.assertRaises(ValueError):
@@ -165,6 +171,18 @@ class CompactObservationTests(unittest.TestCase):
                     write(path/'checksums.json', {name: digest for name, digest in checksums.items() if name != missing})
                     with self.assertRaisesRegex(ValueError, f'evidence not checksummed: .*{missing}'):
                         verify_evidence(path)
+
+    def test_only_root_checksum_manifest_is_exempt(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)
+            (path/'manifest.json').write_text('{}')
+            write(path/'checksums.json', {
+                'manifest.json': hashlib.sha256((path/'manifest.json').read_bytes()).hexdigest(),
+            })
+            verify_evidence(path)
+            write(path/'hive/checksums.json', {})
+            with self.assertRaisesRegex(ValueError, r'evidence not checksummed: .*hive/checksums\.json'):
+                verify_evidence(path)
 
     def test_converted_observations_keep_the_original_digest(self):
         source = ROOT/'evidence/2026-09-23/raw-validation-native'

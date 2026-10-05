@@ -411,7 +411,14 @@ id = "anders"
 name = "Anders Kristiansen"
 icon = "alpine"
 role = "Alpine trooper · Nethermind"
-note = "Nethermind’s coordination contact since Łukasz’s handoff; posted its client positions."
+note = "Nethermind’s coordination contact; posted its client positions."
+
+[[actor]]
+id = "lukasz"
+name = "Łukasz Rozmej"
+icon = "cowboy"
+role = "Cavalry · Nethermind"
+note = "Still reviews and merges most of Nethermind’s trace PRs, after handing coordination to Anders."
 
 [[actor]]
 id = "mo4islona"

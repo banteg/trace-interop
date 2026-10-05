@@ -65,7 +65,9 @@ def properties(case, observation, peers, checks, expected):
     def covered(topic):
         return any(c['topic'] == topic for c in checks)
 
-    if case.get('role')=='reference':
+    if case.get('role')=='reference' and context.get('_chain')=='pruned':
+        explain('H27','not_applicable','The pruned scenario’s history is unavailable by design; its filters are not compared block by block.')
+    elif case.get('role')=='reference':
         explain('H27','control' if status=='result' else 'blocked',
                 'Per-block reference response for the filter comparison.' if status=='result' else 'Per-block reference unavailable: '+status)
 

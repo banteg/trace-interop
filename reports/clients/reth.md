@@ -4,7 +4,7 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.7.0 · 10bcf461** (of 33 decisions): ✅ 24 agree (+2 since the previous capture) · 🛠️ 1 fix submitted · ⚠️ 7 with no fix yet (7 on converged decisions) · ⚪ 1 not fully measured. 2 of these agreements are not yet in 2.7.0 · 3d592ece. Upstream fix PRs: 24 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.7.0 · 10bcf461** (of 33 decisions): ✅ 25 agree (+2 since the previous capture) · 🛠️ 1 fix submitted · ⚠️ 7 with no fix yet (7 on converged decisions). 2 of these agreements are not yet in 2.7.0 · 3d592ece. Upstream fix PRs: 24 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Reth decisions by outcome, with fix PRs](reth-work.svg)
 
@@ -43,13 +43,6 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
-## Assessment gaps
-
-| Decision | Build | Reason | Example |
-| --- | --- | --- | --- |
-| [Filter execution across fork boundaries](../decisions/H27.md) | 2.7.0 · 3d592ece | 1 blocked case: Per-block reference unavailable: rpc_error. | [_reference/block/0x3](../cases/pruned/_reference/block/0x3.md) |
-| [Filter execution across fork boundaries](../decisions/H27.md) | 2.7.0 · 10bcf461 | 1 blocked case: Per-block reference unavailable: rpc_error. | [_reference/block/0x3](../cases/pruned/_reference/block/0x3.md) |
-
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
 | Behavior | Examples |
@@ -71,6 +64,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
+| [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
 | [Historical state at system-operation boundaries](../decisions/H28.md) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Block 2](../cases/a/block-2.md) · [Filter all](../cases/a/filter-all.md) |
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |

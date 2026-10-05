@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15129 |
-| 🟡 Partial | 856 |
+| 🔎 Assessed | 15145 |
+| 🟡 Partial | 851 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 506 |
-| 🔎 Control | 35 |
+| 🚧 Blocked | 493 |
+| 🔎 Control | 37 |
 
 
-Of the partial observations, 770 already have a differing assertion; 86 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 769 already have a differing assertion; 82 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -79,9 +79,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H09 | not_applicable | No failed frame is selected; the address-filter assertion independently checks the selected inventory. | 9 |
 | H11 | blocked | H15 owns this error, a base_fee validation rejection: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, feeCap: 0 baseFee: 1677430. There is no executed result to inspect. | 1 |
 | H13 | blocked | Cannot inspect this property: malformed_json. | 36 |
-| H13 | blocked | The error does not identify a validation failure: -32000 sender has deployed code | 4 |
 | H14 | blocked | Cannot inspect this property: malformed_json. | 8 |
-| H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 1 |
 | H14 | blocked | Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32603 Internal error. | 2 |
 | H14 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 40 |
 | H14 | not_applicable | H03 owns this request’s rejection. 'garbage' is not valid under any of the given schemas | 11 |
@@ -93,15 +91,11 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H14 | not_applicable | H33 owns this request’s rejection. '0x2' is not of type 'null' | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. '0xf5de2a84' is not valid under any of the given schemas | 11 |
 | H14 | not_applicable | H33 owns this request’s rejection. {'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e'} is not valid under any of the given schemas | 11 |
+| H14 | not_applicable | Rejected for base_fee, so there is no executed result to judge: rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000. | 1 |
 | H15 | blocked | A generic/internal/crash error does not prove validation: internal error | 376 |
 | H15 | blocked | Cannot inspect this property: malformed_json. | 236 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed result -32603 Internal error. | 2 |
-| H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32003 Insufficient funds for gas * price + value. | 8 |
-| H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32004 Upfront gas cost exceeds account balance (transaction up-front gas cost 0x1b1ae4d6e2ef500000 exceeds transaction sender. | 2 |
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32603 Internal error. | 4 |
-| H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -38014 call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. | 2 |
-| H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -38014 first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. | 2 |
-| H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -38014 insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000. | 8 |
 | H15 | blocked | No receipt gas or execution-gas witness was captured. | 6 |
 | H15 | blocked | The reference field-gas-omitted-allowance-eth-call returned no successful output. | 2 |
 | H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 8 |
@@ -116,15 +110,20 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | eth_call: funds rejection; trace_call: unclassified RPC error: internal error. | 48 |
 | H15 | blocked | eth_call: priority rejection; trace_call: malformed_json. | 8 |
 | H15 | blocked | eth_call: priority rejection; trace_call: unclassified RPC error: internal error. | 8 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -32003 Insufficient funds for gas * price + value. | 4 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -32004 Upfront gas cost exceeds account balance (transaction up-front gas cost 0x1b1ae4d6e2ef500000 exceeds transaction sender. | 1 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -38014 call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. | 1 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -38014 first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. | 1 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -38014 insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000. | 4 |
 | H16 | blocked | Cannot inspect this property: unsupported. | 24 |
 | H16 | blocked | H15 owns this error, a base_fee validation rejection: first run for txIndex 0 error: fee cap less than block base fee: address 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f, fee. There is no executed result to inspect. | 1 |
-| H16 | blocked | H15 owns this error, a funds validation rejection: Insufficient funds for gas * price + value. There is no executed result to inspect. | 2 |
-| H16 | blocked | H15 owns this error, a funds validation rejection: call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. There is no executed result to inspect. | 1 |
-| H16 | blocked | H15 owns this error, a funds validation rejection: first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. There is no executed result to inspect. | 1 |
-| H16 | blocked | H15 owns this error, a funds validation rejection: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 . There is no executed result to inspect. | 1 |
 | H16 | blocked | H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect. | 258 |
 | H16 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 34 |
 | H16 | not_applicable | For unsigned calls H16 defers to H15’s policy; this call’s fee accounting is judged under H15. | 33 |
+| H16 | not_applicable | H15 owns this error, a funds validation rejection: Insufficient funds for gas * price + value. There is no executed result to inspect. | 2 |
+| H16 | not_applicable | H15 owns this error, a funds validation rejection: call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. There is no executed result to inspect. | 1 |
+| H16 | not_applicable | H15 owns this error, a funds validation rejection: first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. There is no executed result to inspect. | 1 |
+| H16 | not_applicable | H15 owns this error, a funds validation rejection: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 . There is no executed result to inspect. | 1 |
 | H16 | not_applicable | The signed transaction was correctly rejected before execution; execution-result properties do not apply. | 7 |
 | H17 | blocked | Cannot inspect this property: unsupported. | 10 |
 | H17 | blocked | No state-diff object was returned; account markers cannot be assessed. | 2 |
@@ -150,9 +149,9 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H23 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 11 |
 | H26 | blocked | Cannot inspect this property: unsupported. | 6 |
 | H26 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 16 |
-| H27 | blocked | Per-block reference unavailable: rpc_error | 2 |
 | H27 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
 | H27 | control | Per-block reference response for the filter comparison. | 125 |
+| H27 | not_applicable | The pruned scenario’s history is unavailable by design; its filters are not compared block by block. | 2 |
 | H28 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H28 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 12 |
 | H29 | blocked | Cannot inspect this property: unsupported. | 2 |

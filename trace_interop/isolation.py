@@ -7,7 +7,7 @@ sites also give a check these internal tags, which the functions here resolve an
 
 - `role: 'result'`: the check reads an executed result. On an error response, or an error
   envelope wrapped as a result, whose rejection another decision owns, it is blocked and names
-  that owner. An error no decision's rule identifies stays a difference: the check's own
+  that owner; it is not applicable when that owner's own rejection check accepts the rejection. An error no decision's rule identifies stays a difference: the check's own
   decision may require the request to execute.
 - `role: 'rejection'`: the check judges how this request is rejected. A schema-derived check
   (`role: 'schema'`, H14) yields to another decision's rejection check on the same request and
@@ -56,6 +56,7 @@ def isolate(case, observation, checks):
     error = observation.get('status') == 'rpc_error' or embedded_error(response)
     owner = error_owner(case['request']['method'], response) if error else None
     rejections = {c['topic'] for c in checks if c.get('role') == 'rejection'}
+    accepted = {c['topic'] for c in checks if c.get('role') == 'rejection' and c['status'] == 'matches'}
     isolated = []
     for check in checks:
         check = dict(check)
@@ -64,7 +65,8 @@ def isolate(case, observation, checks):
         if owners:
             check.update(status='not_applicable', detail=f'{" and ".join(owners)} owns this request’s rejection. {check["detail"]}')
         elif role == 'result' and owner and owner[0] != check['topic'] and check['status'] == 'change_needed':
-            check.update(status='blocked', detail=f'{owner[0]} owns this error, {owner[1]}. There is no executed result to inspect.')
+            check.update(status='not_applicable' if owner[0] in accepted else 'blocked',
+                         detail=f'{owner[0]} owns this error, {owner[1]}. There is no executed result to inspect.')
         isolated.append(check)
     return isolated
 

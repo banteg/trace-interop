@@ -421,6 +421,20 @@ class FieldProbeTests(Probe):
                     peers[f'field-gas-omitted-{label}-eth-call'] = result(word(100_000))
                     self.assertIn('change_needed', statuses(case, error(-38014), peers))
 
+    def test_a_rejection_like_the_eth_call_twin_meets_parity(self):
+        def rejected(message):
+            return {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': -32000, 'message': message}}}
+        funds = rejected('insufficient funds for gas * price + value')
+        for suffix in ['', '-many']:
+            case = PRAGUE[f'field-gas-omitted-allowance{suffix}']
+            twin = {'field-gas-omitted-allowance-eth-call': funds}
+            # Both reject the default budget for funds: the call follows eth_call, and nothing executed to bound.
+            self.assertEqual(sorted(statuses(case, funds, twin)), ['matches', 'not_applicable'])
+            # A rejection for another violation than the twin's leaves parity blocked.
+            self.assertEqual(sorted(statuses(case, rejected('intrinsic gas too low'), twin)), ['blocked', 'not_applicable'])
+        # The eth_call twin's own budget bound has nothing to bound once its default budget is rejected.
+        self.assertEqual(statuses(PRAGUE['field-gas-omitted-allowance-eth-call'], funds), ['not_applicable'])
+
     def test_gas_cap_probe_requires_a_complete_word(self):
         case = PRAGUE['field-gas-omitted-funded-eth-call']
         peers = {'field-gas-cap-eth-call': result('0x'+f'{50_000_000:064x}')}

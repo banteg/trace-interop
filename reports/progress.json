@@ -39,7 +39,7 @@
     {
       "builds": {
         "development": {
-          "agree": 29,
+          "agree": 30,
           "build": [
             "3.8.0-dev \u00b7 5cb6c867"
           ],
@@ -58,14 +58,14 @@
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 29,
+        "agree": 30,
         "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 3
+        "unmeasured": 2
       },
-      "dev_only": 15,
+      "dev_only": 16,
       "name": "Erigon",
       "prs": {
         "merged": 22,
@@ -75,7 +75,7 @@
     {
       "builds": {
         "development": {
-          "agree": 29,
+          "agree": 31,
           "build": [
             "2.2.0-preview \u00b7 6dff813b"
           ],
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 29,
+        "agree": 31,
         "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 3
+        "unmeasured": 1
       },
-      "dev_only": 13,
+      "dev_only": 14,
       "name": "Nethermind",
       "prs": {
         "merged": 47,
@@ -111,7 +111,7 @@
     {
       "builds": {
         "development": {
-          "agree": 24,
+          "agree": 25,
           "build": [
             "2.7.0 \u00b7 10bcf461"
           ],
@@ -119,7 +119,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 22,
+          "agree": 23,
           "build": [
             "2.7.0 \u00b7 3d592ece"
           ],
@@ -130,12 +130,12 @@
       "client": "reth",
       "counted": true,
       "counts": {
-        "agree": 24,
+        "agree": 25,
         "converged": 7,
         "fix": 1,
         "policy": 0,
         "review": 0,
-        "unmeasured": 1
+        "unmeasured": 0
       },
       "dev_only": 2,
       "name": "Reth",

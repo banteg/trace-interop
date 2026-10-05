@@ -51,6 +51,23 @@ class RuleSafetyTests(unittest.TestCase):
         self.assertEqual([c['status'] for c in checks], ['matches'])
         self.assertIn('(2 or -32003 recommended)', checks[0]['detail'])
 
+    def test_eip3607_rejection_wordings_name_the_sender_violation(self):
+        from trace_interop.cli import ROOT, read
+        cases = {c['name']: c for c in read(ROOT/'fixtures/corpora/raw-validation.json')['cases']}
+        case = dict(cases['raw-validation-code-sender-trace'], context={})
+        for message in ['sender not an eoa', 'sender has deployed code']:
+            observation = {'status': 'rpc_error', 'response': {'error': {'code': -32000, 'message': message}}}
+            self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] == 'H13'], ['matches'], message)
+
+    def test_pruned_history_references_are_not_compared(self):
+        from trace_interop.coverage import supplement
+        reference = {'name': '_reference/block/0x3', 'role': 'reference', 'request': {'method': 'trace_block', 'params': ['0x3']}}
+        observation = {'status': 'rpc_error', 'response': {'error': {'code': -32603, 'message': 'pruned'}}}
+        for chain, status in [('pruned', 'not_applicable'), ('a', 'blocked')]:
+            case = dict(reference, context={'_chain': chain})
+            checks = supplement(case, observation, {}, evaluate(case, observation, {}), ['H27'])
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H27'], [status], chain)
+
     def test_beyond_head_range_and_unknown_block_require_an_error_with_a_recommended_code(self):
         for name, method, params, accepted in [
                 ('missing-block-filter', 'trace_filter', [{'fromBlock': '0x2f', 'toBlock': '0xffff'}], -32602),

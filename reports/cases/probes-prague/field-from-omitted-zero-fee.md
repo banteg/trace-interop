@@ -51,6 +51,6 @@
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
 - [H15](../../decisions/H15.md): Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.
-- [H14](../../decisions/H14.md): An omitted from defaults to the zero address, observed by CALLER, on an explicitly zero-fee call. Depends on H15: The zero-address sender is unfunded, so the call runs only if its fees are zero; an error rejects the fee, not the from default. Observed rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000.
+- [H14](../../decisions/H14.md): An omitted from defaults to the zero address, observed by CALLER, on an explicitly zero-fee call. Rejected for base_fee, so there is no executed result to judge: rpc_error -32000 fee cap less than block base fee: address <nil>, feeCap: 0 baseFee: 765625000.
 
 </details>

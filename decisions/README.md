@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **88 of 132** client decisions agree with the draft (+2 since the previous capture). 11 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 32 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **92 of 132** client decisions agree with the draft (+2 since the previous capture). 11 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 34 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -20,10 +20,10 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **88 of 132** c
 | [H10](../reports/decisions/H10.md) | 🤝 Converged | ···· | **Creation result field names**<br>Which fields and values describe a creation result and a call action? | ⚠️✅✅✅—✅ | ⚠️✅✅✅✅✅ |
 | [H11](../reports/decisions/H11.md) | 🧪 Harmonized · dev | ··👍· | **Empty trace-type selection**<br>What happens when the trace-type list is empty? | ⚠️🟡✅✅—✅ | ✅✅✅✅✅✅ |
 | [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
-| [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍👍· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️🛠️✅—🛠️ | ⚠️✅🟡✅✅🛠️ |
+| [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍👍· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️🛠️✅—🛠️ | ⚠️✅✅✅✅🛠️ |
 | [H14](../reports/decisions/H14.md) | 🤝 Converged | ·👍◐· | **Invalid parameters and rejected calls**<br>How do malformed parameters and rejected unsigned calls fail, and which error codes are recommended? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H15](../reports/decisions/H15.md) | 🤝 Converged | ·👍👍· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️🟡🟡⚠️🟡⚠️ |
-| [H16](../reports/decisions/H16.md) | 🤝 Converged | ·👍·· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️✅✅—🟡 | ⚠️🟡🟡✅🟡🟡 |
+| [H16](../reports/decisions/H16.md) | 🤝 Converged | ·👍·· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️✅✅—🟡 | ⚠️✅✅✅✅🟡 |
 | [H17](../reports/decisions/H17.md) | 🤝 Converged | ··👍👍 | **New-account stateDiff encoding**<br>How does stateDiff mark an account that is created or deleted? | 🟡🟡✅✅—🟡 | 🟡✅✅✅✅🟡 |
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅✅—🟡 | 🟡✅✅✅✅🟡 |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅✅—🟡 | 🟡✅✅✅✅🟡 |
@@ -34,7 +34,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **88 of 132** c
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H25](../reports/decisions/H25.md) | 🤝 Converged | 👍·👍· | **Well-formed errors for rejected raw transactions**<br>How does a trace method report a validation or execution failure found while producing its response? | 🛠️✅🛠️✅—✅ | ✅✅✅✅✅✅ |
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅✅⚠️—🟡 | 🛠️✅✅⚠️✅🟡 |
-| [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅🟡—✅ | 🛠️✅✅🟡✅✅ |
+| [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
 | [H29](../reports/decisions/H29.md) | 🤝 Converged | ··👍· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—🛠️ | ⚠️✅✅✅✅🛠️ |
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—✅ | ✅✅✅✅✅✅ |

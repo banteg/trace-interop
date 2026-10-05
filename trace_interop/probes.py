@@ -5,7 +5,9 @@ its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
 An `error` probe requires an error response; its optional `recommended` code is reported, not required.
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
-the error cannot separate its property from that dependency. A probe with `observe` (a
+the error cannot separate its property from that dependency. A dependent `same-output` probe whose
+eth_call twin is rejected for the same violation meets eth_call parity instead, and any other
+dependent probe on a response rejected for a known violation has no executed result to judge. A probe with `observe` (a
 reason) records its outcome as an observation, never as a verdict; with `extension` it is
 extension evidence, which does not hold a topic's verdict open (presentation.verdict). A probe with
 `control` (a reason) records its outcome as supporting evidence, such as an eth_call parity twin,
@@ -264,6 +266,17 @@ def assess(case, observation, peers):
         peer = mapping(peers.get(name))
         return mapping(peer.get('response')).get('result') if peer.get('status') == 'result' else None
 
+    def rejected_alike(name):
+        """The violation this response and its peer `name` are both rejected for, or None."""
+        peer = mapping(peers.get(name))
+        if status != 'rpc_error' or peer.get('status') != 'rpc_error':
+            return None
+        kind = violation(mapping(response.get('error')).get('message'))
+        return kind if kind and kind == violation(mapping(mapping(peer.get('response')).get('error')).get('message')) else None
+
+    parity = next((rejected_alike(p['reference']) for p in probes
+                   if p['kind'] == 'same-output' and 'depends' in p and rejected_alike(p['reference'])), None)
+
     for probe in probes:
         topic, kind = probe['topic'], probe['kind']
         requirement = probe['requirement']
@@ -288,6 +301,15 @@ def assess(case, observation, peers):
             # An error envelope wrapped as a result (H25) carries no result either.
             error = mapping(response.get('error') or mapping(result).get('error'))
             observed = f'{status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip()
+            rejected_for = violation(error.get('message')) if status == 'rpc_error' else None
+            if 'depends' in probe and kind == 'same-output' and parity:
+                add(topic, True, requirement, f'Rejected for {parity}, as its eth_call twin {probe["reference"]} is: {observed}.',
+                    role='rejection')
+                continue
+            if 'depends' in probe and kind != 'same-output' and rejected_for:
+                checks.append({'topic': topic, 'status': 'not_applicable', 'requirement': requirement,
+                               'detail': f'Rejected for {rejected_for}, so there is no executed result to judge: {observed}.'})
+                continue
             if 'depends' in probe and not (kind == 'same-output' and isinstance(peer_result(probe['reference']), str)):
                 checks.append({'topic': topic, 'status': 'blocked', 'requirement': requirement,
                                'detail': f'Depends on {probe["depends"]["topic"]}: {probe["depends"]["reason"]} Observed {observed}.'})

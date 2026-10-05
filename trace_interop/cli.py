@@ -356,7 +356,7 @@ def execute(args):
         elif request['method'] == 'trace_replayBlockTransactions':
             txhashes.update(t['hash'] for t in blocks.get(request['params'][0],{}).get('transactions',[]))
     cases += [{'name':'_control/receipt/'+h, 'request':{'jsonrpc':'2.0','id':1,'method':'eth_getTransactionReceipt','params':[h]}} for h in sorted(txhashes)]
-    if args.corpus not in ['reorg','reorg-safe'] and not corpus.get('scenario_phases'):
+    if args.corpus not in ['reorg','reorg-safe','pruned'] and not corpus.get('scenario_phases'):
         needed = set()
         for case in cases:
             request=case['request']

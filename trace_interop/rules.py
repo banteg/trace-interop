@@ -73,7 +73,7 @@ def violation(message):
                           ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
                           ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
                           ('priority', r'(?:priority|\btip\b).*(?:fee|cap)'),
-                          ('base_fee', r'base ?fee'), ('sender', r'\beoa\b')]:
+                          ('base_fee', r'base ?fee'), ('sender', r'\beoa\b|sender has deployed code')]:
         if re.search(pattern, message):
             return kind
     return None

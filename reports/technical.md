@@ -2,7 +2,9 @@
 
 [Back to the maintainer overview](README.md)
 
-Published builds checked at **2026-10-04T19:36:57.679798+00:00**. [Freshness preflight](../evidence/2026-10-04/eval/preflight.json) · [Build lock](../evidence/2026-10-04/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+Published builds checked at **2026-10-05T19:51:21.922482+00:00**. [Freshness preflight](../evidence/2026-10-05/eval/preflight.json) · [Build lock](../evidence/2026-10-05/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
+
+The Anvil development build (built 2026-10-05 07:41 UTC) predates its v1.8.5 release build (2026-10-05 18:35 UTC), so it tests an earlier revision than that release.
 
 The human reports summarize selected assertions against a proposed specification. Agreement is not full conformance, and an RPC error can be the correct result for an invalid-input case. Setup failures are excluded from semantic assessment. Version and commit labels identify captured builds; channel identifiers in raw artifacts describe how updates are discovered.
 
@@ -45,7 +47,7 @@ Coverage below counts all selected trace observations, including missing respons
 | 🟡 Partial | 818 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 493 |
-| 🔎 Control | 37 |
+| 🔎 Control | 35 |
 
 
 Of the partial observations, 769 already have a differing assertion; 49 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
@@ -107,7 +109,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | eth_call: funds rejection; trace_call: unclassified RPC error: internal error. | 48 |
 | H15 | blocked | eth_call: priority rejection; trace_call: malformed_json. | 8 |
 | H15 | blocked | eth_call: priority rejection; trace_call: unclassified RPC error: internal error. | 8 |
-| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -32003 Insufficient funds for gas * price + value. | 4 |
+| H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -32003 Insufficient funds for gas * price + value. | 2 |
 | H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -32004 Upfront gas cost exceeds account balance (transaction up-front gas cost 0x1b1ae4d6e2ef500000 exceeds transaction sender. | 1 |
 | H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -38014 call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. | 1 |
 | H15 | not_applicable | Rejected for funds, so there is no executed result to judge: rpc_error -38014 first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. | 1 |
@@ -117,7 +119,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H16 | blocked | H25 owns this error, an error envelope returned as a successful result. There is no executed result to inspect. | 258 |
 | H16 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 34 |
 | H16 | not_applicable | For unsigned calls H16 defers to H15’s policy; this call’s fee accounting is judged under H15. | 33 |
-| H16 | not_applicable | H15 owns this error, a funds validation rejection: Insufficient funds for gas * price + value. There is no executed result to inspect. | 2 |
+| H16 | not_applicable | H15 owns this error, a funds validation rejection: Insufficient funds for gas * price + value. There is no executed result to inspect. | 1 |
 | H16 | not_applicable | H15 owns this error, a funds validation rejection: call 0: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 100000000000. There is no executed result to inspect. | 1 |
 | H16 | not_applicable | H15 owns this error, a funds validation rejection: first run for txIndex 0 error: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C26590293. There is no executed result to inspect. | 1 |
 | H16 | not_applicable | H15 owns this error, a funds validation rejection: insufficient funds for gas * price + value: address 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf have 1000000000000000000 . There is no executed result to inspect. | 1 |
@@ -148,7 +150,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H26 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 16 |
 | H27 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 18 |
 | H27 | control | Per-block reference response for the filter comparison. | 125 |
-| H27 | not_applicable | The pruned scenario’s history is unavailable by design; its filters are not compared block by block. | 2 |
 | H28 | blocked | Cannot inspect this property: unsupported. | 4 |
 | H28 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 12 |
 | H29 | blocked | Cannot inspect this property: unsupported. | 2 |
@@ -165,10 +166,10 @@ Eligibility is recomputed from the frozen head and independent scenario controls
 
 | Build | Scenario | Run evidence |
 | --- | --- | --- |
-| Anvil · 1.8.4-nightly · 60255eee | mined-probes | [mined-probes](../evidence/2026-10-04/eval/mined-probes/summary.json) |
-| Anvil · 1.8.4 · 50af4efe | mined-probes | [mined-probes](../evidence/2026-10-04/eval/mined-probes/summary.json) |
-| Erigon · 3.8.0-dev · 5cb6c867 | reorg-safe | [reorg-safe](../evidence/2026-10-04/eval/reorg-safe/summary.json) |
-| Erigon · 3.7.1 · 8c1e3893 | reorg-safe | [reorg-safe](../evidence/2026-10-04/eval/reorg-safe/summary.json) |
+| Anvil · 1.8.4-nightly · e15c2f1c | mined-probes | [mined-probes](../evidence/2026-10-05/eval/mined-probes/summary.json) |
+| Anvil · 1.8.5 · 51a52c59 | mined-probes | [mined-probes](../evidence/2026-10-05/eval/mined-probes/summary.json) |
+| Erigon · 3.8.0-dev · 96188a47 | reorg-safe | [reorg-safe](../evidence/2026-10-05/eval/reorg-safe/summary.json) |
+| Erigon · 3.7.1 · 8c1e3893 | reorg-safe | [reorg-safe](../evidence/2026-10-05/eval/reorg-safe/summary.json) |
 
 ## Result-shape checks
 
@@ -755,9 +756,9 @@ These cases returned results that differ from the draft schema. The case pages r
 | [fork-followup/_reference/block/0x34](cases/fork-followup/_reference/block/0x34.md) | Nethermind 2.1.0 · b3e7e84c |
 | [fork-followup/_reference/block/0x35](cases/fork-followup/_reference/block/0x35.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [fork-followup/beacon-call-55](cases/fork-followup/beacon-call-55.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
-| [forks/block-35](cases/forks/block-35.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [forks/block-36](cases/forks/block-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [forks/block-47](cases/forks/block-47.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [forks/block-35](cases/forks/block-35.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [forks/block-36](cases/forks/block-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [forks/block-47](cases/forks/block-47.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [forks/block-48](cases/forks/block-48.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/block-51](cases/forks/block-51.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/block-52](cases/forks/block-52.md) | Nethermind 2.1.0 · b3e7e84c |
@@ -765,9 +766,9 @@ These cases returned results that differ from the draft schema. The case pages r
 | [forks/block-56](cases/forks/block-56.md) | Nethermind 2.1.0 · b3e7e84c |
 | [forks/block-59](cases/forks/block-59.md) | Nethermind 2.1.0 · b3e7e84c |
 | [forks/block-60](cases/forks/block-60.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
-| [forks/filter-35](cases/forks/filter-35.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [forks/filter-36](cases/forks/filter-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [forks/filter-47](cases/forks/filter-47.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [forks/filter-35](cases/forks/filter-35.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [forks/filter-36](cases/forks/filter-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [forks/filter-47](cases/forks/filter-47.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-48](cases/forks/filter-48.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-51](cases/forks/filter-51.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-52](cases/forks/filter-52.md) | Nethermind 2.1.0 · b3e7e84c |
@@ -775,8 +776,8 @@ These cases returned results that differ from the draft schema. The case pages r
 | [forks/filter-56](cases/forks/filter-56.md) | Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-59](cases/forks/filter-59.md) | Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-60](cases/forks/filter-60.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
-| [forks/filter-across-36](cases/forks/filter-across-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [forks/filter-across-48](cases/forks/filter-across-48.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [forks/filter-across-36](cases/forks/filter-across-36.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [forks/filter-across-48](cases/forks/filter-across-48.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-across-52](cases/forks/filter-across-52.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-across-56](cases/forks/filter-across-56.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [forks/filter-across-60](cases/forks/filter-across-60.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
@@ -822,19 +823,9 @@ These cases returned results that differ from the draft schema. The case pages r
 | [initial/get-transfer-root](cases/initial/get-transfer-root.md) | Nethermind 2.1.0 · b3e7e84c |
 | [initial/get-zero](cases/initial/get-zero.md) | Nethermind 2.1.0 · b3e7e84c |
 | [initial/raw-valid-default-block](cases/initial/raw-valid-default-block.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
-| [initial/replay-7702-stateDiff](cases/initial/replay-7702-stateDiff.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-7702-trace](cases/initial/replay-7702-trace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-7702-vmTrace](cases/initial/replay-7702-vmTrace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
 | [initial/replay-block-tree](cases/initial/replay-block-tree.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
-| [initial/replay-revert-stateDiff](cases/initial/replay-revert-stateDiff.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-revert-trace](cases/initial/replay-revert-trace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe, Nethermind 2.1.0 · b3e7e84c |
-| [initial/replay-revert-vmTrace](cases/initial/replay-revert-vmTrace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-transfer-stateDiff](cases/initial/replay-transfer-stateDiff.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-transfer-trace](cases/initial/replay-transfer-trace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-transfer-vmTrace](cases/initial/replay-transfer-vmTrace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-tree-stateDiff](cases/initial/replay-tree-stateDiff.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
-| [initial/replay-tree-trace](cases/initial/replay-tree-trace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe, Nethermind 2.1.0 · b3e7e84c |
-| [initial/replay-tree-vmTrace](cases/initial/replay-tree-vmTrace.md) | Anvil 1.8.4-nightly · 60255eee, Anvil 1.8.4 · 50af4efe |
+| [initial/replay-revert-trace](cases/initial/replay-revert-trace.md) | Nethermind 2.1.0 · b3e7e84c |
+| [initial/replay-tree-trace](cases/initial/replay-tree-trace.md) | Nethermind 2.1.0 · b3e7e84c |
 | [initial/transaction-revert](cases/initial/transaction-revert.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [initial/transaction-tree](cases/initial/transaction-tree.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [mined-probes/block-2](cases/mined-probes/block-2.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
@@ -883,29 +874,29 @@ These cases returned results that differ from the draft schema. The case pages r
 | [precompiles/nested-delegatecall-value1-success](cases/precompiles/nested-delegatecall-value1-success.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [precompiles/nested-staticcall-value0-failed](cases/precompiles/nested-staticcall-value0-failed.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [precompiles/nested-staticcall-value0-success](cases/precompiles/nested-staticcall-value0-success.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
-| [probes-forks/_reference/block/0x1](cases/probes-forks/_reference/block/0x1.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/_reference/block/0x2](cases/probes-forks/_reference/block/0x2.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/_reference/block/0x3](cases/probes-forks/_reference/block/0x3.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/_reference/block/0x4](cases/probes-forks/_reference/block/0x4.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/_reference/block/0x1](cases/probes-forks/_reference/block/0x1.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/_reference/block/0x2](cases/probes-forks/_reference/block/0x2.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/_reference/block/0x3](cases/probes-forks/_reference/block/0x3.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/_reference/block/0x4](cases/probes-forks/_reference/block/0x4.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/_reference/block/0x48](cases/probes-forks/_reference/block/0x48.md) | Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/_reference/block/0x5](cases/probes-forks/_reference/block/0x5.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/_reference/block/0x5](cases/probes-forks/_reference/block/0x5.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/beacon-many-55](cases/probes-forks/beacon-many-55.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/beacon-trace-55](cases/probes-forks/beacon-trace-55.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/depth-limit](cases/probes-forks/depth-limit.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-forks/filter-null-fromBlock](cases/probes-forks/filter-null-fromBlock.md) | Erigon 3.7.1 · 8c1e3893, Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/filter-null-members](cases/probes-forks/filter-null-members.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b |
-| [probes-forks/filter-null-toBlock](cases/probes-forks/filter-null-toBlock.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/filter-null-members](cases/probes-forks/filter-null-members.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
+| [probes-forks/filter-null-toBlock](cases/probes-forks/filter-null-toBlock.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/filter-omitted-fromBlock](cases/probes-forks/filter-omitted-fromBlock.md) | Erigon 3.7.1 · 8c1e3893, Nethermind 2.1.0 · b3e7e84c |
-| [probes-forks/filter-omitted-toBlock](cases/probes-forks/filter-omitted-toBlock.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b, Nethermind 2.1.0 · b3e7e84c |
+| [probes-forks/filter-omitted-toBlock](cases/probes-forks/filter-omitted-toBlock.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/fork-dynamic-fees-priced-at](cases/probes-forks/fork-dynamic-fees-priced-at.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-forks/fork-dynamic-fees-priced-before](cases/probes-forks/fork-dynamic-fees-priced-before.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-forks/genesis-filter](cases/probes-forks/genesis-filter.md) | Erigon 3.7.1 · 8c1e3893 |
-| [probes-forks/genesis-range-rewards](cases/probes-forks/genesis-range-rewards.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b |
+| [probes-forks/genesis-range-rewards](cases/probes-forks/genesis-range-rewards.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
 | [probes-forks/many-write-delete-storage](cases/probes-forks/many-write-delete-storage.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-forks/rewards-intersection-default](cases/probes-forks/rewards-intersection-default.md) | Erigon 3.7.1 · 8c1e3893 |
-| [probes-forks/rewards-to](cases/probes-forks/rewards-to.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b |
-| [probes-forks/rewards-union](cases/probes-forks/rewards-union.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b |
-| [probes-forks/rewards-window](cases/probes-forks/rewards-window.md) | Erigon 3.8.0-dev · 5cb6c867, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 6dff813b |
+| [probes-forks/rewards-to](cases/probes-forks/rewards-to.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
+| [probes-forks/rewards-union](cases/probes-forks/rewards-union.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
+| [probes-forks/rewards-window](cases/probes-forks/rewards-window.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
 | [probes-prague/blob-fee-cap-unpriced](cases/probes-prague/blob-fee-cap-unpriced.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-defaulted](cases/probes-prague/blob-fee-defaulted.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
 | [probes-prague/blob-fee-none](cases/probes-prague/blob-fee-none.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
@@ -1018,22 +1009,22 @@ Capture completeness records whether requests finished, not whether their result
 
 | Run | Corpus | Capture complete |
 | --- | --- | --- |
-| [initial](../evidence/2026-10-04/eval/initial/manifest.json) | initial | ✅ Yes |
-| [a](../evidence/2026-10-04/eval/a/manifest.json) | a | ✅ Yes |
-| [repeat](../evidence/2026-10-04/eval/repeat/manifest.json) | repeat | ✅ Yes |
-| [forks](../evidence/2026-10-04/eval/forks/manifest.json) | forks | ✅ Yes |
-| [fork-followup](../evidence/2026-10-04/eval/fork-followup/manifest.json) | fork-followup | ✅ Yes |
-| [precompiles](../evidence/2026-10-04/eval/precompiles/manifest.json) | precompiles | ✅ Yes |
-| [precompile-values](../evidence/2026-10-04/eval/precompile-values/manifest.json) | precompile-values | ✅ Yes |
-| [raw-validation](../evidence/2026-10-04/eval/raw-validation/manifest.json) | raw-validation | ✅ Yes |
-| [coverage](../evidence/2026-10-04/eval/coverage/manifest.json) | coverage | ✅ Yes |
-| [fee-policy](../evidence/2026-10-04/eval/fee-policy/manifest.json) | fee-policy | ✅ Yes |
-| [fee-compat](../evidence/2026-10-04/eval/fee-compat/manifest.json) | fee-compat | ✅ Yes |
-| [callmany-isolation](../evidence/2026-10-04/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
-| [h30](../evidence/2026-10-04/eval/h30/manifest.json) | h30 | ✅ Yes |
-| [raw-selector](../evidence/2026-10-04/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-10-04/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
-| [probes-forks](../evidence/2026-10-04/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
-| [mined-probes](../evidence/2026-10-04/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
-| [reorg-safe](../evidence/2026-10-04/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
-| [pruned](../evidence/2026-10-04/eval/pruned/manifest.json) | pruned | ✅ Yes |
+| [initial](../evidence/2026-10-05/eval/initial/manifest.json) | initial | ✅ Yes |
+| [a](../evidence/2026-10-05/eval/a/manifest.json) | a | ✅ Yes |
+| [repeat](../evidence/2026-10-05/eval/repeat/manifest.json) | repeat | ✅ Yes |
+| [forks](../evidence/2026-10-05/eval/forks/manifest.json) | forks | ✅ Yes |
+| [fork-followup](../evidence/2026-10-05/eval/fork-followup/manifest.json) | fork-followup | ✅ Yes |
+| [precompiles](../evidence/2026-10-05/eval/precompiles/manifest.json) | precompiles | ✅ Yes |
+| [precompile-values](../evidence/2026-10-05/eval/precompile-values/manifest.json) | precompile-values | ✅ Yes |
+| [raw-validation](../evidence/2026-10-05/eval/raw-validation/manifest.json) | raw-validation | ✅ Yes |
+| [coverage](../evidence/2026-10-05/eval/coverage/manifest.json) | coverage | ✅ Yes |
+| [fee-policy](../evidence/2026-10-05/eval/fee-policy/manifest.json) | fee-policy | ✅ Yes |
+| [fee-compat](../evidence/2026-10-05/eval/fee-compat/manifest.json) | fee-compat | ✅ Yes |
+| [callmany-isolation](../evidence/2026-10-05/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
+| [h30](../evidence/2026-10-05/eval/h30/manifest.json) | h30 | ✅ Yes |
+| [raw-selector](../evidence/2026-10-05/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
+| [probes-prague](../evidence/2026-10-05/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-forks](../evidence/2026-10-05/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
+| [mined-probes](../evidence/2026-10-05/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
+| [reorg-safe](../evidence/2026-10-05/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
+| [pruned](../evidence/2026-10-05/eval/pruned/manifest.json) | pruned | ✅ Yes |

@@ -4,7 +4,7 @@
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.2.0-preview · 6dff813b** (of 33 decisions): ✅ 32 agree (-1 since the previous capture) · ⚠️ 1 with no fix yet (1 on converged decisions). 15 of these agreements are not yet in 2.1.0 · b3e7e84c. Upstream fix PRs: 47 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.2.0-preview · e8955c4c** (of 33 decisions): ✅ 32 agree · ⚠️ 1 with no fix yet (1 on converged decisions). 15 of these agreements are not yet in 2.1.0 · b3e7e84c. Upstream fix PRs: 47 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Nethermind decisions by outcome, with fix PRs](nethermind-work.svg)
 
@@ -12,14 +12,14 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.1.0` | [`b3e7e84c`](https://github.com/NethermindEth/nethermind/commit/b3e7e84c1695420e771326f73801b66fa0574871) | 2026-10-01 | [2026-10-04](../../evidence/2026-10-04/eval/initial/manifest.json) |
-| `2.2.0-preview` | [`6dff813b`](https://github.com/NethermindEth/nethermind/commit/6dff813b6c3b8141689422e4113f6ea0760e0260) | 2026-10-04 | [2026-10-04](../../evidence/2026-10-04/eval/initial/manifest.json) |
+| `2.1.0` | [`b3e7e84c`](https://github.com/NethermindEth/nethermind/commit/b3e7e84c1695420e771326f73801b66fa0574871) | 2026-10-01 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
+| `2.2.0-preview` | [`e8955c4c`](https://github.com/NethermindEth/nethermind/commit/e8955c4cd6a1c41ffc525033198850fd989c46dc) | 2026-10-05 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.1.0 · b3e7e84c | 2.2.0-preview · 6dff813b | Proposed change |
+| Behavior | 2.1.0 · b3e7e84c | 2.2.0-preview · e8955c4c | Proposed change |
 | --- | --- | --- | --- |
 | [trace_get selector and return shape](../decisions/H02.md)<br>`trace_get` returns a list and treats positions differently from a nested path; `[]` returns `[]`. | 🛠️ Fix submitted: [Nethermind #13858](https://github.com/NethermindEth/nethermind/pull/13858)<br>[Get nested parent](../cases/a/get-nested-parent.md) | ✅ Checked cases agree<br>[_reference/block/0x30](../cases/a/_reference/block/0x30.md) | Return one object for one `traceAddress` path. `[]` selects the root; a missing path returns `null`. This changes the response type. Checked requirements: Return the transaction-tree record at [], or null if absent. Return the transaction-tree record at [0], or null if absent. Return the transaction-tree record at [1], or null if absent. Return the transaction-tree record at [0, 0], or null if absent. A missing selected frame is null, not an empty collection. Return the transaction-tree record at [6, 0], or null if absent. Return the transaction-tree record at [6], or null if absent.<br>[Trace lookup](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TraceRpcModule.cs#L433) |
 | [Filter composition and mode](../decisions/H03.md)<br>2.0.0 · bec830cd: `mode: "union"` returns the intersection (1 record instead of 6) and `mode: "garbage"` is accepted: the filter type has no `mode` field, so every request is intersected. 2.2.0-preview · 287f54f0 includes #13857, which adds the `mode` field, and agrees on the checked cases. | 🛠️ Fix submitted: [Nethermind #13857](https://github.com/NethermindEth/nethermind/pull/13857)<br>1 blocked case: Depends on H23, which differs for this build in rewards-to, rewards-union. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436', 'blockNumber': 2, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}.<br>[Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) | ✅ Checked cases agree<br>[Filter all](../cases/a/filter-all.md) | Ship #13857 in a release: a validated `mode` field that accepts `intersection` (the default) and `union` and rejects other values (`-32602` recommended).<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) |
@@ -45,7 +45,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 2.1.0 · b3e7e84c | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params). Selector latest: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params). Selector pending: rejected as invalid params (-32602: Invalid params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
-| 2.2.0-preview · 6dff813b | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params). Selector latest: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params). Selector pending: rejected as invalid params (-32602: Invalid params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 2.2.0-preview · e8955c4c | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params). Selector latest: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params). Selector pending: rejected as invalid params (-32602: Invalid params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 

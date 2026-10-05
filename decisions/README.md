@@ -4,23 +4,23 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** client decisions agree with the draft (+2 since the previous capture). 11 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 36 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** client decisions agree with the draft. 11 more have a submitted fix, and **20 differ with no fix yet**: 20 on converged decisions and 0 on decisions still under review. 36 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
 | [H01](../reports/decisions/H01.md) | 🤝 Converged | 👍··· | **Method coverage**<br>Which trace_* methods must a client implement, and how does it signal the ones it does not? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
-| [H02](../reports/decisions/H02.md) | 🤝 Converged | ··👍👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅🛠️✅—🛠️ | ✅✅✅✅✅🛠️ |
+| [H02](../reports/decisions/H02.md) | 🤝 Converged | ··👍👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅🛠️✅—✅ | ✅✅✅✅✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍👍👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | 🛠️🛠️🛠️✅—✅ | 🛠️✅✅✅✅✅ |
 | [H04](../reports/decisions/H04.md) | 🤝 Converged | ·👍👍👍 | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ✅✅🛠️🛠️—⚠️ | ✅✅✅🛠️✅⚠️ |
 | [H05](../reports/decisions/H05.md) | 🤝 Converged | ·👍👍👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️🛠️✅—✅ | ⚠️✅✅✅✅✅ |
-| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️🛠️⚠️—🛠️ | ⚠️✅✅⚠️✅🛠️ |
-| [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | **Replay transactionHash field**<br>Which replay results carry `transactionHash`? | 🟡✅✅✅—🛠️ | 🟡✅✅✅✅🛠️ |
+| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️🛠️⚠️—✅ | ⚠️✅✅⚠️✅🛠️ |
+| [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | **Replay transactionHash field**<br>Which replay results carry `transactionHash`? | 🟡✅✅✅—✅ | 🟡✅✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | 🤝 Converged | ···· | **Empty output and unrequested components**<br>What do `output`, `trace`, `stateDiff` and `vmTrace` hold when they are empty or not requested? | 🟡🟡✅✅—✅ | 🟡✅✅✅✅✅ |
 | [H09](../reports/decisions/H09.md) | 🤝 Converged | ·👍👍👍 | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅✅✅✅🟡 |
 | [H10](../reports/decisions/H10.md) | 🤝 Converged | ···· | **Creation result field names**<br>Which fields and values describe a creation result and a call action? | ⚠️✅✅✅—✅ | ⚠️✅✅✅✅✅ |
 | [H11](../reports/decisions/H11.md) | 🧪 Harmonized · dev | ··👍· | **Empty trace-type selection**<br>What happens when the trace-type list is empty? | ⚠️🟡✅✅—✅ | ✅✅✅✅✅✅ |
 | [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
-| [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍👍· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️🛠️✅—🛠️ | ⚠️✅✅✅✅🛠️ |
+| [H13](../reports/decisions/H13.md) | 🤝 Converged | ·👍👍· | **Signed transaction execution validity**<br>Which validity checks does trace_rawTransaction apply to a signed transaction before tracing it? | ⚠️⚠️🛠️✅—✅ | ⚠️✅✅✅✅✅ |
 | [H14](../reports/decisions/H14.md) | 🤝 Converged | ·👍◐· | **Invalid parameters and rejected calls**<br>How do malformed parameters and rejected unsigned calls fail, and which error codes are recommended? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H15](../reports/decisions/H15.md) | 🤝 Converged | ·👍👍· | **Unsigned simulation fees and block environment**<br>Which fee defaults and block environment do unsigned trace_call and trace_callMany use? | ⚠️🛠️⚠️⚠️—⚠️ | ⚠️✅✅⚠️✅⚠️ |
 | [H16](../reports/decisions/H16.md) | 🤝 Converged | ·👍·· | **Fee accounting and sequential state diffs**<br>Which fee payments does a transaction's stateDiff report, and where do block-level balance changes go? | ⚠️⚠️✅✅—🟡 | ⚠️✅✅✅✅🟡 |
@@ -36,7 +36,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** c
 | [H26](../reports/decisions/H26.md) | 🤝 Converged | ··👍· | **Account deletion across Cancun**<br>How does stateDiff report a deleted account, before and after EIP-6780? | 🛠️✅✅⚠️—🟡 | 🛠️✅✅⚠️✅🟡 |
 | [H27](../reports/decisions/H27.md) | 🤝 Converged | ···· | **Filter execution across fork boundaries**<br>When trace_filter spans a fork boundary, does each block run under its own fork rules and state? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H28](../reports/decisions/H28.md) | 🤝 Converged | ·👍·· | **Historical state at system-operation boundaries**<br>Which state does a historical trace at block N run against, relative to the system operations of blocks N and N+1? | 🛠️🛠️✅✅—🚧 | 🛠️✅✅✅✅🚧 |
-| [H29](../reports/decisions/H29.md) | 🤝 Converged | ··👍· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—🛠️ | ⚠️✅✅✅✅🛠️ |
+| [H29](../reports/decisions/H29.md) | 🤝 Converged | ··👍· | **Precompile call-frame inclusion**<br>Which precompile calls appear as call frames? | ⚠️✅🛠️✅—✅ | ⚠️✅✅✅✅🛠️ |
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—✅ | ✅✅✅✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H32](../reports/decisions/H32.md) | 🤝 Converged | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | 🛠️🛠️🛠️⚠️—⚠️ | 🛠️✅✅⚠️🟡⚠️ |

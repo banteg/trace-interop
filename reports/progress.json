@@ -41,9 +41,9 @@
         "development": {
           "agree": 31,
           "build": [
-            "3.8.0-dev \u00b7 5cb6c867"
+            "3.8.0-dev \u00b7 96188a47"
           ],
-          "gained": 1,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -77,10 +77,10 @@
         "development": {
           "agree": 32,
           "build": [
-            "2.2.0-preview \u00b7 6dff813b"
+            "2.2.0-preview \u00b7 e8955c4c"
           ],
           "gained": 0,
-          "lost": 1
+          "lost": 0
         },
         "release": {
           "agree": 17,
@@ -113,9 +113,9 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.7.0 \u00b7 10bcf461"
+            "2.7.0 \u00b7 42fa3c56"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -147,28 +147,28 @@
     {
       "builds": {
         "development": {
-          "agree": 14,
+          "agree": 17,
           "build": [
-            "1.8.4-nightly \u00b7 60255eee"
+            "1.8.4-nightly \u00b7 e15c2f1c"
           ],
-          "gained": 0,
+          "gained": 3,
           "lost": 0
         },
         "release": {
-          "agree": 14,
+          "agree": 19,
           "build": [
-            "1.8.4 \u00b7 50af4efe"
+            "1.8.5 \u00b7 51a52c59"
           ],
-          "gained": 0,
+          "gained": 5,
           "lost": 0
         }
       },
       "client": "anvil",
       "counted": false,
       "counts": {
-        "agree": 14,
+        "agree": 17,
         "converged": 5,
-        "fix": 5,
+        "fix": 2,
         "policy": 0,
         "review": 0,
         "unmeasured": 9
@@ -176,8 +176,8 @@
       "dev_only": 0,
       "name": "Anvil",
       "prs": {
-        "merged": 6,
-        "open": 8
+        "merged": 12,
+        "open": 2
       }
     }
   ],

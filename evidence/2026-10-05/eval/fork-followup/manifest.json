@@ -1,0 +1,599 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-02T21:26:23.012928999Z",
+      "digest": "hyperledger/besu@sha256:c1f6febefb4207f44a5e4787310bf7f9c83a8fcf235e3fd1e4b651283d0f9615",
+      "image_id": "sha256:83c97c3e99976e8a25b64d108b71680e1d93455af9769f8dda1123e1f1dd1847",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "1d62d893baed6c148313bb3d9d64f5c316d371e2",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-09-25T21:56:58.835401325Z",
+      "digest": "hyperledger/besu@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0",
+      "image_id": "sha256:ca05efeb8050497e45bc2b4ed22111a8189a8b85ffa7aca09da18f45a417810d",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.9.0"
+      },
+      "release": {
+        "published_at": "2026-09-25T22:22:13Z",
+        "tag": "26.9.0",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.9.0"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.9.0"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-05T19:03:29.651533232Z",
+      "digest": "erigontech/erigon@sha256:a4fadfa0c8813c3578d47a6a1618e9b039258df925682c6cbb7226387d11fa38",
+      "image_id": "sha256:84b52272863706cfb9e2c035847d19a98753eb2b2a4f7d2fe41a414f907348ff",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-05T19:01:57Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "96188a47395eb2a1f95e49d2c939f08fa15d66c7",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "96188a4",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "96188a47395eb2a1f95e49d2c939f08fa15d66c7"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-01T20:05:57.904718012Z",
+      "digest": "erigontech/erigon@sha256:28ee51ce29ecfedc4b9aee10b347ec97d990f8776bb8d51786c6642055791481",
+      "image_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-01T20:03:37Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.7",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.7.1"
+      },
+      "release": {
+        "published_at": "2026-10-02T08:12:41Z",
+        "tag": "v3.7.1",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.7.1"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.7.1"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "f228e25a27a29dd975351538d282e3483745e44d72adf2acffed15e972667933",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:1b158d1bc73ade3e65beabd448425ec5de15cde0660cc2a779418c352af6d63a",
+      "local_image": "trace-interop/geth-source:f228e25a27a29dd975351538d282e3483745e44d72adf2acffed15e972667933",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "e67cfd25108049d3765002924460d08fafebb59d",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "8c2d376945413bb927816fa9c2ac8bdff9d4ab3fb582b235cbf5f03c2f559802"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-05T18:57:56Z",
+      "digest": "nethermindeth/nethermind@sha256:6fc837257f870bc42909140f0a73df383b92de2acc04e108f0839f12d73b9ffc",
+      "image_id": "sha256:e0c045404a220272a43cea3e8e0ad37efaa68c9c03b1077f23531a4c69224187",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-05T18:57:56Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "e8955c4cd6a1c41ffc525033198850fd989c46dc",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-01T21:50:32Z",
+      "digest": "nethermind/nethermind@sha256:25f72063f6fc8ba89f1c08abe1ed3211203b3cf303c9618cc3a2488e1e4ab2e0",
+      "image_id": "sha256:2954427b4c521fc9247b4cbdc16bdabbb149fd0b9036b73542fb095c6e00f54c",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-01T21:50:32Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "b3e7e84c1695420e771326f73801b66fa0574871",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.1.0"
+      },
+      "release": {
+        "published_at": "2026-10-01T22:43:39Z",
+        "tag": "2.1.0",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.1.0"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.1.0"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-05T01:45:32.22939616Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:e1915d9bd70ac4bdaa52ff75e605a7e8592dc9902a811914dae416571332e0ee",
+      "image_id": "sha256:6f6b302a14d26d24eaa009bf116797aba0f8754fb5c691dbf6f980f8884f9406",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-09-28T11:08:00.92360729Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:a7f059d470878a5a59f3c575f3fc81b536d0d2d56d7a1cbed73e717a4f766336",
+      "image_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-09-28T12:45:27Z",
+        "tag": "v2.7.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.7.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.7.0"
+    }
+  },
+  "corpus": "fork-followup",
+  "finished_at": "2026-10-05T20:00:23.832734+00:00",
+  "fixture_manifest_sha256": "ae033f54344e0594050dcc7c05ca4a79da222bbf10bf3dee7449268be928e30b",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x7d97fd",
+    "blobGasUsed": "0x20000",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x18d04",
+    "hash": "0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000002000000000000000000002000000000000000000000000000800000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000800000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x48",
+    "parentBeaconBlockRoot": "0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd",
+    "parentHash": "0x7964ce394f9773783863d05cf0826d125024c5f5dac03c07d5d7832c551a40de",
+    "receiptsRoot": "0x8242a788eddcd94326c2acb0a6cb547ca411104a65e3c6c5f751ce1c7f14cd15",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x42da2e489b18e750a877106cd83e76fd16d4234d530e8290eda403582c50aac4",
+    "timestamp": "0x2d0",
+    "transactionsRoot": "0x4a0b6fa744634b80a04463acab0cad7eb4aa563337ed6f95ec3728d7ef745a99",
+    "withdrawalsRoot": "0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b"
+  },
+  "hive_binary_sha256": "d5270fd0b4e6abe243ac449f652fbe26926c84b167f3237be47e900f1ea28521",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "612bbe83f0809d01fc10dbdec612599c1754d9315f989bce755b53fc650c19a0",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "destroy-trace-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-55-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-560",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": null,
+      "name": "system-beacon-56-8751",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x33"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x33",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x33"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-51",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x33",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x34"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x34",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x34"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-52",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x34",
+          true
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-balance-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x717f8aa2b982bee0e29f573d31df288663e1ce16",
+          "0x35"
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-filter-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x35",
+            "toAddress": [
+              "0x717f8aa2b982bee0e29f573d31df288663e1ce16"
+            ],
+            "toBlock": "0x35"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawal-block-53",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x35",
+          true
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-55",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-call-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "_reference/block/0x33",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x33"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x34",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x34"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x35",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x35"
+        ]
+      },
+      "role": "reference"
+    }
+  ],
+  "source_commit": "707d0ea107f2477a9b29391a3f4e1384466a2b47",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-05T19:59:39.100121+00:00"
+}

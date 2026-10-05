@@ -12,7 +12,6 @@
   },
   "L07": {
     "anvil_development": "H29: stored trace_transaction and trace_block records keep the zero-value identity precompile frame at `[6]`, which the replay and trace_call omit.",
-    "anvil_release": "H29, as in the nightly.",
     "nethermind_development": "Found by this law. A suicide record has no `result` member in trace_transaction and trace_block, but `\"result\": null` in the replayed trace of the same transaction. Serialization only.",
     "nethermind_release": "The same suicide serialization as the development build."
   },

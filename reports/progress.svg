@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="624" height="214" viewBox="0 0 624 214" role="img" aria-labelledby="title">
-<title id="title">Decision outcomes per client: Besu 6 agree, 10 fix submitted, 11 no fix · converged, 6 not fully measured; Erigon 31 agree, 1 no fix · converged, 1 not fully measured; Nethermind 32 agree, 1 no fix · converged; Reth 25 agree, 1 fix submitted, 7 no fix · converged; Anvil 14 agree, 5 fix submitted, 5 no fix · converged, 9 not fully measured</title>
+<title id="title">Decision outcomes per client: Besu 6 agree, 10 fix submitted, 11 no fix · converged, 6 not fully measured; Erigon 31 agree, 1 no fix · converged, 1 not fully measured; Nethermind 32 agree, 1 no fix · converged; Reth 25 agree, 1 fix submitted, 7 no fix · converged; Anvil 17 agree, 2 fix submitted, 5 no fix · converged, 9 not fully measured</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px}.head{font-weight:600}.partial{stroke-dasharray:3 2}.label{fill:#1f2328}.muted{fill:#59636e}.pr{fill:none;stroke:#11756f}.edge{stroke:#11756f}.b-agree{fill:#11756f}.n-agree{fill:#ffffff}.b-fix{fill:#79c7bd}.n-fix{fill:#1f2328}.b-converged{fill:#c8641a}.n-converged{fill:#ffffff}.b-review{fill:#f2b36b}.n-review{fill:#1f2328}.b-policy{fill:#8172c4}.n-policy{fill:#ffffff}.b-unmeasured{fill:#dde1e6}.n-unmeasured{fill:#1f2328}@media (prefers-color-scheme:dark){.label{fill:#e6edf3}.muted{fill:#9198a1}.pr{fill:none;stroke:#3aa59a}.edge{stroke:#3aa59a}.b-agree{fill:#3aa59a}.n-agree{fill:#0d1117}.b-fix{fill:#1a6b62}.n-fix{fill:#ffffff}.b-converged{fill:#e5843a}.n-converged{fill:#0d1117}.b-review{fill:#8f5420}.n-review{fill:#ffffff}.b-policy{fill:#9b8fe0}.n-policy{fill:#0d1117}.b-unmeasured{fill:#2d333b}.n-unmeasured{fill:#e6edf3}}</style>
 <text class="label" x="88" y="26" text-anchor="end">Besu</text>
 <rect class="b-agree" x="96" y="12" width="91" height="20"/>
@@ -28,10 +28,10 @@
 <rect class="b-converged" x="499" y="102" width="109" height="20"/>
 <text class="n-converged" x="553.5" y="116" text-anchor="middle">7</text>
 <text class="label" x="88" y="146" text-anchor="end">Anvil</text>
-<rect class="b-agree" x="96" y="132" width="215" height="20"/>
-<text class="n-agree" x="203.5" y="146" text-anchor="middle">14</text>
-<rect class="b-fix" x="313" y="132" width="76" height="20"/>
-<text class="n-fix" x="351" y="146" text-anchor="middle">5</text>
+<rect class="b-agree" x="96" y="132" width="262" height="20"/>
+<text class="n-agree" x="227" y="146" text-anchor="middle">17</text>
+<rect class="b-fix" x="360" y="132" width="29" height="20"/>
+<text class="n-fix" x="374.5" y="146" text-anchor="middle">2</text>
 <rect class="b-converged" x="391" y="132" width="75" height="20"/>
 <text class="n-converged" x="428.5" y="146" text-anchor="middle">5</text>
 <rect class="b-unmeasured" x="468" y="132" width="140" height="20"/>

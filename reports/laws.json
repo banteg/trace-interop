@@ -2,11 +2,11 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 712,
+        "held": 710,
         "violated": 0
       },
       "anvil_release": {
-        "held": 712,
+        "held": 702,
         "violated": 0
       },
       "besu_development": {
@@ -48,11 +48,11 @@
     },
     "L02": {
       "anvil_development": {
-        "held": 1368,
+        "held": 1360,
         "violated": 0
       },
       "anvil_release": {
-        "held": 1368,
+        "held": 1363,
         "violated": 0
       },
       "besu_development": {
@@ -94,11 +94,11 @@
     },
     "L03": {
       "anvil_development": {
-        "held": 91,
+        "held": 89,
         "violated": 0
       },
       "anvil_release": {
-        "held": 91,
+        "held": 86,
         "violated": 0
       },
       "besu_development": {
@@ -140,11 +140,11 @@
     },
     "L04": {
       "anvil_development": {
-        "held": 2920,
+        "held": 2914,
         "violated": 0
       },
       "anvil_release": {
-        "held": 2920,
+        "held": 2915,
         "violated": 0
       },
       "besu_development": {
@@ -186,12 +186,12 @@
     },
     "L05": {
       "anvil_development": {
-        "held": 3,
-        "violated": 5
+        "held": 8,
+        "violated": 0
       },
       "anvil_release": {
-        "held": 3,
-        "violated": 5
+        "held": 9,
+        "violated": 0
       },
       "besu_development": {
         "held": 8,
@@ -282,8 +282,8 @@
         "violated": 2
       },
       "anvil_release": {
-        "held": 9,
-        "violated": 2
+        "held": 11,
+        "violated": 0
       },
       "besu_development": {
         "held": 56,
@@ -366,7 +366,7 @@
         "violated": 0
       },
       "anvil_release": {
-        "held": 492,
+        "held": 493,
         "violated": 0
       },
       "besu_development": {
@@ -1061,126 +1061,6 @@
         "get-nested-parent",
         "transaction-tree"
       ],
-      "client": "anvil_development",
-      "corpus": "a",
-      "detail": "requested traceAddress [6]: .action.callType: differs at character 4: \u2026call vs \u2026callcode",
-      "law": "L05",
-      "run": "a",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "get-one",
-        "transaction-tree"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "requested traceAddress [1]: .action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "get-root",
-        "transaction-tree"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "get-transfer-root",
-        "transaction-transfer"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "get-zero",
-        "transaction-tree"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "requested traceAddress [0]: .action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "get-nested-parent",
-        "transaction-tree"
-      ],
-      "client": "anvil_release",
-      "corpus": "a",
-      "detail": "requested traceAddress [6]: .action.callType: differs at character 4: \u2026call vs \u2026callcode",
-      "law": "L05",
-      "run": "a",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "get-one",
-        "transaction-tree"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [1]: .action.gas: differs at character 2: \u20260xea60 vs \u20260xf35c",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "get-root",
-        "transaction-tree"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "get-transfer-root",
-        "transaction-transfer"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs null",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "get-zero",
-        "transaction-tree"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [0]: .action.from: differs at character 2: \u20260x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 vs \u20260x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
-      "law": "L05",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "get-nested-parent",
-        "transaction-tree"
-      ],
       "client": "nethermind_release",
       "corpus": "a",
       "detail": "requested traceAddress [6]: value: {\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
@@ -1282,7 +1162,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
+      "version": "anvil Version: 1.8.4-nightly+e15c2f1c"
     },
     {
       "cases": [
@@ -1294,31 +1174,7 @@
       "detail": "list has 10 vs 9 entries",
       "law": "L07",
       "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+60255eee"
-    },
-    {
-      "cases": [
-        "block-tree",
-        "replay-tree-trace"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "list has 10 vs 9 entries",
-      "law": "L07",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
-    },
-    {
-      "cases": [
-        "transaction-tree",
-        "replay-tree-trace"
-      ],
-      "client": "anvil_release",
-      "corpus": "initial",
-      "detail": "list has 10 vs 9 entries",
-      "law": "L07",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4+50af4efe"
+      "version": "anvil Version: 1.8.4-nightly+e15c2f1c"
     },
     {
       "cases": [
@@ -1330,7 +1186,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1342,7 +1198,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1354,7 +1210,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1366,7 +1222,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1378,7 +1234,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1390,7 +1246,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1402,7 +1258,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1414,7 +1270,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1426,7 +1282,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [
@@ -1438,7 +1294,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+6dff813b"
+      "version": "2.2.0-preview+e8955c4c"
     },
     {
       "cases": [

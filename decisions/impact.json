@@ -22,7 +22,7 @@
     },
     "anvil": {
       "name": "Anvil",
-      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. Foundry 1.8.4 and the nightly 328811cb ship revm-inspectors 0.44.1 (#17226): its 0.44.0 changes (#17073) bring the EIP-7702 stateDiff, executing-bytecode and vmTrace step fixes also in Reth 2.7.0, and 0.44.1 adds the reverted-CREATE result and failure labels (#533) and vmTrace memory and subs that follow execution (#532), which Reth does not pin yet. Both builds also correct the empty trace-type selection, omitted filter bounds and the trace_callMany default block (#17078), return null from trace_transaction for a missing transaction (#17089), and keep the creation and deletion markers of accounts absent before the call (#17106). Its own RPC layer still differs in tree-path lookup, missing blocks and replays, replay transaction hashes, conflicting data/input and zero-fee BASEFEE. Mined-trace methods also return precompile frames that its trace_call omits. The mined-probes chain cannot be replayed because Anvil cannot set a parent beacon root."
+      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. Foundry 1.8.5 \u00b7 51a52c59 ships ten trace-interop fixes (#17301\u2013#17304, #17306, #17307, #17309\u2013#17312): tree-path trace_get, missing blocks and replays, replay transaction hashes, mined traces without nested precompile frames, EIP-3607 rejection for signed raw transactions, conflicting call fields, pending in block trace methods, and the fee-free, cap-only and omitted-gas call environment. With revm-inspectors 0.44.1 (#17226) it also carries the reverted-CREATE results, failure labels and vmTrace fixes. It still accepts integer trace_get indices (open #17308), executes calls priced below the base fee, and cannot set a parent beacon root, so the mined-probes chain is not replayed until open #17305 lands. The nightly e15c2f1c predates the fixes merged on 2026-10-05."
     }
   },
   "topics": {
@@ -101,8 +101,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "trace_block returns `[]` for a missing block, a missing replay returns -32001 `transaction not found`, and trace_call at a block beyond the head returns -32602. trace_replayBlockTransactions of an unknown block returns `[]`, and a filter ending one block past the head returns the head\u2019s records instead of an error. For a missing transaction, trace_transaction returns `[]` in 1.8.3 and null in the nightly df92604b (#17089).",
-        "change": "Return `null` for a missing path or replay and an error for an unknown selected block (-32001 recommended), including the trace_call and block-replay blocks, and for a filter bound beyond the head (-32602 recommended). Ship #17089 in a release."
+        "observed": "1.8.5 \u00b7 51a52c59 includes #17306: an unknown block returns -32001 from trace_block and block replays, a trace_filter bound past the head is rejected with -32602 and an unknown replay returns null. The nightly e15c2f1c predates it: trace_block returns `[]` for a missing block and a filter ending past the head returns the head\u2019s records.",
+        "change": "None beyond #17306 reaching the nightly."
       }
     },
     "H09": {
@@ -188,8 +188,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "An explicit zero fee keeps the block base fee visible as BASEFEE instead of 0. Priced calls settle the sender debit and coinbase tip in stateDiff, matching the proposal where the native clients do not. On blob calls, an omitted `maxFeePerBlobGas` runs at the head\u2019s BLOBBASEFEE and an explicit zero is rejected (-32003).",
-        "change": "Run a zero effective price with GASPRICE and BASEFEE 0 and no gas-fee balance effects; keep the priced settlement. Run a blob call with an omitted or zero `maxFeePerBlobGas` at BLOBBASEFEE 0 with no blob fee, accepting the explicit zero."
+        "observed": "1.8.5 \u00b7 51a52c59 runs fee-free calls at BASEFEE 0 and blob calls without a cap at BLOBBASEFEE 0, accepting an explicit zero cap (#17310), charges cap-only calls at the base fee (#17311) and caps omitted gas by the sender\u2019s allowance (#17312). It still executes a positive gas price or fee cap below the base fee instead of rejecting it. The nightly e15c2f1c predates these fixes.",
+        "change": "Reject a positive gas price or fee cap below the base fee (-32602 or the eth_simulateV1 -38012 recommended), as the native clients do."
       }
     },
     "H20": {
@@ -268,8 +268,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "trace_transaction, trace_block and trace_filter return the calltree\u2019s nested zero-value identity call as a frame, shifting its siblings; trace_call and the replays omit it. Mined traces are built from the frames recorded at mining time without the active precompile set.",
-        "change": "Build mined traces with the same precompile filter as simulations: omit nested zero-value precompile frames and number the emitted tree."
+        "observed": "1.8.5 \u00b7 51a52c59 omits nested zero-value precompile calls from mined traces (#17303), as simulations and replays do. The nightly e15c2f1c predates it and still returns the calltree\u2019s nested identity call as a frame in trace_transaction, trace_block and trace_filter.",
+        "change": "None beyond #17303 reaching the nightly."
       }
     },
     "H02": {
@@ -286,8 +286,8 @@
         "change": "No change; existing flat-index callers need a migration path."
       },
       "anvil": {
-        "observed": "`trace_get` indexes the flattened frame list and needs exactly one index: `[]` and nested paths return null, and `[1]` returns the second frame in list order.",
-        "change": "Interpret the selector as one `traceAddress` path: `[]` selects the root, `[0]` its first child."
+        "observed": "1.8.5 \u00b7 51a52c59 and the nightly e15c2f1c read the indices as one `traceAddress` path (#17302): `[]` selects the root and `[0]` its first child. 1.8.4 indexed the flattened frame list.",
+        "change": "No change."
       }
     },
     "H08": {
@@ -322,8 +322,8 @@
         "change": "Reject integer path entries (-32602 recommended); callers must convert output path integers to hex quantities. Treat a null filter member as omitted."
       },
       "anvil": {
-        "observed": "When `data` and `input` are both set and differ, trace_call runs `input` instead of rejecting the request.",
-        "change": "Reject conflicting `data` and `input` (-32602 recommended)."
+        "observed": "1.8.5 \u00b7 51a52c59 rejects disagreeing `data` and `input` and gasPrice with dynamic fee fields, and prices a legacy blob call by its gasPrice (#17307). Both builds still accept integer trace_get indices, which open #17308 rejects. The nightly e15c2f1c predates #17307.",
+        "change": "Merge #17308: reject integer trace_get indices (-32602 recommended)."
       },
       "geth": {
         "observed": "The fork reports a state-dependent rejection without a listed code, such as a blob fee cap below the blob base fee or a transaction type not active at the fork, as -32003 (since e26833e3), and keeps -32602 for call objects that are invalid regardless of state.",
@@ -380,8 +380,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "Individual replays omit `transactionHash`.",
-        "change": "Include `transactionHash` in trace_replayTransaction results, as block replays do."
+        "observed": "1.8.5 \u00b7 51a52c59 and the nightly e15c2f1c include `transactionHash` in individual replays (#17301), as block replays do.",
+        "change": "No change."
       }
     },
     "H18": {

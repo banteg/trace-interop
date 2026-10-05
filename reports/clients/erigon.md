@@ -4,7 +4,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.8.0-dev · 5cb6c867** (of 33 decisions): ✅ 31 agree (+1 since the previous capture) · ⚠️ 1 with no fix yet (1 on converged decisions) · ⚪ 1 not fully measured. 17 of these agreements are not yet in 3.7.1 · 8c1e3893. Upstream fix PRs: 22 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.8.0-dev · 96188a47** (of 33 decisions): ✅ 31 agree · ⚠️ 1 with no fix yet (1 on converged decisions) · ⚪ 1 not fully measured. 17 of these agreements are not yet in 3.7.1 · 8c1e3893. Upstream fix PRs: 22 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Erigon decisions by outcome, with fix PRs](erigon-work.svg)
 
@@ -12,14 +12,14 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.7.1` | [`8c1e3893`](https://github.com/erigontech/erigon/commit/8c1e3893d77d230720d172f1492d95b5777a862c) | 2026-10-01 | [2026-10-04](../../evidence/2026-10-04/eval/initial/manifest.json) |
-| `3.8.0-dev` | [`5cb6c867`](https://github.com/erigontech/erigon/commit/5cb6c8674de8ff3967d36356cfdcd0f0b88e31ce) | 2026-10-04 | [2026-10-04](../../evidence/2026-10-04/eval/initial/manifest.json) |
+| `3.7.1` | [`8c1e3893`](https://github.com/erigontech/erigon/commit/8c1e3893d77d230720d172f1492d95b5777a862c) | 2026-10-01 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
+| `3.8.0-dev` | [`96188a47`](https://github.com/erigontech/erigon/commit/96188a47395eb2a1f95e49d2c939f08fa15d66c7) | 2026-10-05 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 3.7.1 · 8c1e3893 | 3.8.0-dev · 5cb6c867 | Proposed change |
+| Behavior | 3.7.1 · 8c1e3893 | 3.8.0-dev · 96188a47 | Proposed change |
 | --- | --- | --- | --- |
 | [Filter composition and mode](../decisions/H03.md)<br>Both lists are combined with OR by default (6 records instead of 1). With `mode: "intersection"`, a one-sided filter returns `[]` instead of treating the empty side as unrestricted. The unrecognized `mode: "garbage"` is accepted and treated as union. | 🛠️ Fix submitted: [Erigon #24255](https://github.com/erigontech/erigon/pull/24255)<br>[Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) | ✅ Checked cases agree<br>[Filter all](../cases/a/filter-all.md) | Make intersection the default. Under either mode, ignore an omitted, null or empty side. Reject unknown mode values (`-32602` recommended).<br>[Address filtering](https://github.com/erigontech/erigon/blob/e26d9bd4056586e004488c31b561fb2663d46019/rpc/jsonrpc/trace_filtering.go#L311) |
 | [Post-merge reward records](../decisions/H05.md)<br>The linked case differs from the proposed behavior. | 🛠️ Fix submitted: [Erigon #24295](https://github.com/erigontech/erigon/pull/24295)<br>[Genesis filter](../cases/probes-forks/genesis-filter.md) | ✅ Checked cases agree<br>[_reference/block/0x30](../cases/a/_reference/block/0x30.md) | The genesis block has no transaction or reward records.<br>[Address filtering](https://github.com/erigontech/erigon/blob/e26d9bd4056586e004488c31b561fb2663d46019/rpc/jsonrpc/trace_filtering.go#L311) · [Call frames and precompiles](https://github.com/erigontech/erigon/blob/e26d9bd4056586e004488c31b561fb2663d46019/rpc/jsonrpc/trace_adhoc.go#L378) |
@@ -43,7 +43,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 3.7.1 · 8c1e3893 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
-| 3.8.0-dev · 5cb6c867 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 3.8.0-dev · 96188a47 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 

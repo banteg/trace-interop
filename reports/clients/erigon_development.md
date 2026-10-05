@@ -6,13 +6,13 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.8.0-dev` | [`5cb6c867`](https://github.com/erigontech/erigon/commit/5cb6c8674de8ff3967d36356cfdcd0f0b88e31ce) | 2026-10-04 | [2026-10-04](../../evidence/2026-10-04/eval/initial/manifest.json) |
+| `3.8.0-dev` | [`96188a47`](https://github.com/erigontech/erigon/commit/96188a47395eb2a1f95e49d2c939f08fa15d66c7) | 2026-10-05 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 3.8.0-dev · 5cb6c867 | Proposed change |
+| Behavior | 3.8.0-dev · 96188a47 | Proposed change |
 | --- | --- | --- |
 | [Invalid parameters and rejected calls](../decisions/H14.md)<br>Malformed raw transactions and an unknown option use error codes other than `-32602`, and an unknown filter field is accepted. 3.7.0 drops `input` and every post-Berlin call field, so an `input`-only call runs with empty calldata. 3.8.0-dev · a2a19253 includes #24290, #24294, #24334, #24351 and #24336: it decodes `input` and the post-Berlin fields, treats an explicit null as omitted, rejects a chainId for another chain and rejects disagreeing `data` and `input` with -32602. | ⚠️ Differs · [Erigon #24536](https://github.com/erigontech/erigon/pull/24536) (partial fix)<br>[Filter unknown field](../cases/a/filter-unknown-field.md) | Reject malformed input, unknown filter fields and unknown trace types (`-32602` recommended), separately from execution rejection. Ship the call-field fixes in a release. Checked requirements: Malformed input returns an error (-32602 recommended). The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended). Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.<br>[Signed transaction replay](https://github.com/erigontech/erigon/blob/e26d9bd4056586e004488c31b561fb2663d46019/rpc/jsonrpc/trace_adhoc.go#L1695) · [Call simulation](https://github.com/erigontech/erigon/blob/e26d9bd4056586e004488c31b561fb2663d46019/rpc/jsonrpc/trace_adhoc.go#L1096) |
 
@@ -22,7 +22,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 3.8.0-dev · 5cb6c867 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 3.8.0-dev · 96188a47 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -30,7 +30,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Single-block hash selection in trace_filter](../decisions/H33.md) | 3.8.0-dev · 5cb6c867 | 9 blocked cases: Scenario setup stopped: Invalid forkchoice state. | [After/filter hash a](../cases/reorg-safe/after/filter-hash-a.md) · [After/filter hash b](../cases/reorg-safe/after/filter-hash-b.md) |
+| [Single-block hash selection in trace_filter](../decisions/H33.md) | 3.8.0-dev · 96188a47 | 9 blocked cases: Scenario setup stopped: Invalid forkchoice state. | [After/filter hash a](../cases/reorg-safe/after/filter-hash-a.md) · [After/filter hash b](../cases/reorg-safe/after/filter-hash-b.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

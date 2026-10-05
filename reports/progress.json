@@ -39,7 +39,7 @@
     {
       "builds": {
         "development": {
-          "agree": 30,
+          "agree": 31,
           "build": [
             "3.8.0-dev \u00b7 5cb6c867"
           ],
@@ -58,14 +58,14 @@
       "client": "erigon",
       "counted": true,
       "counts": {
-        "agree": 30,
+        "agree": 31,
         "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 2
+        "unmeasured": 1
       },
-      "dev_only": 16,
+      "dev_only": 17,
       "name": "Erigon",
       "prs": {
         "merged": 22,
@@ -75,7 +75,7 @@
     {
       "builds": {
         "development": {
-          "agree": 31,
+          "agree": 32,
           "build": [
             "2.2.0-preview \u00b7 6dff813b"
           ],
@@ -94,14 +94,14 @@
       "client": "nethermind",
       "counted": true,
       "counts": {
-        "agree": 31,
+        "agree": 32,
         "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 1
+        "unmeasured": 0
       },
-      "dev_only": 14,
+      "dev_only": 15,
       "name": "Nethermind",
       "prs": {
         "merged": 47,

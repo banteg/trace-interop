@@ -41,14 +41,14 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15145 |
-| 🟡 Partial | 851 |
+| 🔎 Assessed | 15178 |
+| 🟡 Partial | 818 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 493 |
 | 🔎 Control | 37 |
 
 
-Of the partial observations, 769 already have a differing assertion; 82 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
+Of the partial observations, 769 already have a differing assertion; 49 have only support or evidence gaps alongside their checked assertions. Result-schema validation is reported separately.
 
 
 ### Unevaluated properties
@@ -98,10 +98,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H15 | blocked | Depends on H15: The client may reject its default gas budget for insufficient funds; gas defaulting requires a successful eth_call control. Observed rpc_error -32603 Internal error. | 4 |
 | H15 | blocked | No receipt gas or execution-gas witness was captured. | 6 |
 | H15 | blocked | The reference field-gas-omitted-allowance-eth-call returned no successful output. | 2 |
-| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 8 |
-| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21000..23137 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 32 |
-| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=21700..26335 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 10 |
-| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=34829..43536 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 32 |
+| H15 | blocked | The refund is not independently derived; balances settle within the refund bound. Gas=120918..151147 (root execution gas plus independently calculated Prague intrinsic/floor cost, less any refund), price=2000000000, expected tip=1998322570/gas, burn=1677430/gas, blob fee and destroyed wei=0. | 1 |
 | H15 | blocked | eth_call: base_fee rejection; trace_call: malformed_json. | 40 |
 | H15 | blocked | eth_call: base_fee rejection; trace_call: unclassified RPC error: internal error. | 56 |
 | H15 | blocked | eth_call: execution output (224 bytes); trace_call: unclassified RPC error: internal error. | 56 |

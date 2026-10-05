@@ -2,8 +2,9 @@
 
 No client response is an input. Unsupported programs fail closed. This is not a
 general EVM: calls, creations and exceptional halts need separate fixtures. Storage is
-modelled only for slots whose transaction-start values the fixture anchors in STORAGE, or
-for a fresh (just-created) account, whose slots start at zero.
+modelled only for slots whose transaction-start values the fixture anchors in STORAGE, for
+a fresh (just-created) account, whose slots start at zero, or for an account whose complete
+storage STORAGE lists (COMPLETE_STORAGE), whose other slots are zero.
 """
 import re
 
@@ -32,6 +33,22 @@ class OutOfGas(UnsupportedProgram):
     """Execution provably halts for lack of gas, without a modeled VM trace."""
 
 
+def sstore_refund(original, current, value):
+    """The change one SSTORE makes to the EIP-3529 refund counter, under EIP-2200 semantics."""
+    if current == value:
+        return 0
+    if original == current:
+        return 4800 if original and not value else 0
+    change = 0
+    if original and not current:
+        change -= 4800
+    elif original and not value:
+        change += 4800
+    if original == value:
+        change += 19900 if original == 0 else 2800
+    return change
+
+
 def intrinsic(data, creation=False):
     raw = bytes.fromhex(data.removeprefix('0x'))
     return 21000 + sum(4 if b == 0 else 16 for b in raw) + (32000 + 2*((len(raw)+31)//32) if creation else 0)
@@ -58,7 +75,7 @@ def execute(code, gas, calldata='0x', environment=None):
         storage=env.get('STORAGE',{})
         if slot in storage:
             return storage[slot]
-        if env.get('FRESH_ACCOUNT'):
+        if env.get('FRESH_ACCOUNT') or env.get('COMPLETE_STORAGE'):
             return 0
         raise UnsupportedProgram('unanchored storage read')
 
@@ -133,19 +150,8 @@ def execute(code, gas, calldata='0x', environment=None):
                         raise OutOfGas('SSTORE sentry requires an OOG model')
                     before=original_value(slot)
                     # EIP-2200 with EIP-2929 cold surcharges and EIP-3529 refunds.
-                    if now==value:
-                        cost=cold+100
-                    elif before==now:
-                        cost=cold+(20000 if before==0 else 2900)
-                        refund+=4800 if before and not value else 0
-                    else:
-                        cost=cold+100
-                        if before and not now:
-                            refund-=4800
-                        elif before and not value:
-                            refund+=4800
-                        if before==value:
-                            refund+=19900 if before==0 else 2800
+                    cost=cold+(20000 if before==0 else 2900) if now!=value and before==now else cold+100
+                    refund+=sstore_refund(before,now,value)
                     written[slot]=value
                     store={'key':hex(slot),'val':hex(value)}
             elif op in [0x5c,0x5d]:
@@ -214,8 +220,8 @@ def execute(code, gas, calldata='0x', environment=None):
                 break
     except (IndexError, OverflowError) as exc:
         raise UnsupportedProgram('invalid model program') from exc
-    # refund is the EIP-3529 counter before the one-fifth cap; a REVERT discards it.
-    return {'code': code, 'ops': steps, 'refund': 0 if reverted else refund}, output, reverted
+    # refund is the EIP-3529 counter before the one-fifth cap; a REVERT discards it and the writes.
+    return {'code': code, 'ops': steps, 'refund': 0 if reverted else refund, 'writes': {} if reverted else written}, output, reverted
 
 
 ENVIRONMENT = [0x30, 0x32, 0x33, 0x34, 0x3a, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x48]

@@ -5,7 +5,7 @@ from eth_hash.auto import keccak
 from .chain_model import decode_transaction, resolve_block
 from .oracles import TREE
 from .rules import accounting_topic
-from .vm_model import intrinsic, execute, differences, reported_environment, UnsupportedProgram, OutOfGas
+from .vm_model import intrinsic, execute, differences, reported_environment, sstore_refund, UnsupportedProgram, OutOfGas
 from functools import lru_cache
 
 
@@ -205,16 +205,132 @@ def opcodes(code):
         i+=1+(raw[i]-0x5f if 0x60<=raw[i]<=0x7f else 0)
 
 
-def modelled_refund(tx, block, context, method, code):
-    """The refund counter of an independently executable root program, or None."""
+def modelled_refund(tx, block, context, method, code, storage=None):
+    """The refund counter of an independently executable root program, or None. `storage`, when
+    known, is the root account's complete storage at the transaction's start."""
     if not isinstance(code,str) or code in ['0x','']:
         return None
+    env=root_environment(tx,block,context,method)
+    if storage is not None:
+        env.update(STORAGE=storage,COMPLETE_STORAGE=True)
     try:
         gas=tx['gas']-intrinsic(tx['data'],tx['to'] is None)-tx.get('intrinsic_extra',0)
-        steps,_,_=execute(code,gas,'0x' if tx['to'] is None else tx['data'],root_environment(tx,block,context,method))
+        steps,_,_=execute(code,gas,'0x' if tx['to'] is None else tx['data'],env)
     except (UnsupportedProgram,ValueError,KeyError):
         return None
     return steps['refund']
+
+
+def genesis_storage(context, address):
+    """An account's complete storage at any fixture block, its genesis slots, when no fixture
+    transaction targets or names it and no other genesis code names it; None otherwise."""
+    if not address:
+        return None
+    name=address.lower().removeprefix('0x')
+    if any(name in str(code).lower() for a,code in context.get('_codes',{}).items() if a!=address.lower()):
+        return None
+    for b in context.get('_blocks',{}).values():
+        for tx in b['transactions']:
+            if tx['to']==address.lower() or name in tx['data'].lower():
+                return None
+    return {int(k,16):int(v,16) for k,v in mapping(mapping(context.get('_alloc',{}).get(address.lower())).get('storage')).items()}
+
+
+def bundle_storage(context, block, method, priors, tx, codes, exists, nonces):
+    """The root account's complete storage when `tx` starts, after the bundle items before it, or
+    None. Each item is its own transaction, so an earlier item's surviving writes are the next
+    item's original values."""
+    storage=genesis_storage(context,tx['to'])
+    for prior in priors if storage is not None else []:
+        if prior['to']!=tx['to']:
+            # Another account's code can only reach this one by naming it, which genesis_storage
+            # rules out for genesis code; a bundle creation's initcode is the item's own data.
+            if prior['to'] is None and tx['to'].removeprefix('0x') in prior['data'].lower():
+                return None
+            continue
+        code=execution_code(prior,codes,exists,nonces,context.get('_chain_id'))
+        env=dict(root_environment(prior,block,context,method),STORAGE=storage,COMPLETE_STORAGE=True)
+        try:
+            gas=10_000_000 if prior['gas'] is None else prior['gas']-intrinsic(prior['data'],False)
+            steps,_,_=execute(code,gas,prior['data'],env)
+        except (UnsupportedProgram,ValueError,KeyError,TypeError):
+            return None
+        storage={**storage,**steps['writes']}
+    return storage
+
+
+def traced_refund(vm, frames, diff, codes):
+    """The EIP-3529 refund counter, before the one-fifth cap, of a multi-frame execution: its
+    vmTrace SSTOREs in execution order, placed in each frame's storage context by the call frames
+    and priced from the state diff's original values. None when a frame cannot be placed or a
+    write lacks its reported store. Failed frames keep no writes and no refund."""
+    frames=[f for f in frames if isinstance(f,dict) and isinstance(f.get('traceAddress'),list)]
+    children={}
+    for f in frames:
+        children.setdefault(tuple(f['traceAddress'][:-1]),[]).append(f) if f['traceAddress'] else None
+    roots=[f for f in frames if f['traceAddress']==[]]
+    if len(roots)!=1 or not isinstance(vm,dict) or roots[0].get('error'):
+        return 0 if roots and roots[0].get('error') else None
+    codes=dict(codes)
+
+    def callee(frame):
+        action=mapping(frame.get('action'))
+        if frame.get('type')=='create':
+            return action.get('init'), mapping(frame.get('result')).get('address')
+        return codes.get(str(action.get('to')).lower(),'0x'), str(action.get('to')).lower()
+
+    writes=[]
+
+    def walk(node, context, path):
+        code=bytes.fromhex(str(node.get('code','0x')).removeprefix('0x'))
+        queue=list(children.get(tuple(path),[]))
+        for op in node.get('ops') or []:
+            pc=op.get('pc')
+            ex=op.get('ex')
+            if isinstance(pc,int) and pc<len(code) and code[pc]==0x55 and ex is not None:
+                store=mapping(ex).get('store')
+                if not store:
+                    raise ValueError('an executed SSTORE lacks its store')
+                writes.append((context,int(store['key'],16),int(store['val'],16)))
+            sub=op.get('sub')
+            if not isinstance(sub,dict):
+                continue
+            if str(sub.get('code','0x')) in ['0x',''] and not sub.get('ops'):
+                if queue and callee(queue[0])[0] in ['0x','',None]:
+                    queue.pop(0)  # A call into an account without code may or may not have a frame.
+                continue
+            while queue and callee(queue[0])[0] in ['0x','',None]:
+                queue.pop(0)
+            if not queue or str(callee(queue[0])[0]).lower()!=str(sub.get('code')).lower():
+                raise ValueError('a vmTrace frame does not match the next call frame')
+            frame=queue.pop(0)
+            kind=mapping(frame.get('action')).get('callType')
+            target=context if kind in ['delegatecall','callcode'] else callee(frame)[1]
+            if frame.get('type')=='create' and target:
+                codes[target.lower()]=mapping(frame.get('result')).get('code','0x')
+            if not frame.get('error'):
+                walk(sub,str(target).lower(),frame['traceAddress'])
+
+    try:
+        walk(vm,callee(roots[0])[1],[])
+    except (ValueError,KeyError,TypeError):
+        return None
+    # A slot the state diff reports starts at its `from`; any other written slot ends where it started.
+    original={}
+    for address,account in mapping(diff).items():
+        for key,change in mapping(mapping(account).get('storage')).items():
+            change=mapping(change)
+            start=change.get('-') if '-' in change else '0x0' if '+' in change else mapping(change.get('*')).get('from')
+            if start is not None:
+                original[(address.lower(),int(key,16))]=int(start,16)
+    for context,key,value in writes:
+        original.setdefault((context,key),[v for c,k,v in writes if (c,k)==(context,key)][-1])
+    current,refund={},0
+    for context,key,value in writes:
+        slot=(context,key)
+        refund+=sstore_refund(original[slot],current.get(slot,original[slot]),value)
+        current[slot]=value
+    return refund
 
 
 def settled_gas(deltas, miner, low, high, tip_price, burn_price, blob):
@@ -416,11 +532,24 @@ def assess(case, observation, peers, topics):
                 # is known not to refund.
                 code=execution_code(tx,codes,exists,nonces,context.get('_chain_id'))
                 refundable=code is None or len(trace)>1 or 0x55 in opcodes(code)
-                refund=modelled_refund(tx,block,context,method,code) if refundable and len(trace)==1 else None
+                refund,derived=None,'modelled'
+                if refundable and len(trace)==1:
+                    storage=bundle_storage(context,block,method,[p for p,_,_ in models[:i]] if method=='trace_callMany' else [],
+                                           tx,codes,exists,nonces) if tx['to'] else None
+                    refund=modelled_refund(tx,block,context,method,code,storage)
+                elif refundable:
+                    # The same call's vmTrace, from this or a sibling trace selection, places each SSTORE.
+                    vm=e.get('vmTrace') or next((mapping(observed(c['name'])).get('vmTrace') for c in context.get('cases',[])
+                            if c['request']['method']==method and c['request']['params'][0]==case['request']['params'][0]
+                            and c['request']['params'][2:]==case['request']['params'][2:]
+                            and isinstance(mapping(observed(c['name'])).get('vmTrace'),dict)), None) if method=='trace_call' else None
+                    refund=traced_refund(vm,trace,diff,codes) if vm else None
+                    derived='traced'
                 if refund is not None:
-                    # A modelled single-frame root has an exact EIP-3529 refund, capped at a fifth.
+                    # An exact EIP-3529 refund, capped at a fifth.
                     gas=low=max(spent-min(refund,spent//5),floor)
-                    source=f'root execution gas plus independently calculated Prague intrinsic/floor cost, less the modelled refund {refund}'
+                    source=(f'root execution gas plus independently calculated Prague intrinsic/floor cost, less the {derived} refund {refund}'
+                            + (' (from the vmTrace SSTOREs and the state diff)' if derived=='traced' else ''))
                 else:
                     gas,low=max(spent,floor),max(spent-spent//5 if refundable else spent,floor)
                     source='root execution gas plus independently calculated Prague intrinsic/floor cost'+(', less any refund' if refundable else '')

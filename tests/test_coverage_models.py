@@ -6,9 +6,9 @@ from pathlib import Path
 from trace_interop.cli import ROOT, read, load_observations
 from trace_interop.chain_model import load_chain, decode_transaction
 from trace_interop.coverage import supplement
-from trace_interop.execution_models import assess, balance_delta, created_address
+from trace_interop.execution_models import assess, balance_delta, bundle_storage, created_address, genesis_storage, traced_refund
 from trace_interop.presentation import verdict
-from trace_interop.vm_model import execute, differences, intrinsic, UnsupportedProgram, local_invariants
+from trace_interop.vm_model import execute, differences, intrinsic, sstore_refund, UnsupportedProgram, local_invariants
 
 
 class VMModelTests(unittest.TestCase):
@@ -175,6 +175,54 @@ class VMModelTests(unittest.TestCase):
         vm,_,_=execute('0x4400',100,environment={'PREVRANDAO':0})
         vm['ops'][0]['op']='DIFFICULTY'
         self.assertFalse(local_invariants(vm))
+
+
+class RefundModelTests(unittest.TestCase):
+    def test_sstore_refund_follows_eip_2200_and_3529(self):
+        for original, current, value, change in [(5, 5, 0, 4800), (0, 0, 1, 0), (5, 5, 5, 0), (5, 0, 5, -2000),
+                                                   (0, 1, 0, 19900), (5, 6, 0, 4800), (5, 6, 5, 2800), (5, 0, 7, -4800)]:
+            self.assertEqual(sstore_refund(original, current, value), change, (original, current, value))
+
+    def test_bundle_items_carry_their_writes_into_the_next_items_original_values(self):
+        target = '0x'+'44'*20
+        code = '0x600035600055'  # SSTORE(0, calldata word 0)
+        context = {'_codes': {target: code}, '_alloc': {target: {'code': code}}, '_blocks': {}}
+        call = lambda word: {'sender': '0x'+'11'*20, 'to': target, 'value': 0, 'data': '0x'+f'{word:064x}', 'gas': 100000,
+                             'price_cap': 0, 'tip_cap': 0, 'authorizations': [], 'nonce': 0}
+        args = (context, {'number': 1}, 'trace_callMany')
+        self.assertEqual(bundle_storage(*args, [], call(1), {target: code}, {target}, {}), {})
+        self.assertEqual(bundle_storage(*args, [call(7)], call(0), {target: code}, {target}, {}), {0: 7})
+        # A fixture transaction that targets the account leaves its storage unknown.
+        context['_blocks'] = {'0x1': {'number': 1, 'transactions': [dict(call(1), to=target, data='0x', hash='0x01')]}}
+        self.assertIsNone(genesis_storage(context, target))
+
+    def test_vmtrace_refund_places_writes_and_discards_failed_frames(self):
+        root, child = '0x'+'aa'*20, '0x'+'bb'*20
+        clear = {'code': '0x600060055500', 'ops': [{'pc': 4, 'cost': 2900, 'ex': {'used': 0, 'push': [], 'mem': None,
+                                                                                   'store': {'key': '0x5', 'val': '0x0'}}, 'sub': None}]}
+        def tree(failed):
+            vm = {'code': '0x6000600060006000600073'+child[2:]+'5af1', 'ops': [{'pc': 32, 'cost': 100, 'ex': {'used': 0, 'push': ['0x0' if failed else '0x1'], 'mem': None, 'store': None}, 'sub': clear}]}
+            frames = [{'type': 'call', 'traceAddress': [], 'action': {'callType': 'call', 'to': root}},
+                      dict({'type': 'call', 'traceAddress': [0], 'action': {'callType': 'call', 'to': child}}, **({'error': 'Reverted'} if failed else {}))]
+            return vm, frames
+        diff = {child: {'storage': {'0x'+'05'.rjust(64, '0'): {'*': {'from': '0x5', 'to': '0x0'}}}}}
+        codes = {child: clear['code']}
+        self.assertEqual(traced_refund(*tree(False), diff, codes), 4800)
+        self.assertEqual(traced_refund(*tree(True), {}, codes), 0)
+        # A vmTrace frame that matches no call frame is not placed.
+        self.assertIsNone(traced_refund(*tree(False), diff, {child: '0x00'}))
+
+    def test_vmtrace_refund_of_the_frozen_call_tree_is_zero(self):
+        import json
+
+        from trace_interop.cli import load_observations
+        run = ROOT/'evidence/2026-10-04/eval/initial'
+        observations = load_observations(run)
+        alloc = read(ROOT/'fixtures/chains/initial/genesis.json')['alloc']
+        codes = {'0x'+a.removeprefix('0x').lower(): v.get('code', '0x') for a, v in alloc.items()}
+        result = lambda name: json.loads(observations[name]['erigon_development']['raw_response'])['result']
+        self.assertEqual(traced_refund(result('call-tree-vmTrace-priced')['vmTrace'], result('call-tree-trace-priced')['trace'],
+                                       result('call-tree-stateDiff-priced')['stateDiff'], codes), 0)
 
 
 class CallGasTwinTests(unittest.TestCase):
@@ -462,6 +510,22 @@ class ReviewRegressionTests(unittest.TestCase):
         checks = [c for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'}) if c['topic'] == 'H15']
         self.assertTrue(checks)
         self.assertNotIn('matches', {c['status'] for c in checks}, checks)
+
+    def test_untouched_account_storage_gives_the_exact_refund(self):
+        target = '0x'+'33'*20
+        case = {'name': 'zero-to-one-no-refund',
+                'context': {'_head': {'number': '0x1'}, '_blocks': {'0x1': {'number': 1, 'base_fee': 1, 'miner': self.miner, 'transactions': []}},
+                            '_alloc': {self.sender: {'balance': '0x1000000'}, target: {'code': '0x600160005500'}},
+                            '_codes': {self.sender: '0x', target: '0x600160005500'}},
+                'request': {'method': 'trace_call', 'params': [{'from': self.sender, 'to': target, 'gas': '0x186a0', 'gasPrice': '0x2'}, ['trace', 'stateDiff'], 'latest']}}
+        # No fixture transaction or code reaches the target, so its slot starts at genesis zero and a
+        # zero-to-one SSTORE has no refund: the call is charged its full 43,106 gas.
+        charged = 43106
+        result = {'trace': [{'type': 'call', 'traceAddress': [], 'result': {'gasUsed': hex(22106), 'output': '0x'}}],
+                  'stateDiff': {self.sender: {'balance': {'*': {'from': hex(1000000), 'to': hex(1000000-2*charged)}}}, self.miner: {'balance': {'+': hex(charged)}}}}
+        checks = [c for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'}) if c['topic'] == 'H15']
+        self.assertEqual([c['status'] for c in checks], ['matches'], checks)
+        self.assertIn('less the modelled refund 0', checks[0]['detail'])
 
     def test_capture_cleanup_only_removes_its_own_artifacts(self):
         from unittest.mock import patch

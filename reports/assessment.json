@@ -24,10 +24,10 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 15145,
+    "assessed": 15178,
     "blocked": 493,
     "control": 37,
-    "partial": 851,
+    "partial": 818,
     "unassessed": 0
   },
   "evidence": {
@@ -75,7 +75,7 @@
     "spec.lock.json": "4279b2d7c17088254ad313f6ddd58ba9d0736ac9df91dd1c46451d53783e6a88",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "170a9f9f393f1317b1ea08059e626f834208fd945e560f38c2790b52aa06198e",
-    "trace_interop/execution_models.py": "ea1caa89675076af1a853cb407295ad9e61b7a5d2507d562a3c71a0d80b162ff",
+    "trace_interop/execution_models.py": "779b2c97af90cba4df552da23758b3f58da4676d27fd07d107cfd4b8e032e0da",
     "trace_interop/fee_policy.py": "89859fe4d2a85bf3ea800dd219b81e85da62554544025d47474b9d7a78ba61a8",
     "trace_interop/inventory.py": "c18981e20d46231a977703c3aba56d57af8adc6500f06a6880f24dcb68462f91",
     "trace_interop/isolation.py": "94ad3f9020425c909dd122bba3a221e38bcb78d5f8fe2e07e68fa2de5672dd7e",
@@ -91,7 +91,7 @@
     "trace_interop/tables.py": "338c20cfe1b1175188a5d656ae2f3af9564827d70d8bc9dcf157db6ad7dc0a6a",
     "trace_interop/validation.py": "36db4951a9f459c49476fe4639c6a00f9a597d00826e64e4bc1beaa0e96091e9",
     "trace_interop/versions.py": "0935eb1857cf902311cc61d6f998f3585e086e2a77b70ac3cfaac96fe15ffd54",
-    "trace_interop/vm_model.py": "d385b7627603df336cdbacea3cbf07db204a659c318180d44768b0f6b03eb9c8",
+    "trace_interop/vm_model.py": "c1a44665f1bba4ef0ba46829cd8f7e4fcdfb7ab045784503dd0cbfcd8204db6c",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
   "spec_commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf"

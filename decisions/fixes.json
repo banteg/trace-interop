@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-05",
+  "checked_at": "2026-10-06",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2529,10 +2529,17 @@
       "decisions": [
         "H33"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after."
+      "merged_at": "2026-10-06T03:41:00Z",
+      "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after.",
+      "uptake": {
+        "merge_commit": "d6af070e7aff681524ae679d2075786bc2887bff",
+        "builds": {
+          "1d62d893baed6c148313bb3d9d64f5c316d371e2": false,
+          "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14111",
@@ -2806,10 +2813,17 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "rejects JSON integer trace_get indices with -32602; with #17307 it covers Anvil's measured H14 differences"
+      "merged_at": "2026-10-05T23:08:05Z",
+      "note": "rejects JSON integer trace_get indices with -32602; with #17307 it covers Anvil's measured H14 differences",
+      "uptake": {
+        "merge_commit": "b8853b1d89a4218d93ac1bc4c7c4dda91ba77a46",
+        "builds": {
+          "e15c2f1caf7d8e792295bbfb898280e9cbb8e101": false,
+          "51a52c59cffd940f76eddd0b4bb1791aa4b5ac7f": false
+        }
+      }
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17309",

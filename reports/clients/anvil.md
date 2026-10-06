@@ -4,7 +4,7 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.8.4-nightly · e15c2f1c** (of 33 decisions): ✅ 17 agree (+3 since the previous capture) · 🛠️ 2 fix submitted · ⚠️ 5 with no fix yet (5 on converged decisions) · ⚪ 9 not fully measured. Upstream fix PRs: 12 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.8.4-nightly · e15c2f1c** (of 33 decisions): ✅ 17 agree (+3 since the previous capture) · 🛠️ 2 fix submitted · ⚠️ 5 with no fix yet (5 on converged decisions) · ⚪ 9 not fully measured. Upstream fix PRs: 13 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Anvil decisions by outcome, with fix PRs](anvil-work.svg)
 

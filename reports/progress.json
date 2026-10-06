@@ -32,8 +32,8 @@
       "dev_only": 2,
       "name": "Besu",
       "prs": {
-        "merged": 2,
-        "open": 22
+        "merged": 3,
+        "open": 21
       }
     },
     {
@@ -176,8 +176,8 @@
       "dev_only": 0,
       "name": "Anvil",
       "prs": {
-        "merged": 12,
-        "open": 2
+        "merged": 13,
+        "open": 1
       }
     }
   ],

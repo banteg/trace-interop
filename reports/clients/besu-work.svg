@@ -63,8 +63,8 @@
 <rect class="b-fix" x="16" y="308" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="321" text-anchor="middle">H33</text>
 <text class="label" x="70" y="321">Single-block hash selection in trace_filter</text>
-<rect class="pr" x="400" y="308" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="321" text-anchor="middle">#11407</text>
+<rect class="b-fix" x="400" y="308" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="321" text-anchor="middle">#11407</text>
 <text class="label head" x="16" y="353">No fix · converged (11)</text>
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H05</text>

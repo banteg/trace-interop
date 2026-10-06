@@ -59,8 +59,8 @@
 <text class="label" x="70" y="233">Invalid parameters and rejected calls</text>
 <rect class="b-fix edge partial" x="400" y="220" width="109" height="18" rx="4"/>
 <text class="n-fix" x="454.5" y="233" text-anchor="middle">Foundry #17307</text>
-<rect class="pr edge partial" x="515" y="220" width="109" height="18" rx="4"/>
-<text class="label" x="569.5" y="233" text-anchor="middle">Foundry #17308</text>
+<rect class="b-fix edge partial" x="515" y="220" width="109" height="18" rx="4"/>
+<text class="n-fix" x="569.5" y="233" text-anchor="middle">Foundry #17308</text>
 <rect class="b-converged" x="16" y="244" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="257" text-anchor="middle">H15</text>
 <text class="label" x="70" y="257">Unsigned simulation fees and block environment</text>

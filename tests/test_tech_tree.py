@@ -49,6 +49,10 @@ def states(data):
 
 
 class TechTreeTests(unittest.TestCase):
+    def test_pr_totals_cover_every_tracked_pr_except_closed(self):
+        totals = tech_tree.build(tree(), **tracker(lib=('merged', 'open', 'closed')))['totals']
+        self.assertEqual((totals['merged'], totals['open']), (1, 3))
+
     def test_repository_tree_is_a_laid_out_dag(self):
         data = tech_tree.build(**tech_tree.load())
         nodes = {n['id']: n for n in data['nodes']}

@@ -83,13 +83,13 @@
 <rect class="b-unmeasured" x="16" y="348" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="361" text-anchor="middle">H09</text>
 <text class="label" x="70" y="361">Failed frame results and error labels</text>
-<rect class="pr edge partial" x="400" y="348" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="361" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="348" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="361" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="372" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="385" text-anchor="middle">H16</text>
 <text class="label" x="70" y="385">Fee accounting and sequential state diffs</text>
-<rect class="pr edge partial" x="400" y="372" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="385" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="372" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="385" text-anchor="middle">Foundry #17305</text>
 <rect class="b-fix edge partial" x="515" y="372" width="109" height="18" rx="4"/>
 <text class="n-fix" x="569.5" y="385" text-anchor="middle">Foundry #17312</text>
 <rect class="b-unmeasured" x="16" y="396" width="44" height="18" rx="4"/>
@@ -97,40 +97,40 @@
 <text class="label" x="70" y="409">New-account stateDiff encoding</text>
 <rect class="b-agree" x="400" y="396" width="109" height="18" rx="4"/>
 <text class="n-agree" x="454.5" y="409" text-anchor="middle">Foundry #17106</text>
-<rect class="pr edge partial" x="515" y="396" width="109" height="18" rx="4"/>
-<text class="label" x="569.5" y="409" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="515" y="396" width="109" height="18" rx="4"/>
+<text class="n-fix" x="569.5" y="409" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="420" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="433" text-anchor="middle">H18</text>
 <text class="label" x="70" y="433">EIP-7702 code changes in stateDiff</text>
-<rect class="pr edge partial" x="400" y="420" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="433" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="420" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="433" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="444" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="457" text-anchor="middle">H19</text>
 <text class="label" x="70" y="457">vmTrace executing bytecode</text>
-<rect class="pr edge partial" x="400" y="444" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="457" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="444" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="457" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="468" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="481" text-anchor="middle">H20</text>
 <text class="label" x="70" y="481">vmTrace step timing and deltas</text>
-<rect class="pr edge partial" x="400" y="468" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="481" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="468" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="481" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="492" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="505" text-anchor="middle">H23</text>
 <text class="label" x="70" y="505">Special-action address matching</text>
-<rect class="pr edge partial" x="400" y="492" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="505" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="492" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="505" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="516" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="529" text-anchor="middle">H26</text>
 <text class="label" x="70" y="529">Account deletion across Cancun</text>
 <rect class="b-agree" x="400" y="516" width="109" height="18" rx="4"/>
 <text class="n-agree" x="454.5" y="529" text-anchor="middle">Foundry #17106</text>
-<rect class="pr edge partial" x="515" y="516" width="109" height="18" rx="4"/>
-<text class="label" x="569.5" y="529" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="515" y="516" width="109" height="18" rx="4"/>
+<text class="n-fix" x="569.5" y="529" text-anchor="middle">Foundry #17305</text>
 <rect class="b-unmeasured" x="16" y="540" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="553" text-anchor="middle">H28</text>
 <text class="label" x="70" y="553">Historical state at system-operation boundari…</text>
-<rect class="pr edge partial" x="400" y="540" width="109" height="18" rx="4"/>
-<text class="label" x="454.5" y="553" text-anchor="middle">Foundry #17305</text>
+<rect class="b-fix edge partial" x="400" y="540" width="109" height="18" rx="4"/>
+<text class="n-fix" x="454.5" y="553" text-anchor="middle">Foundry #17305</text>
 <rect class="b-agree" x="16" y="572" width="130" height="18" rx="4"/>
 <text class="n-agree" x="81" y="585" text-anchor="middle">in measured build</text>
 <rect class="b-fix" x="152" y="572" width="150" height="18" rx="4"/>

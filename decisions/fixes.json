@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-06",
+  "checked_at": "2026-10-07",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -1678,7 +1678,7 @@
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/24032",
-      "title": "execution: test crash recovery during catch-up reorgs",
+      "title": "execution: test catch-up crash recovery and fix forkchoice persistence",
       "client": "erigon",
       "decisions": [],
       "state": "open",
@@ -2754,10 +2754,17 @@
         "H26",
         "H28"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301\u2013#17312 replays every mined-probes block and agrees on H09, H16\u2013H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833"
+      "merged_at": "2026-10-06T10:32:23Z",
+      "note": "not a fix: a one-shot parent beacon root for the next mined block, so the replica can reproduce mined-probes past block 2 and measure these decisions; replica.py sets each fixture block's root through it and keeps the zero root on builds without it. A build merging #17301\u2013#17312 replays every mined-probes block and agrees on H09, H16\u2013H20 and H28 (evidence/2026-10-03/anvil-matt-prs); H23 and H26 then wait on bluealloy/revm#3833",
+      "uptake": {
+        "merge_commit": "f5fb603f3aaacf736494783727f0d2ab2b97c3e3",
+        "builds": {
+          "e15c2f1caf7d8e792295bbfb898280e9cbb8e101": false,
+          "51a52c59cffd940f76eddd0b4bb1791aa4b5ac7f": false
+        }
+      }
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17306",

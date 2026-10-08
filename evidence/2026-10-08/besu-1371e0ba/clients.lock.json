@@ -1,0 +1,29 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-08T08:59:06.603288353Z",
+      "digest": "hyperledger/besu@sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0",
+      "image_id": "sha256:51c59c842eb1ba4f975695a411001d922408b7010c689b6396f35db35900a6a9",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "1371e0bab855c05e12164e3587ab1f518b64f93d",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolution": "latest-published",
+  "resolution_started_at": "2026-10-08T09:21:34.792096+00:00",
+  "resolved_at": "2026-10-08T09:21:36.068895+00:00"
+}

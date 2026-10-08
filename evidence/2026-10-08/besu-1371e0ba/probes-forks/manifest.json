@@ -1,0 +1,2364 @@
+{
+  "clients": {
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-08T08:59:06.603288353Z",
+      "digest": "hyperledger/besu@sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0",
+      "image_id": "sha256:51c59c842eb1ba4f975695a411001d922408b7010c689b6396f35db35900a6a9",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "1371e0bab855c05e12164e3587ab1f518b64f93d",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    }
+  },
+  "corpus": "probes-forks",
+  "finished_at": "2026-10-08T09:29:11.606023+00:00",
+  "fixture_manifest_sha256": "ae033f54344e0594050dcc7c05ca4a79da222bbf10bf3dee7449268be928e30b",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x7d97fd",
+    "blobGasUsed": "0x20000",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0xbebc200",
+    "gasUsed": "0x18d04",
+    "hash": "0xb3ba0330884cb90c46699588aab05619155565a21fecf9b9f9482693556f2316",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000200000002000000000000000000002000000000000000000000000000800000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009000000000000000000000000000000000000000800000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x48",
+    "parentBeaconBlockRoot": "0x47c896f5986ec29f58ec60eec56ed176910779e9fc9cf45c3c090126aeb21acd",
+    "parentHash": "0x7964ce394f9773783863d05cf0826d125024c5f5dac03c07d5d7832c551a40de",
+    "receiptsRoot": "0x8242a788eddcd94326c2acb0a6cb547ca411104a65e3c6c5f751ce1c7f14cd15",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x42da2e489b18e750a877106cd83e76fd16d4234d530e8290eda403582c50aac4",
+    "timestamp": "0x2d0",
+    "transactionsRoot": "0x4a0b6fa744634b80a04463acab0cad7eb4aa563337ed6f95ec3728d7ef745a99",
+    "withdrawalsRoot": "0xe0ab3dbb84deba21eca1dff9c98528bd2f6a427acd3d30f09ca504c7f0ef0a3b"
+  },
+  "hive_binary_sha256": "c7b0f84281a3327893d6db15a3009f95dfee80152d96377eddfb2784c3af8f42",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "612bbe83f0809d01fc10dbdec612599c1754d9315f989bce755b53fc650c19a0",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x48",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "many-write-delete-storage",
+      "probes": [
+        {
+          "address": "0x8a700907005c5c3b442322abfb6bec88772ebd11",
+          "expected": {
+            "balance": {
+              "-": "0x0"
+            },
+            "code": {
+              "-": "0x36156008576000ff5b602a60005500"
+            },
+            "nonce": {
+              "-": "0x1"
+            }
+          },
+          "index": 2,
+          "kind": "account",
+          "requirement": "Before Cancun the final item deletes the account created by an earlier item.",
+          "topic": "H26"
+        },
+        {
+          "address": "0x8a700907005c5c3b442322abfb6bec88772ebd11",
+          "expected": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0x000000000000000000000000000000000000000000000000000000000000002a"
+          },
+          "index": 2,
+          "kind": "deleted-storage",
+          "requirement": "Account deletion wipes all storage; optional - entries report the item's pre-values, including slot zero written to 42 by the preceding item.",
+          "topic": "H26"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x600f80600b6000396000f336156008576000ff5b602a60005500",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x8a700907005c5c3b442322abfb6bec88772ebd11"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x01",
+                "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+                "gas": "0x493e0",
+                "gasPrice": "0x77359400",
+                "to": "0x8a700907005c5c3b442322abfb6bec88772ebd11"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "_control/beacon-timestamp-55",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "State at block 55 predates block 56's beacon-root write: the timestamp slot reads zero.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "_control/beacon-root-55",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "kind": "outputs",
+          "requirement": "State at block 55 predates block 56's beacon-root write: the root slot reads zero.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x37"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x0000000000000000000000000000000000000000000000000000000000000230",
+      "name": "_control/beacon-timestamp-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x230",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "expected_control": "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd",
+      "name": "_control/beacon-root-56",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02",
+          "0x222f",
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "rewards-to",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A reward matches toAddress by author, after its block's transactions: block reward, then uncle rewards in ommer order.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-intersection",
+      "probes": [
+        {
+          "depends": {
+            "reason": "The request names the default mode explicitly, so a server that rejects the mode field fails before matching rewards.",
+            "topic": "H03"
+          },
+          "expected": [],
+          "kind": "records",
+          "requirement": "A reward has no from side, so an intersection with a populated fromAddress excludes it.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-intersection-default",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "A reward has no from side, so an intersection with a populated fromAddress excludes it. Intersection is the default mode.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-union",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x20f1a75baf485b3e05dbcf13ffeb10dfe11fae25e85c994900d918ad7225015e",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+                "value": "0x1"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x8422e05f9445c7ccabda85615c4ec61664212e8e30a3d45301485bc42e948797",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "In union mode a toAddress match by author suffices for a reward; sender roots precede their block's rewards.",
+          "topic": "H23"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sender-skip",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7",
+              "transactionPosition": 0,
+              "type": "call"
+            }
+          ],
+          "kind": "records",
+          "requirement": "Filter first, then skip after matching records and take count, across block boundaries.",
+          "topic": "H03"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 2,
+            "count": 3,
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rewards-window",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A page over matching records crosses a block boundary and reward records in block, transaction, reward order.",
+          "topic": "H03"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 3,
+            "count": 5,
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x4"
+          }
+        ]
+      }
+    },
+    {
+      "name": "range-reversed",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32602,
+          "requirement": "An explicit fromBlock above toBlock is rejected (-32602 recommended), as eth_getLogs does.",
+          "topic": "H06"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x3",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "genesis-block",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x0"
+        ]
+      }
+    },
+    {
+      "name": "genesis-replay",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records. Block replay returns [].",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0x0",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "genesis-filter",
+      "probes": [
+        {
+          "expected": [],
+          "kind": "records",
+          "requirement": "The genesis block has no transaction or reward records.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x0",
+            "toBlock": "0x0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "genesis-range-rewards",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0xca7c8aea26c81f9bdb4d4a3e9ededebaa234273e58973c278705573b99ca4c97",
+              "blockNumber": 1,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "A range from genesis contributes no genesis reward; blocks 1 and 2 contribute their block rewards.",
+          "topic": "H05"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x0",
+            "toAddress": [
+              "0x0000000000000000000000000000000000000000"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "beacon-trace-55",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "trace_call at block 55 reads the beacon root of timestamp 560 only if block 55 stored it.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-many-55",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The first trace_callMany item at block 55 runs on the same post-block state as trace_call.",
+          "topic": "H28"
+        },
+        {
+          "index": 0,
+          "kind": "same-output",
+          "reference": "beacon-trace-55",
+          "requirement": "The one-item trace_callMany output equals trace_call at the same block.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "beacon-trace-56",
+      "probes": [
+        {
+          "expected": [
+            "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd"
+          ],
+          "kind": "outputs",
+          "requirement": "trace_call at block 56 reads the beacon root of timestamp 560 only if block 56 stored it.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "beacon-many-56",
+      "probes": [
+        {
+          "expected": [
+            "0x83472eda6eb475906aeeb7f09e757ba9f6663b9f6a5bf8611d6306f677f67ebd"
+          ],
+          "kind": "outputs",
+          "requirement": "The first trace_callMany item at block 56 runs on the same post-block state as trace_call.",
+          "topic": "H28"
+        },
+        {
+          "index": 0,
+          "kind": "same-output",
+          "reference": "beacon-trace-56",
+          "requirement": "The one-item trace_callMany output equals trace_call at the same block.",
+          "topic": "H28"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000230",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x000F3df6D732807Ef1319fB7B8bB8522d0Beac02"
+              },
+              [
+                "trace"
+              ]
+            ]
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "filter-null-members",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x20f1a75baf485b3e05dbcf13ffeb10dfe11fae25e85c994900d918ad7225015e",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+                "value": "0x1"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x8422e05f9445c7ccabda85615c4ec61664212e8e30a3d45301485bc42e948797",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x654aa64f5fbefb84c270ec74211b81ca8c44a72e",
+                "value": "0x1"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x56986d49e0794b39fb138c69bfb50002af01cff27e10648c7b1b5ec61efa44ef",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x7056a4af2966270142db7e76b0b51756578858880e2904948e7d2af43d021a65",
+              "blockNumber": 4,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xa3c11aae6b85617de77a09ce890b50546f904f8636bd4980ba504232d11486e5",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xd803681e487e6ac18053afc5a6cd813c86ec3e4d",
+                "value": "0x1"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xc70350195cb3501cc832a074062ca6f8e4e3e1c93b7fe777ad58a7c7f826f68a",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x478eae0e571ba000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x0a728c95283c121447117e4783e3f20acb8cc6274b8594e73ccd1537d6f744c7",
+              "blockNumber": 5,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "requirement": "Null mode, after, count and address lists are omitted, so blocks 2-5 return every record.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": null,
+            "count": null,
+            "fromAddress": null,
+            "fromBlock": "0x2",
+            "mode": null,
+            "toAddress": null,
+            "toBlock": "0x5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-omitted-toBlock",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-null-toBlock",
+      "probes": [
+        {
+          "kind": "same-result",
+          "reference": "filter-omitted-toBlock",
+          "requirement": "A null toBlock is omitted, so it resolves to the same latest head.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-omitted-fromBlock",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "toBlock": "0x48"
+          }
+        ]
+      }
+    },
+    {
+      "name": "filter-null-fromBlock",
+      "probes": [
+        {
+          "kind": "same-result",
+          "reference": "filter-omitted-fromBlock",
+          "requirement": "A null fromBlock is omitted, so it resolves to the same latest head.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": null,
+            "toBlock": "0x48"
+          }
+        ]
+      }
+    },
+    {
+      "name": "depth-limit",
+      "probes": [
+        {
+          "attempts": [
+            "call",
+            "create"
+          ],
+          "depth": 1024,
+          "kind": "depth",
+          "requirement": "Under the deepest executed frame, at depth 1024, the CALL and CREATE that fail the depth precheck each emit a failed frame with no result and no subtraces.",
+          "topic": "H29"
+        },
+        {
+          "attempts": [
+            "call",
+            "create"
+          ],
+          "depth": 1024,
+          "kind": "depth",
+          "labels": [
+            "Max call depth exceeded",
+            "Max call depth exceeded"
+          ],
+          "requirement": "A CALL or CREATE that fails the depth precheck has error \"Max call depth exceeded\".",
+          "topic": "H09"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60296022600039602960006000f060006000600060006000856102005a03f1505000601e80600b6000396000f360006000600060006000306102005a03f1601c57600060006000f0505b00",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x200000",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "0x3"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-access-list-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The access-list fields run at block 32, at Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x20"
+        ]
+      }
+    },
+    {
+      "name": "fork-access-list-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-access-list-at.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The access-list fields run at block 32, at Berlin (block 32).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "accessList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "storageKeys": []
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x20"
+        ]
+      }
+    },
+    {
+      "name": "fork-type1-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 1 with no access-list fields runs at block 31, before Berlin (block 32): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x1"
+          },
+          [
+            "trace"
+          ],
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-type1-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-type1-before.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 1 with no access-list fields runs at block 31, before Berlin (block 32): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x1"
+          },
+          "0x1f"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The dynamic-fees fields at block 35, before London (block 36) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The dynamic-fees fields run at block 36, at London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-at.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The dynamic-fees fields run at block 36, at London (block 36).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-type2-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 2 with no dynamic-fees fields runs at block 35, before London (block 36): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x2"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-type2-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-type2-before.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 2 with no dynamic-fees fields runs at block 35, before London (block 36): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x2"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The blob fields at block 55, before Cancun (block 56) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The blob fields run at block 56, at Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-at.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The blob fields run at block 56, at Cancun (block 56).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [
+              "0x015a4cab4911426699ed34483de6640cf55a568afc5c5edffdcbd8bcd4452f68"
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-type3-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 3 with no blob fields runs at block 55, before Cancun (block 56): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x3"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-type3-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-type3-before.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 3 with no blob fields runs at block 55, before Cancun (block 56): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x3"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-authorization-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "The authorization fields at block 59, before Prague (block 60) name a feature not active at the selected block, so the call is rejected (-32003 recommended).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-at",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The authorization fields run at block 60, at Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "name": "fork-authorization-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-authorization-at.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "The authorization fields run at block 60, at Prague (block 60).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "authorizationList": [
+              {
+                "address": "0x00000000000000000000000000000000000000ee",
+                "chainId": "0xc72dd9d5e883e",
+                "nonce": "0x0",
+                "r": "0x86af3a52abd32c04ce6704ee2710dab8447f7af79930e97d893a2ec773c02964",
+                "s": "0x4043b2933aefee93438b1a0599d16ee5f806844140a43d4883e5a2f99423862b",
+                "yParity": "0x1"
+              }
+            ],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "name": "fork-type4-before",
+      "probes": [
+        {
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 4 with no authorization fields runs at block 59, before Prague (block 60): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x4"
+          },
+          [
+            "trace"
+          ],
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-type4-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-type4-before.",
+          "expected": [
+            "0x"
+          ],
+          "kind": "outputs",
+          "requirement": "An explicit type 4 with no authorization fields runs at block 59, before Prague (block 60): type is not a feature.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "to": "0x00000000000000000000000000000000000000ee",
+            "type": "0x4"
+          },
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x23"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at",
+      "probes": [
+        {
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "requirement": "At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          [
+            "trace"
+          ],
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "fork-dynamic-fees-priced-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-dynamic-fees-priced-at.",
+          "expected": [
+            "0x0000000000000000000000000000000000000000000000000000000077359400"
+          ],
+          "kind": "outputs",
+          "requirement": "At London (block 36) the dynamic fees run at GASPRICE 2000000000, min(tip + base fee, cap).",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x3a60005260206000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x77359400",
+            "maxPriorityFeePerGas": "0x3b9aca00"
+          },
+          "0x24"
+        ]
+      }
+    },
+    {
+      "name": "_reference/block/0x1",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x1"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x3",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x4",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x4"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x5",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x5"
+        ]
+      },
+      "role": "reference"
+    },
+    {
+      "name": "_reference/block/0x48",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x48"
+        ]
+      },
+      "role": "reference"
+    }
+  ],
+  "source_commit": "ec51c6c73b722f4fc2e2a2404b93412fa3af60ea",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf",
+    "generated_sha256": "25cca1e1bcde15f32ff268bd2780bd8f3b1eff37b889740fe961fd2800a2338e",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-08T09:28:56.726779+00:00"
+}

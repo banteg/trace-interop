@@ -1,0 +1,5 @@
+docker.io/hyperledger/besu@sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0: Pulling from hyperledger/besu
+Digest: sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0
+Status: Image is up to date for hyperledger/besu@sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0
+docker.io/hyperledger/besu@sha256:755f6af77f960e31716b6d5a9cc583eaf4cd17929284fefd71fc1fd40f41dea0
+Captured 71 responses in /home/banteg/dev/trace-besu-1371e0ba-2026-10-08/runs/besu-1371e0ba/raw-validation

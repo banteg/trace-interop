@@ -1,0 +1,10 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/besu",
+      "tag": "51c59c842eb1ba4f975695a411001d922408b7010c689b6396f35db35900a6a9"
+    },
+    "client": "besu",
+    "nametag": "development"
+  }
+]

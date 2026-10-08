@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "eligible": {
+    "besu_development": true
+  },
+  "exchange_count": 756,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 headBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 safeBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (besu_development)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "besu_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "besu_development": "besu/v26.10-develop-1371e0b/linux-x86_64/openjdk-java-25"
+  }
+}

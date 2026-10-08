@@ -97,8 +97,8 @@
 <rect class="b-converged" x="16" y="484" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="497" text-anchor="middle">H14</text>
 <text class="label" x="70" y="497">Invalid parameters and rejected calls</text>
-<rect class="pr edge partial" x="400" y="484" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="497" text-anchor="middle">#11432</text>
+<rect class="b-fix edge partial" x="400" y="484" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="497" text-anchor="middle">#11432</text>
 <rect class="pr edge partial" x="461" y="484" width="55" height="18" rx="4"/>
 <text class="label" x="488.5" y="497" text-anchor="middle">#11439</text>
 <rect class="b-converged" x="16" y="508" width="44" height="18" rx="4"/>
@@ -106,13 +106,13 @@
 <text class="label" x="70" y="521">Unsigned simulation fees and block environment</text>
 <rect class="b-agree edge partial" x="400" y="508" width="55" height="18" rx="4"/>
 <text class="n-agree" x="427.5" y="521" text-anchor="middle">#11404</text>
-<rect class="pr edge partial" x="461" y="508" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="521" text-anchor="middle">#11432</text>
+<rect class="b-fix edge partial" x="461" y="508" width="55" height="18" rx="4"/>
+<text class="n-fix" x="488.5" y="521" text-anchor="middle">#11432</text>
 <rect class="b-converged" x="16" y="532" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="545" text-anchor="middle">H16</text>
 <text class="label" x="70" y="545">Fee accounting and sequential state diffs</text>
-<rect class="pr edge partial" x="400" y="532" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="545" text-anchor="middle">#11365</text>
+<rect class="b-fix edge partial" x="400" y="532" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="545" text-anchor="middle">#11365</text>
 <rect class="b-agree edge partial" x="461" y="532" width="55" height="18" rx="4"/>
 <text class="n-agree" x="488.5" y="545" text-anchor="middle">#11404</text>
 <rect class="b-converged" x="16" y="556" width="44" height="18" rx="4"/>

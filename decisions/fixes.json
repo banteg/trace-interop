@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-07",
+  "checked_at": "2026-10-08",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -209,9 +209,17 @@
       "partial": [
         "H16"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-10-07T23:26:00Z",
+      "uptake": {
+        "merge_commit": "b28a9b9f5eff7a24d997cad5524583dd8f0d095f",
+        "builds": {
+          "1d62d893baed6c148313bb3d9d64f5c316d371e2": false,
+          "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4": false
+        }
+      },
+      "note": "A build at 1371e0ba agrees on probes-prague/many-original-value, H16's callMany case (evidence/2026-10-08/besu-1371e0ba)"
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11379",
@@ -2532,7 +2540,7 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-10-06T03:41:00Z",
-      "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after.",
+      "note": "trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after.; a build at 1371e0ba agrees on 11 more H33 checks, leaving only filter-blockhash-union, blocked by trace_filter mode (evidence/2026-10-08/besu-1371e0ba)",
       "uptake": {
         "merge_commit": "d6af070e7aff681524ae679d2075786bc2887bff",
         "builds": {
@@ -2573,10 +2581,17 @@
         "H14",
         "H15"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "trace_callMany names a rejected call\u2019s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain"
+      "merged_at": "2026-10-08T08:47:47Z",
+      "note": "trace_callMany names a rejected call\u2019s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain; a build at its merge 1371e0ba agrees on 9 more H14 checks and 190 H15 checks, leaving H15 with no difference in the checked cases (evidence/2026-10-08/besu-1371e0ba)",
+      "uptake": {
+        "merge_commit": "1371e0bab855c05e12164e3587ab1f518b64f93d",
+        "builds": {
+          "1d62d893baed6c148313bb3d9d64f5c316d371e2": false,
+          "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11435",

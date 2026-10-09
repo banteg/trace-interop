@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-08",
+  "checked_at": "2026-10-09",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -212,14 +212,14 @@
       "state": "merged",
       "draft": false,
       "merged_at": "2026-10-07T23:26:00Z",
+      "note": "A build at 1371e0ba agrees on probes-prague/many-original-value, H16's callMany case (evidence/2026-10-08/besu-1371e0ba)",
       "uptake": {
         "merge_commit": "b28a9b9f5eff7a24d997cad5524583dd8f0d095f",
         "builds": {
           "1d62d893baed6c148313bb3d9d64f5c316d371e2": false,
           "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4": false
         }
-      },
-      "note": "A build at 1371e0ba agrees on probes-prague/many-original-value, H16's callMany case (evidence/2026-10-08/besu-1371e0ba)"
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11379",
@@ -1690,7 +1690,7 @@
       "client": "erigon",
       "decisions": [],
       "state": "open",
-      "draft": true,
+      "draft": false,
       "merged_at": null,
       "note": "supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario"
     },
@@ -2947,10 +2947,17 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "call objects with maxFeePerGas or maxPriorityFeePerGas before London are rejected (zero included) through the preCheck gate that already rejects the other fork-gated fields, across the call, estimate, access-list, callMany, simulate and trace methods, instead of running at GASPRICE 0"
+      "merged_at": "2026-10-08T20:17:41Z",
+      "note": "call objects with maxFeePerGas or maxPriorityFeePerGas before London are rejected (zero included) through the preCheck gate that already rejects the other fork-gated fields, across the call, estimate, access-list, callMany, simulate and trace methods, instead of running at GASPRICE 0",
+      "uptake": {
+        "merge_commit": "480cbe5a2f2a10b8514d6c8248e0e9c073bb0ec4",
+        "builds": {
+          "96188a47395eb2a1f95e49d2c939f08fa15d66c7": false,
+          "8c1e3893d77d230720d172f1492d95b5777a862c": false
+        }
+      }
     },
     {
       "url": "https://github.com/alloy-rs/evm/pull/427",

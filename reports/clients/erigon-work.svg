@@ -78,8 +78,8 @@
 <text class="n-agree" x="610.5" y="153" text-anchor="middle">#24336</text>
 <rect class="b-agree edge partial" x="644" y="140" width="55" height="18" rx="4"/>
 <text class="n-agree" x="671.5" y="153" text-anchor="middle">#24351</text>
-<rect class="pr edge partial" x="400" y="164" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="177" text-anchor="middle">#24536</text>
+<rect class="b-fix edge partial" x="400" y="164" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="177" text-anchor="middle">#24536</text>
 <text class="label head" x="16" y="209">Not fully measured (1)</text>
 <rect class="b-unmeasured" x="16" y="220" width="44" height="18" rx="4"/>
 <text class="n-unmeasured" x="38" y="233" text-anchor="middle">H33</text>

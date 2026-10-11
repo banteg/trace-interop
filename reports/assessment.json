@@ -24,7 +24,7 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 15379,
+    "assessed": 15397,
     "blocked": 302,
     "control": 35,
     "partial": 817,
@@ -43,13 +43,13 @@
     "../evidence/2026-10-11/eval/mined-probes/manifest.json": "ad7754f5faf28a4871e1db68839802b773d2d1e20f8b5d928475a14b12095920",
     "../evidence/2026-10-11/eval/precompile-values/manifest.json": "78a1831b30b4d02bc1a6385e3287648ee309360130071999603aaa69a4d39367",
     "../evidence/2026-10-11/eval/precompiles/manifest.json": "3af5b0fe553617d7cbbb1deb2036a87bb70c2425150f0ba2083b790a7c20e60f",
-    "../evidence/2026-10-11/eval/probes-forks/manifest.json": "7559c57eac787715c2b40ebfef5f1a146a36f224809dbe313e0046c4c80a9754",
     "../evidence/2026-10-11/eval/probes-prague/manifest.json": "cddf907db51a8005a7559200127da6ca2532dad9dc81cb0d4c82db2262574fad",
     "../evidence/2026-10-11/eval/pruned/manifest.json": "fe36ecf5edc23a91f9311e31186dbcd50fec8a504d98431cb43514ce81d19754",
     "../evidence/2026-10-11/eval/raw-selector/manifest.json": "3391b1a89a1e6b4c8830b29e21c3949ba9d916bd8351f1f4e3350f327abac1b5",
     "../evidence/2026-10-11/eval/raw-validation/manifest.json": "e125848a40ffbd788b9394872d1c54a0d6edf3a6660358c18d71d1c043028c0f",
     "../evidence/2026-10-11/eval/reorg-safe/manifest.json": "379e468bf83395d23fd09491da03426c496624f4718ab51f7d814cd725004f06",
-    "../evidence/2026-10-11/eval/repeat/manifest.json": "f1fdd7973d70bdd356c4a2ac70b38c881ff0f76b4c9da9a7bfd2546a778fd88f"
+    "../evidence/2026-10-11/eval/repeat/manifest.json": "f1fdd7973d70bdd356c4a2ac70b38c881ff0f76b4c9da9a7bfd2546a778fd88f",
+    "../evidence/2026-10-12/h14-blob-cap/probes-forks/manifest.json": "08ff0ba107f6061da8e9208e82b52402b005c004e51204f31b21eb71c3f9d4b4"
   },
   "matrix": {
     "../evidence/2026-10-11/eval/clients.lock.json": "267bbf404a127516dd4e74adaf5f2819407689c46c8bffa540769df0ff53abd6",
@@ -64,13 +64,13 @@
   "sources": {
     "decisions/impact.json": "8969b1dfc872671affc41ce97570be860a0c4431dc943dcfaecd38326c2d83da",
     "decisions/laws.json": "1bea5e2e4f23b3523ad555c80d96f89a4dcbd8cf6225f1dedd607216a59d3a8a",
-    "decisions/ledger.json": "be714bd4d3ecad524217253fc1070f4748d03254fa2f2dc786bb26a263eb8832",
+    "decisions/ledger.json": "11ef3dd09c452a8a6bd78857822b3a072d40ff92a644a7d5175b8594509ef321",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "10460e6f795d72626749e1cd8c0d7d9105d37d30381b3abc73c920eddb2059ba",
     "fixtures/checksums.json": "fb2d99b2ca55c049678211a6a1d64e54046f0f87040524551bf7f7ecc94254e8",
     "locks/source-revisions.json": "01fbce65770e806308387d3b2f25fc3dcf22106830957ede8efb5f9f14a2906b",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "9057ef6f63ab76702c0fdd204aa90790a83cb8224aa10d9e394a0fef1f8953d0",
+    "reports.lock.json": "288065245cff1895581a8cf5303b0628fea44fe3f08db40051b0bbf557961cf4",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "ce1a8860131ce936b3de359ddbab6bd14c81597844244660616d201e4ddadcce",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",

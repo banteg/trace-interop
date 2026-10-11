@@ -12,8 +12,8 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.1.0` | [`b3e7e84c`](https://github.com/NethermindEth/nethermind/commit/b3e7e84c1695420e771326f73801b66fa0574871) | 2026-10-01 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
-| `2.2.0-preview` | [`e8955c4c`](https://github.com/NethermindEth/nethermind/commit/e8955c4cd6a1c41ffc525033198850fd989c46dc) | 2026-10-05 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json) |
+| `2.1.0` | [`b3e7e84c`](https://github.com/NethermindEth/nethermind/commit/b3e7e84c1695420e771326f73801b66fa0574871) | 2026-10-01 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json)<br>[2026-10-11](../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
+| `2.2.0-preview` | [`e8955c4c`](https://github.com/NethermindEth/nethermind/commit/e8955c4cd6a1c41ffc525033198850fd989c46dc) | 2026-10-05 | [2026-10-05](../../evidence/2026-10-05/eval/initial/manifest.json)<br>[2026-10-11](../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

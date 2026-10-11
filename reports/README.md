@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/7babebc596f2c6a94a836ff0f0fed78f6b85dcdf) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/29df74f9327e2ab5e6ba7ee9f2888c1f661f441d) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 Published builds checked at **2026-10-05T19:51:21.922482+00:00**. [Freshness preflight](../evidence/2026-10-05/eval/preflight.json) · [Build lock](../evidence/2026-10-05/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 

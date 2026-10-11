@@ -14,7 +14,7 @@
     "mined-probes.json": "0f2664db21aaac9b343d57437f4acef7d2505ee8924a1bb1326eef9fd33fecbb",
     "precompile-values.json": "b0145180908faf82d8e107c8e11de3224c8ea078c909742d6a9a4b33b850b558",
     "precompiles.json": "4c8d691c887cdae641b9484f19dcdd582d69db91b67c8590ee0c06dd6d0cf838",
-    "probes-forks.json": "1efd8443dfe227a23fc464813a2f0afb8b22102b642dc0bfae78a92bf8c9ee15",
+    "probes-forks.json": "c7a16a39e8d699ce5dd7f5d34899c2d90df34a0e74bfa295bee933bd4a7fcf0f",
     "probes-prague.json": "08cbabb2af96f84cedbc00140261cf85b0553220b257e55ce41c62cdab0402bb",
     "pruned.json": "323aabce8c3d7640d15781ebb1d4e6a3a2c82229cd5c8366879ccc7002cd1ce6",
     "raw-selector.json": "0ff3b0cea0cd99cde7fc538825957a49c01500a2034229ccc0138f9d514191f8",
@@ -24,7 +24,7 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 15178,
+    "assessed": 15187,
     "blocked": 493,
     "control": 35,
     "partial": 818,
@@ -43,13 +43,13 @@
     "../evidence/2026-10-05/eval/mined-probes/manifest.json": "8c55ce122a132033beb2c1541a8f3242e8e7dc3f00ca0f9dab57c344ccabe0f7",
     "../evidence/2026-10-05/eval/precompile-values/manifest.json": "0aa0024c627166d06bb4de2d881d162a54fdf8f5671bcaba7179e4e5df39e798",
     "../evidence/2026-10-05/eval/precompiles/manifest.json": "e911254f05937cbe157b827f72b3b12a9c1f33355e7ee529fb571d80f709e089",
-    "../evidence/2026-10-05/eval/probes-forks/manifest.json": "d213c3c353363c3445dd4f1a8daceaed6ec5c47bda5825475ede3877079f1fd4",
     "../evidence/2026-10-05/eval/probes-prague/manifest.json": "d5354a4f496ba052c4874ce244e3483317fbe14dff418fd63749fdc5b7eda31c",
     "../evidence/2026-10-05/eval/pruned/manifest.json": "ef84a20863fec08322e871cc79ab85e5211fc8799d83b6293bbc7c44edbe98ec",
     "../evidence/2026-10-05/eval/raw-selector/manifest.json": "85ef4e0542bfff738ec6eaf2be4a2285cf4082ab8d658056dd41462b69d5f959",
     "../evidence/2026-10-05/eval/raw-validation/manifest.json": "1c8cdb2d5c1c9fce7672d2d59aeb67bb7d71f9419f8b1cce12790505e444bc46",
     "../evidence/2026-10-05/eval/reorg-safe/manifest.json": "e297ff3b14ce09da98a508cabf4d1f47c6891c2e1449e1d2a1470f411ed56323",
-    "../evidence/2026-10-05/eval/repeat/manifest.json": "52e8cd1f7f87c94b884bb7acd4d4977cfb75f34608d9bf079b3fb7c391c33501"
+    "../evidence/2026-10-05/eval/repeat/manifest.json": "52e8cd1f7f87c94b884bb7acd4d4977cfb75f34608d9bf079b3fb7c391c33501",
+    "../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json": "7c5e636204566b3f36d65adeb8928e4752d3a0a9d02c4483cdd5f4e21721b7eb"
   },
   "matrix": {
     "../evidence/2026-10-05/eval/clients.lock.json": "60c17def53d7b237c53b0520a8b82217b128074d4ee9d55f5d41d65d9bb0b996",
@@ -64,15 +64,15 @@
   "sources": {
     "decisions/impact.json": "4f6fbd8e872600c561b80e94e5b3debea389059040b8e132138b362f6c0feb1c",
     "decisions/laws.json": "998b56f88a15b454f28fb01e7157e1bc9d6d1252da7224d35d81ec22cb6b3d57",
-    "decisions/ledger.json": "19d78ce6669cbde1c5b8d6d1117abce62ea819e6ab34a53b5058f45e37134459",
+    "decisions/ledger.json": "f887940ded8a2c6ff496f6b59afb9ac6011ff2b28169e04ffbb3277412ae9292",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "10460e6f795d72626749e1cd8c0d7d9105d37d30381b3abc73c920eddb2059ba",
-    "fixtures/checksums.json": "ae033f54344e0594050dcc7c05ca4a79da222bbf10bf3dee7449268be928e30b",
+    "fixtures/checksums.json": "9b22c4f3df3c7abc2a3248f15b3cb7fbfe93044838076ba934e478305c230e10",
     "locks/source-revisions.json": "c184b7b353243a9670e9770612de537812bf40d3cbea03eafd1380d27c3a5069",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "f29261289c11799b7313f6b32672584e63cb568fbc7f33f551b1e80ed143660f",
+    "reports.lock.json": "448338126d21d97ccb813a69d25895378a0a1badb33b2063d7c45ebba3f3f6c4",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
-    "spec.lock.json": "4279b2d7c17088254ad313f6ddd58ba9d0736ac9df91dd1c46451d53783e6a88",
+    "spec.lock.json": "ce1a8860131ce936b3de359ddbab6bd14c81597844244660616d201e4ddadcce",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "170a9f9f393f1317b1ea08059e626f834208fd945e560f38c2790b52aa06198e",
     "trace_interop/execution_models.py": "779b2c97af90cba4df552da23758b3f58da4676d27fd07d107cfd4b8e032e0da",
@@ -83,16 +83,16 @@
     "trace_interop/mined_probes.py": "56776dd217b5c99a18f22678c078b8857b46de77974313526d7839fe9f398a63",
     "trace_interop/oracles.py": "42091ebc2cd25f820c6f24a46e8d03fb4512a9444187d25d4691be316ac88fa7",
     "trace_interop/presentation.py": "6d752d4d517a5dd97f9326bdc022b4c7f09a0a8ad8e837c92b63379358fff465",
-    "trace_interop/probes.py": "446fd65f75f7e695c8d9c7de20a6d2126603df8bdcff06d8932b99c5c7413dd7",
+    "trace_interop/probes.py": "eac7712dee1a0ecd2a3a1e089922508996f394125c4c029a0d82ae71c262b778",
     "trace_interop/report.py": "075e9294a06d1df9cd7d372140b2e1b75b1417bb8b06060040590ce112f1ad06",
     "trace_interop/rules.py": "4ae4ba11f2a3e95c39f7c991838e3d7eb6639189334bfdf2fa67f904c84dc711",
     "trace_interop/scenarios.py": "18a734105b96a0f12173030136f60e6842fd609233809ad9bab72163a87dfa02",
     "trace_interop/status.py": "c0fdd3cdc40fe29ca469c154d2786895944e98c5aa765e9b297dc017d4b90c8d",
     "trace_interop/tables.py": "338c20cfe1b1175188a5d656ae2f3af9564827d70d8bc9dcf157db6ad7dc0a6a",
-    "trace_interop/validation.py": "36db4951a9f459c49476fe4639c6a00f9a597d00826e64e4bc1beaa0e96091e9",
+    "trace_interop/validation.py": "80ece060879c818a7a9c233648768340da3b6b43cd719462c673b4376520436c",
     "trace_interop/versions.py": "0935eb1857cf902311cc61d6f998f3585e086e2a77b70ac3cfaac96fe15ffd54",
     "trace_interop/vm_model.py": "c1a44665f1bba4ef0ba46829cd8f7e4fcdfb7ab045784503dd0cbfcd8204db6c",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "7babebc596f2c6a94a836ff0f0fed78f6b85dcdf"
+  "spec_commit": "29df74f9327e2ab5e6ba7ee9f2888c1f661f441d"
 }

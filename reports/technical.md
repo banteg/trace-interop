@@ -43,7 +43,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15178 |
+| 🔎 Assessed | 15187 |
 | 🟡 Partial | 818 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 493 |
@@ -883,6 +883,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-forks/beacon-many-55](cases/probes-forks/beacon-many-55.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/beacon-trace-55](cases/probes-forks/beacon-trace-55.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/depth-limit](cases/probes-forks/depth-limit.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8 |
+| [probes-forks/filter-case-variant-member](cases/probes-forks/filter-case-variant-member.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/filter-null-fromBlock](cases/probes-forks/filter-null-fromBlock.md) | Erigon 3.7.1 · 8c1e3893, Nethermind 2.1.0 · b3e7e84c |
 | [probes-forks/filter-null-members](cases/probes-forks/filter-null-members.md) | Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c |
 | [probes-forks/filter-null-toBlock](cases/probes-forks/filter-null-toBlock.md) | Besu 26.10-develop · 1d62d893, Besu 26.9.0 · ee9c64c8, Erigon 3.8.0-dev · 96188a47, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · e8955c4c, Nethermind 2.1.0 · b3e7e84c |
@@ -1024,7 +1025,7 @@ Capture completeness records whether requests finished, not whether their result
 | [h30](../evidence/2026-10-05/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-10-05/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
 | [probes-prague](../evidence/2026-10-05/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
-| [probes-forks](../evidence/2026-10-05/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
+| [probes-forks](../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-05/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-05/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-10-05/eval/pruned/manifest.json) | pruned | ✅ Yes |

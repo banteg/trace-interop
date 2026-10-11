@@ -1,5 +1,31 @@
 """Validate request shapes against the same pinned artifact as response shapes."""
-from jsonschema import Draft201909Validator
+from jsonschema import Draft201909Validator, validators
+
+
+def folded(validator, schema, instance):
+    """A closed object's members renamed to the defined member each matches case-insensitively.
+    Servers may fold member names, so only a member that matches no defined member, or one another
+    member already takes, is unknown (H14). Responses keep the exact names."""
+    properties = schema.get('properties', {})
+    if schema.get('additionalProperties') is not False or not validator.is_type(instance, 'object'):
+        return instance
+    by_name = {}
+    for name in properties:
+        by_name.setdefault(name.lower(), []).append(name)
+    renamed = {key: matches[0] for key in instance
+               if key not in properties and len(matches := by_name.get(key.lower(), [])) == 1}
+    targets = [renamed.get(key, key) for key in instance]
+    return {renamed[key] if key in renamed and targets.count(renamed[key]) == 1 else key: value
+            for key, value in instance.items()}
+
+
+def on_folded(check):
+    return lambda validator, value, instance, schema: check(validator, value, folded(validator, schema, instance), schema)
+
+
+RequestValidator = validators.extend(Draft201909Validator, {
+    keyword: on_folded(Draft201909Validator.VALIDATORS[keyword]) for keyword in ('properties', 'additionalProperties')})
+
 
 def request_errors(request, methods):
     method = methods.get(request['method'])
@@ -10,7 +36,7 @@ def request_errors(request, methods):
     schema = {'type': 'array', 'items': [p['schema'] for p in descriptors],
               'minItems': sum(bool(p.get('required')) for p in descriptors),
               'maxItems': len(descriptors)}
-    errors = [e.message for e in Draft201909Validator(schema).iter_errors(params)]
+    errors = [e.message for e in RequestValidator(schema).iter_errors(params)]
     calls = params[:1] if request['method'] == 'trace_call' else [p[0] for p in params[0] if isinstance(p, list) and p] if request['method'] == 'trace_callMany' and params and isinstance(params[0], list) else []
     for call in calls:
         # An explicit null is an omitted member, so only two present values can disagree.

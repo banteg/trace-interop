@@ -4,6 +4,8 @@ A case lists `probes`: each names its decision topic, a kind and the expected va
 its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
 An `error` probe requires an error response; its optional `recommended` code is reported, not required.
+A probe with `or_rejected` (a recommended code) is also met by an error response, for a request the
+draft lets a server either honor or reject, such as a member name in another letter case (H14).
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
 the error cannot separate its property from that dependency. A dependent `same-output` probe whose
 eth_call twin is rejected for the same violation meets eth_call parity instead, and any other
@@ -302,6 +304,10 @@ def assess(case, observation, peers):
             error = mapping(response.get('error') or mapping(result).get('error'))
             observed = f'{status} {error.get("code", "")} {str(error.get("message", ""))[:120]}'.strip()
             rejected_for = violation(error.get('message')) if status == 'rpc_error' else None
+            if 'or_rejected' in probe and rejection(status, response):
+                add(topic, True, requirement, f'Rejected: {observed}' + recommended_note(error.get('code'), probe['or_rejected']),
+                    role='rejection')
+                continue
             if 'depends' in probe and kind == 'same-output' and parity:
                 add(topic, True, requirement, f'Rejected for {parity}, as its eth_call twin {probe["reference"]} is: {observed}.',
                     role='rejection')

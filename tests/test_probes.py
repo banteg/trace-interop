@@ -646,6 +646,34 @@ class NullMemberTests(Probe):
         self.assertEqual(request_errors(PRAGUE['field-data-input-differ']['request'], methods), ['data and input must agree'])
 
 
+class MemberCaseTests(Probe):
+    """A filter member name in another letter case takes effect or is rejected, never ignored (H14)."""
+
+    def test_a_case_variant_is_honored_or_rejected(self):
+        case = FORKS['filter-case-variant-member']
+        records = case['probes'][0]['expected']
+        self.assertMatches(case, result(records))
+        self.assertMatches(case, error(-32602))
+        noted = assess(case, error(-32000), {})
+        self.assertEqual([c['status'] for c in noted], ['matches'])
+        self.assertIn('-32602 recommended', noted[0]['detail'])
+        # Ignoring TOBLOCK widens the range to the head; an internal error is no rejection.
+        self.assertDiffers(case, result(records+[{'type': 'reward', 'blockNumber': 4}]))
+        self.assertDiffers(case, error(-32603))
+
+    def test_validation_folds_case_only_in_closed_objects(self):
+        from trace_interop.validation import request_errors
+        methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
+        def errors(member):
+            return request_errors({'method': 'trace_filter', 'params': [{'fromBlock': '0x2', **member}]}, methods)
+        self.assertEqual(request_errors(case := FORKS['filter-case-variant-member']['request'], methods), [], case)
+        # A folded member's value is still checked, and one that collides with another member stays unknown.
+        self.assertTrue(errors({'TOBLOCK': 'pending'}))
+        self.assertTrue(errors({'toBlock': '0x3', 'TOBLOCK': '0x3'}))
+        self.assertTrue(errors({'toblock': '0x3', 'TOBLOCK': '0x3'}))
+        self.assertTrue(errors({'unknownDiagnosticFlag': True}))
+
+
 class RawSelectorTests(Probe):
     """H12: which state and block environment a signed transaction ran against. The two-argument
     request must use latest; an explicit third selector is extension evidence, classified only."""

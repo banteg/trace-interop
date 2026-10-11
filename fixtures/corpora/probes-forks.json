@@ -1170,6 +1170,138 @@
       }
     },
     {
+      "name": "filter-case-variant-member",
+      "probes": [
+        {
+          "expected": [
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x20f1a75baf485b3e05dbcf13ffeb10dfe11fae25e85c994900d918ad7225015e",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x4a0f1452281bcec5bd90c3dce6162a5995bfe9df",
+                "value": "0x1"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x8422e05f9445c7ccabda85615c4ec61664212e8e30a3d45301485bc42e948797",
+              "transactionPosition": 1,
+              "type": "call"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df",
+                "value": "0x2"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0xd88e8a0fc694c17e0275588011931da84242dd1e72da3eb1144a6a8c648a4564",
+              "transactionPosition": 2,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x4563918244f40000"
+              },
+              "blockHash": "0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436",
+              "blockNumber": 2,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "callType": "call",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "to": "0xc7b99a164efd027a93f147376cc7da7c67c6bbe0",
+                "value": "0x1"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "transactionHash": "0x93c6066fa11cf4a0f8988644cf740fed9df2ad4a0dadd5aded7a02ecc4be4685",
+              "transactionPosition": 0,
+              "type": "call"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "block",
+                "value": "0x49b9ca9a69434000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            },
+            {
+              "action": {
+                "author": "0x0000000000000000000000000000000000000000",
+                "rewardType": "uncle",
+                "value": "0x3cb71f51fc558000"
+              },
+              "blockHash": "0x2cd37cf31e57ceb56e7d009ffda233a84acf52ae9a630ee91600b0f17099d092",
+              "blockNumber": 3,
+              "subtraces": 0,
+              "traceAddress": [],
+              "type": "reward"
+            }
+          ],
+          "kind": "records",
+          "or_rejected": -32602,
+          "requirement": "TOBLOCK takes effect as toBlock, so blocks 2-3 return every record, or the request is rejected (-32602 recommended); never ignored, which would widen the range to the head.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "TOBLOCK": "0x3",
+            "fromBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
       "name": "filter-omitted-toBlock",
       "request": {
         "id": 1,

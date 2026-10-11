@@ -613,6 +613,13 @@ def forks():
          [{'fromBlock': '0x2', 'toBlock': '0x5', **dict.fromkeys(['fromAddress', 'toAddress', 'mode', 'after', 'count'])}],
          probes=[probe('H14', 'records', 'Null mode, after, count and address lists are omitted, so blocks 2-5 return every record.',
                        expected=records(2, 5))])
+    # A member name in another letter case is honored as the member it matches or rejected, never ignored (H14).
+    # Ignoring TOBLOCK would leave toBlock at the head, so block 4's reward record would follow.
+    assert int(read(chain/'headblock.json')['number'], 16) > 3 and reward_records(4)
+    case(cases, 'filter-case-variant-member', 'trace_filter', [{'fromBlock': '0x2', 'TOBLOCK': '0x3'}],
+         probes=[probe('H14', 'records', 'TOBLOCK takes effect as toBlock, so blocks 2-3 return every record, or the request is '
+                       'rejected (-32602 recommended); never ignored, which would widen the range to the head.',
+                       expected=records(2, 3), or_rejected=-32602)])
     # The fromBlock twin names the head by number: a null or omitted fromBlock is latest, so the range is valid
     # without depending on block tag support (H32).
     for bound, twin in [('toBlock', {'fromBlock': '0x2'}), ('fromBlock', {'toBlock': read(chain/'headblock.json')['number']})]:

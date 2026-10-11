@@ -661,6 +661,17 @@ class MemberCaseTests(Probe):
         self.assertDiffers(case, result(records+[{'type': 'reward', 'blockNumber': 4}]))
         self.assertDiffers(case, error(-32603))
 
+    def test_a_blob_fee_cap_without_hashes_is_rejected_at_every_fork(self):
+        for name in ['fork-blob-fee-only-before', 'fork-blob-fee-only-at']:
+            case = FORKS[name]
+            call = case['request']['params'][0]
+            self.assertEqual((call['maxFeePerBlobGas'], 'blobVersionedHashes' in call), ('0x1', False), name)
+            self.assertMatches(case, error(-32003))
+            self.assertMatches(case, error(-32602))
+            # Running the call ignores the cap; an internal error is no rejection.
+            self.assertDiffers(case, result({'output': '0x', 'trace': []}))
+            self.assertDiffers(case, error(-32603))
+
     def test_validation_folds_case_only_in_closed_objects(self):
         from trace_interop.validation import request_errors
         methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}

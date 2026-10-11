@@ -2320,6 +2320,126 @@
           "0x24"
         ]
       }
+    },
+    {
+      "name": "fork-blob-fee-only-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-fee-only-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-fee-only-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-fee-only-at",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-fee-only-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-fee-only-at.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x38"
+        ]
+      }
     }
   ],
   "description": "Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain."

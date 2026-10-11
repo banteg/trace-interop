@@ -703,6 +703,15 @@ def forks():
                             expected=[words(effective)])
         case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
         case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
+    # A blob fee cap without blob hashes describes no transaction at any fork, since a blob transaction carries at
+    # least one versioned hash, so it is rejected before and at Cancun (H14, decided 2026-10-12), never ignored.
+    for name, block in [('fork-blob-fee-only-before', activation['cancun']-1), ('fork-blob-fee-only-at', activation['cancun'])]:
+        call = dict({'from': sender, 'to': target, 'gas': '0x186a0', 'data': '0x', 'maxFeePerBlobGas': '0x1'}, **dynamic)
+        where = f'at block {block}, {"before" if block < activation["cancun"] else "at"} Cancun (block {activation["cancun"]})'
+        outcome = probe('H14', 'error', f'A maxFeePerBlobGas without blobVersionedHashes {where} describes no transaction, so the call is '
+                        'rejected (-32003 recommended), never run with the cap ignored.', recommended=-32003)
+        case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
+        case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}
 
 

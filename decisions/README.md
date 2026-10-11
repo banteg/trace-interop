@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** client decisions agree with the draft. 10 more have a submitted fix, and **19 differ with no fix yet**: 19 on converged decisions and 0 on decisions still under review. 36 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **122 of 165** client decisions agree with the draft (+11 since the previous capture). 10 more have a submitted fix, and **24 differ with no fix yet**: 24 on converged decisions and 0 on decisions still under review. 45 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |

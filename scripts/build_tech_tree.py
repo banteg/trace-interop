@@ -104,17 +104,17 @@ def build(tree, progress, fixes, status, captured):
     if researching:
         researching['now'] = True
 
-    counted = [client for client in progress['clients'] if client['counted']]
+    clients = progress['clients']
     return {
         'decisions': decisions,
         'captured': captured,
         'fixes_checked': fixes['checked_at'],
         'researching': researching and researching['id'],
-        'totals': {'agree': sum(client['builds']['development']['agree'] for client in counted),
-                   'of': len(counted) * decisions,
+        'totals': {'agree': sum(client['builds']['development']['agree'] for client in clients),
+                   'of': len(clients) * decisions,
                    'merged': sum(pr['state'] == 'merged' for pr in fixes['prs']),
                    'open': sum(pr['state'] == 'open' for pr in fixes['prs']),
-                   'clients': [client['name'] for client in counted]},
+                   'clients': [client['name'] for client in clients]},
         'layout': tree['layout'],
         'eras': tree['era'],
         'advisor': tree['advisor'],

@@ -229,13 +229,12 @@ class ProgressTests(unittest.TestCase):
             counts = [int(c.split()[0]) for c in cells[2:8]]
             with self.subTest(client=cells[0]):
                 self.assertEqual(sum(counts), decisions)
-        # Reported implementations such as Anvil are charted but stay out of the native headline.
+        # Reported implementations such as Anvil are counted in the headline with the native clients.
         from trace_interop.status import NATIVE_CLIENTS, REPORTED_CLIENTS
         family = lambda row: row.split('](clients/', 1)[1].split('.md', 1)[0]
         self.assertEqual({family(r) for r in rows}, {*NATIVE_CLIENTS, *REPORTED_CLIENTS})
-        native = [r for r in rows if family(r) in NATIVE_CLIENTS]
-        agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in native)
-        self.assertIn(f'**{agree} of {len(native) * decisions}**', page)
+        agree = sum(int(r.strip('|').split('|')[2].split()[0]) for r in rows)
+        self.assertIn(f'**{agree} of {len(rows) * decisions}**', page)
         self.assertTrue((root/'reports/progress.svg').is_file())
         for f in [*NATIVE_CLIENTS, *REPORTED_CLIENTS]:
             with self.subTest(work_map=f):
@@ -243,7 +242,7 @@ class ProgressTests(unittest.TestCase):
                 self.assertTrue((root/f'reports/clients/{f}-work.svg').is_file())
         progress = json.loads((root/'reports/progress.json').read_text())
         self.assertEqual(progress['decisions'], decisions)
-        self.assertEqual(sum(c['builds']['development']['agree'] for c in progress['clients'] if c['counted']), agree)
+        self.assertEqual(sum(c['builds']['development']['agree'] for c in progress['clients']), agree)
         for c in progress['clients']:
             with self.subTest(client=c['client']):
                 self.assertEqual(sum(c['counts'].values()), decisions)

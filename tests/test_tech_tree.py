@@ -33,7 +33,7 @@ def tree():
 
 def tracker(dev=30, release=30, counts=SETTLED, lib=('merged',), geth='open', spec='open'):
     pr = lambda url, state: {'url': url, 'state': state, 'draft': state == 'open', 'merged_at': None}
-    client = {'client': 'x', 'name': 'X', 'counted': True, 'counts': counts, 'prs': {'merged': 5, 'open': 1},
+    client = {'client': 'x', 'name': 'X', 'counts': counts, 'prs': {'merged': 5, 'open': 1},
               'builds': {'development': {'agree': dev, 'build': ['2.0.0-dev · aaaa']},
                          'release': {'agree': release, 'build': ['1.9.0 · bbbb']}}}
     return {'progress': {'decisions': 33, 'clients': [client]},

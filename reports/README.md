@@ -8,7 +8,7 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** client decisions agree with the draft. 10 more have a submitted fix, and **19 differ with no fix yet**: 19 on converged decisions and 0 on decisions still under review. 36 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **122 of 165** client decisions agree with the draft (+11 since the previous capture). 10 more have a submitted fix, and **24 differ with no fix yet**: 24 on converged decisions and 0 on decisions still under review. 45 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
@@ -20,7 +20,7 @@ Across the Besu, Erigon, Nethermind and Reth development builds, **94 of 132** c
 | [Reth](clients/reth.md) | 2.7.0 · 1a4dbbe1 | 25 | 1 | 7 | 0 | 0 | 0 | 2 | 24 / 6 |
 | [Anvil](clients/anvil.md) | 1.8.6-nightly · 32624734 | 28 (+11) | 0 | 5 | 0 | 0 | 0 | 9 | 15 / 0 |
 
-Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
+Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is captured by replaying the fixture chains, so its fork-transition and reorg scenarios stay unmeasured. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)
 
 ## Start with your client
 

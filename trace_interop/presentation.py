@@ -643,15 +643,15 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             prs=pr_counts(fixes, f))
     native = [f for f in NATIVE_CLIENTS if f in progress]
     shown = native + [f for f in REPORTED_CLIENTS if f in progress]
-    sums = sum((progress[f]['counts'] for f in native), Counter())
+    sums = sum((progress[f]['counts'] for f in shown), Counter())
     signed = lambda n: f' ({n:+d} since the previous capture)' if n else ''
-    gained = sum(progress[f]['gained'] or 0 for f in native)
-    headline = (f'Across the {", ".join(editorial["clients"][f]["name"] for f in native[:-1])} and {editorial["clients"][native[-1]]["name"]} '
-                f'development builds, **{sums["agree"]} of {len(native) * len(decisions)}** client decisions agree with the draft'
+    gained = sum(progress[f]['gained'] or 0 for f in shown)
+    headline = (f'Across the {", ".join(editorial["clients"][f]["name"] for f in shown[:-1])} and {editorial["clients"][shown[-1]]["name"]} '
+                f'development builds, **{sums["agree"]} of {len(shown) * len(decisions)}** client decisions agree with the draft'
                 f'{signed(gained) if previous else ""}. {sums["fix"]} more have a submitted fix, and '
                 f'**{sums["converged"] + sums["review"]} differ with no fix yet**: {sums["converged"]} on converged decisions '
                 f'and {sums["review"]} on decisions still under review. '
-                f'{sum(progress[f]["dev_only"] or 0 for f in native)} agreements are in development builds but not yet in a stable release.') if native else ''
+                f'{sum(progress[f]["dev_only"] or 0 for f in shown)} agreements are in development builds but not yet in a stable release.') if native else ''
 
     def scores(client):
         """A build's agreements, and the decisions it gained and lost since the previous capture."""
@@ -881,7 +881,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
     if native:
         save(output/'progress.svg', svg([(editorial['clients'][f]['name'], progress[f]['counts']) for f in shown], len(decisions)))
         write(output/'progress.json', dict(decisions=len(decisions), clients=[dict(
-            client=f, name=editorial['clients'][f]['name'], counted=f in native,
+            client=f, name=editorial['clients'][f]['name'],
             counts={key: progress[f]['counts'][key] for key, *_ in BUCKETS}, dev_only=progress[f]['dev_only'],
             prs=dict(zip(('merged', 'open'), progress[f]['prs'])),
             builds={channel: scores(c) for channel, c in (('development', progress[f]['build']), ('release', f + '_release')) if c in by_client})
@@ -895,7 +895,7 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             for f in shown])
         text += ('Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; '
                  'one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. '
-                 'Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is shown for tooling compatibility and is not in the totals above. '
+                 'Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is captured by replaying the fixture chains, so its fork-transition and reorg scenarios stay unmeasured. '
                  '[Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)\n\n')
     else:
         (output/'progress.svg').unlink(missing_ok=True)

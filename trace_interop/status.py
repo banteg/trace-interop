@@ -3,7 +3,7 @@
 from datetime import date, datetime
 
 NATIVE_CLIENTS = ('besu', 'erigon', 'nethermind', 'reth')
-# Implementations shown with the native clients' progress but outside harmonization, positions and totals.
+# Implementations counted in the progress totals with the native clients, but outside harmonization and positions.
 REPORTED_CLIENTS = ('anvil',)
 POLICY_LABELS = {'review': '⚪ Under review', 'diverging': '🔀 Diverging', 'converged': '🤝 Converged'}
 LEGEND = (

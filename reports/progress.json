@@ -20,7 +20,6 @@
         }
       },
       "client": "besu",
-      "counted": true,
       "counts": {
         "agree": 6,
         "converged": 10,
@@ -56,7 +55,6 @@
         }
       },
       "client": "erigon",
-      "counted": true,
       "counts": {
         "agree": 31,
         "converged": 1,
@@ -92,7 +90,6 @@
         }
       },
       "client": "nethermind",
-      "counted": true,
       "counts": {
         "agree": 32,
         "converged": 1,
@@ -128,7 +125,6 @@
         }
       },
       "client": "reth",
-      "counted": true,
       "counts": {
         "agree": 25,
         "converged": 7,
@@ -164,7 +160,6 @@
         }
       },
       "client": "anvil",
-      "counted": false,
       "counts": {
         "agree": 28,
         "converged": 5,

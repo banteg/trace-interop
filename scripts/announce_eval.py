@@ -31,21 +31,20 @@ def channel(clients, name):
 def caption(root, url):
     matrix = Path(json.loads((root/'reports.lock.json').read_text())['matrix'])
     progress = json.loads((root/'reports/progress.json').read_text())
-    counted = [c for c in progress['clients'] if c['counted']]
-    total = {key: sum(c['builds']['development'].get(key, 0) for c in counted) for key in ('agree', 'gained', 'lost')}
+    clients = progress['clients']
+    total = {key: sum(c['builds']['development'].get(key, 0) for c in clients) for key in ('agree', 'gained', 'lost')}
     change = delta(total['gained'], total['lost'])
-    omitted = [c['name'] for c in progress['clients'] if not c['counted']]
     links = [('Progress', 'reports/README.md#progress')]
     if (root/'reports/changes.md').exists():
         links.append(('Changes', 'reports/changes.md'))
     links.append(('Eval notes', (matrix/'README.md').as_posix()))
     text = '\n'.join([
-        f'<b>Eval {escape(matrix.parent.name)}</b> · {total["agree"]} of {len(counted) * progress["decisions"]} agree' + (f' ({change})' if change else ''),
+        f'<b>Eval {escape(matrix.parent.name)}</b> · {total["agree"]} of {len(clients) * progress["decisions"]} agree' + (f' ({change})' if change else ''),
         '',
         f'Dev: {channel(progress["clients"], "development")}',
         f'Stable: {channel(progress["clients"], "release")}',
         '',
-        f'Scores count decisions that agree with the draft, of {progress["decisions"]}' + (f'; the total omits {escape(", ".join(omitted))}.' if omitted else '.'),
+        f'Scores count decisions that agree with the draft, of {progress["decisions"]}.',
         ' · '.join(f'<a href="{escape(f"{url}/{path}")}">{name}</a>' for name, path in links),
     ])
     visible = len(unescape(re.sub(r'<[^>]+>', '', text)))

@@ -85,6 +85,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "42fa3c569ad182914d26db410919d6a10c7b4859",
       "committed_at": "2026-10-04T19:29:38Z"
+    },
+    {
+      "version": "Reth Version: 2.7.0+1a4dbbe1",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607",
+      "committed_at": "2026-10-10T03:08:17Z"
     }
   ],
   "erigon_release": [
@@ -197,6 +203,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "96188a47395eb2a1f95e49d2c939f08fa15d66c7",
       "committed_at": "2026-10-05T18:23:00Z"
+    },
+    {
+      "version": "3.8.0-dev-1d3ebbf2",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "1d3ebbf217f6b4f99028cd590889a5c9f3aaa969",
+      "committed_at": "2026-10-11T08:14:26Z"
     }
   ],
   "besu_release": [
@@ -279,6 +291,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "1d62d893baed6c148313bb3d9d64f5c316d371e2",
       "committed_at": "2026-10-02T21:12:31Z"
+    },
+    {
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d05d8e745383699dd686e6efb090eddeb63a7380",
+      "committed_at": "2026-10-09T15:30:54Z"
     }
   ],
   "nethermind_release": [
@@ -415,6 +433,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "e8955c4cd6a1c41ffc525033198850fd989c46dc",
       "committed_at": "2026-10-05T18:57:56Z"
+    },
+    {
+      "version": "2.2.0-preview+204457ad",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "204457adfec70998bfc579bfbd88f62575ea52a3",
+      "committed_at": "2026-10-10T06:21:53Z"
     }
   ],
   "go-ethereum_trace": [
@@ -547,6 +571,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "e15c2f1caf7d8e792295bbfb898280e9cbb8e101",
       "committed_at": "2026-10-04T18:19:14Z"
+    },
+    {
+      "version": "anvil Version: 1.8.6-nightly+32624734",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "32624734aaf99e89a5046a3017a374a911000da8",
+      "committed_at": "2026-10-10T02:30:40Z"
     }
   ]
 }

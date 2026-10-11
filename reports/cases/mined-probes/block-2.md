@@ -2,21 +2,21 @@
 
 `trace_block` · mined-probes · [All reports](../../README.md)
 
-**What this checks:** Assess this declared topic case. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The reader makes one STATICCALL to the system contract. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order.
+**What this checks:** The reader makes one STATICCALL to the system contract. Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order. Assess this declared topic case. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Anvil · 1.8.4-nightly · e15c2f1c](../../clients/anvil_development.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Besu · 26.10-develop · 1d62d893](../../clients/besu_development.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Erigon · 3.8.0-dev · 96188a47](../../clients/erigon_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.2.0-preview · e8955c4c](../../clients/nethermind_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 42fa3c56](../../clients/reth_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 5 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 5 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | 4 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,15 +31,11 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · e15c2f1c** (`anvil Version: 1.8.4-nightly+e15c2f1c`)
-
-- [H28](../../decisions/H28.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
-
 **Anvil · 1.8.5 · 51a52c59** (`anvil Version: 1.8.5+51a52c59`)
 
 - [H28](../../decisions/H28.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 
-**Besu · 26.10-develop · 1d62d893** (`besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress [0]: error 'Reverted', result null.
 - [H28](../../decisions/H28.md): Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. call [0]: unexpected error 'Reverted'; result.output None != 0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e

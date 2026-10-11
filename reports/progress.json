@@ -5,7 +5,7 @@
         "development": {
           "agree": 6,
           "build": [
-            "26.10-develop \u00b7 1d62d893"
+            "26.10-develop \u00b7 d05d8e74"
           ],
           "gained": 0,
           "lost": 0
@@ -23,11 +23,11 @@
       "counted": true,
       "counts": {
         "agree": 6,
-        "converged": 11,
-        "fix": 10,
+        "converged": 10,
+        "fix": 9,
         "policy": 0,
         "review": 0,
-        "unmeasured": 6
+        "unmeasured": 8
       },
       "dev_only": 2,
       "name": "Besu",
@@ -41,7 +41,7 @@
         "development": {
           "agree": 31,
           "build": [
-            "3.8.0-dev \u00b7 96188a47"
+            "3.8.0-dev \u00b7 1d3ebbf2"
           ],
           "gained": 0,
           "lost": 0
@@ -77,7 +77,7 @@
         "development": {
           "agree": 32,
           "build": [
-            "2.2.0-preview \u00b7 e8955c4c"
+            "2.2.0-preview \u00b7 204457ad"
           ],
           "gained": 0,
           "lost": 0
@@ -113,7 +113,7 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.7.0 \u00b7 42fa3c56"
+            "2.7.0 \u00b7 1a4dbbe1"
           ],
           "gained": 0,
           "lost": 0
@@ -147,11 +147,11 @@
     {
       "builds": {
         "development": {
-          "agree": 17,
+          "agree": 28,
           "build": [
-            "1.8.4-nightly \u00b7 e15c2f1c"
+            "1.8.6-nightly \u00b7 32624734"
           ],
-          "gained": 3,
+          "gained": 11,
           "lost": 0
         },
         "release": {
@@ -159,24 +159,24 @@
           "build": [
             "1.8.5 \u00b7 51a52c59"
           ],
-          "gained": 5,
+          "gained": 0,
           "lost": 0
         }
       },
       "client": "anvil",
       "counted": false,
       "counts": {
-        "agree": 17,
+        "agree": 28,
         "converged": 5,
-        "fix": 2,
+        "fix": 0,
         "policy": 0,
         "review": 0,
-        "unmeasured": 9
+        "unmeasured": 0
       },
-      "dev_only": 0,
+      "dev_only": 9,
       "name": "Anvil",
       "prs": {
-        "merged": 14,
+        "merged": 15,
         "open": 0
       }
     }

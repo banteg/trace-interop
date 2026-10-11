@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Anvil · 1.8.4-nightly · e15c2f1c](../../clients/anvil_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Besu · 26.10-develop · 1d62d893](../../clients/besu_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Erigon · 3.8.0-dev · 96188a47](../../clients/erigon_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.2.0-preview · e8955c4c](../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 42fa3c56](../../clients/reth_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | `0x00000000000000000000000000000000000000000000000000000000b2d05e00` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -40,7 +40,7 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · e15c2f1c** (`anvil Version: 1.8.4-nightly+e15c2f1c`)
+**Anvil · 1.8.6-nightly · 32624734** (`anvil Version: 1.8.6-nightly+32624734`)
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
@@ -48,7 +48,7 @@
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
-**Besu · 26.10-develop · 1d62d893** (`besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
@@ -56,7 +56,7 @@
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
-**Erigon · 3.8.0-dev · 96188a47** (`3.8.0-dev-96188a47`)
+**Erigon · 3.8.0-dev · 1d3ebbf2** (`3.8.0-dev-1d3ebbf2`)
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
@@ -68,7 +68,7 @@
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 
-**Nethermind · 2.2.0-preview · e8955c4c** (`2.2.0-preview+e8955c4c`)
+**Nethermind · 2.2.0-preview · 204457ad** (`2.2.0-preview+204457ad`)
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x0000000000000000000000000000000000000000000000000000000000000000']
 
@@ -76,7 +76,7 @@
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x0000000000000000000000000000000000000000000000000000000000000000']
 
-**Reth · 2.7.0 · 42fa3c56** (`Reth Version: 2.7.0+42fa3c56`)
+**Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)
 
 - [H14](../../decisions/H14.md): The call runs with type 1, which does not change execution, at GASPRICE 3000000000, from its dynamic fee caps. eth_call parity control for combo-type1-dynamic. Observed: Expected ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']; got ['0x00000000000000000000000000000000000000000000000000000000b2d05e00']
 

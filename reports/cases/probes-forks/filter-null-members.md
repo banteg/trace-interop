@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Besu · 26.10-develop · 1d62d893](../../clients/besu_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · 96188a47](../../clients/erigon_development.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 16 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Nethermind · 2.2.0-preview · e8955c4c](../../clients/nethermind_development.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 42fa3c56](../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/h14-case-variant/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/h14-case-variant/probes-forks/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 16 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | 16 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -37,7 +37,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 1d62d893** (`besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
 - [H14](../../decisions/H14.md): Null mode, after, count and address lists are omitted, so blocks 2-5 return every record. Expected a result; observed rpc_error -32602 Invalid filter params
 
@@ -45,7 +45,7 @@
 
 - [H14](../../decisions/H14.md): Null mode, after, count and address lists are omitted, so blocks 2-5 return every record. Expected a result; observed rpc_error -32602 Invalid filter params
 
-**Erigon · 3.8.0-dev · 96188a47** (`3.8.0-dev-96188a47`)
+**Erigon · 3.8.0-dev · 1d3ebbf2** (`3.8.0-dev-1d3ebbf2`)
 
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
@@ -67,7 +67,7 @@
 - Result shape at `7`: 'transactionHash' is a required property
 - Result shape at `7`: 'transactionPosition' is a required property
 
-**Nethermind · 2.2.0-preview · e8955c4c** (`2.2.0-preview+e8955c4c`)
+**Nethermind · 2.2.0-preview · 204457ad** (`2.2.0-preview+204457ad`)
 
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property
@@ -82,7 +82,7 @@
 
 - [H14](../../decisions/H14.md): Null mode, after, count and address lists are omitted, so blocks 2-5 return every record. Expected a result; observed rpc_error -32602 Invalid params
 
-**Reth · 2.7.0 · 42fa3c56** (`Reth Version: 2.7.0+42fa3c56`)
+**Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)
 
 - [H14](../../decisions/H14.md): Null mode, after, count and address lists are omitted, so blocks 2-5 return every record. Expected a result; observed rpc_error -32602 Invalid params
 

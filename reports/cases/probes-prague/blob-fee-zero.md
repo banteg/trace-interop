@@ -2,21 +2,21 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Anvil · 1.8.4-nightly · e15c2f1c](../../clients/anvil_development.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Besu · 26.10-develop · 1d62d893](../../clients/besu_development.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Erigon · 3.8.0-dev · 96188a47](../../clients/erigon_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.2.0-preview · e8955c4c](../../clients/nethermind_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
-| [Reth · 2.7.0 · 42fa3c56](../../clients/reth_development.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../evidence/2026-10-05/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-05/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32603` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | RPC error `-32003` | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -46,14 +46,9 @@
 }
 ```
 
-**Anvil · 1.8.4-nightly · e15c2f1c** (`anvil Version: 1.8.4-nightly+e15c2f1c`)
+**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
-- [H15](../../decisions/H15.md): An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read. Expected a result; observed rpc_error -32003 Block `blob_gas_price` is greater than tx-specified `max_fee_per_blob_gas`
-
-**Besu · 26.10-develop · 1d62d893** (`besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25`)
-
-- [H15](../../decisions/H15.md): An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read. Expected {'error': None, 'result': {'code': '0x0000000000000000000000000000000000000000000000000000000000000000'}}; got {'action': {'from': '0x4e59b44847b379578588920ca78fbf26c0b4956c', 'gas': '0x3b49f', 'init': '0x4a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223', 'code': '0x0000000000000000000000000000000000000000000000000000000000000001', 'gasUsed': '0x1911'}, 'subtraces': 0, 'traceAddress': [0], 'type': 'create'}
-- Result shape at `trace/1`: {'action': {'from': '0x4e59b44847b379578588920ca78fbf26c0b4956c', 'gas': '0x3b49f', 'init': '0x4a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223', 'code': '0x0000000000000000000000000000000000000000000000000000000000000001', 'gasUsed': '0x1911'},
+- Result shape at `trace/1`: {'action': {'from': '0x4e59b44847b379578588920ca78fbf26c0b4956c', 'gas': '0x3b49f', 'init': '0x4a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223', 'code': '0x0000000000000000000000000000000000000000000000000000000000000000', 'gasUsed': '0x1911'},
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
@@ -67,7 +62,7 @@
 
 - [H15](../../decisions/H15.md): An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read. Expected a result; observed rpc_error -32000 maxFeePerBlobGas, if specified, must be non-zero
 
-**Reth · 2.7.0 · 42fa3c56** (`Reth Version: 2.7.0+42fa3c56`)
+**Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)
 
 - [H15](../../decisions/H15.md): An explicit zero maxFeePerBlobGas is accepted, not rejected, and runs with BLOBBASEFEE 0. The factory's CREATE2 child deploys the word it read. Expected a result; observed rpc_error -32003 max fee per blob gas less than block blob gas fee
 

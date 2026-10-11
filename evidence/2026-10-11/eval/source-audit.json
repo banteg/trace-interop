@@ -1,0 +1,30 @@
+{
+  "capture_source": "aec8278dfdd9b5928221284903788d533118418d",
+  "source_dirty": true,
+  "dirty_paths": [
+    "?? evidence/2026-10-11/eval/"
+  ],
+  "dirty_note": "The matrix wrote its output inside the clone (evidence/2026-10-11/eval/) instead of the ignored runs/ directory, so git status listed that untracked folder and every manifest records source_dirty: true. git status --porcelain --untracked-files=all in the capture clone listed nothing else; tracked files matched aec8278d.",
+  "manifest_count": 19,
+  "manifests": {
+    "a/manifest.json": "66ed441890b621d133c18f2e7b1ae759f677987a1167238ea98b6e27a66840c2",
+    "callmany-isolation/manifest.json": "bda47b043217d42b1729fba0ce6f84241cc96b664ebe57a39c3779e935fb6e1c",
+    "coverage/manifest.json": "c6f766b7f6ddd811f970e3eeb3da458119672f49fe1dee5bcc149ee6f27d50eb",
+    "fee-compat/manifest.json": "419db86b83b7545309be7bd7788ed1c6b161958909155e4f5552cb347e94ea2d",
+    "fee-policy/manifest.json": "35c56e7bce55cbe9580f0d712655002afc59308169b224fb1af9e00245e028e6",
+    "fork-followup/manifest.json": "bcb9a03a2655069fd0543f4582259939a02a85afc3291fc03e93a1370ddcba6e",
+    "forks/manifest.json": "453953cb381df124f71d2f348de721d8e44a8dd53b05faeb8347573c92bfe5bc",
+    "h30/manifest.json": "fe9658b0ab6bc972d2bd4f979cdab7eb13990173a6e994a19b37203099bafc00",
+    "initial/manifest.json": "5c546cebb3e708ab3673a11ec22b497de9b1c12be9535182bc24e2b1350cf0a2",
+    "mined-probes/manifest.json": "ad7754f5faf28a4871e1db68839802b773d2d1e20f8b5d928475a14b12095920",
+    "precompile-values/manifest.json": "78a1831b30b4d02bc1a6385e3287648ee309360130071999603aaa69a4d39367",
+    "precompiles/manifest.json": "3af5b0fe553617d7cbbb1deb2036a87bb70c2425150f0ba2083b790a7c20e60f",
+    "probes-forks/manifest.json": "7559c57eac787715c2b40ebfef5f1a146a36f224809dbe313e0046c4c80a9754",
+    "probes-prague/manifest.json": "cddf907db51a8005a7559200127da6ca2532dad9dc81cb0d4c82db2262574fad",
+    "pruned/manifest.json": "fe36ecf5edc23a91f9311e31186dbcd50fec8a504d98431cb43514ce81d19754",
+    "raw-selector/manifest.json": "3391b1a89a1e6b4c8830b29e21c3949ba9d916bd8351f1f4e3350f327abac1b5",
+    "raw-validation/manifest.json": "e125848a40ffbd788b9394872d1c54a0d6edf3a6660358c18d71d1c043028c0f",
+    "reorg-safe/manifest.json": "379e468bf83395d23fd09491da03426c496624f4718ab51f7d814cd725004f06",
+    "repeat/manifest.json": "f1fdd7973d70bdd356c4a2ac70b38c881ff0f76b4c9da9a7bfd2546a778fd88f"
+  }
+}

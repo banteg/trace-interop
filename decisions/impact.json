@@ -2,7 +2,7 @@
   "clients": {
     "besu": {
       "name": "Besu",
-      "summary": "Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10-develop \u00b7 711f8142 runs unsigned calls like eth_call (#11404) and returns rejected trace_callMany bundles as one JSON-RPC error (#11401); trace_callMany still lacks a per-call transaction boundary (#11365) and answers every rejected item with an internal error."
+      "summary": "Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10-develop \u00b7 d05d8e74 runs unsigned calls like eth_call (#11404), returns rejected trace_callMany bundles as one JSON-RPC error (#11401), starts each trace_callMany call at a transaction boundary (#11365), reports each rejected item with its own reason (#11432) and selects exactly the hashed block in trace_filter (#11407)."
     },
     "erigon": {
       "name": "Erigon",
@@ -22,7 +22,7 @@
     },
     "anvil": {
       "name": "Anvil",
-      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. Foundry 1.8.5 \u00b7 51a52c59 ships ten trace-interop fixes (#17301\u2013#17304, #17306, #17307, #17309\u2013#17312): tree-path trace_get, missing blocks and replays, replay transaction hashes, mined traces without nested precompile frames, EIP-3607 rejection for signed raw transactions, conflicting call fields, pending in block trace methods, and the fee-free, cap-only and omitted-gas call environment. With revm-inspectors 0.44.1 (#17226) it also carries the reverted-CREATE results, failure labels and vmTrace fixes. It still accepts integer trace_get indices (open #17308), executes calls priced below the base fee, and cannot set a parent beacon root, so the mined-probes chain is not replayed until open #17305 lands. The nightly e15c2f1c predates the fixes merged on 2026-10-05."
+      "summary": "Foundry\u2019s development node, captured by replaying each chain instead of through Hive. Foundry 1.8.5 \u00b7 51a52c59 ships ten trace-interop fixes (#17301\u2013#17304, #17306, #17307, #17309\u2013#17312): tree-path trace_get, missing blocks and replays, replay transaction hashes, mined traces without nested precompile frames, EIP-3607 rejection for signed raw transactions, conflicting call fields, pending in block trace methods, and the fee-free, cap-only and omitted-gas call environment. With revm-inspectors 0.44.1 (#17226) it also carries the reverted-CREATE results, failure labels and vmTrace fixes. 1.8.5 still accepts integer trace_get indices and executes calls priced below the base fee, and cannot set a parent beacon root, so the mined-probes chain is not replayed on it. The nightly 32624734 adds #17305, #17308 and #17419 (by figtracer): it replays mined-probes and agrees on 28 decisions. Its remaining differences are null address lists in trace_filter (H04), the self-destruct-to-self payload (H23, H26; open bluealloy/revm#3833) and the filter tags and blockHash that Alloy\u2019s `TraceFilter` lacks (H32, H33)."
     }
   },
   "topics": {
@@ -101,8 +101,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 includes #17306: an unknown block returns -32001 from trace_block and block replays, a trace_filter bound past the head is rejected with -32602 and an unknown replay returns null. The nightly e15c2f1c predates it: trace_block returns `[]` for a missing block and a filter ending past the head returns the head\u2019s records.",
-        "change": "None beyond #17306 reaching the nightly."
+        "observed": "1.8.5 \u00b7 51a52c59 includes #17306: an unknown block returns -32001 from trace_block and block replays, a trace_filter bound past the head is rejected with -32602 and an unknown replay returns null. The nightly 32624734 includes it too.",
+        "change": "No change."
       }
     },
     "H09": {
@@ -167,8 +167,8 @@
     },
     "H15": {
       "besu": {
-        "observed": "26.9.0 \u00b7 ee9c64c8: paired eth_call executes explicit zero fees with BASEFEE 0, while trace_call returns an internal error; an omitted fee is priced and charged at the base fee in trace_call but free in eth_call, and invalid trace fee/funding requests produce generic internal errors. 26.10-develop \u00b7 711f8142 includes #11404: trace_call and every trace_callMany item run an unpriced call like eth_call (GASPRICE and BASEFEE 0, no fee effects) and validate and charge a priced one. Its trace_call names each rejection with Besu\u2019s own codes (-32009 below the base fee, -32004 insufficient funds, -32003 intrinsic gas) instead of the eth_simulateV1 codes, and reports a positive tip over a zero or omitted fee cap as below the base fee instead of as a priority fee above the cap. trace_callMany answers every rejected item, whatever the violation, with -32603 Internal error, so 152 rejection checks are unassessable. Both builds reject a supplied nonce below the state nonce, 26.9.0 with -32603 and the development build with -32001 (\u201cNonce too low\u201d). On blob calls an omitted or zero `maxFeePerBlobGas` runs at the head\u2019s BLOBBASEFEE (1) instead of 0; the development build accepts the explicit zero, which 26.9.0 rejects with an internal error.",
-        "change": "Ship #11404 in a release. Report each rejected trace_callMany item with its own reason, as trace_call does, with the eth_simulateV1 codes recommended (-38012, -38014, -38013); rank a tip above the cap ahead of the base-fee check (-32602 recommended); ignore a supplied nonce. Run a blob call with an omitted or zero `maxFeePerBlobGas` at BLOBBASEFEE 0 with no blob fee."
+        "observed": "26.9.0 \u00b7 ee9c64c8: paired eth_call executes explicit zero fees with BASEFEE 0, while trace_call returns an internal error; an omitted fee is priced and charged at the base fee in trace_call but free in eth_call, and invalid trace fee/funding requests produce generic internal errors. 26.10-develop \u00b7 711f8142 includes #11404: trace_call and every trace_callMany item run an unpriced call like eth_call (GASPRICE and BASEFEE 0, no fee effects) and validate and charge a priced one. Its trace_call names each rejection with Besu\u2019s own codes (-32009 below the base fee, -32004 insufficient funds, -32003 intrinsic gas) instead of the eth_simulateV1 codes, and reports a positive tip over a zero or omitted fee cap as below the base fee instead of as a priority fee above the cap. trace_callMany answers every rejected item, whatever the violation, with -32603 Internal error, so 152 rejection checks are unassessable. Both builds reject a supplied nonce below the state nonce, 26.9.0 with -32603 and the development build with -32001 (\u201cNonce too low\u201d). On blob calls an omitted or zero `maxFeePerBlobGas` runs at the head\u2019s BLOBBASEFEE (1) instead of 0; the development build accepts the explicit zero, which 26.9.0 rejects with an internal error. 26.10-develop \u00b7 d05d8e74 includes #11432 and no H15 difference remains: each rejected trace_callMany item reports its own reason, a tip above the cap is reported first, a supplied nonce is ignored and an omitted or zero `maxFeePerBlobGas` runs at BLOBBASEFEE 0. Two trace_callMany gas witnesses stay blocked.",
+        "change": "Ship #11404 and #11432 in a release."
       },
       "erigon": {
         "observed": "3.7.0 \u00b7 bdc78cc4: eth_call uses BASEFEE 0 for explicit zero fees and debits priced gas upfront. trace_call rejects legacy zero, reprices typed zero and omitted fees to B, changes GASLIMIT and skips the sender gas debit; its stateDiff still credits tips. Both methods reject positive legacy/typed caps below B. 3.8.0-dev \u00b7 a2a19253 includes #24330 and #24343: trace_call and trace_callMany price gas like eth_call, run zero and defaulted blob fees with BLOBBASEFEE 0, charge priced calls, keep the block GASLIMIT and report fee and funding rejections with the eth_simulateV1 codes (-38012 for a fee cap below the base fee). 3.7.0 runs omitted and zero blob caps at the head\u2019s BLOBBASEFEE. Refund-bound accounting remains unassessed.",
@@ -188,8 +188,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 runs fee-free calls at BASEFEE 0 and blob calls without a cap at BLOBBASEFEE 0, accepting an explicit zero cap (#17310), charges cap-only calls at the base fee (#17311) and caps omitted gas by the sender\u2019s allowance (#17312). It still executes a positive gas price or fee cap below the base fee instead of rejecting it. The nightly e15c2f1c predates these fixes.",
-        "change": "Reject a positive gas price or fee cap below the base fee (-32602 or the eth_simulateV1 -38012 recommended), as the native clients do."
+        "observed": "1.8.5 \u00b7 51a52c59 runs fee-free calls at BASEFEE 0 and blob calls without a cap at BLOBBASEFEE 0, accepting an explicit zero cap (#17310), charges cap-only calls at the base fee (#17311) and caps omitted gas by the sender\u2019s allowance (#17312). It still executes a positive gas price or fee cap below the base fee instead of rejecting it. The nightly 32624734 carries these fixes and #17419, which rejects such a call.",
+        "change": "Ship #17419 in a release."
       }
     },
     "H20": {
@@ -214,7 +214,7 @@
         "change": "Ship revm-inspectors 0.44.1 (#27668) in a release."
       },
       "anvil": {
-        "observed": "1.8.3 locks revm-inspectors 0.43.0 (whole-memory `mem`, pre-operation `used`, no `store`). 1.8.4 and the nightly 328811cb ship 0.44.1 (#532): memory and subs follow execution, MLOAD reports its memory, there is no synthetic STOP, and a call that fails its precheck has no `sub`. Only the blocked mined-probes cases remain.",
+        "observed": "1.8.3 locks revm-inspectors 0.43.0 (whole-memory `mem`, pre-operation `used`, no `store`). 1.8.4 and the nightly 328811cb ship 0.44.1 (#532): memory and subs follow execution, MLOAD reports its memory, there is no synthetic STOP, and a call that fails its precheck has no `sub`. The nightly 32624734 replays mined-probes through #17305 and agrees there too.",
         "change": "No change; 1.8.4 ships revm-inspectors 0.44.1."
       }
     },
@@ -240,6 +240,10 @@
       "reth": {
         "observed": "A failed CREATE matches its attempted address through Alloy\u2019s failed result address, the same policy difference Erigon and Nethermind show. A post-Cancun SELFDESTRUCT to self has no executing account or beneficiary, so address filters miss it: revm skips the inspector callback (revm #3834).",
         "change": "Give a failed CREATE no recipient match, the H23 adoption shared with Erigon and Nethermind. The SELFDESTRUCT payload follows from revm #3833 once it reaches revm-inspectors and Reth."
+      },
+      "anvil": {
+        "observed": "The nightly 32624734 replays mined-probes through #17305. With the zeroed self-destruct-to-self payload (H26), trace_filter misses that suicide record by its executing account and by its beneficiary.",
+        "change": "None beyond bluealloy/revm#3833 (H26)."
       }
     },
     "H24": {
@@ -268,8 +272,8 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 omits nested zero-value precompile calls from mined traces (#17303), as simulations and replays do. The nightly e15c2f1c predates it and still returns the calltree\u2019s nested identity call as a frame in trace_transaction, trace_block and trace_filter.",
-        "change": "None beyond #17303 reaching the nightly."
+        "observed": "1.8.5 \u00b7 51a52c59 omits nested zero-value precompile calls from mined traces (#17303), as simulations and replays do. The nightly 32624734 includes it too.",
+        "change": "No change."
       }
     },
     "H02": {
@@ -286,7 +290,7 @@
         "change": "No change; existing flat-index callers need a migration path."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 and the nightly e15c2f1c read the indices as one `traceAddress` path (#17302): `[]` selects the root and `[0]` its first child. 1.8.4 indexed the flattened frame list.",
+        "observed": "1.8.5 \u00b7 51a52c59 and the nightly 32624734 read the indices as one `traceAddress` path (#17302): `[]` selects the root and `[0]` its first child. 1.8.4 indexed the flattened frame list.",
         "change": "No change."
       }
     },
@@ -322,8 +326,8 @@
         "change": "Reject integer path entries (-32602 recommended); callers must convert output path integers to hex quantities. Treat a null filter member as omitted."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 rejects disagreeing `data` and `input` and gasPrice with dynamic fee fields, and prices a legacy blob call by its gasPrice (#17307). Both builds still accept integer trace_get indices, which open #17308 rejects. The nightly e15c2f1c predates #17307.",
-        "change": "Merge #17308: reject integer trace_get indices (-32602 recommended)."
+        "observed": "1.8.5 \u00b7 51a52c59 rejects disagreeing `data` and `input` and gasPrice with dynamic fee fields, and prices a legacy blob call by its gasPrice (#17307). 1.8.5 still accepts integer trace_get indices; the nightly 32624734 includes #17307 and #17308 and rejects them.",
+        "change": "Ship #17308 in a release."
       },
       "geth": {
         "observed": "The fork reports a state-dependent rejection without a listed code, such as a blob fee cap below the blob base fee or a transaction type not active at the fork, as -32003 (since e26833e3), and keeps -32602 for call objects that are invalid regardless of state.",
@@ -370,8 +374,8 @@
         "change": "Report a deleted account\u2019s storage as `{}`."
       },
       "anvil": {
-        "observed": "With revm-inspectors 0.44.0 the nightlies reported the calltree\u2019s child, created and self-destructed in one transaction and absent at both endpoints, as a deleted account. 1.8.4 and the nightly 328811cb include #17106 and omit it, so only the blocked mined-probes cases remain.",
-        "change": "No change; 1.8.4 ships #17106."
+        "observed": "With revm-inspectors 0.44.0 the nightlies reported the calltree\u2019s child, created and self-destructed in one transaction and absent at both endpoints, as a deleted account. 1.8.4 and the nightly 328811cb include #17106 and omit it. The nightly 32624734 replays mined-probes through #17305: a post-Cancun SELFDESTRUCT to self yields a suicide record with a zero address, balance and refundAddress in trace_transaction, trace_block and both replays, because revm passes no payload to the tracer for it.",
+        "change": "Merge bluealloy/revm#3833, which passes the executing account, beneficiary and balance to the tracer, and take it through revm-inspectors."
       }
     },
     "H07": {
@@ -380,7 +384,7 @@
         "change": "No change."
       },
       "anvil": {
-        "observed": "1.8.5 \u00b7 51a52c59 and the nightly e15c2f1c include `transactionHash` in individual replays (#17301), as block replays do.",
+        "observed": "1.8.5 \u00b7 51a52c59 and the nightly 32624734 include `transactionHash` in individual replays (#17301), as block replays do.",
         "change": "No change."
       }
     },
@@ -472,21 +476,21 @@
         "change": "Use `*` with 32-byte from/to words for every slot change on a surviving account; reserve `+` and `-` for account birth and deletion."
       },
       "anvil": {
-        "observed": "1.8.3 marked a contract created in trace_call with `+` but reported a first transfer to an absent account as a balance change from zero; revm-inspectors 0.44.0 lost the creation markers too. 1.8.4 and the nightly 328811cb ship revm-inspectors 0.44.1 with #17106, which makes absent accounts read as absent for the state-diff builder: every field of an account absent before the call is marked `+`, for transfers and creations alike, and only the blocked mined-probes cases remain.",
+        "observed": "1.8.3 marked a contract created in trace_call with `+` but reported a first transfer to an absent account as a balance change from zero; revm-inspectors 0.44.0 lost the creation markers too. 1.8.4 and the nightly 328811cb ship revm-inspectors 0.44.1 with #17106, which makes absent accounts read as absent for the state-diff builder: every field of an account absent before the call is marked `+`, for transfers and creations alike, and the nightly 32624734, which replays mined-probes through #17305, agrees there too.",
         "change": "No change; 1.8.4 ships #17106."
       }
     },
     "H16": {
       "besu": {
-        "observed": "`trace_callMany` does not start each call at a transaction boundary, so a later call\u2019s SSTORE uses the pre-bundle original value of a slot an earlier call wrote. With the zero-fee bundles executing since #11404, 26.10-develop \u00b7 711f8142 shows it in both bundles: the second `initial/call-many` and `initial/call-many-priced` call uses 5,600 gas less (0x1e683 against 0x1fc63) than on every other build, `probes-prague/many-original-value` measures a 2,208-gas SSTORE where 5,008 is expected (2,800 less), and the reverted write in `a/many-storage-write-revert-read` is charged 2,800 gas less. Transient storage, warm sets and SELFDESTRUCT scope already reset per call. A rejected item returns -32603 Internal error (`field-gas-omitted-allowance-many`) rather than its funds rejection.",
-        "change": "Mark a transaction boundary before each call, as block replay already does, so original values, access sets, transient storage and refunds start afresh (#11365). Return a rejected item\u2019s own error (H15)."
+        "observed": "26.9.0: `trace_callMany` does not start each call at a transaction boundary, so a later call\u2019s SSTORE uses the pre-bundle original value of a slot an earlier call wrote; `probes-prague/many-original-value` measures a 2,208-gas SSTORE where 5,008 is expected. 26.10-develop \u00b7 d05d8e74 includes #11365 and #11432: every call starts at a boundary and a rejected item returns its own funds rejection. Both builds still differ on the `mined-probes` block 2 replay\u2019s fee accounting and on the declared state-diff fixture of `initial/raw-valid-default-block`.",
+        "change": "Ship #11365 in a release. Pay the exact miner tip and burn the block base fee in the block 2 replay\u2019s balance deltas."
       }
     },
     "H33": {
       "append_checked_requirements": false,
       "besu": {
-        "observed": "Both builds parse `blockHash` but never read it, so `{blockHash: H2}` traces the head (block 0x30) with or without address lists, a page, null bounds or the genesis hash, and returns `[]` where the head has no matching records. An unknown hash also answers with the head, and `[]` with `count: 0`; `{blockHash, fromBlock: 0x2}` answers block 2. A short hash and an EIP-1898 object are rejected with -32602. In the reorg scenario every A and B hash answers with the current head, including A\u2019s after the switch. The mode union case is blocked: Besu rejects mode union without the member too.",
-        "change": "Read the `blockHash` its `FilterParameter` already parses and select exactly that block, canonical in the request\u2019s chain view, resolving and tracing it in one view. Reject a hash with non-null bounds and a malformed hash (-32602 recommended) and an unknown, noncanonical, unexecuted or unavailable hash (-32001 recommended; 4444 for pruned history), before any `count: 0` shortcut; treat a null member as omitted."
+        "observed": "26.9.0 parses `blockHash` but never reads it, so `{blockHash: H2}` traces the head (block 0x30) with or without address lists, a page, null bounds or the genesis hash, and returns `[]` where the head has no matching records. An unknown hash also answers with the head, and `[]` with `count: 0`; `{blockHash, fromBlock: 0x2}` answers block 2. A short hash and an EIP-1898 object are rejected with -32602. In the reorg scenario every A and B hash answers with the current head, including A\u2019s after the switch. The mode union case is blocked: Besu rejects mode union without the member too. 26.10-develop \u00b7 d05d8e74 includes #11407: it selects exactly the hashed block, rejects an unknown hash and a hash with bounds, and agrees in the reorg scenario; only the mode union case stays blocked.",
+        "change": "Ship #11407 in a release."
       },
       "erigon": {
         "observed": "3.7.1 \u00b7 8c1e3893 accepts `blockHash` as an unknown member and ignores it, scanning from genesis to the head. 3.8.0-dev \u00b7 5cb6c867 includes #24435: it selects exactly the hashed block and rejects a hash with bounds. The reorg phases are blocked: both builds stop at the branch switch (\u201cInvalid forkchoice state\u201d), so the development build is only partially assessed.",

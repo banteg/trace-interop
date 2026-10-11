@@ -2,7 +2,7 @@
   "counts": {
     "L01": {
       "anvil_development": {
-        "held": 710,
+        "held": 650,
         "violated": 0
       },
       "anvil_release": {
@@ -10,7 +10,7 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 775,
+        "held": 772,
         "violated": 1
       },
       "besu_release": {
@@ -18,7 +18,7 @@
         "violated": 1
       },
       "erigon_development": {
-        "held": 742,
+        "held": 740,
         "violated": 0
       },
       "erigon_release": {
@@ -48,7 +48,7 @@
     },
     "L02": {
       "anvil_development": {
-        "held": 1360,
+        "held": 1269,
         "violated": 0
       },
       "anvil_release": {
@@ -94,7 +94,7 @@
     },
     "L03": {
       "anvil_development": {
-        "held": 89,
+        "held": 106,
         "violated": 0
       },
       "anvil_release": {
@@ -110,7 +110,7 @@
         "violated": 3
       },
       "erigon_development": {
-        "held": 146,
+        "held": 145,
         "violated": 0
       },
       "erigon_release": {
@@ -140,7 +140,7 @@
     },
     "L04": {
       "anvil_development": {
-        "held": 2914,
+        "held": 2383,
         "violated": 0
       },
       "anvil_release": {
@@ -232,7 +232,7 @@
     },
     "L06": {
       "anvil_development": {
-        "held": 5,
+        "held": 14,
         "violated": 0
       },
       "anvil_release": {
@@ -278,8 +278,8 @@
     },
     "L07": {
       "anvil_development": {
-        "held": 9,
-        "violated": 2
+        "held": 29,
+        "violated": 0
       },
       "anvil_release": {
         "held": 11,
@@ -324,7 +324,7 @@
     },
     "L08": {
       "anvil_development": {
-        "held": 12,
+        "held": 23,
         "violated": 0
       },
       "anvil_release": {
@@ -362,7 +362,7 @@
     },
     "L09": {
       "anvil_development": {
-        "held": 492,
+        "held": 389,
         "violated": 0
       },
       "anvil_release": {
@@ -408,7 +408,7 @@
     },
     "L10": {
       "anvil_development": {
-        "held": 35,
+        "held": 44,
         "violated": 0
       },
       "anvil_release": {
@@ -462,7 +462,7 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 11,
+        "held": 10,
         "violated": 0
       },
       "besu_release": {
@@ -617,7 +617,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -639,7 +639,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -650,7 +650,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -661,7 +661,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -1154,30 +1154,6 @@
     },
     {
       "cases": [
-        "block-tree",
-        "replay-tree-trace"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "list has 10 vs 9 entries",
-      "law": "L07",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+e15c2f1c"
-    },
-    {
-      "cases": [
-        "transaction-tree",
-        "replay-tree-trace"
-      ],
-      "client": "anvil_development",
-      "corpus": "initial",
-      "detail": "list has 10 vs 9 entries",
-      "law": "L07",
-      "run": "initial",
-      "version": "anvil Version: 1.8.4-nightly+e15c2f1c"
-    },
-    {
-      "cases": [
         "block-36",
         "replay-36"
       ],
@@ -1186,7 +1162,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1198,7 +1174,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1210,7 +1186,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1222,7 +1198,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1234,7 +1210,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1246,7 +1222,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1258,7 +1234,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1270,7 +1246,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1282,7 +1258,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -1294,7 +1270,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+e8955c4c"
+      "version": "2.2.0-preview+204457ad"
     },
     {
       "cases": [
@@ -3659,7 +3635,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3672,7 +3648,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3685,7 +3661,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3700,7 +3676,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-1d62d89/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [

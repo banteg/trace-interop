@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-11",
+  "checked_at": "2026-10-12",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2037,9 +2037,16 @@
       ],
       "note": "trace_block and trace_replayBlockTransactions return block not found instead of null",
       "title": "fix(rpc): return block not found from trace_block and block replays",
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-10-12T01:36:14Z",
+      "uptake": {
+        "merge_commit": "82e6fc4c091f71b3deec39fd3288c5c93acda210",
+        "builds": {
+          "d05d8e745383699dd686e6efb090eddeb63a7380": false,
+          "ee9c64c8ed031cba5c6bcdb502a79c03c3a467c4": false
+        }
+      }
     },
     {
       "url": "https://github.com/foundry-rs/foundry/pull/17106",

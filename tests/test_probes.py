@@ -661,11 +661,12 @@ class MemberCaseTests(Probe):
         self.assertDiffers(case, result(records+[{'type': 'reward', 'blockNumber': 4}]))
         self.assertDiffers(case, error(-32603))
 
-    def test_a_blob_fee_cap_without_hashes_is_rejected_at_every_fork(self):
-        for name in ['fork-blob-fee-only-before', 'fork-blob-fee-only-at']:
+    def test_a_blob_fee_cap_without_hashes_or_an_empty_list_is_rejected_at_every_fork(self):
+        for name in ['fork-blob-fee-only-before', 'fork-blob-fee-only-at', 'fork-blob-empty-before', 'fork-blob-empty-at']:
             case = FORKS[name]
             call = case['request']['params'][0]
-            self.assertEqual((call['maxFeePerBlobGas'], 'blobVersionedHashes' in call), ('0x1', False), name)
+            self.assertFalse(call.get('blobVersionedHashes'), name)
+            self.assertEqual(call.get('maxFeePerBlobGas'), '0x1' if 'fee-only' in name else None, name)
             self.assertMatches(case, error(-32003))
             self.assertMatches(case, error(-32602))
             # Running the call ignores the cap; an internal error is no rejection.

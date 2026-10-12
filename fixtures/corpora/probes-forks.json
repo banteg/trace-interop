@@ -2327,7 +2327,7 @@
         {
           "kind": "error",
           "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2359,7 +2359,7 @@
           "control": "eth_call parity control for fork-blob-fee-only-before.",
           "kind": "error",
           "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2387,7 +2387,7 @@
         {
           "kind": "error",
           "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2419,7 +2419,7 @@
           "control": "eth_call parity control for fork-blob-fee-only-at.",
           "kind": "error",
           "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the cap ignored.",
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2433,6 +2433,126 @@
             "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
             "gas": "0x186a0",
             "maxFeePerBlobGas": "0x1",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-empty-before",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-empty-before-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-empty-before.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          "0x37"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-empty-at",
+      "probes": [
+        {
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "blobVersionedHashes": [],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
+            "maxFeePerGas": "0x0",
+            "maxPriorityFeePerGas": "0x0",
+            "to": "0x00000000000000000000000000000000000000ee"
+          },
+          [
+            "trace"
+          ],
+          "0x38"
+        ]
+      }
+    },
+    {
+      "name": "fork-blob-empty-at-eth-call",
+      "probes": [
+        {
+          "control": "eth_call parity control for fork-blob-empty-at.",
+          "kind": "error",
+          "recommended": -32003,
+          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "topic": "H14"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_call",
+        "params": [
+          {
+            "blobVersionedHashes": [],
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x186a0",
             "maxFeePerGas": "0x0",
             "maxPriorityFeePerGas": "0x0",
             "to": "0x00000000000000000000000000000000000000ee"

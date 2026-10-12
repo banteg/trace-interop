@@ -55,18 +55,10 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 ## Erigon
 
-```mermaid
-flowchart LR
-  Erigon_24322["Erigon #24322"]:::open
-  Erigon_24032["Erigon #24032"]:::open
-  Erigon_24032 --> Erigon_24322
-  classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
-```
-
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Erigon #23952](https://github.com/erigontech/erigon/pull/23952) | Include MCOPY memory writes in vmTrace | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | — | — | dev, stable | — |
-| [Erigon #24032](https://github.com/erigontech/erigon/pull/24032) | Test catch-up crash recovery and fix forkchoice persistence; supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario | — | — | — | — | — | — |
+| [Erigon #24032](https://github.com/erigontech/erigon/pull/24032) | Test catch-up crash recovery and fix forkchoice persistence; supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario; a build at b5f10db passes the reorg-safe setup controls, and its H33 reorg cases agree (evidence/2026-10-12/erigon-b5f10db) | — | 2026-10-12 | — | — | — | — |
 | [Erigon #24056](https://github.com/erigontech/erigon/pull/24056) | Read account state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-18 | — | — | dev, stable | dev |
 | [Erigon #24255](https://github.com/erigontech/erigon/pull/24255) | Default trace_filter address lists to intersection · after rpc-tests #604 | [H03](../reports/decisions/H03.md), [H04](../reports/decisions/H04.md) | 2026-09-25 | — | — | dev | dev |
 | [Erigon #24290](https://github.com/erigontech/erigon/pull/24290) | Read trace_call calldata from `input`; adds `input` only; #24294 adds the remaining call fields | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 | — | — | dev | — |
@@ -74,7 +66,6 @@ flowchart LR
 | [Erigon #24293](https://github.com/erigontech/erigon/pull/24293) | Trace_callMany reads state at the end of the requested block | [H28](../reports/decisions/H28.md) | 2026-09-25 | — | — | dev | dev |
 | [Erigon #24294](https://github.com/erigontech/erigon/pull/24294) | Trace_call and trace_callMany accept nonce, chainId, blob hashes and authorizations; adds the call fields #24290 leaves out; the unknown-mode and malformed-input error codes remain | [H14](../reports/decisions/H14.md) (partial) | 2026-09-25 | — | — | dev | — |
 | [Erigon #24295](https://github.com/erigontech/erigon/pull/24295) | Trace_filter reports no genesis block reward | [H05](../reports/decisions/H05.md) | 2026-09-25 | — | — | dev | dev |
-| [Erigon #24322](https://github.com/erigontech/erigon/pull/24322) (draft) | Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032 | — | — | — | — | — | — |
 | [Erigon #24328](https://github.com/erigontech/erigon/pull/24328) | Trace_rawTransaction charges the sender for gas; signed raw transactions only; unsigned trace_call fee accounting follows H15 | [H16](../reports/decisions/H16.md) (partial) | 2026-09-26 | — | — | dev | — |
 | [Erigon #24329](https://github.com/erigontech/erigon/pull/24329) | Trace_rawTransaction rejects transactions invalid at latest state; validates nonce, balance, sender code and gas cap; keeps -32000 until the H13 error-code mapping is agreed | [H13](../reports/decisions/H13.md) (partial) | 2026-09-28 | — | — | dev | — |
 | [Erigon #24334](https://github.com/erigontech/erigon/pull/24334) | Treat explicit null as omitted in trace_call data/input and trace_filter mode | [H14](../reports/decisions/H14.md) (partial) | 2026-09-27 | — | — | dev | — |
@@ -227,4 +218,5 @@ No measured build consumes these repositories.
 ## Closed
 
 - [Erigon #24292](https://github.com/erigontech/erigon/pull/24292): Apply safe and finalized from a same-head fork choice; closed in favor of #24032, which applies the same-head safe/finalized update; our regression tests pass on it (fixes #24028)
+- [Erigon #24322](https://github.com/erigontech/erigon/pull/24322): Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032
 - [Nethermind #13665](https://github.com/NethermindEth/nethermind/pull/13665): Retain output in state-only Parity traces

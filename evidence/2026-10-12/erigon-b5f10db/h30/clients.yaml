@@ -1,0 +1,10 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/erigon",
+      "tag": "28fcbb91fe012d7d3cf7775dd40afb9a3134d34c6b3e19022c3d6b67e1f447e7"
+    },
+    "client": "erigon",
+    "nametag": "development"
+  }
+]

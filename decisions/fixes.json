@@ -1689,10 +1689,17 @@
       "title": "execution: test catch-up crash recovery and fix forkchoice persistence",
       "client": "erigon",
       "decisions": [],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario"
+      "merged_at": "2026-10-12T12:08:40Z",
+      "note": "supersedes #24292: persists safe/finalized from a same-head forkchoice update, which unblocks the reorg scenario; a build at b5f10db passes the reorg-safe setup controls, and its H33 reorg cases agree (evidence/2026-10-12/erigon-b5f10db)",
+      "uptake": {
+        "merge_commit": "c67d1a87fb9dd69e26624dbf0259d0c8472e22d4",
+        "builds": {
+          "1d3ebbf217f6b4f99028cd590889a5c9f3aaa969": false,
+          "8c1e3893d77d230720d172f1492d95b5777a862c": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27429",
@@ -1761,7 +1768,7 @@
       "depends_on": [
         "https://github.com/erigontech/erigon/pull/24032"
       ],
-      "state": "open",
+      "state": "closed",
       "draft": true,
       "merged_at": null,
       "note": "Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required."

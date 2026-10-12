@@ -22,7 +22,7 @@
         "violated": 0
       },
       "erigon_release": {
-        "held": 766,
+        "held": 768,
         "violated": 0
       },
       "go-ethereum_trace": {
@@ -114,7 +114,7 @@
         "violated": 0
       },
       "erigon_release": {
-        "held": 174,
+        "held": 176,
         "violated": 0
       },
       "go-ethereum_trace": {

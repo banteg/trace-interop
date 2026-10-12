@@ -41,7 +41,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 15397 |
+| 🔎 Assessed | 15415 |
 | 🟡 Partial | 817 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 302 |
@@ -1026,7 +1026,7 @@ Capture completeness records whether requests finished, not whether their result
 | [h30](../evidence/2026-10-11/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [raw-selector](../evidence/2026-10-11/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
 | [probes-prague](../evidence/2026-10-11/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
-| [probes-forks](../evidence/2026-10-12/h14-blob-cap/probes-forks/manifest.json) | probes-forks | ✅ Yes |
+| [probes-forks](../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-11/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-11/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-10-11/eval/pruned/manifest.json) | pruned | ✅ Yes |

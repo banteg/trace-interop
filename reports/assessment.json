@@ -24,7 +24,7 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 15397,
+    "assessed": 15415,
     "blocked": 302,
     "control": 35,
     "partial": 817,
@@ -49,7 +49,7 @@
     "../evidence/2026-10-11/eval/raw-validation/manifest.json": "e125848a40ffbd788b9394872d1c54a0d6edf3a6660358c18d71d1c043028c0f",
     "../evidence/2026-10-11/eval/reorg-safe/manifest.json": "379e468bf83395d23fd09491da03426c496624f4718ab51f7d814cd725004f06",
     "../evidence/2026-10-11/eval/repeat/manifest.json": "f1fdd7973d70bdd356c4a2ac70b38c881ff0f76b4c9da9a7bfd2546a778fd88f",
-    "../evidence/2026-10-12/h14-blob-cap/probes-forks/manifest.json": "08ff0ba107f6061da8e9208e82b52402b005c004e51204f31b21eb71c3f9d4b4"
+    "../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json": "4dae701cddcf5e5207a3099586a92bfe9100dc337b54b92e989747a6d3dd5e2c"
   },
   "matrix": {
     "../evidence/2026-10-11/eval/clients.lock.json": "267bbf404a127516dd4e74adaf5f2819407689c46c8bffa540769df0ff53abd6",
@@ -64,13 +64,13 @@
   "sources": {
     "decisions/impact.json": "8969b1dfc872671affc41ce97570be860a0c4431dc943dcfaecd38326c2d83da",
     "decisions/laws.json": "1bea5e2e4f23b3523ad555c80d96f89a4dcbd8cf6225f1dedd607216a59d3a8a",
-    "decisions/ledger.json": "bf7cc65e1e0ea622b1ee325c5aa6ca91d1bf75dce7deb41788bed6b850940945",
+    "decisions/ledger.json": "957b8d1ba37a879a27965fb7a213c9a16ea4b8731079c64bbaf36e900f2e6d8a",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "10460e6f795d72626749e1cd8c0d7d9105d37d30381b3abc73c920eddb2059ba",
     "fixtures/checksums.json": "0501c5d7ff8af7ebf7810bb343cff08dc6bad64e385aa8f39e8395d5aba83d42",
     "locks/source-revisions.json": "01fbce65770e806308387d3b2f25fc3dcf22106830957ede8efb5f9f14a2906b",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "288065245cff1895581a8cf5303b0628fea44fe3f08db40051b0bbf557961cf4",
+    "reports.lock.json": "b117098ca970496d9226724c927132e95d6374c3296201bc569d9b6710eb7c67",
     "scripts/run_matrix.py": "f5d550cbd978caf9f82d76e46aa762865012e66de2d3d9ec3965224181f53ae5",
     "spec.lock.json": "ce1a8860131ce936b3de359ddbab6bd14c81597844244660616d201e4ddadcce",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",

@@ -1,4 +1,6 @@
 """Transaction identity, state-existence and accounting models for frozen cases."""
+import re
+
 import rlp
 from eth_hash.auto import keccak
 
@@ -7,6 +9,11 @@ from .oracles import TREE
 from .rules import accounting_topic
 from .vm_model import intrinsic, execute, differences, reported_environment, sstore_refund, UnsupportedProgram, OutOfGas
 from functools import lru_cache
+
+
+# Mainnet precompiles count up from 0x01 and EIP-7587 reserves 0x100-0x1ff for rollup ones;
+# the models do not execute them.
+PRECOMPILES = range(0x01, 0x200)
 
 
 def mapping(value):
@@ -18,6 +25,35 @@ def quantity(value):
         return int(value,16) if isinstance(value,str) else None
     except ValueError:
         return None
+
+
+def hexed(value, digits='*'):
+    """Whether `value` is 0x-prefixed hex with `digits`, a regex count, digits."""
+    return isinstance(value,str) and re.fullmatch('0x[0-9a-fA-F]'+digits,value) is not None
+
+
+def marker(change):
+    """The marker of a well-formed field or slot change, None for a malformed or missing one."""
+    if change=='=':
+        return '='
+    if not isinstance(change,dict) or len(change)!=1:
+        return None
+    (kind,value),=change.items()
+    if kind=='*':
+        value=mapping(value)
+        values=[value['from'],value['to']] if set(value)=={'from','to'} else [None]
+    else:
+        values=[value]
+    return kind if kind in ['+','-','*'] and all(map(hexed,values)) else None
+
+
+def account_markers(account):
+    """The markers on an account diff's balance, nonce and code, and on its storage slots; an
+    omitted storage member lists no slots (the schema requires it)."""
+    account=mapping(account)
+    storage=account.get('storage',{})
+    return ({marker(account.get(k)) for k in ['balance','nonce','code']},
+            {marker(s) for s in storage.values()} if isinstance(storage,dict) else {None})
 
 
 def created_address(sender, nonce):
@@ -74,6 +110,24 @@ def born_accounts(tx, exists, nonces):
     return [address] if isinstance(creation_outcome(tx['data'], gas, exists, address), str) else []
 
 
+def call_transaction(call):
+    """The transaction an unsigned call object describes, None for one the model cannot represent.
+    An explicit null member is omitted (H14)."""
+    if not isinstance(call,dict):
+        return None
+    c={k:v for k,v in call.items() if v is not None}
+    tx={'sender':c.get('from','0x'+'00'*20),'to':c.get('to'),'value':quantity(c.get('value','0x0')),
+        'data':c.get('data',c.get('input','0x')),'gas':quantity(c['gas']) if 'gas' in c else None,
+        'price_cap':quantity(c.get('gasPrice',c.get('maxFeePerGas','0x0'))),
+        'tip_cap':quantity(c.get('gasPrice',c.get('maxPriorityFeePerGas','0x0'))),
+        'authorizations':[],'nonce':quantity(c.get('nonce','0x0'))}
+    addresses=[tx['sender']]+([tx['to']] if 'to' in c else [])
+    if (not all(hexed(a,'{40}') for a in addresses) or not hexed(tx['data']) or len(tx['data'])%2
+            or None in [tx[k] for k in ['value','price_cap','tip_cap','nonce']] or 'gas' in c and tx['gas'] is None):
+        return None
+    return dict(tx,sender=tx['sender'].lower(),to=tx['to'] and tx['to'].lower())
+
+
 def transactions(case):
     context = case['context']
     blocks = context.get('_blocks', {})
@@ -96,12 +150,11 @@ def transactions(case):
         except (ValueError,IndexError,rlp.exceptions.RLPException):
             return []
     if method in ['trace_call','trace_callMany']:
-        calls = [params[0]] if method=='trace_call' else [c[0] for c in params[0]]
-        return [({'sender':c.get('from','0x'+'00'*20).lower(), 'to':c.get('to'),
-                  'value':quantity(c.get('value','0x0')), 'data':c.get('data',c.get('input','0x')),
-                  'gas':quantity(c.get('gas')), 'price_cap':quantity(c.get('gasPrice',c.get('maxFeePerGas','0x0'))),
-                  'tip_cap':quantity(c.get('gasPrice',c.get('maxPriorityFeePerGas','0x0'))),
-                  'authorizations':[], 'nonce':quantity(c.get('nonce','0x0'))},block,None) for c in calls if isinstance(c,dict)]
+        bundle = params[0] if params and isinstance(params[0],list) else [None]
+        calls = params[:1] if method=='trace_call' else [c[0] if isinstance(c,list) and len(c)>1 else None for c in bundle]
+        # Each item follows the earlier ones, so one unmodellable item leaves the bundle unmodelled.
+        models = [call_transaction(c) for c in calls]
+        return [(tx,block,None) for tx in models] if None not in models else []
     return []
 
 
@@ -208,8 +261,8 @@ def opcodes(code):
 def modelled_refund(tx, block, context, method, code, storage=None):
     """The refund counter of an independently executable root program, or None. `storage`, when
     known, is the root account's complete storage at the transaction's start."""
-    if not isinstance(code,str) or code in ['0x','']:
-        return None
+    if not isinstance(code,str) or code in ['0x',''] or tx['gas'] is None:
+        return None  # Omitted gas takes the client's default (H15): no independent budget.
     env=root_environment(tx,block,context,method)
     if storage is not None:
         env.update(STORAGE=storage,COMPLETE_STORAGE=True)
@@ -266,8 +319,11 @@ def traced_refund(vm, frames, diff, codes):
     write lacks its reported store. Failed frames keep no writes and no refund."""
     frames=[f for f in frames if isinstance(f,dict) and isinstance(f.get('traceAddress'),list)]
     children={}
-    for f in frames:
-        children.setdefault(tuple(f['traceAddress'][:-1]),[]).append(f) if f['traceAddress'] else None
+    try:
+        for f in frames:
+            children.setdefault(tuple(f['traceAddress'][:-1]),[]).append(f) if f['traceAddress'] else None
+    except TypeError:
+        return None  # An unhashable path entry places no frame.
     roots=[f for f in frames if f['traceAddress']==[]]
     if len(roots)!=1 or not isinstance(vm,dict) or roots[0].get('error'):
         return 0 if roots and roots[0].get('error') else None
@@ -311,18 +367,20 @@ def traced_refund(vm, frames, diff, codes):
             if not frame.get('error'):
                 walk(sub,str(target).lower(),frame['traceAddress'])
 
-    try:
-        walk(vm,callee(roots[0])[1],[])
-    except (ValueError,KeyError,TypeError):
-        return None
     # A slot the state diff reports starts at its `from`; any other written slot ends where it started.
     original={}
-    for address,account in mapping(diff).items():
-        for key,change in mapping(mapping(account).get('storage')).items():
-            change=mapping(change)
-            start=change.get('-') if '-' in change else '0x0' if '+' in change else mapping(change.get('*')).get('from')
-            if start is not None:
-                original[(address.lower(),int(key,16))]=int(start,16)
+    try:
+        walk(vm,callee(roots[0])[1],[])
+        for address,account in mapping(diff).items():
+            for key,change in mapping(mapping(account).get('storage')).items():
+                kind=marker(change)
+                if kind is None:
+                    raise ValueError('a malformed slot change has no known start')
+                if kind!='=':
+                    start='0x0' if kind=='+' else change['*']['from'] if kind=='*' else change['-']
+                    original[(address.lower(),int(key,16))]=int(start,16)
+    except (ValueError,KeyError,TypeError):
+        return None
     for context,key,value in writes:
         original.setdefault((context,key),[v for c,k,v in writes if (c,k)==(context,key)][-1])
     current,refund={},0
@@ -380,6 +438,8 @@ def assess(case, observation, peers, topics):
     for i,(tx,block,index) in enumerate(models):
         e=mapping(envelopes[i]) if i<len(envelopes) else {}
         diff=e.get('stateDiff')
+        # Clients may checksum addresses; the models' addresses are lowercase.
+        accounts={a.lower():v for a,v in diff.items()} if isinstance(diff,dict) else {}
         params=case['request']['params']
         modes=params[0][i][1] if method=='trace_callMany' else params[1] if len(params)>1 else []
         state_requested=isinstance(modes,list) and 'stateDiff' in modes
@@ -429,7 +489,6 @@ def assess(case, observation, peers, topics):
         # destroyed within it, so absent after it and omitted (H26), or born with + markers (H17).
         temporary=[a for a in internal_creations(tx,codes,dict(nonces)) if a not in exists]
         if 'H26' in topics and temporary and state_requested and isinstance(diff,dict):
-            accounts={a.lower():v for a,v in diff.items()}
             reported=[f'{a}: {accounts[a]}' for a in temporary if a in accounts]
             add('H26',not reported,'An account created and destroyed within the transaction is absent at both endpoints and has no account diff.',
                 '; '.join(reported) or 'Temporary account '+', '.join(temporary)+'.')
@@ -443,7 +502,7 @@ def assess(case, observation, peers, topics):
                     return {'+':after} if born else '=' if before==after else {'*':{'from':before,'to':after}}
                 want={'code':change(codes.get(authority,'0x'),after_codes.get(authority,'0x')),
                       'nonce':change(hex(nonces.get(authority,0)),hex(after_nonces.get(authority,0)))}
-                account=mapping(mapping(diff).get(authority))
+                account=mapping(accounts.get(authority))
                 count=sum(a['authority']==authority for a in applied)
                 add('H18',isinstance(diff,dict) and all(account.get(k,'=')==v for k,v in want.items()),
                     'Valid authorization tuples, folded per authority in order, change the recovered authority from its independently reconstructed code and nonce; invalid tuples change nothing.',
@@ -451,17 +510,29 @@ def assess(case, observation, peers, topics):
         if 'H17' in topics and state_requested and isinstance(diff,dict):
             bad=[]
             for address,account in diff.items():
-                account=mapping(account)
-                if address.lower() in unknown or address.lower() in temporary:
+                address=address.lower()
+                if address in unknown or address in temporary:
                     continue  # H26 judges a reported temporary account.
-                if address.lower() in exists:
-                    if any(isinstance(account.get(k),dict) and '+' in account[k] for k in ['balance','nonce','code']):
-                        bad.append(address+': existing account has creation markers')
-                elif any(account.get(k) != {'+':mapping(account.get(k)).get('+')} for k in ['balance','nonce','code']):
-                    bad.append(address+': new account lacks creation markers for all fields')
+                fields,slots=account_markers(account)
+                if address not in exists:
+                    if fields!={'+'}:
+                        bad.append(address+': new account lacks creation markers for all fields')
+                    elif slots-{'+'} or not all(quantity(s['+']) for s in account.get('storage',{}).values()):
+                        bad.append(address+': new account storage is not its created nonzero slots')
+                elif fields=={'-'}:
+                    # A deletion's slots are H26's. A codeless account with a nonce can neither
+                    # self-destruct nor be an empty touched account, so it survives.
+                    if codes.get(address)=='0x' and (nonces.get(address,0) or address==tx['sender']):
+                        bad.append(address+': surviving account has deletion markers')
+                elif '+' in fields|slots:
+                    bad.append(address+': existing account has creation markers')
+                elif '-' in fields|slots:
+                    bad.append(address+': surviving account has deletion markers')
+                elif fields-{'=','*'} or slots-{'*'}:
+                    bad.append(address+': existing account lacks = or * markers')
             births = set(born_accounts(tx,exists,nonces))
-            bad+=[address+': new account omitted' for address in births-unknown if address not in map(str.lower,diff)]
-            uncertain = unknown & ({a.lower() for a in diff} | births)
+            bad+=[address+': new account omitted' for address in births-unknown if address not in accounts]
+            uncertain = unknown & (set(accounts) | births)
             if uncertain and not bad:
                 checks.append(dict(topic='H17',status='blocked',
                     requirement='Establish account existence before judging birth markers.',
@@ -476,7 +547,8 @@ def assess(case, observation, peers, topics):
                     add('H19',isinstance(vm,dict) and vm.get('code')==code,
                         'The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs.',
                         f'Expected source {code[:100]}.')
-                if 'H20' in topics and code not in ['0x','']:
+                # Omitted gas takes the client's default (H15): post-step gas has no independent start.
+                if 'H20' in topics and code not in ['0x',''] and tx['gas'] is not None:
                     env=root_environment(tx,block,context,method)
                     try:
                         gas=tx['gas']-intrinsic(tx['data'],tx['to'] is None)-tx.get('intrinsic_extra',0)
@@ -553,28 +625,39 @@ def assess(case, observation, peers, topics):
                 else:
                     gas,low=max(spent,floor),max(spent-spent//5 if refundable else spent,floor)
                     source='root execution gas plus independently calculated Prague intrinsic/floor cost'+(', less any refund' if refundable else '')
-        if (gas is None and tx['to'] and tx['data']=='0x' and not tx.get('intrinsic_extra')
-                and execution_code(tx,codes,exists,nonces,context.get('_chain_id'))=='0x'):
+        # A call that runs no code changes balances only by its value and fees.
+        plain=(tx['to'] is not None and int(tx['to'],16) not in PRECOMPILES
+               and execution_code(tx,codes,exists,nonces,context.get('_chain_id'))=='0x')
+        if gas is None and plain and tx['data']=='0x' and not tx.get('intrinsic_extra'):
             gas,low,source=21000,21000,'independent simple-transfer model'
         if gas is None:
             checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',detail='No receipt gas or execution-gas witness was captured.'))
             continue
-        # Wei destroyed by SELFDESTRUCT to self in the creating transaction (EIP-6780),
-        # as independently derived by the corpus; it leaves no balance behind.
-        removed=context.get('destroyed_wei',{}).get(tx.get('hash'),0)
+        blob=0
         if tx.get('type')==3:
             blob_gas,blob_price=quantity(mapping(receipt).get('blobGasUsed')),quantity(mapping(receipt).get('blobGasPrice'))
             if blob_gas is None or blob_price is None:
                 checks.append(dict(topic=accounting,status='blocked',requirement='Check accounting against independent gas.',detail='The receipt lacks blob gas used or blob gas price.'))
                 continue
-            removed+=blob_gas*blob_price
+            blob=blob_gas*blob_price
+        # Wei destroyed by SELFDESTRUCT to self in the creating transaction (EIP-6780),
+        # as independently derived by the corpus; it leaves no balance behind.
+        removed=context.get('destroyed_wei',{}).get(tx.get('hash'),0)+blob
         base=block.get('base_fee',0)
         price=min(tx['price_cap'],base+tx['tip_cap'])
         # Fee-free calls explicitly bypass admission, but do not pay negative tips.
         tip_price,burn_price=max(price-base,0),min(price,base)
         deltas=[balance_delta(mapping(a).get('balance')) for a in diff.values()]
-        miner=balance_delta(mapping(diff.get(block.get('miner'))).get('balance','='))
+        miner=balance_delta(mapping(accounts.get(block.get('miner'))).get('balance','='))
         settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,removed)
+        if settled is not None and plain:
+            # The sum settles; each account must too, or offsetting deltas would pass.
+            want={}
+            for address,amount in [(tx['sender'],-tx['value']-(tip_price+burn_price)*settled-blob),
+                                   (tx['to'],tx['value']),(block.get('miner'),tip_price*settled)]:
+                want[address]=want.get(address,0)+amount
+            if any(balance_delta(mapping(accounts.get(a)).get('balance','='))!=want.get(a,0) for a in want.keys()|accounts.keys()):
+                settled=None
         detail=f'Gas={gas if low==gas else f"{low}..{gas}"} ({source}), price={price}, expected tip={tip_price}/gas, burn={burn_price}/gas, blob fee and destroyed wei={removed}.'
         if low!=gas and settled is not None and (tip_price or burn_price):
             # Settling within the refund bound is consistent but does not prove the refund.

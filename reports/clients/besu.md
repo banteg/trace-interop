@@ -4,7 +4,7 @@ Start with failed-frame reporting, precompile output and inclusion, and range-fi
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 26.10-develop · d05d8e74** (of 33 decisions): ✅ 6 agree · 🛠️ 9 fix submitted · ⚠️ 10 with no fix yet (10 on converged decisions) · ⚪ 8 not fully measured. 2 of these agreements are not yet in 26.9.0 · ee9c64c8. Upstream fix PRs: 6 merged, 18 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 26.10-develop · d05d8e74** (of 33 decisions): ✅ 6 agree · 🛠️ 9 fix submitted · ⚠️ 10 with no fix yet (10 on converged decisions) · ⚪ 8 not fully measured. 2 of these agreements are not yet in 26.9.0 · ee9c64c8. Upstream fix PRs: 7 merged, 17 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Besu decisions by outcome, with fix PRs](besu-work.svg)
 

@@ -177,7 +177,7 @@ def block_hash_check(probe, case, status, response, result, reference):
         return text
 
     def described(records):
-        places = list(dict.fromkeys(at(r) for r in records))
+        places = list({repr(place): place for place in map(at, records)}.values())  # a client value may be unhashable
         count = f'{len(records)} {"record" if len(records) == 1 else "records"}'
         numbers = [n for n, _ in places if type(n) is int]
         if len(places) > 3 and len(numbers) == len(places):
@@ -398,7 +398,7 @@ def assess(case, observation, peers):
             executed = [f for f in frames if not f.get('error')]
             deepest = max(executed, key=lambda f: len(path(f)), default=None)
             depth = len(path(deepest)) if deepest else -1
-            attempts = [f for f in frames if len(path(f)) == depth + 1]
+            attempts = [f for f in frames if deepest and path(f)[:-1] == path(deepest)]
             shapes = [(f.get('type'), f.get('error'), f.get('result'), f.get('subtraces')) for f in attempts]
             ok = (depth == probe['depth'] and [f.get('type') for f in attempts] == probe['attempts']
                   and all(f.get('error') and f.get('result') is None and f.get('subtraces') == 0 for f in attempts)
@@ -441,7 +441,8 @@ def assess(case, observation, peers):
                 checks.append({'topic': topic, 'status': 'unassessed', 'requirement': requirement,
                                'detail': 'The bounded VM model cannot establish this program: '+str(exc)})
                 continue
-            if not isinstance(ops, list) or [mapping(o).get('pc') for o in ops[:len(model)]] != [o['pc'] for o in model]:
+            # Only `end` reads past the modelled program; push and store judge every root operation.
+            if not isinstance(ops, list) or [mapping(o).get('pc') for o in (ops[:len(model)] if kind == 'end' else ops)] != [o['pc'] for o in model]:
                 add(topic, False, requirement, f'Root operations do not follow the modelled pcs {[o["pc"] for o in model]}; got {[mapping(o).get("pc") for o in sequence(ops)]}')
                 continue
             if kind == 'end':

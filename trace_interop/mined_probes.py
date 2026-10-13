@@ -5,6 +5,8 @@ calculated gas (scripts/build_mined_probes_fixtures.py); no client response is a
 Per-transaction assertions apply wherever that transaction appears: individual and block
 replay, trace_transaction and trace_block. Filter cases pin their exact frame identities.
 """
+from itertools import groupby
+
 from .execution_models import balance_delta
 from .vm_model import store_words
 
@@ -41,7 +43,8 @@ def check_frame(frames, want):
 
 
 def assess_transaction(probe, topics, envelope, frames, selection):
-    """Checks for one transaction's expectations visible in this response."""
+    """Checks for one transaction's expectations visible in this response; `frames` is a string when
+    the response's frames cannot be attributed to the transaction, and then says why."""
     checks = []
     diff = envelope.get('stateDiff') if envelope is not None else None
 
@@ -54,7 +57,9 @@ def assess_transaction(probe, topics, envelope, frames, selection):
             continue
         kind = assertion['kind']
         if kind in ['tree', 'frame'] and 'trace' in selection:
-            if kind == 'tree':
+            if isinstance(frames, str):
+                add(assertion, False, frames)
+            elif kind == 'tree':
                 got = [[f.get('traceAddress'), f.get('type')] for f in frames]
                 add(assertion, got == assertion['frames'], f'Expected {assertion["frames"]}, got {got}.')
             else:
@@ -131,6 +136,16 @@ def assess(case, observation, peers):
     else:
         return []
     selection = set(params[1]) if method.startswith('trace_replay') and len(params) > 1 and isinstance(params[1], list) else {'trace'}
+    if method in ['trace_transaction', 'trace_block']:
+        # Each transaction's frames, one contiguous run each in block order (a non-object breaks a run);
+        # trace_block may end with block reward records, which H05 judges.
+        records = seq(result)
+        while method == 'trace_block' and records and obj(records[-1]).get('type') == 'reward' and obj(records[-1]).get('transactionHash') is None:
+            records = records[:-1]
+        runs = [(h, list(group)) for h, group in groupby(records, lambda f: obj(f).get('transactionHash'))]
+        order = [h for h, _ in runs]
+        runs = [group for _, group in runs] if order == hashes else [
+            f'The frames are not each transaction\u2019s in one run, in block order: got transaction runs {order}.']*len(hashes)
     for i, txhash in enumerate(hashes):
         if method == 'trace_replayBlockTransactions':
             envelopes = seq(result)
@@ -141,9 +156,10 @@ def assess(case, observation, peers):
             envelope = obj(result)
         else:
             envelope = None
-        if envelope is not None:
-            frames = [f for f in seq(envelope.get('trace')) if isinstance(f, dict)]
+        if envelope is None:
+            frames = runs[i]
         else:
-            frames = [f for f in seq(result) if isinstance(f, dict) and f.get('transactionHash') == txhash]
+            frames = seq(envelope.get('trace'))
+            frames = frames if all(isinstance(f, dict) for f in frames) else f'The trace has non-object frames: {frames!r:.300}'
         checks += assess_transaction(probes[txhash], topics, envelope, frames, selection)
     return checks

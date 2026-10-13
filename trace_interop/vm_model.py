@@ -137,23 +137,26 @@ def execute(code, gas, calldata='0x', environment=None):
                 cost=1
             elif op in [0x54,0x55]:
                 slot=stack.pop()
-                now=slot_value(slot)
                 warm=env.setdefault('_warm_slots',set())
                 cold=0 if slot in warm else 2100
-                warm.add(slot)
+                # Gas checks that need no slot value halt before the slot is read.
                 if op==0x54:
                     cost=cold or 100
+                    if gas<cost:
+                        raise OutOfGas('exceptional halt requires an OOG model')
+                    now=slot_value(slot)
                     stack.append(now);push=[now]
                 else:
                     value=stack.pop()
                     if gas<=2300:
                         raise OutOfGas('SSTORE sentry requires an OOG model')
-                    before=original_value(slot)
+                    now,before=slot_value(slot),original_value(slot)
                     # EIP-2200 with EIP-2929 cold surcharges and EIP-3529 refunds.
                     cost=cold+(20000 if before==0 else 2900) if now!=value and before==now else cold+100
                     refund+=sstore_refund(before,now,value)
                     written[slot]=value
                     store={'key':hex(slot),'val':hex(value)}
+                warm.add(slot)
             elif op in [0x5c,0x5d]:
                 slot=stack.pop()
                 cost=100
@@ -266,6 +269,15 @@ def stack_window(opcode, stack):
     return [window[-1]]+window[1:-1]+[window[0]]
 
 
+def same(a, b):
+    """JSON equality, where unlike Python's true is not 1 and false is not 0."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(same(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(map(same, a, b))
+    return type(a) is type(b) and a == b
+
+
 def differences(actual, expected):
     """Compare mandatory semantics and optional mnemonics, never optional idx."""
     if not isinstance(actual, dict) or not isinstance(actual.get('ops'), list):
@@ -278,14 +290,14 @@ def differences(actual, expected):
             errors.append(f'step {i} is not an object')
             continue
         for key in ['pc', 'cost', 'sub']:
-            if got.get(key) != want[key] or key in ['pc','cost'] and type(got.get(key)) is not int:
+            if not same(got.get(key), want[key]):
                 errors.append(f'step {i} ({want["op"]}) {key}: expected {want[key]}, got {got.get(key)}')
         ex=got.get('ex')
         if not isinstance(ex,dict):
             errors.append(f'step {i} execution effects missing')
         else:
             for key in ['used','mem']:
-                if ex.get(key)!=want['ex'][key] or key=='used' and type(ex.get(key)) is not int:
+                if not same(ex.get(key),want['ex'][key]):
                     errors.append(f'step {i} ({want["op"]}) {key}: expected {want["ex"][key]}, got {ex.get(key)}')
             if store_words(ex.get('store'))!=store_words(want['ex']['store']) or ex.get('store') is not None and store_words(ex['store']) is None:
                 errors.append(f'step {i} ({want["op"]}) store: expected {want["ex"]["store"]}, got {ex.get("store")}')
@@ -428,13 +440,14 @@ def local_invariants(vm):
 
 Every step deducts its recorded cost; a call or creation that entered a child frame also receives
 the child's unused gas, and one that entered none (result 0 and no executed sub) includes the gas it
-forwarded in its cost. An operation that halted exceptionally (ex null) has an implementation-defined cost, so
-none of these relations applies to it. DUPn and SWAPn push the top n+1 words, deepest first, of the
-stack reconstructed from earlier pushes (arity only once it is lost). Operand ranges come from the
-stack reconstructed from reported push words: MLOAD mem is the loaded word, and CALL-family mem
-starts at the output offset and covers either the full output window or exactly the bytes copied
-from the child's return data, null only when that choice is empty. Dedicated models additionally
-derive costs and effects independently of recorded values.
+forwarded in its cost. An operation that halted exceptionally (ex null) has an implementation-defined
+nonnegative cost, so none of these relations applies to it. DUPn and SWAPn push the top n+1 words,
+deepest first, of the stack reconstructed from earlier pushes (arity only once it is lost). Operand
+ranges come from the stack reconstructed from reported push words: MLOAD mem is the loaded word, and
+CALL-family mem starts at the output offset and covers either the full output window or exactly the
+bytes copied from the child's return data, null only when that choice is empty. Only a completed
+SSTORE sets store, to its key and value operands. Dedicated models additionally derive costs and
+effects independently of recorded values.
 """
     errors = []
     if not isinstance(vm, dict) or not isinstance(vm.get('ops'), list):
@@ -488,7 +501,7 @@ derive costs and effects independently of recorded values.
                 errors.append(f'operation {i} reports memory for RETURN/REVERT')
             if opcode == 0x51:
                 word = f'0x{pushed[0]:064x}' if pushed and len(pushed) == 1 else None
-                if not isinstance(mem, dict) or mem.get('data') != word or operands and mem.get('off') != operands[0]:
+                if not isinstance(mem, dict) or mem.get('data') != word or operands and not same(mem.get('off'), operands[0]):
                     errors.append(f'operation {i} MLOAD mem is not the loaded word at its offset')
             if opcode in CALLS and operands:
                 offset, size = operands[-2], operands[-1]
@@ -498,11 +511,20 @@ derive costs and effects independently of recorded values.
                     copied = None if target in PRECOMPILES else 0
                 data = mem.get('data') if isinstance(mem, dict) else None
                 if not (call_mem_length(0, size, copied) if mem is None else isinstance(data, str) and len(data) > 2
-                        and len(data) % 2 == 0 and mem.get('off') == offset and call_mem_length(len(data)//2-1, size, copied)):
+                        and len(data) % 2 == 0 and same(mem.get('off'), offset) and call_mem_length(len(data)//2-1, size, copied)):
                     errors.append(f'operation {i} call mem is neither the output window nor the copied return data')
+            store = store_words(ex.get('store'))
+            if opcode == 0x55 and (store is None or operands and list(store) != operands):
+                errors.append(f'operation {i} SSTORE store is not its key and value operands')
+            if opcode != 0x55 and ex.get('store') is not None:
+                errors.append(f'operation {i} reports store, which only a completed SSTORE sets')
             previous = used if type(used) is int else None
         else:
             previous = None
+            if ex is not None:
+                errors.append(f'operation {i} execution effects are neither an object nor null')
+            elif type(op.get('cost')) is not int or op['cost'] < 0:
+                errors.append(f'operation {i} gas is not a nonnegative integer')
         if sub is not None:
             errors.extend(f'subtrace {i}: '+e for e in local_invariants(sub))
     return errors

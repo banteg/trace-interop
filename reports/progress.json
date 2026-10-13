@@ -22,8 +22,8 @@
       "client": "besu",
       "counts": {
         "agree": 6,
-        "converged": 10,
-        "fix": 9,
+        "converged": 11,
+        "fix": 8,
         "policy": 0,
         "review": 0,
         "unmeasured": 8

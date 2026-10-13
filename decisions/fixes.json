@@ -725,7 +725,11 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "depends_on": [
+        "https://github.com/alloy-rs/evm/pull/411"
+      ],
+      "note": "pruned history surfaces as the history-unavailable error through Reth's execution wrappers; blocks with pre-execution system calls (EIP-4788, EIP-2935 and later) still fail with -32603 until alloy-rs/evm#411 is released and bumped in Reth"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27411",
@@ -849,7 +853,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors"
+      "note": "fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors; Anvil waits on it too, through revm-inspectors in Foundry"
     },
     {
       "url": "https://github.com/erigontech/silkworm/pull/2885",
@@ -860,7 +864,11 @@
       ],
       "state": "open",
       "draft": true,
-      "merged_at": null
+      "merged_at": null,
+      "partial": [
+        "H20"
+      ],
+      "note": "adds the missing vmTrace effects of six opcodes; Silkworm keeps the other H20 defects Erigon fixed in #24291 and #24344 (synthetic trailing STOP, kept pre-execution faults and halted ex/store, a sub on SELFDESTRUCT)"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13667",
@@ -2278,11 +2286,16 @@
       "url": "https://github.com/paradigmxyz/reth/pull/27593",
       "title": "fix(rpc): use the local pending block for pending simulations",
       "client": "reth",
-      "decisions": [],
+      "decisions": [
+        "H32"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "Locally built pending state returned slot 42 to storage_at but slot 7 to a pending call; Fedora regression and 131 affected RPC tests passed after fix"
+      "note": "Locally built pending state returned slot 42 to storage_at but slot 7 to a pending call; Fedora regression and 131 affected RPC tests passed after fix; covers H32's real pending environment for calls (the local pending block's header and state), not the pending tag in the block methods",
+      "partial": [
+        "H32"
+      ]
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14060",
@@ -2658,7 +2671,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "for types 0x0-0x4 the fields pick the call's class, so a call neither drops a field nor takes a requirement from its type (type 0/1 with dynamic fees, type 2 with an authorization list, type 3 without blobs); discriminator fields no single type carries are rejected; eth_sendTransaction (also Optimism), eth_signTransaction and eth_fillTransaction apply the requested type when its class can carry the fields and reject it otherwise; since 2026-10-03 also the fork rule: a call field the block's fork lacks (access list before Berlin, dynamic fees before London, blob hashes before Cancun, authorization list before Prague) is rejected at conversion, zero or empty included, instead of -32603 or being ignored; eth_simulateV1 checks against the base block"
+      "note": "for types 0x0-0x4 the fields pick the class for calls and for signing alike, as in geth, so an explicit type never drops a field or adds a requirement and an unknown type is ignored (since 11d3f0c a gasPrice-only request signs as legacy); a registered type above set-code (Optimism deposit, frame) picks its class directly; discriminator fields no single type carries are rejected; the fork rule rejects a call field the fork of the block it runs in lacks (access list before Berlin, dynamic fees before London, blob hashes before Cancun, authorization list before Prague), eth_simulateV1 per simulated block and debug_traceCallMany with its block overrides, while eth_fillTransaction stays outside it; a fee cap below the tip is reported before the fork error (8909021). A lone maxFeePerBlobGas is still dropped: deferred to a follow-up because the eth_simulateV1 fixtures send it without hashes"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",
@@ -3053,7 +3066,10 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "trace_filter resolves safe and finalized bounds (rejecting them when absent) and rejects pending instead of -32603; trace_block, trace_replayBlockTransactions, trace_call and trace_callMany reject pending instead of evaluating it as latest"
+      "note": "trace_filter resolves safe and finalized bounds (rejecting them when absent) and rejects pending instead of -32603; trace_block, trace_replayBlockTransactions, trace_call and trace_callMany reject pending instead of evaluating it as latest; trace_call and trace_callMany still take no block hash, which H32 also requires",
+      "partial": [
+        "H32"
+      ]
     }
   ]
 }

@@ -2,14 +2,14 @@
 
 `trace_call` · repeat · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Creation vmTrace.code is executing initcode. Successful creation uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth. The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes.
+**What this checks:** Output remains a byte string under every trace selection. Creation vmTrace.code is executing initcode. Every creation names its creationMethod; a successful one uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth. The replay/raw root VM is an object with the frozen initcode or resolved one-hop execution code, 0x when no code runs. The independently executable replay/raw root has exact costs, post-step gas, stack and memory effects. At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem. Root VM bytecode equals the independently frozen execution source. Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects. Modelled execution returns exactly the independently computed bytes.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
 | [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
 | [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/repeat/manifest.json) |
@@ -44,10 +44,12 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x85822', 'init': '0x60016000526001601ff3', 'value': '0x0'}, 'result': {'address': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'code': '0x01', 'gasUsed': '0xda'}, 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x85822', 'init': '0x60016000526001601ff3', 'value': '0x0'}, 'result': {'address': '0xe3a8b633a20d3bc82cfd6d6cb315dd9784b3ea41', 'code': '0x01', 'gasUsed': '0xda'}, 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not
 
 </details>

@@ -56,24 +56,42 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [New-account stateDiff encoding](../decisions/H17.md) | 3.7.1 · 8c1e3893 | 2 blocked cases: The RPC returned an error, so there is no execution result to inspect. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [vmTrace executing bytecode](../decisions/H19.md) | 3.7.1 · 8c1e3893 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | 3.7.1 · 8c1e3893 | 3 blocked cases: The RPC returned an error, so there is no execution result to inspect. | [Model environment free](../cases/coverage/model-environment-free.md) · [Call constructor](../cases/initial/call-constructor.md) |
+| [Single-block hash selection in trace_filter](../decisions/H33.md) | 3.8.0-dev · 1d3ebbf2 | 9 blocked cases: Scenario setup stopped: Invalid forkchoice state. | [After/filter hash a](../cases/reorg-safe/after/filter-hash-a.md) · [After/filter hash b](../cases/reorg-safe/after/filter-hash-b.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
 | Behavior | Examples |
 | --- | --- |
 | [trace_get selector and return shape](../decisions/H02.md) | [_reference/block/0x30](../cases/a/_reference/block/0x30.md) · [Block 2](../cases/a/block-2.md) |
+| [Filter composition and mode](../decisions/H03.md) (3.8.0-dev · 1d3ebbf2) | [Filter all](../cases/a/filter-all.md) · [Filter both unknown mode](../cases/a/filter-both-unknown-mode.md) |
 | [Empty address lists](../decisions/H04.md) | [Filter both null](../cases/a/filter-both-null.md) · [Filter from empty to set](../cases/a/filter-from-empty-to-set.md) |
+| [Post-merge reward records](../decisions/H05.md) (3.8.0-dev · 1d3ebbf2) | [_reference/block/0x30](../cases/a/_reference/block/0x30.md) · [Block 2](../cases/a/block-2.md) |
+| [Missing transactions and paths](../decisions/H06.md) (3.8.0-dev · 1d3ebbf2) | [Missing block block](../cases/a/missing-block-block.md) · [Missing block call](../cases/a/missing-block-call.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
+| [Empty output and unrequested components](../decisions/H08.md) (3.8.0-dev · 1d3ebbf2) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
+| [Failed frame results and error labels](../decisions/H09.md) (3.8.0-dev · 1d3ebbf2) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
-| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| [Empty trace-type selection](../decisions/H11.md) (3.8.0-dev · 1d3ebbf2) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
+| [Raw-transaction block argument](../decisions/H12.md) | [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) · [Raw state default](../cases/raw-selector/raw-state-default.md) |
+| [Signed transaction execution validity](../decisions/H13.md) (3.8.0-dev · 1d3ebbf2) | [Raw below basefee](../cases/a/raw-below-basefee.md) · [Raw insufficient funds](../cases/a/raw-insufficient-funds.md) |
+| [Unsigned simulation fees and block environment](../decisions/H15.md) (3.8.0-dev · 1d3ebbf2) | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
+| [Fee accounting and sequential state diffs](../decisions/H16.md) (3.8.0-dev · 1d3ebbf2) | [Many storage write read](../cases/a/many-storage-write-read.md) · [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) |
+| [New-account stateDiff encoding](../decisions/H17.md) (3.8.0-dev · 1d3ebbf2) | [Prefunded empty](../cases/a/prefunded-empty.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
+| [vmTrace executing bytecode](../decisions/H19.md) (3.8.0-dev · 1d3ebbf2) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
+| [vmTrace step timing and deltas](../decisions/H20.md) (3.8.0-dev · 1d3ebbf2) | [Call gas7400](../cases/a/call-gas7400.md) · [Call mcopy](../cases/a/call-mcopy.md) |
+| [vmTrace numeric and optional metadata encoding](../decisions/H21.md) (3.8.0-dev · 1d3ebbf2) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
+| [Special-action address matching](../decisions/H23.md) (3.8.0-dev · 1d3ebbf2) | [Filter all](../cases/a/filter-all.md) · [Filter both null](../cases/a/filter-both-null.md) |
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |
 | [Well-formed errors for rejected raw transactions](../decisions/H25.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Account deletion across Cancun](../decisions/H26.md) | [Destroy trace 55](../cases/fork-followup/destroy-trace-55.md) · [Destroy trace 56](../cases/fork-followup/destroy-trace-56.md) |
 | [Filter execution across fork boundaries](../decisions/H27.md) | [Filter two blocks](../cases/a/filter-two-blocks.md) · [Filter 35](../cases/forks/filter-35.md) |
+| [Historical state at system-operation boundaries](../decisions/H28.md) (3.8.0-dev · 1d3ebbf2) | [Beacon call 55](../cases/fork-followup/beacon-call-55.md) · [Beacon call 56](../cases/fork-followup/beacon-call-56.md) |
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Block 2](../cases/a/block-2.md) · [Filter all](../cases/a/filter-all.md) |
+| [Omitted trace_filter range bounds](../decisions/H30.md) (3.8.0-dev · 1d3ebbf2) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
+| [Trace block tags and pending state](../decisions/H32.md) (3.8.0-dev · 1d3ebbf2) | [Block pending](../cases/h30/block-pending.md) · [Call number pending](../cases/h30/call-number-pending.md) |
 
 </details>
 

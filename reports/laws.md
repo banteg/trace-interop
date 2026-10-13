@@ -16,7 +16,7 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 | **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 27818 | Nethermind 2.1.0 · b3e7e84c |
 | **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 91 | Nethermind 2.1.0 · b3e7e84c |
 | **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 145 | — |
-| **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 544 | Nethermind 2.2.0-preview · 204457ad, Nethermind 2.1.0 · b3e7e84c |
+| **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 760 | Nethermind 2.2.0-preview · 204457ad, Nethermind 2.1.0 · b3e7e84c |
 | **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 196 | Nethermind 2.1.0 · b3e7e84c |
 | **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4417 | Erigon 3.7.1 · 8c1e3893 |
 | **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 729 | Besu 26.10-develop · d05d8e74, Besu 26.9.0 · ee9c64c8, Erigon 3.7.1 · 8c1e3893 |
@@ -55,8 +55,8 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Nethermind 2.2.0-preview · 204457ad | 10 | Found by this law. A suicide record has no `result` member in trace_transaction and trace_block, but `"result": null` in the replayed trace of the same transaction. Serialization only. | [block-36](cases/forks/block-36.md) vs [replay-36](cases/forks/replay-36.md): `[8].result present on one side only` · [block-4](cases/mined-probes/block-4.md) vs [replay-create-destroy-absent](cases/mined-probes/replay-create-destroy-absent.md): `[2].result present on one side only` |
-| Nethermind 2.1.0 · b3e7e84c | 10 | The same suicide serialization as the development build. | [block-36](cases/forks/block-36.md) vs [replay-36](cases/forks/replay-36.md): `[8].result present on one side only` · [block-4](cases/mined-probes/block-4.md) vs [replay-create-destroy-absent](cases/mined-probes/replay-create-destroy-absent.md): `[2].result present on one side only` |
+| Nethermind 2.2.0-preview · 204457ad | 18 | Found by this law. A suicide record has no `result` member in trace_transaction and trace_block, but `"result": null` in the replayed trace of the same transaction. Serialization only. | [block-36](cases/forks/block-36.md) vs [replay-36](cases/forks/replay-36.md): `[8].result present on one side only` · [block-4](cases/mined-probes/block-4.md) vs [replay-block-4](cases/mined-probes/replay-block-4.md): `[1].result present on one side only` |
+| Nethermind 2.1.0 · b3e7e84c | 18 | The same suicide serialization as the development build. | [block-36](cases/forks/block-36.md) vs [replay-36](cases/forks/replay-36.md): `[8].result present on one side only` · [block-4](cases/mined-probes/block-4.md) vs [replay-block-4](cases/mined-probes/replay-block-4.md): `[1].result present on one side only` |
 
 ### L08 Single and block replay agree
 

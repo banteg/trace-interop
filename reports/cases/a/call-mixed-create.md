@@ -2,14 +2,14 @@
 
 `trace_call` · a · [All reports](../../README.md)
 
-**What this checks:** Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth.
+**What this checks:** Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
 | [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 3 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
 | [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
@@ -45,11 +45,15 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [1]: creationMethod null
 - Result shape at `trace/1`: {'action': {'from': '0x0000000000000000000000000000000000001006', 'gas': '0x83739', 'init': '0x600a61000d600039600a6000f3602a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xea91ad16d2b6ec90fe255a49dfd6e2f47304de88', 'code': '0x602a60005260206000f3', 'gasUsed': '0x7e8'}, 'subtraces': 0,
 - Result shape at `trace/2`: {'action': {'from': '0x0000000000000000000000000000000000001006', 'gas': '0x7b44f', 'init': '0x600a61000d600039600a6000f3602a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0x30b44c7249bb3959e686a86b65ccdb4c643c2750', 'code': '0x602a60005260206000f3', 'gasUsed': '0x7e8'}, 'subtraces': 0,
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [1]: creationMethod null
 - Result shape at `trace/1`: {'action': {'from': '0x0000000000000000000000000000000000001006', 'gas': '0x83739', 'init': '0x600a61000d600039600a6000f3602a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xea91ad16d2b6ec90fe255a49dfd6e2f47304de88', 'code': '0x602a60005260206000f3', 'gasUsed': '0x7e8'}, 'subtraces': 0,
 - Result shape at `trace/2`: {'action': {'from': '0x0000000000000000000000000000000000001006', 'gas': '0x7b44f', 'init': '0x600a61000d600039600a6000f3602a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0x30b44c7249bb3959e686a86b65ccdb4c643c2750', 'code': '0x602a60005260206000f3', 'gasUsed': '0x7e8'}, 'subtraces': 0,
 

@@ -2,7 +2,7 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit. A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree. Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. A priced omitted-gas call follows eth_call defaulting, including any smaller sender allowance or block limit. A priced omitted-gas budget must not exceed the RPC cap, even when eth_call and trace_call agree. Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

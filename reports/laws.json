@@ -278,11 +278,11 @@
     },
     "L07": {
       "anvil_development": {
-        "held": 29,
+        "held": 55,
         "violated": 0
       },
       "anvil_release": {
-        "held": 11,
+        "held": 19,
         "violated": 0
       },
       "besu_development": {
@@ -294,31 +294,31 @@
         "violated": 0
       },
       "erigon_development": {
-        "held": 56,
+        "held": 82,
         "violated": 0
       },
       "erigon_release": {
-        "held": 56,
+        "held": 82,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 56,
+        "held": 82,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 46,
-        "violated": 10
+        "held": 64,
+        "violated": 18
       },
       "nethermind_release": {
-        "held": 46,
-        "violated": 10
+        "held": 64,
+        "violated": 18
       },
       "reth_development": {
-        "held": 56,
+        "held": 82,
         "violated": 0
       },
       "reth_release": {
-        "held": 56,
+        "held": 82,
         "violated": 0
       }
     },
@@ -1179,7 +1179,31 @@
     {
       "cases": [
         "block-tree",
+        "replay-block-tree"
+      ],
+      "client": "nethermind_development",
+      "corpus": "initial",
+      "detail": "[8].result present on one side only",
+      "law": "L07",
+      "run": "initial",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "block-tree",
         "replay-tree-trace"
+      ],
+      "client": "nethermind_development",
+      "corpus": "initial",
+      "detail": "[8].result present on one side only",
+      "law": "L07",
+      "run": "initial",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "transaction-tree",
+        "replay-block-tree"
       ],
       "client": "nethermind_development",
       "corpus": "initial",
@@ -1198,6 +1222,42 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[1].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
       "version": "2.2.0-preview+204457ad"
     },
     {
@@ -1239,7 +1299,31 @@
     {
       "cases": [
         "transaction-create-destroy-absent",
+        "replay-block-4"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "transaction-create-destroy-absent",
         "replay-create-destroy-absent"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "transaction-create-destroy-prefunded",
+        "replay-block-4"
       ],
       "client": "nethermind_development",
       "corpus": "mined-probes",
@@ -1256,6 +1340,18 @@
       "client": "nethermind_development",
       "corpus": "mined-probes",
       "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.2.0-preview+204457ad"
+    },
+    {
+      "cases": [
+        "transaction-selfdestruct-self",
+        "replay-block-4"
+      ],
+      "client": "nethermind_development",
+      "corpus": "mined-probes",
+      "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
       "version": "2.2.0-preview+204457ad"
@@ -1299,7 +1395,31 @@
     {
       "cases": [
         "block-tree",
+        "replay-block-tree"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "[8].result present on one side only",
+      "law": "L07",
+      "run": "initial",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "block-tree",
         "replay-tree-trace"
+      ],
+      "client": "nethermind_release",
+      "corpus": "initial",
+      "detail": "[8].result present on one side only",
+      "law": "L07",
+      "run": "initial",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "transaction-tree",
+        "replay-block-tree"
       ],
       "client": "nethermind_release",
       "corpus": "initial",
@@ -1318,6 +1438,42 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[1].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "block-4",
+        "replay-block-4"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
       "version": "2.1.0+b3e7e84c"
     },
     {
@@ -1359,7 +1515,31 @@
     {
       "cases": [
         "transaction-create-destroy-absent",
+        "replay-block-4"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "transaction-create-destroy-absent",
         "replay-create-destroy-absent"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "transaction-create-destroy-prefunded",
+        "replay-block-4"
       ],
       "client": "nethermind_release",
       "corpus": "mined-probes",
@@ -1376,6 +1556,18 @@
       "client": "nethermind_release",
       "corpus": "mined-probes",
       "detail": "[2].result present on one side only",
+      "law": "L07",
+      "run": "mined-probes",
+      "version": "2.1.0+b3e7e84c"
+    },
+    {
+      "cases": [
+        "transaction-selfdestruct-self",
+        "replay-block-4"
+      ],
+      "client": "nethermind_release",
+      "corpus": "mined-probes",
+      "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
       "version": "2.1.0+b3e7e84c"

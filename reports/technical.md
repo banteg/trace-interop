@@ -59,6 +59,7 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | --- | --- | --- | --- |
 | H02 | not_applicable | The transaction is not in the chain: a missing transaction lookup is H06’s rule, not path selection. | 11 |
 | H03 | blocked | Depends on H23, which differs for this build in rewards-to, rewards-union. record 0 missing; expected {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436', 'blockNumber': 2, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'} | 1 |
+| H05 | blocked | No frames for 5 of the 5 selected transactions, first 0x827f578f78815feb24e5d992addb5d6d184958aad72d02c213271f4b4ac780ae; the result cannot show that rewards are omitted. | 1 |
 | H06 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H06 | control | Ledger reference; executable requirements are assessed by the linked topic cases. | 2 |
 | H06 | not_applicable | The transaction exists: which frame a path selects, including null for a missing path, is H02’s rule. | 22 |

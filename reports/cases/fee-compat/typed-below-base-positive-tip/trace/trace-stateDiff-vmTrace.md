@@ -2,7 +2,7 @@
 
 `trace_call` · fee-compat · [All reports](../../../../README.md)
 
-**What this checks:** The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
+**What this checks:** The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution. Identify a fee/funding validation rejection. Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

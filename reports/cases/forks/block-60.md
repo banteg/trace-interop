@@ -31,19 +31,19 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - Result shape at `/`: [{'action': {'creationMethod': 'create', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x4b0e', 'init': '0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3', 'value': '0x0'}, 'blockHash': '0x9732abf48d7d692097d80da5ae6d726f466d264bee9b657ab9e89544453d2767', 'blo
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - Result shape at `/`: [{'action': {'creationMethod': 'create', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x4b0e', 'init': '0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3', 'value': '0x0'}, 'blockHash': '0x9732abf48d7d692097d80da5ae6d726f466d264bee9b657ab9e89544453d2767', 'blo
 
 **Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 - [H09](../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - Result shape at `/`: [{'action': {'creationMethod': 'create', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x4b0e', 'init': '0x600d380380600d6000396000f336156009575f355f555b305f525f5460205260405ff3', 'value': '0x0'}, 'blockHash': '0x9732abf48d7d692097d80da5ae6d726f466d264bee9b657ab9e89544453d2767', 'blo
 

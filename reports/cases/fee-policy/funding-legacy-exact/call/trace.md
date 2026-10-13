@@ -2,14 +2,14 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Execute each valid simulation and return one envelope per call. Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Call 0: distinguish admission from the known execution success/failure.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. Execute each valid simulation and return one envelope per call. Call 0: use BASEFEE zero for zero fees and the selected base fee for priced calls; preserve other block fields and expose upfront payment and prior settlement through BALANCE. Call 0: distinguish admission from the known execution success/failure.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
 | [Anvil · 1.8.6-nightly · 32624734](../../../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../../../clients/besu_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../../../clients/besu_development.md) | 1 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../../../clients/erigon_release.md) | 1 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
 | [Erigon · 3.8.0-dev · 1d3ebbf2](../../../../clients/erigon_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e67cfd25](../../../../clients/go-ethereum_trace.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
@@ -43,10 +43,12 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23c1c', 'init': '0x3a60005248602052436040524260605245608052333160a052413160c05260e06000f3', 'value': '0xde02b6f7625c0c0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x23c1c', 'init': '0x3a60005248602052436040524260605245608052333160a052413160c05260e06000f3', 'value': '0xde02b6f7625c0c0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x0000000000000000000000
 
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)

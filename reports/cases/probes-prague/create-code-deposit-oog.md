@@ -2,14 +2,14 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. Failed frames have an error string; an exceptional halt omits result or sets it to null. The failed creation frame has an error and no result; the caller continues. Code whose deposit costs more than the child's remaining gas fails the creation with "Out of gas". The caller sees CREATE push 0.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. Failed frames have an error string; an exceptional halt omits result or sets it to null. The failed creation frame has an error and no result; the caller continues. Code whose deposit costs more than the child's remaining gas fails the creation with "Out of gas". The caller sees CREATE push 0.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 call frames; nonempty output | ⚠️ Differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
@@ -42,11 +42,15 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x13d620', 'init': '0x615dc06000f3', 'value': '0x0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `trace/1`: {'action': {'from': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'gas': '0x130ba5', 'init': '0x615dc06000f3', 'value': '0x0'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [0], 'type': 'create'} is not valid under any of the given schemas
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
 - Result shape at `trace/0`: {'action': {'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x13d620', 'init': '0x615dc06000f3', 'value': '0x0'}, 'result': {'address': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'code': '0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `trace/1`: {'action': {'from': '0x00de48310d77a4d56aa400248b0b1613508f5b73', 'gas': '0x130ba5', 'init': '0x615dc06000f3', 'value': '0x0'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [0], 'type': 'create'} is not valid under any of the given schemas
 

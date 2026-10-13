@@ -2,14 +2,14 @@
 
 `trace_call` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed. The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.
+**What this checks:** Unrequested vmTrace is null. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed. The blob call runs with type 3, which does not change execution, at GASPRICE 2000000000, the word its CREATE2 child deploys.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
+| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | 2 call frames; nonempty output | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
 | [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 2 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/probes-prague/manifest.json) |
@@ -49,10 +49,12 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
 - Result shape at `trace/1`: {'action': {'from': '0x4e59b44847b379578588920ca78fbf26c0b4956c', 'gas': '0x3b49f', 'init': '0x3a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0x03aabecabc004eeaae2f254e6d52da3d3980a45e', 'code': '0x0000000000000000000000000000000000000000000000000000000077359400', 'gasUsed': '0x1911'},
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
 - Result shape at `trace/1`: {'action': {'from': '0x4e59b44847b379578588920ca78fbf26c0b4956c', 'gas': '0x3b49f', 'init': '0x3a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0x03aabecabc004eeaae2f254e6d52da3d3980a45e', 'code': '0x0000000000000000000000000000000000000000000000000000000077359400', 'gasUsed': '0x1911'},
 
 **Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)

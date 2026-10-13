@@ -31,15 +31,15 @@
 
 **Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 
 **Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
 
-- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records.
+- [H05](../../decisions/H05.md): A PoS block has no synthetic PoW reward records. 1 reward records.
 - Result shape at `/`: [{'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x11ba0', 'input': '0x74fb911b03a9f447656d6974', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x3'}, 'blockHash': '0xf3be11c8f8d9b2ba562c673badb50687e003b8d747b7054e57503a2d1d4b7cc3', 'blo
 
 </details>

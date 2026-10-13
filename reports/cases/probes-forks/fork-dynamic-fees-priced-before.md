@@ -2,7 +2,7 @@
 
 `trace_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Successful creation uses address, code and gasUsed.
+**What this checks:** Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Every creation names its creationMethod; a successful one uses address, code and gasUsed.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -41,6 +41,7 @@
 
 **Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
 
+- [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - [H14](../../decisions/H14.md): Dynamic fee fields at block 35, before London (block 36), name a feature not active at the selected block, so the call is rejected (-32003 recommended), never run with the fees ignored or reinterpreted. Observed result with output 0x0000000000000000000000000000000000000000000000000000000000000000
 - Result shape at `trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xb720', 'init': '0x3a60005260206000f3', 'value': '0x0'}, 'result': {'address': '0xf89374e8646084be4525b8da2e64af316b570458', 'code': '0x0000000000000000000000000000000000000000000000000000000000000000', 'gasUsed': '0x1911'},
 

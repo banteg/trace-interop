@@ -147,7 +147,7 @@ actor = "mattsse"
 client = "anvil"
 build = "development"
 url = "https://github.com/foundry-rs/foundry"
-text = "Foundry’s dev node, tracked for tooling compatibility and left out of the totals. It is captured by replaying chains because it has no Engine API, so it never enters Hive."
+text = "Foundry’s dev node, the one most tooling tests against, so its agreement counts in the totals; it stays outside harmonization and client positions. It is captured by replaying chains because it has no Engine API, so it never enters Hive."
 
 [[node]]
 id = "reth"

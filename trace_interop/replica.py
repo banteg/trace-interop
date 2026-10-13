@@ -9,6 +9,7 @@ wire bytes stay verbatim.
 """
 import hashlib
 import json
+import re
 import subprocess
 import time
 import urllib.request
@@ -86,10 +87,14 @@ def network_form(tx, sidecars):
 
 
 def translate(text, mapping):
-    """Replace every hash in `mapping`, with or without its 0x prefix."""
-    for old, new in mapping.items():
-        text = text.replace(old[2:], new[2:])
-    return text
+    """Replace every hash in `mapping`, with or without its 0x prefix, in one pass. A hash also counts inside longer
+    hex data (memory, output, storage the EIP-2935 contract filled), but only on a byte boundary of that data, and
+    a replacement is never replaced again."""
+    digits = {old[2:]: new[2:] for old, new in mapping.items()}
+    # Within a run of hex digits, each step takes a whole hash or the bytes up to the next one.
+    hashes = '(?:' + '|'.join(map(re.escape, digits)) + ')'
+    steps = re.compile(f'{hashes}|(?:(?!{hashes})..)+')
+    return re.sub('[0-9a-fA-F]+', lambda data: steps.sub(lambda step: digits.get(step[0], step[0]), data[0]), text)
 
 
 class RpcError(ValueError):

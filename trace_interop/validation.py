@@ -23,8 +23,9 @@ def on_folded(check):
     return lambda validator, value, instance, schema: check(validator, value, folded(validator, schema, instance), schema)
 
 
+# Every keyword of a closed object sees the folded members, so a matched member also meets if/then, not and required.
 RequestValidator = validators.extend(Draft201909Validator, {
-    keyword: on_folded(Draft201909Validator.VALIDATORS[keyword]) for keyword in ('properties', 'additionalProperties')})
+    keyword: on_folded(check) for keyword, check in Draft201909Validator.VALIDATORS.items()})
 
 
 def request_errors(request, methods):

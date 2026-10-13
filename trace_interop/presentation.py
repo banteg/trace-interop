@@ -37,6 +37,7 @@ STAGE_STYLES = {
     'in client': 'fill:#fff8c5,stroke:#9a6700,color:#1f2328',
     'in measured build': 'fill:#dafbe1,stroke:#1a7f37,color:#1f2328',
     'verified': 'fill:#1a7f37,stroke:#116329,color:#ffffff',
+    'closed': 'fill:#ffebe9,stroke:#cf222e,color:#1f2328',
     'done': 'fill:#ffffff,stroke:#1a7f37,color:#1f2328',
     'pending': 'fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a',
 }
@@ -122,6 +123,25 @@ def display_verdict(checks, fixes=()):
         return f'{icon} {label}'
     links = ' · '.join(f'[{pr["label"]}]({pr["url"]})' + (' (partial fix)' if partial else '') for pr, partial in fixes)
     return f'{icon} {label} · {links}' if all(partial for _, partial in fixes) else f'🛠️ Fix submitted: {links}'
+
+
+def placements(selected, by_client, topics):
+    """{section: {topic: builds}} for a client page, each build placed by its own verdict: `differs`, `gaps`, `agree`
+    or `unchecked`, and under `observations` as well when it has any (a policy-open build has no other section).
+    Method availability (H01) is placed only where it differs."""
+    placed = {section: defaultdict(list) for section in ('differs', 'observations', 'gaps', 'agree', 'unchecked')}
+    for topic in topics:
+        for c in selected:
+            checks = by_client[c].get(topic, [])
+            if any(q['status'] == 'observation' for q in checks):
+                placed['observations'][topic].append(c)
+            found = verdict(checks)
+            section = ('differs' if found in ('Differs', 'Method unavailable')
+                       else 'gaps' if any(q['status'] in ('blocked', 'unassessed') for q in checks)
+                       else None if found == 'Policy open' else 'agree' if found == 'Checked cases agree' else 'unchecked')
+            if section == 'differs' or section and topic != 'H01':
+                placed[section][topic].append(c)
+    return placed
 
 
 def timestamp(value):
@@ -402,8 +422,10 @@ def case_link(output, parent, check, label='Example'):
 
 def examples(output, parent, checks, limit=2):
     selected = {}
-    priority = {'change_needed':0, 'unsupported':0, 'blocked':1, 'unassessed':1, 'observation':2, 'matches':3}
-    for c in sorted(checks, key=lambda x: (priority.get(x['status'],4), x['corpus'], x['case'])):
+    # Extension evidence ranks after the baseline checks it sits beside.
+    priority = {'change_needed':0, 'unsupported':0, 'blocked':1, 'unassessed':1, 'observation':2, 'matches':3, 'extension':4}
+    rank = lambda c: priority.get('extension' if c['status'] == 'observation' and c.get('extension') else c['status'], 5)
+    for c in sorted(checks, key=lambda x: (rank(x), x['corpus'], x['case'])):
         selected.setdefault((c['corpus'], c['case']), c)
     return ' · '.join(case_link(output, parent, c, c['case'].replace('-', ' ').capitalize()) for c in list(selected.values())[:limit])
 
@@ -732,21 +754,15 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
             if versions and versions <= set(build_note['versions']):
                 text += build_note['text'] + '\n\n'
         text += 'Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).\n\n'
-        rows = []; matched = []; untested = []; observations = []; partial = []
-        for topic, d in decisions.items():
+        rows = []
+        placed = placements(selected, by_client, decisions)
+        observations, partial, matched, untested = (placed[s] for s in ('observations', 'gaps', 'agree', 'unchecked'))
+        # A decision placed for only some of the family's builds names them.
+        builds = lambda found: '' if found == selected else ' (' + ', '.join(label(c) for c in found) + ')'
+        for topic, (affected, *_) in placed['differs'].items():
             checks = [q for c in selected for q in by_client[c].get(topic, [])]
-            if verdict(checks) == 'Policy open':
-                observations.append(topic)
-                continue
-            if any(q['status'] == 'observation' for q in checks):
-                observations.append(topic)  # extension evidence beside a settled baseline verdict
-            if not any(q['status'] in BAD for q in checks):
-                if topic != 'H01':
-                    (partial if any(q['status'] in ['unassessed','blocked'] for q in checks) else matched if any(q['status']=='matches' for q in checks) else untested).append(topic)
-                continue
-            affected = next(c for c in selected if any(q['status'] in BAD for q in by_client[c].get(topic, [])))
             observed, change = note(editorial, affected, topic, checks)
-            subject = f'[{d["title"]}](../decisions/{topic}.md)<br>{observed}'
+            subject = f'[{decisions[topic]["title"]}](../decisions/{topic}.md)<br>{observed}'
             statuses = []
             for c in selected:
                 cchecks = by_client[c].get(topic, [])
@@ -777,22 +793,22 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         if partial:
             text += '## Assessment gaps\n\n'
             gap_rows = []
-            for t in partial:
-                for c in selected:
+            for t, found in partial.items():
+                for c in found:
                     checks = by_client[c].get(t, [])
                     gaps = [q for q in checks if q['status'] in ['blocked','unassessed']]
-                    if gaps:
-                        fix = build_verdict(c, t)
-                        gap_rows.append([f'[{decisions[t]["title"]}](../decisions/{t}.md)', label(c),
-                                         coverage_summary(checks) + (f'<br>{fix}' if fix != display_verdict(checks) else ''),
-                                         examples(output, path.parent, gaps)])
+                    fix = build_verdict(c, t)
+                    gap_rows.append([f'[{decisions[t]["title"]}](../decisions/{t}.md)', label(c),
+                                     coverage_summary(checks) + (f'<br>{fix}' if fix != display_verdict(checks) else ''),
+                                     examples(output, path.parent, gaps)])
             text += table(['Decision', 'Build', 'Reason', 'Example'], gap_rows)
         if matched:
             text += '<details><summary>✅ Behaviors with no difference in the checked cases</summary>\n\n'
-            text += table(['Behavior', 'Examples'], [[f'[{decisions[t]["title"]}](../decisions/{t}.md)', examples(output, path.parent, [q for c in selected for q in by_client[c].get(t, [])])] for t in matched])
+            text += table(['Behavior', 'Examples'], [[f'[{decisions[t]["title"]}](../decisions/{t}.md)' + builds(found), examples(output, path.parent, [q for c in found for q in by_client[c].get(t, [])])]
+                                                   for t, found in matched.items()])
             text += '</details>\n\n'
         if untested:
-            text += '**⚪ Still needs review:** ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' for t in untested) + '.\n\n'
+            text += '**⚪ Still needs review:** ' + ', '.join(f'[{decisions[t]["title"]}](../decisions/{t}.md)' + builds(found) for t, found in untested.items()) + '.\n\n'
         text += '[Method availability](../decisions/H01.md) · [All decisions](../../decisions/README.md)\n\n'
         text += 'For setup gaps, exact run inventories and reproduction, see the [technical appendix](../technical.md).\n'
         save(path, text)

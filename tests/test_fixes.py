@@ -315,7 +315,7 @@ class RefreshFixesTests(unittest.TestCase):
             def pr(self, url):
                 commit, base, head = self.infos[url]
                 return {'title': 'new', 'state': 'MERGED' if commit else 'OPEN', 'isDraft': False, 'mergedAt': commit and '2026-09-24T00:00:00Z',
-                        'mergeCommit': commit and {'oid': commit}, 'baseRefName': base, 'headRefName': head}
+                        'mergeCommit': commit and {'oid': commit}, 'baseRefName': base, 'headRefName': head, 'isCrossRepository': False}
 
             def contains(self, repo, commit, ref):
                 return (repo, commit, ref) in self.inside

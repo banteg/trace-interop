@@ -50,7 +50,7 @@ class GitHub:
         return self.outputs[args]
 
     def pr(self, url):
-        return json.loads(self.gh('pr', 'view', url, '--json', 'title,state,isDraft,mergedAt,mergeCommit,baseRefName,headRefName'))
+        return json.loads(self.gh('pr', 'view', url, '--json', 'title,state,isDraft,mergedAt,mergeCommit,baseRefName,headRefName,isCrossRepository'))
 
     def contains(self, repo, commit, ref):
         """Whether `commit` is in the history of `ref`."""
@@ -80,17 +80,30 @@ class GitHub:
 
 
 def version(text):
-    """(major, minor, patch) of a tag, version or requirement such as v0.44.0, v120 or ^43."""
-    numbers = [int(n) for n in re.match(r'[\^=~v ]*(\d+(?:\.\d+)*)', text)[1].split('.')][:3]
+    """(major, minor, patch) of a tag or version such as v0.44.0 or v120."""
+    numbers = [int(n) for n in re.match(r'v?(\d+(?:\.\d+)*)', text)[1].split('.')][:3]
     return tuple(numbers + [0] * (3 - len(numbers)))
 
 
+COMPARATOR = re.compile(r'\s*(\^|~|=|>=|<=|>|<)?\s*v?(\d+(?:\.\d+){0,2})?(\.?\*)?\s*')
+
+
 def admits(requirement, release):
-    """Whether a Cargo default (caret) requirement admits a release version: at least the requirement, with the
-    same leftmost nonzero component."""
-    base = version(requirement)
-    significant = next((i for i, n in enumerate(base) if n), 2) + 1
-    return version(release) >= base and version(release)[:significant] == base[:significant]
+    """Whether a Cargo version requirement admits a release version: every comma-separated comparator holds, a bare
+    one being caret. Comparators bound only the components they give: ^0.0 admits 0.0.5, <=1.2 admits 1.2.9."""
+    release = version(release)
+
+    def holds(comparator):
+        op, numbers, wildcard = COMPARATOR.fullmatch(comparator).groups()
+        given = tuple(int(n) for n in numbers.split('.')) if numbers else ()
+        head, base = release[:len(given)], given + (0,) * (3 - len(given))
+        bounds = {'=': head == given, '>': head > given, '<=': head <= given, '>=': release >= base, '<': release < base}
+        if wildcard or op in bounds:
+            return bounds['=' if wildcard else op]
+        # Caret keeps the leftmost nonzero component given (the last one when all are zero); tilde the minor, if given.
+        kept = min(len(given), 2) if op == '~' else next((i for i, n in enumerate(given) if n), len(given) - 1) + 1
+        return release >= base and release[:kept] == given[:kept]
+    return all(holds(comparator) for comparator in requirement.split(','))
 
 
 def version_tags(gh, repo):
@@ -176,7 +189,8 @@ def uptake(gh, pr, commit, libraries, builds, previous=None):
     it into its repository's default branch, None while the branch it merged into has not; `previous` is its last uptake."""
     repo = repository(pr['url'])
     own = [ref for client, ref in sorted(builds.items()) if family(client) == pr['client']]
-    if commit is None:
+    # Without a measured build there is no client repository for a library change to reach.
+    if commit is None or repo in libraries and not own:
         return ({'releases': [], 'client': None} if repo in libraries else {}) | {'builds': {ref['commit']: False for ref in own}}
     if repo not in libraries:
         return {'builds': {ref['commit']: gh.contains(repo, commit, ref['commit']) for ref in own}}
@@ -211,7 +225,8 @@ def current_builds(root):
 def refresh(path, gh, builds):
     fixes = json.loads(path.read_text())
     infos = {pr['url']: gh.pr(pr['url']) for pr in fixes['prs']}
-    branches = {(repository(url), info['headRefName']): url for url, info in infos.items()}
+    # A base branch lives in the PR's own repository, so only a PR from a branch of that repository can be one.
+    branches = {(repository(url), info['headRefName']): url for url, info in infos.items() if not info['isCrossRepository']}
     for pr in fixes['prs']:
         info = infos[pr['url']]
         current = dict(title=info['title'], state=info['state'].lower(), draft=info['isDraft'], merged_at=info['mergedAt'])

@@ -13,9 +13,10 @@ FAMILIES = ['trace', 'stateDiff', 'vmTrace', 'output']
 
 
 def result(observation):
-    if 'response' not in observation:
-        return {'malformed': observation['raw_response'][:200]}
-    response = observation['response']
+    """The result or error of a response object; otherwise the status with the wire bytes or the failure detail."""
+    response = observation.get('response')
+    if not isinstance(response, dict):
+        return {observation['status']: observation.get('raw_response', observation.get('detail'))[:200]}
     return response['result'] if 'result' in response else {'error': response.get('error')}
 
 
@@ -39,7 +40,7 @@ def show(args):
 
 
 def groups(args):
-    runs = {p.parent for name in [OBSERVATIONS, COMPACT_OBSERVATIONS] for p in Path(args.evidence).glob('*/'+name)}
+    runs = {p.parent for name in [OBSERVATIONS, COMPACT_OBSERVATIONS] for p in Path(args.evidence).rglob(name)}
     for run in sorted(runs):
         for name, case in load_observations(run).items():
             if name.startswith('_control'):
@@ -51,7 +52,7 @@ def groups(args):
                     outputs.setdefault(json.dumps(value, sort_keys=True), []).append(build)
             if len(outputs) > 1:
                 ranked = sorted(outputs.values(), key=len, reverse=True)
-                print(run.name, name, ' | '.join(','.join(sorted(g)) for g in ranked))
+                print(run.relative_to(args.evidence), name, ' | '.join(','.join(sorted(g)) for g in ranked))
 
 
 def main():
@@ -66,7 +67,7 @@ def main():
     one.add_argument('--limit', type=int, default=4000, help='truncate each printed output to this many characters')
     one.set_defaults(run=show)
     many = commands.add_parser('groups', help='list cases whose builds disagree')
-    many.add_argument('evidence', help='an evidence snapshot directory, e.g. evidence/2026-09-24/h15-call-compat')
+    many.add_argument('evidence', help='an evidence directory; every run below it is read, e.g. evidence/2026-09-24/h15-call-compat')
     many.add_argument('--family', choices=FAMILIES, default='stateDiff')
     many.set_defaults(run=groups)
     args = parser.parse_args()

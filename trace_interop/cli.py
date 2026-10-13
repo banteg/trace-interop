@@ -300,6 +300,13 @@ def selected_cases(corpus, pattern):
         from .scenarios import ordered_cases
         return ordered_cases(corpus)
     selected = {c['name'] for c in cases}
+    # A case is assessed against its probes' references and its fee reference, so they are sent with it (and theirs).
+    by_name = {c['name']: c for c in corpus['cases']}
+    for case in cases:
+        for name in [*(p['reference'] for p in case.get('probes', []) if 'reference' in p), *filter(None, [case.get('fee_reference')])]:
+            if name not in selected:
+                selected.add(name)
+                cases.append(by_name[name])
     # Setup controls remain mandatory even for a single selected probe.
     cases += [c for c in corpus['cases'] if c['name'] not in selected
               and (c['name'].startswith(('control-', '_control/'))

@@ -6,7 +6,7 @@ upfront payment and prior-call settlement observable even without stateDiff.
 import re
 
 from .execution_models import balance_delta, created_address, quantity
-from .rules import recommended_note, rejection, violation
+from .rules import mapping, recommended_note, rejection, violation
 from .vm_model import intrinsic
 
 SENDER = '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf'
@@ -132,9 +132,9 @@ def assess(case, observation):
     status = observation.get('status')
     if status not in ['result', 'rpc_error']:
         return [dict(topic='H15', status='blocked', requirement='Inspect the fee-policy response.', detail=str(status))]
-    response = observation.get('response', {})
+    response = mapping(observation.get('response'))
     if policy['admission'] == 'reject':
-        error = response.get('error', {})
+        error = mapping(response.get('error'))
         index, violations = first_invalid(case)
         if status != 'rpc_error':
             add(False, 'Reject this independently invalid fee/funding request before execution.', policy['reason'])
@@ -191,13 +191,15 @@ def assess(case, observation):
         if not isinstance(diff, dict) or any(not isinstance(a, dict) for a in diff.values()):
             add(False, f'Call {i}: return the requested stateDiff.')
             continue
-        sender = diff.get(step['sender'], {})
-        miner = diff.get(MINER, {})
+        # Addresses are case-insensitive: a client may key stateDiff by EIP-55 checksums.
+        accounts = {address.lower(): account for address, account in diff.items()}
+        sender = accounts.get(step['sender'].lower(), {})
+        miner = accounts.get(MINER, {})
         deltas = [balance_delta(a.get('balance', '=')) for a in diff.values()]
         add(account_bounds(sender, step['before'], step['after'])
             and account_bounds(sender, step['nonce'], step['nonce']+1, 'nonce')
             and account_bounds(miner, step['miner_before'], step['miner_after'])
-            and (not step['sent'] or balance_delta(diff.get(step['recipient'], {}).get('balance', '=')) == step['sent'])
+            and (not step['sent'] or balance_delta(accounts.get(step['recipient'].lower(), {}).get('balance', '=')) == step['sent'])
             and all(d is not None for d in deltas) and sum(deltas) == -step['burn'],
             f'Call {i}: settle exact gas, unused-gas/refund credits, transferred value, nonce, beneficiary tip and base-fee burn.',
             f'Sender {step["before"]}->{step["after"]}; miner {step["miner_before"]}->{step["miner_after"]}; burn {step["burn"]}.')
@@ -210,7 +212,7 @@ def assess_compatibility(case, observation, peers):
     if not reference:
         return []
     def outcome(obs, eth=False):
-        response = obs.get('response', {})
+        response = mapping(obs.get('response'))
         status = obs.get('status', 'not_observed')
         if status == 'result':
             result = response.get('result')
@@ -222,13 +224,14 @@ def assess_compatibility(case, observation, peers):
                     # Empty output bytes alone cannot establish successful execution.
                     if str(roots[0]['error']).lower() == 'insufficient balance for transfer':
                         return ('halt', 'funds'), ''
-                    return None, 'unclassified root execution error: '+str(roots[0]['error'])
+                    # Any root failure differs from output or a rejection; only another halt may be this one.
+                    return ('halt', None), 'unclassified root execution error: '+str(roots[0]['error'])
             output = result if eth else result.get('output') if isinstance(result, dict) and 'error' not in result else None
             if isinstance(output, str) and re.fullmatch(r'0x(?:[0-9a-fA-F]{2})*', output):
                 return ('output', output.lower()), ''
             return None, 'invalid execution output'
         if status == 'rpc_error':
-            error = response.get('error', {})
+            error = mapping(response.get('error'))
             message = str(error.get('message', '')).lower()
             if rejection(status, response) and message == 'evm error: outoffunds':
                 return ('halt', 'funds'), ''
@@ -241,13 +244,13 @@ def assess_compatibility(case, observation, peers):
     left, left_error = outcome(peers.get(reference, {}), eth=True)
     right, right_error = outcome(observation)
     if left and left[0] == 'halt' and right and right[0] == 'output':
-        result = observation.get('response', {}).get('result')
+        result = mapping(observation.get('response')).get('result')
         roots = [f for f in result.get('trace', []) if isinstance(f, dict)
                  and f.get('traceAddress') == []] if isinstance(result, dict) and isinstance(result.get('trace'), list) else []
         if not roots:
             right, right_error = None, 'No root trace was returned to distinguish an execution halt from empty output'
     def describe(value, error):
-        if value is None:
+        if value is None or value[1] is None:
             return error
         if value[0] == 'output':
             return f'execution output ({(len(value[1])-2)//2} bytes)'
@@ -265,7 +268,8 @@ def assess_compatibility(case, observation, peers):
             detail += ' Differing words: '+'; '.join(differences)+'.'
         else:
             detail += ' Output bytes differ.'
-    status = 'blocked' if left is None or right is None else 'matches' if left == right else 'change_needed'
+    unknown = left is None or right is None or None in (left[1], right[1]) and left[0] == right[0]
+    status = 'blocked' if unknown else 'matches' if left == right else 'change_needed'
     return [dict(topic='H15', status=status,
                  requirement='The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class.',
                  detail=detail)]

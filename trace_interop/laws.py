@@ -89,6 +89,8 @@ class Run:
 
 def tree_violations(frames):
     """Structural defects of one transaction's frame list; empty when it is a well-formed preorder tree."""
+    if any(not isinstance(f, dict) for f in frames):
+        return ['a record is not an object']
     paths = [f.get('traceAddress') for f in frames]
     if any(not isinstance(p, list) or any(type(i) is not int or i < 0 for i in p) for p in paths):
         return ['a traceAddress is not a list of non-negative integers']
@@ -195,7 +197,7 @@ def evaluate(context, cases, peers, *, profile=False):
         else:
             lists = [(label, sequence(e.get('trace'))) for label, _, e in envelopes(case, result)]
         for label, frames in lists:
-            if frames and all(isinstance(f, dict) for f in frames):
+            if frames:
                 problems = tree_violations(frames)
                 law('L01', [case['name']], f'{label} {"; ".join(problems[:3])}'.strip() if problems else None)
         for label, _, e in envelopes(case, result):
@@ -273,7 +275,7 @@ def evaluate(context, cases, peers, *, profile=False):
     for case in run.of('trace_replayTransaction'):
         params = case['request']['params']
         if len(params) > 1 and 'trace' in sequence(params[1]) and isinstance(run.results[case['name']], dict):
-            replays.setdefault(params[0], case)
+            replays.setdefault(params[0], []).append((case, run.results[case['name']]))
     for case in run.of('trace_replayBlockTransactions'):
         params = case['request']['params']
         number = run.block(params[0]) if params else None
@@ -282,16 +284,12 @@ def evaluate(context, cases, peers, *, profile=False):
         for index, e in enumerate(sequence(run.results[case['name']])):
             tx = run.hashes_by_block.get(number, {}).get(index)
             if tx and isinstance(e, dict):
-                replays.setdefault(tx, dict(case, _index=index))
+                replays.setdefault(tx, []).append((case, e))
     stored = [(tx, c, run.results[c['name']]) for tx, c in trees.items()]
     stored += [(tx, c, frames) for c in blocks.values() for tx, frames in transactions(sequence(run.results[c['name']])).items()]
     for tx, case, frames in stored:
-        replay = replays.get(tx)
-        if replay is None or not isinstance(frames, list):
-            continue
-        result = run.results[replay['name']]
-        envelope = result[replay['_index']] if '_index' in replay else result
-        compare('L07', [case['name'], replay['name']], [core(f) for f in frames], sequence(envelope.get('trace')))
+        for replay, envelope in replays.get(tx, []) if isinstance(frames, list) else []:
+            compare('L07', [case['name'], replay['name']], [core(f) for f in frames], sequence(envelope.get('trace')))
 
     # L08: a single replay against its block replay envelope.
     for case in run.of('trace_replayTransaction'):
@@ -349,11 +347,12 @@ def evaluate(context, cases, peers, *, profile=False):
             compare('L10', names, result, records)
             continue
         position, missing = 0, None
-        for frame in result:
+        for i, frame in enumerate(result):
             while position < len(records) and records[position] != frame:
                 position += 1
             if position == len(records):
-                missing = f'record {result.index(frame)}, {frame.get("type")} at {frame.get("transactionHash")} {frame.get("traceAddress")}, is not the next block record'
+                record = f'{frame.get("type")} at {frame.get("transactionHash")} {frame.get("traceAddress")}' if isinstance(frame, dict) else shown(frame)
+                missing = f'record {i}, {record}, is not the next block record'
                 break
             position += 1
         law('L10', names, missing)

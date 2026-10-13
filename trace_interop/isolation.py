@@ -13,8 +13,8 @@ sites also give a check these internal tags, which the functions here resolve an
   (`role: 'schema'`, H14) yields to another decision's rejection check on the same request and
   becomes not applicable, naming that owner.
 - `depends: [topic, ...]`: the check cannot separate its property from those decisions. It is
-  blocked while a dependency's check differs on the same response or, when the response has none,
-  anywhere in the same build's run.
+  blocked while a dependency's check differs on the same response or, when the response has none
+  that is judged, anywhere in the same build's run.
 """
 from collections import defaultdict
 
@@ -81,7 +81,7 @@ def resolve_dependencies(records):
     for record in records:
         for check in record['checks']:
             for topic in check.pop('depends', ()):
-                own = [c for c in record['checks'] if c['topic'] == topic]
+                own = [c for c in record['checks'] if c['topic'] == topic and c['status'] not in ('blocked', 'unassessed')]
                 cases = [record['case']] if any(c['status'] == 'change_needed' for c in own) else [] if own else differing[topic]
                 if cases and check['status'] == 'change_needed':
                     check.update(status='blocked', detail=f'Depends on {topic}, which differs for this build in '

@@ -100,7 +100,8 @@ class FeeCompatibilityTests(unittest.TestCase):
         trace = self.observation(output)
         peers = {case['fee_reference']: self.observation(output, eth=True)}
         trace['response']['result']['trace'] = [{'traceAddress': [], 'error': 'unclassified failure'}]
-        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'blocked')
+        # Whichever halt it is, a failed root is not eth_call's successful output.
+        self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'change_needed')
         trace['response']['result']['trace'] = [
             {'traceAddress': []}, {'traceAddress': [0], 'error': 'unclassified failure'}]
         self.assertEqual(assess_compatibility(case, trace, peers)[0]['status'], 'matches')

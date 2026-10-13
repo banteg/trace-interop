@@ -2,6 +2,8 @@
 import json
 import subprocess
 
+from .rules import mapping
+
 READINESS = r'''package main
 import (
  "context"
@@ -186,7 +188,7 @@ def assessed_cases(captured, corpus):
 def verify_state(corpus_name, corpus, observations, client):
     def result(name):
         observation = observations.get(name, {}).get(client, {})
-        return observation.get('response', {}).get('result') if observation.get('status') == 'result' else None
+        return mapping(observation.get('response')).get('result') if observation.get('status') == 'result' else None
     for case in corpus.get('cases', []):
         if case.get('expected_control') is not None and result(case['name']) != case['expected_control']:
             return False, 'Independent setup control failed or unavailable: '+case['name']
@@ -217,7 +219,7 @@ def verify_state(corpus_name, corpus, observations, client):
         header,receipt,latest=result('old-header'),result('old-receipt'),result('latest-call')
         valid=isinstance(header,dict) and header.get('number')=='0x2' and isinstance(receipt,dict) and isinstance(latest,dict) and latest.get('output')=='0x'+f'{42:064x}'
         nonce_observation=observations.get('old-nonce',{}).get(client,{})
-        nonce_error=nonce_observation.get('response',{}).get('error') if nonce_observation.get('status') == 'rpc_error' else None
+        nonce_error=mapping(nonce_observation.get('response')).get('error') if nonce_observation.get('status') == 'rpc_error' else None
         def unavailable(error):
             message=error.get('message','') if isinstance(error,dict) else ''
             message=message.lower() if isinstance(message,str) else ''
@@ -264,7 +266,7 @@ def verify_setup(manifest, corpus, observations, client, launches=()):
     for case in manifest['selected_cases']:
         if case['request']['method'] == 'eth_blockNumber':
             obs = observations.get(case['name'], {}).get(client, {})
-            if obs.get('status') != 'result' or obs.get('response', {}).get('result') != head['number']:
+            if obs.get('status') != 'result' or mapping(obs.get('response')).get('result') != head['number']:
                 return False, 'Canonical height control failed: '+case['name']
     # Controls are the captured cases, judged by their current definition when the request is unchanged.
     cases = assessed_cases(manifest['selected_cases'], corpus.get('cases', []))

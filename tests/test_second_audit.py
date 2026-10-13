@@ -55,9 +55,11 @@ class SemanticChecks(unittest.TestCase):
                 self.check_status(c,mutated,p,'H16','change_needed')
 
     def test_deletion_values_match_frozen_prestate(self):
+        alloc=read(ROOT/'fixtures/chains/forks/genesis.json')['alloc']
         for field,bad in [('code',{'-':'0x'}),('nonce',{'-':'0xdead'}),('storage',{'0x'+'00'*32:{'-':'0x'+'01'*32}})]:
             with self.subTest(field=field):
                 c,o,p=captured('2026-09-23/harness-audit-geth-fork-followup','destroy-trace-55','go-ethereum_trace')
+                c['context']['_alloc']={'0x'+a:v for a,v in alloc.items()}
                 self.check_status(c,o,p,'H26','matches')
                 o['response']['result']['stateDiff'][c['request']['params'][0]['to']][field]=bad
                 self.check_status(c,o,p,'H26','change_needed')

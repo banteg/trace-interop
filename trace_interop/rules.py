@@ -4,8 +4,11 @@ from __future__ import annotations
 import json
 import re
 
+from .chain_model import resolve_block
 from .oracles import anchor, IDENTITY, REVERT_OUTPUT, REVERT_GAS
-from .vm_model import UnsupportedProgram, encoding_valid, execute
+from .vm_model import DATA, QUANTITY, UnsupportedProgram, encoding_valid, execute
+
+ADDRESS = re.compile(r'0x[0-9a-fA-F]{40}')
 
 
 def is_extension_request(request):
@@ -18,6 +21,64 @@ def mapping(value):
 
 def sequence(value):
     return value if isinstance(value, list) else []
+
+
+def distinct(values):
+    """Distinct JSON values in first-seen order; a client's values may be unhashable."""
+    return list({json.dumps(v, sort_keys=True): v for v in values}.values())
+
+
+def state_account(diff, address):
+    """An address's stateDiff account, matched by its bytes since a client may checksum (EIP-55) its keys. None when
+    absent; several spellings of one address contradict each other and yield their list, which no account check accepts."""
+    found = [v for k, v in mapping(diff).items() if isinstance(address, str) and k.lower() == address.lower()]
+    return found[0] if len(found) == 1 else found or None
+
+
+def creation_difference(frame):
+    """H10's first difference in a create frame, or '': every creation names its creationMethod, and a successful
+    one reports its address, deployed code and gasUsed."""
+    where = f'traceAddress {frame.get("traceAddress")}: '
+    method = mapping(frame.get('action')).get('creationMethod')
+    if method not in ('create', 'create2'):
+        return where+f'creationMethod {json.dumps(method)}'
+    if 'error' in frame:
+        return ''
+    value = mapping(frame.get('result'))
+    return next((where+f'result.{k} {json.dumps(value.get(k))}' for k, form in [('address', ADDRESS), ('code', DATA), ('gasUsed', QUANTITY)]
+                 if not (isinstance(value.get(k), str) and form.fullmatch(value[k]))), '')
+
+
+def pos_selection(method, params, context):
+    """The frozen transactions whose frames a trace_block or trace_filter PoS selection must hold: none for an
+    address-filtered or paged filter, and None when no frozen block resolves the selection."""
+    if method == 'trace_block':
+        return mapping(resolve_block(context, params[0])).get('transactions')
+    filt = mapping(params[0])
+    if sequence(filt.get('fromAddress')) or sequence(filt.get('toAddress')) or {'after', 'count'} & set(filt):
+        return []
+    low, high = (mapping(resolve_block(context, filt.get(k))).get('number') for k in ['fromBlock', 'toBlock'])
+    if low is None or high is None:
+        return None
+    return [t for b in sorted(context['_blocks'].values(), key=lambda b: b['number']) if low <= b['number'] <= high for t in b['transactions']]
+
+
+def pos_check(result, transactions):
+    """H05's (status, detail) for the records of a PoS selection. A malformed list or a synthetic reward differs. A list
+    without the frames of every selected transaction, or an empty one no frozen block bounds, shows no omitted reward:
+    its inventory is another decision's (H02 for blocks, H03/H04/H27 for filters)."""
+    if not isinstance(result, list) or not all(isinstance(f, dict) for f in result):
+        return 'change_needed', f'Expected a list of frame objects; got {json.dumps(result)[:120]}.'
+    rewards = sum(f.get('type') == 'reward' for f in result)
+    if rewards:
+        return 'change_needed', f'{rewards} reward records.'
+    if transactions is None and not result:
+        return 'unassessed', 'No frozen block shows whether this empty result omits records.'
+    hashes = [str(f.get('transactionHash')).lower() for f in result]
+    missing = [t['hash'] for t in transactions or [] if t['hash'] not in hashes]
+    if missing:
+        return 'blocked', f'No frames for {len(missing)} of the {len(transactions)} selected transactions, first {missing[0]}; the result cannot show that rewards are omitted.'
+    return 'matches', ''
 
 
 def deleted_storage_shape(storage):
@@ -152,10 +213,13 @@ def pending_check(method, params, status, response, result, context):
     if not result:
         return verdict('blocked', 'An empty result names no block, so it cannot show a pending environment.')
     if method == 'trace_block':
-        numbers = sorted({mapping(f).get('blockNumber') for f in result}, key=str)
+        numbers = sorted(distinct(mapping(f).get('blockNumber') for f in result), key=str)
         return verdict('matches' if numbers == [head+1] else 'change_needed', f'Records from blocks {numbers}; the head is {head}.')
+    hashes = [mapping(e).get('transactionHash') for e in result]
+    if not all(isinstance(h, str) for h in hashes):
+        return verdict('change_needed', f'Expected envelopes with transactionHash strings; got {json.dumps(result)[:80]}.')
     canonical = {t['hash'] for b in mapping(context.get('_blocks')).values() for t in b['transactions']}
-    replayed = {mapping(e).get('transactionHash') for e in result}
+    replayed = set(hashes)
     return verdict('change_needed' if canonical & replayed else 'matches',
                    f'{len(result)} envelopes, {len(canonical & replayed)} of them canonical transactions.')
 
@@ -289,7 +353,7 @@ def evaluate(case, observation, peers, invalid_params=None):
             if status == 'rpc_error':
                 detail = f'{name}: RPC error {mapping(response.get("error")).get("code")}.'
             elif isinstance(result, list):
-                blocks = sorted({frame.get('blockNumber') for frame in result if isinstance(frame, dict)})
+                blocks = sorted(distinct(frame.get('blockNumber') for frame in result if isinstance(frame, dict)), key=str)
                 detail = f'{name}: {len(result)} records from blocks {blocks}.'
             else:
                 detail = f'{name}: {status}.'
@@ -377,7 +441,7 @@ def evaluate(case, observation, peers, invalid_params=None):
                     funding_root=next((f for f in funding_frames if isinstance(f,dict) and f.get('traceAddress')==[]),{})
                     target=case['funded_creation_address']
                     created=mapping(mapping(root).get('result')).get('address')
-                    code_change=mapping(mapping(mapping(execution).get('stateDiff')).get(target)).get('code')
+                    code_change=mapping(state_account(mapping(execution).get('stateDiff'), target)).get('code')
                     installed=mapping(mapping(code_change).get('*')).get('to', mapping(code_change).get('+'))
                     creation_verified=created == target if created is not None else installed == mapping(execution).get('output') and isinstance(installed,str)
                     check('H29', creation_verified and 'error' not in funding_root and mapping(funding_root.get('action')).get('to') == case['funded_creation_address']
@@ -407,10 +471,13 @@ def evaluate(case, observation, peers, invalid_params=None):
         raw_frames = result.get('trace', [])
         if not isinstance(raw_frames, list) or any(not isinstance(f, dict) for f in raw_frames):
             check('H08', False, 'The execution trace is an array of frame objects.')
-        for frame in (f for f in sequence(raw_frames) if isinstance(f, dict)):
-            if frame.get('type') == 'create' and 'error' not in frame:
-                value = mapping(frame.get('result'))
-                check('H10', all(k in value for k in ['address','code','gasUsed']), 'Successful creation uses address, code and gasUsed.')
+        creations = [f for f in sequence(raw_frames) if isinstance(f, dict) and f.get('type') == 'create']
+        for frame in creations:
+            detail = creation_difference(frame)
+            check('H10', not detail, 'Every creation names its creationMethod; a successful one uses address, code and gasUsed.', detail)
+        modes = params[1] if len(params) > 1 else []
+        if not creations and isinstance(modes, list) and 'trace' in modes and mapping(params[0]).get('to') is None:
+            check('H10', False, 'A creation call’s requested trace contains its CREATE frame.')
     if name == 'call-mcopy' and isinstance(result,dict):
         vm = mapping(result.get('vmTrace'))
         op = next((o for o in sequence(vm.get('ops')) if isinstance(o, dict) and o.get('pc') == 11),{})
@@ -516,9 +583,9 @@ def evaluate(case, observation, peers, invalid_params=None):
         valid = len(diffs) == len(params[0]) and all(isinstance(d,dict) for d in diffs)
         nonce = context.get('nonce')
         check('H16', valid and isinstance(nonce,int) and all(
-            mapping(mapping(d).get(sender)).get('nonce') == {'*':{'from':hex(nonce+i),'to':hex(nonce+i+1)}}
+            mapping(state_account(d, sender)).get('nonce') == {'*':{'from':hex(nonce+i),'to':hex(nonce+i+1)}}
             for i,d in enumerate(diffs)), 'Each call reports its own sender nonce transition, including a reverted call.', role='result')
-        storage = [mapping(mapping(d).get(target)).get('storage',{}) for d in diffs]
+        storage = [mapping(state_account(d, target)).get('storage',{}) for d in diffs]
         # The target account exists at both endpoints, so its slots change with '*'
         # even from zero, as in Parity and every native client; slots never use '='.
         first = storage[0] if storage else None
@@ -573,17 +640,17 @@ def evaluate(case, observation, peers, invalid_params=None):
             diff = mapping(result).get('stateDiff')
             check('H13', isinstance(diff, dict) and bool(diff), 'Requested stateDiff records the signed execution state changes.')
             if case.get('expected_execution_error'):
-                marker = mapping(diff).get(case['marker'].lower())
+                marker = state_account(diff, case['marker'])
                 check('H13', marker is None or isinstance(marker, dict) and marker.get('storage', {}) == {},
                       'The first-opcode out-of-gas control cannot commit a marker storage write.')
             else:
                 if 'signed_create_address' in case:
-                    account = mapping(mapping(diff).get(case['signed_create_address'].lower()))
+                    account = mapping(state_account(diff, case['signed_create_address']))
                     code = mapping(account.get('code'))
                     ok = code.get('+', mapping(code.get('*')).get('to')) == case['expected_output']
                     requirement = 'Creation stateDiff installs the constructor ADDRESS bytes at the signed creation address.'
                 else:
-                    slot = mapping(mapping(mapping(diff).get(case['marker'].lower())).get('storage')).get('0x'+'0'*64)
+                    slot = mapping(mapping(state_account(diff, case['marker'])).get('storage')).get('0x'+'0'*64)
                     ok = mapping(slot).get('*') == {'from':'0x'+'0'*64, 'to':'0x'+f'{42:064x}'} or mapping(slot).get('+') == '0x'+f'{42:064x}'
                     requirement = 'Marker stateDiff records slot zero changing from zero to word 42.'
                 check('H13', ok, requirement)
@@ -628,7 +695,8 @@ def evaluate(case, observation, peers, invalid_params=None):
         if header is None and context.get('_chain')=='initial':
             header={'difficulty':'0x0'}
         if header and int(header.get('difficulty','0x1'),16)==0:
-            check('H05', not any(mapping(f).get('type')=='reward' for f in result), 'A PoS block has no synthetic PoW reward records.')
+            verdict, detail = pos_check(result, pos_selection(method, params, context))
+            checks.append({'topic': 'H05', 'status': verdict, 'requirement': 'A PoS block has no synthetic PoW reward records.', 'detail': detail})
     envelopes = [result] if isinstance(result, dict) else sequence(result) if method in ['trace_callMany', 'trace_replayBlockTransactions'] else []
     frame_values = [mapping(e).get('trace', []) for e in envelopes]
     if method in ['trace_block', 'trace_transaction', 'trace_filter']:
@@ -668,27 +736,32 @@ def evaluate(case, observation, peers, invalid_params=None):
         check('H15', ok, 'Explicit zero-fee unsigned execution is accepted; fee environment and accounting are checked separately.')
     contracts=context.get('contracts',{})
     if name=='prefunded-empty' and isinstance(result,dict):
-        change=mapping(result.get('stateDiff')).get(params[0]['to'],{})
+        change=state_account(result.get('stateDiff'), params[0]['to'])
         check('H17', mapping(change).get('code')=='=' and mapping(change).get('nonce')=='=', 'An existing prefunded account does not acquire creation markers for empty code or zero nonce.')
     if name in ['auth-set','auth-replace','auth-clear','auth-set-revert'] and contracts:
         authority='undelegated' if name in ['auth-set','auth-set-revert'] else 'delegated'
         destination={'auth-set':'return42','auth-replace':'revert','auth-set-revert':'revert'}.get(name)
         before='0x'+contracts[authority]['code'];after='0xef0100'+contracts[destination]['address'][2:] if destination else '0x'
-        change=mapping(result.get('stateDiff')).get(contracts[authority]['address'],{}) if isinstance(result,dict) else {}
+        change=state_account(result.get('stateDiff'), contracts[authority]['address']) if isinstance(result,dict) else {}
         change = mapping(change).get('code') if isinstance(result,dict) else None
         check('H18', change=={'*':{'from':before,'to':after}}, 'EIP-7702 reports the actual delegation-code transition, including clear and changes surviving execution revert.')
     if name in ['destroy-trace-55','destroy-trace-56']:
-        change=mapping(result.get('stateDiff')).get(params[0]['to'],{}) if isinstance(result,dict) else {}
+        change=mapping(state_account(result.get('stateDiff'), params[0]['to'])) if isinstance(result,dict) else {}
         before_cancun=name.endswith('55')
+        requirement='Report the exact deleted balance, code and nonce before Cancun; optional slot deletions match the known zero pre-values. Preserve an existing account after EIP-6780.'
         # This fixture account has genesis code 0x611008ff, nonce zero and no storage;
         # it is untouched by the mined fixture transactions.
-        balance=mapping(context.get('_alloc',{}).get(params[0]['to'])).get('balance')
-        ok=(mapping(change).get('code') == {'-':'0x611008ff'}
-            and mapping(change).get('nonce') == {'-':'0x0'}
-            and (balance is None or mapping(change).get('balance') == {'-':hex(int(balance,16))})
-            and deleted_storage_shape(mapping(change).get('storage'))
-            and all(int(slot['-'], 16) == 0 for slot in change['storage'].values())) if before_cancun else mapping(change).get('code')=='=' and mapping(change).get('nonce')=='='
-        check('H26', ok, 'Report the exact deleted balance, code and nonce before Cancun; optional slot deletions match the known zero pre-values. Preserve an existing account after EIP-6780.')
+        balance=mapping(mapping(context.get('_alloc')).get(params[0]['to'].lower())).get('balance')
+        if before_cancun and balance is None:
+            checks.append({'topic':'H26','status':'unassessed','requirement':requirement,
+                           'detail':'The frozen genesis allocation does not give the deleted account’s balance.'})
+        else:
+            check('H26', (change.get('code') == {'-':'0x611008ff'}
+                and change.get('nonce') == {'-':'0x0'}
+                and change.get('balance') == {'-':hex(int(balance,16))}
+                and deleted_storage_shape(change.get('storage'))
+                and all(int(slot['-'], 16) == 0 for slot in change['storage'].values())) if before_cancun else change.get('code')=='=' and change.get('nonce')=='=',
+                requirement)
     diffs = [mapping(e).get('stateDiff') for e in ([result] if isinstance(result, dict) else sequence(result)
                                                    if method in ['trace_callMany', 'trace_replayBlockTransactions'] else [])]
     deleted = [(address, account) for diff in diffs for address, account in mapping(diff).items()

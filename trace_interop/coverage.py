@@ -6,7 +6,7 @@ properties and blocked checks are retained, without turning them into passes.
 import re
 
 from .oracles import anchor
-from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, reported_environment, UnsupportedProgram, NAMES
+from .vm_model import execute, intrinsic, differences, local_invariants, encoding_valid, reported_environment, UnsupportedProgram, NAMES, DATA
 from .chain_model import decode_transaction, resolve_block
 import rlp
 from eth_hash.auto import keccak
@@ -14,7 +14,7 @@ from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
 from .probes import assess as assess_probe
 from .mined_probes import assess as assess_mined_probes
-from .rules import accounting_topic, page_dependencies
+from .rules import accounting_topic, page_dependencies, creation_difference, pos_selection, pos_check, state_account
 from .isolation import deferred, isolate
 
 
@@ -136,8 +136,10 @@ def properties(case, observation, peers, checks, expected):
 
     if 'H10' in declared and status == 'result' and not covered('H10'):
         creations = [f for f in frames if f.get('type') == 'create']
-        add('H10', bool(creations) and all('error' in f or all(k in obj(f.get('result')) for k in ['address','code','gasUsed']) for f in creations),
-            'The creation fixture contains its CREATE frame and successful creations include address, code and gasUsed.')
+        bad = [d for d in map(creation_difference, creations) if d]
+        add('H10', bool(creations) and not bad,
+            'The creation fixture contains its CREATE frame; every creation names its creationMethod and successful creations include address, code and gasUsed.',
+            '; '.join(bad[:4]))
 
     if 'H14' in declared and not covered('H14') and name in ['filter-from-only-intersection', 'filter-to-only-intersection']:
         explain('H14', 'not_applicable', 'A one-sided intersection filter is valid input; H03 checks its result. Invalid-input codes do not apply.')
@@ -181,8 +183,10 @@ def properties(case, observation, peers, checks, expected):
             elif name in ['filter-transfer','withdrawal-filter-51','withdrawal-filter-52','withdrawal-filter-53'] or any(t in name for t in ['page','filter-zero']):
                 explain('H03', 'blocked', 'The per-block reference lacks an independent transaction inventory.')
     if 'H05' in declared and not covered('H05') and status == 'result':
-        add('H05', isinstance(result, list) and all(obj(f).get('type') != 'reward' for f in result),
-            'The declared PoS range contains no synthetic PoW reward records, including withdrawal blocks.')
+        verdict, detail = (pos_check(result, pos_selection(method, params, context)) if method in ['trace_block', 'trace_filter']
+                           else ('unassessed', 'Only block and filter records are checked for synthetic rewards.'))
+        checks.append({'topic': 'H05', 'status': verdict, 'detail': detail,
+                       'requirement': 'The declared PoS range contains no synthetic PoW reward records, including withdrawal blocks.'})
     if 'H23' in declared and name == 'transaction-tree':
         explain('H23', 'control', 'This transaction trace anchors CREATE/SELFDESTRUCT identities for the address-filter probes.')
     if 'H27' in declared and name in ['block-35', 'block-36']:
@@ -228,13 +232,13 @@ def properties(case, observation, peers, checks, expected):
         valid = bool(vms)
         while vms:
             vm = vms.pop()
-            valid &= isinstance(vm, dict) and isinstance(obj(vm).get('ops'), list)
+            valid &= (isinstance(vm, dict) and isinstance(vm.get('ops'), list)
+                      and isinstance(vm.get('code'), str) and DATA.fullmatch(vm['code']) is not None)
             for op in seq(obj(vm).get('ops')):
-                ex = obj(obj(op).get('ex'))
+                ex = obj(op).get('ex')
                 valid &= all(type(obj(op).get(k)) is int and obj(op)[k] >= 0 for k in ['pc','cost'])
-                if ex:
-                    valid &= type(ex.get('used')) is int and ex['used'] >= 0
-                    valid &= encoding_valid(ex)
+                # ex is null for an exceptional halt, otherwise the step's complete effects.
+                valid &= ex is None or type(obj(ex).get('used')) is int and ex['used'] >= 0 and encoding_valid(ex)
                 if obj(op).get('sub') is not None:
                     vms.append(op['sub'])
         add('H21', bool(valid), 'Replay VM numeric fields use nonnegative integers; stack words and storage operands use minimal quantities at every depth.')
@@ -299,7 +303,7 @@ def properties(case, observation, peers, checks, expected):
                     nonce = context.get('model_nonce')
                     address = ('0x'+keccak(rlp.encode([bytes.fromhex(call['from'][2:]),nonce]))[-20:].hex()
                                if nonce is not None else obj(obj(creations[0]).get('result')).get('address') if creations else None)
-                    account = obj(obj(result).get('stateDiff')).get(address)
+                    account = state_account(obj(result).get('stateDiff'), address)
                     # H08/H15 compare runtime bytes against the independent EVM
                     # model. H17 checks their account-existence encoding: a wrong
                     # BASEFEE/GASLIMIT must not become a second marker failure.
@@ -324,9 +328,7 @@ def properties(case, observation, peers, checks, expected):
             for i in range(count):
                 envelope = obj(envelopes[i]) if i < len(envelopes) else {}
                 diff = obj(envelope.get('stateDiff'))
-                sender = obj(diff.get(model['sender']))
-                recipient = obj(diff.get(model['target']))
-                fee_recipient = obj(diff.get(model['miner']))
+                sender, recipient, fee_recipient = (obj(state_account(diff, model[k])) for k in ['sender', 'target', 'miner'])
                 paid, tip = 21000*model['price'], 21000*(model['price']-base)
                 before = model['balance']-i*(paid+model['value'])
                 changed = lambda a,b: {'*':{'from':hex(a),'to':hex(b)}}

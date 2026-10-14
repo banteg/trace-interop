@@ -1,0 +1,10 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/nethermind",
+      "tag": "48052208d5b38ccdbe9921d0ac73dab18d3498987d429f084767d56d6eb77179"
+    },
+    "client": "nethermind",
+    "nametag": "development"
+  }
+]

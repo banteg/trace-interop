@@ -1,0 +1,30 @@
+{
+  "clients": {
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-14T10:15:21Z",
+      "digest": "nethermindeth/nethermind@sha256:3ffc86057d2798e246d6e717ea4d0b3f30d0a7780ece3a596a735d177259708e",
+      "image_id": "sha256:48052208d5b38ccdbe9921d0ac73dab18d3498987d429f084767d56d6eb77179",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-14T10:15:21Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "d8bb65b3bfcd580490f9271ee4aaaa1c39c8ae7e",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master-d8bb65b"
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolution": "pinned",
+  "resolution_started_at": "2026-10-14T14:05:12.566683+00:00",
+  "resolved_at": "2026-10-14T14:05:20.803237+00:00"
+}

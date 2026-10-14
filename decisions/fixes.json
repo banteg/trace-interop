@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-13",
+  "checked_at": "2026-10-14",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2668,10 +2668,17 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "for types 0x0-0x4 the fields pick the class for calls and for signing alike, as in geth, so an explicit type never drops a field or adds a requirement and an unknown type is ignored (since 11d3f0c a gasPrice-only request signs as legacy); a registered type above set-code (Optimism deposit, frame) picks its class directly; discriminator fields no single type carries are rejected; the fork rule rejects a call field the fork of the block it runs in lacks (access list before Berlin, dynamic fees before London, blob hashes before Cancun, authorization list before Prague), eth_simulateV1 per simulated block and debug_traceCallMany with its block overrides, while eth_fillTransaction stays outside it; a fee cap below the tip is reported before the fork error (8909021). A lone maxFeePerBlobGas is still dropped: deferred to a follow-up because the eth_simulateV1 fixtures send it without hashes"
+      "merged_at": "2026-10-14T10:15:22Z",
+      "note": "for types 0x0-0x4 the fields pick the class for calls and for signing alike, as in geth, so an explicit type never drops a field or adds a requirement and an unknown type is ignored (since 11d3f0c a gasPrice-only request signs as legacy); a registered type above set-code (Optimism deposit, frame) picks its class directly; discriminator fields no single type carries are rejected; the fork rule rejects a call field the fork of the block it runs in lacks (access list before Berlin, dynamic fees before London, blob hashes before Cancun, authorization list before Prague), eth_simulateV1 per simulated block and debug_traceCallMany with its block overrides, while eth_fillTransaction stays outside it; a fee cap below the tip is reported before the fork error (8909021). A lone maxFeePerBlobGas is still dropped: deferred to a follow-up because the eth_simulateV1 fixtures send it without hashes",
+      "uptake": {
+        "merge_commit": "d8bb65b3bfcd580490f9271ee4aaaa1c39c8ae7e",
+        "builds": {
+          "204457adfec70998bfc579bfbd88f62575ea52a3": false,
+          "b3e7e84c1695420e771326f73801b66fa0574871": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",

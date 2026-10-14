@@ -80,8 +80,8 @@
 <text class="n-agree" x="610.5" y="153" text-anchor="middle">#14050</text>
 <rect class="b-agree" x="644" y="140" width="55" height="18" rx="4"/>
 <text class="n-agree" x="671.5" y="153" text-anchor="middle">#14089</text>
-<rect class="pr edge partial" x="400" y="164" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="177" text-anchor="middle">#14212</text>
+<rect class="b-fix edge partial" x="400" y="164" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="177" text-anchor="middle">#14212</text>
 <rect class="b-agree" x="16" y="196" width="130" height="18" rx="4"/>
 <text class="n-agree" x="81" y="209" text-anchor="middle">in measured build</text>
 <rect class="b-fix" x="152" y="196" width="150" height="18" rx="4"/>

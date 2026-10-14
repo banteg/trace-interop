@@ -1,0 +1,5 @@
+docker.io/nethermindeth/nethermind@sha256:3ffc86057d2798e246d6e717ea4d0b3f30d0a7780ece3a596a735d177259708e: Pulling from nethermindeth/nethermind
+Digest: sha256:3ffc86057d2798e246d6e717ea4d0b3f30d0a7780ece3a596a735d177259708e
+Status: Image is up to date for nethermindeth/nethermind@sha256:3ffc86057d2798e246d6e717ea4d0b3f30d0a7780ece3a596a735d177259708e
+docker.io/nethermindeth/nethermind@sha256:3ffc86057d2798e246d6e717ea4d0b3f30d0a7780ece3a596a735d177259708e
+Captured 94 responses in /home/banteg/dev/trace-nethermind-d8bb65b-2026-10-14/runs/nethermind-d8bb65b/a

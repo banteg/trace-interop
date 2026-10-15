@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-14",
+  "checked_at": "2026-10-15",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2687,10 +2687,17 @@
       "decisions": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "follow-up to nethermind#14212: maxFeePerBlobGas becomes a blob-class discriminator, so a call with the cap and no blob hashes is rejected (need at least 1 blob) by eth_call, eth_estimateGas, eth_createAccessList, trace_call, trace_callMany and debug_traceCallMany, with or without overrides; the *_simulateV1 endpoints keep reading a lone cap as absent for their spec fixtures; a cap beside an authorization list is rejected in every method; covers the last H14 difference of the d8bb65b capture (fork-blob-fee-only-before/-at)"
+      "merged_at": "2026-10-15T09:14:45Z",
+      "note": "follow-up to nethermind#14212: maxFeePerBlobGas becomes a blob-class discriminator, so a call with the cap and no blob hashes is rejected (need at least 1 blob) by eth_call, eth_estimateGas, eth_createAccessList, trace_call, trace_callMany and debug_traceCallMany, with or without overrides; the *_simulateV1 endpoints keep reading a lone cap as absent for their spec fixtures; a cap beside an authorization list is rejected in every method; covers the last H14 difference of the d8bb65b capture (fork-blob-fee-only-before/-at)",
+      "uptake": {
+        "merge_commit": "d8b6a53b047041d939e8a4c5e5ff0ba234f8aeec",
+        "builds": {
+          "204457adfec70998bfc579bfbd88f62575ea52a3": false,
+          "b3e7e84c1695420e771326f73801b66fa0574871": false
+        }
+      }
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27668",

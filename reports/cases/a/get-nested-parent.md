@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | One frame, path `[6]` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | One frame, path `[6]` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 1 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
-| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/a/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Anvil · 1.8.6-nightly · de005f70](../../clients/anvil_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | One frame, path `[6]` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Besu · 26.10-develop · 0776d82f](../../clients/besu_development.md) | One frame, path `[6]` | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Erigon · 3.8.0-dev · 5b452f41](../../clients/erigon_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../clients/go-ethereum_trace.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Nethermind · 2.2.0-preview · cd336c4c](../../clients/nethermind_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
+| [Reth · 2.7.0 · ec3e7e42](../../clients/reth_development.md) | One frame, path `[6]` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/a/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/a/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -34,17 +34,12 @@
 }
 ```
 
-**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 0776d82f** (`besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `/`: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d3
 
-**Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10.0 · 976ca7ea** (`besu/v26.10.0/linux-x86_64/openjdk-java-25`)
 
 - Result shape at `/`: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d3
-
-**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
-
-- [H02](../../decisions/H02.md): Return the transaction-tree record at [6], or null if absent. Compared with the same client and transaction; precompile inclusion can shift sibling indexes.
-- Result shape at `/`: [{'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6a00f', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e', 'blockNumber': 2, 'result': {'address': '0x2d
 
 </details>

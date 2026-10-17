@@ -2,21 +2,21 @@
 
 `trace_call` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Identify a fee/funding validation rejection. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution. Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Assess the declared property.
+**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Anvil · 1.8.6-nightly · 32624734](../../../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../../../clients/besu_release.md) | RPC error `-32603` | 🚧 Blocked | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../../../clients/besu_development.md) | RPC error `-32004` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../../../clients/erigon_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Erigon · 3.8.0-dev · 1d3ebbf2](../../../../clients/erigon_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../../../clients/nethermind_release.md) | Incomplete or malformed JSON | ⚠️ Differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Nethermind · 2.2.0-preview · 204457ad](../../../../clients/nethermind_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
-| [Reth · 2.7.0 · 1a4dbbe1](../../../../clients/reth_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-11/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-11/eval/fee-policy/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../../../clients/anvil_release.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Anvil · 1.8.6-nightly · de005f70](../../../../clients/anvil_development.md) | RPC error `-32003` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../../../clients/besu_release.md) | RPC error `-32004` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Besu · 26.10-develop · 0776d82f](../../../../clients/besu_development.md) | RPC error `-32004` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../../../clients/erigon_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Erigon · 3.8.0-dev · 5b452f41](../../../../clients/erigon_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../../../clients/go-ethereum_trace.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../../../clients/nethermind_release.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Nethermind · 2.2.0-preview · cd336c4c](../../../../clients/nethermind_development.md) | RPC error `-38014` | ✅ Checked cases agree | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../../../clients/reth_release.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
+| [Reth · 2.7.0 · ec3e7e42](../../../../clients/reth_development.md) | 0 call frames; nonempty output | ⚠️ Differs | [Response](../../../../../evidence/2026-10-17/eval/fee-policy/observations.json.gz) · [Build/run](../../../../../evidence/2026-10-17/eval/fee-policy/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,20 +43,11 @@
 }
 ```
 
-**Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
-
-- [H15](../../../../decisions/H15.md): Identify a fee/funding validation rejection. A generic/internal/crash error does not prove validation: internal error
-
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Affordable at effective price, but not at the EIP-1559 fee cap.
 
-**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
-
-- [H25](../../../../decisions/H25.md): Return one complete JSON-RPC response; never wrap an error envelope as a successful result.
-- [H15](../../../../decisions/H15.md): Assess the declared property. Cannot inspect this property: malformed_json.
-
-**Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)
+**Reth · 2.7.0 · ec3e7e42** (`Reth Version: 2.7.0+ec3e7e42`)
 
 - [H15](../../../../decisions/H15.md): Reject this independently invalid fee/funding request before execution. Affordable at effective price, but not at the EIP-1559 fee cap.
 

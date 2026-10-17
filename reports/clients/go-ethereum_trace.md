@@ -6,7 +6,7 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`e67cfd25`](https://github.com/banteg/go-ethereum/commit/e67cfd25108049d3765002924460d08fafebb59d) | 2026-10-03 | [2026-10-11](../../evidence/2026-10-11/eval/initial/manifest.json)<br>[2026-10-12](../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
+| `1.17.7-unstable` | [`71db3b03`](https://github.com/banteg/go-ethereum/commit/71db3b037aac2f765bfc9492df439fcf671729dd) | 2026-10-13 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -20,13 +20,13 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.17.7-unstable · e67cfd25 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 1.17.7-unstable · 71db3b03 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 ## Assessment gaps
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Trace block tags and pending state](../decisions/H32.md) | 1.17.7-unstable · e67cfd25 | 2 blocked cases: An empty result names no block, so it cannot show a pending environment. | [Block pending](../cases/h30/block-pending.md) · [Replay pending](../cases/h30/replay-pending.md) |
+| [Trace block tags and pending state](../decisions/H32.md) | 1.17.7-unstable · 71db3b03 | 2 blocked cases: An empty result names no block, so it cannot show a pending environment. | [Block pending](../cases/h30/block-pending.md) · [Replay pending](../cases/h30/replay-pending.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

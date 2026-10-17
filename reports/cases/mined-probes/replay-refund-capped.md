@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Anvil · 1.8.6-nightly · 32624734](../../clients/anvil_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-11/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-11/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.6-nightly · de005f70](../../clients/anvil_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Besu · 26.10-develop · 0776d82f](../../clients/besu_development.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Erigon · 3.8.0-dev · 5b452f41](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.2.0-preview · cd336c4c](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
+| [Reth · 2.7.0 · ec3e7e42](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/mined-probes/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,7 +43,7 @@
 - [H19](../../decisions/H19.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 - [H20](../../decisions/H20.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 
-**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 0776d82f** (`besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 - [H09](../../decisions/H09.md): Assess the declared property. Cannot inspect this property: unsupported.
@@ -51,17 +51,12 @@
 - [H19](../../decisions/H19.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H20](../../decisions/H20.md): Assess the declared property. Cannot inspect this property: unsupported.
 
-**Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10.0 · 976ca7ea** (`besu/v26.10.0/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 - [H09](../../decisions/H09.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H16](../../decisions/H16.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H19](../../decisions/H19.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H20](../../decisions/H20.md): Assess the declared property. Cannot inspect this property: unsupported.
-
-**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
-
-- [H21](../../decisions/H21.md): Stack words and storage operands use minimal hex quantities at every depth. First at root pc 2: ex {"mem": null, "push": [], "store": {"key": "0x0000000000000000000000000000000000000000000000000000000000000000", "val": "0x00"}, "used": 173996} (2 in total).
-- Result shape at `/`: {'output': '0x', 'stateDiff': {'0x0000000000000000000000000000000000000000': {'balance': {'*': {'from': '0x313aa83660000', 'to': '0x340caa3742000'}}, 'code': '=', 'nonce': '=', 'storage': {}}, '0x0000000000000000000000000000000000005502': {'balance': '=', 'code': '=', 'nonce': '=', 'storage': {'0x00
 
 </details>

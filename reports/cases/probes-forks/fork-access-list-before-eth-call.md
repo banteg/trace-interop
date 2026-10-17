@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.9.0 · ee9c64c8](../../clients/besu_release.md) | RPC error `-32602` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Besu · 26.10-develop · d05d8e74](../../clients/besu_development.md) | RPC error `-32602` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Erigon · 3.8.0-dev · 1d3ebbf2](../../clients/erigon_development.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · e67cfd25](../../clients/go-ethereum_trace.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Nethermind · 2.1.0 · b3e7e84c](../../clients/nethermind_release.md) | RPC error `-32603` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Nethermind · 2.2.0-preview · 204457ad](../../clients/nethermind_development.md) | RPC error `-32603` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| [Reth · 2.7.0 · 1a4dbbe1](../../clients/reth_development.md) | RPC error `-32003` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | RPC error `-32602` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Besu · 26.10-develop · 0776d82f](../../clients/besu_development.md) | RPC error `-32602` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.0-dev · 5b452f41](../../clients/erigon_development.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../clients/go-ethereum_trace.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | RPC error `-32603` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.2.0-preview · cd336c4c](../../clients/nethermind_development.md) | RPC error `-32000` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | RPC error `-32003` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
+| [Reth · 2.7.0 · ec3e7e42](../../clients/reth_development.md) | RPC error `-32003` | 🔎 Control / not applicable | [Response](../../../evidence/2026-10-17/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,15 +41,15 @@
 }
 ```
 
-**Besu · 26.10-develop · d05d8e74** (`besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 0776d82f** (`besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type ACCESS_LIST is invalid, accepted transaction types are [FRONTIER]) (-32003 recommended)
 
-**Besu · 26.9.0 · ee9c64c8** (`besu/v26.9.0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10.0 · 976ca7ea** (`besu/v26.10.0/linux-x86_64/openjdk-java-25`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32602: Invalid transaction type (Transaction type ACCESS_LIST is invalid, accepted transaction types are [FRONTIER]) (-32003 recommended)
 
-**Erigon · 3.8.0-dev · 1d3ebbf2** (`3.8.0-dev-1d3ebbf2`)
+**Erigon · 3.8.0-dev · 5b452f41** (`3.8.0-dev-5b452f41`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32000: eip-2930 transactions require Berlin (-32003 recommended)
 
@@ -57,19 +57,19 @@
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32000: eip-2930 transactions require Berlin (-32003 recommended)
 
-**Geth draft fork · 1.17.7-unstable · e67cfd25** (`Geth/v1.17.7-unstable-e67cfd25-2026-10-03/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.7-unstable · 71db3b03** (`Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32000: err: transaction type not supported: access list tx (sender 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f) (supplied gas 10 (-32003 recommended)
 
-**Nethermind · 2.2.0-preview · 204457ad** (`2.2.0-preview+204457ad`)
+**Nethermind · 2.2.0-preview · cd336c4c** (`2.2.0-preview+cd336c4c`)
+
+- [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32000: InvalidTxType: Transaction type in Custom is not supported. (-32003 recommended)
+
+**Nethermind · 2.2.0 · 1d2aff00** (`2.2.0+1d2aff00`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32603: Internal error (-32003 recommended)
 
-**Nethermind · 2.1.0 · b3e7e84c** (`2.1.0+b3e7e84c`)
-
-- [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32603: Internal error (-32003 recommended)
-
-**Reth · 2.7.0 · 1a4dbbe1** (`Reth Version: 2.7.0+1a4dbbe1`)
+**Reth · 2.7.0 · ec3e7e42** (`Reth Version: 2.7.0+ec3e7e42`)
 
 - [H14](../../decisions/H14.md): The access-list fields at block 31, before Berlin (block 32) name a feature not active at the selected block, so the call is rejected (-32003 recommended). eth_call parity control for fork-access-list-before. Observed: Observed rpc_error -32003: transaction type not supported
 

@@ -7,15 +7,9 @@
     "besu_development": "H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes.",
     "besu_release": "H22, as in the development build."
   },
-  "L04": {
-    "nethermind_release": "H08: output is missing when stateDiff alone is selected. H20: vmTrace `store` appears only when stateDiff is also selected. The development build has neither."
-  },
   "L07": {
     "nethermind_development": "Found by this law. A suicide record has no `result` member in trace_transaction and trace_block, but `\"result\": null` in the replayed trace of the same transaction. Serialization only.",
     "nethermind_release": "The same suicide serialization as the development build."
-  },
-  "L08": {
-    "nethermind_release": "H08 output and H20 `store`, as under L04."
   },
   "L09": {
     "erigon_release": "H15: trace_call runs with GASLIMIT 2^256 − 1 while the same item in trace_callMany sees the block gas limit, fixed by erigon#24343 in the development build. `beacon-many-55` also reads block 56’s beacon root from trace_callMany at block 55 (H28), fixed by erigon#24293 in the development build."

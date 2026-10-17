@@ -4,7 +4,7 @@ Reth 2.7.0 · 3d592ece, with revm-inspectors 0.44.0, ships tree-path lookup, def
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.7.0 · 1a4dbbe1** (of 33 decisions): ✅ 25 agree · 🛠️ 1 fix submitted · ⚠️ 7 with no fix yet (7 on converged decisions). 2 of these agreements are not yet in 2.7.0 · 3d592ece. Upstream fix PRs: 24 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.7.0 · ec3e7e42** (of 33 decisions): ✅ 25 agree · 🛠️ 1 fix submitted · ⚠️ 7 with no fix yet (7 on converged decisions). 2 of these agreements are not yet in 2.7.0 · 3d592ece. Upstream fix PRs: 24 merged, 6 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Reth decisions by outcome, with fix PRs](reth-work.svg)
 
@@ -12,14 +12,14 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-10-11](../../evidence/2026-10-11/eval/initial/manifest.json)<br>[2026-10-12](../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
-| `2.7.0` | [`1a4dbbe1`](https://github.com/paradigmxyz/reth/commit/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607) | 2026-10-10 | [2026-10-11](../../evidence/2026-10-11/eval/initial/manifest.json)<br>[2026-10-12](../../evidence/2026-10-12/h14-blob-empty/probes-forks/manifest.json) |
+| `2.7.0` | [`3d592ece`](https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921) | 2026-09-28 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
+| `2.7.0` | [`ec3e7e42`](https://github.com/paradigmxyz/reth/commit/ec3e7e4267159ebe1bf3bbf410feac9f7d3d18aa) | 2026-10-15 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.7.0 · 3d592ece | 2.7.0 · 1a4dbbe1 | Proposed change |
+| Behavior | 2.7.0 · 3d592ece | 2.7.0 · ec3e7e42 | Proposed change |
 | --- | --- | --- | --- |
 | [Empty address lists](../decisions/H04.md)<br>Treats `[]` as unrestricted in both builds and rejects only a null address list, because Alloy’s `TraceFilter` defaults the lists only when they are absent. Alloy #4257 fixes this and is merged, but no Alloy release carries it; 2.7.0 locks alloy-rpc-types-trace 2.5.0. | 🛠️ Fix submitted: [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257)<br>[Filter both null](../cases/a/filter-both-null.md) | 🛠️ Fix submitted: [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257)<br>[Filter both null](../cases/a/filter-both-null.md) | Take up Alloy #4257 so a null list is treated as omitted. Checked requirements: Compare address bytes: OR within each list, AND across lists by default and OR under mode union; missing/null/empty lists are unrestricted.<br>[Address filtering](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L370) |
 | [Missing transactions and paths](../decisions/H06.md)<br>2.7.0 · 3d592ece and the nightly return null for a missing individual replay (#27364) and from trace_replayBlockTransactions for an unknown block, and -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification. | ⚠️ Differs · [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) (partial fix) · [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) (partial fix) · [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478) (partial fix)<br>[Old block](../cases/pruned/old-block.md) | ⚠️ Differs · [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) (partial fix) · [Reth #27378](https://github.com/paradigmxyz/reth/pull/27378) (partial fix) · [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478) (partial fix)<br>[Old block](../cases/pruned/old-block.md) | Return `null` for absent transactions and an error for an unknown selected block, including a block replay (-32001 recommended), as trace_block already does (open #27478). For known transactions whose state is unavailable, return an error that reports unavailable history (`4444` recommended) rather than an internal error. A filter bound beyond the head already returns an error; `-32602` is recommended. Checked requirements: Unavailable historical state returns an error (4444, pruned history, recommended), never a result or null.<br>[Trace lookup](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L218) · [Replay results](https://github.com/paradigmxyz/reth/blob/58a51b3ee3f6714ded9207b244a273c8afb592fd/crates/rpc/rpc/src/trace.rs#L195) |
@@ -39,7 +39,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
 | 2.7.0 · 3d592ece | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
-| 2.7.0 · 1a4dbbe1 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 2.7.0 · ec3e7e42 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: honored: the block 0x0 post-state, sender nonce 0. Selector latest: honored: the latest (block 0x30) post-state in the head (block 0x30) environment. Selector block 0x19 by number: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 by hash: honored: the block 0x19 post-state in the block 0x19 environment. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment. Selector pending: honored: the latest (block 0x30) post-state in the pending block 0x31 environment. | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -52,7 +52,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Post-merge reward records](../decisions/H05.md) | [_reference/block/0x30](../cases/a/_reference/block/0x30.md) · [Block 2](../cases/a/block-2.md) |
 | [Replay transactionHash field](../decisions/H07.md) | [Replay 35](../cases/forks/replay-35.md) · [Replay 36](../cases/forks/replay-36.md) |
 | [Empty output and unrequested components](../decisions/H08.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [Failed frame results and error labels](../decisions/H09.md) (2.7.0 · 1a4dbbe1) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
+| [Failed frame results and error labels](../decisions/H09.md) (2.7.0 · ec3e7e42) | [Auth replace](../cases/a/auth-replace.md) · [Auth set revert](../cases/a/auth-set-revert.md) |
 | [Creation result field names](../decisions/H10.md) | [Call mixed create](../cases/a/call-mixed-create.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [Empty trace-type selection](../decisions/H11.md) | [Empty types](../cases/a/empty-types.md) · [Call empty types](../cases/initial/call-empty-types.md) |
 | [Raw-transaction block argument](../decisions/H12.md) | [Raw valid current nonce](../cases/initial/raw-valid-current-nonce.md) · [Raw state default](../cases/raw-selector/raw-state-default.md) |
@@ -61,7 +61,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [New-account stateDiff encoding](../decisions/H17.md) | [Prefunded empty](../cases/a/prefunded-empty.md) · [Model empty runtime](../cases/coverage/model-empty-runtime.md) |
 | [EIP-7702 code changes in stateDiff](../decisions/H18.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [vmTrace executing bytecode](../decisions/H19.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
-| [vmTrace step timing and deltas](../decisions/H20.md) (2.7.0 · 1a4dbbe1) | [Call gas7400](../cases/a/call-gas7400.md) · [Call mcopy](../cases/a/call-mcopy.md) |
+| [vmTrace step timing and deltas](../decisions/H20.md) (2.7.0 · ec3e7e42) | [Call gas7400](../cases/a/call-gas7400.md) · [Call mcopy](../cases/a/call-mcopy.md) |
 | [vmTrace numeric and optional metadata encoding](../decisions/H21.md) | [Auth clear](../cases/a/auth-clear.md) · [Auth replace](../cases/a/auth-replace.md) |
 | [Precompile return bytes](../decisions/H22.md) | [Call identity](../cases/initial/call-identity.md) |
 | [Sibling failure isolation](../decisions/H24.md) | [Call siblings revert ok](../cases/a/call-siblings-revert-ok.md) · [Nested call outer0 value1 failed](../cases/precompile-values/nested-call-outer0-value1-failed.md) |

@@ -10,15 +10,15 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 774,
+        "held": 772,
         "violated": 1
       },
       "besu_release": {
-        "held": 607,
+        "held": 774,
         "violated": 1
       },
       "erigon_development": {
-        "held": 742,
+        "held": 746,
         "violated": 0
       },
       "erigon_release": {
@@ -30,11 +30,11 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 746,
+        "held": 744,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 762,
+        "held": 746,
         "violated": 0
       },
       "reth_development": {
@@ -60,7 +60,7 @@
         "violated": 0
       },
       "besu_release": {
-        "held": 1076,
+        "held": 1390,
         "violated": 0
       },
       "erigon_development": {
@@ -80,7 +80,7 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 1466,
+        "held": 1431,
         "violated": 0
       },
       "reth_development": {
@@ -102,11 +102,11 @@
         "violated": 0
       },
       "besu_development": {
-        "held": 167,
+        "held": 165,
         "violated": 3
       },
       "besu_release": {
-        "held": 158,
+        "held": 167,
         "violated": 3
       },
       "erigon_development": {
@@ -122,11 +122,11 @@
         "violated": 0
       },
       "nethermind_development": {
-        "held": 146,
+        "held": 145,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 154,
+        "held": 146,
         "violated": 0
       },
       "reth_development": {
@@ -152,7 +152,7 @@
         "violated": 0
       },
       "besu_release": {
-        "held": 1570,
+        "held": 2461,
         "violated": 0
       },
       "erigon_development": {
@@ -172,8 +172,8 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 2387,
-        "violated": 30
+        "held": 2383,
+        "violated": 0
       },
       "reth_development": {
         "held": 3222,
@@ -218,8 +218,8 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 0,
-        "violated": 8
+        "held": 8,
+        "violated": 0
       },
       "reth_development": {
         "held": 9,
@@ -348,8 +348,8 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 22,
-        "violated": 1
+        "held": 23,
+        "violated": 0
       },
       "reth_development": {
         "held": 23,
@@ -374,7 +374,7 @@
         "violated": 0
       },
       "besu_release": {
-        "held": 237,
+        "held": 390,
         "violated": 0
       },
       "erigon_development": {
@@ -424,7 +424,7 @@
         "violated": 4
       },
       "erigon_development": {
-        "held": 76,
+        "held": 75,
         "violated": 0
       },
       "erigon_release": {
@@ -440,7 +440,7 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 76,
+        "held": 75,
         "violated": 0
       },
       "reth_development": {
@@ -466,7 +466,7 @@
         "violated": 0
       },
       "besu_release": {
-        "held": 11,
+        "held": 10,
         "violated": 0
       },
       "erigon_development": {
@@ -486,7 +486,7 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 11,
+        "held": 10,
         "violated": 0
       },
       "reth_development": {
@@ -532,7 +532,7 @@
         "violated": 0
       },
       "nethermind_release": {
-        "held": 2,
+        "held": 1,
         "violated": 0
       },
       "reth_development": {
@@ -617,7 +617,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -628,7 +628,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -639,7 +639,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -650,7 +650,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -661,7 +661,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -672,7 +672,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -683,7 +683,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -694,463 +694,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
-    },
-    {
-      "cases": [
-        "legacy-refund-then-observe/many/trace-vmTrace",
-        "legacy-refund-then-observe/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund-then-observe/many/trace-vmTrace",
-        "legacy-refund-then-observe/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund-then-observe/many/vmTrace",
-        "legacy-refund-then-observe/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund-then-observe/many/vmTrace",
-        "legacy-refund-then-observe/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/trace-vmTrace",
-        "legacy-refund/call/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/trace-vmTrace",
-        "legacy-refund/call/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/vmTrace",
-        "legacy-refund/call/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/call/vmTrace",
-        "legacy-refund/call/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/many/trace-vmTrace",
-        "legacy-refund/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/many/trace-vmTrace",
-        "legacy-refund/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/many/vmTrace",
-        "legacy-refund/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "legacy-refund/many/vmTrace",
-        "legacy-refund/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund-then-observe/many/trace-vmTrace",
-        "typed-refund-then-observe/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund-then-observe/many/trace-vmTrace",
-        "typed-refund-then-observe/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund-then-observe/many/vmTrace",
-        "typed-refund-then-observe/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund-then-observe/many/vmTrace",
-        "typed-refund-then-observe/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/call/trace-vmTrace",
-        "typed-refund/call/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/call/trace-vmTrace",
-        "typed-refund/call/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/call/vmTrace",
-        "typed-refund/call/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/call/vmTrace",
-        "typed-refund/call/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": ".vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/many/trace-vmTrace",
-        "typed-refund/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/many/trace-vmTrace",
-        "typed-refund/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/many/vmTrace",
-        "typed-refund/many/stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "typed-refund/many/vmTrace",
-        "typed-refund/many/trace-stateDiff-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "fee-policy",
-      "detail": "[0].vmTrace.ops[2].ex.store: null vs {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v",
-      "law": "L04",
-      "run": "fee-policy",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "vm-store",
-        "vm-store-vm-only"
-      ],
-      "client": "nethermind_release",
-      "corpus": "probes-prague",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000001\", \"v vs null",
-      "law": "L04",
-      "run": "probes-prague",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "raw-validation-code-sender-all",
-        "raw-validation-code-sender-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "raw-validation",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v vs null",
-      "law": "L04",
-      "run": "raw-validation",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "raw-validation-delegated-sender-valid-all",
-        "raw-validation-delegated-sender-valid-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "raw-validation",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v vs null",
-      "law": "L04",
-      "run": "raw-validation",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "raw-validation-nonce-high-all",
-        "raw-validation-nonce-high-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "raw-validation",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v vs null",
-      "law": "L04",
-      "run": "raw-validation",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "raw-validation-nonce-low-all",
-        "raw-validation-nonce-low-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "raw-validation",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v vs null",
-      "law": "L04",
-      "run": "raw-validation",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "raw-validation-valid-all",
-        "raw-validation-valid-vmTrace"
-      ],
-      "client": "nethermind_release",
-      "corpus": "raw-validation",
-      "detail": ".vmTrace.ops[2].ex.store: {\"key\": \"0x0000000000000000000000000000000000000000000000000000000000000000\", \"v vs null",
-      "law": "L04",
-      "run": "raw-validation",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-nested-parent",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "a",
-      "detail": "requested traceAddress [6]: value: {\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
-      "law": "L05",
-      "run": "a",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-nested-positive",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "a",
-      "detail": "requested traceAddress [6, 0]: value: {\"action\": {\"address\": \"0x2d303c5b7911d87d594bf1b31fbb9aa187888893\", \"balance\":  vs [{\"action\": {\"creationMethod\": \"create\", \"from\": \"0x9dcd17433742f4c0ca53122ab541",
-      "law": "L05",
-      "run": "a",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-missing",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [65535]: value: null vs []",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-nested",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [0, 0]: value: null vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-one",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [1]: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-root",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-transfer-root",
-        "transaction-transfer"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress []: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x7435ed30a8b4aeb0877cef0c6e8cffe834eb8 vs []",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "get-zero",
-        "transaction-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": "requested traceAddress [0]: value: {\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc2 vs [{\"action\": {\"callType\": \"call\", \"from\": \"0x9dcd17433742f4c0ca53122ab541d0ba67fc",
-      "law": "L05",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -1162,7 +706,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1174,7 +718,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1186,7 +730,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1198,7 +742,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1210,7 +754,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1222,7 +766,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1234,7 +778,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1246,7 +790,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1258,7 +802,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1270,7 +814,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1282,7 +826,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1294,7 +838,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1306,7 +850,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1318,7 +862,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1330,7 +874,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1342,7 +886,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1354,7 +898,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1366,7 +910,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+204457ad"
+      "version": "2.2.0-preview+cd336c4c"
     },
     {
       "cases": [
@@ -1378,7 +922,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1390,7 +934,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1402,7 +946,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1414,7 +958,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1426,7 +970,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1438,7 +982,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1450,7 +994,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1462,7 +1006,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1474,7 +1018,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1486,7 +1030,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1498,7 +1042,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1510,7 +1054,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1522,7 +1066,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1534,7 +1078,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1546,7 +1090,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1558,7 +1102,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1570,7 +1114,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -1582,19 +1126,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.1.0+b3e7e84c"
-    },
-    {
-      "cases": [
-        "replay-tree-vmTrace",
-        "replay-block-tree"
-      ],
-      "client": "nethermind_release",
-      "corpus": "initial",
-      "detail": ".vmTrace.ops[49].sub.ops[11].ex.store: null vs {\"key\": \"0xe8e77626586f73b955364c7b4bbf0bb7f7685ebd40e852b164633a4acbd3244c\", \"v",
-      "law": "L08",
-      "run": "initial",
-      "version": "2.1.0+b3e7e84c"
+      "version": "2.2.0+1d2aff00"
     },
     {
       "cases": [
@@ -3827,7 +3359,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3840,7 +3372,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3853,7 +3385,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3868,7 +3400,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-d05d8e7/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3881,7 +3413,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3894,7 +3426,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3907,7 +3439,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3922,7 +3454,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.9.0/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [

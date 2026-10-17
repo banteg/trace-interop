@@ -2298,6 +2298,24 @@
       ]
     },
     {
+      "url": "https://github.com/paradigmxyz/reth/pull/27977",
+      "title": "fix(rpc): charge priced calls",
+      "client": "reth",
+      "decisions": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "follows mattsse's suggestion in reth#27476: prepare_call_env sets disable_fee_charge only for a zero gas price, so a priced eth_call/trace_call is funded and charged (at the effective gas price) while unpriced calls stay free; depends on alloy-evm#437 so omitted-gas priced blob calls stay fundable; on OP, op-revm's operator-fee refund would need a guard in op-reth",
+      "partial": [
+        "H15"
+      ],
+      "depends_on": [
+        "https://github.com/alloy-rs/evm/pull/437"
+      ]
+    },
+    {
       "url": "https://github.com/NethermindEth/nethermind/pull/14060",
       "title": "fix(rpc): reject signed raw transaction gas above the cap",
       "client": "nethermind",
@@ -3066,6 +3084,21 @@
       "draft": false,
       "merged_at": null,
       "note": "CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth needs the alloy-evm release; its eth_simulateV1 builds transactions separately and still differs"
+    },
+    {
+      "url": "https://github.com/alloy-rs/evm/pull/437",
+      "title": "fix(call): reserve the blob fee in the caller gas allowance",
+      "client": "reth",
+      "decisions": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls",
+      "partial": [
+        "H15"
+      ]
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11439",

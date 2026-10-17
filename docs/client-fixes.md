@@ -155,7 +155,9 @@ flowchart LR
   next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
   Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
   Alloy_EVM_427["Alloy EVM #427"]:::open
+  Alloy_EVM_437["Alloy EVM #437"]:::open
   Reth_27378["Reth #27378"]:::open
+  Reth_27977["Reth #27977"]:::open
   revm_3833["revm #3833"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
@@ -166,7 +168,9 @@ flowchart LR
   Alloy_EVM_411 -.-> next_Alloy_EVM_release
   next_Alloy_EVM_release -.-> Reth_takes_next_Alloy_EVM_release
   Alloy_EVM_427 -.-> next_Alloy_EVM_release
+  Alloy_EVM_437 -.-> next_Alloy_EVM_release
   Alloy_EVM_411 --> Reth_27378
+  Alloy_EVM_437 --> Reth_27977
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
@@ -183,6 +187,7 @@ flowchart LR
 | [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | 2026-10-01 | — | — | — | — |
 | [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [Alloy EVM #427](https://github.com/alloy-rs/evm/pull/427) | Price blob calls by a legacy gas price; CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth needs the alloy-evm release; its eth_simulateV1 builds transactions separately and still differs | [H14](../reports/decisions/H14.md) (partial), [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
+| [Alloy EVM #437](https://github.com/alloy-rs/evm/pull/437) | Reserve the blob fee in the caller gas allowance; caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev, stable | dev, stable |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 | — | — | dev, stable | — |
 | [Reth #27364](https://github.com/paradigmxyz/reth/pull/27364) | Return null for missing transaction replays | [H06](../reports/decisions/H06.md) (partial) | 2026-09-22 | — | — | dev, stable | — |
@@ -197,6 +202,7 @@ flowchart LR
 | [Reth #27586](https://github.com/paradigmxyz/reth/pull/27586) | Keep omitted-gas calls within the RPC gas cap; Native Fedora regression: historical block or sender allowance must not raise omitted unsigned-call gas above the RPC cap. | [H15](../reports/decisions/H15.md) (partial) | 2026-10-01 | — | — | dev | — |
 | [Reth #27593](https://github.com/paradigmxyz/reth/pull/27593) | Use the local pending block for pending simulations; Locally built pending state returned slot 42 to storage_at but slot 7 to a pending call; Fedora regression and 131 affected RPC tests passed after fix; covers H32's real pending environment for calls (the local pending block's header and state), not the pending tag in the block methods | [H32](../reports/decisions/H32.md) (partial) | — | — | — | — | — |
 | [Reth #27668](https://github.com/paradigmxyz/reth/pull/27668) | Bump revm-inspectors to 0.44.1; bumps revm-inspectors to 0.44.1, bringing the merged #530 (H26), #532 (H20) and #533 (H09/H23) into Reth | [H09](../reports/decisions/H09.md) (partial), [H20](../reports/decisions/H20.md) (partial), [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | 2026-10-03 | — | — | dev | — |
+| [Reth #27977](https://github.com/paradigmxyz/reth/pull/27977) | Charge priced calls; follows mattsse's suggestion in reth#27476: prepare_call_env sets disable_fee_charge only for a zero gas price, so a priced eth_call/trace_call is funded and charged (at the effective gas price) while unpriced calls stay free; depends on alloy-evm#437 so omitted-gas priced blob calls stay fundable; on OP, op-revm's operator-fee refund would need a guard in op-reth · after Alloy EVM #437 | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors; Anvil waits on it too, through revm-inspectors in Foundry | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
 | [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete Parity VM execution deltas; its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | — |
 | [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs | [H18](../reports/decisions/H18.md) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | [2026-09-25](https://github.com/paradigmxyz/reth/commit/eb03d80dddbf671e256ab235095ad9f3ccfa9923) | dev, stable | dev, stable |

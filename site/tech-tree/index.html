@@ -139,6 +139,9 @@ a { color: inherit; }
 .node.st-locked .portrait canvas { filter: grayscale(1) contrast(.9); opacity: .7; }
 .node.st-locked .nt, .node.st-locked .ns { color: #3b3b3b; }
 .node.sel { box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 0 0 0 3px var(--hl), 4px 4px 0 rgba(0,0,0,.35); }
+.node.medal { box-shadow: inset -1px -1px #000, inset 1px 1px rgba(255,255,255,.85), 0 0 0 2px #1b1612, 0 0 0 5px var(--metal), 0 0 0 6px #1b1612, 4px 4px 0 3px rgba(0,0,0,.3); }
+.node.medal.sel { box-shadow: inset -1px -1px #000, inset 1px 1px #fff, 0 0 0 2px #1b1612, 0 0 0 5px var(--metal), 0 0 0 6px #1b1612, 0 0 0 9px var(--hl), 4px 4px 0 6px rgba(0,0,0,.3); }
+.node .nf .rank { display: inline-flex; align-items: center; gap: 2px; font-weight: 700; }
 .node:hover { transform: translate(-1px,-1px); }
 @keyframes civblink { 0% { outline-color: #f5dc1e; } 100% { outline-color: #1b1612; } }
 
@@ -201,6 +204,8 @@ ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; }
 .chip { background: #1b1612; color: var(--paper); }
 .chip.st-active { background: #2a4e9a; color: #fff; }
 .chip.st-locked { background: #7a7a7a; color: #fff; }
+.chip.place { margin-left: 6px; }
+.chip.medal { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px 1px 2px; vertical-align: bottom; background: var(--metal); color: #1b1612; }
 .stat { background: var(--paper-2); box-shadow: inset 1px 1px #6d5a33, inset -1px -1px #fff8e2; }
 .rel button { background: var(--win); border: 0; box-shadow: inset -1px -1px var(--win-dk), inset 1px 1px var(--win-hi), inset -2px -2px var(--win-lo); color: #000; }
 .links a { color: #1d2f9e; }
@@ -778,24 +783,6 @@ const SPR = {
     ".kBwBwkooookBwBk",
     ".kwBwBwkookwBwBk"
   ],
-  unknown: [
-    "................",
-    "................",
-    ".....kkkkkk.....",
-    "....kgwwwwgk....",
-    "...kgwwggwwgk...",
-    "...kggggwwggk...",
-    "...kgggwwgggk...",
-    "...kgggwwgggk...",
-    "...kggggggggk...",
-    "....kggwwggk....",
-    ".....kkkkkk.....",
-    "...kkggggggkk...",
-    "..kggggggggggk..",
-    ".kggggggggggggk.",
-    ".kggggggggggggk.",
-    ".kkkkkkkkkkkkkk."
-  ],
   wagon: [
     "................",
     "................",
@@ -861,6 +848,49 @@ function sprite(name, size, mode, badge) {
 }
 const spr = (name, size, badge) => sprite(name, size, 'civ', badge);
 
+// medals: a ribbon over a numbered disc; places past the podium get no medal
+const MEDAL = [
+  "..kkkk....kkkk..",
+  "..kBLk....kRrk..",
+  "...kBLk..kRrk...",
+  "....kBLkkRrk....",
+  ".....kBLRrk.....",
+  "......kLRk......",
+  ".....kkkkkk.....",
+  "....kYYYYyyk....",
+  "...kYYyyyyybk...",
+  "...kYyyyyyybk...",
+  "...kYyyyyyybk...",
+  "...kyyyyyyybk...",
+  "...kyyyyyyybk...",
+  "...kyyyyyybbk...",
+  "....kbbbbbbk....",
+  ".....kkkkkk....."
+];
+const DIGITS = { 1: [".k.", "kk.", ".k.", ".k.", "kkk"], 2: ["kk.", "..k", ".k.", "k..", "kkk"], 3: ["kk.", "..k", ".k.", "..k", "kk."] };
+const METAL = {
+  1: { Y: PAL.Y, y: PAL.y, b: PAL.b },
+  2: { Y: PAL.w, y: PAL.G, b: PAL.g },
+  3: { Y: PAL.O, y: PAL.o, b: PAL.q }
+};
+function medal(place, size) {
+  const c = document.createElement('canvas');
+  c.width = c.height = 16;
+  const x = c.getContext('2d');
+  const paint = (rows, ox, oy, colors) => rows.forEach((row, j) => [...row].forEach((ch, i) => {
+    if (ch === '.') return;
+    x.fillStyle = colors[ch] || PAL[ch];
+    x.fillRect(ox + i, oy + j, 1, 1);
+  }));
+  paint(MEDAL, 0, 0, METAL[place]);
+  paint(DIGITS[place], 6, 8, {});
+  c.className = 'spr';
+  c.style.width = c.style.height = size + 'px';
+  c.setAttribute('aria-hidden', 'true');
+  return c;
+}
+const ordinal = n => n + ({ 1: 'st', 2: 'nd', 3: 'rd' }[n] || 'th');
+
 /* ================= textures ================= */
 function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 function marble() {
@@ -909,7 +939,7 @@ const UI = {
   crit: 'Critical path',
   cat: { foundation: 'Foundation', library: 'Library', dev: 'Dev build', stable: 'Stable release', council: 'Council', geth: 'Reference client', tests: 'Fixtures', spec: 'Code of laws', wonder: 'Wonder of the world' },
   st: { done: 'Known', active: 'Researching', locked: 'Undiscovered' },
-  advisor: 'Science Advisor', unit: 'Contact', allows: 'Allows',
+  advisor: 'Science Advisor', unit: 'Contact', allows: 'Allows', finished: 'dev build to finish',
   fit: ['Actual size', 'Fit to window']
 };
 
@@ -1060,7 +1090,9 @@ function renderBoard() {
     b.style.left = gm.x + 'px'; b.style.top = gm.y + 'px';
     b.style.width = gm.w + 'px'; b.style.height = gm.h + 'px';
     b.style.setProperty('--cat', CAT_COLORS[n.category]);
-    b.setAttribute('aria-label', `${n.title}, ${S.st[n.status]}${pr ? `, ${pr[0]} of ${pr[1]}` : ''}`);
+    b.setAttribute('aria-label', `${n.title}, ${S.st[n.status]}${pr ? `, ${pr[0]} of ${pr[1]}` : ''}${n.medal ? `, ${ordinal(n.medal.place)} ${S.finished}` : ''}`);
+    const metal = n.medal && METAL[n.medal.place];
+    if (metal) { b.classList.add('medal'); b.style.setProperty('--metal', metal.y); }
     const port = el('span', 'portrait');
     port.append(spr(n.icon, tall ? 64 : 32, badged(n)));
     const body = el('span', 'nb');
@@ -1076,7 +1108,12 @@ function renderBoard() {
       const left = el('span');
       if (n.prs && (n.prs.merged || n.prs.open)) left.append(resChip(n.prs));
       else left.textContent = n.label || (badged(n) ? S.cat.stable : '');
-      foot.append(left, el('span', null, pr ? `${pr[0]}/${pr[1]}` : ''));
+      const right = el('span', null, pr ? `${pr[0]}/${pr[1]}` : '');
+      if (metal) {
+        right.className = 'rank';
+        right.prepend(medal(n.medal.place, 14), `${ordinal(n.medal.place)} · `);
+      }
+      foot.append(left, right);
       body.append(foot);
     }
     b.append(port, body);
@@ -1129,6 +1166,12 @@ function renderInfo() {
   const txt = el('div');
   txt.append(el('div', 'info-kicker', S.cat[n.category]), el('h2', null, n.title), el('div', 'info-sub', n.sub));
   txt.append(el('span', `chip st-${n.status}`, n.status === 'locked' ? `${S.st.locked}: ${n.label.replace(/^waits on /, '')}` : S.st[n.status]));
+  if (n.medal) {
+    const chip = el('span', 'chip place', `${ordinal(n.medal.place)} ${S.finished} · ${fmtDate(n.medal.date)}`);
+    const metal = METAL[n.medal.place];
+    if (metal) { chip.classList.add('medal'); chip.style.setProperty('--metal', metal.y); chip.prepend(medal(n.medal.place, 16)); }
+    txt.append(chip);
+  }
   head.append(big, txt);
   box.append(head, el('p', 'info-desc', n.summary ? `${n.text} ${n.summary}` : n.text));
 
@@ -1191,7 +1234,7 @@ function renderOrder() {
 function renderCouncil() {
   const S = UI, box = $('council');
   box.innerHTML = '';
-  DATA.actors.filter(a => a.council !== false).forEach(a => {
+  DATA.actors.forEach(a => {
     const c = el('div', 'actor-card');
     const f = el('div', 'face'); f.append(spr(a.icon, 48));
     const t = el('div');

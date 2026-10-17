@@ -8,6 +8,7 @@
 #   pr               one PR in fixes.json; done once merged
 #   done_with        done once that node is done
 #   status           a fixed state (default: active)
+# agreed_on is the capture date a dev build was first done; medals go in that order, and stay.
 # locked_until keeps a node locked until those nodes are done. `sub` may use {version}.
 # cell is [column, row]; span is a height in rows. Critical nodes form the highlighted path.
 
@@ -190,6 +191,7 @@ actor = "anders"
 also = "Łukasz Rozmej (review and merge)"
 client = "nethermind"
 build = "development"
+agreed_on = "2026-10-17"
 url = "https://github.com/NethermindEth/nethermind"
 text = "Nethermind’s development build, which takes trace PRs directly."
 
@@ -248,8 +250,7 @@ cell = [5, 3]
 category = "tests"
 critical = true
 requires = ["geth"]
-actor = "needed"
-also = "Chase (testing contact)"
+actor = "chase"
 done_with = "specmerge"
 locked_until = ["geth"]
 label = "generating"
@@ -281,7 +282,7 @@ span = 3
 category = "wonder"
 critical = true
 requires = ["specmerge", "reth-st", "erigon-st", "nethermind-st", "besu-st"]
-actor = "needed"
+actor = "lightclient"
 status = "active"
 locked_until = ["specmerge"]
 url = "https://github.com/ethereum/hive"
@@ -375,15 +376,15 @@ note = "Client developers coordinating on Telegram since 23 Sep 2026."
 id = "lightclient"
 name = "lightclient"
 icon = "knight"
-role = "Knight · Geth"
-note = "Gave a preliminary go-ahead for a Geth trace namespace."
+role = "Knight · Geth, Hive"
+note = "Gave a preliminary go-ahead for a Geth trace namespace. Owns Hive’s rpc-compat simulator."
 
 [[actor]]
 id = "chase"
 name = "Chase"
 icon = "punk"
-role = "Punk · execution-apis"
-note = "Spec editor. Advised against bikeshedding error codes."
+role = "Punk · execution-apis, rpctestgen"
+note = "Spec editor. Owns rpctestgen, which generates the fixtures. Advised against bikeshedding error codes."
 
 [[actor]]
 id = "usman"
@@ -433,14 +434,6 @@ name = "Trace consumers"
 icon = "wagon"
 role = "Caravans"
 note = "Indexers, explorers and tools that carry per-client workarounds today. Hive is for them."
-
-[[actor]]
-id = "needed"
-name = "Owner needed"
-icon = "unknown"
-role = "Open"
-note = "No one has committed to this yet."
-council = false
 
 # ---------- reviewers beyond the node contacts ----------
 

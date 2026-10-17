@@ -77,7 +77,7 @@ def build(tree, progress, fixes, status, captured):
                 'span': spec.get('span', 1), 'category': spec['category'], 'critical': spec.get('critical', False),
                 'requires': spec.get('requires', []), 'actor': spec.get('actor'), 'also': spec.get('also'), 'url': spec['url'],
                 'text': spec['text'], 'tag': spec.get('tag'), 'label': spec.get('label'), 'status': spec.get('status', 'active'),
-                'summary': None, 'progress': None, 'prs': None}
+                'summary': None, 'progress': None, 'prs': None, 'medal': None}
         if 'client' in spec:
             node |= client_facts(spec, clients[spec['client']], decisions)
         elif 'repos' in spec:
@@ -97,6 +97,10 @@ def build(tree, progress, fixes, status, captured):
         waiting = [nodes[other] for other in spec.get('locked_until', []) if nodes[other]['status'] != 'done']
         if waiting and node['status'] != 'done':
             node |= {'status': 'locked', 'label': f'waits on {waiting[0]["title"]}'}
+    # Medals in the order dev builds were first done; a stable sort breaks ties by file order.
+    finished = sorted((spec for spec in tree['node'] if 'agreed_on' in spec), key=lambda spec: spec['agreed_on'])
+    for place, spec in enumerate(finished, 1):
+        nodes[spec['id']]['medal'] = {'place': place, 'date': spec['agreed_on']}
     for node in nodes.values():
         node['allows'] = [other['id'] for other in nodes.values() if node['id'] in other['requires']]
     researching = next((node for node in sorted(nodes.values(), key=lambda n: n['col'])

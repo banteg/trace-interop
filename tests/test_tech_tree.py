@@ -107,6 +107,22 @@ class TechTreeTests(unittest.TestCase):
         self.assertEqual(states(merged)['spec'][1], '1/33 converged')
         self.assertEqual(merged['researching'], 'hive')
 
+    def test_medals_follow_the_date_each_dev_build_was_done(self):
+        t = tree()
+        t['node'] += [node('late', [1, 2], client='x', build='development', agreed_on='2026-10-20'),
+                      node('early', [1, 3], client='x', build='development', agreed_on='2026-10-17')]
+        medals = {n['id']: n['medal'] for n in tech_tree.build(t, **tracker())['nodes']}
+        self.assertEqual(medals['early'], {'place': 1, 'date': '2026-10-17'})
+        self.assertEqual(medals['late'], {'place': 2, 'date': '2026-10-20'})
+        self.assertIsNone(medals['dev'])
+
+    def test_every_done_dev_build_has_its_date_recorded(self):
+        files = tech_tree.load()
+        nodes = {n['id']: n for n in tech_tree.build(**files)['nodes']}
+        for spec in files['tree']['node']:
+            if spec.get('build') == 'development' and nodes[spec['id']]['status'] == 'done':
+                self.assertIsNotNone(nodes[spec['id']]['medal'], f'{spec["id"]} is done: add agreed_on with the capture date to tree.toml')
+
     def test_page_embeds_the_data_once(self):
         template = (tech_tree.SITE/'index.html').read_text()
         self.assertEqual(template.count(tech_tree.PLACEHOLDER), 1)

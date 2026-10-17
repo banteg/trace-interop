@@ -3039,6 +3039,18 @@
       }
     },
     {
+      "url": "https://github.com/erigontech/erigon/pull/24990",
+      "title": "rpc/ethapi, rpc/jsonrpc: reject maxFeePerBlobGas without blob hashes in calls",
+      "client": "erigon",
+      "decisions": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "CallArgs.ToMessage gives a call with maxFeePerBlobGas and no blobVersionedHashes an empty blob hash list, so every call method (eth_call, eth_estimateGas, eth_createAccessList, eth_callMany, debug_traceCall/CallMany, trace_call/CallMany) rejects it like an explicit empty list: ErrBlobTxnEmptyBlobs from Cancun, ErrBlobTxnPreCancun before; eth_simulateV1 clears a lone cap in sanitizeCall, and eth_fillTransaction estimates gas without it; follows ethereum/go-ethereum#35928 and execution-apis#939 for eth_call; covers Erigon development's last H14 difference in the 2026-10-17 eval (fork-blob-fee-only-before/-at)"
+    },
+    {
       "url": "https://github.com/alloy-rs/evm/pull/427",
       "title": "fix(rpc): price blob calls by a legacy gas price",
       "client": "reth",

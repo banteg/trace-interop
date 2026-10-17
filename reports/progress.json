@@ -57,8 +57,8 @@
       "client": "erigon",
       "counts": {
         "agree": 32,
-        "converged": 1,
-        "fix": 0,
+        "converged": 0,
+        "fix": 1,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -67,7 +67,7 @@
       "name": "Erigon",
       "prs": {
         "merged": 24,
-        "open": 0
+        "open": 1
       }
     },
     {

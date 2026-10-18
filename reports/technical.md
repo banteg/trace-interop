@@ -41,10 +41,10 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 16361 |
+| 🔎 Assessed | 16363 |
 | 🟡 Partial | 111 |
 | ⚪ Unassessed | 0 |
-| 🚧 Blocked | 63 |
+| 🚧 Blocked | 57 |
 | 🔎 Control | 34 |
 
 
@@ -131,7 +131,6 @@ Each row names the reason; controls and inapplicable properties do not count as 
 | H28 | blocked | Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot) | 6 |
 | H29 | blocked | Cannot inspect this property: unsupported. | 2 |
 | H30 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
-| H32 | blocked | An empty result names no block, so it cannot show a pending environment. | 6 |
 | H32 | control | Explicit-range reference for the earliest/default-range comparison; not a standalone default-selection assertion. | 11 |
 | H33 | blocked | Scenario setup stopped: Invalid forkchoice state | 9 |
 | H33 | blocked | The numeric equivalent filter-block-2-union returned no result. | 2 |
@@ -743,6 +742,7 @@ Capture completeness records whether requests finished, not whether their result
 | [fee-compat](../evidence/2026-10-17/eval/fee-compat/manifest.json) | fee-compat | ✅ Yes |
 | [callmany-isolation](../evidence/2026-10-17/eval/callmany-isolation/manifest.json) | callmany-isolation | ✅ Yes |
 | [h30](../evidence/2026-10-17/eval/h30/manifest.json) | h30 | ✅ Yes |
+| [pending](../evidence/2026-10-18/eval-pending/pending/manifest.json) | pending | ✅ Yes |
 | [raw-selector](../evidence/2026-10-17/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
 | [probes-prague](../evidence/2026-10-17/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-10-17/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |

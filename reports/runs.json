@@ -257,6 +257,24 @@
   },
   {
     "complete": true,
+    "corpus": "pending",
+    "digest": "5b51f2032746d9944e12f65274aa2315c7b482863175242d5a58a2360c9a7876",
+    "manifest": "../evidence/2026-10-18/eval-pending/pending/manifest.json",
+    "name": "pending",
+    "versions": {
+      "besu_development": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25",
+      "besu_release": "besu/v26.10.0/linux-x86_64/openjdk-java-25",
+      "erigon_development": "3.8.0-dev-5b452f41",
+      "erigon_release": "3.7.1-8c1e3893",
+      "go-ethereum_trace": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1",
+      "nethermind_development": "2.2.0-preview+cd336c4c",
+      "nethermind_release": "2.2.0+1d2aff00",
+      "reth_development": "Reth Version: 2.7.0+ec3e7e42",
+      "reth_release": "Reth Version: 2.7.0+3d592ece"
+    }
+  },
+  {
+    "complete": true,
     "corpus": "raw-selector",
     "digest": "8a497fd0eef9800fc6fb9239dec96991f18e8cee0977b285ec18e62ba258508e",
     "manifest": "../evidence/2026-10-17/eval/raw-selector/manifest.json",

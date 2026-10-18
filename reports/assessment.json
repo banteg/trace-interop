@@ -25,8 +25,8 @@
     "repeat.json": "30cd3ef3f6a587ed14dd498dd825ffeb5142612801c604736807c751f0d5edab"
   },
   "coverage": {
-    "assessed": 16361,
-    "blocked": 63,
+    "assessed": 16363,
+    "blocked": 57,
     "control": 34,
     "partial": 111,
     "unassessed": 0
@@ -50,7 +50,8 @@
     "../evidence/2026-10-17/eval/raw-selector/manifest.json": "8a497fd0eef9800fc6fb9239dec96991f18e8cee0977b285ec18e62ba258508e",
     "../evidence/2026-10-17/eval/raw-validation/manifest.json": "c3d0d9fa339f9125625558242d2b2ad4525b9cf83f8c38d72a4b471273db011f",
     "../evidence/2026-10-17/eval/reorg-safe/manifest.json": "3ab1a45b7cf597d21f5d254c4723edc42374d31d7e804fffdb3e3bf1307594c2",
-    "../evidence/2026-10-17/eval/repeat/manifest.json": "310ba7d278a038b5fda2a93ec67001b1bc5c0569c1bfedd349a32e2e768bab03"
+    "../evidence/2026-10-17/eval/repeat/manifest.json": "310ba7d278a038b5fda2a93ec67001b1bc5c0569c1bfedd349a32e2e768bab03",
+    "../evidence/2026-10-18/eval-pending/pending/manifest.json": "5b51f2032746d9944e12f65274aa2315c7b482863175242d5a58a2360c9a7876"
   },
   "matrix": {
     "../evidence/2026-10-17/eval/clients.lock.json": "5a4d1cb26d170d220453340338a1db8276e6ae829bc1d4a28583d1aaa88f8449",
@@ -64,15 +65,15 @@
   },
   "sources": {
     "decisions/fixes.json": "ecad6da10075cecb5a371d24c352cf162e6f9c2829ae53250a3f48496b0fb25b",
-    "decisions/impact.json": "07c6b080fd12c4c3afacb2c37c3641a7887626ae186e0af0e6af5e94fd0c3c3e",
+    "decisions/impact.json": "79a1cb631e04386d78f2717bd17efc724d027332d0043a6886cc86d96fc92bcf",
     "decisions/laws.json": "b501411261853c58653d055db713d31c4963cddafa30bd011b45b70d41e3b89d",
-    "decisions/ledger.json": "957b8d1ba37a879a27965fb7a213c9a16ea4b8731079c64bbaf36e900f2e6d8a",
+    "decisions/ledger.json": "391a079ceb09573a19744f36127da370a01f0e869a1a6eeff36bc209e5a4e565",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",
     "decisions/status.json": "10460e6f795d72626749e1cd8c0d7d9105d37d30381b3abc73c920eddb2059ba",
     "fixtures/checksums.json": "c17820a595420df5028c3342e74c2ef12c86d4491935bd64e2654bd239e3545e",
     "locks/source-revisions.json": "2c65827aeacd75e7e7725691baef2823b9817869da50dcb9b06b207e4633f313",
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
-    "reports.lock.json": "0ccfb799f7e79f076d7bcd7a60543c0bef879329fcaf2a550752787290e7e565",
+    "reports.lock.json": "ae2054e59f911afe8ef1b4dbce9733df3171766a1cd880c30268ec17692f4d26",
     "scripts/run_matrix.py": "1f56e061856f852654fdc5dc0fbc0802db4933539d1bfcbc437b5d064ffb1e70",
     "spec.lock.json": "4e78845227232c8a95280f306b88cda8a8d6592e165074cb73cd2fce30c182ec",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
@@ -88,7 +89,7 @@
     "trace_interop/probes.py": "492ca512ec63c23b9142c74ff04fbc5284767e2ea71ccad38f680c78d579b842",
     "trace_interop/report.py": "a1b3007643505fd2ea5f99a5c609cb916f1cfcc6d600363d171ef66580f8bdf5",
     "trace_interop/rules.py": "9bb7dfc912e3ba3b90593453a965476640ef8a03291f4174b72fb5cad84494dd",
-    "trace_interop/scenarios.py": "5f5f39f7c54fc2181886ee1f153a8b099b79d9a485575717cbe1e3e01e2cf227",
+    "trace_interop/scenarios.py": "6732f8e0cd9ca260c2e5037cf7905681d1abd7acdb634443786831922119b6c3",
     "trace_interop/status.py": "11141c0265a4fda35c8fb839ea9ee50b61d0318ead97e44878ae62ad698dfd83",
     "trace_interop/tables.py": "338c20cfe1b1175188a5d656ae2f3af9564827d70d8bc9dcf157db6ad7dc0a6a",
     "trace_interop/validation.py": "c2ce1337d14391eeaeb5a4bbeb4d0d5bec2ed4c003f029d76e8aa8467976180c",

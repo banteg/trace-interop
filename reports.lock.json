@@ -15,6 +15,7 @@
     "evidence/2026-10-17/eval/fee-compat",
     "evidence/2026-10-17/eval/callmany-isolation",
     "evidence/2026-10-17/eval/h30",
+    "evidence/2026-10-18/eval-pending/pending",
     "evidence/2026-10-17/eval/raw-selector",
     "evidence/2026-10-17/eval/probes-prague",
     "evidence/2026-10-17/eval/probes-forks",

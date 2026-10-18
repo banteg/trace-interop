@@ -12,8 +12,8 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.2.0` | [`1d2aff00`](https://github.com/NethermindEth/nethermind/commit/1d2aff00ccee8df1ffabc142ee8ea61b3760754e) | 2026-10-16 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
-| `2.2.0-preview` | [`cd336c4c`](https://github.com/NethermindEth/nethermind/commit/cd336c4ccce9526d5f775ea857851a94e13e60a9) | 2026-10-16 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
+| `2.2.0` | [`1d2aff00`](https://github.com/NethermindEth/nethermind/commit/1d2aff00ccee8df1ffabc142ee8ea61b3760754e) | 2026-10-16 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json)<br>[2026-10-18](../../evidence/2026-10-18/eval-pending/pending/manifest.json) |
+| `2.2.0-preview` | [`cd336c4c`](https://github.com/NethermindEth/nethermind/commit/cd336c4ccce9526d5f775ea857851a94e13e60a9) | 2026-10-16 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json)<br>[2026-10-18](../../evidence/2026-10-18/eval-pending/pending/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -68,7 +68,7 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 | [Precompile call-frame inclusion](../decisions/H29.md) | [Block 2](../cases/a/block-2.md) · [Filter all](../cases/a/filter-all.md) |
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
-| [Trace block tags and pending state](../decisions/H32.md) | [Block pending](../cases/h30/block-pending.md) · [Call number pending](../cases/h30/call-number-pending.md) |
+| [Trace block tags and pending state](../decisions/H32.md) | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
 | [Single-block hash selection in trace_filter](../decisions/H33.md) | [Filter blockhash](../cases/h30/filter-blockhash.md) · [Filter blockhash address from](../cases/h30/filter-blockhash-address-from.md) |
 
 </details>

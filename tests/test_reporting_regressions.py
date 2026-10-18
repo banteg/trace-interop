@@ -53,11 +53,12 @@ class ReportingRegressions(unittest.TestCase):
         request = {'method': 'trace_call', 'params': [{}, [], 'latest']}
         captured = [dict(name='same', request=request, fee_policy={'admission': 'observe'}),
                     dict(name='changed', request=request, fee_policy={'admission': 'observe'}),
-                    dict(name='_control/head', request=request)]
+                    dict(name='_control/head', request=request),
+                    dict(name='retired', request=request)]
         corpus = [dict(name='same', request=request, fee_policy={'admission': 'accept'}),
                   dict(name='changed', request=dict(request, params=[{}, ['trace'], 'latest']), fee_policy={'admission': 'accept'})]
-        self.assertEqual([c.get('fee_policy') for c in assessed_cases(captured, corpus)],
-                         [{'admission': 'accept'}, {'admission': 'observe'}, None])
+        self.assertEqual([(c['name'], c.get('fee_policy')) for c in assessed_cases(captured, corpus)],
+                         [('same', {'admission': 'accept'}), ('changed', {'admission': 'observe'}), ('_control/head', None)])
 
     def test_mixed_builds_do_not_harmonize_and_new_complete_build_supersedes_old(self):
         from trace_interop.status import decision_status, NATIVE_CLIENTS

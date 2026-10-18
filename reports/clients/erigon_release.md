@@ -6,7 +6,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.7.1` | [`8c1e3893`](https://github.com/erigontech/erigon/commit/8c1e3893d77d230720d172f1492d95b5777a862c) | 2026-10-01 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json) |
+| `3.7.1` | [`8c1e3893`](https://github.com/erigontech/erigon/commit/8c1e3893d77d230720d172f1492d95b5777a862c) | 2026-10-01 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json)<br>[2026-10-18](../../evidence/2026-10-18/eval-pending/pending/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

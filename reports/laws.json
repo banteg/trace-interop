@@ -26,7 +26,7 @@
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 746,
+        "held": 748,
         "violated": 0
       },
       "nethermind_development": {
@@ -38,11 +38,11 @@
         "violated": 0
       },
       "reth_development": {
-        "held": 884,
+        "held": 886,
         "violated": 0
       },
       "reth_release": {
-        "held": 884,
+        "held": 886,
         "violated": 0
       }
     },
@@ -118,7 +118,7 @@
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 145,
+        "held": 146,
         "violated": 0
       },
       "nethermind_development": {
@@ -130,11 +130,11 @@
         "violated": 0
       },
       "reth_development": {
-        "held": 152,
+        "held": 153,
         "violated": 0
       },
       "reth_release": {
-        "held": 152,
+        "held": 153,
         "violated": 0
       }
     },

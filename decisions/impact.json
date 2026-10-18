@@ -18,7 +18,7 @@
     },
     "geth": {
       "name": "Geth draft fork",
-      "summary": "The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces stay blocked on the frozen chain\u2019s empty pending block, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
+      "summary": "The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces, which return the pending block holding a pooled transaction, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage."
     },
     "anvil": {
       "name": "Anvil",
@@ -441,11 +441,11 @@
     "H32": {
       "append_checked_requirements": false,
       "besu": {
-        "observed": "trace_filter with safe or pending bounds returns -32603 Internal error; earliest succeeds. Pending call simulations run on the head block (NUMBER 48), and `trace_block` and `trace_replayBlockTransactions` at pending trace head block 48, indistinguishable from latest.",
+        "observed": "trace_filter with safe or pending bounds returns -32603 Internal error; earliest succeeds. Pending call simulations run on the head block (NUMBER 48), and with a transaction pooled (`pending` corpus) `trace_block` and `trace_replayBlockTransactions` at pending trace head block 48 and its canonical transactions, indistinguishable from latest.",
         "change": "Resolve safe/finalized tags when available. Reject pending filter bounds (`-32602` recommended). For `trace_block`, `trace_replayBlockTransactions`, `trace_call` and `trace_callMany`, evaluate pending in a real pending environment or reject it (`-32602` recommended), rather than an internal error or latest; accept a block hash for `trace_call` and `trace_callMany`."
       },
       "reth": {
-        "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work: Alloy\u2019s `TraceFilter` types the bounds as quantities, so even \"latest\" is rejected. Explicit pending call simulations return NUMBER 49, and `trace_block` traces a locally built pending block under its non-canonical hash; on the frozen chain, with no pending transactions, `trace_block` and `trace_replayBlockTransactions` at pending return `[]`.",
+        "observed": "trace_filter rejects earliest, safe and pending with -32602, although numeric bounds work: Alloy\u2019s `TraceFilter` types the bounds as quantities, so even \"latest\" is rejected. Explicit pending call simulations return NUMBER 49, and with a transaction pooled (`pending` corpus) `trace_block` and `trace_replayBlockTransactions` at pending trace a locally built block 49 holding it, under its non-canonical hash.",
         "change": "Accept latest, earliest, safe and finalized filter bounds (an Alloy `TraceFilter` change), with earliest as the lowest available block, and keep rejecting pending bounds. Pending block traces are allowed; how their records are localized is still open."
       },
       "erigon": {
@@ -453,11 +453,11 @@
         "change": "Ship #24345 and #24435 in a release."
       },
       "geth": {
-        "observed": "`earliest` resolves to block 0 rather than the lowest available block. `trace_block` and `trace_replayBlockTransactions` at pending trace the miner\u2019s pending block, which is empty on the frozen chain, so the capture cannot show its environment.",
+        "observed": "`earliest` resolves to block 0 rather than the lowest available block. `trace_block` and `trace_replayBlockTransactions` at pending trace the miner\u2019s pending block: with a transaction pooled (`pending` corpus) they return block 49 holding it.",
         "change": "Resolve `earliest` to the lowest available block, as eth_getLogs does, and keep an error (4444 recommended) for explicit numbers below retained history."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 45912ba3 includes #13936 and rejects pending in every trace method with -32602. 2.0.0 accepts a block hash as a trace_filter bound, as a string or an EIP-1898 object; 2.2.0-preview \u00b7 759efed7 includes #14111 and rejects both with -32602.",
+        "observed": "2.0.0 \u00b7 bec830cd resolves a pending filter bound to the latest block, as Parity\u2019s fallback did, runs pending call simulations on the head block (NUMBER 48), and traces the head block for `trace_block` and `trace_replayBlockTransactions` at pending: Nethermind builds no pending block for RPC (`BlockTree.PendingHash` returns the head). 2.1.0-preview \u00b7 45912ba3 includes #13936 and rejects pending in every trace method with -32602, as 2.2.0 does, also with a transaction pooled. 2.0.0 accepts a block hash as a trace_filter bound, as a string or an EIP-1898 object; 2.2.0-preview \u00b7 759efed7 includes #14111 and rejects both with -32602.",
         "change": "Ship #13936 and #14111 in a release: reject pending in every trace method and block-hash filter bounds, as a string or an EIP-1898 object (`-32602` recommended), and pin a single block with the H33 `blockHash` member instead."
       }
     },

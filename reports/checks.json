@@ -741281,56 +741281,6 @@
     "build_id": "sha256:876d2d96786b18e6c2efe8a9bf3045858ebccb77bf3ced677a7d2aeb46289e3e",
     "capture_eligible": true,
     "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "anvil_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "anvil Version: 1.8.6-nightly+de005f70"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:876d2d96786b18e6c2efe8a9bf3045858ebccb77bf3ced677a7d2aeb46289e3e",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "anvil_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "anvil Version: 1.8.6-nightly+de005f70"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:876d2d96786b18e6c2efe8a9bf3045858ebccb77bf3ced677a7d2aeb46289e3e",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
     "case": "filter-hash-bounds",
     "checks": [
       {
@@ -742679,56 +742629,6 @@
     },
     "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
     "status": "result",
-    "version": "anvil Version: 1.8.5+51a52c59"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:e3c5641d645af6f1e6f76ac472e52bb421c6663e0eefaa06065576c50a49c1b4",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "anvil_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "anvil Version: 1.8.5+51a52c59"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:e3c5641d645af6f1e6f76ac472e52bb421c6663e0eefaa06065576c50a49c1b4",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "anvil_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
     "version": "anvil Version: 1.8.5+51a52c59"
   },
   {
@@ -744106,64 +744006,6 @@
         }
       ],
       "status": "invalid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "Records from blocks [48]; the head is 48.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "change_needed",
-        "topic": "H32"
-      }
-    ],
-    "client": "besu_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "3 envelopes, 3 of them canonical transactions.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "change_needed",
-        "topic": "H32"
-      }
-    ],
-    "client": "besu_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
     },
     "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
     "status": "result",
@@ -745687,64 +745529,6 @@
     "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
     "capture_eligible": true,
     "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "Records from blocks [48]; the head is 48.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "change_needed",
-        "topic": "H32"
-      }
-    ],
-    "client": "besu_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "3 envelopes, 3 of them canonical transactions.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "change_needed",
-        "topic": "H32"
-      }
-    ],
-    "client": "besu_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
     "case": "filter-hash-bounds",
     "checks": [
       {
@@ -747198,56 +746982,6 @@
     "eligibility_detail": "ordinary imported-chain scenario",
     "eligible": true,
     "method": "trace_callMany",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "3.8.0-dev-5b452f41"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "erigon_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "3.8.0-dev-5b452f41"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "erigon_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
     "request_errors": [],
     "run": "h30",
     "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
@@ -748695,56 +748429,6 @@
     "eligibility_detail": "ordinary imported-chain scenario",
     "eligible": true,
     "method": "trace_callMany",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "3.7.1-8c1e3893"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32000 (-32602 recommended).",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "erigon_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "3.7.1-8c1e3893"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32000 (-32602 recommended).",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "erigon_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
     "request_errors": [],
     "run": "h30",
     "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
@@ -750255,64 +749939,6 @@
     "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
   },
   {
-    "assessment": "blocked",
-    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "go-ethereum_trace",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
-  },
-  {
-    "assessment": "blocked",
-    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "go-ethereum_trace",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
-  },
-  {
     "assessment": "assessed",
     "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
     "capture_eligible": true,
@@ -751760,56 +751386,6 @@
     "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
     "capture_eligible": true,
     "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "nethermind_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "2.2.0-preview+cd336c4c"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "nethermind_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "2.2.0-preview+cd336c4c"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
     "case": "filter-hash-bounds",
     "checks": [
       {
@@ -753242,56 +752818,6 @@
     "eligibility_detail": "ordinary imported-chain scenario",
     "eligible": true,
     "method": "trace_callMany",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "2.2.0+1d2aff00"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "nethermind_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "rpc_error",
-    "version": "2.2.0+1d2aff00"
-  },
-  {
-    "assessment": "assessed",
-    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "RPC error -32602.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "matches",
-        "topic": "H32"
-      }
-    ],
-    "client": "nethermind_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
     "request_errors": [],
     "run": "h30",
     "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
@@ -754766,64 +754292,6 @@
     "version": "Reth Version: 2.7.0+ec3e7e42"
   },
   {
-    "assessment": "blocked",
-    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "reth_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Reth Version: 2.7.0+ec3e7e42"
-  },
-  {
-    "assessment": "blocked",
-    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "reth_development",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Reth Version: 2.7.0+ec3e7e42"
-  },
-  {
     "assessment": "assessed",
     "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
     "capture_eligible": true,
@@ -756179,64 +755647,6 @@
     "version": "Reth Version: 2.7.0+3d592ece"
   },
   {
-    "assessment": "blocked",
-    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "block-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "reth_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_block",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Reth Version: 2.7.0+3d592ece"
-  },
-  {
-    "assessment": "blocked",
-    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
-    "capture_eligible": true,
-    "captured_at": "2026-10-17T00:04:27.685233+00:00",
-    "case": "replay-pending",
-    "checks": [
-      {
-        "detail": "An empty result names no block, so it cannot show a pending environment.",
-        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
-        "status": "blocked",
-        "topic": "H32"
-      }
-    ],
-    "client": "reth_release",
-    "corpus": "h30",
-    "eligibility_detail": "ordinary imported-chain scenario",
-    "eligible": true,
-    "method": "trace_replayBlockTransactions",
-    "request_errors": [],
-    "run": "h30",
-    "schema": {
-      "errors": [],
-      "status": "valid"
-    },
-    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
-    "status": "result",
-    "version": "Reth Version: 2.7.0+3d592ece"
-  },
-  {
     "assessment": "assessed",
     "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
     "capture_eligible": true,
@@ -757081,6 +756491,1306 @@
     "method": "trace_block",
     "request_errors": [],
     "run": "h30",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "Records from blocks [48]; the head is 48. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "change_needed",
+        "topic": "H32"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:d919af8a1b62faac0a8e527ae51fd34a94167eb5061112c858e0ae8edac1cccd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "3 envelopes, 3 of them canonical transactions. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "change_needed",
+        "topic": "H32"
+      }
+    ],
+    "client": "besu_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "Records from blocks [48]; the head is 48. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "change_needed",
+        "topic": "H32"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:a3904d98cca6479564ab310e67eb8538c998e51603d666cf9c3067cedb768977",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "3 envelopes, 3 of them canonical transactions. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "change_needed",
+        "topic": "H32"
+      }
+    ],
+    "client": "besu_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:c09149fbac0784174fa04cf330f09a4e6946bf7509050859d9ef554d25a42a5e",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "erigon_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "3.8.0-dev-5b452f41"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "RPC error -32000 (-32602 recommended).",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:f3039ca1f0b04569353845880b630bc376150a485dc07b9584b6fff7814290bd",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "RPC error -32000 (-32602 recommended).",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "erigon_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "3.7.1-8c1e3893"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "Records from blocks [49]; the head is 48.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:48d49c51c11f311a944902c5936fbf4b0c1718cac71b91e286fe0030bc3b7b45",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "1 envelopes, 0 of them canonical transactions.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "go-ethereum_trace",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:e634901e5c9fac6bdcf88822ab9a2ddcde40babd4e0f70b0dbe97fab50cbd879",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "nethermind_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "2.2.0-preview+cd336c4c"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:bb26a86176f3be2336f7a7f13e8c29864c1d89a9697511b1e6c5a176d2295bd3",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "RPC error -32602.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "nethermind_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "rpc_error",
+    "version": "2.2.0+1d2aff00"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "Records from blocks [49]; the head is 48.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:119f0e9ac70fc627b6349e2bf50bfbe9419f8e69fcf5e8712cd73b9e31009c15",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "1 envelopes, 0 of them canonical transactions.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "reth_development",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+ec3e7e42"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/head",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/latest",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getBlockByNumber",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "_control/version",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "web3_clientVersion",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "send/transaction",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_sendRawTransaction",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "unassessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "pool/transaction",
+    "checks": [],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "eth_getTransactionByHash",
+    "request_errors": [],
+    "run": "pending",
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/block",
+    "checks": [
+      {
+        "detail": "Records from blocks [49]; the head is 48.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_block",
+    "request_errors": [],
+    "run": "pending",
+    "schema": {
+      "errors": [],
+      "status": "valid"
+    },
+    "spec_commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "status": "result",
+    "version": "Reth Version: 2.7.0+3d592ece"
+  },
+  {
+    "assessment": "assessed",
+    "build_id": "sha256:c527321a7b5b8b3a171548d943c46e857783fef0ac20d9e4215d50349f6bc191",
+    "capture_eligible": true,
+    "captured_at": "2026-10-18T12:13:36.220980+00:00",
+    "case": "trace/replay",
+    "checks": [
+      {
+        "detail": "1 envelopes, 0 of them canonical transactions.",
+        "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
+        "status": "matches",
+        "topic": "H32"
+      }
+    ],
+    "client": "reth_release",
+    "corpus": "pending",
+    "eligibility_detail": "ordinary imported-chain scenario",
+    "eligible": true,
+    "method": "trace_replayBlockTransactions",
+    "request_errors": [],
+    "run": "pending",
     "schema": {
       "errors": [],
       "status": "valid"

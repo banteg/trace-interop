@@ -1,0 +1,430 @@
+{
+  "clients": {
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+        "binary_sha256": "d7258fbeba4701c95e89fafa7e84620a1ee6d03f12b5e69d5b7e680e57e96de3",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:126970c517715ef155e1dc886a498683a6026dcc5545c5181ea463eb5f07e890",
+      "local_image": "trace-interop/geth-source:d7258fbeba4701c95e89fafa7e84620a1ee6d03f12b5e69d5b7e680e57e96de3",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "4e1bd7a006fbe9f1437fdf1f1a9ce652e1611e54",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "b4798cf1624831890074e4e710bcb3e324dd4047724f0bdf274f99a696635b63"
+      }
+    }
+  },
+  "corpus": "reorg-safe",
+  "finished_at": "2026-10-18T12:16:43.785412+00:00",
+  "fixture_manifest_sha256": "c17820a595420df5028c3342e74c2ef12c86d4491935bd64e2654bd239e3545e",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "e46f4a615ffd6059b4ee54f00112ce2dcebfd76c3f9468337de2912f56a00486",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "ef650033c017892a38e6cb1f3fed4a2e55ccf013d8189fdb0e333ad7008bf6a9",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "before/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "before/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "before/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "before/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "after/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "after/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "after/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "after/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "restored/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "restored/height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "name": "restored/filter-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x28",
+            "toBlock": "0x30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "restored/block-tail",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2d"
+        ]
+      }
+    },
+    {
+      "name": "before/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    },
+    {
+      "name": "after/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    },
+    {
+      "name": "restored/tail-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0xe4a4bd6a4fad4df86c1222128b9d79a1dd0686cf4a0e1d506731482b7266d483"
+        ]
+      }
+    },
+    {
+      "name": "before/filter-hash-a",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "nonempty": true,
+          "reference": "before/filter-tail",
+          "requirement": "Before the switch, branch A\u2019s block 0x2d is canonical: its hash selects A\u2019s records, as the numeric range does.",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      }
+    },
+    {
+      "name": "after/filter-hash-a",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "recommended": -32001,
+          "reject": true,
+          "requirement": "After the switch to branch B, A\u2019s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B\u2019s [] or records.",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      }
+    },
+    {
+      "name": "restored/filter-hash-a",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "nonempty": true,
+          "reference": "restored/filter-tail",
+          "requirement": "Once branch A is restored, the hash of its block 0x2d selects A\u2019s records again.",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
+          }
+        ]
+      }
+    },
+    {
+      "name": "before/filter-hash-b",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "recommended": -32001,
+          "reject": true,
+          "requirement": "Before B\u2019s payloads arrive, B\u2019s block 0x2d is unknown: an error (-32001 recommended).",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      }
+    },
+    {
+      "name": "after/filter-hash-b",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "nonempty": false,
+          "reference": "after/filter-tail",
+          "requirement": "After the switch, B\u2019s block 0x2d is canonical: its hash selects that block, which has no records, as the numeric range shows.",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      }
+    },
+    {
+      "name": "restored/filter-hash-b",
+      "probes": [
+        {
+          "block": {
+            "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110",
+            "number": "0x2d"
+          },
+          "kind": "block-hash",
+          "recommended": -32001,
+          "reject": true,
+          "requirement": "Once branch A is restored, B\u2019s block 0x2d is noncanonical: an error (-32001 recommended), never A\u2019s records.",
+          "topic": "H33"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "blockHash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
+          }
+        ]
+      }
+    }
+  ],
+  "source_commit": "fee3f8b2cc251a2163ea5016472d7bf05fe3df56",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "4c10502119d68a6b338d866c5db0fb64d6c7de79",
+    "generated_sha256": "e7d61c227c81a79362519de1c613731da3cee97ee72ec885198bc9af01a0b408",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-18T12:16:39.467265+00:00"
+}

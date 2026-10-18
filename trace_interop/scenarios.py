@@ -178,11 +178,12 @@ def assessed_cases(captured, corpus):
 
     Observations stay immutable; expectation fields (fee policy, models, references)
     follow the checksummed corpus, so a corrected expectation reassesses old evidence.
-    A request that has since changed keeps the expectations it was captured with.
+    A request that has since changed keeps the expectations it was captured with. A case the
+    corpus has since removed is retired and not assessed; harness-added `_` cases always stay.
     """
     current = {c['name']: c for c in corpus}
     return [current[c['name']] if c['name'] in current and current[c['name']]['request'] == c['request'] else c
-            for c in captured]
+            for c in captured if c['name'] in current or c['name'].startswith('_')]
 
 
 def verify_state(corpus_name, corpus, observations, client):

@@ -2,11 +2,11 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/5e6717fe95fb1c9a155f8a685bdebf613c16c4e8) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/28a5824023fbd76ef4e1dec9564b94be5883fbc1) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
-| [Frame emission](#frame-emission) | [H09](decisions/H09.md), [H29](decisions/H29.md) | 107 | 4 | 0 | 25 |
+| [Frame emission](#frame-emission) | [H09](decisions/H09.md), [H29](decisions/H29.md) | 107 | 0 | 0 | 25 |
 | [Address filtering](#address-filtering) | [H03](decisions/H03.md), [H04](decisions/H04.md), [H23](decisions/H23.md) | 144 | 0 | 0 | 8 |
 | [Block selection](#block-selection) | [H06](decisions/H06.md), [H30](decisions/H30.md), [H31](decisions/H31.md), [H32](decisions/H32.md) | 70 | 0 | 0 | 0 |
 
@@ -23,7 +23,6 @@ Does a call or create attempt produce a record, and does that record carry an er
 
 | Finding | Outcome | Cells where | Cells | Clauses |
 | --- | --- | --- | --- | --- |
-| Conflict | emitted | nested · CALL · precompile · zero · precheck depth · any fork<br>nested · CALLCODE · precompile · zero · precheck depth · any fork<br>nested · DELEGATECALL · precompile · zero · precheck depth · any fork<br>nested · STATICCALL · precompile · zero · precheck depth · any fork | 4 | False by nested-zero-precompile vs True by call-precheck |
 | Overlap | emitted | nested · CALL · precompile · transferred · precheck depth · any fork<br>nested · CALL · precompile · transferred · precheck balance · any fork<br>nested · CALLCODE · precompile · transferred · precheck depth · any fork<br>nested · CALLCODE · precompile · transferred · precheck balance · any fork<br>nested · DELEGATECALL · precompile · inherited · precheck depth · any fork | 5 | agreeing: nested-value-precompile, call-precheck |
 | Overlap | result | outcome: halt | 20 | agreeing: halt-result, halt |
 
@@ -33,9 +32,9 @@ Does a call or create attempt produce a record, and does that record carry an er
 | --- | --- |
 | baseline | “The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt.” |
 | root-precompile | “Retain root precompile calls regardless of value.” |
-| nested-zero-precompile | “Omit nested precompile frames with zero value” |
+| nested-zero-precompile | “Omit nested precompile frames with zero value, including one whose call fails its precheck” |
 | nested-value-precompile | “retain nested frames with nonzero transferred or inherited value, whether successful or failed” |
-| call-precheck | “A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces” |
+| call-precheck | “Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces” |
 | create-precheck | “A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam” |
 | create-precheck-amsterdam | “from Amsterdam the check runs in the creating opcode and no frame is emitted” |
 | collision | “A CREATE whose address collides emits a create frame with error "Contract address collision" that consumes its gas.” |

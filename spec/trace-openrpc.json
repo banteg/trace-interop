@@ -13,7 +13,7 @@
   },
   "methods": [
     {
-      "description": "Return transaction records in transaction-index order, each tree in preorder, followed by the block's historical PoW rewards, the block reward first and then uncle rewards in ommer order. The genesis block has no transaction or reward records and returns []. Do not emit synthetic zero PoW rewards after the Merge. Withdrawals and system operations are applied to state but are not trace records. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). Records from the pending block carry its number and the hash of the block the client built, which is not canonical; all other records carry canonical block hashes. An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended) (H05,H06,H27,H28,H32). Where an error is required, codes named in this profile are recommended, except -32001 for an unknown block. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Return transaction records in transaction-index order, each tree in preorder, followed by the block's historical PoW rewards, the block reward first and then uncle rewards in ommer order. The genesis block has no transaction or reward records and returns []. Do not emit synthetic zero PoW rewards after the Merge. Withdrawals and system operations are applied to state but are not trace records. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). Records from the pending block carry its number and the hash of the block the client built, which is not canonical; all other records carry canonical block hashes. An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended). Where an error is required, codes named in this profile are recommended, except -32001 for an unknown block. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -81,7 +81,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+            "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
             "else": {
               "properties": {
                 "transactionHash": {
@@ -198,7 +198,7 @@
                 ],
                 "properties": {
                   "action": {
-                    "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                    "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                     "properties": {
                       "callType": {
                         "enum": [
@@ -315,7 +315,7 @@
                     },
                     "properties": {
                       "result": {
-                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                         "properties": {
                           "address": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -354,7 +354,7 @@
                         "const": "Reverted"
                       },
                       "result": {
-                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                         "not": {
                           "anyOf": [
                             {
@@ -416,7 +416,7 @@
                 ],
                 "properties": {
                   "action": {
-                    "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                    "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                     "properties": {
                       "creationMethod": {
                         "enum": [
@@ -462,7 +462,7 @@
                   "result": {
                     "anyOf": [
                       {
-                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                         "properties": {
                           "address": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -489,7 +489,7 @@
                         "type": "object"
                       },
                       {
-                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                         "not": {
                           "anyOf": [
                             {
@@ -615,7 +615,7 @@
               {
                 "properties": {
                   "action": {
-                    "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                    "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                     "properties": {
                       "author": {
                         "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -709,7 +709,7 @@
       "summary": "Returns localized call traces for a block."
     },
     {
-      "description": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment. Block accepts a number, tag or block hash; an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended). A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001). pending selects the client's pending block, the next block number built on latest with its pending transactions, and is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block (H32). Ordinary execution fees follow eth_call (H15). Omitted execution-fee fields default to 0. The effective gas price is gasPrice, or min(maxPriorityFeePerGas + base fee, maxFeePerGas), computed after defaulting; when it is 0, GASPRICE and BASEFEE are both 0 and no gas fee is paid. The blob fee is decided independently (H15). A blob call carries a non-empty blobVersionedHashes list, and when its maxFeePerBlobGas is omitted, null or 0 it runs with BLOBBASEFEE 0 and pays no blob fee, so an explicit zero is accepted. A positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE. Defined blob fields must take effect or cause rejection, never be ignored. Other block fields are unchanged. Execution-fee validation is skipped only when both execution fee caps are 0, as with gasPrice 0. Omitted gas follows the client's eth_call default at the selected state, bounded by the server's execution cap; a block limit or sender allowance may lower that budget but never raise it above the cap. Only omitted or null gas takes that default. An explicit gas of 0 is a supplied limit of 0 that fails the intrinsic-gas check, so the call is rejected (-38013 recommended) with no trace, as in eth_simulateV1. Supplied gas above the cap runs with the cap. Callers requiring a portable budget supply gas explicitly; the cap is server policy, not a truncated result. A validation failure is an error that reports its violation. A defect that makes the call object invalid regardless of state, such as a priority fee above the fee cap, an impossible field combination or an empty authorization list, takes precedence when several rules are violated (-32602 recommended); any other validation failure without a listed code recommends -32003 (Transaction rejected). gasPrice with maxFeePerGas or maxPriorityFeePerGas is an impossible combination. A legacy gasPrice otherwise serves as both maxFeePerGas and maxPriorityFeePerGas, also with an authorizationList, whose authorizations apply, or with blob fields, whose blob fee is priced on its own. For transaction types 0x0 to 0x4, type never changes execution; the fields present decide, no supplied field is dropped because of it, and the type adds no requirement of its own. An access list before Berlin, maxFeePerGas or maxPriorityFeePerGas before London, blob fields before Cancun and an authorizationList before Prague are rejected (-32003 recommended), even with zero or empty values, since no transaction at the selected fork can carry them (H14). A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork, since a blob transaction carries at least one versioned hash. Unsigned calls skip the EIP-3607 sender-code check, as eth_call does. Otherwise the price must cover the base fee (-38012 recommended), maxPriorityFeePerGas must not exceed maxFeePerGas (-32602 recommended), and the sender must fund the upfront cost (-38014 recommended); execution then charges the upfront gas payment, applies refunds, burns the base fee and pays the tip. A zero price does not exempt value transfers from funding. Validation rejections recommend the eth_simulateV1 codes listed below; malformed requests are rejected (-32602 recommended). Positional StateOverrides and BlockOverrides are preferred optional extensions, using the eth_simulateV1 schemas and applying before execution. Existing recognized configuration wrappers remain optional extensions where their contents take effect. The baseline call arity does not require either form. Reject an unsupported non-null override shape (-32602 recommended), never silently treat a state map as an empty configuration. Block overrides replace fields of the selected block environment, and the zero-fee rule then uses the overridden base fee. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors (H08,H11,H14,H15,H28). Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment. Block accepts a number, tag or block hash; an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended). A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001). pending selects the client's pending block, the next block number built on latest with its pending transactions, and is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block. Ordinary execution fees follow eth_call. Omitted execution-fee fields default to 0. The effective gas price is gasPrice, or min(maxPriorityFeePerGas + base fee, maxFeePerGas), computed after defaulting; when it is 0, GASPRICE and BASEFEE are both 0 and no gas fee is paid. The blob fee is decided independently. A blob call carries a non-empty blobVersionedHashes list, and when its maxFeePerBlobGas is omitted, null or 0 it runs with BLOBBASEFEE 0 and pays no blob fee, so an explicit zero is accepted. A positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE. Defined blob fields must take effect or cause rejection, never be ignored. Other block fields are unchanged. Execution-fee validation is skipped only when both execution fee caps are 0, as with gasPrice 0. Omitted gas follows the client's eth_call default at the selected state, bounded by the server's execution cap; a block limit or sender allowance may lower that budget but never raise it above the cap. Only omitted or null gas takes that default. An explicit gas of 0 is a supplied limit of 0 that fails the intrinsic-gas check, so the call is rejected (-38013 recommended) with no trace, as in eth_simulateV1. Supplied gas above the cap runs with the cap. Callers requiring a portable budget supply gas explicitly; the cap is server policy, not a truncated result. A validation failure is an error that reports its violation. A defect that makes the call object invalid regardless of state, such as a priority fee above the fee cap, an impossible field combination or an empty authorization list, takes precedence when several rules are violated (-32602 recommended); any other validation failure without a listed code recommends -32003 (Transaction rejected). gasPrice with maxFeePerGas or maxPriorityFeePerGas is an impossible combination. A legacy gasPrice otherwise serves as both maxFeePerGas and maxPriorityFeePerGas, also with an authorizationList, whose authorizations apply, or with blob fields, whose blob fee is priced on its own. For transaction types 0x0 to 0x4, type never changes execution; the fields present decide, no supplied field is dropped because of it, and the type adds no requirement of its own. An access list before Berlin, maxFeePerGas or maxPriorityFeePerGas before London, blob fields before Cancun and an authorizationList before Prague are rejected (-32003 recommended), even with zero or empty values, since no transaction at the selected fork can carry them. A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork, since a blob transaction carries at least one versioned hash. Unsigned calls skip the EIP-3607 sender-code check, as eth_call does. Otherwise the price must cover the base fee (-38012 recommended), maxPriorityFeePerGas must not exceed maxFeePerGas (-32602 recommended), and the sender must fund the upfront cost (-38014 recommended); execution then charges the upfront gas payment, applies refunds, burns the base fee and pays the tip. A zero price does not exempt value transfers from funding. Validation rejections recommend the eth_simulateV1 codes listed below; malformed requests are rejected (-32602 recommended). Positional StateOverrides and BlockOverrides are preferred optional extensions, using the eth_simulateV1 schemas and applying before execution. Existing recognized configuration wrappers remain optional extensions where their contents take effect. The baseline call arity does not require either form. Reject an unsupported non-null override shape (-32602 recommended), never silently treat a state map as an empty configuration. Block overrides replace fields of the selected block environment, and the zero-fee rule then uses the overridden base fee. Simulated changes are discarded. EVM failure is trace output; invalid parameters or unavailable state are RPC errors. Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -792,7 +792,7 @@
           "required": true,
           "schema": {
             "additionalProperties": true,
-            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap, while an explicit gas of 0 is a supplied zero limit that fails the intrinsic-gas check (-38013 recommended). A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. A blob call (one carrying a non-empty blobVersionedHashes list) whose maxFeePerBlobGas is omitted, null or 0 runs with BLOBBASEFEE 0 and pays no blob fee; a positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE (H15). A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork (H14). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+            "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support. An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap, while an explicit gas of 0 is a supplied zero limit that fails the intrinsic-gas check (-38013 recommended). A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. A blob call (one carrying a non-empty blobVersionedHashes list) whose maxFeePerBlobGas is omitted, null or 0 runs with BLOBBASEFEE 0 and pays no blob fee; a positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE. A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork. Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
             "not": {
               "anyOf": [
                 {
@@ -1105,7 +1105,7 @@
           "name": "TraceTypes",
           "required": true,
           "schema": {
-            "description": "An empty array is valid and requests execution output only (H11).",
+            "description": "An empty array is valid and requests execution output only.",
             "items": {
               "enum": [
                 "trace",
@@ -1279,7 +1279,7 @@
                     ]
                   }
                 ],
-                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected (H15).",
+                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected.",
                 "properties": {
                   "blockOverrides": {
                     "anyOf": [
@@ -1555,7 +1555,7 @@
       "result": {
         "name": "Result",
         "schema": {
-          "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target (H08,H20).",
+          "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target.",
           "properties": {
             "output": {
               "pattern": "^0x([0-9a-f]{2})*$",
@@ -1566,7 +1566,7 @@
               "anyOf": [
                 {
                   "additionalProperties": false,
-                  "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state (H16-H18,H26).",
+                  "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state.",
                   "patternProperties": {
                     "^0x[0-9a-fA-F]{40}$": {
                       "oneOf": [
@@ -1910,7 +1910,7 @@
                           "additionalProperties": false,
                           "patternProperties": {
                             "^0x[0-9a-f]{64}$": {
-                              "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed (H17,H26).",
+                              "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed.",
                               "oneOf": [
                                 {
                                   "additionalProperties": false,
@@ -1999,7 +1999,7 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                 "not": {
                   "anyOf": [
                     {
@@ -2117,7 +2117,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                         "properties": {
                           "callType": {
                             "enum": [
@@ -2234,7 +2234,7 @@
                         },
                         "properties": {
                           "result": {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -2273,7 +2273,7 @@
                             "const": "Reverted"
                           },
                           "result": {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -2335,7 +2335,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                         "properties": {
                           "creationMethod": {
                             "enum": [
@@ -2381,7 +2381,7 @@
                       "result": {
                         "anyOf": [
                           {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -2408,7 +2408,7 @@
                             "type": "object"
                           },
                           {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -2534,7 +2534,7 @@
                   {
                     "properties": {
                       "action": {
-                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                         "properties": {
                           "author": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -2779,7 +2779,7 @@
       "summary": "Executes an unsigned call and returns selected traces."
     },
     {
-      "description": "Each [call, traceTypes] item is a separate transaction executed in order on the preceding item's post-state. EIP-2200 and EIP-3529 original storage values, EIP-2929 access sets, EIP-1153 transient storage, the refund counter and the EIP-6780 same-transaction scope all start afresh for each item. All items share one block environment, as selected for trace_call; NUMBER and TIMESTAMP do not advance between items. The first item runs against the same state and environment as trace_call at the selected block. The trace_call fee rules, including the zero-fee BASEFEE and blob-fee BLOBBASEFEE adjustments, apply to each item independently, as do its gas rules, so an item with an explicit gas of 0 fails the intrinsic-gas check (-38013 recommended). Each stateDiff is relative to the preceding item's post-state. Reverted writes roll back and subsequent items continue; transaction-level nonce and fee effects survive. If any decoded item fails validation, return one error for the whole request, with the trace_call codes recommended; return no partial results. A client SHOULD include the failing item's zero-based index in error.data.index. If present, the index MUST identify the failing item. A malformed item is rejected without an index (-32602 recommended). A server may cap the item count or total gas only with an explicit error (-38026 recommended), never by truncating. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns []. Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks, and defaults to latest; preferred positional overrides or recognized existing override wrappers are optional, and accepted overrides apply once, before the first item, as for trace_call (H15,H16,H25,H31). Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Each [call, traceTypes] item is a separate transaction executed in order on the preceding item's post-state. EIP-2200 and EIP-3529 original storage values, EIP-2929 access sets, EIP-1153 transient storage, the refund counter and the EIP-6780 same-transaction scope all start afresh for each item. All items share one block environment, as selected for trace_call; NUMBER and TIMESTAMP do not advance between items. The first item runs against the same state and environment as trace_call at the selected block. The trace_call fee rules, including the zero-fee BASEFEE and blob-fee BLOBBASEFEE adjustments, apply to each item independently, as do its gas rules, so an item with an explicit gas of 0 fails the intrinsic-gas check (-38013 recommended). Each stateDiff is relative to the preceding item's post-state. Reverted writes roll back and subsequent items continue; transaction-level nonce and fee effects survive. If any decoded item fails validation, return one error for the whole request, with the trace_call codes recommended; return no partial results. A client SHOULD include the failing item's zero-based index in error.data.index. If present, the index MUST identify the failing item. A malformed item is rejected without an index (-32602 recommended). A server may cap the item count or total gas only with an explicit error (-38026 recommended), never by truncating. Return one envelope per input in order. The sequence never changes canonical state. Empty input returns []. Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks, and defaults to latest; preferred positional overrides or recognized existing override wrappers are optional, and accepted overrides apply once, before the first item, as for trace_call. Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -2904,7 +2904,7 @@
               "items": [
                 {
                   "additionalProperties": true,
-                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support (H14). An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap, while an explicit gas of 0 is a supplied zero limit that fails the intrinsic-gas check (-38013 recommended). A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. A blob call (one carrying a non-empty blobVersionedHashes list) whose maxFeePerBlobGas is omitted, null or 0 runs with BLOBBASEFEE 0 and pays no blob fee; a positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE (H15). A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork (H14). Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
+                  "description": "Unsigned simulation. The fields are those of the eth_simulateV1 GenericCallTransaction, with chainId and authorizationList as in GenericTransaction, plus data as a compatibility alias for input. When data and input are both present they MUST be equal; otherwise reject the request (-32602 recommended). Every field defined here MUST either take effect with its eth_call meaning or cause the request to be rejected (recommended: -32602 for a malformed field or impossible combination, or -32003 when the selected fork does not support the field, such as authorizationList before Prague); a client MUST NOT silently ignore a defined field. Only fields outside this schema are ignored, and accepting them does not establish extension support. An explicit null for any field other than to is the same as omitting it. Omitted or null to creates a contract. Defaults: from zero address, value zero, input empty; omitted gas follows the client eth_call default at the selected state, bounded by the execution cap, while an explicit gas of 0 is a supplied zero limit that fails the intrinsic-gas check (-38013 recommended). A block limit or sender allowance may lower the budget; supplied gas above the cap uses the cap. Supply gas explicitly for a portable budget. Omitted gasPrice, maxFeePerGas and maxPriorityFeePerGas default to 0 as in eth_call. A blob call (one carrying a non-empty blobVersionedHashes list) whose maxFeePerBlobGas is omitted, null or 0 runs with BLOBBASEFEE 0 and pays no blob fee; a positive maxFeePerBlobGas is validated against the selected block's blob base fee and charged. Calls without blob fields keep the selected block's BLOBBASEFEE. A maxFeePerBlobGas without blobVersionedHashes, or an empty blobVersionedHashes list, is rejected at every fork. Legacy gasPrice and dynamic fee fields MUST NOT be combined. A supplied nonce is accepted but neither validated nor used: execution, including CREATE address derivation, uses the sender nonce in the selected state. A supplied chainId must match the chain.",
                   "not": {
                     "anyOf": [
                       {
@@ -3213,7 +3213,7 @@
                   "type": "object"
                 },
                 {
-                  "description": "An empty array is valid and requests execution output only (H11).",
+                  "description": "An empty array is valid and requests execution output only.",
                   "items": {
                     "enum": [
                       "trace",
@@ -3396,7 +3396,7 @@
                     ]
                   }
                 ],
-                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected (H15).",
+                "description": "Existing recognized configuration wrappers with override members may be accepted instead of the preferred positional state map. Other configuration entries remain extension fields. A successful decode does not establish support; accepted override members must take effect, and unsupported non-null shapes must be rejected.",
                 "properties": {
                   "blockOverrides": {
                     "anyOf": [
@@ -3673,7 +3673,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target (H08,H20).",
+            "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target.",
             "properties": {
               "output": {
                 "pattern": "^0x([0-9a-f]{2})*$",
@@ -3684,7 +3684,7 @@
                 "anyOf": [
                   {
                     "additionalProperties": false,
-                    "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state (H16-H18,H26).",
+                    "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state.",
                     "patternProperties": {
                       "^0x[0-9a-fA-F]{40}$": {
                         "oneOf": [
@@ -4028,7 +4028,7 @@
                             "additionalProperties": false,
                             "patternProperties": {
                               "^0x[0-9a-f]{64}$": {
-                                "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed (H17,H26).",
+                                "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed.",
                                 "oneOf": [
                                   {
                                     "additionalProperties": false,
@@ -4117,7 +4117,7 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                   "not": {
                     "anyOf": [
                       {
@@ -4235,7 +4235,7 @@
                       ],
                       "properties": {
                         "action": {
-                          "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                          "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                           "properties": {
                             "callType": {
                               "enum": [
@@ -4352,7 +4352,7 @@
                           },
                           "properties": {
                             "result": {
-                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                               "properties": {
                                 "address": {
                                   "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -4391,7 +4391,7 @@
                               "const": "Reverted"
                             },
                             "result": {
-                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                               "not": {
                                 "anyOf": [
                                   {
@@ -4453,7 +4453,7 @@
                       ],
                       "properties": {
                         "action": {
-                          "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                          "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                           "properties": {
                             "creationMethod": {
                               "enum": [
@@ -4499,7 +4499,7 @@
                         "result": {
                           "anyOf": [
                             {
-                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                               "properties": {
                                 "address": {
                                   "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -4526,7 +4526,7 @@
                               "type": "object"
                             },
                             {
-                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                               "not": {
                                 "anyOf": [
                                   {
@@ -4652,7 +4652,7 @@
                     {
                       "properties": {
                         "action": {
-                          "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                          "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                           "properties": {
                             "author": {
                               "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -4900,7 +4900,7 @@
       "summary": "Executes dependent unsigned calls in order."
     },
     {
-      "description": "Implementations may generate traces on demand or use stored traces or indexes. No additional index, trace persistence, archive retention, or particular latency, throughput, or minimum query-range guarantee is required. Clients may impose implementation-defined limits on query ranges, output size, execution work, and duration; unavailable required history or a limit that prevents completing the requested result produces an explicit error, never a silently narrowed selection or an incomplete success. Explicit pagination retains its defined meaning. The blockHash member selects exactly one block by hash, as in eth_getLogs (EIP-234); callers may omit it and clients implement it. A non-null blockHash is mutually exclusive with non-null range bounds (-32602 recommended); null is omitted (H14). The result, including [], is for that block, and each record carries its hash; address matching, mode, ordering and after/count apply as for a single-block range. The block must be canonical and executed; an unknown, noncanonical, unexecuted or otherwise unavailable hash returns an error (-32001; 4444 recommended for pruned history), never [] or another block's records. Validate the selector before a count 0 shortcut, and resolve and trace the block in one chain view rather than scanning a replacement block at the same height. Range bounds take numbers and tags only; a block-hash string or EIP-1898 object bound is rejected (-32602 recommended). Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Omitted bounds mean latest through latest, resolved against one canonical head. As for eth_getLogs, if either bound resolves to a block number greater than the current head block, or fromBlock resolves above toBlock, return an error (-32602, Invalid params, recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range or return a partial result. Historical searches must explicitly set fromBlock. earliest means the lowest block the client has available; never replace an explicit endpoint with the retained-history boundary, and return an error (4444 recommended) when required history is unavailable. Resource limits produce errors, never silently narrowed ranges. count limits returned records, not scan or replay work. Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state. Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary; after EIP-6780 that account usually survives. A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match. A reward matches toAddress by author and has no from side; in intersection mode it is excluded whenever fromAddress is populated, while in union mode a toAddress match suffices. The genesis block contributes no records. Order records by block, then transaction, then preorder, with each block's rewards after its transaction records (block reward, then uncle rewards in ommer order). Filter first, then skip after records and take count. Offsets are stable only for a fixed selection. Capture one coherent snapshot for the request; numeric and tag ranges select its canonical blocks (H03-H06,H23,H27,H30,H32,H33). Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Implementations may generate traces on demand or use stored traces or indexes. No additional index, trace persistence, archive retention, or particular latency, throughput, or minimum query-range guarantee is required. Clients may impose implementation-defined limits on query ranges, output size, execution work, and duration; unavailable required history or a limit that prevents completing the requested result produces an explicit error, never a silently narrowed selection or an incomplete success. Explicit pagination retains its defined meaning. The blockHash member selects exactly one block by hash, as in eth_getLogs (EIP-234); callers may omit it and clients implement it. A non-null blockHash is mutually exclusive with non-null range bounds (-32602 recommended); null is omitted. The result, including [], is for that block, and each record carries its hash; address matching, mode, ordering and after/count apply as for a single-block range. The block must be canonical and executed; an unknown, noncanonical, unexecuted or otherwise unavailable hash returns an error (-32001; 4444 recommended for pruned history), never [] or another block's records. Validate the selector before a count 0 shortcut, and resolve and trace the block in one chain view rather than scanning a replacement block at the same height. Range bounds take numbers and tags only; a block-hash string or EIP-1898 object bound is rejected (-32602 recommended). Apply OR within each address list and AND between the lists by default, as eth_getLogs composes topic positions; mode union matches either populated list; omitted/null/empty lists are unrestricted; compare address bytes independently of hex letter case. Omitted bounds mean latest through latest, resolved against one canonical head. As for eth_getLogs, if either bound resolves to a block number greater than the current head block, or fromBlock resolves above toBlock, return an error (-32602, Invalid params, recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range or return a partial result. Historical searches must explicitly set fromBlock. earliest means the lowest block the client has available; never replace an explicit endpoint with the retained-history boundary, and return an error (4444 recommended) when required history is unavailable. Resource limits produce errors, never silently narrowed ranges. count limits returned records, not scan or replay work. Indexed retrieval and replay must yield the same fork-correct per-block records, each block traced from its parent's post-block state. Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary; after EIP-6780 that account usually survives. A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match. A reward matches toAddress by author and has no from side; in intersection mode it is excluded whenever fromAddress is populated, while in union mode a toAddress match suffices. The genesis block contributes no records. Order records by block, then transaction, then preorder, with each block's rewards after its transaction records (block reward, then uncle rewards in ommer order). Filter first, then skip after records and take count. Offsets are stable only for a fixed selection. Capture one coherent snapshot for the request; numeric and tag ranges select its canonical blocks. Error codes named in this profile are recommended, except -32001 for an unknown block; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -4945,7 +4945,7 @@
           "required": true,
           "schema": {
             "additionalProperties": false,
-            "description": "An explicit null member is the same as an omitted one. Callers use the member names exactly as defined; a server may match them case-insensitively, but every member takes effect as the member it matches or is rejected (-32602 recommended), never ignored, so an unknown member is rejected (H14). Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds are numbers and the earliest, latest, safe and finalized tags; pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64 (H32). Unresolvable safe or finalized tags return an error, never head substitution or an empty result. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; validate selectors before count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work. A non-null blockHash is mutually exclusive with non-null bounds (-32602 recommended) and selects exactly that canonical block; the result, including [], is for that block, and each record carries its hash. An unknown, noncanonical, unexecuted or otherwise unavailable hash returns an error (-32001; 4444 recommended for pruned history), never [] or another block's records. Resolve the hash and trace the block in one chain view, never substituting a block by height (H03,H04,H06,H23,H27,H30,H32,H33).",
+            "description": "An explicit null member is the same as an omitted one. Callers use the member names exactly as defined; a server may match them case-insensitively, but every member takes effect as the member it matches or is rejected (-32602 recommended), never ignored, so an unknown member is rejected. Inclusive block range; defaults omitted fromBlock and toBlock to the same latest head, after 0, count unlimited subject to an explicit server limit. Bounds are numbers and the earliest, latest, safe and finalized tags; pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64. Unresolvable safe or finalized tags return an error, never head substitution or an empty result. If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended); an explicit toBlock before an omitted latest start is such a reversed range. Never clamp the range. OR within each address list; AND between lists by default, as eth_getLogs composes topic positions. Missing, null or empty lists are unrestricted. mode union matches either populated list instead. Compare address bytes independently of hex letter case. Resolve tags once per request. Apply filtering before pagination; validate selectors before count 0 returns []. after and count are JSON integers bounded by uint64. Return an error rather than silently truncate when a server limit is exceeded. earliest is the lowest available block; never replace an explicit endpoint with a retention boundary, and return an error (4444 recommended) if required history is unavailable. count limits results, not scan or replay work. A non-null blockHash is mutually exclusive with non-null bounds (-32602 recommended) and selects exactly that canonical block; the result, including [], is for that block, and each record carries its hash. An unknown, noncanonical, unexecuted or otherwise unavailable hash returns an error (-32001; 4444 recommended for pruned history), never [] or another block's records. Resolve the hash and trace the block in one chain view, never substituting a block by height.",
             "if": {
               "properties": {
                 "blockHash": {
@@ -4980,7 +4980,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "Selects exactly the canonical block with this hash (H33). Mutually exclusive with non-null fromBlock and toBlock (-32602 recommended); null is omitted. An unknown, noncanonical, unexecuted or unavailable hash returns an error (-32001; 4444 recommended for pruned history), never []."
+                "description": "Selects exactly the canonical block with this hash. Mutually exclusive with non-null fromBlock and toBlock (-32602 recommended); null is omitted. An unknown, noncanonical, unexecuted or unavailable hash returns an error (-32001; 4444 recommended for pruned history), never []."
               },
               "count": {
                 "anyOf": [
@@ -5118,7 +5118,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+            "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
             "else": {
               "properties": {
                 "transactionHash": {
@@ -5235,7 +5235,7 @@
                 ],
                 "properties": {
                   "action": {
-                    "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                    "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                     "properties": {
                       "callType": {
                         "enum": [
@@ -5352,7 +5352,7 @@
                     },
                     "properties": {
                       "result": {
-                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                         "properties": {
                           "address": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -5391,7 +5391,7 @@
                         "const": "Reverted"
                       },
                       "result": {
-                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                         "not": {
                           "anyOf": [
                             {
@@ -5453,7 +5453,7 @@
                 ],
                 "properties": {
                   "action": {
-                    "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                    "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                     "properties": {
                       "creationMethod": {
                         "enum": [
@@ -5499,7 +5499,7 @@
                   "result": {
                     "anyOf": [
                       {
-                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                        "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                         "properties": {
                           "address": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -5526,7 +5526,7 @@
                         "type": "object"
                       },
                       {
-                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                        "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                         "not": {
                           "anyOf": [
                             {
@@ -5652,7 +5652,7 @@
               {
                 "properties": {
                   "action": {
-                    "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                    "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                     "properties": {
                       "author": {
                         "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -5746,7 +5746,7 @@
       "summary": "Returns localized traces matching an address filter."
     },
     {
-      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object, or null if the transaction is not in a canonical block or the path does not exist. Integer path entries are rejected (-32602 recommended), not treated as missing paths; convert traceAddress integers to hex quantities. Unavailable state is an error (H02,H06). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Position selects one traceAddress path: [] is root, [\"0x0\"] first child, [\"0x6\",\"0x0\"] the first child of child six. Return one localized object, or null if the transaction is not in a canonical block or the path does not exist. Integer path entries are rejected (-32602 recommended), not treated as missing paths; convert traceAddress integers to hex quantities. Unavailable state is an error. Error codes named in this profile are recommended; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -5796,7 +5796,7 @@
           "name": "Position",
           "required": true,
           "schema": {
-            "description": "One path into the call tree: [] selects the root, [\"0x0\"] its first child (H02). Output traceAddress uses JSON integers; the input path uses hex quantities for compatibility with existing callers. Convert each output integer to a minimal hex quantity before querying. Integer path entries are rejected as invalid parameters (-32602 recommended), not treated as missing paths.",
+            "description": "One path into the call tree: [] selects the root, [\"0x0\"] its first child. Output traceAddress uses JSON integers; the input path uses hex quantities for compatibility with existing callers. Convert each output integer to a minimal hex quantity before querying. Integer path entries are rejected as invalid parameters (-32602 recommended), not treated as missing paths.",
             "items": {
               "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$",
               "title": "hex encoded 64 bit unsigned integer",
@@ -5812,7 +5812,7 @@
         "schema": {
           "anyOf": [
             {
-              "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+              "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
               "else": {
                 "properties": {
                   "transactionHash": {
@@ -5929,7 +5929,7 @@
                   ],
                   "properties": {
                     "action": {
-                      "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                      "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                       "properties": {
                         "callType": {
                           "enum": [
@@ -6046,7 +6046,7 @@
                       },
                       "properties": {
                         "result": {
-                          "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                          "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                           "properties": {
                             "address": {
                               "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -6085,7 +6085,7 @@
                           "const": "Reverted"
                         },
                         "result": {
-                          "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                          "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                           "not": {
                             "anyOf": [
                               {
@@ -6147,7 +6147,7 @@
                   ],
                   "properties": {
                     "action": {
-                      "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                      "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                       "properties": {
                         "creationMethod": {
                           "enum": [
@@ -6193,7 +6193,7 @@
                     "result": {
                       "anyOf": [
                         {
-                          "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                          "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                           "properties": {
                             "address": {
                               "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -6220,7 +6220,7 @@
                           "type": "object"
                         },
                         {
-                          "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                          "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                           "not": {
                             "anyOf": [
                               {
@@ -6346,7 +6346,7 @@
                 {
                   "properties": {
                     "action": {
-                      "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                      "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                       "properties": {
                         "author": {
                           "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -6450,7 +6450,7 @@
       "summary": "Returns the trace at one tree path."
     },
     {
-      "description": "Decode the signed transaction and validate it for execution against latest state before simulating it (H13). Apply the transaction validity rules of the selected fork, including signature, chain identity, nonce equality, sufficient balance for value and upfront gas, intrinsic gas, fees and sender-code restrictions (including permitted EIP-7702 delegation). Reject both low and high nonces; do not replace signed fields, override the sender nonce or top up its balance. This is execution validation, not transaction-pool admission; do not impose local replacement, already-known or minimum-tip policies. A decodable transaction that fails validation is rejected for the rule it violates; a transaction signed for another chain fails chain identity, whatever its recovered sender holds. The recommended codes are the eth_sendRawTransaction error groups, 1 nonce too low, 2 nonce too high, 800 intrinsic gas, 804 priority fee above fee cap, 806 fee cap below base fee, 809 insufficient funds, and -32003 (Transaction rejected) for any other validation failure. A signed gas limit above the server's execution cap is not reduced; reject it (-38026 recommended). Malformed encodings or request parameters are rejected (-32602 recommended). A valid transaction that REVERTs or exceptionally halts returns an execution trace, not a validation error. The portable baseline defines two parameters and latest state. An explicitly supplied block-selector extension is outside this baseline; accepting it is not a baseline failure. Extension semantics require separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result (H12-H14,H25). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Decode the signed transaction and validate it for execution against latest state before simulating it. Apply the transaction validity rules of the selected fork, including signature, chain identity, nonce equality, sufficient balance for value and upfront gas, intrinsic gas, fees and sender-code restrictions (including permitted EIP-7702 delegation). Reject both low and high nonces; do not replace signed fields, override the sender nonce or top up its balance. This is execution validation, not transaction-pool admission; do not impose local replacement, already-known or minimum-tip policies. A decodable transaction that fails validation is rejected for the rule it violates; a transaction signed for another chain fails chain identity, whatever its recovered sender holds. The recommended codes are the eth_sendRawTransaction error groups, 1 nonce too low, 2 nonce too high, 800 intrinsic gas, 804 priority fee above fee cap, 806 fee cap below base fee, 809 insufficient funds, and -32003 (Transaction rejected) for any other validation failure. A signed gas limit above the server's execution cap is not reduced; reject it (-38026 recommended). Malformed encodings or request parameters are rejected (-32602 recommended). A valid transaction that REVERTs or exceptionally halts returns an execution trace, not a validation error. The portable baseline defines two parameters and latest state. An explicitly supplied block-selector extension is outside this baseline; accepting it is not a baseline failure. Extension semantics require separate agreement. Validation failure returns a complete JSON-RPC error, not a partially serialized result. Error codes named in this profile are recommended; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -6537,7 +6537,7 @@
           "name": "TraceTypes",
           "required": true,
           "schema": {
-            "description": "An empty array is valid and requests execution output only (H11).",
+            "description": "An empty array is valid and requests execution output only.",
             "items": {
               "enum": [
                 "trace",
@@ -6555,7 +6555,7 @@
       "result": {
         "name": "Result",
         "schema": {
-          "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target (H08,H20).",
+          "description": "output always contains actual return bytes, including when only stateDiff is selected. Unrequested trace is [], stateDiff and vmTrace are null. A selected vmTrace is always an object, even for an EOA or precompile target.",
           "properties": {
             "output": {
               "pattern": "^0x([0-9a-f]{2})*$",
@@ -6566,7 +6566,7 @@
               "anyOf": [
                 {
                   "additionalProperties": false,
-                  "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state (H16-H18,H26).",
+                  "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state.",
                   "patternProperties": {
                     "^0x[0-9a-fA-F]{40}$": {
                       "oneOf": [
@@ -6910,7 +6910,7 @@
                           "additionalProperties": false,
                           "patternProperties": {
                             "^0x[0-9a-f]{64}$": {
-                              "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed (H17,H26).",
+                              "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed.",
                               "oneOf": [
                                 {
                                   "additionalProperties": false,
@@ -6999,7 +6999,7 @@
             },
             "trace": {
               "items": {
-                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                 "not": {
                   "anyOf": [
                     {
@@ -7117,7 +7117,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                         "properties": {
                           "callType": {
                             "enum": [
@@ -7234,7 +7234,7 @@
                         },
                         "properties": {
                           "result": {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -7273,7 +7273,7 @@
                             "const": "Reverted"
                           },
                           "result": {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -7335,7 +7335,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                         "properties": {
                           "creationMethod": {
                             "enum": [
@@ -7381,7 +7381,7 @@
                       "result": {
                         "anyOf": [
                           {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -7408,7 +7408,7 @@
                             "type": "object"
                           },
                           {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -7534,7 +7534,7 @@
                   {
                     "properties": {
                       "action": {
-                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                         "properties": {
                           "author": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -7779,7 +7779,7 @@
       "summary": "Simulates a signed transaction at latest state."
     },
     {
-      "description": "Default block is not implicit: Block is required. Return exactly one envelope per transaction, in transaction order, each with its transactionHash. Empty blocks and the genesis block return []. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. System operations (EIP-4788 and EIP-2935 pre-block calls, EIP-7002 and EIP-7251 post-block calls), withdrawals and rewards are applied in protocol order but belong to no envelope; concatenated stateDiffs therefore do not reconstruct the block post-state. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended) (H05,H07,H16,H28,H32). Where an error is required, codes named in this profile are recommended, except -32001 for an unknown block. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Default block is not implicit: Block is required. Return exactly one envelope per transaction, in transaction order, each with its transactionHash. Empty blocks and the genesis block return []. Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules. System operations (EIP-4788 and EIP-2935 pre-block calls, EIP-7002 and EIP-7251 post-block calls), withdrawals and rewards are applied in protocol order but belong to no envelope; concatenated stateDiffs therefore do not reconstruct the block post-state. Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended). An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended). Where an error is required, codes named in this profile are recommended, except -32001 for an unknown block. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -7850,7 +7850,7 @@
           "name": "TraceTypes",
           "required": true,
           "schema": {
-            "description": "An empty array is valid and requests execution output only (H11).",
+            "description": "An empty array is valid and requests execution output only.",
             "items": {
               "enum": [
                 "trace",
@@ -7869,7 +7869,7 @@
         "name": "Result",
         "schema": {
           "items": {
-            "description": "Execution envelope with the replayed transaction hash (H07).",
+            "description": "Execution envelope with the replayed transaction hash.",
             "properties": {
               "output": {
                 "pattern": "^0x([0-9a-f]{2})*$",
@@ -7880,7 +7880,7 @@
                 "anyOf": [
                   {
                     "additionalProperties": false,
-                    "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state (H16-H18,H26).",
+                    "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state.",
                     "patternProperties": {
                       "^0x[0-9a-fA-F]{40}$": {
                         "oneOf": [
@@ -8224,7 +8224,7 @@
                             "additionalProperties": false,
                             "patternProperties": {
                               "^0x[0-9a-f]{64}$": {
-                                "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed (H17,H26).",
+                                "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed.",
                                 "oneOf": [
                                   {
                                     "additionalProperties": false,
@@ -8313,7 +8313,7 @@
               },
               "trace": {
                 "items": {
-                  "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                  "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                   "not": {
                     "anyOf": [
                       {
@@ -8431,7 +8431,7 @@
                       ],
                       "properties": {
                         "action": {
-                          "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                          "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                           "properties": {
                             "callType": {
                               "enum": [
@@ -8548,7 +8548,7 @@
                           },
                           "properties": {
                             "result": {
-                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                               "properties": {
                                 "address": {
                                   "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -8587,7 +8587,7 @@
                               "const": "Reverted"
                             },
                             "result": {
-                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                               "not": {
                                 "anyOf": [
                                   {
@@ -8649,7 +8649,7 @@
                       ],
                       "properties": {
                         "action": {
-                          "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                          "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                           "properties": {
                             "creationMethod": {
                               "enum": [
@@ -8695,7 +8695,7 @@
                         "result": {
                           "anyOf": [
                             {
-                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                              "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                               "properties": {
                                 "address": {
                                   "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -8722,7 +8722,7 @@
                               "type": "object"
                             },
                             {
-                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                              "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                               "not": {
                                 "anyOf": [
                                   {
@@ -8848,7 +8848,7 @@
                     {
                       "properties": {
                         "action": {
-                          "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                          "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                           "properties": {
                             "author": {
                               "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -9102,7 +9102,7 @@
       "summary": "Replays every transaction in a block."
     },
     {
-      "description": "Reconstruct the state immediately before this transaction from the parent block's post-block state, applying this block's pre-transaction system operations and then its preceding transactions, under this block's fork rules. Return null for a transaction that is not in a canonical block; error for unavailable history. Report the transaction's actual committed state transition; block-level operations belong to no transaction's stateDiff (H06,H07,H16,H18,H28). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Reconstruct the state immediately before this transaction from the parent block's post-block state, applying this block's pre-transaction system operations and then its preceding transactions, under this block's fork rules. Return null for a transaction that is not in a canonical block; error for unavailable history. Report the transaction's actual committed state transition; block-level operations belong to no transaction's stateDiff. Error codes named in this profile are recommended; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -9152,7 +9152,7 @@
           "name": "TraceTypes",
           "required": true,
           "schema": {
-            "description": "An empty array is valid and requests execution output only (H11).",
+            "description": "An empty array is valid and requests execution output only.",
             "items": {
               "enum": [
                 "trace",
@@ -9172,7 +9172,7 @@
         "schema": {
           "anyOf": [
             {
-              "description": "Execution envelope with the replayed transaction hash (H07).",
+              "description": "Execution envelope with the replayed transaction hash.",
               "properties": {
                 "output": {
                   "pattern": "^0x([0-9a-f]{2})*$",
@@ -9183,7 +9183,7 @@
                   "anyOf": [
                     {
                       "additionalProperties": false,
-                      "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state (H16-H18,H26).",
+                      "description": "Net committed state changes for this execution, comparing the execution endpoints. An account appears only if its balance, nonce, code, storage or existence changed. Existence means presence in the state trie: an existing EIP-161-empty account removed by touch-clearing is a deletion. + and - appear only when the account is born or dies; = marks an unchanged field and * a changed field of an account that exists at both endpoints. A born account includes zero nonce and empty code creation markers and lists its nonzero post-state slots. A deleted account has empty storage or optional accurate old-slot - entries; account deletion implies all storage is wiped. Reverted EVM writes are absent; surviving transaction-level changes remain. callMany diffs are relative to each preceding post-state. Multiple authorization writes are reduced to their net effect, including nonce changes when final code equals initial code. An account absent at both endpoints has no account diff. The sender pays value, gasUsed times the effective gas price and blobGasUsed times the blob base fee; base and blob fees are burned or credited to a chain-defined collector, and the tip goes to the fee recipient. Block-level operations (EIP-4788 and EIP-2935 pre-block calls, withdrawals, EIP-7002 and EIP-7251 post-block calls, rewards) belong to no transaction's diff, so concatenated diffs do not reconstruct the block post-state.",
                       "patternProperties": {
                         "^0x[0-9a-fA-F]{40}$": {
                           "oneOf": [
@@ -9527,7 +9527,7 @@
                               "additionalProperties": false,
                               "patternProperties": {
                                 "^0x[0-9a-f]{64}$": {
-                                  "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed (H17,H26).",
+                                  "description": "+ lists a nonzero post-state slot of a born account. * changes a slot of an account that exists at both endpoints, with 32-byte from and to words, including zero words. Slots never use =. A deleted account may optionally list old slot values with -; account deletion implies all storage is wiped whether or not slots are listed.",
                                   "oneOf": [
                                     {
                                       "additionalProperties": false,
@@ -9616,7 +9616,7 @@
                 },
                 "trace": {
                   "items": {
-                    "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                    "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                     "not": {
                       "anyOf": [
                         {
@@ -9734,7 +9734,7 @@
                         ],
                         "properties": {
                           "action": {
-                            "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                            "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                             "properties": {
                               "callType": {
                                 "enum": [
@@ -9851,7 +9851,7 @@
                             },
                             "properties": {
                               "result": {
-                                "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                                "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                                 "properties": {
                                   "address": {
                                     "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -9890,7 +9890,7 @@
                                 "const": "Reverted"
                               },
                               "result": {
-                                "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                                "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                                 "not": {
                                   "anyOf": [
                                     {
@@ -9952,7 +9952,7 @@
                         ],
                         "properties": {
                           "action": {
-                            "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                            "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                             "properties": {
                               "creationMethod": {
                                 "enum": [
@@ -9998,7 +9998,7 @@
                           "result": {
                             "anyOf": [
                               {
-                                "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                                "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                                 "properties": {
                                   "address": {
                                     "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -10025,7 +10025,7 @@
                                 "type": "object"
                               },
                               {
-                                "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                                "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                                 "not": {
                                   "anyOf": [
                                     {
@@ -10151,7 +10151,7 @@
                       {
                         "properties": {
                           "action": {
-                            "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                            "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                             "properties": {
                               "author": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -10408,7 +10408,7 @@
       "summary": "Replays a mined transaction with selected traces."
     },
     {
-      "description": "Return a flat preorder tree, including the root. A transaction that is not in a canonical block returns null; unavailable state is an error. traceAddress is a path, not a flat list index (H02,H06). Error codes named in this profile are recommended; conformance requires the error response itself. This is a provisional trace profile; see docs-api/docs/trace-profile.md and its decision references.",
+      "description": "Return a flat preorder tree, including the root. A transaction that is not in a canonical block returns null; unavailable state is an error. traceAddress is a path, not a flat list index. Error codes named in this profile are recommended; conformance requires the error response itself. See docs-api/docs/trace-profile.md.",
       "errors": [
         {
           "code": -32601,
@@ -10457,7 +10457,7 @@
           "anyOf": [
             {
               "items": {
-                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames (H29). Omitting a call frame must not omit its caller VM return-memory effects. A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion (H05,H09,H10,H24).",
+                "description": "Preorder traversal. The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt. Retain root precompile calls regardless of value. Omit nested precompile frames with zero value, including one whose call fails its precheck; retain nested frames with nonzero transferred or inherited value, whether successful or failed. A precompile is an address in the precompile set active at the executing block's fork. traceAddress gives child ordinals and subtraces counts direct children in the emitted tree, excluding omitted frames. Omitting a call frame must not omit its caller VM return-memory effects. Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces; the forwarded gas returns to the caller. A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam; from Amsterdam the check runs in the creating opcode and no frame is emitted. A CREATE whose address collides emits a create frame with error \"Contract address collision\" that consumes its gas. Standalone historical records require localization; only protocol rewards have null transaction fields. Frames inside simulation and replay envelopes omit localization and protocol rewards. error alone determines failure. A REVERT frame has error \"Reverted\" and a required result {gasUsed, output} carrying its revert bytes, for CREATE too, without address or code: no contract exists at the would-be address. An exceptional halt consumes the frame's action gas; its result is null. Failure labels are \"Reverted\", \"Out of gas\", \"Bad instruction\", \"Bad jump destination\", \"Stack underflow\", \"Out of stack\", \"Mutable Call In Static Context\", \"Built-in failed\" and \"Out of bounds\". As in Parity and OpenEthereum, a code-deposit failure, including code above the EIP-170 size limit, is \"Out of gas\", and returned code starting with 0xEF (EIP-3541) is \"Invalid code\". Beyond Parity, which reported an address collision as \"Out of gas\" and emitted no frame for a failed precheck, use \"Contract address collision\", \"Nonce overflow\", \"Insufficient balance for transfer\" and \"Max call depth exceeded\". EIP-3860 oversized initcode aborts the creating frame with \"Out of gas\". The designated invalid instruction 0xFE is an undefined opcode, so its frame fails with \"Bad instruction\". Any other error string is an extension that consumers treat as a generic failure. revertReason is not part of this profile; raw revert bytes live in result.output. Suicide and reward records carry result null. A suicide frame records the SELFDESTRUCT opcode and its transfer, not account deletion.",
                 "else": {
                   "properties": {
                     "transactionHash": {
@@ -10574,7 +10574,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer (H09,H29).",
+                        "description": "CALL and STATICCALL: from is the caller, to the target. DELEGATECALL and CALLCODE: from is the executing address, to the code address. value is the transferred value; DELEGATECALL reports the inherited value and STATICCALL 0. Root gas is the transaction gas minus intrinsic gas, including access-list and authorization costs. Nested gas is the gas forwarded after the EIP-150 63/64 cap, plus the 2300 stipend for a value transfer.",
                         "properties": {
                           "callType": {
                             "enum": [
@@ -10691,7 +10691,7 @@
                         },
                         "properties": {
                           "result": {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -10730,7 +10730,7 @@
                             "const": "Reverted"
                           },
                           "result": {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -10792,7 +10792,7 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action (H10).",
+                        "description": "from is the creator and init the initcode. Root gas is the transaction gas minus intrinsic gas; nested gas is all but 1/64 of the caller's remaining gas. creationMethod distinguishes CREATE from CREATE2 and is required on every create action.",
                         "properties": {
                           "creationMethod": {
                             "enum": [
@@ -10838,7 +10838,7 @@
                       "result": {
                         "anyOf": [
                           {
-                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode (H10).",
+                            "description": "Successful creation. gasUsed is execution gas before refunds, including the code deposit; for the root it excludes intrinsic gas and the EIP-7623 floor. code is the deployed runtime bytecode.",
                             "properties": {
                               "address": {
                                 "pattern": "^0x[0-9a-fA-F]{40}$",
@@ -10865,7 +10865,7 @@
                             "type": "object"
                           },
                           {
-                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address (H09,H23).",
+                            "description": "A reverted creation reports its gas and revert bytes, never an address or deployed code, because no contract exists at the would-be address.",
                             "not": {
                               "anyOf": [
                                 {
@@ -10991,7 +10991,7 @@
                   {
                     "properties": {
                       "action": {
-                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records (H05).",
+                        "description": "A historical PoW block or uncle reward paid to author. Withdrawals and system operations are not reward records.",
                         "properties": {
                           "author": {
                             "pattern": "^0x[0-9a-fA-F]{40}$",

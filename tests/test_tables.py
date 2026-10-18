@@ -22,12 +22,12 @@ class Tables(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'mode union matches either populated list'):
             verify(reworded, [FILTERS])
 
-    def test_zero_value_precompile_at_the_depth_limit_conflicts(self):
-        conflicts = findings(FRAMES, 'conflicts')
-        self.assertTrue(conflicts)
-        for cell, attributes in conflicts:
-            self.assertEqual((cell['target'], cell['value'], cell['outcome']), ('precompile', 'zero', 'precheck depth'))
-            self.assertEqual(set(attributes['emitted']), {True, False})
+    def test_zero_value_precompile_at_the_depth_limit_is_omitted(self):
+        self.assertEqual(findings(FRAMES, 'conflicts'), [])
+        cells = [r['values'] for r in evaluate(FRAMES) if r['cell']['position'] == 'nested' and r['cell']['target'] == 'precompile'
+                 and r['cell']['value'] == 'zero' and r['cell']['outcome'] == 'precheck depth']
+        self.assertTrue(cells)
+        self.assertTrue(all(set(values['emitted']) == {False} for values in cells))
 
     def test_ordinary_frame_emission_is_stated(self):
         self.assertEqual(findings(FRAMES, 'gaps'), [])

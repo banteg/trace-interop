@@ -12,7 +12,7 @@
       },
       {
         "id": "nested-zero-precompile",
-        "quote": "Omit nested precompile frames with zero value"
+        "quote": "Omit nested precompile frames with zero value, including one whose call fails its precheck"
       },
       {
         "id": "nested-value-precompile",
@@ -20,7 +20,7 @@
       },
       {
         "id": "call-precheck",
-        "quote": "A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces"
+        "quote": "Any other CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces"
       },
       {
         "id": "create-precheck",
@@ -93,67 +93,6 @@
       ]
     },
     "findings": [
-      {
-        "attribute": "emitted",
-        "cells": 4,
-        "detail": [
-          [
-            "False",
-            [
-              "nested-zero-precompile"
-            ]
-          ],
-          [
-            "True",
-            [
-              "call-precheck"
-            ]
-          ]
-        ],
-        "kind": "conflict",
-        "members": [
-          {
-            "fork": "any fork",
-            "opcode": "CALL",
-            "outcome": "precheck depth",
-            "position": "nested",
-            "target": "precompile",
-            "value": "zero"
-          },
-          {
-            "fork": "any fork",
-            "opcode": "CALLCODE",
-            "outcome": "precheck depth",
-            "position": "nested",
-            "target": "precompile",
-            "value": "zero"
-          },
-          {
-            "fork": "any fork",
-            "opcode": "DELEGATECALL",
-            "outcome": "precheck depth",
-            "position": "nested",
-            "target": "precompile",
-            "value": "zero"
-          },
-          {
-            "fork": "any fork",
-            "opcode": "STATICCALL",
-            "outcome": "precheck depth",
-            "position": "nested",
-            "target": "precompile",
-            "value": "zero"
-          }
-        ],
-        "span": {
-          "fork": "*",
-          "opcode": "*",
-          "outcome": "precheck depth",
-          "position": "*",
-          "target": "precompile",
-          "value": "zero"
-        }
-      },
       {
         "attribute": "emitted",
         "cells": 5,

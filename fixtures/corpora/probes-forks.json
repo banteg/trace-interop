@@ -1418,6 +1418,37 @@
       }
     },
     {
+      "name": "depth-limit-precompile",
+      "probes": [
+        {
+          "attempts": [
+            "call"
+          ],
+          "depth": 1024,
+          "kind": "depth",
+          "requirement": "Under the deepest executed frame, at depth 1024, the CALL that fails the depth precheck emits a failed frame, and the zero-value call to a precompile that fails the same check emits none.",
+          "topic": "H29"
+        }
+      ],
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x60326022600039603260006000f060006000600060006000856102005a03f1505000602780600b6000396000f360006000600060006000306102005a03f1602557600060006000600060006004610100f1505b00",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x200000",
+            "gasPrice": "0x0"
+          },
+          [
+            "trace"
+          ],
+          "0x3"
+        ]
+      }
+    },
+    {
       "name": "fork-access-list-before",
       "probes": [
         {

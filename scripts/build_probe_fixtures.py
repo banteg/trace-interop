@@ -632,19 +632,27 @@ def forks():
     # 63/64 rule puts that depth out of reach of any practical gas cap. Each frame keeps 512 gas for its own exit.
     # Only the deepest frame's CALL returns 0; it then also attempts a CREATE, which fails the same check.
     head = asm(0, 0, 0, 0, 0, 'ADDRESS', 0x200, 'GAS', 'SUB', 'CALL')
-    fail = asm(0, 0, 0, 'CREATE', 'POP')
-    runtime = head + asm(len(head)//2 + 3 + len(fail)//2, 'JUMPI') + fail + asm('JUMPDEST', 'STOP')
-    child = deploy(runtime)
-    loader = lambda offset: asm(len(child)//2, offset, 0, 'CODECOPY', len(child)//2, 0, 0, 'CREATE',
-                                0, 0, 0, 0, 0, 'DUP6', 0x200, 'GAS', 'SUB', 'CALL', 'POP', 'POP', 'STOP')
-    root = loader(len(loader(0))//2) + child
-    assert len(loader(len(loader(0))//2)) == len(loader(0))
+
+    def recursion(fail):
+        runtime = head + asm(len(head)//2 + 3 + len(fail)//2, 'JUMPI') + fail + asm('JUMPDEST', 'STOP')
+        child = deploy(runtime)
+        loader = lambda offset: asm(len(child)//2, offset, 0, 'CODECOPY', len(child)//2, 0, 0, 'CREATE',
+                                    0, 0, 0, 0, 0, 'DUP6', 0x200, 'GAS', 'SUB', 'CALL', 'POP', 'POP', 'STOP')
+        assert len(loader(len(loader(0))//2)) == len(loader(0))
+        return loader(len(loader(0))//2) + child
+    root = recursion(asm(0, 0, 0, 'CREATE', 'POP'))
     homestead = hex(int(forkenv['HIVE_FORK_TANGERINE']) - 1)
     case(cases, 'depth-limit', 'trace_call', [{'from': sender, 'data': '0x'+root, 'gas': '0x200000', 'gasPrice': '0x0'}, ['trace'], homestead],
          probes=[probe('H29', 'depth', 'Under the deepest executed frame, at depth 1024, the CALL and CREATE that fail the depth precheck each emit a failed frame with no result and no subtraces.',
                        depth=1024, attempts=['call', 'create']),
                  probe('H09', 'depth', 'A CALL or CREATE that fails the depth precheck has error "Max call depth exceeded".',
                        depth=1024, attempts=['call', 'create'], labels=['Max call depth exceeded']*2)])
+    # The same recursion, where the deepest frame then makes a zero-value call to the identity precompile:
+    # nested zero-value precompile frames are omitted, also when the call fails its depth precheck.
+    root = recursion(asm(0, 0, 0, 0, 0, 4, 0x100, 'CALL', 'POP'))
+    case(cases, 'depth-limit-precompile', 'trace_call', [{'from': sender, 'data': '0x'+root, 'gas': '0x200000', 'gasPrice': '0x0'}, ['trace'], homestead],
+         probes=[probe('H29', 'depth', 'Under the deepest executed frame, at depth 1024, the CALL that fails the depth precheck emits a failed frame, '
+                       'and the zero-value call to a precompile that fails the same check emits none.', depth=1024, attempts=['call'])])
     # Fork activation of call-object features (H14, decided 2026-10-03): an access list before Berlin, dynamic fee
     # fields before London (even zero ones: no transaction carried them yet), blob fields before Cancun and an
     # authorization list before Prague are rejected (-32003 recommended), and run at their fork. An explicit type

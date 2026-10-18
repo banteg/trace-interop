@@ -19,9 +19,9 @@ CHAINS = {'initial': 'initial', 'a': 'a', 'repeat': 'a', 'fixed': 'a',
           'forks': 'forks', 'fork-followup': 'forks', 'boundary-repeat': 'forks',
           'reorg': 'a', 'reorg-safe': 'a', 'pruned': 'a', 'precompiles': 'a', 'precompile-values': 'a', 'raw-validation': 'raw-validation', 'coverage': 'raw-validation', 'fee-policy': 'raw-validation', 'fee-compat': 'raw-validation', 'callmany-isolation': 'a', 'h30': 'a', 'raw-selector': 'a',
           'probes-prague': 'raw-validation', 'probes-forks': 'forks',
-          'mined-probes': 'mined-probes'}
+          'mined-probes': 'mined-probes', 'pending': 'a'}
 # Corpora whose setup exists only as a Hive scenario adapter (Engine API reorgs, Reth pruning).
-HIVE_SCENARIOS = {'reorg', 'reorg-safe', 'pruned'}
+HIVE_SCENARIOS = {'reorg', 'reorg-safe', 'pruned', 'pending'}
 from .versions import NAMES
 from .replica import REPLICA_CLIENTS
 

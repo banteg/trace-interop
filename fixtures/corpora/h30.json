@@ -233,31 +233,6 @@
       }
     },
     {
-      "name": "block-pending",
-      "request": {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "trace_block",
-        "params": [
-          "pending"
-        ]
-      }
-    },
-    {
-      "name": "replay-pending",
-      "request": {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "trace_replayBlockTransactions",
-        "params": [
-          "pending",
-          [
-            "trace"
-          ]
-        ]
-      }
-    },
-    {
       "name": "filter-hash-bounds",
       "request": {
         "jsonrpc": "2.0",

@@ -118,3 +118,20 @@ probes in Hive's lexical order and has no isolation assertion. It remains in the
 historical evidence but is not used as proof that simulations leave state unchanged.
 The new scenario also checks per-call nonce progression and storage transitions;
 fee amounts and warm-access/refund semantics remain outside these assertions.
+
+### Pending block
+
+`pending` is an ordered scenario on the frozen chain-a head. Its `pool` phase sends one
+signed EIP-1559 transfer from Hive's public hivechain key 0x84E75c28…, whose nonce is 0,
+and checks that the transaction is pooled and not mined. The `trace` phase then calls
+trace_block and trace_replayBlockTransactions at `pending`. Without a pooled transaction a
+pending block is empty and traces as `[]`, which cannot show which block was traced. Here a
+pending block is block 0x31 holding that transaction (H32). Block 0x30 has transactions, so
+answering with latest returns canonical records. A rejection (-32602 recommended) also
+agrees. Replica clients are excluded, because Anvil would mine the transaction at once. A
+failed send or a mined transaction blocks the scenario as a setup failure.
+
+```sh
+uv run trace-interop run --lock locks/clients-2026-09-21.json \
+  --corpus pending --output runs/pending
+```

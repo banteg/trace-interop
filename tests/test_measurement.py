@@ -299,15 +299,20 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(statuses('a', 'missing-block-replay', result([]), 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])
-        # H32: pending block methods need a pending block; hash bounds are rejected.
-        self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H32'), ['matches'])
-        self.assertEqual(statuses('h30', 'block-pending', error(-32602), 'H14'), [])
-        record = lambda n: {'type': 'call', 'blockNumber': n, 'traceAddress': [], 'action': {}}
-        self.assertEqual(statuses('h30', 'block-pending', result([record(48)]), 'H32'), ['change_needed'])
-        self.assertEqual(statuses('h30', 'block-pending', result([record(49)]), 'H32'), ['matches'])
-        latest = run_context(ROOT, {'corpus': 'h30'})['_blocks']['0x30']['transactions'][0]['hash']
-        self.assertEqual(statuses('h30', 'replay-pending', result([{'transactionHash': latest, 'trace': [], 'output': '0x'}]), 'H32'),
-                         ['change_needed'])
+        # H32: pending block methods need a pending block holding the pooled transaction; hash bounds are rejected.
+        self.assertEqual(statuses('pending', 'trace/block', error(-32602), 'H32'), ['matches'])
+        self.assertEqual(statuses('pending', 'trace/block', error(-32602), 'H14'), [])
+        self.assertEqual(statuses('pending', 'trace/block', result([]), 'H32'), ['blocked'])
+        pooled = run_context(ROOT, {'corpus': 'pending'})['pending_transaction']
+        latest = run_context(ROOT, {'corpus': 'pending'})['_blocks']['0x30']['transactions'][0]['hash']
+        record = lambda n, h=pooled: {'type': 'call', 'blockNumber': n, 'transactionHash': h, 'traceAddress': [], 'action': {}}
+        self.assertEqual(statuses('pending', 'trace/block', result([record(48, latest)]), 'H32'), ['change_needed'])
+        self.assertEqual(statuses('pending', 'trace/block', result([record(49)]), 'H32'), ['matches'])
+        self.assertEqual(statuses('pending', 'trace/block', result([record(49, '0x'+'11'*32)]), 'H32'), ['change_needed'])
+        envelope = lambda h: {'transactionHash': h, 'trace': [], 'output': '0x'}
+        self.assertEqual(statuses('pending', 'trace/replay', result([envelope(latest)]), 'H32'), ['change_needed'])
+        self.assertEqual(statuses('pending', 'trace/replay', result([envelope(pooled)]), 'H32'), ['matches'])
+        self.assertEqual(statuses('pending', 'trace/replay', result([envelope('0x'+'11'*32)]), 'H32'), ['change_needed'])
         for name in ['filter-hash-bounds', 'filter-hash-object-bounds']:
             self.assertEqual(statuses('h30', name, error(-32602), 'H32'), ['matches'])
             self.assertEqual(statuses('h30', name, result([]), 'H32'), ['change_needed'])

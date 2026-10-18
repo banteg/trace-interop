@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "expected_control": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4",
+      "name": "pool/send",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_sendRawTransaction",
+        "params": [
+          "0x02f871870c72dd9d5e883e80843b9aca0084773594008252089400000000000000000000000000000000000009310180c080a008e61997840e9ef6a616fc2836ec933b86c89d254484fca31484d6daab5eb127a07767ff8ede4ef337d95ca8aa62ac59a2ac995e9b639377f85116b74d209ef444"
+        ]
+      }
+    },
+    {
+      "expected_control_fields": {
+        "blockHash": null,
+        "blockNumber": null,
+        "hash": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4"
+      },
+      "name": "pool/pooled",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionByHash",
+        "params": [
+          "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4"
+        ]
+      }
+    },
+    {
+      "name": "trace/block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "pending"
+        ]
+      }
+    },
+    {
+      "name": "trace/replay",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "pending",
+          [
+            "trace"
+          ]
+        ]
+      }
+    }
+  ],
+  "description": "One pooled EIP-1559 transfer on the frozen chain-a head (public hivechain key 0x84E75c28\u2026), then trace_block and trace_replayBlockTransactions at pending (H32).",
+  "pending_transaction": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4",
+  "scenario_phases": [
+    "pool",
+    "trace"
+  ],
+  "sender": "0x84e75c28348fb86acea1a93a39426d7d60f4cc46"
+}

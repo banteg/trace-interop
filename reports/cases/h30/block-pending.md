@@ -22,8 +22,8 @@
 
 ```json
 {
-  "jsonrpc": "2.0",
   "id": 1,
+  "jsonrpc": "2.0",
   "method": "trace_block",
   "params": [
     "pending"

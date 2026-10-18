@@ -223,10 +223,11 @@ Their expectations come from fixture bytecode, the frozen chains and the rule ch
 - H06, in `a`: `missing-block-replay` replays unknown block 0xffff (an error, -32001 recommended, never null
   or `[]`), and `missing-block-filter-next` ends one block past the head, a two-block range that no range cap
   rejects first (an error, -32602 recommended).
-- H32, in `h30`: `block-pending` and `replay-pending` select the pending block, and `filter-hash-bounds` and
-  `filter-hash-object-bounds` bound a filter by block 2's hash, as a string and as an EIP-1898 object
-  (rejected, -32602 recommended). Accepting either as a hash-to-height endpoint differs, even when the
-  page matches the numeric range.
+- H32, in `pending`: `trace/block` and `trace/replay` select the pending block after `pool/send` pools one
+  transfer, so a pending block is block 0x31 holding that transaction, and latest returns block 0x30's
+  canonical transactions. In `h30`, `filter-hash-bounds` and `filter-hash-object-bounds` bound a filter by
+  block 2's hash, as a string and as an EIP-1898 object (rejected, -32602 recommended). Accepting either as
+  a hash-to-height endpoint differs, even when the page matches the numeric range.
 
 No frozen chain has the Erigon reward-leak block (H23): the forks chain's only transaction to the coinbase is in
 post-merge block 60, which has no reward, so a PoW block in which a listed sender also pays the coinbase needs a

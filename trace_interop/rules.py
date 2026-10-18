@@ -212,16 +212,22 @@ def pending_check(method, params, status, response, result, context):
         return verdict('change_needed', f'Expected a list; got {str(result)[:80]}.')
     if not result:
         return verdict('blocked', 'An empty result names no block, so it cannot show a pending environment.')
+    # A scenario that pooled a transaction first expects the pending block to hold it.
+    pooled = context.get('pending_transaction')
+    missing = f' The pooled transaction {pooled} is missing.'
     if method == 'trace_block':
         numbers = sorted(distinct(mapping(f).get('blockNumber') for f in result), key=str)
-        return verdict('matches' if numbers == [head+1] else 'change_needed', f'Records from blocks {numbers}; the head is {head}.')
+        absent = pooled is not None and pooled not in {mapping(f).get('transactionHash') for f in result}
+        return verdict('matches' if numbers == [head+1] and not absent else 'change_needed',
+                       f'Records from blocks {numbers}; the head is {head}.'+(missing if absent else ''))
     hashes = [mapping(e).get('transactionHash') for e in result]
     if not all(isinstance(h, str) for h in hashes):
         return verdict('change_needed', f'Expected envelopes with transactionHash strings; got {json.dumps(result)[:80]}.')
     canonical = {t['hash'] for b in mapping(context.get('_blocks')).values() for t in b['transactions']}
     replayed = set(hashes)
-    return verdict('change_needed' if canonical & replayed else 'matches',
-                   f'{len(result)} envelopes, {len(canonical & replayed)} of them canonical transactions.')
+    absent = pooled is not None and pooled not in replayed
+    return verdict('change_needed' if canonical & replayed or absent else 'matches',
+                   f'{len(result)} envelopes, {len(canonical & replayed)} of them canonical transactions.'+(missing if absent else ''))
 
 
 def embedded_error(response):

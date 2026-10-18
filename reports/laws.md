@@ -10,7 +10,7 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Law | Statement | Pairs checked | Builds with violations |
 | --- | --- | --- | --- |
-| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8422 | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea |
+| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8431 | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea |
 | **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 15216 | — |
 | **L03** Root output | A successful root call frame reports the envelope output. | 1594 | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea |
 | **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 28675 | — |
@@ -29,8 +29,8 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Besu 26.10-develop · abdf1419 | 1 | Found by this law. At the call depth limit (`probes-forks/depth-limit`) the successful CREATE at depth 1 reports gasUsed 2^64 − 25357 and the phantom CREATE at depth 1025 reports 2^64 − 22239: negative gas wrapped to unsigned. The H29 depth probe records the phantom frame but no assertion checks its gas. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` |
-| Besu 26.10.0 · 976ca7ea | 1 | The same wrapped gasUsed as the development build. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` |
+| Besu 26.10-develop · abdf1419 | 2 | Found by this law. At the call depth limit (`probes-forks/depth-limit`) the successful CREATE at depth 1 reports gasUsed 2^64 − 25357 and the phantom CREATE at depth 1025 reports 2^64 − 22239: negative gas wrapped to unsigned. The H29 depth probe records the phantom frame but no assertion checks its gas. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
+| Besu 26.10.0 · 976ca7ea | 2 | The same wrapped gasUsed as the development build. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
 
 ### L03 Root output
 

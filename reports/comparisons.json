@@ -145587,6 +145587,91 @@
     ]
   },
   {
+    "case": "depth-limit-precompile",
+    "corpus": "probes-forks",
+    "groups": [
+      {
+        "observations": [
+          {
+            "client": "besu_development",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
+          },
+          {
+            "client": "besu_release",
+            "eligible": true,
+            "status": "result",
+            "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+          }
+        ],
+        "sha256": "a472713f57505a8e4a2a2658370b1e19e51ea6be0f27f8f20ae120c67c373f74"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_development",
+            "eligible": true,
+            "status": "result",
+            "version": "3.9.0-dev-1ee57924"
+          },
+          {
+            "client": "go-ethereum_trace",
+            "eligible": true,
+            "status": "result",
+            "version": "Geth/v1.17.9-unstable-fdbb46a5-2026-10-18/linux-amd64/go1.26.1"
+          },
+          {
+            "client": "reth_development",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+e6679687"
+          }
+        ],
+        "sha256": "d9a12e377f58a162fabbc094743fe2d8588d071cc7792c3e9f8659b24b7d6354"
+      },
+      {
+        "observations": [
+          {
+            "client": "erigon_release",
+            "eligible": true,
+            "status": "result",
+            "version": "3.7.1-8c1e3893"
+          }
+        ],
+        "sha256": "34c48b372de2f3c83c86719cc5a2538ac1ae7b44e16d3bdf7a741dbbc78fa25a"
+      },
+      {
+        "observations": [
+          {
+            "client": "nethermind_development",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0-preview+159862be"
+          },
+          {
+            "client": "nethermind_release",
+            "eligible": true,
+            "status": "result",
+            "version": "2.2.0+1d2aff00"
+          }
+        ],
+        "sha256": "8b9107dc3bcfe4cbd113b50cbba401511e8ae0f8422a651f1bd517b8edae44b6"
+      },
+      {
+        "observations": [
+          {
+            "client": "reth_release",
+            "eligible": true,
+            "status": "result",
+            "version": "Reth Version: 2.7.0+3d592ece"
+          }
+        ],
+        "sha256": "dc43cdc7bc8bfea1734b1a5073baece44adda2a372c9185f7c07d9b702430675"
+      }
+    ]
+  },
+  {
     "case": "filter-case-variant-member",
     "corpus": "probes-forks",
     "groups": [
@@ -146544,7 +146629,7 @@
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "a2a20a6bb23059deec53e36f67f1439bffca34fa331abaae351204c63ccd406c"
+        "sha256": "06f4a6f228b4578063e9e4562cd1d7a0dc2e096383eda77e13421b456a5e5e5f"
       },
       {
         "observations": [
@@ -146555,7 +146640,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "79c327f3bdb8c3615d4502b6ed3f6a465c1af0262002ba49802028ceeaafd4bc"
+        "sha256": "cccd7ab31299536bab7420b17883e61ef7a5c9601ea771a73e6de5b4f237eb9e"
       },
       {
         "observations": [
@@ -146644,7 +146729,7 @@
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "a2a20a6bb23059deec53e36f67f1439bffca34fa331abaae351204c63ccd406c"
+        "sha256": "06f4a6f228b4578063e9e4562cd1d7a0dc2e096383eda77e13421b456a5e5e5f"
       },
       {
         "observations": [
@@ -146655,7 +146740,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "79c327f3bdb8c3615d4502b6ed3f6a465c1af0262002ba49802028ceeaafd4bc"
+        "sha256": "cccd7ab31299536bab7420b17883e61ef7a5c9601ea771a73e6de5b4f237eb9e"
       },
       {
         "observations": [
@@ -146869,7 +146954,7 @@
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "0a9b644ad4c176bfe6cbbaf5d33cca2be25be15db2c4324c61e83dc8d1a7a17d"
+        "sha256": "13246fc17a9af590434b5c48e5c84e0947d7f3214d85e4e1a41fce4c5e318d1d"
       },
       {
         "observations": [
@@ -146880,7 +146965,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "e6e193d06e63853c2ced4c66ee4a4d202cc38677c9c12f7567213befd3b76e05"
+        "sha256": "0a9b644ad4c176bfe6cbbaf5d33cca2be25be15db2c4324c61e83dc8d1a7a17d"
       },
       {
         "observations": [
@@ -146964,7 +147049,7 @@
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "0a9b644ad4c176bfe6cbbaf5d33cca2be25be15db2c4324c61e83dc8d1a7a17d"
+        "sha256": "13246fc17a9af590434b5c48e5c84e0947d7f3214d85e4e1a41fce4c5e318d1d"
       },
       {
         "observations": [
@@ -146975,7 +147060,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "e6e193d06e63853c2ced4c66ee4a4d202cc38677c9c12f7567213befd3b76e05"
+        "sha256": "0a9b644ad4c176bfe6cbbaf5d33cca2be25be15db2c4324c61e83dc8d1a7a17d"
       },
       {
         "observations": [
@@ -147907,7 +147992,12 @@
             "eligible": true,
             "status": "rpc_error",
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
-          },
+          }
+        ],
+        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+      },
+      {
+        "observations": [
           {
             "client": "besu_release",
             "eligible": true,
@@ -147915,7 +148005,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+        "sha256": "87b4ed9c58874520263ae795e0cb11be480c676dff6ae37018bd816aea598ad3"
       },
       {
         "observations": [
@@ -147997,7 +148087,12 @@
             "eligible": true,
             "status": "rpc_error",
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
-          },
+          }
+        ],
+        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+      },
+      {
+        "observations": [
           {
             "client": "besu_release",
             "eligible": true,
@@ -148005,7 +148100,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+        "sha256": "87b4ed9c58874520263ae795e0cb11be480c676dff6ae37018bd816aea598ad3"
       },
       {
         "observations": [
@@ -148222,7 +148317,12 @@
             "eligible": true,
             "status": "rpc_error",
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
-          },
+          }
+        ],
+        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+      },
+      {
+        "observations": [
           {
             "client": "besu_release",
             "eligible": true,
@@ -148230,7 +148330,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+        "sha256": "87b4ed9c58874520263ae795e0cb11be480c676dff6ae37018bd816aea598ad3"
       },
       {
         "observations": [
@@ -148312,7 +148412,12 @@
             "eligible": true,
             "status": "rpc_error",
             "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
-          },
+          }
+        ],
+        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+      },
+      {
+        "observations": [
           {
             "client": "besu_release",
             "eligible": true,
@@ -148320,7 +148425,7 @@
             "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
           }
         ],
-        "sha256": "8e3b5479316f693e50a3f36a1b725e72f1b90f1ecabcdf0c50569b92273c8308"
+        "sha256": "87b4ed9c58874520263ae795e0cb11be480c676dff6ae37018bd816aea598ad3"
       },
       {
         "observations": [

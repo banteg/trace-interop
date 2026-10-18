@@ -11,38 +11,38 @@
       },
       "besu_development": {
         "held": 772,
-        "violated": 1
+        "violated": 2
       },
       "besu_release": {
         "held": 774,
-        "violated": 1
+        "violated": 2
       },
       "erigon_development": {
-        "held": 744,
+        "held": 745,
         "violated": 0
       },
       "erigon_release": {
-        "held": 768,
+        "held": 769,
         "violated": 0
       },
       "go-ethereum_trace": {
-        "held": 748,
+        "held": 749,
         "violated": 0
       },
       "nethermind_development": {
-        "held": 744,
+        "held": 745,
         "violated": 0
       },
       "nethermind_release": {
-        "held": 746,
+        "held": 747,
         "violated": 0
       },
       "reth_development": {
-        "held": 886,
+        "held": 887,
         "violated": 0
       },
       "reth_release": {
-        "held": 886,
+        "held": 887,
         "violated": 0
       }
     },
@@ -621,11 +621,33 @@
     },
     {
       "cases": [
+        "depth-limit-precompile"
+      ],
+      "client": "besu_development",
+      "corpus": "probes-forks",
+      "detail": "[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas",
+      "law": "L01",
+      "run": "probes-forks",
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
+    },
+    {
+      "cases": [
         "depth-limit"
       ],
       "client": "besu_release",
       "corpus": "probes-forks",
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
+      "law": "L01",
+      "run": "probes-forks",
+      "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"
+    },
+    {
+      "cases": [
+        "depth-limit-precompile"
+      ],
+      "client": "besu_release",
+      "corpus": "probes-forks",
+      "detail": "[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas",
       "law": "L01",
       "run": "probes-forks",
       "version": "besu/v26.10.0/linux-x86_64/openjdk-java-25"

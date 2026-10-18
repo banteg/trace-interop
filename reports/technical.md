@@ -41,7 +41,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 16367 |
+| 🔎 Assessed | 16376 |
 | 🟡 Partial | 111 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 57 |
@@ -859,6 +859,7 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-forks/beacon-many-55](cases/probes-forks/beacon-many-55.md) | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea |
 | [probes-forks/beacon-trace-55](cases/probes-forks/beacon-trace-55.md) | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea |
 | [probes-forks/depth-limit](cases/probes-forks/depth-limit.md) | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea, Nethermind 2.2.0-preview · 159862be, Nethermind 2.2.0 · 1d2aff00 |
+| [probes-forks/depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md) | Besu 26.10-develop · abdf1419, Besu 26.10.0 · 976ca7ea, Nethermind 2.2.0-preview · 159862be, Nethermind 2.2.0 · 1d2aff00 |
 | [probes-forks/filter-case-variant-member](cases/probes-forks/filter-case-variant-member.md) | Erigon 3.9.0-dev · 1ee57924, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 159862be, Nethermind 2.2.0 · 1d2aff00 |
 | [probes-forks/filter-null-fromBlock](cases/probes-forks/filter-null-fromBlock.md) | Erigon 3.7.1 · 8c1e3893 |
 | [probes-forks/filter-null-members](cases/probes-forks/filter-null-members.md) | Erigon 3.9.0-dev · 1ee57924, Erigon 3.7.1 · 8c1e3893, Nethermind 2.2.0-preview · 159862be, Nethermind 2.2.0 · 1d2aff00 |
@@ -1004,7 +1005,7 @@ Capture completeness records whether requests finished, not whether their result
 | [pending](../evidence/2026-10-18/eval/pending/manifest.json) | pending | ✅ Yes |
 | [raw-selector](../evidence/2026-10-18/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
 | [probes-prague](../evidence/2026-10-18/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
-| [probes-forks](../evidence/2026-10-18/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
+| [probes-forks](../evidence/2026-10-18/depth-precompile/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-10-18/eval/mined-probes/manifest.json) | mined-probes | ⚠️ No |
 | [reorg-safe](../evidence/2026-10-18/eval/reorg-safe/manifest.json) | reorg-safe | ⚠️ No |
 | [pruned](../evidence/2026-10-18/eval/pruned/manifest.json) | pruned | ✅ Yes |

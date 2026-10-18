@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-17",
+  "checked_at": "2026-10-18",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -3063,10 +3063,17 @@
       "decisions": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "CallArgs.ToMessage gives a call with maxFeePerBlobGas and no blobVersionedHashes an empty blob hash list, so every call method (eth_call, eth_estimateGas, eth_createAccessList, eth_callMany, debug_traceCall/CallMany, trace_call/CallMany) rejects it like an explicit empty list: ErrBlobTxnEmptyBlobs from Cancun, ErrBlobTxnPreCancun before; eth_simulateV1 clears a lone cap in sanitizeCall, and eth_fillTransaction estimates gas without it; follows ethereum/go-ethereum#35928 and execution-apis#939 for eth_call; covers Erigon development's last H14 difference in the 2026-10-17 eval (fork-blob-fee-only-before/-at)"
+      "merged_at": "2026-10-18T08:23:05Z",
+      "note": "CallArgs.ToMessage gives a call with maxFeePerBlobGas and no blobVersionedHashes an empty blob hash list, so every call method (eth_call, eth_estimateGas, eth_createAccessList, eth_callMany, debug_traceCall/CallMany, trace_call/CallMany) rejects it like an explicit empty list: ErrBlobTxnEmptyBlobs from Cancun, ErrBlobTxnPreCancun before; eth_simulateV1 clears a lone cap in sanitizeCall, and eth_fillTransaction estimates gas without it; follows ethereum/go-ethereum#35928 and execution-apis#939 for eth_call; covers Erigon development's last H14 difference in the 2026-10-17 eval (fork-blob-fee-only-before/-at)",
+      "uptake": {
+        "merge_commit": "dbaf982a31e38c77ebdf630948037ab4402d8476",
+        "builds": {
+          "5b452f41aa1adf71d761fa4c0acb8e3df887c29a": false,
+          "8c1e3893d77d230720d172f1492d95b5777a862c": false
+        }
+      }
     },
     {
       "url": "https://github.com/alloy-rs/evm/pull/427",

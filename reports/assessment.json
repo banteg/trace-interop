@@ -62,8 +62,8 @@
     "../evidence/2026-10-11/eval/preflight.json": "efe6972d524867062834ad66f78bf3141c99c01965a3cc71f33718f6fb98da4b"
   },
   "sources": {
-    "decisions/fixes.json": "d3ccd1d2d341e665855a447338c664a69175954d7fdcf20d87c0c31bc0155213",
-    "decisions/impact.json": "49d1d53d2a91f3ceffa5182da153f3d6b35988e8c2ff0acd2032796c1d7fb329",
+    "decisions/fixes.json": "ecad6da10075cecb5a371d24c352cf162e6f9c2829ae53250a3f48496b0fb25b",
+    "decisions/impact.json": "07c6b080fd12c4c3afacb2c37c3641a7887626ae186e0af0e6af5e94fd0c3c3e",
     "decisions/laws.json": "b501411261853c58653d055db713d31c4963cddafa30bd011b45b70d41e3b89d",
     "decisions/ledger.json": "957b8d1ba37a879a27965fb7a213c9a16ea4b8731079c64bbaf36e900f2e6d8a",
     "decisions/sources.json": "9e7c13674cae185d29f128886c58b1fd916813faf27207723712216566a677d4",

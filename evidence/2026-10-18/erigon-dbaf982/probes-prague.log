@@ -1,0 +1,5 @@
+docker.io/erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e: Pulling from erigontech/erigon
+Digest: sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+Status: Image is up to date for erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+docker.io/erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+Captured 124 responses in /home/banteg/dev/trace-erigon-dbaf982-2026-10-18/runs/erigon-dbaf982/probes-prague

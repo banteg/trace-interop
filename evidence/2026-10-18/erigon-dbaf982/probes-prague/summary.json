@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "eligible": {
+    "erigon_development": true
+  },
+  "exchange_count": 124,
+  "launches": [
+    {
+      "log": "sending engine_forkchoiceUpdatedV3: [map[finalizedBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 headBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 safeBlockHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956] <nil>]\nresponse: map[payloadId:<nil> payloadStatus:map[latestValidHash:0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956 status:VALID validationError:<nil>]]\n",
+      "name": "client launch (erigon_development)",
+      "pass": true
+    }
+  ],
+  "missing": [],
+  "note": "Hive placeholder failure counts are not conformance scores.",
+  "scenario": {
+    "erigon_development": {
+      "detail": "ordinary imported-chain scenario",
+      "verified": true
+    }
+  },
+  "transport_errors": [],
+  "versions": {
+    "erigon_development": "3.9.0-dev-dbaf982a"
+  }
+}

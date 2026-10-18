@@ -1,0 +1,8 @@
+From https://github.com/ethereum/hive
+ * branch            43ea47bef5761351e3da7b726050ea80ab362c52 -> FETCH_HEAD
+HEAD is now at 43ea47b simulators/ethereum/engine: apply withdrawals CL mock config (#1604)
+docker.io/erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e: Pulling from erigontech/erigon
+Digest: sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+Status: Image is up to date for erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+docker.io/erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e
+Captured 76 responses in /home/banteg/dev/trace-erigon-dbaf982-2026-10-18/runs/erigon-dbaf982/initial

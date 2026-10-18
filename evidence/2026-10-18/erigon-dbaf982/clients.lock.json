@@ -1,0 +1,31 @@
+{
+  "clients": {
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-18T08:24:51.045930389Z",
+      "digest": "erigontech/erigon@sha256:69b6fef2028679beab6dea0ed792859931312dc15412bf07946a192163869a5e",
+      "image_id": "sha256:f046d5cd42844380d6e8754c6f3ae2351fad82af95e6272c50817f20337b27a6",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-18T08:23:17Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "dbaf982a31e38c77ebdf630948037ab4402d8476",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "dbaf982",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "dbaf982a31e38c77ebdf630948037ab4402d8476"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-dbaf982"
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolution": "pinned",
+  "resolution_started_at": "2026-10-18T10:04:09.484008+00:00",
+  "resolved_at": "2026-10-18T10:04:24.524073+00:00"
+}

@@ -18,7 +18,7 @@
         "violated": 1
       },
       "erigon_development": {
-        "held": 746,
+        "held": 744,
         "violated": 0
       },
       "erigon_release": {
@@ -110,7 +110,7 @@
         "violated": 3
       },
       "erigon_development": {
-        "held": 147,
+        "held": 145,
         "violated": 0
       },
       "erigon_release": {
@@ -617,7 +617,7 @@
       "detail": "[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, \u2026 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas",
       "law": "L01",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -639,7 +639,7 @@
       "detail": "root output 0x vs envelope \"0x11223344\"",
       "law": "L03",
       "run": "initial",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -650,7 +650,7 @@
       "detail": "root output 0x vs envelope \"0x6572726f72\"",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -661,7 +661,7 @@
       "detail": "root output 0x vs envelope \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000",
       "law": "L03",
       "run": "precompiles",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -706,7 +706,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -718,7 +718,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "forks",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -730,7 +730,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -742,7 +742,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -754,7 +754,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -766,7 +766,7 @@
       "detail": "[8].result present on one side only",
       "law": "L07",
       "run": "initial",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -778,7 +778,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -790,7 +790,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -802,7 +802,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -814,7 +814,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -826,7 +826,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -838,7 +838,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -850,7 +850,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -862,7 +862,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -874,7 +874,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -886,7 +886,7 @@
       "detail": "[2].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -898,7 +898,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -910,7 +910,7 @@
       "detail": "[1].result present on one side only",
       "law": "L07",
       "run": "mined-probes",
-      "version": "2.2.0-preview+cd336c4c"
+      "version": "2.2.0-preview+159862be"
     },
     {
       "cases": [
@@ -3359,7 +3359,7 @@
       "detail": "list has 8 vs 16 entries",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3372,7 +3372,7 @@
       "detail": "[3].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3385,7 +3385,7 @@
       "detail": "[4].action.gas present on one side only",
       "law": "L10",
       "run": "forks",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [
@@ -3400,7 +3400,7 @@
       "detail": "record 2, call at 0xc70e083ed6a62ac7edb4cfb179bddcdbe6110531183e00b5b1935a5ac7d2bea7 [], is not the next block record",
       "law": "L10",
       "run": "probes-forks",
-      "version": "besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25"
+      "version": "besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25"
     },
     {
       "cases": [

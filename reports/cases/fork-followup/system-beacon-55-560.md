@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Besu · 26.10-develop · 0776d82f](../../clients/besu_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Erigon · 3.8.0-dev · 5b452f41](../../clients/erigon_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../clients/go-ethereum_trace.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Nethermind · 2.2.0-preview · cd336c4c](../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
-| [Reth · 2.7.0 · ec3e7e42](../../clients/reth_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/fork-followup/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Geth draft fork · 1.17.9-unstable · fdbb46a5](../../clients/go-ethereum_trace.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
+| [Reth · 2.7.0 · e6679687](../../clients/reth_development.md) | `0x0000000000000000000000000000000000000000000000000000000000000000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/fork-followup/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/fork-followup/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,7 +31,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 0776d82f** (`besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · abdf1419** (`besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25`)
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -39,7 +39,7 @@
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Erigon · 3.8.0-dev · 5b452f41** (`3.8.0-dev-5b452f41`)
+**Erigon · 3.9.0-dev · 1ee57924** (`3.9.0-dev-1ee57924`)
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -47,11 +47,11 @@
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Geth draft fork · 1.17.7-unstable · 71db3b03** (`Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.9-unstable · fdbb46a5** (`Geth/v1.17.9-unstable-fdbb46a5-2026-10-18/linux-amd64/go1.26.1`)
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 2.2.0-preview · cd336c4c** (`2.2.0-preview+cd336c4c`)
+**Nethermind · 2.2.0-preview · 159862be** (`2.2.0-preview+159862be`)
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -59,7 +59,7 @@
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 2.7.0 · ec3e7e42** (`Reth Version: 2.7.0+ec3e7e42`)
+**Reth · 2.7.0 · e6679687** (`Reth Version: 2.7.0+e6679687`)
 
 - [H28](../../decisions/H28.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

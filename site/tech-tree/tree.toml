@@ -176,6 +176,7 @@ actor = "paolo"
 also = "Alex Sharov (merges)"
 client = "erigon"
 build = "development"
+agreed_on = "2026-10-18"
 url = "https://github.com/erigontech/erigon"
 text = "Erigon’s development build. Fixture changes go through rpc-tests first."
 

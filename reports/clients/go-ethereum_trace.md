@@ -1,12 +1,12 @@
 # Geth draft fork: changes to review
 
-The experimental fork follows the adopted source-review stances; its checked cases agree on every assessed decision, including pending simulations, which it runs in a real pending environment; pending block traces, which return the pending block holding a pooled transaction, and one H14 input policy is open; it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
+The experimental fork follows the adopted source-review stances; its checked cases agree on all 33 decisions, including pending simulations and pending block traces, which it runs in a real pending environment that holds pooled transactions; one H14 input policy is open, and it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.7-unstable` | [`71db3b03`](https://github.com/banteg/go-ethereum/commit/71db3b037aac2f765bfc9492df439fcf671729dd) | 2026-10-13 | [2026-10-16](../../evidence/2026-10-17/eval/initial/manifest.json)<br>[2026-10-17](../../evidence/2026-10-17/eval/coverage/manifest.json)<br>[2026-10-18](../../evidence/2026-10-18/eval-pending/pending/manifest.json) |
+| `1.17.9-unstable` | [`fdbb46a5`](https://github.com/banteg/go-ethereum/commit/fdbb46a5039cf095cd27f6c4a5ef813c08896666) | 2026-10-18 | [2026-10-18](../../evidence/2026-10-18/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -20,7 +20,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.17.7-unstable · 71db3b03 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 1.17.9-unstable · fdbb46a5 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

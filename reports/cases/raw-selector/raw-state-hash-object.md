@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Anvil · 1.8.6-nightly · de005f70](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Besu · 26.10-develop · 0776d82f](../../clients/besu_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Erigon · 3.8.0-dev · 5b452f41](../../clients/erigon_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Geth draft fork · 1.17.7-unstable · 71db3b03](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Nethermind · 2.2.0-preview · cd336c4c](../../clients/nethermind_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
-| [Reth · 2.7.0 · ec3e7e42](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-17/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-17/eval/raw-selector/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Anvil · 1.8.6-nightly · 6c21ffe2](../../clients/anvil_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Geth draft fork · 1.17.9-unstable · fdbb46a5](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
+| [Reth · 2.7.0 · e6679687](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-selector/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-selector/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -37,7 +37,7 @@
 }
 ```
 
-**Anvil · 1.8.6-nightly · de005f70** (`anvil Version: 1.8.6-nightly+de005f70`)
+**Anvil · 1.8.6-nightly · 6c21ffe2** (`anvil Version: 1.8.6-nightly+6c21ffe2`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment.
 
@@ -45,7 +45,7 @@
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment.
 
-**Besu · 26.10-develop · 0776d82f** (`besu/v26.10-develop-0776d82/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · abdf1419** (`besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid number of params).
 
@@ -53,7 +53,7 @@
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid number of params).
 
-**Erigon · 3.8.0-dev · 5b452f41** (`3.8.0-dev-5b452f41`)
+**Erigon · 3.9.0-dev · 1ee57924** (`3.9.0-dev-1ee57924`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2).
 
@@ -61,11 +61,11 @@
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2).
 
-**Geth draft fork · 1.17.7-unstable · 71db3b03** (`Geth/v1.17.7-unstable-71db3b03-2026-10-14/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.9-unstable · fdbb46a5** (`Geth/v1.17.9-unstable-fdbb46a5-2026-10-18/linux-amd64/go1.26.1`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2).
 
-**Nethermind · 2.2.0-preview · cd336c4c** (`2.2.0-preview+cd336c4c`)
+**Nethermind · 2.2.0-preview · 159862be** (`2.2.0-preview+159862be`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params).
 
@@ -73,7 +73,7 @@
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params).
 
-**Reth · 2.7.0 · ec3e7e42** (`Reth Version: 2.7.0+ec3e7e42`)
+**Reth · 2.7.0 · e6679687** (`Reth Version: 2.7.0+e6679687`)
 
 - [H12](../../decisions/H12.md): Record which state and block environment an explicit third selector uses. Selector block 0x19 as an EIP-1898 object: honored: the block 0x19 post-state in the block 0x19 environment.
 

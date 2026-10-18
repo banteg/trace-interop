@@ -5,7 +5,7 @@
         "development": {
           "agree": 6,
           "build": [
-            "26.10-develop \u00b7 0776d82f"
+            "26.10-develop \u00b7 abdf1419"
           ],
           "gained": 0,
           "lost": 0
@@ -15,7 +15,7 @@
           "build": [
             "26.10.0 \u00b7 976ca7ea"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -38,9 +38,9 @@
     {
       "builds": {
         "development": {
-          "agree": 32,
+          "agree": 33,
           "build": [
-            "3.8.0-dev \u00b7 5b452f41"
+            "3.9.0-dev \u00b7 1ee57924"
           ],
           "gained": 1,
           "lost": 0
@@ -56,14 +56,14 @@
       },
       "client": "erigon",
       "counts": {
-        "agree": 32,
+        "agree": 33,
         "converged": 0,
-        "fix": 1,
+        "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 18,
+      "dev_only": 19,
       "name": "Erigon",
       "prs": {
         "merged": 25,
@@ -75,9 +75,9 @@
         "development": {
           "agree": 33,
           "build": [
-            "2.2.0-preview \u00b7 cd336c4c"
+            "2.2.0-preview \u00b7 159862be"
           ],
-          "gained": 1,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -85,7 +85,7 @@
           "build": [
             "2.2.0 \u00b7 1d2aff00"
           ],
-          "gained": 15,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -110,7 +110,7 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.7.0 \u00b7 ec3e7e42"
+            "2.7.0 \u00b7 e6679687"
           ],
           "gained": 0,
           "lost": 0
@@ -145,7 +145,7 @@
         "development": {
           "agree": 28,
           "build": [
-            "1.8.6-nightly \u00b7 de005f70"
+            "1.8.6-nightly \u00b7 6c21ffe2"
           ],
           "gained": 0,
           "lost": 0

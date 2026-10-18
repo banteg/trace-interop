@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** A single-block filter agrees with trace_block at the same fork.
+**What this checks:** Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition. A single-block filter agrees with trace_block at the same fork.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

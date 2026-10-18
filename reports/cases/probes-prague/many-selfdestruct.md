@@ -2,7 +2,7 @@
 
 `trace_callMany` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. A contract created by an earlier item survives SELFDESTRUCT in a later item (EIP-6780): its code remains and its balance moves.
+**What this checks:** Return one execution envelope per input call, in order. Reward and SELFDESTRUCT records carry result null. A contract created by an earlier item survives SELFDESTRUCT in a later item (EIP-6780): its code remains and its balance moves.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

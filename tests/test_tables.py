@@ -29,21 +29,16 @@ class Tables(unittest.TestCase):
             self.assertEqual((cell['target'], cell['value'], cell['outcome']), ('precompile', 'zero', 'precheck depth'))
             self.assertEqual(set(attributes['emitted']), {True, False})
 
-    def test_ordinary_frame_emission_is_unstated(self):
-        gaps = findings(FRAMES, 'gaps')
-        self.assertTrue(gaps)
-        self.assertTrue(all(c['target'] == 'account' and c['outcome'] in ('success', 'revert', 'halt') and a == ['emitted'] for c, a in gaps))
+    def test_ordinary_frame_emission_is_stated(self):
+        self.assertEqual(findings(FRAMES, 'gaps'), [])
 
     def test_address_filtering_is_decided_everywhere(self):
         self.assertEqual(findings(FILTERS, 'conflicts'), [])
         self.assertEqual(findings(FILTERS, 'gaps'), [])
 
     def test_block_selection_gaps(self):
-        gaps = {(c['method'], c['selector'], c['history']) for c, _ in findings(blocks(SPEC), 'gaps')}
-        self.assertIn(('trace_callMany', 'unknown hash', 'available'), gaps)
-        self.assertIn(('trace_call', 'non-canonical hash', 'available'), gaps)
-        self.assertNotIn(('trace_filter', 'unresolvable safe', 'available'), gaps)
-        self.assertNotIn(('trace_call', 'unknown hash', 'available'), gaps)
+        # trace_callMany resolves its block as trace_call does, and a noncanonical hash is stated.
+        self.assertEqual(findings(blocks(SPEC), 'gaps'), [])
         self.assertEqual(findings(blocks(SPEC), 'conflicts'), [])
 
     def test_schema_forms(self):

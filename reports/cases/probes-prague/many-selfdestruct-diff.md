@@ -2,7 +2,7 @@
 
 `trace_callMany` · probes-prague · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. SELFDESTRUCT of a contract created by an earlier item keeps the account: balance changes, code and nonce are unchanged, no deletion markers.
+**What this checks:** Return one execution envelope per input call, in order. Reward and SELFDESTRUCT records carry result null. SELFDESTRUCT of a contract created by an earlier item keeps the account: balance changes, code and nonce are unchanged, no deletion markers.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

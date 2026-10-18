@@ -2,7 +2,7 @@
 
 `trace_call` · fee-compat · [All reports](../../../../README.md)
 
-**What this checks:** The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution.
+**What this checks:** The identical eth_call and trace_call request has the same observable execution output, identifiable execution halt or fee/funding rejection class. Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. Unrequested trace is an empty array. Output remains a byte string under every trace selection. Every operation names its op and has only the specified members; stack words and storage operands use minimal hex quantities at every depth. Reject this independently invalid fee/funding request before execution.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

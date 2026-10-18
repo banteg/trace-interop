@@ -2,7 +2,7 @@
 
 `trace_filter` · reorg-safe · [All reports](../../../README.md)
 
-**What this checks:** Before the switch, branch A’s block 0x2d is canonical: its hash selects A’s records, as the numeric range does. Assess this declared topic case.
+**What this checks:** Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition. Before the switch, branch A’s block 0x2d is canonical: its hash selects A’s records, as the numeric range does. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

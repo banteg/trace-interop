@@ -2,7 +2,7 @@
 
 `trace_filter` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** A reward has no from side, so an intersection with a populated fromAddress excludes it. Intersection is the default mode.
+**What this checks:** A reward has no from side, so an intersection with a populated fromAddress excludes it. Intersection is the default mode. Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -40,6 +40,7 @@
 
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
+- [H05](../../decisions/H05.md): Reward records carry null transactionHash and transactionPosition. First at traceAddress []: error None, result null.
 - [H23](../../decisions/H23.md): A reward has no from side, so an intersection with a populated fromAddress excludes it. Intersection is the default mode. 16 unexpected extra records, first {'action': {'callType': 'call', 'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0x13168', 'input': '0x4322fd2bc0a137d1656d6974', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x2'}, 'blockHash': '0x395e712438dd92dc5d88276418e20a940d2ce71bd6a5c28cc62dab41acdd6436', 'blockNumber': 2, 'result': {'gasUsed': '0x679e', 'output': '0x'}, 'subtraces': 0, 'traceAddress': [], 'transactionHash': '0x20f1a75baf485b3e05dbcf13ffeb10dfe11fae25e85c994900d918ad7225015e', 'transactionPosition': 0, 'type': 'call'}
 - Result shape at `3`: 'transactionHash' is a required property
 - Result shape at `3`: 'transactionPosition' is a required property

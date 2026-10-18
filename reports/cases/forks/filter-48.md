@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. A single-block filter agrees with trace_block at the same fork.
+**What this checks:** Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition. A single-block filter agrees with trace_block at the same fork.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

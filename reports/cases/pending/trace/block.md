@@ -2,7 +2,7 @@
 
 `trace_block` · pending · [All reports](../../../README.md)
 
-**What this checks:** Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.
+**What this checks:** Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead. Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

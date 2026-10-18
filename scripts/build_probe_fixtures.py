@@ -933,10 +933,10 @@ def annotate_blockhash():
     case(cases, 'filter-blockhash-null', 'trace_filter', [{'blockHash': None, 'fromBlock': '0x2', 'toBlock': '0x2', 'count': 3}],
          probes=[hash_probe('A null blockHash is omitted, so the numeric range applies.', selected, reference='filter-block-2', nonempty=True)])
     for suffix, extra, requirement in [
-            ('', {}, 'An unknown hash is an error (-32001 recommended), never [] or another block’s records.'),
+            ('', {}, 'An unknown hash is an error (-32001), never [] or another block’s records.'),
             ('-count-zero', {'count': 0}, 'An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.')]:
         case(cases, 'filter-blockhash-unknown'+suffix, 'trace_filter', [{'blockHash': unknown, **extra}],
-             probes=[hash_probe(requirement, None, reject=True, recommended=-32001)])
+             probes=[hash_probe(requirement, None, reject=True, required=-32001)])
     for suffix, value, requirement in [
             ('short', selected['hash'][:10], 'A blockHash that is not a 32-byte hash is rejected (-32602 recommended).'),
             ('object', {'blockHash': selected['hash']}, 'blockHash takes a bare 32-byte hash, not an EIP-1898 object: it is rejected (-32602 recommended).')]:
@@ -956,12 +956,12 @@ def annotate_blockhash():
         cases = []
         for phase, branch, expectation, requirement in [
                 ('before', a, 'reference', f'Before the switch, branch A’s block {tail} is canonical: its hash selects A’s records, as the numeric range does.'),
-                ('after', a, 'reject', f'After the switch to branch B, A’s block {tail} is noncanonical: its hash is an error (-32001 recommended), never B’s [] or records.'),
+                ('after', a, 'reject', f'After the switch to branch B, A’s block {tail} is noncanonical: its hash is an error (-32001), never B’s [] or records.'),
                 ('restored', a, 'reference', f'Once branch A is restored, the hash of its block {tail} selects A’s records again.'),
-                ('before', b, 'reject', f'Before B’s payloads arrive, B’s block {tail} is unknown: an error (-32001 recommended).'),
+                ('before', b, 'reject', f'Before B’s payloads arrive, B’s block {tail} is unknown: an error (-32001).'),
                 ('after', b, 'reference', f'After the switch, B’s block {tail} is canonical: its hash selects that block, which has no records, as the numeric range shows.'),
-                ('restored', b, 'reject', f'Once branch A is restored, B’s block {tail} is noncanonical: an error (-32001 recommended), never A’s records.')]:
-            fields = ({'reject': True, 'recommended': -32001} if expectation == 'reject'
+                ('restored', b, 'reject', f'Once branch A is restored, B’s block {tail} is noncanonical: an error (-32001), never A’s records.')]:
+            fields = ({'reject': True, 'required': -32001} if expectation == 'reject'
                       else {'reference': phase+'/filter-tail', 'nonempty': branch is a})
             case(cases, f'{phase}/filter-hash-{"a" if branch is a else "b"}', 'trace_filter', [{'blockHash': branch['hash']}],
                  probes=[hash_probe(requirement, branch, **fields)])

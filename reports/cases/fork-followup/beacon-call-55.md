@@ -2,7 +2,7 @@
 
 `trace_call` · fork-followup · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Historical trace_call uses only system changes through the selected block.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Historical trace_call uses only system changes through the selected block.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

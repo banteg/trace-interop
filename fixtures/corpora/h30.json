@@ -737,10 +737,10 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "An unknown hash is an error (-32001 recommended), never [] or another block\u2019s records.",
+          "requirement": "An unknown hash is an error (-32001), never [] or another block\u2019s records.",
           "block": null,
           "reject": true,
-          "recommended": -32001
+          "required": -32001
         }
       ]
     },
@@ -764,7 +764,7 @@
           "requirement": "An unknown hash is an error even with count 0: the selector is validated before any count 0 shortcut, so [] does not pass.",
           "block": null,
           "reject": true,
-          "recommended": -32001
+          "required": -32001
         }
       ]
     },

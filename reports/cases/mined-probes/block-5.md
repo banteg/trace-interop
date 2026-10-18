@@ -2,7 +2,7 @@
 
 `trace_block` · mined-probes · [All reports](../../README.md)
 
-**What this checks:** The storage program is one call frame. Root gasUsed is execution gas before the refund (5004, refund 4800, receipt 21204). Root gasUsed is execution gas before the refund (10009, refund 9600, receipt 24808). Trace roots preserve the frozen transaction inventory and recovered senders in canonical order. Assess this declared topic case.
+**What this checks:** The storage program is one call frame. Root gasUsed is execution gas before the refund (5004, refund 4800, receipt 21204). Root gasUsed is execution gas before the refund (10009, refund 9600, receipt 24808). Trace roots preserve the frozen transaction inventory and recovered senders in canonical order. Assess this declared topic case. Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

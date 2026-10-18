@@ -68,7 +68,7 @@ class RuleSafetyTests(unittest.TestCase):
             checks = supplement(case, observation, {}, evaluate(case, observation, {}), ['H27'])
             self.assertEqual([c['status'] for c in checks if c['topic'] == 'H27'], [status], chain)
 
-    def test_beyond_head_range_and_unknown_block_require_an_error_with_a_recommended_code(self):
+    def test_beyond_head_range_recommends_and_unknown_block_requires_its_code(self):
         for name, method, params, accepted in [
                 ('missing-block-filter', 'trace_filter', [{'fromBlock': '0x2f', 'toBlock': '0xffff'}], -32602),
                 ('missing-block-block', 'trace_block', ['0xffff'], -32001),
@@ -76,16 +76,20 @@ class RuleSafetyTests(unittest.TestCase):
             case = {'name': name, 'context': {'_chain': 'h30'}, 'request': {'method': method, 'params': params}}
             for code in [-32602, -32001]:
                 observation = {'status': 'rpc_error', 'response': {'error': {'code': code, 'message': 'x'}}}
-                # Any error matches; a code other than the recommended one is only noted.
                 checks = [c for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']]
+                if method == 'trace_block':
+                    # An unknown block requires -32001: fixtures compare the code exactly.
+                    self.assertEqual([c['status'] for c in checks], ['matches' if code == accepted else 'change_needed'])
+                    continue
+                # Any error matches; a code other than the recommended one is only noted.
                 self.assertEqual([c['status'] for c in checks], ['matches'])
                 self.assertEqual(checks[0]['detail'], '' if code == accepted else f'Code {code} ({accepted} recommended).')
             observation = {'status': 'result', 'response': {'result': []}}
             self.assertEqual([c['status'] for c in evaluate(case, observation, {}) if c['topic'] in ['H06', 'H30']], ['change_needed'])
 
-    def test_unknown_block_lookup_allows_parity_null_but_no_successful_collection(self):
+    def test_unknown_block_lookup_is_an_error_never_null_or_a_collection(self):
         for method, params in [('trace_block', ['0xffff']), ('trace_replayBlockTransactions', ['0xffff', ['trace']])]:
-            for value, expected in [(None, 'matches'), ([], 'change_needed'), ({}, 'change_needed')]:
+            for value, expected in [(None, 'change_needed'), ([], 'change_needed'), ({}, 'change_needed')]:
                 checks = assess('missing-block-block', value, method, params)
                 self.assertEqual([c['status'] for c in checks if c['topic'] == 'H06'], [expected])
         for method, params in [('trace_call', [{}, ['trace'], '0xffff']),
@@ -121,9 +125,10 @@ class RuleSafetyTests(unittest.TestCase):
         for error in [1, None, {}, []]:
             checks = assess('call', {'trace': [{'error': error, 'result': None}]})
             self.assertIn('change_needed', [c['status'] for c in checks if c['topic'] == 'H09'])
-        for frame in [{'error': 'Out of gas', 'result': None}, {'error': 'Out of gas'}]:
+        for frame, expected in [({'error': 'Out of gas', 'result': None}, 'matches'), ({'error': 'Out of gas'}, 'change_needed'),
+                                ({'error': 'Out of gas', 'result': {'gasUsed': '0x0', 'output': '0x'}}, 'change_needed')]:
             checks = assess('call', {'trace': [frame]})
-            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], ['matches'])
+            self.assertEqual([c['status'] for c in checks if c['topic'] == 'H09'], [expected], frame)
 
     def test_revert_frames_keep_gas_and_output_without_creation_fields(self):
         for frame, expected in [({'type': 'call', 'result': {'gasUsed': '0x6', 'output': '0x'}}, 'matches'),
@@ -293,9 +298,10 @@ class CoverageTests(unittest.TestCase):
             checks = evaluate(case, observation, {}, invalid_params=errors) + assess_probes(case, observation, {})
             return [c['status'] for c in checks if c['topic'] == topic]
         # H06: an unknown block for block replay, and a bound one block past the head, below any range cap.
-        for observation in [error(-32001), error(-32000)]:  # any error, -32001 recommended (Erigon and Nethermind)
-            self.assertEqual(statuses('a', 'missing-block-replay', observation, 'H06'), ['matches'])
-        self.assertEqual(statuses('a', 'missing-block-replay', result(None), 'H06'), ['matches'])  # Parity/Besu absence.
+        # An unknown block is an error with -32001, the one required code; null no longer stands for it.
+        self.assertEqual(statuses('a', 'missing-block-replay', error(-32001), 'H06'), ['matches'])
+        self.assertEqual(statuses('a', 'missing-block-replay', error(-32000), 'H06'), ['change_needed'])
+        self.assertEqual(statuses('a', 'missing-block-replay', result(None), 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-replay', result([]), 'H06'), ['change_needed'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', error(-32602), 'H06'), ['matches'])
         self.assertEqual(statuses('a', 'missing-block-filter-next', result([]), 'H06'), ['change_needed'])

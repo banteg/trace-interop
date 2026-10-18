@@ -180,7 +180,7 @@ class SemanticRegressions(unittest.TestCase):
         txhash = '0x'+'ab'*32
         case = {'name': 'probe', 'request': {'jsonrpc': '2.0', 'id': 1, 'method': 'trace_replayTransaction',
                                              'params': [txhash, ['trace', 'vmTrace']]}, 'context': {}}
-        step = lambda pc, push, sub=None: {'pc': pc, 'cost': 3, 'sub': sub, 'ex': {'used': 1, 'push': push, 'mem': None, 'store': None}}
+        step = lambda pc, push, sub=None: {'pc': pc, 'cost': 3, 'op': 'PUSH1', 'sub': sub, 'ex': {'used': 1, 'push': push, 'mem': None, 'store': None}}
         result = {'output': '0x', 'stateDiff': None, 'transactionHash': None,
                   'trace': [{'traceAddress': [], 'type': 'call', 'subtraces': 1, 'action': {}, 'result': {'gasUsed': '0x0', 'output': '0x'}},
                             {'traceAddress': [0], 'type': 'call', 'subtraces': 0, 'action': {}, 'error': 'Reverted', 'result': None}],

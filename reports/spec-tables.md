@@ -2,13 +2,13 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/4c10502119d68a6b338d866c5db0fb64d6c7de79) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/5e6717fe95fb1c9a155f8a685bdebf613c16c4e8) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
-| [Frame emission](#frame-emission) | [H09](decisions/H09.md), [H29](decisions/H29.md) | 107 | 4 | 45 | 25 |
+| [Frame emission](#frame-emission) | [H09](decisions/H09.md), [H29](decisions/H29.md) | 107 | 4 | 0 | 25 |
 | [Address filtering](#address-filtering) | [H03](decisions/H03.md), [H04](decisions/H04.md), [H23](decisions/H23.md) | 144 | 0 | 0 | 8 |
-| [Block selection](#block-selection) | [H06](decisions/H06.md), [H30](decisions/H30.md), [H31](decisions/H31.md), [H32](decisions/H32.md) | 70 | 0 | 8 | 0 |
+| [Block selection](#block-selection) | [H06](decisions/H06.md), [H30](decisions/H30.md), [H31](decisions/H31.md), [H32](decisions/H32.md) | 70 | 0 | 0 | 0 |
 
 ## Frame emission
 
@@ -24,7 +24,6 @@ Does a call or create attempt produce a record, and does that record carry an er
 | Finding | Outcome | Cells where | Cells | Clauses |
 | --- | --- | --- | --- | --- |
 | Conflict | emitted | nested · CALL · precompile · zero · precheck depth · any fork<br>nested · CALLCODE · precompile · zero · precheck depth · any fork<br>nested · DELEGATECALL · precompile · zero · precheck depth · any fork<br>nested · STATICCALL · precompile · zero · precheck depth · any fork | 4 | False by nested-zero-precompile vs True by call-precheck |
-| Gap | emitted | target: account; outcome: success, revert, halt | 45 | no clause decides it |
 | Overlap | emitted | nested · CALL · precompile · transferred · precheck depth · any fork<br>nested · CALL · precompile · transferred · precheck balance · any fork<br>nested · CALLCODE · precompile · transferred · precheck depth · any fork<br>nested · CALLCODE · precompile · transferred · precheck balance · any fork<br>nested · DELEGATECALL · precompile · inherited · precheck depth · any fork | 5 | agreeing: nested-value-precompile, call-precheck |
 | Overlap | result | outcome: halt | 20 | agreeing: halt-result, halt |
 
@@ -32,15 +31,16 @@ Does a call or create attempt produce a record, and does that record carry an er
 
 | Clause | Quote |
 | --- | --- |
+| baseline | “The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt.” |
 | root-precompile | “Retain root precompile calls regardless of value.” |
 | nested-zero-precompile | “Omit nested precompile frames with zero value” |
 | nested-value-precompile | “retain nested frames with nonzero transferred or inherited value, whether successful or failed” |
-| call-precheck | “A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, no result and no subtraces” |
+| call-precheck | “A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces” |
 | create-precheck | “A CREATE or CREATE2 that fails its precheck (call depth limit, insufficient balance or nonce overflow) emits the same kind of frame before Amsterdam” |
 | create-precheck-amsterdam | “from Amsterdam the check runs in the creating opcode and no frame is emitted” |
 | collision | “A CREATE whose address collides emits a create frame with error "Contract address collision" that consumes its gas.” |
-| halt-result | “Exceptional halt, including an address collision; result is omitted or null.” |
-| halt | “An exceptional halt consumes the frame's action gas; its result may be omitted or null.” |
+| halt-result | “Exceptional halt, including an address collision; result is null.” |
+| halt | “An exceptional halt consumes the frame's action gas; its result is null.” |
 | revert | “A REVERT frame has error "Reverted" and a required result {gasUsed, output} carrying its revert bytes” |
 | success | “Successful frame; result is required and error must be absent.” |
 | error-alone | “error alone determines failure.” |
@@ -89,9 +89,7 @@ What does a request return for each way of naming its block, when the block’s 
 - “If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.” unresolvable safe stands for either tag before the chain has one.
 - “pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64” This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.
 
-| Finding | Outcome | Cells where | Cells | Clauses |
-| --- | --- | --- | --- | --- |
-| Gap | response | trace_call · non-canonical hash · available<br>trace_callMany · number · pruned<br>trace_callMany · number beyond head · available<br>trace_callMany · hash · pruned<br>trace_callMany · unknown hash · available<br>trace_callMany · non-canonical hash · available<br>trace_callMany · unresolvable safe · available<br>trace_callMany · pending · available | 8 | no clause decides it |
+Every cell is decided by exactly one clause.
 
 <details><summary>Clauses</summary>
 
@@ -101,10 +99,12 @@ What does a request return for each way of naming its block, when the block’s 
 | call-default | “Optional block, latest when omitted or null” |
 | call-state | “Execute against the state at the end of the selected block, default latest, under its fork rules and block environment.” |
 | many-state | “The first item runs against the same state and environment as trace_call at the selected block.” |
-| call-unknown | “an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended)” |
+| call-unknown | “an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended)” |
+| call-noncanonical | “A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001).” |
+| many-resolution | “Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks” |
 | call-pending | “is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block” |
 | block-state | “Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules.” |
-| block-unknown | “An unknown selected block returns null or an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)” |
+| block-unknown | “An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended)” |
 | block-pending | “Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended).” |
 | filter-default | “defaults omitted fromBlock and toBlock to the same latest head” |
 | filter-range | “If either bound resolves beyond the current head block, or fromBlock resolves above toBlock, return an error (-32602 recommended)” |

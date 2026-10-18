@@ -2,7 +2,7 @@
 
 `trace_filter` · mined-probes · [All reports](../../README.md)
 
-**What this checks:** A failed nested CREATE has no created-address match. Assess this declared topic case. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** A failed nested CREATE has no created-address match. Assess this declared topic case. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

@@ -2,7 +2,7 @@
 
 `trace_callMany` · precompile-values · [All reports](../../README.md)
 
-**What this checks:** Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome. A handled precompile failure must not mark the successful parent as failed. The constructor returns the precompile call success bit; a funded successful call must return one. The preceding simulated transfer funds the actual zero-value creation address with one wei. Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt omits result or sets it to null.
+**What this checks:** Omit nested zero-value precompiles; retain nonzero transferred/inherited value and number the emitted tree. The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome. A handled precompile failure must not mark the successful parent as failed. The constructor returns the precompile call success bit; a funded successful call must return one. The preceding simulated transfer funds the actual zero-value creation address with one wei. Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt carries result null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -10,11 +10,11 @@
 | [Anvil · 1.8.6-nightly · 6c21ffe2](../../clients/anvil_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 | [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 | [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
-| [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
+| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
+| [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 | [Geth draft fork · 1.17.9-unstable · fdbb46a5](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
-| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
-| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
+| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | 2 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 | [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 | [Reth · 2.7.0 · e6679687](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/precompile-values/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/precompile-values/manifest.json) |
 
@@ -68,6 +68,7 @@
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - Result shape at `1/trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f52', 'init': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'value': '0x0'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'pc': 2, 'sub': None}, {'cost':
 
 **Besu · 26.10.0 · 976ca7ea** (`besu/v26.10.0/linux-x86_64/openjdk-java-25`)
 
@@ -75,5 +76,26 @@
 - [H29](../../decisions/H29.md): The retained child identifies the fixture precompile call-site, opcode, input, value and execution outcome.
 - [H24](../../decisions/H24.md): A handled precompile failure must not mark the successful parent as failed.
 - Result shape at `1/trace/0`: {'action': {'from': '0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f', 'gas': '0xf2f52', 'init': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'value': '0x0'}, 'error': 'Precompile error', 'subtraces': 0, 'traceAddress': [], 'type': 'create'} is not valid under any of the given schema
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'pc': 2, 'sub': None}, {'cost':
+
+**Erigon · 3.9.0-dev · 1ee57924** (`3.9.0-dev-1ee57924`)
+
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'idx': '1-0', 'op': 'PUSH1', 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'i
+
+**Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
+
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'idx': '1-0', 'op': 'PUSH1', 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'i
+
+**Nethermind · 2.2.0-preview · 159862be** (`2.2.0-preview+159862be`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress [0]: error 'Out of gas', result null.
+- Result shape at `1/trace/1`: {'action': {'callType': 'callcode', 'from': '0x93216e4a663e3a680a0fe006285935f47caa5738', 'gas': '0x18f9c', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'pc': 2, 'sub': None}, {'cost':
+
+**Nethermind · 2.2.0 · 1d2aff00** (`2.2.0+1d2aff00`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress [0]: error 'Out of gas', result null.
+- Result shape at `1/trace/1`: {'action': {'callType': 'callcode', 'from': '0x93216e4a663e3a680a0fe006285935f47caa5738', 'gas': '0x18f9c', 'input': '0x000000000000000000000000000000000000000000000000000000000000002a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+- Result shape at `1/vmTrace`: {'code': '0x602a600052604060006080600060016006620186a0f260005260206000f3', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x2a'], 'store': None, 'used': 995151}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 995148}, 'pc': 2, 'sub': None}, {'cost':
 
 </details>

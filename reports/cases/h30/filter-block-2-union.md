@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Retain supporting reference evidence.
+**What this checks:** Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Retain supporting reference evidence.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

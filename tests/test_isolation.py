@@ -129,7 +129,8 @@ class LeakGuard(unittest.TestCase):
     """No response in the published assessment fails two decisions for one defect."""
     CLASSES = {
         'rejection code': r'-32602|invalid params',
-        'null lookup': r'\bnull\b',
+        # A lookup answered with null; record shapes that carry a null member are another class.
+        'null lookup': r'\b(returns|is) null\b',
         # Checks that read an executed result; acceptance and envelope-form checks judge the error itself.
         'executed result': r'^(?!Return one complete JSON-RPC)(?!.*accept).*(execut|envelope|return bytes|returns word|output)',
     }

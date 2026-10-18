@@ -2,7 +2,7 @@
 
 `trace_transaction` · mined-probes · [All reports](../../README.md)
 
-**What this checks:** Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The factory call contains its failed nested create frame. The handled nested failure leaves the root successful; root gasUsed is its execution gas, action.gas excludes intrinsic gas. A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order. Assess this declared topic case.
+**What this checks:** Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The factory call contains its failed nested create frame. The handled nested failure leaves the root successful; root gasUsed is its execution gas, action.gas excludes intrinsic gas. A reverted nested CREATE reports error Reverted and result {gasUsed, output} without address or code. Trace roots preserve the frozen transaction inventory and recovered senders in canonical order. Assess this declared topic case.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

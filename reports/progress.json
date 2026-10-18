@@ -22,11 +22,11 @@
       "client": "besu",
       "counts": {
         "agree": 6,
-        "converged": 10,
+        "converged": 13,
         "fix": 8,
         "policy": 0,
         "review": 0,
-        "unmeasured": 9
+        "unmeasured": 6
       },
       "dev_only": 0,
       "name": "Besu",
@@ -38,7 +38,7 @@
     {
       "builds": {
         "development": {
-          "agree": 33,
+          "agree": 30,
           "build": [
             "3.9.0-dev \u00b7 1ee57924"
           ],
@@ -56,14 +56,14 @@
       },
       "client": "erigon",
       "counts": {
-        "agree": 33,
-        "converged": 0,
+        "agree": 30,
+        "converged": 3,
         "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 19,
+      "dev_only": 16,
       "name": "Erigon",
       "prs": {
         "merged": 25,
@@ -73,7 +73,7 @@
     {
       "builds": {
         "development": {
-          "agree": 33,
+          "agree": 28,
           "build": [
             "2.2.0-preview \u00b7 159862be"
           ],
@@ -81,7 +81,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 32,
+          "agree": 27,
           "build": [
             "2.2.0 \u00b7 1d2aff00"
           ],
@@ -91,8 +91,8 @@
       },
       "client": "nethermind",
       "counts": {
-        "agree": 33,
-        "converged": 0,
+        "agree": 28,
+        "converged": 5,
         "fix": 0,
         "policy": 0,
         "review": 0,
@@ -143,7 +143,7 @@
     {
       "builds": {
         "development": {
-          "agree": 28,
+          "agree": 27,
           "build": [
             "1.8.6-nightly \u00b7 6c21ffe2"
           ],
@@ -151,7 +151,7 @@
           "lost": 0
         },
         "release": {
-          "agree": 19,
+          "agree": 18,
           "build": [
             "1.8.5 \u00b7 51a52c59"
           ],
@@ -161,8 +161,8 @@
       },
       "client": "anvil",
       "counts": {
-        "agree": 28,
-        "converged": 5,
+        "agree": 27,
+        "converged": 6,
         "fix": 0,
         "policy": 0,
         "review": 0,

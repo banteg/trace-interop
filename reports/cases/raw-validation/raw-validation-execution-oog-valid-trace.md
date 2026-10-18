@@ -2,19 +2,19 @@
 
 `trace_rawTransaction` · raw-validation · [All reports](../../README.md)
 
-**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection. The valid signed control reports its expected execution success or halt in a root frame. Failed frames have an error string; an exceptional halt omits result or sets it to null.
+**What this checks:** Return one complete JSON-RPC response; never wrap an error envelope as a successful result. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. The valid signed control executes and returns the marker or constructor ADDRESS bytes under every selection. The valid signed control reports its expected execution success or halt in a root frame. Failed frames have an error string; an exceptional halt carries result null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Anvil · 1.8.6-nightly · 6c21ffe2](../../clients/anvil_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
-| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
-| [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
+| [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Geth draft fork · 1.17.9-unstable · fdbb46a5](../../clients/go-ethereum_trace.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
-| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
+| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | 1 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 | [Reth · 2.7.0 · e6679687](../../clients/reth_development.md) | 1 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/raw-validation/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/raw-validation/manifest.json) |
 
@@ -33,5 +33,25 @@
   ]
 }
 ```
+
+**Besu · 26.10-develop · abdf1419** (`besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress []: error 'Out of gas', result null.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x0', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0x1'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the given schem
+
+**Besu · 26.10.0 · 976ca7ea** (`besu/v26.10.0/linux-x86_64/openjdk-java-25`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress []: error 'Out of gas', result null.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x0', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0x1'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the given schem
+
+**Nethermind · 2.2.0-preview · 159862be** (`2.2.0-preview+159862be`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress []: error 'Out of gas', result null.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x0', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0x1'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the given schem
+
+**Nethermind · 2.2.0 · 1d2aff00** (`2.2.0+1d2aff00`)
+
+- [H09](../../decisions/H09.md): Failed frames have an error string; an exceptional halt carries result null. First at traceAddress []: error 'Out of gas', result null.
+- Result shape at `trace/0`: {'action': {'callType': 'call', 'from': '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf', 'gas': '0x0', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0x1'}, 'error': 'Out of gas', 'subtraces': 0, 'traceAddress': [], 'type': 'call'} is not valid under any of the given schem
 
 </details>

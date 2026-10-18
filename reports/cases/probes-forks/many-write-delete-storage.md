@@ -2,7 +2,7 @@
 
 `trace_callMany` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped. Before Cancun the final item deletes the account created by an earlier item. Account deletion wipes all storage; optional - entries report the item's pre-values, including slot zero written to 42 by the preceding item.
+**What this checks:** Return one execution envelope per input call, in order. Reward and SELFDESTRUCT records carry result null. A deleted account reports storage {} or optional old-slot - entries; account deletion implies every slot is wiped. Before Cancun the final item deletes the account created by an earlier item. Account deletion wipes all storage; optional - entries report the item's pre-values, including slot zero written to 42 by the preceding item.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

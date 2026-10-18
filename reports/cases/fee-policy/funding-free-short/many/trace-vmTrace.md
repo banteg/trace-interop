@@ -2,7 +2,7 @@
 
 `trace_callMany` · fee-policy · [All reports](../../../../README.md)
 
-**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. A supplied error.data.index must identify the failing decoded item; the field is recommended. Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt omits result or sets it to null. Reject this independently invalid fee/funding request before execution.
+**What this checks:** Reject the independently invalid call for its fee/funding violation; a defect invalid regardless of state takes precedence. The eth_simulateV1 code is recommended. A supplied error.data.index must identify the failing decoded item; the field is recommended. Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt carries result null. Reject this independently invalid fee/funding request before execution.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

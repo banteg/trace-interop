@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** A fork-crossing range equals the corresponding per-block traces. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition. A fork-crossing range equals the corresponding per-block traces. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

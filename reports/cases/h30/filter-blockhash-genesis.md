@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** The genesis hash selects the genesis block, which has no trace records: []. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** The genesis hash selects the genesis block, which has no trace records: []. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. Reward and SELFDESTRUCT records carry result null.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

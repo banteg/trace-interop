@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** Null fromBlock and toBlock are omitted, so a blockHash with null bounds selects that block. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

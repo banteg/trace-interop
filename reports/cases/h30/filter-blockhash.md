@@ -2,7 +2,7 @@
 
 `trace_filter` · h30 · [All reports](../../README.md)
 
-**What this checks:** A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block’s records. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
+**What this checks:** A blockHash selects exactly that block: the result equals the numeric single-block filter, each record localized with the requested hash, never another block’s records. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

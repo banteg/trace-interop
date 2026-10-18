@@ -2,7 +2,7 @@
 
 `trace_filter` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** The genesis block has no transaction or reward records.
+**What this checks:** The genesis block has no transaction or reward records. Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -34,6 +34,7 @@
 
 **Erigon · 3.7.1 · 8c1e3893** (`3.7.1-8c1e3893`)
 
+- [H05](../../decisions/H05.md): Reward records carry null transactionHash and transactionPosition. First at traceAddress []: error None, result null.
 - [H05](../../decisions/H05.md): The genesis block has no transaction or reward records. 1 unexpected extra records, first {'action': {'author': '0x0000000000000000000000000000000000000000', 'rewardType': 'block', 'value': '0x4563918244f40000'}, 'blockHash': '0xcf99eb0a280bf38e32a54b8cb1d4403fd277ef7b4ff1836b6b2dc3d8d098e409', 'blockNumber': 0, 'result': None, 'subtraces': 0, 'traceAddress': [], 'type': 'reward'}
 - Result shape at `0`: 'transactionHash' is a required property
 - Result shape at `0`: 'transactionPosition' is a required property

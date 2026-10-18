@@ -2,7 +2,7 @@
 
 `trace_callMany` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The first trace_callMany item at block 55 runs on the same post-block state as trace_call. The one-item trace_callMany output equals trace_call at the same block.
+**What this checks:** Return one execution envelope per input call, in order. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. The first trace_callMany item at block 55 runs on the same post-block state as trace_call. The one-item trace_callMany output equals trace_call at the same block.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

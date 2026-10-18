@@ -6,11 +6,11 @@
     },
     "erigon": {
       "name": "Erigon",
-      "summary": "The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, the genesis reward, omitted trace_filter bounds (#24341), reverted-CREATE results and failure labels (#24355, #24356) and failed-CREATE filter matching, several of which still differ in 3.7.0. Since #24330 and #24343 its trace_call prices gas like eth_call, keeps the block GASLIMIT and returns the eth_simulateV1 codes. It validates signed transactions at the selected state (#24329) rejecting each for its own violation (with -32000; the error-group codes are recommended); a filter bound past the head still returns [] (#24357 is open) and vmTrace still keeps halted-operation details (#24344 is open). Since #24032, 3.8.0-dev \u00b7 5b452f41 keeps safe and finalized hashes from a same-head forkchoice update, so the reorg scenario runs and H33 agrees, and #24706 rejects an unknown trace_filter member. Its one remaining difference was a call with maxFeePerBlobGas and no blob hashes, which ran with the cap ignored (H14). #24990 rejects it, so 3.9.0-dev \u00b7 1ee57924 agrees on all 33 decisions."
+      "summary": "The development build agrees on tree lookup, default filter composition, MCOPY, historical system state including trace_callMany, the genesis reward, omitted trace_filter bounds (#24341), reverted-CREATE results and failure labels (#24355, #24356) and failed-CREATE filter matching, several of which still differ in 3.7.0. Since #24330 and #24343 its trace_call prices gas like eth_call, keeps the block GASLIMIT and returns the eth_simulateV1 codes. It validates signed transactions at the selected state (#24329) rejecting each for its own violation (with -32000; the error-group codes are recommended); a filter bound past the head still returns [] (#24357 is open) and vmTrace still keeps halted-operation details (#24344 is open). Since #24032, 3.8.0-dev \u00b7 5b452f41 keeps safe and finalized hashes from a same-head forkchoice update, so the reorg scenario runs and H33 agrees, and #24706 rejects an unknown trace_filter member. Its one remaining difference was a call with maxFeePerBlobGas and no blob hashes, which ran with the cap ignored (H14). #24990 rejects it, so 3.9.0-dev \u00b7 1ee57924 agreed on all 33 decisions. The draft then pinned forms it had left open for exact fixtures (5e6717fe): reward records need null transaction fields (H05), an unknown trace_call block -32001 (H06) and vmTrace operations no idx (H21)."
     },
     "nethermind": {
       "name": "Nethermind",
-      "summary": "2.2.0 \u00b7 1d2aff00 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957), failed-frame results and labels (#13981) and null for a missing transaction or replay (#13937, #14037). It also validates trace_rawTransaction as block inclusion does (#14091), rejects disagreeing data and input (#14089), rejects block-hash filter bounds and selects one block with the trace_filter blockHash member (#14111), runs blob calls without a positive blob fee cap at BLOBBASEFEE 0 (#14092) and answers rejected calls with the eth_simulateV1 codes (#14158). Its one remaining difference is H14: its release branch was cut before #14212 and #14663, so an explicit type still adds requirements, fields a call\u2019s fork lacks run, and a lone maxFeePerBlobGas is ignored. 2.2.0-preview \u00b7 159862be includes both and agrees on all 33 decisions; a code sender\u2019s rejection message, gas-defaulting probes its funds cannot cover and the legacy-priced authorization list remain unassessed or open."
+      "summary": "2.2.0 \u00b7 1d2aff00 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957), failed-frame results and labels (#13981) and null for a missing transaction or replay (#13937, #14037). It also validates trace_rawTransaction as block inclusion does (#14091), rejects disagreeing data and input (#14089), rejects block-hash filter bounds and selects one block with the trace_filter blockHash member (#14111), runs blob calls without a positive blob fee cap at BLOBBASEFEE 0 (#14092) and answers rejected calls with the eth_simulateV1 codes (#14158). Its one remaining difference is H14: its release branch was cut before #14212 and #14663, so an explicit type still adds requirements, fields a call\u2019s fork lacks run, and a lone maxFeePerBlobGas is ignored. 2.2.0-preview \u00b7 159862be includes both and agreed on all 33 decisions until the draft pinned forms it had left open for exact fixtures (5e6717fe): halted frames, rewards and SELFDESTRUCT records need result null (H09), rewards null transaction fields (H05), vmTrace operations op (H21) and an unknown block -32001 (H06); a code sender\u2019s rejection message, gas-defaulting probes its funds cannot cover and the legacy-priced authorization list remain unassessed or open."
     },
     "reth": {
       "name": "Reth",
@@ -71,12 +71,16 @@
         "change": "Remove the placeholder reward. This also changes which records pagination counts."
       },
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd adds a synthetic PoW reward record to PoS blocks, and `trace_block(0)` and `trace_replayBlockTransactions(0)` return -32000 because the genesis parent lookup fails. 2.2.0-preview \u00b7 287f54f0 includes #13938, which drops the post-merge reward, and #13783 and #13801, which return `[]` for the genesis block.",
-        "change": "Ship #13938, #13783 and #13801 in a release."
+        "observed": "2.0.0 \u00b7 bec830cd adds a synthetic PoW reward record to PoS blocks, and `trace_block(0)` and `trace_replayBlockTransactions(0)` return -32000 because the genesis parent lookup fails. 2.2.0-preview \u00b7 287f54f0 includes #13938, which drops the post-merge reward, and #13783 and #13801, which return `[]` for the genesis block. Master 159862be omits transactionHash and transactionPosition from reward records instead of setting them to null, which the pinned draft requires.",
+        "change": "Emit transactionHash and transactionPosition as null on reward records."
       },
       "reth": {
         "observed": "2.6.0 \u00b7 73a3a008 included a block reward for the genesis coinbase in `trace_block(0)` and filters from block 0 on a PoW-genesis chain; 2.7.0 \u00b7 3d592ece and the nightly emit none (#27423).",
         "change": "No change."
+      },
+      "erigon": {
+        "observed": "Main 1ee57924 omits transactionHash and transactionPosition from reward records instead of setting them to null, which the pinned draft requires.",
+        "change": "Emit transactionHash and transactionPosition as null on reward records."
       }
     },
     "H06": {
@@ -85,16 +89,16 @@
         "change": "Return `null` for an unknown transaction, so callers can distinguish absence from a transaction with no call records. Filter bounds beyond the head already return `-32602` as proposed."
       },
       "erigon": {
-        "observed": "A missing transaction, path or replay returns null as proposed. An unknown selected block, including a block replay, returns -32000, which the rule accepts (-32001 is recommended), and a filter bound beyond the head returns [] (an explicit \"waiting for spec\" choice). 3.8.0-dev \u00b7 a1ce80fb includes #24341 and returns -32602 for a reversed range.",
-        "change": "Prefer `-32001` for an unknown selected block. Return an error for a filter bound beyond the head (`-32602` recommended) rather than `[]`, and ship the reversed-range check (#24341) in a release."
+        "observed": "A missing transaction, path or replay returns null as proposed. An unknown selected block, including a block replay, returned -32000 in earlier builds, and a filter bound beyond the head returns [] (an explicit \"waiting for spec\" choice). 3.8.0-dev \u00b7 a1ce80fb includes #24341 and returns -32602 for a reversed range. Main 1ee57924 answers an unknown trace_call block with -32000; the pinned draft requires -32001 in every method.",
+        "change": "Return -32001 for an unknown trace_call or trace_callMany block."
       },
       "nethermind": {
-        "observed": "In 2.0.0 \u00b7 bec830cd missing transactions or paths can produce exceptions/RPC errors, and a filter bound beyond the head returns -32000. 2.2.0-preview \u00b7 287f54f0 includes #13937: trace_transaction and trace_get return null for a missing transaction, while trace_replayTransaction still returns -32000 (\u201creceipt could not be found\u201d) and a filter bound beyond the head still returns -32000.",
-        "change": "Return `null` from trace_replayTransaction for an absent transaction too, while preserving distinct unavailable-history errors. A filter bound beyond the head already returns an error; `-32602` is recommended."
+        "observed": "In 2.0.0 \u00b7 bec830cd missing transactions or paths can produce exceptions/RPC errors, and a filter bound beyond the head returns -32000. 2.2.0-preview \u00b7 287f54f0 includes #13937: trace_transaction and trace_get return null for a missing transaction, while trace_replayTransaction still returns -32000 (\u201creceipt could not be found\u201d) and a filter bound beyond the head still returns -32000. Master 159862be and 2.2.0 answer an unknown block with -32000, and the pinned draft requires -32001.",
+        "change": "Return -32001 for an unknown block, including an unknown trace_filter blockHash."
       },
       "reth": {
-        "observed": "2.7.0 \u00b7 3d592ece and the nightly return null for a missing individual replay (#27364) and from trace_replayBlockTransactions for an unknown block, and -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification.",
-        "change": "Return `null` for absent transactions and an error for an unknown selected block, including a block replay (-32001 recommended), as trace_block already does (open #27478). For known transactions whose state is unavailable, return an error that reports unavailable history (`4444` recommended) rather than an internal error. A filter bound beyond the head already returns an error; `-32602` is recommended."
+        "observed": "2.7.0 \u00b7 3d592ece and the nightly return null for a missing individual replay (#27364) and from trace_replayBlockTransactions for an unknown block, and -32001 for a filter bound beyond the head. See the linked pruning cases for unavailable-history classification. The pinned draft requires an error with -32001 for an unknown block, so the null from trace_replayBlockTransactions now differs.",
+        "change": "Return -32001 for an unknown block in trace_replayBlockTransactions."
       },
       "geth": {
         "observed": "The fork follows the draft on every checked H06 case, including -32602 for a filter bound beyond the head.",
@@ -111,8 +115,8 @@
         "change": "Keep the error on the failing frame, including a failed root precompile. Add `result: {gasUsed, output}` to REVERT frames; exceptional halts may keep omitting `result`. Use the listed labels, e.g. \"Mutable Call In Static Context\" and \"Built-in failed\". `revertReason` is outside the format and may stay as an extension once `result` is present."
       },
       "nethermind": {
-        "observed": "In 2.0.0 \u00b7 bec830cd failed frames omit their result, and failures use labels such as \"Static call violation\" and \"Error\". 2.2.0-preview \u00b7 287f54f0 includes #13981: a REVERT frame keeps `{gasUsed, output}`, a reverted CREATE has no address or code, and failures use the listed labels.",
-        "change": "Ship #13981 in a release."
+        "observed": "In 2.0.0 \u00b7 bec830cd failed frames omit their result, and failures use labels such as \"Static call violation\" and \"Error\". 2.2.0-preview \u00b7 287f54f0 includes #13981: a REVERT frame keeps `{gasUsed, output}`, a reverted CREATE has no address or code, and failures use the listed labels. Master 159862be omits result on halted frames, rewards and SELFDESTRUCT records; the pinned draft requires result null.",
+        "change": "Emit result null on halted frames, rewards and SELFDESTRUCT records."
       },
       "erigon": {
         "observed": "In 3.7.0 \u00b7 bdc78cc4 a reverted CREATE reports `{address, code, gasUsed}` with the would-be address; exceptional halts use Go error text such as \"out of gas: write protection\", and a failed precheck is labelled \"insufficient balance for transfer\". 3.8.0-dev \u00b7 a2a19253 includes #24355 and #24356: a reverted CREATE reports `{gasUsed, output}` and failures use the listed labels.",
@@ -346,8 +350,12 @@
     },
     "H21": {
       "nethermind": {
-        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 641592d2 includes PR #13750 and emits minimal stack quantities; both builds still encode storage operands as a padded key and non-minimal values such as 0x00.",
-        "change": "Ship the minimal-quantity stack encoding verified in 641592d2, e.g. 0x2a rather than a 32-byte padded string, and apply it to vmTrace store keys and values."
+        "observed": "2.0.0 \u00b7 bec830cd uses padded byte strings for VM stack words. 2.1.0-unstable \u00b7 641592d2 includes PR #13750 and emits minimal stack quantities; both builds still encode storage operands as a padded key and non-minimal values such as 0x00. Master 159862be omits each operation\u2019s op, which the pinned draft requires.",
+        "change": "Name each vmTrace operation in op."
+      },
+      "erigon": {
+        "observed": "Main 1ee57924 adds idx to each vmTrace operation; the pinned draft allows only pc, cost, op, ex and sub.",
+        "change": "Drop idx from vmTrace operations."
       }
     },
     "H25": {

@@ -102,6 +102,11 @@ RAW_VIOLATIONS = [
     ('EIP-3607 ordinary-code sender (not delegation)', 'sender')]
 # Records whose filter membership follows per-action from/to equivalents (H23), not action.from/to.
 SPECIAL_ACTIONS = ('create', 'suicide', 'reward')
+VM_OP_MEMBERS = {'pc', 'cost', 'op', 'ex', 'sub'}
+# The draft's failure labels other than "Reverted".
+HALT_LABELS = {'Out of gas', 'Bad instruction', 'Bad jump destination', 'Stack underflow', 'Out of stack',
+               'Mutable Call In Static Context', 'Built-in failed', 'Out of bounds', 'Contract address collision',
+               'Invalid code', 'Nonce overflow', 'Insufficient balance for transfer', 'Max call depth exceeded'}
 # Unsigned simulations; H16 defers their fee accounting to H15's policy.
 SIMULATIONS = ('trace_call', 'trace_callMany')
 # Recommended eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
@@ -502,8 +507,10 @@ def evaluate(case, observation, peers, invalid_params=None):
                     continue
                 if not encoding_valid(op.get('ex')):
                     invalid.append(f'{where} pc {op.get("pc")}: ex {json.dumps(op.get("ex"))[:200]}')
+                if not isinstance(op.get('op'), str) or set(op) - VM_OP_MEMBERS:
+                    invalid.append(f'{where} pc {op.get("pc")}: members {sorted(op)}')
                 if op.get('sub') is not None: stack.append((op['sub'], f'{where} pc {op.get("pc")} sub'))
-        check('H21', not invalid, 'Stack words and storage operands use minimal hex quantities at every depth.',
+        check('H21', not invalid, 'Every operation names its op and has only the specified members; stack words and storage operands use minimal hex quantities at every depth.',
               f'First at {invalid[0]} ({len(invalid)} in total).' if invalid else '')
     if method == 'trace_filter' and params and isinstance(params[0],dict):
         filt = params[0]
@@ -683,13 +690,11 @@ def evaluate(case, observation, peers, invalid_params=None):
 
     if name.startswith('missing-block-') and method == 'trace_filter':
         rejected('H06', 'A range bound beyond the head returns an error (-32602 recommended), as eth_getLogs does; never a clamped or partial result.', -32602)
-    elif name.startswith('missing-block-') and method in ('trace_block', 'trace_replayBlockTransactions'):
-        if status == 'result' and 'result' in response and result is None:
-            check('H06', True, 'An unknown selected block returns null or an error (-32001 recommended), never a successful collection.')
-        else:
-            rejected('H06', 'An unknown selected block returns null or an error (-32001 recommended), never a successful collection.', -32001)
     elif name.startswith('missing-block-'):
-        rejected('H06', 'An unknown single selected block returns an error (-32001 recommended), never null or a result.', -32001)
+        # The one required code: fixtures compare it exactly.
+        code = mapping(response.get('error')).get('code') if status == 'rpc_error' else None
+        check('H06', code == -32001, 'An unknown selected block returns an error with code -32001, never null or a result.',
+              '' if code == -32001 else f'Code {code}.' if status == 'rpc_error' else f'Status {status}.')
     if name == 'call-unknown-field':
         check('H14', status == 'result' and mapping(result).get('output') == '0x'+f'{42:064x}',
               'Unknown call-object fields are ignored without changing execution output.')
@@ -715,14 +720,25 @@ def evaluate(case, observation, peers, invalid_params=None):
         bad = next((f for f in frames if not ok(f)), None)
         return '' if bad is None else f'First at traceAddress {bad.get("traceAddress")}: error {bad.get("error")!r}, result {json.dumps(bad.get("result"))[:200]}.'
     if failed:
+        # An unrecognized label could be a mislabeled revert, so only the specified halt labels pin result null.
         detail = first(failed, lambda f: isinstance(f['error'], str) and bool(f['error'])
-                       and (f.get('result') is None or isinstance(f['result'], dict)))
-        check('H09', not detail, 'Failed frames have an error string; an exceptional halt omits result or sets it to null.', detail)
+                       and ('result' in f and f['result'] is None if f['error'] in HALT_LABELS
+                            else f.get('result') is None or isinstance(f['result'], dict)))
+        check('H09', not detail, 'Failed frames have an error string; an exceptional halt carries result null.', detail)
         reverted = [f for f in failed if f['error'] == 'Reverted']
         if reverted:
             detail = first(reverted, lambda f: isinstance(f.get('result'), dict) and {'gasUsed', 'output'} <= set(f['result'])
                            and not {'address', 'code'} & set(f['result']))
             check('H09', not detail, 'A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code.', detail)
+    special = [f for f in frames if f.get('type') in ('reward', 'suicide')]
+    if special:
+        detail = first(special, lambda f: 'result' in f and f['result'] is None)
+        check('H09', not detail, 'Reward and SELFDESTRUCT records carry result null.', detail)
+    if method in ['trace_block', 'trace_filter'] and isinstance(result, list):
+        rewards = [f for f in result if isinstance(f, dict) and f.get('type') == 'reward']
+        detail = first(rewards, lambda f: all(k in f and f[k] is None for k in ('transactionHash', 'transactionPosition')))
+        if rewards:
+            check('H05', not detail, 'Reward records carry null transactionHash and transactionPosition.', detail)
     # Identify known REVERT paths from the fixture, never from implementation-specific error text.
     revert_path = [] if name == 'transaction-revert' or name.startswith('replay-revert-') else [0] if name == 'call-siblings-revert-ok' else [1] if name == 'call-siblings-ok-revert' else None
     trace_selected = method in ['trace_transaction','trace_block','trace_filter','trace_get'] or (len(params)>1 and isinstance(params[1],list) and 'trace' in params[1])

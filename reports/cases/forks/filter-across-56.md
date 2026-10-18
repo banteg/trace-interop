@@ -2,7 +2,7 @@
 
 `trace_filter` · forks · [All reports](../../README.md)
 
-**What this checks:** A fork-crossing range equals the corresponding per-block traces.
+**What this checks:** Reward and SELFDESTRUCT records carry result null. Reward records carry null transactionHash and transactionPosition. A fork-crossing range equals the corresponding per-block traces.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

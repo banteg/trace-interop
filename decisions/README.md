@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of 165** client decisions agree with the draft (+1 since the previous capture). 9 more have a submitted fix, and **22 differ with no fix yet**: 22 on converged decisions and 0 on decisions still under review. 31 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **116 of 165** client decisions agree with the draft (+1 since the previous capture). 9 more have a submitted fix, and **34 differ with no fix yet**: 34 on converged decisions and 0 on decisions still under review. 28 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -12,11 +12,11 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 | [H02](../reports/decisions/H02.md) | 🤝 Converged | ··👍👍 | **trace_get selector and return shape**<br>What does trace_get's path argument select, and does it return one trace or a list? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H03](../reports/decisions/H03.md) | 🤝 Converged | ·👍👍👍 | **Filter composition and mode**<br>How do fromAddress and toAddress combine in trace_filter, and what does `mode` change? | 🛠️🛠️✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H04](../reports/decisions/H04.md) | 🤝 Converged | ·👍👍👍 | **Empty address lists**<br>Does an empty address list in trace_filter match every record or none? | ✅✅✅🛠️—⚠️ | ✅✅✅🛠️✅⚠️ |
-| [H05](../reports/decisions/H05.md) | 🤝 Converged | ·👍👍👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️✅✅—✅ | ⚠️✅✅✅✅✅ |
-| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | 🟡⚠️✅⚠️—✅ | 🟡✅✅⚠️✅✅ |
+| [H05](../reports/decisions/H05.md) | 🤝 Converged | ·👍👍👍 | **Post-merge reward records**<br>Which reward records does a block produce after the Merge and at genesis, and do system operations or withdrawals produce any? | ⚠️🛠️🛠️✅—✅ | ⚠️⚠️⚠️✅✅✅ |
+| [H06](../reports/decisions/H06.md) | 🤝 Converged | ·👍👍👍 | **Missing transactions and paths**<br>When a transaction, block or trace path does not exist, does a method return null, [] or an error? | ⚠️⚠️🛠️⚠️—⚠️ | ⚠️⚠️⚠️⚠️✅⚠️ |
 | [H07](../reports/decisions/H07.md) | 🤝 Converged | ···👍 | **Replay transactionHash field**<br>Which replay results carry `transactionHash`? | 🟡✅✅✅—✅ | 🟡✅✅✅✅✅ |
 | [H08](../reports/decisions/H08.md) | 🤝 Converged | ···· | **Empty output and unrequested components**<br>What do `output`, `trace`, `stateDiff` and `vmTrace` hold when they are empty or not requested? | 🟡🟡✅✅—✅ | 🟡✅✅✅✅✅ |
-| [H09](../reports/decisions/H09.md) | 🤝 Converged | ·👍👍👍 | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️🛠️✅🛠️—🟡 | ⚠️✅✅✅✅✅ |
+| [H09](../reports/decisions/H09.md) | 🤝 Converged | ·👍👍👍 | **Failed frame results and error labels**<br>How does a failed frame report its failure: which `result` fields remain, and which `error` labels are allowed? | ⚠️🛠️🛠️🛠️—🟡 | ⚠️✅⚠️✅✅✅ |
 | [H10](../reports/decisions/H10.md) | 🤝 Converged | ···· | **Creation result field names**<br>Which fields and values describe a creation result and a call action? | ⚠️✅✅✅—✅ | ⚠️✅✅✅✅✅ |
 | [H11](../reports/decisions/H11.md) | 🧪 Harmonized · dev | ··👍· | **Empty trace-type selection**<br>What happens when the trace-type list is empty? | ✅🟡✅✅—✅ | ✅✅✅✅✅✅ |
 | [H12](../reports/decisions/H12.md) | 🤝 Converged | ···· | **Raw-transaction block argument**<br>Does trace_rawTransaction take a block argument, and which state does it run against? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
@@ -28,7 +28,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 | [H18](../reports/decisions/H18.md) | 🤝 Converged | ···👍 | **EIP-7702 code changes in stateDiff**<br>How does stateDiff report EIP-7702 delegation code changes? | 🟡✅✅✅—🟡 | 🟡✅✅✅✅✅ |
 | [H19](../reports/decisions/H19.md) | 🤝 Converged | ···👍 | **vmTrace executing bytecode**<br>Which bytecode does a vmTrace frame's `code` hold? | 🟡🟡✅✅—🟡 | 🟡✅✅✅✅✅ |
 | [H20](../reports/decisions/H20.md) | 🤝 Converged | ·👍·👍 | **vmTrace step timing and deltas**<br>What do a vmTrace step's `mem`, `cost` and `used` contain, and at which point are they measured? | ⚠️🛠️✅🛠️—🟡 | ⚠️✅✅✅✅✅ |
-| [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | 🟡🟡✅✅—✅ | 🟡✅✅✅✅✅ |
+| [H21](../reports/decisions/H21.md) | 🤝 Converged | ··👍· | **vmTrace numeric and optional metadata encoding**<br>How are vmTrace numbers encoded, and which step fields are optional? | ⚠️⚠️⚠️✅—✅ | ⚠️⚠️⚠️✅✅✅ |
 | [H22](../reports/decisions/H22.md) | 🤝 Converged | ···· | **Precompile return bytes**<br>What output does a successful precompile call frame report? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H23](../reports/decisions/H23.md) | 🤝 Converged | ·👍👍👍 | **Special-action address matching**<br>Which addresses of a CREATE, SELFDESTRUCT or reward record do trace_filter address lists match? | ⚠️🛠️✅🛠️—🟡 | ⚠️✅✅⚠️✅⚠️ |
 | [H24](../reports/decisions/H24.md) | 🤝 Converged | ···· | **Sibling failure isolation**<br>Can a failure in one call frame change another frame's reported status? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
@@ -40,7 +40,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 | [H30](../reports/decisions/H30.md) | 🧪 Harmonized · dev | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅🛠️✅✅—✅ | ✅✅✅✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | ···· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | 🛠️✅✅✅—✅ | 🛠️✅✅✅✅✅ |
 | [H32](../reports/decisions/H32.md) | 🤝 Converged | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️🛠️✅⚠️—⚠️ | ⚠️✅✅⚠️✅⚠️ |
-| [H33](../reports/decisions/H33.md) | 🤝 Converged | 👍👍👍· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | 🟡🛠️✅⚠️—⚠️ | 🟡✅✅⚠️✅⚠️ |
+| [H33](../reports/decisions/H33.md) | 🤝 Converged | 👍👍👍· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | ⚠️🛠️🛠️⚠️—⚠️ | ⚠️✅⚠️⚠️✅⚠️ |
 
 ## Status key
 

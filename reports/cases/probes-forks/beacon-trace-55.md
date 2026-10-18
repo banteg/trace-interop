@@ -2,7 +2,7 @@
 
 `trace_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string; an exceptional halt omits result or sets it to null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. trace_call at block 55 reads the beacon root of timestamp 560 only if block 55 stored it.
+**What this checks:** Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection. Failed frames have an error string; an exceptional halt carries result null. A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. trace_call at block 55 reads the beacon root of timestamp 560 only if block 55 stored it.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

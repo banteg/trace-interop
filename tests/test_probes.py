@@ -818,8 +818,12 @@ class BlockHashTests(Probe):
                            ('filter-blockhash-malformed-short', -32602), ('filter-blockhash-malformed-object', -32602)]:
             self.assertEqual(self.check(name, error(code)), ('matches', f'Rejected ({code}: invalid).'))
             status, detail = self.check(name, error(-32000))
-            self.assertEqual(status, 'matches')
-            self.assertIn(f'({code} recommended)', detail)
+            if name == 'filter-blockhash-unknown':
+                # An unknown block requires -32001.
+                self.assertEqual((status, detail), ('change_needed', 'Rejected (-32000: invalid); the code must be -32001.'))
+            else:
+                self.assertEqual(status, 'matches')
+                self.assertIn(f'({code} recommended)', detail)
             self.assertEqual(self.check(name, error(-32603))[0], 'change_needed')
         self.assertEqual(self.check('filter-blockhash-and-range', result(self.records(2, self.H2))),
                          ('change_needed', 'Accepted: answered block 0x2\u2019s 3 records.'))

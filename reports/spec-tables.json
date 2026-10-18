@@ -3,6 +3,10 @@
     "cells": 107,
     "clauses": [
       {
+        "id": "baseline",
+        "quote": "The transaction and every CALL-family or CREATE-family operation that targets an account outside the precompile set emit a frame, whether they succeed, revert or halt."
+      },
+      {
         "id": "root-precompile",
         "quote": "Retain root precompile calls regardless of value."
       },
@@ -16,7 +20,7 @@
       },
       {
         "id": "call-precheck",
-        "quote": "A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, no result and no subtraces"
+        "quote": "A CALL-family call that fails its precheck (call depth limit or insufficient balance) emits a frame with its action and error, a null result and no subtraces"
       },
       {
         "id": "create-precheck",
@@ -32,11 +36,11 @@
       },
       {
         "id": "halt-result",
-        "quote": "Exceptional halt, including an address collision; result is omitted or null."
+        "quote": "Exceptional halt, including an address collision; result is null."
       },
       {
         "id": "halt",
-        "quote": "An exceptional halt consumes the frame's action gas; its result may be omitted or null."
+        "quote": "An exceptional halt consumes the frame's action gas; its result is null."
       },
       {
         "id": "revert",
@@ -148,21 +152,6 @@
           "position": "*",
           "target": "precompile",
           "value": "zero"
-        }
-      },
-      {
-        "attribute": "emitted",
-        "cells": 45,
-        "detail": [],
-        "kind": "gap",
-        "members": null,
-        "span": {
-          "fork": "*",
-          "opcode": "*",
-          "outcome": "success, revert, halt",
-          "position": "*",
-          "target": "account",
-          "value": "*"
         }
       },
       {
@@ -442,7 +431,15 @@
       },
       {
         "id": "call-unknown",
-        "quote": "an unknown selected block returns an error (-32001, Resource not found, recommended), and a known block whose required state is pruned returns an error (4444 recommended)"
+        "quote": "an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended)"
+      },
+      {
+        "id": "call-noncanonical",
+        "quote": "A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001)."
+      },
+      {
+        "id": "many-resolution",
+        "quote": "Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks"
       },
       {
         "id": "call-pending",
@@ -454,7 +451,7 @@
       },
       {
         "id": "block-unknown",
-        "quote": "An unknown selected block returns null or an error (-32001, Resource not found, recommended); a known block whose required state is pruned returns an error (4444 recommended)"
+        "quote": "An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended)"
       },
       {
         "id": "block-pending",
@@ -508,61 +505,7 @@
         "pending"
       ]
     },
-    "findings": [
-      {
-        "attribute": "response",
-        "cells": 8,
-        "detail": [],
-        "kind": "gap",
-        "members": [
-          {
-            "history": "available",
-            "method": "trace_call",
-            "selector": "non-canonical hash"
-          },
-          {
-            "history": "pruned",
-            "method": "trace_callMany",
-            "selector": "number"
-          },
-          {
-            "history": "available",
-            "method": "trace_callMany",
-            "selector": "number beyond head"
-          },
-          {
-            "history": "pruned",
-            "method": "trace_callMany",
-            "selector": "hash"
-          },
-          {
-            "history": "available",
-            "method": "trace_callMany",
-            "selector": "unknown hash"
-          },
-          {
-            "history": "available",
-            "method": "trace_callMany",
-            "selector": "non-canonical hash"
-          },
-          {
-            "history": "available",
-            "method": "trace_callMany",
-            "selector": "unresolvable safe"
-          },
-          {
-            "history": "available",
-            "method": "trace_callMany",
-            "selector": "pending"
-          }
-        ],
-        "span": {
-          "history": "*",
-          "method": "trace_call, trace_callMany",
-          "selector": "number, number beyond head, hash, unknown hash, non-canonical hash, unresolvable safe, pending"
-        }
-      }
-    ],
+    "findings": [],
     "id": "blocks",
     "notes": [
       {

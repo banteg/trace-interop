@@ -114,7 +114,8 @@ class PosRewards(unittest.TestCase):
         self.assertEqual(statuses(assessed(case, observation, peers, {'H05'}), 'H05'), ['blocked'])
         result.append(dict(result[0], type='reward', transactionHash=None))
         observation['response']['result'] = result
-        self.assertEqual(statuses(assessed(case, observation, peers, {'H05'}), 'H05'), ['change_needed'])
+        # Both the PoS reward check and the reward localization (a non-null transactionPosition) differ.
+        self.assertEqual(set(statuses(assessed(case, observation, peers, {'H05'}), 'H05')), {'change_needed'})
 
     def test_address_filtered_selection_may_be_empty(self):
         case, observation, peers = captured('fork-followup', 'withdrawal-filter-52')

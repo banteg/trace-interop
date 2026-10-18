@@ -213,13 +213,13 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "After the switch to branch B, A\u2019s block 0x2d is noncanonical: its hash is an error (-32001 recommended), never B\u2019s [] or records.",
+          "requirement": "After the switch to branch B, A\u2019s block 0x2d is noncanonical: its hash is an error (-32001), never B\u2019s [] or records.",
           "block": {
             "number": "0x2d",
             "hash": "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d"
           },
           "reject": true,
-          "recommended": -32001
+          "required": -32001
         }
       ]
     },
@@ -265,13 +265,13 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Before B\u2019s payloads arrive, B\u2019s block 0x2d is unknown: an error (-32001 recommended).",
+          "requirement": "Before B\u2019s payloads arrive, B\u2019s block 0x2d is unknown: an error (-32001).",
           "block": {
             "number": "0x2d",
             "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
           },
           "reject": true,
-          "recommended": -32001
+          "required": -32001
         }
       ]
     },
@@ -317,13 +317,13 @@
         {
           "topic": "H33",
           "kind": "block-hash",
-          "requirement": "Once branch A is restored, B\u2019s block 0x2d is noncanonical: an error (-32001 recommended), never A\u2019s records.",
+          "requirement": "Once branch A is restored, B\u2019s block 0x2d is noncanonical: an error (-32001), never A\u2019s records.",
           "block": {
             "number": "0x2d",
             "hash": "0xb75975dcf8dc29c9d8f63272511a20eb5c16c8466634e83f6b840d3baaa54110"
           },
           "reject": true,
-          "recommended": -32001
+          "required": -32001
         }
       ]
     }

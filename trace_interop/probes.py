@@ -210,6 +210,8 @@ def block_hash_check(probe, case, status, response, result, reference):
         code, message = error.get('code'), str(error.get('message', ''))[:120]
         if not rejection(status, response):
             return verdict(False, f'Failed with {code}: {message}, a server failure rather than a rejection.', role)
+        if has is None and probe.get('required') is not None and code != probe['required']:
+            return verdict(False, f'Rejected ({code}: {message}); the code must be {probe["required"]}.', role)
         if has is None:
             return verdict(True, f'Rejected ({code}: {message}){recommended_note(code, probe.get("recommended"))}.', role)
         return verdict(False, f'Rejected ({code}: {message}), where {has}.', role)

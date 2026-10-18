@@ -27,7 +27,7 @@ for name in ['trace_get','trace_transaction','trace_replayTransaction']:
 validator=Draft201909Validator(methods['trace_call']['result']['schema'])
 vm={'code':'0x00','ops':[]}
 for _ in range(5):
-    vm={'code':'0x00','ops':[{'pc':0,'cost':0,'ex':{'used':1,'push':['0x0'],'mem':None,'store':None},'sub':vm}]}
+    vm={'code':'0x00','ops':[{'pc':0,'cost':0,'op':'CALL','ex':{'used':1,'push':['0x0'],'mem':None,'store':None},'sub':vm}]}
 value=dict(empty,vmTrace=vm)
 validator.validate(value)
 bad=copy.deepcopy(value);node=bad['vmTrace']

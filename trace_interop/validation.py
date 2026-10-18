@@ -3,11 +3,12 @@ from jsonschema import Draft201909Validator, validators
 
 
 def folded(validator, schema, instance):
-    """A closed object's members renamed to the defined member each matches case-insensitively.
+    """An object's members renamed to the defined member each matches case-insensitively.
     Servers may fold member names, so only a member that matches no defined member, or one another
-    member already takes, is unknown (H14). Responses keep the exact names."""
+    member already takes, is unknown (H14), and a folded member meets every keyword, such as the
+    mutually exclusive state and stateDiff of an open account override. Responses keep the exact names."""
     properties = schema.get('properties', {})
-    if schema.get('additionalProperties') is not False or not validator.is_type(instance, 'object'):
+    if not properties or not validator.is_type(instance, 'object'):
         return instance
     by_name = {}
     for name in properties:
@@ -23,7 +24,7 @@ def on_folded(check):
     return lambda validator, value, instance, schema: check(validator, value, folded(validator, schema, instance), schema)
 
 
-# Every keyword of a closed object sees the folded members, so a matched member also meets if/then, not and required.
+# Every keyword of an object sees the folded members, so a matched member also meets if/then, not and required.
 RequestValidator = validators.extend(Draft201909Validator, {
     keyword: on_folded(check) for keyword, check in Draft201909Validator.VALIDATORS.items()})
 

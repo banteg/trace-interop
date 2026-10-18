@@ -121,9 +121,10 @@ fee amounts and warm-access/refund semantics remain outside these assertions.
 
 ### Pending block
 
-`pending` is an ordered scenario on the frozen chain-a head. Its `pool` phase sends one
+`pending` is an ordered scenario on the frozen chain-a head. Its `send` phase submits one
 signed EIP-1559 transfer from Hive's public hivechain key 0x84E75c28…, whose nonce is 0,
-and checks that the transaction is pooled and not mined. The `trace` phase then calls
+and its `pool` phase checks that the transaction is pooled and not mined. Hive runs a
+phase's cases in lexical order, so the check is a phase of its own. The `trace` phase then calls
 trace_block and trace_replayBlockTransactions at `pending`. Without a pooled transaction a
 pending block is empty and traces as `[]`, which cannot show which block was traced. Here a
 pending block is block 0x31 holding that transaction (H32). Block 0x30 has transactions, so

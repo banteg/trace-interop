@@ -2,7 +2,7 @@
   "cases": [
     {
       "expected_control": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4",
-      "name": "pool/send",
+      "name": "send/transaction",
       "request": {
         "id": 1,
         "jsonrpc": "2.0",
@@ -18,7 +18,7 @@
         "blockNumber": null,
         "hash": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4"
       },
-      "name": "pool/pooled",
+      "name": "pool/transaction",
       "request": {
         "id": 1,
         "jsonrpc": "2.0",
@@ -57,6 +57,7 @@
   "description": "One pooled EIP-1559 transfer on the frozen chain-a head (public hivechain key 0x84E75c28\u2026), then trace_block and trace_replayBlockTransactions at pending (H32).",
   "pending_transaction": "0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4",
   "scenario_phases": [
+    "send",
     "pool",
     "trace"
   ],

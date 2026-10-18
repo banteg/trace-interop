@@ -1,9 +1,9 @@
 """Generate the pending corpus: a pooled transaction for H32's pending block methods.
 
 On the frozen chain-a head an empty pending block traces as `[]`, which names no block, so
-it cannot show a pending environment. In this ordered scenario the pool phase sends one signed
-EIP-1559 transfer and checks that it is pooled, not mined; the trace phase then traces the pending
-block, which must be block head+1 holding that transaction. The head block has transactions, so a
+it cannot show a pending environment. In this ordered scenario the send phase submits one signed
+EIP-1559 transfer, the pool phase checks that it is pooled, not mined, and the trace phase then traces
+the pending block, which must be block head+1 holding that transaction. The head block has transactions, so a
 client that answers with latest returns canonical records instead of `[]`.
 """
 from pathlib import Path
@@ -48,14 +48,15 @@ def corpus():
 
     def case(name, method, params, **extra):
         cases.append({'name': name, 'request': {'jsonrpc': '2.0', 'id': 1, 'method': method, 'params': params}, **extra})
-    case('pool/send', 'eth_sendRawTransaction', [raw], expected_control=txhash)
-    case('pool/pooled', 'eth_getTransactionByHash', [txhash],
+    case('send/transaction', 'eth_sendRawTransaction', [raw], expected_control=txhash)
+    # Hive runs a phase's cases in lexical order, so the pool check is its own phase.
+    case('pool/transaction', 'eth_getTransactionByHash', [txhash],
          expected_control_fields={'hash': txhash, 'blockHash': None, 'blockNumber': None})
     case('trace/block', 'trace_block', ['pending'])
     case('trace/replay', 'trace_replayBlockTransactions', ['pending', ['trace']])
     return {'description': 'One pooled EIP-1559 transfer on the frozen chain-a head (public hivechain key 0x84E75c28…), '
                            'then trace_block and trace_replayBlockTransactions at pending (H32).',
-            'scenario_phases': ['pool', 'trace'], 'sender': sender, 'pending_transaction': txhash, 'cases': cases}
+            'scenario_phases': ['send', 'pool', 'trace'], 'sender': sender, 'pending_transaction': txhash, 'cases': cases}
 
 
 def main():

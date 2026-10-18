@@ -428,7 +428,7 @@
       "client": "geth",
       "decisions": [],
       "state": "open",
-      "draft": true,
+      "draft": false,
       "merged_at": null,
       "note": "implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue; Frontier CREATE code-deposit regression fixed in commit 472c0bd8 on the draft PR branch"
     },
@@ -3148,6 +3148,48 @@
       "partial": [
         "H32"
       ]
+    },
+    {
+      "url": "https://github.com/NethermindEth/nethermind/pull/14888",
+      "title": "Emit the trace forms the execution-apis trace spec pins",
+      "client": "nethermind",
+      "decisions": [
+        "H05",
+        "H06",
+        "H09",
+        "H21"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "forms pinned in execution-apis#895 (5e6717fe) for exact Hive fixtures: result null on halted frames, suicides and rewards; null transactionHash and transactionPosition on rewards; op on every vmTrace operation, in the buffered and streaming tracers and the TraceStore format; -32001 for an unknown block by number, hash or unresolvable tag in trace_block, trace_replayBlockTransactions, trace_call, trace_callMany and trace_filter, TraceStore included. Passes the 22 #895 trace fixtures in Hive, where master fails 12"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/25030",
+      "title": "rpc/jsonrpc: null reward localization, no vmTrace idx, -32001 for unknown trace blocks",
+      "client": "erigon",
+      "decisions": [
+        "H05",
+        "H06",
+        "H21"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "forms pinned in execution-apis#895 (5e6717fe): null transactionHash and transactionPosition on reward records from the fast JSON writer; vmTrace operations drop idx; trace_call and trace_callMany return -32001 for an unknown block, and an unresolvable safe or finalized tag is -32001 in the trace methods. QA RPC integration fails until a release includes rpc-tests#631 and RPC_VERSION is bumped on this PR. Passes 22 of the 23 #895 trace fixtures in Hive; the last is the Amsterdam stateGasUsed member"
+    },
+    {
+      "url": "https://github.com/erigontech/rpc-tests/pull/631",
+      "title": "test: drop vmTrace idx and null reward transaction fields in trace fixtures",
+      "client": null,
+      "decisions": [
+        "H05",
+        "H21"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "companion to erigon#25030: removes idx from 2,991,654 vmTrace operations in 75 trace fixtures and adds the null transaction pair to 86 reward records in 35 trace_block and trace_filter fixtures; tars stay bzip2"
     }
   ]
 }

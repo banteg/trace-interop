@@ -57,8 +57,8 @@
       "client": "erigon",
       "counts": {
         "agree": 30,
-        "converged": 3,
-        "fix": 0,
+        "converged": 0,
+        "fix": 3,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -67,7 +67,7 @@
       "name": "Erigon",
       "prs": {
         "merged": 25,
-        "open": 0
+        "open": 1
       }
     },
     {
@@ -92,8 +92,8 @@
       "client": "nethermind",
       "counts": {
         "agree": 28,
-        "converged": 5,
-        "fix": 0,
+        "converged": 1,
+        "fix": 4,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -102,7 +102,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 49,
-        "open": 0
+        "open": 1
       }
     },
     {

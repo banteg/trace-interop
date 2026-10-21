@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Anvil · 1.8.6-nightly · 6c21ffe2](../../clients/anvil_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Besu · 26.10-develop · abdf1419](../../clients/besu_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Erigon · 3.7.1 · 8c1e3893](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Erigon · 3.9.0-dev · 1ee57924](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Geth draft fork · 1.17.9-unstable · fdbb46a5](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Nethermind · 2.2.0-preview · 159862be](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · 3d592ece](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
-| [Reth · 2.7.0 · e6679687](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-18/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-18/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.5 · 51a52c59](../../clients/anvil_release.md) | Setup incomplete; not assessed | ⚪ Not assessed | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Anvil · 1.8.6-nightly · 9089a6bf](../../clients/anvil_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Besu · 26.10.0 · 976ca7ea](../../clients/besu_release.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Besu · 26.10-develop · 7590302e](../../clients/besu_development.md) | 2 records | ⚠️ Differs | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Erigon · 3.8.0 · 7539da15](../../clients/erigon_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Erigon · 3.9.0-dev · d23467c5](../../clients/erigon_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Geth draft fork · 1.17.9-unstable · a15b96ff](../../clients/go-ethereum_trace.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.2.0 · 1d2aff00](../../clients/nethermind_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Nethermind · 2.3.0-preview · e2e011c8](../../clients/nethermind_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Reth · 2.8.0 · 05ba4812](../../clients/reth_release.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
+| [Reth · 2.8.0 · 05ba4812](../../clients/reth_development.md) | 2 records | ✅ Checked cases agree | [Response](../../../evidence/2026-10-21/eval/mined-probes/observations.json.gz) · [Build/run](../../../evidence/2026-10-21/eval/mined-probes/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -35,7 +35,7 @@
 
 - [H28](../../decisions/H28.md): Assess this declared topic case. Replayed chain differs from the fixture at block 0x2 (gasUsed, receiptsRoot)
 
-**Besu · 26.10-develop · abdf1419** (`besu/v26.10-develop-abdf141/linux-x86_64/openjdk-java-25`)
+**Besu · 26.10-develop · 7590302e** (`besu/v26.10-develop-7590302/linux-x86_64/openjdk-java-25`)
 
 - [H28](../../decisions/H28.md): Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. call [0]: result.output 0x0000000000000000000000000000000000000000000000000000000000000000 != 0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d
 - [H28](../../decisions/H28.md): Replay applies the block’s pre-transaction system call, so the read returns the value the block stored. call []: result.output 0x0000000000000000000000000000000000000000000000000000000000000000 != 0x2bbb1ec4c4b7d44e05e437734ee13d193a22291da15db8b43316bfa0376b206d

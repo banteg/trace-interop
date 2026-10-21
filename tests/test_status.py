@@ -149,8 +149,9 @@ class ClientPositionTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         page = (root/'reports/decisions/H03.md').read_text()
         self.assertIn('| Erigon | 👍 Agrees |', page)
-        self.assertIn('| Besu | · No response |', page)
+        # Besu merged #11436, so its position derives from the merged fix.
+        self.assertIn('| Besu | 👍 Agrees |', page)
         self.assertIn('[Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216)', page)
         index = (root/'decisions/README.md').read_text()
-        self.assertTrue(any('[H03]' in line and '| ·👍👍👍 |' in line for line in index.splitlines()))
+        self.assertTrue(any('[H03]' in line and '| 👍👍👍👍 |' in line for line in index.splitlines()))
         self.assertIn('### Client positions', index)

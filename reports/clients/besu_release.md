@@ -1,12 +1,12 @@
 # Besu: changes to review
 
-Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10.0 · 976ca7ea ships what the October 11 development build carried: it runs unsigned calls like eth_call (#11404), returns rejected trace_callMany bundles as one JSON-RPC error (#11401), starts each trace_callMany call at a transaction boundary (#11365), reports each rejected item with its own reason (#11432) and selects exactly the hashed block in trace_filter (#11407). It and 26.10-develop · 0776d82f also return null for an unknown transaction hash (#11379) and Block not found for an unknown block (#11381).
+Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10.0 · 976ca7ea ships what the October 11 development build carried: it runs unsigned calls like eth_call (#11404), returns rejected trace_callMany bundles as one JSON-RPC error (#11401), starts each trace_callMany call at a transaction boundary (#11365), reports each rejected item with its own reason (#11432) and selects exactly the hashed block in trace_filter (#11407). It and the development build also return null for an unknown transaction hash (#11379) and Block not found for an unknown block (#11381). 26.10-develop · 7590302e adds the trace_filter mode member (#11436) and the omitted trace_callMany block (#11440, H31), so it agrees on 8 decisions.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.10.0` | [`976ca7ea`](https://github.com/besu-eth/besu/commit/976ca7ea0bdb5353f00981d0eccbdaf01eed4bc6) | 2026-10-15 | [2026-10-18](../../evidence/2026-10-18/eval/initial/manifest.json) |
+| `26.10.0` | [`976ca7ea`](https://github.com/besu-eth/besu/commit/976ca7ea0bdb5353f00981d0eccbdaf01eed4bc6) | 2026-10-15 | [2026-10-21](../../evidence/2026-10-21/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

@@ -4,7 +4,7 @@ The experimental fork follows the adopted source-review stances; its checked cas
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.17.9-unstable · fdbb46a5** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.17.9-unstable · a15b96ff** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 0 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Geth draft fork decisions by outcome, with fix PRs](geth-work.svg)
 
@@ -12,7 +12,7 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.9-unstable` | [`fdbb46a5`](https://github.com/banteg/go-ethereum/commit/fdbb46a5039cf095cd27f6c4a5ef813c08896666) | 2026-10-18 | [2026-10-18](../../evidence/2026-10-18/eval/initial/manifest.json) |
+| `1.17.9-unstable` | [`a15b96ff`](https://github.com/banteg/go-ethereum/commit/a15b96ff3773bb8f2975f028256add2229f9e747) | 2026-10-18 | [2026-10-21](../../evidence/2026-10-21/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -26,7 +26,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.17.9-unstable · fdbb46a5 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 1.17.9-unstable · a15b96ff | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

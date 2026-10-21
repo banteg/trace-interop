@@ -1,0 +1,253 @@
+{
+  "clients": {
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-21T01:35:13.939888102Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:7dab2a4b45f7abfd38ed6d4c7329ee10275a50cee598855a221396f47f7ecb6c",
+      "image_id": "sha256:00583ba223c8f6758059e694f8d87b7d7c347bcd1cd36aa932932411d9dcebb6",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-10-20T18:11:59.94952147Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:796c866410171459946d6607301ad728a1b150ea0aa05623cf6bdf79cd3e3322",
+      "image_id": "sha256:55d283b94a043d777f3002a5e48566341e4e47c056c9c6f4224ac9bf4f4faf8c",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-10-20T19:34:03Z",
+        "tag": "v2.8.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.8.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.8.0"
+    }
+  },
+  "corpus": "pruned",
+  "finished_at": "2026-10-21T13:09:58.997857+00:00",
+  "fixture_manifest_sha256": "f0c7743ff38a4a272c0ad3bfb9aef2eee074ef9213601f06f753b01394123c6d",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "de37b1b7c97495befc7f02e88451cf8ea5d9ce354d294fab4770a3df67014102",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "runner_exit_code": 1,
+  "runner_sha256": "ef650033c017892a38e6cb1f3fed4a2e55ccf013d8189fdb0e333ad7008bf6a9",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "old-header",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x2",
+          false
+        ]
+      }
+    },
+    {
+      "name": "old-receipt",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "name": "old-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x2"
+        ]
+      }
+    },
+    {
+      "name": "latest-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "name": "old-transaction",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "name": "old-replay",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "trace",
+            "stateDiff"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "old-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      }
+    },
+    {
+      "name": "old-filter",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "latest-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "name": "_control/receipt/0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    }
+  ],
+  "source_commit": "58e647549c7004e53c059e1d32929a2004a5fdb9",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "28a5824023fbd76ef4e1dec9564b94be5883fbc1",
+    "generated_sha256": "808461b76bac68e2f9516cff4c9559ef9b8ac4bd30b00f8e25e0ae83bf4c7b0a",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-21T13:09:53.139160+00:00"
+}

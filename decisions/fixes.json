@@ -3162,6 +3162,18 @@
       }
     },
     {
+      "url": "https://github.com/NethermindEth/nethermind/pull/15017",
+      "title": "Report a noncanonical trace_filter block hash as not found",
+      "client": "nethermind",
+      "decisions": [
+        "H33"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "-32001 instead of -32000 for a trace_filter blockHash naming a known side-chain block, and instead of -32002 for a canonical block past the processed head, in TraceRpcModule and TraceStoreRpcModule; the remaining difference of master after #14888"
+    },
+    {
       "url": "https://github.com/erigontech/erigon/pull/25030",
       "title": "rpc/jsonrpc: null reward localization, no vmTrace idx, -32001 for unknown trace blocks",
       "client": "erigon",

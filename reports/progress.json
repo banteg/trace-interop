@@ -92,8 +92,8 @@
       "client": "nethermind",
       "counts": {
         "agree": 32,
-        "converged": 1,
-        "fix": 0,
+        "converged": 0,
+        "fix": 1,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -102,7 +102,7 @@
       "name": "Nethermind",
       "prs": {
         "merged": 50,
-        "open": 0
+        "open": 1
       }
     },
     {

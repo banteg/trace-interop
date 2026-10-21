@@ -4,7 +4,7 @@
 
 The target is a useful, precise contract. Historical implementations explain compatibility costs, but do not decide the recommendation. Intentional departures need a concrete benefit and an explicit migration cost; observed agreement alone does not establish correctness.
 
-Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of 165** client decisions agree with the draft (+9 since the previous capture). 7 more have a submitted fix, and **27 differ with no fix yet**: 27 on converged decisions and 0 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
+Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of 165** client decisions agree with the draft (+9 since the previous capture). 8 more have a submitted fix, and **26 differ with no fix yet**: 26 on converged decisions and 0 on decisions still under review. 20 agreements are in development builds but not yet in a stable release. [Progress by client](../reports/README.md#progress).
 
 | Decision | Status | Positions | Question | Stable | Dev |
 | --- | --- | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 | [H30](../reports/decisions/H30.md) | ✅ Harmonized · stable | ·👍👍👍 | **Omitted trace_filter range bounds**<br>Which range does trace_filter use when fromBlock or toBlock is omitted? | ✅✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H31](../reports/decisions/H31.md) | 🤝 Converged | 👍··· | **Omitted trace_callMany block**<br>Is trace_callMany's block argument optional, and what is its default? | 🛠️✅✅✅—✅ | ✅✅✅✅✅✅ |
 | [H32](../reports/decisions/H32.md) | 🤝 Converged | ·👍👍· | **Trace block tags and pending state**<br>Which block tags do the trace methods accept, and how is `pending` handled? | ⚠️✅✅⚠️—⚠️ | ⚠️✅✅⚠️✅⚠️ |
-| [H33](../reports/decisions/H33.md) | 🤝 Converged | 👍👍👍· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | ⚠️✅🛠️⚠️—⚠️ | ⚠️✅⚠️⚠️✅⚠️ |
+| [H33](../reports/decisions/H33.md) | 🤝 Converged | 👍👍👍· | **Single-block hash selection in trace_filter**<br>Can trace_filter select exactly one block by hash, and what does a hash that is unknown or not canonical return? | ⚠️✅🛠️⚠️—⚠️ | ⚠️✅🛠️⚠️✅⚠️ |
 
 ## Status key
 

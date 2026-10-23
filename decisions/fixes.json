@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-21",
+  "checked_at": "2026-10-23",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -3168,10 +3168,17 @@
       "decisions": [
         "H33"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "-32001 instead of -32000 for a trace_filter blockHash naming a known side-chain block, and instead of -32002 for a canonical block past the processed head, in TraceRpcModule and TraceStoreRpcModule; the remaining difference of master after #14888"
+      "merged_at": "2026-10-21T23:04:16Z",
+      "note": "-32001 instead of -32000 for a trace_filter blockHash naming a known side-chain block, and instead of -32002 for a canonical block past the processed head, in TraceRpcModule and TraceStoreRpcModule; the remaining difference of master after #14888",
+      "uptake": {
+        "merge_commit": "772915762b867652963c733f43214982189b8c83",
+        "builds": {
+          "e2e011c8c4a9ff595c0b9b8ff95d9ca201e76372": false,
+          "1d2aff00ccee8df1ffabc142ee8ea61b3760754e": false
+        }
+      }
     },
     {
       "url": "https://github.com/erigontech/erigon/pull/25030",

@@ -4,7 +4,7 @@
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.3.0-preview · e2e011c8** (of 33 decisions): ✅ 32 agree (+4 since the previous capture) · 🛠️ 1 fix submitted. 5 of these agreements are not yet in 2.2.0 · 1d2aff00. Upstream fix PRs: 50 merged, 1 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.3.0-preview · e2e011c8** (of 33 decisions): ✅ 32 agree (+4 since the previous capture) · 🛠️ 1 fix submitted. 5 of these agreements are not yet in 2.2.0 · 1d2aff00. Upstream fix PRs: 51 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Nethermind decisions by outcome, with fix PRs](nethermind-work.svg)
 

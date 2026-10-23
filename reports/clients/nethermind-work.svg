@@ -72,8 +72,8 @@
 <text class="label" x="70" y="153">Single-block hash selection in trace_filter</text>
 <rect class="b-agree" x="400" y="140" width="55" height="18" rx="4"/>
 <text class="n-agree" x="427.5" y="153" text-anchor="middle">#14111</text>
-<rect class="pr" x="461" y="140" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="153" text-anchor="middle">#15017</text>
+<rect class="b-fix" x="461" y="140" width="55" height="18" rx="4"/>
+<text class="n-fix" x="488.5" y="153" text-anchor="middle">#15017</text>
 <rect class="b-agree" x="16" y="172" width="130" height="18" rx="4"/>
 <text class="n-agree" x="81" y="185" text-anchor="middle">in measured build</text>
 <rect class="b-fix" x="152" y="172" width="150" height="18" rx="4"/>

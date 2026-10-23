@@ -79,6 +79,8 @@
 <text class="n-fix" x="444.5" y="233" text-anchor="middle">Alloy #4257</text>
 <rect class="pr edge partial" x="495" y="220" width="109" height="18" rx="4"/>
 <text class="label" x="549.5" y="233" text-anchor="middle">Alloy EVM #427</text>
+<rect class="pr edge partial" x="610" y="220" width="55" height="18" rx="4"/>
+<text class="label" x="637.5" y="233" text-anchor="middle">#28105</text>
 <rect class="b-converged" x="16" y="244" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="257" text-anchor="middle">H15</text>
 <text class="label" x="70" y="257">Unsigned simulation fees and block environment</text>
@@ -113,8 +115,10 @@
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H32</text>
 <text class="label" x="70" y="377">Trace block tags and pending state</text>
-<rect class="pr edge partial" x="400" y="364" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="377" text-anchor="middle">#27593</text>
+<rect class="pr edge partial" x="400" y="364" width="89" height="18" rx="4"/>
+<text class="label" x="444.5" y="377" text-anchor="middle">Alloy #4442</text>
+<rect class="pr edge partial" x="495" y="364" width="55" height="18" rx="4"/>
+<text class="label" x="522.5" y="377" text-anchor="middle">#27593</text>
 <rect class="b-converged" x="16" y="388" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="401" text-anchor="middle">H33</text>
 <text class="label" x="70" y="401">Single-block hash selection in trace_filter</text>

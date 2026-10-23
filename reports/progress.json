@@ -137,7 +137,7 @@
       "name": "Reth",
       "prs": {
         "merged": 24,
-        "open": 8
+        "open": 10
       }
     },
     {
@@ -162,8 +162,8 @@
       "client": "anvil",
       "counts": {
         "agree": 27,
-        "converged": 6,
-        "fix": 0,
+        "converged": 5,
+        "fix": 1,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -172,7 +172,7 @@
       "name": "Anvil",
       "prs": {
         "merged": 15,
-        "open": 0
+        "open": 1
       }
     }
   ],

@@ -3237,6 +3237,48 @@
       "draft": false,
       "merged_at": "2026-10-20T13:39:35Z",
       "note": "companion to erigon#25030: removes idx from 2,991,654 vmTrace operations in 75 trace fixtures and adds the null transaction pair to 86 reward records in 35 trace_block and trace_filter fixtures; tars stay bzip2"
+    },
+    {
+      "url": "https://github.com/alloy-rs/alloy/pull/4442",
+      "title": "feat(rpc-types-trace)!: accept block tags in TraceFilter bounds",
+      "client": "reth",
+      "decisions": [
+        "H32"
+      ],
+      "partial": [
+        "H32"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "TraceFilter fromBlock/toBlock become Option<BlockNumberOrTag>, so earliest, latest, safe and finalized deserialize; block_option() rejects pending. Reth and Anvil both reject tags today because they parse trace_filter params into this type; each then needs a handler that resolves the tags, Anvil included"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/28105",
+      "title": "fix(rpc): require hex quantities in trace_get paths",
+      "client": "reth",
+      "decisions": [
+        "H14"
+      ],
+      "partial": [
+        "H14"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "trace_get indices accept only minimal lowercase hex quantities (a TraceAddressIndex param type), so [6, 0] returns -32602 as in Erigon, Nethermind and Anvil (#17308); other methods keep Alloy's Index"
+    },
+    {
+      "url": "https://github.com/foundry-rs/foundry/pull/17777",
+      "title": "fix(anvil): return not found for unknown trace blocks",
+      "client": "anvil",
+      "decisions": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "-32001 for an unknown block in trace_call, trace_callMany and trace_rawTransaction (past the head, below genesis, or an upstream hash past the fork point) and in trace_replayBlockTransactions instead of null; eth_call keeps -32602. Reverses #17306's null for replays, alongside paradigmxyz/reth#27478"
     }
   ]
 }

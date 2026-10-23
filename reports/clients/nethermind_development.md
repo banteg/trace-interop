@@ -1,20 +1,18 @@
 # Nethermind: changes to review
 
-2.2.0 · 1d2aff00 agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957), failed-frame results and labels (#13981) and null for a missing transaction or replay (#13937, #14037). It also validates trace_rawTransaction as block inclusion does (#14091), rejects disagreeing data and input (#14089), rejects block-hash filter bounds and selects one block with the trace_filter blockHash member (#14111), runs blob calls without a positive blob fee cap at BLOBBASEFEE 0 (#14092) and answers rejected calls with the eth_simulateV1 codes (#14158). Its one remaining difference is H14: its release branch was cut before #14212 and #14663, so an explicit type still adds requirements, fields a call’s fork lacks run, and a lone maxFeePerBlobGas is ignored. Master includes both, and #14888 adds the forms the draft pinned for exact fixtures (5e6717fe): result null on halted frames, rewards and SELFDESTRUCT records (H09), null reward transaction fields (H05), vmTrace op (H21) and -32001 for an unknown block (H06). 2.3.0-preview · e2e011c8 agrees on 32 decisions; its one difference is a noncanonical trace_filter blockHash, which returns -32000 where the draft requires -32001 (H33), which #15017 fixes; a code sender’s rejection message, gas-defaulting probes its funds cannot cover and the legacy-priced authorization list remain unassessed or open.
+2.2.1 · c4f1015b, 2.2.0 with Amsterdam unscheduled on Hoodi, agrees on filter modes and empty address lists (#13857), post-merge and genesis reward records (#13938, #13783, #13801), vmTrace steps (#13940, #13958), precheck and collision frames (#13957), failed-frame results and labels (#13981) and null for a missing transaction or replay (#13937, #14037). It also validates trace_rawTransaction as block inclusion does (#14091), rejects disagreeing data and input (#14089), rejects block-hash filter bounds and selects one block with the trace_filter blockHash member (#14111), runs blob calls without a positive blob fee cap at BLOBBASEFEE 0 (#14092) and answers rejected calls with the eth_simulateV1 codes (#14158). It agrees on 27 decisions. Its release branch was cut before #14212 and #14663, so an explicit type still adds requirements, fields a call’s fork lacks run, and a lone maxFeePerBlobGas is ignored (H14). Master includes both, and #14888 adds the forms the draft pinned for exact fixtures (5e6717fe): result null on halted frames, rewards and SELFDESTRUCT records (H09), null reward transaction fields (H05), vmTrace op (H21) and -32001 for an unknown block (H06). With #15017, a noncanonical trace_filter blockHash also returns -32001 (H33), so 2.3.0-preview · 7192e7f3 agrees on all 33 decisions; a code sender’s rejection message, gas-defaulting probes its funds cannot cover and the legacy-priced authorization list remain unassessed or open.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.3.0-preview` | [`e2e011c8`](https://github.com/NethermindEth/nethermind/commit/e2e011c8c4a9ff595c0b9b8ff95d9ca201e76372) | 2026-10-21 | [2026-10-21](../../evidence/2026-10-21/eval/initial/manifest.json) |
+| `2.3.0-preview` | [`7192e7f3`](https://github.com/NethermindEth/nethermind/commit/7192e7f344d7b4516db02d0140bd5ecd83532caf) | 2026-10-23 | [2026-10-23](../../evidence/2026-10-23/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 2.3.0-preview · e2e011c8 | Proposed change |
-| --- | --- | --- |
-| [Single-block hash selection in trace_filter](../decisions/H33.md)<br>In the 2026-09-29 capture, both builds accepted `blockHash` as an unknown member and traced the head instead, including for unknown hashes; `count: 0` returned `[]`, and hash-plus-range requests used the range. After the reorg switch, the development build returned B’s empty head for A’s hash. The selected 2026-09-30 development build rejects non-null `blockHash` with -32602 following #14050, which stops the silent answer but does not select the block; it also rejects null beside numeric bounds. The stable build still ignores the member. | 🛠️ Fix submitted: [Nethermind #15017](https://github.com/NethermindEth/nethermind/pull/15017)<br>[After/filter hash a](../cases/reorg-safe/after/filter-hash-a.md) | Select exactly the hashed block, rejecting side-chain blocks as `SearchForBlocksOnMainChain` already does, and resolve and trace it in one chain view. Reject a hash with non-null bounds and a malformed hash (-32602 recommended) and an unknown, noncanonical, unexecuted or unavailable hash (-32001 recommended; 4444 for pruned history), before any `count: 0` shortcut; treat a null member as omitted.<br>[Address matching](https://github.com/NethermindEth/nethermind/blob/641592d2b96fa1e2fa8e8a0b1761582a1728bd51/src/Nethermind/Nethermind.JsonRpc/Modules/Trace/TxTraceFilter.cs#L56) |
+No differences were found by the selected semantic assertions.
 
 ## Open policy observations
 
@@ -22,7 +20,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 2.3.0-preview · e2e011c8 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params). Selector latest: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params). Selector pending: rejected as invalid params (-32602: Invalid params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 2.3.0-preview · 7192e7f3 | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid params). Selector latest: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid params). Selector pending: rejected as invalid params (-32602: Invalid params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 
@@ -59,6 +57,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 | [Omitted trace_filter range bounds](../decisions/H30.md) | [Filter no bounds](../cases/h30/filter-no-bounds.md) · [Filter to 2 implicit from](../cases/h30/filter-to-2-implicit-from.md) |
 | [Omitted trace_callMany block](../decisions/H31.md) | [Call number default](../cases/h30/call-number-default.md) · [Call number latest](../cases/h30/call-number-latest.md) |
 | [Trace block tags and pending state](../decisions/H32.md) | [Call number pending](../cases/h30/call-number-pending.md) · [Filter earliest](../cases/h30/filter-earliest.md) |
+| [Single-block hash selection in trace_filter](../decisions/H33.md) | [Filter blockhash](../cases/h30/filter-blockhash.md) · [Filter blockhash address from](../cases/h30/filter-blockhash-address-from.md) |
 
 </details>
 

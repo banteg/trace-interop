@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-23T15:49:32.883363+00:00",
+  "clients": {
+    "anvil_development": "sha256:5a9f91d068e2f25f1d0b4d6747b87ef86106d0b076566c39f6675cb5440cdb43",
+    "anvil_release": "sha256:2768eefd12696f8e95194a21ea0fef6dc6e22d333fbdb1e3f0f1abf5d7452dac",
+    "besu_development": "sha256:7a15718eb11bbf5eaf0599899809c598536f3826895c876f7f7e915b69f9fe97",
+    "besu_release": "sha256:e46025fb8b35376ca515de053df7deaab599930fb9f49ee58fa57df408117e9a",
+    "erigon_development": "sha256:9dbdbefb973932f4635c2b475eda1c003bc4ae51fb8df176b69b22e47598896b",
+    "erigon_release": "sha256:9b0e7ace326c5d62d5236af678b5e1798de35caa6ee71bf17371419c5c896efd",
+    "go-ethereum_trace": "sha256:02ca05a7a1be998fb54d4dcff691625805d8f74d7a610e8e82759e06944d7c0b",
+    "nethermind_development": "sha256:726d5a3f1bdb6da8240809b3ec8195e31e5cb804fa06aba90dfef77b46c40510",
+    "nethermind_release": "sha256:be3dcdebb120abccfc13b989770c56ba4ef3f9630028c7a716772931a2dfae1c",
+    "reth_development": "sha256:4360055932fad04efcfe12414bee63d7feb9e9fafe447b8719ff9bbd4ab62cf7",
+    "reth_release": "sha256:36c22d3dc362dc93558e2bce082379da90a094b5437313eaa5f25b2fe93088ae"
+  },
+  "lagging_development": {
+    "reth_development": {
+      "created": "2026-10-22T01:34:12.978484642Z",
+      "release": "v2.8.1",
+      "release_created": "2026-10-23T10:37:22.797953631Z"
+    }
+  },
+  "status": "current"
+}

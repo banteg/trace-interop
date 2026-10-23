@@ -1,0 +1,270 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-10-23T07:06:43.963589811Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:889b675bbe6c8118f87f36a63277f9eac0f32eadcb670e9ff6cb244ba9f1057e",
+      "image_id": "sha256:5a9f91d068e2f25f1d0b4d6747b87ef86106d0b076566c39f6675cb5440cdb43",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-23T06:46:05.284Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "4e8874b2bdc840929585ca73e170993c50a4a531",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-10-21T19:41:16.718284634Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:4a16a86f41d30418fbdca47ce2868121bbb0aeaa0a34bde2dd1e2911c4be2464",
+      "image_id": "sha256:2768eefd12696f8e95194a21ea0fef6dc6e22d333fbdb1e3f0f1abf5d7452dac",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-21T19:20:53.065Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "6bad0a66de7c83f7b33695044138f0f5fa4c5990",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.8.6"
+      },
+      "release": {
+        "published_at": "2026-10-21T19:56:05Z",
+        "tag": "v1.8.6",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.8.6"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.8.6"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-23T12:18:10.156619297Z",
+      "digest": "hyperledger/besu@sha256:3210ca578128c85984a0d149ffd7295143023914f68d0c40e84df31e77b1fa38",
+      "image_id": "sha256:7a15718eb11bbf5eaf0599899809c598536f3826895c876f7f7e915b69f9fe97",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "781a7e1df7c4e1c426d5b19201e8431dc366b72c",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-10-22T17:09:04.653246027Z",
+      "digest": "hyperledger/besu@sha256:47aa21463213abcddc5972bc79443e6806c1c7c68e8f36ed33222882fbad8752",
+      "image_id": "sha256:e46025fb8b35376ca515de053df7deaab599930fb9f49ee58fa57df408117e9a",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "e83703cdf863093b98ebe1d8719cd77cdf8639d8",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.10.1"
+      },
+      "release": {
+        "published_at": "2026-10-22T17:29:18Z",
+        "tag": "26.10.1",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.10.1"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.10.1"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-23T13:34:50.90957915Z",
+      "digest": "erigontech/erigon@sha256:206a0a9d88f0371a64bb98415cdb8167f327fcb94eaf23be81a5f1e5fc577fb6",
+      "image_id": "sha256:9dbdbefb973932f4635c2b475eda1c003bc4ae51fb8df176b69b22e47598896b",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-23T13:33:03Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "598ba62530ff34f62df663bc3afaff30923fdfbe",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "598ba62",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "598ba62530ff34f62df663bc3afaff30923fdfbe"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-20T07:36:16.59152173Z",
+      "digest": "erigontech/erigon@sha256:c181c52bd01474d2f342533da9478f70ade2e450f2ca3fd9900a01f4b6778180",
+      "image_id": "sha256:9b0e7ace326c5d62d5236af678b5e1798de35caa6ee71bf17371419c5c896efd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-20T07:34:10Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.8",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.8.0"
+      },
+      "release": {
+        "published_at": "2026-10-20T07:49:47Z",
+        "tag": "v3.8.0",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.8.0"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.8.0"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63",
+        "binary_sha256": "f78b60cd3f64b4081e585ea3c382aea5d2bf665253232517923c35ae8eec6b3a",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:02ca05a7a1be998fb54d4dcff691625805d8f74d7a610e8e82759e06944d7c0b",
+      "local_image": "trace-interop/geth-source:f78b60cd3f64b4081e585ea3c382aea5d2bf665253232517923c35ae8eec6b3a",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "a15b96ff3773bb8f2975f028256add2229f9e747",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "3d92884ccbb8cc15353b5378470cab60a03b5a9724fc97aca758e84add95882d"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-23T15:21:47Z",
+      "digest": "nethermindeth/nethermind@sha256:52241704b7c180351e877789a9e9acf36f0773f7228ab081f9d08d58a2a170a0",
+      "image_id": "sha256:726d5a3f1bdb6da8240809b3ec8195e31e5cb804fa06aba90dfef77b46c40510",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-23T15:21:47Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "7192e7f344d7b4516db02d0140bd5ecd83532caf",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.3.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-22T18:54:38Z",
+      "digest": "nethermind/nethermind@sha256:9161152aa8f7cffddb898537133a208a5b46c8dcb38cc3220e46f9cac71545e8",
+      "image_id": "sha256:be3dcdebb120abccfc13b989770c56ba4ef3f9630028c7a716772931a2dfae1c",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-22T18:54:38Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "c4f1015be8b989dd609803cc50d3928d6e0dfd4f",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.1"
+      },
+      "release": {
+        "published_at": "2026-10-22T19:41:22Z",
+        "tag": "2.2.1",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.2.1"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.2.1"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-22T01:34:12.978484642Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:d085b98c2fdc19e103ef0f189314f035ac240a1c8f1eecd663484911fa4379f4",
+      "image_id": "sha256:4360055932fad04efcfe12414bee63d7feb9e9fafe447b8719ff9bbd4ab62cf7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-10-23T10:37:22.797953631Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:f877e9b7364cad37abd33f9c1fa4a51cdc7ebc6b0db86541eca396cb37cd16c2",
+      "image_id": "sha256:36c22d3dc362dc93558e2bce082379da90a094b5437313eaa5f25b2fe93088ae",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-10-23T11:18:40Z",
+        "tag": "v2.8.1",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.8.1"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.8.1"
+    }
+  },
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "resolution": "latest-published",
+  "resolution_started_at": "2026-10-23T15:43:58.739376+00:00",
+  "resolved_at": "2026-10-23T15:49:01.218417+00:00"
+}

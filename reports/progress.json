@@ -5,15 +5,15 @@
         "development": {
           "agree": 8,
           "build": [
-            "26.10-develop \u00b7 7590302e"
+            "26.10-develop \u00b7 781a7e1d"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         },
         "release": {
           "agree": 6,
           "build": [
-            "26.10.0 \u00b7 976ca7ea"
+            "26.10.1 \u00b7 e83703cd"
           ],
           "gained": 0,
           "lost": 0
@@ -40,9 +40,9 @@
         "development": {
           "agree": 33,
           "build": [
-            "3.9.0-dev \u00b7 d23467c5"
+            "3.9.0-dev \u00b7 598ba625"
           ],
-          "gained": 3,
+          "gained": 0,
           "lost": 0
         },
         "release": {
@@ -50,7 +50,7 @@
           "build": [
             "3.8.0 \u00b7 7539da15"
           ],
-          "gained": 15,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -73,17 +73,17 @@
     {
       "builds": {
         "development": {
-          "agree": 32,
+          "agree": 33,
           "build": [
-            "2.3.0-preview \u00b7 e2e011c8"
+            "2.3.0-preview \u00b7 7192e7f3"
           ],
-          "gained": 4,
+          "gained": 1,
           "lost": 0
         },
         "release": {
           "agree": 27,
           "build": [
-            "2.2.0 \u00b7 1d2aff00"
+            "2.2.1 \u00b7 c4f1015b"
           ],
           "gained": 0,
           "lost": 0
@@ -91,14 +91,14 @@
       },
       "client": "nethermind",
       "counts": {
-        "agree": 32,
+        "agree": 33,
         "converged": 0,
-        "fix": 1,
+        "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 5,
+      "dev_only": 6,
       "name": "Nethermind",
       "prs": {
         "merged": 51,
@@ -110,7 +110,7 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.8.0 \u00b7 05ba4812"
+            "2.8.0 \u00b7 53bf066f"
           ],
           "gained": 0,
           "lost": 0
@@ -118,9 +118,9 @@
         "release": {
           "agree": 25,
           "build": [
-            "2.8.0 \u00b7 05ba4812"
+            "2.8.1 \u00b7 d763342f"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         }
       },
@@ -145,7 +145,7 @@
         "development": {
           "agree": 27,
           "build": [
-            "1.8.6-nightly \u00b7 9089a6bf"
+            "1.8.7-nightly \u00b7 4e8874b2"
           ],
           "gained": 0,
           "lost": 0
@@ -153,7 +153,7 @@
         "release": {
           "agree": 18,
           "build": [
-            "1.8.5 \u00b7 51a52c59"
+            "1.8.6 \u00b7 6bad0a66"
           ],
           "gained": 0,
           "lost": 0

@@ -1,18 +1,18 @@
 # Besu: changes to review
 
-Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10.0 · 976ca7ea ships what the October 11 development build carried: it runs unsigned calls like eth_call (#11404), returns rejected trace_callMany bundles as one JSON-RPC error (#11401), starts each trace_callMany call at a transaction boundary (#11365), reports each rejected item with its own reason (#11432) and selects exactly the hashed block in trace_filter (#11407). It and the development build also return null for an unknown transaction hash (#11379) and Block not found for an unknown block (#11381). 26.10-develop · 7590302e adds the trace_filter mode member (#11436) and the omitted trace_callMany block (#11440, H31), so it agrees on 8 decisions.
+Start with failed-frame reporting, precompile output and inclusion, and range-filter consistency. Individual replay also needs a scope decision. 26.10.0 · 976ca7ea and 26.10.1 · e83703cd, which only unschedules Amsterdam on Hoodi, ship what the October 11 development build carried: it runs unsigned calls like eth_call (#11404), returns rejected trace_callMany bundles as one JSON-RPC error (#11401), starts each trace_callMany call at a transaction boundary (#11365), reports each rejected item with its own reason (#11432) and selects exactly the hashed block in trace_filter (#11407). It and the development build also return null for an unknown transaction hash (#11379) and Block not found for an unknown block (#11381). 26.10-develop · 781a7e1d carries the trace_filter mode member (#11436) and the omitted trace_callMany block (#11440, H31), so it agrees on 8 decisions.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `26.10.0` | [`976ca7ea`](https://github.com/besu-eth/besu/commit/976ca7ea0bdb5353f00981d0eccbdaf01eed4bc6) | 2026-10-15 | [2026-10-21](../../evidence/2026-10-21/eval/initial/manifest.json) |
+| `26.10.1` | [`e83703cd`](https://github.com/besu-eth/besu/commit/e83703cdf863093b98ebe1d8719cd77cdf8639d8) | 2026-10-22 | [2026-10-23](../../evidence/2026-10-23/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
 ## Changes to discuss
 
-| Behavior | 26.10.0 · 976ca7ea | Proposed change |
+| Behavior | 26.10.1 · e83703cd | Proposed change |
 | --- | --- | --- |
 | [Method coverage](../decisions/H01.md)<br>Individual transaction replay is unavailable. | 🛠️ Fix submitted: [Besu #11406](https://github.com/besu-eth/besu/pull/11406)<br>[Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) | Add `trace_replayTransaction`; the draft requires all nine methods. Checked requirements: trace_replayTransaction<br>[Block replay](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceReplayBlockTransactions.java#L58) |
 | [Filter composition and mode](../decisions/H03.md)<br>A recipient-only filter returns 1 of the 2 expected calls. Every recognized `mode` value is rejected with `-32602`, including `intersection` and `union`. | 🛠️ Fix submitted: [Besu #11436](https://github.com/besu-eth/besu/pull/11436)<br>[Filter from only intersection](../cases/a/filter-from-only-intersection.md) | Make a one-sided query select every call matching the populated list. Accept `intersection` as the default and `union` as an explicit option; reject only unknown values.<br>[Filter execution pipeline](https://github.com/besu-eth/besu/blob/f9572aa82a2dadb3dd1b218d3ca97101540faf97/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/TraceFilter.java#L135) |
@@ -42,7 +42,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 26.10.0 · 976ca7ea | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid number of params). Selector latest: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid number of params). Selector pending: rejected as invalid params (-32602: Invalid number of params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 26.10.1 · e83703cd | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: Invalid number of params). Selector latest: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 by number: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 by hash: rejected as invalid params (-32602: Invalid number of params). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: Invalid number of params). Selector pending: rejected as invalid params (-32602: Invalid number of params). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 Result-shape differences are recorded on the [case pages](../technical.md#result-shape-checks); schema validity is separate from semantic coverage.
 
@@ -50,12 +50,12 @@ Result-shape differences are recorded on the [case pages](../technical.md#result
 
 | Decision | Build | Reason | Example |
 | --- | --- | --- | --- |
-| [Replay transactionHash field](../decisions/H07.md) | 26.10.0 · 976ca7ea | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
-| [Empty output and unrequested components](../decisions/H08.md) | 26.10.0 · 976ca7ea | 4 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay revert statediff](../cases/initial/replay-revert-stateDiff.md) |
-| [Unsigned simulation fees and block environment](../decisions/H15.md) | 26.10.0 · 976ca7ea | 2 blocked cases: No receipt gas or execution-gas witness was captured. | [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) · [Write revert read/many storage write revert read](../cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) |
-| [New-account stateDiff encoding](../decisions/H17.md) | 26.10.0 · 976ca7ea | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 5 blocked cases: unsupported. | [Raw valid default block](../cases/initial/raw-valid-default-block.md) · [Replay tree statediff](../cases/initial/replay-tree-stateDiff.md) |
-| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.10.0 · 976ca7ea | 2 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay authorizations](../cases/mined-probes/replay-authorizations.md) |
-| [vmTrace executing bytecode](../decisions/H19.md) | 26.10.0 · 976ca7ea | 3 blocked cases: unsupported. | [Replay tree vmtrace](../cases/initial/replay-tree-vmTrace.md) · [Replay refund capped](../cases/mined-probes/replay-refund-capped.md) |
+| [Replay transactionHash field](../decisions/H07.md) | 26.10.1 · e83703cd | 12 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay 7702 trace](../cases/initial/replay-7702-trace.md) |
+| [Empty output and unrequested components](../decisions/H08.md) | 26.10.1 · e83703cd | 4 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay revert statediff](../cases/initial/replay-revert-stateDiff.md) |
+| [Unsigned simulation fees and block environment](../decisions/H15.md) | 26.10.1 · e83703cd | 2 blocked cases: No receipt gas or execution-gas witness was captured. | [Many storage write revert read](../cases/a/many-storage-write-revert-read.md) · [Write revert read/many storage write revert read](../cases/callmany-isolation/write-revert-read/many-storage-write-revert-read.md) |
+| [New-account stateDiff encoding](../decisions/H17.md) | 26.10.1 · e83703cd | 1 blocked case: No state-diff object was returned; account markers cannot be assessed. 5 blocked cases: unsupported. | [Raw valid default block](../cases/initial/raw-valid-default-block.md) · [Replay tree statediff](../cases/initial/replay-tree-stateDiff.md) |
+| [EIP-7702 code changes in stateDiff](../decisions/H18.md) | 26.10.1 · e83703cd | 2 blocked cases: unsupported. | [Replay 7702 statediff](../cases/initial/replay-7702-stateDiff.md) · [Replay authorizations](../cases/mined-probes/replay-authorizations.md) |
+| [vmTrace executing bytecode](../decisions/H19.md) | 26.10.1 · e83703cd | 3 blocked cases: unsupported. | [Replay tree vmtrace](../cases/initial/replay-tree-vmTrace.md) · [Replay refund capped](../cases/mined-probes/replay-refund-capped.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

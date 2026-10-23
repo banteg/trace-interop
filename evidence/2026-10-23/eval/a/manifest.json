@@ -1,0 +1,2813 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-10-23T07:06:43.963589811Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:889b675bbe6c8118f87f36a63277f9eac0f32eadcb670e9ff6cb244ba9f1057e",
+      "image_id": "sha256:5a9f91d068e2f25f1d0b4d6747b87ef86106d0b076566c39f6675cb5440cdb43",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-23T06:46:05.284Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "4e8874b2bdc840929585ca73e170993c50a4a531",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-10-21T19:41:16.718284634Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:4a16a86f41d30418fbdca47ce2868121bbb0aeaa0a34bde2dd1e2911c4be2464",
+      "image_id": "sha256:2768eefd12696f8e95194a21ea0fef6dc6e22d333fbdb1e3f0f1abf5d7452dac",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-10-21T19:20:53.065Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "6bad0a66de7c83f7b33695044138f0f5fa4c5990",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.8.6"
+      },
+      "release": {
+        "published_at": "2026-10-21T19:56:05Z",
+        "tag": "v1.8.6",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.8.6"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.8.6"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-10-23T12:18:10.156619297Z",
+      "digest": "hyperledger/besu@sha256:3210ca578128c85984a0d149ffd7295143023914f68d0c40e84df31e77b1fa38",
+      "image_id": "sha256:7a15718eb11bbf5eaf0599899809c598536f3826895c876f7f7e915b69f9fe97",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "781a7e1df7c4e1c426d5b19201e8431dc366b72c",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-10-22T17:09:04.653246027Z",
+      "digest": "hyperledger/besu@sha256:47aa21463213abcddc5972bc79443e6806c1c7c68e8f36ed33222882fbad8752",
+      "image_id": "sha256:e46025fb8b35376ca515de053df7deaab599930fb9f49ee58fa57df408117e9a",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "e83703cdf863093b98ebe1d8719cd77cdf8639d8",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.10.1"
+      },
+      "release": {
+        "published_at": "2026-10-22T17:29:18Z",
+        "tag": "26.10.1",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.10.1"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.10.1"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-10-23T13:34:50.90957915Z",
+      "digest": "erigontech/erigon@sha256:206a0a9d88f0371a64bb98415cdb8167f327fcb94eaf23be81a5f1e5fc577fb6",
+      "image_id": "sha256:9dbdbefb973932f4635c2b475eda1c003bc4ae51fb8df176b69b22e47598896b",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-10-23T13:33:03Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "598ba62530ff34f62df663bc3afaff30923fdfbe",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "598ba62",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "598ba62530ff34f62df663bc3afaff30923fdfbe"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-20T07:36:16.59152173Z",
+      "digest": "erigontech/erigon@sha256:c181c52bd01474d2f342533da9478f70ade2e450f2ca3fd9900a01f4b6778180",
+      "image_id": "sha256:9b0e7ace326c5d62d5236af678b5e1798de35caa6ee71bf17371419c5c896efd",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-20T07:34:10Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.8",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.8.0"
+      },
+      "release": {
+        "published_at": "2026-10-20T07:49:47Z",
+        "tag": "v3.8.0",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.8.0"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.8.0"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63",
+        "binary_sha256": "f78b60cd3f64b4081e585ea3c382aea5d2bf665253232517923c35ae8eec6b3a",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:02ca05a7a1be998fb54d4dcff691625805d8f74d7a610e8e82759e06944d7c0b",
+      "local_image": "trace-interop/geth-source:f78b60cd3f64b4081e585ea3c382aea5d2bf665253232517923c35ae8eec6b3a",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "a15b96ff3773bb8f2975f028256add2229f9e747",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "3d92884ccbb8cc15353b5378470cab60a03b5a9724fc97aca758e84add95882d"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-10-23T15:21:47Z",
+      "digest": "nethermindeth/nethermind@sha256:52241704b7c180351e877789a9e9acf36f0773f7228ab081f9d08d58a2a170a0",
+      "image_id": "sha256:726d5a3f1bdb6da8240809b3ec8195e31e5cb804fa06aba90dfef77b46c40510",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-23T15:21:47Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "7192e7f344d7b4516db02d0140bd5ecd83532caf",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.3.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-22T18:54:38Z",
+      "digest": "nethermind/nethermind@sha256:9161152aa8f7cffddb898537133a208a5b46c8dcb38cc3220e46f9cac71545e8",
+      "image_id": "sha256:be3dcdebb120abccfc13b989770c56ba4ef3f9630028c7a716772931a2dfae1c",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-22T18:54:38Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "c4f1015be8b989dd609803cc50d3928d6e0dfd4f",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.1"
+      },
+      "release": {
+        "published_at": "2026-10-22T19:41:22Z",
+        "tag": "2.2.1",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.2.1"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.2.1"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-10-22T01:34:12.978484642Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:d085b98c2fdc19e103ef0f189314f035ac240a1c8f1eecd663484911fa4379f4",
+      "image_id": "sha256:4360055932fad04efcfe12414bee63d7feb9e9fafe447b8719ff9bbd4ab62cf7",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-10-23T10:37:22.797953631Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:f877e9b7364cad37abd33f9c1fa4a51cdc7ebc6b0db86541eca396cb37cd16c2",
+      "image_id": "sha256:36c22d3dc362dc93558e2bce082379da90a094b5437313eaa5f25b2fe93088ae",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-10-23T11:18:40Z",
+        "tag": "v2.8.1",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.8.1"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.8.1"
+    }
+  },
+  "corpus": "a",
+  "finished_at": "2026-10-23T15:56:44.791519+00:00",
+  "fixture_manifest_sha256": "f0c7743ff38a4a272c0ad3bfb9aef2eee074ef9213601f06f753b01394123c6d",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "0cbfc05ffc7ef3c75c397aa271b5401f04e7ec4b726ec1d2f81f3937e677667c",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+          "number": "0x1",
+          "same_hash": true
+        },
+        {
+          "differs": [],
+          "hash": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.8.7-nightly+4e8874b2"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x5febb94e961b43e8a1fc424236a3d0f3317fbaf6c9acc22b3be1408f3b9a534d",
+          "number": "0x1",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x86b5fb97860a838d8f88dd38afad4efe9b9bb8c720854d54a4f85e7d663b0ed4",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x95101c9d30fe4f93b8341b27809f256e98293ddc8f3364bb3c312e348e3e3d46",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf0d95b29bafb9288e4e39932665e1ef40af8dbfff5cf83da63074c6439c03471",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd5f27832e72054ca5771e9ffa891e77cb69e9e5e6302a685677758f337ce95c",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x131c8bf07ce540c17944915d347371c58612092417669f9947d89a11039d6def",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc437896fc3610ac74d3e8520522baaeeef8e66b0fa5ff807c062851fc3cacae4",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x68745f6d9357e36d098511a2d65d5eb03d2877d4da0c2a7bac3cea7eac5e64c6",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x312a078aa75e92d82ff2dba9915c7e314027497aaa08f2970dc477ab37add548",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea5fc4a97d75954349f21c8f93e31a6f9476aebea06376c63cdcc5252a3ba645",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x61216f95d98603f6e18a287a7ee6cd6f6083ec774659e9c697dc995571607bae",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7c6cd8340a3f6adeee741f1e61affbc9110a40487ada4683d0a0df7a53a31dff",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x449a714d4f576d7a13010e923fa7ac645a7fee5c4fb929f3370e421f108100ce",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa9d31ec9b27ce60aade3ebbbb552a3e2397b55bda8a10ffcf755578eb71ad521",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc0dc1ce4ce3bde842521c46fd310baeb0eff21a5656013d4fdd65062dc006c38",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf04eb0c9c91b252a5073302ea39eb7ef1686a522b54a1be8505c5a1fb1e73917",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8c53ed211529bf2f264ed8dd847c9fb44966dd895a3241cd945050d477abc7d6",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x1d92dd5752700201ab9ff02bc0a248d09680e06e9a288e1c3027a5a82ec8bbda",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd2a88caf640ee647ca68f7f40be902ba824ac5a059d606f840a351d8d757f54b",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x48bd37deb8a30fa93798078fdfb91ff92d6ed59c6102b07c0d611cc0fbd18afc",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xac60f114c5635782d01d0c07218b5884ecc113708c4fb1272db1704dbdd37aa2",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xabcd3c780245a744ef93acf4af5d0c3660bd734147b99549eddfe44e8ec7fb89",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x875af2a9995acb7323314bf019370963b5f65d86098d2de822feb3cb00e7c98a",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xba89cf52c3d342597b3766dad085a62b3cbdfc25e821b066943f34bc393716b9",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x1ad48d0fc402db86b882e90ba73e918165119f917cebfb3abf617c89c445c352",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x91d15bbba4927bc9aa703ae7f6c9ee1baaa29cde7dd746d4a160c94723befe06",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x93b1956560e97bdb417596468195a312c0dcd0f5a6a9763cd662d8b83b46f360",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb50ffc1447b2dffcc1fdb74213de17bac8ac1d44332b955ef21f986170e59357",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x4bb5ec5419dc97827ad698ca42208dfc6cd155542f46951edb52157c2d477c29",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe8dfee3bc750aa17f07de02d7f659c8e36b4b82723b378f4c961f13dd350f354",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xddedee31a972a479fd5372a942efc5c29e0818976c49ad125ea68a04490cbc62",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8fc9a489e8e65dbc3d837a6dd3a95d91622fe7d11b5feb29f7a8fbe188a71b07",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x90719aa4e502e72ef5b1f7f9db843b791d947167de36505e7eef4fcd2a63851c",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x21b69c625570c753155371998ceb462b34670412eb6b3ecc95b28e20c8b41f41",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x723b6c0abd0458247e221f7f10d097805d44031e076f12540e0b09eb38743afd",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9739f72ac1e7729532832ff6789a1136121a5f1895fd9cfe236bfe5fa66e2734",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x27c3363bffad755bb75f7a8deb453f657b79736d65776b4e8c2f03b5fe47d22d",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb02da0b2c9c743044e29bf9ce7b9675f3ac99df0ca2ba81383f685e33375bad7",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x932be2fcc4e220a5061d5c471b7b83b2891bf2192e142cdcb13cdbcf7f4a764a",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x13d53e201186dadacb1350320649bd72409268f15b3ecd3ec375363357077367",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x477d3633ffac07d2f38ce873778cb7d3a541bd7af523c6a784a1a77074e9e2c4",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa22f708e2c168572a864735fb9112e1ed3f6d6ef12b59ba249396db076ef3bd3",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x079e584e7e0c4b1b221d185958fe7a83f5a0c8348b0ecd372d6ef1cdef00f6da",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x3ce813e5810e46bd30c52a9056a414893349aebba97c73ae0c755bc9504a4be5",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x919077cfc26abbf2d13bb5cc7cee1c211376aedf7218ae9dec71355e0c3d58d4",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc18450148a5a0ceeda85c0bff019ad7726cfb1a56b1eb961d4d6fa2174736ce1",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x4fcb49cd6a7373e417f36a4907852046758d898069313b7cd5d267545d24c04d",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7841772aa148ce6248a729c34898434ea12dfdaced74a9a80579bc61db05a2fc",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0x95101c9d30fe4f93b8341b27809f256e98293ddc8f3364bb3c312e348e3e3d46",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0x93b1956560e97bdb417596468195a312c0dcd0f5a6a9763cd662d8b83b46f360",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xba89cf52c3d342597b3766dad085a62b3cbdfc25e821b066943f34bc393716b9",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x4bb5ec5419dc97827ad698ca42208dfc6cd155542f46951edb52157c2d477c29",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0x7c6cd8340a3f6adeee741f1e61affbc9110a40487ada4683d0a0df7a53a31dff",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0xddedee31a972a479fd5372a942efc5c29e0818976c49ad125ea68a04490cbc62",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0x48bd37deb8a30fa93798078fdfb91ff92d6ed59c6102b07c0d611cc0fbd18afc",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0x079e584e7e0c4b1b221d185958fe7a83f5a0c8348b0ecd372d6ef1cdef00f6da",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0xf0d95b29bafb9288e4e39932665e1ef40af8dbfff5cf83da63074c6439c03471",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xe8dfee3bc750aa17f07de02d7f659c8e36b4b82723b378f4c961f13dd350f354",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0x9739f72ac1e7729532832ff6789a1136121a5f1895fd9cfe236bfe5fa66e2734",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x875af2a9995acb7323314bf019370963b5f65d86098d2de822feb3cb00e7c98a",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x68745f6d9357e36d098511a2d65d5eb03d2877d4da0c2a7bac3cea7eac5e64c6",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0xdd5f27832e72054ca5771e9ffa891e77cb69e9e5e6302a685677758f337ce95c",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0x8fc9a489e8e65dbc3d837a6dd3a95d91622fe7d11b5feb29f7a8fbe188a71b07",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0x1ad48d0fc402db86b882e90ba73e918165119f917cebfb3abf617c89c445c352",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0xc0dc1ce4ce3bde842521c46fd310baeb0eff21a5656013d4fdd65062dc006c38",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0xc437896fc3610ac74d3e8520522baaeeef8e66b0fa5ff807c062851fc3cacae4",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0xa9d31ec9b27ce60aade3ebbbb552a3e2397b55bda8a10ffcf755578eb71ad521",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0xc18450148a5a0ceeda85c0bff019ad7726cfb1a56b1eb961d4d6fa2174736ce1",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0xd2a88caf640ee647ca68f7f40be902ba824ac5a059d606f840a351d8d757f54b",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0x61216f95d98603f6e18a287a7ee6cd6f6083ec774659e9c697dc995571607bae",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0x1d92dd5752700201ab9ff02bc0a248d09680e06e9a288e1c3027a5a82ec8bbda",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0xa22f708e2c168572a864735fb9112e1ed3f6d6ef12b59ba249396db076ef3bd3",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0xea5fc4a97d75954349f21c8f93e31a6f9476aebea06376c63cdcc5252a3ba645",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x5febb94e961b43e8a1fc424236a3d0f3317fbaf6c9acc22b3be1408f3b9a534d",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0x27c3363bffad755bb75f7a8deb453f657b79736d65776b4e8c2f03b5fe47d22d",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0x90719aa4e502e72ef5b1f7f9db843b791d947167de36505e7eef4fcd2a63851c",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0x3ce813e5810e46bd30c52a9056a414893349aebba97c73ae0c755bc9504a4be5",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0x312a078aa75e92d82ff2dba9915c7e314027497aaa08f2970dc477ab37add548",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0x21b69c625570c753155371998ceb462b34670412eb6b3ecc95b28e20c8b41f41",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x8c53ed211529bf2f264ed8dd847c9fb44966dd895a3241cd945050d477abc7d6",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xb50ffc1447b2dffcc1fdb74213de17bac8ac1d44332b955ef21f986170e59357",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0x477d3633ffac07d2f38ce873778cb7d3a541bd7af523c6a784a1a77074e9e2c4",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xac60f114c5635782d01d0c07218b5884ecc113708c4fb1272db1704dbdd37aa2",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x4fcb49cd6a7373e417f36a4907852046758d898069313b7cd5d267545d24c04d",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x91d15bbba4927bc9aa703ae7f6c9ee1baaa29cde7dd746d4a160c94723befe06",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0xabcd3c780245a744ef93acf4af5d0c3660bd734147b99549eddfe44e8ec7fb89",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0xf04eb0c9c91b252a5073302ea39eb7ef1686a522b54a1be8505c5a1fb1e73917",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0x131c8bf07ce540c17944915d347371c58612092417669f9947d89a11039d6def",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0x932be2fcc4e220a5061d5c471b7b83b2891bf2192e142cdcb13cdbcf7f4a764a",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0x723b6c0abd0458247e221f7f10d097805d44031e076f12540e0b09eb38743afd",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0xb02da0b2c9c743044e29bf9ce7b9675f3ac99df0ca2ba81383f685e33375bad7",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0x919077cfc26abbf2d13bb5cc7cee1c211376aedf7218ae9dec71355e0c3d58d4",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x7841772aa148ce6248a729c34898434ea12dfdaced74a9a80579bc61db05a2fc",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x449a714d4f576d7a13010e923fa7ac645a7fee5c4fb929f3370e421f108100ce",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0x86b5fb97860a838d8f88dd38afad4efe9b9bb8c720854d54a4f85e7d663b0ed4",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0x13d53e201186dadacb1350320649bd72409268f15b3ecd3ec375363357077367"
+      },
+      "parent_beacon_roots": false,
+      "version": "anvil Version: 1.8.6+6bad0a66"
+    }
+  },
+  "replica_sha256": "2bee51bb825cf7cac318e4fa25afbf3000af43b5f5c027bb11e62bb4912d4e96",
+  "runner_exit_code": 1,
+  "runner_sha256": "ef650033c017892a38e6cb1f3fed4a2e55ccf013d8189fdb0e333ad7008bf6a9",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x30",
+      "name": "control-height",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0xc72dd9d5e883e",
+      "name": "control-chain",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x85",
+      "name": "control-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x602a60005260206000f3",
+      "name": "control-code-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x60006000fd",
+      "name": "control-code-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001003",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x361561001957600035600055602035156100195760006000fd5b60005460005260206000f3",
+      "name": "control-code-storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001001",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6020600060006000600061100261ea60f1506020600060006000600061100361ea60f15000",
+      "name": "control-code-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001004",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000",
+      "name": "control-code-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001005",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x601761001b600039601760006000f050607b601760006000f55000600a61000d600039600a6000f3602a60005260206000f3",
+      "name": "control-code-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001006",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x611008ff",
+      "name": "control-code-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001007",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x6174e060006101803700",
+      "name": "control-code-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001009",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x602a6000526020600060205e00",
+      "name": "control-code-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000100a",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x",
+      "name": "control-code-prefunded-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x000000000000000000000000000000000000100b",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0xef01000000000000000000000000000000000000001002",
+      "name": "control-code-delegated",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x19e7e376e7c213b7e7e7e46cc70a5dd086daff2a",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": "0x",
+      "name": "control-code-undelegated",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x1563915e194d8cfba1943570603f7606a3115508",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-nested-positive",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x6",
+            "0x0"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-nested-parent",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            "0x6"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-integer-path",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          [
+            6,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "get-path-wrong-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_get",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738",
+          "0x6"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "transaction-tree",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_transaction",
+        "params": [
+          "0x55d219e322321525fb6d15c388d730e0f6d0ae119e68163ffcea6d3ee50fa738"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-all",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": null,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": null,
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-both-null",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": null,
+            "fromBlock": "0x2",
+            "toAddress": null,
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-empty-to-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [],
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-empty-from-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "toAddress": [],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-only-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-only-intersection",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "mode": "intersection",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-from-only-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-to-only-union",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "mode": "union",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-both-unknown-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f"
+            ],
+            "fromBlock": "0x2",
+            "mode": "garbage",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-unknown-field",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2",
+            "unknownDiagnosticFlag": true
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-wrong-address-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-negative-count",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": -1,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-past-end-page",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 10000,
+            "count": 1,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-created-to",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x2d303c5b7911d87d594bf1b31fbb9aa187888893"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-creator-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-suicide-from",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromAddress": [
+              "0x2d303c5b7911d87d594bf1b31fbb9aa187888893"
+            ],
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-suicide-beneficiary",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toAddress": [
+              "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0"
+            ],
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-return42",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001004"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-siblings-ok-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001004"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001005"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-siblings-revert-ok",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001005"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-mixed-create",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001006"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-gas7400",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-mcopy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100a"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-destroy",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001007"
+          },
+          "0x30",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "state-only-nonempty-output",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "stateDiff"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "vm-only-nonempty-output",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "prefunded-empty",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x000000000000000000000000000000000000100b",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "empty-types",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "debug-gas7400-opcodes",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001009"
+          },
+          "0x30",
+          {
+            "disableMemory": true,
+            "disableStack": true,
+            "disableStorage": true
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "many-storage-write-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "many-storage-write-revert-read",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_callMany",
+        "params": [
+          [
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000000",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x000000000000000000000000000000000000000000000000000000000000002b0000000000000000000000000000000000000000000000000000000000000001",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ],
+            [
+              {
+                "data": "0x",
+                "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+                "gas": "0x927c0",
+                "gasPrice": "0x77359400",
+                "to": "0x0000000000000000000000000000000000001001"
+              },
+              [
+                "trace",
+                "stateDiff"
+              ]
+            ]
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "control-storage-after-many",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001001"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-wrong-type",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": {},
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-unknown-field",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002",
+            "unknownDiagnosticFlag": true
+          },
+          [
+            "trace"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-unknown-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "garbage"
+          ],
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-null-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          null,
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "call-scalar-mode",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          "trace",
+          "0x30"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-block",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0xffff"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-filter",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 1,
+            "fromBlock": "0x2f",
+            "toBlock": "0xffff"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-call",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x927c0",
+            "gasPrice": "0x77359400",
+            "to": "0x0000000000000000000000000000000000001002"
+          },
+          [
+            "trace"
+          ],
+          "0xffff"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-replay",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_replayBlockTransactions",
+        "params": [
+          "0xffff",
+          [
+            "trace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "missing-block-filter-next",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "count": 1,
+            "fromBlock": "0x30",
+            "toBlock": "0x31"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-valid",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8185847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a8d391fb09e2f92ffc93fe7ac7b1eb7f1e24289f707eec0f34292c1713f795ffa0554e314f2ec6166290fc977d4bd4c86a9e0cadc2366f6139bd907d893bb4e237",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-nonce-high",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b8186847735940082520894000000000000000000000000000000000000123401808718e5bb3abd109fa07088ff5b782a62ee95e868e0cb949f05a4fa52e5dff86136e2d3f5eaa9cfb34ba053f2145a9d3b1d5f726bef1e95aa15db4ab7f50099330d2bbe31dae1e73698ce",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-wrong-chain",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86481858477359400825208940000000000000000000000000000000000001234018026a0680e20ade3f3bfbbb3d8e2246c26a13efb3a8e886c182c159cd240b4636342b8a027a25d70c994f869fa5abe6b841ddfff0ab32944d6e9719c830ace909c024a3b",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-insufficient-funds",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a80847735940082520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0aca7ebc30807b79807337959a904b47c9c067f725b99878e04064bbda2b253c3a03d83e51caa10aa91fc8422e47b95b7f8a2bbd409422f007a5bc93715e1de2b9e",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-low-gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b81858477359400824e2094000000000000000000000000000000000000123401808718e5bb3abd10a0a038e0b48a1022d5c55eea7e525942547d2009224ffa7ab6d1b40a5a16cb70a590a0279569cdb60041c1eac5043486547bdf086c64543c7e2d07870a288096213d33",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "raw-below-basefee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86681850182520894000000000000000000000000000000000000123401808718e5bb3abd10a0a0a6525c23fcea9e006fece50614f7aaf6172e8bcc4cd6226480c174bbc055351c9fc17630ea66fe9c6ebfe8f96bb98c2433c16b43fc260cbd2530add6931d551a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-set",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d40941563915e194d8cfba1943570603f7606a31155088080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010028001a0909ccd479b49d4de221beaed4e2b48ee8623d1efe6c9ba4f10653c26855123d8a0489bae47a8c46d50d536a34d9695a07668c64e89e2e17e1df04d37acb228601501a0138e133d330b2ac9573aef02e8182d29d97e5669e09079e1828d4ffe7abb73b2a018efb64c0af5c267645bd3de711a50fa787eece3679231a6843a23b3f29892c1",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-replace",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d409419e7e376e7c213b7e7e7e46cc70a5dd086daff2a8080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010038080a032b48971f74add2ebe91ce111113ff37b7f8d272ed23134e89aa7658b677ca45a05bc973423f88f2644a49fa4509864691835ff138f284a233ecba072e79dfb5f580a0d69accc0eaf71c8a02bf2b11adb6644f9b694243463e8300fc88feeff61f8884a02f3f0627d55d5268f16db3cef6ef2636ee568713e5a631e7f73656f3c0d26d76",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-clear",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d409419e7e376e7c213b7e7e7e46cc70a5dd086daff2a8080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000000008080a098be4e1c8200ba8e16556d95b598148f7ec1c6e18b76142e70007dfa5d18cf58a018a787b683426bb748bb03664d04512e382dca461e0e442f1d4c39c255f8dde501a0c0e27e354c443878b62ef28229d90a05e8414a30869bef4c3ddcf07fa205c734a0503d6a2d2293f18f5bcbb4330ac6dbeeae67c364b12a58294b8494b29782af51",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "auth-set-revert",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x04f8d4870c72dd9d5e883e818501847735940083030d40941563915e194d8cfba1943570603f7606a31155088080c0f863f861870c72dd9d5e883e9400000000000000000000000000000000000010038080a01c3f9771a572f2fdc37253483e7c67cc8d8e294276bf1dccd8ebe091477d763ba04b0d0c594ea086b9c13812d8810b1320e83b99be260518f6ff94055e04ac61fc80a0eae005bf7758c07ba75a1a0b37133bac4a0625efe1c91958ce0949a08a1bb3bda07c1d251064247970bf84ce0e9c37a44096182fba91e65d4022e080ddc396a15f",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "block-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x2"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "block-3",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x3"
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-two-blocks",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x3"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-0",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 0,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-1",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 4,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-page-2",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "after": 8,
+            "count": 4,
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "category": "semantic",
+      "expected_control": null,
+      "name": "filter-snapshot",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_filter",
+        "params": [
+          {
+            "fromBlock": "0x2",
+            "toBlock": "0x2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "_reference/block/0x30",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_block",
+        "params": [
+          "0x30"
+        ]
+      },
+      "role": "reference"
+    }
+  ],
+  "source_commit": "daa259ce5820edc60c6d5869dbbf295bf27a5e39",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "28a5824023fbd76ef4e1dec9564b94be5883fbc1",
+    "generated_sha256": "808461b76bac68e2f9516cff4c9559ef9b8ac4bd30b00f8e25e0ae83bf4c7b0a",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-10-23T15:55:11.493023+00:00"
+}

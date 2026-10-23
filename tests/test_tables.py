@@ -6,6 +6,7 @@ from trace_interop.cli import ROOT, read
 from trace_interop.tables import FILTERS, FRAMES, blocks, evaluate, report, schema_forms, verify
 
 SPEC = read(ROOT/'spec/trace-openrpc.json')
+NOTES = (ROOT/'spec/trace-notes.md').read_text()
 
 
 def findings(table, kind):
@@ -14,7 +15,7 @@ def findings(table, kind):
 
 class Tables(unittest.TestCase):
     def test_quotes_occur_in_the_pinned_draft(self):
-        report(SPEC)
+        report(SPEC, NOTES)
         reworded = copy.deepcopy(SPEC)
         for m in reworded['methods']:
             m['description'] = m['description'].replace('mode union matches either populated list', 'mode union matches any list')

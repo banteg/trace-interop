@@ -70,6 +70,9 @@ def generate(root, runs, output):
         lock=read(root/'spec.lock.json')
         if sha(root/'spec/trace-openrpc.json') != lock['generated_sha256']:
             raise ValueError('generated schema does not match spec lock')
+        notes=(root/'spec/trace-notes.md').read_text()
+        if sha(root/'spec/trace-notes.md') != lock['notes_sha256']:
+            raise ValueError('pinned notes do not match spec lock')
         methods={m['name']:m for m in spec['methods']}
         pinned=(lock, methods, {name:result_validator(m['result']['schema']) for name,m in methods.items()}, {})
     records, by_client, case_pages, run_rows, laws = assess_runs(root, runs, output, decisions, pinned)
@@ -105,7 +108,7 @@ def generate(root, runs, output):
     write(output/'runs.json',run_rows)
     laws = consistency.summarize(laws)
     write(output/'laws.json', laws)
-    tables = decision_tables.report(spec) if spec else None
+    tables = decision_tables.report(spec, notes) if spec else None
     if tables:
         write(output/'spec-tables.json', tables)
     from .presentation import render

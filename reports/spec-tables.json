@@ -194,7 +194,7 @@
     "clauses": [
       {
         "id": "intersection",
-        "quote": "Apply OR within each address list and AND between the lists by default"
+        "quote": "OR within each address list; AND between lists by default"
       },
       {
         "id": "union",
@@ -202,7 +202,7 @@
       },
       {
         "id": "unrestricted",
-        "quote": "omitted/null/empty lists are unrestricted"
+        "quote": "Missing, null or empty lists are unrestricted."
       },
       {
         "id": "reward-intersection",
@@ -337,7 +337,7 @@
         "reading": "A reward\u2019s from side never matches."
       },
       {
-        "quote": "omitted/null/empty lists are unrestricted",
+        "quote": "Missing, null or empty lists are unrestricted.",
         "reading": "unrestricted covers an omitted, null or empty list."
       }
     ],
@@ -362,11 +362,11 @@
       },
       {
         "id": "call-state",
-        "quote": "Execute against the state at the end of the selected block, default latest, under its fork rules and block environment."
+        "quote": "Execution runs against the state at the end of the selected block, under its fork rules and block environment"
       },
       {
         "id": "many-state",
-        "quote": "The first item runs against the same state and environment as trace_call at the selected block."
+        "quote": "The first item runs against the same state and environment as `trace_call` at the selected block"
       },
       {
         "id": "call-unknown",
@@ -374,11 +374,11 @@
       },
       {
         "id": "call-noncanonical",
-        "quote": "A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001)."
+        "quote": "A block hash, as a string or an object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001)."
       },
       {
         "id": "many-resolution",
-        "quote": "Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks"
+        "quote": "Execution runs against the state at the end of the selected block, under its fork rules and block environment; in trace_callMany the first item runs against that state."
       },
       {
         "id": "call-pending",
@@ -386,7 +386,7 @@
       },
       {
         "id": "block-state",
-        "quote": "Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules."
+        "quote": "Each block is traced from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules"
       },
       {
         "id": "block-unknown",
@@ -456,7 +456,7 @@
         "reading": "unresolvable safe stands for either tag before the chain has one."
       },
       {
-        "quote": "pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64",
+        "quote": "pending, block-hash strings and block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64",
         "reading": "This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it."
       }
     ],

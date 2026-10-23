@@ -1,6 +1,7 @@
 {
   "repository": "https://github.com/banteg/execution-apis",
   "branch": "feat/trace",
-  "commit": "28a5824023fbd76ef4e1dec9564b94be5883fbc1",
-  "generated_sha256": "808461b76bac68e2f9516cff4c9559ef9b8ac4bd30b00f8e25e0ae83bf4c7b0a"
+  "commit": "2f8ca20535d5797b21765dd75817453c5d0d108d",
+  "generated_sha256": "19c887fbfbbebb7aa5984dc6d49bf36906b5cc2b6a3d23e90d2248fe414f5e8a",
+  "notes_sha256": "61b96aab2e25b9522be1bc2b0fcf4832480d4f767b265a572e783218fc2f3f40"
 }

@@ -13,6 +13,7 @@ doc['methods']=[m for m in doc['methods'] if m['name'].startswith('trace_')]
 if len(doc['methods'])!=9:raise SystemExit('expected nine trace methods')
 file=root/'spec/trace-openrpc.json';file.parent.mkdir(exist_ok=True)
 file.write_text(json.dumps(doc,indent=2)+'\n')
-lock={'repository':'https://github.com/banteg/execution-apis','branch':'feat/trace','commit':git('rev-parse','HEAD'),'generated_sha256':hashlib.sha256(file.read_bytes()).hexdigest()}
+notes=root/'spec/trace-notes.md';notes.write_text((checkout/'docs-api/docs/trace-notes.md').read_text())
+lock={'repository':'https://github.com/banteg/execution-apis','branch':'feat/trace','commit':git('rev-parse','HEAD'),'generated_sha256':hashlib.sha256(file.read_bytes()).hexdigest(),'notes_sha256':hashlib.sha256(notes.read_bytes()).hexdigest()}
 (root/'spec.lock.json').write_text(json.dumps(lock,indent=2)+'\n')
 print('Pinned',lock['commit'])

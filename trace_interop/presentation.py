@@ -832,9 +832,9 @@ def render(root, output, records, by_client, case_pages, run_rows, decisions, lo
         text += f'{key}: none recorded.\n\n' if not stances[topic] else f'{key}:\n\n' + table(['Client', 'Position', 'Note', 'Sources'], [
             [editorial['clients'][c]['name'], POSITIONS[s['position']], s['note'], ' · '.join(position_source(source) for source in s['sources'])]
             if (s := stances[topic].get(c)) else [editorial['clients'][c]['name'], NO_POSITION, '', ''] for c in NATIVE_CLIENTS])
-        sections = {'H12': 'explicit-choices-in-this-draft', 'H13': 'open-details-requiring-focused-review', 'H29': 'precompile-frames-h29'}
+        sections = {'H12': 'signed-transactions-trace_rawtransaction', 'H13': 'signed-transactions-trace_rawtransaction', 'H29': 'precompile-frames'}
         if topic in sections:
-            text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-profile.md#{sections[topic]})\n\n'
+            text += f'[Rule in the pinned draft]({lock["repository"]}/blob/{lock["commit"]}/docs-api/docs/trace-notes.md#{sections[topic]})\n\n'
         text += f'## Recommendation\n\n{d["recommendation"]}\n\n{d["rationale"]}\n\n'
         if d.get('background'):
             text += '## Background\n\n' + '\n\n'.join(d['background']) + '\n\n'

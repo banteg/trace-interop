@@ -112,11 +112,12 @@ def strings(value):
         yield value
 
 
-def verify(spec, tables):
-    """Raise unless every quoted clause and note occurs verbatim in the pinned draft."""
-    text = list(strings(spec))
+def verify(spec, tables, notes=''):
+    """Raise unless every quoted clause and note occurs verbatim in the pinned draft or its notes page.
+    Whitespace is collapsed, since the notes page wraps its lines."""
+    text = [' '.join(s.split()) for s in [*strings(spec), notes]]
     missing = [(t.id, q) for t in tables for q in [c.quote for c in t.clauses] + [q for q, _ in t.notes]
-               if not any(q in s for s in text)]
+               if not any(' '.join(q.split()) in s for s in text)]
     if missing:
         raise ValueError('decision-table quotes missing from the pinned draft: ' + '; '.join(f'{t}: {q!r}' for t, q in missing))
 
@@ -211,13 +212,13 @@ FILTERS = Table(
             'from and to describe the list against the record’s side: unrestricted, containing that side’s address (match) or not (miss).'),
            ('A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match.', 'A failed create’s to side never matches.'),
            ('A reward matches toAddress by author and has no from side', 'A reward’s from side never matches.'),
-           ('omitted/null/empty lists are unrestricted', 'unrestricted covers an omitted, null or empty list.')),
+           ('Missing, null or empty lists are unrestricted.', 'unrestricted covers an omitted, null or empty list.')),
     clauses=(
-        Clause('intersection', 'Apply OR within each address list and AND between the lists by default',
+        Clause('intersection', 'OR within each address list; AND between lists by default',
                lambda c: c['mode'] != 'union' and populated(c), lambda c: {'selected': all(s == 'match' for s in populated(c))}),
         Clause('union', 'mode union matches either populated list',
                lambda c: c['mode'] == 'union' and populated(c), lambda c: {'selected': any(s == 'match' for s in populated(c))}),
-        Clause('unrestricted', 'omitted/null/empty lists are unrestricted',
+        Clause('unrestricted', 'Missing, null or empty lists are unrestricted.',
                lambda c: not populated(c), lambda c: {'selected': True}, general=True),
         Clause('reward-intersection', 'in intersection mode it is excluded whenever fromAddress is populated',
                lambda c: c['record'] == 'reward' and c['mode'] != 'union' and c['from'] != 'unrestricted', lambda c: {'selected': False}),
@@ -277,24 +278,24 @@ def blocks(spec):
         notes=(('Resolve tags once per request.', 'trace_filter is read with both bounds naming the same block.'),
                ('If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.',
                 'unresolvable safe stands for either tag before the chain has one.'),
-               ('pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64', 'This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.')),
+               ('pending, block-hash strings and block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64', 'This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.')),
         clauses=(
             Clause('schema', 'Invalid params',
                    lambda c: c['selector'] not in forms[c['method']], lambda c: {'response': 'error (-32602 recommended)'}, general=True),
             Clause('call-default', 'Optional block, latest when omitted or null',
                    lambda c: c['method'] in call_like and c['selector'] == 'omitted', lambda c: {'response': 'latest state'}),
-            Clause('call-state', 'Execute against the state at the end of the selected block, default latest, under its fork rules and block environment.',
+            Clause('call-state', 'Execution runs against the state at the end of the selected block, under its fork rules and block environment',
                    lambda c: c['method'] == 'trace_call' and names(c, KNOWN) and c['history'] == 'available', lambda c: {'response': 'selected state'}),
-            Clause('many-state', 'The first item runs against the same state and environment as trace_call at the selected block.',
+            Clause('many-state', 'The first item runs against the same state and environment as `trace_call` at the selected block',
                    lambda c: c['method'] == 'trace_callMany' and names(c, KNOWN) and c['history'] == 'available', lambda c: {'response': 'selected state'}),
             Clause('call-unknown', 'an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended)',
                    lambda c: c['method'] == 'trace_call' and names(c, ('number', 'hash', 'number beyond head', 'unknown hash', 'unresolvable safe'))
                    and (c['selector'] not in ('number', 'hash') or c['history'] == 'pruned'),
                    lambda c: {'response': 'error (4444 recommended)' if c['history'] == 'pruned' else 'error (-32001)'}),
-            Clause('call-noncanonical', 'A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001).',
+            Clause('call-noncanonical', 'A block hash, as a string or an object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001).',
                    lambda c: c['method'] == 'trace_call' and names(c, ('non-canonical hash',)) and c['history'] == 'available',
                    lambda c: {'response': 'selected state, or an error (-32001) with requireCanonical'}),
-            Clause('many-resolution', 'Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks',
+            Clause('many-resolution', 'Execution runs against the state at the end of the selected block, under its fork rules and block environment; in trace_callMany the first item runs against that state.',
                    lambda c: c['method'] == 'trace_callMany' and names(c, ('number beyond head', 'unknown hash', 'unresolvable safe', 'non-canonical hash', 'pending', 'number', 'hash'))
                    and (c['selector'] not in ('number', 'hash') or c['history'] == 'pruned'),
                    lambda c: {'response': 'error (4444 recommended)' if c['history'] == 'pruned'
@@ -303,7 +304,7 @@ def blocks(spec):
                               else 'error (-32001)'}),
             Clause('call-pending', 'is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block',
                    lambda c: c['method'] == 'trace_call' and c['selector'] == 'pending', lambda c: {'response': 'pending state, or an error (-32602 recommended) without one'}),
-            Clause('block-state', 'Trace the block from its parent\'s post-block state with its own pre-transaction system operations applied, under its own fork rules.',
+            Clause('block-state', 'Each block is traced from its parent\'s post-block state with its own pre-transaction system operations applied, under its own fork rules',
                    lambda c: c['method'] in replayed and names(c, KNOWN) and c['history'] == 'available', lambda c: {'response': 'selected block'}),
             Clause('block-unknown', 'An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended)',
                    lambda c: c['method'] in replayed and names(c, ('number', 'hash', 'number beyond head', 'unknown hash', 'unresolvable safe'))
@@ -329,9 +330,9 @@ def tables(spec):
     return [FRAMES, FILTERS, blocks(spec)]
 
 
-def report(spec):
+def report(spec, notes=''):
     found = tables(spec)
-    verify(spec, found)
+    verify(spec, found, notes)
     return [{'id': t.id, 'title': t.title, 'question': t.question, 'topics': list(t.topics),
              'dimensions': {k: list(v) for k, v in t.dimensions.items()}, 'cells': sum(1 for _ in cells(t)),
              'clauses': [{'id': c.id, 'quote': c.quote} for c in t.clauses],

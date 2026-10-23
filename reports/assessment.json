@@ -75,7 +75,7 @@
     "pyproject.toml": "43fa1750f8f9920be91a4599e200b3d282c7b13f357c250cf40dd7c5624cb49b",
     "reports.lock.json": "caab207a2743518c646ac71ccd78b661ba1f42aea126608c588994e0416d09bf",
     "scripts/run_matrix.py": "1f56e061856f852654fdc5dc0fbc0802db4933539d1bfcbc437b5d064ffb1e70",
-    "spec.lock.json": "bd0aa0a0996d4389bc89215b55dd540fbe71be8ccfcd0923fd8794e32140c820",
+    "spec.lock.json": "6215625cc97706868e4f79dce81dc718e784db47ff16b1943010071a9f9e52a6",
     "trace_interop/chain_model.py": "ebd725b5d73a343ee5e503544d709bb6616f701b5cca749e80c638bce33fddce",
     "trace_interop/coverage.py": "30b330f57c1b58d89854be3dd806890eb3d0d7cacf7578be51b3ad8e861b83ab",
     "trace_interop/execution_models.py": "aa34847984d157e7c778d5bbe33c8d53b3f9c4914e2b0e35a545c0888618d3ce",
@@ -85,17 +85,17 @@
     "trace_interop/laws.py": "1b9a6a9ed0c16dd7bc99e1283b3b02aec12b2a672c2c30764ec97054635cf8e7",
     "trace_interop/mined_probes.py": "db84258dba01db4b114703eaef8953e0bd6d0c46c60ca7d5c6ffa268c176568b",
     "trace_interop/oracles.py": "807436d605622ba7e480941d76d8840dc7803cdd8a4dc46f326130a12874523a",
-    "trace_interop/presentation.py": "4b0cfa7c71f2a2cb10e3f8b169d483fb548c9655ea0e0d379b3cee5b382f88b8",
+    "trace_interop/presentation.py": "4aed9f02111fc3c20b3d588bfacf3cd068713c2fed9a0da556d2396d91dab845",
     "trace_interop/probes.py": "c1b5d32b30f6cbfb3a0c7f1c1cb20d42953254f9ec267de3f6dd030d2b23adfa",
-    "trace_interop/report.py": "a1b3007643505fd2ea5f99a5c609cb916f1cfcc6d600363d171ef66580f8bdf5",
+    "trace_interop/report.py": "9eadeb983140f7b1c1e6398642d0b6ec8e1d28cf4e9d53b4a6f9371d64be9d17",
     "trace_interop/rules.py": "5ae0f79131042f03c3a093398a1c9192e5c95b3cefc198067d74c6d97cf35950",
     "trace_interop/scenarios.py": "6732f8e0cd9ca260c2e5037cf7905681d1abd7acdb634443786831922119b6c3",
     "trace_interop/status.py": "11141c0265a4fda35c8fb839ea9ee50b61d0318ead97e44878ae62ad698dfd83",
-    "trace_interop/tables.py": "3593e7456931f8797f0955d29130d152d3c9ebf2041740c25c2ec05534fdcba8",
+    "trace_interop/tables.py": "ccd2894188346c8a450004d79c34c91092c7b9add8080ced9fb6bea0a884748c",
     "trace_interop/validation.py": "be76c9d2115be457ac77ecb89d4b5947f55cb017688a8ffb6086e434232fc02a",
     "trace_interop/versions.py": "0935eb1857cf902311cc61d6f998f3585e086e2a77b70ac3cfaac96fe15ffd54",
     "trace_interop/vm_model.py": "e76d591674a4e9686622dc624574bf6ea47fe43caac89a7eb662c816d77970ac",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
-  "spec_commit": "28a5824023fbd76ef4e1dec9564b94be5883fbc1"
+  "spec_commit": "2f8ca20535d5797b21765dd75817453c5d0d108d"
 }

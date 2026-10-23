@@ -2,7 +2,7 @@
 
 [Back to the maintainer overview](README.md) · [Consistency laws](laws.md)
 
-Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/28a5824023fbd76ef4e1dec9564b94be5883fbc1) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
+Each table encodes the clauses of the [pinned draft](https://github.com/banteg/execution-apis/tree/2f8ca20535d5797b21765dd75817453c5d0d108d) that decide one question, quoted verbatim, and enumerates every combination of the inputs they govern. A **conflict** is a cell whose clauses require different outcomes; a **gap** is a cell no clause decides. An **overlap** is a cell decided by several clauses that agree, where a sentence is implied by others. The encoding is a reading of the text, reviewed like any other assertion; its notes state the readings that shape the dimensions. Report generation fails when a quote no longer occurs in the pinned draft. [spec-tables.json](spec-tables.json) lists every clause and finding.
 
 | Table | Topics | Cells | Conflicts | Gaps | Overlaps |
 | --- | --- | --- | --- | --- | --- |
@@ -57,7 +57,7 @@ Does trace_filter select a record, given how each address list relates to the re
 - “Match CALL sender/recipient, CREATE creator/created address and SELFDESTRUCT executing (self-destructing) account/beneficiary” from and to describe the list against the record’s side: unrestricted, containing that side’s address (match) or not (miss).
 - “A record matches only addresses it reports; a failed CREATE reports no created address, so it has no created-address match.” A failed create’s to side never matches.
 - “A reward matches toAddress by author and has no from side” A reward’s from side never matches.
-- “omitted/null/empty lists are unrestricted” unrestricted covers an omitted, null or empty list.
+- “Missing, null or empty lists are unrestricted.” unrestricted covers an omitted, null or empty list.
 
 | Finding | Outcome | Cells where | Cells | Clauses |
 | --- | --- | --- | --- | --- |
@@ -68,9 +68,9 @@ Does trace_filter select a record, given how each address list relates to the re
 
 | Clause | Quote |
 | --- | --- |
-| intersection | “Apply OR within each address list and AND between the lists by default” |
+| intersection | “OR within each address list; AND between lists by default” |
 | union | “mode union matches either populated list” |
-| unrestricted | “omitted/null/empty lists are unrestricted” |
+| unrestricted | “Missing, null or empty lists are unrestricted.” |
 | reward-intersection | “in intersection mode it is excluded whenever fromAddress is populated” |
 | reward-union | “while in union mode a toAddress match suffices” |
 
@@ -86,7 +86,7 @@ What does a request return for each way of naming its block, when the block’s 
 
 - “Resolve tags once per request.” trace_filter is read with both bounds naming the same block.
 - “If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block.” unresolvable safe stands for either tag before the chain has one.
-- “pending, block-hash strings and EIP-1898 block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64” This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.
+- “pending, block-hash strings and block-hash objects are rejected (-32602 recommended); numeric bounds fit uint64” This names no response; the schema, which omits pending and hashes from trace_filter bounds, decides it.
 
 Every cell is decided by exactly one clause.
 
@@ -96,13 +96,13 @@ Every cell is decided by exactly one clause.
 | --- | --- |
 | schema | “Invalid params” |
 | call-default | “Optional block, latest when omitted or null” |
-| call-state | “Execute against the state at the end of the selected block, default latest, under its fork rules and block environment.” |
-| many-state | “The first item runs against the same state and environment as trace_call at the selected block.” |
+| call-state | “Execution runs against the state at the end of the selected block, under its fork rules and block environment” |
+| many-state | “The first item runs against the same state and environment as `trace_call` at the selected block” |
 | call-unknown | “an unknown selected block returns an error (-32001, Resource not found), and a known block whose required state is pruned returns an error (4444 recommended)” |
-| call-noncanonical | “A block hash, as a string or an EIP-1898 object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001).” |
-| many-resolution | “Block is resolved as for trace_call, including pending, unknown, noncanonical and pruned blocks” |
+| call-noncanonical | “A block hash, as a string or an object, selects that block even when it is not canonical, as in eth_call; with requireCanonical true a noncanonical hash returns an error (-32001).” |
+| many-resolution | “Execution runs against the state at the end of the selected block, under its fork rules and block environment; in trace_callMany the first item runs against that state.” |
 | call-pending | “is accepted only when the client has such a pending environment; a client without one rejects it (-32602 recommended) rather than substitute another block” |
-| block-state | “Trace the block from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules.” |
+| block-state | “Each block is traced from its parent's post-block state with its own pre-transaction system operations applied, under its own fork rules” |
 | block-unknown | “An unknown selected block returns an error (-32001, Resource not found); a known block whose required state is pruned returns an error (4444 recommended)” |
 | block-pending | “Block accepts pending only when the client has a pending block (the next block number with its pending transactions); otherwise pending is rejected (-32602 recommended).” |
 | filter-default | “defaults omitted fromBlock and toBlock to the same latest head” |

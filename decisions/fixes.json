@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23",
+  "checked_at": "2026-10-26",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -419,7 +419,7 @@
       "client": null,
       "decisions": [],
       "state": "open",
-      "draft": true,
+      "draft": false,
       "merged_at": null
     },
     {
@@ -792,10 +792,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -828,10 +825,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
-          "date": "2026-10-03T04:32:16Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1494,10 +1488,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1526,10 +1517,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1561,10 +1549,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1593,10 +1578,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1625,10 +1607,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "eb03d80dddbf671e256ab235095ad9f3ccfa9923",
-          "date": "2026-09-25T15:20:39Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1657,10 +1636,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
-          "date": "2026-10-03T04:32:16Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -1980,10 +1956,7 @@
             }
           }
         ],
-        "client": {
-          "commit": "ce5c26d2c064333cf27c142f67b6ec52d1ec7158",
-          "date": "2026-10-03T04:32:16Z"
-        },
+        "client": null,
         "builds": {
           "53bf066feb7d9c39a026f45651851909bb9c1c56": true,
           "d763342fa185e4e90ee79dc65f6a5706168b0bcb": true
@@ -2044,7 +2017,7 @@
       ],
       "note": "unknown-block replay errors like trace_block",
       "title": "fix(rpc): error on unknown block in trace_replayBlockTransactions",
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "merged_at": null
     },
@@ -3278,7 +3251,22 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "-32001 for an unknown block in trace_call, trace_callMany and trace_rawTransaction (past the head, below genesis, or an upstream hash past the fork point) and in trace_replayBlockTransactions instead of null; eth_call keeps -32602. Reverses #17306's null for replays, alongside paradigmxyz/reth#27478"
+      "note": "-32001 for an unknown block in trace_call, trace_callMany and trace_rawTransaction (past the head, below genesis, or an upstream hash past the fork point) and in trace_replayBlockTransactions instead of null; eth_call keeps -32602. Reverses #17306's null for replays, alongside paradigmxyz/reth#28160"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/28160",
+      "title": "fix(rpc): error on unknown block in trace_replayBlockTransactions",
+      "client": "reth",
+      "decisions": [
+        "H06"
+      ],
+      "partial": [
+        "H06"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "reopens #27478 (closed by the stale bot before review) with the same commit on current main: unknown-block replay errors like trace_block"
     }
   ]
 }

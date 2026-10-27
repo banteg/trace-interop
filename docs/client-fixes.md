@@ -89,7 +89,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families; remains a draft while client harmonization and specification work continue; Frontier CREATE code-deposit regression fixed in commit 472c0bd8 on the draft PR branch | — | — | — | — | — | — |
+| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families in internal/traceapi; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, after lightclient pushed error-typing and naming commits, with which the 22 execution-apis#895 fixtures regenerate byte-identical | — | — | — | — | — | — |
 
 ## Nethermind
 

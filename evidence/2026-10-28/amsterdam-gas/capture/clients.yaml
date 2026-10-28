@@ -1,0 +1,42 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/besu",
+      "tag": "f0af0e7576b7840e59e9425e36faac8d0b322d68cba106bdbf50cea8083e4f81"
+    },
+    "client": "besu",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/erigon",
+      "tag": "c272c1f07ffca7fd508555c7a3096bac1c5acca60d4560f10d617e7b62e6ed50"
+    },
+    "client": "erigon",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/go-ethereum",
+      "tag": "02ca05a7a1be998fb54d4dcff691625805d8f74d7a610e8e82759e06944d7c0b"
+    },
+    "client": "go-ethereum",
+    "nametag": "trace"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/nethermind",
+      "tag": "58f43807d5572562449fa9ad5d149ade14d342fa02f03dae9568738486bc6175"
+    },
+    "client": "nethermind",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "99788e3f35eaab96131cf3dc9f8f455ffdd19dcbfdba7c9a7d031f1d646b49c6"
+    },
+    "client": "reth",
+    "nametag": "development"
+  }
+]

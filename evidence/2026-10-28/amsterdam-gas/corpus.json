@@ -1,0 +1,2756 @@
+{
+  "cases": [
+    {
+      "name": "plain-call/low",
+      "note": "CALL to a contract that touches no state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x",
+            "value": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d2"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "plain-call/low/raw",
+      "note": "CALL to a contract that touches no state; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86e870c72dd9d5e883e8001843b9aca00830f4240949dcd17433742f4c0ca53122ab541d0ba67fc27d28080c001a07d079cd0dd45003c7d2512adf72616e1644a626c5297bb1d12c7621b7eb84741a0513dd90281d79a8a2f6c0f992984487f1f9b21159ec2bcdd91367eaefb1125b2",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "transfer-new-account/low",
+      "note": "value transfer to an address with no account",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x",
+            "value": "0x1",
+            "to": "0x00000000000000000000000000000000000a5e7d"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "transfer-new-account/low/raw",
+      "note": "value transfer to an address with no account; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86e870c72dd9d5e883e8001843b9aca00830f42409400000000000000000000000000000000000a5e7d0180c080a07a20ee32018fd450568f5ffd039c985853aaf241535c68d00192986b88f1dbb8a03458557708dc2418ac2641a17026170d0bad68428621c3eb5d2e67845db50208",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/low",
+      "note": "root CALL whose frame creates a slot",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x01",
+            "value": "0x0",
+            "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/low/raw",
+      "note": "root CALL whose frame creates a slot; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86e870c72dd9d5e883e8001843b9aca00830f4240947dcd17433742f4c0ca53122ab541d0ba67fc27df8001c080a031c2b728691c4e62bbe00d2c7b37fd8719ab3f379caa8fd673f62ef7aaa3bd3da047f86b064e0a6236cbccace241ef22ed5f64adfaa96d5a4f4a9c811e04f4bff5",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/create-root/low",
+      "note": "creates slot 0x10; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x600160105500",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/create-root/low/raw",
+      "note": "creates slot 0x10; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f860870c72dd9d5e883e8001843b9aca00830f4240808086600160105500c080a09e56f147479e6a80a39121b8baa9574f451791dcf471b46a25fa7e7c0c7e7fcca02b9db825a36d3b6d1fee3eabc38520fe973b47062470e38921bda28952e88def",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/low",
+      "note": "creates slot 0x10; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600160105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/low/raw",
+      "note": "creates slot 0x10; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f894870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80a60000000000000000000000000000000000000000000000000000000000000000600160105500c080a0bb5acef756d24f14f3070bdc08607e9a1c2238521c117f4c4ef1804f6348067ca001c0dff1a4234533e241cf9d90c2d19de89af38590d1ab658f9d627e365328c4",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600160105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/create-root/low",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6001601055600060105500",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/create-root/low/raw",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f865870c72dd9d5e883e8001843b9aca00830f424080808b6001601055600060105500c080a07e33b30fe807228dbdbab8363c77caf059e81b9f93da39ed7b88074d669baae6a04cf9ce2686d9786f9db0bf59e5f5080ef8f045ec5a339fb81d7de8c98e279cc4",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/low",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/low/raw",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f899870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80ab00000000000000000000000000000000000000000000000000000000000000006001601055600060105500c080a0c1c82ef8dbd84d93bda2ee022e9dd398e67672eccc50167373f6622cce8d245da06ca8ed94f49b2851641362918377eac26fbb78ae44a39f775bf5560602f2bf85",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/low/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/create-root/low",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/create-root/low/raw",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f885870c72dd9d5e883e8001843b9aca00830f42408080ab6e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400c001a03eb1d2ae6a4228ca4d3f503ce014a02f412f85607e76ef5363ed9ac056f4562fa063eda198366ec8dec40ed2e168cb5c7ff4e3fc595bcf92008bc31ed623d4dfea",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/low",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/low/raw",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8ba870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b84b00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400c001a0c7e5240a29714d5fc1400205bac35a31d48d5752d96456981632fb1ea7ce49c4a01cd82f72bfb80023ac7135bb4bdd311a5b5ae30f340561e5180e7ef0e1befc4f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/low/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/create-root/low",
+      "note": "a CALL child creates a slot in its own storage; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/create-root/low/raw",
+      "note": "a CALL child creates a slot in its own storage; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f882870c72dd9d5e883e8001843b9aca00830f42408080a86e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100c080a09e88fb2f831f1ca46999619a44c7b9e03855851da7e8e0214086e48c298424c8a009db970b20d67d3e8cc2363523ffec62ade05d4efb91f8270f8c2c8dfbfc6d8b",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/low",
+      "note": "a CALL child creates a slot in its own storage; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/low/raw",
+      "note": "a CALL child creates a slot in its own storage; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b7870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b84800000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100c080a01745fd5f5f547a520872daa64313ed19e3b8d7f6eea12ea87867f5b9c9c4a15ca033618c3fa5e105f208a73b5e7d23aa78b337566705a2a21c4b1f820c4cf66992",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/create-root/low",
+      "note": "a CALL child creates a slot, then reverts; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x71686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/create-root/low/raw",
+      "note": "a CALL child creates a slot, then reverts; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f885870c72dd9d5e883e8001843b9aca00830f42408080ab71686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100c080a03441d3af7fd35ccc03a3674bf85586cbddcd4a7455854bbdd827a8af270c96ada048bf2b7fd3e9b32f929a65c8618bd1e0931c4028459a78d1e9cdac2b2b20de1f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/low",
+      "note": "a CALL child creates a slot, then reverts; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/low/raw",
+      "note": "a CALL child creates a slot, then reverts; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8ba870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b84b000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100c080a00f0b3f9e8e8e3f0e1a4572eb36a5754810d842837269492fb18b0b4d99ef6a62a016fc9356b5b6cde4871a1db955ad0c6a6722b5a222e05770a521fdb1d54e5f42",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create/create-root/low",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create/create-root/low/raw",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f875870c72dd9d5e883e8001843b9aca00830f424080809b6e656000601055006000526006601af3600052600f60116000f000c001a0c68a0a9e47dfe790f268acd38ff71efc414a1c7671f1b4f20b479b3764ac04a0a0623925ba4252be66afeec7e1c9b9416b12331b02b1c0a1226cd735a5fb997fe0",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "create/factory/low",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create/factory/low/raw",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8aa870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b83b00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000c080a0630b34611862bd9563c1dd79c0cdfc8c351def2e92307c96ab0020be0a65ae87a007827a666fc4d619dfba5490cbbcfe9965196fe91575abe3d41b3b1e284ca203",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "create/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create/factory/low/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/create-root/low",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/create-root/low/raw",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f87b870c72dd9d5e883e8001843b9aca00830f42408001a2600060006000600060017300000000000000000000000000000000000a5e7d5af100c080a0f92291b70df2f0ca8779acd8655711ffb44086d9472f4b86c65d7552cb4f904e9f6485cd2f6a66e001380b10f4cc7a05e506b4ef5b7dba1cafdb30d3a0bf0d9e",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/low",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/low/raw",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b1870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c01b8420000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100c080a051ac25c5b7d81f30125fb2379c118d2ba1ab98dcb528fb814541fc88d12341f4a02fd5ce5a011eb5123c4902aa5b9cacf0e22d0df1823d2be99aa82925e812ee4f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/create-root/low",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/create-root/low/raw",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f884870c72dd9d5e883e8001843b9aca00830f42408080aa6e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100c001a09096b92a24c1df44e29a7bb524611eaa2aa21268b2d661a03f78e476d92906eaa03bb3967a280826b59900146418ef994a0b73a596d5de01e54a90be42fbe598bb",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/low",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/low/raw",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b9870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b84a00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100c080a01e1e034f58aa89ef6a378ffb3dde41d2492786d117d91fd0ad1db2e33d8c8e1fa0685323e85a7895b9ad2a2b580e15400cdd73f062c635bcfb4ba7fddceaf53e95",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/low/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/create-root/low",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x6c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/create-root/low/raw",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f882870c72dd9d5e883e8001843b9aca00830f42408080a86c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100c001a0b3fdacb0768638e21e4b31909b70cc7bf271c1a2e936e5f32c0f07321dda3a87a06ba499b66c7262b03fbb3e795a12e6e32e53bbed748033704bdc1df6be0b33a6",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/low",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/low/raw",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b7870c72dd9d5e883e8001843b9aca00830f4240944e59b44847b379578588920ca78fbf26c0b4956c80b84800000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100c001a0f6191c13136a73cd993e18ba851b5e351101a40185ec88ef6d83ceb03d470293a06237b1b3cfa50e578131bcb5e34241c2bea970d3454320938dee42dd40091f4e",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/low/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0xf4240",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain-call/high",
+      "note": "CALL to a contract that touches no state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x",
+            "value": "0x0",
+            "to": "0x9dcd17433742f4c0ca53122ab541d0ba67fc27d2"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "plain-call/high/raw",
+      "note": "CALL to a contract that touches no state; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86f870c72dd9d5e883e8001843b9aca008401c9c380949dcd17433742f4c0ca53122ab541d0ba67fc27d28080c001a076bb7fa5d5f43960f12c9eae7b57f7c55189396daa9357090aa66071646cf1f8a0562aba038967d606520b3e222d73341741acc5be7da633a4ccbb97c104823295",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "transfer-new-account/high",
+      "note": "value transfer to an address with no account",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x",
+            "value": "0x1",
+            "to": "0x00000000000000000000000000000000000a5e7d"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "transfer-new-account/high/raw",
+      "note": "value transfer to an address with no account; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86f870c72dd9d5e883e8001843b9aca008401c9c3809400000000000000000000000000000000000a5e7d0180c001a0b8c24fa8cd86ca4f9335f1e0ec82490fe96be0fb09dfbe6e9bedadede495354da051c4da7a4bd8dc5c6f0321f95146e2a244a32865a15e1e7e2cb2c0d16156e6db",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/high",
+      "note": "root CALL whose frame creates a slot",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x01",
+            "value": "0x0",
+            "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/high/raw",
+      "note": "root CALL whose frame creates a slot; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86f870c72dd9d5e883e8001843b9aca008401c9c380947dcd17433742f4c0ca53122ab541d0ba67fc27df8001c001a06db33a97107d6ce6801e49bbcf7abdc4f55e34cf868ffac3c1aec23f7cb95f24a07dbd2143e23427d582fb59935b5427efd9fb6ceb68534ae35d921829827e598d",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/create-root/high",
+      "note": "creates slot 0x10; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x600160105500",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/create-root/high/raw",
+      "note": "creates slot 0x10; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f861870c72dd9d5e883e8001843b9aca008401c9c380808086600160105500c080a0ef88daa7644fabec1ec409e855a975fef9da1312f1ca75e0f8b810467cb00f1fa009a9244cdd8a0d2e80e0cd350380c3cf85164d687c6578ff17e80b7cd77a5c07",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/high",
+      "note": "creates slot 0x10; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600160105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/high/raw",
+      "note": "creates slot 0x10; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f895870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80a60000000000000000000000000000000000000000000000000000000000000000600160105500c001a0ee2abc4a1fc8d1d7b64165e2a558fd3c7d94a71dff3429d0052015b8ae097571a06a3c69224ddd3fb0eac0ef45a935e499e38e27be0c17f002c61e3077549f06c3",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600160105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/create-root/high",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6001601055600060105500",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/create-root/high/raw",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f866870c72dd9d5e883e8001843b9aca008401c9c38080808b6001601055600060105500c080a047204f654e61cf0fc4d90d266b415e9b2f5055fd746424c9ca0ccc488a84b5d9a029fe982b7e63c9af9626f04228831324e0473ddb1f493f9841bcb09b0df55169",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/high",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/high/raw",
+      "note": "creates slot 0x10, then clears it in the same frame (state gas refill); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f89a870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80ab00000000000000000000000000000000000000000000000000000000000000006001601055600060105500c001a0cc51fe8c1d074cfd2cf252d858eaee93d6b61f0e020fc129e637d450c3526cc0a012da1c4006278f904f2c5e3dd5f597b16d94524da7912222ce751420390d8e7d",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear/factory/high/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006001601055600060105500",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/create-root/high",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/create-root/high/raw",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f886870c72dd9d5e883e8001843b9aca008401c9c3808080ab6e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400c001a0154e47623727d5dae2cf9770005a0130439b3dfb9c6ecfb012ceb8226afd89e3a03d96ca05e1c1f006ba49976858d1dbcfed1b435bae58fcbc08383604d885ea8f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/high",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/high/raw",
+      "note": "creates slot 0x10, then a DELEGATECALL child clears it (refill in another frame); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8bb870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b84b00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400c080a00a9a5c36f3be20c81e564d6db2e22383ee54d00f1c6d035ffb9faa40b3c86665a03c2c55f1ecab0450d577bab26b6fd9cc0879dad1898a979618cf9ba6d1c47fe1",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-clear-child/factory/high/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f060016010556000600060006000845af400",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/create-root/high",
+      "note": "a CALL child creates a slot in its own storage; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/create-root/high/raw",
+      "note": "a CALL child creates a slot in its own storage; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f883870c72dd9d5e883e8001843b9aca008401c9c3808080a86e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100c080a0e2aa9b1bfed05f2e22388f9ab6559d32de13db0c46e8d09c9e9f99cfe2aa5f34a02c2f91122cfe5e9a85815f28e546a10bd72bc5027fb99b3624e5767de74f61a9",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/high",
+      "note": "a CALL child creates a slot in its own storage; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/high/raw",
+      "note": "a CALL child creates a slot in its own storage; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b8870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b84800000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100c001a0d24b5bb659958a77e4ca13cf2f4f33728762792ace7737e58d0271a75c6583b7a06e703c2d877345c2fa81fdbe1d188a565b18f291b7900ab1a6c2c4c5f5931b86",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-new-child/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/create-root/high",
+      "note": "a CALL child creates a slot, then reverts; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x71686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/create-root/high/raw",
+      "note": "a CALL child creates a slot, then reverts; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f886870c72dd9d5e883e8001843b9aca008401c9c3808080ab71686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100c080a00806146920f5baf03f3721922f79627963042dd436209374a411f1f2252db6e6a01abc866c56aa7d1b48629bfcad7698df3cb398d00081641faa685e56961e8aaa",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/high",
+      "note": "a CALL child creates a slot, then reverts; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/high/raw",
+      "note": "a CALL child creates a slot, then reverts; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8bb870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b84b000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100c080a083f52d3f9ea50c471b5d30dae6fd6c7ef77c99520543a0822042fc73456351c4a02b6b4fc4e37a35ff1ec0752c2ae94b85705ba166e5daf66d0feb625372430b9f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "sstore-child-revert/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x000000000000000000000000000000000000000000000000000000000000000071686001602055600080fd60005260096017f36000526012600e6000f060006000600060006000855af100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create/create-root/high",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create/create-root/high/raw",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f876870c72dd9d5e883e8001843b9aca008401c9c38080809b6e656000601055006000526006601af3600052600f60116000f000c080a0151100b74b52dcf174f7e5db90601bf7329496e87ce55657f43988de508e8edaa062050c51fd33aa239d12eaca550db223a0866e4093caaaf821493f696359501c",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "create/factory/high",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "create/factory/high/raw",
+      "note": "CREATE deploys a 6-byte runtime (account creation and code deposit); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8ab870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b83b00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000c001a00553889e422348e7528755dfae5787ead4b1f385353060ffa2d760c6e09bcfeaa011497ff34f7477f42724cc11c57af3ef359bd682b98e829c7f84ae50499c726c",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "create/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create/factory/high/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656000601055006000526006601af3600052600f60116000f000",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/create-root/high",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/create-root/high/raw",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f87d870c72dd9d5e883e8001843b9aca008401c9c3808001a2600060006000600060017300000000000000000000000000000000000a5e7d5af100c080a0f08707185f524e219bafc93f37687ee8557e3bedef9c8b41e03b4258eebea424a03567cc3224275efdefa82bf64e7e5fa1fcb9be6cd492bdd176fcd0c3c30ff400",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/high",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/high/raw",
+      "note": "CALL sends 1 wei to an address with no account (new account charge); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b2870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c01b8420000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100c001a040c50b5dc8e040fae25462a462ab55f2380953beb89aee345e9e38e636f10e76a0744b4c289afa56fb1def2224ebfce455c3fc47d26fefd69a098f9972b0a3e774",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "call-new-account/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x0000000000000000000000000000000000000000000000000000000000000000600060006000600060017300000000000000000000000000000000000a5e7d5af100",
+            "value": "0x1",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/create-root/high",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/create-root/high/raw",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f885870c72dd9d5e883e8001843b9aca008401c9c3808080aa6e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100c001a036f6bbb746ac765d31a1b356d125205be7b47e748434ff73c69b93dd12acdb3ea04275df99c70327a2958af4cb7093202243e5ad80487d8bcdb61a4b60bbb6d159",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/high",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/high/raw",
+      "note": "a CALL child given 50000 gas creates a slot (state charge above its gas_left); runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8ba870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b84a00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100c080a01b99acadd68f0a97bdc161403893c54c15d6df871cfc50317c3b05332907dc95a07e8009a1cc06da98756e61a94688718bc872d395c7da4ecf09c2e5b4b16d47b4",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-state-child/factory/high/structLogger",
+      "note": "geth-style struct logger for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006e656001602055006000526006601af3600052600f60116000f0600060006000600060008561c350f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "disableStorage": true,
+            "disableStack": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/create-root/high",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs as the root creation",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x6c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/create-root/high/raw",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs as the root creation; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f883870c72dd9d5e883e8001843b9aca008401c9c3808080a86c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100c001a04c19a77dd8a18cd5eacb6e90bf831c7dbed74f8fc283d2f896113bef8598bd02a05d62a8ad27e67d1425d05e4dc614a3ba32142153dcaae2e772fbec04de1230a5",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/high",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs in a CREATE2 frame under a root CALL to the factory",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/high/raw",
+      "note": "a CALL child given 30000 gas loops until out of execution gas; runs in a CREATE2 frame under a root CALL to the factory; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f8b8870c72dd9d5e883e8001843b9aca008401c9c380944e59b44847b379578588920ca78fbf26c0b4956c80b84800000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100c080a0dfb3d41c05754437b648fd6e5e10ae91277ef651d73232d960673dcf83275621a04c60c8222bb1b36a4a2f125b9d48da2b33f9e714ecbf6472b2454dfd808649d9",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "oog-exec-child/factory/high/callTracer",
+      "note": "geth-style call tracer for the same call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceCall",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x1c9c380",
+            "input": "0x00000000000000000000000000000000000000000000000000000000000000006c635b6000566000526004601cf3600052600d60136000f06000600060006000600085617530f100",
+            "value": "0x0",
+            "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c"
+          },
+          "latest",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/oog",
+      "note": "root CALL with 100000 gas whose new slot needs more than its gas_left",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_call",
+        "params": [
+          {
+            "from": "0x0c2c51a0990aee1d73c1228de158688341557508",
+            "gas": "0x186a0",
+            "input": "0x01",
+            "value": "0x0",
+            "to": "0x7dcd17433742f4c0ca53122ab541d0ba67fc27df"
+          },
+          [
+            "trace",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "sstore-root/oog/raw",
+      "note": "root CALL with 100000 gas whose new slot needs more than its gas_left; signed, executed on the head state",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_rawTransaction",
+        "params": [
+          "0x02f86e870c72dd9d5e883e8001843b9aca00830186a0947dcd17433742f4c0ca53122ab541d0ba67fc27df8001c080a041242f5ba9f42ab88db318536cf89fd4b6981a5d30b54365c82049aba719413ea02946740b4f433974d7121e36a6538b49d7afc8a010e01964f2abafd01d5d42f1",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/block/0x39",
+      "note": "mined Amsterdam block",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_block",
+        "params": [
+          "0x39"
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/0",
+      "note": "mined Amsterdam transaction to 0x0000bff46984e3725691fa540a8c7589300d8282 with gas 1000000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xc10ab59cdb8c8d36b0b5df324a9fb7da40939de185d700eedf4b4a5f7251acf7",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/0/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xc10ab59cdb8c8d36b0b5df324a9fb7da40939de185d700eedf4b4a5f7251acf7",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/1",
+      "note": "mined Amsterdam transaction to 0x000064d678505ad48f8ccb093bc65613800e8282 with gas 1000000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb2a95a289902c91f0986f79a779241c1338529e5f661bf5d3b1bec51f08e019b",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/1/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xb2a95a289902c91f0986f79a779241c1338529e5f661bf5d3b1bec51f08e019b",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/2",
+      "note": "mined Amsterdam transaction to None with gas 44560",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x779255994bd6b4a2f5fa50cc309d28b60b16ff18fa25f9aab23cbe2372a82522",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/2/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x779255994bd6b4a2f5fa50cc309d28b60b16ff18fa25f9aab23cbe2372a82522",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/3",
+      "note": "mined Amsterdam transaction to None with gas 104258",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xa47f3b52ba61f273e0c4ec5ba16ed6ad4069886d5958ba0666d8af462424eef4",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x39/3/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xa47f3b52ba61f273e0c4ec5ba16ed6ad4069886d5958ba0666d8af462424eef4",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/block/0x3a",
+      "note": "mined Amsterdam block",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_block",
+        "params": [
+          "0x3a"
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/0",
+      "note": "mined Amsterdam transaction to 0x7dcd17433742f4c0ca53122ab541d0ba67fc27df with gas 100000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x9117624aeba24b35fec724154870d2ebf04b6a06ce0cf1f8905875039a2b69d8",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/0/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x9117624aeba24b35fec724154870d2ebf04b6a06ce0cf1f8905875039a2b69d8",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/1",
+      "note": "mined Amsterdam transaction to 0x4340ee1b812acb40a1eb561c019c327b243b92df with gas 21000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x5cb78795f2c7d97cc5ebf8a7a5d56fd4c7ac5bbc9b689c143f0ffa9ea0c78042",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/1/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x5cb78795f2c7d97cc5ebf8a7a5d56fd4c7ac5bbc9b689c143f0ffa9ea0c78042",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/2",
+      "note": "mined Amsterdam transaction to 0x7dcd17433742f4c0ca53122ab541d0ba67fc27df with gas 100000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xfd896c81305ff7f113a947c45fb29815e8854dc23fe545fb09c7a8fa1f52adb8",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/2/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xfd896c81305ff7f113a947c45fb29815e8854dc23fe545fb09c7a8fa1f52adb8",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/3",
+      "note": "mined Amsterdam transaction to 0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f with gas 21000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xe765e3b5a4787f3e548e7da60a94a9b86385c6bf1126a0fb40438e8e899aa2b6",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3a/3/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xe765e3b5a4787f3e548e7da60a94a9b86385c6bf1126a0fb40438e8e899aa2b6",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/block/0x3b",
+      "note": "mined Amsterdam block",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_block",
+        "params": [
+          "0x3b"
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/0",
+      "note": "mined Amsterdam transaction to 0x9dcd17433742f4c0ca53122ab541d0ba67fc27d3 with gas 100000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xb02327053fb189a3631faadd4d4b96ecb286f301fb7867b941a509c29d3e24a7",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/0/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xb02327053fb189a3631faadd4d4b96ecb286f301fb7867b941a509c29d3e24a7",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/1",
+      "note": "mined Amsterdam transaction to 0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0 with gas 600000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x19cbc91713888a88bf3025ac53212aaf65d0dcb710a83ef0d103464d24cacd74",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/1/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x19cbc91713888a88bf3025ac53212aaf65d0dcb710a83ef0d103464d24cacd74",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/2",
+      "note": "mined Amsterdam transaction to 0x7dcd17433742f4c0ca53122ab541d0ba67fc27df with gas 100000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xfca19aa43410d6b3a7363c5dbc9e2c1a07c5c65979a74d48ddcb80b685520b3f",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/2/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xfca19aa43410d6b3a7363c5dbc9e2c1a07c5c65979a74d48ddcb80b685520b3f",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/3",
+      "note": "mined Amsterdam transaction to 0xd803681e487e6ac18053afc5a6cd813c86ec3e4d with gas 21000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xc5ab63ec1074b646fd6626aa56f3c8a30fd5ca43e8da8b011bc1d29279176742",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3b/3/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xc5ab63ec1074b646fd6626aa56f3c8a30fd5ca43e8da8b011bc1d29279176742",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/block/0x3c",
+      "note": "mined Amsterdam block",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_block",
+        "params": [
+          "0x3c"
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/0",
+      "note": "mined Amsterdam transaction to 0x7dcd17433742f4c0ca53122ab541d0ba67fc27df with gas 100000",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x64c1cb4199575875027842cd5dbecae22aadd297916ffc4abbcc6b96f70f681e",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/0/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x64c1cb4199575875027842cd5dbecae22aadd297916ffc4abbcc6b96f70f681e",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/1",
+      "note": "mined Amsterdam transaction to None with gas 84692",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0x96a3becefcea65fa5b0e6ac712234efec5acaf679827c9f75140038e0f340449",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/1/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0x96a3becefcea65fa5b0e6ac712234efec5acaf679827c9f75140038e0f340449",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/2",
+      "note": "mined Amsterdam transaction to None with gas 44560",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "trace_replayTransaction",
+        "params": [
+          "0xf5d58b47de86f548fb4ee0020417772f6294606f5afbf7207dc7cf4ca3891ee4",
+          [
+            "trace",
+            "vmTrace"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "mined/0x3c/2/callTracer",
+      "note": "geth-style call tracer for the same transaction",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "debug_traceTransaction",
+        "params": [
+          "0xf5d58b47de86f548fb4ee0020417772f6294606f5afbf7207dc7cf4ca3891ee4",
+          {
+            "tracer": "callTracer"
+          }
+        ]
+      }
+    }
+  ]
+}

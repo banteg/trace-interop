@@ -87,9 +87,22 @@ A library PR is **released** in the first tag containing it at each library hop,
 
 ## Geth draft fork
 
+```mermaid
+flowchart LR
+  Geth_35791["Geth #35791"]:::open
+  Geth_36035["Geth #36035"]:::open
+  Geth_36036["Geth #36036"]:::open
+  Geth_36035 --> Geth_35791
+  Geth_36036 --> Geth_35791
+  Geth_36035 --> Geth_36036
+  classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
+```
+
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families in internal/traceapi; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, after lightclient pushed error-typing and naming commits, with which the 22 execution-apis#895 fixtures regenerate byte-identical | — | — | — | — | — | — |
+| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical · after Geth #36035 · after Geth #36036 | — | — | — | — | — | — |
+| [Geth #36035](https://github.com/ethereum/go-ethereum/pull/36035) | Core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors; split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit | — | — | — | — | — | — |
+| [Geth #36036](https://github.com/ethereum/go-ethereum/pull/36036) | Core, eth: apply the DAO fork in pre-execution and harden stateAtTransaction; needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state · after Geth #36035 | — | — | — | — | — | — |
 
 ## Nethermind
 

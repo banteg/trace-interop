@@ -427,10 +427,37 @@
       "title": "internal/traceapi: add Parity trace RPC namespace",
       "client": "geth",
       "decisions": [],
+      "depends_on": [
+        "https://github.com/ethereum/go-ethereum/pull/36035",
+        "https://github.com/ethereum/go-ethereum/pull/36036"
+      ],
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "implements the nine Parity trace methods and all three output families in internal/traceapi; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, after lightclient pushed error-typing and naming commits, with which the 22 execution-apis#895 fixtures regenerate byte-identical"
+      "note": "implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical"
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/pull/36035",
+      "title": "core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors",
+      "client": "geth",
+      "decisions": [],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit"
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/pull/36036",
+      "title": "core, eth: apply the DAO fork in pre-execution and harden stateAtTransaction",
+      "client": "geth",
+      "decisions": [],
+      "depends_on": [
+        "https://github.com/ethereum/go-ethereum/pull/36035"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state"
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13551",

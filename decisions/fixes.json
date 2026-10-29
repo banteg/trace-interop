@@ -3,6 +3,7 @@
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
+    "alloy-rs/evm2": "evm2",
     "besu-eth/besu": "Besu",
     "bluealloy/revm": "revm",
     "erigontech/erigon": "Erigon",
@@ -3301,6 +3302,18 @@
       "draft": false,
       "merged_at": null,
       "note": "reopens #27478 (closed by the stale bot before review) with the same commit on current main: unknown-block replay errors like trace_block"
+    },
+    {
+      "url": "https://github.com/alloy-rs/evm2/pull/876",
+      "title": "fix(inspectors): include forwarded gas in call and create step cost",
+      "client": "reth",
+      "decisions": [
+        "H20"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "evm2 runs step_end for CALL and CREATE after the child returns, so Reth 2.9.0 vmTrace cost lost the forwarded gas (9,396 instead of 71,624 on the replay-tree root CALL); records the cost in the call and create hooks, also for failed prechecks"
     }
   ]
 }

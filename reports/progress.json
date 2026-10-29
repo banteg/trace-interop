@@ -5,17 +5,17 @@
         "development": {
           "agree": 8,
           "build": [
-            "26.10-develop \u00b7 781a7e1d"
+            "26.10-develop \u00b7 7f08e68a"
           ],
           "gained": 0,
           "lost": 0
         },
         "release": {
-          "agree": 6,
+          "agree": 8,
           "build": [
-            "26.10.1 \u00b7 e83703cd"
+            "26.10.2 \u00b7 d3e1aea7"
           ],
-          "gained": 0,
+          "gained": 2,
           "lost": 0
         }
       },
@@ -28,7 +28,7 @@
         "review": 0,
         "unmeasured": 6
       },
-      "dev_only": 2,
+      "dev_only": 0,
       "name": "Besu",
       "prs": {
         "merged": 9,
@@ -40,7 +40,7 @@
         "development": {
           "agree": 33,
           "build": [
-            "3.9.0-dev \u00b7 598ba625"
+            "3.9.0-dev \u00b7 6955d198"
           ],
           "gained": 0,
           "lost": 0
@@ -48,7 +48,7 @@
         "release": {
           "agree": 29,
           "build": [
-            "3.8.0 \u00b7 7539da15"
+            "3.8.1 \u00b7 cf6f1413"
           ],
           "gained": 0,
           "lost": 0
@@ -75,15 +75,15 @@
         "development": {
           "agree": 33,
           "build": [
-            "2.3.0-preview \u00b7 7192e7f3"
+            "2.3.0-preview \u00b7 fc9abf09"
           ],
-          "gained": 1,
+          "gained": 0,
           "lost": 0
         },
         "release": {
           "agree": 27,
           "build": [
-            "2.2.1 \u00b7 c4f1015b"
+            "2.2.2 \u00b7 be201120"
           ],
           "gained": 0,
           "lost": 0
@@ -110,25 +110,25 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.8.0 \u00b7 53bf066f"
+            "2.8.1 \u00b7 966010c9"
           ],
-          "gained": 0,
-          "lost": 0
+          "gained": 1,
+          "lost": 1
         },
         "release": {
           "agree": 25,
           "build": [
-            "2.8.1 \u00b7 d763342f"
+            "2.9.0 \u00b7 c9a780f4"
           ],
-          "gained": 0,
-          "lost": 0
+          "gained": 1,
+          "lost": 1
         }
       },
       "client": "reth",
       "counts": {
         "agree": 25,
-        "converged": 7,
-        "fix": 1,
+        "converged": 5,
+        "fix": 3,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -145,7 +145,7 @@
         "development": {
           "agree": 27,
           "build": [
-            "1.8.7-nightly \u00b7 4e8874b2"
+            "1.8.7-nightly \u00b7 716e795c"
           ],
           "gained": 0,
           "lost": 0
@@ -171,8 +171,8 @@
       "dev_only": 9,
       "name": "Anvil",
       "prs": {
-        "merged": 15,
-        "open": 1
+        "merged": 16,
+        "open": 0
       }
     }
   ],

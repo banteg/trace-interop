@@ -1,10 +1,10 @@
 # Geth draft fork: changes to review
 
-The experimental fork follows the adopted source-review stances; its checked cases agree on all 33 decisions, including pending simulations and pending block traces, which it runs in a real pending environment that holds pooled transactions; one H14 input policy is open, and it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
+The experimental fork follows the adopted source-review stances. 0f1fb2ae is the #35791 rework for review (the capture as a registered parityTracer, StateAtTransaction replays, --rpc.evmtimeout calls); its checked cases agree on all 33 decisions, including pending simulations and pending block traces, which it runs in a real pending environment that holds pooled transactions; one H14 input policy is open, and it rejects the H12 raw-transaction block argument, an extension outside the baseline. It is not upstream Geth support or a consensus vote. Filtering remains a bounded scan; pruning still needs runtime coverage.
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.17.9-unstable · a15b96ff** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 0 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.17.11-unstable · 0f1fb2ae** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 0 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Geth draft fork decisions by outcome, with fix PRs](geth-work.svg)
 
@@ -12,7 +12,7 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.9-unstable` | [`a15b96ff`](https://github.com/banteg/go-ethereum/commit/a15b96ff3773bb8f2975f028256add2229f9e747) | 2026-10-18 | [2026-10-23](../../evidence/2026-10-23/eval/initial/manifest.json) |
+| `1.17.11-unstable` | [`0f1fb2ae`](https://github.com/banteg/go-ethereum/commit/0f1fb2ae59dba1a24f6345578e11e6611a39495e) | 2026-10-28 | [2026-10-29](../../evidence/2026-10-29/eval/initial/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 
@@ -26,7 +26,7 @@ These results record behavior whose policy is unresolved. Passing a checked part
 
 | Build | Decision | Observed | Example |
 | --- | --- | --- | --- |
-| 1.17.9-unstable · a15b96ff | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
+| 1.17.11-unstable · 0f1fb2ae | [Raw-transaction block argument](../decisions/H12.md) | 6 extension cases. Selector block 0x0 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector latest: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by number: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 by hash: rejected as invalid params (-32602: too many arguments, want at most 2). Selector block 0x19 as an EIP-1898 object: rejected as invalid params (-32602: too many arguments, want at most 2). Selector pending: rejected as invalid params (-32602: too many arguments, want at most 2). | [Raw valid](../cases/initial/raw-valid.md) · [Raw state hash](../cases/raw-selector/raw-state-hash.md) |
 
 <details><summary>✅ Behaviors with no difference in the checked cases</summary>
 

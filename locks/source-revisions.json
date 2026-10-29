@@ -23,6 +23,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "d763342fa185e4e90ee79dc65f6a5706168b0bcb",
       "committed_at": "2026-10-23T10:18:20Z"
+    },
+    {
+      "version": "Reth Version: 2.9.0+c9a780f4",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "c9a780f4f23d6752ca299b104c93b7f099673c80",
+      "committed_at": "2026-10-29T11:02:54Z"
     }
   ],
   "reth_development": [
@@ -127,6 +133,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "53bf066feb7d9c39a026f45651851909bb9c1c56",
       "committed_at": "2026-10-21T10:49:06Z"
+    },
+    {
+      "version": "Reth Version: 2.8.1+966010c9",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "966010c905449163ef161530a5ee95ac1e0c8487",
+      "committed_at": "2026-10-28T16:31:35Z"
     }
   ],
   "erigon_release": [
@@ -153,6 +165,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "7539da15473efd23e1d7d2660ad39782b3137e6f",
       "committed_at": "2026-10-20T03:36:39Z"
+    },
+    {
+      "version": "3.8.1-cf6f1413",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "cf6f14132ff042df33b8ce64b0114daeb0d15145",
+      "committed_at": "2026-10-23T12:17:57Z"
     }
   ],
   "erigon_development": [
@@ -275,6 +293,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "598ba62530ff34f62df663bc3afaff30923fdfbe",
       "committed_at": "2026-10-23T10:54:49Z"
+    },
+    {
+      "version": "3.9.0-dev-6955d198",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "6955d1985e90b0dc1646e1ea68beb9aae1d3b2c4",
+      "committed_at": "2026-10-29T10:16:34Z"
     }
   ],
   "besu_release": [
@@ -301,6 +325,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "e83703cdf863093b98ebe1d8719cd77cdf8639d8",
       "committed_at": "2026-10-22T16:53:36Z"
+    },
+    {
+      "version": "besu/v26.10.2/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "d3e1aea7326960c317def66074037e7f67892ac4",
+      "committed_at": "2026-10-26T14:46:37Z"
     }
   ],
   "besu_development": [
@@ -399,6 +429,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "781a7e1df7c4e1c426d5b19201e8431dc366b72c",
       "committed_at": "2026-10-23T12:03:17Z"
+    },
+    {
+      "version": "besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "7f08e68a3cc891a3b642f8353b9770cf6ba7d5a0",
+      "committed_at": "2026-10-29T10:46:31Z"
     }
   ],
   "nethermind_release": [
@@ -431,6 +467,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "c4f1015be8b989dd609803cc50d3928d6e0dfd4f",
       "committed_at": "2026-10-22T18:54:38Z"
+    },
+    {
+      "version": "2.2.2+be201120",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "be201120899ea9cdaab1444b89878c56d1a5a4ad",
+      "committed_at": "2026-10-26T15:33:41Z"
     }
   ],
   "nethermind_development": [
@@ -577,6 +619,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "7192e7f344d7b4516db02d0140bd5ecd83532caf",
       "committed_at": "2026-10-23T15:21:47Z"
+    },
+    {
+      "version": "2.3.0-preview+fc9abf09",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "fc9abf09fa8eaaf291edba560073514743facadc",
+      "committed_at": "2026-10-29T12:14:46Z"
     }
   ],
   "go-ethereum_trace": [
@@ -651,6 +699,12 @@
       "repository": "https://github.com/banteg/go-ethereum",
       "commit": "a15b96ff3773bb8f2975f028256add2229f9e747",
       "committed_at": "2026-10-18T15:22:01Z"
+    },
+    {
+      "version": "Geth/v1.17.11-unstable-0f1fb2ae-2026-10-28/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "0f1fb2ae59dba1a24f6345578e11e6611a39495e",
+      "committed_at": "2026-10-28T17:29:01Z"
     }
   ],
   "anvil_release": [
@@ -763,6 +817,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "4e8874b2bdc840929585ca73e170993c50a4a531",
       "committed_at": "2026-10-23T03:33:28Z"
+    },
+    {
+      "version": "anvil Version: 1.8.7-nightly+716e795c",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "716e795cea18c9706f021ea692dd7d1ff76b63b1",
+      "committed_at": "2026-10-29T04:24:53Z"
     }
   ]
 }

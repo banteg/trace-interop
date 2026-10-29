@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-26**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-10-29**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -23,7 +23,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Foundry #17311](https://github.com/foundry-rs/foundry/pull/17311) | Charge cap-only calls at the base fee; a missing tip defaults to zero, so a maxFeePerGas-only call pays min(cap, base fee) instead of its cap | [H15](../reports/decisions/H15.md) (partial) | 2026-10-04 | — | — | dev, stable | — |
 | [Foundry #17312](https://github.com/foundry-rs/foundry/pull/17312) | Cap omitted call gas by the sender's allowance; caps the default gas of a priced call to what the sender can afford, as Reth does, which unblocks the last H16 probe held by the funds check | [H15](../reports/decisions/H15.md) (partial), [H16](../reports/decisions/H16.md) (partial) | 2026-10-05 | — | — | dev, stable | — |
 | [Foundry #17419](https://github.com/foundry-rs/foundry/pull/17419) | Reject priced calls below the base fee; by figtracer, citing the H15 proposal: a positive gasPrice or maxFeePerGas below the base fee is rejected in eth_call, eth_estimateGas, trace_call and trace_callMany instead of executed | [H15](../reports/decisions/H15.md) | 2026-10-06 | — | — | dev | dev |
-| [Foundry #17777](https://github.com/foundry-rs/foundry/pull/17777) | Return not found for unknown trace blocks; -32001 for an unknown block in trace_call, trace_callMany and trace_rawTransaction (past the head, below genesis, or an upstream hash past the fork point) and in trace_replayBlockTransactions instead of null; eth_call keeps -32602. Reverses #17306's null for replays, alongside paradigmxyz/reth#28160 | [H06](../reports/decisions/H06.md) | — | — | — | — | — |
+| [Foundry #17777](https://github.com/foundry-rs/foundry/pull/17777) | Return not found for unknown trace blocks; -32001 for an unknown block in trace_call, trace_callMany and trace_rawTransaction (past the head, below genesis, or an upstream hash past the fork point) and in trace_replayBlockTransactions instead of null; eth_call keeps -32602. Reverses #17306's null for replays, alongside paradigmxyz/reth#28160 | [H06](../reports/decisions/H06.md) | 2026-10-29 | — | — | — | — |
 
 ## Besu
 
@@ -49,9 +49,9 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11407](https://github.com/besu-eth/besu/pull/11407) | Select exactly the blockHash block in trace_filter; trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after.; a build at 1371e0ba agrees on 11 more H33 checks, leaving only filter-blockhash-union, blocked by trace_filter mode (evidence/2026-10-08/besu-1371e0ba) | [H33](../reports/decisions/H33.md) | 2026-10-06 | — | — | dev, stable | — |
 | [Besu #11432](https://github.com/besu-eth/besu/pull/11432) | Align trace_call and trace_callMany validation with the trace spec draft; trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain; a build at its merge 1371e0ba agrees on 9 more H14 checks and 190 H15 checks, leaving H15 with no difference in the checked cases (evidence/2026-10-08/besu-1371e0ba) | [H14](../reports/decisions/H14.md) (partial), [H15](../reports/decisions/H15.md) (partial) | 2026-10-08 | — | — | dev, stable | — |
 | [Besu #11435](https://github.com/besu-eth/besu/pull/11435) | Report creationMethod on every create trace frame; creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2 | [H10](../reports/decisions/H10.md) (partial) | — | — | — | — | — |
-| [Besu #11436](https://github.com/besu-eth/besu/pull/11436) | Accept the trace_filter mode member; trace_filter accepts mode intersection (default, also for null) and union, rejects other values with -32602; block rewards match by author against toAddress, so a reward is selectable with fromAddress empty or in union mode; CREATE and SELFDESTRUCT address matching unchanged | [H03](../reports/decisions/H03.md), [H23](../reports/decisions/H23.md) (partial) | 2026-10-21 | — | — | dev | dev |
+| [Besu #11436](https://github.com/besu-eth/besu/pull/11436) | Accept the trace_filter mode member; trace_filter accepts mode intersection (default, also for null) and union, rejects other values with -32602; block rewards match by author against toAddress, so a reward is selectable with fromAddress empty or in union mode; CREATE and SELFDESTRUCT address matching unchanged | [H03](../reports/decisions/H03.md), [H23](../reports/decisions/H23.md) (partial) | 2026-10-21 | — | — | dev, stable | dev, stable |
 | [Besu #11439](https://github.com/besu-eth/besu/pull/11439) | Reject malformed trace_filter members and legacy calls for another chain; trace_filter rejects a bare address string and negative after/count with -32602; a legacy call keeps a foreign chainId so validation rejects it (-32000) in trace_call and eth_call; trace_rawTransaction is left to #11395 | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
-| [Besu #11440](https://github.com/besu-eth/besu/pull/11440) | Default the trace_callMany block to latest; trace_callMany accepts one argument and runs at latest, as trace_call does | [H31](../reports/decisions/H31.md) | 2026-10-21 | — | — | dev | dev |
+| [Besu #11440](https://github.com/besu-eth/besu/pull/11440) | Default the trace_callMany block to latest; trace_callMany accepts one argument and runs at latest, as trace_call does | [H31](../reports/decisions/H31.md) | 2026-10-21 | — | — | dev, stable | dev, stable |
 | [Besu #11441](https://github.com/besu-eth/besu/pull/11441) | Resolve safe trace_filter bounds and reject pending in trace methods; trace_filter resolves safe and finalized bounds (rejecting them when absent) and rejects pending instead of -32603; trace_block, trace_replayBlockTransactions, trace_call and trace_callMany reject pending instead of evaluating it as latest; trace_call and trace_callMany still take no block hash, which H32 also requires | [H32](../reports/decisions/H32.md) (partial) | — | — | — | — | — |
 
 ## Erigon
@@ -180,6 +180,19 @@ flowchart LR
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
   Reth_takes_next_revm_inspectors_release[["Reth takes next revm-inspectors release"]]:::pending
+  revm_inspectors_504["revm-inspectors #504"]:::released
+  revm_inspectors_v0_44_0(["revm-inspectors v0.44.0"]):::done
+  Reth_takes_revm_inspectors_v0_44_0[["Reth takes revm-inspectors v0.44.0"]]:::pending
+  revm_inspectors_509["revm-inspectors #509"]:::released
+  revm_inspectors_510["revm-inspectors #510"]:::released
+  revm_inspectors_511["revm-inspectors #511"]:::released
+  revm_inspectors_526["revm-inspectors #526"]:::released
+  revm_inspectors_528["revm-inspectors #528"]:::released
+  revm_inspectors_530["revm-inspectors #530"]:::released
+  revm_inspectors_v0_44_1(["revm-inspectors v0.44.1"]):::done
+  Reth_takes_revm_inspectors_v0_44_1[["Reth takes revm-inspectors v0.44.1"]]:::pending
+  revm_inspectors_532["revm-inspectors #532"]:::released
+  revm_inspectors_533["revm-inspectors #533"]:::released
   Alloy_4257 -.-> next_Alloy_release
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_4274 -.-> next_Alloy_release
@@ -193,8 +206,21 @@ flowchart LR
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
+  revm_inspectors_504 --> revm_inspectors_v0_44_0
+  revm_inspectors_v0_44_0 -.-> Reth_takes_revm_inspectors_v0_44_0
+  revm_inspectors_509 --> revm_inspectors_v0_44_0
+  revm_inspectors_510 --> revm_inspectors_v0_44_0
+  revm_inspectors_511 --> revm_inspectors_v0_44_0
+  revm_inspectors_526 --> revm_inspectors_v0_44_0
+  revm_inspectors_528 --> revm_inspectors_v0_44_0
+  revm_inspectors_530 --> revm_inspectors_v0_44_1
+  revm_inspectors_v0_44_1 -.-> Reth_takes_revm_inspectors_v0_44_1
+  revm_inspectors_532 --> revm_inspectors_v0_44_1
+  revm_inspectors_533 --> revm_inspectors_v0_44_1
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  classDef released fill:#fbefff,stroke:#8250df,color:#1f2328
+  classDef done fill:#ffffff,stroke:#1a7f37,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
 ```
 
@@ -225,15 +251,15 @@ flowchart LR
 | [Reth #28105](https://github.com/paradigmxyz/reth/pull/28105) | Require hex quantities in trace_get paths; trace_get indices accept only minimal lowercase hex quantities (a TraceAddressIndex param type), so [6, 0] returns -32602 as in Erigon, Nethermind and Anvil (#17308); other methods keep Alloy's Index | [H14](../reports/decisions/H14.md) (partial) | — | — | — | — | — |
 | [Reth #28160](https://github.com/paradigmxyz/reth/pull/28160) | Error on unknown block in trace_replayBlockTransactions; reopens #27478 (closed by the stale bot before review) with the same commit on current main: unknown-block replay errors like trace_block | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
 | [revm #3833](https://github.com/bluealloy/revm/pull/3833) | Preserve selfdestruct trace payload; fixes revm #3834: a post-Cancun SELFDESTRUCT to self reaches the tracer with its executing account, beneficiary and balance; reaches Reth through revm-inspectors; Anvil waits on it too, through revm-inspectors in Foundry | [H23](../reports/decisions/H23.md) (partial), [H26](../reports/decisions/H26.md) (partial) | — | — | — | — | — |
-| [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete Parity VM execution deltas; its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | — |
-| [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs | [H18](../reports/decisions/H18.md) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | dev, stable |
-| [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) | Report selfdestructed account deletions | [H26](../reports/decisions/H26.md) (partial) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | — |
-| [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode in VM traces | [H19](../reports/decisions/H19.md) | 2026-09-22 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | dev, stable |
-| [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence in state diffs | [H17](../reports/decisions/H17.md) | 2026-09-24 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | dev, stable |
-| [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | dev, stable | — |
-| [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | dev, stable | — |
-| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | dev, stable | dev, stable |
-| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | dev, stable | — |
+| [revm-inspectors #504](https://github.com/paradigmxyz/revm-inspectors/pull/504) | Record complete Parity VM execution deltas; its CALL clamp to the copied bytes is one of the two accepted CALL-family ranges; its MLOAD `mem` omission contradicts H20 and needs a follow-up | [H20](../reports/decisions/H20.md) (partial) | 2026-09-14 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #509](https://github.com/paradigmxyz/revm-inspectors/pull/509) | Report EIP-7702 code changes in state diffs | [H18](../reports/decisions/H18.md) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #510](https://github.com/paradigmxyz/revm-inspectors/pull/510) | Report selfdestructed account deletions | [H26](../reports/decisions/H26.md) (partial) | 2026-09-15 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #511](https://github.com/paradigmxyz/revm-inspectors/pull/511) | Record executed bytecode in VM traces | [H19](../reports/decisions/H19.md) | 2026-09-22 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #526](https://github.com/paradigmxyz/revm-inspectors/pull/526) | Preserve account existence in state diffs | [H17](../reports/decisions/H17.md) | 2026-09-24 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #528](https://github.com/paradigmxyz/revm-inspectors/pull/528) | Report vmTrace store from SSTORE operands | [H20](../reports/decisions/H20.md) (partial) | 2026-09-25 | [revm-inspectors v0.44.0](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.0) | — | — | — |
+| [revm-inspectors #530](https://github.com/paradigmxyz/revm-inspectors/pull/530) | Report no storage slots for a deleted account; storage: {} for deleted accounts; the post-Cancun self-destruct-to-self payload is revm #3833, and no captured fixture yet deletes an account with storage | [H26](../reports/decisions/H26.md) (partial) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
+| [revm-inspectors #532](https://github.com/paradigmxyz/revm-inspectors/pull/532) | Match vmTrace ops and subs to execution | [H20](../reports/decisions/H20.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
+| [revm-inspectors #533](https://github.com/paradigmxyz/revm-inspectors/pull/533) | Report reverted creations without an address | [H09](../reports/decisions/H09.md), [H23](../reports/decisions/H23.md) | 2026-09-29 | [revm-inspectors v0.44.1](https://github.com/paradigmxyz/revm-inspectors/tree/v0.44.1) | — | — | — |
 
 ## Specifications, tests and other repositories
 

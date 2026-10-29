@@ -64,8 +64,8 @@
 <text class="n-agree" x="454.5" y="129" text-anchor="middle">Foundry #17089</text>
 <rect class="b-agree" x="515" y="116" width="109" height="18" rx="4"/>
 <text class="n-agree" x="569.5" y="129" text-anchor="middle">Foundry #17306</text>
-<rect class="pr" x="630" y="116" width="109" height="18" rx="4"/>
-<text class="label" x="684.5" y="129" text-anchor="middle">Foundry #17777</text>
+<rect class="b-fix" x="630" y="116" width="109" height="18" rx="4"/>
+<text class="n-fix" x="684.5" y="129" text-anchor="middle">Foundry #17777</text>
 <text class="label head" x="16" y="161">No fix · converged (5)</text>
 <rect class="b-converged" x="16" y="172" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="185" text-anchor="middle">H04</text>

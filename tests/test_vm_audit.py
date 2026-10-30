@@ -86,12 +86,18 @@ class ExecutionTests(unittest.TestCase):
 
 
 class BlockSelectorTests(unittest.TestCase):
-    def test_selectors_outside_the_draft_are_not_anchored(self):
+    def test_unknown_or_malformed_selectors_are_not_anchored(self):
         context={'_blocks':{'0x1a':{'number':26,'hash':'0x'+'ab'*32}},'_head':{'number':'0x1a'}}
         self.assertIs(resolve_block(context,'0x1a'),context['_blocks']['0x1a'])
         self.assertIs(resolve_block(context,'0x'+'AB'*32),context['_blocks']['0x1a'])
-        for selector in ['0x1A',{'blockNumber':'0x1a'},{'blockHash':'0x'+'ab'*32}]:
+        for selector in ['0x1A',{'blockNumber':'0x1b'},{'blockHash':'0x'+'cd'*32},{}]:
             self.assertIsNone(resolve_block(context,selector),selector)
+
+    def test_eip1898_objects_select_their_block(self):
+        # The pinned trace_call schema takes both EIP-1898 objects; every frozen block is canonical.
+        context={'_blocks':{'0x1a':{'number':26,'hash':'0x'+'ab'*32}},'_head':{'number':'0x1a'}}
+        for selector in [{'blockNumber':'0x1a'},{'blockHash':'0x'+'ab'*32},{'blockHash':'0x'+'ab'*32,'requireCanonical':True}]:
+            self.assertIs(resolve_block(context,selector),context['_blocks']['0x1a'],selector)
 
 
 if __name__ == '__main__':

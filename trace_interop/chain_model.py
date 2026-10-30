@@ -29,7 +29,9 @@ def resolve_block(context, selector):
     """Resolve a selector to a frozen block, or None without an independent header.
 
     Null defaults to latest. Safe/finalized hashes come from the frozen forkchoice;
-    pending has no independently captured header and never substitutes the head.
+    pending has no independently captured header and never substitutes the head. An EIP-1898
+    object selects by its blockHash or blockNumber; every frozen block is canonical, so
+    requireCanonical changes nothing here.
     """
     blocks = context.get('_blocks', {})
     if selector is None or selector == 'latest':
@@ -38,6 +40,8 @@ def resolve_block(context, selector):
         selector = context.get('_block_tags', {}).get(selector)
     elif selector == 'earliest':
         selector = '0x0'
+    elif isinstance(selector, dict):
+        selector = selector.get('blockHash', selector.get('blockNumber'))
     if not isinstance(selector, str):
         return None
     if selector in blocks:

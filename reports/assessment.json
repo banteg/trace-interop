@@ -76,7 +76,7 @@
     "reports.lock.json": "fff6172e192d7ec47c3fd114343dd5bb9fa16295e9178cb18449dec42855a36b",
     "scripts/run_matrix.py": "1f56e061856f852654fdc5dc0fbc0802db4933539d1bfcbc437b5d064ffb1e70",
     "spec.lock.json": "6215625cc97706868e4f79dce81dc718e784db47ff16b1943010071a9f9e52a6",
-    "trace_interop/chain_model.py": "a0c25a0c7c8f1b2cb901c4df2190a073491682a655371d462f5220138622c57d",
+    "trace_interop/chain_model.py": "1a7e63616e5ab0d63269ecad668d1e279d2397485f84e0e85f22fc0a3d5cad08",
     "trace_interop/coverage.py": "b2b8b2f5c03bc196e4984ea64904c95be6272b3234738d03b4a31ba470ebcf78",
     "trace_interop/execution_models.py": "93c8fa7e684779052e080f450cb0ba05339fcb3f6aaaddf7e69c124e4affde40",
     "trace_interop/fee_policy.py": "2ea4e52da0acaaa7e515eff7f8c2915b53d9a4a2dff525b6179e5eaa67dfc09b",

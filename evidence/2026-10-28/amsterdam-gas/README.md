@@ -13,7 +13,7 @@ rule from what the clients emit, read against the EIP and #35970.
 - [`capture/`](capture): the Hive run (820 responses, all five builds eligible).
 - [`corpus.json`](corpus.json), built by [`build_corpus.py`](build_corpus.py);
   [`analyze.py`](analyze.py) tabulates frames, vmTrace ops and native tracers;
-  [`conservation.py`](conservation.py) checks the vmTrace gas law.
+  [`conservation.py`](conservation.py) checks the vmTrace gas law, CALL and CREATE included.
 
 ## Builds
 
@@ -144,13 +144,23 @@ The split for `cost`:
 op minus `cost`.
 
 [`conservation.py`](conservation.py) checks
-`used[i] + stateUsed[i] = used[i−1] + stateUsed[i−1] − cost[i] − stateGasCost[i]`
-for ops that enter no frame:
+`used[i] + stateUsed[i] = used[i−1] + stateUsed[i−1] − cost[i] − stateGasCost[i] + returned[i]`.
+`returned` is 0 for an op that enters no frame. A CALL or CREATE whose child runs instructions lends
+the child its reservoir and gets back the child's final `used + stateUsed`, less a creation's code
+deposit; a reverted child also refills its net state gas, and a halted child returns only the
+reservoir. A CALL or CREATE whose child runs no instruction, or that fails its balance or depth
+precheck and enters no frame, gets back its forwarded gas, which vmTrace does not report apart from
+`cost`, so the script leaves it unchecked. Every CALL and CREATE in this capture entered a frame,
+and the child ran no instruction in 9 per client (8 in Besu).
 
-- It holds on all 62,838 Erigon ops.
+- It holds on all 62,838 Erigon ops that enter no frame and on all 131 CALL and CREATE ops it
+  checks.
 - The other clients have no state members, so it reduces to the one-dimensional law
-  `used[i] = used[i−1] − cost[i]`. That breaks on 52 Geth draft ops, 26 Besu ops, and 4 each in
-  Nethermind and Reth, the refills.
+  `used[i] = used[i−1] − cost[i] + returned[i]`. Among ops that enter no frame, that breaks on 52
+  Geth draft ops, 26 Besu ops, and 4 each in Nethermind and Reth, the refills. Among checked CALL
+  and CREATE ops, it breaks on 76 of 131 Geth draft ops, 50 of 124 Besu ops and 32 of 131
+  Nethermind ops, where the account charge, the code deposit or a child's slot charge or refill
+  moves `gas_left`, and on 118 of 131 Reth ops (see below).
 
 Reth main's CALL and CREATE ops report the net drop across the call instead of including the
 forwarded gas. This came in with evm2 (reth#28098), not with EIP-8037.
@@ -216,7 +226,10 @@ separately, and no value depends on which pool paid a state charge.
   - CREATE family: the account charge.
 - `ex.used` stays `gas_left` after the op, now with spills and refills applied.
 - `ex.stateUsed` (new, integer, omitted when 0) is the reservoir after the op.
-- For an op that enters no frame, `used + stateUsed` falls by exactly `cost + stateGasCost`.
+- For an op that enters no frame, `used + stateUsed` falls by exactly `cost + stateGasCost`, less
+  what a CALL or CREATE that fails its balance or depth precheck gets back at once: its forwarded
+  gas, a value call's stipend and any state charge the failure refills. An op that enters a frame
+  lends the child its reservoir and also gets back what the child returns.
 
 ### Why
 
@@ -240,7 +253,7 @@ separately, and no value depends on which pool paid a state charge.
    client that emits Parity state members today.
 5. **The halt rule stays true.** "An exceptional halt consumes `action.gas`" still holds in the
    execution dimension. The state dimension is restored, as the EIP specifies.
-6. **vmTrace stays self-checking.** The two-dimensional law holds on every Erigon op. The
+6. **vmTrace stays self-checking.** The two-dimensional law holds on every Erigon op it checks. The
    one-dimensional `cost` used today needs a negative value for a refill, which comes out as
    2^64 − 97,820 in Nethermind and 0 in Reth.
 7. **It matches #35970's quantities.**

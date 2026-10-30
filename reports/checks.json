@@ -769776,7 +769776,7 @@
     "case": "trace/block",
     "checks": [
       {
-        "detail": "Records from blocks [48]; the head is 48. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "detail": "Records from blocks [48] with hashes ['0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84']; the head is 48. 0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 is a canonical block hash. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
         "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
         "status": "change_needed",
         "topic": "H32"
@@ -769936,7 +769936,7 @@
     "case": "trace/block",
     "checks": [
       {
-        "detail": "Records from blocks [48]; the head is 48. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
+        "detail": "Records from blocks [48] with hashes ['0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84']; the head is 48. 0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84 is a canonical block hash. The pooled transaction 0xa5ecd8bea38daf73327710f814278a9dd16292def35e16dc5e1aa6165face4a4 is missing.",
         "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
         "status": "change_needed",
         "topic": "H32"
@@ -770376,7 +770376,7 @@
     "case": "trace/block",
     "checks": [
       {
-        "detail": "Records from blocks [49]; the head is 48.",
+        "detail": "Records from blocks [49] with hashes ['0x593703e598bdc6bfc92f73724f8ac5c7b0a12a8ae6c5e7182199dcb957d86833']; the head is 48.",
         "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
         "status": "matches",
         "topic": "H32"
@@ -770804,7 +770804,7 @@
     "case": "trace/block",
     "checks": [
       {
-        "detail": "Records from blocks [49]; the head is 48.",
+        "detail": "Records from blocks [49] with hashes ['0x0096cf7f362ed680984b5a7470b8f53038c459e5790213cf8392a1cd4aeea320']; the head is 48.",
         "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
         "status": "matches",
         "topic": "H32"
@@ -770952,7 +770952,7 @@
     "case": "trace/block",
     "checks": [
       {
-        "detail": "Records from blocks [49]; the head is 48.",
+        "detail": "Records from blocks [49] with hashes ['0x42c6eb1eaadd8ff220172f63891a03a2ea56e35bb46a98757fc12a339f4e3393']; the head is 48.",
         "requirement": "Accept pending only with a real pending environment, the block after the head; otherwise reject it (-32602 recommended), never evaluating latest instead.",
         "status": "matches",
         "topic": "H32"

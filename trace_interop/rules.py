@@ -234,8 +234,12 @@ def pending_check(method, params, status, response, result, context):
     if method == 'trace_block':
         numbers = sorted(distinct(mapping(f).get('blockNumber') for f in result), key=str)
         absent = pooled is not None and pooled not in {mapping(f).get('transactionHash') for f in result}
-        return verdict('matches' if numbers == [head+1] and not absent else 'change_needed',
-                       f'Records from blocks {numbers}; the head is {head}.'+(missing if absent else ''))
+        # Records carry the hash of the one block the client built, never a canonical hash such as its parent's.
+        hashes = distinct(mapping(f).get('blockHash') for f in result)
+        canonical = [h for h in hashes if str(h).lower() in {b.get('hash') for b in mapping(context.get('_blocks')).values()}]
+        return verdict('matches' if numbers == [head+1] and len(hashes) == 1 and not canonical and not absent else 'change_needed',
+                       f'Records from blocks {numbers} with hashes {hashes}; the head is {head}.'
+                       + (f' {canonical[0]} is a canonical block hash.' if canonical else '')+(missing if absent else ''))
     hashes = [mapping(e).get('transactionHash') for e in result]
     if not all(isinstance(h, str) for h in hashes):
         return verdict('change_needed', f'Expected envelopes with transactionHash strings; got {json.dumps(result)[:80]}.')

@@ -126,7 +126,7 @@ class PosRewards(unittest.TestCase):
 
 
 class UnhashableValues(unittest.TestCase):
-    context = {'_environment': {'NUMBER': 48}, '_blocks': {'0x30': {'transactions': [{'hash': '0x' + '11'*32}]}}}
+    context = {'_environment': {'NUMBER': 48}, '_blocks': {'0x30': {'hash': '0x' + 'ab'*32, 'transactions': [{'hash': '0x' + '11'*32}]}}}
 
     def test_pending_block_numbers(self):
         for result in [[{'blockNumber': []}], [{'blockNumber': {}}, {'blockNumber': 49}], [{'blockNumber': 49}, {'blockNumber': None}, {'blockNumber': '0x31'}]]:
@@ -135,6 +135,14 @@ class UnhashableValues(unittest.TestCase):
                 self.assertEqual(check['status'], 'change_needed')
         result = [{'blockNumber': 49}, {'blockNumber': 49}]
         self.assertEqual(pending_check('trace_block', ['pending'], 'result', {'result': result}, result, self.context)['status'], 'matches')
+
+    def test_pending_records_carry_the_built_block_hash(self):
+        built, parent = '0x' + '31'*32, '0x' + 'ab'*32
+        for hashes, expected in [([built, built], 'matches'), ([parent, parent], 'change_needed'),
+                                 (['0x' + 'AB'*32]*2, 'change_needed'), ([built, '0x' + '32'*32], 'change_needed')]:
+            with self.subTest(hashes=hashes):
+                result = [{'blockNumber': 49, 'blockHash': h} for h in hashes]
+                self.assertEqual(pending_check('trace_block', ['pending'], 'result', {'result': result}, result, self.context)['status'], expected)
 
     def test_pending_replay_hashes(self):
         for result in [[{'transactionHash': []}], [{'transactionHash': {}}], [None]]:

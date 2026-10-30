@@ -492,6 +492,27 @@ class ReviewRegressionTests(unittest.TestCase):
     """Counterexamples from the review of the harness stance changes."""
     sender, miner = '0x'+'11'*20, '0x'+'22'*20
 
+    def transfer(self, price, frm, to, received):
+        """H15 for a 1-wei transfer that pays `received` to its recipient, where the fee recipient sends or receives it."""
+        tip, burn = max(price-1, 0)*21000, min(price, 1)*21000
+        case = {'name': 'transfer', 'context': {'_head': {'number': '0x1'}, '_blocks': {'0x1': {'number': 1, 'base_fee': 1, 'miner': self.miner, 'transactions': []}},
+                                                '_alloc': {frm: {'balance': hex(10**6)}}, '_codes': {frm: '0x'}},
+                'request': {'method': 'trace_call', 'params': [{'from': frm, 'to': to, 'gas': '0x5208', 'gasPrice': hex(price), 'value': '0x1'}, ['trace', 'stateDiff'], 'latest']}}
+        if to == self.miner:  # The fee recipient receives the value and the tip.
+            diff = {frm: {'balance': {'*': {'from': hex(10**6), 'to': hex(10**6-1-tip-burn)}}},
+                    to: {'balance': {'*': {'from': '0x5', 'to': hex(5+received+tip)}}}}
+        else:  # The fee recipient sends the value, pays the fees and takes its own tip back.
+            diff = {frm: {'balance': {'*': {'from': hex(10**6), 'to': hex(10**6-1-burn)}}}, to: {'balance': {'+': hex(received)}}}
+        result = {'trace': [{'type': 'call', 'traceAddress': [], 'result': {'gasUsed': '0x0', 'output': '0x'}}], 'stateDiff': diff}
+        return [c['status'] for c in assess(case, {'status': 'result', 'response': {'result': result}}, {}, {'H16'})]
+
+    def test_a_fee_recipient_that_sends_or_receives_the_value_settles(self):
+        for price in [0, 2]:  # The zero-fee rule, and a tip of 1 over the base fee of 1.
+            for frm, to in [(self.sender, self.miner), (self.miner, '0x'+'33'*20)]:
+                with self.subTest(price=price, sender=frm):
+                    self.assertEqual(self.transfer(price, frm, to, 1), ['matches'])
+                    self.assertEqual(self.transfer(price, frm, to, 2), ['change_needed'])
+
     def test_create_returning_runtime_pays_an_unmodelled_code_deposit(self):
         child = '0x60016000f3'
         available = 99979-32002

@@ -392,15 +392,17 @@ def traced_refund(vm, frames, diff, codes):
     return refund
 
 
-def settled_gas(deltas, miner, low, high, tip_price, burn_price, blob):
+def settled_gas(deltas, miner, low, high, miner_price, burn_price, blob, moved=0):
     """Return the charged gas in [low, high] that settles every observed balance exactly, if any.
 
-    blob is wei removed from supply besides the base fee: the blob fee and any balance destroyed."""
+    The fee recipient's balance changes by miner_price per gas, its tip, plus moved, the wei it
+    otherwise gains or loses. blob is wei removed from supply besides the base fee: the blob fee and
+    any balance destroyed."""
     if any(v is None for v in deltas) or miner is None:
         return None
     total=sum(deltas)
-    gas=miner//tip_price if tip_price else -(total+blob)//burn_price if burn_price else low
-    return gas if low<=gas<=high and miner==tip_price*gas and total==-(burn_price*gas+blob) else None
+    gas=(miner-moved)//miner_price if miner_price else -(total+blob)//burn_price if burn_price else low
+    return gas if low<=gas<=high and miner==miner_price*gas+moved and total==-(burn_price*gas+blob) else None
 
 
 def balance_delta(change):
@@ -650,7 +652,13 @@ def assess(case, observation, peers, topics):
         tip_price,burn_price=max(price-base,0),min(price,base)
         deltas=[balance_delta(mapping(a).get('balance')) for a in diff.values()]
         miner=balance_delta(mapping(accounts.get(block.get('miner'))).get('balance','='))
-        settled=settled_gas(deltas,miner,low,gas,tip_price,burn_price,removed)
+        # The fee recipient may also receive the transaction's value, or send it and pay the fees as its sender.
+        # The value moves unless the transaction failed, by its receipt or else its reported root frame.
+        failed=quantity(mapping(receipt).get('status'))==0 if source=='independent receipt' else bool(roots and roots[0].get('error'))
+        value=0 if failed else tx['value']
+        paying=tx['sender']==block.get('miner')
+        moved=value*((tx['to']==block.get('miner'))-paying)-(blob if paying else 0)
+        settled=settled_gas(deltas,miner,low,gas,tip_price-(tip_price+burn_price)*paying,burn_price,removed,moved)
         if settled is not None and plain:
             # The sum settles; each account must too, or offsetting deltas would pass.
             want={}

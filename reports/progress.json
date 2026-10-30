@@ -38,7 +38,7 @@
     {
       "builds": {
         "development": {
-          "agree": 33,
+          "agree": 32,
           "build": [
             "3.9.0-dev \u00b7 6955d198"
           ],
@@ -56,14 +56,14 @@
       },
       "client": "erigon",
       "counts": {
-        "agree": 33,
-        "converged": 0,
+        "agree": 32,
+        "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 4,
+      "dev_only": 3,
       "name": "Erigon",
       "prs": {
         "merged": 26,

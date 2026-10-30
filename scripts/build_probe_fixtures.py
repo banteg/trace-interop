@@ -713,15 +713,18 @@ def forks():
         case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     # A blob transaction carries at least one versioned hash, so a blob fee cap without blob hashes, or an empty
     # blobVersionedHashes list, describes no transaction at any fork: each is rejected before and at Cancun (H14,
-    # decided 2026-10-12), never run with the field ignored.
+    # decided 2026-10-12), never run with the field ignored. The combination is invalid regardless of state, so
+    # before Cancun it takes precedence over the inactive feature and the rejection reports it.
     variants = {'fee-only': ({'maxFeePerBlobGas': '0x1'}, 'A maxFeePerBlobGas without blobVersionedHashes'),
                 'empty': ({'blobVersionedHashes': []}, 'An empty blobVersionedHashes list')}
     for variant, (fields, subject) in variants.items():
         for name, block in [(f'fork-blob-{variant}-before', activation['cancun']-1), (f'fork-blob-{variant}-at', activation['cancun'])]:
             call = dict({'from': sender, 'to': target, 'gas': '0x186a0', 'data': '0x'}, **fields, **dynamic)
-            where = f'at block {block}, {"before" if block < activation["cancun"] else "at"} Cancun (block {activation["cancun"]})'
-            outcome = probe('H14', 'error', f'{subject} {where} describes no transaction, so the call is rejected (-32003 recommended), '
-                            'never run with the field ignored.', recommended=-32003)
+            before = block < activation['cancun']
+            where = f'at block {block}, {"before" if before else "at"} Cancun (block {activation["cancun"]})'
+            precedence = ' The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.' if before else ''
+            outcome = probe('H14', 'error', f'{subject} {where} describes no transaction, so the call is rejected for that defect '
+                            f'(-32602 recommended), never run with the field ignored.{precedence}', recommended=-32602, names='blob_hashes')
             case(cases, name, 'trace_call', [call, ['trace'], hex(block)], probes=[outcome])
             case(cases, name+'-eth-call', 'eth_call', [call, hex(block)], probes=[dict(outcome, control='eth_call parity control for '+name+'.')])
     return {'description': 'Reward matching and pagination, reversed range, genesis, the callMany beacon-root twin, the call depth limit at a Homestead block and fork activation of call-object features on the frozen PoW-to-PoS forks chain.', 'cases': cases}

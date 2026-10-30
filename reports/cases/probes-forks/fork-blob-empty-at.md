@@ -2,7 +2,7 @@
 
 `trace_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.
+**What this checks:** An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |

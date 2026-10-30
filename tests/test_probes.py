@@ -33,7 +33,11 @@ def result(value):
 
 
 def error(code):
-    return {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': code, 'message': 'invalid'}}}
+    return rejected(code, 'invalid')
+
+
+def rejected(code, message):
+    return {'status': 'rpc_error', 'response': {'jsonrpc': '2.0', 'id': 1, 'error': {'code': code, 'message': message}}}
 
 
 def statuses(case, observation, peers=None):
@@ -667,11 +671,18 @@ class MemberCaseTests(Probe):
             call = case['request']['params'][0]
             self.assertFalse(call.get('blobVersionedHashes'), name)
             self.assertEqual(call.get('maxFeePerBlobGas'), '0x1' if 'fee-only' in name else None, name)
-            self.assertMatches(case, error(-32003))
-            self.assertMatches(case, error(-32602))
+            # Besu, Reth, Nethermind and Erigon at Cancun each name the missing hash; the code is only recommended.
+            for code, message in [(-32602, 'Invalid blob count (blob transactions must have at least one blob)'),
+                                  (-32003, 'blob transaction missing blob hashes'),
+                                  (-32000, 'need at least 1 blob for a blob transaction'),
+                                  (-32000, 'maxFeePerBlobGas specified without blobVersionedHashes'),
+                                  (-32000, 'maxFeePerBlobGas requires blobVersionedHashes: blob txn must contain at least one blob versioned hash')]:
+                self.assertMatches(case, rejected(code, message))
+            # Erigon before Cancun reports the inactive fork, not the defect that takes precedence over it.
+            self.assertDiffers(case, rejected(-32000, 'BlobTx transactions require Cancun'))
             # Running the call ignores the cap; an internal error is no rejection.
             self.assertDiffers(case, result({'output': '0x', 'trace': []}))
-            self.assertDiffers(case, error(-32603))
+            self.assertDiffers(case, rejected(-32603, 'blob transaction missing blob hashes'))
 
     def test_validation_folds_case_only_in_closed_objects(self):
         from trace_interop.validation import request_errors

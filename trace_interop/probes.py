@@ -3,7 +3,8 @@
 A case lists `probes`: each names its decision topic, a kind and the expected values
 its generator derived from frozen chain data, fixture bytecode or the bounded VM
 model. Each kind checks one property, so a verdict names the property that differs.
-An `error` probe requires an error response; its optional `recommended` code is reported, not required.
+An `error` probe requires an error response; its optional `recommended` code is reported, not required,
+and its optional `names` (a rules.violation kind) requires the message to report that violation.
 A probe with `or_rejected` (a recommended code) is also met by an error response, for a request the
 draft lets a server either honor or reject, such as a member name in another letter case (H14).
 A probe may declare `depends` ({topic, reason}): an error response then blocks it, since
@@ -293,12 +294,15 @@ def assess(case, observation, peers):
                                            reference if isinstance(reference, list) else None))
             continue
         if kind == 'error':
-            # Any error response satisfies the rule; a `recommended` code is reported, never required.
+            # Any error response satisfies the rule, unless `names` requires it to report that violation;
+            # a `recommended` code is reported, never required.
             error = mapping(response.get('error'))
-            add(topic, rejection(status, response), requirement,
+            named = 'names' not in probe or violation(error.get('message')) == probe['names']
+            add(topic, rejection(status, response) and named, requirement,
                 f'Observed {status}' + (f' {error.get("code")}: {str(error.get("message"))[:120]}'
                                         + recommended_note(error.get('code'), probe.get('recommended')) if status == 'rpc_error'
-                                        else f' with output {str(mapping(result).get("output", result))[:140]}'),
+                                        else f' with output {str(mapping(result).get("output", result))[:140]}')
+                + ('' if named or status != 'rpc_error' else '; the rejection does not report the defect the requirement names.'),
                 role='rejection')
             continue
         if status != 'result' or embedded_error(response):

@@ -111,6 +111,9 @@ HALT_LABELS = {'Out of gas', 'Bad instruction', 'Bad jump destination', 'Stack u
 SIMULATIONS = ('trace_call', 'trace_callMany')
 # Recommended eth_sendRawTransaction error groups (execution-apis #650); -32003 is the generic fallback.
 RAW_CODES = {'nonce_low': 1, 'nonce_high': 2, 'intrinsic': 800, 'priority': 804, 'base_fee': 806, 'funds': 809}
+# Violations that are call-object field combinations no transaction can carry (H14), by the fields they combine:
+# a gasPrice beside dynamic fee fields, and blob fields without a versioned hash.
+FIELD_COMBINATIONS = {'fee_fields': 'fee field', 'blob_hashes': 'blob field'}
 
 
 # JSON-RPC 2.0 base-protocol errors: parse error, invalid request, method not found and internal error.
@@ -135,7 +138,9 @@ def violation(message):
     """Classify a validation error message; None when it names no known violation."""
     message = str(message).lower()
     # A gasPrice beside dynamic fee fields is a field combination (H14), whatever fee its message names.
-    for kind, pattern in [('fee_fields', r'both gasprice and'), ('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
+    for kind, pattern in [('fee_fields', r'both gasprice and'),
+                          ('blob_hashes', r'(?:missing|without|requires|at least (?:one|1)) blob|blob count'),
+                          ('nonce_low', r'nonce too low'), ('nonce_high', r'nonce too high'),
                           ('chain', r'chain ?id'), ('intrinsic', r'intrinsic gas'),
                           ('funds', r'insufficient (?:funds|balance)|exceeds account balance'),
                           ('priority', r'(?:priority|\btip\b).*(?:fee|cap)'),

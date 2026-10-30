@@ -18,7 +18,7 @@ sites also give a check these internal tags, which the functions here resolve an
 """
 from collections import defaultdict
 
-from .rules import SIMULATIONS, embedded_error, mapping, violation
+from .rules import FIELD_COMBINATIONS, SIMULATIONS, embedded_error, mapping, violation
 
 # Which decision judges a validation rejection, by method.
 VALIDATION_OWNERS = {**{method: 'H15' for method in SIMULATIONS}, 'trace_rawTransaction': 'H13'}
@@ -29,8 +29,8 @@ def error_owner(method, response):
     if embedded_error(response):
         return 'H25', 'an error envelope returned as a successful result'
     message = mapping(response.get('error')).get('message')
-    if violation(message) == 'fee_fields':
-        return 'H14', f'a fee field combination rejection: {str(message)[:120]}'
+    if violation(message) in FIELD_COMBINATIONS:
+        return 'H14', f'a {FIELD_COMBINATIONS[violation(message)]} combination rejection: {str(message)[:120]}'
     if method in VALIDATION_OWNERS and violation(message):
         return VALIDATION_OWNERS[method], f'a {violation(message)} validation rejection: {str(message)[:120]}'
     return None

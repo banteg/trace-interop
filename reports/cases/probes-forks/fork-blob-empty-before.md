@@ -2,14 +2,14 @@
 
 `trace_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.
+**What this checks:** An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
 | [Besu · 26.10.2 · d3e1aea7](../../clients/besu_release.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
 | [Besu · 26.10-develop · 7f08e68a](../../clients/besu_development.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.9.0-dev · 6955d198](../../clients/erigon_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
+| [Erigon · 3.9.0-dev · 6955d198](../../clients/erigon_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
 | [Geth draft fork · 1.17.11-unstable · 0f1fb2ae](../../clients/go-ethereum_trace.md) | RPC error `-32602` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
 | [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
 | [Nethermind · 2.3.0-preview · fc9abf09](../../clients/nethermind_development.md) | RPC error `-32000` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
@@ -40,5 +40,13 @@
   ]
 }
 ```
+
+**Erigon · 3.9.0-dev · 6955d198** (`3.9.0-dev-6955d198`)
+
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. Observed rpc_error -32000: BlobTx transactions require Cancun (-32602 recommended); the rejection does not report the defect the requirement names.
+
+**Erigon · 3.8.1 · cf6f1413** (`3.8.1-cf6f1413`)
+
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. Observed rpc_error -32000: BlobTx transactions require Cancun (-32602 recommended); the rejection does not report the defect the requirement names.
 
 </details>

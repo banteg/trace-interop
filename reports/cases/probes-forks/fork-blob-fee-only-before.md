@@ -2,7 +2,7 @@
 
 `trace_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection.
+**What this checks:** A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. Unrequested vmTrace is null. Unrequested stateDiff is null. Output remains a byte string under every trace selection.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -43,10 +43,10 @@
 
 **Erigon · 3.8.1 · cf6f1413** (`3.8.1-cf6f1413`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. Observed result with output 0x
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. Observed result with output 0x
 
 **Nethermind · 2.2.2 · be201120** (`2.2.2+be201120`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. Observed result with output 0x
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. Observed result with output 0x
 
 </details>

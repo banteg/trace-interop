@@ -2,7 +2,7 @@
 
 `eth_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.
+**What this checks:** A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -40,38 +40,38 @@
 
 **Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob) (-32003 recommended)
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob)
 
 **Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob) (-32003 recommended)
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob)
 
 **Erigon · 3.9.0-dev · 6955d198** (`3.9.0-dev-6955d198`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas requires blobVersionedHashes: blob txn must contain at least one blob versioned hash (-32003 recommended)
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas requires blobVersionedHashes: blob txn must contain at least one blob versioned hash (-32602 recommended)
 
 **Erigon · 3.8.1 · cf6f1413** (`3.8.1-cf6f1413`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed result with output 0x
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed result with output 0x
 
 **Geth draft fork · 1.17.11-unstable · 0f1fb2ae** (`Geth/v1.17.11-unstable-0f1fb2ae-2026-10-28/linux-amd64/go1.26.1`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas specified without blobVersionedHashes (-32003 recommended)
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas specified without blobVersionedHashes (-32602 recommended)
 
 **Nethermind · 2.3.0-preview · fc9abf09** (`2.3.0-preview+fc9abf09`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas specified without blobVersionedHashes (-32003 recommended)
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32000: maxFeePerBlobGas specified without blobVersionedHashes (-32602 recommended)
 
 **Nethermind · 2.2.2 · be201120** (`2.2.2+be201120`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed result with output 0x
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed result with output 0x
 
 **Reth · 2.8.1 · 966010c9** (`Reth Version: 2.8.1+966010c9`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes (-32602 recommended)
 
 **Reth · 2.9.0 · c9a780f4** (`Reth Version: 2.9.0+c9a780f4`)
 
-- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes
+- [H14](../../decisions/H14.md): A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-fee-only-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes (-32602 recommended)
 
 </details>

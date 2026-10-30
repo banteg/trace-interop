@@ -2,7 +2,7 @@
 
 `eth_call` · probes-forks · [All reports](../../README.md)
 
-**What this checks:** An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.
+**What this checks:** An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
@@ -40,38 +40,38 @@
 
 **Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob) (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob)
 
 **Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob) (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32602: Invalid blob count (blob transactions must have at least one blob)
 
 **Erigon · 3.9.0-dev · 6955d198** (`3.9.0-dev-6955d198`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: BlobTx transactions require Cancun (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: BlobTx transactions require Cancun (-32602 recommended); the rejection does not report the defect the requirement names.
 
 **Erigon · 3.8.1 · cf6f1413** (`3.8.1-cf6f1413`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: BlobTx transactions require Cancun (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: BlobTx transactions require Cancun (-32602 recommended); the rejection does not report the defect the requirement names.
 
 **Geth draft fork · 1.17.11-unstable · 0f1fb2ae** (`Geth/v1.17.11-unstable-0f1fb2ae-2026-10-28/linux-amd64/go1.26.1`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: err: transaction type not supported: blob tx (sender 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f) (supplied gas 100000) (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: err: transaction type not supported: blob tx (sender 0x7435ed30A8b4AEb0877CEf0c6E8cFFe834eb865f) (supplied gas 100000) (-32602 recommended); the rejection does not report the defect the requirement names.
 
 **Nethermind · 2.3.0-preview · fc9abf09** (`2.3.0-preview+fc9abf09`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: need at least 1 blob for a blob transaction (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: need at least 1 blob for a blob transaction (-32602 recommended)
 
 **Nethermind · 2.2.2 · be201120** (`2.2.2+be201120`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: need at least 1 blob for a blob transaction (-32003 recommended)
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32000: need at least 1 blob for a blob transaction (-32602 recommended)
 
 **Reth · 2.8.1 · 966010c9** (`Reth Version: 2.8.1+966010c9`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes (-32602 recommended)
 
 **Reth · 2.9.0 · c9a780f4** (`Reth Version: 2.9.0+c9a780f4`)
 
-- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes
+- [H14](../../decisions/H14.md): An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature. eth_call parity control for fork-blob-empty-before. Observed: Observed rpc_error -32003: blob transaction missing blob hashes (-32602 recommended)
 
 </details>

@@ -2357,8 +2357,9 @@
       "probes": [
         {
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.",
           "topic": "H14"
         }
       ],
@@ -2389,8 +2390,9 @@
         {
           "control": "eth_call parity control for fork-blob-fee-only-before.",
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.",
           "topic": "H14"
         }
       ],
@@ -2417,8 +2419,9 @@
       "probes": [
         {
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2449,8 +2452,9 @@
         {
           "control": "eth_call parity control for fork-blob-fee-only-at.",
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "A maxFeePerBlobGas without blobVersionedHashes at block 56, at Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2477,8 +2481,9 @@
       "probes": [
         {
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.",
           "topic": "H14"
         }
       ],
@@ -2509,8 +2514,9 @@
         {
           "control": "eth_call parity control for fork-blob-empty-before.",
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "An empty blobVersionedHashes list at block 55, before Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored. The defect is invalid regardless of state, so it takes precedence over the inactive blob feature.",
           "topic": "H14"
         }
       ],
@@ -2537,8 +2543,9 @@
       "probes": [
         {
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],
@@ -2569,8 +2576,9 @@
         {
           "control": "eth_call parity control for fork-blob-empty-at.",
           "kind": "error",
-          "recommended": -32003,
-          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected (-32003 recommended), never run with the field ignored.",
+          "names": "blob_hashes",
+          "recommended": -32602,
+          "requirement": "An empty blobVersionedHashes list at block 56, at Cancun (block 56) describes no transaction, so the call is rejected for that defect (-32602 recommended), never run with the field ignored.",
           "topic": "H14"
         }
       ],

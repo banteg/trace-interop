@@ -163,12 +163,13 @@ def delegation(address):
 
 
 def authorize(tx, exists, codes, nonces, chain_id):
-    """Apply valid EIP-7702 tuples in order, after the sender nonce increment; return the applied tuples."""
+    """Apply valid EIP-7702 tuples in order, after the sender nonce increment; return the applied tuples.
+    A tuple without a recovered authority has an invalid signature and is skipped."""
     applied=[]
     for auth in tx['authorizations']:
         authority=auth['authority']
         code=codes.get(authority,'0x')
-        if (auth['chain_id'] not in [0,chain_id] or auth['nonce']!=nonces.get(authority,0)
+        if (authority is None or auth['chain_id'] not in [0,chain_id] or auth['nonce']!=nonces.get(authority,0)
                 or code not in ['0x',None] and not code.startswith('0xef0100')):
             continue
         exists.add(authority)
@@ -496,7 +497,7 @@ def assess(case, observation, peers, topics):
             after_exists,after_codes,after_nonces=set(exists),dict(codes),dict(nonces)
             after_nonces[tx['sender']]=nonces.get(tx['sender'],0)+1
             applied=authorize(tx,after_exists,after_codes,after_nonces,context.get('_chain_id'))
-            for authority in dict.fromkeys(a['authority'] for a in tx['authorizations']):
+            for authority in dict.fromkeys(a['authority'] for a in tx['authorizations'] if a['authority']):
                 born=authority not in exists and authority in after_exists
                 def change(before,after):
                     return {'+':after} if born else '=' if before==after else {'*':{'from':before,'to':after}}

@@ -4,10 +4,25 @@ from functools import lru_cache
 import rlp
 from eth_hash.auto import keccak
 from eth_keys.datatypes import Signature
+from eth_keys.exceptions import BadSignature
+
+SECP256K1N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
 
 
 def number(raw):
     return int.from_bytes(raw, 'big')
+
+
+def authority(auth):
+    """An EIP-7702 tuple's signer, or None when its signature is invalid: an unrecoverable signature
+    or an s above secp256k1n/2. The tuple is then skipped, and the transaction still runs."""
+    if number(auth[5]) > SECP256K1N//2:
+        return None
+    try:
+        return Signature(vrs=(number(auth[3]),number(auth[4]),number(auth[5]))).recover_public_key_from_msg_hash(
+            keccak(b'\x05'+rlp.encode(auth[:3]))).to_address()
+    except BadSignature:
+        return None
 
 
 def resolve_block(context, selector):
@@ -65,9 +80,7 @@ def _decode_transaction(raw):
     access_list=fields[7] if kind==1 else fields[8] if kind else []
     if kind == 4:
         for auth in fields[9]:
-            authority = Signature(vrs=(number(auth[3]),number(auth[4]),number(auth[5]))).recover_public_key_from_msg_hash(
-                keccak(b'\x05'+rlp.encode(auth[:3]))).to_address()
-            authorizations.append({'authority':authority,'address':'0x'+auth[1].hex(),'nonce':number(auth[2]),'chain_id':number(auth[0])})
+            authorizations.append({'authority':authority(auth),'address':'0x'+auth[1].hex(),'nonce':number(auth[2]),'chain_id':number(auth[0])})
     return {'hash':'0x'+keccak(wire).hex(), 'sender':sender, 'nonce':number(nonce),
             'gas':number(gas),'price_cap':number(price),'tip_cap':tip,'type':kind,
             'intrinsic_extra':2400*len(access_list)+1900*sum(len(a[1]) for a in access_list)+25000*len(authorizations),

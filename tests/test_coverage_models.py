@@ -303,6 +303,30 @@ class ChainModelTests(unittest.TestCase):
         self.assertEqual(replay([born],{absent:{'code':{'+':delegated(auth['address'])},'nonce':{'+':'0x1'}}}),['matches'])
         self.assertEqual(replay([born],{absent:{'code':{'*':{'from':'0x','to':delegated(auth['address'])}},'nonce':{'*':{'from':'0x0','to':'0x1'}}}}),['change_needed'])
 
+    def test_a_tuple_with_an_invalid_signature_is_skipped_and_the_transaction_runs(self):
+        import rlp
+        from eth_hash.auto import keccak
+        from eth_keys import keys
+
+        from trace_interop.chain_model import SECP256K1N
+        from trace_interop.execution_models import authorize
+        def tuple_by(key, high_s=False):
+            fields=[1,b'\x22'*20,0]
+            signature=keys.PrivateKey(key.to_bytes(32,'big')).sign_msg_hash(keccak(b'\x05'+rlp.encode(fields)))
+            v,r,s=signature.vrs
+            return fields+([1-v,r,SECP256K1N-s] if high_s else [v,r,s])
+        sender=keys.PrivateKey((1).to_bytes(32,'big'))
+        # A valid tuple, a zero signature (r = s = 0) and a recoverable high-s signature (EIP-2).
+        body=[1,0,0,1,100000,b'\x11'*20,0,b'',[],[tuple_by(2),[1,b'\x22'*20,0,0,0,0],tuple_by(3,high_s=True)]]
+        signature=sender.sign_msg_hash(keccak(b'\x04'+rlp.encode(body)))
+        tx=decode_transaction(b'\x04'+rlp.encode(body+list(signature.vrs)))
+        valid=keys.PrivateKey((2).to_bytes(32,'big')).public_key.to_canonical_address()
+        self.assertEqual([a['authority'] for a in tx['authorizations']],['0x'+valid.hex(),None,None])
+        self.assertEqual(tx['intrinsic_extra'],3*25000)  # Every tuple is charged, valid or not.
+        codes,nonces={},{}
+        self.assertEqual(authorize(tx,set(),codes,nonces,1),tx['authorizations'][:1])
+        self.assertEqual(codes,{'0x'+valid.hex():'0xef0100'+'22'*20})
+
     def test_known_empty_execution_requires_empty_vm_object(self):
         blocks=load_chain(ROOT/'fixtures/chains/initial/chain.rlp')
         tx=blocks['0x2']['transactions'][3]

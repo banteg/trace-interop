@@ -137,6 +137,36 @@ class ResultValidatorTests(unittest.TestCase):
         self.assertTrue(errors(result_validator(schema)))
         self.assertEqual(errors(result_validator(schema)), errors(Draft201909Validator(schema)))
 
+    def test_a_deep_vm_trace_validates_without_deep_recursion(self):
+        import sys
+
+        from jsonschema import Draft201909Validator
+
+        from trace_interop.report import result_validator
+        root = Path(__file__).resolve().parents[1]
+        schema = next(m for m in json.loads((root/'spec/trace-openrpc.json').read_text())['methods'] if m['name'] == 'trace_call')['result']['schema']
+        def errors(validator, value):
+            return [(list(e.absolute_path), e.message, len(e.context)) for e in validator.iter_errors(value)]
+        step = {'pc': 0, 'cost': 3, 'op': 'PUSH1', 'ex': {'used': 1, 'push': ['0x1'], 'mem': None, 'store': None}, 'sub': None}
+        def vm(depth, leaf):
+            # A Reth trace 101 frames deep, 1,908 ops in all, raised RecursionError in plain validation.
+            frame = leaf
+            for _ in range(depth):
+                frame = {'code': '0x', 'ops': [dict(step, pc=pc) for pc in range(18)] + [dict(step, op='CALL', sub=frame)]}
+            return {'output': '0x', 'trace': [], 'stateDiff': None, 'vmTrace': frame}
+        self.assertEqual(list(result_validator(schema).iter_errors(vm(110, {'code': '0x', 'ops': []}))), [])
+        # A defect in the innermost frame, and a frame entered by an operation that never executed, are reported as plain validation reports them.
+        for leaf in [{'code': '0x0', 'ops': []}, {'code': '0x', 'ops': [dict(step, ex=None, sub={'code': '0x', 'ops': []})]}]:
+            value = vm(110, leaf)
+            limit = sys.getrecursionlimit()
+            sys.setrecursionlimit(10_000)
+            try:
+                plain = errors(Draft201909Validator(schema), value)
+            finally:
+                sys.setrecursionlimit(limit)
+            self.assertTrue(plain)
+            self.assertEqual(errors(result_validator(schema), value), plain)
+
 
 class ChangesPageTests(unittest.TestCase):
     def test_flips_and_build_changes_are_grouped_by_client(self):

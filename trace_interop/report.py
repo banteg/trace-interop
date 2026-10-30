@@ -46,13 +46,54 @@ def run_context(root, manifest):
     return context
 
 
-def result_validator(schema):
+class ResultValidator:
     """One validator per method, over a pre-crawled registry: the recursive vmTrace `$ref` resolves
-    against an embedded `$id`, which an uncrawled registry would re-crawl on every lookup."""
-    from jsonschema import Draft201909Validator
-    from referencing import Registry
-    from referencing.jsonschema import DRAFT201909
-    return Draft201909Validator(schema, registry=Registry().with_resource('', DRAFT201909.create_resource(schema)).crawl())
+    against an embedded `$id`, which an uncrawled registry would re-crawl on every lookup. A vmTrace
+    nests a frame per call depth, and validating one through its `$ref` recurses about ten Python frames
+    per level, so a 100-deep trace would exceed the recursion limit. Nested frames (`sub`) are therefore
+    validated deepest first, and a parent's `$ref` reuses its child's errors instead of descending into it;
+    the errors equal plain validation's."""
+    def __init__(self, schema):
+        from jsonschema import Draft201909Validator, ValidationError, validators
+        from referencing import Registry
+        from referencing.jsonschema import DRAFT201909
+        self.frames = {}  # id(frame) -> its errors, for the result being validated
+
+        def ref(validator, ref, instance, schema):
+            if id(instance) in self.frames:
+                yield from map(ValidationError.create_from, self.frames[id(instance)])
+            else:
+                yield from validator._validate_reference(ref=ref, instance=instance)
+        cls = validators.extend(Draft201909Validator, {'$ref': ref})
+        registry = Registry().with_resource('', DRAFT201909.create_resource(schema)).crawl()
+        self.result = cls(schema, registry=registry)
+        resource = next((s for s in json_objects(schema) if '$id' in s), None)
+        self.frame = resource and cls(resource, registry=registry)
+
+    def iter_errors(self, result):
+        self.frames.clear()
+        if self.frame:
+            for frame in reversed([v for o in json_objects(result) if isinstance(v := o.get('sub'), dict)]):
+                self.frames[id(frame)] = list(self.frame.iter_errors(frame))
+        try:
+            yield from self.result.iter_errors(result)
+        finally:
+            self.frames.clear()
+
+
+def json_objects(value):
+    """Every object in a JSON value, each before the objects it contains, without recursion."""
+    stack = [value]
+    while stack:
+        value = stack.pop()
+        if isinstance(value, dict):
+            yield value
+            stack.extend(reversed(list(value.values())))
+        elif isinstance(value, list):
+            stack.extend(reversed(value))
+
+
+result_validator = ResultValidator
 
 
 def generate(root, runs, output):

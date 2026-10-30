@@ -87,7 +87,7 @@
     "trace_interop/oracles.py": "807436d605622ba7e480941d76d8840dc7803cdd8a4dc46f326130a12874523a",
     "trace_interop/presentation.py": "4aed9f02111fc3c20b3d588bfacf3cd068713c2fed9a0da556d2396d91dab845",
     "trace_interop/probes.py": "909d496a476c1d64156dab13c0a6f6bfc176d85a6d4314651bee4140735a3418",
-    "trace_interop/report.py": "9eadeb983140f7b1c1e6398642d0b6ec8e1d28cf4e9d53b4a6f9371d64be9d17",
+    "trace_interop/report.py": "a3de54af6550923b93684a966d7feff406dd21f09769f8672ca897b552eec5c8",
     "trace_interop/rules.py": "cda1cceef1580a42b4ef6be0da277aecfc02a0fdf7044a1a44cfa0ed6b156afb",
     "trace_interop/scenarios.py": "6732f8e0cd9ca260c2e5037cf7905681d1abd7acdb634443786831922119b6c3",
     "trace_interop/status.py": "11141c0265a4fda35c8fb839ea9ee50b61d0318ead97e44878ae62ad698dfd83",

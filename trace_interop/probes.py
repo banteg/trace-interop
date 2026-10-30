@@ -21,6 +21,7 @@ that runs the same gas at the same price, so the difference isolates one fee, su
 """
 from .execution_models import balance_delta
 from .rules import (
+    call_object,
     deleted_storage_shape,
     embedded_error,
     page_dependencies,
@@ -239,7 +240,7 @@ def block_hash_check(probe, case, status, response, result, reference):
 
 def model_steps(case):
     model = case['model']
-    call = case['request']['params'][0]
+    call = call_object(case['request']['params'][0])
     environment = {'FRESH_ACCOUNT': 'to' not in call}
     return execute(model['code'], 10_000_000, '0x' if 'to' not in call else call.get('data', call.get('input', '0x')), environment)[0]['ops']
 

@@ -14,7 +14,7 @@ from .execution_models import assess as assess_execution
 from .fee_policy import assess as assess_fee_policy, assess_compatibility
 from .probes import assess as assess_probe
 from .mined_probes import assess as assess_mined_probes
-from .rules import accounting_topic, page_dependencies, creation_difference, pos_selection, pos_check, state_account
+from .rules import accounting_topic, call_object, page_dependencies, creation_difference, pos_selection, pos_check, state_account
 from .isolation import deferred, isolate
 
 
@@ -253,7 +253,7 @@ def properties(case, observation, peers, checks, expected):
     # Execute independently supplied straight-line fixtures, including their exact
     # output, opcode gas, same-step writes and stack changes.
     if method == 'trace_call' and params and isinstance(params[0], dict):
-        call = params[0]
+        call = call_object(params[0])
         model = case.get('model')
         code = model.get('code') if isinstance(model, dict) else None
         if code is None and ('H19' in declared or 'H20' in declared):

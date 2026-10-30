@@ -23,6 +23,11 @@ def sequence(value):
     return value if isinstance(value, list) else []
 
 
+def call_object(call):
+    """A simulation call object with its explicit null members omitted (H14), so a null to creates a contract."""
+    return {k: v for k, v in mapping(call).items() if v is not None}
+
+
 def distinct(values):
     """Distinct JSON values in first-seen order; a client's values may be unhashable."""
     return list({json.dumps(v, sort_keys=True): v for v in values}.values())
@@ -179,6 +184,7 @@ def observed_number(call, output, context):
     """Which block NUMBER a simulated program observed, from the bounded VM model of its code:
     'head', 'next' or 'neither'; None when the model cannot tell them apart."""
     head = mapping(context.get('_environment')).get('NUMBER')
+    call = call_object(call)
     data = call.get('data', call.get('input', '0x'))
     code = data if 'to' not in call else mapping(context.get('_codes')).get(str(call['to']).lower())
     if head is None or not isinstance(code, str):

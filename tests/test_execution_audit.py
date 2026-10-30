@@ -141,6 +141,26 @@ class NullMemberTests(Accounts, unittest.TestCase):
                 self.assertEqual(transactions(self.case('trace_call', call)), [])
                 self.assertEqual(transactions(self.case('trace_callMany', call)), [])
 
+    def test_the_vm_model_takes_null_members_as_omitted(self):
+        from trace_interop.coverage import supplement
+        from trace_interop.vm_model import execute, intrinsic
+        code = '0x600160020100'
+        def checks(call):
+            gas = int(call['gas'], 16) if call.get('gas') else 100000
+            vm, output, _ = execute(code, gas-intrinsic(call.get('data') or '0x', call.get('to') is None))
+            case = dict(self.case('trace_call', dict(call, **{'from': self.sender})), context={'_alloc': {self.target: {'code': code}}, '_codes': {self.target: code}})
+            case['request']['params'][1] = ['trace', 'vmTrace']
+            result = {'output': output, 'trace': [], 'stateDiff': None, 'vmTrace': vm}
+            return supplement(case, {'status': 'result', 'response': {'result': result}}, {}, [], ['H19', 'H20'])
+        # A null to creates a contract from the data; null data runs the target's code without calldata.
+        for call in [{'to': None, 'data': code, 'gas': '0x186a0'}, dict(self.null, to=self.target, gas='0x186a0')]:
+            with self.subTest(call=call):
+                found = checks(call)
+                self.assertIn(('H08', 'matches'), [(c['topic'], c['status']) for c in found])
+                self.assertEqual({c['status'] for c in found}, {'matches'}, found)
+        # Null gas takes the client's default, which the model cannot know: only the local relations are judged.
+        self.assertEqual({c['status'] for c in checks({'to': self.target, 'gas': None})}, {'matches'})
+
 
 class TracedRefundTests(unittest.TestCase):
     """#15: a malformed state diff or call frame leaves the traced refund unknown."""

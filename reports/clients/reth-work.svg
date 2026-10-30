@@ -92,8 +92,8 @@
 <text class="n-agree" x="603.5" y="257" text-anchor="middle">#27367</text>
 <rect class="pr edge partial" x="637" y="244" width="55" height="18" rx="4"/>
 <text class="label" x="664.5" y="257" text-anchor="middle">#27378</text>
-<rect class="pr edge partial" x="400" y="268" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="281" text-anchor="middle">#28160</text>
+<rect class="b-fix edge partial" x="400" y="268" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="281" text-anchor="middle">#28160</text>
 <rect class="b-converged" x="16" y="292" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="305" text-anchor="middle">H14</text>
 <text class="label" x="70" y="305">Invalid parameters and rejected calls</text>

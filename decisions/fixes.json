@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29",
+  "checked_at": "2026-10-30",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -3298,10 +3298,17 @@
       "partial": [
         "H06"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "reopens #27478 (closed by the stale bot before review) with the same commit on current main: unknown-block replay errors like trace_block"
+      "merged_at": "2026-10-30T13:51:14Z",
+      "note": "reopens #27478 (closed by the stale bot before review) with the same commit on current main: unknown-block replay errors like trace_block",
+      "uptake": {
+        "merge_commit": "4e1a5574eeb984118d7018fb48ccddfb31c1e36c",
+        "builds": {
+          "966010c905449163ef161530a5ee95ac1e0c8487": false,
+          "c9a780f4f23d6752ca299b104c93b7f099673c80": false
+        }
+      }
     },
     {
       "url": "https://github.com/alloy-rs/evm2/pull/876",

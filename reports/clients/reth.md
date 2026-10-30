@@ -4,7 +4,7 @@ Reth 2.9.0 · c9a780f4 replaces revm and revm-inspectors with evm2 (#25002), who
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 2.8.1 · 966010c9** (of 33 decisions): ✅ 25 agree · 🛠️ 3 fix submitted · ⚠️ 5 with no fix yet (5 on converged decisions). Upstream fix PRs: 24 merged, 11 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 2.8.1 · 966010c9** (of 33 decisions): ✅ 25 agree · 🛠️ 3 fix submitted · ⚠️ 5 with no fix yet (5 on converged decisions). Upstream fix PRs: 25 merged, 10 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Reth decisions by outcome, with fix PRs](reth-work.svg)
 

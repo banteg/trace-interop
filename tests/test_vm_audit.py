@@ -13,6 +13,14 @@ class LocalInvariantTests(unittest.TestCase):
             bad=copy.deepcopy(vm);bad['ops'][1]['ex']=ex
             self.assertTrue(local_invariants(bad),ex)
 
+    def test_a_first_operation_rejected_before_execution_leaves_no_operations(self):
+        # ADD and POP underflow the empty stack; 0x0c is undefined and 0xFE the designated invalid instruction.
+        for code in ['0x01', '0x50', '0x0c', '0xfe']:
+            self.assertEqual(local_invariants({'code': code, 'ops': []}), [], code)
+        # STOP and PUSH1 begin executing, so they must be reported.
+        for code in ['0x00', '0x6001']:
+            self.assertTrue(local_invariants({'code': code, 'ops': []}), code)
+
     def test_halted_step_cost_is_a_nonnegative_integer(self):
         vm,_,_=execute('0x600100',100)
         vm['ops'][1]['ex']=None

@@ -456,7 +456,9 @@ effects independently of recorded values.
         code = bytes.fromhex(vm.get('code', '0x')[2:])
     except (ValueError, TypeError):
         return ['VM bytecode malformed']
-    if code and not vm['ops']:
+    # A first operation rejected before execution is omitted: an undefined opcode, including the
+    # designated invalid 0xFE, or one whose inputs underflow the empty stack.
+    if code and not vm['ops'] and code[0] in INPUTS and code[0] != 0xfe and not INPUTS[code[0]]:
         return ['nonempty executing bytecode has no operations']
     previous = None
     for i, (op, (operands, broken)) in enumerate(zip(vm['ops'], replay(vm, code))):

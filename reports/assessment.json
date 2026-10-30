@@ -94,7 +94,7 @@
     "trace_interop/tables.py": "ccd2894188346c8a450004d79c34c91092c7b9add8080ced9fb6bea0a884748c",
     "trace_interop/validation.py": "be76c9d2115be457ac77ecb89d4b5947f55cb017688a8ffb6086e434232fc02a",
     "trace_interop/versions.py": "0935eb1857cf902311cc61d6f998f3585e086e2a77b70ac3cfaac96fe15ffd54",
-    "trace_interop/vm_model.py": "e76d591674a4e9686622dc624574bf6ea47fe43caac89a7eb662c816d77970ac",
+    "trace_interop/vm_model.py": "52a27b787ae2d13561bfb7911b56a5e87556393f05c603c82e7d0fefab18d4a2",
     "uv.lock": "5a37a577fcd2c3cf5bb7f113fe4bf8b1ebce6703d152b31af21d5944e0f5e3af"
   },
   "spec_commit": "2f8ca20535d5797b21765dd75817453c5d0d108d"

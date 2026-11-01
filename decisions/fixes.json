@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30",
+  "checked_at": "2026-11-01",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -64,7 +64,8 @@
       ],
       "state": "open",
       "draft": false,
-      "merged_at": null
+      "merged_at": null,
+      "note": "Reth moved to evm2 and no longer uses alloy-evm; reth#27378 carries the fix there"
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/10953",
@@ -445,7 +446,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit"
+      "note": "split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit; its commits merged with #36036"
     },
     {
       "url": "https://github.com/ethereum/go-ethereum/pull/36036",
@@ -455,10 +456,16 @@
       "depends_on": [
         "https://github.com/ethereum/go-ethereum/pull/36035"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state"
+      "merged_at": "2026-11-01T10:43:13Z",
+      "note": "needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state",
+      "uptake": {
+        "merge_commit": "ca5554d19828dd324a686ff4d9b5fa4cc2d030bb",
+        "builds": {
+          "0f1fb2ae59dba1a24f6345578e11e6611a39495e": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/13551",
@@ -754,10 +761,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "depends_on": [
-        "https://github.com/alloy-rs/evm/pull/411"
-      ],
-      "note": "pruned history surfaces as the history-unavailable error through Reth's execution wrappers; blocks with pre-execution system calls (EIP-4788, EIP-2935 and later) still fail with -32603 until alloy-rs/evm#411 is released and bumped in Reth"
+      "note": "pruned history surfaces as the history-unavailable error through Reth's execution wrappers, also inside evm2's DatabaseError and HandlerError::Database; ConfigureEvm::pre_block_state_changes returns the BlockExecutionError instead of a boxed error, so blocks with pre-execution system calls (EIP-4788, EIP-2935 and later) report it too, replacing alloy-evm#411"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/27411",
@@ -2308,12 +2312,9 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "follows mattsse's suggestion in reth#27476: prepare_call_env sets disable_fee_charge only for a zero gas price, so a priced eth_call/trace_call is funded and charged (at the effective gas price) while unpriced calls stay free; depends on alloy-evm#437 so omitted-gas priced blob calls stay fundable; on OP, op-revm's operator-fee refund would need a guard in op-reth",
+      "note": "follows mattsse's suggestion in reth#27476: prepare_call_env drops evm2's fee charge and balance check only for a zero gas price, so a priced eth_call/trace_call is funded and charged (at the effective gas price) while unpriced calls stay free; omitted-gas priced blob calls stay fundable since reth#28113 reserved the blob fee in the caller gas allowance, replacing alloy-evm#437; on OP, the operator fee of a priced call is charged like a transaction's",
       "partial": [
         "H15"
-      ],
-      "depends_on": [
-        "https://github.com/alloy-rs/evm/pull/437"
       ]
     },
     {
@@ -3098,7 +3099,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth needs the alloy-evm release; its eth_simulateV1 builds transactions separately and still differs"
+      "note": "CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth moved to evm2 and kept its own CallFees, so reth#28227 ports the fix"
     },
     {
       "url": "https://github.com/alloy-rs/evm/pull/437",
@@ -3110,7 +3111,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls",
+      "note": "caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls; Reth moved to evm2; reth#28113 reserves the blob fee there",
       "partial": [
         "H15"
       ]
@@ -3125,10 +3126,17 @@
       "partial": [
         "H14"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "trace_filter rejects a bare address string and negative after/count with -32602; a legacy call keeps a foreign chainId so validation rejects it (-32000) in trace_call and eth_call; trace_rawTransaction is left to #11395"
+      "merged_at": "2026-10-31T06:43:08Z",
+      "note": "trace_filter rejects a bare address string and negative after/count with -32602; a legacy call keeps a foreign chainId so validation rejects it (-32000) in trace_call and eth_call; trace_rawTransaction is left to #11395",
+      "uptake": {
+        "merge_commit": "f10d23c34013634b275a05a637317f68594f01cd",
+        "builds": {
+          "7f08e68a3cc891a3b642f8353b9770cf6ba7d5a0": false,
+          "d3e1aea7326960c317def66074037e7f67892ac4": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11440",
@@ -3321,6 +3329,23 @@
       "draft": false,
       "merged_at": null,
       "note": "evm2 runs step_end for CALL and CREATE after the child returns, so Reth 2.9.0 vmTrace cost lost the forwarded gas (9,396 instead of 71,624 on the replay-tree root CALL); records the cost in the call and create hooks, also for failed prechecks"
+    },
+    {
+      "url": "https://github.com/paradigmxyz/reth/pull/28227",
+      "title": "fix(rpc): price blob calls by a legacy gas price",
+      "client": "reth",
+      "decisions": [
+        "H14",
+        "H15"
+      ],
+      "partial": [
+        "H14",
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "ports alloy-evm#427 to reth-rpc-convert's CallFees after the move to evm2: ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict, and a blob cap alone prices execution at 0 (H15); eth_simulateV1 builds transactions separately and still differs"
     }
   ]
 }

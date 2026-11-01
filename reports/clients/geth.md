@@ -4,7 +4,7 @@ The experimental fork follows the adopted source-review stances. 0f1fb2ae is the
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 1.17.11-unstable · 0f1fb2ae** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 0 merged, 3 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 1.17.11-unstable · 0f1fb2ae** (of 33 decisions): ✅ 33 agree. Upstream fix PRs: 1 merged, 2 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Geth draft fork decisions by outcome, with fix PRs](geth-work.svg)
 

@@ -3320,7 +3320,7 @@
     },
     {
       "url": "https://github.com/alloy-rs/evm2/pull/876",
-      "title": "fix(inspectors): include forwarded gas in call and create step cost",
+      "title": "fix(inspectors): include forwarded gas in parity create step cost",
       "client": "reth",
       "decisions": [
         "H20"
@@ -3328,7 +3328,7 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "evm2 runs step_end for CALL and CREATE after the child returns, so Reth 2.9.0 vmTrace cost lost the forwarded gas (9,396 instead of 71,624 on the replay-tree root CALL); records the cost in the call and create hooks, also for failed prechecks"
+      "note": "evm2#744 (mattsse, merged 2026-10-29) made the step cost follow geth: CALL costs include the forwarded gas, CREATE costs leave it out in both struct logs and vmTrace; reworked on 2026-11-01 so the parity builder adds the child gas limit to a CREATE/CREATE2 cost (also after a failed precheck) and pairs steps only with children of their kind; Reth's pinned evm2 (592bf18) predates #744, so Reth 2.9.0's root CALL still costs 9,396 instead of 71,624"
     },
     {
       "url": "https://github.com/paradigmxyz/reth/pull/28227",

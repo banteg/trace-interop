@@ -215,7 +215,7 @@
       },
       "reth": {
         "observed": "2.9.0 \u00b7 c9a780f4 and the nightly 966010c9 run evm2, whose vmTrace reports a CALL or CREATE `cost` without the gas forwarded to the child: the replay-tree root CALL costs 9,396 where Erigon, Nethermind, Anvil and the Geth draft report 71,624, with the same `ex.used`. A call or creation that fails its precheck also omits the forwarded gas. The other revm-inspectors 0.44.1 fixes carried over.",
-        "change": "Include the forwarded gas (63/64-capped for calls, all but 1/64 for creations) in the evm2 inspector's CALL and CREATE `cost`, also after a failed precheck."
+        "change": "Bump evm2 past #744, which includes the forwarded gas in CALL costs, and add the all-but-1/64 forwarded to a CREATE or CREATE2 to its vmTrace `cost`, also after a failed precheck (evm2#876)."
       },
       "anvil": {
         "observed": "1.8.3 locks revm-inspectors 0.43.0 (whole-memory `mem`, pre-operation `used`, no `store`). 1.8.4 and the nightly 328811cb ship 0.44.1 (#532): memory and subs follow execution, MLOAD reports its memory, there is no synthetic STOP, and a call that fails its precheck has no `sub`. The nightly 32624734 replays mined-probes through #17305 and agrees there too.",

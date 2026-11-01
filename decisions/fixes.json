@@ -436,14 +436,14 @@
       "state": "open",
       "draft": false,
       "merged_at": null,
-      "note": "implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical"
+      "note": "implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, which merged together on 2026-11-01 and were rebased out of this PR, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical"
     },
     {
       "url": "https://github.com/ethereum/go-ethereum/pull/36035",
       "title": "core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors",
       "client": "geth",
       "decisions": [],
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "merged_at": null,
       "note": "split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit; its commits merged with #36036"

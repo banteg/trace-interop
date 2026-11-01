@@ -90,19 +90,19 @@ A library PR is **released** in the first tag containing it at each library hop,
 ```mermaid
 flowchart LR
   Geth_35791["Geth #35791"]:::open
-  Geth_36035["Geth #36035"]:::open
+  Geth_36035["Geth #36035"]:::closed
   Geth_36036["Geth #36036"]:::merged
   Geth_36035 --> Geth_35791
   Geth_36036 --> Geth_35791
   Geth_36035 --> Geth_36036
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
   classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
+  classDef closed fill:#ffebe9,stroke:#cf222e,color:#1f2328
 ```
 
 | PR | Change | Decisions | Merged | Released | In client | In measured build | Verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical · after Geth #36035 · after Geth #36036 | — | — | — | — | — | — |
-| [Geth #36035](https://github.com/ethereum/go-ethereum/pull/36035) | Core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors; split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit; its commits merged with #36036 | — | — | — | — | — | — |
+| [Geth #35791](https://github.com/ethereum/go-ethereum/pull/35791) | Add Parity trace RPC namespace; implements the nine Parity trace methods and all three output families: internal/traceapi on top of tracers.Backend, with the capture registered as the parityTracer in eth/tracers/parity; approved by lightclient on 2026-10-27 for the 1.17.11 milestone, then reworked on 2026-10-28 for rjl493456442's review (refactors split into #36035 and #36036, which merged together on 2026-11-01 and were rebased out of this PR, --rpc.evmtimeout for calls, stateDiff without a state copy); EIP-8037 two-dimensional gas waits for #35970; the 22 execution-apis#895 fixtures regenerate byte-identical · after Geth #36035 · after Geth #36036 | — | — | — | — | — | — |
 | [Geth #36036](https://github.com/ethereum/go-ethereum/pull/36036) | Core, eth: apply the DAO fork in pre-execution and harden stateAtTransaction; needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state · after Geth #36035 | — | 2026-11-01 | — | — | — | — |
 
 ## Nethermind
@@ -276,5 +276,6 @@ No measured build consumes these repositories.
 
 - [Erigon #24292](https://github.com/erigontech/erigon/pull/24292): Apply safe and finalized from a same-head fork choice; closed in favor of #24032, which applies the same-head safe/finalized update; our regression tests pass on it (fixes #24028)
 - [Erigon #24322](https://github.com/erigontech/erigon/pull/24322): Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032
+- [Geth #36035](https://github.com/ethereum/go-ethereum/pull/36035): Core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors; split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit; its commits merged with #36036
 - [Nethermind #13665](https://github.com/NethermindEth/nethermind/pull/13665): Retain output in state-only Parity traces
 - [Reth #27478](https://github.com/paradigmxyz/reth/pull/27478): Error on unknown block in trace_replayBlockTransactions; unknown-block replay errors like trace_block

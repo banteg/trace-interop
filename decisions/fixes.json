@@ -62,7 +62,7 @@
       "partial": [
         "H06"
       ],
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "merged_at": null,
       "note": "Reth moved to evm2 and no longer uses alloy-evm; reth#27378 carries the fix there"
@@ -3096,7 +3096,7 @@
         "H14",
         "H15"
       ],
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "merged_at": null,
       "note": "CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth moved to evm2 and kept its own CallFees, so reth#28227 ports the fix"
@@ -3108,7 +3108,7 @@
       "decisions": [
         "H15"
       ],
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "merged_at": null,
       "note": "caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls; Reth moved to evm2; reth#28113 reserves the blob fee there",

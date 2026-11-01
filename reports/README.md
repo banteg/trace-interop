@@ -1,6 +1,6 @@
 # Trace API: what would change?
 
-The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/2f8ca20535d5797b21765dd75817453c5d0d108d) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
+The clients already share much of the `trace_*` API. These reports show where adopting the [draft specification](https://github.com/banteg/execution-apis/tree/794b655decb8980df6f02427f7e99a225d9eb46d) would change their behavior. Start with your client, then use the examples and source links to review a proposed change.
 
 Published builds checked at **2026-10-29T12:46:43.495599+00:00**. [Freshness preflight](../evidence/2026-10-29/eval/preflight.json) · [Build lock](../evidence/2026-10-29/eval/clients.lock.json). All corpora use this snapshot; later upstream changes require a new capture.
 
@@ -19,7 +19,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 | [Besu](clients/besu.md) | 26.10-develop · 7f08e68a | 8 | 6 | 13 | 0 | 0 | 6 | 0 | 10 / 14 |
 | [Erigon](clients/erigon.md) | 3.9.0-dev · 6955d198 | 32 | 0 | 1 | 0 | 0 | 0 | 3 | 26 / 0 |
 | [Nethermind](clients/nethermind.md) | 2.3.0-preview · fc9abf09 | 33 | 0 | 0 | 0 | 0 | 0 | 6 | 51 / 0 |
-| [Reth](clients/reth.md) | 2.8.1 · 966010c9 | 25 | 3 | 5 | 0 | 0 | 0 | 0 | 25 / 11 |
+| [Reth](clients/reth.md) | 2.8.1 · 966010c9 | 25 | 3 | 5 | 0 | 0 | 0 | 0 | 25 / 8 |
 | [Anvil](clients/anvil.md) | 1.8.7-nightly · 716e795c | 27 | 1 | 5 | 0 | 0 | 0 | 9 | 16 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is captured by replaying the fixture chains, so its fork-transition and reorg scenarios stay unmeasured. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)

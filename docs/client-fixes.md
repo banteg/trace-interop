@@ -170,11 +170,6 @@ flowchart LR
   Reth_takes_next_Alloy_release[["Reth takes next Alloy release"]]:::pending
   Alloy_4274["Alloy #4274"]:::merged
   Alloy_4442["Alloy #4442"]:::open
-  Alloy_EVM_411["Alloy EVM #411"]:::open
-  next_Alloy_EVM_release(["next Alloy EVM release"]):::pending
-  Reth_takes_next_Alloy_EVM_release[["Reth takes next Alloy EVM release"]]:::pending
-  Alloy_EVM_427["Alloy EVM #427"]:::open
-  Alloy_EVM_437["Alloy EVM #437"]:::open
   revm_3833["revm #3833"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
@@ -196,10 +191,6 @@ flowchart LR
   next_Alloy_release -.-> Reth_takes_next_Alloy_release
   Alloy_4274 -.-> next_Alloy_release
   Alloy_4442 -.-> next_Alloy_release
-  Alloy_EVM_411 -.-> next_Alloy_EVM_release
-  next_Alloy_EVM_release -.-> Reth_takes_next_Alloy_EVM_release
-  Alloy_EVM_427 -.-> next_Alloy_EVM_release
-  Alloy_EVM_437 -.-> next_Alloy_EVM_release
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
@@ -228,9 +219,6 @@ flowchart LR
 | [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H04](../reports/decisions/H04.md), [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | — | — | — | — |
 | [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | 2026-10-01 | — | — | — | — |
 | [Alloy #4442](https://github.com/alloy-rs/alloy/pull/4442) | Accept block tags in TraceFilter bounds; TraceFilter fromBlock/toBlock become Option<BlockNumberOrTag>, so earliest, latest, safe and finalized deserialize; block_option() rejects pending. Reth and Anvil both reject tags today because they parse trace_filter params into this type; each then needs a handler that resolves the tags, Anvil included | [H32](../reports/decisions/H32.md) (partial) | — | — | — | — | — |
-| [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411) | Preserve fatal system call error sources; Reth moved to evm2 and no longer uses alloy-evm; reth#27378 carries the fix there | [H06](../reports/decisions/H06.md) (partial) | — | — | — | — | — |
-| [Alloy EVM #427](https://github.com/alloy-rs/evm/pull/427) | Price blob calls by a legacy gas price; CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth moved to evm2 and kept its own CallFees, so reth#28227 ports the fix | [H14](../reports/decisions/H14.md) (partial), [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
-| [Alloy EVM #437](https://github.com/alloy-rs/evm/pull/437) | Reserve the blob fee in the caller gas allowance; caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls; Reth moved to evm2; reth#28113 reserves the blob fee there | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 | [evm2 #876](https://github.com/alloy-rs/evm2/pull/876) | Include forwarded gas in parity create step cost; evm2#744 (mattsse, merged 2026-10-29) made the step cost follow geth: CALL costs include the forwarded gas, CREATE costs leave it out in both struct logs and vmTrace; reworked on 2026-11-01 so the parity builder adds the child gas limit to a CREATE/CREATE2 cost (also after a failed precheck) and pairs steps only with children of their kind; Reth's pinned evm2 (592bf18) predates #744, so Reth 2.9.0's root CALL still costs 9,396 instead of 71,624 | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev, stable | dev, stable |
 | [Reth #27217](https://github.com/paradigmxyz/reth/pull/27217) | Correct Otterscan block and transaction responses | — | 2026-09-25 | — | — | dev, stable | — |
@@ -274,6 +262,9 @@ No measured build consumes these repositories.
 
 ## Closed
 
+- [Alloy EVM #411](https://github.com/alloy-rs/evm/pull/411): Preserve fatal system call error sources; Reth moved to evm2 and no longer uses alloy-evm; reth#27378 carries the fix there
+- [Alloy EVM #427](https://github.com/alloy-rs/evm/pull/427): Price blob calls by a legacy gas price; CallFees::ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict; a blob cap alone now prices execution at 0 (H15). Reth moved to evm2 and kept its own CallFees, so reth#28227 ports the fix
+- [Alloy EVM #437](https://github.com/alloy-rs/evm/pull/437): Reserve the blob fee in the caller gas allowance; caller_gas_allowance subtracts the EIP-4844 max blob fee (calc_max_data_fee) with the value before dividing by the gas price, as revm funds it; prerequisite for reth#27977, whose fee charging would otherwise reject omitted-gas priced blob calls; Reth moved to evm2; reth#28113 reserves the blob fee there
 - [Erigon #24292](https://github.com/erigontech/erigon/pull/24292): Apply safe and finalized from a same-head fork choice; closed in favor of #24032, which applies the same-head safe/finalized update; our regression tests pass on it (fixes #24028)
 - [Erigon #24322](https://github.com/erigontech/erigon/pull/24322): Handle repeated forkchoice outside unwind; Review follow-up targeting https://github.com/erigontech/erigon/pull/24032's branch; parent PR remains required. · after Erigon #24032
 - [Geth #36035](https://github.com/ethereum/go-ethereum/pull/36035): Core/state, eth, internal/ethapi, triedb: type unavailable state and missing block tag errors; split out of #35791 at rjl493456442's request: ErrStateUnavailable, ErrSafeBlockNotFound/ErrFinalizedBlockNotFound and exported ethapi error codes; includes lightclient's commit; its commits merged with #36036

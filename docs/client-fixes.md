@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-03**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-04**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 

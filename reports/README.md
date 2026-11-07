@@ -16,7 +16,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **125 of
 
 | Client | Build | ✅ Agree | 🛠️ Fix submitted | ⚠️ No fix · converged | ⚠️ No fix · under review | ❔ Policy open | ⚪ Not fully measured | In dev, not stable | Fix PRs merged / open |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Besu](clients/besu.md) | 26.10-develop · 7f08e68a | 8 | 6 | 13 | 0 | 0 | 6 | 0 | 10 / 14 |
+| [Besu](clients/besu.md) | 26.10-develop · 7f08e68a | 8 | 6 | 13 | 0 | 0 | 6 | 0 | 11 / 13 |
 | [Erigon](clients/erigon.md) | 3.9.0-dev · 6955d198 | 32 | 0 | 1 | 0 | 0 | 0 | 3 | 26 / 0 |
 | [Nethermind](clients/nethermind.md) | 2.3.0-preview · fc9abf09 | 33 | 0 | 0 | 0 | 0 | 0 | 6 | 51 / 0 |
 | [Reth](clients/reth.md) | 2.8.1 · 966010c9 | 25 | 3 | 5 | 0 | 0 | 0 | 0 | 25 / 8 |

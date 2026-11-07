@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-05",
+  "checked_at": "2026-11-07",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -2555,10 +2555,17 @@
       "decisions": [
         "H01"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Adds the missing method by reusing block replay's execution and result steps, so each result equals the trace_replayBlockTransactions entry for that transaction (L08). Unknown hash returns null; missing body, state or trie nodes return 4444. Inherits #10953's pre-block system calls through Tracer.processTracing. Remaining Besu trace work is tracked in besu-eth/besu#11405."
+      "merged_at": "2026-11-06T01:55:47Z",
+      "note": "Adds the missing method by reusing block replay's execution and result steps, so each result equals the trace_replayBlockTransactions entry for that transaction (L08). Unknown hash returns null; missing body, state or trie nodes return 4444. Inherits #10953's pre-block system calls through Tracer.processTracing. Remaining Besu trace work is tracked in besu-eth/besu#11405.",
+      "uptake": {
+        "merge_commit": "2190b6e9616aa30b6f1466847b4bf7f2b6745726",
+        "builds": {
+          "7f08e68a3cc891a3b642f8353b9770cf6ba7d5a0": false,
+          "d3e1aea7326960c317def66074037e7f67892ac4": false
+        }
+      }
     },
     {
       "url": "https://github.com/alloy-rs/alloy/pull/4274",

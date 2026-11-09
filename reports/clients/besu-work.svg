@@ -120,8 +120,8 @@
 <rect class="b-converged" x="16" y="532" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="545" text-anchor="middle">H32</text>
 <text class="label" x="70" y="545">Trace block tags and pending state</text>
-<rect class="pr edge partial" x="400" y="532" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="545" text-anchor="middle">#11441</text>
+<rect class="b-fix edge partial" x="400" y="532" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="545" text-anchor="middle">#11441</text>
 <rect class="b-converged" x="16" y="556" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="569" text-anchor="middle">H33</text>
 <text class="label" x="70" y="569">Single-block hash selection in trace_filter</text>

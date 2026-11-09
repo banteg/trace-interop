@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-07",
+  "checked_at": "2026-11-09",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -462,6 +462,22 @@
       "note": "needed by #35791's StateAtTransaction replays: moves the DAO fork transfers from StateProcessor.Process into PreExecution, so debug tracers and replays at the fork block see them; stateAtTransaction stops on cancellation and types missing state",
       "uptake": {
         "merge_commit": "ca5554d19828dd324a686ff4d9b5fa4cc2d030bb",
+        "builds": {
+          "0f1fb2ae59dba1a24f6345578e11e6611a39495e": false
+        }
+      }
+    },
+    {
+      "url": "https://github.com/ethereum/go-ethereum/pull/36053",
+      "title": "eth: regenerate side chain state along the block's own ancestry",
+      "client": "geth",
+      "decisions": [],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-11-09T08:59:38Z",
+      "note": "StateAtBlock on a hash-scheme database regenerated a side-chain block's state by re-executing the canonical blocks above the ancestor, so debug and trace replays of a side block's parent state ran on the canonical post-state; the fix re-executes the block's own ancestry",
+      "uptake": {
+        "merge_commit": "af4f72f5bdfb2d17bb7a01b857cf5f6d140ac0ba",
         "builds": {
           "0f1fb2ae59dba1a24f6345578e11e6611a39495e": false
         }
@@ -3166,18 +3182,25 @@
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11441",
-      "title": "fix(rpc): resolve safe trace_filter bounds and reject pending in trace methods",
+      "title": "fix(rpc): resolve safe trace_filter bounds; reject pending in trace",
       "client": "besu",
       "decisions": [
         "H32"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
+      "merged_at": "2026-11-09T01:19:31Z",
       "note": "trace_filter resolves safe and finalized bounds (rejecting them when absent) and rejects pending instead of -32603; trace_block, trace_replayBlockTransactions, trace_call and trace_callMany reject pending instead of evaluating it as latest; trace_call and trace_callMany still take no block hash, which H32 also requires",
       "partial": [
         "H32"
-      ]
+      ],
+      "uptake": {
+        "merge_commit": "02dc47aa287442906dadcc6ac7942ebde9932ba1",
+        "builds": {
+          "7f08e68a3cc891a3b642f8353b9770cf6ba7d5a0": false,
+          "d3e1aea7326960c317def66074037e7f67892ac4": false
+        }
+      }
     },
     {
       "url": "https://github.com/NethermindEth/nethermind/pull/14888",
